@@ -1,0 +1,15 @@
+{
+  "name": "nation-design-system",
+  "version": "1.0.0",
+  "description": "Nation Group Thailand Design System token pipeline",
+  "type": "module",
+  "scripts": {
+    "tokens:pull":  "node scripts/figma-to-tokens.mjs",
+    "tokens:build": "node scripts/build-tokens.mjs",
+    "tokens:sync":  "npm run tokens:pull && npm run tokens:build",
+    "tokens:push":  "node scripts/tokens-to-figma.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}

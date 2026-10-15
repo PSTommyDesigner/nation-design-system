@@ -1,0 +1,448 @@
+/**
+ * Toast styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับไฟล์ออกแบบหน้า 19 Toasts and Banners ได้
+ *
+ * โครง token ที่ใช้
+ *   ขนาด    --ntg-toast-width-{size} ความกว้างบนเดสก์ท็อป
+ *           --ntg-toast-padding-{size} ระยะขอบเท่ากันทั้งสี่ด้าน
+ *           --ntg-toast-gap-{size} ช่องไฟระหว่างไอคอน กลุ่มข้อความ และปุ่มปิด
+ *           --ntg-toast-stack-{size} ระยะระหว่างหัวข้อกับข้อความรอง
+ *           --ntg-toast-action-gap-{size} ระยะจากกลุ่มข้อความลงมาถึงปุ่มกระทำ
+ *           --ntg-toast-icon-{size} ขนาดไอคอนบอกชนิด ปุ่มปิดใช้ค่าเดียวกัน
+ *           --ntg-toast-text-width-{size} ความกว้างที่เหลือให้กลุ่มข้อความ (ค่าอนุพันธ์)
+ *   มุมโค้ง  --ntg-toast-radius-{size}
+ *   เงา      --ntg-shadows-bottom-md ตัวเดียว ทุกขนาดใช้เหมือนกัน
+ *   ตัวอักษร หัวข้อใช้ preset label/sm md lg xl และ title/lg
+ *           ข้อความรองใช้ preset body/xs xs sm md lg
+ *   เคลื่อนไหว ขาเข้า --ntg-motion-duration-default (250ms) กับ --ntg-motion-easing-enter
+ *           ขาออก --ntg-motion-duration-fast (150ms) กับ --ntg-motion-easing-exit
+ *   ชั้นซ้อน --ntg-layer-notification (400) ชั้นสูงสุดของระบบ
+ *
+ * ⚠️ ห้ามตั้งความสูง ความสูงมาจากเนื้อหา คือบรรทัดหัวข้อ บวกข้อความรอง บวกระยะขอบบนล่าง
+ *    tokens/scale/toast.mjs เขียนกำกับไว้ว่าไม่มีสูตรความสูงโดยตั้งใจ
+ *    ถ้าตรึงความสูงไว้ ข้อความที่ตัดหลายบรรทัดจะล้นออกนอกกล่อง
+ *
+ * ⚠️ ความกว้างของกลุ่มข้อความใช้ flex-basis เป็น --ntg-toast-text-width-{size}
+ *    ซึ่งเป็นค่าอนุพันธ์ที่ tokens/scale/toast.mjs คำนวณไว้แล้วจาก
+ *    ความกว้าง ลบ ระยะขอบสองข้าง ลบ ไอคอนกับปุ่มปิด ลบ ช่องไฟสองช่อง
+ *    ผูกไว้เพื่อให้ฝั่งโค้ดกับฝั่งไฟล์ออกแบบได้ตัวเลขเดียวกัน ไม่ใช่ปล่อยให้ flex เดาเอง
+ *
+ * ⚠️ ขาออกใช้ชั้นเวลา fast ขาเข้าใช้ชั้น default ไม่ใช่ชั้นเดียวกัน
+ *    เพราะขาออกต้องเร็วกว่าหรือเท่ากับขาเข้า ซึ่งเป็นข้อที่ตลาดทำตรงกันทุกเจ้าในงานวิจัยหัวข้อ 9
+ *    ถ้าสลับกัน จะรู้สึกว่าใบนั้นไม่ยอมไปตอนกดปิด
+ *
+ * ⚠️ 44 คือค่าคงที่ของเกณฑ์ WCAG 2.5.5 Target Size ไม่ใช่ค่าของระบบออกแบบ
+ *    ประกาศไว้ที่เดียวแบบเดียวกับที่ Tabs ทำ แล้วให้ชั้นพื้นที่แตะอ้างตัวนั้น
+ */
+
+/* ═══ กล่องลอยที่ยึดมุมจอ เป็นของ ToastStack ไม่ใช่ของตัวใบ ═══════ */
+
+.viewport {
+  position: fixed;
+  /* ยึดล่างขวาบนเดสก์ท็อป ระยะขอบใช้ระยะขอบของขนาดกลาง ซึ่งเป็นขนาดเริ่มต้นของระบบ */
+  inset-block-end: var(--ntg-toast-padding-md);
+  inset-inline-end: var(--ntg-toast-padding-md);
+  /*
+   * ชั้นการวางซ้อน อ้าง token --ntg-layer-notification (400) ซึ่งเป็นชั้นสูงสุดของระบบ
+   * เพราะข้อความแจ้งต้องอยู่เหนือทั้งแผงลอยและชั้นฉากทับ
+   *
+   * ⚠️ --toast-layer ตั้งใจไม่ประกาศค่าไว้ จะได้ตกไปใช้ token เป็นค่าตั้งต้น
+   *    ถ้าแอปปลายทางมีชั้นที่สูงกว่านี้ ให้ตั้ง --toast-layer จากข้างนอก
+   *    แทนการแก้ไฟล์นี้ ถ้ามาประกาศค่าไว้ที่นี่ ตัวตั้งต้นจะถูกบังจนทับจากข้างนอกไม่ได้ผล
+   */
+  z-index: var(--toast-layer, var(--ntg-layer-notification));
+  display: flex;
+  flex-direction: column;
+  /* ปล่อยให้คลิกผ่านไปโดนเนื้อหาข้างหลังได้ มีแต่ตัวใบที่รับการคลิก */
+  pointer-events: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  /* ใบใหม่เข้าด้านล่าง จึงเรียงจากเก่าไปใหม่ตามลำดับ DOM ปกติ */
+  align-items: flex-end;
+  gap: var(--ntg-size-space-s1-lg);
+  margin: var(--ntg-size-space-none);
+  padding: var(--ntg-size-space-none);
+  list-style: none;
+}
+
+/*
+ * ชั้นประกาศให้โปรแกรมอ่านหน้าจอ แยกออกจากตัวที่มองเห็นโดยตั้งใจ
+ *
+ * ⚠️ ห้ามย้าย aria-live หรือ role ไปอยู่บนกล่องที่มองเห็น
+ *    ถ้าใส่ไว้บนตัวที่มองเห็น โปรแกรมอ่านหน้าจอจะอ่านสองรอบ
+ *    รอบแรกตอน live region เปลี่ยน และรอบสองตอนผู้ใช้เลื่อนไปเจอกล่องนั้น
+ *    Base Web เขียนเหตุผลนี้ไว้ในโค้ด และ Fluent 2 กับ Radix แยกออกมาแบบเดียวกัน
+ *
+ * ใช้วิธีซ่อนแบบที่ยังอยู่ในต้นไม้การเข้าถึง ห้ามใช้ display none หรือ visibility hidden
+ * เพราะสองตัวนั้นจะถอดข้อความออกจากต้นไม้ แล้วจะไม่มีการประกาศเกิดขึ้นเลย
+ */
+.liveRegion {
+  /*
+   * ⚠️ 1px ตรงนี้เป็นค่าคงที่ของสูตรซ่อนแบบยังอ่านได้ ไม่ใช่ระยะของระบบออกแบบ
+   *    ต้องมีขนาดมากกว่า 0 ไม่งั้นเบราว์เซอร์บางตัวจะถอดออกจากต้นไม้การเข้าถึง
+   */
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: var(--ntg-size-space-none);
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ═══ ตัวใบ ═══════════════════════════════════════════════════ */
+
+.root {
+  /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
+  --toast-width: var(--ntg-toast-width-md);
+  --toast-pad: var(--ntg-toast-padding-md);
+  --toast-gap: var(--ntg-toast-gap-md);
+  --toast-stack: var(--ntg-toast-stack-md);
+  --toast-action-gap: var(--ntg-toast-action-gap-md);
+  --toast-icon: var(--ntg-toast-icon-md);
+  --toast-text-width: var(--ntg-toast-text-width-md);
+  --toast-radius: var(--ntg-toast-radius-md);
+  --toast-title-family: var(--ntg-typography-font-family-label-lg);
+  --toast-title-size: var(--ntg-typography-font-size-label-lg);
+  --toast-title-line: var(--ntg-typography-line-height-label-lg);
+  --toast-title-weight: var(--ntg-typography-font-weight-label-lg);
+  --toast-title-space: var(--ntg-typography-letter-space-label-lg);
+  --toast-desc-family: var(--ntg-typography-font-family-body-sm);
+  --toast-desc-size: var(--ntg-typography-font-size-body-sm);
+  --toast-desc-line: var(--ntg-typography-line-height-body-sm);
+  --toast-desc-weight: var(--ntg-typography-font-weight-body-sm);
+  --toast-desc-space: var(--ntg-typography-letter-space-body-sm);
+
+  /* เวลาและเส้นโค้งการเคลื่อนไหว อ้าง token ของระบบ ดูคำอธิบายที่หัวไฟล์ */
+  --toast-enter-duration: var(--ntg-motion-duration-default);
+  --toast-leave-duration: var(--ntg-motion-duration-fast);
+  --toast-enter-ease: var(--ntg-motion-easing-enter);
+  --toast-leave-ease: var(--ntg-motion-easing-exit);
+
+  /* ค่าคงที่ของเกณฑ์ WCAG 2.5.5 ไม่ใช่ค่าของระบบออกแบบ */
+  --toast-touch-target: 44px;
+
+  position: relative;
+  box-sizing: border-box;
+  inline-size: var(--toast-width);
+  /* ห้ามตั้งความสูง ดูคำอธิบายที่หัวไฟล์ */
+  padding: var(--toast-pad);
+  border-radius: var(--toast-radius);
+  background: var(--toast-bg);
+  box-shadow: var(--ntg-shadows-bottom-md);
+  /* ตัวใบรับการคลิก ส่วนกล่องลอยที่ครอบอยู่ปล่อยให้คลิกผ่าน */
+  pointer-events: auto;
+  animation: toast-enter var(--toast-enter-duration) var(--toast-enter-ease) both;
+}
+
+/* ใบที่กำลังจะหาย ระยะขาออก 15 เปอร์เซ็นต์ สั้นกว่าขาเข้าที่ 50 ตามที่ Atlassian ทำ */
+.leaving {
+  animation: toast-leave var(--toast-leave-duration) var(--toast-leave-ease) both;
+}
+
+@keyframes toast-enter {
+  from { opacity: 0; translate: 0 50%; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes toast-leave {
+  from { opacity: 1; translate: 0 0; }
+  to { opacity: 0; translate: 0 15%; }
+}
+
+/* ── แถวบน ไอคอน กลุ่มข้อความ ปุ่มปิด ───────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--toast-gap);
+}
+
+/* ไอคอนบอกชนิด กรอบล็อกสัดส่วน 1 ต่อ 1 และอยู่แนวเดียวกับบรรทัดแรกของหัวข้อ */
+.iconSlot {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--toast-icon);
+  /* สูงเท่าบรรทัดหัวข้อ ไอคอนจึงอยู่กลางบรรทัดแรกพอดี ไม่ใช่ชิดขอบบนของกล่อง */
+  block-size: var(--toast-title-line);
+  color: var(--toast-icon-color);
+}
+
+.body {
+  /*
+   * flex-basis เป็นค่าอนุพันธ์จาก tokens/scale/toast.mjs ดูคำอธิบายที่หัวไฟล์
+   * min-inline-size 0 จำเป็น ไม่งั้นข้อความยาวจะดันกล่องให้กว้างเกิน token
+   */
+  flex: 1 1 var(--toast-text-width);
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--toast-stack);
+}
+
+.title {
+  margin: var(--ntg-size-space-none);
+  color: var(--ntg-color-text-general-heading);
+  font-family: var(--toast-title-family);
+  font-size: var(--toast-title-size);
+  line-height: var(--toast-title-line);
+  font-weight: var(--toast-title-weight);
+  letter-spacing: var(--toast-title-space);
+  /* ข้อความยาวตัดบรรทัดได้ ห้ามตัดคำด้วยจุดสามจุด ข้อความแจ้งต้องอ่านได้ครบ */
+  overflow-wrap: anywhere;
+}
+
+.description {
+  margin: var(--ntg-size-space-none);
+  color: var(--ntg-color-text-general-text);
+  font-family: var(--toast-desc-family);
+  font-size: var(--toast-desc-size);
+  line-height: var(--toast-desc-line);
+  font-weight: var(--toast-desc-weight);
+  letter-spacing: var(--toast-desc-space);
+  overflow-wrap: anywhere;
+}
+
+/* ปุ่มกระทำอยู่ใต้ข้อความเสมอ ไม่ใช่ท้ายแถวเดียวกัน มีได้ปุ่มเดียว */
+.actionRow {
+  display: flex;
+  margin-block-start: calc(var(--toast-action-gap) - var(--toast-stack));
+}
+
+/*
+ * ปุ่มปิด เป็นพี่น้องของกลุ่มข้อความ ไม่ใช่ลูกของมัน
+ * React Aria ระบุว่าลำดับใน DOM มีผลกับสิ่งที่ผู้ใช้ได้ยิน
+ * ถ้าปุ่มปิดอยู่ก่อนเนื้อหา โปรแกรมอ่านหน้าจอจะอ่านคำว่าปิดก่อนข้อความจริง
+ */
+.close {
+  flex: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--toast-icon);
+  /* สูงเท่าบรรทัดหัวข้อ ปุ่มจึงตรงแนวกับไอคอนฝั่งซ้าย */
+  block-size: var(--toast-title-line);
+  padding: var(--ntg-size-space-none);
+  border: none;
+  /*
+   * กลุ่ม toast ไม่มี token มุมโค้งเต็มของตัวเอง จึงหยิบของป้ายกลมมาใช้
+   * เพราะปุ่มปิดคือของกลมชนิดเดียวกัน ไม่ใช่ใส่ค่าดิบ (วิธีเดียวกับที่ Tabs ทำกับจุดแจ้งเตือน)
+   */
+  border-radius: var(--ntg-circular-badge-radius-full);
+  background: none;
+  color: var(--ntg-icon-general-secondary);
+  cursor: pointer;
+  appearance: none;
+  transition: color var(--toast-leave-duration) ease;
+}
+
+/*
+ * ชั้นพื้นที่แตะ มองไม่เห็น ขยายเฉพาะพื้นที่กด ไม่ขยายกล่องจริง
+ * ถ้าขยายกล่องจริง ปุ่มจะไปทับข้อความและทับขอบกล่อง
+ */
+.close::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+  min-inline-size: var(--toast-touch-target);
+  min-block-size: var(--toast-touch-target);
+}
+
+.close:hover { color: var(--ntg-icon-general-primary); }
+
+.close:focus-visible {
+  outline: none;
+  box-shadow: var(--ntg-focused-ring-default);
+}
+
+/* ═══ ชนิด 5 ค่า ทรงเดียวคือพื้นสีอ่อน ═══════════════════════════ */
+
+.typeDefault {
+  --toast-bg: var(--ntg-color-background-general-secondary);
+  --toast-icon-color: var(--ntg-icon-general-primary);
+}
+
+.typeBrand {
+  --toast-bg: var(--ntg-color-background-brand-primary);
+  --toast-icon-color: var(--ntg-icon-brand-on-subtle);
+}
+
+.typeError {
+  --toast-bg: var(--ntg-color-background-system-error-primary);
+  --toast-icon-color: var(--ntg-icon-system-error-on-subtle);
+}
+
+.typeWarning {
+  --toast-bg: var(--ntg-color-background-system-warning-primary);
+  --toast-icon-color: var(--ntg-icon-system-warning-on-subtle);
+}
+
+.typeSuccess {
+  --toast-bg: var(--ntg-color-background-system-success-primary);
+  --toast-icon-color: var(--ntg-icon-system-success-on-subtle);
+}
+
+/* ═══ ขนาด 5 ขั้น ═══════════════════════════════════════════════ */
+
+.xs {
+  --toast-width: var(--ntg-toast-width-xs);
+  --toast-pad: var(--ntg-toast-padding-xs);
+  --toast-gap: var(--ntg-toast-gap-xs);
+  --toast-stack: var(--ntg-toast-stack-xs);
+  --toast-action-gap: var(--ntg-toast-action-gap-xs);
+  --toast-icon: var(--ntg-toast-icon-xs);
+  --toast-text-width: var(--ntg-toast-text-width-xs);
+  --toast-radius: var(--ntg-toast-radius-xs);
+  --toast-title-family: var(--ntg-typography-font-family-label-sm);
+  --toast-title-size: var(--ntg-typography-font-size-label-sm);
+  --toast-title-line: var(--ntg-typography-line-height-label-sm);
+  --toast-title-weight: var(--ntg-typography-font-weight-label-sm);
+  --toast-title-space: var(--ntg-typography-letter-space-label-sm);
+  --toast-desc-family: var(--ntg-typography-font-family-body-xs);
+  --toast-desc-size: var(--ntg-typography-font-size-body-xs);
+  --toast-desc-line: var(--ntg-typography-line-height-body-xs);
+  --toast-desc-weight: var(--ntg-typography-font-weight-body-xs);
+  --toast-desc-space: var(--ntg-typography-letter-space-body-xs);
+}
+
+.sm {
+  --toast-width: var(--ntg-toast-width-sm);
+  --toast-pad: var(--ntg-toast-padding-sm);
+  --toast-gap: var(--ntg-toast-gap-sm);
+  --toast-stack: var(--ntg-toast-stack-sm);
+  --toast-action-gap: var(--ntg-toast-action-gap-sm);
+  --toast-icon: var(--ntg-toast-icon-sm);
+  --toast-text-width: var(--ntg-toast-text-width-sm);
+  --toast-radius: var(--ntg-toast-radius-sm);
+  --toast-title-family: var(--ntg-typography-font-family-label-md);
+  --toast-title-size: var(--ntg-typography-font-size-label-md);
+  --toast-title-line: var(--ntg-typography-line-height-label-md);
+  --toast-title-weight: var(--ntg-typography-font-weight-label-md);
+  --toast-title-space: var(--ntg-typography-letter-space-label-md);
+  --toast-desc-family: var(--ntg-typography-font-family-body-xs);
+  --toast-desc-size: var(--ntg-typography-font-size-body-xs);
+  --toast-desc-line: var(--ntg-typography-line-height-body-xs);
+  --toast-desc-weight: var(--ntg-typography-font-weight-body-xs);
+  --toast-desc-space: var(--ntg-typography-letter-space-body-xs);
+}
+
+.md {
+  --toast-width: var(--ntg-toast-width-md);
+  --toast-pad: var(--ntg-toast-padding-md);
+  --toast-gap: var(--ntg-toast-gap-md);
+  --toast-stack: var(--ntg-toast-stack-md);
+  --toast-action-gap: var(--ntg-toast-action-gap-md);
+  --toast-icon: var(--ntg-toast-icon-md);
+  --toast-text-width: var(--ntg-toast-text-width-md);
+  --toast-radius: var(--ntg-toast-radius-md);
+  --toast-title-family: var(--ntg-typography-font-family-label-lg);
+  --toast-title-size: var(--ntg-typography-font-size-label-lg);
+  --toast-title-line: var(--ntg-typography-line-height-label-lg);
+  --toast-title-weight: var(--ntg-typography-font-weight-label-lg);
+  --toast-title-space: var(--ntg-typography-letter-space-label-lg);
+  --toast-desc-family: var(--ntg-typography-font-family-body-sm);
+  --toast-desc-size: var(--ntg-typography-font-size-body-sm);
+  --toast-desc-line: var(--ntg-typography-line-height-body-sm);
+  --toast-desc-weight: var(--ntg-typography-font-weight-body-sm);
+  --toast-desc-space: var(--ntg-typography-letter-space-body-sm);
+}
+
+.lg {
+  --toast-width: var(--ntg-toast-width-lg);
+  --toast-pad: var(--ntg-toast-padding-lg);
+  --toast-gap: var(--ntg-toast-gap-lg);
+  --toast-stack: var(--ntg-toast-stack-lg);
+  --toast-action-gap: var(--ntg-toast-action-gap-lg);
+  --toast-icon: var(--ntg-toast-icon-lg);
+  --toast-text-width: var(--ntg-toast-text-width-lg);
+  --toast-radius: var(--ntg-toast-radius-lg);
+  --toast-title-family: var(--ntg-typography-font-family-label-xl);
+  --toast-title-size: var(--ntg-typography-font-size-label-xl);
+  --toast-title-line: var(--ntg-typography-line-height-label-xl);
+  --toast-title-weight: var(--ntg-typography-font-weight-label-xl);
+  --toast-title-space: var(--ntg-typography-letter-space-label-xl);
+  --toast-desc-family: var(--ntg-typography-font-family-body-md);
+  --toast-desc-size: var(--ntg-typography-font-size-body-md);
+  --toast-desc-line: var(--ntg-typography-line-height-body-md);
+  --toast-desc-weight: var(--ntg-typography-font-weight-body-md);
+  --toast-desc-space: var(--ntg-typography-letter-space-body-md);
+}
+
+.xl {
+  --toast-width: var(--ntg-toast-width-xl);
+  --toast-pad: var(--ntg-toast-padding-xl);
+  --toast-gap: var(--ntg-toast-gap-xl);
+  --toast-stack: var(--ntg-toast-stack-xl);
+  --toast-action-gap: var(--ntg-toast-action-gap-xl);
+  --toast-icon: var(--ntg-toast-icon-xl);
+  --toast-text-width: var(--ntg-toast-text-width-xl);
+  --toast-radius: var(--ntg-toast-radius-xl);
+  --toast-title-family: var(--ntg-typography-font-family-title-lg);
+  --toast-title-size: var(--ntg-typography-font-size-title-lg);
+  --toast-title-line: var(--ntg-typography-line-height-title-lg);
+  --toast-title-weight: var(--ntg-typography-font-weight-title-lg);
+  --toast-title-space: var(--ntg-typography-letter-space-title-lg);
+  --toast-desc-family: var(--ntg-typography-font-family-body-lg);
+  --toast-desc-size: var(--ntg-typography-font-size-body-lg);
+  --toast-desc-line: var(--ntg-typography-line-height-body-lg);
+  --toast-desc-weight: var(--ntg-typography-font-weight-body-lg);
+  --toast-desc-space: var(--ntg-typography-letter-space-body-lg);
+}
+
+/* ═══ มือถือ ยืดเต็มจอ ยึดล่างกลาง ═══════════════════════════════ */
+
+/*
+ * ⚠️ จุดตัด 768 ตรงกับ --ntg-grid-breakpoint-tablet-v
+ *    @media อ่าน custom property ไม่ได้ตามข้อกำหนดของ CSS จึงต้องเขียนเลขตรงนี้
+ *    ถ้าแก้ token ต้องมาแก้บรรทัดนี้ด้วย
+ */
+@media (max-width: 767.98px) {
+  .viewport {
+    /* ยึดล่างกลาง กางเต็มความกว้างจอ ส่วนระยะขอบข้างไปอยู่ที่ตัวใบ */
+    inset-inline: 0;
+  }
+
+  .list {
+    align-items: stretch;
+  }
+
+  .root {
+    /* ยืดเต็มจอแล้วเว้นขอบข้างละเท่ากับระยะขอบของขนาดเดียวกัน */
+    inline-size: auto;
+    margin-inline: var(--toast-pad);
+  }
+
+  .body {
+    /* บนมือถือความกว้างมาจากจอ ไม่ใช่จาก token จึงปล่อยให้ยืดตาม */
+    flex: 1 1 auto;
+  }
+}
+
+/* ═══ ผู้ใช้ขอให้ลดการเคลื่อนไหว ═══════════════════════════════════ */
+
+/*
+ * ปิดการเคลื่อนไหวทั้งหมด แบบเดียวกับที่ sonner ทำ
+ * ส่วนการหยุดนับเวลาหายเองอยู่ฝั่ง TypeScript เพราะต้องหยุดนาฬิกาจริง ไม่ใช่แค่หยุดภาพ
+ */
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .leaving {
+    animation: none;
+  }
+
+  .close {
+    transition: none;
+  }
+}

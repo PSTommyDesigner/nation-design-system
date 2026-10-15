@@ -1,0 +1,30 @@
+{
+  "//": "ใช้ตรวจชนิดข้อมูลอย่างเดียว ไม่ได้ใช้ build (noEmit) ของจริงถูก build ที่โปรเจกต์ปลายทางที่หยิบ component ไปใช้",
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "types/**/*.d.ts",
+    "components/**/*.ts",
+    "components/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

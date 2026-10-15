@@ -1,0 +1,55 @@
+{
+  "device": {
+    "desktop": {
+      "device-width": {
+        "$type": "dimension",
+        "$value": "1440px",
+        "$description": "ความกว้างจออ้างอิง ของจอ desktop"
+      },
+      "scale": {
+        "$type": "dimension",
+        "$value": "1px",
+        "$description": "ตัวคูณขนาดของจอนี้ ของจอ desktop"
+      },
+      "root-font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.text-md}",
+        "$description": "ขนาดตัวอักษรฐานของจอนี้ ของจอ desktop"
+      }
+    },
+    "tablet": {
+      "device-width": {
+        "$type": "dimension",
+        "$value": "768px",
+        "$description": "ความกว้างจออ้างอิง ของจอ tablet"
+      },
+      "scale": {
+        "$type": "dimension",
+        "$value": "1px",
+        "$description": "ตัวคูณขนาดของจอนี้ ของจอ tablet"
+      },
+      "root-font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.text-md}",
+        "$description": "ขนาดตัวอักษรฐานของจอนี้ ของจอ tablet"
+      }
+    },
+    "mobile": {
+      "device-width": {
+        "$type": "dimension",
+        "$value": "375px",
+        "$description": "ความกว้างจออ้างอิง ของจอ mobile"
+      },
+      "scale": {
+        "$type": "dimension",
+        "$value": "1.25px",
+        "$description": "ตัวคูณขนาดของจอนี้ ของจอ mobile"
+      },
+      "root-font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.text-md}",
+        "$description": "ขนาดตัวอักษรฐานของจอนี้ ของจอ mobile"
+      }
+    }
+  }
+}

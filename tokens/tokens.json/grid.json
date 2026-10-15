@@ -1,0 +1,246 @@
+{
+  "grid": {
+    "breakpoint": {
+      "fullhd": {
+        "$type": "dimension",
+        "$value": "1920px"
+      },
+      "desktop": {
+        "$type": "dimension",
+        "$value": "1440px"
+      },
+      "tablet-h": {
+        "$type": "dimension",
+        "$value": "1024px"
+      },
+      "tablet-v": {
+        "$type": "dimension",
+        "$value": "768px"
+      },
+      "mobile": {
+        "$type": "dimension",
+        "$value": "375px"
+      }
+    },
+    "v2022": {
+      "desktop": {
+        "columns": {
+          "$type": "number",
+          "$value": 12
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "108px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "1224px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "80px"
+        }
+      },
+      "tablet-h": {
+        "columns": {
+          "$type": "number",
+          "$value": 10
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "80px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "864px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "72px"
+        }
+      },
+      "tablet-v": {
+        "columns": {
+          "$type": "number",
+          "$value": 8
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "40px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "688px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "72px"
+        }
+      },
+      "mobile": {
+        "columns": {
+          "$type": "number",
+          "$value": 4
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "5px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "20px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "335px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "80px"
+        }
+      }
+    },
+    "v2026": {
+      "$description": "รุ่นปรับปรุงมือถือของกริดเว็บทั่วไป (ตัดสิน 2026-08-24) · แคนวาสอ้างอิง 360x810 (Android large) · มีเฉพาะจอ mobile เพราะจอที่เหลือใช้ค่าของ v2022 ต่อไปไม่มีอะไรเปลี่ยน จึงไม่ทำค่าซ้ำ · เก็บเฉพาะค่าที่คนเลือกเอง (columns · gutter · margin) ส่วนความกว้างคอลัมน์ 72 กับพื้นที่เนื้อหา 312 เป็นค่าที่คำนวณได้ ไม่เก็บเป็น token ตามแนวทาง Material และ Carbon ดู docs/research/grid-column-width.md · งานใหม่ให้ใช้ v2026 สำหรับมือถือ และ v2022 สำหรับ desktop กับ tablet · v2022 mobile เก็บไว้สำหรับงานที่ประกาศไปแล้ว",
+      "mobile": {
+        "columns": {
+          "$type": "number",
+          "$value": 4
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "24px",
+          "$description": "ขอบซ้ายขวาของกริดมือถือรุ่น 2026 · 24 เลือกเพื่อให้คอลัมน์ออกมา 72 ซึ่งทำให้ขอบคอลัมน์ทุกเส้น (24 · 104 · 184 · 264 · 336) เป็นพหุคูณของ 8 ครบ บนแคนวาส 360"
+        }
+      }
+    },
+    "nation-digital": {
+      "fullhd": {
+        "columns": {
+          "$type": "number",
+          "$value": 10
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "186px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "1548px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "144px"
+        }
+      },
+      "desktop": {
+        "columns": {
+          "$type": "number",
+          "$value": 8
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "102px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "1236px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "144px"
+        }
+      },
+      "tablet-h": {
+        "columns": {
+          "$type": "number",
+          "$value": 6
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "50px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "924px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "144px"
+        }
+      },
+      "tablet-v": {
+        "columns": {
+          "$type": "number",
+          "$value": 4
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "78px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "612px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "144px"
+        }
+      },
+      "mobile": {
+        "columns": {
+          "$type": "number",
+          "$value": 2
+        },
+        "gutter": {
+          "$type": "dimension",
+          "$value": "15px"
+        },
+        "margin": {
+          "$type": "dimension",
+          "$value": "15px"
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "345px"
+        },
+        "column-width": {
+          "$type": "dimension",
+          "$value": "165px"
+        }
+      }
+    }
+  }
+}

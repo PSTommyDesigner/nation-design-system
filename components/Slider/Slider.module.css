@@ -1,0 +1,159 @@
+/**
+ * Slider styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับไฟล์ออกแบบหน้า 17 Sliders ได้
+ *
+ * โครง token ที่ใช้
+ *   ขนาด    --ntg-slider-handle-{size} · track-{size} · row-height-{size}
+ *           · row-height-touch-{size} · inset-{size} · overhang-{size}
+ *   มุมโค้ง  --ntg-slider-radius-full (ทั้งรางและปุ่มจับเป็นทรงเต็มมุม)
+ *   สี      ราง --ntg-color-background-general-quaternary
+ *           แถบเติม --ntg-color-foreground-brand-primary
+ *           ปุ่มจับ พื้น --ntg-color-background-general-primary ขอบ --ntg-color-background-brand-solid*
+ *
+ * ⚠️ ห้ามให้กรอบไหนตัดขอบ ปุ่มจับล้นพ้นรางขึ้นลงข้างละเท่ากับ overhang
+ * ⚠️ สถานะกดเปลี่ยนแค่สีขอบปุ่มจับ ห้ามขยับขนาด
+ */
+
+.root {
+  --slider-handle: var(--ntg-slider-handle-md);
+  --slider-track: var(--ntg-slider-track-md);
+  --slider-row: var(--ntg-slider-row-height-md);
+  --slider-row-touch: var(--ntg-slider-row-height-touch-md);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-sm);
+  inline-size: 100%;
+  font-family: var(--ntg-typography-font-family-primary);
+}
+
+/* ── ชั้นที่สอง แถวที่กดได้ คือพื้นที่แตะจริง ───────────────── */
+.row {
+  display: flex;
+  align-items: center;
+  block-size: var(--slider-row);
+  overflow: visible;
+}
+
+.touchTarget .row { block-size: var(--slider-row-touch); }
+
+/* ── ชั้นที่หนึ่ง ภาพ ────────────────────────────────────── */
+.track {
+  position: relative;
+  inline-size: 100%;
+  block-size: var(--slider-track);
+  border-radius: var(--ntg-slider-radius-full);
+  background: var(--ntg-color-background-general-quaternary);
+  cursor: pointer;
+  overflow: visible;
+  touch-action: none;
+}
+
+.fill {
+  position: absolute;
+  inset-block: 0;
+  border-radius: var(--ntg-slider-radius-full);
+  background: var(--ntg-color-foreground-brand-primary);
+}
+
+.handle {
+  position: absolute;
+  inset-block-start: 50%;
+  inline-size: var(--slider-handle);
+  block-size: var(--slider-handle);
+  translate: -50% -50%;
+  border-radius: var(--ntg-slider-radius-full);
+  background: var(--ntg-color-background-general-primary);
+  border: 1px solid var(--ntg-color-background-brand-solid);
+  box-sizing: border-box;
+  cursor: grab;
+  touch-action: none;
+}
+
+.handle:hover { border-color: var(--ntg-color-background-brand-solid-hover); }
+
+.handle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+}
+
+/* วางหลัง :focus-visible เพื่อให้สีตอนกดชนะสีตอนโฟกัส แต่วงแหวนยังอยู่ */
+.handle:active {
+  border-color: var(--ntg-color-background-brand-solid-pressed);
+  cursor: grabbing;
+}
+
+/* ── ป้ายค่าเหนือปุ่มจับ ─────────────────────────────────── */
+.tooltip {
+  position: absolute;
+  inset-block-end: calc(100% + var(--ntg-size-space-s1-sm));
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  padding: var(--ntg-size-space-s1-xs) var(--ntg-size-space-s1-sm);
+  border-radius: var(--ntg-card-radius-top-left);
+  background: var(--ntg-color-background-general-primary);
+  color: var(--ntg-color-text-general-section-heading);
+  box-shadow: var(--ntg-shadows-bottom-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  font-size: var(--ntg-typography-font-size-label-xs);
+  line-height: var(--ntg-typography-line-height-label-xs);
+  font-weight: var(--ntg-typography-font-weight-label-xs);
+  letter-spacing: var(--ntg-typography-letter-space-label-xs);
+}
+
+/* ── ป้ายค่าต่ำสุดสูงสุดใต้ราง ───────────────────────────── */
+.minMax {
+  display: flex;
+  justify-content: space-between;
+  color: var(--ntg-color-text-general-supporting-text);
+  font-size: var(--ntg-typography-font-size-label-xs);
+  line-height: var(--ntg-typography-line-height-label-xs);
+  font-weight: var(--ntg-typography-font-weight-label-xs);
+  letter-spacing: var(--ntg-typography-letter-space-label-xs);
+}
+
+/* ── ปิดใช้งาน เปลี่ยนทั้งราง แถบเติม และปุ่มจับ ──────────── */
+.root[data-disabled='true'] .track {
+  background: var(--ntg-color-background-general-disabled-subtle);
+  cursor: default;
+}
+.root[data-disabled='true'] .fill { background: var(--ntg-color-background-general-disabled); }
+.root[data-disabled='true'] .handle {
+  border-color: var(--ntg-color-background-general-disabled);
+  cursor: default;
+}
+
+/* ── ขนาด ────────────────────────────────────────────────── */
+.xs {
+  --slider-handle: var(--ntg-slider-handle-xs);
+  --slider-track: var(--ntg-slider-track-xs);
+  --slider-row: var(--ntg-slider-row-height-xs);
+  --slider-row-touch: var(--ntg-slider-row-height-touch-xs);
+}
+.sm {
+  --slider-handle: var(--ntg-slider-handle-sm);
+  --slider-track: var(--ntg-slider-track-sm);
+  --slider-row: var(--ntg-slider-row-height-sm);
+  --slider-row-touch: var(--ntg-slider-row-height-touch-sm);
+}
+.md {
+  --slider-handle: var(--ntg-slider-handle-md);
+  --slider-track: var(--ntg-slider-track-md);
+  --slider-row: var(--ntg-slider-row-height-md);
+  --slider-row-touch: var(--ntg-slider-row-height-touch-md);
+}
+.lg {
+  --slider-handle: var(--ntg-slider-handle-lg);
+  --slider-track: var(--ntg-slider-track-lg);
+  --slider-row: var(--ntg-slider-row-height-lg);
+  --slider-row-touch: var(--ntg-slider-row-height-touch-lg);
+}
+.xl {
+  --slider-handle: var(--ntg-slider-handle-xl);
+  --slider-track: var(--ntg-slider-track-xl);
+  --slider-row: var(--ntg-slider-row-height-xl);
+  --slider-row-touch: var(--ntg-slider-row-height-touch-xl);
+}

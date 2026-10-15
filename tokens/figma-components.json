@@ -1,0 +1,44 @@
+{
+  "$note": "แกนและคุณสมบัติของ component ในไฟล์ออกแบบ ใช้โดย scripts/verify-component-api.mjs · วิธีเก็บอยู่ในหัวสคริปต์นั้น",
+  "fileKey": "QgmoT5Uuvv3elB96F4nsTq",
+  "capturedAt": "2026-10-15",
+  "components": {
+    "Tag": {
+      "figmaPage": "21 Tags",
+      "sets": 154,
+      "axes": {
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "hierarchy": ["primary", "secondary"],
+        "default-gray": ["false", "true"],
+        "state": ["default", "hover", "disabled"]
+      },
+      "properties": [
+        "tag-title",
+        "left-icon",
+        "left-icon-swap",
+        "right-icon",
+        "right-icon-swap",
+        "swap-icon"
+      ],
+      "map": {
+        "axes": {
+          "size": { "prop": "size", "type": "TagSize" },
+          "hierarchy": { "prop": "hierarchy", "type": "TagHierarchy" },
+          "default-gray": { "prop": "defaultGray" }
+        },
+        "properties": {
+          "tag-title": "children",
+          "left-icon": "leftIcon",
+          "left-icon-swap": "leftIcon",
+          "right-icon": "closable",
+          "right-icon-swap": "closeIcon",
+          "swap-icon": "icon"
+        }
+      },
+      "accepted": {
+        "state": "สถานะ default กับ hover มาจาก pseudo-class ของ CSS ส่วน disabled เป็น prop disabled อยู่แล้ว ไม่ต้องมีแกนให้เลือกเอง"
+      },
+      "$note": "ทรงไม่ได้เป็นแกน variant ในไฟล์ออกแบบ แต่แยกเป็นชื่อชุด เช่น pill-tag กับ circular-icon-tag ฝั่งโค้ดรวมเป็น prop shape ตัวเดียว"
+    }
+  }
+}

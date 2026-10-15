@@ -1,0 +1,167 @@
+/**
+ * LinkButton styles Nation Design System
+ *
+ * ปุ่มแบบลิงก์ (ไม่มีพื้นหลัง ไม่มีเส้นขอบ) ครอบคลุมทั้งแบบมีข้อความและไอคอนล้วน
+ * ขนาด/ระยะจากกลุ่ม token `link-button/*` · สีจาก `button/color/link/*`
+ */
+
+.root {
+  --lb-fg: inherit;
+  --lb-fg-hover: var(--lb-fg);
+  --lb-fg-pressed: var(--lb-fg);
+  --lb-fg-disabled: inherit;
+  --lb-underline: var(--ntg-color-border-brand-solid);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--ntg-typography-font-family-primary);
+  font-weight: var(--ntg-typography-font-weight-medium);
+  color: var(--lb-fg);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.root:hover:not(:disabled) { color: var(--lb-fg-hover); }
+.root:focus-visible {
+  outline: none;
+  box-shadow: inset 0 -1px 0 var(--lb-underline);
+}
+/* สถานะกด ใช้ token ชุด pressed ที่ไฟล์ออกแบบกำหนดไว้เมื่อ 2026-09-04
+   วางไว้หลัง :focus-visible เพื่อให้สีตอนกดชนะสีตอนโฟกัส แต่วงแหวนโฟกัสยังอยู่ */
+.root:active:not(:disabled) { color: var(--lb-fg-pressed); }
+
+.root:disabled,
+.root[aria-disabled='true'] { color: var(--lb-fg-disabled); cursor: not-allowed; }
+
+/* ── ขนาด ─────────────────────────────────────────── */
+.xs {
+  height: var(--ntg-link-button-height-xs); gap: var(--ntg-link-button-gap-xs);
+  padding: var(--ntg-link-button-padding-top-xs) var(--ntg-link-button-padding-right-xs)
+           var(--ntg-link-button-padding-bottom-xs) var(--ntg-link-button-padding-left-xs);
+  font-size: var(--ntg-typography-font-size-text-xs);
+  line-height: var(--ntg-typography-line-height-text-xs);
+}
+.sm {
+  height: var(--ntg-link-button-height-sm); gap: var(--ntg-link-button-gap-sm);
+  padding: var(--ntg-link-button-padding-top-sm) var(--ntg-link-button-padding-right-sm)
+           var(--ntg-link-button-padding-bottom-sm) var(--ntg-link-button-padding-left-sm);
+  font-size: var(--ntg-typography-font-size-text-sm);
+  line-height: var(--ntg-typography-line-height-text-sm);
+}
+.md {
+  height: var(--ntg-link-button-height-md); gap: var(--ntg-link-button-gap-md);
+  padding: var(--ntg-link-button-padding-top-md) var(--ntg-link-button-padding-right-md)
+           var(--ntg-link-button-padding-bottom-md) var(--ntg-link-button-padding-left-md);
+  font-size: var(--ntg-typography-font-size-text-md);
+  line-height: var(--ntg-typography-line-height-text-md);
+}
+.lg {
+  height: var(--ntg-link-button-height-lg); gap: var(--ntg-link-button-gap-lg);
+  padding: var(--ntg-link-button-padding-top-lg) var(--ntg-link-button-padding-right-lg)
+           var(--ntg-link-button-padding-bottom-lg) var(--ntg-link-button-padding-left-lg);
+  font-size: var(--ntg-typography-font-size-text-lg);
+  line-height: var(--ntg-typography-line-height-text-lg);
+}
+.xl {
+  height: var(--ntg-link-button-height-xl); gap: var(--ntg-link-button-gap-xl);
+  padding: var(--ntg-link-button-padding-top-xl) var(--ntg-link-button-padding-right-xl)
+           var(--ntg-link-button-padding-bottom-xl) var(--ntg-link-button-padding-left-xl);
+  font-size: var(--ntg-typography-font-size-text-xl);
+  line-height: var(--ntg-typography-line-height-text-xl);
+}
+
+/* ไอคอนล้วน ใช้ระยะชุด icon-only */
+.iconOnly.xs { padding: var(--ntg-link-icon-button-icon-only-padding-top-xs) var(--ntg-link-icon-button-icon-only-padding-right-xs) var(--ntg-link-icon-button-icon-only-padding-bottom-xs) var(--ntg-link-icon-button-icon-only-padding-left-xs); }
+.iconOnly.sm { padding: var(--ntg-link-icon-button-icon-only-padding-top-sm) var(--ntg-link-icon-button-icon-only-padding-right-sm) var(--ntg-link-icon-button-icon-only-padding-bottom-sm) var(--ntg-link-icon-button-icon-only-padding-left-sm); }
+.iconOnly.md { padding: var(--ntg-link-icon-button-icon-only-padding-top-md) var(--ntg-link-icon-button-icon-only-padding-right-md) var(--ntg-link-icon-button-icon-only-padding-bottom-md) var(--ntg-link-icon-button-icon-only-padding-left-md); }
+.iconOnly.lg { padding: var(--ntg-link-icon-button-icon-only-padding-top-lg) var(--ntg-link-icon-button-icon-only-padding-right-lg) var(--ntg-link-icon-button-icon-only-padding-bottom-lg) var(--ntg-link-icon-button-icon-only-padding-left-lg); }
+.iconOnly.xl { padding: var(--ntg-link-icon-button-icon-only-padding-top-xl) var(--ntg-link-icon-button-icon-only-padding-right-xl) var(--ntg-link-icon-button-icon-only-padding-bottom-xl) var(--ntg-link-icon-button-icon-only-padding-left-xl); }
+
+/* ข้อความไม่มีระยะขอบ ทุกขนาด (ตัดสิน 2026-09-02)
+   ปุ่มลิงก์ต้องชิดแนวเนื้อหาที่วางต่อท้าย ถ้าใส่ระยะขอบตัวอักษรตัวแรกจะเยื้องออก
+   เดิมโค้ดใส่ 4px ซ้ายขวาจาก token title-padding ซึ่งไม่ตรงกับไฟล์ออกแบบ จึงตัดออก */
+.label { padding-left: 0; padding-right: 0; }
+
+.icon { flex: none; display: inline-flex; }
+.xs .icon { width: var(--ntg-link-button-icon-xs); height: var(--ntg-link-button-icon-xs); }
+.sm .icon { width: var(--ntg-link-button-icon-sm); height: var(--ntg-link-button-icon-sm); }
+.md .icon { width: var(--ntg-link-button-icon-md); height: var(--ntg-link-button-icon-md); }
+.lg .icon { width: var(--ntg-link-button-icon-lg); height: var(--ntg-link-button-icon-lg); }
+.xl .icon { width: var(--ntg-link-button-icon-xl); height: var(--ntg-link-button-icon-xl); }
+
+.content { display: inline-flex; align-items: center; gap: inherit; }
+@media (prefers-reduced-motion: reduce) {
+    .root { transition: none; }
+}
+
+/* ── ตระกูลสี ─────────────────────────────────────── */
+.brand {
+  --lb-fg: var(--ntg-button-color-link-brand-text-default);
+  --lb-fg-hover: var(--ntg-button-color-link-brand-text-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-brand-text-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-brand-text-disabled);
+}
+.brand.iconOnly {
+  --lb-fg: var(--ntg-button-color-link-brand-icon-default);
+  --lb-fg-hover: var(--ntg-button-color-link-brand-icon-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-brand-icon-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-brand-icon-disabled);
+}
+.brandGray {
+  --lb-fg: var(--ntg-button-color-link-brand-gray-text-default);
+  --lb-fg-hover: var(--ntg-button-color-link-brand-gray-text-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-brand-gray-text-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-brand-gray-text-disabled);
+  --lb-underline: var(--ntg-icon-general-quaternary);
+}
+.brandGray.iconOnly {
+  --lb-fg: var(--ntg-button-color-link-brand-gray-icon-default);
+  --lb-fg-hover: var(--ntg-button-color-link-brand-gray-icon-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-brand-gray-icon-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-brand-gray-icon-disabled);
+}
+.gray {
+  --lb-fg: var(--ntg-button-color-link-gray-text-default);
+  --lb-fg-hover: var(--ntg-button-color-link-gray-text-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-gray-text-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-gray-text-disabled);
+  --lb-underline: var(--ntg-icon-general-quaternary);
+}
+.gray.iconOnly {
+  --lb-fg: var(--ntg-button-color-link-gray-icon-default);
+  --lb-fg-hover: var(--ntg-button-color-link-gray-icon-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-gray-icon-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-gray-icon-disabled);
+}
+.error {
+  --lb-fg: var(--ntg-button-color-link-error-text-default);
+  --lb-fg-hover: var(--ntg-button-color-link-error-text-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-error-text-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-error-text-disabled);
+  --lb-underline: var(--ntg-color-border-system-error-solid);
+}
+.error.iconOnly {
+  --lb-fg: var(--ntg-button-color-link-error-icon-default);
+  --lb-fg-hover: var(--ntg-button-color-link-error-icon-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-error-icon-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-error-icon-disabled);
+}
+.errorGray {
+  --lb-fg: var(--ntg-button-color-link-error-gray-text-default);
+  --lb-fg-hover: var(--ntg-button-color-link-error-gray-text-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-error-gray-text-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-error-gray-text-disabled);
+  --lb-underline: var(--ntg-icon-general-quaternary);
+}
+.errorGray.iconOnly {
+  --lb-fg: var(--ntg-button-color-link-error-gray-icon-default);
+  --lb-fg-hover: var(--ntg-button-color-link-error-gray-icon-hover);
+  --lb-fg-pressed: var(--ntg-button-color-link-error-gray-icon-pressed);
+  --lb-fg-disabled: var(--ntg-button-color-link-error-gray-icon-disabled);
+}

@@ -1,0 +1,387 @@
+/**
+ * Button styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี / ระยะ / มุมโค้ง เพื่อให้ sync กับ Figma ได้
+ *
+ * โครง token ที่ใช้
+ *   ขนาด    --ntg-button-size-{size} · padding-{side}-{size} · gap-{size} · icon-{size}
+ *   มุมโค้ง  --ntg-button-radius-{corner}-{size} · --ntg-button-radius-full (ทรงแคปซูล)
+ *   สี      --ntg-button-color-{family}-{background|text|icon|border}-{hierarchy}-{state}
+ */
+
+.root {
+  /* ค่าที่ variant/size เขียนทับผ่าน custom property */
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--btn-bg);
+  --btn-bg-pressed: var(--btn-bg);
+  --btn-bg-focus: var(--btn-bg);
+  --btn-bg-disabled: transparent;
+  --btn-fg: inherit;
+  --btn-fg-hover: var(--btn-fg);
+  --btn-fg-pressed: var(--btn-fg);
+  --btn-fg-focus: var(--btn-fg);
+  --btn-fg-disabled: inherit;
+  --btn-border: transparent;
+  --btn-border-hover: var(--btn-border);
+  --btn-border-pressed: var(--btn-border);
+  --btn-border-focus: var(--btn-border);
+  --btn-border-disabled: transparent;
+  --btn-ring: var(--ntg-color-effect-focused-ring-brand);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  font-family: var(--ntg-typography-font-family-primary);
+  font-weight: var(--ntg-typography-font-weight-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--btn-border);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.root:hover:not(:disabled) {
+  background: var(--btn-bg-hover);
+  color: var(--btn-fg-hover);
+  border-color: var(--btn-border-hover);
+}
+
+.root:focus-visible {
+  outline: none;
+  background: var(--btn-bg-focus);
+  color: var(--btn-fg-focus);
+  border-color: var(--btn-border-focus);
+  box-shadow: 0 0 0 4px var(--btn-ring);
+}
+
+/* สถานะกด ใช้ token ชุด pressed ที่ไฟล์ออกแบบกำหนดไว้เมื่อ 2026-09-04
+   วางไว้หลัง :focus-visible เพื่อให้สีตอนกดชนะสีตอนโฟกัส แต่วงแหวนโฟกัสยังอยู่ */
+.root:active:not(:disabled) {
+  background: var(--btn-bg-pressed);
+  color: var(--btn-fg-pressed);
+  border-color: var(--btn-border-pressed);
+}
+
+.root:disabled,
+.root[aria-disabled='true'] {
+  background: var(--btn-bg-disabled);
+  color: var(--btn-fg-disabled);
+  border-color: var(--btn-border-disabled);
+  cursor: not-allowed;
+}
+
+/* ── ขนาด ─────────────────────────────────────────── */
+.xs {
+  height: var(--ntg-button-size-xs);
+  padding: var(--ntg-button-padding-top-xs) var(--ntg-button-padding-right-xs)
+           var(--ntg-button-padding-bottom-xs) var(--ntg-button-padding-left-xs);
+  gap: var(--ntg-button-gap-xs);
+  font-size: var(--ntg-typography-font-size-text-xs);
+  line-height: var(--ntg-typography-line-height-text-xs);
+  border-radius: var(--ntg-button-radius-top-left-xs) var(--ntg-button-radius-top-right-xs)
+                 var(--ntg-button-radius-bottom-right-xs) var(--ntg-button-radius-bottom-left-xs);
+}
+.sm {
+  height: var(--ntg-button-size-sm);
+  padding: var(--ntg-button-padding-top-sm) var(--ntg-button-padding-right-sm)
+           var(--ntg-button-padding-bottom-sm) var(--ntg-button-padding-left-sm);
+  gap: var(--ntg-button-gap-sm);
+  font-size: var(--ntg-typography-font-size-text-sm);
+  line-height: var(--ntg-typography-line-height-text-sm);
+  border-radius: var(--ntg-button-radius-top-left-sm) var(--ntg-button-radius-top-right-sm)
+                 var(--ntg-button-radius-bottom-right-sm) var(--ntg-button-radius-bottom-left-sm);
+}
+.md {
+  height: var(--ntg-button-size-md);
+  padding: var(--ntg-button-padding-top-md) var(--ntg-button-padding-right-md)
+           var(--ntg-button-padding-bottom-md) var(--ntg-button-padding-left-md);
+  gap: var(--ntg-button-gap-md);
+  font-size: var(--ntg-typography-font-size-text-md);
+  line-height: var(--ntg-typography-line-height-text-md);
+  border-radius: var(--ntg-button-radius-top-left-md) var(--ntg-button-radius-top-right-md)
+                 var(--ntg-button-radius-bottom-right-md) var(--ntg-button-radius-bottom-left-md);
+}
+.lg {
+  height: var(--ntg-button-size-lg);
+  padding: var(--ntg-button-padding-top-lg) var(--ntg-button-padding-right-lg)
+           var(--ntg-button-padding-bottom-lg) var(--ntg-button-padding-left-lg);
+  gap: var(--ntg-button-gap-lg);
+  font-size: var(--ntg-typography-font-size-text-lg);
+  line-height: var(--ntg-typography-line-height-text-lg);
+  border-radius: var(--ntg-button-radius-top-left-lg) var(--ntg-button-radius-top-right-lg)
+                 var(--ntg-button-radius-bottom-right-lg) var(--ntg-button-radius-bottom-left-lg);
+}
+.xl {
+  height: var(--ntg-button-size-xl);
+  padding: var(--ntg-button-padding-top-xl) var(--ntg-button-padding-right-xl)
+           var(--ntg-button-padding-bottom-xl) var(--ntg-button-padding-left-xl);
+  gap: var(--ntg-button-gap-xl);
+  font-size: var(--ntg-typography-font-size-text-xl);
+  line-height: var(--ntg-typography-line-height-text-xl);
+  border-radius: var(--ntg-button-radius-top-left-xl) var(--ntg-button-radius-top-right-xl)
+                 var(--ntg-button-radius-bottom-right-xl) var(--ntg-button-radius-bottom-left-xl);
+}
+
+/* ทรงแคปซูล (pill) ทับมุมโค้งของทุกขนาด */
+.pill {
+  border-radius: var(--ntg-button-radius-full);
+}
+
+/* ── ป้ายข้อความ ─────────────────────────────────── */
+.label {
+  padding-left: var(--ntg-button-title-padding-left-md);
+  padding-right: var(--ntg-button-title-padding-right-md);
+}
+.xs .label { padding-left: var(--ntg-button-title-padding-left-xs); padding-right: var(--ntg-button-title-padding-right-xs); }
+.sm .label { padding-left: var(--ntg-button-title-padding-left-sm); padding-right: var(--ntg-button-title-padding-right-sm); }
+.lg .label { padding-left: var(--ntg-button-title-padding-left-lg); padding-right: var(--ntg-button-title-padding-right-lg); }
+.xl .label { padding-left: var(--ntg-button-title-padding-left-xl); padding-right: var(--ntg-button-title-padding-right-xl); }
+
+.icon { flex: none; display: inline-flex; }
+.xs .icon { width: var(--ntg-button-icon-xs); height: var(--ntg-button-icon-xs); }
+.sm .icon { width: var(--ntg-button-icon-sm); height: var(--ntg-button-icon-sm); }
+.md .icon { width: var(--ntg-button-icon-md); height: var(--ntg-button-icon-md); }
+.lg .icon { width: var(--ntg-button-icon-lg); height: var(--ntg-button-icon-lg); }
+.xl .icon { width: var(--ntg-button-icon-xl); height: var(--ntg-button-icon-xl); }
+
+.content { display: inline-flex; align-items: center; gap: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+    .root { transition: none; }
+}
+
+/* ── ตระกูลสี × ลำดับความสำคัญ ───────────────────── */
+/* brand */
+.brand.primary {
+  --btn-bg: var(--ntg-button-color-brand-background-primary-default);
+  --btn-bg-hover: var(--ntg-button-color-brand-background-primary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-brand-background-primary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-brand-background-primary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-brand-background-primary-disabled);
+  --btn-fg: var(--ntg-button-color-brand-text-primary-default);
+  --btn-fg-hover: var(--ntg-button-color-brand-text-primary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-brand-text-primary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-brand-text-primary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-brand-text-primary-disabled);
+}
+.brand.secondary {
+  --btn-bg: var(--ntg-button-color-brand-background-secondary-default);
+  --btn-bg-hover: var(--ntg-button-color-brand-background-secondary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-brand-background-secondary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-brand-background-secondary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-brand-background-secondary-disabled);
+  --btn-fg: var(--ntg-button-color-brand-text-secondary-default);
+  --btn-fg-hover: var(--ntg-button-color-brand-text-secondary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-brand-text-secondary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-brand-text-secondary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-brand-text-secondary-disabled);
+  --btn-border: var(--ntg-button-color-brand-border-secondary-default);
+  --btn-border-hover: var(--ntg-button-color-brand-border-secondary-hover);
+  --btn-border-pressed: var(--ntg-button-color-brand-border-secondary-pressed);
+  --btn-border-focus: var(--ntg-button-color-brand-border-secondary-focused);
+  --btn-border-disabled: var(--ntg-button-color-brand-border-secondary-disabled);
+}
+.brand.tertiary {
+  --btn-bg-hover: var(--ntg-button-color-brand-background-tertiary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-brand-background-tertiary-pressed);
+  --btn-fg: var(--ntg-button-color-brand-text-tertiary-default);
+  --btn-fg-hover: var(--ntg-button-color-brand-text-tertiary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-brand-text-tertiary-pressed);
+  --btn-fg-disabled: var(--ntg-button-color-brand-text-tertiary-disabled);
+  --btn-bg-focus: var(--ntg-button-color-brand-background-tertiary-focused);
+  --btn-fg-focus: var(--ntg-button-color-brand-text-tertiary-focused);
+}
+
+/* brand-gray */
+.brandGray.primary {
+  --btn-bg: var(--ntg-button-color-brand-gray-background-primary-default);
+  --btn-bg-hover: var(--ntg-button-color-brand-gray-background-primary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-brand-gray-background-primary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-brand-gray-background-primary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-brand-gray-background-primary-disabled);
+  --btn-fg: var(--ntg-button-color-brand-gray-text-primary-default);
+  --btn-fg-hover: var(--ntg-button-color-brand-gray-text-primary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-brand-gray-text-primary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-brand-gray-text-primary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-brand-gray-text-primary-disabled);
+}
+.brandGray.secondary {
+  --btn-bg: var(--ntg-button-color-brand-gray-background-secondary-default);
+  --btn-bg-hover: var(--ntg-button-color-brand-gray-background-secondary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-brand-gray-background-secondary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-brand-gray-background-secondary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-brand-gray-background-secondary-disabled);
+  --btn-fg: var(--ntg-button-color-brand-gray-text-secondary-default);
+  --btn-fg-hover: var(--ntg-button-color-brand-gray-text-secondary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-brand-gray-text-secondary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-brand-gray-text-secondary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-brand-gray-text-secondary-disabled);
+  --btn-border: var(--ntg-button-color-brand-gray-border-secondary-default);
+  --btn-border-hover: var(--ntg-button-color-brand-gray-border-secondary-hover);
+  --btn-border-pressed: var(--ntg-button-color-brand-gray-border-secondary-pressed);
+  --btn-border-focus: var(--ntg-button-color-brand-gray-border-secondary-focused);
+  --btn-border-disabled: var(--ntg-button-color-brand-gray-border-secondary-disabled);
+}
+.brandGray.tertiary {
+  --btn-bg-hover: var(--ntg-button-color-brand-gray-background-tertiary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-brand-gray-background-tertiary-pressed);
+  --btn-fg: var(--ntg-button-color-brand-gray-text-tertiary-default);
+  --btn-fg-hover: var(--ntg-button-color-brand-gray-text-tertiary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-brand-gray-text-tertiary-pressed);
+  --btn-fg-disabled: var(--ntg-button-color-brand-gray-text-tertiary-disabled);
+  --btn-bg-focus: var(--ntg-button-color-brand-gray-background-tertiary-focused);
+  --btn-fg-focus: var(--ntg-button-color-brand-gray-text-tertiary-focused);
+}
+
+/* neutral */
+.neutral.primary {
+  --btn-bg: var(--ntg-button-color-neutral-background-primary-default);
+  --btn-bg-hover: var(--ntg-button-color-neutral-background-primary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-neutral-background-primary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-neutral-background-primary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-neutral-background-primary-disabled);
+  --btn-fg: var(--ntg-button-color-neutral-text-primary-default);
+  --btn-fg-hover: var(--ntg-button-color-neutral-text-primary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-neutral-text-primary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-neutral-text-primary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-neutral-text-primary-disabled);
+  --btn-ring: var(--ntg-color-effect-focused-ring-default);
+}
+.neutral.secondary {
+  --btn-bg: var(--ntg-button-color-neutral-background-secondary-default);
+  --btn-bg-hover: var(--ntg-button-color-neutral-background-secondary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-neutral-background-secondary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-neutral-background-secondary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-neutral-background-secondary-disabled);
+  --btn-fg: var(--ntg-button-color-neutral-text-secondary-default);
+  --btn-fg-hover: var(--ntg-button-color-neutral-text-secondary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-neutral-text-secondary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-neutral-text-secondary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-neutral-text-secondary-disabled);
+  --btn-border: var(--ntg-button-color-neutral-border-secondary-default);
+  --btn-border-hover: var(--ntg-button-color-neutral-border-secondary-hover);
+  --btn-border-pressed: var(--ntg-button-color-neutral-border-secondary-pressed);
+  --btn-border-focus: var(--ntg-button-color-neutral-border-secondary-focused);
+  --btn-border-disabled: var(--ntg-button-color-neutral-border-secondary-disabled);
+  --btn-ring: var(--ntg-color-effect-focused-ring-default);
+}
+.neutral.tertiary {
+  --btn-bg-hover: var(--ntg-button-color-neutral-background-tertiary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-neutral-background-tertiary-pressed);
+  --btn-fg: var(--ntg-button-color-neutral-text-tertiary-default);
+  --btn-fg-hover: var(--ntg-button-color-neutral-text-tertiary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-neutral-text-tertiary-pressed);
+  --btn-fg-disabled: var(--ntg-button-color-neutral-text-tertiary-disabled);
+  --btn-bg-focus: var(--ntg-button-color-neutral-background-tertiary-focused);
+  --btn-fg-focus: var(--ntg-button-color-neutral-text-tertiary-focused);
+  --btn-ring: var(--ntg-color-effect-focused-ring-default);
+}
+
+/* error */
+.error.primary {
+  --btn-bg: var(--ntg-button-color-error-background-primary-default);
+  --btn-bg-hover: var(--ntg-button-color-error-background-primary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-error-background-primary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-error-background-primary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-error-background-primary-disabled);
+  --btn-fg: var(--ntg-button-color-error-text-primary-default);
+  --btn-fg-hover: var(--ntg-button-color-error-text-primary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-error-text-primary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-error-text-primary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-error-text-primary-disabled);
+  --btn-ring: var(--ntg-color-effect-focused-ring-error);
+}
+.error.secondary {
+  --btn-bg: var(--ntg-button-color-error-background-secondary-default);
+  --btn-bg-hover: var(--ntg-button-color-error-background-secondary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-error-background-secondary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-error-background-secondary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-error-background-secondary-disabled);
+  --btn-fg: var(--ntg-button-color-error-text-secondary-default);
+  --btn-fg-hover: var(--ntg-button-color-error-text-secondary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-error-text-secondary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-error-text-secondary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-error-text-secondary-disabled);
+  --btn-border: var(--ntg-button-color-error-border-secondary-default);
+  --btn-border-hover: var(--ntg-button-color-error-border-secondary-hover);
+  --btn-border-pressed: var(--ntg-button-color-error-border-secondary-pressed);
+  --btn-border-focus: var(--ntg-button-color-error-border-secondary-focused);
+  --btn-border-disabled: var(--ntg-button-color-error-border-secondary-disabled);
+  --btn-ring: var(--ntg-color-effect-focused-ring-error);
+}
+.error.tertiary {
+  --btn-bg-hover: var(--ntg-button-color-error-background-tertiary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-error-background-tertiary-pressed);
+  --btn-fg: var(--ntg-button-color-error-text-tertiary-default);
+  --btn-fg-hover: var(--ntg-button-color-error-text-tertiary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-error-text-tertiary-pressed);
+  --btn-fg-disabled: var(--ntg-button-color-error-text-tertiary-disabled);
+  --btn-bg-focus: var(--ntg-button-color-error-background-tertiary-focused);
+  --btn-fg-focus: var(--ntg-button-color-error-text-tertiary-focused);
+  --btn-ring: var(--ntg-color-effect-focused-ring-error);
+}
+
+/* error-gray */
+.errorGray.primary {
+  --btn-bg: var(--ntg-button-color-error-gray-background-primary-default);
+  --btn-bg-hover: var(--ntg-button-color-error-gray-background-primary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-error-gray-background-primary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-error-gray-background-primary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-error-gray-background-primary-disabled);
+  --btn-fg: var(--ntg-button-color-error-gray-text-primary-default);
+  --btn-fg-hover: var(--ntg-button-color-error-gray-text-primary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-error-gray-text-primary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-error-gray-text-primary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-error-gray-text-primary-disabled);
+  --btn-ring: var(--ntg-color-effect-focused-ring-error);
+}
+.errorGray.secondary {
+  --btn-bg: var(--ntg-button-color-error-gray-background-secondary-default);
+  --btn-bg-hover: var(--ntg-button-color-error-gray-background-secondary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-error-gray-background-secondary-pressed);
+  --btn-bg-focus: var(--ntg-button-color-error-gray-background-secondary-focused);
+  --btn-bg-disabled: var(--ntg-button-color-error-gray-background-secondary-disabled);
+  --btn-fg: var(--ntg-button-color-error-gray-text-secondary-default);
+  --btn-fg-hover: var(--ntg-button-color-error-gray-text-secondary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-error-gray-text-secondary-pressed);
+  --btn-fg-focus: var(--ntg-button-color-error-gray-text-secondary-focused);
+  --btn-fg-disabled: var(--ntg-button-color-error-gray-text-secondary-disabled);
+  --btn-border: var(--ntg-button-color-error-gray-border-secondary-default);
+  --btn-border-hover: var(--ntg-button-color-error-gray-border-secondary-hover);
+  --btn-border-pressed: var(--ntg-button-color-error-gray-border-secondary-pressed);
+  --btn-border-focus: var(--ntg-button-color-error-gray-border-secondary-focused);
+  --btn-border-disabled: var(--ntg-button-color-error-gray-border-secondary-disabled);
+  --btn-ring: var(--ntg-color-effect-focused-ring-error);
+}
+.errorGray.tertiary {
+  --btn-bg-hover: var(--ntg-button-color-error-gray-background-tertiary-hover);
+  --btn-bg-pressed: var(--ntg-button-color-error-gray-background-tertiary-pressed);
+  --btn-fg: var(--ntg-button-color-error-gray-text-tertiary-default);
+  --btn-fg-hover: var(--ntg-button-color-error-gray-text-tertiary-hover);
+  --btn-fg-pressed: var(--ntg-button-color-error-gray-text-tertiary-pressed);
+  --btn-fg-disabled: var(--ntg-button-color-error-gray-text-tertiary-disabled);
+  --btn-bg-focus: var(--ntg-button-color-error-gray-background-tertiary-focused);
+  --btn-fg-focus: var(--ntg-button-color-error-gray-text-tertiary-focused);
+  --btn-ring: var(--ntg-color-effect-focused-ring-error);
+}
+
+/* alpha (พื้นโปร่งบนภาพ) มีชั้นเดียว ไม่มี hierarchy */
+.alpha {
+  --btn-bg: var(--ntg-button-color-alpha-background-default);
+  --btn-bg-hover: var(--ntg-button-color-alpha-background-hover);
+  --btn-bg-pressed: var(--ntg-button-color-alpha-background-pressed);
+  --btn-bg-focus: var(--ntg-button-color-alpha-background-focused);
+  --btn-bg-disabled: var(--ntg-button-color-alpha-background-disabled);
+  --btn-fg: var(--ntg-button-color-alpha-text-default);
+  --btn-fg-hover: var(--ntg-button-color-alpha-text-hover);
+  --btn-fg-pressed: var(--ntg-button-color-alpha-text-pressed);
+  --btn-fg-focus: var(--ntg-button-color-alpha-text-focused);
+  --btn-fg-disabled: var(--ntg-button-color-alpha-text-disabled);
+}
+
+.fullWidth { width: 100%; }

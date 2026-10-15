@@ -1,0 +1,68 @@
+/**
+ * Divider styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ระยะ หรือความหนา เพื่อให้ sync กับ Figma หน้า 28 Dividers ได้
+ *
+ * โครง token ที่ใช้
+ *   ความหนา   --ntg-divider-thickness (ตัวแปรของหน้านี้เอง คนละตัวกับ tab/divider)
+ *   สี        --ntg-color-border-general-primary
+ *   ระยะประ   --ntg-size-space-s1-lg (8 เว้น 8 ตามเอกสาร docs/28-dividers.md หัวข้อ 4.3)
+ *
+ * ⚠️ ระยะประเป็น token ได้เฉพาะฝั่งโค้ด เพราะ Figma ผูกตัวแปรกับระยะประไม่ได้
+ *    จึงอ้างสเกลระยะห่างกลางของระบบแทนการตั้งค่าใหม่ของตัวเอง
+ *
+ * ⚠️ ห้ามใส่ความยาวให้เส้น ทุกคลาสในไฟล์นี้คุมแค่ความหนา ความยาวมาจากกรอบแม่
+ */
+
+.root {
+  /* ไม่ให้ flex บีบความหนาของเส้น ส่วนความยาวปล่อยให้ยืดตามกรอบแม่ */
+  flex: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── แนวของเส้น ─────────────────────────────────────────── */
+
+/* ยืดเต็มความกว้างของกรอบแม่ ทั้งกรอบแบบ block และกรอบแบบ flex */
+.horizontal {
+  width: 100%;
+  align-self: stretch;
+  height: var(--ntg-divider-thickness);
+}
+
+/* ยืดเต็มความสูงของกรอบแม่ ทั้งกรอบที่กำหนดความสูงไว้และกรอบแบบ flex */
+.vertical {
+  height: 100%;
+  align-self: stretch;
+  width: var(--ntg-divider-thickness);
+}
+
+/* ── ชนิดของเส้น ────────────────────────────────────────── */
+
+.solid {
+  background-color: var(--ntg-color-border-general-primary);
+}
+
+/* เส้นประวาดด้วยแถบสีซ้ำแทน border-style: dashed
+   เพราะ dashed ให้ระยะประตามที่เบราว์เซอร์คำนวณเอง ผูกกับ token ไม่ได้ */
+.dash.horizontal {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--ntg-color-border-general-primary) 0,
+    var(--ntg-color-border-general-primary) var(--ntg-size-space-s1-lg),
+    transparent var(--ntg-size-space-s1-lg),
+    transparent calc(var(--ntg-size-space-s1-lg) * 2)
+  );
+}
+
+.dash.vertical {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--ntg-color-border-general-primary) 0,
+    var(--ntg-color-border-general-primary) var(--ntg-size-space-s1-lg),
+    transparent var(--ntg-size-space-s1-lg),
+    transparent calc(var(--ntg-size-space-s1-lg) * 2)
+  );
+}

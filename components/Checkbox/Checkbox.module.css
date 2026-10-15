@@ -1,0 +1,262 @@
+/**
+ * Checkbox styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 15 Checkbox ได้
+ *
+ * โครง token ที่ใช้
+ *   ภาพกล่องติ๊ก --ntg-checkbox-size-{ขนาด} · icon-{ขนาด} · border · radius-{มุม}-{ขนาด}
+ *   แถวที่กดได้   --ntg-checkbox-row-height-{ขนาด} · row-height-touch · gap · indent-{ขนาด}
+ *   ตัวอักษร      --ntg-typography-{font-size|line-height|font-weight}-label-{ขนาด} และ body-{ขนาด}
+ *   สี            --ntg-color-background-* · --ntg-color-border-* · --ntg-color-text-general-* · --ntg-icon-*
+ *
+ * ⚠️ เครื่องหมายเต็มกล่องพอดี ไม่มีระยะขอบใน (สูตรที่ tokens/scale/checkbox.mjs)
+ *    ห้ามบีบขนาดเครื่องหมายเอง ถ้าอยากให้เล็กกว่ากล่องต้องเพิ่ม token ระยะขอบในก่อน
+ *
+ * ⚠️ ความสูงแถวอ้างสเกลความสูงตัวควบคุมกลาง ห้ามพิมพ์ค่าตายทับ
+ */
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--ntg-checkbox-gap);
+  font-family: var(--ntg-typography-font-family-primary);
+  color: var(--ntg-color-text-general-label);
+}
+
+.row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-checkbox-gap);
+  cursor: pointer;
+}
+
+.root[data-disabled='true'] .row { cursor: not-allowed; }
+
+/* ช่องติ๊กจริงซ่อนไว้ แต่ยังรับโฟกัสและอ่านได้ด้วยโปรแกรมอ่านหน้าจอ
+   ค่า 1px ตรงนี้เป็นสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ ไม่ใช่ค่าออกแบบ จึงไม่ต้องเป็น token */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.box {
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  background: var(--ntg-color-background-general-primary);
+  border: var(--ntg-checkbox-border) solid var(--ntg-color-border-general-primary);
+  /* ใช้ขั้นเวลาสั้นของระบบ เพราะเป็นการเปลี่ยนสีในที่เดิม ส่วน ease เป็นคำสงวนของ CSS ไม่ใช่ค่าออกแบบ */
+  transition:
+    background-color var(--ntg-motion-duration-fast) ease,
+    border-color var(--ntg-motion-duration-fast) ease;
+}
+
+/* เครื่องหมายวางทับกล่องเต็มใบ ถอยออกเท่าความหนาเส้นขอบเพราะเครื่องหมายเท่าขนาดกล่องเต็ม
+   ไม่ใช่เท่าพื้นที่ในกรอบ ถ้าไม่ถอยจะล้นออกไปข้างละหนึ่งเท่าความหนาเส้น */
+.mark {
+  position: absolute;
+  top: calc(-1 * var(--ntg-checkbox-border));
+  left: calc(-1 * var(--ntg-checkbox-border));
+  display: block;
+  opacity: 0;
+  color: var(--ntg-icon-brand-on-brand-primary);
+}
+
+/* ไอคอนเต็มกรอบที่ครอบอยู่ ขนาดจริงมาจาก token ที่ตั้งให้ .mark ตามขนาด */
+.mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── สถานะ ────────────────────────────────────────────────── */
+.root[data-checked='true'] .mark,
+.root[data-indeterminate='true'] .mark { opacity: 1; }
+
+.root[data-checked='true'] .box,
+.root[data-indeterminate='true'] .box {
+  background: var(--ntg-color-background-brand-solid);
+  border-color: var(--ntg-color-border-brand-solid);
+}
+
+/* ชี้ค้าง */
+.root:not([data-disabled='true']) .row:hover .box {
+  border-color: var(--ntg-color-border-general-primary-hover);
+}
+
+.root[data-checked='true']:not([data-disabled='true']) .row:hover .box,
+.root[data-indeterminate='true']:not([data-disabled='true']) .row:hover .box {
+  background: var(--ntg-color-background-brand-solid-hover);
+  border-color: var(--ntg-color-border-brand-solid-hover);
+}
+
+/* สถานะกด ใช้ token ชุด pressed ที่ระบบเตรียมไว้แล้ว */
+.root:not([data-disabled='true']) .row:active .box {
+  border-color: var(--ntg-color-border-general-primary-pressed);
+}
+
+.root[data-checked='true']:not([data-disabled='true']) .row:active .box,
+.root[data-indeterminate='true']:not([data-disabled='true']) .row:active .box {
+  background: var(--ntg-color-background-brand-solid-pressed);
+  border-color: var(--ntg-color-border-brand-solid-pressed);
+}
+
+/* ปิดใช้งาน ทับทุกสถานะด้านบน */
+.root[data-disabled='true'] .box {
+  background: var(--ntg-color-background-general-disabled);
+  border-color: var(--ntg-color-border-general-disabled);
+}
+
+.root[data-disabled='true'] .mark { color: var(--ntg-icon-general-disable); }
+.root[data-disabled='true'] { color: var(--ntg-color-text-general-disabled); }
+
+/* วงแหวนโฟกัส ความหนา 4px เป็นค่าคงที่ของระบบโฟกัส ไม่ใช่ค่าออกแบบรายชิ้น จึงไม่เป็น token
+   กล่องติ๊กมีพื้นหลังทึบ จึงใช้เงาได้ ไม่ต้องใช้เส้นขอบแบบปุ่มโปร่ง */
+.input:focus-visible + .box {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+}
+
+.title {
+  font-family: var(--ntg-typography-font-family-primary);
+}
+
+.supporting {
+  font-family: var(--ntg-typography-font-family-primary);
+  color: var(--ntg-color-text-general-supporting-text);
+}
+
+.root[data-disabled='true'] .supporting { color: var(--ntg-color-text-general-disabled); }
+
+/* ── ขนาด ────────────────────────────────────────────────── */
+/* การจับคู่ text preset ต่อขนาดมาจากเอกสารหน้า 15 หัวข้อ 4.3
+   หัวข้อใช้ label และข้อความช่วยใช้ body ที่ขนาดตัวอักษรเดียวกัน
+   ขนาด xl ใช้ preset ชุดเดียวกับ lg เพราะบันได preset หมดที่ xl */
+
+.xs .row { min-height: var(--ntg-checkbox-row-height-xs); }
+.xs .box {
+  width: var(--ntg-checkbox-size-xs);
+  height: var(--ntg-checkbox-size-xs);
+  border-radius:
+    var(--ntg-checkbox-radius-top-left-xs) var(--ntg-checkbox-radius-top-right-xs)
+    var(--ntg-checkbox-radius-bottom-right-xs) var(--ntg-checkbox-radius-bottom-left-xs);
+}
+.xs .mark { width: var(--ntg-checkbox-icon-xs); height: var(--ntg-checkbox-icon-xs); }
+.xs .title {
+  font-size: var(--ntg-typography-font-size-label-sm);
+  line-height: var(--ntg-typography-line-height-label-sm);
+  font-weight: var(--ntg-typography-font-weight-label-sm);
+}
+.xs .supporting {
+  padding-inline-start: var(--ntg-checkbox-indent-xs);
+  font-size: var(--ntg-typography-font-size-body-xs);
+  line-height: var(--ntg-typography-line-height-body-xs);
+  font-weight: var(--ntg-typography-font-weight-body-xs);
+}
+
+.sm .row { min-height: var(--ntg-checkbox-row-height-sm); }
+.sm .box {
+  width: var(--ntg-checkbox-size-sm);
+  height: var(--ntg-checkbox-size-sm);
+  border-radius:
+    var(--ntg-checkbox-radius-top-left-sm) var(--ntg-checkbox-radius-top-right-sm)
+    var(--ntg-checkbox-radius-bottom-right-sm) var(--ntg-checkbox-radius-bottom-left-sm);
+}
+.sm .mark { width: var(--ntg-checkbox-icon-sm); height: var(--ntg-checkbox-icon-sm); }
+.sm .title {
+  font-size: var(--ntg-typography-font-size-label-md);
+  line-height: var(--ntg-typography-line-height-label-md);
+  font-weight: var(--ntg-typography-font-weight-label-md);
+}
+.sm .supporting {
+  padding-inline-start: var(--ntg-checkbox-indent-sm);
+  font-size: var(--ntg-typography-font-size-body-sm);
+  line-height: var(--ntg-typography-line-height-body-sm);
+  font-weight: var(--ntg-typography-font-weight-body-sm);
+}
+
+.md .row { min-height: var(--ntg-checkbox-row-height-md); }
+.md .box {
+  width: var(--ntg-checkbox-size-md);
+  height: var(--ntg-checkbox-size-md);
+  border-radius:
+    var(--ntg-checkbox-radius-top-left-md) var(--ntg-checkbox-radius-top-right-md)
+    var(--ntg-checkbox-radius-bottom-right-md) var(--ntg-checkbox-radius-bottom-left-md);
+}
+.md .mark { width: var(--ntg-checkbox-icon-md); height: var(--ntg-checkbox-icon-md); }
+.md .title {
+  font-size: var(--ntg-typography-font-size-label-lg);
+  line-height: var(--ntg-typography-line-height-label-lg);
+  font-weight: var(--ntg-typography-font-weight-label-lg);
+}
+.md .supporting {
+  padding-inline-start: var(--ntg-checkbox-indent-md);
+  font-size: var(--ntg-typography-font-size-body-md);
+  line-height: var(--ntg-typography-line-height-body-md);
+  font-weight: var(--ntg-typography-font-weight-body-md);
+}
+
+.lg .row { min-height: var(--ntg-checkbox-row-height-lg); }
+.lg .box {
+  width: var(--ntg-checkbox-size-lg);
+  height: var(--ntg-checkbox-size-lg);
+  border-radius:
+    var(--ntg-checkbox-radius-top-left-lg) var(--ntg-checkbox-radius-top-right-lg)
+    var(--ntg-checkbox-radius-bottom-right-lg) var(--ntg-checkbox-radius-bottom-left-lg);
+}
+.lg .mark { width: var(--ntg-checkbox-icon-lg); height: var(--ntg-checkbox-icon-lg); }
+.lg .title {
+  font-size: var(--ntg-typography-font-size-label-xl);
+  line-height: var(--ntg-typography-line-height-label-xl);
+  font-weight: var(--ntg-typography-font-weight-label-xl);
+}
+.lg .supporting {
+  padding-inline-start: var(--ntg-checkbox-indent-lg);
+  font-size: var(--ntg-typography-font-size-body-lg);
+  line-height: var(--ntg-typography-line-height-body-lg);
+  font-weight: var(--ntg-typography-font-weight-body-lg);
+}
+
+.xl .row { min-height: var(--ntg-checkbox-row-height-xl); }
+.xl .box {
+  width: var(--ntg-checkbox-size-xl);
+  height: var(--ntg-checkbox-size-xl);
+  border-radius:
+    var(--ntg-checkbox-radius-top-left-xl) var(--ntg-checkbox-radius-top-right-xl)
+    var(--ntg-checkbox-radius-bottom-right-xl) var(--ntg-checkbox-radius-bottom-left-xl);
+}
+.xl .mark { width: var(--ntg-checkbox-icon-xl); height: var(--ntg-checkbox-icon-xl); }
+.xl .title {
+  font-size: var(--ntg-typography-font-size-label-xl);
+  line-height: var(--ntg-typography-line-height-label-xl);
+  font-weight: var(--ntg-typography-font-weight-label-xl);
+}
+.xl .supporting {
+  padding-inline-start: var(--ntg-checkbox-indent-xl);
+  font-size: var(--ntg-typography-font-size-body-lg);
+  line-height: var(--ntg-typography-line-height-body-lg);
+  font-weight: var(--ntg-typography-font-weight-body-lg);
+}
+
+/* พื้นที่แตะขั้นต่ำ ใช้สเกลแถวที่กดได้ ไม่ใช่ขนาดภาพกล่องติ๊ก
+   เปิดเองบนอุปกรณ์ที่ตัวชี้หยาบ ตามข้อ 4 ของคู่มือนักพัฒนาในเอกสารหน้า 15
+   และบังคับเปิดด้วย prop touchTarget ได้เมื่อรู้ว่าจะใช้งานด้วยนิ้ว */
+.touchTarget .row { min-height: var(--ntg-checkbox-row-height-touch); }
+
+/* ยกเฉพาะขนาดที่แถวเตี้ยกว่าเกณฑ์ คือ xs 24 sm 32 md 40
+   ขนาด lg เท่ากับเกณฑ์พอดีที่ 48 และ xl สูงกว่าอยู่แล้วที่ 56 ถ้าเขียนรวมจะกลายเป็นการบีบให้เตี้ยลง */
+@media (pointer: coarse) {
+  .xs .row, .sm .row, .md .row { min-height: var(--ntg-checkbox-row-height-touch); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box { transition: none; }
+}

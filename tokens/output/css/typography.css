@@ -1,0 +1,387 @@
+/**
+ * Typography utility classes auto-generated. Do not edit directly.
+ */
+
+.ntg-typography-display-xl {
+  font-family: Prompt;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 84px;
+}
+
+.ntg-typography-display-lg {
+  font-family: Prompt;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 72px;
+}
+
+.ntg-typography-display-md {
+  font-family: Prompt;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 58px;
+}
+
+.ntg-typography-display-sm {
+  font-family: Prompt;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 46px;
+}
+
+.ntg-typography-display-xs {
+  font-family: Prompt;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 36px;
+}
+
+.ntg-typography-page-heading-xl {
+  font-family: Prompt;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 58px;
+}
+
+.ntg-typography-page-heading-lg {
+  font-family: Prompt;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 46px;
+}
+
+.ntg-typography-page-heading-md {
+  font-family: Prompt;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 36px;
+}
+
+.ntg-typography-page-heading-sm {
+  font-family: Prompt;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 34px;
+}
+
+.ntg-typography-page-heading-xs {
+  font-family: Prompt;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 34px;
+}
+
+.ntg-typography-section-heading-xl {
+  font-family: Prompt;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 36px;
+}
+
+.ntg-typography-section-heading-lg {
+  font-family: Prompt;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 34px;
+}
+
+.ntg-typography-section-heading-md {
+  font-family: Prompt;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 34px;
+}
+
+.ntg-typography-section-heading-sm {
+  font-family: Prompt;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 30px;
+}
+
+.ntg-typography-section-heading-xs {
+  font-family: Prompt;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 28px;
+}
+
+.ntg-typography-title-xl {
+  font-family: Prompt;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 34px;
+}
+
+.ntg-typography-title-lg {
+  font-family: Prompt;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 30px;
+}
+
+.ntg-typography-title-md {
+  font-family: Prompt;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 28px;
+}
+
+.ntg-typography-title-sm {
+  font-family: Prompt;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 26px;
+}
+
+.ntg-typography-title-xs {
+  font-family: Prompt;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 24px;
+}
+
+.ntg-typography-body-xl {
+  font-family: Prompt;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 30px;
+}
+
+.ntg-typography-body-lg {
+  font-family: Prompt;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 28px;
+}
+
+.ntg-typography-body-md {
+  font-family: Prompt;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 26px;
+}
+
+.ntg-typography-body-sm {
+  font-family: Prompt;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 24px;
+}
+
+.ntg-typography-body-xs {
+  font-family: Prompt;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 22px;
+}
+
+.ntg-typography-article-xl {
+  font-family: Sarabun;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 36px;
+}
+
+.ntg-typography-article-lg {
+  font-family: Sarabun;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 34px;
+}
+
+.ntg-typography-article-md {
+  font-family: Sarabun;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 32px;
+}
+
+.ntg-typography-article-sm {
+  font-family: Sarabun;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 30px;
+}
+
+.ntg-typography-article-xs {
+  font-family: Sarabun;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 28px;
+}
+
+.ntg-typography-article-pullquote-xl {
+  font-family: Sarabun;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 36px;
+}
+
+.ntg-typography-article-pullquote-lg {
+  font-family: Sarabun;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 34px;
+}
+
+.ntg-typography-article-pullquote-md {
+  font-family: Sarabun;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 32px;
+}
+
+.ntg-typography-article-pullquote-sm {
+  font-family: Sarabun;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 30px;
+}
+
+.ntg-typography-article-pullquote-xs {
+  font-family: Sarabun;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 28px;
+}
+
+.ntg-typography-meta-byline {
+  font-family: Prompt;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 24px;
+}
+
+.ntg-typography-meta-overline {
+  font-family: Prompt;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 22px;
+}
+
+.ntg-typography-meta-timestamp {
+  font-family: Prompt;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 22px;
+}
+
+.ntg-typography-meta-caption {
+  font-family: Prompt;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 22px;
+}
+
+.ntg-typography-meta-read-time {
+  font-family: Prompt;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 22px;
+}
+
+.ntg-typography-meta-helper {
+  font-family: Prompt;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 22px;
+}
+
+.ntg-typography-meta-credit {
+  font-family: Prompt;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  line-height: 16px;
+}
+
+.ntg-typography-meta-micro {
+  font-family: Prompt;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 12px;
+}
+
+.ntg-typography-label-xl {
+  font-family: Prompt;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 28px;
+}
+
+.ntg-typography-label-lg {
+  font-family: Prompt;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 26px;
+}
+
+.ntg-typography-label-md {
+  font-family: Prompt;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 24px;
+}
+
+.ntg-typography-label-sm {
+  font-family: Prompt;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 22px;
+}
+
+.ntg-typography-label-xs {
+  font-family: Prompt;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  line-height: 16px;
+}

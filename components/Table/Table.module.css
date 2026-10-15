@@ -1,0 +1,262 @@
+/**
+ * Table styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 26 Table ได้
+ *
+ * โครง token ที่ใช้
+ *   กรอบตาราง   --ntg-table-radius-{มุม} · --ntg-divider-thickness · --ntg-color-border-general-primary
+ *   ระยะในเซล   --ntg-table-padding-{top|right|bottom|left} · --ntg-table-gap
+ *   ตัวอักษร     title/xs (หัวตารางและค่าหลัก) · meta/caption (บรรทัดรองและตัวเลข)
+ *               body/sm (วันที่) · label/md (ลิงก์) ทั้งสี่ชุดเป็น preset สำเร็จรูป ไม่ได้ผสมเอง
+ *   สี          --ntg-color-text-general-{heading|text|supporting-text|disabled}
+ *               --ntg-color-background-general-{primary|secondary|primary-hover|disabled}
+ *               --ntg-color-background-brand-primary-alt (แถวที่ถูกเลือก)
+ *               --ntg-icon-general-quaternary · --ntg-button-color-link-gray-icon-default
+ *
+ * ⚠️ ความสูงแถวไม่มี token โดยตั้งใจ (tokens/scale/table.mjs)
+ *    เซลทุกชนิดสูงตามเนื้อหาข้างใน ห้ามพิมพ์ความสูงตายตัวลงไฟล์นี้
+ *
+ * ⚠️ ใช้ border-collapse: separate ไม่ใช่ collapse
+ *    เพราะ collapse ทำให้เส้นขอบของหัวตารางแบบตรึงหายไปตอนเลื่อน
+ */
+
+/* กรอบนอกที่เลื่อนแนวนอนได้ ต้องรับโฟกัสได้ด้วยคีย์บอร์ดตาม WCAG 2.1
+   เพราะพื้นที่ที่เลื่อนได้แต่โฟกัสไม่ได้ คนที่ใช้คีย์บอร์ดอย่างเดียวจะอ่านคอลัมน์ขวาสุดไม่ได้ */
+.scroller {
+  overflow-x: auto;
+  background: var(--ntg-color-background-general-primary);
+  border: var(--ntg-divider-thickness) solid var(--ntg-color-border-general-primary);
+  border-radius:
+    var(--ntg-table-radius-top-left) var(--ntg-table-radius-top-right)
+    var(--ntg-table-radius-bottom-right) var(--ntg-table-radius-bottom-left);
+}
+
+/* วงแหวนโฟกัส ความหนา 4px เป็นค่าคงที่ของระบบโฟกัส ไม่ใช่ค่าออกแบบรายชิ้น จึงไม่เป็น token
+   กรอบตารางมีพื้นหลังทึบ จึงใช้เงาได้ ไม่ต้องใช้เส้นขอบแบบของโปร่ง */
+.scroller:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--ntg-typography-font-family-primary);
+}
+
+.caption {
+  text-align: start;
+  color: var(--ntg-color-text-general-heading);
+  padding:
+    var(--ntg-table-padding-top) var(--ntg-table-padding-right)
+    var(--ntg-table-padding-bottom) var(--ntg-table-padding-left);
+  font-size: var(--ntg-typography-font-size-title-xs);
+  line-height: var(--ntg-typography-line-height-title-xs);
+  font-weight: var(--ntg-typography-font-weight-title-xs);
+}
+
+/* คำบรรยายตารางที่ซ่อนจากสายตาแต่ยังให้โปรแกรมอ่านหน้าจออ่านได้
+   ค่า 1px ตรงนี้เป็นสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ ไม่ใช่ค่าออกแบบ จึงไม่ต้องเป็น token */
+.captionHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── เซล ─────────────────────────────────────────────────── */
+/* ระยะขอบ 12 เท่ากันทั้งสี่ด้าน อ่านจากต้นฉบับทั้ง 15 ชนิดเมื่อ 2026-09-11 */
+.cell {
+  padding:
+    var(--ntg-table-padding-top) var(--ntg-table-padding-right)
+    var(--ntg-table-padding-bottom) var(--ntg-table-padding-left);
+  border-bottom: var(--ntg-divider-thickness) solid var(--ntg-color-border-general-primary);
+  vertical-align: middle;
+  text-align: start;
+}
+
+/* แถวสุดท้ายไม่ต้องมีเส้น เพราะกรอบนอกทำหน้าที่ปิดท้ายอยู่แล้ว */
+.body tr:last-child .cell { border-bottom: 0; }
+
+.headCell {
+  color: var(--ntg-color-text-general-heading);
+  background: var(--ntg-color-background-general-primary);
+  font-size: var(--ntg-typography-font-size-title-xs);
+  line-height: var(--ntg-typography-line-height-title-xs);
+  font-weight: var(--ntg-typography-font-weight-title-xs);
+  white-space: nowrap;
+}
+
+/* หัวตารางแบบตรึงไว้ด้านบนตอนเลื่อนแนวตั้ง ใช้ได้เพราะเส้นขอบอยู่ที่เซล ไม่ใช่ที่ตาราง */
+.stickyHead .headCell {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* ── การจัดชิดของเนื้อหาในเซล ───────────────────────────── */
+.alignStart { text-align: start; }
+.alignCenter { text-align: center; }
+.alignEnd { text-align: end; }
+
+/* ── ปุ่มเรียงลำดับในหัวตาราง ───────────────────────────── */
+/* หัวตารางของจริงวางชื่อคอลัมน์ไว้ซ้าย แล้วดันไอคอนไปชิดขวาสุดของคอลัมน์
+   ช่องไฟขั้นต่ำระหว่างสองชิ้นคือระยะภายในเซล */
+.sortButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ntg-table-gap);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.alignCenter .sortButton { justify-content: center; }
+
+/* คอลัมน์ที่ชิดขวา กลับทิศให้ไอคอนอยู่ซ้ายของชื่อ แล้วดันทั้งคู่ไปชิดขอบขวาของคอลัมน์
+   ในทิศ row-reverse จุดเริ่มต้นอยู่ทางขวา flex-start จึงหมายถึงชิดขวาที่ตามองเห็น
+   ถ้าใช้ space-between เหมือนคอลัมน์ชิดซ้าย ไอคอนจะกระเด็นไปอยู่สุดขอบซ้ายของคอลัมน์ */
+.alignEnd .sortButton {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.sortButton:focus-visible {
+  outline: none;
+  /* ความหนา 4px เป็นค่าคงที่ของระบบโฟกัส เหมือนกรอบตารางด้านบน */
+  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+  border-radius:
+    var(--ntg-table-radius-top-left) var(--ntg-table-radius-top-right)
+    var(--ntg-table-radius-bottom-right) var(--ntg-table-radius-bottom-left);
+}
+
+.sortIcon {
+  flex: none;
+  display: inline-flex;
+  color: var(--ntg-icon-general-quaternary);
+}
+
+/* ── ชนิดของเซล ตรงกับชุดที่ลงท้ายด้วย table-cell ในหน้า 26 ── */
+/* ค่าหลักของเซลข้อความใช้ preset title/xs ตรงกับ text-table-cell */
+.text {
+  color: var(--ntg-color-text-general-text);
+  font-size: var(--ntg-typography-font-size-title-xs);
+  line-height: var(--ntg-typography-line-height-title-xs);
+  font-weight: var(--ntg-typography-font-weight-title-xs);
+}
+
+/* บรรทัดรองใต้ค่าหลัก ตรงกับช่องข้อความที่สองของ text-table-cell */
+.supporting {
+  display: block;
+  color: var(--ntg-color-text-general-supporting-text);
+  font-size: var(--ntg-typography-font-size-caption);
+  line-height: var(--ntg-typography-line-height-caption);
+  font-weight: var(--ntg-typography-font-weight-caption);
+}
+
+/* number-table-cell ใช้ preset meta/caption */
+.number {
+  color: var(--ntg-color-text-general-text);
+  font-size: var(--ntg-typography-font-size-caption);
+  line-height: var(--ntg-typography-line-height-caption);
+  font-weight: var(--ntg-typography-font-weight-caption);
+  font-variant-numeric: tabular-nums;
+}
+
+/* date-table-cell ใช้ preset body/sm */
+.date {
+  color: var(--ntg-color-text-general-text);
+  font-size: var(--ntg-typography-font-size-body-sm);
+  line-height: var(--ntg-typography-line-height-body-sm);
+  font-weight: var(--ntg-typography-font-weight-body-sm);
+  white-space: nowrap;
+}
+
+/* link-table-cell ใช้ preset label/md และสีตัวอักษรของแบรนด์ */
+.link {
+  color: var(--ntg-color-text-brand-primary);
+  font-size: var(--ntg-typography-font-size-label-md);
+  line-height: var(--ntg-typography-line-height-label-md);
+  font-weight: var(--ntg-typography-font-weight-label-md);
+}
+
+.link a { color: inherit; }
+
+/* icon-table-cell และ action-table-cell ใช้สีไอคอนชุดเดียวกับปุ่มลิงก์สีเทา */
+.icon,
+.action {
+  color: var(--ntg-button-color-link-gray-icon-default);
+}
+
+/* เซลที่มีลูกมากกว่าหนึ่งชิ้น เช่น รูปกับข้อความ หรือข้อความกับไอคอนเรียง */
+.inline {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-table-gap);
+}
+
+.alignCenter > .inline { justify-content: center; }
+.alignEnd > .inline { justify-content: flex-end; }
+
+/* ── ช่องติ๊กเลือกแถว ────────────────────────────────────── */
+/* ความกว้างคอลัมน์นี้บีบตามขนาดกล่องติ๊กบวกระยะขอบของเซล ตรงกับ select-table-cell */
+.selectCell {
+  width: calc(
+    var(--ntg-checkbox-size-sm) + var(--ntg-table-padding-left) + var(--ntg-table-padding-right)
+  );
+  white-space: nowrap;
+}
+
+/* ── สถานะของแถว ─────────────────────────────────────────── */
+/* ใช้ขั้นเวลาสั้นของระบบ เพราะเป็นการเปลี่ยนสีในที่เดิม ส่วน ease เป็นคำสงวนของ CSS ไม่ใช่ค่าออกแบบ */
+.row {
+  background: var(--ntg-color-background-general-primary);
+  transition: background-color var(--ntg-motion-duration-fast) ease;
+}
+
+/* แถวสลับสีช่วยไล่สายตา เปิดด้วย prop zebra */
+.zebra .row:nth-child(even) { background: var(--ntg-color-background-general-secondary); }
+
+.row:hover { background: var(--ntg-color-background-general-primary-hover); }
+
+.row[data-selected='true'],
+.row[data-selected='true']:hover { background: var(--ntg-color-background-brand-primary-alt); }
+
+.row[data-disabled='true'],
+.row[data-disabled='true']:hover { background: var(--ntg-color-background-general-disabled); }
+
+.row[data-disabled='true'] .cell { color: var(--ntg-color-text-general-disabled); }
+.row[data-disabled='true'] .supporting { color: var(--ntg-color-text-general-disabled); }
+
+/* ── ตารางที่ไม่มีข้อมูล ─────────────────────────────────── */
+.empty {
+  text-align: center;
+  color: var(--ntg-color-text-general-supporting-text);
+  font-size: var(--ntg-typography-font-size-body-sm);
+  line-height: var(--ntg-typography-line-height-body-sm);
+  font-weight: var(--ntg-typography-font-weight-body-sm);
+}
+
+/* เป้าแตะขั้นต่ำ 44px ตาม WCAG 2.1 ข้อ 2.5.5 ไม่ใช่ค่าออกแบบของหน้า 26 จึงไม่เป็น token
+   ยกเฉพาะบนอุปกรณ์ที่ตัวชี้หยาบ เพราะบนเมาส์ปุ่มเรียงลำดับเล็กกว่านี้ก็กดโดนอยู่แล้ว */
+@media (pointer: coarse) {
+  .sortButton { min-height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row { transition: none; }
+}

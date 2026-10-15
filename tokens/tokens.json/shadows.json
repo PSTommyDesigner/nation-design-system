@@ -1,0 +1,243 @@
+{
+  "shadows": {
+    "center": {
+      "xs": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.05)",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "4px",
+          "spread": "0px"
+        },
+        "$description": "element เล็กที่ต้องมีเงารอบด้าน เช่น หัวลูกศร tooltip · slider · progress"
+      },
+      "sm": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.05)",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "4px",
+          "spread": "2px"
+        },
+        "$description": "ตาราง · กริด · การ์ดที่ต้องการเงารอบด้านเท่ากัน"
+      },
+      "md": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "8px",
+          "spread": "2px"
+        },
+        "$description": "element ลอยรอบด้านขนาดกลาง (ใช้น้อย)"
+      },
+      "lg": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "16px",
+          "spread": "4px"
+        },
+        "$description": "element ลอยรอบด้านขนาดใหญ่ (ใช้น้อย)"
+      },
+      "xl": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "24px",
+          "spread": "8px"
+        },
+        "$description": "element ลอยรอบด้านขนาดใหญ่มาก (ใช้น้อย)"
+      }
+    },
+    "bottom": {
+      "xs": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.05)",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        "$description": "ค่าเริ่มต้นของระบบ · การ์ด แถบ และ element ที่ยกจากพื้นเล็กน้อย"
+      },
+      "sm": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "4px",
+          "spread": "0px"
+        },
+        "$description": "ปุ่มในรายการ · toggle · ช่องกรอก · ปุ่มขนาด sm"
+      },
+      "md": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "3px",
+          "blur": "8px",
+          "spread": "-2px"
+        },
+        "$description": "tooltip · dropdown · แถบข้าง · ปุ่มขนาด md"
+      },
+      "lg": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "16px",
+          "spread": "-4px"
+        },
+        "$description": "ปุ่มขนาด lg · การ์ดที่ต้องเด่นกว่าปกติ"
+      },
+      "xl": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "20px",
+          "blur": "24px",
+          "spread": "-4px"
+        },
+        "$description": "โมดัล · ไดอะล็อก · ปุ่มขนาด xl"
+      }
+    },
+    "top": {
+      "xs": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.05)",
+          "offsetX": "0px",
+          "offsetY": "-1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        "$description": "เงาทอดขึ้นบนบางที่สุด · แถบล่างที่ตรึงไว้แบบบาง"
+      },
+      "sm": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "-1px",
+          "blur": "4px",
+          "spread": "0px"
+        },
+        "$description": "เงาทอดขึ้นบน · แถบเครื่องมือล่างจอ"
+      },
+      "md": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "-3px",
+          "blur": "8px",
+          "spread": "-2px"
+        },
+        "$description": "element ที่เงาต้องทอดขึ้นบน เช่น แถบล่างที่ตรึงไว้"
+      },
+      "lg": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "-12px",
+          "blur": "16px",
+          "spread": "-4px"
+        },
+        "$description": "เงาทอดขึ้นบนเด่นชัด · แผงที่เลื่อนขึ้นจากขอบล่าง"
+      },
+      "xl": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.1)",
+          "offsetX": "0px",
+          "offsetY": "-20px",
+          "blur": "24px",
+          "spread": "-4px"
+        },
+        "$description": "เงาทอดขึ้นบนหนาที่สุด · แผงซ้อนที่ดึงขึ้นจากขอบล่างเต็มจอ"
+      }
+    }
+  },
+  "$extensions": {
+    "generator": {
+      "name": "Token Press",
+      "version": "2.3.1"
+    },
+    "figma": {
+      "collection": {
+        "name": "primitive"
+      }
+    }
+  },
+  "focused-ring": {
+    "brand": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(30, 88, 242, 0.2)",
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "0px",
+        "spread": "4px"
+      },
+      "$description": "วงแหวนโฟกัสสีแบรนด์ · ปุ่มหลักและลิงก์"
+    },
+    "default": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(71, 84, 103, 0.1)",
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "0px",
+        "spread": "4px"
+      },
+      "$description": "วงแหวนโฟกัสกลาง"
+    },
+    "error": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(217, 45, 32, 0.2)",
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "0px",
+        "spread": "4px"
+      },
+      "$description": "วงแหวนโฟกัสสถานะผิดพลาด"
+    },
+    "warning": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(202, 133, 4, 0.2)",
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "0px",
+        "spread": "4px"
+      },
+      "$description": "วงแหวนโฟกัสสถานะเตือน"
+    },
+    "success": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(3, 152, 85, 0.2)",
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "0px",
+        "spread": "4px"
+      },
+      "$description": "วงแหวนโฟกัสสถานะสำเร็จ"
+    }
+  }
+}

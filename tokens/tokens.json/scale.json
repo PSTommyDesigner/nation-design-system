@@ -1,0 +1,924 @@
+{
+  "scale": {
+    "avatar": {
+      "size": {
+        "base": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "8px"
+        }
+      },
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "ring": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "indicator": {
+        "base": {
+          "$type": "dimension",
+          "$value": "6px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "group": {
+        "overlap": {
+          "base": {
+            "$type": "dimension",
+            "$value": "-4px"
+          },
+          "step": {
+            "$type": "dimension",
+            "$value": "-4px"
+          }
+        }
+      },
+      "label": {
+        "gap": {
+          "base": {
+            "$type": "dimension",
+            "$value": "8px"
+          },
+          "step": {
+            "$type": "dimension",
+            "$value": "4px"
+          }
+        }
+      }
+    },
+    "button": {
+      "step": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "height": {
+        "base": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "8px"
+        }
+      },
+      "padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        }
+      },
+      "gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "icon-only": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "3px"
+        }
+      },
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "radius": {
+        "base": {
+          "$type": "dimension",
+          "$value": "6px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "title-padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      }
+    },
+    "input": {
+      "height": {
+        "base": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "8px"
+        }
+      },
+      "padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "radius": {
+        "base": {
+          "$type": "dimension",
+          "$value": "6px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "border": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "stack-gap": {
+        "$type": "dimension",
+        "$value": "4px"
+      },
+      "textarea": {
+        "padding": {
+          "base": {
+            "$type": "dimension",
+            "$value": "4px"
+          },
+          "step": {
+            "$type": "dimension",
+            "$value": "2px"
+          }
+        }
+      }
+    },
+    "badge": {
+      "height": {
+        "base": {
+          "$type": "dimension",
+          "$value": "18px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "10px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "padding": {
+        "x": {
+          "semi-rounded": {
+            "base": {
+              "$type": "dimension",
+              "$value": "4px"
+            },
+            "step": {
+              "$type": "dimension",
+              "$value": "1px"
+            }
+          },
+          "pill": {
+            "base": {
+              "$type": "dimension",
+              "$value": "6px"
+            },
+            "step": {
+              "$type": "dimension",
+              "$value": "1px"
+            }
+          }
+        },
+        "no": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      },
+      "title-padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "1px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "2px"
+      }
+    },
+    "card": {
+      "image-width": {
+        "base": {
+          "$type": "dimension",
+          "$value": "184px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "104px"
+        }
+      },
+      "image-height": {
+        "base": {
+          "$type": "dimension",
+          "$value": "104px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "58px"
+        }
+      }
+    },
+    "tag": {
+      "height": {
+        "base": {
+          "$type": "dimension",
+          "$value": "18px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "padding": {
+        "x": {
+          "semi-rounded": {
+            "base": {
+              "$type": "dimension",
+              "$value": "4px"
+            },
+            "step": {
+              "$type": "dimension",
+              "$value": "1px"
+            }
+          },
+          "pill": {
+            "base": {
+              "$type": "dimension",
+              "$value": "6px"
+            },
+            "step": {
+              "$type": "dimension",
+              "$value": "1px"
+            }
+          },
+          "flush": {
+            "base": {
+              "$type": "dimension",
+              "$value": "5px"
+            },
+            "step": {
+              "$type": "dimension",
+              "$value": "2px"
+            }
+          }
+        },
+        "no": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      },
+      "title-padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "1px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "10px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "icon-leading": {
+        "base": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "checkbox": {
+        "base": {
+          "$type": "dimension",
+          "$value": "10px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      }
+    },
+    "link-button": {
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "3px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      },
+      "icon-only": {
+        "base": {
+          "$type": "dimension",
+          "$value": "3px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      }
+    },
+    "table": {
+      "padding": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "8px"
+      }
+    },
+    "toggle": {
+      "track": {
+        "base": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "ratio": {
+          "$type": "number",
+          "$value": 2
+        }
+      },
+      "inset": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "row": {
+        "base": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "touch": {
+          "$type": "dimension",
+          "$value": "48px"
+        }
+      }
+    },
+    "checkbox": {
+      "size": {
+        "base": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "border": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "row": {
+        "base": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "touch": {
+          "$type": "dimension",
+          "$value": "48px"
+        }
+      },
+      "radius": {
+        "base": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      }
+    },
+    "radio": {
+      "size": {
+        "base": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "dot": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "border": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "row": {
+        "base": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "touch": {
+          "$type": "dimension",
+          "$value": "48px"
+        }
+      }
+    },
+    "slider": {
+      "handle": {
+        "base": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "track": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "row": {
+        "base": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "touch-min": {
+          "$type": "dimension",
+          "$value": "48px"
+        }
+      }
+    },
+    "tab": {
+      "height": {
+        "base": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "8px"
+        }
+      },
+      "padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "unread": {
+        "base": {
+          "$type": "dimension",
+          "$value": "6px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      }
+    },
+    "toast": {
+      "width": {
+        "base": {
+          "$type": "dimension",
+          "$value": "280px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "40px"
+        }
+      },
+      "padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "20px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "stack": {
+        "base": {
+          "$type": "dimension",
+          "$value": "0px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "action-gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      }
+    },
+    "banner": {
+      "padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "icon": {
+        "base": {
+          "$type": "dimension",
+          "$value": "20px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "stack": {
+        "base": {
+          "$type": "dimension",
+          "$value": "0px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "action-gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      }
+    },
+    "tooltip": {
+      "padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "stack": {
+        "base": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "arrow": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "offset": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "max-width": {
+        "base": {
+          "$type": "dimension",
+          "$value": "200px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "40px"
+        }
+      },
+      "max-width-mobile": {
+        "base": {
+          "$type": "dimension",
+          "$value": "160px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "40px"
+        }
+      }
+    },
+    "progress": {
+      "bar-height": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "hz-gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "vc-gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "diameter": {
+        "base": {
+          "$type": "dimension",
+          "$value": "40px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "16px"
+        }
+      },
+      "stroke": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      }
+    },
+    "pagination": {
+      "gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "1px"
+        }
+      },
+      "group-gap": {
+        "base": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      },
+      "padding-x": {
+        "base": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      }
+    },
+    "dropdown": {
+      "panel-rows": {
+        "base": {
+          "$type": "dimension",
+          "$value": "5.5px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      },
+      "panel-padding-y": {
+        "base": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      }
+    }
+  }
+}

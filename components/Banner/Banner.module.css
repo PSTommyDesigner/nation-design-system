@@ -1,0 +1,338 @@
+/**
+ * Banner styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับไฟล์ออกแบบหน้า 19 Toasts and Banners ได้
+ *
+ * โครง token ที่ใช้
+ *   ขนาด    --ntg-banner-padding-{size} ระยะขอบเท่ากันทั้งสี่ด้าน
+ *           --ntg-banner-gap-{size} ช่องไฟระหว่างไอคอน กลุ่มข้อความ และปุ่มปิด
+ *           --ntg-banner-stack-{size} ระยะระหว่างหัวข้อกับข้อความรอง
+ *           --ntg-banner-action-gap-{size} ระยะจากกลุ่มข้อความลงมาถึงปุ่มกระทำ
+ *           --ntg-banner-icon-{size} ขนาดไอคอนบอกชนิด ปุ่มปิดใช้ค่าเดียวกัน
+ *   มุมโค้ง  --ntg-banner-radius-page (0) และ --ntg-banner-radius-section-{size}
+ *   ตัวอักษร ชุดเดียวกับ Toast ทุกขั้น หัวข้อใช้ preset label/sm md lg xl และ title/lg
+ *           ข้อความรองใช้ preset body/xs xs sm md lg
+ *
+ * ⚠️ ห้ามใส่เงา ทุกเจ้าในงานวิจัยไม่ใส่เงาให้แถบที่อยู่ในสายเนื้อหา
+ *    เงาสื่อว่าของชิ้นนั้นลอยอยู่เหนือหน้า ซึ่งขัดกับความหมายของแถบในสายเนื้อหา
+ *    ของเดิมในไฟล์ออกแบบใส่ shadows/bottom/xs ไว้ และถูกถอดออกแล้ว
+ *    รวมถึงวงแหวนโฟกัสของตัวแถบเองก็ไม่มี เพราะแถบรับโฟกัสด้วยการสั่งจากโค้ดเท่านั้น
+ *    ไม่ได้อยู่ในลำดับ Tab ของหน้า วงแหวนจึงไม่มีใครได้เห็น (ปุ่มข้างในมีวงแหวนของตัวเอง)
+ *
+ * ⚠️ ห้ามตั้งความกว้างและความสูง
+ *    ความกว้างมาจากกรอบแม่เสมอ และความสูงมาจากเนื้อหา
+ *    tokens/scale/banner.mjs เขียนกำกับไว้ว่าไม่มี token ของสองมิตินี้โดยตั้งใจ
+ *    ถ้าตรึงไว้ ข้อความที่ตัดหลายบรรทัดจะล้นออกนอกแถบ
+ *
+ * ⚠️ ไม่มี token ระยะเยื้อง เพราะไอคอนอยู่คอลัมน์ของตัวเอง
+ *    ข้อความรองและปุ่มกระทำจึงตรงแนวกับหัวข้อเองอยู่แล้วโดยไม่ต้องเยื้อง
+ *
+ * ⚠️ 44 คือค่าคงที่ของเกณฑ์ WCAG 2.5.5 Target Size ไม่ใช่ค่าของระบบออกแบบ
+ *    ประกาศไว้ที่เดียวแบบเดียวกับที่ Tabs และ Toast ทำ
+ */
+
+.root {
+  /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
+  --banner-pad: var(--ntg-banner-padding-md);
+  --banner-gap: var(--ntg-banner-gap-md);
+  --banner-stack: var(--ntg-banner-stack-md);
+  --banner-action-gap: var(--ntg-banner-action-gap-md);
+  --banner-icon: var(--ntg-banner-icon-md);
+  --banner-radius-section: var(--ntg-banner-radius-section-md);
+  --banner-title-family: var(--ntg-typography-font-family-label-lg);
+  --banner-title-size: var(--ntg-typography-font-size-label-lg);
+  --banner-title-line: var(--ntg-typography-line-height-label-lg);
+  --banner-title-weight: var(--ntg-typography-font-weight-label-lg);
+  --banner-title-space: var(--ntg-typography-letter-space-label-lg);
+  --banner-desc-family: var(--ntg-typography-font-family-body-sm);
+  --banner-desc-size: var(--ntg-typography-font-size-body-sm);
+  --banner-desc-line: var(--ntg-typography-line-height-body-sm);
+  --banner-desc-weight: var(--ntg-typography-font-weight-body-sm);
+  --banner-desc-space: var(--ntg-typography-letter-space-body-sm);
+
+  /* ค่าคงที่ของเกณฑ์ WCAG 2.5.5 ไม่ใช่ค่าของระบบออกแบบ */
+  --banner-touch-target: 44px;
+
+  box-sizing: border-box;
+  /* ความกว้างมาจากกรอบแม่ ห้ามตั้ง inline-size ดูคำอธิบายที่หัวไฟล์ */
+  display: block;
+  padding: var(--banner-pad);
+  background: var(--banner-bg);
+}
+
+/* แถบรับโฟกัสจากการสั่งในโค้ด เช่นสรุปข้อผิดพลาดของฟอร์มตอนกดส่ง แต่ไม่อยู่ในลำดับ Tab */
+.root:focus {
+  outline: none;
+}
+
+/*
+ * ชั้นประกาศให้โปรแกรมอ่านหน้าจอ แยกออกจากตัวที่มองเห็นโดยตั้งใจ
+ *
+ * ⚠️ ห้ามย้าย aria-live หรือ role ไปอยู่บนกล่องที่มองเห็น
+ *    ถ้าใส่ไว้บนตัวที่มองเห็น โปรแกรมอ่านหน้าจอจะอ่านสองรอบ
+ *    รอบแรกตอน live region เปลี่ยน และรอบสองตอนผู้ใช้เลื่อนไปเจอแถบนั้น
+ *    Base Web เขียนเหตุผลนี้ไว้ในโค้ด และ Fluent 2 กับ Radix แยกออกมาแบบเดียวกัน
+ */
+.liveRegion {
+  /*
+   * ⚠️ 1px ตรงนี้เป็นค่าคงที่ของสูตรซ่อนแบบยังอ่านได้ ไม่ใช่ระยะของระบบออกแบบ
+   *    ต้องมีขนาดมากกว่า 0 ไม่งั้นเบราว์เซอร์บางตัวจะถอดออกจากต้นไม้การเข้าถึง
+   */
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: var(--ntg-size-space-none);
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── แถวบน ไอคอน กลุ่มข้อความ ปุ่มปิด ───────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--banner-gap);
+}
+
+/* ไอคอนบอกชนิด กรอบล็อกสัดส่วน 1 ต่อ 1 และอยู่แนวเดียวกับบรรทัดแรกของหัวข้อ */
+.iconSlot {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--banner-icon);
+  block-size: var(--banner-title-line);
+  color: var(--banner-icon-color);
+}
+
+.body {
+  /* ยืดเต็มที่ว่างที่เหลือ min-inline-size 0 กันข้อความยาวดันแถวให้ล้น */
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--banner-stack);
+}
+
+.title {
+  margin: var(--ntg-size-space-none);
+  color: var(--ntg-color-text-general-heading);
+  font-family: var(--banner-title-family);
+  font-size: var(--banner-title-size);
+  line-height: var(--banner-title-line);
+  font-weight: var(--banner-title-weight);
+  letter-spacing: var(--banner-title-space);
+  overflow-wrap: anywhere;
+}
+
+.description {
+  margin: var(--ntg-size-space-none);
+  color: var(--ntg-color-text-general-text);
+  font-family: var(--banner-desc-family);
+  font-size: var(--banner-desc-size);
+  line-height: var(--banner-desc-line);
+  font-weight: var(--banner-desc-weight);
+  letter-spacing: var(--banner-desc-space);
+  overflow-wrap: anywhere;
+}
+
+/*
+ * ปุ่มกระทำอยู่ใต้ข้อความเสมอ ไม่ใช่ท้ายแถวเดียวกัน มีได้ปุ่มเดียว
+ * ของเดิมวางไว้ท้ายแถว ซึ่งพอข้อความยาวหลายบรรทัดปุ่มจะลอยอยู่กลางอากาศ
+ */
+.actionRow {
+  display: flex;
+  /* หัก stack ออกเพราะ gap ของ body ใส่ระยะมาให้แล้วหนึ่งชั้น */
+  margin-block-start: calc(var(--banner-action-gap) - var(--banner-stack));
+}
+
+/*
+ * ปุ่มปิด เป็นพี่น้องของกลุ่มข้อความ ไม่ใช่ลูกของมัน
+ * React Aria ระบุว่าลำดับใน DOM มีผลกับสิ่งที่ผู้ใช้ได้ยิน
+ * ถ้าปุ่มปิดอยู่ก่อนเนื้อหา โปรแกรมอ่านหน้าจอจะอ่านคำว่าปิดก่อนข้อความจริง
+ */
+.close {
+  flex: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--banner-icon);
+  block-size: var(--banner-title-line);
+  padding: var(--ntg-size-space-none);
+  border: none;
+  /*
+   * กลุ่ม banner ไม่มี token มุมโค้งเต็มของตัวเอง จึงหยิบของป้ายกลมมาใช้
+   * เพราะปุ่มปิดคือของกลมชนิดเดียวกัน ไม่ใช่ใส่ค่าดิบ
+   */
+  border-radius: var(--ntg-circular-badge-radius-full);
+  background: none;
+  color: var(--ntg-icon-general-secondary);
+  cursor: pointer;
+  appearance: none;
+}
+
+/*
+ * ชั้นพื้นที่แตะ มองไม่เห็น ขยายเฉพาะพื้นที่กด ไม่ขยายกล่องจริง
+ * ถ้าขยายกล่องจริง ปุ่มจะไปทับข้อความและทับขอบแถบ
+ */
+.close::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+  min-inline-size: var(--banner-touch-target);
+  min-block-size: var(--banner-touch-target);
+}
+
+.close:hover { color: var(--ntg-icon-general-primary); }
+
+.close:focus-visible {
+  outline: none;
+  /* วงแหวนโฟกัสของปุ่ม ไม่ใช่เงายกตัวของแถบ แถบยังไม่มีเงาตามกฎที่หัวไฟล์ */
+  box-shadow: var(--ntg-focused-ring-default);
+}
+
+/* ═══ 2 ระดับ ต่างกันที่มุมโค้งอย่างเดียว ═══════════════════════════ */
+
+/*
+ * ระดับหน้า ยืนเต็มความกว้างบนสุดของหน้า มุมโค้ง 0
+ * ถ้าใส่มุมโค้งจะเห็นสีพื้นหลังโผล่ที่มุมแล้วดูเหมือนวางผิดที่
+ */
+.levelPage {
+  border-radius: var(--ntg-banner-radius-page);
+}
+
+/* ระดับกล่องเนื้อหา กว้างเท่าคอลัมน์ที่มันอยู่ มีมุมโค้งตามขนาด */
+.levelSection {
+  border-radius: var(--banner-radius-section);
+}
+
+/* ═══ ชนิด 5 ค่า ทรงเดียวคือพื้นสีอ่อน ═══════════════════════════ */
+
+.typeDefault {
+  --banner-bg: var(--ntg-color-background-general-secondary);
+  --banner-icon-color: var(--ntg-icon-general-primary);
+}
+
+.typeBrand {
+  --banner-bg: var(--ntg-color-background-brand-primary);
+  --banner-icon-color: var(--ntg-icon-brand-on-subtle);
+}
+
+.typeError {
+  --banner-bg: var(--ntg-color-background-system-error-primary);
+  --banner-icon-color: var(--ntg-icon-system-error-on-subtle);
+}
+
+.typeWarning {
+  --banner-bg: var(--ntg-color-background-system-warning-primary);
+  --banner-icon-color: var(--ntg-icon-system-warning-on-subtle);
+}
+
+.typeSuccess {
+  --banner-bg: var(--ntg-color-background-system-success-primary);
+  --banner-icon-color: var(--ntg-icon-system-success-on-subtle);
+}
+
+/* ═══ ขนาด 5 ขั้น ═══════════════════════════════════════════════ */
+
+.xs {
+  --banner-pad: var(--ntg-banner-padding-xs);
+  --banner-gap: var(--ntg-banner-gap-xs);
+  --banner-stack: var(--ntg-banner-stack-xs);
+  --banner-action-gap: var(--ntg-banner-action-gap-xs);
+  --banner-icon: var(--ntg-banner-icon-xs);
+  --banner-radius-section: var(--ntg-banner-radius-section-xs);
+  --banner-title-family: var(--ntg-typography-font-family-label-sm);
+  --banner-title-size: var(--ntg-typography-font-size-label-sm);
+  --banner-title-line: var(--ntg-typography-line-height-label-sm);
+  --banner-title-weight: var(--ntg-typography-font-weight-label-sm);
+  --banner-title-space: var(--ntg-typography-letter-space-label-sm);
+  --banner-desc-family: var(--ntg-typography-font-family-body-xs);
+  --banner-desc-size: var(--ntg-typography-font-size-body-xs);
+  --banner-desc-line: var(--ntg-typography-line-height-body-xs);
+  --banner-desc-weight: var(--ntg-typography-font-weight-body-xs);
+  --banner-desc-space: var(--ntg-typography-letter-space-body-xs);
+}
+
+.sm {
+  --banner-pad: var(--ntg-banner-padding-sm);
+  --banner-gap: var(--ntg-banner-gap-sm);
+  --banner-stack: var(--ntg-banner-stack-sm);
+  --banner-action-gap: var(--ntg-banner-action-gap-sm);
+  --banner-icon: var(--ntg-banner-icon-sm);
+  --banner-radius-section: var(--ntg-banner-radius-section-sm);
+  --banner-title-family: var(--ntg-typography-font-family-label-md);
+  --banner-title-size: var(--ntg-typography-font-size-label-md);
+  --banner-title-line: var(--ntg-typography-line-height-label-md);
+  --banner-title-weight: var(--ntg-typography-font-weight-label-md);
+  --banner-title-space: var(--ntg-typography-letter-space-label-md);
+  --banner-desc-family: var(--ntg-typography-font-family-body-xs);
+  --banner-desc-size: var(--ntg-typography-font-size-body-xs);
+  --banner-desc-line: var(--ntg-typography-line-height-body-xs);
+  --banner-desc-weight: var(--ntg-typography-font-weight-body-xs);
+  --banner-desc-space: var(--ntg-typography-letter-space-body-xs);
+}
+
+.md {
+  --banner-pad: var(--ntg-banner-padding-md);
+  --banner-gap: var(--ntg-banner-gap-md);
+  --banner-stack: var(--ntg-banner-stack-md);
+  --banner-action-gap: var(--ntg-banner-action-gap-md);
+  --banner-icon: var(--ntg-banner-icon-md);
+  --banner-radius-section: var(--ntg-banner-radius-section-md);
+  --banner-title-family: var(--ntg-typography-font-family-label-lg);
+  --banner-title-size: var(--ntg-typography-font-size-label-lg);
+  --banner-title-line: var(--ntg-typography-line-height-label-lg);
+  --banner-title-weight: var(--ntg-typography-font-weight-label-lg);
+  --banner-title-space: var(--ntg-typography-letter-space-label-lg);
+  --banner-desc-family: var(--ntg-typography-font-family-body-sm);
+  --banner-desc-size: var(--ntg-typography-font-size-body-sm);
+  --banner-desc-line: var(--ntg-typography-line-height-body-sm);
+  --banner-desc-weight: var(--ntg-typography-font-weight-body-sm);
+  --banner-desc-space: var(--ntg-typography-letter-space-body-sm);
+}
+
+.lg {
+  --banner-pad: var(--ntg-banner-padding-lg);
+  --banner-gap: var(--ntg-banner-gap-lg);
+  --banner-stack: var(--ntg-banner-stack-lg);
+  --banner-action-gap: var(--ntg-banner-action-gap-lg);
+  --banner-icon: var(--ntg-banner-icon-lg);
+  --banner-radius-section: var(--ntg-banner-radius-section-lg);
+  --banner-title-family: var(--ntg-typography-font-family-label-xl);
+  --banner-title-size: var(--ntg-typography-font-size-label-xl);
+  --banner-title-line: var(--ntg-typography-line-height-label-xl);
+  --banner-title-weight: var(--ntg-typography-font-weight-label-xl);
+  --banner-title-space: var(--ntg-typography-letter-space-label-xl);
+  --banner-desc-family: var(--ntg-typography-font-family-body-md);
+  --banner-desc-size: var(--ntg-typography-font-size-body-md);
+  --banner-desc-line: var(--ntg-typography-line-height-body-md);
+  --banner-desc-weight: var(--ntg-typography-font-weight-body-md);
+  --banner-desc-space: var(--ntg-typography-letter-space-body-md);
+}
+
+.xl {
+  --banner-pad: var(--ntg-banner-padding-xl);
+  --banner-gap: var(--ntg-banner-gap-xl);
+  --banner-stack: var(--ntg-banner-stack-xl);
+  --banner-action-gap: var(--ntg-banner-action-gap-xl);
+  --banner-icon: var(--ntg-banner-icon-xl);
+  --banner-radius-section: var(--ntg-banner-radius-section-xl);
+  --banner-title-family: var(--ntg-typography-font-family-title-lg);
+  --banner-title-size: var(--ntg-typography-font-size-title-lg);
+  --banner-title-line: var(--ntg-typography-line-height-title-lg);
+  --banner-title-weight: var(--ntg-typography-font-weight-title-lg);
+  --banner-title-space: var(--ntg-typography-letter-space-title-lg);
+  --banner-desc-family: var(--ntg-typography-font-family-body-lg);
+  --banner-desc-size: var(--ntg-typography-font-size-body-lg);
+  --banner-desc-line: var(--ntg-typography-line-height-body-lg);
+  --banner-desc-weight: var(--ntg-typography-font-weight-body-lg);
+  --banner-desc-space: var(--ntg-typography-letter-space-body-lg);
+}

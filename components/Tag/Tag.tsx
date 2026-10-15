@@ -1,0 +1,231 @@
+/**
+ * Tag Nation Design System
+ *
+ * ป้ายจัดหมวดที่ผู้ใช้แตะได้ กรองได้ เลือกได้ ปิดได้
+ * ตรงกับ component set ใน Figma หน้า 21 Tags (121 ชุด 4,095 แบบ)
+ *
+ * ⚠️ เลือกระหว่าง Tag กับ Badge ด้วยคำถามว่าใครเป็นคนเปลี่ยนค่า
+ *    ถ้าผู้ใช้เป็นคนเปลี่ยนให้ใช้ Tag ถ้าระบบเป็นคนเปลี่ยนให้ใช้ Badge
+ *    เหตุผลเต็มอยู่ที่ docs/research/badge-component.md
+ *
+ * ค่าทั้งหมดมาจาก design tokens ผ่าน CSS variables ไม่มีค่า hard-code
+ *
+ * ⚠️ ชื่อคลาสทุกตัวอ้างผ่าน object ที่ประกาศไว้ด้านล่าง ห้ามประกอบชื่อคลาสหรือ
+ *    ชื่อตัวแปร CSS ตอนรัน เพราะชื่อที่ประกอบตอนรันไม่มีเครื่องมือไหนตรวจได้
+ *    ว่ามีอยู่จริง ถ้าพิมพ์ผิด CSS จะเงียบแล้วตกไปใช้ค่า default ของเบราว์เซอร์
+ */
+import React from 'react';
+import { Icon } from '../Icon';
+import styles from './Tag.module.css';
+
+/** ตระกูลสี 11 ตระกูล ตรงกับเฟรมในหน้า Figma 21 Tags */
+export type TagFamily =
+  | 'brand' | 'neutral' | 'red' | 'green' | 'yellow'
+  | 'cyan' | 'blue' | 'purple' | 'pink' | 'bamboo' | 'brown';
+
+/**
+ * ระดับความเด่น ตรงกับแกน `hierarchy` ใน Figma
+ * primary พื้นทึบ · secondary มีขอบพื้นโปร่ง
+ *
+ * ⚠️ เดิมมี `tertiary` ที่เป็นข้อความล้วน ถูกแยกออกไปเป็นชุด `link-tag` ของตัวเอง
+ *    เมื่อ 2026-09-18 ฝั่งโค้ดจึงใช้ `shape="link"` แทน ไม่ใช่ระดับความเด่น
+ *
+ * ⚠️ แท็กมี 2 ระดับ ส่วนป้ายมี 4 ระดับเพราะมีสไตล์พื้นอ่อนเพิ่มมา
+ *    `secondary` ของแท็กคือมีขอบ ส่วน `secondary` ของป้ายคือพื้นอ่อน
+ */
+export type TagHierarchy = 'primary' | 'secondary';
+export type TagSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+/** ทรง 3 แบบ `link` คือข้อความล้วน ไม่มีพื้นไม่มีขอบ */
+/**
+ * ทรงของแท็ก
+ * ⚠️ `circular` ใช้ได้เฉพาะโหมดไอคอนล้วน เพราะในไฟล์ออกแบบมีแต่ชุด `circular-icon-tag`
+ *    ทรงนี้กว้างเท่าสูงจริง ต่างจาก `pill` ที่เป็นแคปซูลกว้างกว่าสูง
+ */
+export type TagShape = 'semi-rounded' | 'pill' | 'circular' | 'link';
+
+/**
+ * ชิ้นนำหน้าหรือต่อท้ายที่ทำให้แท็กเป็นคนละชนิด
+ * ตรงกับชุดแยกในไฟล์ออกแบบ คือ number image checkbox indicator
+ *
+ * ⚠️ ทรง `link` รองรับเฉพาะ `none` เพราะไฟล์ออกแบบมีแค่ชุดฐาน
+ */
+export type TagLeading = 'none' | 'number' | 'image' | 'checkbox' | 'indicator';
+
+export interface TagProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children' | 'onSelect'> {
+  children: React.ReactNode;
+  family?: TagFamily;
+  hierarchy?: TagHierarchy;
+  size?: TagSize;
+  shape?: TagShape;
+  /**
+   * โหมดเทา เทาตอนอยู่เฉย แล้วขึ้นสีตอนชี้ ตรงกับแกน `default-gray`
+   * ⚠️ ไม่มีผลกับ `family="neutral"` เพราะตระกูลนั้นเป็นสีเทาอยู่แล้ว
+   */
+  defaultGray?: boolean;
+  /** ชนิดของชิ้นประกอบ ตรงกับชุดแยกในไฟล์ออกแบบ */
+  leading?: TagLeading;
+  /** ตัวเลขต่อท้าย ใช้เมื่อ `leading` เป็น `number` */
+  count?: number;
+  /** ที่อยู่รูป ใช้เมื่อ `leading` เป็น `image` */
+  imageSrc?: string;
+  /** สถานะติ๊ก ใช้เมื่อ `leading` เป็น `checkbox` */
+  checked?: boolean;
+  /**
+   * ไอคอนด้านซ้ายของข้อความ ตรงกับคุณสมบัติ `left-icon` กับ `left-icon-swap` ในไฟล์ออกแบบ
+   * ส่งไอคอนเข้ามาเท่ากับเปิด ไม่ส่งเท่ากับปิด จึงไม่ต้องมีตัวเปิดปิดแยก
+   * ⚠️ ชนิด `indicator` ไม่มีไอคอนซ้าย เพราะช่องซ้ายเป็นของจุดสถานะแล้ว
+   */
+  leftIcon?: React.ReactNode;
+  /**
+   * แสดงปุ่มปิด ค่าตั้งต้นปิด ตรงกับคุณสมบัติ `right-icon` ในไฟล์ออกแบบ
+   * (เปลี่ยนชื่อจาก `icon` เป็น `right-icon` เมื่อ 2026-10-15 ตอนเพิ่มไอคอนซ้าย)
+   */
+  closable?: boolean;
+  /** ไอคอนของปุ่มปิด ตรงกับ `right-icon-swap` ค่าตั้งต้นเป็นกากบาท */
+  closeIcon?: React.ReactNode;
+  /**
+   * โหมดไอคอนล้วน ตรงกับชุด `icon-tag` `circular-icon-tag` `link-icon-tag` ในไฟล์ออกแบบ
+   * ⚠️ โหมดนี้ไม่มีข้อความ ต้องส่ง `label` เสมอเพื่อให้โปรแกรมอ่านหน้าจออ่านออก
+   */
+  iconOnly?: boolean;
+  /** ไอคอนของโหมดไอคอนล้วน ตรงกับ `swap-icon` */
+  icon?: React.ReactNode;
+  /** คำอ่านของโหมดไอคอนล้วน จำเป็นเมื่อ `iconOnly` เป็นจริง */
+  label?: string;
+  /** เรียกเมื่อกดปุ่มปิด */
+  onClose?: () => void;
+  /** เรียกเมื่อกดตัวแท็ก ถ้าส่งมาแท็กจะรับโฟกัสและกดด้วยแป้นพิมพ์ได้ */
+  onSelect?: () => void;
+  disabled?: boolean;
+  /** คำอธิบายปุ่มปิดสำหรับโปรแกรมอ่านหน้าจอ */
+  closeLabel?: string;
+}
+
+const SIZE_CLASS: Record<TagSize, string> = {
+  xs: styles.xs, sm: styles.sm, md: styles.md, lg: styles.lg, xl: styles.xl,
+};
+const SHAPE_CLASS: Record<TagShape, string> = {
+  'semi-rounded': styles.semiRounded, pill: styles.pill, circular: styles.circular, link: styles.link,
+};
+const LEADING_CLASS: Record<TagLeading, string> = {
+  none: styles.leadNone,
+  number: styles.leadNumber,
+  image: styles.leadImage,
+  checkbox: styles.leadCheckbox,
+  indicator: styles.leadIndicator,
+};
+const FAMILY_CLASS: Record<TagFamily, string> = {
+  brand: styles.brand, neutral: styles.neutral, red: styles.red, green: styles.green,
+  yellow: styles.yellow, cyan: styles.cyan, blue: styles.blue, purple: styles.purple,
+  pink: styles.pink, bamboo: styles.bamboo, brown: styles.brown,
+};
+const HIERARCHY_CLASS: Record<TagHierarchy, string> = {
+  primary: styles.primary, secondary: styles.secondary,
+};
+
+/**
+ * @example
+ * <Tag family="blue">การเมือง</Tag>
+ * <Tag family="brand" hierarchy="primary" closable onClose={remove}>กรุงเทพ</Tag>
+ * <Tag family="green" leading="number" count={12}>ข่าวใหม่</Tag>
+ * <Tag family="neutral" leading="checkbox" checked onSelect={toggle}>เลือกไว้</Tag>
+ * <Tag family="red" shape="link">อ่านต่อ</Tag>
+ */
+export function Tag({
+  children,
+  family = 'neutral',
+  hierarchy = 'secondary',
+  size = 'md',
+  shape = 'semi-rounded',
+  defaultGray = false,
+  leading = 'none',
+  count,
+  imageSrc,
+  checked,
+  leftIcon,
+  closable = false,
+  closeIcon,
+  iconOnly = false,
+  icon,
+  label,
+  onClose,
+  onSelect,
+  disabled = false,
+  closeLabel = 'ลบแท็ก',
+  className,
+  ...rest
+}: TagProps) {
+  const interactive = Boolean(onSelect) && !disabled;
+  // ทรงกลมมีแต่ชุดไอคอนล้วนในไฟล์ออกแบบ จึงบังคับเข้าโหมดนั้นเสมอ
+  const onlyIcon = iconOnly || shape === 'circular';
+  // ทรง link มีแค่ชุดฐานในไฟล์ออกแบบ ชนิดอื่นจึงถูกบังคับกลับเป็น none
+  // โหมดไอคอนล้วนก็ไม่มีของนำหน้า เพราะไม่มีข้อความให้นำหน้า
+  const effectiveLeading: TagLeading = shape === 'link' || onlyIcon ? 'none' : leading;
+  // ไอคอนซ้ายกับจุดสถานะใช้ช่องเดียวกัน ไฟล์ออกแบบจึงยกเว้นชนิด indicator ไว้
+  const showLeftIcon = Boolean(leftIcon) && !onlyIcon && effectiveLeading !== 'indicator';
+
+  const classes = [
+    styles.root,
+    SIZE_CLASS[size],
+    SHAPE_CLASS[shape],
+    LEADING_CLASS[effectiveLeading],
+    onlyIcon ? styles.iconOnly : undefined,
+    FAMILY_CLASS[family],
+    // ทรง link คุมสีเองทั้งหมด ไม่ใช้คลาสระดับความเด่น
+    shape === 'link' ? undefined : HIERARCHY_CLASS[hierarchy],
+    defaultGray && family !== 'neutral' ? styles.defaultGray : undefined,
+    interactive ? styles.interactive : undefined,
+    className,
+  ].filter(Boolean).join(' ');
+
+  return (
+    <span
+      className={classes}
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      aria-disabled={disabled || undefined}
+      aria-pressed={effectiveLeading === 'checkbox' ? Boolean(checked) : undefined}
+      onClick={interactive ? onSelect : undefined}
+      onKeyDown={interactive ? (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect?.(); }
+      } : undefined}
+      {...rest}
+    >
+      {onlyIcon ? (
+        <>
+          <span className={styles.icon} aria-hidden="true">{icon ?? <Icon name="close" />}</span>
+          <span className={styles.srOnly}>{label}</span>
+        </>
+      ) : null}
+
+      {showLeftIcon ? <span className={styles.icon} aria-hidden="true">{leftIcon}</span> : null}
+      {effectiveLeading === 'indicator' ? <span className={styles.dot} aria-hidden="true" /> : null}
+      {effectiveLeading === 'checkbox' ? (
+        <span className={styles.checkbox} data-checked={checked ? 'true' : undefined} aria-hidden="true">
+          {checked ? <Icon name="check" /> : null}
+        </span>
+      ) : null}
+      {effectiveLeading === 'image' && imageSrc ? (
+        <span className={styles.leading}><img src={imageSrc} alt="" /></span>
+      ) : null}
+
+      {onlyIcon ? null : <span className={styles.title}>{children}</span>}
+
+      {/* ช่องตัวเลขอยู่ท้ายข้อความ ตรงกับไฟล์ออกแบบ ส่วนช่องรูปอยู่หน้าข้อความ */}
+      {effectiveLeading === 'number' ? <span className={styles.leading}>{count}</span> : null}
+
+      {closable && !disabled && !onlyIcon ? (
+        <button
+          type="button"
+          className={styles.close}
+          aria-label={closeLabel}
+          onClick={(e) => { e.stopPropagation(); onClose?.(); }}
+        >
+          {closeIcon ?? <Icon name="close" />}
+        </button>
+      ) : null}
+    </span>
+  );
+}
+
+export default Tag;

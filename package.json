@@ -1,0 +1,33 @@
+{
+  "name": "nation-design-system",
+  "version": "1.0.0",
+  "description": "Nation Group Thailand Design System token pipeline",
+  "type": "module",
+  "scripts": {
+    "tokens:pull": "node scripts/figma-to-tokens.mjs",
+    "tokens:generate": "node scripts/generate-scale.mjs",
+    "tokens:build": "node scripts/clean-selfref.mjs && node scripts/generate-scale.mjs && node scripts/build-tokens.mjs",
+    "tokens:clean": "node scripts/clean-selfref.mjs",
+    "tokens:verify": "node scripts/verify-figma-sync.mjs",
+    "typecheck": "tsc --noEmit",
+    "tokens:sync": "npm run tokens:pull && npm run tokens:build",
+    "tokens:push": "node scripts/tokens-to-figma.mjs",
+    "worklog:new": "node scripts/worklog-new.mjs",
+    "worklog:asana": "node scripts/worklog-to-asana.mjs",
+    "worklog": "npm run worklog:new && npm run worklog:asana",
+    "worklog:remind": "node scripts/worklog-remind.mjs",
+    "worklog:schedule-on": "launchctl load -w ~/Library/LaunchAgents/com.nation.worklog-remind.plist && echo '✓ เตือน worklog เปิด (จ-ศ 16:00)'",
+    "worklog:schedule-off": "launchctl unload ~/Library/LaunchAgents/com.nation.worklog-remind.plist && echo '✓ เตือน worklog ปิดแล้ว'",
+    "worklog:month": "node scripts/worklog-month.mjs",
+    "worklog:month-on": "launchctl load -w ~/Library/LaunchAgents/com.nation.worklog-month.plist && echo '✓ push worklog อัตโนมัติ เปิด (จ-ศ 16:30)'",
+    "worklog:month-off": "launchctl unload ~/Library/LaunchAgents/com.nation.worklog-month.plist && echo '✓ push worklog อัตโนมัติ ปิดแล้ว'",
+    "asana:task": "node scripts/asana-task.mjs",
+    "verify:coverage": "node scripts/verify-component-coverage.mjs",
+    "verify:api": "node scripts/verify-component-api.mjs"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "style-dictionary": "^4.3.0",
+    "typescript": "^7.0.2"
+  }
+}

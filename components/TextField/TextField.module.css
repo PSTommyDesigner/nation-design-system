@@ -1,0 +1,123 @@
+/**
+ * TextField styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 13 Input ได้
+ *
+ * โครง token ที่ใช้
+ *   ขนาด    --ntg-input-height-{size} · padding-{top|bottom|left|right}-{size} · gap-{size}
+ *           · icon-{size} · border · stack-gap
+ *   มุมโค้ง  --ntg-input-radius-{corner}-{size}
+ *
+ * ⚠️ มีแค่ 3 ขนาด คือ sm md lg ต่างจาก component อื่นที่มี 5 ขนาด
+ *    เพราะช่องกรอกใช้จริงแค่ 3 ขนาด ตรงกับไฟล์ออกแบบ
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-input-stack-gap);
+  font-family: var(--ntg-typography-font-family-primary);
+}
+
+.labelRow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ntg-color-text-general-label);
+}
+
+.required { color: var(--ntg-color-text-system-error); }
+
+.box {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background: var(--ntg-color-background-general-primary);
+  border: var(--ntg-input-border) solid var(--ntg-color-border-general-primary);
+  color: var(--ntg-color-text-general-label);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.box:hover:not([data-disabled='true']):not([data-readonly='true']) {
+  background: var(--ntg-color-background-general-primary-hover);
+  border-color: var(--ntg-color-border-general-primary-hover);
+}
+
+.box:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+}
+
+.box[data-error='true'] { border-color: var(--ntg-color-border-system-error); }
+.box[data-disabled='true'] {
+  background: var(--ntg-color-background-general-disabled-subtle);
+  border-color: var(--ntg-color-border-general-disabled);
+  color: var(--ntg-color-text-general-disabled);
+  cursor: not-allowed;
+}
+.box[data-readonly='true'] { background: var(--ntg-color-background-general-secondary); }
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+}
+.input::placeholder { color: var(--ntg-color-text-general-placeholder); }
+
+.icon { display: inline-flex; flex: none; }
+.divider { flex: none; align-self: stretch; width: var(--ntg-input-border); background: var(--ntg-color-border-general-primary); }
+
+.hint { color: var(--ntg-color-text-general-supporting-text); }
+.hint[data-error='true'] { color: var(--ntg-color-text-system-error); }
+
+/* ── ขนาด ────────────────────────────────────────────────── */
+.sm .box {
+  min-height: var(--ntg-input-height-sm);
+  padding: var(--ntg-input-padding-top-sm) var(--ntg-input-padding-right-sm)
+           var(--ntg-input-padding-bottom-sm) var(--ntg-input-padding-left-sm);
+  gap: var(--ntg-input-gap-sm);
+  border-radius: var(--ntg-input-radius-top-left-sm) var(--ntg-input-radius-top-right-sm)
+                 var(--ntg-input-radius-bottom-right-sm) var(--ntg-input-radius-bottom-left-sm);
+}
+.sm .icon { width: var(--ntg-input-icon-sm); height: var(--ntg-input-icon-sm); }
+.sm .labelRow, .sm .hint, .sm .input {
+  font-size: var(--ntg-typography-font-size-label-xs);
+  line-height: var(--ntg-typography-line-height-label-xs);
+}
+
+.md .box {
+  min-height: var(--ntg-input-height-md);
+  padding: var(--ntg-input-padding-top-md) var(--ntg-input-padding-right-md)
+           var(--ntg-input-padding-bottom-md) var(--ntg-input-padding-left-md);
+  gap: var(--ntg-input-gap-md);
+  border-radius: var(--ntg-input-radius-top-left-md) var(--ntg-input-radius-top-right-md)
+                 var(--ntg-input-radius-bottom-right-md) var(--ntg-input-radius-bottom-left-md);
+}
+.md .icon { width: var(--ntg-input-icon-md); height: var(--ntg-input-icon-md); }
+.md .labelRow, .md .hint, .md .input {
+  font-size: var(--ntg-typography-font-size-label-sm);
+  line-height: var(--ntg-typography-line-height-label-sm);
+}
+
+.lg .box {
+  min-height: var(--ntg-input-height-lg);
+  padding: var(--ntg-input-padding-top-lg) var(--ntg-input-padding-right-lg)
+           var(--ntg-input-padding-bottom-lg) var(--ntg-input-padding-left-lg);
+  gap: var(--ntg-input-gap-lg);
+  border-radius: var(--ntg-input-radius-top-left-lg) var(--ntg-input-radius-top-right-lg)
+                 var(--ntg-input-radius-bottom-right-lg) var(--ntg-input-radius-bottom-left-lg);
+}
+.lg .icon { width: var(--ntg-input-icon-lg); height: var(--ntg-input-icon-lg); }
+.lg .labelRow, .lg .hint, .lg .input {
+  font-size: var(--ntg-typography-font-size-label-md);
+  line-height: var(--ntg-typography-line-height-label-md);
+}
+
+/* ช่องหลายบรรทัด ความสูงโตตามเนื้อหา ไม่ผูกความสูงตายตัว */
+.multiline .box { align-items: flex-start; }
+.multiline .input { resize: vertical; }

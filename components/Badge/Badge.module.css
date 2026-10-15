@@ -1,0 +1,151 @@
+/**
+ * Badge styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 22 Badge ได้
+ *
+ * โครง token ที่ใช้
+ *   ขนาด    --ntg-{ทรง}-badge-size-{size} · padding-{top|bottom|left|right}-{size} · title-padding-{left|right}-{size}
+ *           · icon-{size} · icon-padding-{size} · gap-{size}
+ *   มุมโค้ง  --ntg-semi-rounded-badge-radius-{size}-{corner} · --ntg-pill-badge-radius-full · --ntg-circular-badge-radius-full
+ *   สี      --ntg-color-utility-u-{family}-{50|300|600}
+ *   ตัวอักษร --ntg-typography-*-label-{preset} ตาม text preset ของแต่ละขนาด
+ *
+ * ⚠️ ป้ายเป็นของนิ่ง ไม่มี hover focus หรือ disabled โดยตั้งใจ
+ *    ถ้าที่ไหนต้องการของกดได้ ให้ใช้ Tag ไม่ใช่ Badge
+ */
+
+.root {
+  --badge-bg: transparent;
+  --badge-fg: inherit;
+  --badge-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: var(--ntg-typography-font-family-primary);
+  white-space: nowrap;
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  border: 1px solid var(--badge-border);
+}
+
+.title {
+  display: inline-block;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+}
+
+/* ── ขนาด ────────────────────────────────────────────────── */
+.xs {
+  min-height: var(--ntg-semi-rounded-badge-size-xs);
+  padding: var(--ntg-semi-rounded-badge-padding-top-xs) var(--ntg-semi-rounded-badge-padding-right-xs)
+           var(--ntg-semi-rounded-badge-padding-bottom-xs) var(--ntg-semi-rounded-badge-padding-left-xs);
+  gap: var(--ntg-semi-rounded-badge-gap-xs);
+  font-size: var(--ntg-typography-font-size-label-xs);
+  line-height: var(--ntg-typography-line-height-label-xs);
+  font-weight: var(--ntg-typography-font-weight-label-xs);
+  letter-spacing: var(--ntg-typography-letter-space-label-xs);
+}
+.xs .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-xs) var(--ntg-semi-rounded-badge-title-padding-right-xs); }
+.xs .icon { width: var(--ntg-semi-rounded-badge-icon-xs); height: var(--ntg-semi-rounded-badge-icon-xs); }
+.xs.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-xs); }
+
+.sm {
+  min-height: var(--ntg-semi-rounded-badge-size-sm);
+  padding: var(--ntg-semi-rounded-badge-padding-top-sm) var(--ntg-semi-rounded-badge-padding-right-sm)
+           var(--ntg-semi-rounded-badge-padding-bottom-sm) var(--ntg-semi-rounded-badge-padding-left-sm);
+  gap: var(--ntg-semi-rounded-badge-gap-sm);
+  font-size: var(--ntg-typography-font-size-label-xs);
+  line-height: var(--ntg-typography-line-height-label-xs);
+  font-weight: var(--ntg-typography-font-weight-label-xs);
+  letter-spacing: var(--ntg-typography-letter-space-label-xs);
+}
+.sm .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-sm) var(--ntg-semi-rounded-badge-title-padding-right-sm); }
+.sm .icon { width: var(--ntg-semi-rounded-badge-icon-sm); height: var(--ntg-semi-rounded-badge-icon-sm); }
+.sm.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-sm); }
+
+.md {
+  min-height: var(--ntg-semi-rounded-badge-size-md);
+  padding: var(--ntg-semi-rounded-badge-padding-top-md) var(--ntg-semi-rounded-badge-padding-right-md)
+           var(--ntg-semi-rounded-badge-padding-bottom-md) var(--ntg-semi-rounded-badge-padding-left-md);
+  gap: var(--ntg-semi-rounded-badge-gap-md);
+  font-size: var(--ntg-typography-font-size-label-sm);
+  line-height: var(--ntg-typography-line-height-label-sm);
+  font-weight: var(--ntg-typography-font-weight-label-sm);
+  letter-spacing: var(--ntg-typography-letter-space-label-sm);
+}
+.md .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-md) var(--ntg-semi-rounded-badge-title-padding-right-md); }
+.md .icon { width: var(--ntg-semi-rounded-badge-icon-md); height: var(--ntg-semi-rounded-badge-icon-md); }
+.md.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-md); }
+
+.lg {
+  min-height: var(--ntg-semi-rounded-badge-size-lg);
+  padding: var(--ntg-semi-rounded-badge-padding-top-lg) var(--ntg-semi-rounded-badge-padding-right-lg)
+           var(--ntg-semi-rounded-badge-padding-bottom-lg) var(--ntg-semi-rounded-badge-padding-left-lg);
+  gap: var(--ntg-semi-rounded-badge-gap-lg);
+  font-size: var(--ntg-typography-font-size-label-md);
+  line-height: var(--ntg-typography-line-height-label-md);
+  font-weight: var(--ntg-typography-font-weight-label-md);
+  letter-spacing: var(--ntg-typography-letter-space-label-md);
+}
+.lg .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-lg) var(--ntg-semi-rounded-badge-title-padding-right-lg); }
+.lg .icon { width: var(--ntg-semi-rounded-badge-icon-lg); height: var(--ntg-semi-rounded-badge-icon-lg); }
+.lg.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-lg); }
+
+.xl {
+  min-height: var(--ntg-semi-rounded-badge-size-xl);
+  padding: var(--ntg-semi-rounded-badge-padding-top-xl) var(--ntg-semi-rounded-badge-padding-right-xl)
+           var(--ntg-semi-rounded-badge-padding-bottom-xl) var(--ntg-semi-rounded-badge-padding-left-xl);
+  gap: var(--ntg-semi-rounded-badge-gap-xl);
+  font-size: var(--ntg-typography-font-size-label-lg);
+  line-height: var(--ntg-typography-line-height-label-lg);
+  font-weight: var(--ntg-typography-font-weight-label-lg);
+  letter-spacing: var(--ntg-typography-letter-space-label-lg);
+}
+.xl .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-xl) var(--ntg-semi-rounded-badge-title-padding-right-xl); }
+.xl .icon { width: var(--ntg-semi-rounded-badge-icon-xl); height: var(--ntg-semi-rounded-badge-icon-xl); }
+.xl.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-xl); }
+
+/* ── ทรง ─────────────────────────────────────────────────── */
+.semiRounded.xs { border-radius: var(--ntg-semi-rounded-badge-radius-xs-top-left) var(--ntg-semi-rounded-badge-radius-xs-top-right) var(--ntg-semi-rounded-badge-radius-xs-bottom-right) var(--ntg-semi-rounded-badge-radius-xs-bottom-left); }
+.semiRounded.sm { border-radius: var(--ntg-semi-rounded-badge-radius-sm-top-left) var(--ntg-semi-rounded-badge-radius-sm-top-right) var(--ntg-semi-rounded-badge-radius-sm-bottom-right) var(--ntg-semi-rounded-badge-radius-sm-bottom-left); }
+.semiRounded.md { border-radius: var(--ntg-semi-rounded-badge-radius-md-top-left) var(--ntg-semi-rounded-badge-radius-md-top-right) var(--ntg-semi-rounded-badge-radius-md-bottom-right) var(--ntg-semi-rounded-badge-radius-md-bottom-left); }
+.semiRounded.lg { border-radius: var(--ntg-semi-rounded-badge-radius-lg-top-left) var(--ntg-semi-rounded-badge-radius-lg-top-right) var(--ntg-semi-rounded-badge-radius-lg-bottom-right) var(--ntg-semi-rounded-badge-radius-lg-bottom-left); }
+.semiRounded.xl { border-radius: var(--ntg-semi-rounded-badge-radius-xl-top-left) var(--ntg-semi-rounded-badge-radius-xl-top-right) var(--ntg-semi-rounded-badge-radius-xl-bottom-right) var(--ntg-semi-rounded-badge-radius-xl-bottom-left); }
+.pill { border-radius: var(--ntg-pill-badge-radius-full); }
+.circular { border-radius: var(--ntg-circular-badge-radius-full); }
+
+/* ── ตระกูลสี ระบุเฉพาะ 3 ขั้นที่ใช้จริง ───────────────────── */
+.brand   { --badge-ramp-50: var(--ntg-color-utility-u-brand-50);   --badge-ramp-300: var(--ntg-color-utility-u-brand-300);   --badge-ramp-600: var(--ntg-color-utility-u-brand-600); }
+.neutral { --badge-ramp-50: var(--ntg-color-utility-u-gray-50);    --badge-ramp-300: var(--ntg-color-utility-u-gray-300);    --badge-ramp-600: var(--ntg-color-utility-u-gray-600); }
+.red     { --badge-ramp-50: var(--ntg-color-utility-u-red-50);     --badge-ramp-300: var(--ntg-color-utility-u-red-300);     --badge-ramp-600: var(--ntg-color-utility-u-red-600); }
+.green   { --badge-ramp-50: var(--ntg-color-utility-u-green-50);   --badge-ramp-300: var(--ntg-color-utility-u-green-300);   --badge-ramp-600: var(--ntg-color-utility-u-green-600); }
+.yellow  { --badge-ramp-50: var(--ntg-color-utility-u-yellow-50);  --badge-ramp-300: var(--ntg-color-utility-u-yellow-300);  --badge-ramp-600: var(--ntg-color-utility-u-yellow-600); }
+.cyan    { --badge-ramp-50: var(--ntg-color-utility-u-cyan-50);    --badge-ramp-300: var(--ntg-color-utility-u-cyan-300);    --badge-ramp-600: var(--ntg-color-utility-u-cyan-600); }
+.blue    { --badge-ramp-50: var(--ntg-color-utility-u-blue-50);    --badge-ramp-300: var(--ntg-color-utility-u-blue-300);    --badge-ramp-600: var(--ntg-color-utility-u-blue-600); }
+.purple  { --badge-ramp-50: var(--ntg-color-utility-u-purple-50);  --badge-ramp-300: var(--ntg-color-utility-u-purple-300);  --badge-ramp-600: var(--ntg-color-utility-u-purple-600); }
+.pink    { --badge-ramp-50: var(--ntg-color-utility-u-pink-50);    --badge-ramp-300: var(--ntg-color-utility-u-pink-300);    --badge-ramp-600: var(--ntg-color-utility-u-pink-600); }
+.bamboo  { --badge-ramp-50: var(--ntg-color-utility-u-bamboo-50);  --badge-ramp-300: var(--ntg-color-utility-u-bamboo-300);  --badge-ramp-600: var(--ntg-color-utility-u-bamboo-600); }
+
+/* ── ระดับความเด่น ───────────────────────────────────────── */
+.primary {
+  --badge-bg: var(--badge-ramp-600);
+  --badge-fg: var(--ntg-color-text-general-const-white);
+}
+.secondary {
+  --badge-bg: var(--badge-ramp-50);
+  --badge-fg: var(--badge-ramp-600);
+}
+.tertiary {
+  --badge-bg: var(--ntg-color-background-general-primary);
+  --badge-border: var(--badge-ramp-300);
+  --badge-fg: var(--badge-ramp-600);
+}
+.quaternary {
+  --badge-fg: var(--badge-ramp-600);
+}

@@ -1,0 +1,348 @@
+/**
+ * Pagination styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ขนาด มุมโค้ง หรือเส้นโค้งเวลา เพื่อให้ sync กับไฟล์ออกแบบหน้า 24 Pagination ได้
+ *
+ * โครง token ที่ใช้
+ *   ขนาด      --ntg-pagination-height-{size}      ความสูงของทุกชิ้นในแถว ทั้งปุ่มเลขและปุ่มลูกศร
+ *             --ntg-pagination-min-width-{size}   ความกว้างขั้นต่ำของปุ่มเลข เท่ากับความสูงเสมอ
+ *             --ntg-pagination-padding-x-{size}   ระยะขอบซ้ายขวา เผื่อให้เลขสามหลักขึ้นไปไม่ชนขอบ
+ *             --ntg-pagination-gap-{size}         ช่องไฟระหว่างปุ่มเลขที่ติดกัน
+ *             --ntg-pagination-group-gap-{size}   ช่องไฟระหว่างกลุ่ม คือลูกศร กลุ่มเลข ลูกศร
+ *             --ntg-pagination-radius-{size}      มุมโค้ง ยืมสูตรมุมโค้งปุ่มของระบบ
+ *   ไอคอน     --ntg-button-icon-{size}            ยืมจากชุดปุ่มกลางของระบบ หน้า 12 Buttons
+ *   ตัวอักษร   --ntg-typography-*-label-{size}     ใช้ preset label เท่านั้น ห้ามประกอบเอง
+ *   สี         ปกติ   --ntg-button-color-brand-gray-text-tertiary-default
+ *             ชี้/กด --ntg-button-color-brand-gray-background-tertiary-hover
+ *                    --ntg-button-color-brand-gray-text-tertiary-hover
+ *             ปิด    --ntg-button-color-brand-gray-text-tertiary-disabled
+ *             หน้าปัจจุบัน --ntg-color-background-brand-primary-alt
+ *                         --ntg-color-text-brand-primary
+ *   โฟกัส     --ntg-focused-ring-default
+ *   เคลื่อนไหว --ntg-motion-duration-fast กับ --ntg-motion-easing-enter
+ *
+ * ⚠️ ห้ามตั้งความกว้างของแถบ ไม่ว่าจะเป็น width หรือ max-width
+ *    tokens/scale/pagination.mjs เขียนกำกับไว้ว่าไม่มี token ความกว้างโดยตั้งใจ
+ *    แถบยืดเต็มกรอบแม่เสมอ ของเดิมในไฟล์ออกแบบตรึงไว้ที่ 1440 กับ 375
+ *    แล้วคนเอาไปวางในคอลัมน์ที่แคบกว่าจนเลข 1 กับหน้าสุดท้ายถูกตัดหาย
+ *
+ * ⚠️ ปุ่มเลขใช้ min-inline-size ไม่ใช่ inline-size
+ *    ปุ่มเป็นจัตุรัสเมื่อเลขหลักเดียว แล้วกว้างขึ้นเองเมื่อเลขยาวขึ้น
+ *    หมวดข่าวของเราทะลุ 2,278 หน้าได้จริง ถ้าตรึงเป็นจัตุรัสเลขจะล้นออกนอกกล่อง
+ *
+ * ⚠️ สภาพหน้าปัจจุบันผูกกับตัวเลือกแอตทริบิวต์ [aria-current='page'] ไม่ใช่คลาสแยก
+ *    เพื่อให้สภาพที่ตาเห็นกับสภาพที่โปรแกรมอ่านหน้าจออ่านได้มาจากแหล่งเดียวกัน
+ *    ถ้าแยกเป็นคลาส วันหนึ่งสองอย่างจะหลุดจากกันโดยไม่มีใครรู้
+ *
+ * ⚠️ สีตอนกดใช้ชุดเดียวกับตอนชี้ ตามที่เอกสารหน้า 24 หัวข้อ 4.4 ตัดสินไว้
+ *    ระบบมี token ชุด pressed อยู่ (background-tertiary-pressed) แต่หน้านี้เลือกไม่ใช้
+ *    เพราะแถบแบ่งหน้าเป็นของแบนที่ไม่มีพื้นหลังตอนปกติ การไล่สีสามขั้นจึงไม่ได้สื่ออะไรเพิ่ม
+ *    ถ้าวันหนึ่งหน้า 24 เพิ่มสภาพกด ให้มาแก้ที่กฎ .control:active ที่เดียว
+ *
+ * ⚠️ ตัวเลขในไฟล์นี้ที่ไม่ได้อ้าง token มีสองชนิด และไม่มีชนิดไหนเป็นค่าของระบบออกแบบ
+ *    1 ค่าคงที่ของสูตรซ่อนแบบที่ยังอยู่ในต้นไม้การเข้าถึง คือ 1px กับ -1px ใน .arrowText
+ *      ต้องมีขนาดมากกว่า 0 ไม่งั้นเบราว์เซอร์บางตัวจะถอดข้อความออกจากต้นไม้แล้วชื่อของลูกศรจะหาย
+ *      วิธีเดียวกับ .liveRegion ของ Toast และ .input ของ Toggle
+ *    2 จุดตัดของจอในคำสั่ง media
+ *    ทุกระยะจริง ทุกสี ทุกมุมโค้ง และทุกเส้นโค้งเวลาในไฟล์นี้อ้าง token ทั้งหมด
+ *
+ * ⚠️ จุดตัด 768 ตรงกับ --ntg-grid-breakpoint-tablet-v
+ *    media อ่าน custom property ไม่ได้ตามข้อกำหนดของ CSS จึงต้องเขียนเลขตรงนี้
+ *    ถ้าแก้ token ต้องมาแก้บรรทัดนั้นด้วย เป็นกรณีเดียวกับที่ Toast และ Tooltip ทำ
+ */
+
+/* ═══ ชุดตัวแปรรายขนาด ═══════════════════════════════════════════ */
+
+/*
+ * ชั้นนี้ไม่วาดอะไร มีหน้าที่แปลชื่อ token รายขนาดให้เป็นชื่อกลางที่ชั้นล่างใช้
+ * ทำให้กฎที่วาดจริงเขียนครั้งเดียว ไม่ต้องเขียนซ้ำห้ารอบตามขนาด
+ */
+.xs {
+  --pagination-height: var(--ntg-pagination-height-xs);
+  --pagination-min-width: var(--ntg-pagination-min-width-xs);
+  --pagination-padding-x: var(--ntg-pagination-padding-x-xs);
+  --pagination-gap: var(--ntg-pagination-gap-xs);
+  --pagination-group-gap: var(--ntg-pagination-group-gap-xs);
+  --pagination-radius: var(--ntg-pagination-radius-xs);
+  --pagination-icon: var(--ntg-button-icon-xs);
+  --pagination-font-family: var(--ntg-typography-font-family-label-xs);
+  --pagination-font-size: var(--ntg-typography-font-size-label-xs);
+  --pagination-font-weight: var(--ntg-typography-font-weight-label-xs);
+  --pagination-line-height: var(--ntg-typography-line-height-label-xs);
+  --pagination-letter-space: var(--ntg-typography-letter-space-label-xs);
+}
+
+.sm {
+  --pagination-height: var(--ntg-pagination-height-sm);
+  --pagination-min-width: var(--ntg-pagination-min-width-sm);
+  --pagination-padding-x: var(--ntg-pagination-padding-x-sm);
+  --pagination-gap: var(--ntg-pagination-gap-sm);
+  --pagination-group-gap: var(--ntg-pagination-group-gap-sm);
+  --pagination-radius: var(--ntg-pagination-radius-sm);
+  --pagination-icon: var(--ntg-button-icon-sm);
+  --pagination-font-family: var(--ntg-typography-font-family-label-sm);
+  --pagination-font-size: var(--ntg-typography-font-size-label-sm);
+  --pagination-font-weight: var(--ntg-typography-font-weight-label-sm);
+  --pagination-line-height: var(--ntg-typography-line-height-label-sm);
+  --pagination-letter-space: var(--ntg-typography-letter-space-label-sm);
+}
+
+.md {
+  --pagination-height: var(--ntg-pagination-height-md);
+  --pagination-min-width: var(--ntg-pagination-min-width-md);
+  --pagination-padding-x: var(--ntg-pagination-padding-x-md);
+  --pagination-gap: var(--ntg-pagination-gap-md);
+  --pagination-group-gap: var(--ntg-pagination-group-gap-md);
+  --pagination-radius: var(--ntg-pagination-radius-md);
+  --pagination-icon: var(--ntg-button-icon-md);
+  --pagination-font-family: var(--ntg-typography-font-family-label-md);
+  --pagination-font-size: var(--ntg-typography-font-size-label-md);
+  --pagination-font-weight: var(--ntg-typography-font-weight-label-md);
+  --pagination-line-height: var(--ntg-typography-line-height-label-md);
+  --pagination-letter-space: var(--ntg-typography-letter-space-label-md);
+}
+
+.lg {
+  --pagination-height: var(--ntg-pagination-height-lg);
+  --pagination-min-width: var(--ntg-pagination-min-width-lg);
+  --pagination-padding-x: var(--ntg-pagination-padding-x-lg);
+  --pagination-gap: var(--ntg-pagination-gap-lg);
+  --pagination-group-gap: var(--ntg-pagination-group-gap-lg);
+  --pagination-radius: var(--ntg-pagination-radius-lg);
+  --pagination-icon: var(--ntg-button-icon-lg);
+  --pagination-font-family: var(--ntg-typography-font-family-label-lg);
+  --pagination-font-size: var(--ntg-typography-font-size-label-lg);
+  --pagination-font-weight: var(--ntg-typography-font-weight-label-lg);
+  --pagination-line-height: var(--ntg-typography-line-height-label-lg);
+  --pagination-letter-space: var(--ntg-typography-letter-space-label-lg);
+}
+
+.xl {
+  --pagination-height: var(--ntg-pagination-height-xl);
+  --pagination-min-width: var(--ntg-pagination-min-width-xl);
+  --pagination-padding-x: var(--ntg-pagination-padding-x-xl);
+  --pagination-gap: var(--ntg-pagination-gap-xl);
+  --pagination-group-gap: var(--ntg-pagination-group-gap-xl);
+  --pagination-radius: var(--ntg-pagination-radius-xl);
+  --pagination-icon: var(--ntg-button-icon-xl);
+  --pagination-font-family: var(--ntg-typography-font-family-label-xl);
+  --pagination-font-size: var(--ntg-typography-font-size-label-xl);
+  --pagination-font-weight: var(--ntg-typography-font-weight-label-xl);
+  --pagination-line-height: var(--ntg-typography-line-height-label-xl);
+  --pagination-letter-space: var(--ntg-typography-letter-space-label-xl);
+}
+
+/* ═══ กรอบนอกสุด ═══════════════════════════════════════════════ */
+
+/*
+ * nav เป็นของระดับบล็อกอยู่แล้ว จึงกว้างเท่ากรอบแม่เองโดยไม่ต้องตั้งอะไร
+ * การจัดวางในกรอบแม่เป็นเรื่องของ layout ไม่ใช่ของชิ้นงาน อยากชิดซ้ายให้ส่ง className มาทับ
+ */
+.root {
+  display: block;
+}
+
+/* ═══ แถวของรายการ ═════════════════════════════════════════════ */
+
+/*
+ * ⚠️ ใช้ ul กับ li เพื่อให้โปรแกรมอ่านหน้าจอบอกได้ว่ามีกี่รายการ
+ *    จึงต้องล้างระยะขอบและจุดนำของรายการที่เบราว์เซอร์ใส่มาให้เอง
+ *
+ * ⚠️ ช่องไฟในแถวนี้เป็นช่องไฟระหว่างปุ่มเลข ส่วนช่องไฟระหว่างกลุ่มไปอยู่ที่ .previous กับ .next
+ *    ถ้าตั้งช่องไฟระหว่างกลุ่มที่แถวนี้ เลขทุกตัวจะห่างกันเท่ากลุ่ม แล้วแถวจะแยกกลุ่มไม่ออก
+ *
+ * ช่องไฟแนวตั้ง (ค่าแรกของ gap) ใช้ช่องไฟระหว่างกลุ่ม เพราะเป็นระยะระหว่างแถวที่ขึ้นบรรทัดใหม่
+ * ซึ่งเป็นการแยกกลุ่มในแนวตั้ง ไม่ใช่การเรียงของที่อยู่ในกลุ่มเดียวกัน
+ */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pagination-group-gap) var(--pagination-gap);
+  margin: var(--ntg-size-space-none);
+  padding: var(--ntg-size-space-none);
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex: none;
+}
+
+/*
+ * ช่องไฟระหว่างกลุ่ม คิดจากช่องไฟของแถวที่มีอยู่แล้ว
+ * ระยะจริงระหว่างลูกศรกับเลขตัวแรก เท่ากับ ช่องไฟแถว บวก ส่วนต่างตรงนี้ ซึ่งได้ช่องไฟระหว่างกลุ่มพอดี
+ * ทำแบบนี้แล้วโครงยังเป็น ul ชั้นเดียว ไม่ต้องซ้อน ul เข้าไปอีกชั้นเพื่อให้ได้ช่องไฟสองค่า
+ */
+.previous {
+  margin-inline-end: calc(var(--pagination-group-gap) - var(--pagination-gap));
+}
+
+.next {
+  margin-inline-start: calc(var(--pagination-group-gap) - var(--pagination-gap));
+}
+
+/* ═══ ของที่กดได้ ทั้งปุ่มเลขและปุ่มลูกศร ═══════════════════════════ */
+
+/*
+ * ⚠️ ความสูงมาจากตัวแปรเดียวกันทั้งปุ่มเลขและปุ่มลูกศร
+ *    ของเดิมเลขหน้าสูง 40 แต่ปุ่มก่อนหน้าถัดไปสูง 38 ขอบล่างจึงไม่ตรงแนว
+ *
+ * ⚠️ ไม่มีระยะขอบแนวตั้งโดยตั้งใจ ความสูงปุ่มเป็นตัวคุม แล้ววางเนื้อหากึ่งกลาง
+ *    ค่าระยะขอบที่เก็บไว้ในไฟล์ออกแบบเดิมบวกกลับไม่ได้ เพราะเฟรมเป็นขนาดตายตัว
+ */
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--pagination-gap);
+  block-size: var(--pagination-height);
+  min-inline-size: var(--pagination-min-width);
+  padding-block: var(--ntg-size-space-none);
+  padding-inline: var(--pagination-padding-x);
+  border: 0;
+  border-radius: var(--pagination-radius);
+  background: transparent;
+  color: var(--ntg-button-color-brand-gray-text-tertiary-default);
+  font-family: var(--pagination-font-family);
+  font-size: var(--pagination-font-size);
+  font-weight: var(--pagination-font-weight);
+  line-height: var(--pagination-line-height);
+  letter-spacing: var(--pagination-letter-space);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--ntg-motion-duration-fast) var(--ntg-motion-easing-enter),
+    color var(--ntg-motion-duration-fast) var(--ntg-motion-easing-enter);
+}
+
+/* หน้าปัจจุบันไม่ตอบสนองการชี้ สภาพของมันต้องแยกจากสภาพชี้ให้เห็นชัด */
+.control:hover:not([aria-current='page']):not(:disabled):not([aria-disabled='true']) {
+  background: var(--ntg-button-color-brand-gray-background-tertiary-hover);
+  color: var(--ntg-button-color-brand-gray-text-tertiary-hover);
+}
+
+.control:focus-visible {
+  outline: none;
+  box-shadow: var(--ntg-focused-ring-default);
+}
+
+/*
+ * สภาพกด ใช้ชุดเดียวกับสภาพชี้ตามเอกสารหน้า 24 หัวข้อ 4.4
+ * วางไว้หลัง focus-visible เพื่อให้สีตอนกดชนะสีตอนโฟกัส แต่วงแหวนโฟกัสยังอยู่
+ * กฎนี้จำเป็นแม้สีจะเท่ากับตอนชี้ เพราะการกดด้วยแป้นพิมพ์ไม่ทำให้เกิดสภาพชี้
+ */
+.control:active:not([aria-current='page']):not(:disabled):not([aria-disabled='true']) {
+  background: var(--ntg-button-color-brand-gray-background-tertiary-hover);
+  color: var(--ntg-button-color-brand-gray-text-tertiary-hover);
+}
+
+/*
+ * ⚠️ หน้าปัจจุบันผูกกับแอตทริบิวต์ ไม่ใช่คลาส ดูเหตุผลที่หัวไฟล์
+ *    วางไว้หลังสภาพชี้และสภาพกด เพื่อให้สีของหน้าปัจจุบันชนะทุกสภาพ ยกเว้นวงแหวนโฟกัสที่ยังอยู่
+ */
+.control[aria-current='page'] {
+  background: var(--ntg-color-background-brand-primary-alt);
+  color: var(--ntg-color-text-brand-primary);
+}
+
+/* สุดทางแล้ว ปิดใช้งาน ไม่ใช่ซ่อน ถ้าซ่อนแถวจะกระตุกและผู้ใช้จะหาปุ่มไม่เจอ */
+.control:disabled,
+.control[aria-disabled='true'] {
+  background: transparent;
+  color: var(--ntg-button-color-brand-gray-text-tertiary-disabled);
+  cursor: not-allowed;
+}
+
+/* ═══ ปุ่มเลขหน้า ═══════════════════════════════════════════════ */
+
+/*
+ * ตัวเลขความกว้างเท่ากันทุกตัว ถ้าไม่ตั้ง ความกว้างของปุ่มจะเปลี่ยนตามรูปร่างของเลขแต่ละตัว
+ * แล้วแถวจะขยับไปมาระหว่างหน้าที่มีจำนวนหลักเท่ากัน
+ */
+.number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══ ปุ่มก่อนหน้าและถัดไป ═══════════════════════════════════════ */
+
+.arrow {
+  white-space: nowrap;
+}
+
+.icon {
+  flex: none;
+  inline-size: var(--pagination-icon);
+  block-size: var(--pagination-icon);
+}
+
+/*
+ * บนจอกว้างข้อความแสดงตามปกติ กฎที่ซ่อนอยู่ในคำสั่ง media ท้ายไฟล์
+ * ประกาศคลาสไว้ที่นี่ด้วยเพื่อให้ชื่อคลาสมีอยู่จริงแม้จอไม่เข้าเงื่อนไข
+ */
+.arrowText {
+  flex: none;
+}
+
+/* ═══ จุดไข่ปลา ═════════════════════════════════════════════════ */
+
+/*
+ * ⚠️ จองที่เท่าปุ่มเลขหนึ่งปุ่ม ไม่ใช่กว้างเท่าตัวอักษรสามจุด
+ *    ถ้าปล่อยให้กว้างเท่าเนื้อหา แถวจะกระตุกเวลาจุดไข่ปลาสลับเป็นเลขหน้าตามสูตร
+ *
+ * ⚠️ ไม่มีพื้นหลัง ไม่มีสภาพชี้ และกดไม่ได้
+ *    ของเดิมในไฟล์ออกแบบใช้ instance เดียวกับปุ่มเลข จึงมีพื้นหลังและสภาพชี้เหมือนปุ่ม
+ *    ทั้งที่กดไม่ได้ ซึ่งหลอกผู้ใช้ และโปรแกรมอ่านหน้าจอก็อ่านว่าเป็นปุ่ม
+ */
+.ellipsisItem {
+  display: flex;
+}
+
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  block-size: var(--pagination-height);
+  min-inline-size: var(--pagination-min-width);
+  padding-inline: var(--pagination-padding-x);
+  color: var(--ntg-button-color-brand-gray-text-tertiary-default);
+  font-family: var(--pagination-font-family);
+  font-size: var(--pagination-font-size);
+  font-weight: var(--pagination-font-weight);
+  line-height: var(--pagination-line-height);
+  letter-spacing: var(--pagination-letter-space);
+  user-select: none;
+}
+
+/* ═══ มือถือ ซ่อนข้อความของลูกศร แต่ชื่อยังอยู่ ═══════════════════ */
+
+/*
+ * ⚠️ จุดตัด 768 ตรงกับ --ntg-grid-breakpoint-tablet-v ดูคำอธิบายที่หัวไฟล์
+ *
+ * ⚠️ ใช้วิธีซ่อนแบบที่ยังอยู่ในต้นไม้การเข้าถึง ห้ามใช้ display none หรือ visibility hidden
+ *    เพราะสองตัวนั้นจะถอดข้อความออกจากต้นไม้ แล้วปุ่มลูกศรจะกลายเป็นปุ่มไม่มีชื่อ
+ *    ซึ่งเป็นข้อที่พลาดกันมากที่สุดของลูกศรที่มีแต่ไอคอน
+ *    ข้อความยังเป็นที่มาของชื่อปุ่มเสมอ จึงไม่ต้องใส่ aria-label ซ้อนอีกชั้น
+ */
+@media (max-width: 767.98px) {
+  .arrowText {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: var(--ntg-size-space-none);
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control {
+    transition: none;
+  }
+}

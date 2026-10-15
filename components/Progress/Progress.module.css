@@ -1,0 +1,423 @@
+/**
+ * Progress styles Nation Design System
+ *
+ * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
+ * ห้าม hard-code สี ขนาด มุมโค้ง หรือเส้นโค้งเวลา เพื่อให้ sync กับไฟล์ออกแบบหน้า 23 Progress Bars ได้
+ *
+ * โครง token ที่ใช้
+ *   แถบแนวนอน  --ntg-progress-bar-height-{size}   ความหนาแถบ
+ *              --ntg-progress-bar-hz-gap-{size}   ช่องไฟแถบกับป้าย ตอนป้ายอยู่ขวา
+ *              --ntg-progress-bar-vc-gap-{size}   ช่องไฟแถบกับป้าย ตอนป้ายอยู่ล่าง
+ *              --ntg-progress-bar-radius-full     ทรงแคปซูล ค่าเดียวทุกขนาด
+ *   วงแหวนเต็มวง --ntg-circular-progress-bar-size-{size}      กล่อง เป็นค่าอนุพันธ์
+ *              --ntg-circular-progress-bar-diameter-{size}  เส้นผ่านศูนย์กลางแนวกลางเส้น
+ *              --ntg-circular-progress-bar-stroke-{size}    ความหนาเส้น
+ *   วงแหวนครึ่งวง --ntg-semi-circular-progress-bar-size-{size}     ความกว้างกล่อง
+ *              --ntg-semi-circular-progress-bar-height-{size}   ความสูงกล่อง เป็นค่าอนุพันธ์
+ *              --ntg-semi-circular-progress-bar-diameter-{size} เส้นผ่านศูนย์กลาง
+ *              --ntg-semi-circular-progress-bar-stroke-{size}   ความหนาเส้น
+ *   ตัวอักษร    --ntg-typography-*-label-{size} ใช้ preset label เท่านั้น ห้ามประกอบเอง
+ *   สี          ราง --ntg-color-background-general-tertiary
+ *              ตัวเติม --ntg-color-background-brand-solid
+ *              ป้าย --ntg-color-text-general-heading
+ *   เคลื่อนไหว   --ntg-motion-duration-default กับ --ntg-motion-easing-enter
+ *
+ * ⚠️ วงแหวนเต็มวงกับวงแหวนครึ่งวงอ้าง token คนละชุด ถึงแม้ค่าตอนนี้จะเท่ากัน
+ *    tokens/scale/progress.mjs ออก token แยกสองกลุ่มโดยตั้งใจ ถ้าวันหนึ่งสองทรงแยกสเกลกัน
+ *    ไฟล์นี้จะเปลี่ยนตามเองโดยไม่ต้องแก้ ถ้ารวบไปอ้างกลุ่มเดียวจะพังเงียบ ๆ ตอนนั้น
+ *
+ * ⚠️ ห้ามตั้งความกว้างของแถบแนวนอน ไม่ว่าจะเป็น width หรือ max-width
+ *    tokens/scale/progress.mjs เขียนกำกับไว้ว่าไม่มี token ความกว้างโดยตั้งใจ
+ *    แถบยืดเต็มกรอบแม่เสมอ ของเดิมในไฟล์ออกแบบตรึงไว้ที่ 320 แล้วคนเอาไปวางในคอลัมน์ที่แคบกว่าจนล้น
+ *
+ * ⚠️ ตัวเลขในไฟล์นี้ที่ไม่ได้อ้าง token มีสามชนิด และไม่มีชนิดไหนเป็นค่าของระบบออกแบบ
+ *    1 ร้อยละของการจัดวาง เช่น 50% คือครึ่งหนึ่งของกล่องแม่ตามไวยากรณ์ของ CSS เอง
+ *    2 ร้อยละของภาพเคลื่อนไหว เช่น ระยะไถลของแถบตอนไม่รู้ค่า เป็นพิกัดของการเคลื่อนที่
+ *    3 องศาการหมุน เป็นมุมของรูป ไม่ใช่ระยะ
+ *    ทุกระยะจริง ทุกสี และทุกเส้นโค้งเวลาในไฟล์นี้อ้าง token ทั้งหมด
+ *
+ * ⚠️ `--progress-loop` เป็นสำเนาของ PROGRESS_MOTION.indeterminateLoopMs ใน types.ts
+ *    รอบของแบบไม่รู้ค่ายาวกว่าชั้นเวลาที่ช้าที่สุดของระบบ (slow 400ms) จึงไม่มี token ให้อ้าง
+ *    **ถ้าแก้ที่นี่ต้องไปแก้ที่ types.ts ด้วย**
+ *
+ * ⚠️ วงแหวนตั้ง cx cy r ผ่าน CSS ไม่ใช่ attribute ของ SVG
+ *    เพราะรัศมีจริงอยู่ใน CSS variable ซึ่งฝั่ง JavaScript อ่านตอน render ไม่ได้
+ *    ถ้าคำนวณในฝั่ง JavaScript จะต้องพิมพ์ตัวเลขขนาดลงโค้ด ซึ่งผิดกฎของระบบ
+ *    SVG geometry properties ใช้ได้ใน Chrome Safari และ Firefox ตั้งแต่ปี 2019
+ */
+
+/* ═══ ชุดตัวแปรรายขนาด ใช้ร่วมกันทั้งสามทรง ═══════════════════════ */
+
+/*
+ * ชั้นนี้ไม่วาดอะไร มีหน้าที่แปลชื่อ token รายขนาดให้เป็นชื่อกลางที่ชั้นล่างใช้
+ * ทำให้กฎที่วาดจริงเขียนครั้งเดียว ไม่ต้องเขียนซ้ำห้ารอบตามขนาด
+ */
+.xs {
+  --progress-bar-height: var(--ntg-progress-bar-height-xs);
+  --progress-hz-gap: var(--ntg-progress-bar-hz-gap-xs);
+  --progress-vc-gap: var(--ntg-progress-bar-vc-gap-xs);
+  --progress-box: var(--ntg-circular-progress-bar-size-xs);
+  --progress-diameter: var(--ntg-circular-progress-bar-diameter-xs);
+  --progress-stroke: var(--ntg-circular-progress-bar-stroke-xs);
+  --progress-semi-width: var(--ntg-semi-circular-progress-bar-size-xs);
+  --progress-semi-height: var(--ntg-semi-circular-progress-bar-height-xs);
+  --progress-semi-diameter: var(--ntg-semi-circular-progress-bar-diameter-xs);
+  --progress-semi-stroke: var(--ntg-semi-circular-progress-bar-stroke-xs);
+  --progress-font-family: var(--ntg-typography-font-family-label-xs);
+  --progress-font-size: var(--ntg-typography-font-size-label-xs);
+  --progress-font-weight: var(--ntg-typography-font-weight-label-xs);
+  --progress-line-height: var(--ntg-typography-line-height-label-xs);
+  --progress-letter-space: var(--ntg-typography-letter-space-label-xs);
+}
+
+.sm {
+  --progress-bar-height: var(--ntg-progress-bar-height-sm);
+  --progress-hz-gap: var(--ntg-progress-bar-hz-gap-sm);
+  --progress-vc-gap: var(--ntg-progress-bar-vc-gap-sm);
+  --progress-box: var(--ntg-circular-progress-bar-size-sm);
+  --progress-diameter: var(--ntg-circular-progress-bar-diameter-sm);
+  --progress-stroke: var(--ntg-circular-progress-bar-stroke-sm);
+  --progress-semi-width: var(--ntg-semi-circular-progress-bar-size-sm);
+  --progress-semi-height: var(--ntg-semi-circular-progress-bar-height-sm);
+  --progress-semi-diameter: var(--ntg-semi-circular-progress-bar-diameter-sm);
+  --progress-semi-stroke: var(--ntg-semi-circular-progress-bar-stroke-sm);
+  --progress-font-family: var(--ntg-typography-font-family-label-sm);
+  --progress-font-size: var(--ntg-typography-font-size-label-sm);
+  --progress-font-weight: var(--ntg-typography-font-weight-label-sm);
+  --progress-line-height: var(--ntg-typography-line-height-label-sm);
+  --progress-letter-space: var(--ntg-typography-letter-space-label-sm);
+}
+
+.md {
+  --progress-bar-height: var(--ntg-progress-bar-height-md);
+  --progress-hz-gap: var(--ntg-progress-bar-hz-gap-md);
+  --progress-vc-gap: var(--ntg-progress-bar-vc-gap-md);
+  --progress-box: var(--ntg-circular-progress-bar-size-md);
+  --progress-diameter: var(--ntg-circular-progress-bar-diameter-md);
+  --progress-stroke: var(--ntg-circular-progress-bar-stroke-md);
+  --progress-semi-width: var(--ntg-semi-circular-progress-bar-size-md);
+  --progress-semi-height: var(--ntg-semi-circular-progress-bar-height-md);
+  --progress-semi-diameter: var(--ntg-semi-circular-progress-bar-diameter-md);
+  --progress-semi-stroke: var(--ntg-semi-circular-progress-bar-stroke-md);
+  --progress-font-family: var(--ntg-typography-font-family-label-md);
+  --progress-font-size: var(--ntg-typography-font-size-label-md);
+  --progress-font-weight: var(--ntg-typography-font-weight-label-md);
+  --progress-line-height: var(--ntg-typography-line-height-label-md);
+  --progress-letter-space: var(--ntg-typography-letter-space-label-md);
+}
+
+.lg {
+  --progress-bar-height: var(--ntg-progress-bar-height-lg);
+  --progress-hz-gap: var(--ntg-progress-bar-hz-gap-lg);
+  --progress-vc-gap: var(--ntg-progress-bar-vc-gap-lg);
+  --progress-box: var(--ntg-circular-progress-bar-size-lg);
+  --progress-diameter: var(--ntg-circular-progress-bar-diameter-lg);
+  --progress-stroke: var(--ntg-circular-progress-bar-stroke-lg);
+  --progress-semi-width: var(--ntg-semi-circular-progress-bar-size-lg);
+  --progress-semi-height: var(--ntg-semi-circular-progress-bar-height-lg);
+  --progress-semi-diameter: var(--ntg-semi-circular-progress-bar-diameter-lg);
+  --progress-semi-stroke: var(--ntg-semi-circular-progress-bar-stroke-lg);
+  --progress-font-family: var(--ntg-typography-font-family-label-lg);
+  --progress-font-size: var(--ntg-typography-font-size-label-lg);
+  --progress-font-weight: var(--ntg-typography-font-weight-label-lg);
+  --progress-line-height: var(--ntg-typography-line-height-label-lg);
+  --progress-letter-space: var(--ntg-typography-letter-space-label-lg);
+}
+
+.xl {
+  --progress-bar-height: var(--ntg-progress-bar-height-xl);
+  --progress-hz-gap: var(--ntg-progress-bar-hz-gap-xl);
+  --progress-vc-gap: var(--ntg-progress-bar-vc-gap-xl);
+  --progress-box: var(--ntg-circular-progress-bar-size-xl);
+  --progress-diameter: var(--ntg-circular-progress-bar-diameter-xl);
+  --progress-stroke: var(--ntg-circular-progress-bar-stroke-xl);
+  --progress-semi-width: var(--ntg-semi-circular-progress-bar-size-xl);
+  --progress-semi-height: var(--ntg-semi-circular-progress-bar-height-xl);
+  --progress-semi-diameter: var(--ntg-semi-circular-progress-bar-diameter-xl);
+  --progress-semi-stroke: var(--ntg-semi-circular-progress-bar-stroke-xl);
+  --progress-font-family: var(--ntg-typography-font-family-label-xl);
+  --progress-font-size: var(--ntg-typography-font-size-label-xl);
+  --progress-font-weight: var(--ntg-typography-font-weight-label-xl);
+  --progress-line-height: var(--ntg-typography-line-height-label-xl);
+  --progress-letter-space: var(--ntg-typography-letter-space-label-xl);
+}
+
+/* ═══ ค่าร่วมของทั้งสามทรง ═══════════════════════════════════════ */
+
+.bar,
+.circular,
+.semi {
+  /* สำเนาของ PROGRESS_MOTION.indeterminateLoopMs ดูคำอธิบายที่หัวไฟล์ */
+  --progress-loop: 2000ms;
+  --progress-track-color: var(--ntg-color-background-general-tertiary);
+  --progress-fill-color: var(--ntg-color-background-brand-solid);
+  --progress-label-color: var(--ntg-color-text-general-heading);
+  --progress-change-duration: var(--ntg-motion-duration-default);
+  --progress-change-ease: var(--ntg-motion-easing-enter);
+}
+
+/*
+ * ป้ายตัวเลข ใช้ preset label ของระบบเท่านั้น
+ *
+ * ⚠️ ตัวเลขเรียงเป็นตารางด้วย tabular-nums
+ *    ถ้าไม่ตั้ง ความกว้างของป้ายจะเปลี่ยนตามรูปร่างของเลขแต่ละตัว
+ *    แล้วแถบที่ยืดเต็มพื้นที่ที่เหลือจะขยับไปมาระหว่างค่าที่มีจำนวนหลักเท่ากัน
+ */
+.label {
+  color: var(--progress-label-color);
+  font-family: var(--progress-font-family);
+  font-size: var(--progress-font-size);
+  font-weight: var(--progress-font-weight);
+  line-height: var(--progress-line-height);
+  letter-spacing: var(--progress-letter-space);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ═══ แถบแนวนอน ═════════════════════════════════════════════════ */
+
+/*
+ * ⚠️ ห้ามตั้งความกว้าง กรอบนอกเป็น block เต็มพื้นที่ที่แม่ให้มาเสมอ
+ *    ถ้าหยิบไปใช้แล้วอยากให้สั้นลง ให้ไปจำกัดที่กรอบแม่ ไม่ใช่ที่นี่
+ */
+.bar {
+  display: flex;
+  width: 100%;
+}
+
+/* ป้ายอยู่ขวา แถบกินพื้นที่ที่เหลือทั้งหมด ป้ายกว้างเท่าเนื้อหา */
+/*
+ * ช่องไฟแยกตามทิศ ของสองชิ้นที่วางเรียงกันในแนวนอนต้องห่างกว่าของที่กองซ้อนกันในแนวตั้ง
+ * เพราะความสูงบรรทัดของป้ายเผื่อที่ว่างบนล่างไว้ในตัวอยู่แล้ว
+ */
+.barRight {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--progress-hz-gap);
+}
+
+.barRight .track {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/*
+ * ป้ายอยู่ล่าง ชิดขวาตรงกับไฟล์ออกแบบ
+ * เหตุผลคือสายตาไล่ตามแถบจากซ้ายไปขวาแล้วไปจบที่ป้ายพอดี เป็นจังหวะเดียวกับแบบป้ายอยู่ขวา
+ */
+.barBottom {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--progress-vc-gap);
+}
+
+.barBottom .label {
+  align-self: flex-end;
+}
+
+/*
+ * ราง เป็นกล่องที่ถือ role progressbar
+ * overflow hidden ทำหน้าที่สองอย่าง คือตัดมุมตัวเติมให้เป็นแคปซูลตามราง
+ * และขังส่วนที่ไถลออกนอกขอบตอนไม่รู้ค่าไว้ข้างใน
+ */
+.track {
+  position: relative;
+  overflow: hidden;
+  height: var(--progress-bar-height);
+  border-radius: var(--ntg-progress-bar-radius-full);
+  background-color: var(--progress-track-color);
+}
+
+/*
+ * ตัวเติม ความกว้างมาจาก inline style เป็นร้อยละ
+ * ⚠️ ร้อยละนั้นเป็นข้อมูล ไม่ใช่ขนาดของระบบออกแบบ จึงไม่มี token และต้องมาจากฝั่ง JavaScript
+ */
+.fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background-color: var(--progress-fill-color);
+  transition: width var(--progress-change-duration) var(--progress-change-ease);
+}
+
+/*
+ * แบบไม่รู้ค่า ส่วนโค้งความยาวคงที่ไถลผ่านรางซ้ำไปเรื่อย ๆ
+ * ระยะเริ่มกับระยะจบคิดเป็นร้อยละของตัวมันเอง จึงกวาดพ้นรางทั้งสองด้านพอดีทุกความกว้าง
+ */
+.fillIndeterminate {
+  width: 40%;
+  transition: none;
+  animation: progress-bar-slide var(--progress-loop) linear infinite;
+}
+
+@keyframes progress-bar-slide {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(250%); }
+}
+
+/* ═══ วงแหวน ใช้ร่วมกันทั้งเต็มวงและครึ่งวง ═══════════════════════ */
+
+/*
+ * เส้นของวงแหวน
+ * ⚠️ ปลายเส้นมนทั้งสองด้าน เป็นเหตุผลที่กล่องต้องเผื่อความหนาเต็มหนึ่งเท่า
+ *    ดู tokens/scale/progress.mjs หัวข้อค่าอนุพันธ์
+ */
+.ring {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.ringTrack {
+  stroke: var(--progress-track-color);
+}
+
+.ringFill {
+  stroke: var(--progress-fill-color);
+  transition: stroke-dashoffset var(--progress-change-duration) var(--progress-change-ease);
+}
+
+/*
+ * ⚠️ ตอนค่าเป็นศูนย์ต้องซ่อนเส้นตัวเติมทิ้ง
+ *    ปลายเส้นมนวาดครึ่งวงกลมที่ปลายทั้งสองข้างของขีด ถึงขีดจะยาวศูนย์ก็ยังเห็นเป็นจุด
+ *    เปลี่ยนปลายเป็นตัดแล้วจุดหายไป แต่ยังเหลือรอยขีดบาง ๆ จากการไล่ขอบภาพ
+ *    ผลคือวงแหวนที่ค่าศูนย์ดูเหมือนคืบไปแล้วนิดหนึ่ง และไม่ตรงกับแถบแนวนอนที่ค่าศูนย์แล้วไม่เห็นอะไรเลย
+ *    ใช้ visibility ไม่ใช่ถอด element ออก เพื่อให้ตอนค่าขยับจากศูนย์ยังไล่ค่าได้ตามปกติ
+ */
+.ringZero {
+  stroke-linecap: butt;
+  visibility: hidden;
+}
+
+/* ═══ วงแหวนเต็มวง ═══════════════════════════════════════════════ */
+
+.circular {
+  position: relative;
+  display: inline-flex;
+  width: var(--progress-box);
+  height: var(--progress-box);
+}
+
+.circularSvg {
+  display: block;
+  width: var(--progress-box);
+  height: var(--progress-box);
+}
+
+/*
+ * ⚠️ หมุน -90 องศาเพื่อให้จุดเริ่มของเส้นทางย้ายจาก 3 นาฬิกาไปที่ 12 นาฬิกา
+ *    `<circle>` ของ SVG วาดตามเข็มอยู่แล้ว การหมุนไม่เปลี่ยนทิศ ตัวเติมจึงกวาดตามเข็ม
+ *    จุดหมุนต้องระบุเป็นพิกัดจริง ไม่ใช่ center เพราะกล่องของ SVG กับวงกลมไม่ได้ซ้อนกันเสมอไป
+ */
+.circularRing {
+  cx: calc(var(--progress-box) / 2);
+  cy: calc(var(--progress-box) / 2);
+  r: calc(var(--progress-diameter) / 2);
+  stroke-width: var(--progress-stroke);
+  transform: rotate(-90deg);
+  transform-origin: calc(var(--progress-box) / 2) calc(var(--progress-box) / 2);
+}
+
+/* แบบไม่รู้ค่า ส่วนโค้งความยาวคงที่หมุนรอบวงซ้ำไปเรื่อย ๆ จากจุดเริ่มเดิม */
+.circularIndeterminate {
+  transition: none;
+  animation: progress-ring-spin var(--progress-loop) linear infinite;
+}
+
+@keyframes progress-ring-spin {
+  from { transform: rotate(-90deg); }
+  to { transform: rotate(270deg); }
+}
+
+/* ═══ วงแหวนครึ่งวง ══════════════════════════════════════════════ */
+
+.semi {
+  position: relative;
+  display: inline-flex;
+  width: var(--progress-semi-width);
+  height: var(--progress-semi-height);
+}
+
+.semiSvg {
+  display: block;
+  width: var(--progress-semi-width);
+  height: var(--progress-semi-height);
+}
+
+/*
+ * ⚠️ วาดเป็นวงกลมเต็มใบแล้วโชว์แค่ครึ่งบนด้วยเส้นประ ไม่ได้วาดเป็นส่วนโค้ง
+ *    เพราะคำสั่งวาดส่วนโค้งต้องพิมพ์พิกัดเป็นตัวเลขลงไปตรง ๆ ซึ่งอ่านจาก CSS variable ไม่ได้
+ *    ครึ่งล่างของวงกลมอยู่นอกกรอบมองเห็นของ SVG จึงถูกตัดทิ้งไปเอง
+ *
+ * ⚠️ จุดศูนย์กลางอยู่สูงจากขอบล่างเท่ากับครึ่งหนึ่งของความหนา
+ *    เพราะปลายเส้นมนที่ปลายทั้งสองข้างล้นลงมาใต้แนวจุดศูนย์กลางพอดีครึ่งความหนา
+ *    ความสูงกล่องจึงเท่ากับ ครึ่งเส้นผ่านศูนย์กลาง บวก ความหนาเต็ม ตามที่ token คำนวณไว้
+ *
+ * ⚠️ หมุน 180 องศาเพื่อย้ายจุดเริ่มของเส้นทางจาก 3 นาฬิกาไปที่ 9 นาฬิกา
+ *    แล้วตัวเติมจะกวาดตามเข็มขึ้นไปข้ามยอดวงไปจบที่ 3 นาฬิกา
+ */
+.semiRing {
+  cx: calc(var(--progress-semi-width) / 2);
+  cy: calc(var(--progress-semi-height) - var(--progress-semi-stroke) / 2);
+  r: calc(var(--progress-semi-diameter) / 2);
+  stroke-width: var(--progress-semi-stroke);
+  transform: rotate(180deg);
+  transform-origin:
+    calc(var(--progress-semi-width) / 2)
+    calc(var(--progress-semi-height) - var(--progress-semi-stroke) / 2);
+}
+
+/* ═══ ป้ายที่อยู่กลางวงแหวน ══════════════════════════════════════ */
+
+/*
+ * ⚠️ ป้ายนี้อยู่ในกล่อง role progressbar ซึ่งมีกฎ Children Presentational
+ *    แปลว่าโปรแกรมอ่านหน้าจอไม่อ่านข้อความนี้ ค่าจึงต้องเดินทางผ่าน
+ *    aria-valuenow หรือ aria-valuetext เท่านั้น ดูคำอธิบายในไฟล์ component
+ */
+.centerLabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/*
+ * ป้ายของครึ่งวง วางชิดขอบล่างของกล่อง ซึ่งคือช่องว่างใต้ยอดโค้งพอดี
+ * จัดกลางตามแนวตั้งไม่ได้ เพราะกลางกล่องคือตำแหน่งที่เส้นโค้งพาดอยู่
+ */
+.semiLabel {
+  align-items: flex-end;
+}
+
+/* ═══ ลดการเคลื่อนไหว ════════════════════════════════════════════ */
+
+/*
+ * ⚠️ แบบไม่รู้ค่ายังต้องขยับอยู่ ห้ามหยุดนิ่งสนิท
+ *    ของที่หยุดนิ่งแปลว่าระบบค้าง ซึ่งเป็นคนละความหมายกับกำลังทำงานอยู่
+ *    จึงเปลี่ยนจากการวนตำแหน่งเป็นการจางเข้าจางออกอยู่กับที่ ซึ่งไม่กระตุ้นอาการเวียนศีรษะ
+ *    ส่วนแบบรู้ค่าตัดการไล่ค่าออก ให้กระโดดไปค่าใหม่ทันที
+ */
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .ringFill {
+    transition: none;
+  }
+
+  .fillIndeterminate {
+    width: 100%;
+    transform: none;
+    animation: progress-pulse var(--progress-loop) ease-in-out infinite;
+  }
+
+  .circularIndeterminate {
+    transform: rotate(-90deg);
+    animation: progress-pulse var(--progress-loop) ease-in-out infinite;
+  }
+}
+
+@keyframes progress-pulse {
+  0%,
+  100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
