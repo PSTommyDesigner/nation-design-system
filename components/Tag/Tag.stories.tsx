@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Tag, type TagFamily } from './Tag'
+import { Icon } from '../Icon'
 
 const meta: Meta<typeof Tag> = {
   title: 'Components/Tag',
@@ -16,10 +17,10 @@ export const Secondary: Story = { args: { hierarchy: 'secondary' } }
 export const Pill: Story = { args: { shape: 'pill' } }
 export const LinkStyle: Story = { args: { shape: 'link', children: '#เศรษฐกิจ' } }
 export const Closable: Story = { args: { closable: true } }
-export const WithLeftIcon: Story = { args: { leftIcon: 'star' } }
+export const WithLeftIcon: Story = { args: { leftIcon: <Icon name="star" /> } }
 export const WithNumber: Story = { args: { leading: 'number', count: 12, children: 'แจ้งเตือน' } }
 export const IconOnly: Story = {
-  args: { children: undefined, iconOnly: true, icon: 'close', label: 'ปิด' },
+  args: { children: undefined, iconOnly: true, icon: <Icon name="close" />, label: 'ปิด' },
 }
 
 const FAMILIES: TagFamily[] = [
