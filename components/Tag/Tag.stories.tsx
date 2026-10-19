@@ -17,10 +17,10 @@ export const Secondary: Story = { args: { hierarchy: 'secondary' } }
 export const Pill: Story = { args: { shape: 'pill' } }
 export const LinkStyle: Story = { args: { shape: 'link', children: '#เศรษฐกิจ' } }
 export const Closable: Story = { args: { closable: true } }
-export const WithLeftIcon: Story = { args: { leftIcon: <Icon name="star" /> } }
+export const WithLeftIcon: Story = { args: { leftIcon: <Icon name="star" size="100%" /> } }
 export const WithNumber: Story = { args: { leading: 'number', count: 12, children: 'แจ้งเตือน' } }
 export const IconOnly: Story = {
-  args: { children: undefined, iconOnly: true, icon: <Icon name="close" />, label: 'ปิด' },
+  args: { children: undefined, iconOnly: true, icon: <Icon name="close" size="100%" />, label: 'ปิด' },
 }
 
 const FAMILIES: TagFamily[] = [

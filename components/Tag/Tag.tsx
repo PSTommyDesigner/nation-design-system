@@ -74,6 +74,10 @@ export interface TagProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'c
    * ไอคอนด้านซ้ายของข้อความ ตรงกับคุณสมบัติ `left-icon` กับ `left-icon-swap` ในไฟล์ออกแบบ
    * ส่งไอคอนเข้ามาเท่ากับเปิด ไม่ส่งเท่ากับปิด จึงไม่ต้องมีตัวเปิดปิดแยก
    * ⚠️ ชนิด `indicator` ไม่มีไอคอนซ้าย เพราะช่องซ้ายเป็นของจุดสถานะแล้ว
+   * ⚠️ ช่องที่วางไอคอนนี้ถูกกำหนดขนาดด้วย CSS (`--tag-icon`) อยู่แล้วตามขนาดของแท็ก
+   *    ต้องส่ง `<Icon name="..." size="100%" />` ไม่ใช่ `<Icon name="..." />` เฉย ๆ
+   *    ไม่งั้นไอคอนจะใช้ขนาดเริ่มต้นของตัวเอง (24px) ไม่ตรงกับช่องที่เตรียมไว้
+   *    (เคยพลาดตอนเขียนตัวอย่างใน Tag.stories.tsx เมื่อ 2026-10-19)
    */
   leftIcon?: React.ReactNode;
   /**
@@ -81,14 +85,14 @@ export interface TagProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'c
    * (เปลี่ยนชื่อจาก `icon` เป็น `right-icon` เมื่อ 2026-10-15 ตอนเพิ่มไอคอนซ้าย)
    */
   closable?: boolean;
-  /** ไอคอนของปุ่มปิด ตรงกับ `right-icon-swap` ค่าตั้งต้นเป็นกากบาท */
+  /** ไอคอนของปุ่มปิด ตรงกับ `right-icon-swap` ค่าตั้งต้นเป็นกากบาท ส่งเองต้องใส่ `size="100%"` เหมือน `leftIcon` */
   closeIcon?: React.ReactNode;
   /**
    * โหมดไอคอนล้วน ตรงกับชุด `icon-tag` `circular-icon-tag` `link-icon-tag` ในไฟล์ออกแบบ
    * ⚠️ โหมดนี้ไม่มีข้อความ ต้องส่ง `label` เสมอเพื่อให้โปรแกรมอ่านหน้าจออ่านออก
    */
   iconOnly?: boolean;
-  /** ไอคอนของโหมดไอคอนล้วน ตรงกับ `swap-icon` */
+  /** ไอคอนของโหมดไอคอนล้วน ตรงกับ `swap-icon` ส่งเองต้องใส่ `size="100%"` เหมือน `leftIcon` */
   icon?: React.ReactNode;
   /** คำอ่านของโหมดไอคอนล้วน จำเป็นเมื่อ `iconOnly` เป็นจริง */
   label?: string;
@@ -193,7 +197,7 @@ export function Tag({
     >
       {onlyIcon ? (
         <>
-          <span className={styles.icon} aria-hidden="true">{icon ?? <Icon name="close" />}</span>
+          <span className={styles.icon} aria-hidden="true">{icon ?? <Icon name="close" size="100%" />}</span>
           <span className={styles.srOnly}>{label}</span>
         </>
       ) : null}
@@ -202,7 +206,7 @@ export function Tag({
       {effectiveLeading === 'indicator' ? <span className={styles.dot} aria-hidden="true" /> : null}
       {effectiveLeading === 'checkbox' ? (
         <span className={styles.checkbox} data-checked={checked ? 'true' : undefined} aria-hidden="true">
-          {checked ? <Icon name="check" /> : null}
+          {checked ? <Icon name="check" size="100%" /> : null}
         </span>
       ) : null}
       {effectiveLeading === 'image' && imageSrc ? (
@@ -221,7 +225,7 @@ export function Tag({
           aria-label={closeLabel}
           onClick={(e) => { e.stopPropagation(); onClose?.(); }}
         >
-          {closeIcon ?? <Icon name="close" />}
+          {closeIcon ?? <Icon name="close" size="100%" />}
         </button>
       ) : null}
     </span>
