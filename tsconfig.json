@@ -22,7 +22,9 @@
   "include": [
     "types/**/*.d.ts",
     "components/**/*.ts",
-    "components/**/*.tsx"
+    "components/**/*.tsx",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -11,6 +11,13 @@ declare module '*.module.css' {
 }
 
 /**
+ * CSS ธรรมดา (ไม่ใช่ module) นำเข้าแบบ side-effect เท่านั้น
+ * component ในระบบไม่ใช้แบบนี้ (ใช้ .module.css เสมอ) แต่ .storybook/preview.tsx
+ * ต้องโหลด tokens/output/css/variables.css เป็น global CSS ให้ Storybook เอง
+ */
+declare module '*.css';
+
+/**
  * process.env.NODE_ENV
  * ใช้เฉพาะเพื่อซ่อนคำเตือนตอน production (เช่น เตือนเมื่อเรียกชื่อไอคอนที่ไม่มีอยู่)
  *
