@@ -1,0 +1,65 @@
+# Deploy Storybook (เว็บพรีวิว component library) ขึ้น GitHub Pages
+#
+# ทำงานทุกครั้งที่ push เข้า main รัน typecheck และ build token ก่อนเสมอ
+# เพื่อกันไม่ให้โค้ดหรือ token ที่พังหลุดขึ้นเว็บพรีวิวแบบไม่มีใครรู้
+#
+# ⚠️ ต้องเปิด GitHub Pages ของ repo นี้ด้วยมือก่อนครั้งแรก
+#    ไปที่ Settings > Pages > Build and deployment > Source เลือก "GitHub Actions"
+#    ไม่งั้น job deploy จะ error แม้ build สำเร็จ
+name: Deploy Storybook
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# กันไม่ให้ deploy สองรอบทับกันถ้า push ติด ๆ กัน ปล่อยให้รอบล่าสุดชนะ
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: เช็คเอาท์โค้ด
+        uses: actions/checkout@v4
+
+      - name: ตั้งค่า Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: ติดตั้ง dependency
+        run: npm ci
+
+      - name: ตรวจชนิดข้อมูล
+        run: npm run typecheck
+
+      - name: สร้าง token ใหม่ (กันไฟล์ output ค้างจากสูตรเก่า)
+        run: npm run tokens:build
+
+      - name: build Storybook แบบ static
+        run: npm run build-storybook
+
+      - name: เตรียมไฟล์สำหรับ Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: storybook-static
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: deploy ขึ้น GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

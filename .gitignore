@@ -34,3 +34,6 @@ fix-*.md
 # tokens/output/            เก็บขึ้น git เพราะเป็นของที่ทีมอื่นหยิบไปใช้ และทำให้ด่านตรวจรันได้โดยไม่ต้อง build ก่อน
 # tokens/figma-fingerprint.json  เก็บ เพราะเป็นข้อมูลตั้งต้นของด่าน tokens:verify
 # tokens/figma-components.json   เก็บ เพราะเป็นข้อมูลตั้งต้นของด่าน verify:api
+
+*storybook.log
+storybook-static

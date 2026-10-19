@@ -26,6 +26,7 @@ sources_of_truth:
 | ผลลัพธ์ที่เอาไปใช้ | `tokens/output/css/*.css` และ `tokens/output/js/*.mjs` | สร้างอัตโนมัติ ห้ามแก้มือ |
 | ชิ้นงานฝั่งโค้ด | `components/` | โค้ด |
 | ตัวอย่างสำหรับส่งต่อ | `prototype/` | โค้ด |
+| เว็บพรีวิว component library | `npm run storybook` (dev) หรือ `.storybook/` + `*.stories.tsx` ในแต่ละโฟลเดอร์ component | โค้ด |
 
 ตัวแปร CSS ใช้คำนำหน้า `--ntg-` ทั้งระบบ แบรนด์ในเครือใช้ตัวย่อ 3 ตัวอักษร ดู [brand-codes.md](brand-codes.md)
 
@@ -73,6 +74,8 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | `npm run worklog:new` | สร้างไฟล์บันทึกงานประจำวัน |
 | `npm run worklog:asana` | ส่งบันทึกงานขึ้น Asana |
 | `npm run worklog:month` | สรุปรายเดือนขึ้นการ์ดสรุป |
+| `npm run storybook` | เปิดเว็บพรีวิว component library แบบ dev ที่ `localhost:6006` |
+| `npm run build-storybook` | build เว็บพรีวิวเป็น static ลง `storybook-static/` deploy อัตโนมัติขึ้น GitHub Pages ทุกครั้งที่ push เข้า `main` |
 
 ## 5. กฎที่ห้ามฝ่าฝืน
 

@@ -24,11 +24,24 @@
     "asana:task": "node scripts/asana-task.mjs",
     "verify:coverage": "node scripts/verify-component-coverage.mjs",
     "verify:api": "node scripts/verify-component-api.mjs",
-    "verify:families": "node scripts/verify-color-families.mjs"
+    "verify:families": "node scripts/verify-color-families.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@storybook/addon-docs": "^10.6.2",
+    "@storybook/react-vite": "^10.6.2",
     "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "storybook": "^10.6.2",
     "style-dictionary": "^4.3.0",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  },
+  "peerDependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   }
 }
