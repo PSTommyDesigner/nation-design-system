@@ -3,7 +3,7 @@ title: "Nation Design System ภาพรวมระบบ"
 description: "จุดเริ่มต้นของเอกสารทั้งหมด บอกว่าระบบประกอบด้วยอะไร ความจริงอยู่ที่ไหน ค่าไหลจากไฟล์ออกแบบไปเป็นโค้ดอย่างไร และเอกสารแต่ละฉบับอยู่ตรงไหน"
 target_audience: ["UI/UX Designer", "Frontend Developer", "Design System Maintainer"]
 version: "1.0.0"
-last_updated: "2026-09-11"
+last_updated: "2026-10-19"
 status: "active"
 sources_of_truth:
   figma_page: "ไฟล์ DS หลัก QgmoT5Uuvv3elB96F4nsTq"
@@ -20,7 +20,7 @@ sources_of_truth:
 
 | ชั้น | อยู่ที่ไหน | ใครเป็นเจ้าของความจริง |
 |---|---|---|
-| ไฟล์ออกแบบ | Figma ไฟล์ `QgmoT5` 37 หน้าเรียงตาม Atomic Design | Figma |
+| ไฟล์ออกแบบ | Figma ไฟล์ `QgmoT5` 29 หน้า (00 ถึง 28) เรียงตาม Atomic Design | Figma |
 | สูตรขนาด | `tokens/scale/*.mjs` | โค้ด |
 | ค่ากลาง (token) | `tokens/tokens.json/*.json` รูปแบบ W3C DTCG แยกไฟล์ตาม collection | Figma แล้ว export ลงมา |
 | ผลลัพธ์ที่เอาไปใช้ | `tokens/output/css/*.css` และ `tokens/output/js/*.mjs` | สร้างอัตโนมัติ ห้ามแก้มือ |
@@ -65,6 +65,11 @@ tokens/output/css + js             ← เอาไปใช้จริง
 |---|---|
 | `npm run tokens:build` | สร้าง token ใหม่ทั้งหมด ใช้หลัง export จาก Token Press ทุกครั้ง |
 | `npm run tokens:generate` | รันเฉพาะสูตรขนาดและด่านตรวจ |
+| `npm run typecheck` | ตรวจชนิดข้อมูลของ `components/` ทั้งหมด ต้องขึ้น 0 error ก่อนบอกว่าแก้โค้ดเสร็จ |
+| `npm run tokens:verify` | เทียบชื่อและค่าตัวแปรระหว่างไฟล์ออกแบบกับ `tokens/tokens.json` ต้องขึ้น "ต้องดู 0 กลุ่ม" |
+| `npm run verify:coverage` | เทียบ `tokens/scale/*.mjs` กับ `components/` หาช่องว่างและโฟลเดอร์เปล่า |
+| `npm run verify:api` | เทียบแกน variant กับ component property ในไฟล์ออกแบบ กับ props จริงในไฟล์ `.tsx` |
+| `npm run verify:families` | เทียบสีที่แต่ละตระกูลใช้กับตระกูลของตัวเอง สำหรับหน้าที่จัดชิ้นงานเป็นตระกูลสี |
 | `npm run worklog:new` | สร้างไฟล์บันทึกงานประจำวัน |
 | `npm run worklog:asana` | ส่งบันทึกงานขึ้น Asana |
 | `npm run worklog:month` | สรุปรายเดือนขึ้นการ์ดสรุป |
@@ -92,10 +97,12 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [asana-task-naming.md](rules/asana-task-naming.md) | กติกาตั้งชื่อการ์ดงานและแม่แบบรายละเอียด 5 หัวข้อ |
 | [worklog.md](rules/worklog.md) | วิธีบันทึกงาน เก็บที่ไหน ส่งขึ้น Asana อย่างไร |
 
-### เอกสารประจำหน้า (มีแล้ว 18 จาก 37 หน้า)
-| มีแล้ว | ยังไม่มี |
+### เอกสารประจำหน้า (มีแล้ว 28 จาก 29 หน้า)
+| 01 ถึง 28 | 00 Document |
 |---|---|
-| [01 Color](01-color.md) · [02 Icons](02-icons.md) · [03 Typography](03-typography.md) · [04 Grid](04-grid.md) · [05 Effect](05-effect.md) · [06 Shape](06-shape.md) · [07 Space](07-space.md) · [08 Logo](08-logo.md) · [09 Third-party Logos](09-third-party-logos.md) · [10 Frame](10-frame.md) · [11 Avatar](11-avatar.md) · [12 Buttons](12-buttons.md) · [13 Input](13-input.md) · [14 Toggles](14-toggles.md) · [15 Checkbox](15-checkbox.md) · [16 Radio](16-radio.md) · [21 Tags](21-tags.md) · [22 Badge](22-badge.md) | 00 Document · 17 Sliders · 18 Tabs · 19 Toasts & Banners · 20 Tooltips · 23 Progress Bars · 24 Pagination · 25 Dropdowns · 26 Image And Carousel · 27 Lists · 26 Table · 27 Card · 30 Panels · 28 Dividers · 32 Modals · 33 Sidebars · 29 Header · 35 Footer · 36 Templates |
+| [01 Color](01-color.md) · [02 Icons](02-icons.md) · [03 Typography](03-typography.md) · [04 Grid](04-grid.md) · [05 Effect](05-effect.md) · [06 Shape](06-shape.md) · [07 Space](07-space.md) · [08 Logo](08-logo.md) · [09 Third-party Logos](09-third-party-logos.md) · [10 Frame](10-frame.md) · [11 Avatar](11-avatar.md) · [12 Buttons](12-buttons.md) · [13 Input](13-input.md) · [14 Toggles](14-toggles.md) · [15 Checkbox](15-checkbox.md) · [16 Radio](16-radio.md) · [17 Sliders](17-sliders.md) · [18 Tabs](18-tabs.md) · [19 Toasts & Banners](19-toasts-banners.md) · [20 Tooltips](20-tooltips.md) · [21 Tags](21-tags.md) · [22 Badge](22-badge.md) · [23 Progress Bars](23-progress-bars.md) · [24 Pagination](24-pagination.md) · [25 Dropdowns](25-dropdowns.md) · [26 Table](26-table.md) · [27 Card](27-card.md) · [28 Dividers](28-dividers.md) | ไม่มีไฟล์ `docs/00-*.md` เพราะหน้า 00 ใช้ Page Documentation และ Component Previews ในไฟล์ออกแบบเองแทน (ดูหน้า `00 Document Documentation` ใน Figma) |
+
+> **ตัดจากรายการเดิม (ไม่มีอยู่จริงแล้ว 2026-10-19)** `26 Image And Carousel` และ `27 Lists` (เลขเก่าก่อนยุบหน้า) `30 Panels` `32 Modals` `33 Sidebars` `29 Header` `35 Footer` `36 Templates` เป็นหน้าชั้น Organisms ที่ถูกยุบไปแล้วเมื่อ 2026-10-12 (ดูเหตุผลที่ [rules/layer-scope.md](rules/layer-scope.md)) ไฟล์ Figma ปัจจุบันมี 29 หน้าเท่านั้นคือ 00 ถึง 28
 
 รายชื่อหน้าทั้งหมดพร้อมรหัสโหนดอยู่ที่ [figma-pages.md](figma-pages.md) **เลขหน้ายึดตามไฟล์ Figma เป็นหลัก** ชื่อไฟล์เอกสารตั้งตามเลขหน้านั้น
 
@@ -106,8 +113,9 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [shape-radius.md](research/shape-radius.md) | ค่ามุมโค้งและการตั้งชื่อ |
 | [effect-elevation.md](research/effect-elevation.md) | ชื่อและโครงของเงา |
 | [grid-column-width.md](research/grid-column-width.md) | ระบบกริดและความกว้างคอลัมน์ |
-| [avatar-component.md](research/avatar-component.md) · [badge-component.md](research/badge-component.md) · [input-component.md](research/input-component.md) · [toggle-component.md](research/toggle-component.md) | สูตรขนาดของชิ้นงานแต่ละชนิด |
+| [avatar-component.md](research/avatar-component.md) · [badge-component.md](research/badge-component.md) · [input-component.md](research/input-component.md) · [toggle-component.md](research/toggle-component.md) · [dropdown-component.md](research/dropdown-component.md) · [pagination-component.md](research/pagination-component.md) · [progress-component.md](research/progress-component.md) · [slider-component.md](research/slider-component.md) · [tabs-component.md](research/tabs-component.md) · [toast-banner-component.md](research/toast-banner-component.md) · [tooltip-component.md](research/tooltip-component.md) | สูตรขนาดและโครงของชิ้นงานแต่ละชนิด เทียบกับ DS เจ้าใหญ่ 10 ถึง 15 เจ้าต่อตัว |
 | [ds-ownership-model.md](research/ds-ownership-model.md) | โมเดลการดูแล DS จาก 19 องค์กร |
+| [component-library-preview-site.md](research/component-library-preview-site.md) | เครื่องมือทำเว็บพรีวิว component ที่ทีมอื่นเข้ามาดู/ใช้ได้ ตัดสินใจเลือก Storybook เมื่อ 2026-10-19 |
 | [component-inventory-research.md](component-inventory-research.md) | รายการชิ้นงานที่ต้องมีและ token ที่ต้องใช้ |
 
 ### บันทึกงาน
