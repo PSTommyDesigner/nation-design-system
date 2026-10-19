@@ -5,7 +5,7 @@ const meta: Meta<typeof Badge> = {
   title: 'Components/Badge',
   component: Badge,
   tags: ['autodocs'],
-  args: { children: 'ด่วน', family: 'red', hierarchy: 'primary', size: 'md' },
+  args: { children: 'ด่วน', family: 'brand', hierarchy: 'primary', size: 'md' },
 }
 export default meta
 

@@ -6,7 +6,7 @@ const meta: Meta<typeof Tag> = {
   title: 'Components/Tag',
   component: Tag,
   tags: ['autodocs'],
-  args: { children: 'การเมือง', family: 'blue', hierarchy: 'primary', size: 'md' },
+  args: { children: 'การเมือง', family: 'brand', hierarchy: 'primary', size: 'md' },
 }
 export default meta
 
