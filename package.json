@@ -23,7 +23,8 @@
     "worklog:month-off": "launchctl unload ~/Library/LaunchAgents/com.nation.worklog-month.plist && echo '✓ push worklog อัตโนมัติ ปิดแล้ว'",
     "asana:task": "node scripts/asana-task.mjs",
     "verify:coverage": "node scripts/verify-component-coverage.mjs",
-    "verify:api": "node scripts/verify-component-api.mjs"
+    "verify:api": "node scripts/verify-component-api.mjs",
+    "verify:families": "node scripts/verify-color-families.mjs"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",

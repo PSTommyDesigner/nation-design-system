@@ -20,10 +20,10 @@
 | Prop | ชนิด | ค่าตั้งต้น | คำอธิบาย |
 |---|---|---|---|
 | `children` | ReactNode | ไม่มี | ข้อความในป้าย ถ้าไม่ส่งและส่ง `icon` แทน จะเป็นป้ายไอคอนล้วน |
-| `family` | 10 ตระกูลสี | `neutral` | brand neutral red green yellow cyan blue purple pink bamboo |
-| `hierarchy` | `primary` `secondary` `tertiary` `quaternary` | `secondary` | ระดับความเด่น |
+| `family` | 11 ตระกูลสี | `neutral` | brand neutral red green yellow cyan blue purple pink bamboo brown |
+| `hierarchy` | `primary` `secondary` `tertiary` `quaternary` | `secondary` | ระดับความเด่น ทรง `link` ไม่สนค่านี้ |
 | `size` | `xs` ถึง `xl` | `md` | ความสูง 16 20 24 28 32 เท่ากับ Tag |
-| `shape` | `semi-rounded` `pill` `circular` | `semi-rounded` | `circular` ใช้ได้เฉพาะป้ายไอคอนล้วน |
+| `shape` | `semi-rounded` `pill` `circular` `link` | `semi-rounded` | `circular` ใช้ได้เฉพาะป้ายไอคอนล้วน ส่วน `link` ใช้ได้เฉพาะแบบมีข้อความ |
 | `trailingIcon` | IconName | ไม่มี | ไอคอนท้ายข้อความ |
 | `icon` | IconName | ไม่มี | ไอคอนของป้ายไอคอนล้วน |
 | `label` | string | ไม่มี | **บังคับเมื่อเป็นป้ายไอคอนล้วน** เพื่อให้โปรแกรมอ่านหน้าจออ่านได้ |
@@ -34,6 +34,7 @@
 <Badge family="red" hierarchy="primary" size="sm">ด่วน</Badge>
 <Badge family="green" hierarchy="secondary" shape="pill">เผยแพร่แล้ว</Badge>
 <Badge family="brand" icon="check" shape="circular" label="ยืนยันแล้ว" />
+<Badge family="blue" shape="link" trailingIcon="chevron-right">อ่านต่อ</Badge>
 ```
 
 ## ข้อควรระวัง
@@ -43,3 +44,16 @@
 3. **หนึ่งของหนึ่งป้าย** ถ้าต้องติดหลายอันบนของชิ้นเดียว แปลว่าที่จริงต้องการ `Tag`
 4. **ห้ามผูก tooltip กับตัวป้าย** ให้ผูกกับตัวแม่แทน
 5. **ชื่อระดับของป้ายกับของแท็กหมายถึงคนละหน้าตา** ป้ายมี 4 ระดับเพราะมีพื้นอ่อน ส่วนแท็กมี 3 ระดับ `secondary` ของแท็กคือมีขอบ
+
+## ทรง link
+
+ป้ายแบบข้อความล้วน ไม่มีพื้น ไม่มีขอบ ระยะขอบเป็นศูนย์ทุกด้าน ความสูงเท่ากับความสูงบรรทัดของ text preset ตรง ๆ คือ 16 16 22 24 26 ตามขนาด xs ถึง xl ซึ่งตรงกับชุด `link-badge` ในไฟล์ออกแบบหน้า 22 ทุกค่า
+
+ต่างจากอีกสามทรงสองเรื่อง
+
+- **ไม่สนแกน `hierarchy`** เพราะชุด `link-badge` ในไฟล์ออกแบบมีแค่แกนขนาด ไม่มีแกนระดับความเด่น
+- **ใช้สีขั้น 400 ของตระกูล** ไม่ใช่ขั้น 600 เหมือนอีกสามทรง
+
+> ⚠️ `hierarchy="quaternary"` เป็นของเก่าจากตอนที่แบบข้อความล้วนยังเป็นระดับหนึ่งของแกน `hierarchy`
+> ไฟล์ออกแบบแยกออกไปเป็นชุด `link-badge` แล้วเมื่อ 2026-09-22 ของใหม่ให้ใช้ `shape="link"`
+> ซึ่งให้สีตรงกับไฟล์ออกแบบ ส่วน `quaternary` ยังใช้สีขั้น 600 ตามของเดิม เก็บไว้ไม่ให้ของที่เขียนไปแล้วพัง

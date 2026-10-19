@@ -21,6 +21,13 @@
  *    พื้นทึบใช้ขั้น 600 ที่ red green yellow purple แต่ใช้ 400 ที่ cyan blue bamboo pink brown
  *    ขั้นตอนชี้ยิ่งไม่เป็นสูตร blue กับ brown ใช้ 500 ส่วน cyan bamboo pink ใช้ 600
  *    ห้ามเขียนเป็นสูตร ให้แก้ตามไฟล์ออกแบบทีละตระกูลเสมอ
+ *
+ * ⚠️ ขอบใช้ box-shadow แบบ inset ไม่ใช่ border (แก้ 2026-10-19 ตามไฟล์ออกแบบ)
+ *    ของเดิมใช้ `border: 1px solid` ซึ่งถึงจะโปร่งใสก็ยังกินพื้นที่ในกล่องแบบ border-box
+ *    ผลคือกล่องสูงกว่าไฟล์ออกแบบ 2px ทุกขนาดที่มีเนื้อหา ไฟล์ออกแบบใช้เส้นขอบแบบ INSIDE
+ *    ซึ่งไม่กินพื้นที่กรอบ box-shadow แบบ inset จึงตรงกว่า border (เจอพร้อมกับ Badge ซึ่งเขียนรูปแบบเดียวกัน)
+ *    hover ใช้ box-shadow ค่าเดียวเหมือนเดิม ส่วน focus-visible ต้องรวมเส้นขอบกับวงแหวนโฟกัสไว้ในค่าเดียวกัน
+ *    เพราะ box-shadow เป็น property เดียว ตั้งสองรอบจะทับกัน ไม่ใช่ซ้อนกัน
  */
 
 .root {
@@ -38,8 +45,8 @@
   white-space: nowrap;
   background: var(--tag-bg);
   color: var(--tag-fg);
-  border: 1px solid var(--tag-border);
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  box-shadow: inset 0 0 0 1px var(--tag-border);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 
   min-height: var(--tag-h);
   padding: var(--tag-pt) var(--tag-pr) var(--tag-pb) var(--tag-pl);
@@ -52,12 +59,18 @@
 .interactive:hover:not([aria-disabled='true']) {
   background: var(--tag-bg-hover);
   color: var(--tag-fg-hover);
-  border-color: var(--tag-border-hover);
+  box-shadow: inset 0 0 0 1px var(--tag-border-hover);
 }
 
 .interactive:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+  /* ขอบเดิมของ root (ไม่ใช่ตัว hover) ต่อด้วยวงแหวนโฟกัสล้นนอกกล่อง รวมในค่าเดียวเพราะ box-shadow ตั้งซ้ำแล้วทับ ไม่ซ้อน */
+  box-shadow: inset 0 0 0 1px var(--tag-border), 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+}
+
+/* เมาส์ชี้ค้างพร้อมโฟกัสด้วยคีย์บอร์ด (เช่น คลิกแล้วไม่ปล่อยเมาส์) ให้ยังเห็นสีขอบของ hover เหมือนของเดิมก่อนแก้ */
+.interactive:hover:focus-visible:not([aria-disabled='true']) {
+  box-shadow: inset 0 0 0 1px var(--tag-border-hover), 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
 }
 
 .title {

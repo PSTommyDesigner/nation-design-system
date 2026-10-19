@@ -8,11 +8,17 @@
  *   ขนาด    --ntg-{ทรง}-badge-size-{size} · padding-{top|bottom|left|right}-{size} · title-padding-{left|right}-{size}
  *           · icon-{size} · icon-padding-{size} · gap-{size}
  *   มุมโค้ง  --ntg-semi-rounded-badge-radius-{size}-{corner} · --ntg-pill-badge-radius-full · --ntg-circular-badge-radius-full
- *   สี      --ntg-color-utility-u-{family}-{50|300|600}
+ *   สี      --ntg-color-utility-u-{family}-{50|300|400|600}
  *   ตัวอักษร --ntg-typography-*-label-{preset} ตาม text preset ของแต่ละขนาด
  *
  * ⚠️ ป้ายเป็นของนิ่ง ไม่มี hover focus หรือ disabled โดยตั้งใจ
  *    ถ้าที่ไหนต้องการของกดได้ ให้ใช้ Tag ไม่ใช่ Badge
+ *
+ * ⚠️ ขอบใช้ box-shadow แบบ inset ไม่ใช่ border (แก้ 2026-10-19 ตามไฟล์ออกแบบ)
+ *    ของเดิมใช้ `border: 1px solid` ซึ่งถึงจะโปร่งใสก็ยังกินพื้นที่ในกล่องแบบ border-box
+ *    ผลคือกล่องสูงกว่าไฟล์ออกแบบ 2px ทุกขนาด เพราะ border(2) + padding(2) + ความสูงบรรทัด
+ *    รวมกันเกิน min-height ที่ตั้งไว้ กล่องเลยขยายตามเนื้อหาแทนที่จะหยุดที่ min-height
+ *    ไฟล์ออกแบบใช้เส้นขอบแบบ INSIDE ซึ่งไม่กินพื้นที่กรอบ box-shadow แบบ inset จึงตรงกว่า border
  */
 
 .root {
@@ -28,7 +34,7 @@
   white-space: nowrap;
   background: var(--badge-bg);
   color: var(--badge-fg);
-  border: 1px solid var(--badge-border);
+  box-shadow: inset 0 0 0 1px var(--badge-border);
 }
 
 .title {
@@ -120,17 +126,44 @@
 .pill { border-radius: var(--ntg-pill-badge-radius-full); }
 .circular { border-radius: var(--ntg-circular-badge-radius-full); }
 
+/**
+ * ทรง link ข้อความล้วน
+ * ระยะขอบเป็นศูนย์ทุกด้าน ความสูงมาจากความสูงบรรทัดของ preset ตรง ๆ
+ * --badge-border เป็น transparent อยู่แล้วสำหรับทรงนี้ (ดูด้านล่าง) จึงไม่ต้องรีเซ็ตขอบเพิ่ม
+ */
+.link {
+  border-radius: 0;
+}
+.link.xs { min-height: var(--ntg-link-badge-size-xs); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-xs); }
+.link.sm { min-height: var(--ntg-link-badge-size-sm); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-sm); }
+.link.md { min-height: var(--ntg-link-badge-size-md); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-md); }
+.link.lg { min-height: var(--ntg-link-badge-size-lg); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-lg); }
+.link.xl { min-height: var(--ntg-link-badge-size-xl); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-xl); }
+
+.link.xs .title { padding-inline: var(--ntg-link-badge-title-padding-left-xs) var(--ntg-link-badge-title-padding-right-xs); }
+.link.sm .title { padding-inline: var(--ntg-link-badge-title-padding-left-sm) var(--ntg-link-badge-title-padding-right-sm); }
+.link.md .title { padding-inline: var(--ntg-link-badge-title-padding-left-md) var(--ntg-link-badge-title-padding-right-md); }
+.link.lg .title { padding-inline: var(--ntg-link-badge-title-padding-left-lg) var(--ntg-link-badge-title-padding-right-lg); }
+.link.xl .title { padding-inline: var(--ntg-link-badge-title-padding-left-xl) var(--ntg-link-badge-title-padding-right-xl); }
+
+.link.xs .icon { width: var(--ntg-link-badge-icon-xs); height: var(--ntg-link-badge-icon-xs); }
+.link.sm .icon { width: var(--ntg-link-badge-icon-sm); height: var(--ntg-link-badge-icon-sm); }
+.link.md .icon { width: var(--ntg-link-badge-icon-md); height: var(--ntg-link-badge-icon-md); }
+.link.lg .icon { width: var(--ntg-link-badge-icon-lg); height: var(--ntg-link-badge-icon-lg); }
+.link.xl .icon { width: var(--ntg-link-badge-icon-xl); height: var(--ntg-link-badge-icon-xl); }
+
 /* ── ตระกูลสี ระบุเฉพาะ 3 ขั้นที่ใช้จริง ───────────────────── */
-.brand   { --badge-ramp-50: var(--ntg-color-utility-u-brand-50);   --badge-ramp-300: var(--ntg-color-utility-u-brand-300);   --badge-ramp-600: var(--ntg-color-utility-u-brand-600); }
-.neutral { --badge-ramp-50: var(--ntg-color-utility-u-gray-50);    --badge-ramp-300: var(--ntg-color-utility-u-gray-300);    --badge-ramp-600: var(--ntg-color-utility-u-gray-600); }
-.red     { --badge-ramp-50: var(--ntg-color-utility-u-red-50);     --badge-ramp-300: var(--ntg-color-utility-u-red-300);     --badge-ramp-600: var(--ntg-color-utility-u-red-600); }
-.green   { --badge-ramp-50: var(--ntg-color-utility-u-green-50);   --badge-ramp-300: var(--ntg-color-utility-u-green-300);   --badge-ramp-600: var(--ntg-color-utility-u-green-600); }
-.yellow  { --badge-ramp-50: var(--ntg-color-utility-u-yellow-50);  --badge-ramp-300: var(--ntg-color-utility-u-yellow-300);  --badge-ramp-600: var(--ntg-color-utility-u-yellow-600); }
-.cyan    { --badge-ramp-50: var(--ntg-color-utility-u-cyan-50);    --badge-ramp-300: var(--ntg-color-utility-u-cyan-300);    --badge-ramp-600: var(--ntg-color-utility-u-cyan-600); }
-.blue    { --badge-ramp-50: var(--ntg-color-utility-u-blue-50);    --badge-ramp-300: var(--ntg-color-utility-u-blue-300);    --badge-ramp-600: var(--ntg-color-utility-u-blue-600); }
-.purple  { --badge-ramp-50: var(--ntg-color-utility-u-purple-50);  --badge-ramp-300: var(--ntg-color-utility-u-purple-300);  --badge-ramp-600: var(--ntg-color-utility-u-purple-600); }
-.pink    { --badge-ramp-50: var(--ntg-color-utility-u-pink-50);    --badge-ramp-300: var(--ntg-color-utility-u-pink-300);    --badge-ramp-600: var(--ntg-color-utility-u-pink-600); }
-.bamboo  { --badge-ramp-50: var(--ntg-color-utility-u-bamboo-50);  --badge-ramp-300: var(--ntg-color-utility-u-bamboo-300);  --badge-ramp-600: var(--ntg-color-utility-u-bamboo-600); }
+.brand   { --badge-ramp-50: var(--ntg-color-utility-u-brand-50);   --badge-ramp-300: var(--ntg-color-utility-u-brand-300);   --badge-ramp-400: var(--ntg-color-utility-u-brand-400);   --badge-ramp-600: var(--ntg-color-utility-u-brand-600); }
+.neutral { --badge-ramp-50: var(--ntg-color-utility-u-gray-50);    --badge-ramp-300: var(--ntg-color-utility-u-gray-300);   --badge-ramp-400: var(--ntg-color-utility-u-gray-400);    --badge-ramp-600: var(--ntg-color-utility-u-gray-600); }
+.red     { --badge-ramp-50: var(--ntg-color-utility-u-red-50);     --badge-ramp-300: var(--ntg-color-utility-u-red-300);   --badge-ramp-400: var(--ntg-color-utility-u-red-400);     --badge-ramp-600: var(--ntg-color-utility-u-red-600); }
+.green   { --badge-ramp-50: var(--ntg-color-utility-u-green-50);   --badge-ramp-300: var(--ntg-color-utility-u-green-300);   --badge-ramp-400: var(--ntg-color-utility-u-green-400);   --badge-ramp-600: var(--ntg-color-utility-u-green-600); }
+.yellow  { --badge-ramp-50: var(--ntg-color-utility-u-yellow-50);  --badge-ramp-300: var(--ntg-color-utility-u-yellow-300);   --badge-ramp-400: var(--ntg-color-utility-u-yellow-400);  --badge-ramp-600: var(--ntg-color-utility-u-yellow-600); }
+.cyan    { --badge-ramp-50: var(--ntg-color-utility-u-cyan-50);    --badge-ramp-300: var(--ntg-color-utility-u-cyan-300);   --badge-ramp-400: var(--ntg-color-utility-u-cyan-400);    --badge-ramp-600: var(--ntg-color-utility-u-cyan-600); }
+.blue    { --badge-ramp-50: var(--ntg-color-utility-u-blue-50);    --badge-ramp-300: var(--ntg-color-utility-u-blue-300);   --badge-ramp-400: var(--ntg-color-utility-u-blue-400);    --badge-ramp-600: var(--ntg-color-utility-u-blue-600); }
+.purple  { --badge-ramp-50: var(--ntg-color-utility-u-purple-50);  --badge-ramp-300: var(--ntg-color-utility-u-purple-300);   --badge-ramp-400: var(--ntg-color-utility-u-purple-400);  --badge-ramp-600: var(--ntg-color-utility-u-purple-600); }
+.pink    { --badge-ramp-50: var(--ntg-color-utility-u-pink-50);    --badge-ramp-300: var(--ntg-color-utility-u-pink-300);   --badge-ramp-400: var(--ntg-color-utility-u-pink-400);    --badge-ramp-600: var(--ntg-color-utility-u-pink-600); }
+.bamboo  { --badge-ramp-50: var(--ntg-color-utility-u-bamboo-50);  --badge-ramp-300: var(--ntg-color-utility-u-bamboo-300);   --badge-ramp-400: var(--ntg-color-utility-u-bamboo-400);  --badge-ramp-600: var(--ntg-color-utility-u-bamboo-600); }
+.brown   { --badge-ramp-50: var(--ntg-color-utility-u-brown-50);   --badge-ramp-300: var(--ntg-color-utility-u-brown-300);   --badge-ramp-400: var(--ntg-color-utility-u-brown-400);   --badge-ramp-600: var(--ntg-color-utility-u-brown-600); }
 
 /* ── ระดับความเด่น ───────────────────────────────────────── */
 .primary {
@@ -148,4 +181,15 @@
 }
 .quaternary {
   --badge-fg: var(--badge-ramp-600);
+}
+
+/**
+ * ⚠️ ต้องอยู่ท้ายสุดของไฟล์ เพราะทรง link ไม่สนแกน hierarchy
+ *    ชุด link-badge ในไฟล์ออกแบบไม่มีแกนนี้ และใช้สีขั้น 400 ไม่ใช่ 600
+ *    ความจำเพาะเท่ากับคลาสของ hierarchy จึงต้องพึ่งลำดับในไฟล์เป็นตัวตัดสิน
+ */
+.link {
+  --badge-bg: transparent;
+  --badge-border: transparent;
+  --badge-fg: var(--badge-ramp-400);
 }

@@ -37,40 +37,111 @@ const manifest = JSON.parse(readFileSync(MANIFEST, 'utf8'))
 
 // ── ถอด props กับชนิดข้อมูลแบบ union ออกจากไฟล์ tsx ──────────
 //   ไม่ได้ใช้ตัวแปลภาษาเต็มรูป เพราะโครงไฟล์ในโปรเจกต์นี้สม่ำเสมอพอ
-//   แต่ต้องกันกรณี interface ซ้อนวงเล็บปีกกา จึงนับวงเล็บแทนการหาวงเล็บปิดตัวแรก
-const parseComponent = (name) => {
-  const file = `${DIR}/${name}/${name}.tsx`
-  if (!existsSync(file)) return null
-  const src = readFileSync(file, 'utf8')
+//   แต่ต้องกันสามกรณีที่เคยทำให้อ่านพลาด
+//     1. interface ที่มีวงเล็บปีกกาซ้อน จึงนับวงเล็บแทนการหาวงเล็บปิดตัวแรก
+//     2. ⚠️ Props ที่ประกาศเป็น type alias ไม่ใช่ interface (เจอ 2026-10-19 ที่ LinkButton กับ Pagination)
+//        เช่น `export type PaginationProps = PaginationBaseProps & PaginationNavigationProps`
+//        ของเดิมหาเจอแค่ `export interface <ชื่อ>Props` จึงได้ 0 prop แล้วจะฟ้องผิดทั้งตัว
+//        ตอนนี้ไล่ตามชื่อที่ alias อ้างถึงต่อไปเรื่อย ๆ และเก็บ object ที่เขียนไว้ตรงนั้นด้วย
+//     3. ชนิดข้อมูลที่มี `;` อยู่ข้างใน เช่น `(page: number) => string;` ในบล็อก object
+//        จึงหาจุดจบของ type ด้วยการนับวงเล็บ ไม่ใช่ `[^;]+`
 
-  const props = new Set()
-  const start = src.search(new RegExp(`export interface ${name}Props[^{]*\\{`))
-  if (start >= 0) {
-    let i = src.indexOf('{', start)
-    let depth = 0
-    let end = i
-    for (; end < src.length; end++) {
-      if (src[end] === '{') depth++
-      else if (src[end] === '}') { depth--; if (depth === 0) break }
-    }
-    const body = src.slice(i + 1, end)
-    // เอาเฉพาะบรรทัดที่อยู่ชั้นบนสุดของ interface ไม่ใช่ชั้นในของ object ซ้อน
-    let d = 0
-    for (const line of body.split('\n')) {
-      const trimmed = line.trim()
-      if (d === 0) {
-        const m = trimmed.match(/^(\w+)\??\s*:/)
-        if (m) props.add(m[1])
-      }
-      d += (line.match(/\{/g) || []).length - (line.match(/\}/g) || []).length
-    }
+/** อ่าน RHS ของ type ไปจนเจอ ; ที่อยู่นอกวงเล็บทุกชั้น (ไม่นับ < > เพราะชนกับ =>) */
+const readTypeRhs = (src, from) => {
+  let d = 0
+  for (let j = from; j < src.length; j++) {
+    const ch = src[j]
+    if (ch === '{' || ch === '(' || ch === '[') d++
+    else if (ch === '}' || ch === ')' || ch === ']') d--
+    else if (ch === ';' && d === 0) return src.slice(from, j)
   }
+  return src.slice(from)
+}
+
+/** ชื่อ prop ที่อยู่ชั้นบนสุดของบล็อก { ... } ไม่เอาชั้นในของ object ซ้อน */
+const topLevelProps = (body) => {
+  const out = []
+  let d = 0
+  for (const line of body.split('\n')) {
+    const trimmed = line.trim()
+    if (d === 0) {
+      const m = trimmed.match(/^(\w+)\??\s*:/)
+      if (m) out.push(m[1])
+    }
+    d += (line.match(/\{/g) || []).length - (line.match(/\}/g) || []).length
+  }
+  return out
+}
+
+/** เนื้อในของบล็อก { ... } ทุกบล็อกที่อยู่ชั้นนอกสุดของข้อความที่ให้มา */
+const outerBlocks = (text) => {
+  const out = []
+  let d = 0
+  let start = -1
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === '{') { if (d === 0) start = i + 1; d++ }
+    else if (text[i] === '}') { d--; if (d === 0 && start >= 0) { out.push(text.slice(start, i)); start = -1 } }
+  }
+  return out
+}
+
+/**
+ * อ่าน props ของ component ตัวหนึ่ง
+ * spec.file     ใช้เมื่อ component อยู่ในไฟล์ของตัวอื่น เช่น AvatarGroup อยู่ใน Avatar.tsx
+ * spec.propsType ใช้เมื่อชื่อชนิดข้อมูลไม่ใช่ `<ชื่อ>Props`
+ */
+const parseComponent = (name, spec = {}) => {
+  const owner = spec.file || name
+  const dir = `${DIR}/${owner}`
+  if (!existsSync(`${dir}/${owner}.tsx`)) return null
+  // ⚠️ ต้องอ่านทุกไฟล์ในโฟลเดอร์ ไม่ใช่แค่ <ชื่อ>.tsx (เจอ 2026-10-19 ที่ Pagination)
+  //    ชนิดข้อมูลแบบ union บางตัวอยู่ในไฟล์ types.ts ข้าง ๆ ถ้าอ่านไฟล์เดียวจะฟ้องว่าหาชนิดไม่เจอ
+  //    ทั้งที่โค้ดมีครบ ซึ่งเป็นการฟ้องผิด ไม่ใช่ช่องว่างจริง
+  const src = readdirSync(dir)
+    .filter((f) => /\.tsx?$/.test(f))
+    .sort((a, b) => (a === `${owner}.tsx` ? -1 : b === `${owner}.tsx` ? 1 : a.localeCompare(b)))
+    .map((f) => readFileSync(`${dir}/${f}`, 'utf8'))
+    .join('\n')
+
+  // เก็บ interface ทุกตัวในไฟล์ (ไม่ใช่เฉพาะตัวที่ชื่อลงท้าย Props)
+  const interfaces = {}
+  for (const m of src.matchAll(/(?:export\s+)?interface\s+(\w+)[^{]*\{/g)) {
+    const open = m.index + m[0].length - 1
+    let d = 0
+    let end = open
+    for (; end < src.length; end++) {
+      if (src[end] === '{') d++
+      else if (src[end] === '}') { d--; if (d === 0) break }
+    }
+    interfaces[m[1]] = src.slice(open + 1, end)
+  }
+
+  // เก็บ type alias ทุกตัว พร้อม RHS ดิบ
+  const aliases = {}
+  for (const m of src.matchAll(/(?:export\s+)?type\s+(\w+)\s*=\s*/g)) {
+    aliases[m[1]] = readTypeRhs(src, m.index + m[0].length)
+  }
+
+  // ไล่หา props ของ <ชื่อ>Props ตามสายที่มันอ้างถึง
+  const props = new Set()
+  const seen = new Set()
+  const collect = (typeName, depth = 0) => {
+    if (depth > 8 || seen.has(typeName)) return
+    seen.add(typeName)
+    if (interfaces[typeName]) for (const p of topLevelProps(interfaces[typeName])) props.add(p)
+    const rhs = aliases[typeName]
+    if (!rhs) return
+    for (const block of outerBlocks(rhs)) for (const p of topLevelProps(block)) props.add(p)
+    // ชื่อชนิดข้อมูลอื่นที่ถูกอ้างถึง ตัวที่ไม่มีในไฟล์นี้จะไม่เจอแล้วข้ามไปเอง
+    for (const ref of rhs.matchAll(/\b([A-Z]\w*)\b/g)) collect(ref[1], depth + 1)
+  }
+  collect(spec.propsType || `${name}Props`)
 
   // union ของค่าที่เป็นไปได้ เช่น export type TagSize = 'xs' | 'sm' ...
   const unions = {}
-  for (const m of src.matchAll(/export type (\w+)\s*=\s*([^;]+);/g)) {
-    const values = [...m[2].matchAll(/'([^']+)'/g)].map((x) => x[1])
-    if (values.length) unions[m[1]] = values
+  for (const [typeName, rhs] of Object.entries(aliases)) {
+    const values = [...rhs.matchAll(/'([^']+)'/g)].map((x) => x[1])
+    if (values.length) unions[typeName] = values
   }
   return { props, unions }
 }
@@ -87,8 +158,8 @@ for (const dir of readdirSync(DIR)) {
 }
 
 for (const [name, spec] of Object.entries(manifest.components || {})) {
-  const code = parseComponent(name)
-  if (!code) { rows.push(['ไม่มีโค้ด', name, '', 'หาไฟล์ tsx ไม่เจอ']); continue }
+  const code = parseComponent(name, spec)
+  if (!code) { rows.push(['ไม่มีโค้ด', name, '', `หาไฟล์ ${spec.file || name}.tsx ไม่เจอ`]); continue }
   const map = spec.map || {}
   const acc = spec.accepted || {}
 

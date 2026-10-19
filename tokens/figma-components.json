@@ -1,11 +1,520 @@
 {
-  "$note": "แกนและคุณสมบัติของ component ในไฟล์ออกแบบ ใช้โดย scripts/verify-component-api.mjs · วิธีเก็บอยู่ในหัวสคริปต์นั้น",
-  "fileKey": "QgmoT5Uuvv3elB96F4nsTq",
-  "capturedAt": "2026-10-15",
+  "capturedAt": "2026-10-19",
+  "note": "แกน variant กับ component property ที่อ่านจากไฟล์ออกแบบ ใช้เป็นข้อมูลตั้งต้นของ npm run verify:api วิธีเก็บอยู่ในหัวไฟล์ scripts/verify-component-api.mjs",
+  "conventions": {
+    "axes": "ปกติมาจาก variantGroupProperties ของ COMPONENT_SET · ตัวที่เขียนกำกับว่า fromSetNames คือแกนที่ไฟล์ออกแบบไม่ได้ทำเป็นแกน แต่แยกเป็นชุดคนละชื่อ เช่น semi-rounded-badge กับ pill-badge ฝั่งโค้ดยุบเป็น prop เดียว",
+    "properties": "ตัดชื่อที่ซ้ำกับแกนออกแล้ว เพราะ Figma แสดงแกนปนอยู่ใน componentPropertyDefinitions ด้วย",
+    "accepted": "แกนหรือคุณสมบัติที่ตัดสินแล้วว่าไม่ต้องมีคู่ในโค้ด พร้อมเหตุผล",
+    "internalParts": "ชุดที่ขึ้นต้นด้วย _ กับชิ้นส่วนย่อย เช่น slider-handle tooltip-arrow _dropdown-option ไม่เก็บ เพราะเป็นชิ้นส่วนข้างในที่ฝั่งโค้ดไม่ได้เปิดเป็น component แยก"
+  },
   "components": {
+    "Avatar": {
+      "figmaPage": "11 Avatar",
+      "figmaSets": ["avatar-image", "avatar-icon", "avatar-monogram", "avatar-number"],
+      "axes": {
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "online-indicator": ["false", "true"],
+        "state": ["default", "hover"]
+      },
+      "properties": ["text-value"],
+      "map": {
+        "axes": {
+          "size": { "prop": "size", "type": "AvatarSize" },
+          "online-indicator": { "prop": "status" }
+        },
+        "properties": { "text-value": "initials" }
+      },
+      "accepted": {
+        "state": "default กับ hover มาจาก pseudo-class ของ CSS ตัวที่กดได้เปิดด้วย prop interactive"
+      },
+      "notes": "ชุด avatar-monogram ใช้ prop initials ส่วน avatar-number ใช้ prop count คนละ prop กัน ตารางจับคู่จึงผูก text-value ไว้กับ initials ตัวเดียว"
+    },
+    "AvatarGroup": {
+      "file": "Avatar",
+      "propsType": "AvatarGroupProps",
+      "figmaPage": "11 Avatar",
+      "figmaSets": ["avatar-group"],
+      "axes": {
+        "size": ["xs", "sm", "md"],
+        "add-user-button": ["false", "true"],
+        "more-users": ["false", "true"]
+      },
+      "properties": ["avatar-1"],
+      "map": {
+        "axes": {
+          "size": { "prop": "size", "type": "AvatarGroupSize" },
+          "add-user-button": { "prop": "action" },
+          "more-users": { "prop": "max" }
+        },
+        "properties": { "avatar-1": "children" }
+      },
+      "notes": "ไฟล์ออกแบบมีช่อง avatar-1 ถึง avatar-10 เป็นสิบช่อง ฝั่งโค้ดรับเป็น children ช่องเดียว จึงเก็บแค่ช่องแรกเป็นตัวแทน"
+    },
+    "AvatarLabel": {
+      "file": "Avatar",
+      "propsType": "AvatarLabelProps",
+      "figmaPage": "11 Avatar",
+      "figmaSets": ["avatar-label"],
+      "axes": {
+        "size": ["sm", "md", "lg", "xl"],
+        "status-icon": ["false", "online-indicator"],
+        "state": ["default", "hover"]
+      },
+      "properties": ["avatar", "name", "email", "show-email"],
+      "map": {
+        "axes": { "size": { "prop": "size", "type": "AvatarLabelSize" } },
+        "properties": {
+          "avatar": "avatar",
+          "name": "title",
+          "email": "supportingText"
+        }
+      },
+      "accepted": {
+        "state": "default กับ hover มาจาก pseudo-class ของ CSS",
+        "status-icon": "จุดบอกสถานะอยู่ที่ตัว Avatar ข้างใน ส่งเข้ามาทาง prop avatar ไม่ใช่แกนของป้ายชื่อเอง",
+        "show-email": "ส่ง supportingText หรือไม่ส่ง เท่ากับเปิดปิดอยู่แล้ว ไม่ต้องมีตัวเปิดปิดแยกให้ซ้ำซ้อน"
+      }
+    },
+    "Badge": {
+      "figmaPage": "22 Badge",
+      "figmaSets": ["semi-rounded-badge", "pill-badge", "semi-rounded-icon-badge", "circular-icon-badge", "link-badge"],
+      "axes": {
+        "hierarchy": ["primary", "secondary", "tertiary"],
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "shape": ["semi-rounded", "pill", "circular", "link"]
+      },
+      "axesFromSetNames": ["shape"],
+      "properties": ["badge-title", "trailing-icon", "trailing-icon-swap", "leading-icon-swap"],
+      "map": {
+        "axes": {
+          "hierarchy": { "prop": "hierarchy", "type": "BadgeHierarchy" },
+          "size": { "prop": "size", "type": "BadgeSize" },
+          "shape": { "prop": "shape", "type": "BadgeShape" }
+        },
+        "properties": {
+          "badge-title": "children",
+          "trailing-icon": "trailingIcon",
+          "trailing-icon-swap": "trailingIcon",
+          "leading-icon-swap": "icon"
+        }
+      },
+      "notes": "leading-icon-swap คือไอคอนของชุดไอคอนล้วน semi-rounded-icon-badge กับ circular-icon-badge ซึ่งมีลูกชื่อ leading-icon ตัวเดียว ไม่ใช่ไอคอนนำหน้าข้อความ ฝั่งโค้ดคือ prop icon ที่ใช้ตอนไม่ส่ง children"
+    },
+    "Banner": {
+      "figmaPage": "19 Toasts & Banners",
+      "figmaSets": ["banner"],
+      "axes": {
+        "level": ["page", "section"],
+        "type": ["default", "brand", "error", "warning", "success"],
+        "size": ["xs", "sm", "md", "lg", "xl"]
+      },
+      "properties": ["show-icon", "show-support", "show-action", "show-close"],
+      "map": {
+        "axes": {
+          "level": { "prop": "level", "type": "BannerLevel" },
+          "type": { "prop": "type", "type": "BannerType" },
+          "size": { "prop": "size", "type": "BannerSize" }
+        },
+        "properties": {
+          "show-icon": "showIcon",
+          "show-support": "showDescription",
+          "show-action": "showAction",
+          "show-close": "showClose"
+        }
+      }
+    },
+    "Button": {
+      "figmaPage": "12 Buttons",
+      "figmaSets": ["semi-rounded-button", "pill-button"],
+      "axes": {
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "shape": ["semi-rounded", "pill"],
+        "icon-only": ["false"],
+        "state": ["default", "hover", "focused", "disabled"]
+      },
+      "axesFromSetNames": ["shape"],
+      "properties": ["Title", "L-icon", "R-icon", "swap-L-icon", "swap-R-icon"],
+      "map": {
+        "axes": {
+          "size": { "prop": "size", "type": "ButtonSize" },
+          "shape": { "prop": "shape", "type": "ButtonShape" }
+        },
+        "properties": {
+          "Title": "children",
+          "L-icon": "leftIcon",
+          "R-icon": "rightIcon",
+          "swap-L-icon": "leftIcon",
+          "swap-R-icon": "rightIcon"
+        }
+      },
+      "accepted": {
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled เป็น attribute มาตรฐานของปุ่ม",
+        "icon-only": "ชุดไอคอนล้วนแยกเป็น component IconButton ในโค้ด ไม่ได้ทำเป็น prop ของ Button"
+      }
+    },
+    "IconButton": {
+      "figmaPage": "12 Buttons",
+      "figmaSets": ["semi-rounded-icon-button", "circular-icon-button"],
+      "axes": {
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "shape": ["semi-rounded", "circular"],
+        "icon-only": ["true"],
+        "state": ["default", "hover", "focused", "disabled"]
+      },
+      "axesFromSetNames": ["shape"],
+      "properties": ["swap-icon"],
+      "map": {
+        "axes": {
+          "size": { "prop": "size" },
+          "shape": { "prop": "shape", "type": "IconButtonShape" }
+        },
+        "properties": { "swap-icon": "icon" }
+      },
+      "accepted": {
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled เป็น attribute มาตรฐานของปุ่ม",
+        "icon-only": "component นี้คือชุดไอคอนล้วนอยู่แล้ว ไม่ต้องมีแกนให้เลือก"
+      },
+      "notes": "แกนขนาดไม่ได้ผูกชนิดข้อมูล เพราะโค้ดใช้ ButtonSize ที่ import มาจาก Button ไม่ได้ประกาศไว้ในไฟล์นี้"
+    },
+    "LinkButton": {
+      "figmaPage": "12 Buttons",
+      "figmaSets": ["link-button", "link-icon-button"],
+      "axes": {
+        "default-gray": ["false", "true"],
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "state": ["default", "hover", "focused", "disabled"]
+      },
+      "properties": ["Title", "L Icon", "R Icon", "Swap L Icon", "Swap R Icon", "swap-icon"],
+      "map": {
+        "axes": {
+          "default-gray": { "prop": "defaultGray" },
+          "size": { "prop": "size" }
+        },
+        "properties": {
+          "Title": "children",
+          "L Icon": "leftIcon",
+          "R Icon": "rightIcon",
+          "Swap L Icon": "leftIcon",
+          "Swap R Icon": "rightIcon",
+          "swap-icon": "leftIcon"
+        }
+      },
+      "accepted": {
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled เป็น attribute มาตรฐาน"
+      },
+      "notes": "ชื่อคุณสมบัติฝั่งไฟล์ออกแบบของหน้า 12 ยังใช้เว้นวรรคกับตัวพิมพ์ใหญ่ ไม่ตรงกติกาตั้งชื่อ เก็บตามของจริงไว้ก่อน ไว้แก้ตอนหยิบหน้า 12 มาทำ"
+    },
+    "Card": {
+      "figmaPage": "27 Card",
+      "figmaSets": ["vertical-news-card", "horizontal-news-card", "news-list-card", "video-list-card"],
+      "axes": {
+        "Size": ["xs", "sm", "md", "lg", "xl"],
+        "Image Trailing": ["False", "True"],
+        "Play": ["False", "True"],
+        "State": ["Default", "Hover"]
+      },
+      "properties": [
+        "Heading",
+        "Heading value",
+        "Headline Value",
+        "Subheading",
+        "Supheading",
+        "Supporting text",
+        "Supporting text value",
+        "Tag on image",
+        "More Button"
+      ],
+      "map": {
+        "axes": {
+          "Size": { "prop": "size", "type": "CardSize" },
+          "Image Trailing": { "prop": "imageTrailing" },
+          "Play": { "prop": "overlay" }
+        },
+        "properties": {
+          "Heading": "title",
+          "Heading value": "title",
+          "Headline Value": "title",
+          "Subheading": "category",
+          "Supheading": "category",
+          "Supporting text": "lead",
+          "Supporting text value": "lead",
+          "Tag on image": "tag",
+          "More Button": "meta"
+        }
+      },
+      "accepted": {
+        "State": "default กับ hover มาจาก pseudo-class ของ CSS"
+      },
+      "notes": "หน้า 27 มี 12 ชุดกับอีก 8 ตัวเดี่ยว เก็บเฉพาะ 4 ชุดที่โค้ดครอบคลุมแล้ว ที่เหลือยังไม่ได้ทำฝั่งโค้ด เหตุผลอยู่ใน components/Card/README"
+    },
+    "Checkbox": {
+      "figmaPage": "15 Checkbox",
+      "figmaSets": ["checkbox", "text-checkbox"],
+      "axes": {
+        "checked": ["false", "true", "indeterminate"],
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "state": ["default", "hover", "focused", "disabled"]
+      },
+      "properties": ["title-value", "supporting-text", "supporting-text-value"],
+      "map": {
+        "axes": { "size": { "prop": "size", "type": "CheckboxSize" } },
+        "properties": {
+          "title-value": "label",
+          "supporting-text": "supportingText",
+          "supporting-text-value": "supportingText"
+        }
+      },
+      "accepted": {
+        "checked": "ค่า false กับ true คือ attribute checked มาตรฐานของ input ส่วน indeterminate มี prop indeterminate แยกให้แล้ว เพราะ HTML ตั้งผ่าน attribute ไม่ได้",
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled เป็น attribute มาตรฐานของ input"
+      }
+    },
+    "Radio": {
+      "figmaPage": "16 Radio",
+      "figmaSets": ["radio", "text-radio"],
+      "axes": {
+        "checked": ["false", "true"],
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "state": ["default", "hover", "focused", "disabled"]
+      },
+      "properties": ["Title Text", "Title Value", "Supporting text"],
+      "map": {
+        "axes": { "size": { "prop": "size", "type": "RadioSize" } },
+        "properties": {
+          "Title Text": "label",
+          "Title Value": "label",
+          "Supporting text": "supportingText"
+        }
+      },
+      "accepted": {
+        "checked": "attribute checked มาตรฐานของ input ชนิด radio ไม่ต้องมี prop ซ้ำ",
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled เป็น attribute มาตรฐานของ input"
+      },
+      "notes": "ชื่อคุณสมบัติของหน้า 16 ยังใช้เว้นวรรคกับตัวพิมพ์ใหญ่ ไม่ตรงกติกาตั้งชื่อ เก็บตามของจริงไว้ก่อน"
+    },
+    "Divider": {
+      "figmaPage": "28 Dividers",
+      "figmaSets": ["horizontal-divider", "vertical-divider"],
+      "axes": {
+        "type": ["solid", "dash"],
+        "orientation": ["horizontal", "vertical"]
+      },
+      "axesFromSetNames": ["orientation"],
+      "properties": [],
+      "map": {
+        "axes": {
+          "type": { "prop": "type", "type": "DividerType" },
+          "orientation": { "prop": "orientation", "type": "DividerOrientation" }
+        }
+      }
+    },
+    "Dropdown": {
+      "figmaPage": "25 Dropdowns",
+      "figmaSets": ["dropdown", "dropdown-menu"],
+      "axes": {
+        "size": ["sm", "md", "lg"],
+        "state": ["default", "hover", "focused", "open", "disabled", "error", "error-hover", "error-focused", "read-only"]
+      },
+      "properties": ["show-group-header"],
+      "map": {
+        "axes": { "size": { "prop": "size", "type": "DropdownSize" } },
+        "properties": { "show-group-header": "options" }
+      },
+      "accepted": {
+        "state": "default hover focused open มาจาก pseudo-class และสถานะภายใน ส่วน disabled error read-only มี prop แยกให้แล้วครบ"
+      },
+      "notes": "หัวข้อกลุ่มในโค้ดมาจากโครงของ options ไม่ใช่ตัวเปิดปิดแยก"
+    },
+    "Slider": {
+      "figmaPage": "17 Sliders",
+      "figmaSets": ["slider", "range-slider"],
+      "axes": {
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "disabled": ["false", "true"]
+      },
+      "properties": ["value-tooltip", "min-max-label"],
+      "map": {
+        "axes": {
+          "size": { "prop": "size", "type": "SliderSize" },
+          "disabled": { "prop": "disabled" }
+        },
+        "properties": {
+          "value-tooltip": "showValueTooltip",
+          "min-max-label": "showMinMaxLabel"
+        }
+      },
+      "notes": "ชุด range-slider ฝั่งโค้ดคือ Slider ตัวเดียวกัน แยกด้วยชนิดของ prop value ไม่ใช่แกน"
+    },
+    "Tabs": {
+      "figmaPage": "18 Tabs",
+      "figmaSets": ["segmented-tab", "underline-tab", "segmented-tab-group", "underline-tab-group"],
+      "axes": {
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "shape": ["segmented", "underline"],
+        "current": ["false", "true"],
+        "icon": ["false", "leading", "unread", "only"],
+        "state": ["default", "hover", "focused", "disabled"]
+      },
+      "axesFromSetNames": ["shape"],
+      "properties": ["text", "tab-3", "tab-4", "tab-5", "tab-6", "tab-7", "tab-8", "tab-9", "tab-10"],
+      "map": {
+        "axes": {
+          "size": { "prop": "size", "type": "TabsSize" },
+          "shape": { "prop": "shape", "type": "TabsShape" },
+          "current": { "prop": "value" }
+        },
+        "properties": {
+          "text": "items",
+          "tab-3": "items",
+          "tab-4": "items",
+          "tab-5": "items",
+          "tab-6": "items",
+          "tab-7": "items",
+          "tab-8": "items",
+          "tab-9": "items",
+          "tab-10": "items"
+        }
+      },
+      "accepted": {
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled ตั้งที่รายการแต่ละตัวใน items",
+        "icon": "ชนิดไอคอนอยู่ที่รายการแต่ละตัวใน prop items ชนิดข้อมูล TabIconKind ค่า false ของไฟล์ออกแบบตรงกับ none ของโค้ด"
+      }
+    },
+    "TextField": {
+      "figmaPage": "13 Input",
+      "figmaSets": ["text-field", "text-area"],
+      "axes": {
+        "size": ["sm", "md", "lg"],
+        "state": ["default", "hover", "focused", "disabled", "error", "error-hover", "error-focused", "read-only"]
+      },
+      "properties": [
+        "label",
+        "hint",
+        "placeholder",
+        "required",
+        "show-label",
+        "show-hint",
+        "leading-icon",
+        "trailing-icon",
+        "leading-divider",
+        "trailing-divider"
+      ],
+      "map": {
+        "axes": { "size": { "prop": "size", "type": "TextFieldSize" } },
+        "properties": {
+          "label": "label",
+          "hint": "hint",
+          "required": "required",
+          "show-label": "label",
+          "show-hint": "hint",
+          "leading-icon": "leadingIcon",
+          "trailing-icon": "trailingIcon",
+          "leading-divider": "leadingDivider",
+          "trailing-divider": "trailingDivider"
+        }
+      },
+      "accepted": {
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled error read-only มี prop แยกให้แล้วครบ",
+        "placeholder": "เป็น attribute มาตรฐานของ input ส่งผ่านได้อยู่แล้ว ไม่ต้องประกาศซ้ำ"
+      },
+      "notes": "ชุด tag-field ของหน้า 13 ยังไม่มีฝั่งโค้ด จึงไม่ได้เก็บแกนกับคุณสมบัติของชุดนั้น ชุด text-area คือ prop multiline ของ TextField"
+    },
+    "Toast": {
+      "figmaPage": "19 Toasts & Banners",
+      "figmaSets": ["toast"],
+      "axes": {
+        "type": ["default", "brand", "error", "warning", "success"],
+        "size": ["xs", "sm", "md", "lg", "xl"]
+      },
+      "properties": ["show-icon", "show-support", "show-action", "show-close"],
+      "map": {
+        "axes": {
+          "type": { "prop": "type", "type": "ToastType" },
+          "size": { "prop": "size", "type": "ToastSize" }
+        },
+        "properties": {
+          "show-icon": "showIcon",
+          "show-support": "showDescription",
+          "show-action": "showAction",
+          "show-close": "showClose"
+        }
+      }
+    },
+    "Toggle": {
+      "figmaPage": "14 Toggles",
+      "figmaSets": ["toggle"],
+      "axes": {
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "active": ["false", "true"],
+        "state": ["default", "hover", "focused", "disabled"]
+      },
+      "properties": ["title", "title-value", "supporting-text", "supporting-text-value"],
+      "map": {
+        "axes": { "size": { "prop": "size", "type": "ToggleSize" } },
+        "properties": {
+          "title": "label",
+          "title-value": "label",
+          "supporting-text": "supportingText",
+          "supporting-text-value": "supportingText"
+        }
+      },
+      "accepted": {
+        "active": "attribute checked มาตรฐานของ input ชนิด checkbox ไม่ต้องมี prop ซ้ำ",
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled เป็น attribute มาตรฐานของ input"
+      }
+    },
+    "Tooltip": {
+      "figmaPage": "20 Tooltips",
+      "figmaSets": ["tooltip"],
+      "axes": {
+        "size": ["xs", "sm", "md", "lg", "xl"],
+        "placement": ["top", "bottom", "left", "right"],
+        "supporting-text": ["false", "true"]
+      },
+      "properties": [],
+      "map": {
+        "axes": {
+          "size": { "prop": "size", "type": "TooltipSize" },
+          "placement": { "prop": "placement", "type": "TooltipAxis" },
+          "supporting-text": { "prop": "description" }
+        }
+      },
+      "notes": "ชุด value-label บนหน้า 20 เป็นของเก่าที่ยังใช้แกน Dark Mode กับ Arrow แบบเดิม ไม่ใช่ต้นทางของ component นี้"
+    },
+    "Pagination": {
+      "figmaPage": "24 Pagination",
+      "figmaSets": ["pagination"],
+      "axes": { "size": ["xs", "sm", "md", "lg", "xl"] },
+      "properties": [],
+      "map": {
+        "axes": { "size": { "prop": "size", "type": "PaginationSize" } }
+      },
+      "notes": "ชุด _pagination-number-button กับ _pagination-ellipsis เป็นชิ้นส่วนข้างใน ฝั่งโค้ดไม่ได้เปิดเป็น component แยก"
+    },
+    "Table": {
+      "figmaPage": "26 Table",
+      "figmaSets": [],
+      "axes": {},
+      "properties": [],
+      "notes": "หน้า 26 ไม่มีชุดระดับตาราง มีแต่ช่องตาราง 15 ชนิดที่เป็น component เดี่ยว กับช่องของเอกสารสีอีก 5 ตัว ฝั่งโค้ดสร้างช่องจาก prop columns ชนิดช่องอยู่ที่ TableCellVariant ไม่ใช่แกน variant"
+    },
+    "Icon": {
+      "figmaPage": "02 Icon",
+      "figmaSets": [],
+      "axes": {},
+      "properties": [],
+      "notes": "ไอคอน 1,663 ตัวเป็น component เดี่ยวตัวละหนึ่งชิ้น ไม่มีแกน variant เลย ฝั่งโค้ดเลือกด้วย prop name ขนาดคุมด้วย prop size"
+    },
+    "NationHouseIcon": {
+      "figmaPage": "02 Icon",
+      "figmaSets": [],
+      "axes": {},
+      "properties": [],
+      "notes": "หมวด nation-house 150 ตัว เป็น component เดี่ยวเหมือนไอคอนอื่น ไม่มีแกน variant ส่วน prop filled เป็นของฝั่งโค้ด ไฟล์ออกแบบไม่มีแกนนี้"
+    },
     "Tag": {
       "figmaPage": "21 Tags",
-      "sets": 154,
+      "figmaSets": ["semi-rounded-tag", "pill-tag", "link-tag", "icon-tag", "circular-icon-tag", "link-icon-tag"],
       "axes": {
         "size": ["xs", "sm", "md", "lg", "xl"],
         "hierarchy": ["primary", "secondary"],
@@ -37,8 +546,7 @@
       },
       "accepted": {
         "state": "สถานะ default กับ hover มาจาก pseudo-class ของ CSS ส่วน disabled เป็น prop disabled อยู่แล้ว ไม่ต้องมีแกนให้เลือกเอง"
-      },
-      "$note": "ทรงไม่ได้เป็นแกน variant ในไฟล์ออกแบบ แต่แยกเป็นชื่อชุด เช่น pill-tag กับ circular-icon-tag ฝั่งโค้ดรวมเป็น prop shape ตัวเดียว"
+      }
     }
   }
 }
