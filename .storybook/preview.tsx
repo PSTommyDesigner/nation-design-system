@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 import { create } from 'storybook/theming'
+import { CustomDocsPage } from './CustomDocsPage'
 
 // โหลด design token เป็น CSS variable ส่วนกลาง ทุก component ต้องใช้ตัวแปรชุดนี้
 // ไม่ hard-code สี ระยะ หรือมุมโค้งเอง ตามกฎของโปรเจกต์
@@ -57,6 +58,9 @@ const preview: Preview = {
     },
     docs: {
       theme: docsTheme,
+      // เทมเพลตหน้า Docs แบบกำหนดเอง ให้ตัวอย่างสดเชื่อมกับตาราง Controls จริง
+      // ไม่ซ้ำกับภาพนิ่งด้านล่างเหมือนของเริ่มต้น ดูเหตุผลเต็มที่ CustomDocsPage.tsx
+      page: CustomDocsPage,
     },
   },
 }
