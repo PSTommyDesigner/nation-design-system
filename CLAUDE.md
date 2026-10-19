@@ -209,6 +209,19 @@ nation-design-system/
 
 **อื่นๆ:** Component `.tsx` เปลี่ยน → UI Designer อัปเดต Figma annotations Design/rename/layout ใน Figma = **ไม่กระทบโค้ด** ไม่ต้อง sync (sync เฉพาะชั้น variable/token)
 
+## Git / GitHub
+> repo หลัก = `PSTommyDesigner/nation-design-system` (Private) ตั้ง git local ครั้งแรก 2026-10-18 push ขึ้น GitHub ครั้งแรก 2026-10-19
+
+- **⚠️ VS Code integrated terminal บางเครื่องไม่ยอมให้ `git` ถาม username/password แบบ interactive ได้เลย** (เจอ 2026-10-19) อาการคือ `git push` ขึ้น `remote: Invalid username or token` ทันทีไม่มีพรอมต์ขึ้นเลยแม้แต่ครั้งเดียว ไม่ว่าจะลอง `git -c credential.helper=` ปิด helper ชั่วคราวก็ยังพังแบบเดียวกัน และ VS Code ก็ไม่เด้งกล่องถามแยกจากเทอร์มินัลด้วย (ไล่เช็คครบแล้วว่าไม่ใช่ Keychain ค้างของเก่า ไม่ใช่ credential helper ตัวอื่นแอบดัก)
+  - **ทางแก้ที่ได้ผล:** ข้ามการถามของ `git` ไปเลย เก็บ token เข้า Keychain ตรง ๆ ด้วยคำสั่งบรรทัดเดียว (แก้ `YOUR_TOKEN_HERE` เป็น token จริงก่อนกด Enter):
+    ```
+    printf 'protocol=https\nhost=github.com\nusername=<บัญชี GitHub>\npassword=YOUR_TOKEN_HERE\n\n' | git credential approve
+    ```
+  - พอเก็บเข้า Keychain ครั้งเดียวแล้ว `git push` ครั้งต่อ ๆ ไปจะหยิบไปใช้เองไม่ถามอีก (credential.helper = osxkeychain อยู่แล้วทั้ง global และ local)
+  - **ห้ามให้ token ผ่านไฟล์ที่เก็บไว้ถาวรหรือผ่านแชทเด็ดขาด** พิมพ์/วางตรงบรรทัดคำสั่งในเทอร์มินัลของผู้ใช้เองเท่านั้น (เหมือนกฎเดียวกับ `.env`)
+- **บัญชี GitHub ที่ใช้ = `PSTommyDesigner`** ตั้ง local `user.name`/`user.email` ของ repo นี้แยกจากค่า global เครื่อง (global ผูกบัญชีอื่น) ตรวจด้วย `git config user.name` / `git config user.email` ก่อนทุกครั้งที่สงสัยว่า commit จะผูกผิดบัญชี
+- **ask-first:** สร้าง repo ใหม่ / เปลี่ยน visibility / force push = ถามก่อนเสมอ
+
 ## Asana (สร้าง/แก้ task ผ่าน API)
 > project **Design Process 2026** = `1212508564439334` workspace `1202078700109283` token `ASANA_TOKEN` ใน `.env`
 
