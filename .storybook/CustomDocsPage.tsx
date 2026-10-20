@@ -145,10 +145,25 @@ const LAYOUT_CSS = `
       var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
     box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
   }
-  .docs-section > :last-child,
-  .docs-section div.sbdocs.sbdocs-preview:last-child {
-    margin-bottom: 0;
+  /* จังหวะระยะในหัวข้อ (หัวหน้าทัก 2026-10-20 ว่า margin กับ padding ดันกันจนไม่เป็นระเบียบ)
+     ต้นเหตุคือ Storybook ใส่ margin ของตัวเองไว้ทุกชั้น h3 20/8 p 16 กรอบตัวอย่าง 25/40
+     แถว Show code -40/40 ตาราง 25/40 มาซ้อนกับ gap ของ section จึงได้ระยะที่ไม่เท่ากันสักคู่
+     แก้โดยล้าง margin ของ Storybook ในหัวข้อให้เป็น 0 ทั้งหมด แล้วกำหนดระยะชุดเดียวตามไฟล์ออกแบบ
+       หัวข้อ → เนื้อหา 24 (gap ของ section)  ชื่อ story → คำอธิบาย 8 (gap ของ header)
+       คำอธิบาย → ตัวอย่าง 24  ตัวอย่าง → Show code 8  ระหว่าง story 40 (24 + 16) */
+  .docs-section .sb-anchor { display: flex; flex-direction: column; }
+  .docs-section .sb-anchor + .sb-anchor { margin-top: var(--ntg-size-space-s2-sm); }
+  .docs-section .sb-anchor > h3 { margin: 0; }
+  .docs-section .sb-anchor p { margin: var(--ntg-size-space-s1-lg) 0 0; }
+  .docs-section .sb-anchor > h3 + div.sbdocs.sbdocs-preview { margin-top: var(--ntg-size-space-s2-lg); }
+  .docs-section div.sbdocs.sbdocs-preview {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ntg-size-space-s1-lg);
+    margin: var(--ntg-size-space-s2-lg) 0 0;
   }
+  .docs-section div.sbdocs.sbdocs-preview .sbdocs-preview-actions { margin: 0; }
+  .docs-section table.docblock-argstable { margin: 0; }
   .docs-section-heading {
     margin: 0;
     font-family: var(--ntg-typography-font-family-section-heading-xl);
