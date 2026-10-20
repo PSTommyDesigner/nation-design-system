@@ -32,9 +32,11 @@ import { Title, Subtitle, Description, Canvas, Controls, Stories } from '@storyb
 // กว้างเท่าแผง addon ของ Storybook (--right-panel-width: 400px) ไม่มี token อ้างอิง
 // เพราะเป็นผังของเครื่องมือ ไม่ใช่ชิ้นงานในไฟล์ออกแบบ
 const PANEL_WIDTH = 400
-const PANEL_PADDING = 16
 const CONTENT_GAP = 32
 
+// กรอบมนรอบตารางคือเงากับมุมโค้งที่ Storybook ใส่ให้ tbody ของ .docblock-argstable
+// (คลาสมาตรฐาน ตรวจจาก bundle แล้ว) หัวหน้าสั่งถอดออกและให้ตารางชิดขอบแผง 2026-10-20
+// ตัวเลือกจึงใช้ชื่อแท็กร่วมกับคลาสให้ความจำเพาะสูงกว่ากฎ && ของ Storybook เสมอ
 const LAYOUT_CSS = `
   .sbdocs-wrapper {
     padding-right: ${PANEL_WIDTH + CONTENT_GAP}px;
@@ -46,10 +48,22 @@ const LAYOUT_CSS = `
     bottom: 0;
     width: ${PANEL_WIDTH}px;
     box-sizing: border-box;
-    padding: ${PANEL_PADDING}px;
+    padding: 0;
     overflow-y: auto;
     background: var(--ntg-color-background-general-primary);
     border-left: 1px solid var(--ntg-color-border-general-primary);
+  }
+  .docs-side-controls table.docblock-argstable {
+    width: 100%;
+    margin: 0;
+  }
+  .docs-side-controls table.docblock-argstable tbody {
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+  }
+  .docs-side-controls table.docblock-argstable tbody tr:first-child td {
+    border-top: 1px solid var(--ntg-color-border-general-primary);
   }
   .docs-side-controls table thead th:nth-child(2),
   .docs-side-controls table thead th:nth-child(3),
