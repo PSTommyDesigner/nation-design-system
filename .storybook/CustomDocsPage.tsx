@@ -126,6 +126,11 @@ const LAYOUT_CSS = `
   div.sbdocs.sbdocs-preview .docs-story {
     padding: 0;
   }
+  /* กล่องโชว์โค้ดใต้ตัวอย่างมีมุมโค้งล่างของตัวเอง (StyledSource ใส่ borderBottom*Radius =
+     appBorderRadius) พอกรอบนอกไม่โค้งแล้วจึงเห็นมุมโค้งโผล่นิดหน่อย หัวหน้าทัก 2026-10-20 */
+  div.sbdocs.sbdocs-preview .docblock-source {
+    border-radius: 0;
+  }
   /* กรอบรอบแต่ละหัวข้อ (หัวหน้าสั่ง 2026-10-20) section ในไฟล์ออกแบบไม่มีเส้นขอบ (พื้น primary
      padding 80 gap 24) จึงยืมกรอบของการ์ดในระบบมาใช้ คือขอบ 1px border/general/primary มุม 12
      ตาม info-card ส่วน padding 40 เท่ากรอบ content ของเทมเพลตหน้า 00 Document gap 24 เท่า section */
