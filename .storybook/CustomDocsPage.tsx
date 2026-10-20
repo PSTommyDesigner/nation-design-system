@@ -41,7 +41,7 @@
  */
 import { useContext } from 'react'
 import {
-  Title, Subtitle, Description, Canvas, Controls, ArgTypes, DocsStory, DocsContext, useOf,
+  Title, Subtitle, Description, Canvas, Controls, ArgTypes, Source, DocsContext, useOf, anchorBlockIdFromId,
 } from '@storybook/addon-docs/blocks'
 
 // ลำดับหัวข้อตามกฎ 8.5 ของ CLAUDE.md หัวข้อสุดท้ายรับ story ที่ไม่ได้ระบุหมวด
@@ -126,14 +126,6 @@ const LAYOUT_CSS = `
   div.sbdocs.sbdocs-preview .docs-story {
     padding: 0;
   }
-  /* กล่องโชว์โค้ดใต้ตัวอย่าง หัวหน้าสั่ง 2026-10-20 ให้มุมโค้ง 8 ทุกมุม (ของเดิม StyledSource
-     โค้งเฉพาะมุมล่าง มุมบนเป็น 0 เพราะเคยต่อกับกรอบนอก) ผมเคยอ่านผิดเป็น padding แล้วตั้งมุมเป็น 0
-     class docblock-source ไม่ได้อยู่ที่กล่องจริง จึงเลือกตามตำแหน่ง คือลูกของ .sbdocs-preview ที่ไม่ใช่
-     .docs-story ค่า 8 ยืม token มุมปุ่ม md ตัวเดียวกับที่ธีมหน้า Docs ยืมเป็น appBorderRadius */
-  div.sbdocs.sbdocs-preview .docblock-source,
-  div.sbdocs.sbdocs-preview > div:not(.docs-story) > div {
-    border-radius: var(--ntg-button-radius-top-left-md);
-  }
   /* กรอบรอบแต่ละหัวข้อ (หัวหน้าสั่ง 2026-10-20) section ในไฟล์ออกแบบไม่มีเส้นขอบ (พื้น primary
      padding 80 gap 24) จึงยืมกรอบของการ์ดในระบบมาใช้ คือขอบ 1px border/general/primary มุม 12
      ตาม info-card ส่วน padding 40 เท่ากรอบ content ของเทมเพลตหน้า 00 Document gap 24 เท่า section */
@@ -148,28 +140,38 @@ const LAYOUT_CSS = `
       var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
     box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
   }
-  /* จังหวะระยะในหัวข้อ (หัวหน้าทัก 2026-10-20 ว่า margin กับ padding ดันกันจนไม่เป็นระเบียบ
-     แล้วทักซ้ำว่ายังมี margin ค้าง) ต้นเหตุคือ Storybook ใส่ margin ของตัวเองไว้ทุกชั้น h3 20/8 p 16
-     กรอบตัวอย่าง 25/40 แถว Show code -40/40 ตาราง 25/40
-     หลักคือ ในหัวข้อไม่ใช้ margin เลย ทุกระยะมาจาก gap ของ flex ชั้นเดียวกัน จะได้ไม่มีค่าซ้อนกัน
-       .docs-section gap 24  ระหว่างหัวข้อกับเนื้อหา และระหว่าง story
-       .sb-anchor    gap 16  ระหว่างชื่อ story คำอธิบาย ตัวอย่าง และแถว Show code
-       .sbdocs-preview gap 8 ระหว่างตัวอย่างกับกล่องโค้ดตอนกด Show code */
-  .docs-section .sb-anchor { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-sm); }
-  .docs-section .sb-anchor > * { margin: 0; }
-  .docs-section .sb-anchor > h3 { margin: 0; }
-  .docs-section .sb-anchor p { margin: 0; }
-  .docs-section div.sbdocs.sbdocs-preview {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ntg-size-space-s1-lg);
-    margin: 0;
-  }
+  /* จังหวะระยะ (หัวหน้าทัก 2026-10-20 หลายรอบ) หลักคือไม่ใช้ margin เลย ทุกระยะมาจาก gap ของ flex
+     ชั้นเดียวกัน ลูกทุกตัวของบล็อกถูกตั้ง margin 0 ทับค่าของ Storybook (h3 20/8 p 16 กรอบ 25/40
+     โค้ด 25/40)
+       .docs-hero      gap 16  ส่วนบนสุด ชื่อ component คำโปรย คำอธิบาย ตัวอย่างหลัก กล่องโค้ด
+       .docs-section   gap 24  ระหว่างหัวข้อกับเนื้อหา และระหว่าง story
+       .docs-story     gap 16  ชื่อ story คำอธิบาย ตัวอย่าง กล่องโค้ด */
+  .docs-hero, .docs-story-block { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-sm); }
+  .docs-hero > *, .docs-story-block > * { margin: 0; }
+  .docs-hero p, .docs-story-block p { margin: 0; }
+  .docs-section div.sbdocs.sbdocs-preview, .docs-hero div.sbdocs.sbdocs-preview { margin: 0; }
   .docs-section table.docblock-argstable { margin: 0; }
-  /* แถว Show code เป็นพี่น้องถัดจาก .sbdocs-preview (ไม่ได้อยู่ข้างใน) Storybook ให้ margin-top -40
-     เพื่อดึงขึ้นไปซ้อนในระยะล่าง 40 ของกรอบเดิม พอกรอบไม่มีระยะล่างแล้วแถวจึงทับตัวอย่าง
-     (หัวหน้าทัก 2026-10-20 รอบก่อนผมเขียนตัวเลือกผิดชั้นจึงไม่ติด) ระยะมาจาก gap ของ .sb-anchor */
-  .docs-section .sb-anchor > .sbdocs-preview-actions { margin: 0; }
+  /* ชื่อ story ลดขนาดจาก h3 ของ Storybook (24px) เป็น preset title/md (หัวหน้าสั่ง 2026-10-20) */
+  .docs-story-title {
+    margin: 0;
+    font-family: var(--ntg-typography-font-family-title-md);
+    font-size: var(--ntg-typography-font-size-title-md);
+    line-height: var(--ntg-typography-line-height-title-md);
+    font-weight: var(--ntg-typography-font-weight-title-md);
+    letter-spacing: var(--ntg-typography-letter-space-title-md);
+    color: var(--ntg-color-text-general-heading);
+  }
+  /* กล่องโค้ด (หัวหน้าสั่ง 2026-10-20) แสดงตลอด ไม่มีปุ่ม Show/Hide code และเป็นโทนสว่าง
+     ทำโดยปิด source ของ Canvas (sourceState none ทำให้แถวปุ่มหายทั้งแถว) แล้ววางบล็อก Source
+     แยกต่างหากใต้ตัวอย่าง dark=false ใช้ธีมสว่าง พื้น general/secondary ขอบ 1px general/primary
+     มุม 8 เท่ากับที่ธีมหน้า Docs ยืมจากมุมปุ่ม md */
+  .docs-code > * {
+    margin: 0;
+    box-shadow: none;
+    border: 1px solid var(--ntg-color-border-general-primary);
+    border-radius: var(--ntg-button-radius-top-left-md);
+    background: var(--ntg-color-background-general-secondary);
+  }
   /* Storybook ใส่ border 8px โปร่งใส !important รอบชิ้นงานใน .innerZoomElementWrapper (layout padded)
      ทำให้ชิ้นงานมีขอบล่องหน 8px ทุกด้าน หัวหน้าสั่งเอาออก 2026-10-20 ต้องใช้ !important ตอบ */
   div.sbdocs.sbdocs-preview .innerZoomElementWrapper > * { border: 0 !important; }
@@ -218,7 +220,14 @@ const GroupedStories = () => {
             <h2 className="docs-section-heading">{section}</h2>
             {note && <p className="docs-section-note">{note}</p>}
             {list.map((story) => (
-              <DocsStory key={story.id} of={story.moduleExport} />
+              <div key={story.id} id={anchorBlockIdFromId(story.id)} className="docs-story-block">
+                <h3 className="docs-story-title">{story.name}</h3>
+                <Description of={story.moduleExport} />
+                <Canvas of={story.moduleExport} sourceState="none" />
+                <div className="docs-code">
+                  <Source of={story.moduleExport} dark={false} />
+                </div>
+              </div>
             ))}
           </section>
         )
@@ -230,10 +239,15 @@ const GroupedStories = () => {
 export const CustomDocsPage = () => (
   <>
     <style>{LAYOUT_CSS}</style>
-    <Title />
-    <Subtitle />
-    <Description />
-    <Canvas />
+    <div className="docs-hero">
+      <Title />
+      <Subtitle />
+      <Description />
+      <Canvas sourceState="none" />
+      <div className="docs-code">
+        <Source dark={false} />
+      </div>
+    </div>
     <GroupedStories />
     <section className="docs-section">
       <h2 className="docs-section-heading">Props</h2>
