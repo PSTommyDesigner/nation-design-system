@@ -19,14 +19,14 @@
   align-items: center;
   gap: 0;
 }
-/* หัวหน้าสั่งลดขนาดป้ายกำกับใต้ตัวอย่างลงเป็น preset micro (ตัวเล็กสุดในระบบ ไม่มี preset
-   ชื่อ meta-micro จริง ค้นจาก tokens/tokens.json/typography.json แล้วมีแต่ "micro" เฉย ๆ) */
+/* ป้ายกำกับใต้ตัวอย่าง preset label/xs (หัวหน้าสั่ง 2026-10-20 รอบสอง หลัง micro 8px
+   เล็กเกินอ่าน เปลี่ยนเป็น label/xs ซึ่งยังเล็กกว่า label/md เดิมแต่อ่านได้) */
 .ntg-docs-labeled > .ntg-docs-labeled-text {
-  font-family: var(--ntg-typography-font-family-micro);
-  font-size: var(--ntg-typography-font-size-micro);
-  line-height: var(--ntg-typography-line-height-micro);
-  font-weight: var(--ntg-typography-font-weight-micro);
-  letter-spacing: var(--ntg-typography-letter-space-micro);
+  font-family: var(--ntg-typography-font-family-label-xs);
+  font-size: var(--ntg-typography-font-size-label-xs);
+  line-height: var(--ntg-typography-line-height-label-xs);
+  font-weight: var(--ntg-typography-font-weight-label-xs);
+  letter-spacing: var(--ntg-typography-letter-space-label-xs);
   color: var(--ntg-color-text-general-text);
 }
 
