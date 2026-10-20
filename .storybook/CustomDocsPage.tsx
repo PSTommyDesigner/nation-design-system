@@ -128,8 +128,19 @@ const LAYOUT_CSS = `
   }
   /* กล่องโชว์โค้ดใต้ตัวอย่างมีมุมโค้งล่างของตัวเอง (StyledSource ใส่ borderBottom*Radius =
      appBorderRadius) พอกรอบนอกไม่โค้งแล้วจึงเห็นมุมโค้งโผล่นิดหน่อย หัวหน้าทัก 2026-10-20 */
-  div.sbdocs.sbdocs-preview .docblock-source {
+  div.sbdocs.sbdocs-preview .docblock-source,
+  div.sbdocs.sbdocs-preview > div:not(.docs-story) > div {
     border-radius: 0;
+  }
+  /* หัวหน้าสั่ง 2026-10-20 ให้กล่องโค้ดมี padding 8 ทุกด้าน ของเดิมคือ pre.prismjs ใส่
+     padding เท่า layoutMargin ของธีม และคอลัมน์โค้ดข้างในเติม padding ซ้ายขวาอีกชั้น
+     (ตัวเลือกบรรทัดแรกเผื่อกรณี class docblock-source ไม่ได้อยู่ที่กล่อง ซึ่งเจอจริงใน DevTools) */
+  div.sbdocs.sbdocs-preview pre.prismjs {
+    padding: var(--ntg-size-space-s1-lg);
+  }
+  div.sbdocs.sbdocs-preview pre.prismjs > div {
+    padding-left: 0;
+    padding-right: 0;
   }
   /* กรอบรอบแต่ละหัวข้อ (หัวหน้าสั่ง 2026-10-20) section ในไฟล์ออกแบบไม่มีเส้นขอบ (พื้น primary
      padding 80 gap 24) จึงยืมกรอบของการ์ดในระบบมาใช้ คือขอบ 1px border/general/primary มุม 12
