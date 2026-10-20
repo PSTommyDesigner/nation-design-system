@@ -145,27 +145,28 @@ const LAYOUT_CSS = `
       var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
     box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
   }
-  /* จังหวะระยะในหัวข้อ (หัวหน้าทัก 2026-10-20 ว่า margin กับ padding ดันกันจนไม่เป็นระเบียบ)
-     ต้นเหตุคือ Storybook ใส่ margin ของตัวเองไว้ทุกชั้น h3 20/8 p 16 กรอบตัวอย่าง 25/40
-     แถว Show code -40/40 ตาราง 25/40 มาซ้อนกับ gap ของ section จึงได้ระยะที่ไม่เท่ากันสักคู่
-     แก้โดยล้าง margin ของ Storybook ในหัวข้อให้เป็น 0 ทั้งหมด แล้วกำหนดระยะชุดเดียวตามไฟล์ออกแบบ
-       หัวข้อ → เนื้อหา 24 (gap ของ section)  ชื่อ story → คำอธิบาย 8 (gap ของ header)
-       คำอธิบาย → ตัวอย่าง 24  ตัวอย่าง → Show code 8  ระหว่าง story 40 (24 + 16) */
-  .docs-section .sb-anchor { display: flex; flex-direction: column; }
-  .docs-section .sb-anchor + .sb-anchor { margin-top: var(--ntg-size-space-s2-sm); }
+  /* จังหวะระยะในหัวข้อ (หัวหน้าทัก 2026-10-20 ว่า margin กับ padding ดันกันจนไม่เป็นระเบียบ
+     แล้วทักซ้ำว่ายังมี margin ค้าง) ต้นเหตุคือ Storybook ใส่ margin ของตัวเองไว้ทุกชั้น h3 20/8 p 16
+     กรอบตัวอย่าง 25/40 แถว Show code -40/40 ตาราง 25/40
+     หลักคือ ในหัวข้อไม่ใช้ margin เลย ทุกระยะมาจาก gap ของ flex ชั้นเดียวกัน จะได้ไม่มีค่าซ้อนกัน
+       .docs-section gap 24  ระหว่างหัวข้อกับเนื้อหา และระหว่าง story
+       .sb-anchor    gap 16  ระหว่างชื่อ story คำอธิบาย ตัวอย่าง และแถว Show code
+       .sbdocs-preview gap 8 ระหว่างตัวอย่างกับกล่องโค้ดตอนกด Show code */
+  .docs-section .sb-anchor { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-sm); }
+  .docs-section .sb-anchor > * { margin: 0; }
   .docs-section .sb-anchor > h3 { margin: 0; }
-  .docs-section .sb-anchor p { margin: var(--ntg-size-space-s1-lg) 0 0; }
-  .docs-section .sb-anchor > h3 + div.sbdocs.sbdocs-preview { margin-top: var(--ntg-size-space-s2-lg); }
+  .docs-section .sb-anchor p { margin: 0; }
   .docs-section div.sbdocs.sbdocs-preview {
     display: flex;
     flex-direction: column;
     gap: var(--ntg-size-space-s1-lg);
-    margin: var(--ntg-size-space-s2-lg) 0 0;
+    margin: 0;
   }
+  .docs-section table.docblock-argstable { margin: 0; }
   /* แถว Show code เป็นพี่น้องถัดจาก .sbdocs-preview (ไม่ได้อยู่ข้างใน) Storybook ให้ margin-top -40
      เพื่อดึงขึ้นไปซ้อนในระยะล่าง 40 ของกรอบเดิม พอกรอบไม่มีระยะล่างแล้วแถวจึงทับตัวอย่าง
-     (หัวหน้าทัก 2026-10-20 รอบก่อนผมเขียนตัวเลือกผิดชั้นจึงไม่ติด) */
-  .docs-section .sb-anchor > .sbdocs-preview-actions { margin: var(--ntg-size-space-s1-lg) 0 0; }
+     (หัวหน้าทัก 2026-10-20 รอบก่อนผมเขียนตัวเลือกผิดชั้นจึงไม่ติด) ระยะมาจาก gap ของ .sb-anchor */
+  .docs-section .sb-anchor > .sbdocs-preview-actions { margin: 0; }
   /* Storybook ใส่ border 8px โปร่งใส !important รอบชิ้นงานใน .innerZoomElementWrapper (layout padded)
      ทำให้ชิ้นงานมีขอบล่องหน 8px ทุกด้าน หัวหน้าสั่งเอาออก 2026-10-20 ต้องใช้ !important ตอบ */
   div.sbdocs.sbdocs-preview .innerZoomElementWrapper > * { border: 0 !important; }
