@@ -27,9 +27,6 @@
  *    ส่วนประกอบ · ชุด · ขนาด · สถานะ · ควรไม่ควร
  *    - แต่ละ story บอกว่าตัวเองอยู่หัวข้อไหนด้วย `parameters.docs.section` ใน stories.tsx
  *      เทมเพลตกลางตัวนี้จัดกลุ่มให้เอง ไม่ต้องเขียน MDX แยกทีละ component
- *    - `name` ของทุก story ถูกตั้งเป็นชื่อ component ตรงๆ (เช่น 'Tag') เพราะ Storybook ใช้ค่านี้
- *      เป็นชื่อลิงก์ย่อยใน sidebar ด้วย ตั้งไว้ยาวๆ เป็นภาษาไทยแล้ว sidebar รกและซ้ำกับหน้า Docs
- *      (หัวหน้าทัก 2026-10-20) หัวข้อจริงที่แสดงในหน้า Docs ใช้ `parameters.docs.title` แทน
  *    - หัวข้อที่ไม่มี story จะไม่ขึ้นเลย ไม่มีหัวข้อว่าง
  *    - หัวข้อที่ไม่มีของจริงให้โชว์ (เช่น สถานะ ของ Badge ที่กดไม่ได้) ห้ามยัดตัวอย่างปลอม
  *      ให้ meta ใส่เหตุผลไว้ที่ `parameters.docs.sectionNotes[หัวข้อ]` แล้วหน้าจะแสดงเหตุผลแทน
@@ -241,7 +238,7 @@ const GroupedStories = () => {
             {list.map((story) => (
               <div key={story.id} id={anchorBlockIdFromId(story.id)} className="docs-story-block">
                 <div className="docs-story-header">
-                  <h3 className="docs-story-title">{(story.parameters.docs?.title as string | undefined) ?? story.name}</h3>
+                  <h3 className="docs-story-title">{story.name}</h3>
                   <Description of={story.moduleExport} />
                 </div>
                 <Canvas of={story.moduleExport} sourceState="none" />
