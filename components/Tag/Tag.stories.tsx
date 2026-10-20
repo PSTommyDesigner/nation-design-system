@@ -82,21 +82,57 @@ export const Hierarchies: Story = {
     </Preview>
   ),
 }
-export const Shapes: Story = {
-  name: 'ทรง 4 แบบ',
-  parameters: { docs: { section: 'ชุด' } },
+// 14 ชนิดจริงของ Tag (ตรวจจากไฟล์ออกแบบ 2026-10-20) หัวข้อ Variants ของหน้า 21 Tags
+// เขียนว่า "11 ชนิด" แต่นับไม่ครบ ขาดกลุ่มไอคอนล้วน 3 ชุด (icon-tag, circular-icon-tag,
+// link-icon-tag) ค้นข้อความทั้งเอกสารแล้วไม่พบคำว่า icon-tag เลยสักจุด จึงยึดของจริงจาก
+// tokens/figma-components.json (figmaSets) แทนตัวเลขในเอกสารที่ยังไม่ได้แก้
+// งานแก้ไฟล์ออกแบบเป็นคนละงาน พักไว้คุยทีหลังตามที่หัวหน้าสั่ง
+export const AllTypes: Story = {
+  name: '14 ชนิด',
+  parameters: {
+    docs: {
+      section: 'ชุด',
+      description: {
+        story:
+          'ข้อความทรงมุมมนและทรงแคปซูลมีส่วนนำหน้าได้ 5 แบบเท่ากัน (เปล่า ตัวเลข รูป checkbox indicator) บวกแท็กแบบลิงก์อีก 1 ชนิด รวมกลุ่มข้อความ 11 ชนิด ส่วนโหมดไอคอนล้วนมี 3 ทรง (มุมมน กลม ลิงก์) ไม่มีทรงแคปซูล รวมทั้งหมด 14 ชนิด',
+      },
+    },
+  },
   render: () => (
-    <Preview>
-      <Labeled label="semi-rounded"><Tag shape="semi-rounded">การเมือง</Tag></Labeled>
-      <Labeled label="pill"><Tag shape="pill">การเมือง</Tag></Labeled>
-      <Labeled label="circular"><Tag shape="circular" iconOnly icon={<Icon name="close" size="100%" />} label="ปิด">ปิด</Tag></Labeled>
-      <Labeled label="link"><Tag shape="link">#เศรษฐกิจ</Tag></Labeled>
-    </Preview>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <Labeled label="ทรงมุมมน 5 ชนิด">
+        <Preview>
+          <Labeled label="เปล่า"><Tag shape="semi-rounded">การเมือง</Tag></Labeled>
+          <Labeled label="ตัวเลข"><Tag shape="semi-rounded" leading="number" count={3}>แจ้งเตือน</Tag></Labeled>
+          <Labeled label="รูป"><Tag shape="semi-rounded" leading="image" imageSrc="">การเมือง</Tag></Labeled>
+          <Labeled label="checkbox"><Tag shape="semi-rounded" leading="checkbox" checked>การเมือง</Tag></Labeled>
+          <Labeled label="indicator"><Tag shape="semi-rounded" leading="indicator">การเมือง</Tag></Labeled>
+        </Preview>
+      </Labeled>
+      <Labeled label="ทรงแคปซูล 5 ชนิด">
+        <Preview>
+          <Labeled label="เปล่า"><Tag shape="pill">การเมือง</Tag></Labeled>
+          <Labeled label="ตัวเลข"><Tag shape="pill" leading="number" count={3}>แจ้งเตือน</Tag></Labeled>
+          <Labeled label="รูป"><Tag shape="pill" leading="image" imageSrc="">การเมือง</Tag></Labeled>
+          <Labeled label="checkbox"><Tag shape="pill" leading="checkbox" checked>การเมือง</Tag></Labeled>
+          <Labeled label="indicator"><Tag shape="pill" leading="indicator">การเมือง</Tag></Labeled>
+        </Preview>
+      </Labeled>
+      <Labeled label="ลิงก์ 1 ชนิด">
+        <Preview>
+          <Labeled label="link"><Tag shape="link">#เศรษฐกิจ</Tag></Labeled>
+        </Preview>
+      </Labeled>
+      <Labeled label="ไอคอนล้วน 3 ชนิด (ไม่มีทรงแคปซูล)">
+        <Preview>
+          <Labeled label="มุมมน"><Tag shape="semi-rounded" iconOnly icon={<Icon name="star" size="100%" />} label="รายการโปรด">{undefined}</Tag></Labeled>
+          <Labeled label="กลม"><Tag shape="circular" iconOnly icon={<Icon name="close" size="100%" />} label="ปิด">{undefined}</Tag></Labeled>
+          <Labeled label="ลิงก์"><Tag shape="link" iconOnly icon={<Icon name="close" size="100%" />} label="ปิด">{undefined}</Tag></Labeled>
+        </Preview>
+      </Labeled>
+    </div>
   ),
 }
-export const Secondary: Story = { args: { hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
-export const Pill: Story = { args: { shape: 'pill' }, parameters: { docs: { section: 'ชุด' } } }
-export const LinkStyle: Story = { args: { shape: 'link', children: '#เศรษฐกิจ' }, parameters: { docs: { section: 'ชุด' } } }
 
 // ── ขนาด ────────────────────────────────────────────────────
 const SIZES: TagSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
@@ -134,6 +170,27 @@ export const States: Story = {
       <Labeled label="ปกติ"><Tag>การเมือง</Tag></Labeled>
       <Labeled label="กดได้ (ชี้ / Tab)"><Tag onSelect={() => undefined}>การเมือง</Tag></Labeled>
       <Labeled label="disabled"><Tag disabled closable>การเมือง</Tag></Labeled>
+    </Preview>
+  ),
+}
+
+export const DefaultGray: Story = {
+  name: 'โหมดเทา',
+  parameters: {
+    docs: {
+      section: 'สถานะ',
+      description: {
+        story:
+          'ทุกตระกูลมีโหมดเทา (defaultGray) คือแสดงสีเทาตอนอยู่เฉยแล้วขึ้นสีตระกูลจริงตอนชี้ (ลองเอาเมาส์ชี้ที่ตัวอย่าง) ยกเว้นตระกูล brand กับ neutral ที่ไม่มีโหมดนี้ เพราะ brand เป็นสีหลักต้องเห็นชัดตลอด ส่วน neutral เป็นสีเทาอยู่แล้ว ส่ง defaultGray กับ neutral ได้แต่ไม่มีผล',
+      },
+    },
+  },
+  render: () => (
+    <Preview>
+      <Labeled label="red ปกติ"><Tag family="red">การเมือง</Tag></Labeled>
+      <Labeled label="red โหมดเทา"><Tag family="red" defaultGray>การเมือง</Tag></Labeled>
+      <Labeled label="blue ปกติ"><Tag family="blue" hierarchy="secondary">การเมือง</Tag></Labeled>
+      <Labeled label="blue โหมดเทา"><Tag family="blue" hierarchy="secondary" defaultGray>การเมือง</Tag></Labeled>
     </Preview>
   ),
 }
