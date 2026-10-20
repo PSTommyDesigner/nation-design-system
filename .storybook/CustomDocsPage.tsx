@@ -113,6 +113,19 @@ const LAYOUT_CSS = `
   .docs-side-controls table tbody td:nth-child(3) {
     display: none;
   }
+  /* ถอดกรอบที่ครอบตัวอย่าง component (หัวหน้าสั่ง 2026-10-20) Storybook วาดเป็น border +
+     box-shadow + มุมโค้ง + พื้นสีบน .sbdocs-preview (getBlockBackgroundStyle) และใส่ padding
+     32px 22px ให้ .docs-story ข้างใน ล้างทั้งสองชั้นให้ตัวอย่างวางบนพื้นเอกสารตรง ๆ
+     แถว Show code ด้านล่างยังอยู่ ตัวเลือกใช้สองคลาสให้ชนะกฎของ emotion */
+  div.sbdocs.sbdocs-preview {
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+  }
+  div.sbdocs.sbdocs-preview .docs-story {
+    padding: 0;
+  }
   .docs-section {
     display: flex;
     flex-direction: column;
