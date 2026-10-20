@@ -15,38 +15,39 @@ export default meta
 
 type Story = StoryObj<typeof Tag>
 
-export const Default: Story = {}
+export const Default: Story = { name: 'Tag' }
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
-  name: 'ส่วนประกอบทั้งหมด',
+  name: 'Tag',
   args: { leftIcon: <Icon name="star" size="100%" />, closable: true },
   parameters: {
     docs: {
+      title: 'ส่วนประกอบทั้งหมด',
       section: 'ส่วนประกอบ',
       description: { story: 'แท็กประกอบด้วย 3 ส่วน คือ ไอคอนนำหน้า (leftIcon) ข้อความ (children) และปุ่มปิด (closable) ไอคอนกับปุ่มปิดเป็นส่วนเสริม ใส่หรือไม่ใส่ก็ได้ ข้อความเป็นส่วนที่ต้องมีเสมอ ยกเว้นโหมดไอคอนล้วน' },
     },
   },
 }
 export const WithLeftIcon: Story = {
-  name: 'ไอคอนนำหน้า',
+  name: 'Tag',
   args: { leftIcon: <Icon name="star" size="100%" /> },
-  parameters: { docs: { section: 'ส่วนประกอบ' } },
+  parameters: { docs: { title: 'ไอคอนนำหน้า', section: 'ส่วนประกอบ' } },
 }
 export const Closable: Story = {
-  name: 'ปุ่มปิด',
+  name: 'Tag',
   args: { closable: true },
-  parameters: { docs: { section: 'ส่วนประกอบ' } },
+  parameters: { docs: { title: 'ปุ่มปิด', section: 'ส่วนประกอบ' } },
 }
 export const WithNumber: Story = {
-  name: 'ตัวเลขนำหน้า',
+  name: 'Tag',
   args: { leading: 'number', count: 12, children: 'แจ้งเตือน' },
-  parameters: { docs: { section: 'ส่วนประกอบ' } },
+  parameters: { docs: { title: 'ตัวเลขนำหน้า', section: 'ส่วนประกอบ' } },
 }
 export const IconOnly: Story = {
-  name: 'ไอคอนล้วน',
+  name: 'Tag',
   args: { children: undefined, iconOnly: true, icon: <Icon name="close" size="100%" />, label: 'ปิด' },
-  parameters: { docs: { section: 'ส่วนประกอบ' } },
+  parameters: { docs: { title: 'ไอคอนล้วน', section: 'ส่วนประกอบ' } },
 }
 
 // ── ชุด ─────────────────────────────────────────────────────
@@ -55,8 +56,8 @@ const FAMILIES: TagFamily[] = [
 ]
 
 export const AllFamilies: Story = {
-  name: 'ตระกูลสี 11 ตระกูล',
-  parameters: { docs: { section: 'ชุด' } },
+  name: 'Tag',
+  parameters: { docs: { title: 'ตระกูลสี 11 ตระกูล', section: 'ชุด' } },
   render: () => (
     <Preview>
       {FAMILIES.map((family) => (
@@ -68,9 +69,10 @@ export const AllFamilies: Story = {
   ),
 }
 export const Hierarchies: Story = {
-  name: 'ลำดับชั้น primary กับ secondary',
+  name: 'Tag',
   parameters: {
     docs: {
+      title: 'ลำดับชั้น primary กับ secondary',
       section: 'ชุด',
       description: { story: 'primary พื้นทึบใช้เมื่อแท็กเป็นจุดเด่นของบรรทัด secondary พื้นโปร่งมีขอบ ใช้เมื่อมีแท็กหลายใบอยู่ด้วยกัน' },
     },
@@ -83,8 +85,8 @@ export const Hierarchies: Story = {
   ),
 }
 export const Shapes: Story = {
-  name: 'ทรง 4 แบบ',
-  parameters: { docs: { section: 'ชุด' } },
+  name: 'Tag',
+  parameters: { docs: { title: 'ทรง 4 แบบ', section: 'ชุด' } },
   render: () => (
     <Preview>
       <Labeled label="semi-rounded"><Tag shape="semi-rounded">การเมือง</Tag></Labeled>
@@ -94,17 +96,18 @@ export const Shapes: Story = {
     </Preview>
   ),
 }
-export const Secondary: Story = { args: { hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
-export const Pill: Story = { args: { shape: 'pill' }, parameters: { docs: { section: 'ชุด' } } }
-export const LinkStyle: Story = { args: { shape: 'link', children: '#เศรษฐกิจ' }, parameters: { docs: { section: 'ชุด' } } }
+export const Secondary: Story = { name: 'Tag', args: { hierarchy: 'secondary' }, parameters: { docs: { title: 'Secondary', section: 'ชุด' } } }
+export const Pill: Story = { name: 'Tag', args: { shape: 'pill' }, parameters: { docs: { title: 'Pill', section: 'ชุด' } } }
+export const LinkStyle: Story = { name: 'Tag', args: { shape: 'link', children: '#เศรษฐกิจ' }, parameters: { docs: { title: 'Link Style', section: 'ชุด' } } }
 
 // ── ขนาด ────────────────────────────────────────────────────
 const SIZES: TagSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 export const Sizes: Story = {
-  name: 'ขนาด 5 ขั้น',
+  name: 'Tag',
   parameters: {
     docs: {
+      title: 'ขนาด 5 ขั้น',
       section: 'ขนาด',
       description: { story: 'ขนาดคุมด้วยสูตรใน tokens/scale/tag.mjs ความสูงกับช่องไฟไล่ตามขั้นเดียวกันทุกตระกูลและทุกทรง' },
     },
@@ -122,9 +125,10 @@ export const Sizes: Story = {
 
 // ── สถานะ ───────────────────────────────────────────────────
 export const States: Story = {
-  name: 'ปกติ กดได้ และ disabled',
+  name: 'Tag',
   parameters: {
     docs: {
+      title: 'ปกติ กดได้ และ disabled',
       section: 'สถานะ',
       description: { story: 'แท็กที่ส่ง onSelect จะรับโฟกัสและกดได้ ลองเอาเมาส์ชี้ (hover) หรือกด Tab (focus) ที่ตัวอย่างได้เลย สถานะเหล่านี้เกิดจากการใช้งานจริง จึงไม่ทำเป็นภาพนิ่ง ส่วน disabled ปิดทั้งการกดและปุ่มปิด' },
     },
@@ -140,10 +144,10 @@ export const States: Story = {
 
 // ── ควรไม่ควร ───────────────────────────────────────────────
 export const GoodAndBad: Story = {
-  name: 'ควรและไม่ควร',
+  name: 'Tag',
   // ตัวอย่างในหัวข้อนี้ประกอบจากหลายชิ้นย่อยในบล็อกเดียว ไม่ใช่การพรีวิวการใช้งาน component
   // ตัวเดียวแบบหัวข้ออื่น จึงไม่ต้องมีกล่องโค้ด (หัวหน้าสั่ง 2026-10-20)
-  parameters: { docs: { section: 'ควรไม่ควร', hideCode: true } },
+  parameters: { docs: { title: 'ควรและไม่ควร', section: 'ควรไม่ควร', hideCode: true } },
   render: () => (
     <DoDont>
       <Do text="ใช้คำสั้น 1 ถึง 2 คำ เช่น หมวดข่าวหรือคำค้น ให้กวาดตาอ่านทีละหลายใบได้">

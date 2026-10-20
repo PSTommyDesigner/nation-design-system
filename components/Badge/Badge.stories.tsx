@@ -22,23 +22,24 @@ export default meta
 
 type Story = StoryObj<typeof Badge>
 
-export const Default: Story = {}
+export const Default: Story = { name: 'Badge' }
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
-  name: 'ส่วนประกอบทั้งหมด',
+  name: 'Badge',
   args: { trailingIcon: 'chevron-right' },
   parameters: {
     docs: {
+      title: 'ส่วนประกอบทั้งหมด',
       section: 'ส่วนประกอบ',
       description: { story: 'ป้ายประกอบด้วย 2 ส่วน คือ ข้อความ (children) กับไอคอนท้ายข้อความ (trailingIcon) ไอคอนเป็นส่วนเสริม ถ้าไม่ส่งข้อความแต่ส่ง icon จะกลายเป็นป้ายไอคอนล้วน' },
     },
   },
 }
 export const IconOnly: Story = {
-  name: 'ไอคอนล้วน',
+  name: 'Badge',
   args: { children: undefined, icon: 'check', shape: 'circular', family: 'brand', label: 'ยืนยันแล้ว' },
-  parameters: { docs: { section: 'ส่วนประกอบ' } },
+  parameters: { docs: { title: 'ไอคอนล้วน', section: 'ส่วนประกอบ' } },
 }
 
 // ── ชุด ─────────────────────────────────────────────────────
@@ -48,8 +49,8 @@ const FAMILIES: BadgeFamily[] = [
 const HIERARCHIES: BadgeHierarchy[] = ['primary', 'secondary', 'tertiary', 'quaternary']
 
 export const AllFamilies: Story = {
-  name: 'ตระกูลสี 11 ตระกูล',
-  parameters: { docs: { section: 'ชุด' } },
+  name: 'Badge',
+  parameters: { docs: { title: 'ตระกูลสี 11 ตระกูล', section: 'ชุด' } },
   render: () => (
     <Preview>
       {FAMILIES.map((family) => (
@@ -61,9 +62,10 @@ export const AllFamilies: Story = {
   ),
 }
 export const Hierarchies: Story = {
-  name: 'ลำดับชั้น 4 ขั้น',
+  name: 'Badge',
   parameters: {
     docs: {
+      title: 'ลำดับชั้น 4 ขั้น',
       section: 'ชุด',
       description: { story: 'ไล่จากเด่นสุดไปเบาสุด primary พื้นทึบ secondary พื้นอ่อน tertiary พื้นโปร่งมีขอบ quaternary ข้อความล้วน' },
     },
@@ -79,8 +81,8 @@ export const Hierarchies: Story = {
   ),
 }
 export const Shapes: Story = {
-  name: 'ทรง 4 แบบ',
-  parameters: { docs: { section: 'ชุด' } },
+  name: 'Badge',
+  parameters: { docs: { title: 'ทรง 4 แบบ', section: 'ชุด' } },
   render: () => (
     <Preview>
       <Labeled label="semi-rounded"><Badge shape="semi-rounded">ด่วน</Badge></Labeled>
@@ -90,21 +92,23 @@ export const Shapes: Story = {
     </Preview>
   ),
 }
-export const Secondary: Story = { args: { hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
-export const Tertiary: Story = { args: { hierarchy: 'tertiary' }, parameters: { docs: { section: 'ชุด' } } }
-export const Pill: Story = { args: { shape: 'pill', hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
+export const Secondary: Story = { name: 'Badge', args: { hierarchy: 'secondary' }, parameters: { docs: { title: 'Secondary', section: 'ชุด' } } }
+export const Tertiary: Story = { name: 'Badge', args: { hierarchy: 'tertiary' }, parameters: { docs: { title: 'Tertiary', section: 'ชุด' } } }
+export const Pill: Story = { name: 'Badge', args: { shape: 'pill', hierarchy: 'secondary' }, parameters: { docs: { title: 'Pill', section: 'ชุด' } } }
 export const LinkStyle: Story = {
+  name: 'Badge',
   args: { shape: 'link', children: 'อ่านต่อ', family: 'blue' },
-  parameters: { docs: { section: 'ชุด' } },
+  parameters: { docs: { title: 'Link Style', section: 'ชุด' } },
 }
 
 // ── ขนาด ────────────────────────────────────────────────────
 const SIZES: BadgeSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 export const Sizes: Story = {
-  name: 'ขนาด 5 ขั้น',
+  name: 'Badge',
   parameters: {
     docs: {
+      title: 'ขนาด 5 ขั้น',
       section: 'ขนาด',
       description: { story: 'ขนาดคุมด้วยสูตรใน tokens/scale/badge.mjs ความสูงกับช่องไฟไล่ตามขั้นเดียวกันทุกตระกูลและทุกทรง' },
     },
@@ -122,10 +126,10 @@ export const Sizes: Story = {
 
 // ── ควรไม่ควร ───────────────────────────────────────────────
 export const GoodAndBad: Story = {
-  name: 'ควรและไม่ควร',
+  name: 'Badge',
   // ตัวอย่างในหัวข้อนี้ประกอบจากหลายชิ้นย่อยในบล็อกเดียว ไม่ใช่การพรีวิวการใช้งาน component
   // ตัวเดียวแบบหัวข้ออื่น จึงไม่ต้องมีกล่องโค้ด (หัวหน้าสั่ง 2026-10-20)
-  parameters: { docs: { section: 'ควรไม่ควร', hideCode: true } },
+  parameters: { docs: { title: 'ควรและไม่ควร', section: 'ควรไม่ควร', hideCode: true } },
   render: () => (
     <DoDont>
       <Do text="ใช้ป้ายบอกสถานะหรือความสำคัญของเนื้อหา เช่น ด่วน ใหม่ ไลฟ์ คำเดียวจบ">
