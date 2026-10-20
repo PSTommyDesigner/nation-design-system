@@ -162,7 +162,13 @@ const LAYOUT_CSS = `
     gap: var(--ntg-size-space-s1-lg);
     margin: var(--ntg-size-space-s2-lg) 0 0;
   }
-  .docs-section div.sbdocs.sbdocs-preview .sbdocs-preview-actions { margin: 0; }
+  /* แถว Show code เป็นพี่น้องถัดจาก .sbdocs-preview (ไม่ได้อยู่ข้างใน) Storybook ให้ margin-top -40
+     เพื่อดึงขึ้นไปซ้อนในระยะล่าง 40 ของกรอบเดิม พอกรอบไม่มีระยะล่างแล้วแถวจึงทับตัวอย่าง
+     (หัวหน้าทัก 2026-10-20 รอบก่อนผมเขียนตัวเลือกผิดชั้นจึงไม่ติด) */
+  .docs-section .sb-anchor > .sbdocs-preview-actions { margin: var(--ntg-size-space-s1-lg) 0 0; }
+  /* Storybook ใส่ border 8px โปร่งใส !important รอบชิ้นงานใน .innerZoomElementWrapper (layout padded)
+     ทำให้ชิ้นงานมีขอบล่องหน 8px ทุกด้าน หัวหน้าสั่งเอาออก 2026-10-20 ต้องใช้ !important ตอบ */
+  div.sbdocs.sbdocs-preview .innerZoomElementWrapper > * { border: 0 !important; }
   .docs-section table.docblock-argstable { margin: 0; }
   .docs-section-heading {
     margin: 0;
