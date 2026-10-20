@@ -17,14 +17,16 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--ntg-size-space-s1-md);
+  gap: 0;
 }
+/* หัวหน้าสั่งลดขนาดป้ายกำกับใต้ตัวอย่างลงเป็น preset micro (ตัวเล็กสุดในระบบ ไม่มี preset
+   ชื่อ meta-micro จริง ค้นจาก tokens/tokens.json/typography.json แล้วมีแต่ "micro" เฉย ๆ) */
 .ntg-docs-labeled > .ntg-docs-labeled-text {
-  font-family: var(--ntg-typography-font-family-label-md);
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-  letter-spacing: var(--ntg-typography-letter-space-label-md);
+  font-family: var(--ntg-typography-font-family-micro);
+  font-size: var(--ntg-typography-font-size-micro);
+  line-height: var(--ntg-typography-line-height-micro);
+  font-weight: var(--ntg-typography-font-weight-micro);
+  letter-spacing: var(--ntg-typography-letter-space-micro);
   color: var(--ntg-color-text-general-text);
 }
 

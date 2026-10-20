@@ -163,13 +163,21 @@ const LAYOUT_CSS = `
   }
   /* กล่องโค้ด (หัวหน้าสั่ง 2026-10-20) แสดงตลอด ไม่มีปุ่ม Show/Hide code และเป็นโทนสว่าง
      ทำโดยปิด source ของ Canvas (sourceState none ทำให้แถวปุ่มหายทั้งแถว) แล้ววางบล็อก Source
-     แยกต่างหากใต้ตัวอย่าง dark=false ใช้ธีมสว่าง พื้น general/secondary ขอบ 1px general/primary
-     มุม 8 เท่ากับที่ธีมหน้า Docs ยืมจากมุมปุ่ม md */
+     แยกต่างหากใต้ตัวอย่าง dark=false ใช้ธีมสว่าง ขอบ 1px general/primary มุม 8 เท่ากับที่ธีม
+     หน้า Docs ยืมจากมุมปุ่ม md
+     พื้นแยกสองโทน (หัวหน้าสั่ง 2026-10-20) กล่องโค้ดของ section แรกสุด (.docs-hero) ใช้
+     general/primary ส่วนกล่องโค้ดในแต่ละหัวข้อ (.docs-story-block) ยังเป็น general/secondary
+     เพื่อให้ต่างจากพื้นกรอบหัวข้อที่เป็น general/primary อยู่แล้ว */
   .docs-code > * {
     margin: 0;
     box-shadow: none;
     border: 1px solid var(--ntg-color-border-general-primary);
     border-radius: var(--ntg-button-radius-top-left-md);
+  }
+  .docs-hero .docs-code > * {
+    background: var(--ntg-color-background-general-primary);
+  }
+  .docs-story-block .docs-code > * {
     background: var(--ntg-color-background-general-secondary);
   }
   /* Storybook ใส่ border 8px โปร่งใส !important รอบชิ้นงานใน .innerZoomElementWrapper (layout padded)

@@ -122,7 +122,7 @@ export const Sizes: Story = {
 
 // ── สถานะ ───────────────────────────────────────────────────
 export const States: Story = {
-  name: 'สถานะ',
+  name: 'ปกติ กดได้ และ disabled',
   parameters: {
     docs: {
       section: 'สถานะ',
