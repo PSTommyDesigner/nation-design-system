@@ -1,0 +1,76 @@
+/* บล็อกประกอบเอกสารหน้า Docs (preview · labeled · do-dont)
+   ใช้คู่กับ docs-blocks.tsx ทุกค่าสี ระยะ มุมโค้ง ตัวอักษร ผูก token ผ่าน CSS variable
+   โหลดเป็น global ใน preview.tsx เพราะ story เดี่ยวก็ใช้บล็อกชุดนี้ ไม่ใช่แค่หน้า Docs */
+
+.ntg-docs-preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ntg-size-space-s2-sm);
+}
+.ntg-docs-preview.is-column {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ntg-docs-labeled {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-md);
+}
+.ntg-docs-labeled > .ntg-docs-labeled-text {
+  font-family: var(--ntg-typography-font-family-label-md);
+  font-size: var(--ntg-typography-font-size-label-md);
+  line-height: var(--ntg-typography-line-height-label-md);
+  font-weight: var(--ntg-typography-font-weight-label-md);
+  letter-spacing: var(--ntg-typography-letter-space-label-md);
+  color: var(--ntg-color-text-general-text);
+}
+
+.ntg-docs-do-dont {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--ntg-size-space-s2-lg);
+  width: 100%;
+}
+.ntg-docs-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-sm);
+  padding: var(--ntg-size-space-s2-md);
+  background: var(--ntg-color-background-general-primary);
+  border-radius: var(--ntg-info-card-radius-top-left) var(--ntg-info-card-radius-top-right)
+    var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
+  box-shadow: inset 0 0 0 1px var(--ntg-card-border);
+}
+.ntg-docs-card.is-do { --ntg-card-border: var(--ntg-color-border-system-success-solid); --ntg-card-label: var(--ntg-color-text-system-success); }
+.ntg-docs-card.is-dont { --ntg-card-border: var(--ntg-color-border-system-error-solid); --ntg-card-label: var(--ntg-color-text-system-error); }
+.ntg-docs-card-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-md);
+  font-family: var(--ntg-typography-font-family-label-md);
+  font-size: var(--ntg-typography-font-size-label-md);
+  line-height: var(--ntg-typography-line-height-label-md);
+  font-weight: var(--ntg-typography-font-weight-label-md);
+  letter-spacing: var(--ntg-typography-letter-space-label-md);
+  color: var(--ntg-card-label);
+}
+.ntg-docs-card-label > svg { width: 16px; height: 16px; }
+.ntg-docs-card-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ntg-size-space-s2-sm);
+  min-height: 40px;
+}
+.ntg-docs-card-text {
+  margin: 0;
+  font-family: var(--ntg-typography-font-family-body-md);
+  font-size: var(--ntg-typography-font-size-body-md);
+  line-height: var(--ntg-typography-line-height-body-md);
+  font-weight: var(--ntg-typography-font-weight-body-md);
+  letter-spacing: var(--ntg-typography-letter-space-body-md);
+  color: var(--ntg-color-text-general-text);
+}

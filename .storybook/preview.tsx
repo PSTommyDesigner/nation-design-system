@@ -5,6 +5,8 @@ import { CustomDocsPage } from './CustomDocsPage'
 // โหลด design token เป็น CSS variable ส่วนกลาง ทุก component ต้องใช้ตัวแปรชุดนี้
 // ไม่ hard-code สี ระยะ หรือมุมโค้งเอง ตามกฎของโปรเจกต์
 import '../tokens/output/css/variables.css'
+// สไตล์ของบล็อกประกอบเอกสาร (preview · labeled · do-dont) ดู docs-blocks.tsx
+import './docs-blocks.css'
 
 /**
  * ธีมของหน้า Docs (หน้า prop table + ตัวอย่างของแต่ละ component) เท่านั้น

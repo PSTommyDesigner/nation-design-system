@@ -22,12 +22,34 @@
  *      จึงซ่อนคอลัมน์ Description กับ Default ด้วย CSS ตามตำแหน่ง ไม่ได้ลบข้อมูลจริง
  *    ⚠️ ยังไม่ได้เปิดดูด้วยตาจริงในเบราว์เซอร์ เครื่องมือไม่มี browser automation
  *
+ * ⚠️ เนื้อหาจัดเป็นหัวข้อแบบ Page Doc ของไฟล์ออกแบบ (ตั้ง 2026-10-20 หัวหน้าอนุมัติแผน)
+ *    แทนการไล่ story เป็นรายการยาวไม่มีหมวด หัวข้อยึดตามกฎ 8.5 ของ CLAUDE.md คือ
+ *    ส่วนประกอบ · ชุด · ขนาด · สถานะ · ควรไม่ควร
+ *    - แต่ละ story บอกว่าตัวเองอยู่หัวข้อไหนด้วย `parameters.docs.section` ใน stories.tsx
+ *      เทมเพลตกลางตัวนี้จัดกลุ่มให้เอง ไม่ต้องเขียน MDX แยกทีละ component
+ *    - หัวข้อที่ไม่มี story จะไม่ขึ้นเลย ไม่มีหัวข้อว่าง
+ *    - หัวข้อที่ไม่มีของจริงให้โชว์ (เช่น สถานะ ของ Badge ที่กดไม่ได้) ห้ามยัดตัวอย่างปลอม
+ *      ให้ meta ใส่เหตุผลไว้ที่ `parameters.docs.sectionNotes[หัวข้อ]` แล้วหน้าจะแสดงเหตุผลแทน
+ *    - story ที่ไม่ได้ระบุหัวข้อไปรวมที่ "ตัวอย่างเพิ่มเติม" ท้ายสุด จะได้ไม่หายไปเฉย ๆ
+ *    - ท้ายหน้าเป็นตาราง Props เต็ม (ชื่อ คำอธิบาย ค่าตั้งต้น) สำหรับคนอ่านเอกสาร
+ *      ส่วนแผงขวาเหลือ Name กับ Control สำหรับคนลองเล่น คอลัมน์ Control จึงมีที่แผงขวาที่เดียว
+ *    - หัวข้อใช้ preset section-heading/xl และคำอธิบาย body/xl ตามโครง section ของหน้า 00 Document
+ *
  * โครง:
- *   เนื้อหา (กึ่งกลางพื้นที่ที่เหลือ)  Title / Subtitle / Description / Canvas / Stories
+ *   เนื้อหา (กึ่งกลางพื้นที่ที่เหลือ)  Title / Subtitle / Description / Canvas / หัวข้อ 5 หมวด / Props
  *   แผงขวา (fixed เต็มสูง 400px)       Controls ของ story เดียวกับ Canvas (แชร์ args กัน)
- *   Stories ตั้ง includePrimary เป็น false ไม่ให้แสดงตัวแรกซ้ำกับที่อยู่ใน Canvas แล้ว
  */
-import { Title, Subtitle, Description, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks'
+import { useContext } from 'react'
+import {
+  Title, Subtitle, Description, Canvas, Controls, ArgTypes, DocsStory, DocsContext, useOf,
+} from '@storybook/addon-docs/blocks'
+
+// ลำดับหัวข้อตามกฎ 8.5 ของ CLAUDE.md หัวข้อสุดท้ายรับ story ที่ไม่ได้ระบุหมวด
+const SECTIONS = ['ส่วนประกอบ', 'ชุด', 'ขนาด', 'สถานะ', 'ควรไม่ควร'] as const
+const EXTRA_SECTION = 'ตัวอย่างเพิ่มเติม'
+
+type StoryEntry = ReturnType<React.ContextType<typeof DocsContext>['componentStories']>[number]
+type SectionNotes = Partial<Record<string, string>>
 
 // กว้างเท่าแผง addon ของ Storybook (--right-panel-width: 400px) ไม่มี token อ้างอิง
 // เพราะเป็นผังของเครื่องมือ ไม่ใช่ชิ้นงานในไฟล์ออกแบบ
@@ -91,7 +113,65 @@ const LAYOUT_CSS = `
   .docs-side-controls table tbody td:nth-child(3) {
     display: none;
   }
+  .docs-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ntg-size-space-s2-lg);
+    margin-top: var(--ntg-size-space-s3-sm);
+  }
+  .docs-section-heading {
+    margin: 0;
+    font-family: var(--ntg-typography-font-family-section-heading-xl);
+    font-size: var(--ntg-typography-font-size-section-heading-xl);
+    line-height: var(--ntg-typography-line-height-section-heading-xl);
+    font-weight: var(--ntg-typography-font-weight-section-heading-xl);
+    letter-spacing: var(--ntg-typography-letter-space-section-heading-xl);
+    color: var(--ntg-color-text-general-heading);
+  }
+  .docs-section-note {
+    margin: 0;
+    font-family: var(--ntg-typography-font-family-body-xl);
+    font-size: var(--ntg-typography-font-size-body-xl);
+    line-height: var(--ntg-typography-line-height-body-xl);
+    font-weight: var(--ntg-typography-font-weight-body-xl);
+    letter-spacing: var(--ntg-typography-letter-space-body-xl);
+    color: var(--ntg-color-text-general-text);
+  }
 `
+
+// จัดกลุ่ม story ตาม parameters.docs.section แล้วเรียงตามลำดับหัวข้อ
+// story ตัวแรกที่ติดป้าย autodocs คือตัวที่อยู่ใน Canvas ด้านบนแล้ว (กติกาเดียวกับ usePrimaryStory ของ Storybook) จึงตัดออก
+const GroupedStories = () => {
+  const { componentStories } = useContext(DocsContext)
+  const { preparedMeta } = useOf('meta', ['meta'])
+  const notes = (preparedMeta.parameters.docs?.sectionNotes ?? {}) as SectionNotes
+
+  const stories = componentStories().filter((s) => s.tags?.includes('autodocs')).slice(1)
+  const groups = new Map<string, StoryEntry[]>()
+  for (const story of stories) {
+    const section = (story.parameters.docs?.section as string | undefined) ?? EXTRA_SECTION
+    groups.set(section, [...(groups.get(section) ?? []), story])
+  }
+
+  return (
+    <>
+      {[...SECTIONS, EXTRA_SECTION].map((section) => {
+        const list = groups.get(section) ?? []
+        const note = section === EXTRA_SECTION ? undefined : notes[section]
+        if (!list.length && !note) return null
+        return (
+          <section key={section} className="docs-section">
+            <h2 className="docs-section-heading">{section}</h2>
+            {note && <p className="docs-section-note">{note}</p>}
+            {list.map((story) => (
+              <DocsStory key={story.id} of={story.moduleExport} />
+            ))}
+          </section>
+        )
+      })}
+    </>
+  )
+}
 
 export const CustomDocsPage = () => (
   <>
@@ -100,7 +180,11 @@ export const CustomDocsPage = () => (
     <Subtitle />
     <Description />
     <Canvas />
-    <Stories includePrimary={false} />
+    <GroupedStories />
+    <section className="docs-section">
+      <h2 className="docs-section-heading">Props</h2>
+      <ArgTypes />
+    </section>
     <aside className="docs-side-controls" aria-label="Controls">
       <Controls />
     </aside>
