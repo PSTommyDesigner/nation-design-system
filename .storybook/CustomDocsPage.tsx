@@ -132,7 +132,7 @@ const LAYOUT_CSS = `
   .docs-section {
     display: flex;
     flex-direction: column;
-    gap: var(--ntg-size-space-s2-lg);
+    gap: var(--ntg-size-space-s3-sm);
     margin-top: var(--ntg-size-space-s3-sm);
     padding: var(--ntg-size-space-s3-sm);
     background: var(--ntg-color-background-general-primary);
@@ -149,6 +149,10 @@ const LAYOUT_CSS = `
   .docs-hero, .docs-story-block { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-sm); }
   .docs-hero > *, .docs-story-block > * { margin: 0; }
   .docs-hero p, .docs-story-block p { margin: 0; }
+  /* ชื่อ story กับคำอธิบาย รวมเป็น container เดียว gap none (หัวหน้าสั่ง 2026-10-20) แยกจาก
+     gap s2-sm ที่คุมระยะ header ไปหาตัวอย่างกับกล่องโค้ดด้านล่าง */
+  .docs-story-header { display: flex; flex-direction: column; gap: var(--ntg-size-space-none); }
+  .docs-story-header > * { margin: 0; }
   .docs-section div.sbdocs.sbdocs-preview, .docs-hero div.sbdocs.sbdocs-preview { margin: 0; }
   .docs-section table.docblock-argstable { margin: 0; }
   /* ชื่อ story ลดขนาดจาก h3 ของ Storybook (24px) เป็น preset title/md (หัวหน้าสั่ง 2026-10-20) */
@@ -183,8 +187,12 @@ const LAYOUT_CSS = `
   /* Storybook ใส่ border 8px โปร่งใส !important รอบชิ้นงานใน .innerZoomElementWrapper (layout padded)
      ทำให้ชิ้นงานมีขอบล่องหน 8px ทุกด้าน หัวหน้าสั่งเอาออก 2026-10-20 ต้องใช้ !important ตอบ */
   div.sbdocs.sbdocs-preview .innerZoomElementWrapper > * { border: 0 !important; }
+  /* Storybook ใส่ paddingBottom 4 กับ borderBottom 1px ให้ h2 ทุกตัวโดยปริยาย (global h2 style
+     ใน blocks.js) หัวหน้าสั่ง 2026-10-20 ให้ padding เป็น none ทุกด้านและถอดเส้นใต้หัวออก */
   .docs-section-heading {
     margin: 0;
+    padding: var(--ntg-size-space-none);
+    border-bottom: 0;
     font-family: var(--ntg-typography-font-family-section-heading-xl);
     font-size: var(--ntg-typography-font-size-section-heading-xl);
     line-height: var(--ntg-typography-line-height-section-heading-xl);
@@ -229,12 +237,19 @@ const GroupedStories = () => {
             {note && <p className="docs-section-note">{note}</p>}
             {list.map((story) => (
               <div key={story.id} id={anchorBlockIdFromId(story.id)} className="docs-story-block">
-                <h3 className="docs-story-title">{story.name}</h3>
-                <Description of={story.moduleExport} />
-                <Canvas of={story.moduleExport} sourceState="none" />
-                <div className="docs-code">
-                  <Source of={story.moduleExport} dark={false} />
+                <div className="docs-story-header">
+                  <h3 className="docs-story-title">{story.name}</h3>
+                  <Description of={story.moduleExport} />
                 </div>
+                <Canvas of={story.moduleExport} sourceState="none" />
+                {/* story ที่ไม่ได้เกี่ยวกับการพรีวิวการใช้งาน component จริง (เช่น ควรไม่ควร ที่
+                    ประกอบจากหลายตัวอย่างย่อยในบล็อกเดียว) ไม่ต้องมีกล่องโค้ด ตั้งค่าที่
+                    parameters.docs.hideCode ของ story นั้น (หัวหน้าสั่ง 2026-10-20) */}
+                {!story.parameters.docs?.hideCode && (
+                  <div className="docs-code">
+                    <Source of={story.moduleExport} dark={false} />
+                  </div>
+                )}
               </div>
             ))}
           </section>
