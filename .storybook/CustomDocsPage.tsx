@@ -170,7 +170,6 @@ const LAYOUT_CSS = `
   /* Storybook ใส่ border 8px โปร่งใส !important รอบชิ้นงานใน .innerZoomElementWrapper (layout padded)
      ทำให้ชิ้นงานมีขอบล่องหน 8px ทุกด้าน หัวหน้าสั่งเอาออก 2026-10-20 ต้องใช้ !important ตอบ */
   div.sbdocs.sbdocs-preview .innerZoomElementWrapper > * { border: 0 !important; }
-  .docs-section table.docblock-argstable { margin: 0; }
   .docs-section-heading {
     margin: 0;
     font-family: var(--ntg-typography-font-family-section-heading-xl);
