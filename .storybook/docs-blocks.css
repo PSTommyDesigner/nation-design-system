@@ -34,43 +34,46 @@
   gap: var(--ntg-size-space-s2-lg);
   width: 100%;
 }
+/* การ์ด ควร/ไม่ควร ยึดตาม do-info-card กับ dont-info-card ของหน้า 27 Card (อ่านค่าจริง 2026-10-20)
+   พื้น general/secondary ขอบ 1px general/primary inside มุม 12 padding 16 gap 8
+   หัว "Do" / "Don't" ใช้ title/sm สีหัวข้อ + ไอคอน 20px สี icon/system/success หรือ error
+   เนื้อหา body/sm สีข้อความ ตัวอย่าง component วางระหว่างหัวกับเนื้อหา (ลำดับเดียวกับ Page Doc หน้า 21) */
 .ntg-docs-card {
   display: flex;
   flex-direction: column;
-  gap: var(--ntg-size-space-s2-sm);
-  padding: var(--ntg-size-space-s2-md);
-  background: var(--ntg-color-background-general-primary);
+  gap: var(--ntg-size-space-s1-lg);
+  padding: var(--ntg-size-space-s2-sm);
+  background: var(--ntg-color-background-general-secondary);
   border-radius: var(--ntg-info-card-radius-top-left) var(--ntg-info-card-radius-top-right)
     var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
-  box-shadow: inset 0 0 0 1px var(--ntg-card-border);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
 }
-.ntg-docs-card.is-do { --ntg-card-border: var(--ntg-color-border-system-success-solid); --ntg-card-label: var(--ntg-color-text-system-success); }
-.ntg-docs-card.is-dont { --ntg-card-border: var(--ntg-color-border-system-error-solid); --ntg-card-label: var(--ntg-color-text-system-error); }
+.ntg-docs-card.is-do { --ntg-card-icon: var(--ntg-icon-system-success-primary); }
+.ntg-docs-card.is-dont { --ntg-card-icon: var(--ntg-icon-system-error-primary); }
 .ntg-docs-card-label {
   display: inline-flex;
   align-items: center;
-  gap: var(--ntg-size-space-s1-md);
-  font-family: var(--ntg-typography-font-family-label-md);
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-  letter-spacing: var(--ntg-typography-letter-space-label-md);
-  color: var(--ntg-card-label);
+  gap: var(--ntg-size-space-s1-sm);
+  font-family: var(--ntg-typography-font-family-title-sm);
+  font-size: var(--ntg-typography-font-size-title-sm);
+  line-height: var(--ntg-typography-line-height-title-sm);
+  font-weight: var(--ntg-typography-font-weight-title-sm);
+  letter-spacing: var(--ntg-typography-letter-space-title-sm);
+  color: var(--ntg-color-text-general-heading);
 }
-.ntg-docs-card-label > svg { width: 16px; height: 16px; }
+.ntg-docs-card-label > svg { width: 20px; height: 20px; color: var(--ntg-card-icon); }
 .ntg-docs-card-body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--ntg-size-space-s2-sm);
-  min-height: 40px;
 }
 .ntg-docs-card-text {
   margin: 0;
-  font-family: var(--ntg-typography-font-family-body-md);
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-  letter-spacing: var(--ntg-typography-letter-space-body-md);
+  font-family: var(--ntg-typography-font-family-body-sm);
+  font-size: var(--ntg-typography-font-size-body-sm);
+  line-height: var(--ntg-typography-line-height-body-sm);
+  font-weight: var(--ntg-typography-font-weight-body-sm);
+  letter-spacing: var(--ntg-typography-letter-space-body-sm);
   color: var(--ntg-color-text-general-text);
 }

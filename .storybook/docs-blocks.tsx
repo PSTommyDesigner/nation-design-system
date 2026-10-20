@@ -4,7 +4,8 @@
  *
  *   Preview  = บล็อก `preview` ในไฟล์ออกแบบ วาง instance จริงเรียงแนวนอน ช่องไฟ 16
  *   Labeled  = ชิ้นงานหนึ่งชิ้นพร้อมป้ายกำกับใต้ชิ้น ใช้ในหัวข้อขนาดกับสถานะ
- *   DoDont   = บล็อก `do-dont` ประกอบจาก Do กับ Dont คู่กัน เทียบ info-card / do กับ don't
+ *   DoDont   = บล็อก `do-dont` ประกอบจาก Do กับ Dont คู่กัน ยึดสไตล์ do-info-card กับ dont-info-card
+ *              ของหน้า 27 Card (หัวหน้าสั่ง 2026-10-20 ให้เหมือนไฟล์ออกแบบ) หัวการ์ดจึงเป็น Do / Don't ตามต้นฉบับ
  *
  * สไตล์อยู่ที่ docs-blocks.css (โหลด global ใน preview.tsx) ผูก token ทั้งหมด ไม่มีค่าดิบ
  * ไอคอนในป้าย ควร/ไม่ควร ใช้ Icon ของ DS ไม่วาดเอง
@@ -32,8 +33,8 @@ type CardProps = { text: string; children?: ReactNode }
 const Card = ({ kind, text, children }: CardProps & { kind: 'do' | 'dont' }) => (
   <div className={`ntg-docs-card is-${kind}`}>
     <span className="ntg-docs-card-label">
+      {kind === 'do' ? 'Do' : "Don't"}
       <Icon name={kind === 'do' ? 'check' : 'close'} size="100%" />
-      {kind === 'do' ? 'ควร' : 'ไม่ควร'}
     </span>
     {children && <div className="ntg-docs-card-body">{children}</div>}
     <p className="ntg-docs-card-text">{text}</p>

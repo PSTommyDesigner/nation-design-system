@@ -126,11 +126,23 @@ const LAYOUT_CSS = `
   div.sbdocs.sbdocs-preview .docs-story {
     padding: 0;
   }
+  /* กรอบรอบแต่ละหัวข้อ (หัวหน้าสั่ง 2026-10-20) section ในไฟล์ออกแบบไม่มีเส้นขอบ (พื้น primary
+     padding 80 gap 24) จึงยืมกรอบของการ์ดในระบบมาใช้ คือขอบ 1px border/general/primary มุม 12
+     ตาม info-card ส่วน padding 40 เท่ากรอบ content ของเทมเพลตหน้า 00 Document gap 24 เท่า section */
   .docs-section {
     display: flex;
     flex-direction: column;
     gap: var(--ntg-size-space-s2-lg);
     margin-top: var(--ntg-size-space-s3-sm);
+    padding: var(--ntg-size-space-s3-sm);
+    background: var(--ntg-color-background-general-primary);
+    border-radius: var(--ntg-info-card-radius-top-left) var(--ntg-info-card-radius-top-right)
+      var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
+    box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
+  }
+  .docs-section > :last-child,
+  .docs-section div.sbdocs.sbdocs-preview:last-child {
+    margin-bottom: 0;
   }
   .docs-section-heading {
     margin: 0;
