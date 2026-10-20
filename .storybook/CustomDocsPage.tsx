@@ -57,13 +57,33 @@ const LAYOUT_CSS = `
     width: 100%;
     margin: 0;
   }
+  /* ล้างกรอบมนของตาราง ให้เหมือนโหมด inAddonPanel ของ Storybook ที่บล็อก Controls ไม่เปิดให้ใช้
+     อ่านจาก blocks.js: เงาคือ filter บน tbody (ไม่ใช่ box-shadow) พื้นเทาอยู่ที่ทุกช่อง
+     กรอบกับมุมโค้งเป็นเส้นขอบ/รัศมีบนช่องแถวแรก แถวสุดท้าย ช่องซ้ายสุด ขวาสุด ทีละช่อง
+     ตัวเลือกทุกตัวมีความจำเพาะสูงกว่ากฎ && ของ Storybook ที่คู่กัน จึงชนะโดยไม่พึ่งลำดับไฟล์ */
   .docs-side-controls table.docblock-argstable tbody {
-    box-shadow: none;
-    border: 0;
+    filter: none;
+  }
+  .docs-side-controls table.docblock-argstable tbody > tr > * {
+    background: var(--ntg-color-background-general-primary);
     border-radius: 0;
   }
-  .docs-side-controls table.docblock-argstable tbody tr:first-child td {
-    border-top: 1px solid var(--ntg-color-border-general-primary);
+  .docs-side-controls table.docblock-argstable tbody > tr > *:first-of-type,
+  .docs-side-controls table.docblock-argstable tbody > tr > *:last-of-type {
+    border-inline-start: 0;
+    border-inline-end: 0;
+    border-radius: 0;
+  }
+  .docs-side-controls table.docblock-argstable tbody > tr:first-of-type > *,
+  .docs-side-controls table.docblock-argstable tbody > tr:last-of-type > * {
+    border-block-end: 0;
+    border-radius: 0;
+  }
+  .docs-side-controls table.docblock-argstable tbody > tr:first-of-type > *:first-of-type,
+  .docs-side-controls table.docblock-argstable tbody > tr:first-of-type > *:last-of-type,
+  .docs-side-controls table.docblock-argstable tbody > tr:last-of-type > *:first-of-type,
+  .docs-side-controls table.docblock-argstable tbody > tr:last-of-type > *:last-of-type {
+    border-radius: 0;
   }
   .docs-side-controls table thead th:nth-child(2),
   .docs-side-controls table thead th:nth-child(3),
