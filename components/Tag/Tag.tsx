@@ -44,12 +44,19 @@ export type TagSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type TagShape = 'semi-rounded' | 'pill' | 'circular' | 'link';
 
 /**
- * ชิ้นนำหน้าหรือต่อท้ายที่ทำให้แท็กเป็นคนละชนิด
- * ตรงกับชุดแยกในไฟล์ออกแบบ คือ number image checkbox indicator
+ * ชิ้นนำหน้าหรือต่อท้ายที่ทำให้แท็กเป็นคนละชนิด ตรงกับชุดแยกในไฟล์ออกแบบ
+ *
+ * ⚠️ ชื่อค่าขึ้นต้นด้วยตำแหน่งจริงที่ตรวจจากลำดับชั้นใน Figma ไม่ใช่สมมติ (หัวหน้าทัก
+ *    2026-10-21 ว่าของเดิมชื่อ `leading` ทั้งหมดทั้งที่ `checkbox` กับ `image` อยู่หลัง
+ *    ข้อความจริง ตรวจ node tree แล้วเจอว่าโค้ดเดิมวางสองชนิดนี้ผิดฝั่งด้วย แก้พร้อมกัน)
+ *      left-indicator  อยู่หน้าข้อความ (ลำดับชั้น indicator มาก่อน tag-title)
+ *      right-checkbox  อยู่หลังข้อความ (ลำดับชั้น tag-title มาก่อน checkbox)
+ *      right-image     อยู่หลังข้อความ (ลำดับชั้น tag-title มาก่อน image)
+ *      right-number    อยู่หลังข้อความ (ลำดับชั้น tag-title มาก่อน number)
  *
  * ⚠️ ทรง `link` รองรับเฉพาะ `none` เพราะไฟล์ออกแบบมีแค่ชุดฐาน
  */
-export type TagLeading = 'none' | 'number' | 'image' | 'checkbox' | 'indicator';
+export type TagLeading = 'none' | 'left-indicator' | 'right-checkbox' | 'right-image' | 'right-number';
 
 export interface TagProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children' | 'onSelect'> {
   children: React.ReactNode;
@@ -62,13 +69,13 @@ export interface TagProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'c
    * ⚠️ ไม่มีผลกับ `family="neutral"` เพราะตระกูลนั้นเป็นสีเทาอยู่แล้ว
    */
   defaultGray?: boolean;
-  /** ชนิดของชิ้นประกอบ ตรงกับชุดแยกในไฟล์ออกแบบ */
+  /** ชนิดของชิ้นประกอบ ตรงกับชุดแยกในไฟล์ออกแบบ ชื่อค่าบอกตำแหน่งจริง (left-/right-) */
   leading?: TagLeading;
-  /** ตัวเลขต่อท้าย ใช้เมื่อ `leading` เป็น `number` */
+  /** ตัวเลขต่อท้าย ใช้เมื่อ `leading` เป็น `right-number` */
   count?: number;
-  /** ที่อยู่รูป ใช้เมื่อ `leading` เป็น `image` */
+  /** ที่อยู่รูป ใช้เมื่อ `leading` เป็น `right-image` */
   imageSrc?: string;
-  /** สถานะติ๊ก ใช้เมื่อ `leading` เป็น `checkbox` */
+  /** สถานะติ๊ก ใช้เมื่อ `leading` เป็น `right-checkbox` */
   checked?: boolean;
   /**
    * ไอคอนด้านซ้ายของข้อความ ตรงกับคุณสมบัติ `left-icon` กับ `left-icon-swap` ในไฟล์ออกแบบ
@@ -113,10 +120,10 @@ const SHAPE_CLASS: Record<TagShape, string> = {
 };
 const LEADING_CLASS: Record<TagLeading, string> = {
   none: styles.leadNone,
-  number: styles.leadNumber,
-  image: styles.leadImage,
-  checkbox: styles.leadCheckbox,
-  indicator: styles.leadIndicator,
+  'right-number': styles.leadNumber,
+  'right-image': styles.leadImage,
+  'right-checkbox': styles.leadCheckbox,
+  'left-indicator': styles.leadIndicator,
 };
 const FAMILY_CLASS: Record<TagFamily, string> = {
   brand: styles.brand, neutral: styles.neutral, red: styles.red, green: styles.green,
@@ -131,8 +138,8 @@ const HIERARCHY_CLASS: Record<TagHierarchy, string> = {
  * @example
  * <Tag family="blue">การเมือง</Tag>
  * <Tag family="brand" hierarchy="primary" closable onClose={remove}>กรุงเทพ</Tag>
- * <Tag family="green" leading="number" count={12}>ข่าวใหม่</Tag>
- * <Tag family="neutral" leading="checkbox" checked onSelect={toggle}>เลือกไว้</Tag>
+ * <Tag family="green" leading="right-number" count={12}>ข่าวใหม่</Tag>
+ * <Tag family="neutral" leading="right-checkbox" checked onSelect={toggle}>เลือกไว้</Tag>
  * <Tag family="red" shape="link">อ่านต่อ</Tag>
  */
 export function Tag({
@@ -165,8 +172,8 @@ export function Tag({
   // ทรง link มีแค่ชุดฐานในไฟล์ออกแบบ ชนิดอื่นจึงถูกบังคับกลับเป็น none
   // โหมดไอคอนล้วนก็ไม่มีของนำหน้า เพราะไม่มีข้อความให้นำหน้า
   const effectiveLeading: TagLeading = shape === 'link' || onlyIcon ? 'none' : leading;
-  // ไอคอนซ้ายกับจุดสถานะใช้ช่องเดียวกัน ไฟล์ออกแบบจึงยกเว้นชนิด indicator ไว้
-  const showLeftIcon = Boolean(leftIcon) && !onlyIcon && effectiveLeading !== 'indicator';
+  // ไอคอนซ้ายกับจุดสถานะใช้ช่องเดียวกัน ไฟล์ออกแบบจึงยกเว้นชนิด left-indicator ไว้
+  const showLeftIcon = Boolean(leftIcon) && !onlyIcon && effectiveLeading !== 'left-indicator';
 
   const classes = [
     styles.root,
@@ -188,7 +195,7 @@ export function Tag({
       role={interactive ? 'button' : undefined}
       tabIndex={interactive ? 0 : undefined}
       aria-disabled={disabled || undefined}
-      aria-pressed={effectiveLeading === 'checkbox' ? Boolean(checked) : undefined}
+      aria-pressed={effectiveLeading === 'right-checkbox' ? Boolean(checked) : undefined}
       onClick={interactive ? onSelect : undefined}
       onKeyDown={interactive ? (e) => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect?.(); }
@@ -203,20 +210,23 @@ export function Tag({
       ) : null}
 
       {showLeftIcon ? <span className={styles.icon} aria-hidden="true">{leftIcon}</span> : null}
-      {effectiveLeading === 'indicator' ? <span className={styles.dot} aria-hidden="true" /> : null}
-      {effectiveLeading === 'checkbox' ? (
+      {/* left-indicator อยู่หน้าข้อความ ตรวจลำดับชั้นจริงใน Figma แล้วมาก่อน tag-title */}
+      {effectiveLeading === 'left-indicator' ? <span className={styles.dot} aria-hidden="true" /> : null}
+
+      {onlyIcon ? null : <span className={styles.title}>{children}</span>}
+
+      {/* right-checkbox · right-image · right-number อยู่หลังข้อความทั้งสามชนิด ตรวจลำดับชั้นจริง
+          ใน Figma แล้วพบว่า tag-title มาก่อนทั้งสามเสมอ (หัวหน้าทัก 2026-10-21 ของเดิมวาง
+          checkbox กับ image ไว้หน้าข้อความผิดฝั่ง แก้พร้อมกับเปลี่ยนชื่อค่าในรอบนี้) */}
+      {effectiveLeading === 'right-checkbox' ? (
         <span className={styles.checkbox} data-checked={checked ? 'true' : undefined} aria-hidden="true">
           {checked ? <Icon name="check" size="100%" /> : null}
         </span>
       ) : null}
-      {effectiveLeading === 'image' && imageSrc ? (
+      {effectiveLeading === 'right-image' && imageSrc ? (
         <span className={styles.leading}><img src={imageSrc} alt="" /></span>
       ) : null}
-
-      {onlyIcon ? null : <span className={styles.title}>{children}</span>}
-
-      {/* ช่องตัวเลขอยู่ท้ายข้อความ ตรงกับไฟล์ออกแบบ ส่วนช่องรูปอยู่หน้าข้อความ */}
-      {effectiveLeading === 'number' ? (
+      {effectiveLeading === 'right-number' ? (
         <span className={`${styles.leading} ${styles.leadingNumber}`}>{count}</span>
       ) : null}
 
