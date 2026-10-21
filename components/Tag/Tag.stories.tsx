@@ -15,7 +15,11 @@ export default meta
 
 type Story = StoryObj<typeof Tag>
 
-export const Default: Story = {}
+// Default กับ semi-rounded-tag เรนเดอร์เหมือนกันเป๊ะ (shape เริ่มต้นของ Tag คือ semi-rounded
+// อยู่แล้ว) เลยรวมเป็น story เดียว ใช้ชื่อ semi-rounded-tag ตรงกับ 13 ชนิดที่เหลือ แต่ยังทำ
+// หน้าที่ primary/hero ของหน้า Docs เหมือนเดิม (หัวหน้าทัก 2026-10-21 ว่า Default ซ้ำกับ
+// semi-rounded-tag ใน sidebar)
+export const Default: Story = { name: 'semi-rounded-tag' }
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
@@ -248,7 +252,8 @@ export const GoodAndBad: Story = {
 // ออกแบบ (tokens/figma-components.json → figmaSets) ตัด tag autodocs ออกเพื่อไม่ให้ไป
 // ซ้ำกับหัวข้อ "14 ชนิด" (AllTypes) ที่โชว์ทั้งหมดในหน้า Docs อยู่แล้ว เปิดจาก sidebar
 // แต่ละอันจะได้แผง Controls ที่ผูกกับตัวอย่างนั้นตรงๆ ลองเปลี่ยนค่าได้จริง
-export const SemiRoundedTag: Story = { tags: ['!autodocs'], name: 'semi-rounded-tag', args: { shape: 'semi-rounded' } }
+// semi-rounded-tag ไม่ต้องมีตรงนี้แล้ว เพราะ Default ด้านบนทำหน้าที่แทนอยู่แล้ว (เรนเดอร์
+// เหมือนกันเป๊ะ รวมเป็น story เดียว หัวหน้าทัก 2026-10-21)
 export const PillTag: Story = { tags: ['!autodocs'], name: 'pill-tag', args: { shape: 'pill' } }
 export const NumberTag: Story = { tags: ['!autodocs'], name: 'number-tag', args: { shape: 'semi-rounded', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
 export const PillNumberTag: Story = { tags: ['!autodocs'], name: 'pill-number-tag', args: { shape: 'pill', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
