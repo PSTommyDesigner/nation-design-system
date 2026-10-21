@@ -19,6 +19,7 @@ export const Default: Story = {}
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
+  tags: ['!dev'],
   name: 'ส่วนประกอบทั้งหมด',
   args: { leftIcon: <Icon name="star" size="100%" />, closable: true },
   parameters: {
@@ -29,21 +30,25 @@ export const Anatomy: Story = {
   },
 }
 export const WithLeftIcon: Story = {
+  tags: ['!dev'],
   name: 'ไอคอนนำหน้า',
   args: { leftIcon: <Icon name="star" size="100%" /> },
   parameters: { docs: { section: 'ส่วนประกอบ' } },
 }
 export const Closable: Story = {
+  tags: ['!dev'],
   name: 'ปุ่มปิด',
   args: { closable: true },
   parameters: { docs: { section: 'ส่วนประกอบ' } },
 }
 export const WithNumber: Story = {
+  tags: ['!dev'],
   name: 'ตัวเลขนำหน้า',
   args: { leading: 'number', count: 12, children: 'แจ้งเตือน' },
   parameters: { docs: { section: 'ส่วนประกอบ' } },
 }
 export const IconOnly: Story = {
+  tags: ['!dev'],
   name: 'ไอคอนล้วน',
   args: { children: undefined, iconOnly: true, icon: <Icon name="close" size="100%" />, label: 'ปิด' },
   parameters: { docs: { section: 'ส่วนประกอบ' } },
@@ -55,6 +60,7 @@ const FAMILIES: TagFamily[] = [
 ]
 
 export const AllFamilies: Story = {
+  tags: ['!dev'],
   name: 'ตระกูลสี 11 ตระกูล',
   parameters: { docs: { section: 'ชุด' } },
   render: () => (
@@ -68,6 +74,7 @@ export const AllFamilies: Story = {
   ),
 }
 export const Hierarchies: Story = {
+  tags: ['!dev'],
   name: 'ลำดับชั้น primary กับ secondary',
   parameters: {
     docs: {
@@ -88,6 +95,7 @@ export const Hierarchies: Story = {
 // tokens/figma-components.json (figmaSets) แทนตัวเลขในเอกสารที่ยังไม่ได้แก้
 // งานแก้ไฟล์ออกแบบเป็นคนละงาน พักไว้คุยทีหลังตามที่หัวหน้าสั่ง
 export const AllTypes: Story = {
+  tags: ['!dev'],
   name: '14 ชนิด',
   parameters: {
     docs: {
@@ -138,6 +146,7 @@ export const AllTypes: Story = {
 const SIZES: TagSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 export const Sizes: Story = {
+  tags: ['!dev'],
   name: 'ขนาด 5 ขั้น',
   parameters: {
     docs: {
@@ -158,6 +167,7 @@ export const Sizes: Story = {
 
 // ── สถานะ ───────────────────────────────────────────────────
 export const States: Story = {
+  tags: ['!dev'],
   name: 'ปกติ กดได้ และ disabled',
   parameters: {
     docs: {
@@ -175,6 +185,7 @@ export const States: Story = {
 }
 
 export const DefaultGray: Story = {
+  tags: ['!dev'],
   name: 'โหมดเทา',
   parameters: {
     docs: {
@@ -197,6 +208,7 @@ export const DefaultGray: Story = {
 
 // ── ควรไม่ควร ───────────────────────────────────────────────
 export const GoodAndBad: Story = {
+  tags: ['!dev'],
   name: 'ควรและไม่ควร',
   // ตัวอย่างในหัวข้อนี้ประกอบจากหลายชิ้นย่อยในบล็อกเดียว ไม่ใช่การพรีวิวการใช้งาน component
   // ตัวเดียวแบบหัวข้ออื่น จึงไม่ต้องมีกล่องโค้ด (หัวหน้าสั่ง 2026-10-20)
@@ -229,4 +241,41 @@ export const GoodAndBad: Story = {
       </Dont>
     </DoDont>
   ),
+}
+
+// ── 14 ชนิดจริงจากไฟล์ออกแบบ (เมนู sidebar สำหรับลองเล่นแต่ละชนิด) ──────────
+// หัวหน้าสั่ง 2026-10-21 ให้เก็บเฉพาะ 14 ชื่อนี้ไว้ใน sidebar ตั้งชื่อตรงกับชุดจริงในไฟล์
+// ออกแบบ (tokens/figma-components.json → figmaSets) ตัด tag autodocs ออกเพื่อไม่ให้ไป
+// ซ้ำกับหัวข้อ "14 ชนิด" (AllTypes) ที่โชว์ทั้งหมดในหน้า Docs อยู่แล้ว เปิดจาก sidebar
+// แต่ละอันจะได้แผง Controls ที่ผูกกับตัวอย่างนั้นตรงๆ ลองเปลี่ยนค่าได้จริง
+export const SemiRoundedTag: Story = { tags: ['!autodocs'], name: 'semi-rounded-tag', args: { shape: 'semi-rounded' } }
+export const PillTag: Story = { tags: ['!autodocs'], name: 'pill-tag', args: { shape: 'pill' } }
+export const NumberTag: Story = { tags: ['!autodocs'], name: 'number-tag', args: { shape: 'semi-rounded', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
+export const PillNumberTag: Story = { tags: ['!autodocs'], name: 'pill-number-tag', args: { shape: 'pill', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
+export const ImageTag: Story = { tags: ['!autodocs'], name: 'image-tag', args: { shape: 'semi-rounded', leading: 'image', imageSrc: '' } }
+export const PillImageTag: Story = { tags: ['!autodocs'], name: 'pill-image-tag', args: { shape: 'pill', leading: 'image', imageSrc: '' } }
+export const CheckboxTag: Story = { tags: ['!autodocs'], name: 'checkbox-tag', args: { shape: 'semi-rounded', leading: 'checkbox', checked: true } }
+export const PillCheckboxTag: Story = { tags: ['!autodocs'], name: 'pill-checkbox-tag', args: { shape: 'pill', leading: 'checkbox', checked: true } }
+export const IndicatorTag: Story = { tags: ['!autodocs'], name: 'indicator-tag', args: { shape: 'semi-rounded', leading: 'indicator' } }
+export const PillIndicatorTag: Story = { tags: ['!autodocs'], name: 'pill-indicator-tag', args: { shape: 'pill', leading: 'indicator' } }
+
+export const IconTag: Story = {
+  tags: ['!autodocs'],
+  name: 'icon-tag',
+  args: { shape: 'semi-rounded', iconOnly: true, icon: <Icon name="star" size="100%" />, label: 'รายการโปรด', children: undefined },
+}
+export const CircularIconTag: Story = {
+  tags: ['!autodocs'],
+  name: 'circular-icon-tag',
+  args: { shape: 'circular', iconOnly: true, icon: <Icon name="close" size="100%" />, label: 'ปิด', children: undefined },
+}
+export const LinkTag: Story = {
+  tags: ['!autodocs'],
+  name: 'link-tag',
+  args: { shape: 'link', children: '#เศรษฐกิจ' },
+}
+export const LinkIconTag: Story = {
+  tags: ['!autodocs'],
+  name: 'link-icon-tag',
+  args: { shape: 'link', iconOnly: true, icon: <Icon name="close" size="100%" />, label: 'ปิด', children: undefined },
 }
