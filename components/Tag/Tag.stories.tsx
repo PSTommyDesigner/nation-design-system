@@ -19,7 +19,7 @@ type Story = StoryObj<typeof Tag>
 // อยู่แล้ว) เลยรวมเป็น story เดียว ใช้ชื่อ semi-rounded-tag ตรงกับ 13 ชนิดที่เหลือ แต่ยังทำ
 // หน้าที่ primary/hero ของหน้า Docs เหมือนเดิม (หัวหน้าทัก 2026-10-21 ว่า Default ซ้ำกับ
 // semi-rounded-tag ใน sidebar)
-export const Default: Story = { name: 'semi-rounded-tag' }
+export const Default: Story = { name: 'Semi-rounded-tag' }
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
@@ -254,33 +254,33 @@ export const GoodAndBad: Story = {
 // แต่ละอันจะได้แผง Controls ที่ผูกกับตัวอย่างนั้นตรงๆ ลองเปลี่ยนค่าได้จริง
 // semi-rounded-tag ไม่ต้องมีตรงนี้แล้ว เพราะ Default ด้านบนทำหน้าที่แทนอยู่แล้ว (เรนเดอร์
 // เหมือนกันเป๊ะ รวมเป็น story เดียว หัวหน้าทัก 2026-10-21)
-export const PillTag: Story = { tags: ['!autodocs'], name: 'pill-tag', args: { shape: 'pill' } }
-export const NumberTag: Story = { tags: ['!autodocs'], name: 'number-tag', args: { shape: 'semi-rounded', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
-export const PillNumberTag: Story = { tags: ['!autodocs'], name: 'pill-number-tag', args: { shape: 'pill', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
-export const ImageTag: Story = { tags: ['!autodocs'], name: 'image-tag', args: { shape: 'semi-rounded', leading: 'image', imageSrc: '' } }
-export const PillImageTag: Story = { tags: ['!autodocs'], name: 'pill-image-tag', args: { shape: 'pill', leading: 'image', imageSrc: '' } }
-export const CheckboxTag: Story = { tags: ['!autodocs'], name: 'checkbox-tag', args: { shape: 'semi-rounded', leading: 'checkbox', checked: true } }
-export const PillCheckboxTag: Story = { tags: ['!autodocs'], name: 'pill-checkbox-tag', args: { shape: 'pill', leading: 'checkbox', checked: true } }
-export const IndicatorTag: Story = { tags: ['!autodocs'], name: 'indicator-tag', args: { shape: 'semi-rounded', leading: 'indicator' } }
-export const PillIndicatorTag: Story = { tags: ['!autodocs'], name: 'pill-indicator-tag', args: { shape: 'pill', leading: 'indicator' } }
+export const PillTag: Story = { tags: ['!autodocs'], name: 'Pill-tag', args: { shape: 'pill' } }
+export const NumberTag: Story = { tags: ['!autodocs'], name: 'Number-tag', args: { shape: 'semi-rounded', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
+export const PillNumberTag: Story = { tags: ['!autodocs'], name: 'Pill-number-tag', args: { shape: 'pill', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
+export const ImageTag: Story = { tags: ['!autodocs'], name: 'Image-tag', args: { shape: 'semi-rounded', leading: 'image', imageSrc: '' } }
+export const PillImageTag: Story = { tags: ['!autodocs'], name: 'Pill-image-tag', args: { shape: 'pill', leading: 'image', imageSrc: '' } }
+export const CheckboxTag: Story = { tags: ['!autodocs'], name: 'Checkbox-tag', args: { shape: 'semi-rounded', leading: 'checkbox', checked: true } }
+export const PillCheckboxTag: Story = { tags: ['!autodocs'], name: 'Pill-checkbox-tag', args: { shape: 'pill', leading: 'checkbox', checked: true } }
+export const IndicatorTag: Story = { tags: ['!autodocs'], name: 'Indicator-tag', args: { shape: 'semi-rounded', leading: 'indicator' } }
+export const PillIndicatorTag: Story = { tags: ['!autodocs'], name: 'Pill-indicator-tag', args: { shape: 'pill', leading: 'indicator' } }
 
 export const IconTag: Story = {
   tags: ['!autodocs'],
-  name: 'icon-tag',
+  name: 'Icon-tag',
   args: { shape: 'semi-rounded', iconOnly: true, icon: <Icon name="star" size="100%" />, label: 'รายการโปรด', children: undefined },
 }
 export const CircularIconTag: Story = {
   tags: ['!autodocs'],
-  name: 'circular-icon-tag',
+  name: 'Circular-icon-tag',
   args: { shape: 'circular', iconOnly: true, icon: <Icon name="close" size="100%" />, label: 'ปิด', children: undefined },
 }
 export const LinkTag: Story = {
   tags: ['!autodocs'],
-  name: 'link-tag',
+  name: 'Link-tag',
   args: { shape: 'link', children: '#เศรษฐกิจ' },
 }
 export const LinkIconTag: Story = {
   tags: ['!autodocs'],
-  name: 'link-icon-tag',
+  name: 'Link-icon-tag',
   args: { shape: 'link', iconOnly: true, icon: <Icon name="close" size="100%" />, label: 'ปิด', children: undefined },
 }
