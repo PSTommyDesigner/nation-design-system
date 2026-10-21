@@ -216,7 +216,9 @@ export function Tag({
       {onlyIcon ? null : <span className={styles.title}>{children}</span>}
 
       {/* ช่องตัวเลขอยู่ท้ายข้อความ ตรงกับไฟล์ออกแบบ ส่วนช่องรูปอยู่หน้าข้อความ */}
-      {effectiveLeading === 'number' ? <span className={styles.leading}>{count}</span> : null}
+      {effectiveLeading === 'number' ? (
+        <span className={`${styles.leading} ${styles.leadingNumber}`}>{count}</span>
+      ) : null}
 
       {closable && !disabled && !onlyIcon ? (
         <button

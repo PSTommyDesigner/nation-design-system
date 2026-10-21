@@ -3,6 +3,12 @@ import { Tag, type TagFamily, type TagSize } from './Tag'
 import { Icon } from '../Icon'
 import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks'
 
+// placeholder สาธิตกล่องรูปของ leading="image" เท่านั้น ไม่ใช่ asset จริงของ DS
+// (imageSrc เป็น string ว่างจะทำให้ Tag.tsx ไม่วาดกล่องรูปเลย ตามเงื่อนไข effectiveLeading === 'image' && imageSrc)
+const PLACEHOLDER_IMAGE_SRC =
+  'data:image/svg+xml;utf8,' +
+  encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><rect width="26" height="26" fill="#C4C4C4"/></svg>')
+
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section (ส่วนประกอบ · ชุด · ขนาด · สถานะ · ควรไม่ควร)
 // ดูกติกาที่ .storybook/CustomDocsPage.tsx
 const meta: Meta<typeof Tag> = {
@@ -116,7 +122,7 @@ export const AllTypes: Story = {
         <Preview>
           <Labeled label="เปล่า"><Tag shape="semi-rounded">การเมือง</Tag></Labeled>
           <Labeled label="ตัวเลข"><Tag shape="semi-rounded" leading="number" count={3}>แจ้งเตือน</Tag></Labeled>
-          <Labeled label="รูป"><Tag shape="semi-rounded" leading="image" imageSrc="">การเมือง</Tag></Labeled>
+          <Labeled label="รูป"><Tag shape="semi-rounded" leading="image" imageSrc={PLACEHOLDER_IMAGE_SRC}>การเมือง</Tag></Labeled>
           <Labeled label="checkbox"><Tag shape="semi-rounded" leading="checkbox" checked>การเมือง</Tag></Labeled>
           <Labeled label="indicator"><Tag shape="semi-rounded" leading="indicator">การเมือง</Tag></Labeled>
         </Preview>
@@ -125,7 +131,7 @@ export const AllTypes: Story = {
         <Preview>
           <Labeled label="เปล่า"><Tag shape="pill">การเมือง</Tag></Labeled>
           <Labeled label="ตัวเลข"><Tag shape="pill" leading="number" count={3}>แจ้งเตือน</Tag></Labeled>
-          <Labeled label="รูป"><Tag shape="pill" leading="image" imageSrc="">การเมือง</Tag></Labeled>
+          <Labeled label="รูป"><Tag shape="pill" leading="image" imageSrc={PLACEHOLDER_IMAGE_SRC}>การเมือง</Tag></Labeled>
           <Labeled label="checkbox"><Tag shape="pill" leading="checkbox" checked>การเมือง</Tag></Labeled>
           <Labeled label="indicator"><Tag shape="pill" leading="indicator">การเมือง</Tag></Labeled>
         </Preview>
@@ -257,8 +263,8 @@ export const GoodAndBad: Story = {
 export const PillTag: Story = { tags: ['!autodocs'], name: 'Pill-tag', args: { shape: 'pill' } }
 export const NumberTag: Story = { tags: ['!autodocs'], name: 'Number-tag', args: { shape: 'semi-rounded', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
 export const PillNumberTag: Story = { tags: ['!autodocs'], name: 'Pill-number-tag', args: { shape: 'pill', leading: 'number', count: 3, children: 'แจ้งเตือน' } }
-export const ImageTag: Story = { tags: ['!autodocs'], name: 'Image-tag', args: { shape: 'semi-rounded', leading: 'image', imageSrc: '' } }
-export const PillImageTag: Story = { tags: ['!autodocs'], name: 'Pill-image-tag', args: { shape: 'pill', leading: 'image', imageSrc: '' } }
+export const ImageTag: Story = { tags: ['!autodocs'], name: 'Image-tag', args: { shape: 'semi-rounded', leading: 'image', imageSrc: PLACEHOLDER_IMAGE_SRC } }
+export const PillImageTag: Story = { tags: ['!autodocs'], name: 'Pill-image-tag', args: { shape: 'pill', leading: 'image', imageSrc: PLACEHOLDER_IMAGE_SRC } }
 export const CheckboxTag: Story = { tags: ['!autodocs'], name: 'Checkbox-tag', args: { shape: 'semi-rounded', leading: 'checkbox', checked: true } }
 export const PillCheckboxTag: Story = { tags: ['!autodocs'], name: 'Pill-checkbox-tag', args: { shape: 'pill', leading: 'checkbox', checked: true } }
 export const IndicatorTag: Story = { tags: ['!autodocs'], name: 'Indicator-tag', args: { shape: 'semi-rounded', leading: 'indicator' } }

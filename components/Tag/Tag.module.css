@@ -97,6 +97,15 @@
 }
 .leading img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ป้ายตัวเลขของชนิด number เป็นกล่องพื้นทึบแยกจากตัวทัก ไม่ใช่แค่ตัวเลขลอย
+   (หัวหน้าทัก 2026-10-21 ว่าของจริงในไฟล์ออกแบบไม่ตรง ตรวจ node tree แล้วพบว่าขาด
+   background ไปตั้งแต่แรก) สีผูกตัวแปรจริงจากกล่อง number ในไฟล์ออกแบบ มุมเป็น 0
+   เพราะกล่องแปะชิดขอบขวาของทัก ถูกมุมโค้งรวมของตัวทักครอบอยู่แล้วผ่าน overflow: hidden */
+.leadingNumber {
+  background: var(--ntg-color-foreground-brand-secondary);
+  color: var(--ntg-color-text-general-const-white);
+}
+
 /* จุดสถานะของชนิด indicator วาดด้วย CSS เพราะชุดไอคอนไม่มีวงกลมเปล่า */
 .dot {
   flex: none;
