@@ -56,6 +56,20 @@ const docsTheme = create({
 })
 
 const preview: Preview = {
+  // prop ที่รับ React element (เช่น leftIcon / closeIcon / icon ของ Tag) ห้ามมีตัวควบคุมในแผง Controls
+  // เพราะ Storybook เดาว่าเป็น object แล้วส่ง {} (object เปล่า) เข้า prop ตอนผู้ใช้แตะแผง
+  // React เรนเดอร์ {} ไม่ได้ ทั้ง story พังเป็น Minified React error #31 (หัวหน้าเจอ 2026-10-22 ที่ Semi-rounded-tag)
+  // ตัวอย่างในหน้า Docs ยังส่ง element จริงผ่าน args ได้ตามปกติ แค่ไม่มีช่องให้แก้มือ
+  argTypesEnhancers: [
+    (context) => {
+      const argTypes = { ...context.argTypes }
+      for (const [name, argType] of Object.entries(argTypes)) {
+        const summary = String(argType?.table?.type?.summary ?? argType?.type?.name ?? '')
+        if (/ReactNode|ReactElement|Element/.test(summary)) argTypes[name] = { ...argType, control: false }
+      }
+      return argTypes
+    },
+  ],
   parameters: {
     controls: {
       matchers: {
