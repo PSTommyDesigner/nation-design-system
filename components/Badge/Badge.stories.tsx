@@ -9,6 +9,8 @@ const meta: Meta<typeof Badge> = {
   component: Badge,
   tags: ['autodocs'],
   args: { children: 'ด่วน', family: 'brand', hierarchy: 'primary', size: 'md' },
+  // quaternary เป็นค่าเก่าในโค้ด ไฟล์ออกแบบแยกไปเป็นชุด link-badge แล้ว (2026-09-22) จึงไม่โชว์ในแผง Controls
+  argTypes: { hierarchy: { options: ['primary', 'secondary', 'tertiary'] } },
   parameters: {
     docs: {
       // ป้ายเป็นของแสดงผลอย่างเดียว ไม่มีของจริงให้โชว์ในหัวข้อสถานะ จึงเขียนเหตุผลแทนตามกฎ 8.5
@@ -22,8 +24,17 @@ export default meta
 
 type Story = StoryObj<typeof Badge>
 
+// แผง Controls ของ story แต่ละชนิดให้เหลือเฉพาะ prop ที่ชนิดนั้นมีจริงในไฟล์ออกแบบ
+// (หัวหน้าทัก 2026-10-22 ว่า Semi-rounded-tag มี checked ของชนิด checkbox ติดมาด้วย)
+// prop ที่กำหนดชนิด (shape / leading / iconOnly) ไม่โชว์ เพราะ story คือชนิดนั้นอยู่แล้ว
+const controls = (include: string[]) => ({ controls: { include } })
+
+const TEXT_BADGE = ['children', 'family', 'hierarchy', 'size', 'trailingIcon']
+const ICON_BADGE = ['family', 'hierarchy', 'size', 'icon', 'label']
+const LINK_BADGE = ['children', 'family', 'size', 'trailingIcon'] // ชุด link-badge ไม่มีแกน hierarchy
+
 // Default = ชุด semi-rounded-badge ในไฟล์ออกแบบ (เรนเดอร์เหมือนกันเป๊ะ จึงรวมเป็น story เดียว แบบเดียวกับ Tag)
-export const Default: Story = { name: 'Semi-rounded-badge' }
+export const Default: Story = { name: 'Semi-rounded-badge', parameters: controls(TEXT_BADGE) }
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
@@ -162,7 +173,7 @@ export const GoodAndBad: Story = {
 // แบบเดียวกับ Tag (หัวหน้าสั่ง 2026-10-21) เก็บเฉพาะชื่อชุดจริงใน tokens/figma-components.json
 // ไว้ใน sidebar ส่วน story ภาพรวมด้านบนติด tag !dev ให้โชว์เฉพาะในหน้า Docs ไม่ซ้ำกันในเมนู
 // semi-rounded-badge ไม่ต้องมีตรงนี้ เพราะ Default ด้านบนทำหน้าที่แทนอยู่แล้ว
-export const PillBadge: Story = { tags: ['!autodocs'], name: 'Pill-badge', args: { shape: 'pill' } }
-export const SemiRoundedIconBadge: Story = { tags: ['!autodocs'], name: 'Semi-rounded-icon-badge', args: { children: undefined, shape: 'semi-rounded', icon: 'check', label: 'ยืนยันแล้ว' } }
-export const CircularIconBadge: Story = { tags: ['!autodocs'], name: 'Circular-icon-badge', args: { children: undefined, shape: 'circular', icon: 'check', label: 'ยืนยันแล้ว' } }
-export const LinkBadge: Story = { tags: ['!autodocs'], name: 'Link-badge', args: { shape: 'link', children: 'อ่านต่อ', family: 'blue' } }
+export const PillBadge: Story = { tags: ['!autodocs'], name: 'Pill-badge', args: { shape: 'pill' }, parameters: controls(TEXT_BADGE) }
+export const SemiRoundedIconBadge: Story = { tags: ['!autodocs'], name: 'Semi-rounded-icon-badge', args: { children: undefined, shape: 'semi-rounded', icon: 'check', label: 'ยืนยันแล้ว' }, parameters: controls(ICON_BADGE) }
+export const CircularIconBadge: Story = { tags: ['!autodocs'], name: 'Circular-icon-badge', args: { children: undefined, shape: 'circular', icon: 'check', label: 'ยืนยันแล้ว' }, parameters: controls(ICON_BADGE) }
+export const LinkBadge: Story = { tags: ['!autodocs'], name: 'Link-badge', args: { shape: 'link', children: 'อ่านต่อ', family: 'blue' }, parameters: controls(LINK_BADGE) }

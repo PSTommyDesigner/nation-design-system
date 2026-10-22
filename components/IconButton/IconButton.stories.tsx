@@ -16,8 +16,15 @@ export default meta
 
 type Story = StoryObj<typeof IconButton>
 
+// แผง Controls ของ story แต่ละชนิดให้เหลือเฉพาะ prop ที่ชนิดนั้นมีจริงในไฟล์ออกแบบ
+// (หัวหน้าทัก 2026-10-22 ว่า Semi-rounded-tag มี checked ของชนิด checkbox ติดมาด้วย)
+// prop ที่กำหนดชนิด (shape / leading / iconOnly) ไม่โชว์ เพราะ story คือชนิดนั้นอยู่แล้ว
+const controls = (include: string[]) => ({ controls: { include } })
+
+const ICON_BUTTON = ['icon', 'label', 'family', 'hierarchy', 'size', 'defaultGray', 'disabled']
+
 // Default = ชุด semi-rounded-icon-button ในไฟล์ออกแบบ
-export const Default: Story = { name: 'Semi-rounded-icon-button' }
+export const Default: Story = { name: 'Semi-rounded-icon-button', parameters: controls(ICON_BUTTON) }
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
@@ -166,4 +173,4 @@ export const GoodAndBad: Story = {
 
 // ── 2 ชนิดจริงจากไฟล์ออกแบบ (เมนู sidebar สำหรับลองเล่นแต่ละชนิด) ──────────
 // semi-rounded-icon-button ไม่ต้องมีตรงนี้ เพราะ Default ด้านบนทำหน้าที่แทนอยู่แล้ว
-export const CircularIconButton: Story = { tags: ['!autodocs'], name: 'Circular-icon-button', args: { shape: 'circular' } }
+export const CircularIconButton: Story = { tags: ['!autodocs'], name: 'Circular-icon-button', args: { shape: 'circular' }, parameters: controls(ICON_BUTTON) }

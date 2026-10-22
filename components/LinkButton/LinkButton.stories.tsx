@@ -16,8 +16,16 @@ export default meta
 
 type Story = StoryObj<typeof LinkButton>
 
+// แผง Controls ของ story แต่ละชนิดให้เหลือเฉพาะ prop ที่ชนิดนั้นมีจริงในไฟล์ออกแบบ
+// (หัวหน้าทัก 2026-10-22 ว่า Semi-rounded-tag มี checked ของชนิด checkbox ติดมาด้วย)
+// prop ที่กำหนดชนิด (shape / leading / iconOnly) ไม่โชว์ เพราะ story คือชนิดนั้นอยู่แล้ว
+const controls = (include: string[]) => ({ controls: { include } })
+
+const LINK_BUTTON = ['children', 'family', 'size', 'defaultGray', 'leftIcon', 'rightIcon', 'href', 'disabled']
+const LINK_ICON_BUTTON = ['leftIcon', 'label', 'family', 'size', 'defaultGray', 'href', 'disabled']
+
 // Default = ชุด link-button ในไฟล์ออกแบบ (render เป็น button เมื่อไม่ส่ง href)
-export const Default: Story = { name: 'Link-button' }
+export const Default: Story = { name: 'Link-button', parameters: controls(LINK_BUTTON) }
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
@@ -154,4 +162,4 @@ export const AsAnchor: Story = {
 
 // ── 2 ชนิดจริงจากไฟล์ออกแบบ (เมนู sidebar สำหรับลองเล่นแต่ละชนิด) ──────────
 // link-button ไม่ต้องมีตรงนี้ เพราะ Default ด้านบนทำหน้าที่แทนอยู่แล้ว
-export const LinkIconButton: Story = { tags: ['!autodocs'], name: 'Link-icon-button', args: { children: undefined, leftIcon: 'close', label: 'ปิด' } }
+export const LinkIconButton: Story = { tags: ['!autodocs'], name: 'Link-icon-button', args: { children: undefined, leftIcon: 'close', label: 'ปิด' }, parameters: controls(LINK_ICON_BUTTON) }
