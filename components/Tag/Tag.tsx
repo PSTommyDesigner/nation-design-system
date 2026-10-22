@@ -225,7 +225,7 @@ export function Tag({
         </span>
       ) : null}
       {effectiveLeading === 'left-image' && imageSrc ? (
-        <span className={styles.leading}><img src={imageSrc} alt="" /></span>
+        <span className={`${styles.leading} ${styles.leadingImage}`}><img src={imageSrc} alt="" /></span>
       ) : null}
       {effectiveLeading === 'left-number' ? (
         <span className={`${styles.leading} ${styles.leadingNumber}`}>{count}</span>
