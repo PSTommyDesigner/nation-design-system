@@ -25,6 +25,9 @@
     "verify:coverage": "node scripts/verify-component-coverage.mjs",
     "verify:api": "node scripts/verify-component-api.mjs",
     "verify:families": "node scripts/verify-color-families.mjs",
+    "figma:layers": "node scripts/extract-figma-layers.mjs",
+    "css:generate": "node scripts/generate-component-css.mjs",
+    "verify:css": "node scripts/generate-component-css.mjs tag --check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

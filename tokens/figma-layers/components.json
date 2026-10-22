@@ -1,0 +1,21 @@
+{
+  "tag": {
+    "page": "21 Tags",
+    "depth": 5,
+    "reference": "Brand Tags",
+    "referenceHierarchy": "secondary",
+    "families": [
+      "Brand Tags", "Neutral Tags", "Red Tags", "Green Tags", "Yellow Tags",
+      "Cyan Tags", "Blue Tags", "Purple Tags", "Pink Tags", "Bamboo Tags", "Brown Tags"
+    ],
+    "sets": [
+      "semi-rounded-tag", "pill-tag",
+      "number-tag", "pill-number-tag",
+      "image-tag", "pill-image-tag",
+      "checkbox-tag", "pill-checkbox-tag",
+      "indicator-tag", "pill-indicator-tag",
+      "icon-tag", "circular-icon-tag",
+      "link-tag", "link-icon-tag"
+    ]
+  }
+}

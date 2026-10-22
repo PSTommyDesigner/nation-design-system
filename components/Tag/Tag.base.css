@@ -1,0 +1,127 @@
+/*
+ * Tag ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ของเบราว์เซอร์เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว
+ * ค่าทุกค่า (ระยะ มุมโค้ง ขนาด สี เงา ตัวอักษร) มาจาก custom property ชื่อ --tag-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างให้จาก tokens/figma-layers/tag.json (spec ชั้นที่ดึงจากไฟล์ออกแบบ)
+ * แล้วต่อท้ายไฟล์นี้เป็น Tag.module.css   ห้ามแก้ Tag.module.css ตรง ๆ
+ *
+ * ทำไมต้องแยก (หัวหน้าสั่ง 2026-10-22): token บอกว่ามีตัวแปรอะไร แต่ไม่บอกว่าใช้ตรงไหน
+ * ไฟล์ออกแบบบอกครบว่าชั้นไหนผูกตัวแปรอะไร การอ่านด้วยตาแล้วเขียนมือทำให้เส้นขอบ มุมโค้ง
+ * และสีกล่องตัวเลขผิดจากไฟล์ออกแบบมาแล้ว จึงให้ส่วนที่เป็น "ค่า" ทั้งหมดถูกสร้างจากไฟล์ออกแบบแทน
+ *
+ * สิ่งที่ยังเป็นการตัดสินใจฝั่งเว็บ (ไม่มีในไฟล์ออกแบบ) และเขียนไว้ตรงนี้
+ *   1. เส้นขอบวาดด้วยชั้นซ้อนทับ ::after เพราะใน Figma เส้นขอบของเฟรมวาด "ทับ" ลูก แต่ box-shadow
+ *      แบบ inset ของ CSS อยู่ใต้ลูก ช่องตัวเลขที่ชนขอบซ้ายจะบังเส้นขอบ (หัวหน้าทัก 2026-10-22)
+ *   2. เส้นขอบใช้ box-shadow ไม่ใช่ border เพราะไฟล์ออกแบบใช้ stroke แบบ INSIDE ซึ่งไม่กินพื้นที่
+ *   3. overflow: hidden ที่กล่องนอกตรงกับ clipsContent ของไฟล์ออกแบบ ทำให้มุมของช่องตัวเลขถูกตัดตามมุมโค้ง
+ *   4. ช่องรูปไม่ใส่ระยะขอบ เพราะในไฟล์ออกแบบรูปเป็น fill ของกล่องทั้งใบ ระยะ image-padding ไม่ได้บีบรูป
+ *   5. ช่องตัวเลขไม่วาดเส้นซ้าย 1px ของตัวเอง เพราะซ้อนอยู่ใต้เส้นขอบของกล่องนอกพอดี (หัวหน้าสั่ง 2026-10-22)
+ *   6. สถานะ checked ของช่องติ๊กอ่านจาก component ช่องติ๊ก ไม่ได้อยู่ในชุดแท็ก จึงเขียนไว้ตรงนี้
+ *   7. hover ใช้ได้เฉพาะแท็กที่กดได้ (.interactive) และ focus ring เป็นของฝั่งเว็บ
+ */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  background: var(--tag-bg, transparent);
+  color: var(--tag-fg, inherit);
+  padding: var(--tag-pt, 0) var(--tag-pr, 0) var(--tag-pb, 0) var(--tag-pl, 0);
+  gap: var(--tag-gap, 0);
+  border-radius: var(--tag-r-tl, 0) var(--tag-r-tr, 0) var(--tag-r-br, 0) var(--tag-r-bl, 0);
+  box-shadow: var(--tag-shadow, none);
+  font-family: var(--tag-font-family);
+  font-size: var(--tag-font-size);
+  line-height: var(--tag-line-height);
+  font-weight: var(--tag-font-weight);
+  letter-spacing: var(--tag-letter-space);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.root::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 var(--tag-border-w, 1px) var(--tag-border, transparent);
+  pointer-events: none;
+  transition: box-shadow 0.15s ease;
+}
+
+.interactive { cursor: pointer; }
+.interactive:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand), var(--tag-shadow, 0 0 0 0 transparent);
+}
+.root[aria-disabled='true'] { cursor: not-allowed; }
+
+.title {
+  display: inline-block;
+  padding: var(--tag-title-pt, 0) var(--tag-title-pr, 0) var(--tag-title-pb, 0) var(--tag-title-pl, 0);
+}
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tag-content-gap, var(--tag-gap, 0));
+  padding: var(--tag-content-pt, 0) var(--tag-content-pr, 0) var(--tag-content-pb, 0) var(--tag-content-pl, 0);
+}
+.icon { display: inline-flex; flex: none; }
+.close { display: inline-flex; flex: none; background: none; border: 0; padding: 0; cursor: pointer; }
+.icon, .close { width: var(--tag-icon); height: var(--tag-icon); color: var(--tag-icon-color, inherit); }
+
+.leading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--tag-lead-w);
+  height: var(--tag-lead-h);
+  align-self: var(--tag-lead-align, center);
+  padding-inline: var(--tag-lead-pl, 0) var(--tag-lead-pr, 0);
+  overflow: hidden;
+}
+.leading img { width: 100%; height: 100%; object-fit: cover; }
+.leadingImage { padding-inline: 0; }
+.leadingNumber { background: var(--tag-lead-bg); color: var(--tag-lead-fg); }
+
+.dot {
+  flex: none;
+  width: var(--tag-dot);
+  height: var(--tag-dot);
+  margin-inline: var(--tag-dot-pl, 0) var(--tag-dot-pr, 0);
+  border-radius: 50%;
+  background: var(--tag-dot-color);
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--tag-checkbox);
+  height: var(--tag-checkbox);
+  border-radius: var(--tag-checkbox-r-tl, 0) var(--tag-checkbox-r-tr, 0) var(--tag-checkbox-r-br, 0) var(--tag-checkbox-r-bl, 0);
+  background: var(--tag-checkbox-bg);
+  border: var(--tag-checkbox-border-w, 1px) solid var(--tag-checkbox-border);
+  color: var(--tag-fg);
+}
+.checkbox[data-checked='true'] { background: var(--tag-fg); border-color: var(--tag-fg); color: var(--ntg-color-text-general-const-white); }
+
+/* ข้อความสำหรับโปรแกรมอ่านหน้าจอในโหมดไอคอนล้วน ค่า 1px เป็นสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ ไม่ใช่ค่าออกแบบ */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.iconOnly .title, .iconOnly .leading, .iconOnly .dot, .iconOnly .checkbox { display: none; }
