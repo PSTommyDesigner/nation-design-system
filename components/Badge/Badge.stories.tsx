@@ -22,10 +22,12 @@ export default meta
 
 type Story = StoryObj<typeof Badge>
 
-export const Default: Story = {}
+// Default = ชุด semi-rounded-badge ในไฟล์ออกแบบ (เรนเดอร์เหมือนกันเป๊ะ จึงรวมเป็น story เดียว แบบเดียวกับ Tag)
+export const Default: Story = { name: 'Semi-rounded-badge' }
 
 // ── ส่วนประกอบ ──────────────────────────────────────────────
 export const Anatomy: Story = {
+  tags: ['!dev'],
   name: 'ส่วนประกอบทั้งหมด',
   args: { trailingIcon: 'chevron-right' },
   parameters: {
@@ -36,6 +38,7 @@ export const Anatomy: Story = {
   },
 }
 export const IconOnly: Story = {
+  tags: ['!dev'],
   name: 'ไอคอนล้วน',
   args: { children: undefined, icon: 'check', shape: 'circular', family: 'brand', label: 'ยืนยันแล้ว' },
   parameters: { docs: { section: 'ส่วนประกอบ' } },
@@ -48,6 +51,7 @@ const FAMILIES: BadgeFamily[] = [
 const HIERARCHIES: BadgeHierarchy[] = ['primary', 'secondary', 'tertiary', 'quaternary']
 
 export const AllFamilies: Story = {
+  tags: ['!dev'],
   name: 'ตระกูลสี 11 ตระกูล',
   parameters: { docs: { section: 'ชุด' } },
   render: () => (
@@ -61,6 +65,7 @@ export const AllFamilies: Story = {
   ),
 }
 export const Hierarchies: Story = {
+  tags: ['!dev'],
   name: 'ลำดับชั้น 4 ขั้น',
   parameters: {
     docs: {
@@ -79,6 +84,7 @@ export const Hierarchies: Story = {
   ),
 }
 export const Shapes: Story = {
+  tags: ['!dev'],
   name: 'ทรง 4 แบบ',
   parameters: { docs: { section: 'ชุด' } },
   render: () => (
@@ -90,10 +96,11 @@ export const Shapes: Story = {
     </Preview>
   ),
 }
-export const Secondary: Story = { args: { hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
-export const Tertiary: Story = { args: { hierarchy: 'tertiary' }, parameters: { docs: { section: 'ชุด' } } }
-export const Pill: Story = { args: { shape: 'pill', hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
+export const Secondary: Story = { tags: ['!dev'], args: { hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
+export const Tertiary: Story = { tags: ['!dev'], args: { hierarchy: 'tertiary' }, parameters: { docs: { section: 'ชุด' } } }
+export const Pill: Story = { tags: ['!dev'], args: { shape: 'pill', hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
 export const LinkStyle: Story = {
+  tags: ['!dev'],
   args: { shape: 'link', children: 'อ่านต่อ', family: 'blue' },
   parameters: { docs: { section: 'ชุด' } },
 }
@@ -102,6 +109,7 @@ export const LinkStyle: Story = {
 const SIZES: BadgeSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 export const Sizes: Story = {
+  tags: ['!dev'],
   name: 'ขนาด 5 ขั้น',
   parameters: {
     docs: {
@@ -122,6 +130,7 @@ export const Sizes: Story = {
 
 // ── ควรไม่ควร ───────────────────────────────────────────────
 export const GoodAndBad: Story = {
+  tags: ['!dev'],
   name: 'ควรและไม่ควร',
   // ตัวอย่างในหัวข้อนี้ประกอบจากหลายชิ้นย่อยในบล็อกเดียว ไม่ใช่การพรีวิวการใช้งาน component
   // ตัวเดียวแบบหัวข้ออื่น จึงไม่ต้องมีกล่องโค้ด (หัวหน้าสั่ง 2026-10-20)
@@ -148,3 +157,12 @@ export const GoodAndBad: Story = {
     </DoDont>
   ),
 }
+
+// ── 5 ชนิดจริงจากไฟล์ออกแบบ (เมนู sidebar สำหรับลองเล่นแต่ละชนิด) ──────────
+// แบบเดียวกับ Tag (หัวหน้าสั่ง 2026-10-21) เก็บเฉพาะชื่อชุดจริงใน tokens/figma-components.json
+// ไว้ใน sidebar ส่วน story ภาพรวมด้านบนติด tag !dev ให้โชว์เฉพาะในหน้า Docs ไม่ซ้ำกันในเมนู
+// semi-rounded-badge ไม่ต้องมีตรงนี้ เพราะ Default ด้านบนทำหน้าที่แทนอยู่แล้ว
+export const PillBadge: Story = { tags: ['!autodocs'], name: 'Pill-badge', args: { shape: 'pill' } }
+export const SemiRoundedIconBadge: Story = { tags: ['!autodocs'], name: 'Semi-rounded-icon-badge', args: { children: undefined, shape: 'semi-rounded', icon: 'check', label: 'ยืนยันแล้ว' } }
+export const CircularIconBadge: Story = { tags: ['!autodocs'], name: 'Circular-icon-badge', args: { children: undefined, shape: 'circular', icon: 'check', label: 'ยืนยันแล้ว' } }
+export const LinkBadge: Story = { tags: ['!autodocs'], name: 'Link-badge', args: { shape: 'link', children: 'อ่านต่อ', family: 'blue' } }

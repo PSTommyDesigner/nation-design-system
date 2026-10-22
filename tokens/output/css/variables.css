@@ -603,8 +603,12 @@
   --ntg-scale-tag-padding-x-semi-rounded-step: 1px;
   --ntg-scale-tag-padding-x-pill-base: 6px;
   --ntg-scale-tag-padding-x-pill-step: 1px;
-  --ntg-scale-tag-padding-x-flush-base: 5px;
-  --ntg-scale-tag-padding-x-flush-step: 2px;
+  --ntg-scale-tag-padding-x-flush-left-base: 5px;
+  --ntg-scale-tag-padding-x-flush-left-step: 1px;
+  --ntg-scale-tag-padding-x-flush-right-semi-rounded-base: 6px;
+  --ntg-scale-tag-padding-x-flush-right-semi-rounded-step: 2px;
+  --ntg-scale-tag-padding-x-flush-right-pill-base: 7px;
+  --ntg-scale-tag-padding-x-flush-right-pill-step: 2px;
   --ntg-scale-tag-padding-no: 0px;
   --ntg-scale-tag-title-padding-base: 1px;
   --ntg-scale-tag-title-padding-step: 1px;
@@ -1299,17 +1303,27 @@
   --ntg-semi-rounded-tag-icon-md: 14px; /** ไอคอนปิดของแท็กขนาด md เท่ากับ 14px */
   --ntg-semi-rounded-tag-icon-lg: 16px; /** ไอคอนปิดของแท็กขนาด lg เท่ากับ 16px */
   --ntg-semi-rounded-tag-icon-xl: 18px; /** ไอคอนปิดของแท็กขนาด xl เท่ากับ 18px */
-  --ntg-semi-rounded-tag-number-tag-padding-left-xs: 5px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด xs เท่ากับ 5px */
-  --ntg-semi-rounded-tag-number-tag-padding-left-sm: 7px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด sm เท่ากับ 7px */
-  --ntg-semi-rounded-tag-number-tag-padding-left-md: 9px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด md เท่ากับ 9px */
-  --ntg-semi-rounded-tag-number-tag-padding-left-lg: 11px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด lg เท่ากับ 11px */
-  --ntg-semi-rounded-tag-number-tag-padding-left-xl: 13px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด xl เท่ากับ 13px */
-  --ntg-semi-rounded-tag-number-tag-padding-right-xs: 5px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด xs เท่ากับ 5px */
-  --ntg-semi-rounded-tag-number-tag-padding-right-sm: 7px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด sm เท่ากับ 7px */
-  --ntg-semi-rounded-tag-number-tag-padding-right-md: 9px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด md เท่ากับ 9px */
-  --ntg-semi-rounded-tag-number-tag-padding-right-lg: 11px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด lg เท่ากับ 11px */
-  --ntg-semi-rounded-tag-number-tag-padding-right-xl: 13px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด xl เท่ากับ 13px */
+  --ntg-semi-rounded-tag-number-tag-padding-left-xs: 5px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด xs เท่ากับ 5px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-number-tag-padding-left-sm: 6px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด sm เท่ากับ 6px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-number-tag-padding-left-md: 7px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด md เท่ากับ 7px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-number-tag-padding-left-lg: 8px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด lg เท่ากับ 8px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-number-tag-padding-left-xl: 9px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด xl เท่ากับ 9px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-number-tag-padding-right-xs: 6px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด xs เท่ากับ 6px คือขอบกล่องด้านไอคอนปิด */
+  --ntg-semi-rounded-tag-number-tag-padding-right-sm: 8px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด sm เท่ากับ 8px คือขอบกล่องด้านไอคอนปิด */
+  --ntg-semi-rounded-tag-number-tag-padding-right-md: 10px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด md เท่ากับ 10px คือขอบกล่องด้านไอคอนปิด */
+  --ntg-semi-rounded-tag-number-tag-padding-right-lg: 12px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด lg เท่ากับ 12px คือขอบกล่องด้านไอคอนปิด */
+  --ntg-semi-rounded-tag-number-tag-padding-right-xl: 14px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด xl เท่ากับ 14px คือขอบกล่องด้านไอคอนปิด */
   --ntg-semi-rounded-tag-number-tag-padding-no: 0px; /** ระยะขอบแบบชนขอบเท่ากับ 0px ใช้กับด้านที่ของนำหน้าเต็มความสูงชนขอบกล่อง */
+  --ntg-semi-rounded-tag-number-tag-title-padding-left-xs: 1px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-left-sm: 2px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-left-md: 3px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-left-lg: 4px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-left-xl: 5px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-right-xs: 1px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-right-sm: 2px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-right-md: 3px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-right-lg: 4px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
+  --ntg-semi-rounded-tag-number-tag-title-padding-right-xl: 5px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
   --ntg-semi-rounded-tag-number-tag-title-padding-top-xs: 1px; /** ระยะขอบบนของกรอบข้อความขนาด xs เท่ากับ 1px คำนวณจาก (ความสูง 18 ลบความสูงบรรทัด 16 ของ preset label/xs) หารสอง */
   --ntg-semi-rounded-tag-number-tag-title-padding-top-sm: 3px; /** ระยะขอบบนของกรอบข้อความขนาด sm เท่ากับ 3px คำนวณจาก (ความสูง 22 ลบความสูงบรรทัด 16 ของ preset label/xs) หารสอง */
   --ntg-semi-rounded-tag-number-tag-title-padding-top-md: 2px; /** ระยะขอบบนของกรอบข้อความขนาด md เท่ากับ 2px คำนวณจาก (ความสูง 26 ลบความสูงบรรทัด 22 ของ preset label/sm) หารสอง */
@@ -1320,6 +1334,11 @@
   --ntg-semi-rounded-tag-number-tag-title-padding-bottom-md: 2px; /** ระยะขอบล่างของกรอบข้อความขนาด md เท่ากับ 2px คำนวณจาก (ความสูง 26 ลบความสูงบรรทัด 22 ของ preset label/sm) หารสอง */
   --ntg-semi-rounded-tag-number-tag-title-padding-bottom-lg: 3px; /** ระยะขอบล่างของกรอบข้อความขนาด lg เท่ากับ 3px คำนวณจาก (ความสูง 30 ลบความสูงบรรทัด 24 ของ preset label/md) หารสอง */
   --ntg-semi-rounded-tag-number-tag-title-padding-bottom-xl: 4px; /** ระยะขอบล่างของกรอบข้อความขนาด xl เท่ากับ 4px คำนวณจาก (ความสูง 34 ลบความสูงบรรทัด 26 ของ preset label/lg) หารสอง */
+  --ntg-semi-rounded-tag-number-tag-content-gap-xs: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด xs เท่ากับ 2px */
+  --ntg-semi-rounded-tag-number-tag-content-gap-sm: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด sm เท่ากับ 2px */
+  --ntg-semi-rounded-tag-number-tag-content-gap-md: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด md เท่ากับ 2px */
+  --ntg-semi-rounded-tag-number-tag-content-gap-lg: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด lg เท่ากับ 2px */
+  --ntg-semi-rounded-tag-number-tag-content-gap-xl: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด xl เท่ากับ 2px */
   --ntg-semi-rounded-tag-number-tag-gap-xs: 0px; /** ช่องไฟของชนิด number-tag ขนาด xs เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
   --ntg-semi-rounded-tag-number-tag-gap-sm: 0px; /** ช่องไฟของชนิด number-tag ขนาด sm เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
   --ntg-semi-rounded-tag-number-tag-gap-md: 0px; /** ช่องไฟของชนิด number-tag ขนาด md เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
@@ -1345,17 +1364,27 @@
   --ntg-semi-rounded-tag-number-tag-icon-md: 16px; /** ไอคอนด้านซ้ายของชนิด number-tag ขนาด md เท่ากับ 16px */
   --ntg-semi-rounded-tag-number-tag-icon-lg: 18px; /** ไอคอนด้านซ้ายของชนิด number-tag ขนาด lg เท่ากับ 18px */
   --ntg-semi-rounded-tag-number-tag-icon-xl: 20px; /** ไอคอนด้านซ้ายของชนิด number-tag ขนาด xl เท่ากับ 20px */
-  --ntg-semi-rounded-tag-image-tag-padding-left-xs: 5px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด xs เท่ากับ 5px */
-  --ntg-semi-rounded-tag-image-tag-padding-left-sm: 7px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด sm เท่ากับ 7px */
-  --ntg-semi-rounded-tag-image-tag-padding-left-md: 9px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด md เท่ากับ 9px */
-  --ntg-semi-rounded-tag-image-tag-padding-left-lg: 11px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด lg เท่ากับ 11px */
-  --ntg-semi-rounded-tag-image-tag-padding-left-xl: 13px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด xl เท่ากับ 13px */
-  --ntg-semi-rounded-tag-image-tag-padding-right-xs: 5px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด xs เท่ากับ 5px */
-  --ntg-semi-rounded-tag-image-tag-padding-right-sm: 7px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด sm เท่ากับ 7px */
-  --ntg-semi-rounded-tag-image-tag-padding-right-md: 9px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด md เท่ากับ 9px */
-  --ntg-semi-rounded-tag-image-tag-padding-right-lg: 11px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด lg เท่ากับ 11px */
-  --ntg-semi-rounded-tag-image-tag-padding-right-xl: 13px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด xl เท่ากับ 13px */
+  --ntg-semi-rounded-tag-image-tag-padding-left-xs: 5px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด xs เท่ากับ 5px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-image-tag-padding-left-sm: 6px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด sm เท่ากับ 6px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-image-tag-padding-left-md: 7px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด md เท่ากับ 7px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-image-tag-padding-left-lg: 8px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด lg เท่ากับ 8px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-image-tag-padding-left-xl: 9px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด xl เท่ากับ 9px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-semi-rounded-tag-image-tag-padding-right-xs: 6px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด xs เท่ากับ 6px คือขอบกล่องด้านไอคอนปิด */
+  --ntg-semi-rounded-tag-image-tag-padding-right-sm: 8px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด sm เท่ากับ 8px คือขอบกล่องด้านไอคอนปิด */
+  --ntg-semi-rounded-tag-image-tag-padding-right-md: 10px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด md เท่ากับ 10px คือขอบกล่องด้านไอคอนปิด */
+  --ntg-semi-rounded-tag-image-tag-padding-right-lg: 12px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด lg เท่ากับ 12px คือขอบกล่องด้านไอคอนปิด */
+  --ntg-semi-rounded-tag-image-tag-padding-right-xl: 14px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด xl เท่ากับ 14px คือขอบกล่องด้านไอคอนปิด */
   --ntg-semi-rounded-tag-image-tag-padding-no: 0px; /** ระยะขอบแบบชนขอบเท่ากับ 0px ใช้กับด้านที่ของนำหน้าเต็มความสูงชนขอบกล่อง */
+  --ntg-semi-rounded-tag-image-tag-title-padding-left-xs: 1px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-left-sm: 2px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-left-md: 3px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-left-lg: 4px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-left-xl: 5px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-right-xs: 1px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-right-sm: 2px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-right-md: 3px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-right-lg: 4px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
+  --ntg-semi-rounded-tag-image-tag-title-padding-right-xl: 5px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
   --ntg-semi-rounded-tag-image-tag-title-padding-top-xs: 1px; /** ระยะขอบบนของกรอบข้อความขนาด xs เท่ากับ 1px คำนวณจาก (ความสูง 18 ลบความสูงบรรทัด 16 ของ preset label/xs) หารสอง */
   --ntg-semi-rounded-tag-image-tag-title-padding-top-sm: 3px; /** ระยะขอบบนของกรอบข้อความขนาด sm เท่ากับ 3px คำนวณจาก (ความสูง 22 ลบความสูงบรรทัด 16 ของ preset label/xs) หารสอง */
   --ntg-semi-rounded-tag-image-tag-title-padding-top-md: 2px; /** ระยะขอบบนของกรอบข้อความขนาด md เท่ากับ 2px คำนวณจาก (ความสูง 26 ลบความสูงบรรทัด 22 ของ preset label/sm) หารสอง */
@@ -1366,6 +1395,11 @@
   --ntg-semi-rounded-tag-image-tag-title-padding-bottom-md: 2px; /** ระยะขอบล่างของกรอบข้อความขนาด md เท่ากับ 2px คำนวณจาก (ความสูง 26 ลบความสูงบรรทัด 22 ของ preset label/sm) หารสอง */
   --ntg-semi-rounded-tag-image-tag-title-padding-bottom-lg: 3px; /** ระยะขอบล่างของกรอบข้อความขนาด lg เท่ากับ 3px คำนวณจาก (ความสูง 30 ลบความสูงบรรทัด 24 ของ preset label/md) หารสอง */
   --ntg-semi-rounded-tag-image-tag-title-padding-bottom-xl: 4px; /** ระยะขอบล่างของกรอบข้อความขนาด xl เท่ากับ 4px คำนวณจาก (ความสูง 34 ลบความสูงบรรทัด 26 ของ preset label/lg) หารสอง */
+  --ntg-semi-rounded-tag-image-tag-content-gap-xs: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด xs เท่ากับ 2px */
+  --ntg-semi-rounded-tag-image-tag-content-gap-sm: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด sm เท่ากับ 2px */
+  --ntg-semi-rounded-tag-image-tag-content-gap-md: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด md เท่ากับ 2px */
+  --ntg-semi-rounded-tag-image-tag-content-gap-lg: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด lg เท่ากับ 2px */
+  --ntg-semi-rounded-tag-image-tag-content-gap-xl: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด xl เท่ากับ 2px */
   --ntg-semi-rounded-tag-image-tag-gap-xs: 0px; /** ช่องไฟของชนิด image-tag ขนาด xs เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
   --ntg-semi-rounded-tag-image-tag-gap-sm: 0px; /** ช่องไฟของชนิด image-tag ขนาด sm เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
   --ntg-semi-rounded-tag-image-tag-gap-md: 0px; /** ช่องไฟของชนิด image-tag ขนาด md เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
@@ -1422,6 +1456,11 @@
   --ntg-semi-rounded-tag-checkbox-tag-title-padding-right-md: 3px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
   --ntg-semi-rounded-tag-checkbox-tag-title-padding-right-lg: 4px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
   --ntg-semi-rounded-tag-checkbox-tag-title-padding-right-xl: 5px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
+  --ntg-semi-rounded-tag-checkbox-tag-content-gap-xs: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด xs เท่ากับ 2px */
+  --ntg-semi-rounded-tag-checkbox-tag-content-gap-sm: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด sm เท่ากับ 2px */
+  --ntg-semi-rounded-tag-checkbox-tag-content-gap-md: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด md เท่ากับ 2px */
+  --ntg-semi-rounded-tag-checkbox-tag-content-gap-lg: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด lg เท่ากับ 2px */
+  --ntg-semi-rounded-tag-checkbox-tag-content-gap-xl: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด xl เท่ากับ 2px */
   --ntg-semi-rounded-tag-checkbox-tag-gap-xs: 2px; /** ช่องไฟระหว่างของนำหน้ากับข้อความของชนิด checkbox-tag ขนาด xs เท่ากับ 2px */
   --ntg-semi-rounded-tag-checkbox-tag-gap-sm: 2px; /** ช่องไฟระหว่างของนำหน้ากับข้อความของชนิด checkbox-tag ขนาด sm เท่ากับ 2px */
   --ntg-semi-rounded-tag-checkbox-tag-gap-md: 2px; /** ช่องไฟระหว่างของนำหน้ากับข้อความของชนิด checkbox-tag ขนาด md เท่ากับ 2px */
@@ -1589,17 +1628,27 @@
   --ntg-pill-tag-icon-md: 14px; /** ไอคอนปิดของแท็กขนาด md เท่ากับ 14px */
   --ntg-pill-tag-icon-lg: 16px; /** ไอคอนปิดของแท็กขนาด lg เท่ากับ 16px */
   --ntg-pill-tag-icon-xl: 18px; /** ไอคอนปิดของแท็กขนาด xl เท่ากับ 18px */
-  --ntg-pill-tag-number-tag-padding-left-xs: 7px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด xs เท่ากับ 7px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-number-tag-padding-left-sm: 9px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด sm เท่ากับ 9px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-number-tag-padding-left-md: 11px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด md เท่ากับ 11px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-number-tag-padding-left-lg: 13px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด lg เท่ากับ 13px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-number-tag-padding-left-xl: 15px; /** ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด xl เท่ากับ 15px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-number-tag-padding-right-xs: 5px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด xs เท่ากับ 5px */
-  --ntg-pill-tag-number-tag-padding-right-sm: 7px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด sm เท่ากับ 7px */
-  --ntg-pill-tag-number-tag-padding-right-md: 9px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด md เท่ากับ 9px */
-  --ntg-pill-tag-number-tag-padding-right-lg: 11px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด lg เท่ากับ 11px */
-  --ntg-pill-tag-number-tag-padding-right-xl: 13px; /** ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด xl เท่ากับ 13px */
+  --ntg-pill-tag-number-tag-padding-left-xs: 5px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด xs เท่ากับ 5px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-number-tag-padding-left-sm: 6px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด sm เท่ากับ 6px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-number-tag-padding-left-md: 7px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด md เท่ากับ 7px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-number-tag-padding-left-lg: 8px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด lg เท่ากับ 8px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-number-tag-padding-left-xl: 9px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด xl เท่ากับ 9px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-number-tag-padding-right-xs: 7px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด xs เท่ากับ 7px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
+  --ntg-pill-tag-number-tag-padding-right-sm: 9px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด sm เท่ากับ 9px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
+  --ntg-pill-tag-number-tag-padding-right-md: 11px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด md เท่ากับ 11px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
+  --ntg-pill-tag-number-tag-padding-right-lg: 13px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด lg เท่ากับ 13px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
+  --ntg-pill-tag-number-tag-padding-right-xl: 15px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด xl เท่ากับ 15px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
   --ntg-pill-tag-number-tag-padding-no: 0px; /** ระยะขอบแบบชนขอบเท่ากับ 0px ใช้กับด้านที่ของนำหน้าเต็มความสูงชนขอบกล่อง */
+  --ntg-pill-tag-number-tag-title-padding-left-xs: 1px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px */
+  --ntg-pill-tag-number-tag-title-padding-left-sm: 2px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px */
+  --ntg-pill-tag-number-tag-title-padding-left-md: 3px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
+  --ntg-pill-tag-number-tag-title-padding-left-lg: 4px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
+  --ntg-pill-tag-number-tag-title-padding-left-xl: 5px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
+  --ntg-pill-tag-number-tag-title-padding-right-xs: 1px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px */
+  --ntg-pill-tag-number-tag-title-padding-right-sm: 2px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px */
+  --ntg-pill-tag-number-tag-title-padding-right-md: 3px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
+  --ntg-pill-tag-number-tag-title-padding-right-lg: 4px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
+  --ntg-pill-tag-number-tag-title-padding-right-xl: 5px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
   --ntg-pill-tag-number-tag-title-padding-top-xs: 1px; /** ระยะขอบบนของกรอบข้อความขนาด xs เท่ากับ 1px คำนวณจาก (ความสูง 18 ลบความสูงบรรทัด 16 ของ preset label/xs) หารสอง */
   --ntg-pill-tag-number-tag-title-padding-top-sm: 3px; /** ระยะขอบบนของกรอบข้อความขนาด sm เท่ากับ 3px คำนวณจาก (ความสูง 22 ลบความสูงบรรทัด 16 ของ preset label/xs) หารสอง */
   --ntg-pill-tag-number-tag-title-padding-top-md: 2px; /** ระยะขอบบนของกรอบข้อความขนาด md เท่ากับ 2px คำนวณจาก (ความสูง 26 ลบความสูงบรรทัด 22 ของ preset label/sm) หารสอง */
@@ -1610,6 +1659,11 @@
   --ntg-pill-tag-number-tag-title-padding-bottom-md: 2px; /** ระยะขอบล่างของกรอบข้อความขนาด md เท่ากับ 2px คำนวณจาก (ความสูง 26 ลบความสูงบรรทัด 22 ของ preset label/sm) หารสอง */
   --ntg-pill-tag-number-tag-title-padding-bottom-lg: 3px; /** ระยะขอบล่างของกรอบข้อความขนาด lg เท่ากับ 3px คำนวณจาก (ความสูง 30 ลบความสูงบรรทัด 24 ของ preset label/md) หารสอง */
   --ntg-pill-tag-number-tag-title-padding-bottom-xl: 4px; /** ระยะขอบล่างของกรอบข้อความขนาด xl เท่ากับ 4px คำนวณจาก (ความสูง 34 ลบความสูงบรรทัด 26 ของ preset label/lg) หารสอง */
+  --ntg-pill-tag-number-tag-content-gap-xs: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด xs เท่ากับ 2px */
+  --ntg-pill-tag-number-tag-content-gap-sm: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด sm เท่ากับ 2px */
+  --ntg-pill-tag-number-tag-content-gap-md: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด md เท่ากับ 2px */
+  --ntg-pill-tag-number-tag-content-gap-lg: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด lg เท่ากับ 2px */
+  --ntg-pill-tag-number-tag-content-gap-xl: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด xl เท่ากับ 2px */
   --ntg-pill-tag-number-tag-gap-xs: 0px; /** ช่องไฟของชนิด number-tag ขนาด xs เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
   --ntg-pill-tag-number-tag-gap-sm: 0px; /** ช่องไฟของชนิด number-tag ขนาด sm เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
   --ntg-pill-tag-number-tag-gap-md: 0px; /** ช่องไฟของชนิด number-tag ขนาด md เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
@@ -1635,17 +1689,27 @@
   --ntg-pill-tag-number-tag-icon-md: 16px; /** ไอคอนด้านซ้ายของชนิด number-tag ขนาด md เท่ากับ 16px */
   --ntg-pill-tag-number-tag-icon-lg: 18px; /** ไอคอนด้านซ้ายของชนิด number-tag ขนาด lg เท่ากับ 18px */
   --ntg-pill-tag-number-tag-icon-xl: 20px; /** ไอคอนด้านซ้ายของชนิด number-tag ขนาด xl เท่ากับ 20px */
-  --ntg-pill-tag-image-tag-padding-left-xs: 7px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด xs เท่ากับ 7px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-image-tag-padding-left-sm: 9px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด sm เท่ากับ 9px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-image-tag-padding-left-md: 11px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด md เท่ากับ 11px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-image-tag-padding-left-lg: 13px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด lg เท่ากับ 13px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-image-tag-padding-left-xl: 15px; /** ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด xl เท่ากับ 15px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
-  --ntg-pill-tag-image-tag-padding-right-xs: 5px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด xs เท่ากับ 5px */
-  --ntg-pill-tag-image-tag-padding-right-sm: 7px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด sm เท่ากับ 7px */
-  --ntg-pill-tag-image-tag-padding-right-md: 9px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด md เท่ากับ 9px */
-  --ntg-pill-tag-image-tag-padding-right-lg: 11px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด lg เท่ากับ 11px */
-  --ntg-pill-tag-image-tag-padding-right-xl: 13px; /** ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด xl เท่ากับ 13px */
+  --ntg-pill-tag-image-tag-padding-left-xs: 5px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด xs เท่ากับ 5px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-image-tag-padding-left-sm: 6px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด sm เท่ากับ 6px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-image-tag-padding-left-md: 7px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด md เท่ากับ 7px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-image-tag-padding-left-lg: 8px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด lg เท่ากับ 8px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-image-tag-padding-left-xl: 9px; /** ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด xl เท่ากับ 9px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย */
+  --ntg-pill-tag-image-tag-padding-right-xs: 7px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด xs เท่ากับ 7px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
+  --ntg-pill-tag-image-tag-padding-right-sm: 9px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด sm เท่ากับ 9px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
+  --ntg-pill-tag-image-tag-padding-right-md: 11px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด md เท่ากับ 11px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
+  --ntg-pill-tag-image-tag-padding-right-lg: 13px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด lg เท่ากับ 13px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
+  --ntg-pill-tag-image-tag-padding-right-xl: 15px; /** ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด xl เท่ากับ 15px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า */
   --ntg-pill-tag-image-tag-padding-no: 0px; /** ระยะขอบแบบชนขอบเท่ากับ 0px ใช้กับด้านที่ของนำหน้าเต็มความสูงชนขอบกล่อง */
+  --ntg-pill-tag-image-tag-title-padding-left-xs: 1px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px */
+  --ntg-pill-tag-image-tag-title-padding-left-sm: 2px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px */
+  --ntg-pill-tag-image-tag-title-padding-left-md: 3px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
+  --ntg-pill-tag-image-tag-title-padding-left-lg: 4px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
+  --ntg-pill-tag-image-tag-title-padding-left-xl: 5px; /** ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
+  --ntg-pill-tag-image-tag-title-padding-right-xs: 1px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px */
+  --ntg-pill-tag-image-tag-title-padding-right-sm: 2px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px */
+  --ntg-pill-tag-image-tag-title-padding-right-md: 3px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
+  --ntg-pill-tag-image-tag-title-padding-right-lg: 4px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
+  --ntg-pill-tag-image-tag-title-padding-right-xl: 5px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
   --ntg-pill-tag-image-tag-title-padding-top-xs: 1px; /** ระยะขอบบนของกรอบข้อความขนาด xs เท่ากับ 1px คำนวณจาก (ความสูง 18 ลบความสูงบรรทัด 16 ของ preset label/xs) หารสอง */
   --ntg-pill-tag-image-tag-title-padding-top-sm: 3px; /** ระยะขอบบนของกรอบข้อความขนาด sm เท่ากับ 3px คำนวณจาก (ความสูง 22 ลบความสูงบรรทัด 16 ของ preset label/xs) หารสอง */
   --ntg-pill-tag-image-tag-title-padding-top-md: 2px; /** ระยะขอบบนของกรอบข้อความขนาด md เท่ากับ 2px คำนวณจาก (ความสูง 26 ลบความสูงบรรทัด 22 ของ preset label/sm) หารสอง */
@@ -1656,6 +1720,11 @@
   --ntg-pill-tag-image-tag-title-padding-bottom-md: 2px; /** ระยะขอบล่างของกรอบข้อความขนาด md เท่ากับ 2px คำนวณจาก (ความสูง 26 ลบความสูงบรรทัด 22 ของ preset label/sm) หารสอง */
   --ntg-pill-tag-image-tag-title-padding-bottom-lg: 3px; /** ระยะขอบล่างของกรอบข้อความขนาด lg เท่ากับ 3px คำนวณจาก (ความสูง 30 ลบความสูงบรรทัด 24 ของ preset label/md) หารสอง */
   --ntg-pill-tag-image-tag-title-padding-bottom-xl: 4px; /** ระยะขอบล่างของกรอบข้อความขนาด xl เท่ากับ 4px คำนวณจาก (ความสูง 34 ลบความสูงบรรทัด 26 ของ preset label/lg) หารสอง */
+  --ntg-pill-tag-image-tag-content-gap-xs: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด xs เท่ากับ 2px */
+  --ntg-pill-tag-image-tag-content-gap-sm: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด sm เท่ากับ 2px */
+  --ntg-pill-tag-image-tag-content-gap-md: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด md เท่ากับ 2px */
+  --ntg-pill-tag-image-tag-content-gap-lg: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด lg เท่ากับ 2px */
+  --ntg-pill-tag-image-tag-content-gap-xl: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด xl เท่ากับ 2px */
   --ntg-pill-tag-image-tag-gap-xs: 0px; /** ช่องไฟของชนิด image-tag ขนาด xs เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
   --ntg-pill-tag-image-tag-gap-sm: 0px; /** ช่องไฟของชนิด image-tag ขนาด sm เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
   --ntg-pill-tag-image-tag-gap-md: 0px; /** ช่องไฟของชนิด image-tag ขนาด md เท่ากับ 0px เพราะของนำหน้าชนขอบกล่อง */
@@ -1712,6 +1781,11 @@
   --ntg-pill-tag-checkbox-tag-title-padding-right-md: 3px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px */
   --ntg-pill-tag-checkbox-tag-title-padding-right-lg: 4px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px */
   --ntg-pill-tag-checkbox-tag-title-padding-right-xl: 5px; /** ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px */
+  --ntg-pill-tag-checkbox-tag-content-gap-xs: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด xs เท่ากับ 2px */
+  --ntg-pill-tag-checkbox-tag-content-gap-sm: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด sm เท่ากับ 2px */
+  --ntg-pill-tag-checkbox-tag-content-gap-md: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด md เท่ากับ 2px */
+  --ntg-pill-tag-checkbox-tag-content-gap-lg: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด lg เท่ากับ 2px */
+  --ntg-pill-tag-checkbox-tag-content-gap-xl: 2px; /** ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด xl เท่ากับ 2px */
   --ntg-pill-tag-checkbox-tag-gap-xs: 2px; /** ช่องไฟระหว่างของนำหน้ากับข้อความของชนิด checkbox-tag ขนาด xs เท่ากับ 2px */
   --ntg-pill-tag-checkbox-tag-gap-sm: 2px; /** ช่องไฟระหว่างของนำหน้ากับข้อความของชนิด checkbox-tag ขนาด sm เท่ากับ 2px */
   --ntg-pill-tag-checkbox-tag-gap-md: 2px; /** ช่องไฟระหว่างของนำหน้ากับข้อความของชนิด checkbox-tag ขนาด md เท่ากับ 2px */

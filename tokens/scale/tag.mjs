@@ -45,19 +45,18 @@ export const PADDING_X = {
   'semi-rounded': { base: 4, step: 1 },  // 4 · 5 · 6 · 7 · 8
   pill: { base: 6, step: 1 },            // 6 · 7 · 8 · 9 · 10
 };
-// ชนิดที่ของนำหน้าเต็มความสูง กล่องนอกกันระยะให้ของนำหน้าแทน จึงใช้บันไดของตัวเอง
-export const PADDING_X_FLUSH = { base: 5, step: 2 }; // 5 · 7 · 9 · 11 · 13
+// ⚠️ ชนิดชนขอบ (number image) หัวหน้าปรับโครง 2026-10-21 ให้ช่องตัวเลขหรือช่องรูปอยู่ซ้ายสุดชนขอบ
+//    ข้อความอยู่กลางในชั้น content และไอคอนปิดอยู่ขวาสุดในชั้น content เดียวกัน
+//    ระยะขอบซ้ายของ content จึงเป็น "ช่องว่างหลังช่องตัวเลข" (เล็ก โตทีละ 1)
+//    ส่วนระยะขอบขวาของ content เป็น "ขอบกล่องด้านไอคอนปิด" (โตทีละ 2 แยก base ตามทรง เหมือน PADDING_X)
+//    ค่าอ่านจากไฟล์ออกแบบหลังหัวหน้าแก้เสร็จ 2026-10-21 ตรงกันทั้ง 4 ชุด (number image คูณสองทรง)
+//    เดิม (ก่อน 2026-10-21) ช่องตัวเลขอยู่ขวาและซ้ายกว้างกว่าขวา กลับด้านแล้วเพราะโครงใหม่กลับด้านทั้งแถว
+export const PADDING_X_FLUSH = {
+  left: { base: 5, step: 1 },                                   // 5 · 6 · 7 · 8 · 9  ทั้งสองทรง
+  right: { 'semi-rounded': { base: 6, step: 2 }, pill: { base: 7, step: 2 } }, // 6..14 · 7..15 แคปซูลเผื่อขอบมากกว่า 1px
+};
 export const PADDING_NO = 0;                          // ชนขอบ
 export const TITLE_PADDING = { base: 1, step: 1 };    // 1 · 2 · 3 · 4 · 5
-// ⚠️ ระยะขอบกล่องของชนิดที่มีของนำหน้าในทรงแคปซูล ซ้ายกว้างกว่าขวา 2px โดยตั้งใจ
-//    user สั่ง 2026-09-18 ให้ถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน
-//    และยืนยันอีกครั้ง 2026-10-08 ว่าทรงแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่าทรงมุมมน
-//
-// ⚠️ ย้ายมาจาก title-padding เมื่อ 2026-10-08 เพราะค่าชุดนี้คือ "ขอบของกล่อง" ไม่ใช่ "ขอบของกรอบข้อความ"
-//    ชนิดที่มีของนำหน้าตั้งกล่องนอกเป็นชนขอบทั้งสี่ด้าน ลูกตัวแรกจึงเป็นตัวให้ขอบซ้ายของกล่อง
-//    ตอนที่ค่าอยู่ใน title-padding ทำให้สองทรงอ่านค่าจาก token คนละชื่อทั้งที่เป็นเรื่องเดียวกัน
-//    และเป็นต้นเหตุให้ทรงมุมมน 10 ตระกูลผูกผิดตัวจนขอบแคบกว่าตระกูลแบรนด์ 6px ต่อข้าง
-export const PADDING_X_PILL_FLUSH = { left: { base: 7, step: 2 }, right: { base: 5, step: 2 } };
 export const GAP = 2;          // ช่องไฟระหว่างข้อความกับไอคอนปิด
 export const GAP_FLUSH = 0;    // ชนิดที่ของนำหน้าชนขอบ ไม่มีช่องไฟ
 export const ICON = { base: 10, step: 2 };          // 10 · 12 · 14 · 16 · 18  ไอคอนปิดของชุดฐาน
@@ -99,6 +98,11 @@ export const iconTagIconAt = (s) => ICON_LEADING.base + SIZES.indexOf(s) * ICON_
 const FLUSH_TYPES = ['number-tag', 'image-tag'];
 // ชื่อของนำหน้าในแต่ละชนิด ใช้ตั้งชื่อตัวแปรขนาดและระยะขอบของมัน
 const LEADING = { 'number-tag': 'number', 'image-tag': 'image' };
+// ชนิดที่ไฟล์ออกแบบห่อไอคอนซ้ายกับกรอบข้อความไว้ในชั้น content (หัวหน้าปรับโครง 2026-10-21)
+//   ชั้นนี้มีช่องไฟของตัวเอง content-gap คั่นระหว่างไอคอนซ้ายกับข้อความ
+//   ส่วน gap ของกล่องนอกยังคั่นระหว่างชั้น content กับของต่อท้าย (ช่องตัวเลข ช่องรูป ช่องติ๊ก)
+//   indicator-tag ไม่อยู่ในกลุ่มนี้ เพราะไฟล์ออกแบบไม่ได้ปรับโครงชุดนั้น
+const CONTENT_TYPES = ['number-tag', 'image-tag', 'checkbox-tag'];
 
 const at = (s) => SIZES.indexOf(s);
 export const heightAt = (s) => HEIGHT.base + at(s) * HEIGHT.step;
@@ -147,17 +151,16 @@ export function build(dim) {
   }]));
 
   // ระยะขอบของกล่องนอก · type = null คือชุดฐาน
+  // ชนิดชนขอบ ค่านี้คือระยะขอบของชั้น content (กล่องนอกเป็นศูนย์ทุกด้าน)
   const padding = (shape, type) => {
     const flush = FLUSH_TYPES.includes(type);
-    const pillFlush = flush && shape === 'pill';
-    const x = flush ? PADDING_X_FLUSH : PADDING_X[shape];
     const of = type ? `กล่องแท็กชนิด ${type} ` : 'กล่องแท็ก';
-    const o = pillFlush ? {
-      left: grow(PADDING_X_PILL_FLUSH.left, (v, s) => `ระยะขอบซ้ายของ${of}ทรงแคปซูลขนาด ${s} เท่ากับ ${v}px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า`),
-      right: grow(PADDING_X_PILL_FLUSH.right, (v, s) => `ระยะขอบขวาของ${of}ทรงแคปซูลขนาด ${s} เท่ากับ ${v}px`),
+    const o = flush ? {
+      left: grow(PADDING_X_FLUSH.left, (v, s) => `ระยะขอบซ้ายของชั้น content ใน${of}ขนาด ${s} เท่ากับ ${v}px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย`),
+      right: grow(PADDING_X_FLUSH.right[shape], (v, s) => `ระยะขอบขวาของชั้น content ใน${of}ทรง ${shape} ขนาด ${s} เท่ากับ ${v}px คือขอบกล่องด้านไอคอนปิด${shape === 'pill' ? ' กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า' : ''}`),
     } : {
-      left: grow(x, (v, s) => `ระยะขอบซ้ายของ${of}ขนาด ${s} เท่ากับ ${v}px`),
-      right: grow(x, (v, s) => `ระยะขอบขวาของ${of}ขนาด ${s} เท่ากับ ${v}px`),
+      left: grow(PADDING_X[shape], (v, s) => `ระยะขอบซ้ายของ${of}ขนาด ${s} เท่ากับ ${v}px`),
+      right: grow(PADDING_X[shape], (v, s) => `ระยะขอบขวาของ${of}ขนาด ${s} เท่ากับ ${v}px`),
     };
     o.no = { ...dim(PADDING_NO), $description: `ระยะขอบแบบชนขอบเท่ากับ ${PADDING_NO}px ใช้กับด้านที่ของนำหน้าเต็มความสูงชนขอบกล่อง` };
     // ⚠️ ชนิดที่ของนำหน้าเต็มความสูง กล่องนอกไม่มีระยะขอบบนล่าง ใช้ padding/no เท่ากับ 0 แทน
@@ -172,10 +175,12 @@ export function build(dim) {
 
   const titlePadding = (shape, type) => {
     const flush = FLUSH_TYPES.includes(type);
-    // ⚠️ ชนิดที่มีของนำหน้าไม่มีระยะขอบซ้ายขวาของกรอบข้อความ (ถอดออก 2026-10-08)
-    //    เพราะลูกตัวแรกทำหน้าที่ให้ขอบของกล่อง ซึ่งย้ายไปอยู่ที่ padding แล้ว
-    //    กรอบข้อความเหลือหน้าที่เดียวคือคุมความสูงด้วยระยะขอบบนล่าง
-    const o = flush ? {} : {
+    // ⚠️ ระยะขอบซ้ายขวาของกรอบข้อความมีทุกชนิด (กลับมาใส่ให้ชนิดชนขอบ 2026-10-21)
+    //    เคยถอดออกจากชนิดชนขอบเมื่อ 2026-10-08 เพราะตอนนั้นลูกตัวแรกเป็นตัวให้ขอบของกล่อง
+    //    หัวหน้าปรับโครงไฟล์ออกแบบ 2026-10-21 ห่อไอคอนซ้ายกับกรอบข้อความไว้ในชั้น content
+    //    ขอบของกล่องย้ายไปอยู่ที่ชั้น content (ใช้ padding ของชนิดนั้น) กรอบข้อความจึงกลับมามี
+    //    ระยะขอบซ้ายขวาของตัวเองเหมือนชนิดอื่น ส่วนบนล่างยังเป็นตัวคุมความสูงของชนิดชนขอบ
+    const o = {
       left: grow(TITLE_PADDING, (v, s) => `ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด ${s} เท่ากับ ${v}px`),
       right: grow(TITLE_PADDING, (v, s) => `ระยะขอบขวาของกรอบข้อความในแท็กขนาด ${s} เท่ากับ ${v}px`),
     };
@@ -203,6 +208,9 @@ export function build(dim) {
         padding: padding(shape, type),
         'title-padding': titlePadding(shape, type),
       };
+      if (CONTENT_TYPES.includes(type)) {
+        node['content-gap'] = flat(GAP, (v, s) => `ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด ${type} ขนาด ${s} เท่ากับ ${v}px`);
+      }
       if (FLUSH_TYPES.includes(type)) {
         const lead = LEADING[type];
         node.gap = flat(GAP_FLUSH, (v, s) => `ช่องไฟของชนิด ${type} ขนาด ${s} เท่ากับ ${v}px เพราะของนำหน้าชนขอบกล่อง`);
@@ -351,7 +359,11 @@ export function build(dim) {
       x: {
         'semi-rounded': { base: dim(PADDING_X['semi-rounded'].base), step: dim(PADDING_X['semi-rounded'].step) },
         pill: { base: dim(PADDING_X.pill.base), step: dim(PADDING_X.pill.step) },
-        flush: { base: dim(PADDING_X_FLUSH.base), step: dim(PADDING_X_FLUSH.step) },
+        'flush-left': { base: dim(PADDING_X_FLUSH.left.base), step: dim(PADDING_X_FLUSH.left.step) },
+        'flush-right': {
+          'semi-rounded': { base: dim(PADDING_X_FLUSH.right['semi-rounded'].base), step: dim(PADDING_X_FLUSH.right['semi-rounded'].step) },
+          pill: { base: dim(PADDING_X_FLUSH.right.pill.base), step: dim(PADDING_X_FLUSH.right.pill.step) },
+        },
       },
       no: dim(PADDING_NO),
     },
@@ -365,6 +377,14 @@ export function build(dim) {
   return { name, semantic, component, radius, radiusAppliesTo: ['tag'], checks };
 }
 
+// ── สถานะการ sync กับไฟล์ออกแบบ (2026-10-21) ─────────────────
+// หัวหน้าปรับโครง 6 ชุดที่มีของนำหน้า (number image checkbox ทั้งสองทรง) รอบสุดท้ายด้วยมือที่ตระกูล Neutral
+// ของนำหน้า (ช่องตัวเลข ช่องรูป ช่องติ๊ก) อยู่ซ้ายสุด ข้อความกับไอคอนปิดอยู่ในชั้น content ทางขวา
+// คุณสมบัติ left-icon ของ 6 ชุดนี้เปลี่ยนเป็น right-icon (ไอคอนปิดตัวเดียวกับชุดฐาน) ค่าเริ่มต้นเปิด
+// ตัวแปรที่เพิ่มคือ content-gap ของ 6 ชุด และ title-padding ซ้ายขวาของชนิดชนขอบ 4 ชุด
+// ไอคอนซ้ายของทรงแคปซูลย้ายไปใช้ pill-tag/icon (บันได ICON ของชุดฐาน) ตามต้นแบบ
+// ส่วนทรงมุมมนยังใช้บันได ICON_LEADING ของชนิดตัวเอง ตามที่หัวหน้าตัดสินให้แตะน้อยที่สุด
+//
 // ── สถานะการ sync กับไฟล์ออกแบบ (2026-09-22) ─────────────────
 // ค่าทุกตัวในไฟล์นี้อ่านจากตัวแปรจริงใน Figma collection component 589 ตัว
 // และวัดความสูงจากชิ้นงานจริงซ้ำอีกรอบ ตรงกันหมด

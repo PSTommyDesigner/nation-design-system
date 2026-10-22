@@ -22,6 +22,15 @@
  *    ขั้นตอนชี้ยิ่งไม่เป็นสูตร blue กับ brown ใช้ 500 ส่วน cyan bamboo pink ใช้ 600
  *    ห้ามเขียนเป็นสูตร ให้แก้ตามไฟล์ออกแบบทีละตระกูลเสมอ
  *
+ * ⚠️ ชั้น content (เพิ่ม 2026-10-21 ตามที่หัวหน้าปรับโครงไฟล์ออกแบบ แก้รอบสุดท้ายในวันเดียวกัน)
+ *    6 ชุดที่มีของนำหน้า (number image checkbox ทั้งสองทรง) ของนำหน้าอยู่ซ้ายสุด แล้วชั้น content
+ *    ห่อข้อความกับไอคอนปิดไว้ทางขวา ชนิดชนขอบ (number image) กล่องนอกไม่มีระยะขอบ
+ *    ระยะขอบซ้ายของ content คือช่องว่างถัดจากช่องตัวเลข ระยะขอบขวาคือขอบกล่องด้านไอคอนปิด
+ *    กรอบข้อความมี title-padding ครบสี่ด้าน และคั่นข้อความกับไอคอนปิดด้วย content-gap
+ *    ทรงแคปซูลใช้ไอคอนขนาด pill-tag/icon (บันไดของชุดฐาน) ตามต้นแบบ ส่วนทรงมุมมนใช้ของชนิดตัวเอง
+ *    checkbox ทรงแคปซูลมีระยะขอบซ้ายขวาที่กล่องนอก ระยะขอบบนล่างที่ชั้น content
+ *    ส่วนทรงมุมมนมีระยะขอบครบสี่ด้านที่กล่องนอก ตามไฟล์ออกแบบที่หัวหน้าแก้ด้วยมือ
+ *
  * ⚠️ ขอบใช้ box-shadow แบบ inset ไม่ใช่ border (แก้ 2026-10-19 ตามไฟล์ออกแบบ)
  *    ของเดิมใช้ `border: 1px solid` ซึ่งถึงจะโปร่งใสก็ยังกินพื้นที่ในกล่องแบบ border-box
  *    ผลคือกล่องสูงกว่าไฟล์ออกแบบ 2px ทุกขนาดที่มีเนื้อหา ไฟล์ออกแบบใช้เส้นขอบแบบ INSIDE
@@ -79,11 +88,21 @@
    แล้วระยะขอบบนล่างที่คุมความสูงของชนิดที่มีของนำหน้าจะหายไปด้วย (เคยพลาด 2026-10-15) */
   padding: var(--tag-title-pt, 0) var(--tag-title-pr, 0) var(--tag-title-pb, 0) var(--tag-title-pl, 0);
 }
+/* ชั้น content ห่อไอคอนซ้าย ข้อความ และไอคอนปิด ตรงกับชั้น content ในไฟล์ออกแบบ (หัวหน้าปรับโครง 2026-10-21)
+   ชนิดที่มีของนำหน้า (number image checkbox) ของนำหน้าอยู่นอกชั้นนี้ทางซ้าย ระยะขอบของกล่องย้ายมาอยู่ที่ชั้นนี้
+   และคั่นข้อความกับไอคอนปิดด้วย content-gap ของชนิดนั้น
+   ชนิดอื่นไม่ตั้ง --tag-content-* ชั้นจึงไม่มีระยะขอบและใช้ช่องไฟเดียวกับกล่องนอก */
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tag-content-gap, var(--tag-gap));
+  padding: var(--tag-content-pt, 0) var(--tag-content-pr, 0) var(--tag-content-pb, 0) var(--tag-content-pl, 0);
+}
 .icon { display: inline-flex; flex: none; }
 .close { display: inline-flex; flex: none; background: none; border: 0; padding: 0; cursor: pointer; color: inherit; }
 .icon, .close { width: var(--tag-icon); height: var(--tag-icon); }
 
-/* ของนำหน้าที่เต็มความสูงชนขอบ ใช้กับชนิด number กับ image */
+/* ของนำหน้าที่เต็มความสูงชนขอบซ้าย ใช้กับชนิด number กับ image */
 .leading {
   display: inline-flex;
   align-items: center;
@@ -97,26 +116,50 @@
 }
 .leading img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ป้ายตัวเลขของชนิด number เป็นกล่องพื้นทึบแยกจากตัวทัก ไม่ใช่แค่ตัวเลขลอย
-   (หัวหน้าทัก 2026-10-21 ว่าของจริงในไฟล์ออกแบบไม่ตรง ตรวจ node tree แล้วพบว่าขาด
-   background ไปตั้งแต่แรก) สีผูกตัวแปรจริงจากกล่อง number ในไฟล์ออกแบบ มุมเป็น 0
-   เพราะกล่องแปะชิดขอบขวาของทัก ถูกมุมโค้งรวมของตัวทักครอบอยู่แล้วผ่าน overflow: hidden */
+/* ช่องตัวเลขของชนิด number เป็นกล่องพื้นทึบชนขอบซ้าย ไม่ใช่แค่ตัวเลขลอย
+   สีอ่านจากไฟล์ออกแบบทุกตระกูล 2026-10-22: พื้นกล่องใช้สีเดียวกับข้อความของแท็ก (--tag-fg)
+   ขอบกล่องใช้สีเดียวกับขอบแท็ก ตัวเลขสีขาวเสมอ ตอนชี้เปลี่ยนตามสีข้อความและขอบตอนชี้
+   โหมดเทาและตระกูล neutral ใช้พื้น solid-secondary ขอบ general/primary ตอนชี้เป็น solid
+   ปิดใช้งานใช้พื้น secondary-hover ขอบ general/primary ตัวเลข disabled-subtle
+   มุมเป็น 0 เพราะกล่องแปะชิดขอบของแท็ก ถูกมุมโค้งรวมของแท็กครอบอยู่แล้วผ่าน overflow: hidden */
 .leadingNumber {
-  background: var(--ntg-color-foreground-brand-secondary);
+  background: var(--tag-fg);
   color: var(--ntg-color-text-general-const-white);
+  box-shadow: inset 0 0 0 1px var(--tag-border);
+}
+.interactive:hover:not([aria-disabled='true']) .leadingNumber {
+  background: var(--tag-fg-hover);
+  box-shadow: inset 0 0 0 1px var(--tag-border-hover);
+}
+.neutral .leadingNumber, .defaultGray .leadingNumber {
+  background: var(--ntg-color-background-general-solid-secondary);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
+}
+.neutral.interactive:hover:not([aria-disabled='true']) .leadingNumber,
+.defaultGray.interactive:hover:not([aria-disabled='true']) .leadingNumber {
+  background: var(--ntg-color-background-general-solid);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-background-general-solid);
+}
+.root[aria-disabled='true'] .leadingNumber {
+  background: var(--ntg-color-background-general-secondary-hover);
+  color: var(--ntg-color-text-general-disabled-subtle);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
 }
 
-/* จุดสถานะของชนิด indicator วาดด้วย CSS เพราะชุดไอคอนไม่มีวงกลมเปล่า */
+/* จุดสถานะของชนิด indicator วาดด้วย CSS เพราะชุดไอคอนไม่มีวงกลมเปล่า
+   สีอ่านจากไฟล์ออกแบบ 2026-10-22: icon/system/success-secondary ทุกตระกูล ไม่ใช่สีข้อความของแท็ก */
 .dot {
   flex: none;
   width: var(--tag-dot);
   height: var(--tag-dot);
   margin-inline: var(--tag-dot-pl) var(--tag-dot-pr);
   border-radius: var(--ntg-pill-tag-radius-full);
-  background: currentColor;
+  background: var(--ntg-icon-system-success-secondary);
 }
 
-/* ช่องติ๊กของชนิด checkbox ใช้มุมโค้งของ component ช่องติ๊กตามขนาด */
+/* ช่องติ๊กของชนิด checkbox ใช้มุมโค้งของ component ช่องติ๊กตามขนาด
+   สีอ่านจากไฟล์ออกแบบ 2026-10-22: พื้น background/general/primary ขอบ border/general/primary
+   ทุกตระกูลเหมือนกัน (เป็น instance ของ component ช่องติ๊ก ไม่ได้ทาสีตระกูล) */
 .checkbox {
   display: inline-flex;
   align-items: center;
@@ -125,10 +168,11 @@
   box-sizing: border-box;
   width: var(--tag-checkbox);
   height: var(--tag-checkbox);
-  border: 1px solid currentColor;
-  color: inherit;
+  background: var(--ntg-color-background-general-primary);
+  border: 1px solid var(--ntg-color-border-general-primary);
+  color: var(--tag-fg);
 }
-.checkbox[data-checked='true'] { background: currentColor; }
+.checkbox[data-checked='true'] { background: var(--tag-fg); border-color: var(--tag-fg); color: var(--ntg-color-text-general-const-white); }
 
 /* ── ตัวอักษรต่อขนาด ใช้ preset label ห้ามผสมเอง ─────────── */
 .xs {
@@ -235,171 +279,221 @@
 .semiRounded.leadNumber.xs {
   --tag-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-xs);
-  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-xs);
+  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-xs);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-xs);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-number-tag-content-gap-xs);
   --tag-title-pt: var(--ntg-semi-rounded-tag-number-tag-title-padding-top-xs);
   --tag-title-pb: var(--ntg-semi-rounded-tag-number-tag-title-padding-bottom-xs);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-title-padding-left-xs);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-title-padding-right-xs);
   --tag-lead-w: var(--ntg-semi-rounded-tag-number-tag-number-xs);
   --tag-lead-h: var(--ntg-semi-rounded-tag-number-tag-number-xs);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-number-tag-number-padding-left-xs);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-number-tag-number-padding-right-xs);
   --tag-icon: var(--ntg-semi-rounded-tag-number-tag-icon-xs);
   --tag-gap: var(--ntg-semi-rounded-tag-number-tag-gap-xs);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-xs);
 }
 .semiRounded.leadNumber.sm {
   --tag-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-sm);
-  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-sm);
+  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-sm);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-sm);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-number-tag-content-gap-sm);
   --tag-title-pt: var(--ntg-semi-rounded-tag-number-tag-title-padding-top-sm);
   --tag-title-pb: var(--ntg-semi-rounded-tag-number-tag-title-padding-bottom-sm);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-title-padding-left-sm);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-title-padding-right-sm);
   --tag-lead-w: var(--ntg-semi-rounded-tag-number-tag-number-sm);
   --tag-lead-h: var(--ntg-semi-rounded-tag-number-tag-number-sm);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-number-tag-number-padding-left-sm);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-number-tag-number-padding-right-sm);
   --tag-icon: var(--ntg-semi-rounded-tag-number-tag-icon-sm);
   --tag-gap: var(--ntg-semi-rounded-tag-number-tag-gap-sm);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-sm);
 }
 .semiRounded.leadNumber.md {
   --tag-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-md);
-  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-md);
+  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-md);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-md);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-number-tag-content-gap-md);
   --tag-title-pt: var(--ntg-semi-rounded-tag-number-tag-title-padding-top-md);
   --tag-title-pb: var(--ntg-semi-rounded-tag-number-tag-title-padding-bottom-md);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-title-padding-left-md);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-title-padding-right-md);
   --tag-lead-w: var(--ntg-semi-rounded-tag-number-tag-number-md);
   --tag-lead-h: var(--ntg-semi-rounded-tag-number-tag-number-md);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-number-tag-number-padding-left-md);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-number-tag-number-padding-right-md);
   --tag-icon: var(--ntg-semi-rounded-tag-number-tag-icon-md);
   --tag-gap: var(--ntg-semi-rounded-tag-number-tag-gap-md);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-md);
 }
 .semiRounded.leadNumber.lg {
   --tag-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-lg);
-  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-lg);
+  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-lg);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-lg);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-number-tag-content-gap-lg);
   --tag-title-pt: var(--ntg-semi-rounded-tag-number-tag-title-padding-top-lg);
   --tag-title-pb: var(--ntg-semi-rounded-tag-number-tag-title-padding-bottom-lg);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-title-padding-left-lg);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-title-padding-right-lg);
   --tag-lead-w: var(--ntg-semi-rounded-tag-number-tag-number-lg);
   --tag-lead-h: var(--ntg-semi-rounded-tag-number-tag-number-lg);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-number-tag-number-padding-left-lg);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-number-tag-number-padding-right-lg);
   --tag-icon: var(--ntg-semi-rounded-tag-number-tag-icon-lg);
   --tag-gap: var(--ntg-semi-rounded-tag-number-tag-gap-lg);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-lg);
 }
 .semiRounded.leadNumber.xl {
   --tag-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-xl);
-  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-xl);
+  --tag-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-number-tag-padding-left-xl);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-number-tag-padding-right-xl);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-number-tag-content-gap-xl);
   --tag-title-pt: var(--ntg-semi-rounded-tag-number-tag-title-padding-top-xl);
   --tag-title-pb: var(--ntg-semi-rounded-tag-number-tag-title-padding-bottom-xl);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-title-padding-left-xl);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-title-padding-right-xl);
   --tag-lead-w: var(--ntg-semi-rounded-tag-number-tag-number-xl);
   --tag-lead-h: var(--ntg-semi-rounded-tag-number-tag-number-xl);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-number-tag-number-padding-left-xl);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-number-tag-number-padding-right-xl);
   --tag-icon: var(--ntg-semi-rounded-tag-number-tag-icon-xl);
   --tag-gap: var(--ntg-semi-rounded-tag-number-tag-gap-xl);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-number-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-xl);
 }
 .semiRounded.leadImage.xs {
   --tag-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-xs);
-  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-xs);
+  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-xs);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-xs);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-image-tag-content-gap-xs);
   --tag-title-pt: var(--ntg-semi-rounded-tag-image-tag-title-padding-top-xs);
   --tag-title-pb: var(--ntg-semi-rounded-tag-image-tag-title-padding-bottom-xs);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-title-padding-left-xs);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-title-padding-right-xs);
   --tag-lead-w: var(--ntg-semi-rounded-tag-image-tag-image-xs);
   --tag-lead-h: var(--ntg-semi-rounded-tag-image-tag-image-xs);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-image-tag-image-padding-left-xs);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-image-tag-image-padding-right-xs);
   --tag-icon: var(--ntg-semi-rounded-tag-image-tag-icon-xs);
   --tag-gap: var(--ntg-semi-rounded-tag-image-tag-gap-xs);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-xs);
 }
 .semiRounded.leadImage.sm {
   --tag-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-sm);
-  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-sm);
+  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-sm);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-sm);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-image-tag-content-gap-sm);
   --tag-title-pt: var(--ntg-semi-rounded-tag-image-tag-title-padding-top-sm);
   --tag-title-pb: var(--ntg-semi-rounded-tag-image-tag-title-padding-bottom-sm);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-title-padding-left-sm);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-title-padding-right-sm);
   --tag-lead-w: var(--ntg-semi-rounded-tag-image-tag-image-sm);
   --tag-lead-h: var(--ntg-semi-rounded-tag-image-tag-image-sm);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-image-tag-image-padding-left-sm);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-image-tag-image-padding-right-sm);
   --tag-icon: var(--ntg-semi-rounded-tag-image-tag-icon-sm);
   --tag-gap: var(--ntg-semi-rounded-tag-image-tag-gap-sm);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-sm);
 }
 .semiRounded.leadImage.md {
   --tag-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-md);
-  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-md);
+  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-md);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-md);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-image-tag-content-gap-md);
   --tag-title-pt: var(--ntg-semi-rounded-tag-image-tag-title-padding-top-md);
   --tag-title-pb: var(--ntg-semi-rounded-tag-image-tag-title-padding-bottom-md);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-title-padding-left-md);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-title-padding-right-md);
   --tag-lead-w: var(--ntg-semi-rounded-tag-image-tag-image-md);
   --tag-lead-h: var(--ntg-semi-rounded-tag-image-tag-image-md);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-image-tag-image-padding-left-md);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-image-tag-image-padding-right-md);
   --tag-icon: var(--ntg-semi-rounded-tag-image-tag-icon-md);
   --tag-gap: var(--ntg-semi-rounded-tag-image-tag-gap-md);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-md);
 }
 .semiRounded.leadImage.lg {
   --tag-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-lg);
-  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-lg);
+  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-lg);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-lg);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-image-tag-content-gap-lg);
   --tag-title-pt: var(--ntg-semi-rounded-tag-image-tag-title-padding-top-lg);
   --tag-title-pb: var(--ntg-semi-rounded-tag-image-tag-title-padding-bottom-lg);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-title-padding-left-lg);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-title-padding-right-lg);
   --tag-lead-w: var(--ntg-semi-rounded-tag-image-tag-image-lg);
   --tag-lead-h: var(--ntg-semi-rounded-tag-image-tag-image-lg);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-image-tag-image-padding-left-lg);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-image-tag-image-padding-right-lg);
   --tag-icon: var(--ntg-semi-rounded-tag-image-tag-icon-lg);
   --tag-gap: var(--ntg-semi-rounded-tag-image-tag-gap-lg);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-lg);
 }
 .semiRounded.leadImage.xl {
   --tag-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-xl);
-  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-xl);
+  --tag-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-semi-rounded-tag-image-tag-padding-left-xl);
+  --tag-content-pr: var(--ntg-semi-rounded-tag-image-tag-padding-right-xl);
+  --tag-content-pt: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-semi-rounded-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-image-tag-content-gap-xl);
   --tag-title-pt: var(--ntg-semi-rounded-tag-image-tag-title-padding-top-xl);
   --tag-title-pb: var(--ntg-semi-rounded-tag-image-tag-title-padding-bottom-xl);
+  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-title-padding-left-xl);
+  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-title-padding-right-xl);
   --tag-lead-w: var(--ntg-semi-rounded-tag-image-tag-image-xl);
   --tag-lead-h: var(--ntg-semi-rounded-tag-image-tag-image-xl);
   --tag-lead-pl: var(--ntg-semi-rounded-tag-image-tag-image-padding-left-xl);
   --tag-lead-pr: var(--ntg-semi-rounded-tag-image-tag-image-padding-right-xl);
   --tag-icon: var(--ntg-semi-rounded-tag-image-tag-icon-xl);
   --tag-gap: var(--ntg-semi-rounded-tag-image-tag-gap-xl);
-  --tag-title-pl: var(--ntg-semi-rounded-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-semi-rounded-tag-image-tag-padding-no);
   --tag-h: var(--ntg-semi-rounded-tag-size-xl);
 }
 .semiRounded.leadCheckbox.xs {
@@ -407,6 +501,7 @@
   --tag-pb: var(--ntg-semi-rounded-tag-checkbox-tag-padding-bottom-xs);
   --tag-pl: var(--ntg-semi-rounded-tag-checkbox-tag-padding-left-xs);
   --tag-pr: var(--ntg-semi-rounded-tag-checkbox-tag-padding-right-xs);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-checkbox-tag-content-gap-xs);
   --tag-icon: var(--ntg-semi-rounded-tag-checkbox-tag-icon-xs);
   --tag-gap: var(--ntg-semi-rounded-tag-checkbox-tag-gap-xs);
   --tag-title-pl: var(--ntg-semi-rounded-tag-checkbox-tag-title-padding-left-xs);
@@ -419,6 +514,7 @@
   --tag-pb: var(--ntg-semi-rounded-tag-checkbox-tag-padding-bottom-sm);
   --tag-pl: var(--ntg-semi-rounded-tag-checkbox-tag-padding-left-sm);
   --tag-pr: var(--ntg-semi-rounded-tag-checkbox-tag-padding-right-sm);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-checkbox-tag-content-gap-sm);
   --tag-icon: var(--ntg-semi-rounded-tag-checkbox-tag-icon-sm);
   --tag-gap: var(--ntg-semi-rounded-tag-checkbox-tag-gap-sm);
   --tag-title-pl: var(--ntg-semi-rounded-tag-checkbox-tag-title-padding-left-sm);
@@ -431,6 +527,7 @@
   --tag-pb: var(--ntg-semi-rounded-tag-checkbox-tag-padding-bottom-md);
   --tag-pl: var(--ntg-semi-rounded-tag-checkbox-tag-padding-left-md);
   --tag-pr: var(--ntg-semi-rounded-tag-checkbox-tag-padding-right-md);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-checkbox-tag-content-gap-md);
   --tag-icon: var(--ntg-semi-rounded-tag-checkbox-tag-icon-md);
   --tag-gap: var(--ntg-semi-rounded-tag-checkbox-tag-gap-md);
   --tag-title-pl: var(--ntg-semi-rounded-tag-checkbox-tag-title-padding-left-md);
@@ -443,6 +540,7 @@
   --tag-pb: var(--ntg-semi-rounded-tag-checkbox-tag-padding-bottom-lg);
   --tag-pl: var(--ntg-semi-rounded-tag-checkbox-tag-padding-left-lg);
   --tag-pr: var(--ntg-semi-rounded-tag-checkbox-tag-padding-right-lg);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-checkbox-tag-content-gap-lg);
   --tag-icon: var(--ntg-semi-rounded-tag-checkbox-tag-icon-lg);
   --tag-gap: var(--ntg-semi-rounded-tag-checkbox-tag-gap-lg);
   --tag-title-pl: var(--ntg-semi-rounded-tag-checkbox-tag-title-padding-left-lg);
@@ -455,6 +553,7 @@
   --tag-pb: var(--ntg-semi-rounded-tag-checkbox-tag-padding-bottom-xl);
   --tag-pl: var(--ntg-semi-rounded-tag-checkbox-tag-padding-left-xl);
   --tag-pr: var(--ntg-semi-rounded-tag-checkbox-tag-padding-right-xl);
+  --tag-content-gap: var(--ntg-semi-rounded-tag-checkbox-tag-content-gap-xl);
   --tag-icon: var(--ntg-semi-rounded-tag-checkbox-tag-icon-xl);
   --tag-gap: var(--ntg-semi-rounded-tag-checkbox-tag-gap-xl);
   --tag-title-pl: var(--ntg-semi-rounded-tag-checkbox-tag-title-padding-left-xl);
@@ -591,179 +690,234 @@
 .pill.leadNumber.xs {
   --tag-pt: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-number-tag-padding-left-xs);
-  --tag-pr: var(--ntg-pill-tag-number-tag-padding-right-xs);
+  --tag-pl: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-number-tag-padding-left-xs);
+  --tag-content-pr: var(--ntg-pill-tag-number-tag-padding-right-xs);
+  --tag-content-pt: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-number-tag-content-gap-xs);
   --tag-title-pt: var(--ntg-pill-tag-number-tag-title-padding-top-xs);
   --tag-title-pb: var(--ntg-pill-tag-number-tag-title-padding-bottom-xs);
+  --tag-title-pl: var(--ntg-pill-tag-number-tag-title-padding-left-xs);
+  --tag-title-pr: var(--ntg-pill-tag-number-tag-title-padding-right-xs);
   --tag-lead-w: var(--ntg-pill-tag-number-tag-number-xs);
   --tag-lead-h: var(--ntg-pill-tag-number-tag-number-xs);
   --tag-lead-pl: var(--ntg-pill-tag-number-tag-number-padding-left-xs);
   --tag-lead-pr: var(--ntg-pill-tag-number-tag-number-padding-right-xs);
-  --tag-icon: var(--ntg-pill-tag-number-tag-icon-xs);
+  --tag-icon: var(--ntg-pill-tag-icon-xs);
   --tag-gap: var(--ntg-pill-tag-number-tag-gap-xs);
-  --tag-title-pl: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-xs);
 }
 .pill.leadNumber.sm {
   --tag-pt: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-number-tag-padding-left-sm);
-  --tag-pr: var(--ntg-pill-tag-number-tag-padding-right-sm);
+  --tag-pl: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-number-tag-padding-left-sm);
+  --tag-content-pr: var(--ntg-pill-tag-number-tag-padding-right-sm);
+  --tag-content-pt: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-number-tag-content-gap-sm);
   --tag-title-pt: var(--ntg-pill-tag-number-tag-title-padding-top-sm);
   --tag-title-pb: var(--ntg-pill-tag-number-tag-title-padding-bottom-sm);
+  --tag-title-pl: var(--ntg-pill-tag-number-tag-title-padding-left-sm);
+  --tag-title-pr: var(--ntg-pill-tag-number-tag-title-padding-right-sm);
   --tag-lead-w: var(--ntg-pill-tag-number-tag-number-sm);
   --tag-lead-h: var(--ntg-pill-tag-number-tag-number-sm);
   --tag-lead-pl: var(--ntg-pill-tag-number-tag-number-padding-left-sm);
   --tag-lead-pr: var(--ntg-pill-tag-number-tag-number-padding-right-sm);
-  --tag-icon: var(--ntg-pill-tag-number-tag-icon-sm);
+  --tag-icon: var(--ntg-pill-tag-icon-sm);
   --tag-gap: var(--ntg-pill-tag-number-tag-gap-sm);
-  --tag-title-pl: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-sm);
 }
 .pill.leadNumber.md {
   --tag-pt: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-number-tag-padding-left-md);
-  --tag-pr: var(--ntg-pill-tag-number-tag-padding-right-md);
+  --tag-pl: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-number-tag-padding-left-md);
+  --tag-content-pr: var(--ntg-pill-tag-number-tag-padding-right-md);
+  --tag-content-pt: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-number-tag-content-gap-md);
   --tag-title-pt: var(--ntg-pill-tag-number-tag-title-padding-top-md);
   --tag-title-pb: var(--ntg-pill-tag-number-tag-title-padding-bottom-md);
+  --tag-title-pl: var(--ntg-pill-tag-number-tag-title-padding-left-md);
+  --tag-title-pr: var(--ntg-pill-tag-number-tag-title-padding-right-md);
   --tag-lead-w: var(--ntg-pill-tag-number-tag-number-md);
   --tag-lead-h: var(--ntg-pill-tag-number-tag-number-md);
   --tag-lead-pl: var(--ntg-pill-tag-number-tag-number-padding-left-md);
   --tag-lead-pr: var(--ntg-pill-tag-number-tag-number-padding-right-md);
-  --tag-icon: var(--ntg-pill-tag-number-tag-icon-md);
+  --tag-icon: var(--ntg-pill-tag-icon-md);
   --tag-gap: var(--ntg-pill-tag-number-tag-gap-md);
-  --tag-title-pl: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-md);
 }
 .pill.leadNumber.lg {
   --tag-pt: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-number-tag-padding-left-lg);
-  --tag-pr: var(--ntg-pill-tag-number-tag-padding-right-lg);
+  --tag-pl: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-number-tag-padding-left-lg);
+  --tag-content-pr: var(--ntg-pill-tag-number-tag-padding-right-lg);
+  --tag-content-pt: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-number-tag-content-gap-lg);
   --tag-title-pt: var(--ntg-pill-tag-number-tag-title-padding-top-lg);
   --tag-title-pb: var(--ntg-pill-tag-number-tag-title-padding-bottom-lg);
+  --tag-title-pl: var(--ntg-pill-tag-number-tag-title-padding-left-lg);
+  --tag-title-pr: var(--ntg-pill-tag-number-tag-title-padding-right-lg);
   --tag-lead-w: var(--ntg-pill-tag-number-tag-number-lg);
   --tag-lead-h: var(--ntg-pill-tag-number-tag-number-lg);
   --tag-lead-pl: var(--ntg-pill-tag-number-tag-number-padding-left-lg);
   --tag-lead-pr: var(--ntg-pill-tag-number-tag-number-padding-right-lg);
-  --tag-icon: var(--ntg-pill-tag-number-tag-icon-lg);
+  --tag-icon: var(--ntg-pill-tag-icon-lg);
   --tag-gap: var(--ntg-pill-tag-number-tag-gap-lg);
-  --tag-title-pl: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-lg);
 }
 .pill.leadNumber.xl {
   --tag-pt: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-number-tag-padding-left-xl);
-  --tag-pr: var(--ntg-pill-tag-number-tag-padding-right-xl);
+  --tag-pl: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-number-tag-padding-left-xl);
+  --tag-content-pr: var(--ntg-pill-tag-number-tag-padding-right-xl);
+  --tag-content-pt: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-number-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-number-tag-content-gap-xl);
   --tag-title-pt: var(--ntg-pill-tag-number-tag-title-padding-top-xl);
   --tag-title-pb: var(--ntg-pill-tag-number-tag-title-padding-bottom-xl);
+  --tag-title-pl: var(--ntg-pill-tag-number-tag-title-padding-left-xl);
+  --tag-title-pr: var(--ntg-pill-tag-number-tag-title-padding-right-xl);
   --tag-lead-w: var(--ntg-pill-tag-number-tag-number-xl);
   --tag-lead-h: var(--ntg-pill-tag-number-tag-number-xl);
   --tag-lead-pl: var(--ntg-pill-tag-number-tag-number-padding-left-xl);
   --tag-lead-pr: var(--ntg-pill-tag-number-tag-number-padding-right-xl);
-  --tag-icon: var(--ntg-pill-tag-number-tag-icon-xl);
+  --tag-icon: var(--ntg-pill-tag-icon-xl);
   --tag-gap: var(--ntg-pill-tag-number-tag-gap-xl);
-  --tag-title-pl: var(--ntg-pill-tag-number-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-number-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-xl);
 }
 .pill.leadImage.xs {
   --tag-pt: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-image-tag-padding-left-xs);
-  --tag-pr: var(--ntg-pill-tag-image-tag-padding-right-xs);
+  --tag-pl: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-image-tag-padding-left-xs);
+  --tag-content-pr: var(--ntg-pill-tag-image-tag-padding-right-xs);
+  --tag-content-pt: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-image-tag-content-gap-xs);
   --tag-title-pt: var(--ntg-pill-tag-image-tag-title-padding-top-xs);
   --tag-title-pb: var(--ntg-pill-tag-image-tag-title-padding-bottom-xs);
+  --tag-title-pl: var(--ntg-pill-tag-image-tag-title-padding-left-xs);
+  --tag-title-pr: var(--ntg-pill-tag-image-tag-title-padding-right-xs);
   --tag-lead-w: var(--ntg-pill-tag-image-tag-image-xs);
   --tag-lead-h: var(--ntg-pill-tag-image-tag-image-xs);
   --tag-lead-pl: var(--ntg-pill-tag-image-tag-image-padding-left-xs);
   --tag-lead-pr: var(--ntg-pill-tag-image-tag-image-padding-right-xs);
-  --tag-icon: var(--ntg-pill-tag-image-tag-icon-xs);
+  --tag-icon: var(--ntg-pill-tag-icon-xs);
   --tag-gap: var(--ntg-pill-tag-image-tag-gap-xs);
-  --tag-title-pl: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-xs);
 }
 .pill.leadImage.sm {
   --tag-pt: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-image-tag-padding-left-sm);
-  --tag-pr: var(--ntg-pill-tag-image-tag-padding-right-sm);
+  --tag-pl: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-image-tag-padding-left-sm);
+  --tag-content-pr: var(--ntg-pill-tag-image-tag-padding-right-sm);
+  --tag-content-pt: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-image-tag-content-gap-sm);
   --tag-title-pt: var(--ntg-pill-tag-image-tag-title-padding-top-sm);
   --tag-title-pb: var(--ntg-pill-tag-image-tag-title-padding-bottom-sm);
+  --tag-title-pl: var(--ntg-pill-tag-image-tag-title-padding-left-sm);
+  --tag-title-pr: var(--ntg-pill-tag-image-tag-title-padding-right-sm);
   --tag-lead-w: var(--ntg-pill-tag-image-tag-image-sm);
   --tag-lead-h: var(--ntg-pill-tag-image-tag-image-sm);
   --tag-lead-pl: var(--ntg-pill-tag-image-tag-image-padding-left-sm);
   --tag-lead-pr: var(--ntg-pill-tag-image-tag-image-padding-right-sm);
-  --tag-icon: var(--ntg-pill-tag-image-tag-icon-sm);
+  --tag-icon: var(--ntg-pill-tag-icon-sm);
   --tag-gap: var(--ntg-pill-tag-image-tag-gap-sm);
-  --tag-title-pl: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-sm);
 }
 .pill.leadImage.md {
   --tag-pt: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-image-tag-padding-left-md);
-  --tag-pr: var(--ntg-pill-tag-image-tag-padding-right-md);
+  --tag-pl: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-image-tag-padding-left-md);
+  --tag-content-pr: var(--ntg-pill-tag-image-tag-padding-right-md);
+  --tag-content-pt: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-image-tag-content-gap-md);
   --tag-title-pt: var(--ntg-pill-tag-image-tag-title-padding-top-md);
   --tag-title-pb: var(--ntg-pill-tag-image-tag-title-padding-bottom-md);
+  --tag-title-pl: var(--ntg-pill-tag-image-tag-title-padding-left-md);
+  --tag-title-pr: var(--ntg-pill-tag-image-tag-title-padding-right-md);
   --tag-lead-w: var(--ntg-pill-tag-image-tag-image-md);
   --tag-lead-h: var(--ntg-pill-tag-image-tag-image-md);
   --tag-lead-pl: var(--ntg-pill-tag-image-tag-image-padding-left-md);
   --tag-lead-pr: var(--ntg-pill-tag-image-tag-image-padding-right-md);
-  --tag-icon: var(--ntg-pill-tag-image-tag-icon-md);
+  --tag-icon: var(--ntg-pill-tag-icon-md);
   --tag-gap: var(--ntg-pill-tag-image-tag-gap-md);
-  --tag-title-pl: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-md);
 }
 .pill.leadImage.lg {
   --tag-pt: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-image-tag-padding-left-lg);
-  --tag-pr: var(--ntg-pill-tag-image-tag-padding-right-lg);
+  --tag-pl: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-image-tag-padding-left-lg);
+  --tag-content-pr: var(--ntg-pill-tag-image-tag-padding-right-lg);
+  --tag-content-pt: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-image-tag-content-gap-lg);
   --tag-title-pt: var(--ntg-pill-tag-image-tag-title-padding-top-lg);
   --tag-title-pb: var(--ntg-pill-tag-image-tag-title-padding-bottom-lg);
+  --tag-title-pl: var(--ntg-pill-tag-image-tag-title-padding-left-lg);
+  --tag-title-pr: var(--ntg-pill-tag-image-tag-title-padding-right-lg);
   --tag-lead-w: var(--ntg-pill-tag-image-tag-image-lg);
   --tag-lead-h: var(--ntg-pill-tag-image-tag-image-lg);
   --tag-lead-pl: var(--ntg-pill-tag-image-tag-image-padding-left-lg);
   --tag-lead-pr: var(--ntg-pill-tag-image-tag-image-padding-right-lg);
-  --tag-icon: var(--ntg-pill-tag-image-tag-icon-lg);
+  --tag-icon: var(--ntg-pill-tag-icon-lg);
   --tag-gap: var(--ntg-pill-tag-image-tag-gap-lg);
-  --tag-title-pl: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-lg);
 }
 .pill.leadImage.xl {
   --tag-pt: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-pb: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-pl: var(--ntg-pill-tag-image-tag-padding-left-xl);
-  --tag-pr: var(--ntg-pill-tag-image-tag-padding-right-xl);
+  --tag-pl: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-pr: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pl: var(--ntg-pill-tag-image-tag-padding-left-xl);
+  --tag-content-pr: var(--ntg-pill-tag-image-tag-padding-right-xl);
+  --tag-content-pt: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-pb: var(--ntg-pill-tag-image-tag-padding-no);
+  --tag-content-gap: var(--ntg-pill-tag-image-tag-content-gap-xl);
   --tag-title-pt: var(--ntg-pill-tag-image-tag-title-padding-top-xl);
   --tag-title-pb: var(--ntg-pill-tag-image-tag-title-padding-bottom-xl);
+  --tag-title-pl: var(--ntg-pill-tag-image-tag-title-padding-left-xl);
+  --tag-title-pr: var(--ntg-pill-tag-image-tag-title-padding-right-xl);
   --tag-lead-w: var(--ntg-pill-tag-image-tag-image-xl);
   --tag-lead-h: var(--ntg-pill-tag-image-tag-image-xl);
   --tag-lead-pl: var(--ntg-pill-tag-image-tag-image-padding-left-xl);
   --tag-lead-pr: var(--ntg-pill-tag-image-tag-image-padding-right-xl);
-  --tag-icon: var(--ntg-pill-tag-image-tag-icon-xl);
+  --tag-icon: var(--ntg-pill-tag-icon-xl);
   --tag-gap: var(--ntg-pill-tag-image-tag-gap-xl);
-  --tag-title-pl: var(--ntg-pill-tag-image-tag-padding-no);
-  --tag-title-pr: var(--ntg-pill-tag-image-tag-padding-no);
   --tag-h: var(--ntg-pill-tag-size-xl);
 }
 .pill.leadCheckbox.xs {
-  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-xs);
-  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-xs);
+  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-no);
   --tag-pl: var(--ntg-pill-tag-checkbox-tag-padding-left-xs);
   --tag-pr: var(--ntg-pill-tag-checkbox-tag-padding-right-xs);
-  --tag-icon: var(--ntg-pill-tag-checkbox-tag-icon-xs);
+  --tag-content-pl: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pr: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-xs);
+  --tag-content-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-xs);
+  --tag-content-gap: var(--ntg-pill-tag-checkbox-tag-content-gap-xs);
+  --tag-icon: var(--ntg-pill-tag-icon-xs);
   --tag-gap: var(--ntg-pill-tag-checkbox-tag-gap-xs);
   --tag-title-pl: var(--ntg-pill-tag-checkbox-tag-title-padding-left-xs);
   --tag-title-pr: var(--ntg-pill-tag-checkbox-tag-title-padding-right-xs);
@@ -771,11 +925,16 @@
   --tag-checkbox: var(--ntg-pill-tag-checkbox-tag-checkbox-xs);
 }
 .pill.leadCheckbox.sm {
-  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-sm);
-  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-sm);
+  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-no);
   --tag-pl: var(--ntg-pill-tag-checkbox-tag-padding-left-sm);
   --tag-pr: var(--ntg-pill-tag-checkbox-tag-padding-right-sm);
-  --tag-icon: var(--ntg-pill-tag-checkbox-tag-icon-sm);
+  --tag-content-pl: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pr: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-sm);
+  --tag-content-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-sm);
+  --tag-content-gap: var(--ntg-pill-tag-checkbox-tag-content-gap-sm);
+  --tag-icon: var(--ntg-pill-tag-icon-sm);
   --tag-gap: var(--ntg-pill-tag-checkbox-tag-gap-sm);
   --tag-title-pl: var(--ntg-pill-tag-checkbox-tag-title-padding-left-sm);
   --tag-title-pr: var(--ntg-pill-tag-checkbox-tag-title-padding-right-sm);
@@ -783,11 +942,16 @@
   --tag-checkbox: var(--ntg-pill-tag-checkbox-tag-checkbox-sm);
 }
 .pill.leadCheckbox.md {
-  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-md);
-  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-md);
+  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-no);
   --tag-pl: var(--ntg-pill-tag-checkbox-tag-padding-left-md);
   --tag-pr: var(--ntg-pill-tag-checkbox-tag-padding-right-md);
-  --tag-icon: var(--ntg-pill-tag-checkbox-tag-icon-md);
+  --tag-content-pl: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pr: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-md);
+  --tag-content-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-md);
+  --tag-content-gap: var(--ntg-pill-tag-checkbox-tag-content-gap-md);
+  --tag-icon: var(--ntg-pill-tag-icon-md);
   --tag-gap: var(--ntg-pill-tag-checkbox-tag-gap-md);
   --tag-title-pl: var(--ntg-pill-tag-checkbox-tag-title-padding-left-md);
   --tag-title-pr: var(--ntg-pill-tag-checkbox-tag-title-padding-right-md);
@@ -795,11 +959,16 @@
   --tag-checkbox: var(--ntg-pill-tag-checkbox-tag-checkbox-md);
 }
 .pill.leadCheckbox.lg {
-  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-lg);
-  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-lg);
+  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-no);
   --tag-pl: var(--ntg-pill-tag-checkbox-tag-padding-left-lg);
   --tag-pr: var(--ntg-pill-tag-checkbox-tag-padding-right-lg);
-  --tag-icon: var(--ntg-pill-tag-checkbox-tag-icon-lg);
+  --tag-content-pl: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pr: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-lg);
+  --tag-content-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-lg);
+  --tag-content-gap: var(--ntg-pill-tag-checkbox-tag-content-gap-lg);
+  --tag-icon: var(--ntg-pill-tag-icon-lg);
   --tag-gap: var(--ntg-pill-tag-checkbox-tag-gap-lg);
   --tag-title-pl: var(--ntg-pill-tag-checkbox-tag-title-padding-left-lg);
   --tag-title-pr: var(--ntg-pill-tag-checkbox-tag-title-padding-right-lg);
@@ -807,11 +976,16 @@
   --tag-checkbox: var(--ntg-pill-tag-checkbox-tag-checkbox-lg);
 }
 .pill.leadCheckbox.xl {
-  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-xl);
-  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-xl);
+  --tag-pt: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-pb: var(--ntg-pill-tag-checkbox-tag-padding-no);
   --tag-pl: var(--ntg-pill-tag-checkbox-tag-padding-left-xl);
   --tag-pr: var(--ntg-pill-tag-checkbox-tag-padding-right-xl);
-  --tag-icon: var(--ntg-pill-tag-checkbox-tag-icon-xl);
+  --tag-content-pl: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pr: var(--ntg-pill-tag-checkbox-tag-padding-no);
+  --tag-content-pt: var(--ntg-pill-tag-checkbox-tag-padding-top-xl);
+  --tag-content-pb: var(--ntg-pill-tag-checkbox-tag-padding-bottom-xl);
+  --tag-content-gap: var(--ntg-pill-tag-checkbox-tag-content-gap-xl);
+  --tag-icon: var(--ntg-pill-tag-icon-xl);
   --tag-gap: var(--ntg-pill-tag-checkbox-tag-gap-xl);
   --tag-title-pl: var(--ntg-pill-tag-checkbox-tag-title-padding-left-xl);
   --tag-title-pr: var(--ntg-pill-tag-checkbox-tag-title-padding-right-xl);

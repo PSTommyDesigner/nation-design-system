@@ -44,19 +44,20 @@ export type TagSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type TagShape = 'semi-rounded' | 'pill' | 'circular' | 'link';
 
 /**
- * ชิ้นนำหน้าหรือต่อท้ายที่ทำให้แท็กเป็นคนละชนิด ตรงกับชุดแยกในไฟล์ออกแบบ
+ * ชิ้นนำหน้าที่ทำให้แท็กเป็นคนละชนิด ตรงกับชุดแยกในไฟล์ออกแบบ
  *
- * ⚠️ ชื่อค่าขึ้นต้นด้วยตำแหน่งจริงที่ตรวจจากลำดับชั้นใน Figma ไม่ใช่สมมติ (หัวหน้าทัก
- *    2026-10-21 ว่าของเดิมชื่อ `leading` ทั้งหมดทั้งที่ `checkbox` กับ `image` อยู่หลัง
- *    ข้อความจริง ตรวจ node tree แล้วเจอว่าโค้ดเดิมวางสองชนิดนี้ผิดฝั่งด้วย แก้พร้อมกัน)
- *      left-indicator  อยู่หน้าข้อความ (ลำดับชั้น indicator มาก่อน tag-title)
- *      right-checkbox  อยู่หลังข้อความ (ลำดับชั้น tag-title มาก่อน checkbox)
- *      right-image     อยู่หลังข้อความ (ลำดับชั้น tag-title มาก่อน image)
- *      right-number    อยู่หลังข้อความ (ลำดับชั้น tag-title มาก่อน number)
+ * ⚠️ ชื่อค่าขึ้นต้นด้วยตำแหน่งจริงที่ตรวจจากลำดับชั้นใน Figma ไม่ใช่สมมติ
+ *    หัวหน้าปรับโครงรอบสุดท้าย 2026-10-21 ให้ของนำหน้าทุกชนิดอยู่ซ้ายสุดของแท็ก
+ *    ข้อความอยู่กลาง ไอคอนปิดอยู่ขวาสุด (ตรวจแล้วทั้ง 6 ชุด x 11 ตระกูล 1,800 แบบ)
+ *      left-indicator  จุดสถานะ (ชั้น indicator มาก่อน tag-title)
+ *      left-checkbox   ช่องติ๊ก (ชั้น left-checkbox มาก่อน content)
+ *      left-image      ช่องรูปชนขอบซ้าย (ชั้น left-image มาก่อน content)
+ *      left-number     ช่องตัวเลขชนขอบซ้าย (ชั้น right-number มาก่อน content ชื่อชั้นในไฟล์ออกแบบยังไม่ได้เปลี่ยน)
+ *    ก่อนหน้านั้นในวันเดียวกันเคยเป็น right-* เพราะโครงรุ่นก่อนวางสามชนิดนี้ไว้หลังข้อความ
  *
  * ⚠️ ทรง `link` รองรับเฉพาะ `none` เพราะไฟล์ออกแบบมีแค่ชุดฐาน
  */
-export type TagLeading = 'none' | 'left-indicator' | 'right-checkbox' | 'right-image' | 'right-number';
+export type TagLeading = 'none' | 'left-indicator' | 'left-checkbox' | 'left-image' | 'left-number';
 
 export interface TagProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children' | 'onSelect'> {
   children: React.ReactNode;
@@ -71,16 +72,18 @@ export interface TagProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'c
   defaultGray?: boolean;
   /** ชนิดของชิ้นประกอบ ตรงกับชุดแยกในไฟล์ออกแบบ ชื่อค่าบอกตำแหน่งจริง (left-/right-) */
   leading?: TagLeading;
-  /** ตัวเลขต่อท้าย ใช้เมื่อ `leading` เป็น `right-number` */
+  /** ตัวเลขนำหน้า ใช้เมื่อ `leading` เป็น `left-number` */
   count?: number;
-  /** ที่อยู่รูป ใช้เมื่อ `leading` เป็น `right-image` */
+  /** ที่อยู่รูป ใช้เมื่อ `leading` เป็น `left-image` */
   imageSrc?: string;
-  /** สถานะติ๊ก ใช้เมื่อ `leading` เป็น `right-checkbox` */
+  /** สถานะติ๊ก ใช้เมื่อ `leading` เป็น `left-checkbox` */
   checked?: boolean;
   /**
    * ไอคอนด้านซ้ายของข้อความ ตรงกับคุณสมบัติ `left-icon` กับ `left-icon-swap` ในไฟล์ออกแบบ
    * ส่งไอคอนเข้ามาเท่ากับเปิด ไม่ส่งเท่ากับปิด จึงไม่ต้องมีตัวเปิดปิดแยก
-   * ⚠️ ชนิด `indicator` ไม่มีไอคอนซ้าย เพราะช่องซ้ายเป็นของจุดสถานะแล้ว
+   * ⚠️ มีเฉพาะชุดฐาน (`leading="none"`) ชนิดที่มีของนำหน้าทุกชนิดไม่มีไอคอนซ้าย
+   *    เพราะช่องซ้ายเป็นของของนำหน้าแล้ว (หัวหน้าปรับ 2026-10-21 ชุด number image checkbox
+   *    เปลี่ยนคุณสมบัติจาก left-icon เป็น right-icon ซึ่งคือไอคอนปิดตัวเดียวกับชุดฐาน)
    * ⚠️ ช่องที่วางไอคอนนี้ถูกกำหนดขนาดด้วย CSS (`--tag-icon`) อยู่แล้วตามขนาดของแท็ก
    *    ต้องส่ง `<Icon name="..." size="100%" />` ไม่ใช่ `<Icon name="..." />` เฉย ๆ
    *    ไม่งั้นไอคอนจะใช้ขนาดเริ่มต้นของตัวเอง (24px) ไม่ตรงกับช่องที่เตรียมไว้
@@ -120,9 +123,9 @@ const SHAPE_CLASS: Record<TagShape, string> = {
 };
 const LEADING_CLASS: Record<TagLeading, string> = {
   none: styles.leadNone,
-  'right-number': styles.leadNumber,
-  'right-image': styles.leadImage,
-  'right-checkbox': styles.leadCheckbox,
+  'left-number': styles.leadNumber,
+  'left-image': styles.leadImage,
+  'left-checkbox': styles.leadCheckbox,
   'left-indicator': styles.leadIndicator,
 };
 const FAMILY_CLASS: Record<TagFamily, string> = {
@@ -138,8 +141,8 @@ const HIERARCHY_CLASS: Record<TagHierarchy, string> = {
  * @example
  * <Tag family="blue">การเมือง</Tag>
  * <Tag family="brand" hierarchy="primary" closable onClose={remove}>กรุงเทพ</Tag>
- * <Tag family="green" leading="right-number" count={12}>ข่าวใหม่</Tag>
- * <Tag family="neutral" leading="right-checkbox" checked onSelect={toggle}>เลือกไว้</Tag>
+ * <Tag family="green" leading="left-number" count={12}>ข่าวใหม่</Tag>
+ * <Tag family="neutral" leading="left-checkbox" checked onSelect={toggle}>เลือกไว้</Tag>
  * <Tag family="red" shape="link">อ่านต่อ</Tag>
  */
 export function Tag({
@@ -172,8 +175,13 @@ export function Tag({
   // ทรง link มีแค่ชุดฐานในไฟล์ออกแบบ ชนิดอื่นจึงถูกบังคับกลับเป็น none
   // โหมดไอคอนล้วนก็ไม่มีของนำหน้า เพราะไม่มีข้อความให้นำหน้า
   const effectiveLeading: TagLeading = shape === 'link' || onlyIcon ? 'none' : leading;
-  // ไอคอนซ้ายกับจุดสถานะใช้ช่องเดียวกัน ไฟล์ออกแบบจึงยกเว้นชนิด left-indicator ไว้
-  const showLeftIcon = Boolean(leftIcon) && !onlyIcon && effectiveLeading !== 'left-indicator';
+  // ไอคอนซ้ายมีเฉพาะชุดฐาน ชนิดที่มีของนำหน้าใช้ช่องซ้ายไปแล้ว
+  const showLeftIcon = Boolean(leftIcon) && !onlyIcon && effectiveLeading === 'none';
+  // ⚠️ ชุด number image checkbox indicator ในไฟล์ออกแบบไม่มีแกน hierarchy (30 แบบ = default-gray x size x state)
+  //    มีหน้าตาเดียวคือพื้นขาวมีขอบ แบบเดียวกับ secondary ของชุดฐาน จึงบังคับระดับความเด่นเป็น secondary
+  //    ไม่ให้โค้ดเรนเดอร์แบบที่ไฟล์ออกแบบไม่มี (หัวหน้าทัก 2026-10-22 ว่า Storybook ไม่ตรงไฟล์ออกแบบ)
+  const FIXED_SECONDARY: TagLeading[] = ['left-number', 'left-image', 'left-checkbox', 'left-indicator'];
+  const effectiveHierarchy: TagHierarchy = FIXED_SECONDARY.includes(effectiveLeading) ? 'secondary' : hierarchy;
 
   const classes = [
     styles.root,
@@ -183,7 +191,7 @@ export function Tag({
     onlyIcon ? styles.iconOnly : undefined,
     FAMILY_CLASS[family],
     // ทรง link คุมสีเองทั้งหมด ไม่ใช้คลาสระดับความเด่น
-    shape === 'link' ? undefined : HIERARCHY_CLASS[hierarchy],
+    shape === 'link' ? undefined : HIERARCHY_CLASS[effectiveHierarchy],
     defaultGray && family !== 'neutral' ? styles.defaultGray : undefined,
     interactive ? styles.interactive : undefined,
     className,
@@ -195,7 +203,7 @@ export function Tag({
       role={interactive ? 'button' : undefined}
       tabIndex={interactive ? 0 : undefined}
       aria-disabled={disabled || undefined}
-      aria-pressed={effectiveLeading === 'right-checkbox' ? Boolean(checked) : undefined}
+      aria-pressed={effectiveLeading === 'left-checkbox' ? Boolean(checked) : undefined}
       onClick={interactive ? onSelect : undefined}
       onKeyDown={interactive ? (e) => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect?.(); }
@@ -209,37 +217,40 @@ export function Tag({
         </>
       ) : null}
 
-      {showLeftIcon ? <span className={styles.icon} aria-hidden="true">{leftIcon}</span> : null}
-      {/* left-indicator อยู่หน้าข้อความ ตรวจลำดับชั้นจริงใน Figma แล้วมาก่อน tag-title */}
+      {/* ของนำหน้าทุกชนิดอยู่ซ้ายสุด ตรวจลำดับชั้นจริงใน Figma แล้ว (2026-10-21) มาก่อน content ทั้งหมด */}
       {effectiveLeading === 'left-indicator' ? <span className={styles.dot} aria-hidden="true" /> : null}
-
-      {onlyIcon ? null : <span className={styles.title}>{children}</span>}
-
-      {/* right-checkbox · right-image · right-number อยู่หลังข้อความทั้งสามชนิด ตรวจลำดับชั้นจริง
-          ใน Figma แล้วพบว่า tag-title มาก่อนทั้งสามเสมอ (หัวหน้าทัก 2026-10-21 ของเดิมวาง
-          checkbox กับ image ไว้หน้าข้อความผิดฝั่ง แก้พร้อมกับเปลี่ยนชื่อค่าในรอบนี้) */}
-      {effectiveLeading === 'right-checkbox' ? (
+      {effectiveLeading === 'left-checkbox' ? (
         <span className={styles.checkbox} data-checked={checked ? 'true' : undefined} aria-hidden="true">
           {checked ? <Icon name="check" size="100%" /> : null}
         </span>
       ) : null}
-      {effectiveLeading === 'right-image' && imageSrc ? (
+      {effectiveLeading === 'left-image' && imageSrc ? (
         <span className={styles.leading}><img src={imageSrc} alt="" /></span>
       ) : null}
-      {effectiveLeading === 'right-number' ? (
+      {effectiveLeading === 'left-number' ? (
         <span className={`${styles.leading} ${styles.leadingNumber}`}>{count}</span>
       ) : null}
 
-      {closable && !disabled && !onlyIcon ? (
-        <button
-          type="button"
-          className={styles.close}
-          aria-label={closeLabel}
-          onClick={(e) => { e.stopPropagation(); onClose?.(); }}
-        >
-          {closeIcon ?? <Icon name="close" size="100%" />}
-        </button>
-      ) : null}
+      {/* ชั้น content ห่อไอคอนซ้าย ข้อความ และไอคอนปิด ตรงกับชั้น `content` ในไฟล์ออกแบบ (หัวหน้าปรับโครง 2026-10-21)
+          ในไฟล์ออกแบบชั้นนี้มีเฉพาะ 6 ชุดที่มีของนำหน้า (number image checkbox ทั้งสองทรง) และมีไอคอนปิดอยู่ข้างใน
+          ฝั่งโค้ดใช้ชั้นเดียวกันกับทุกชนิดเพื่อไม่ให้มีสองโครง ชนิดที่ไฟล์ออกแบบไม่มีชั้นนี้
+          จะไม่ตั้งตัวแปร --tag-content-* ชั้นจึงไม่มีระยะขอบและใช้ช่องไฟเดียวกับกล่องนอก ผลเท่ากับไม่มีชั้น */}
+      {onlyIcon ? null : (
+        <span className={styles.content}>
+          {showLeftIcon ? <span className={styles.icon} aria-hidden="true">{leftIcon}</span> : null}
+          <span className={styles.title}>{children}</span>
+          {closable && !disabled ? (
+            <button
+              type="button"
+              className={styles.close}
+              aria-label={closeLabel}
+              onClick={(e) => { e.stopPropagation(); onClose?.(); }}
+            >
+              {closeIcon ?? <Icon name="close" size="100%" />}
+            </button>
+          ) : null}
+        </span>
+      )}
     </span>
   );
 }

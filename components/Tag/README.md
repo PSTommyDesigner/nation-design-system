@@ -24,9 +24,9 @@
 | `shape` | `semi-rounded` `pill` `link` | `semi-rounded` | ทรง `link` คือข้อความล้วน ไม่มีพื้นไม่มีขอบ รองรับเฉพาะ `leading="none"` |
 | `defaultGray` | boolean | `false` | เทาตอนอยู่เฉย แล้วขึ้นสีตอนชี้ |
 | `leading` | `none` `number` `image` `checkbox` `indicator` | `none` | ชนิดของชิ้นประกอบ |
-| `count` | number | ไม่มี | ใช้กับ `leading="right-number"` |
-| `imageSrc` | string | ไม่มี | ใช้กับ `leading="right-image"` |
-| `checked` | boolean | ไม่มี | ใช้กับ `leading="right-checkbox"` |
+| `count` | number | ไม่มี | ใช้กับ `leading="left-number"` |
+| `imageSrc` | string | ไม่มี | ใช้กับ `leading="left-image"` |
+| `checked` | boolean | ไม่มี | ใช้กับ `leading="left-checkbox"` |
 | `leftIcon` | ReactNode | | ไอคอนด้านซ้าย ตรงกับ `left-icon` กับ `left-icon-swap` ส่งไอคอนเข้ามาเท่ากับเปิด ไม่ส่งเท่ากับปิด |
 | `closable` | boolean | `false` | แสดงปุ่มปิด ค่าตั้งต้นปิดตรงกับไฟล์ออกแบบ ตรงกับ `right-icon` |
 | `closeIcon` | ReactNode | กากบาท | ไอคอนของปุ่มปิด ตรงกับ `right-icon-swap` |
@@ -42,8 +42,8 @@
 ```tsx
 <Tag family="blue">การเมือง</Tag>
 <Tag family="brand" hierarchy="primary" closable onClose={remove}>กรุงเทพ</Tag>
-<Tag family="green" leading="right-number" count={12}>ข่าวใหม่</Tag>
-<Tag family="neutral" leading="right-checkbox" checked onSelect={toggle}>เลือกไว้</Tag>
+<Tag family="green" leading="left-number" count={12}>ข่าวใหม่</Tag>
+<Tag family="neutral" leading="left-checkbox" checked onSelect={toggle}>เลือกไว้</Tag>
 ```
 
 ## ข้อควรระวัง

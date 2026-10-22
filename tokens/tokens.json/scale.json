@@ -315,14 +315,36 @@
               "$value": "1px"
             }
           },
-          "flush": {
+          "flush-left": {
             "base": {
               "$type": "dimension",
               "$value": "5px"
             },
             "step": {
               "$type": "dimension",
-              "$value": "2px"
+              "$value": "1px"
+            }
+          },
+          "flush-right": {
+            "semi-rounded": {
+              "base": {
+                "$type": "dimension",
+                "$value": "6px"
+              },
+              "step": {
+                "$type": "dimension",
+                "$value": "2px"
+              }
+            },
+            "pill": {
+              "base": {
+                "$type": "dimension",
+                "$value": "7px"
+              },
+              "step": {
+                "$type": "dimension",
+                "$value": "2px"
+              }
             }
           }
         },

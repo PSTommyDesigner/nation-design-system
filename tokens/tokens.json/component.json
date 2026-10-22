@@ -5571,54 +5571,54 @@
           "xs": {
             "$type": "dimension",
             "$value": "5px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด xs เท่ากับ 5px"
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด xs เท่ากับ 5px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "7px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด sm เท่ากับ 7px"
+            "$value": "6px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด sm เท่ากับ 6px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "md": {
             "$type": "dimension",
-            "$value": "9px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด md เท่ากับ 9px"
+            "$value": "7px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด md เท่ากับ 7px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "11px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด lg เท่ากับ 11px"
+            "$value": "8px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด lg เท่ากับ 8px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "13px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ขนาด xl เท่ากับ 13px"
+            "$value": "9px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด xl เท่ากับ 9px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           }
         },
         "right": {
           "xs": {
             "$type": "dimension",
-            "$value": "5px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด xs เท่ากับ 5px"
+            "$value": "6px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด xs เท่ากับ 6px คือขอบกล่องด้านไอคอนปิด"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "7px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด sm เท่ากับ 7px"
+            "$value": "8px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด sm เท่ากับ 8px คือขอบกล่องด้านไอคอนปิด"
           },
           "md": {
             "$type": "dimension",
-            "$value": "9px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด md เท่ากับ 9px"
+            "$value": "10px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด md เท่ากับ 10px คือขอบกล่องด้านไอคอนปิด"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "11px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด lg เท่ากับ 11px"
+            "$value": "12px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด lg เท่ากับ 12px คือขอบกล่องด้านไอคอนปิด"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "13px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ขนาด xl เท่ากับ 13px"
+            "$value": "14px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง semi-rounded ขนาด xl เท่ากับ 14px คือขอบกล่องด้านไอคอนปิด"
           }
         },
         "no": {
@@ -5628,6 +5628,60 @@
         }
       },
       "title-padding": {
+        "left": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "1px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "3px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด md เท่ากับ 3px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "4px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "5px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
+          }
+        },
+        "right": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "1px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "3px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "4px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "5px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
+          }
+        },
         "top": {
           "xs": {
             "$type": "dimension",
@@ -5681,6 +5735,33 @@
             "$value": "4px",
             "$description": "ระยะขอบล่างของกรอบข้อความขนาด xl เท่ากับ 4px คำนวณจาก (ความสูง 34 ลบความสูงบรรทัด 26 ของ preset label/lg) หารสอง"
           }
+        }
+      },
+      "content-gap": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด xs เท่ากับ 2px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด sm เท่ากับ 2px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด md เท่ากับ 2px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด lg เท่ากับ 2px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด xl เท่ากับ 2px"
         }
       },
       "gap": {
@@ -5827,54 +5908,54 @@
           "xs": {
             "$type": "dimension",
             "$value": "5px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด xs เท่ากับ 5px"
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด xs เท่ากับ 5px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "7px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด sm เท่ากับ 7px"
+            "$value": "6px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด sm เท่ากับ 6px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "md": {
             "$type": "dimension",
-            "$value": "9px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด md เท่ากับ 9px"
+            "$value": "7px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด md เท่ากับ 7px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "11px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด lg เท่ากับ 11px"
+            "$value": "8px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด lg เท่ากับ 8px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "13px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ขนาด xl เท่ากับ 13px"
+            "$value": "9px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด xl เท่ากับ 9px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           }
         },
         "right": {
           "xs": {
             "$type": "dimension",
-            "$value": "5px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด xs เท่ากับ 5px"
+            "$value": "6px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด xs เท่ากับ 6px คือขอบกล่องด้านไอคอนปิด"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "7px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด sm เท่ากับ 7px"
+            "$value": "8px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด sm เท่ากับ 8px คือขอบกล่องด้านไอคอนปิด"
           },
           "md": {
             "$type": "dimension",
-            "$value": "9px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด md เท่ากับ 9px"
+            "$value": "10px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด md เท่ากับ 10px คือขอบกล่องด้านไอคอนปิด"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "11px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด lg เท่ากับ 11px"
+            "$value": "12px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด lg เท่ากับ 12px คือขอบกล่องด้านไอคอนปิด"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "13px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ขนาด xl เท่ากับ 13px"
+            "$value": "14px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง semi-rounded ขนาด xl เท่ากับ 14px คือขอบกล่องด้านไอคอนปิด"
           }
         },
         "no": {
@@ -5884,6 +5965,60 @@
         }
       },
       "title-padding": {
+        "left": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "1px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "3px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด md เท่ากับ 3px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "4px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "5px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
+          }
+        },
+        "right": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "1px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "3px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "4px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "5px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
+          }
+        },
         "top": {
           "xs": {
             "$type": "dimension",
@@ -5937,6 +6072,33 @@
             "$value": "4px",
             "$description": "ระยะขอบล่างของกรอบข้อความขนาด xl เท่ากับ 4px คำนวณจาก (ความสูง 34 ลบความสูงบรรทัด 26 ของ preset label/lg) หารสอง"
           }
+        }
+      },
+      "content-gap": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด xs เท่ากับ 2px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด sm เท่ากับ 2px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด md เท่ากับ 2px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด lg เท่ากับ 2px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด xl เท่ากับ 2px"
         }
       },
       "gap": {
@@ -6247,6 +6409,33 @@
             "$value": "5px",
             "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
           }
+        }
+      },
+      "content-gap": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด xs เท่ากับ 2px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด sm เท่ากับ 2px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด md เท่ากับ 2px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด lg เท่ากับ 2px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด xl เท่ากับ 2px"
         }
       },
       "gap": {
@@ -7178,55 +7367,55 @@
         "left": {
           "xs": {
             "$type": "dimension",
-            "$value": "7px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด xs เท่ากับ 7px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "5px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด xs เท่ากับ 5px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "9px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด sm เท่ากับ 9px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "6px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด sm เท่ากับ 6px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "md": {
             "$type": "dimension",
-            "$value": "11px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด md เท่ากับ 11px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "7px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด md เท่ากับ 7px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "13px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด lg เท่ากับ 13px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "8px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด lg เท่ากับ 8px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "15px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด xl เท่ากับ 15px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "9px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด number-tag ขนาด xl เท่ากับ 9px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           }
         },
         "right": {
           "xs": {
             "$type": "dimension",
-            "$value": "5px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด xs เท่ากับ 5px"
+            "$value": "7px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด xs เท่ากับ 7px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "7px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด sm เท่ากับ 7px"
+            "$value": "9px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด sm เท่ากับ 9px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           },
           "md": {
             "$type": "dimension",
-            "$value": "9px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด md เท่ากับ 9px"
+            "$value": "11px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด md เท่ากับ 11px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "11px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด lg เท่ากับ 11px"
+            "$value": "13px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด lg เท่ากับ 13px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "13px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด number-tag ทรงแคปซูลขนาด xl เท่ากับ 13px"
+            "$value": "15px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด number-tag ทรง pill ขนาด xl เท่ากับ 15px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           }
         },
         "no": {
@@ -7236,6 +7425,60 @@
         }
       },
       "title-padding": {
+        "left": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "1px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "3px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด md เท่ากับ 3px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "4px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "5px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
+          }
+        },
+        "right": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "1px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "3px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "4px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "5px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
+          }
+        },
         "top": {
           "xs": {
             "$type": "dimension",
@@ -7289,6 +7532,33 @@
             "$value": "4px",
             "$description": "ระยะขอบล่างของกรอบข้อความขนาด xl เท่ากับ 4px คำนวณจาก (ความสูง 34 ลบความสูงบรรทัด 26 ของ preset label/lg) หารสอง"
           }
+        }
+      },
+      "content-gap": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด xs เท่ากับ 2px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด sm เท่ากับ 2px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด md เท่ากับ 2px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด lg เท่ากับ 2px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด number-tag ขนาด xl เท่ากับ 2px"
         }
       },
       "gap": {
@@ -7434,55 +7704,55 @@
         "left": {
           "xs": {
             "$type": "dimension",
-            "$value": "7px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด xs เท่ากับ 7px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "5px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด xs เท่ากับ 5px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "9px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด sm เท่ากับ 9px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "6px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด sm เท่ากับ 6px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "md": {
             "$type": "dimension",
-            "$value": "11px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด md เท่ากับ 11px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "7px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด md เท่ากับ 7px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "13px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด lg เท่ากับ 13px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "8px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด lg เท่ากับ 8px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "15px",
-            "$description": "ระยะขอบซ้ายของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด xl เท่ากับ 15px กว้างกว่าขวา 2px โดยตั้งใจเพื่อถ่วงสายตากับมุมโค้ง ห้ามปรับให้เท่ากัน และกว้างกว่าทรงมุมมนเพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
+            "$value": "9px",
+            "$description": "ระยะขอบซ้ายของชั้น content ในกล่องแท็กชนิด image-tag ขนาด xl เท่ากับ 9px คือช่องว่างถัดจากช่องตัวเลขหรือช่องรูปที่ชนขอบซ้าย"
           }
         },
         "right": {
           "xs": {
             "$type": "dimension",
-            "$value": "5px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด xs เท่ากับ 5px"
+            "$value": "7px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด xs เท่ากับ 7px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "7px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด sm เท่ากับ 7px"
+            "$value": "9px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด sm เท่ากับ 9px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           },
           "md": {
             "$type": "dimension",
-            "$value": "9px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด md เท่ากับ 9px"
+            "$value": "11px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด md เท่ากับ 11px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "11px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด lg เท่ากับ 11px"
+            "$value": "13px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด lg เท่ากับ 13px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "13px",
-            "$description": "ระยะขอบขวาของกล่องแท็กชนิด image-tag ทรงแคปซูลขนาด xl เท่ากับ 13px"
+            "$value": "15px",
+            "$description": "ระยะขอบขวาของชั้น content ในกล่องแท็กชนิด image-tag ทรง pill ขนาด xl เท่ากับ 15px คือขอบกล่องด้านไอคอนปิด กว้างกว่าทรงมุมมน 1px เพราะแคปซูลมนกว่าจึงต้องเผื่อขอบมากกว่า"
           }
         },
         "no": {
@@ -7492,6 +7762,60 @@
         }
       },
       "title-padding": {
+        "left": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "1px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "3px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด md เท่ากับ 3px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "4px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "5px",
+            "$description": "ระยะขอบซ้ายของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
+          }
+        },
+        "right": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "1px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xs เท่ากับ 1px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด sm เท่ากับ 2px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "3px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด md เท่ากับ 3px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "4px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด lg เท่ากับ 4px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "5px",
+            "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
+          }
+        },
         "top": {
           "xs": {
             "$type": "dimension",
@@ -7545,6 +7869,33 @@
             "$value": "4px",
             "$description": "ระยะขอบล่างของกรอบข้อความขนาด xl เท่ากับ 4px คำนวณจาก (ความสูง 34 ลบความสูงบรรทัด 26 ของ preset label/lg) หารสอง"
           }
+        }
+      },
+      "content-gap": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด xs เท่ากับ 2px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด sm เท่ากับ 2px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด md เท่ากับ 2px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด lg เท่ากับ 2px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด image-tag ขนาด xl เท่ากับ 2px"
         }
       },
       "gap": {
@@ -7855,6 +8206,33 @@
             "$value": "5px",
             "$description": "ระยะขอบขวาของกรอบข้อความในแท็กขนาด xl เท่ากับ 5px"
           }
+        }
+      },
+      "content-gap": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด xs เท่ากับ 2px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด sm เท่ากับ 2px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด md เท่ากับ 2px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด lg เท่ากับ 2px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "ช่องไฟระหว่างไอคอนซ้ายกับข้อความในชั้น content ของชนิด checkbox-tag ขนาด xl เท่ากับ 2px"
         }
       },
       "gap": {

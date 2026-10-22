@@ -3,8 +3,8 @@ import { Tag, type TagFamily, type TagSize } from './Tag'
 import { Icon } from '../Icon'
 import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks'
 
-// placeholder สาธิตกล่องรูปของ leading="right-image" เท่านั้น ไม่ใช่ asset จริงของ DS
-// (imageSrc เป็น string ว่างจะทำให้ Tag.tsx ไม่วาดกล่องรูปเลย ตามเงื่อนไข effectiveLeading === 'right-image' && imageSrc)
+// placeholder สาธิตกล่องรูปของ leading="left-image" เท่านั้น ไม่ใช่ asset จริงของ DS
+// (imageSrc เป็น string ว่างจะทำให้ Tag.tsx ไม่วาดกล่องรูปเลย ตามเงื่อนไข effectiveLeading === 'left-image' && imageSrc)
 const PLACEHOLDER_IMAGE_SRC =
   'data:image/svg+xml;utf8,' +
   encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><rect width="26" height="26" fill="#C4C4C4"/></svg>')
@@ -54,7 +54,7 @@ export const Closable: Story = {
 export const WithNumber: Story = {
   tags: ['!dev'],
   name: 'ตัวเลขนำหน้า',
-  args: { leading: 'right-number', count: 12, children: 'แจ้งเตือน' },
+  args: { leading: 'left-number', count: 12, children: 'แจ้งเตือน' },
   parameters: { docs: { section: 'ส่วนประกอบ' } },
 }
 export const IconOnly: Story = {
@@ -121,18 +121,18 @@ export const AllTypes: Story = {
       <Labeled label="ทรงมุมมน 5 ชนิด">
         <Preview>
           <Labeled label="เปล่า"><Tag shape="semi-rounded">การเมือง</Tag></Labeled>
-          <Labeled label="ตัวเลข"><Tag shape="semi-rounded" leading="right-number" count={3}>แจ้งเตือน</Tag></Labeled>
-          <Labeled label="รูป"><Tag shape="semi-rounded" leading="right-image" imageSrc={PLACEHOLDER_IMAGE_SRC}>การเมือง</Tag></Labeled>
-          <Labeled label="checkbox"><Tag shape="semi-rounded" leading="right-checkbox" checked>การเมือง</Tag></Labeled>
+          <Labeled label="ตัวเลข"><Tag shape="semi-rounded" leading="left-number" count={3}>แจ้งเตือน</Tag></Labeled>
+          <Labeled label="รูป"><Tag shape="semi-rounded" leading="left-image" imageSrc={PLACEHOLDER_IMAGE_SRC}>การเมือง</Tag></Labeled>
+          <Labeled label="checkbox"><Tag shape="semi-rounded" leading="left-checkbox" checked>การเมือง</Tag></Labeled>
           <Labeled label="indicator"><Tag shape="semi-rounded" leading="left-indicator">การเมือง</Tag></Labeled>
         </Preview>
       </Labeled>
       <Labeled label="ทรงแคปซูล 5 ชนิด">
         <Preview>
           <Labeled label="เปล่า"><Tag shape="pill">การเมือง</Tag></Labeled>
-          <Labeled label="ตัวเลข"><Tag shape="pill" leading="right-number" count={3}>แจ้งเตือน</Tag></Labeled>
-          <Labeled label="รูป"><Tag shape="pill" leading="right-image" imageSrc={PLACEHOLDER_IMAGE_SRC}>การเมือง</Tag></Labeled>
-          <Labeled label="checkbox"><Tag shape="pill" leading="right-checkbox" checked>การเมือง</Tag></Labeled>
+          <Labeled label="ตัวเลข"><Tag shape="pill" leading="left-number" count={3}>แจ้งเตือน</Tag></Labeled>
+          <Labeled label="รูป"><Tag shape="pill" leading="left-image" imageSrc={PLACEHOLDER_IMAGE_SRC}>การเมือง</Tag></Labeled>
+          <Labeled label="checkbox"><Tag shape="pill" leading="left-checkbox" checked>การเมือง</Tag></Labeled>
           <Labeled label="indicator"><Tag shape="pill" leading="left-indicator">การเมือง</Tag></Labeled>
         </Preview>
       </Labeled>
@@ -261,12 +261,12 @@ export const GoodAndBad: Story = {
 // semi-rounded-tag ไม่ต้องมีตรงนี้แล้ว เพราะ Default ด้านบนทำหน้าที่แทนอยู่แล้ว (เรนเดอร์
 // เหมือนกันเป๊ะ รวมเป็น story เดียว หัวหน้าทัก 2026-10-21)
 export const PillTag: Story = { tags: ['!autodocs'], name: 'Pill-tag', args: { shape: 'pill' } }
-export const NumberTag: Story = { tags: ['!autodocs'], name: 'Number-tag', args: { shape: 'semi-rounded', leading: 'right-number', count: 3, children: 'แจ้งเตือน' } }
-export const PillNumberTag: Story = { tags: ['!autodocs'], name: 'Pill-number-tag', args: { shape: 'pill', leading: 'right-number', count: 3, children: 'แจ้งเตือน' } }
-export const ImageTag: Story = { tags: ['!autodocs'], name: 'Image-tag', args: { shape: 'semi-rounded', leading: 'right-image', imageSrc: PLACEHOLDER_IMAGE_SRC } }
-export const PillImageTag: Story = { tags: ['!autodocs'], name: 'Pill-image-tag', args: { shape: 'pill', leading: 'right-image', imageSrc: PLACEHOLDER_IMAGE_SRC } }
-export const CheckboxTag: Story = { tags: ['!autodocs'], name: 'Checkbox-tag', args: { shape: 'semi-rounded', leading: 'right-checkbox', checked: true } }
-export const PillCheckboxTag: Story = { tags: ['!autodocs'], name: 'Pill-checkbox-tag', args: { shape: 'pill', leading: 'right-checkbox', checked: true } }
+export const NumberTag: Story = { tags: ['!autodocs'], name: 'Number-tag', args: { shape: 'semi-rounded', leading: 'left-number', count: 3, children: 'แจ้งเตือน' } }
+export const PillNumberTag: Story = { tags: ['!autodocs'], name: 'Pill-number-tag', args: { shape: 'pill', leading: 'left-number', count: 3, children: 'แจ้งเตือน' } }
+export const ImageTag: Story = { tags: ['!autodocs'], name: 'Image-tag', args: { shape: 'semi-rounded', leading: 'left-image', imageSrc: PLACEHOLDER_IMAGE_SRC } }
+export const PillImageTag: Story = { tags: ['!autodocs'], name: 'Pill-image-tag', args: { shape: 'pill', leading: 'left-image', imageSrc: PLACEHOLDER_IMAGE_SRC } }
+export const CheckboxTag: Story = { tags: ['!autodocs'], name: 'Checkbox-tag', args: { shape: 'semi-rounded', leading: 'left-checkbox', checked: true } }
+export const PillCheckboxTag: Story = { tags: ['!autodocs'], name: 'Pill-checkbox-tag', args: { shape: 'pill', leading: 'left-checkbox', checked: true } }
 export const IndicatorTag: Story = { tags: ['!autodocs'], name: 'Indicator-tag', args: { shape: 'semi-rounded', leading: 'left-indicator' } }
 export const PillIndicatorTag: Story = { tags: ['!autodocs'], name: 'Pill-indicator-tag', args: { shape: 'pill', leading: 'left-indicator' } }
 
