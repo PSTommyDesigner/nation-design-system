@@ -52,9 +52,9 @@
   box-sizing: border-box;
   font-family: var(--ntg-typography-font-family-primary);
   white-space: nowrap;
+  position: relative;
   background: var(--tag-bg);
   color: var(--tag-fg);
-  box-shadow: inset 0 0 0 1px var(--tag-border);
   transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 
   min-height: var(--tag-h);
@@ -67,23 +67,34 @@
   overflow: hidden;
 }
 
+/* ⚠️ เส้นขอบของแท็กวาดด้วยชั้นซ้อนทับ (::after) ไม่ใช่ box-shadow ของกล่องนอกตรง ๆ (แก้ 2026-10-22 หัวหน้าทัก)
+   เหตุผล: ใน Figma เส้นขอบของเฟรมวาด "ทับ" ลูกเสมอ แต่ใน CSS box-shadow แบบ inset อยู่ชั้นพื้นหลัง
+   ของกล่อง ซึ่งอยู่ "ใต้" ลูก พอช่องตัวเลขหรือช่องรูปชนขอบซ้าย มันจึงบังเส้นขอบด้านซ้ายหาย
+   ชั้นซ้อนทับนี้อยู่เหนือลูกทุกตัว เส้นขอบจึงอยู่ที่กล่องนอกสุดชั้นเดียวเหมือนไฟล์ออกแบบ
+   ส่วนวงแหวนโฟกัสที่ล้นออกนอกกล่องยังอยู่ที่กล่องนอกเพราะ box-shadow ของตัวเองไม่ถูก overflow ตัด */
+.root::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px var(--tag-border);
+  pointer-events: none;
+  transition: box-shadow 0.15s ease;
+}
+
 .interactive { cursor: pointer; }
 
 .interactive:hover:not([aria-disabled='true']) {
   background: var(--tag-bg-hover);
   color: var(--tag-fg-hover);
+}
+.interactive:hover:not([aria-disabled='true'])::after {
   box-shadow: inset 0 0 0 1px var(--tag-border-hover);
 }
 
 .interactive:focus-visible {
   outline: none;
-  /* ขอบเดิมของ root (ไม่ใช่ตัว hover) ต่อด้วยวงแหวนโฟกัสล้นนอกกล่อง รวมในค่าเดียวเพราะ box-shadow ตั้งซ้ำแล้วทับ ไม่ซ้อน */
-  box-shadow: inset 0 0 0 1px var(--tag-border), 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
-}
-
-/* เมาส์ชี้ค้างพร้อมโฟกัสด้วยคีย์บอร์ด (เช่น คลิกแล้วไม่ปล่อยเมาส์) ให้ยังเห็นสีขอบของ hover เหมือนของเดิมก่อนแก้ */
-.interactive:hover:focus-visible:not([aria-disabled='true']) {
-  box-shadow: inset 0 0 0 1px var(--tag-border-hover), 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
 }
 
 .title {
@@ -125,32 +136,23 @@
 
 /* ช่องตัวเลขของชนิด number เป็นกล่องพื้นทึบชนขอบซ้าย ไม่ใช่แค่ตัวเลขลอย
    สีอ่านจากไฟล์ออกแบบทุกตระกูล 2026-10-22: พื้นกล่องใช้สีเดียวกับข้อความของแท็ก (--tag-fg)
-   ขอบกล่องใช้สีเดียวกับขอบแท็ก ตัวเลขสีขาวเสมอ ตอนชี้เปลี่ยนตามสีข้อความและขอบตอนชี้
-   โหมดเทาและตระกูล neutral ใช้พื้น solid-secondary ขอบ general/primary ตอนชี้เป็น solid
-   ปิดใช้งานใช้พื้น secondary-hover ขอบ general/primary ตัวเลข disabled-subtle
+   ตัวเลขสีขาวเสมอ ตอนชี้เปลี่ยนตามสีข้อความตอนชี้
+   โหมดเทาและตระกูล neutral ใช้พื้น solid-secondary ตอนชี้เป็น solid
+   ปิดใช้งานใช้พื้น secondary-hover ตัวเลข disabled-subtle
+   ⚠️ ช่องตัวเลขไม่มีเส้นขอบของตัวเอง (หัวหน้าสั่ง 2026-10-22 เส้นขอบอยู่ที่กล่องนอกสุดชั้นเดียว)
+      ในไฟล์ออกแบบช่องนี้มีเส้นซ้าย 1px ที่ซ้อนอยู่ใต้เส้นขอบของกล่องนอกพอดี จึงไม่ต้องวาดซ้ำ
    มุมเป็น 0 เพราะกล่องแปะชิดขอบของแท็ก ถูกมุมโค้งรวมของแท็กครอบอยู่แล้วผ่าน overflow: hidden */
 .leadingNumber {
   background: var(--tag-fg);
   color: var(--ntg-color-text-general-const-white);
-  box-shadow: inset 0 0 0 1px var(--tag-border);
 }
-.interactive:hover:not([aria-disabled='true']) .leadingNumber {
-  background: var(--tag-fg-hover);
-  box-shadow: inset 0 0 0 1px var(--tag-border-hover);
-}
-.neutral .leadingNumber, .defaultGray .leadingNumber {
-  background: var(--ntg-color-background-general-solid-secondary);
-  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
-}
+.interactive:hover:not([aria-disabled='true']) .leadingNumber { background: var(--tag-fg-hover); }
+.neutral .leadingNumber, .defaultGray .leadingNumber { background: var(--ntg-color-background-general-solid-secondary); }
 .neutral.interactive:hover:not([aria-disabled='true']) .leadingNumber,
-.defaultGray.interactive:hover:not([aria-disabled='true']) .leadingNumber {
-  background: var(--ntg-color-background-general-solid);
-  box-shadow: inset 0 0 0 1px var(--ntg-color-background-general-solid);
-}
+.defaultGray.interactive:hover:not([aria-disabled='true']) .leadingNumber { background: var(--ntg-color-background-general-solid); }
 .root[aria-disabled='true'] .leadingNumber {
   background: var(--ntg-color-background-general-secondary-hover);
   color: var(--ntg-color-text-general-disabled-subtle);
-  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
 }
 
 /* จุดสถานะของชนิด indicator วาดด้วย CSS เพราะชุดไอคอนไม่มีวงกลมเปล่า
