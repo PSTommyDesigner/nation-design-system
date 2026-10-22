@@ -123,7 +123,7 @@ export const AllTypes: Story = {
           <Labeled label="เปล่า"><Tag shape="semi-rounded">การเมือง</Tag></Labeled>
           <Labeled label="ตัวเลข"><Tag shape="semi-rounded" leading="left-number" count={3}>แจ้งเตือน</Tag></Labeled>
           <Labeled label="รูป"><Tag shape="semi-rounded" leading="left-image" imageSrc={PLACEHOLDER_IMAGE_SRC}>การเมือง</Tag></Labeled>
-          <Labeled label="checkbox"><Tag shape="semi-rounded" leading="left-checkbox" checked>การเมือง</Tag></Labeled>
+          <Labeled label="checkbox"><Tag shape="semi-rounded" leading="left-checkbox">การเมือง</Tag></Labeled>
           <Labeled label="indicator"><Tag shape="semi-rounded" leading="left-indicator">การเมือง</Tag></Labeled>
         </Preview>
       </Labeled>
@@ -132,7 +132,7 @@ export const AllTypes: Story = {
           <Labeled label="เปล่า"><Tag shape="pill">การเมือง</Tag></Labeled>
           <Labeled label="ตัวเลข"><Tag shape="pill" leading="left-number" count={3}>แจ้งเตือน</Tag></Labeled>
           <Labeled label="รูป"><Tag shape="pill" leading="left-image" imageSrc={PLACEHOLDER_IMAGE_SRC}>การเมือง</Tag></Labeled>
-          <Labeled label="checkbox"><Tag shape="pill" leading="left-checkbox" checked>การเมือง</Tag></Labeled>
+          <Labeled label="checkbox"><Tag shape="pill" leading="left-checkbox">การเมือง</Tag></Labeled>
           <Labeled label="indicator"><Tag shape="pill" leading="left-indicator">การเมือง</Tag></Labeled>
         </Preview>
       </Labeled>
@@ -265,8 +265,8 @@ export const NumberTag: Story = { tags: ['!autodocs'], name: 'Number-tag', args:
 export const PillNumberTag: Story = { tags: ['!autodocs'], name: 'Pill-number-tag', args: { shape: 'pill', leading: 'left-number', count: 3, children: 'แจ้งเตือน' } }
 export const ImageTag: Story = { tags: ['!autodocs'], name: 'Image-tag', args: { shape: 'semi-rounded', leading: 'left-image', imageSrc: PLACEHOLDER_IMAGE_SRC } }
 export const PillImageTag: Story = { tags: ['!autodocs'], name: 'Pill-image-tag', args: { shape: 'pill', leading: 'left-image', imageSrc: PLACEHOLDER_IMAGE_SRC } }
-export const CheckboxTag: Story = { tags: ['!autodocs'], name: 'Checkbox-tag', args: { shape: 'semi-rounded', leading: 'left-checkbox', checked: true } }
-export const PillCheckboxTag: Story = { tags: ['!autodocs'], name: 'Pill-checkbox-tag', args: { shape: 'pill', leading: 'left-checkbox', checked: true } }
+export const CheckboxTag: Story = { tags: ['!autodocs'], name: 'Checkbox-tag', args: { shape: 'semi-rounded', leading: 'left-checkbox', checked: false } }
+export const PillCheckboxTag: Story = { tags: ['!autodocs'], name: 'Pill-checkbox-tag', args: { shape: 'pill', leading: 'left-checkbox', checked: false } }
 export const IndicatorTag: Story = { tags: ['!autodocs'], name: 'Indicator-tag', args: { shape: 'semi-rounded', leading: 'left-indicator' } }
 export const PillIndicatorTag: Story = { tags: ['!autodocs'], name: 'Pill-indicator-tag', args: { shape: 'pill', leading: 'left-indicator' } }
 
