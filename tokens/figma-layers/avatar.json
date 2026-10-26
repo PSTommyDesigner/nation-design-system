@@ -1,0 +1,6030 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "11 Avatar",
+ "reference": "Avatar Components",
+ "sets": {
+  "avatar-image": {
+   "defs": {
+    "online-indicator": ["false","true"],
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover"]
+   },
+   "layout": {
+    "xs, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xs",
+     "h": "avatar/size/xs",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 24,
+       "h": 24,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/sm",
+     "h": "avatar/size/sm",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 32,
+       "h": 32,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/md",
+     "h": "avatar/size/md",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 40,
+       "h": 40,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      }
+     ]
+    },
+    "lg, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/lg",
+     "h": "avatar/size/lg",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 48,
+       "h": 48,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      }
+     ]
+    },
+    "xl, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xl",
+     "h": "avatar/size/xl",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 56,
+       "h": 56,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      }
+     ]
+    },
+    "xs, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xs",
+     "h": "avatar/size/xs",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 24,
+       "h": 24,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "w": "avatar/indicator/xs",
+       "h": "avatar/indicator/xs",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "sm, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/sm",
+     "h": "avatar/size/sm",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 32,
+       "h": 32,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "w": "avatar/indicator/sm",
+       "h": "avatar/indicator/sm",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "md, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/md",
+     "h": "avatar/size/md",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 40,
+       "h": 40,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "w": "avatar/indicator/md",
+       "h": "avatar/indicator/md",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "lg, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/lg",
+     "h": "avatar/size/lg",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 48,
+       "h": 48,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "w": "avatar/indicator/lg",
+       "h": "avatar/indicator/lg",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "xl, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xl",
+     "h": "avatar/size/xl",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": 56,
+       "h": 56,
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Image",
+         "t": "RECTANGLE",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "w": "avatar/indicator/xl",
+       "h": "avatar/indicator/xl",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Avatar Components": {
+     "online-indicator=false, state=default": 0,
+     "online-indicator=false, state=hover": 1,
+     "online-indicator=true, state=default": 2,
+     "online-indicator=true, state=hover": 2
+    }
+   }
+  },
+  "avatar-icon": {
+   "defs": {
+    "online-indicator": ["false","true"],
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover"]
+   },
+   "layout": {
+    "xs, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xs",
+     "h": "avatar/size/xs",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/xs",
+         "h": "avatar/icon/xs",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/sm",
+     "h": "avatar/size/sm",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/sm",
+         "h": "avatar/icon/sm",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/md",
+     "h": "avatar/size/md",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/md",
+         "h": "avatar/icon/md",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "lg, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/lg",
+     "h": "avatar/size/lg",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/lg",
+         "h": "avatar/icon/lg",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xl, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xl",
+     "h": "avatar/size/xl",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/xl",
+         "h": "avatar/icon/xl",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xs, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xs",
+     "h": "avatar/size/xs",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/xs",
+         "h": "avatar/icon/xs",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/xs",
+       "h": "avatar/indicator/xs",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "sm, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/sm",
+     "h": "avatar/size/sm",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/sm",
+         "h": "avatar/icon/sm",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/sm",
+       "h": "avatar/indicator/sm",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "md, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/md",
+     "h": "avatar/size/md",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/md",
+         "h": "avatar/icon/md",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/md",
+       "h": "avatar/indicator/md",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "lg, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/lg",
+     "h": "avatar/size/lg",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/lg",
+         "h": "avatar/icon/lg",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/lg",
+       "h": "avatar/indicator/lg",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "xl, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xl",
+     "h": "avatar/size/xl",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "account-&-auth/person",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/icon/xl",
+         "h": "avatar/icon/xl",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/xl",
+       "h": "avatar/indicator/xl",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Avatar Components": {
+     "online-indicator=false, state=default": 3,
+     "online-indicator=false, state=hover": 4,
+     "online-indicator=true, state=default": 5,
+     "online-indicator=true, state=hover": 6
+    }
+   }
+  },
+  "avatar-monogram": {
+   "defs": {
+    "text-value": {
+     "type": "TEXT",
+     "def": "T"
+    },
+    "online-indicator": ["false","true"],
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover"]
+   },
+   "layout": {
+    "xs, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xs",
+     "h": "avatar/size/xs",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 20,
+         "h": 20,
+         "ts": "text::title/xs",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/sm",
+     "h": "avatar/size/sm",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 28,
+         "h": 28,
+         "ts": "text::section-heading/xs",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/md",
+     "h": "avatar/size/md",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 36,
+         "h": 36,
+         "ts": "text::section-heading/sm",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/lg",
+     "h": "avatar/size/lg",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 44,
+         "h": 44,
+         "ts": "text::section-heading/lg",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xl",
+     "h": "avatar/size/xl",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 52,
+         "h": 52,
+         "ts": "text::section-heading/xl",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xs, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xs",
+     "h": "avatar/size/xs",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 20,
+         "h": 20,
+         "ts": "text::title/xs",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/xs",
+       "h": "avatar/indicator/xs",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "sm, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/sm",
+     "h": "avatar/size/sm",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 28,
+         "h": 28,
+         "ts": "text::section-heading/xs",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/sm",
+       "h": "avatar/indicator/sm",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "md, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/md",
+     "h": "avatar/size/md",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 36,
+         "h": 36,
+         "ts": "text::section-heading/sm",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/md",
+       "h": "avatar/indicator/md",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "lg, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/lg",
+     "h": "avatar/size/lg",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 44,
+         "h": 44,
+         "ts": "text::section-heading/lg",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/lg",
+       "h": "avatar/indicator/lg",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "xl, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xl",
+     "h": "avatar/size/xl",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 52,
+         "h": 52,
+         "ts": "text::section-heading/xl",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/xl",
+       "h": "avatar/indicator/xl",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Avatar Components": {
+     "online-indicator=false, state=default": 7,
+     "online-indicator=false, state=hover": 8,
+     "online-indicator=true, state=default": 9,
+     "online-indicator=true, state=hover": 10
+    }
+   }
+  },
+  "avatar-number": {
+   "defs": {
+    "text-value": {
+     "type": "TEXT",
+     "def": "99+"
+    },
+    "online-indicator": ["false","true"],
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover"]
+   },
+   "layout": {
+    "xs, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xs",
+     "h": "avatar/size/xs",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 20,
+         "h": 20,
+         "ts": "text::meta/micro",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/sm",
+     "h": "avatar/size/sm",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 28,
+         "h": 28,
+         "ts": "text::title/xs",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/md",
+     "h": "avatar/size/md",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 36,
+         "h": 36,
+         "ts": "text::title/sm",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/lg",
+     "h": "avatar/size/lg",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 44,
+         "h": 44,
+         "ts": "text::section-heading/xs",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, online-indicator=false, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xl",
+     "h": "avatar/size/xl",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 52,
+         "h": 52,
+         "ts": "text::section-heading/sm",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xs, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xs",
+     "h": "avatar/size/xs",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 20,
+         "h": 20,
+         "ts": "text::meta/micro",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/xs",
+       "h": "avatar/indicator/xs",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "sm, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/sm",
+     "h": "avatar/size/sm",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 28,
+         "h": 28,
+         "ts": "text::title/xs",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/sm",
+       "h": "avatar/indicator/sm",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "md, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/md",
+     "h": "avatar/size/md",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 36,
+         "h": 36,
+         "ts": "text::title/sm",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/md",
+       "h": "avatar/indicator/md",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "lg, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/lg",
+     "h": "avatar/size/lg",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 44,
+         "h": 44,
+         "ts": "text::section-heading/xs",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/lg",
+       "h": "avatar/indicator/lg",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    },
+    "xl, online-indicator=true, status-icon=, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": "avatar/size/xl",
+     "h": "avatar/size/xl",
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["FIXED","FIXED"],
+         "w": 52,
+         "h": 52,
+         "ts": "text::section-heading/sm",
+         "ref": {
+          "characters": "text-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "_avatar-online-indicator",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/indicator/xl",
+       "h": "avatar/indicator/xl",
+       "clip": true,
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "inst": true
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Avatar Components": {
+     "online-indicator=false, state=default": 7,
+     "online-indicator=false, state=hover": 8,
+     "online-indicator=true, state=default": 9,
+     "online-indicator=true, state=hover": 10
+    }
+   }
+  },
+  "avatar-label": {
+   "defs": {
+    "avatar": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-email": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "name": {
+     "type": "TEXT",
+     "def": "Garry Gergich"
+    },
+    "email": {
+     "type": "TEXT",
+     "def": "garry@nationgroup.com"
+    },
+    "size": ["sm","md","lg","xl"],
+    "status-icon": ["false","online-indicator"],
+    "state": ["default","hover"]
+   },
+   "layout": {
+    "sm, online-indicator=, status-icon=false, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "avatar/label/gap/sm",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "avatar-icon",
+       "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/size/sm",
+       "h": "avatar/size/sm",
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ref": {
+        "visible": "avatar"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "Frame",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ch": [
+          {
+           "n": "account-&-auth/person",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "avatar/icon/sm",
+           "h": "avatar/icon/sm",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Text and supporting text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/xs",
+         "ref": {
+          "characters": "name"
+         }
+        },
+        {
+         "n": "Supporting text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/xs",
+         "ref": {
+          "visible": "show-email",
+          "characters": "email"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=, status-icon=false, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "avatar/label/gap/md",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "avatar-icon",
+       "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/size/md",
+       "h": "avatar/size/md",
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ref": {
+        "visible": "avatar"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "Frame",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ch": [
+          {
+           "n": "account-&-auth/person",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "avatar/icon/md",
+           "h": "avatar/icon/md",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Text and supporting text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/xs",
+         "ref": {
+          "characters": "name"
+         }
+        },
+        {
+         "n": "Supporting text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "visible": "show-email",
+          "characters": "email"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, online-indicator=, status-icon=false, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "avatar/label/gap/lg",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "avatar-icon",
+       "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/size/lg",
+       "h": "avatar/size/lg",
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ref": {
+        "visible": "avatar"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "Frame",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ch": [
+          {
+           "n": "account-&-auth/person",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "avatar/icon/lg",
+           "h": "avatar/icon/lg",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Text and supporting text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/md",
+         "ref": {
+          "characters": "name"
+         }
+        },
+        {
+         "n": "Supporting text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "visible": "show-email",
+          "characters": "email"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, online-indicator=, status-icon=false, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "avatar/label/gap/xl",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "avatar-icon",
+       "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/size/xl",
+       "h": "avatar/size/xl",
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ref": {
+        "visible": "avatar"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "Frame",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ch": [
+          {
+           "n": "account-&-auth/person",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "avatar/icon/xl",
+           "h": "avatar/icon/xl",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Text and supporting text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/md",
+         "ref": {
+          "characters": "name"
+         }
+        },
+        {
+         "n": "Supporting text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "visible": "show-email",
+          "characters": "email"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=, status-icon=online-indicator, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "avatar/label/gap/sm",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "avatar-icon",
+       "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/size/sm",
+       "h": "avatar/size/sm",
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ref": {
+        "visible": "avatar"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "Frame",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ch": [
+          {
+           "n": "account-&-auth/person",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "avatar/icon/sm",
+           "h": "avatar/icon/sm",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Text and supporting text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/xs",
+         "ref": {
+          "characters": "name"
+         }
+        },
+        {
+         "n": "Supporting text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/xs",
+         "ref": {
+          "visible": "show-email",
+          "characters": "email"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=, status-icon=online-indicator, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "avatar/label/gap/md",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "avatar-icon",
+       "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/size/md",
+       "h": "avatar/size/md",
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ref": {
+        "visible": "avatar"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "Frame",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ch": [
+          {
+           "n": "account-&-auth/person",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "avatar/icon/md",
+           "h": "avatar/icon/md",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Text and supporting text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/xs",
+         "ref": {
+          "characters": "name"
+         }
+        },
+        {
+         "n": "Supporting text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "visible": "show-email",
+          "characters": "email"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, online-indicator=, status-icon=online-indicator, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "avatar/label/gap/lg",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "avatar-icon",
+       "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/size/lg",
+       "h": "avatar/size/lg",
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ref": {
+        "visible": "avatar"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "Frame",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ch": [
+          {
+           "n": "account-&-auth/person",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "avatar/icon/lg",
+           "h": "avatar/icon/lg",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Text and supporting text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/md",
+         "ref": {
+          "characters": "name"
+         }
+        },
+        {
+         "n": "Supporting text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "visible": "show-email",
+          "characters": "email"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, online-indicator=, status-icon=online-indicator, add-user-button=, more-users=, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "avatar/label/gap/xl",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "avatar-icon",
+       "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FIXED"],
+       "w": "avatar/size/xl",
+       "h": "avatar/size/xl",
+       "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+       "ref": {
+        "visible": "avatar"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "Frame",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ch": [
+          {
+           "n": "account-&-auth/person",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "avatar/icon/xl",
+           "h": "avatar/icon/xl",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Text and supporting text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/md",
+         "ref": {
+          "characters": "name"
+         }
+        },
+        {
+         "n": "Supporting text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "visible": "show-email",
+          "characters": "email"
+         }
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Avatar Components": {
+     "status-icon=false, state=default": 11,
+     "status-icon=false, state=hover": 12,
+     "status-icon=online-indicator, state=default": 11,
+     "status-icon=online-indicator, state=hover": 12
+    }
+   }
+  },
+  "avatar-group": {
+   "defs": {
+    "avatar-1": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-2": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-3": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-4": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-5": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-6": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-7": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-8": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-9": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "avatar-10": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "size": ["xs","sm","md"],
+    "add-user-button": ["false","true"],
+    "more-users": ["false","true"]
+   },
+   "layout": {
+    "xs, online-indicator=, status-icon=, add-user-button=false, more-users=false, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/xs",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=, status-icon=, add-user-button=false, more-users=false, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/sm",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=, status-icon=, add-user-button=false, more-users=false, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/md",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xs, online-indicator=, status-icon=, add-user-button=true, more-users=false, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/xs",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "circular-icon-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/xs",
+       "p": ["icon-button/padding/top/xs","icon-button/padding/right/xs","icon-button/padding/bottom/xs","icon-button/padding/left/xs"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/xs",
+       "h": "icon-button/size/xs",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/xs",
+         "h": "icon-button/icon/xs",
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=, status-icon=, add-user-button=true, more-users=false, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/sm",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "circular-icon-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/sm",
+       "p": ["icon-button/padding/top/sm","icon-button/padding/right/sm","icon-button/padding/bottom/sm","icon-button/padding/left/sm"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/sm",
+       "h": "icon-button/size/sm",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/sm",
+         "h": "icon-button/icon/sm",
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=, status-icon=, add-user-button=true, more-users=false, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/md",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "circular-icon-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/md",
+       "p": ["icon-button/padding/top/md","icon-button/padding/right/md","icon-button/padding/bottom/md","icon-button/padding/left/md"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/md",
+       "h": "icon-button/size/md",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/md",
+         "h": "icon-button/icon/md",
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xs, online-indicator=, status-icon=, add-user-button=false, more-users=true, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/xs",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-number",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "VERTICAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["FIXED","FIXED"],
+             "w": 20,
+             "h": 20,
+             "ts": "text::meta/micro",
+             "ref": {
+              "characters": "text-value"
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=, status-icon=, add-user-button=false, more-users=true, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/sm",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-number",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "VERTICAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["FIXED","FIXED"],
+             "w": 28,
+             "h": 28,
+             "ts": "text::title/xs",
+             "ref": {
+              "characters": "text-value"
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=, status-icon=, add-user-button=false, more-users=true, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/md",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-number",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "VERTICAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["FIXED","FIXED"],
+             "w": 36,
+             "h": 36,
+             "ts": "text::title/sm",
+             "ref": {
+              "characters": "text-value"
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xs, online-indicator=, status-icon=, add-user-button=true, more-users=true, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/xs",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/xs",
+             "h": "avatar/icon/xs",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-number",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/xs",
+         "h": "avatar/size/xs",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "VERTICAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["FIXED","FIXED"],
+             "w": 20,
+             "h": 20,
+             "ts": "text::meta/micro",
+             "ref": {
+              "characters": "text-value"
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "circular-icon-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/xs",
+       "p": ["icon-button/padding/top/xs","icon-button/padding/right/xs","icon-button/padding/bottom/xs","icon-button/padding/left/xs"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/xs",
+       "h": "icon-button/size/xs",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/xs",
+         "h": "icon-button/icon/xs",
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, online-indicator=, status-icon=, add-user-button=true, more-users=true, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/sm",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/sm",
+             "h": "avatar/icon/sm",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-number",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/sm",
+         "h": "avatar/size/sm",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "VERTICAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["FIXED","FIXED"],
+             "w": 28,
+             "h": 28,
+             "ts": "text::title/xs",
+             "ref": {
+              "characters": "text-value"
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "circular-icon-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/sm",
+       "p": ["icon-button/padding/top/sm","icon-button/padding/right/sm","icon-button/padding/bottom/sm","icon-button/padding/left/sm"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/sm",
+       "h": "icon-button/size/sm",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/sm",
+         "h": "icon-button/icon/sm",
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, online-indicator=, status-icon=, add-user-button=true, more-users=true, online=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Avatars",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "avatar/group/overlap/md",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-1"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-2"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-3"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-4"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-icon",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "ref": {
+          "visible": "avatar-5"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "account-&-auth/person",
+             "t": "INSTANCE",
+             "s": ["FIXED","FIXED"],
+             "w": "avatar/icon/md",
+             "h": "avatar/icon/md",
+             "clip": true,
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "avatar-number",
+         "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FIXED","FIXED"],
+         "w": "avatar/size/md",
+         "h": "avatar/size/md",
+         "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Frame",
+           "t": "FRAME",
+           "lm": "VERTICAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"],
+           "ch": [
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["FIXED","FIXED"],
+             "w": 36,
+             "h": 36,
+             "ts": "text::title/sm",
+             "ref": {
+              "characters": "text-value"
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "circular-icon-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/md",
+       "p": ["icon-button/padding/top/md","icon-button/padding/right/md","icon-button/padding/bottom/md","icon-button/padding/left/md"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/md",
+       "h": "icon-button/size/md",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/md",
+         "h": "icon-button/icon/md",
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Avatar Components": {
+     "add-user-button=false, more-users=false": 13,
+     "add-user-button=true, more-users=false": 13,
+     "add-user-button=false, more-users=true": 14,
+     "add-user-button=true, more-users=true": 14
+    }
+   }
+  },
+  "_avatar-online-indicator": {
+   "defs": {
+    "size": ["xs","sm","md","lg","xl"],
+    "online": ["false","true"]
+   },
+   "layout": {
+    "xs, online-indicator=, status-icon=, add-user-button=, more-users=, online=false": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/xs",
+     "h": "avatar/indicator/xs",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "xs, online-indicator=, status-icon=, add-user-button=, more-users=, online=true": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/xs",
+     "h": "avatar/indicator/xs",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "sm, online-indicator=, status-icon=, add-user-button=, more-users=, online=false": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/sm",
+     "h": "avatar/indicator/sm",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "sm, online-indicator=, status-icon=, add-user-button=, more-users=, online=true": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/sm",
+     "h": "avatar/indicator/sm",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "md, online-indicator=, status-icon=, add-user-button=, more-users=, online=false": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/md",
+     "h": "avatar/indicator/md",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "md, online-indicator=, status-icon=, add-user-button=, more-users=, online=true": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/md",
+     "h": "avatar/indicator/md",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "lg, online-indicator=, status-icon=, add-user-button=, more-users=, online=false": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/lg",
+     "h": "avatar/indicator/lg",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "lg, online-indicator=, status-icon=, add-user-button=, more-users=, online=true": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/lg",
+     "h": "avatar/indicator/lg",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "xl, online-indicator=, status-icon=, add-user-button=, more-users=, online=false": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/xl",
+     "h": "avatar/indicator/xl",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    },
+    "xl, online-indicator=, status-icon=, add-user-button=, more-users=, online=true": {
+     "t": "COMPONENT",
+     "w": "avatar/indicator/xl",
+     "h": "avatar/indicator/xl",
+     "clip": true,
+     "r": ["avatar/radius/full","avatar/radius/full","avatar/radius/full","avatar/radius/full"]
+    }
+   },
+   "colors": {
+    "Avatar Components": {
+     "online=false": 15,
+     "online=true": 16
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "Frame": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/Image": {
+    "fills": ["IMAGE"]
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/Image": {
+    "fills": ["IMAGE"]
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/Image": {
+    "fills": ["IMAGE"]
+   },
+   "_avatar-online-indicator": {
+    "fills": ["color/foreground/system/success-primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "OUTSIDE"
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/brand/primary-alt"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/account-&-auth/person/vector": {
+    "fills": ["icon/brand/primary"]
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/brand/primary-alt-hover"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/account-&-auth/person/vector": {
+    "fills": ["icon/brand/primary-hover"]
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/brand/primary-alt"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/account-&-auth/person/vector": {
+    "fills": ["icon/brand/primary"]
+   },
+   "_avatar-online-indicator": {
+    "fills": ["color/foreground/system/success-primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "OUTSIDE"
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/brand/primary-alt-hover"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/account-&-auth/person/vector": {
+    "fills": ["icon/brand/primary-hover"]
+   },
+   "_avatar-online-indicator": {
+    "fills": ["color/foreground/system/success-primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "OUTSIDE"
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/brand/primary-alt"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/Text": {
+    "fills": ["color/text/brand/primary"]
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/brand/primary-alt-hover"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/Text": {
+    "fills": ["color/text/brand/primary-hover"]
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/brand/primary-alt"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/Text": {
+    "fills": ["color/text/brand/primary"]
+   },
+   "_avatar-online-indicator": {
+    "fills": ["color/foreground/system/success-primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "OUTSIDE"
+   }
+  },
+  {
+   "Frame": {
+    "fills": ["color/background/brand/primary-alt-hover"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Frame/Text": {
+    "fills": ["color/text/brand/primary-hover"]
+   },
+   "_avatar-online-indicator": {
+    "fills": ["color/foreground/system/success-primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "OUTSIDE"
+   }
+  },
+  {
+   "avatar-icon/Frame": {
+    "fills": ["color/background/brand/primary-alt"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Text and supporting text/Text": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "Text and supporting text/Supporting text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "avatar-icon/Frame": {
+    "fills": ["color/background/brand/primary-alt-hover"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Text and supporting text/Text": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "Text and supporting text/Supporting text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "Avatars/avatar-icon/Frame": {
+    "fills": ["color/background/brand/primary-alt"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   }
+  },
+  {
+   "Avatars/avatar-icon/Frame": {
+    "fills": ["color/background/brand/primary-alt"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Avatars/avatar-number/Frame": {
+    "fills": ["color/background/brand/primary-alt"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [2,2,2,2],
+    "sa": "OUTSIDE"
+   },
+   "Avatars/avatar-number/Frame/Text": {
+    "fills": ["color/text/brand/primary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/foreground/general/disable-subtle"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "OUTSIDE"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/foreground/system/success-primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "OUTSIDE"
+   }
+  }
+ ]
+}

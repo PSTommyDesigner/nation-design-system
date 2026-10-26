@@ -41,13 +41,10 @@ const SIZE_CLASS: Record<AvatarSize, string> = {
   xs: styles.xs, sm: styles.sm, md: styles.md, lg: styles.lg, xl: styles.xl,
 };
 
-const GROUP_SIZE_CLASS: Record<AvatarGroupSize, string> = {
-  xs: styles.groupXs, sm: styles.groupSm, md: styles.groupMd,
-};
+// กลุ่มกับป้ายชื่อใช้คลาสขนาดชุดเดียวกับอวาตาร์ (ตัวสร้าง CSS ออกกฎเป็น .group.md / .label.md)
+const GROUP_SIZE_CLASS: Record<AvatarGroupSize, string> = { xs: styles.xs, sm: styles.sm, md: styles.md };
 
-const LABEL_SIZE_CLASS: Record<AvatarLabelSize, string> = {
-  sm: styles.labelSm, md: styles.labelMd, lg: styles.labelLg, xl: styles.labelXl,
-};
+const LABEL_SIZE_CLASS: Record<AvatarLabelSize, string> = { sm: styles.sm, md: styles.md, lg: styles.lg, xl: styles.xl };
 
 const STATUS_TEXT: Record<AvatarStatus, string> = {
   online: 'ออนไลน์',

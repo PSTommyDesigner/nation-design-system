@@ -251,5 +251,29 @@
       "_pagination-number-button",
       "_pagination-ellipsis"
     ]
+  },
+  "avatar": {
+    "page": "11 Avatar",
+    "depth": 5,
+    "reference": "Avatar Components",
+    "families": [
+      "Avatar Components"
+    ],
+    "sets": [
+      "avatar-image",
+      "avatar-icon",
+      "avatar-monogram",
+      "avatar-number",
+      "avatar-label",
+      "avatar-group",
+      "_avatar-online-indicator"
+    ],
+    "layoutAxes": [
+      "online-indicator",
+      "status-icon",
+      "add-user-button",
+      "more-users",
+      "online"
+    ]
   }
 }

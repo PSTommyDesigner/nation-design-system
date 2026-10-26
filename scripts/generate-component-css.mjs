@@ -810,7 +810,87 @@ const PAGINATION = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Avatar: หน้า 11 อวาตาร์ 4 แบบ (image icon monogram number แกน online-indicator state) + ป้ายชื่อ + กลุ่ม + จุดสถานะฐาน
+//   โค้ดเป็น Avatar เดียว แยกด้วย data-variant จุดสถานะคือ .indicator ใต้ root ที่มี data-status
+//   ป้ายชื่อกับกลุ่มมีขนาดไม่ครบ 5 ขั้น (sizes ต่อชุด) ค่าอวาตาร์ข้างในป้าย/กลุ่มเป็นของ Avatar เอง ไม่ดึงซ้ำ
+// ═══════════════════════════════════════════════════════════════════════════════
+const AV_KEY = (tail) => (size) => `${size}, ${tail}`
+const avatarSet = (variant) => ({ classes: `.root[data-variant="${variant}"]` })
+const avatarColors = {
+  'Frame': (c, W) => ({ '--av-bg': c.fills ? W(c.fills[0]) : 'transparent', '--av-ring': c.strokes ? W(c.strokes[0]) : 'transparent', '--av-ring-w': c.strokes ? `${c.sw[0]}px` : '0px' }),
+  'Frame/Image': () => ({}),
+  'Frame/**/vector': (c, W) => ({ '--av-icon-color': W(c.fills[0]) }),
+  'Frame/Text': (c, W) => ({ '--av-fg': W(c.fills[0]) }),
+  '_avatar-online-indicator': (c, W) => ({ '--av-ind-bg': W(c.fills[0]), '--av-ind-ring': c.strokes ? W(c.strokes[0]) : 'transparent', '--av-ind-ring-w': c.strokes ? `${c.sw[0]}px` : '0px' }),
+}
+const AVATAR = {
+  specFile: 'tokens/figma-layers/avatar.json',
+  baseFile: 'components/Avatar/Avatar.base.css',
+  outFile: 'components/Avatar/Avatar.module.css',
+  sets: {
+    'avatar-image': avatarSet('image'), 'avatar-icon': avatarSet('icon'), 'avatar-monogram': avatarSet('monogram'), 'avatar-number': avatarSet('number'),
+    'avatar-label': { classes: '.label', sizes: ['sm', 'md', 'lg', 'xl'] },
+    'avatar-group': { classes: '.group', sizes: ['xs', 'sm', 'md'] },
+    '_avatar-online-indicator': { classes: '.root' },
+  },
+  sizeSel: (sel, size) => sel.replace(/^(\.[\w-]+)/, `$1.${size}`),
+  layoutVariants: [{
+    key: (size, set) => {
+      if (set === 'avatar-label') return `${size}, online-indicator=, status-icon=online-indicator, add-user-button=, more-users=, online=`
+      if (set === 'avatar-group') return `${size}, online-indicator=, status-icon=, add-user-button=false, more-users=true, online=`
+      if (set === '_avatar-online-indicator') return `${size}, online-indicator=, status-icon=, add-user-button=, more-users=, online=true`
+      return `${size}, online-indicator=true, status-icon=, add-user-button=, more-users=, online=`
+    }, cls: '',
+  }],
+  familyClass: () => '',
+  axisClass: {
+    'online-indicator': (v) => (v === 'true' ? '[data-status]' : ':not([data-status])'),
+    'online': (v) => `[data-status="${v === 'true' ? 'online' : 'offline'}"]`,
+    'status-icon': () => '', 'add-user-button': () => '', 'more-users': () => '',
+  },
+  stateSelector: { default: (sel) => sel, hover: (sel) => `${sel}[data-interactive="true"]:hover` },
+  layers: {
+    '(root)': (n, W, ctx) => {
+      if (ctx.set === 'avatar-label') return { '--av-label-gap': W(n.g) }
+      if (ctx.set === 'avatar-group') return { '--av-group-gap': W(n.g) }
+      if (ctx.set === '_avatar-online-indicator') return { '--av-indicator': W(n.w) }
+      return { '--av-size': W(n.w), ...(n.r ? { '--av-r-tl': W(n.r[0]), '--av-r-tr': W(n.r[1]), '--av-r-br': W(n.r[2]), '--av-r-bl': W(n.r[3]) } : {}) }
+    },
+    'Frame': () => ({}),
+    'Frame/Image': () => ({}),
+    'Frame/Text': () => ({}),
+    'Frame/account-&-auth/person': (n, W) => ({ '--av-icon': W(n.w) }),
+    'Frame/**': () => ({}),
+    '_avatar-online-indicator': (n, W) => ({ '--av-indicator': W(n.w) }),
+    '_avatar-online-indicator/**': () => ({}),
+    'avatar-icon': () => ({}), 'avatar-icon/**': () => ({}),
+    'Text and supporting text': (n, W) => ({ '--av-label-stack': W(n.g) }),
+    'Text and supporting text/**': () => ({}),
+    'Avatars': (n, W) => ({ '--av-overlap': W(n.g) }),
+    'Avatars/**': () => ({}),
+    '**': () => ({}),   // ปุ่มเพิ่มผู้ใช้ในกลุ่ม เป็น instance ของปุ่มไอคอน ค่าเป็นของมันเอง
+  },
+  text: [
+    { sets: ['avatar-monogram'], layers: ['Frame/Text'], vars: { '--av-mono-font-family': 'font-family', '--av-mono-font-size': 'font-size', '--av-mono-line-height': 'line-height', '--av-mono-font-weight': 'font-weight', '--av-mono-letter-space': 'letter-space' } },
+    { sets: ['avatar-number'], layers: ['Frame/Text'], vars: { '--av-num-font-family': 'font-family', '--av-num-font-size': 'font-size', '--av-num-line-height': 'line-height', '--av-num-font-weight': 'font-weight', '--av-num-letter-space': 'letter-space' } },
+    { sets: ['avatar-label'], layers: ['Text and supporting text/Text'], vars: { '--av-label-font-family': 'font-family', '--av-label-font-size': 'font-size', '--av-label-line-height': 'line-height', '--av-label-font-weight': 'font-weight', '--av-label-letter-space': 'letter-space' } },
+    { sets: ['avatar-label'], layers: ['Text and supporting text/Supporting text'], vars: { '--av-sup-font-family': 'font-family', '--av-sup-font-size': 'font-size', '--av-sup-line-height': 'line-height', '--av-sup-font-weight': 'font-weight', '--av-sup-letter-space': 'letter-space' } },
+  ],
+  colors: {
+    ...avatarColors,
+    '(root)': (c, W, ctx) => (ctx.set === '_avatar-online-indicator'
+      ? { '--av-ind-bg': W(c.fills[0]), '--av-ind-ring': c.strokes ? W(c.strokes[0]) : 'transparent', '--av-ind-ring-w': c.strokes ? `${c.sw[0]}px` : '0px' }
+      : {}),
+    'avatar-icon': () => ({}), 'avatar-icon/**': () => ({}),
+    'Text and supporting text/Text': (c, W) => ({ '--av-label-fg': W(c.fills[0]) }),
+    'Text and supporting text/Supporting text': (c, W) => ({ '--av-sup-fg': W(c.fills[0]) }),
+    'Avatars/**': () => ({}),
+    '**': () => ({}),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -852,6 +932,8 @@ for (const size of textGroups.length ? SIZES : []) {
     let ts = null
     for (const [setName, set] of Object.entries(spec.sets)) {
       if (M.sets[setName]?.ignoreLayout) continue
+      if (g.sets && !g.sets.includes(setName)) continue                       // กลุ่มข้อความที่ผูกกับบางชุด (เช่น อักษรย่อ กับ ตัวเลข ของอวาตาร์ใช้ preset ต่างกัน)
+      if (M.sets[setName]?.sizes && !M.sets[setName].sizes.includes(size)) continue   // ชุดที่มีไม่ครบทุกขนาด
       const k0 = (M.layoutVariants || [{ key: M.layoutKey }])[0].key
       walk(L(set, size, k0 && ((sz) => k0(sz, setName))), '', (key, n) => {
         if (n.ts && g.layers.includes(key)) {
@@ -860,7 +942,7 @@ for (const size of textGroups.length ? SIZES : []) {
         }
       })
     }
-    if (!ts) { errors.push(`${size}: ไม่พบชั้นข้อความ ${g.layers.join('/')} ในชุดไหนเลย`); continue }
+    if (!ts) { if (!g.sets || g.sets.some((n) => !M.sets[n]?.sizes || M.sets[n].sizes.includes(size))) errors.push(`${size}: ไม่พบชั้นข้อความ ${g.layers.join('/')} ในชุดไหนเลย`); continue }
     Object.assign(vars, styleVars(ts, g.vars, `typography ${size} ${g.layers[0]}`))
   }
   out.push(`.${size} { ${decl(vars)} }`)
@@ -875,7 +957,7 @@ for (const [setName, set] of Object.entries(spec.sets)) {
   if (!map) { errors.push(`ชุด ${setName} ไม่มีในตารางจับคู่ sets`); continue }
   if (map.ignoreLayout) continue   // ชุดที่โค้ดไม่ได้วาดตามโครง (เช่น ลูกศรต้นแบบของคำใบ้ที่โค้ดวาดด้วย clip-path)
   // โครงหลายแบบต่อขนาดตามแกน (เช่น banner ระดับ page กับ section ต่างกันที่มุมโค้ง) ประกาศ layoutVariants [{ key, cls }]
-  for (const lv of (M.layoutVariants || [{ key: M.layoutKey, cls: '' }])) for (const size of SIZES) {
+  for (const lv of (M.layoutVariants || [{ key: M.layoutKey, cls: '' }])) for (const size of (map.sizes || SIZES)) {
     const vars = {}
     walk(L(set, size, lv.key && ((sz) => lv.key(sz, setName))), '', (key, n) => {
       const fn = lookup(M.layers, key)

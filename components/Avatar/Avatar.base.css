@@ -1,0 +1,118 @@
+/*
+ * Avatar ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ค่าทุกค่ามาจาก --av-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/avatar.json (spec ชั้นจากไฟล์ออกแบบหน้า 11)
+ * แล้วต่อท้ายไฟล์นี้เป็น Avatar.module.css ห้ามแก้ Avatar.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. วงแหวนรอบอวาตาร์และขอบของจุดสถานะเป็น stroke แบบ OUTSIDE ในไฟล์ออกแบบ ฝั่งเว็บวาดด้วย box-shadow ด้านนอก (--av-ring-w / --av-ind-ring-w)
+ *   2. hover ในไฟล์ออกแบบเป็นแกน state ฝั่งเว็บใช้กับตัวที่กดได้เท่านั้น (data-interactive) อวาตาร์เปล่า ๆ ไม่เปลี่ยนหน้าตา
+ *   3. จุดสถานะ offline ไม่มีในชุดอวาตาร์ (มีแต่ online) สีมาจากชุดฐาน _avatar-online-indicator แกน online=false
+ *   4. กลุ่มใช้ margin ติดลบจาก --av-overlap เพราะ gap รับค่าติดลบไม่ได้ ช่องไฟระหว่างกลุ่มกับปุ่มเพิ่มผู้ใช้ (--av-group-gap) ยังเป็นค่าดิบ 8 ในไฟล์ออกแบบ
+ *   5. ข้อความซ่อนสำหรับโปรแกรมอ่านหน้าจอใช้สูตรมาตรฐาน 1px ไม่ใช่ค่าออกแบบ
+ */
+
+.root {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--av-size);
+  height: var(--av-size);
+  border-radius: var(--av-r-tl, 50%) var(--av-r-tr, 50%) var(--av-r-br, 50%) var(--av-r-bl, 50%);
+  background: var(--av-bg, transparent);
+  box-shadow: 0 0 0 var(--av-ring-w, 0px) var(--av-ring, transparent);
+  font-family: var(--av-mono-font-family, inherit);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.icon {
+  flex: none;
+  width: var(--av-icon);
+  height: var(--av-icon);
+  color: var(--av-icon-color, currentColor);
+}
+.text { color: var(--av-fg, inherit); }
+.root[data-variant='monogram'] .text {
+  font-family: var(--av-mono-font-family);
+  font-size: var(--av-mono-font-size);
+  line-height: var(--av-mono-line-height);
+  font-weight: var(--av-mono-font-weight);
+  letter-spacing: var(--av-mono-letter-space);
+}
+.root[data-variant='number'] .text {
+  font-family: var(--av-num-font-family);
+  font-size: var(--av-num-font-size);
+  line-height: var(--av-num-line-height);
+  font-weight: var(--av-num-font-weight);
+  letter-spacing: var(--av-num-letter-space);
+}
+.indicator {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--av-indicator);
+  height: var(--av-indicator);
+  border-radius: 50%;
+  background: var(--av-ind-bg, transparent);
+  box-shadow: 0 0 0 var(--av-ind-ring-w, 0px) var(--av-ind-ring, transparent);
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--av-group-gap, 0);
+}
+.group > * + * { margin-inline-start: var(--av-overlap, 0); }
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--av-label-gap, 0);
+}
+.labelText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--av-label-stack, 0);
+  min-width: 0;
+}
+.labelTitle {
+  color: var(--av-label-fg, inherit);
+  font-family: var(--av-label-font-family);
+  font-size: var(--av-label-font-size);
+  line-height: var(--av-label-line-height);
+  font-weight: var(--av-label-font-weight);
+  letter-spacing: var(--av-label-letter-space);
+}
+.labelSupporting {
+  color: var(--av-sup-fg, inherit);
+  font-family: var(--av-sup-font-family);
+  font-size: var(--av-sup-font-size);
+  line-height: var(--av-sup-line-height);
+  font-weight: var(--av-sup-font-weight);
+  letter-spacing: var(--av-sup-letter-space);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; }
+}

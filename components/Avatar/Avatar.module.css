@@ -1,27 +1,22 @@
-/**
- * Avatar styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Avatar/Avatar.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 11 Avatar แล้วรัน  npm run figma:layers -- avatar  และ  npm run css:generate -- avatar
+ *   spec: tokens/figma-layers/avatar.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Avatar ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ มุมโค้ง หรือขนาด เพื่อให้ sync กับ Figma หน้า 11 Avatar ได้
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ค่าทุกค่ามาจาก --av-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/avatar.json (spec ชั้นจากไฟล์ออกแบบหน้า 11)
+ * แล้วต่อท้ายไฟล์นี้เป็น Avatar.module.css ห้ามแก้ Avatar.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ขนาด       --ntg-avatar-size-{size} · --ntg-avatar-icon-{size} · --ntg-avatar-indicator-{size}
- *   วงแหวน     --ntg-avatar-ring (รอบตัวอวาตาร์) · --ntg-avatar-indicator-ring (รอบจุดสถานะ)
- *   มุมโค้ง     --ntg-avatar-radius-full
- *   กลุ่ม       --ntg-avatar-group-overlap-{xs|sm|md}
- *   ป้ายชื่อ     --ntg-avatar-label-gap-{sm|md|lg|xl}
- *   สีพื้น       --ntg-color-background-general-primary · --ntg-color-background-brand-primary-alt
- *   สีวงแหวน   --ntg-color-border-general-tertiary · --ntg-color-border-brand-solid
- *   สีไอคอน    --ntg-icon-brand-primary · สีตัวย่อ --ntg-color-text-brand-primary
- *   สีสถานะ    --ntg-color-foreground-system-success-primary · --ntg-color-foreground-general-disable-subtle
- *
- * ⚠️ วงแหวนวาดด้วย box-shadow ล้นออกนอกกล่อง ไม่ใช้ border เพราะ border กินที่ข้างใน
- *    แล้วจะทำให้ขนาดที่ประกาศไม่ตรงกับรูปที่เห็น
- *
- * ⚠️ ไม่มี padding ให้อวาตาร์ ระยะเว้นขอบรอบไอคอนเป็นผลลัพธ์จากการจัดกลาง
- *    ถ้าต้องขยับระยะเว้นขอบ ให้แก้ขนาดไอคอนที่ tokens/scale/avatar.mjs
- *
- * ⚠️ ไม่มีสถานะโฟกัสในไฟล์นี้ตามไฟล์ออกแบบ วงแหวนโฟกัสเป็นของตัวที่กดได้ที่ครอบข้างนอก
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. วงแหวนรอบอวาตาร์และขอบของจุดสถานะเป็น stroke แบบ OUTSIDE ในไฟล์ออกแบบ ฝั่งเว็บวาดด้วย box-shadow ด้านนอก (--av-ring-w / --av-ind-ring-w)
+ *   2. hover ในไฟล์ออกแบบเป็นแกน state ฝั่งเว็บใช้กับตัวที่กดได้เท่านั้น (data-interactive) อวาตาร์เปล่า ๆ ไม่เปลี่ยนหน้าตา
+ *   3. จุดสถานะ offline ไม่มีในชุดอวาตาร์ (มีแต่ online) สีมาจากชุดฐาน _avatar-online-indicator แกน online=false
+ *   4. กลุ่มใช้ margin ติดลบจาก --av-overlap เพราะ gap รับค่าติดลบไม่ได้ ช่องไฟระหว่างกลุ่มกับปุ่มเพิ่มผู้ใช้ (--av-group-gap) ยังเป็นค่าดิบ 8 ในไฟล์ออกแบบ
+ *   5. ข้อความซ่อนสำหรับโปรแกรมอ่านหน้าจอใช้สูตรมาตรฐาน 1px ไม่ใช่ค่าออกแบบ
  */
 
 .root {
@@ -31,77 +26,52 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border-radius: var(--ntg-avatar-radius-full);
-  font-family: var(--ntg-typography-font-family-primary);
-  background: var(--ntg-color-background-general-primary);
-  /* วงแหวนล้นออกนอกกล่อง จึงไม่ลดขนาดรูปที่มองเห็น */
-  box-shadow: 0 0 0 var(--ntg-avatar-ring) var(--ntg-color-border-general-tertiary);
+  width: var(--av-size);
+  height: var(--av-size);
+  border-radius: var(--av-r-tl, 50%) var(--av-r-tr, 50%) var(--av-r-br, 50%) var(--av-r-bl, 50%);
+  background: var(--av-bg, transparent);
+  box-shadow: 0 0 0 var(--av-ring-w, 0px) var(--av-ring, transparent);
+  font-family: var(--av-mono-font-family, inherit);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
-
-.root[data-variant='icon'],
-.root[data-variant='monogram'],
-.root[data-variant='number'] {
-  background: var(--ntg-color-background-brand-primary-alt);
-}
-
-/* สถานะ hover เปิดเมื่อส่ง interactive เข้ามาเท่านั้น
-   เพราะอวาตาร์เปล่า ๆ กดไม่ได้ ไม่ควรเปลี่ยนหน้าตาตอนเมาส์ผ่าน */
-.root[data-interactive='true']:hover {
-  box-shadow: 0 0 0 var(--ntg-avatar-ring) var(--ntg-color-border-brand-solid);
-}
-
-.root[data-interactive='true'][data-variant='icon']:hover,
-.root[data-interactive='true'][data-variant='monogram']:hover,
-.root[data-interactive='true'][data-variant='number']:hover {
-  background: var(--ntg-color-background-brand-primary-alt-hover);
-}
-
 .image {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--ntg-avatar-radius-full);
+  border-radius: inherit;
 }
-
 .icon {
   flex: none;
-  color: var(--ntg-icon-brand-primary);
+  width: var(--av-icon);
+  height: var(--av-icon);
+  color: var(--av-icon-color, currentColor);
 }
-
-.root[data-interactive='true']:hover .icon {
-  color: var(--ntg-icon-brand-primary-hover);
+.text { color: var(--av-fg, inherit); }
+.root[data-variant='monogram'] .text {
+  font-family: var(--av-mono-font-family);
+  font-size: var(--av-mono-font-size);
+  line-height: var(--av-mono-line-height);
+  font-weight: var(--av-mono-font-weight);
+  letter-spacing: var(--av-mono-letter-space);
 }
-
-.text {
-  color: var(--ntg-color-text-brand-primary);
+.root[data-variant='number'] .text {
+  font-family: var(--av-num-font-family);
+  font-size: var(--av-num-font-size);
+  line-height: var(--av-num-line-height);
+  font-weight: var(--av-num-font-weight);
+  letter-spacing: var(--av-num-letter-space);
 }
-
-.root[data-interactive='true']:hover .text {
-  color: var(--ntg-color-text-brand-primary-hover);
-}
-
-/* จุดบอกสถานะเกาะมุมขวาล่างพอดีขอบ ตรงกับไฟล์ออกแบบที่ระยะเป็นศูนย์ทั้งสองด้าน
-   วงแหวนของจุดนี้ใช้ token ของตัวเอง ไม่ใช่ avatar/ring เพราะคนละหน้าที่และบางกว่าครึ่งหนึ่ง
-   ตัวนั้นคือวงแหวนรอบตัวอวาตาร์ ตัวนี้คือขอบที่ทำให้จุดอ่านออกเมื่อทับบนรูปที่สีใกล้กัน */
 .indicator {
   position: absolute;
   right: 0;
   bottom: 0;
-  border-radius: var(--ntg-avatar-radius-full);
-  box-shadow: 0 0 0 var(--ntg-avatar-indicator-ring) var(--ntg-color-border-general-tertiary);
+  width: var(--av-indicator);
+  height: var(--av-indicator);
+  border-radius: 50%;
+  background: var(--av-ind-bg, transparent);
+  box-shadow: 0 0 0 var(--av-ind-ring-w, 0px) var(--av-ind-ring, transparent);
 }
-
-.root[data-status='online'] .indicator {
-  background: var(--ntg-color-foreground-system-success-primary);
-}
-
-.root[data-status='offline'] .indicator {
-  background: var(--ntg-color-foreground-general-disable-subtle);
-}
-
-/* ข้อความที่มีไว้ให้โปรแกรมอ่านหน้าจออ่านอย่างเดียว ไม่แสดงบนจอ
-   ค่า 1px ตรงนี้เป็นสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ ไม่ใช่ค่าออกแบบ จึงไม่ต้องเป็น token */
 .srOnly {
   position: absolute;
   width: 1px;
@@ -114,177 +84,106 @@
   border: 0;
 }
 
-/* ── ขนาด ────────────────────────────────────────────────── */
-/* ตัวย่อกับตัวเลขใช้ชุดตัวอักษรสำเร็จรูปเท่านั้น ห้ามผสมขนาดกับน้ำหนักเอง */
-
-.xs { width: var(--ntg-avatar-size-xs); height: var(--ntg-avatar-size-xs); }
-.xs .icon { width: var(--ntg-avatar-icon-xs); height: var(--ntg-avatar-icon-xs); }
-.xs .indicator { width: var(--ntg-avatar-indicator-xs); height: var(--ntg-avatar-indicator-xs); }
-/* ตัวย่อขนาด xs ใช้ชุด title/xs */
-.xs[data-variant='monogram'] .text {
-  font-size: var(--ntg-typography-font-size-title-xs);
-  line-height: var(--ntg-typography-line-height-title-xs);
-  font-weight: var(--ntg-typography-font-weight-title-xs);
-}
-/* ตัวเลขขนาด xs ใช้ชุด meta/micro ซึ่งเป็นชุดเดียวที่ขนาดเล็กถึง 8
-   เดิมไฟล์ออกแบบใช้น้ำหนัก 600 ซึ่งไม่มีคู่ที่ขนาด 8 ผู้ใช้ตัดสิน 2026-10-15 ให้ขยับแบบมาใช้ชุดที่มี
-   ไฟล์ออกแบบผูกชุดนี้แล้ว สองฝั่งจึงตรงกัน */
-.xs[data-variant='number'] .text {
-  font-size: var(--ntg-typography-font-size-micro);
-  line-height: var(--ntg-typography-line-height-micro);
-  font-weight: var(--ntg-typography-font-weight-micro);
-}
-
-.sm { width: var(--ntg-avatar-size-sm); height: var(--ntg-avatar-size-sm); }
-.sm .icon { width: var(--ntg-avatar-icon-sm); height: var(--ntg-avatar-icon-sm); }
-.sm .indicator { width: var(--ntg-avatar-indicator-sm); height: var(--ntg-avatar-indicator-sm); }
-/* ตัวย่อขนาด sm ใช้ชุด section-heading/xs ตรงกับที่ผูกไว้ในไฟล์ออกแบบแล้ว */
-.sm[data-variant='monogram'] .text {
-  font-size: var(--ntg-typography-font-size-section-heading-xs);
-  line-height: var(--ntg-typography-line-height-section-heading-xs);
-  font-weight: var(--ntg-typography-font-weight-section-heading-xs);
-}
-/* ตัวเลขขนาด sm ใช้ชุด title/xs */
-.sm[data-variant='number'] .text {
-  font-size: var(--ntg-typography-font-size-title-xs);
-  line-height: var(--ntg-typography-line-height-title-xs);
-  font-weight: var(--ntg-typography-font-weight-title-xs);
-}
-
-.md { width: var(--ntg-avatar-size-md); height: var(--ntg-avatar-size-md); }
-.md .icon { width: var(--ntg-avatar-icon-md); height: var(--ntg-avatar-icon-md); }
-.md .indicator { width: var(--ntg-avatar-indicator-md); height: var(--ntg-avatar-indicator-md); }
-/* ตัวย่อขนาด md ใช้ชุด section-heading/sm ตรงกับที่ผูกไว้ในไฟล์ออกแบบแล้ว */
-.md[data-variant='monogram'] .text {
-  font-size: var(--ntg-typography-font-size-section-heading-sm);
-  line-height: var(--ntg-typography-line-height-section-heading-sm);
-  font-weight: var(--ntg-typography-font-weight-section-heading-sm);
-}
-/* ตัวเลขขนาด md ใช้ชุด title/sm */
-.md[data-variant='number'] .text {
-  font-size: var(--ntg-typography-font-size-title-sm);
-  line-height: var(--ntg-typography-line-height-title-sm);
-  font-weight: var(--ntg-typography-font-weight-title-sm);
-}
-
-.lg { width: var(--ntg-avatar-size-lg); height: var(--ntg-avatar-size-lg); }
-.lg .icon { width: var(--ntg-avatar-icon-lg); height: var(--ntg-avatar-icon-lg); }
-.lg .indicator { width: var(--ntg-avatar-indicator-lg); height: var(--ntg-avatar-indicator-lg); }
-/* ตัวย่อขนาด lg ใช้ชุด section-heading/lg ซึ่งเป็นชุดที่ขนาดถึง 24 และน้ำหนักตรงกัน */
-.lg[data-variant='monogram'] .text {
-  font-size: var(--ntg-typography-font-size-section-heading-lg);
-  line-height: var(--ntg-typography-line-height-section-heading-lg);
-  font-weight: var(--ntg-typography-font-weight-section-heading-lg);
-}
-/* ตัวเลขขนาด lg ใช้ชุด section-heading/xs ตรงกับที่ผูกไว้ในไฟล์ออกแบบแล้ว */
-.lg[data-variant='number'] .text {
-  font-size: var(--ntg-typography-font-size-section-heading-xs);
-  line-height: var(--ntg-typography-line-height-section-heading-xs);
-  font-weight: var(--ntg-typography-font-weight-section-heading-xs);
-}
-
-.xl { width: var(--ntg-avatar-size-xl); height: var(--ntg-avatar-size-xl); }
-.xl .icon { width: var(--ntg-avatar-icon-xl); height: var(--ntg-avatar-icon-xl); }
-.xl .indicator { width: var(--ntg-avatar-indicator-xl); height: var(--ntg-avatar-indicator-xl); }
-/* ตัวย่อขนาด xl ใช้ชุด section-heading/xl ซึ่งเป็นชุดน้ำหนัก 500 ที่ใหญ่สุดของระบบ
-   เดิมไฟล์ออกแบบใช้ 30/44 ซึ่งระบบไม่มีขนาด 30 เลย ผู้ใช้ตัดสิน 2026-10-15 ให้ขยับแบบมาใช้ชุดที่มี
-   ไฟล์ออกแบบผูกชุดนี้แล้ว สองฝั่งจึงตรงกัน */
-.xl[data-variant='monogram'] .text {
-  font-size: var(--ntg-typography-font-size-section-heading-xl);
-  line-height: var(--ntg-typography-line-height-section-heading-xl);
-  font-weight: var(--ntg-typography-font-weight-section-heading-xl);
-}
-/* ตัวเลขขนาด xl ใช้ชุด section-heading/sm ตรงกับที่ผูกไว้ในไฟล์ออกแบบแล้ว */
-.xl[data-variant='number'] .text {
-  font-size: var(--ntg-typography-font-size-section-heading-sm);
-  line-height: var(--ntg-typography-line-height-section-heading-sm);
-  font-weight: var(--ntg-typography-font-weight-section-heading-sm);
-}
-
-/* ── กลุ่มอวาตาร์ ─────────────────────────────────────────── */
-/* ซ้อนกันด้วยระยะติดลบ ค่าที่เก็บใน token ติดลบอยู่แล้วจึงใช้ได้ตรง
-   ใช้ margin ไม่ใช่ gap เพราะ gap รับค่าติดลบไม่ได้ */
-
 .group {
   display: inline-flex;
   align-items: center;
+  gap: var(--av-group-gap, 0);
 }
-
-.groupXs > * + * { margin-inline-start: var(--ntg-avatar-group-overlap-xs); }
-.groupSm > * + * { margin-inline-start: var(--ntg-avatar-group-overlap-sm); }
-.groupMd > * + * { margin-inline-start: var(--ntg-avatar-group-overlap-md); }
-
-/* ── ป้ายชื่อ ─────────────────────────────────────────────── */
-/* ⚠️ ห้ามตั้งความสูงให้ป้ายชื่อ ความสูงมาจากความสูงบรรทัดของชุดตัวอักษร */
+.group > * + * { margin-inline-start: var(--av-overlap, 0); }
 
 .label {
   display: inline-flex;
   align-items: center;
-  font-family: var(--ntg-typography-font-family-primary);
+  gap: var(--av-label-gap, 0);
 }
-
 .labelText {
   display: flex;
   flex-direction: column;
+  gap: var(--av-label-stack, 0);
   min-width: 0;
 }
-
 .labelTitle {
-  color: var(--ntg-color-text-general-section-heading);
+  color: var(--av-label-fg, inherit);
+  font-family: var(--av-label-font-family);
+  font-size: var(--av-label-font-size);
+  line-height: var(--av-label-line-height);
+  font-weight: var(--av-label-font-weight);
+  letter-spacing: var(--av-label-letter-space);
 }
-
 .labelSupporting {
-  color: var(--ntg-color-text-general-supporting-text);
+  color: var(--av-sup-fg, inherit);
+  font-family: var(--av-sup-font-family);
+  font-size: var(--av-sup-font-size);
+  line-height: var(--av-sup-line-height);
+  font-weight: var(--av-sup-font-weight);
+  letter-spacing: var(--av-sup-letter-space);
 }
 
-.labelSm { gap: var(--ntg-avatar-label-gap-sm); }
-/* ชื่อใช้ชุด title/xs และบรรทัดรองใช้ชุด body/xs */
-.labelSm .labelTitle {
-  font-size: var(--ntg-typography-font-size-title-xs);
-  line-height: var(--ntg-typography-line-height-title-xs);
-  font-weight: var(--ntg-typography-font-weight-title-xs);
-}
-.labelSm .labelSupporting {
-  font-size: var(--ntg-typography-font-size-body-xs);
-  line-height: var(--ntg-typography-line-height-body-xs);
-  font-weight: var(--ntg-typography-font-weight-body-xs);
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; }
 }
 
-.labelMd { gap: var(--ntg-avatar-label-gap-md); }
-/* ชื่อใช้ชุด title/xs และบรรทัดรองใช้ชุด body/sm */
-.labelMd .labelTitle {
-  font-size: var(--ntg-typography-font-size-title-xs);
-  line-height: var(--ntg-typography-line-height-title-xs);
-  font-weight: var(--ntg-typography-font-weight-title-xs);
-}
-.labelMd .labelSupporting {
-  font-size: var(--ntg-typography-font-size-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-}
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --av-mono-font-family: var(--ntg-typography-font-family-title-xs); --av-mono-font-size: var(--ntg-typography-font-size-title-xs); --av-mono-line-height: var(--ntg-typography-line-height-title-xs); --av-mono-font-weight: var(--ntg-typography-font-weight-title-xs); --av-mono-letter-space: var(--ntg-typography-letter-space-title-xs); --av-num-font-family: var(--ntg-typography-font-family-micro); --av-num-font-size: var(--ntg-typography-font-size-micro); --av-num-line-height: var(--ntg-typography-line-height-micro); --av-num-font-weight: var(--ntg-typography-font-weight-micro); --av-num-letter-space: var(--ntg-typography-letter-space-micro); }
+.sm { --av-mono-font-family: var(--ntg-typography-font-family-section-heading-xs); --av-mono-font-size: var(--ntg-typography-font-size-section-heading-xs); --av-mono-line-height: var(--ntg-typography-line-height-section-heading-xs); --av-mono-font-weight: var(--ntg-typography-font-weight-section-heading-xs); --av-mono-letter-space: var(--ntg-typography-letter-space-section-heading-xs); --av-num-font-family: var(--ntg-typography-font-family-title-xs); --av-num-font-size: var(--ntg-typography-font-size-title-xs); --av-num-line-height: var(--ntg-typography-line-height-title-xs); --av-num-font-weight: var(--ntg-typography-font-weight-title-xs); --av-num-letter-space: var(--ntg-typography-letter-space-title-xs); --av-label-font-family: var(--ntg-typography-font-family-title-xs); --av-label-font-size: var(--ntg-typography-font-size-title-xs); --av-label-line-height: var(--ntg-typography-line-height-title-xs); --av-label-font-weight: var(--ntg-typography-font-weight-title-xs); --av-label-letter-space: var(--ntg-typography-letter-space-title-xs); --av-sup-font-family: var(--ntg-typography-font-family-body-xs); --av-sup-font-size: var(--ntg-typography-font-size-body-xs); --av-sup-line-height: var(--ntg-typography-line-height-body-xs); --av-sup-font-weight: var(--ntg-typography-font-weight-body-xs); --av-sup-letter-space: var(--ntg-typography-letter-space-body-xs); }
+.md { --av-mono-font-family: var(--ntg-typography-font-family-section-heading-sm); --av-mono-font-size: var(--ntg-typography-font-size-section-heading-sm); --av-mono-line-height: var(--ntg-typography-line-height-section-heading-sm); --av-mono-font-weight: var(--ntg-typography-font-weight-section-heading-sm); --av-mono-letter-space: var(--ntg-typography-letter-space-section-heading-sm); --av-num-font-family: var(--ntg-typography-font-family-title-sm); --av-num-font-size: var(--ntg-typography-font-size-title-sm); --av-num-line-height: var(--ntg-typography-line-height-title-sm); --av-num-font-weight: var(--ntg-typography-font-weight-title-sm); --av-num-letter-space: var(--ntg-typography-letter-space-title-sm); --av-label-font-family: var(--ntg-typography-font-family-title-xs); --av-label-font-size: var(--ntg-typography-font-size-title-xs); --av-label-line-height: var(--ntg-typography-line-height-title-xs); --av-label-font-weight: var(--ntg-typography-font-weight-title-xs); --av-label-letter-space: var(--ntg-typography-letter-space-title-xs); --av-sup-font-family: var(--ntg-typography-font-family-body-sm); --av-sup-font-size: var(--ntg-typography-font-size-body-sm); --av-sup-line-height: var(--ntg-typography-line-height-body-sm); --av-sup-font-weight: var(--ntg-typography-font-weight-body-sm); --av-sup-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.lg { --av-mono-font-family: var(--ntg-typography-font-family-section-heading-lg); --av-mono-font-size: var(--ntg-typography-font-size-section-heading-lg); --av-mono-line-height: var(--ntg-typography-line-height-section-heading-lg); --av-mono-font-weight: var(--ntg-typography-font-weight-section-heading-lg); --av-mono-letter-space: var(--ntg-typography-letter-space-section-heading-lg); --av-num-font-family: var(--ntg-typography-font-family-section-heading-xs); --av-num-font-size: var(--ntg-typography-font-size-section-heading-xs); --av-num-line-height: var(--ntg-typography-line-height-section-heading-xs); --av-num-font-weight: var(--ntg-typography-font-weight-section-heading-xs); --av-num-letter-space: var(--ntg-typography-letter-space-section-heading-xs); --av-label-font-family: var(--ntg-typography-font-family-title-md); --av-label-font-size: var(--ntg-typography-font-size-title-md); --av-label-line-height: var(--ntg-typography-line-height-title-md); --av-label-font-weight: var(--ntg-typography-font-weight-title-md); --av-label-letter-space: var(--ntg-typography-letter-space-title-md); --av-sup-font-family: var(--ntg-typography-font-family-body-md); --av-sup-font-size: var(--ntg-typography-font-size-body-md); --av-sup-line-height: var(--ntg-typography-line-height-body-md); --av-sup-font-weight: var(--ntg-typography-font-weight-body-md); --av-sup-letter-space: var(--ntg-typography-letter-space-body-md); }
+.xl { --av-mono-font-family: var(--ntg-typography-font-family-section-heading-xl); --av-mono-font-size: var(--ntg-typography-font-size-section-heading-xl); --av-mono-line-height: var(--ntg-typography-line-height-section-heading-xl); --av-mono-font-weight: var(--ntg-typography-font-weight-section-heading-xl); --av-mono-letter-space: var(--ntg-typography-letter-space-section-heading-xl); --av-num-font-family: var(--ntg-typography-font-family-section-heading-sm); --av-num-font-size: var(--ntg-typography-font-size-section-heading-sm); --av-num-line-height: var(--ntg-typography-line-height-section-heading-sm); --av-num-font-weight: var(--ntg-typography-font-weight-section-heading-sm); --av-num-letter-space: var(--ntg-typography-letter-space-section-heading-sm); --av-label-font-family: var(--ntg-typography-font-family-title-md); --av-label-font-size: var(--ntg-typography-font-size-title-md); --av-label-line-height: var(--ntg-typography-line-height-title-md); --av-label-font-weight: var(--ntg-typography-font-weight-title-md); --av-label-letter-space: var(--ntg-typography-letter-space-title-md); --av-sup-font-family: var(--ntg-typography-font-family-body-md); --av-sup-font-size: var(--ntg-typography-font-size-body-md); --av-sup-line-height: var(--ntg-typography-line-height-body-md); --av-sup-font-weight: var(--ntg-typography-font-weight-body-md); --av-sup-letter-space: var(--ntg-typography-letter-space-body-md); }
 
-.labelLg { gap: var(--ntg-avatar-label-gap-lg); }
-/* ชื่อใช้ชุด title/md และบรรทัดรองใช้ชุด body/md */
-.labelLg .labelTitle {
-  font-size: var(--ntg-typography-font-size-title-md);
-  line-height: var(--ntg-typography-line-height-title-md);
-  font-weight: var(--ntg-typography-font-weight-title-md);
-}
-.labelLg .labelSupporting {
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-}
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.xs[data-variant="image"] { --av-size: var(--ntg-avatar-size-xs); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-xs); }
+.root.sm[data-variant="image"] { --av-size: var(--ntg-avatar-size-sm); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-sm); }
+.root.md[data-variant="image"] { --av-size: var(--ntg-avatar-size-md); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-md); }
+.root.lg[data-variant="image"] { --av-size: var(--ntg-avatar-size-lg); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-lg); }
+.root.xl[data-variant="image"] { --av-size: var(--ntg-avatar-size-xl); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-xl); }
+.root.xs[data-variant="icon"] { --av-size: var(--ntg-avatar-size-xs); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-icon: var(--ntg-avatar-icon-xs); --av-indicator: var(--ntg-avatar-indicator-xs); }
+.root.sm[data-variant="icon"] { --av-size: var(--ntg-avatar-size-sm); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-icon: var(--ntg-avatar-icon-sm); --av-indicator: var(--ntg-avatar-indicator-sm); }
+.root.md[data-variant="icon"] { --av-size: var(--ntg-avatar-size-md); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-icon: var(--ntg-avatar-icon-md); --av-indicator: var(--ntg-avatar-indicator-md); }
+.root.lg[data-variant="icon"] { --av-size: var(--ntg-avatar-size-lg); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-icon: var(--ntg-avatar-icon-lg); --av-indicator: var(--ntg-avatar-indicator-lg); }
+.root.xl[data-variant="icon"] { --av-size: var(--ntg-avatar-size-xl); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-icon: var(--ntg-avatar-icon-xl); --av-indicator: var(--ntg-avatar-indicator-xl); }
+.root.xs[data-variant="monogram"] { --av-size: var(--ntg-avatar-size-xs); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-xs); }
+.root.sm[data-variant="monogram"] { --av-size: var(--ntg-avatar-size-sm); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-sm); }
+.root.md[data-variant="monogram"] { --av-size: var(--ntg-avatar-size-md); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-md); }
+.root.lg[data-variant="monogram"] { --av-size: var(--ntg-avatar-size-lg); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-lg); }
+.root.xl[data-variant="monogram"] { --av-size: var(--ntg-avatar-size-xl); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-xl); }
+.root.xs[data-variant="number"] { --av-size: var(--ntg-avatar-size-xs); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-xs); }
+.root.sm[data-variant="number"] { --av-size: var(--ntg-avatar-size-sm); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-sm); }
+.root.md[data-variant="number"] { --av-size: var(--ntg-avatar-size-md); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-md); }
+.root.lg[data-variant="number"] { --av-size: var(--ntg-avatar-size-lg); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-lg); }
+.root.xl[data-variant="number"] { --av-size: var(--ntg-avatar-size-xl); --av-r-tl: var(--ntg-avatar-radius-full); --av-r-tr: var(--ntg-avatar-radius-full); --av-r-br: var(--ntg-avatar-radius-full); --av-r-bl: var(--ntg-avatar-radius-full); --av-indicator: var(--ntg-avatar-indicator-xl); }
+.label.sm { --av-label-gap: var(--ntg-avatar-label-gap-sm); --av-label-stack: 0; }
+.label.md { --av-label-gap: var(--ntg-avatar-label-gap-md); --av-label-stack: 0; }
+.label.lg { --av-label-gap: var(--ntg-avatar-label-gap-lg); --av-label-stack: 0; }
+.label.xl { --av-label-gap: var(--ntg-avatar-label-gap-xl); --av-label-stack: 0; }
+.group.xs { --av-group-gap: 8px; --av-overlap: var(--ntg-avatar-group-overlap-xs); }
+.group.sm { --av-group-gap: 8px; --av-overlap: var(--ntg-avatar-group-overlap-sm); }
+.group.md { --av-group-gap: 8px; --av-overlap: var(--ntg-avatar-group-overlap-md); }
+.root.xs { --av-indicator: var(--ntg-avatar-indicator-xs); }
+.root.sm { --av-indicator: var(--ntg-avatar-indicator-sm); }
+.root.md { --av-indicator: var(--ntg-avatar-indicator-md); }
+.root.lg { --av-indicator: var(--ntg-avatar-indicator-lg); }
+.root.xl { --av-indicator: var(--ntg-avatar-indicator-xl); }
 
-.labelXl { gap: var(--ntg-avatar-label-gap-xl); }
-/* ชื่อใช้ชุด title/md และบรรทัดรองใช้ชุด body/md ตรงกับไฟล์ออกแบบที่ xl ใช้ชุดเดียวกับ lg */
-.labelXl .labelTitle {
-  font-size: var(--ntg-typography-font-size-title-md);
-  line-height: var(--ntg-typography-line-height-title-md);
-  font-weight: var(--ntg-typography-font-weight-title-md);
-}
-.labelXl .labelSupporting {
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-}
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root[data-variant="image"]:not([data-status]) { --av-bg: var(--ntg-color-background-general-primary); --av-ring: var(--ntg-color-border-general-tertiary); --av-ring-w: 2px; }
+.root[data-variant="image"][data-status] { --av-bg: var(--ntg-color-background-general-primary); --av-ring: var(--ntg-color-border-general-tertiary); --av-ring-w: 2px; --av-ind-bg: var(--ntg-color-foreground-system-success-primary); --av-ind-ring: var(--ntg-color-border-general-tertiary); --av-ind-ring-w: 1px; }
+.root[data-variant="icon"]:not([data-status]) { --av-bg: var(--ntg-color-background-brand-primary-alt); --av-ring: var(--ntg-color-border-general-tertiary); --av-ring-w: 2px; --av-icon-color: var(--ntg-icon-brand-primary); }
+.root[data-variant="icon"][data-status] { --av-bg: var(--ntg-color-background-brand-primary-alt); --av-ring: var(--ntg-color-border-general-tertiary); --av-ring-w: 2px; --av-icon-color: var(--ntg-icon-brand-primary); --av-ind-bg: var(--ntg-color-foreground-system-success-primary); --av-ind-ring: var(--ntg-color-border-general-tertiary); --av-ind-ring-w: 1px; }
+.root[data-variant="monogram"]:not([data-status]),
+.root[data-variant="number"]:not([data-status]) { --av-bg: var(--ntg-color-background-brand-primary-alt); --av-ring: var(--ntg-color-border-general-tertiary); --av-ring-w: 2px; --av-fg: var(--ntg-color-text-brand-primary); }
+.root[data-variant="monogram"][data-status],
+.root[data-variant="number"][data-status] { --av-bg: var(--ntg-color-background-brand-primary-alt); --av-ring: var(--ntg-color-border-general-tertiary); --av-ring-w: 2px; --av-fg: var(--ntg-color-text-brand-primary); --av-ind-bg: var(--ntg-color-foreground-system-success-primary); --av-ind-ring: var(--ntg-color-border-general-tertiary); --av-ind-ring-w: 1px; }
+.label { --av-label-fg: var(--ntg-color-text-general-section-heading); --av-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.group {  }
+.root[data-status="offline"] { --av-ind-bg: var(--ntg-color-foreground-general-disable-subtle); --av-ind-ring: var(--ntg-color-border-general-tertiary); --av-ind-ring-w: 1px; }
+.root[data-status="online"] { --av-ind-bg: var(--ntg-color-foreground-system-success-primary); --av-ind-ring: var(--ntg-color-border-general-tertiary); --av-ind-ring-w: 1px; }
+.root[data-variant="image"]:not([data-status])[data-interactive="true"]:hover { --av-bg: var(--ntg-color-background-general-primary); --av-ring: var(--ntg-color-border-brand-solid); --av-ring-w: 2px; }
+.root[data-variant="image"][data-status][data-interactive="true"]:hover { --av-bg: var(--ntg-color-background-general-primary); --av-ring: var(--ntg-color-border-general-tertiary); --av-ring-w: 2px; --av-ind-bg: var(--ntg-color-foreground-system-success-primary); --av-ind-ring: var(--ntg-color-border-general-tertiary); --av-ind-ring-w: 1px; }
+.root[data-variant="icon"]:not([data-status])[data-interactive="true"]:hover { --av-bg: var(--ntg-color-background-brand-primary-alt-hover); --av-ring: var(--ntg-color-border-brand-solid); --av-ring-w: 2px; --av-icon-color: var(--ntg-icon-brand-primary-hover); }
+.root[data-variant="icon"][data-status][data-interactive="true"]:hover { --av-bg: var(--ntg-color-background-brand-primary-alt-hover); --av-ring: var(--ntg-color-border-brand-solid); --av-ring-w: 2px; --av-icon-color: var(--ntg-icon-brand-primary-hover); --av-ind-bg: var(--ntg-color-foreground-system-success-primary); --av-ind-ring: var(--ntg-color-border-general-tertiary); --av-ind-ring-w: 1px; }
+.root[data-variant="monogram"]:not([data-status])[data-interactive="true"]:hover,
+.root[data-variant="number"]:not([data-status])[data-interactive="true"]:hover { --av-bg: var(--ntg-color-background-brand-primary-alt-hover); --av-ring: var(--ntg-color-border-brand-solid); --av-ring-w: 2px; --av-fg: var(--ntg-color-text-brand-primary-hover); }
+.root[data-variant="monogram"][data-status][data-interactive="true"]:hover,
+.root[data-variant="number"][data-status][data-interactive="true"]:hover { --av-bg: var(--ntg-color-background-brand-primary-alt-hover); --av-ring: var(--ntg-color-border-brand-solid); --av-ring-w: 2px; --av-fg: var(--ntg-color-text-brand-primary-hover); --av-ind-bg: var(--ntg-color-foreground-system-success-primary); --av-ind-ring: var(--ntg-color-border-general-tertiary); --av-ind-ring-w: 1px; }
+.label[data-interactive="true"]:hover { --av-label-fg: var(--ntg-color-text-general-section-heading); --av-sup-fg: var(--ntg-color-text-general-supporting-text); }
