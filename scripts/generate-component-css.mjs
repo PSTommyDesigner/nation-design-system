@@ -1022,7 +1022,65 @@ const SLIDER = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Card: หน้า 27 การ์ดข่าวแนวตั้ง/แนวนอน (5 ขนาด) และการ์ดรายการข่าว/วิดีโอ (ขนาดเดียว แกน image trailing / play / state)
+//   โค้ดเป็น Card เดียว แยกด้วยคลาส vertical / horizontal / list ชั้นข้อความในไฟล์ชื่อตามเนื้อหาจึงจับคู่ด้วย wildcard
+//   ป้ายบนรูป (pill-badge) กับปุ่มลิงก์ More เป็น instance ของ component อื่น ไม่ดึงค่า
+// ═══════════════════════════════════════════════════════════════════════════════
+const cardTxt = (px) => ({ [`--card-${px}-font-family`]: 'font-family', [`--card-${px}-font-size`]: 'font-size', [`--card-${px}-line-height`]: 'line-height', [`--card-${px}-font-weight`]: 'font-weight', [`--card-${px}-letter-space`]: 'letter-space' })
+const CARD = {
+  specFile: 'tokens/figma-layers/card.json',
+  baseFile: 'components/Card/Card.base.css',
+  outFile: 'components/Card/Card.module.css',
+  sets: {
+    'vertical-news-card': { classes: '.vertical' }, 'horizontal-news-card': { classes: '.horizontal' },
+    'news-list-card': { classes: '.list', sizes: ['one'] }, 'video-list-card': { classes: '.list', sizes: ['one'] },
+  },
+  layoutVariants: [{ key: (size, set) => (set === 'news-list-card' ? `${size}, image trailing=false, play=` : set === 'video-list-card' ? `${size}, image trailing=, play=false` : `${size}, image trailing=, play=`), cls: '' }],
+  hiddenLayers: ['Content/Supporting Text/link-button'],
+  familyClass: () => '',
+  axisClass: { 'image trailing': (v) => (v === 'true' ? '.imageTrailing' : v === 'false' ? ':not(.imageTrailing)' : ''), play: () => '' },
+  stateSelector: { default: (sel) => sel, hover: (sel) => `a${sel}:hover` },
+  layers: {
+    '(root)': (n, W, ctx) => (/list/.test(ctx.set)
+      ? (n.r ? { '--card-r-tl': W(n.r[0]), '--card-r-tr': W(n.r[1]), '--card-r-br': W(n.r[2]), '--card-r-bl': W(n.r[3]) } : {})
+      : { '--card-gap': W(n.g) }),
+    'Image frame': (n, W) => ({ '--card-img-w': W(n.w), '--card-img-h': W(n.h) }),
+    'Image frame/**': () => ({}),
+    'Heading & Text': (n, W) => ({ '--card-text-gap': W(n.g) }),
+    'Heading & Text/**': () => ({}),
+    'image-1:1': (n, W) => ({ '--card-list-image': W(n.w) }),
+    'image-1:1/**': () => ({}),
+    'Frmae': () => ({}),
+    'Frmae/image-1:1': (n, W) => ({ '--card-list-image': W(n.h) }),
+    'Frmae/**': () => ({}),
+    'Content': (n, W) => ({ '--card-list-pt': W(n.p[0]), '--card-list-pr': W(n.p[1]), '--card-list-pb': W(n.p[2]), '--card-list-pl': W(n.p[3]), '--card-list-gap': W(n.g) }),
+    'Content/**': () => ({}),
+  },
+  text: [
+    { sets: ['vertical-news-card', 'horizontal-news-card'], layers: ['Heading & Text/Subheading/*'], vars: cardTxt('cat') },
+    { sets: ['vertical-news-card', 'horizontal-news-card'], layers: ['Heading & Text/Heading/*'], vars: cardTxt('title') },
+    { sets: ['vertical-news-card', 'horizontal-news-card'], layers: ['Heading & Text/Supporting Text/*'], vars: cardTxt('lead'), optional: true },
+    { sets: ['news-list-card', 'video-list-card'], layers: ['Content/Heading/*'], vars: cardTxt('list-title') },
+    { sets: ['news-list-card', 'video-list-card'], layers: ['Content/Supporting Text/*'], vars: cardTxt('list-meta') },
+  ],
+  colors: {
+    '(root)': (c, W) => ({ '--card-bg': W(c.fills[0]), '--card-border': c.strokes ? W(c.strokes[0]) : 'transparent', '--card-border-w': c.strokes ? `${c.sw[0]}px` : '0px', '--card-shadow': effectVar(c.fx, 'card effect') }),
+    'Image frame/16:9/Crop': (c, W) => ({ '--card-media-bg': W(c.fills[0]) }),
+    'Image frame/**': () => ({}),
+    'Heading & Text/Subheading/*': (c, W) => ({ '--card-cat-fg': W(c.fills[0]) }),
+    'Heading & Text/Heading/*': (c, W) => ({ '--card-fg': W(c.fills[0]) }),
+    'Heading & Text/Supporting Text/*': (c, W) => ({ '--card-lead-fg': W(c.fills[0]) }),
+    '**/Img Place': () => ({}),
+    'Frmae/Supporting Text': (c, W) => ({ '--card-overlay-bg': W(c.fills[0]) }),
+    'Frmae/Supporting Text/*': (c, W) => ({ '--card-overlay-fg': W(c.fills[0]) }),
+    'Content/Heading/*': (c, W) => ({ '--card-fg': W(c.fills[0]) }),
+    'Content/Supporting Text/*': (c, W) => ({ '--card-meta-fg': W(c.fills[0]) }),
+    'Content/**': () => ({}),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER, card: CARD }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -1068,13 +1126,13 @@ for (const size of textGroups.length ? SIZES : []) {
       if (M.sets[setName]?.sizes && !M.sets[setName].sizes.includes(size)) continue   // ชุดที่มีไม่ครบทุกขนาด
       const k0 = (M.layoutVariants || [{ key: M.layoutKey }])[0].key
       walk(L(set, size, k0 && ((sz) => k0(sz, setName))), '', (key, n) => {
-        if (n.ts && g.layers.includes(key)) {
+        if (n.ts && g.layers.some((l) => (l.includes('*') ? lookup({ [l]: true }, key) : l === key))) {
           if (ts && ts !== n.ts) errors.push(`${setName} ${size} ${key}: text style ${n.ts} ไม่ตรงกับชุดอื่น (${ts})`)
           ts = n.ts
         }
       })
     }
-    if (!ts) { if (!g.sets || g.sets.some((n) => !M.sets[n]?.sizes || M.sets[n].sizes.includes(size))) errors.push(`${size}: ไม่พบชั้นข้อความ ${g.layers.join('/')} ในชุดไหนเลย`); continue }
+    if (!ts) { if (!g.optional && (!g.sets || g.sets.some((n) => !M.sets[n]?.sizes || M.sets[n].sizes.includes(size)))) errors.push(`${size}: ไม่พบชั้นข้อความ ${g.layers.join('/')} ในชุดไหนเลย`); continue }
     Object.assign(vars, styleVars(ts, g.vars, `typography ${size} ${g.layers[0]}`))
   }
   out.push(`.${size} { ${decl(vars)} }`)

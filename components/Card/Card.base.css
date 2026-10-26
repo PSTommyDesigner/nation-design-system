@@ -1,0 +1,151 @@
+/*
+ * Card ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --card-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/card.json (spec ชั้นจากไฟล์ออกแบบหน้า 27)
+ * แล้วต่อท้ายไฟล์นี้เป็น Card.module.css ห้ามแก้ Card.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นที่มีชื่อ token: ระยะป้ายบนรูป (ในไฟล์ออกแบบเป็นตำแหน่ง x,y ของเฟรมที่วางแบบ absolute ผูกตัวแปรไม่ได้
+ *    ค่า 4 6 8 10 12 ต่อขนาด ตรงกับสเกล s1/sm ถึง s2/xs) วงแหวนโฟกัสของการ์ดที่เป็นลิงก์ และระยะข้อความ meta
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบการ์ดรายการใช้ box-shadow inset รวมกับเงาในค่าเดียว · การ์ดข่าวไม่มีกล่อง
+ *   2. hover ของการ์ดรายการใช้กับการ์ดที่เป็นลิงก์เท่านั้น (a.list)
+ *   3. responsive เป็นความสามารถฝั่งเว็บ ไฟล์ออกแบบวางที่ความกว้างตายตัว
+ *   4. การตัดบรรทัด (titleLines / leadLines) เป็นพฤติกรรมฝั่งเว็บ
+ */
+
+.root {
+  display: flex;
+  box-sizing: border-box;
+  text-decoration: none;
+  gap: var(--card-gap, 0);
+}
+a.root { cursor: pointer; }
+.root:focus-visible {
+  outline: none;
+  box-shadow: var(--ntg-focused-ring-brand);
+}
+.media {
+  position: relative;
+  flex: none;
+  overflow: hidden;
+  width: var(--card-img-w);
+  height: var(--card-img-h);
+  background: var(--card-media-bg, transparent);
+}
+.image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tag { position: absolute; top: 0; inset-inline-start: 0; }
+.xs .tag { margin: var(--ntg-size-space-s1-sm); }
+.sm .tag { margin: var(--ntg-size-space-s1-md); }
+.md .tag { margin: var(--ntg-size-space-s1-lg); }
+.lg .tag { margin: var(--ntg-size-space-s1-xl); }
+.xl .tag { margin: var(--ntg-size-space-s2-xs); }
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  background: var(--card-overlay-bg, transparent);
+  color: var(--card-overlay-fg, inherit);
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: var(--card-text-gap, 0);
+}
+.category {
+  color: var(--card-cat-fg, inherit);
+  font-family: var(--card-cat-font-family);
+  font-size: var(--card-cat-font-size);
+  line-height: var(--card-cat-line-height);
+  font-weight: var(--card-cat-font-weight);
+  letter-spacing: var(--card-cat-letter-space);
+}
+.title {
+  color: var(--card-fg, inherit);
+  font-family: var(--card-title-font-family);
+  font-size: var(--card-title-font-size);
+  line-height: var(--card-title-line-height);
+  font-weight: var(--card-title-font-weight);
+  letter-spacing: var(--card-title-letter-space);
+}
+.lead {
+  color: var(--card-lead-fg, inherit);
+  font-family: var(--card-lead-font-family);
+  font-size: var(--card-lead-font-size);
+  line-height: var(--card-lead-line-height);
+  font-weight: var(--card-lead-font-weight);
+  letter-spacing: var(--card-lead-letter-space);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+  color: var(--card-meta-fg, var(--card-lead-fg, inherit));
+  font-family: var(--card-list-meta-font-family, var(--card-lead-font-family));
+  font-size: var(--card-list-meta-font-size, var(--card-lead-font-size));
+  line-height: var(--card-list-meta-line-height, var(--card-lead-line-height));
+  font-weight: var(--card-list-meta-font-weight, var(--card-lead-font-weight));
+  letter-spacing: var(--card-list-meta-letter-space, var(--card-lead-letter-space));
+}
+.root[data-title-clamp='true'] .title,
+.root[data-lead-clamp='true'] .lead {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.root[data-title-clamp='true'] .title { -webkit-line-clamp: var(--card-title-lines); line-clamp: var(--card-title-lines); }
+.root[data-lead-clamp='true'] .lead { -webkit-line-clamp: var(--card-lead-lines); line-clamp: var(--card-lead-lines); }
+
+.vertical { flex-direction: column; }
+.horizontal { flex-direction: row; align-items: flex-start; }
+.root.imageTrailing { flex-direction: row-reverse; }
+
+.list {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  overflow: hidden;
+  background: var(--card-bg, transparent);
+  border-radius: var(--card-r-tl, 0) var(--card-r-tr, 0) var(--card-r-br, 0) var(--card-r-bl, 0);
+  box-shadow: inset 0 0 0 var(--card-border-w, 0px) var(--card-border, transparent), var(--card-shadow, 0 0 0 0 transparent);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.list .media {
+  width: var(--card-list-image);
+  height: var(--card-list-image);
+  align-self: stretch;
+}
+.list .body {
+  gap: var(--card-list-gap, 0);
+  padding: var(--card-list-pt, 0) var(--card-list-pr, 0) var(--card-list-pb, 0) var(--card-list-pl, 0);
+}
+.list .title {
+  font-family: var(--card-list-title-font-family);
+  font-size: var(--card-list-title-font-size);
+  line-height: var(--card-list-title-line-height);
+  font-weight: var(--card-list-title-font-weight);
+  letter-spacing: var(--card-list-title-letter-space);
+}
+.list .lead {
+  font-family: var(--card-list-meta-font-family);
+  font-size: var(--card-list-meta-font-size);
+  line-height: var(--card-list-meta-line-height);
+  font-weight: var(--card-list-meta-font-weight);
+  letter-spacing: var(--card-list-meta-letter-space);
+}
+.list:focus-visible { box-shadow: inset 0 0 0 var(--card-border-w, 0px) var(--card-border, transparent), var(--card-shadow, 0 0 0 0 transparent), var(--ntg-focused-ring-brand); }
+
+.responsive { width: 100%; }
+.responsive.vertical .media { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+@media (max-width: 767px) {
+  .responsive.horizontal { flex-direction: column; }
+  .responsive.horizontal .media { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .list { transition: none; }
+}

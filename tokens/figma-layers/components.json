@@ -309,5 +309,23 @@
     "layoutAxes": [
       "disabled"
     ]
+  },
+  "card": {
+    "page": "27 Card",
+    "depth": 5,
+    "reference": "Card Component Previews",
+    "families": [
+      "Card Component Previews"
+    ],
+    "sets": [
+      "vertical-news-card",
+      "horizontal-news-card",
+      "news-list-card",
+      "video-list-card"
+    ],
+    "layoutAxes": [
+      "image trailing",
+      "play"
+    ]
   }
 }

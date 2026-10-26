@@ -1,0 +1,2106 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "27 Card",
+ "reference": "Card Component Previews",
+ "sets": {
+  "vertical-news-card": {
+   "defs": {
+    "Supporting text value": {
+     "type": "TEXT",
+     "def": "This is supporting text This is supporting text This is supporting text."
+    },
+    "Supporting text": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "Heading value": {
+     "type": "TEXT",
+     "def": "This is heading. heading heading heading."
+    },
+    "Subheading": {
+     "type": "TEXT",
+     "def": "Subheading"
+    },
+    "Supheading": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "Heading": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "Size": ["xs","sm","md","lg","xl"]
+   },
+   "layout": {
+    "xs, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s1/lg",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/xs",
+       "h": "card/image-height/xs",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/sm",
+           "p": ["pill-badge/padding/top/sm","pill-badge/padding/right/sm","pill-badge/padding/bottom/sm","pill-badge/padding/left/sm"],
+           "s": ["HUG","FIXED"],
+           "h": 22,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/sm",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/sm",
+           "ref": {
+            "characters": "Subheading"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/xs",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s1/lg",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/sm",
+       "h": "card/image-height/sm",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/md",
+           "p": ["pill-badge/padding/top/md","pill-badge/padding/right/md","pill-badge/padding/bottom/md","pill-badge/padding/left/md"],
+           "s": ["HUG","FIXED"],
+           "h": 26,
+           "clip": true,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/sm",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/sm",
+           "ref": {
+            "characters": "Subheading"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::title/sm",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supporting text"
+         },
+         "ch": [
+          {
+           "n": "This is supporting text This is supporting text This is supporting text.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/sm",
+           "ref": {
+            "characters": "Supporting text value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s1/xl",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/md",
+       "h": "card/image-height/md",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/lg",
+           "p": ["pill-badge/padding/top/lg","pill-badge/padding/right/lg","pill-badge/padding/bottom/lg","pill-badge/padding/left/lg"],
+           "s": ["HUG","FIXED"],
+           "h": 30,
+           "clip": true,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/md",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/sm",
+           "ref": {
+            "characters": "Subheading"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/md",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supporting text"
+         },
+         "ch": [
+          {
+           "n": "This is supporting text This is supporting text This is supporting text.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/sm",
+           "ref": {
+            "characters": "Supporting text value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "lg, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s2/xs",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 496,
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/lg",
+       "h": "card/image-height/lg",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/lg",
+           "p": ["pill-badge/padding/top/lg","pill-badge/padding/right/lg","pill-badge/padding/bottom/lg","pill-badge/padding/left/lg"],
+           "s": ["HUG","FIXED"],
+           "h": 30,
+           "clip": true,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/md",
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 496,
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/md",
+           "ref": {
+            "characters": "Subheading"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/lg",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supporting text"
+         },
+         "ch": [
+          {
+           "n": "This is supporting text This is supporting text This is supporting text.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/md",
+           "ref": {
+            "characters": "Supporting text value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xl, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s2/sm",
+     "p": [0,0,0,0],
+     "s": ["HUG","HUG"],
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/xl",
+       "h": "card/image-height/xl",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/lg",
+           "p": ["pill-badge/padding/top/lg","pill-badge/padding/right/lg","pill-badge/padding/bottom/lg","pill-badge/padding/left/lg"],
+           "s": ["HUG","FIXED"],
+           "h": 30,
+           "clip": true,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/lg",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/md",
+           "ref": {
+            "characters": "Subheading"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/xl",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Supporting text"
+         },
+         "ch": [
+          {
+           "n": "This is supporting text This is supporting text This is supporting text.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/xl",
+           "ref": {
+            "characters": "Supporting text value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Card Component Previews": {
+     "size=xs, image trailing=, play=": 0,
+     "size=sm, image trailing=, play=": 1,
+     "size=md, image trailing=, play=": 1,
+     "size=lg, image trailing=, play=": 1,
+     "size=xl, image trailing=, play=": 1
+    }
+   }
+  },
+  "horizontal-news-card": {
+   "defs": {
+    "Subheading": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "Heading value": {
+     "type": "TEXT",
+     "def": "This is heading. heading heading heading."
+    },
+    "Supporting text value": {
+     "type": "TEXT",
+     "def": "This is supporting text This is supporting text This is supporting text."
+    },
+    "Heading": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "Supporting text": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "Tag on image": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "Size": ["xs","sm","md","lg","xl"]
+   },
+   "layout": {
+    "xs, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s2/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 496,
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/xs",
+       "h": "card/image-height/xs",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ref": {
+          "visible": "Tag on image"
+         },
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/sm",
+           "p": ["pill-badge/padding/top/sm","pill-badge/padding/right/sm","pill-badge/padding/bottom/sm","pill-badge/padding/left/sm"],
+           "s": ["HUG","FIXED"],
+           "h": 22,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/sm",
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Subheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/xs",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s2/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 704,
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/sm",
+       "h": "card/image-height/sm",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ref": {
+          "visible": "Tag on image"
+         },
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/md",
+           "p": ["pill-badge/padding/top/md","pill-badge/padding/right/md","pill-badge/padding/bottom/md","pill-badge/padding/left/md"],
+           "s": ["HUG","FIXED"],
+           "h": 26,
+           "clip": true,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/sm",
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Subheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/sm",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "ref": {
+          "visible": "Supporting text"
+         },
+         "ch": [
+          {
+           "n": "This is supporting text This is supporting text This is supporting text.",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::body/sm",
+           "ref": {
+            "characters": "Supporting text value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s2/lg",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 808,
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/md",
+       "h": "card/image-height/md",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ref": {
+          "visible": "Tag on image"
+         },
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/lg",
+           "p": ["pill-badge/padding/top/lg","pill-badge/padding/right/lg","pill-badge/padding/bottom/lg","pill-badge/padding/left/lg"],
+           "s": ["HUG","FIXED"],
+           "h": 30,
+           "clip": true,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/md",
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Subheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/md",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "ref": {
+          "visible": "Supporting text"
+         },
+         "ch": [
+          {
+           "n": "This is supporting text This is supporting text This is supporting text.",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::body/sm",
+           "ref": {
+            "characters": "Supporting text value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "lg, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s2/lg",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 912,
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/lg",
+       "h": "card/image-height/lg",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ref": {
+          "visible": "Tag on image"
+         },
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/lg",
+           "p": ["pill-badge/padding/top/lg","pill-badge/padding/right/lg","pill-badge/padding/bottom/lg","pill-badge/padding/left/lg"],
+           "s": ["HUG","FIXED"],
+           "h": 30,
+           "clip": true,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/md",
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Subheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/md"
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/lg",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "ref": {
+          "visible": "Supporting text"
+         },
+         "ch": [
+          {
+           "n": "This is supporting text This is supporting text This is supporting text.",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::body/md",
+           "ref": {
+            "characters": "Supporting text value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xl, image trailing=, play=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "size/space/s2/lg",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 1016,
+     "ch": [
+      {
+       "n": "Image frame",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "card/image-width/xl",
+       "h": "card/image-height/xl",
+       "ch": [
+        {
+         "n": "16:9",
+         "t": "INSTANCE",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Crop",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Tag on image",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["HUG","HUG"],
+         "ref": {
+          "visible": "Tag on image"
+         },
+         "ch": [
+          {
+           "n": "pill-badge",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": "pill-badge/gap/lg",
+           "p": ["pill-badge/padding/top/lg","pill-badge/padding/right/lg","pill-badge/padding/bottom/lg","pill-badge/padding/left/lg"],
+           "s": ["HUG","FIXED"],
+           "h": 30,
+           "clip": true,
+           "r": ["badge/radius/full","badge/radius/full","badge/radius/full","badge/radius/full"],
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Heading & Text",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s1/lg",
+       "p": [0,0,0,0],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Subheading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Subheading"
+         },
+         "ch": [
+          {
+           "n": "Subheading",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/md"
+          }
+         ]
+        },
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ref": {
+          "visible": "Heading"
+         },
+         "ch": [
+          {
+           "n": "This is heading. heading heading heading.",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/xl",
+           "ref": {
+            "characters": "Heading value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "ref": {
+          "visible": "Supporting text"
+         },
+         "ch": [
+          {
+           "n": "This is supporting text This is supporting text This is supporting text.",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::body/xl",
+           "ref": {
+            "characters": "Supporting text value"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Card Component Previews": {
+     "size=xs, image trailing=, play=": 0,
+     "size=sm, image trailing=, play=": 1,
+     "size=md, image trailing=, play=": 1,
+     "size=lg, image trailing=, play=": 1,
+     "size=xl, image trailing=, play=": 1
+    }
+   }
+  },
+  "news-list-card": {
+   "defs": {
+    "Headline Value": {
+     "type": "TEXT",
+     "def": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup"
+    },
+    "Image Trailing": ["False","True"],
+    "State": ["Default","Hover"]
+   },
+   "layout": {
+    "one, image trailing=false, play=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 345,
+     "clip": true,
+     "r": ["card/radius/top-left","card/radius/top-right","card/radius/bottom-right","card/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "image-1:1",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "card/list-image",
+       "h": "card/list-image",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "Img Place",
+         "t": "RECTANGLE"
+        }
+       ]
+      },
+      {
+       "n": "Content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "MIN",
+       "g": "size/space/s1/sm",
+       "p": ["size/space/s1/lg","size/space/s1/lg","size/space/s1/lg","size/space/s1/lg"],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "ch": [
+          {
+           "n": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::title/sm",
+           "ref": {
+            "characters": "Headline Value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "SPACE_BETWEEN",
+         "ca": "CENTER",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ch": [
+          {
+           "n": "1 ม.ค. 2568 00:00",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/sm"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "one, image trailing=true, play=": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 345,
+     "clip": true,
+     "r": ["card/radius/top-left","card/radius/top-right","card/radius/bottom-right","card/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "Content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "MIN",
+       "g": "size/space/s1/sm",
+       "p": ["size/space/s1/lg","size/space/s1/lg","size/space/s1/lg","size/space/s1/lg"],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "ch": [
+          {
+           "n": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::title/sm",
+           "ref": {
+            "characters": "Headline Value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "SPACE_BETWEEN",
+         "ca": "CENTER",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ch": [
+          {
+           "n": "1 ม.ค. 2568 00:00",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/sm"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "image-1:1",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "card/list-image",
+       "h": "card/list-image",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "Img Place",
+         "t": "RECTANGLE"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Card Component Previews": {
+     "image trailing=false, state=default": 2,
+     "image trailing=false, state=hover": 3,
+     "image trailing=true, state=default": 4,
+     "image trailing=true, state=hover": 5
+    }
+   }
+  },
+  "video-list-card": {
+   "defs": {
+    "Headline Value": {
+     "type": "TEXT",
+     "def": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup"
+    },
+    "More Button": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "Play": ["False","True"],
+    "State": ["Default","Hover"]
+   },
+   "layout": {
+    "one, image trailing=, play=false": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FILL","HUG"],
+     "clip": true,
+     "r": ["card/radius/top-left","card/radius/top-right","card/radius/bottom-right","card/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "Frmae",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 112,
+       "ch": [
+        {
+         "n": "image-1:1",
+         "t": "INSTANCE",
+         "s": ["FILL","FIXED"],
+         "h": "card/list-image",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Img Place",
+           "t": "RECTANGLE"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "MIN",
+       "g": "size/space/s1/sm",
+       "p": ["size/space/s1/lg","size/space/s1/lg","size/space/s1/lg","size/space/s1/lg"],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "ch": [
+          {
+           "n": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::title/sm",
+           "ref": {
+            "characters": "Headline Value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ch": [
+          {
+           "n": "1 ม.ค. 2568 00:00",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/sm"
+          },
+          {
+           "n": "link-button",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 2,
+           "p": [0,0,0,0],
+           "s": ["HUG","HUG"],
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "More Button"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "one, image trailing=, play=true": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FILL","HUG"],
+     "clip": true,
+     "r": ["card/radius/top-left","card/radius/top-right","card/radius/bottom-right","card/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "Frmae",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 112,
+       "ch": [
+        {
+         "n": "image-1:1",
+         "t": "INSTANCE",
+         "s": ["FILL","FIXED"],
+         "h": "card/list-image",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "Img Place",
+           "t": "RECTANGLE"
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 4,
+         "p": [4,4,4,4],
+         "s": ["FIXED","HUG"],
+         "w": 112,
+         "clip": true,
+         "ch": [
+          {
+           "n": "Material design(2)/AUDIO & VIDEO/Filled/pause",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": 24,
+           "h": 24,
+           "clip": true,
+           "inst": true
+          },
+          {
+           "n": "00:00:00",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::body/sm"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "MIN",
+       "g": "size/space/s1/sm",
+       "p": ["size/space/s1/lg","size/space/s1/lg","size/space/s1/lg","size/space/s1/lg"],
+       "s": ["FILL","FILL"],
+       "ch": [
+        {
+         "n": "Heading",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","FILL"],
+         "ch": [
+          {
+           "n": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::title/sm",
+           "ref": {
+            "characters": "Headline Value"
+           }
+          }
+         ]
+        },
+        {
+         "n": "Supporting Text",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": 8,
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "ch": [
+          {
+           "n": "1 ม.ค. 2568 00:00",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/sm"
+          },
+          {
+           "n": "link-button",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 2,
+           "p": [0,0,0,0],
+           "s": ["HUG","HUG"],
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "More Button"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Card Component Previews": {
+     "play=false, state=default": 6,
+     "play=false, state=hover": 7,
+     "play=true, state=default": 8,
+     "play=true, state=hover": 9
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "Image frame/16:9/Crop": {
+    "fills": ["color/background/general/quaternary"]
+   },
+   "Image frame/Tag on image/pill-badge": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/primary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "Heading & Text/Subheading/Subheading": {
+    "fills": ["color/text/brand/primary"]
+   },
+   "Heading & Text/Heading/This is heading. heading heading heading.": {
+    "fills": ["color/text/general/heading"]
+   }
+  },
+  {
+   "Image frame/16:9/Crop": {
+    "fills": ["color/background/general/quaternary"]
+   },
+   "Image frame/Tag on image/pill-badge": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/primary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "Heading & Text/Subheading/Subheading": {
+    "fills": ["color/text/brand/primary"]
+   },
+   "Heading & Text/Heading/This is heading. heading heading heading.": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Heading & Text/Supporting Text/This is supporting text This is supporting text This is supporting text.": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/center/xs"
+   },
+   "image-1:1/Img Place": {
+    "fills": ["IMAGE"]
+   },
+   "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Content/Supporting Text/1 ม.ค. 2568 00:00": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/border/general/tertiary-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/center/xs"
+   },
+   "image-1:1/Img Place": {
+    "fills": ["IMAGE"]
+   },
+   "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Content/Supporting Text/1 ม.ค. 2568 00:00": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/center/xs"
+   },
+   "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Content/Supporting Text/1 ม.ค. 2568 00:00": {
+    "fills": ["color/text/general/text"]
+   },
+   "image-1:1/Img Place": {
+    "fills": ["IMAGE"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/border/general/tertiary-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/center/xs"
+   },
+   "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Content/Supporting Text/1 ม.ค. 2568 00:00": {
+    "fills": ["color/text/general/text"]
+   },
+   "image-1:1/Img Place": {
+    "fills": ["IMAGE"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/center/xs"
+   },
+   "Frmae/image-1:1/Img Place": {
+    "fills": ["IMAGE"]
+   },
+   "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Content/Supporting Text/1 ม.ค. 2568 00:00": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/border/general/tertiary-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/center/xs"
+   },
+   "Frmae/image-1:1/Img Place": {
+    "fills": ["IMAGE"]
+   },
+   "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Content/Supporting Text/1 ม.ค. 2568 00:00": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/tertiary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/center/xs"
+   },
+   "Frmae/image-1:1/Img Place": {
+    "fills": ["IMAGE"]
+   },
+   "Frmae/Supporting Text": {
+    "fills": ["color/background/alpha/black-50"]
+   },
+   "Frmae/Supporting Text/00:00:00": {
+    "fills": ["color/text/general/const-white"]
+   },
+   "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Content/Supporting Text/1 ม.ค. 2568 00:00": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/border/general/tertiary-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/center/xs"
+   },
+   "Frmae/image-1:1/Img Place": {
+    "fills": ["IMAGE"]
+   },
+   "Frmae/Supporting Text": {
+    "fills": ["color/background/alpha/black-50"]
+   },
+   "Frmae/Supporting Text/00:00:00": {
+    "fills": ["color/text/general/const-white"]
+   },
+   "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Content/Supporting Text/1 ม.ค. 2568 00:00": {
+    "fills": ["color/text/general/text"]
+   }
+  }
+ ]
+}

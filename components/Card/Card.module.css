@@ -1,370 +1,196 @@
-/**
- * Card styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Card/Card.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 27 Card แล้วรัน  npm run figma:layers -- card  และ  npm run css:generate -- card
+ *   spec: tokens/figma-layers/card.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Card ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ มุมโค้ง หรือขนาด เพื่อให้ sync กับ Figma หน้า 27 Card ได้
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --card-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/card.json (spec ชั้นจากไฟล์ออกแบบหน้า 27)
+ * แล้วต่อท้ายไฟล์นี้เป็น Card.module.css ห้ามแก้ Card.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ขนาดรูป     --ntg-card-image-width-{ขนาด} · --ntg-card-image-height-{ขนาด}
- *   มุมโค้ง      --ntg-card-radius-{มุม}
- *   ช่องไฟ       --ntg-size-space-s1-* · --ntg-size-space-s2-* จากสเกลระยะห่างกลาง
- *   ตัวอักษร     ชุดสำเร็จรูป label/* · title/* · body/* ครบทั้งห้าคุณสมบัติต่อชุด
- *   สีข้อความ    --ntg-color-text-brand-primary · --ntg-color-text-general-heading · --ntg-color-text-general-text
- *   สีพื้น        --ntg-color-background-general-quaternary (พื้นที่วางรูป) · --ntg-color-background-general-primary
- *   สีเส้นขอบ     --ntg-color-border-general-tertiary
- *   เงา          --ntg-shadows-center-xs
- *   วงแหวนโฟกัส  --ntg-color-effect-focused-ring-brand
+ * ⚠️ ข้อยกเว้นที่มีชื่อ token: ระยะป้ายบนรูป (ในไฟล์ออกแบบเป็นตำแหน่ง x,y ของเฟรมที่วางแบบ absolute ผูกตัวแปรไม่ได้
+ *    ค่า 4 6 8 10 12 ต่อขนาด ตรงกับสเกล s1/sm ถึง s2/xs) วงแหวนโฟกัสของการ์ดที่เป็นลิงก์ และระยะข้อความ meta
  *
- * ⚠️ การ์ดข่าวแนวตั้งกับแนวนอนไม่มีพื้นหลัง ไม่มีเส้นขอบ และไม่มีมุมโค้ง ตรงกับไฟล์ออกแบบ
- *    มีแต่การ์ดรายการที่เป็นกล่องจริง จึงมีพื้น เส้นขอบ มุมโค้ง และเงา
- *
- * ⚠️ ไฟล์ออกแบบไม่มีสถานะเมาส์ชี้ให้การ์ดข่าวแนวตั้งและแนวนอน (ไม่มีแกน State)
- *    มีเฉพาะการ์ดรายการ ที่นี่จึงใส่สถานะชี้ให้เฉพาะการ์ดรายการตามของจริง
- *
- * ⚠️ ความกว้างกล่องข้อความของการ์ดแนวนอนในไฟล์ออกแบบยังไม่เป็นสูตร (xs 296, sm 400, md ขึ้นไป 392)
- *    ซึ่งเป็นงานค้างที่บันทึกไว้ใน docs/27-card.md ฝั่งโค้ดจึงให้กล่องข้อความกินที่ที่เหลือแทน
- *    เพื่อไม่ให้ต้องตามแก้สามค่านี้เมื่อฝั่งออกแบบตัดสิน
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบการ์ดรายการใช้ box-shadow inset รวมกับเงาในค่าเดียว · การ์ดข่าวไม่มีกล่อง
+ *   2. hover ของการ์ดรายการใช้กับการ์ดที่เป็นลิงก์เท่านั้น (a.list)
+ *   3. responsive เป็นความสามารถฝั่งเว็บ ไฟล์ออกแบบวางที่ความกว้างตายตัว
+ *   4. การตัดบรรทัด (titleLines / leadLines) เป็นพฤติกรรมฝั่งเว็บ
  */
 
 .root {
   display: flex;
   box-sizing: border-box;
-  /* รูปกับข้อความอยู่ในลิงก์เดียวกัน จึงต้องล้างขีดเส้นใต้ที่เบราว์เซอร์ใส่ให้ลิงก์ */
   text-decoration: none;
-  font-family: var(--ntg-typography-font-family-primary);
+  gap: var(--card-gap, 0);
 }
-
-a.root {
-  cursor: pointer;
-}
-
-/* วงแหวนโฟกัสอยู่ที่ทั้งใบ เพราะทั้งใบคือลิงก์เดียว
-   ค่า 4px เป็นความหนาวงแหวนโฟกัสมาตรฐานของระบบ ใช้เหมือนกันทุก component ไม่ใช่ค่าออกแบบรายชิ้น */
+a.root { cursor: pointer; }
 .root:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+  box-shadow: var(--ntg-focused-ring-brand);
 }
-
-/* ── กรอบรูป ───────────────────────────────────────────── */
-
 .media {
   position: relative;
   flex: none;
   overflow: hidden;
-  /* ไม่มีรูปก็ยังเห็นพื้นที่วางรูป ไม่ให้การ์ดดูแหว่ง (docs/27-card.md ตารางปัญหาที่พบบ่อย) */
-  background: var(--ntg-color-background-general-quaternary);
+  width: var(--card-img-w);
+  height: var(--card-img-h);
+  background: var(--card-media-bg, transparent);
 }
-
-.image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  /* ครอบเต็มกรอบโดยไม่บิดสัดส่วน แทนการยืดรูป (ข้อห้ามในเอกสารหน้า 27) */
-  object-fit: cover;
-}
-
-.tag {
-  position: absolute;
-  top: 0;
-  inset-inline-start: 0;
-}
-
+.image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tag { position: absolute; top: 0; inset-inline-start: 0; }
+.xs .tag { margin: var(--ntg-size-space-s1-sm); }
+.sm .tag { margin: var(--ntg-size-space-s1-md); }
+.md .tag { margin: var(--ntg-size-space-s1-lg); }
+.lg .tag { margin: var(--ntg-size-space-s1-xl); }
+.xl .tag { margin: var(--ntg-size-space-s2-xs); }
 .overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: inline-flex;
+  background: var(--card-overlay-bg, transparent);
+  color: var(--card-overlay-fg, inherit);
 }
-
-/* ── กล่องข้อความ ───────────────────────────────────────── */
-
 .body {
   display: flex;
   flex-direction: column;
-  /* กินที่ที่เหลือ และยอมให้หดได้เพื่อให้ตัดบรรทัดทำงานในกล่องแบบ flex */
   flex: 1;
   min-width: 0;
+  gap: var(--card-text-gap, 0);
 }
-
 .category {
-  color: var(--ntg-color-text-brand-primary);
+  color: var(--card-cat-fg, inherit);
+  font-family: var(--card-cat-font-family);
+  font-size: var(--card-cat-font-size);
+  line-height: var(--card-cat-line-height);
+  font-weight: var(--card-cat-font-weight);
+  letter-spacing: var(--card-cat-letter-space);
 }
-
 .title {
-  color: var(--ntg-color-text-general-heading);
+  color: var(--card-fg, inherit);
+  font-family: var(--card-title-font-family);
+  font-size: var(--card-title-font-size);
+  line-height: var(--card-title-line-height);
+  font-weight: var(--card-title-font-weight);
+  letter-spacing: var(--card-title-letter-space);
 }
-
-.lead,
+.lead {
+  color: var(--card-lead-fg, inherit);
+  font-family: var(--card-lead-font-family);
+  font-size: var(--card-lead-font-size);
+  line-height: var(--card-lead-line-height);
+  font-weight: var(--card-lead-font-weight);
+  letter-spacing: var(--card-lead-letter-space);
+}
 .meta {
-  color: var(--ntg-color-text-general-text);
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+  color: var(--card-meta-fg, var(--card-lead-fg, inherit));
+  font-family: var(--card-list-meta-font-family, var(--card-lead-font-family));
+  font-size: var(--card-list-meta-font-size, var(--card-lead-font-size));
+  line-height: var(--card-list-meta-line-height, var(--card-lead-line-height));
+  font-weight: var(--card-list-meta-font-weight, var(--card-lead-font-weight));
+  letter-spacing: var(--card-list-meta-letter-space, var(--card-lead-letter-space));
 }
-
-/* จำกัดจำนวนบรรทัดแทนการตรึงความสูงการ์ด จำนวนบรรทัดมาจาก props ไม่ใช่ค่าออกแบบ */
 .root[data-title-clamp='true'] .title,
 .root[data-lead-clamp='true'] .lead {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.root[data-title-clamp='true'] .title { -webkit-line-clamp: var(--card-title-lines); line-clamp: var(--card-title-lines); }
+.root[data-lead-clamp='true'] .lead { -webkit-line-clamp: var(--card-lead-lines); line-clamp: var(--card-lead-lines); }
 
-.root[data-title-clamp='true'] .title {
-  -webkit-line-clamp: var(--card-title-lines);
-  line-clamp: var(--card-title-lines);
-}
-
-.root[data-lead-clamp='true'] .lead {
-  -webkit-line-clamp: var(--card-lead-lines);
-  line-clamp: var(--card-lead-lines);
-}
-
-/* แถวล่างสุดวางของหลายชิ้นเรียงกันได้ เช่นเวลาคู่กับปุ่มลิงก์ของการ์ดรายการวิดีโอ */
-.meta {
-  display: flex;
-  align-items: center;
-  gap: var(--ntg-size-space-s1-lg);
-  font-family: var(--ntg-typography-font-family-body-sm);
-  font-size: var(--ntg-typography-font-size-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  letter-spacing: var(--ntg-typography-letter-space-body-sm);
-}
-
-/* ── ทิศทางการวาง ───────────────────────────────────────── */
-
-.vertical {
-  flex-direction: column;
-}
-
-.horizontal {
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-/* รูปอยู่ขวาสลับด้วย CSS ไม่ใช่สลับลำดับใน DOM เพื่อให้ลำดับการอ่านคงเดิม
-   เขียนสองคลาสซ้อนเพื่อให้ชนะกฎทิศทางของแต่ละชุดที่ประกาศทีหลังในไฟล์นี้ */
-.root.imageTrailing {
-  flex-direction: row-reverse;
-}
-
-/* ── ขนาดรูปของการ์ดข่าว ใช้ร่วมกันทั้งแนวตั้งและแนวนอน ───── */
-
-.xs .media { width: var(--ntg-card-image-width-xs); height: var(--ntg-card-image-height-xs); }
-.sm .media { width: var(--ntg-card-image-width-sm); height: var(--ntg-card-image-height-sm); }
-.md .media { width: var(--ntg-card-image-width-md); height: var(--ntg-card-image-height-md); }
-.lg .media { width: var(--ntg-card-image-width-lg); height: var(--ntg-card-image-height-lg); }
-.xl .media { width: var(--ntg-card-image-width-xl); height: var(--ntg-card-image-height-xl); }
-
-/* ระยะที่แท็กหมวดเว้นจากมุมรูป วัดจากไฟล์ออกแบบจริง 4 6 8 10 12 ตรงกับสเกลระยะห่างกลางทุกขั้น */
-.xs .tag { margin: var(--ntg-size-space-s1-sm); }
-.sm .tag { margin: var(--ntg-size-space-s1-md); }
-.md .tag { margin: var(--ntg-size-space-s1-lg); }
-.lg .tag { margin: var(--ntg-size-space-s1-xl); }
-.xl .tag { margin: var(--ntg-size-space-s2-xs); }
-
-/* ช่องไฟภายในกล่องข้อความ วัดจากไฟล์ออกแบบจริง 4 4 6 6 8 */
-.xs .body, .sm .body { gap: var(--ntg-size-space-s1-sm); }
-.md .body, .lg .body { gap: var(--ntg-size-space-s1-md); }
-.xl .body { gap: var(--ntg-size-space-s1-lg); }
-
-/* ช่องไฟระหว่างรูปกับข้อความของการ์ดแนวตั้ง วัดจากไฟล์ออกแบบจริง 8 8 10 12 14
-   ⚠️ ขั้น xl ในไฟล์ออกแบบคือ 14 ซึ่งไม่มีในสเกลระยะห่างกลาง (s1 จบที่ 10 ส่วน s2 เริ่มที่ 12 ก้าวละ 4)
-      ที่นี่ใช้ 16 เพราะต้องมากกว่าขั้น lg ที่เป็น 12 ถ้าใช้ 12 จะเท่ากับขั้นก่อนหน้า
-      รายงานไว้แล้วว่าต้องให้ฝั่งออกแบบตัดสินว่าจะปรับ 14 เข้าสเกล หรือเพิ่มขั้น 14 ให้สเกลกลาง */
-.vertical.xs, .vertical.sm { gap: var(--ntg-size-space-s1-lg); }
-.vertical.md { gap: var(--ntg-size-space-s1-xl); }
-.vertical.lg { gap: var(--ntg-size-space-s2-xs); }
-.vertical.xl { gap: var(--ntg-size-space-s2-sm); }
-
-/* ช่องไฟระหว่างรูปกับข้อความของการ์ดแนวนอน วัดจากไฟล์ออกแบบจริง 16 16 24 24 24 */
-.horizontal.xs, .horizontal.sm { gap: var(--ntg-size-space-s2-sm); }
-.horizontal.md, .horizontal.lg, .horizontal.xl { gap: var(--ntg-size-space-s2-lg); }
-
-/* ── ตัวอักษรของการ์ดข่าว ใช้ชุดสำเร็จรูปเท่านั้น ห้ามผสมขนาดกับน้ำหนักเอง ─────
-   ตารางนี้ถอดจากไฟล์ออกแบบจริงทีละขนาด ไม่ใช่การไล่ขนาดตามสูตร
-   ⚠️ ขั้น xl ของชื่อหมวดใช้ชุด title/md ไม่ใช่ label เหมือนขั้นอื่น ซึ่งเป็นของจริงในไฟล์ออกแบบ
-   ⚠️ ขั้น xs ในไฟล์ออกแบบไม่มีความนำ ที่นี่กำหนดชุด body/sm ให้เผื่อกรณีที่โค้ดส่งความนำมา */
-
-.xs .category, .sm .category, .md .category {
-  font-family: var(--ntg-typography-font-family-label-sm);
-  font-size: var(--ntg-typography-font-size-label-sm);
-  font-weight: var(--ntg-typography-font-weight-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
-  letter-spacing: var(--ntg-typography-letter-space-label-sm);
-}
-
-.lg .category {
-  font-family: var(--ntg-typography-font-family-label-md);
-  font-size: var(--ntg-typography-font-size-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  letter-spacing: var(--ntg-typography-letter-space-label-md);
-}
-
-.xl .category {
-  font-family: var(--ntg-typography-font-family-title-md);
-  font-size: var(--ntg-typography-font-size-title-md);
-  font-weight: var(--ntg-typography-font-weight-title-md);
-  line-height: var(--ntg-typography-line-height-title-md);
-  letter-spacing: var(--ntg-typography-letter-space-title-md);
-}
-
-.xs .title {
-  font-family: var(--ntg-typography-font-family-title-xs);
-  font-size: var(--ntg-typography-font-size-title-xs);
-  font-weight: var(--ntg-typography-font-weight-title-xs);
-  line-height: var(--ntg-typography-line-height-title-xs);
-  letter-spacing: var(--ntg-typography-letter-space-title-xs);
-}
-
-.sm .title {
-  font-family: var(--ntg-typography-font-family-title-sm);
-  font-size: var(--ntg-typography-font-size-title-sm);
-  font-weight: var(--ntg-typography-font-weight-title-sm);
-  line-height: var(--ntg-typography-line-height-title-sm);
-  letter-spacing: var(--ntg-typography-letter-space-title-sm);
-}
-
-.md .title {
-  font-family: var(--ntg-typography-font-family-title-md);
-  font-size: var(--ntg-typography-font-size-title-md);
-  font-weight: var(--ntg-typography-font-weight-title-md);
-  line-height: var(--ntg-typography-line-height-title-md);
-  letter-spacing: var(--ntg-typography-letter-space-title-md);
-}
-
-.lg .title {
-  font-family: var(--ntg-typography-font-family-title-lg);
-  font-size: var(--ntg-typography-font-size-title-lg);
-  font-weight: var(--ntg-typography-font-weight-title-lg);
-  line-height: var(--ntg-typography-line-height-title-lg);
-  letter-spacing: var(--ntg-typography-letter-space-title-lg);
-}
-
-.xl .title {
-  font-family: var(--ntg-typography-font-family-title-xl);
-  font-size: var(--ntg-typography-font-size-title-xl);
-  font-weight: var(--ntg-typography-font-weight-title-xl);
-  line-height: var(--ntg-typography-line-height-title-xl);
-  letter-spacing: var(--ntg-typography-letter-space-title-xl);
-}
-
-.xs .lead, .sm .lead, .md .lead {
-  font-family: var(--ntg-typography-font-family-body-sm);
-  font-size: var(--ntg-typography-font-size-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  letter-spacing: var(--ntg-typography-letter-space-body-sm);
-}
-
-.lg .lead {
-  font-family: var(--ntg-typography-font-family-body-md);
-  font-size: var(--ntg-typography-font-size-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  letter-spacing: var(--ntg-typography-letter-space-body-md);
-}
-
-.xl .lead {
-  font-family: var(--ntg-typography-font-family-body-xl);
-  font-size: var(--ntg-typography-font-size-body-xl);
-  font-weight: var(--ntg-typography-font-weight-body-xl);
-  line-height: var(--ntg-typography-line-height-body-xl);
-  letter-spacing: var(--ntg-typography-letter-space-body-xl);
-}
-
-/* ── การ์ดรายการ ─────────────────────────────────────────
-   ชุดเดียวในหน้านี้ที่เป็นกล่องจริง จึงมีพื้น เส้นขอบ มุมโค้ง และเงา
-   ⚠️ รูปของชุดนี้เป็นจัตุรัส 112 คูณ 112 ไม่ใช่ 16 ต่อ 9 เหมือนการ์ดข่าว
-      และยังไม่มี token ขนาดรูปของการ์ดรายการ รายละเอียดอยู่ที่กฎด้านล่าง */
+.vertical { flex-direction: column; }
+.horizontal { flex-direction: row; align-items: flex-start; }
+.root.imageTrailing { flex-direction: row-reverse; }
 
 .list {
   flex-direction: row;
   align-items: stretch;
-  gap: var(--ntg-size-space-none);
+  gap: 0;
   overflow: hidden;
-  background: var(--ntg-color-background-general-primary);
-  /* ยังไม่มี --ntg-card-border จึงยืมความหนาเส้นขอบของช่องกรอกซึ่งเป็น 1px เท่ากับที่วัดได้จริง */
-  border: var(--ntg-input-border) solid var(--ntg-color-border-general-tertiary);
-  border-start-start-radius: var(--ntg-card-radius-top-left);
-  border-start-end-radius: var(--ntg-card-radius-top-right);
-  border-end-end-radius: var(--ntg-card-radius-bottom-right);
-  border-end-start-radius: var(--ntg-card-radius-bottom-left);
-  box-shadow: var(--ntg-shadows-center-xs);
-  /* เปลี่ยนสีในที่เดิมจึงใช้ขั้นเวลาสั้น ส่วน ease เป็นคำสงวนของ CSS ไม่ใช่ค่าออกแบบ */
-  transition:
-    background-color var(--ntg-motion-duration-fast) ease,
-    border-color var(--ntg-motion-duration-fast) ease;
+  background: var(--card-bg, transparent);
+  border-radius: var(--card-r-tl, 0) var(--card-r-tr, 0) var(--card-r-br, 0) var(--card-r-bl, 0);
+  box-shadow: inset 0 0 0 var(--card-border-w, 0px) var(--card-border, transparent), var(--card-shadow, 0 0 0 0 transparent);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
-
-/* ขนาดรูปของการ์ดรายการเป็นจัตุรัส 112 เท่ากันทุกแบบ ใช้ token ของตัวเอง
-   เดิมยืมขั้น s5-xs ของสเกลระยะห่างกลางมาใช้เพราะค่าบังเอิญตรงกัน ซึ่งอันตราย
-   เพราะ token ตัวนั้นมีหน้าที่เป็นระยะเปิดหน้า ถ้าใครแก้สเกลระยะห่างรูปจะเพี้ยนตาม (แก้ 2026-10-15) */
 .list .media {
-  width: var(--ntg-card-list-image);
-  height: var(--ntg-card-list-image);
+  width: var(--card-list-image);
+  height: var(--card-list-image);
   align-self: stretch;
 }
-
 .list .body {
-  gap: var(--ntg-size-space-s1-sm);
-  padding: var(--ntg-size-space-s1-lg);
+  gap: var(--card-list-gap, 0);
+  padding: var(--card-list-pt, 0) var(--card-list-pr, 0) var(--card-list-pb, 0) var(--card-list-pl, 0);
 }
-
 .list .title {
-  font-family: var(--ntg-typography-font-family-title-sm);
-  font-size: var(--ntg-typography-font-size-title-sm);
-  font-weight: var(--ntg-typography-font-weight-title-sm);
-  line-height: var(--ntg-typography-line-height-title-sm);
-  letter-spacing: var(--ntg-typography-letter-space-title-sm);
+  font-family: var(--card-list-title-font-family);
+  font-size: var(--card-list-title-font-size);
+  line-height: var(--card-list-title-line-height);
+  font-weight: var(--card-list-title-font-weight);
+  letter-spacing: var(--card-list-title-letter-space);
 }
-
 .list .lead {
-  font-family: var(--ntg-typography-font-family-body-sm);
-  font-size: var(--ntg-typography-font-size-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  letter-spacing: var(--ntg-typography-letter-space-body-sm);
+  font-family: var(--card-list-meta-font-family);
+  font-size: var(--card-list-meta-font-size);
+  line-height: var(--card-list-meta-line-height);
+  font-weight: var(--card-list-meta-font-weight);
+  letter-spacing: var(--card-list-meta-letter-space);
 }
+.list:focus-visible { box-shadow: inset 0 0 0 var(--card-border-w, 0px) var(--card-border, transparent), var(--card-shadow, 0 0 0 0 transparent), var(--ntg-focused-ring-brand); }
 
-/* สถานะเมาส์ชี้มีเฉพาะชุดนี้ ตรงกับแกน State ในไฟล์ออกแบบ */
-a.list:hover {
-  background: var(--ntg-color-background-general-primary-hover);
-  border-color: var(--ntg-color-border-general-tertiary-hover);
-}
-
-/* ชุดนี้มีเงาของตัวเองอยู่แล้ว วงแหวนโฟกัสจึงต้องซ้อนบนเงาเดิม ไม่ใช่เขียนทับจนเงาหาย */
-.list:focus-visible {
-  box-shadow:
-    var(--ntg-shadows-center-xs),
-    0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
-}
-
-/* ── การยืดหดตามความกว้างที่วาง ──────────────────────────
-   ⚠️ เป็นพฤติกรรมฝั่งโค้ด ไฟล์ออกแบบวางที่ความกว้างตายตัวจึงไม่มีแกนนี้
-      เปิดด้วย props `responsive` เท่านั้น ของเดิมไม่เปลี่ยนพฤติกรรม */
-
-.responsive {
-  width: 100%;
-}
-
-/* 16 ต่อ 9 คือสัดส่วนที่ไฟล์ออกแบบประกาศไว้และมีด่านตรวจคุมอยู่ใน tokens/scale/card.mjs
-   เป็นสัดส่วน ไม่ใช่ขนาด จึงไม่มี token ให้อ้างและไม่นับเป็นค่าขนาดที่ hard-code */
-.responsive.vertical .media {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-}
-
-/* จุดตัดจอแคบ ค่า 767px เป็นจุดตัดของ media query ไม่ใช่ขนาดของชิ้นงาน จึงไม่มี token ให้อ้าง */
+.responsive { width: 100%; }
+.responsive.vertical .media { width: 100%; height: auto; aspect-ratio: 16 / 9; }
 @media (max-width: 767px) {
-  .responsive.horizontal {
-    flex-direction: column;
-  }
-
-  .responsive.horizontal .media {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
+  .responsive.horizontal { flex-direction: column; }
+  .responsive.horizontal .media { width: 100%; height: auto; aspect-ratio: 16 / 9; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .list { transition: none; }
+}
+
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --card-cat-font-family: var(--ntg-typography-font-family-label-sm); --card-cat-font-size: var(--ntg-typography-font-size-label-sm); --card-cat-line-height: var(--ntg-typography-line-height-label-sm); --card-cat-font-weight: var(--ntg-typography-font-weight-label-sm); --card-cat-letter-space: var(--ntg-typography-letter-space-label-sm); --card-title-font-family: var(--ntg-typography-font-family-title-xs); --card-title-font-size: var(--ntg-typography-font-size-title-xs); --card-title-line-height: var(--ntg-typography-line-height-title-xs); --card-title-font-weight: var(--ntg-typography-font-weight-title-xs); --card-title-letter-space: var(--ntg-typography-letter-space-title-xs); }
+.sm { --card-cat-font-family: var(--ntg-typography-font-family-label-sm); --card-cat-font-size: var(--ntg-typography-font-size-label-sm); --card-cat-line-height: var(--ntg-typography-line-height-label-sm); --card-cat-font-weight: var(--ntg-typography-font-weight-label-sm); --card-cat-letter-space: var(--ntg-typography-letter-space-label-sm); --card-title-font-family: var(--ntg-typography-font-family-title-sm); --card-title-font-size: var(--ntg-typography-font-size-title-sm); --card-title-line-height: var(--ntg-typography-line-height-title-sm); --card-title-font-weight: var(--ntg-typography-font-weight-title-sm); --card-title-letter-space: var(--ntg-typography-letter-space-title-sm); --card-lead-font-family: var(--ntg-typography-font-family-body-sm); --card-lead-font-size: var(--ntg-typography-font-size-body-sm); --card-lead-line-height: var(--ntg-typography-line-height-body-sm); --card-lead-font-weight: var(--ntg-typography-font-weight-body-sm); --card-lead-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.md { --card-cat-font-family: var(--ntg-typography-font-family-label-sm); --card-cat-font-size: var(--ntg-typography-font-size-label-sm); --card-cat-line-height: var(--ntg-typography-line-height-label-sm); --card-cat-font-weight: var(--ntg-typography-font-weight-label-sm); --card-cat-letter-space: var(--ntg-typography-letter-space-label-sm); --card-title-font-family: var(--ntg-typography-font-family-title-md); --card-title-font-size: var(--ntg-typography-font-size-title-md); --card-title-line-height: var(--ntg-typography-line-height-title-md); --card-title-font-weight: var(--ntg-typography-font-weight-title-md); --card-title-letter-space: var(--ntg-typography-letter-space-title-md); --card-lead-font-family: var(--ntg-typography-font-family-body-sm); --card-lead-font-size: var(--ntg-typography-font-size-body-sm); --card-lead-line-height: var(--ntg-typography-line-height-body-sm); --card-lead-font-weight: var(--ntg-typography-font-weight-body-sm); --card-lead-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.lg { --card-cat-font-family: var(--ntg-typography-font-family-label-md); --card-cat-font-size: var(--ntg-typography-font-size-label-md); --card-cat-line-height: var(--ntg-typography-line-height-label-md); --card-cat-font-weight: var(--ntg-typography-font-weight-label-md); --card-cat-letter-space: var(--ntg-typography-letter-space-label-md); --card-title-font-family: var(--ntg-typography-font-family-title-lg); --card-title-font-size: var(--ntg-typography-font-size-title-lg); --card-title-line-height: var(--ntg-typography-line-height-title-lg); --card-title-font-weight: var(--ntg-typography-font-weight-title-lg); --card-title-letter-space: var(--ntg-typography-letter-space-title-lg); --card-lead-font-family: var(--ntg-typography-font-family-body-md); --card-lead-font-size: var(--ntg-typography-font-size-body-md); --card-lead-line-height: var(--ntg-typography-line-height-body-md); --card-lead-font-weight: var(--ntg-typography-font-weight-body-md); --card-lead-letter-space: var(--ntg-typography-letter-space-body-md); }
+.xl { --card-cat-font-family: var(--ntg-typography-font-family-title-md); --card-cat-font-size: var(--ntg-typography-font-size-title-md); --card-cat-line-height: var(--ntg-typography-line-height-title-md); --card-cat-font-weight: var(--ntg-typography-font-weight-title-md); --card-cat-letter-space: var(--ntg-typography-letter-space-title-md); --card-title-font-family: var(--ntg-typography-font-family-title-xl); --card-title-font-size: var(--ntg-typography-font-size-title-xl); --card-title-line-height: var(--ntg-typography-line-height-title-xl); --card-title-font-weight: var(--ntg-typography-font-weight-title-xl); --card-title-letter-space: var(--ntg-typography-letter-space-title-xl); --card-lead-font-family: var(--ntg-typography-font-family-body-xl); --card-lead-font-size: var(--ntg-typography-font-size-body-xl); --card-lead-line-height: var(--ntg-typography-line-height-body-xl); --card-lead-font-weight: var(--ntg-typography-font-weight-body-xl); --card-lead-letter-space: var(--ntg-typography-letter-space-body-xl); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.vertical.xs { --card-gap: var(--ntg-size-space-s1-lg); --card-img-w: var(--ntg-card-image-width-xs); --card-img-h: var(--ntg-card-image-height-xs); --card-text-gap: var(--ntg-size-space-s1-sm); }
+.vertical.sm { --card-gap: var(--ntg-size-space-s1-lg); --card-img-w: var(--ntg-card-image-width-sm); --card-img-h: var(--ntg-card-image-height-sm); --card-text-gap: var(--ntg-size-space-s1-sm); }
+.vertical.md { --card-gap: var(--ntg-size-space-s1-xl); --card-img-w: var(--ntg-card-image-width-md); --card-img-h: var(--ntg-card-image-height-md); --card-text-gap: var(--ntg-size-space-s1-md); }
+.vertical.lg { --card-gap: var(--ntg-size-space-s2-xs); --card-img-w: var(--ntg-card-image-width-lg); --card-img-h: var(--ntg-card-image-height-lg); --card-text-gap: var(--ntg-size-space-s1-md); }
+.vertical.xl { --card-gap: var(--ntg-size-space-s2-sm); --card-img-w: var(--ntg-card-image-width-xl); --card-img-h: var(--ntg-card-image-height-xl); --card-text-gap: var(--ntg-size-space-s1-lg); }
+.horizontal.xs { --card-gap: var(--ntg-size-space-s2-sm); --card-img-w: var(--ntg-card-image-width-xs); --card-img-h: var(--ntg-card-image-height-xs); --card-text-gap: var(--ntg-size-space-s1-sm); }
+.horizontal.sm { --card-gap: var(--ntg-size-space-s2-sm); --card-img-w: var(--ntg-card-image-width-sm); --card-img-h: var(--ntg-card-image-height-sm); --card-text-gap: var(--ntg-size-space-s1-sm); }
+.horizontal.md { --card-gap: var(--ntg-size-space-s2-lg); --card-img-w: var(--ntg-card-image-width-md); --card-img-h: var(--ntg-card-image-height-md); --card-text-gap: var(--ntg-size-space-s1-md); }
+.horizontal.lg { --card-gap: var(--ntg-size-space-s2-lg); --card-img-w: var(--ntg-card-image-width-lg); --card-img-h: var(--ntg-card-image-height-lg); --card-text-gap: var(--ntg-size-space-s1-md); }
+.horizontal.xl { --card-gap: var(--ntg-size-space-s2-lg); --card-img-w: var(--ntg-card-image-width-xl); --card-img-h: var(--ntg-card-image-height-xl); --card-text-gap: var(--ntg-size-space-s1-lg); }
+.list { --card-r-tl: var(--ntg-card-radius-top-left); --card-r-tr: var(--ntg-card-radius-top-right); --card-r-br: var(--ntg-card-radius-bottom-right); --card-r-bl: var(--ntg-card-radius-bottom-left); --card-list-image: var(--ntg-card-list-image); --card-list-pt: var(--ntg-size-space-s1-lg); --card-list-pr: var(--ntg-size-space-s1-lg); --card-list-pb: var(--ntg-size-space-s1-lg); --card-list-pl: var(--ntg-size-space-s1-lg); --card-list-gap: var(--ntg-size-space-s1-sm); }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.vertical.xs,
+.horizontal.xs { --card-media-bg: var(--ntg-color-background-general-quaternary); --card-cat-fg: var(--ntg-color-text-brand-primary); --card-fg: var(--ntg-color-text-general-heading); }
+.vertical.sm,
+.vertical.md,
+.vertical.lg,
+.vertical.xl,
+.horizontal.sm,
+.horizontal.md,
+.horizontal.lg,
+.horizontal.xl { --card-media-bg: var(--ntg-color-background-general-quaternary); --card-cat-fg: var(--ntg-color-text-brand-primary); --card-fg: var(--ntg-color-text-general-heading); --card-lead-fg: var(--ntg-color-text-general-text); }
+.list:not(.imageTrailing),
+.list.imageTrailing { --card-bg: var(--ntg-color-background-general-primary); --card-border: var(--ntg-color-border-general-tertiary); --card-border-w: 1px; --card-shadow: var(--ntg-shadows-center-xs); --card-fg: var(--ntg-color-text-general-heading); --card-meta-fg: var(--ntg-color-text-general-text); }
+.list { --card-bg: var(--ntg-color-background-general-primary); --card-border: var(--ntg-color-border-general-tertiary); --card-border-w: 1px; --card-shadow: var(--ntg-shadows-center-xs); --card-fg: var(--ntg-color-text-general-heading); --card-meta-fg: var(--ntg-color-text-general-text); --card-overlay-bg: var(--ntg-color-background-alpha-black-50); --card-overlay-fg: var(--ntg-color-text-general-const-white); }
+a.list:not(.imageTrailing):hover,
+a.list.imageTrailing:hover { --card-bg: var(--ntg-color-background-general-primary-hover); --card-border: var(--ntg-color-border-general-tertiary-hover); --card-border-w: 1px; --card-shadow: var(--ntg-shadows-center-xs); --card-fg: var(--ntg-color-text-general-heading); --card-meta-fg: var(--ntg-color-text-general-text); }
+a.list:hover { --card-bg: var(--ntg-color-background-general-primary-hover); --card-border: var(--ntg-color-border-general-tertiary-hover); --card-border-w: 1px; --card-shadow: var(--ntg-shadows-center-xs); --card-fg: var(--ntg-color-text-general-heading); --card-meta-fg: var(--ntg-color-text-general-text); --card-overlay-bg: var(--ntg-color-background-alpha-black-50); --card-overlay-fg: var(--ntg-color-text-general-const-white); }
