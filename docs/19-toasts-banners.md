@@ -141,7 +141,7 @@ sources_of_truth:
 | `warning` | `color/background/system/warning-primary` | `icon/system/warning-on-subtle` | #fef7c3 และ #a15c07 |
 | `success` | `color/background/system/success-primary` | `icon/system/success-on-subtle` | #d1fadf และ #027a48 |
 
-ข้อความและปุ่มปิดใช้ชุดเดียวกันทุกชนิด หัวข้อ `color/text/general/heading` ข้อความรอง `color/text/general/text` ปุ่มปิด `icon/general/secondary`
+ข้อความและปุ่มปิดใช้ชุดเดียวกันทุกชนิด หัวข้อ `color/text/general/heading` ข้อความรอง `color/text/general/text` ปุ่มปิด `icon/general/quaternary` (ตามที่ผูกจริงในไฟล์ออกแบบ อ่านด้วยท่อสร้าง CSS 2026-10-26 เอกสารเดิมเขียนว่า secondary ซึ่งไม่ตรงกับไฟล์ ถ้าตั้งใจให้เป็น secondary ต้องแก้ที่ไฟล์ออกแบบแล้วดึงใหม่)
 
 **คอนทราสต์ที่วัดได้จริง** ผ่านเกณฑ์ทุกช่อง
 

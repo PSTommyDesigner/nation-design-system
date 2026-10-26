@@ -1,0 +1,229 @@
+/*
+ * Toast ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --ts-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/toast.json (spec ชั้นจากไฟล์ออกแบบหน้า 19)
+ * แล้วต่อท้ายไฟล์นี้เป็น Toast.module.css ห้ามแก้ Toast.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นของไฟล์นี้: มีชื่อ token อยู่บ้าง เฉพาะพฤติกรรมที่ไฟล์ออกแบบแสดงไม่ได้
+ *    คือ motion (โผล่/หาย) ชั้นซ้อน (layer) ตำแหน่งกองข้อความแจ้ง (viewport) และระยะห่างในกอง (list)
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ปุ่มปิดตอนชี้ใช้สีไอคอนของชนิดนั้น (ไฟล์ออกแบบไม่มีสถานะ hover ของปุ่มปิด) และมีพื้นที่แตะ 44px ซ่อนอยู่
+ *   2. กลุ่มข้อความยืดเต็มที่เหลือ (FILL ในไฟล์ออกแบบ) ความกว้างข้อความแจ้งมาจาก --ts-w
+ *   3. ปุ่ม action เป็น LinkButton ค่าของมันอยู่ที่ LinkButton.module.css
+ *   4. วงแหวนโฟกัสของปุ่มปิดใช้ effect style focused-ring/default โดยตรง (ไฟล์ออกแบบไม่มีสถานะโฟกัสของปุ่มปิด)
+ */
+
+
+.viewport {
+  position: fixed;
+  /* ยึดล่างขวาบนเดสก์ท็อป ระยะขอบใช้ระยะขอบของขนาดกลาง ซึ่งเป็นขนาดเริ่มต้นของระบบ */
+  inset-block-end: var(--ntg-toast-padding-md);
+  inset-inline-end: var(--ntg-toast-padding-md);
+  /*
+   * ชั้นการวางซ้อน อ้าง token --ntg-layer-notification (400) ซึ่งเป็นชั้นสูงสุดของระบบ
+   * เพราะข้อความแจ้งต้องอยู่เหนือทั้งแผงลอยและชั้นฉากทับ
+   *
+   * ⚠️ --ts-layer ตั้งใจไม่ประกาศค่าไว้ จะได้ตกไปใช้ token เป็นค่าตั้งต้น
+   *    ถ้าแอปปลายทางมีชั้นที่สูงกว่านี้ ให้ตั้ง --ts-layer จากข้างนอก
+   *    แทนการแก้ไฟล์นี้ ถ้ามาประกาศค่าไว้ที่นี่ ตัวตั้งต้นจะถูกบังจนทับจากข้างนอกไม่ได้ผล
+   */
+  z-index: var(--ts-layer, var(--ntg-layer-notification));
+  display: flex;
+  flex-direction: column;
+  /* ปล่อยให้คลิกผ่านไปโดนเนื้อหาข้างหลังได้ มีแต่ตัวใบที่รับการคลิก */
+  pointer-events: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  /* ใบใหม่เข้าด้านล่าง จึงเรียงจากเก่าไปใหม่ตามลำดับ DOM ปกติ */
+  align-items: flex-end;
+  gap: var(--ntg-size-space-s1-lg);
+  margin: var(--ntg-size-space-none);
+  padding: var(--ntg-size-space-none);
+  list-style: none;
+}
+
+/*
+ * ชั้นประกาศให้โปรแกรมอ่านหน้าจอ แยกออกจากตัวที่มองเห็นโดยตั้งใจ
+ *
+ * ⚠️ ห้ามย้าย aria-live หรือ role ไปอยู่บนกล่องที่มองเห็น
+ *    ถ้าใส่ไว้บนตัวที่มองเห็น โปรแกรมอ่านหน้าจอจะอ่านสองรอบ
+ *    รอบแรกตอน live region เปลี่ยน และรอบสองตอนผู้ใช้เลื่อนไปเจอกล่องนั้น
+ *    Base Web เขียนเหตุผลนี้ไว้ในโค้ด และ Fluent 2 กับ Radix แยกออกมาแบบเดียวกัน
+ *
+ * ใช้วิธีซ่อนแบบที่ยังอยู่ในต้นไม้การเข้าถึง ห้ามใช้ display none หรือ visibility hidden
+ * เพราะสองตัวนั้นจะถอดข้อความออกจากต้นไม้ แล้วจะไม่มีการประกาศเกิดขึ้นเลย
+ */
+.liveRegion {
+  /*
+   * ⚠️ 1px ตรงนี้เป็นค่าคงที่ของสูตรซ่อนแบบยังอ่านได้ ไม่ใช่ระยะของระบบออกแบบ
+   *    ต้องมีขนาดมากกว่า 0 ไม่งั้นเบราว์เซอร์บางตัวจะถอดออกจากต้นไม้การเข้าถึง
+   */
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: var(--ntg-size-space-none);
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ═══ ตัวใบ ═══════════════════════════════════════════════════ */
+
+.root {
+  /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
+
+  /* เวลาและเส้นโค้งการเคลื่อนไหว อ้าง token ของระบบ ดูคำอธิบายที่หัวไฟล์ */
+  --ts-enter-duration: var(--ntg-motion-duration-default);
+  --ts-leave-duration: var(--ntg-motion-duration-fast);
+  --ts-enter-ease: var(--ntg-motion-easing-enter);
+  --ts-leave-ease: var(--ntg-motion-easing-exit);
+
+  /* ค่าคงที่ของเกณฑ์ WCAG 2.5.5 ไม่ใช่ค่าของระบบออกแบบ */
+  --ts-touch-target: 44px;
+
+  position: relative;
+  box-sizing: border-box;
+  inline-size: var(--ts-w);
+  /* ห้ามตั้งความสูง ดูคำอธิบายที่หัวไฟล์ */
+  padding: var(--ts-pt, 0) var(--ts-pr, 0) var(--ts-pb, 0) var(--ts-pl, 0);
+  border-radius: var(--ts-r-tl, 0) var(--ts-r-tr, 0) var(--ts-r-br, 0) var(--ts-r-bl, 0);
+  background: var(--ts-bg);
+  box-shadow: var(--ts-shadow, 0 0 0 0 transparent);
+  /* ตัวใบรับการคลิก ส่วนกล่องลอยที่ครอบอยู่ปล่อยให้คลิกผ่าน */
+  pointer-events: auto;
+  animation: toast-enter var(--ts-enter-duration) var(--ts-enter-ease) both;
+}
+
+/* ใบที่กำลังจะหาย ระยะขาออก 15 เปอร์เซ็นต์ สั้นกว่าขาเข้าที่ 50 ตามที่ Atlassian ทำ */
+.leaving {
+  animation: toast-leave var(--ts-leave-duration) var(--ts-leave-ease) both;
+}
+
+@keyframes toast-enter {
+  from { opacity: 0; translate: 0 50%; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes toast-leave {
+  from { opacity: 1; translate: 0 0; }
+  to { opacity: 0; translate: 0 15%; }
+}
+
+/* ── แถวบน ไอคอน กลุ่มข้อความ ปุ่มปิด ───────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ts-gap);
+}
+
+/* ไอคอนบอกชนิด กรอบล็อกสัดส่วน 1 ต่อ 1 และอยู่แนวเดียวกับบรรทัดแรกของหัวข้อ */
+.iconSlot {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--ts-icon);
+  /* สูงเท่าบรรทัดหัวข้อ ไอคอนจึงอยู่กลางบรรทัดแรกพอดี ไม่ใช่ชิดขอบบนของกล่อง */
+  block-size: var(--ts-title-line);
+  color: var(--ts-icon-color);
+}
+
+.body {
+  /*
+   * flex-basis เป็นค่าอนุพันธ์จาก tokens/scale/toast.mjs ดูคำอธิบายที่หัวไฟล์
+   * min-inline-size 0 จำเป็น ไม่งั้นข้อความยาวจะดันกล่องให้กว้างเกิน token
+   */
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ts-stack);
+}
+
+.title {
+  margin: var(--ntg-size-space-none);
+  color: var(--ts-fg);
+  font-family: var(--ts-title-family);
+  font-size: var(--ts-title-size);
+  line-height: var(--ts-title-line);
+  font-weight: var(--ts-title-weight);
+  letter-spacing: var(--ts-title-space);
+  /* ข้อความยาวตัดบรรทัดได้ ห้ามตัดคำด้วยจุดสามจุด ข้อความแจ้งต้องอ่านได้ครบ */
+  overflow-wrap: anywhere;
+}
+
+.description {
+  margin: var(--ntg-size-space-none);
+  color: var(--ts-desc-fg);
+  font-family: var(--ts-desc-family);
+  font-size: var(--ts-desc-size);
+  line-height: var(--ts-desc-line);
+  font-weight: var(--ts-desc-weight);
+  letter-spacing: var(--ts-desc-space);
+  overflow-wrap: anywhere;
+}
+
+/* ปุ่มกระทำอยู่ใต้ข้อความเสมอ ไม่ใช่ท้ายแถวเดียวกัน มีได้ปุ่มเดียว */
+.actionRow {
+  display: flex;
+  margin-block-start: calc(var(--ts-action-gap) - var(--ts-stack));
+}
+
+/*
+ * ปุ่มปิด เป็นพี่น้องของกลุ่มข้อความ ไม่ใช่ลูกของมัน
+ * React Aria ระบุว่าลำดับใน DOM มีผลกับสิ่งที่ผู้ใช้ได้ยิน
+ * ถ้าปุ่มปิดอยู่ก่อนเนื้อหา โปรแกรมอ่านหน้าจอจะอ่านคำว่าปิดก่อนข้อความจริง
+ */
+.close {
+  flex: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--ts-icon);
+  /* สูงเท่าบรรทัดหัวข้อ ปุ่มจึงตรงแนวกับไอคอนฝั่งซ้าย */
+  block-size: var(--ts-title-line);
+  padding: var(--ntg-size-space-none);
+  border: none;
+  /*
+   * กลุ่ม toast ไม่มี token มุมโค้งเต็มของตัวเอง จึงหยิบของป้ายกลมมาใช้
+   * เพราะปุ่มปิดคือของกลมชนิดเดียวกัน ไม่ใช่ใส่ค่าดิบ (วิธีเดียวกับที่ Tabs ทำกับจุดแจ้งเตือน)
+   */
+  border-radius: 50%;
+  background: none;
+  color: var(--ts-close-color);
+  cursor: pointer;
+  appearance: none;
+  transition: color var(--ts-leave-duration) ease;
+}
+
+/*
+ * ชั้นพื้นที่แตะ มองไม่เห็น ขยายเฉพาะพื้นที่กด ไม่ขยายกล่องจริง
+ * ถ้าขยายกล่องจริง ปุ่มจะไปทับข้อความและทับขอบกล่อง
+ */
+.close::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+  min-inline-size: var(--ts-touch-target);
+  min-block-size: var(--ts-touch-target);
+}
+
+.close:hover { color: var(--ts-icon-color); }
+
+.close:focus-visible {
+  outline: none;
+  box-shadow: var(--ntg-focused-ring-default);
+}
+
+/* ═══ ชนิด 5 ค่า ทรงเดียวคือพื้นสีอ่อน ═══════════════════════════ */

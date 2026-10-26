@@ -1,43 +1,26 @@
-/**
- * Toast styles Nation Design System
- *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับไฟล์ออกแบบหน้า 19 Toasts and Banners ได้
- *
- * โครง token ที่ใช้
- *   ขนาด    --ntg-toast-width-{size} ความกว้างบนเดสก์ท็อป
- *           --ntg-toast-padding-{size} ระยะขอบเท่ากันทั้งสี่ด้าน
- *           --ntg-toast-gap-{size} ช่องไฟระหว่างไอคอน กลุ่มข้อความ และปุ่มปิด
- *           --ntg-toast-stack-{size} ระยะระหว่างหัวข้อกับข้อความรอง
- *           --ntg-toast-action-gap-{size} ระยะจากกลุ่มข้อความลงมาถึงปุ่มกระทำ
- *           --ntg-toast-icon-{size} ขนาดไอคอนบอกชนิด ปุ่มปิดใช้ค่าเดียวกัน
- *           --ntg-toast-text-width-{size} ความกว้างที่เหลือให้กลุ่มข้อความ (ค่าอนุพันธ์)
- *   มุมโค้ง  --ntg-toast-radius-{size}
- *   เงา      --ntg-shadows-bottom-md ตัวเดียว ทุกขนาดใช้เหมือนกัน
- *   ตัวอักษร หัวข้อใช้ preset label/sm md lg xl และ title/lg
- *           ข้อความรองใช้ preset body/xs xs sm md lg
- *   เคลื่อนไหว ขาเข้า --ntg-motion-duration-default (250ms) กับ --ntg-motion-easing-enter
- *           ขาออก --ntg-motion-duration-fast (150ms) กับ --ntg-motion-easing-exit
- *   ชั้นซ้อน --ntg-layer-notification (400) ชั้นสูงสุดของระบบ
- *
- * ⚠️ ห้ามตั้งความสูง ความสูงมาจากเนื้อหา คือบรรทัดหัวข้อ บวกข้อความรอง บวกระยะขอบบนล่าง
- *    tokens/scale/toast.mjs เขียนกำกับไว้ว่าไม่มีสูตรความสูงโดยตั้งใจ
- *    ถ้าตรึงความสูงไว้ ข้อความที่ตัดหลายบรรทัดจะล้นออกนอกกล่อง
- *
- * ⚠️ ความกว้างของกลุ่มข้อความใช้ flex-basis เป็น --ntg-toast-text-width-{size}
- *    ซึ่งเป็นค่าอนุพันธ์ที่ tokens/scale/toast.mjs คำนวณไว้แล้วจาก
- *    ความกว้าง ลบ ระยะขอบสองข้าง ลบ ไอคอนกับปุ่มปิด ลบ ช่องไฟสองช่อง
- *    ผูกไว้เพื่อให้ฝั่งโค้ดกับฝั่งไฟล์ออกแบบได้ตัวเลขเดียวกัน ไม่ใช่ปล่อยให้ flex เดาเอง
- *
- * ⚠️ ขาออกใช้ชั้นเวลา fast ขาเข้าใช้ชั้น default ไม่ใช่ชั้นเดียวกัน
- *    เพราะขาออกต้องเร็วกว่าหรือเท่ากับขาเข้า ซึ่งเป็นข้อที่ตลาดทำตรงกันทุกเจ้าในงานวิจัยหัวข้อ 9
- *    ถ้าสลับกัน จะรู้สึกว่าใบนั้นไม่ยอมไปตอนกดปิด
- *
- * ⚠️ 44 คือค่าคงที่ของเกณฑ์ WCAG 2.5.5 Target Size ไม่ใช่ค่าของระบบออกแบบ
- *    ประกาศไว้ที่เดียวแบบเดียวกับที่ Tabs ทำ แล้วให้ชั้นพื้นที่แตะอ้างตัวนั้น
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Toast/Toast.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 19 Toasts & Banners แล้วรัน  npm run figma:layers -- toast  และ  npm run css:generate -- toast
+ *   spec: tokens/figma-layers/toast.json (ดึง 2026-10-26)
  */
 
-/* ═══ กล่องลอยที่ยึดมุมจอ เป็นของ ToastStack ไม่ใช่ของตัวใบ ═══════ */
+/*
+ * Toast ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --ts-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/toast.json (spec ชั้นจากไฟล์ออกแบบหน้า 19)
+ * แล้วต่อท้ายไฟล์นี้เป็น Toast.module.css ห้ามแก้ Toast.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นของไฟล์นี้: มีชื่อ token อยู่บ้าง เฉพาะพฤติกรรมที่ไฟล์ออกแบบแสดงไม่ได้
+ *    คือ motion (โผล่/หาย) ชั้นซ้อน (layer) ตำแหน่งกองข้อความแจ้ง (viewport) และระยะห่างในกอง (list)
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ปุ่มปิดตอนชี้ใช้สีไอคอนของชนิดนั้น (ไฟล์ออกแบบไม่มีสถานะ hover ของปุ่มปิด) และมีพื้นที่แตะ 44px ซ่อนอยู่
+ *   2. กลุ่มข้อความยืดเต็มที่เหลือ (FILL ในไฟล์ออกแบบ) ความกว้างข้อความแจ้งมาจาก --ts-w
+ *   3. ปุ่ม action เป็น LinkButton ค่าของมันอยู่ที่ LinkButton.module.css
+ *   4. วงแหวนโฟกัสของปุ่มปิดใช้ effect style focused-ring/default โดยตรง (ไฟล์ออกแบบไม่มีสถานะโฟกัสของปุ่มปิด)
+ */
+
 
 .viewport {
   position: fixed;
@@ -48,11 +31,11 @@
    * ชั้นการวางซ้อน อ้าง token --ntg-layer-notification (400) ซึ่งเป็นชั้นสูงสุดของระบบ
    * เพราะข้อความแจ้งต้องอยู่เหนือทั้งแผงลอยและชั้นฉากทับ
    *
-   * ⚠️ --toast-layer ตั้งใจไม่ประกาศค่าไว้ จะได้ตกไปใช้ token เป็นค่าตั้งต้น
-   *    ถ้าแอปปลายทางมีชั้นที่สูงกว่านี้ ให้ตั้ง --toast-layer จากข้างนอก
+   * ⚠️ --ts-layer ตั้งใจไม่ประกาศค่าไว้ จะได้ตกไปใช้ token เป็นค่าตั้งต้น
+   *    ถ้าแอปปลายทางมีชั้นที่สูงกว่านี้ ให้ตั้ง --ts-layer จากข้างนอก
    *    แทนการแก้ไฟล์นี้ ถ้ามาประกาศค่าไว้ที่นี่ ตัวตั้งต้นจะถูกบังจนทับจากข้างนอกไม่ได้ผล
    */
-  z-index: var(--toast-layer, var(--ntg-layer-notification));
+  z-index: var(--ts-layer, var(--ntg-layer-notification));
   display: flex;
   flex-direction: column;
   /* ปล่อยให้คลิกผ่านไปโดนเนื้อหาข้างหลังได้ มีแต่ตัวใบที่รับการคลิก */
@@ -101,50 +84,32 @@
 
 .root {
   /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
-  --toast-width: var(--ntg-toast-width-md);
-  --toast-pad: var(--ntg-toast-padding-md);
-  --toast-gap: var(--ntg-toast-gap-md);
-  --toast-stack: var(--ntg-toast-stack-md);
-  --toast-action-gap: var(--ntg-toast-action-gap-md);
-  --toast-icon: var(--ntg-toast-icon-md);
-  --toast-text-width: var(--ntg-toast-text-width-md);
-  --toast-radius: var(--ntg-toast-radius-md);
-  --toast-title-family: var(--ntg-typography-font-family-label-lg);
-  --toast-title-size: var(--ntg-typography-font-size-label-lg);
-  --toast-title-line: var(--ntg-typography-line-height-label-lg);
-  --toast-title-weight: var(--ntg-typography-font-weight-label-lg);
-  --toast-title-space: var(--ntg-typography-letter-space-label-lg);
-  --toast-desc-family: var(--ntg-typography-font-family-body-sm);
-  --toast-desc-size: var(--ntg-typography-font-size-body-sm);
-  --toast-desc-line: var(--ntg-typography-line-height-body-sm);
-  --toast-desc-weight: var(--ntg-typography-font-weight-body-sm);
-  --toast-desc-space: var(--ntg-typography-letter-space-body-sm);
 
   /* เวลาและเส้นโค้งการเคลื่อนไหว อ้าง token ของระบบ ดูคำอธิบายที่หัวไฟล์ */
-  --toast-enter-duration: var(--ntg-motion-duration-default);
-  --toast-leave-duration: var(--ntg-motion-duration-fast);
-  --toast-enter-ease: var(--ntg-motion-easing-enter);
-  --toast-leave-ease: var(--ntg-motion-easing-exit);
+  --ts-enter-duration: var(--ntg-motion-duration-default);
+  --ts-leave-duration: var(--ntg-motion-duration-fast);
+  --ts-enter-ease: var(--ntg-motion-easing-enter);
+  --ts-leave-ease: var(--ntg-motion-easing-exit);
 
   /* ค่าคงที่ของเกณฑ์ WCAG 2.5.5 ไม่ใช่ค่าของระบบออกแบบ */
-  --toast-touch-target: 44px;
+  --ts-touch-target: 44px;
 
   position: relative;
   box-sizing: border-box;
-  inline-size: var(--toast-width);
+  inline-size: var(--ts-w);
   /* ห้ามตั้งความสูง ดูคำอธิบายที่หัวไฟล์ */
-  padding: var(--toast-pad);
-  border-radius: var(--toast-radius);
-  background: var(--toast-bg);
-  box-shadow: var(--ntg-shadows-bottom-md);
+  padding: var(--ts-pt, 0) var(--ts-pr, 0) var(--ts-pb, 0) var(--ts-pl, 0);
+  border-radius: var(--ts-r-tl, 0) var(--ts-r-tr, 0) var(--ts-r-br, 0) var(--ts-r-bl, 0);
+  background: var(--ts-bg);
+  box-shadow: var(--ts-shadow, 0 0 0 0 transparent);
   /* ตัวใบรับการคลิก ส่วนกล่องลอยที่ครอบอยู่ปล่อยให้คลิกผ่าน */
   pointer-events: auto;
-  animation: toast-enter var(--toast-enter-duration) var(--toast-enter-ease) both;
+  animation: toast-enter var(--ts-enter-duration) var(--ts-enter-ease) both;
 }
 
 /* ใบที่กำลังจะหาย ระยะขาออก 15 เปอร์เซ็นต์ สั้นกว่าขาเข้าที่ 50 ตามที่ Atlassian ทำ */
 .leaving {
-  animation: toast-leave var(--toast-leave-duration) var(--toast-leave-ease) both;
+  animation: toast-leave var(--ts-leave-duration) var(--ts-leave-ease) both;
 }
 
 @keyframes toast-enter {
@@ -161,7 +126,7 @@
 .row {
   display: flex;
   align-items: flex-start;
-  gap: var(--toast-gap);
+  gap: var(--ts-gap);
 }
 
 /* ไอคอนบอกชนิด กรอบล็อกสัดส่วน 1 ต่อ 1 และอยู่แนวเดียวกับบรรทัดแรกของหัวข้อ */
@@ -170,10 +135,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  inline-size: var(--toast-icon);
+  inline-size: var(--ts-icon);
   /* สูงเท่าบรรทัดหัวข้อ ไอคอนจึงอยู่กลางบรรทัดแรกพอดี ไม่ใช่ชิดขอบบนของกล่อง */
-  block-size: var(--toast-title-line);
-  color: var(--toast-icon-color);
+  block-size: var(--ts-title-line);
+  color: var(--ts-icon-color);
 }
 
 .body {
@@ -181,40 +146,40 @@
    * flex-basis เป็นค่าอนุพันธ์จาก tokens/scale/toast.mjs ดูคำอธิบายที่หัวไฟล์
    * min-inline-size 0 จำเป็น ไม่งั้นข้อความยาวจะดันกล่องให้กว้างเกิน token
    */
-  flex: 1 1 var(--toast-text-width);
+  flex: 1 1 auto;
   min-inline-size: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--toast-stack);
+  gap: var(--ts-stack);
 }
 
 .title {
   margin: var(--ntg-size-space-none);
-  color: var(--ntg-color-text-general-heading);
-  font-family: var(--toast-title-family);
-  font-size: var(--toast-title-size);
-  line-height: var(--toast-title-line);
-  font-weight: var(--toast-title-weight);
-  letter-spacing: var(--toast-title-space);
+  color: var(--ts-fg);
+  font-family: var(--ts-title-family);
+  font-size: var(--ts-title-size);
+  line-height: var(--ts-title-line);
+  font-weight: var(--ts-title-weight);
+  letter-spacing: var(--ts-title-space);
   /* ข้อความยาวตัดบรรทัดได้ ห้ามตัดคำด้วยจุดสามจุด ข้อความแจ้งต้องอ่านได้ครบ */
   overflow-wrap: anywhere;
 }
 
 .description {
   margin: var(--ntg-size-space-none);
-  color: var(--ntg-color-text-general-text);
-  font-family: var(--toast-desc-family);
-  font-size: var(--toast-desc-size);
-  line-height: var(--toast-desc-line);
-  font-weight: var(--toast-desc-weight);
-  letter-spacing: var(--toast-desc-space);
+  color: var(--ts-desc-fg);
+  font-family: var(--ts-desc-family);
+  font-size: var(--ts-desc-size);
+  line-height: var(--ts-desc-line);
+  font-weight: var(--ts-desc-weight);
+  letter-spacing: var(--ts-desc-space);
   overflow-wrap: anywhere;
 }
 
 /* ปุ่มกระทำอยู่ใต้ข้อความเสมอ ไม่ใช่ท้ายแถวเดียวกัน มีได้ปุ่มเดียว */
 .actionRow {
   display: flex;
-  margin-block-start: calc(var(--toast-action-gap) - var(--toast-stack));
+  margin-block-start: calc(var(--ts-action-gap) - var(--ts-stack));
 }
 
 /*
@@ -229,21 +194,21 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  inline-size: var(--toast-icon);
+  inline-size: var(--ts-icon);
   /* สูงเท่าบรรทัดหัวข้อ ปุ่มจึงตรงแนวกับไอคอนฝั่งซ้าย */
-  block-size: var(--toast-title-line);
+  block-size: var(--ts-title-line);
   padding: var(--ntg-size-space-none);
   border: none;
   /*
    * กลุ่ม toast ไม่มี token มุมโค้งเต็มของตัวเอง จึงหยิบของป้ายกลมมาใช้
    * เพราะปุ่มปิดคือของกลมชนิดเดียวกัน ไม่ใช่ใส่ค่าดิบ (วิธีเดียวกับที่ Tabs ทำกับจุดแจ้งเตือน)
    */
-  border-radius: var(--ntg-circular-badge-radius-full);
+  border-radius: 50%;
   background: none;
-  color: var(--ntg-icon-general-secondary);
+  color: var(--ts-close-color);
   cursor: pointer;
   appearance: none;
-  transition: color var(--toast-leave-duration) ease;
+  transition: color var(--ts-leave-duration) ease;
 }
 
 /*
@@ -256,11 +221,11 @@
   inset-block-start: 50%;
   inset-inline-start: 50%;
   translate: -50% -50%;
-  min-inline-size: var(--toast-touch-target);
-  min-block-size: var(--toast-touch-target);
+  min-inline-size: var(--ts-touch-target);
+  min-block-size: var(--ts-touch-target);
 }
 
-.close:hover { color: var(--ntg-icon-general-primary); }
+.close:hover { color: var(--ts-icon-color); }
 
 .close:focus-visible {
   outline: none;
@@ -269,180 +234,24 @@
 
 /* ═══ ชนิด 5 ค่า ทรงเดียวคือพื้นสีอ่อน ═══════════════════════════ */
 
-.typeDefault {
-  --toast-bg: var(--ntg-color-background-general-secondary);
-  --toast-icon-color: var(--ntg-icon-general-primary);
-}
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --ts-title-family: var(--ntg-typography-font-family-label-sm); --ts-title-size: var(--ntg-typography-font-size-label-sm); --ts-title-line: var(--ntg-typography-line-height-label-sm); --ts-title-weight: var(--ntg-typography-font-weight-label-sm); --ts-title-space: var(--ntg-typography-letter-space-label-sm); --ts-desc-family: var(--ntg-typography-font-family-body-xs); --ts-desc-size: var(--ntg-typography-font-size-body-xs); --ts-desc-line: var(--ntg-typography-line-height-body-xs); --ts-desc-weight: var(--ntg-typography-font-weight-body-xs); --ts-desc-space: var(--ntg-typography-letter-space-body-xs); }
+.sm { --ts-title-family: var(--ntg-typography-font-family-label-md); --ts-title-size: var(--ntg-typography-font-size-label-md); --ts-title-line: var(--ntg-typography-line-height-label-md); --ts-title-weight: var(--ntg-typography-font-weight-label-md); --ts-title-space: var(--ntg-typography-letter-space-label-md); --ts-desc-family: var(--ntg-typography-font-family-body-xs); --ts-desc-size: var(--ntg-typography-font-size-body-xs); --ts-desc-line: var(--ntg-typography-line-height-body-xs); --ts-desc-weight: var(--ntg-typography-font-weight-body-xs); --ts-desc-space: var(--ntg-typography-letter-space-body-xs); }
+.md { --ts-title-family: var(--ntg-typography-font-family-label-lg); --ts-title-size: var(--ntg-typography-font-size-label-lg); --ts-title-line: var(--ntg-typography-line-height-label-lg); --ts-title-weight: var(--ntg-typography-font-weight-label-lg); --ts-title-space: var(--ntg-typography-letter-space-label-lg); --ts-desc-family: var(--ntg-typography-font-family-body-sm); --ts-desc-size: var(--ntg-typography-font-size-body-sm); --ts-desc-line: var(--ntg-typography-line-height-body-sm); --ts-desc-weight: var(--ntg-typography-font-weight-body-sm); --ts-desc-space: var(--ntg-typography-letter-space-body-sm); }
+.lg { --ts-title-family: var(--ntg-typography-font-family-label-xl); --ts-title-size: var(--ntg-typography-font-size-label-xl); --ts-title-line: var(--ntg-typography-line-height-label-xl); --ts-title-weight: var(--ntg-typography-font-weight-label-xl); --ts-title-space: var(--ntg-typography-letter-space-label-xl); --ts-desc-family: var(--ntg-typography-font-family-body-md); --ts-desc-size: var(--ntg-typography-font-size-body-md); --ts-desc-line: var(--ntg-typography-line-height-body-md); --ts-desc-weight: var(--ntg-typography-font-weight-body-md); --ts-desc-space: var(--ntg-typography-letter-space-body-md); }
+.xl { --ts-title-family: var(--ntg-typography-font-family-title-lg); --ts-title-size: var(--ntg-typography-font-size-title-lg); --ts-title-line: var(--ntg-typography-line-height-title-lg); --ts-title-weight: var(--ntg-typography-font-weight-title-lg); --ts-title-space: var(--ntg-typography-letter-space-title-lg); --ts-desc-family: var(--ntg-typography-font-family-body-lg); --ts-desc-size: var(--ntg-typography-font-size-body-lg); --ts-desc-line: var(--ntg-typography-line-height-body-lg); --ts-desc-weight: var(--ntg-typography-font-weight-body-lg); --ts-desc-space: var(--ntg-typography-letter-space-body-lg); }
 
-.typeBrand {
-  --toast-bg: var(--ntg-color-background-brand-primary);
-  --toast-icon-color: var(--ntg-icon-brand-on-subtle);
-}
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.xs { --ts-w: var(--ntg-toast-width-xs); --ts-pt: var(--ntg-toast-padding-xs); --ts-pr: var(--ntg-toast-padding-xs); --ts-pb: var(--ntg-toast-padding-xs); --ts-pl: var(--ntg-toast-padding-xs); --ts-gap: var(--ntg-toast-gap-xs); --ts-r-tl: var(--ntg-toast-radius-xs); --ts-r-tr: var(--ntg-toast-radius-xs); --ts-r-br: var(--ntg-toast-radius-xs); --ts-r-bl: var(--ntg-toast-radius-xs); --ts-icon: var(--ntg-toast-icon-xs); --ts-action-gap: var(--ntg-toast-action-gap-xs); --ts-stack: var(--ntg-toast-stack-xs); --ts-close: var(--ntg-toast-icon-xs); }
+.root.sm { --ts-w: var(--ntg-toast-width-sm); --ts-pt: var(--ntg-toast-padding-sm); --ts-pr: var(--ntg-toast-padding-sm); --ts-pb: var(--ntg-toast-padding-sm); --ts-pl: var(--ntg-toast-padding-sm); --ts-gap: var(--ntg-toast-gap-sm); --ts-r-tl: var(--ntg-toast-radius-sm); --ts-r-tr: var(--ntg-toast-radius-sm); --ts-r-br: var(--ntg-toast-radius-sm); --ts-r-bl: var(--ntg-toast-radius-sm); --ts-icon: var(--ntg-toast-icon-sm); --ts-action-gap: var(--ntg-toast-action-gap-sm); --ts-stack: var(--ntg-toast-stack-sm); --ts-close: var(--ntg-toast-icon-sm); }
+.root.md { --ts-w: var(--ntg-toast-width-md); --ts-pt: var(--ntg-toast-padding-md); --ts-pr: var(--ntg-toast-padding-md); --ts-pb: var(--ntg-toast-padding-md); --ts-pl: var(--ntg-toast-padding-md); --ts-gap: var(--ntg-toast-gap-md); --ts-r-tl: var(--ntg-toast-radius-md); --ts-r-tr: var(--ntg-toast-radius-md); --ts-r-br: var(--ntg-toast-radius-md); --ts-r-bl: var(--ntg-toast-radius-md); --ts-icon: var(--ntg-toast-icon-md); --ts-action-gap: var(--ntg-toast-action-gap-md); --ts-stack: var(--ntg-toast-stack-md); --ts-close: var(--ntg-toast-icon-md); }
+.root.lg { --ts-w: var(--ntg-toast-width-lg); --ts-pt: var(--ntg-toast-padding-lg); --ts-pr: var(--ntg-toast-padding-lg); --ts-pb: var(--ntg-toast-padding-lg); --ts-pl: var(--ntg-toast-padding-lg); --ts-gap: var(--ntg-toast-gap-lg); --ts-r-tl: var(--ntg-toast-radius-lg); --ts-r-tr: var(--ntg-toast-radius-lg); --ts-r-br: var(--ntg-toast-radius-lg); --ts-r-bl: var(--ntg-toast-radius-lg); --ts-icon: var(--ntg-toast-icon-lg); --ts-action-gap: var(--ntg-toast-action-gap-lg); --ts-stack: var(--ntg-toast-stack-lg); --ts-close: var(--ntg-toast-icon-lg); }
+.root.xl { --ts-w: var(--ntg-toast-width-xl); --ts-pt: var(--ntg-toast-padding-xl); --ts-pr: var(--ntg-toast-padding-xl); --ts-pb: var(--ntg-toast-padding-xl); --ts-pl: var(--ntg-toast-padding-xl); --ts-gap: var(--ntg-toast-gap-xl); --ts-r-tl: var(--ntg-toast-radius-xl); --ts-r-tr: var(--ntg-toast-radius-xl); --ts-r-br: var(--ntg-toast-radius-xl); --ts-r-bl: var(--ntg-toast-radius-xl); --ts-icon: var(--ntg-toast-icon-xl); --ts-action-gap: var(--ntg-toast-action-gap-xl); --ts-stack: var(--ntg-toast-stack-xl); --ts-close: var(--ntg-toast-icon-xl); }
 
-.typeError {
-  --toast-bg: var(--ntg-color-background-system-error-primary);
-  --toast-icon-color: var(--ntg-icon-system-error-on-subtle);
-}
-
-.typeWarning {
-  --toast-bg: var(--ntg-color-background-system-warning-primary);
-  --toast-icon-color: var(--ntg-icon-system-warning-on-subtle);
-}
-
-.typeSuccess {
-  --toast-bg: var(--ntg-color-background-system-success-primary);
-  --toast-icon-color: var(--ntg-icon-system-success-on-subtle);
-}
-
-/* ═══ ขนาด 5 ขั้น ═══════════════════════════════════════════════ */
-
-.xs {
-  --toast-width: var(--ntg-toast-width-xs);
-  --toast-pad: var(--ntg-toast-padding-xs);
-  --toast-gap: var(--ntg-toast-gap-xs);
-  --toast-stack: var(--ntg-toast-stack-xs);
-  --toast-action-gap: var(--ntg-toast-action-gap-xs);
-  --toast-icon: var(--ntg-toast-icon-xs);
-  --toast-text-width: var(--ntg-toast-text-width-xs);
-  --toast-radius: var(--ntg-toast-radius-xs);
-  --toast-title-family: var(--ntg-typography-font-family-label-sm);
-  --toast-title-size: var(--ntg-typography-font-size-label-sm);
-  --toast-title-line: var(--ntg-typography-line-height-label-sm);
-  --toast-title-weight: var(--ntg-typography-font-weight-label-sm);
-  --toast-title-space: var(--ntg-typography-letter-space-label-sm);
-  --toast-desc-family: var(--ntg-typography-font-family-body-xs);
-  --toast-desc-size: var(--ntg-typography-font-size-body-xs);
-  --toast-desc-line: var(--ntg-typography-line-height-body-xs);
-  --toast-desc-weight: var(--ntg-typography-font-weight-body-xs);
-  --toast-desc-space: var(--ntg-typography-letter-space-body-xs);
-}
-
-.sm {
-  --toast-width: var(--ntg-toast-width-sm);
-  --toast-pad: var(--ntg-toast-padding-sm);
-  --toast-gap: var(--ntg-toast-gap-sm);
-  --toast-stack: var(--ntg-toast-stack-sm);
-  --toast-action-gap: var(--ntg-toast-action-gap-sm);
-  --toast-icon: var(--ntg-toast-icon-sm);
-  --toast-text-width: var(--ntg-toast-text-width-sm);
-  --toast-radius: var(--ntg-toast-radius-sm);
-  --toast-title-family: var(--ntg-typography-font-family-label-md);
-  --toast-title-size: var(--ntg-typography-font-size-label-md);
-  --toast-title-line: var(--ntg-typography-line-height-label-md);
-  --toast-title-weight: var(--ntg-typography-font-weight-label-md);
-  --toast-title-space: var(--ntg-typography-letter-space-label-md);
-  --toast-desc-family: var(--ntg-typography-font-family-body-xs);
-  --toast-desc-size: var(--ntg-typography-font-size-body-xs);
-  --toast-desc-line: var(--ntg-typography-line-height-body-xs);
-  --toast-desc-weight: var(--ntg-typography-font-weight-body-xs);
-  --toast-desc-space: var(--ntg-typography-letter-space-body-xs);
-}
-
-.md {
-  --toast-width: var(--ntg-toast-width-md);
-  --toast-pad: var(--ntg-toast-padding-md);
-  --toast-gap: var(--ntg-toast-gap-md);
-  --toast-stack: var(--ntg-toast-stack-md);
-  --toast-action-gap: var(--ntg-toast-action-gap-md);
-  --toast-icon: var(--ntg-toast-icon-md);
-  --toast-text-width: var(--ntg-toast-text-width-md);
-  --toast-radius: var(--ntg-toast-radius-md);
-  --toast-title-family: var(--ntg-typography-font-family-label-lg);
-  --toast-title-size: var(--ntg-typography-font-size-label-lg);
-  --toast-title-line: var(--ntg-typography-line-height-label-lg);
-  --toast-title-weight: var(--ntg-typography-font-weight-label-lg);
-  --toast-title-space: var(--ntg-typography-letter-space-label-lg);
-  --toast-desc-family: var(--ntg-typography-font-family-body-sm);
-  --toast-desc-size: var(--ntg-typography-font-size-body-sm);
-  --toast-desc-line: var(--ntg-typography-line-height-body-sm);
-  --toast-desc-weight: var(--ntg-typography-font-weight-body-sm);
-  --toast-desc-space: var(--ntg-typography-letter-space-body-sm);
-}
-
-.lg {
-  --toast-width: var(--ntg-toast-width-lg);
-  --toast-pad: var(--ntg-toast-padding-lg);
-  --toast-gap: var(--ntg-toast-gap-lg);
-  --toast-stack: var(--ntg-toast-stack-lg);
-  --toast-action-gap: var(--ntg-toast-action-gap-lg);
-  --toast-icon: var(--ntg-toast-icon-lg);
-  --toast-text-width: var(--ntg-toast-text-width-lg);
-  --toast-radius: var(--ntg-toast-radius-lg);
-  --toast-title-family: var(--ntg-typography-font-family-label-xl);
-  --toast-title-size: var(--ntg-typography-font-size-label-xl);
-  --toast-title-line: var(--ntg-typography-line-height-label-xl);
-  --toast-title-weight: var(--ntg-typography-font-weight-label-xl);
-  --toast-title-space: var(--ntg-typography-letter-space-label-xl);
-  --toast-desc-family: var(--ntg-typography-font-family-body-md);
-  --toast-desc-size: var(--ntg-typography-font-size-body-md);
-  --toast-desc-line: var(--ntg-typography-line-height-body-md);
-  --toast-desc-weight: var(--ntg-typography-font-weight-body-md);
-  --toast-desc-space: var(--ntg-typography-letter-space-body-md);
-}
-
-.xl {
-  --toast-width: var(--ntg-toast-width-xl);
-  --toast-pad: var(--ntg-toast-padding-xl);
-  --toast-gap: var(--ntg-toast-gap-xl);
-  --toast-stack: var(--ntg-toast-stack-xl);
-  --toast-action-gap: var(--ntg-toast-action-gap-xl);
-  --toast-icon: var(--ntg-toast-icon-xl);
-  --toast-text-width: var(--ntg-toast-text-width-xl);
-  --toast-radius: var(--ntg-toast-radius-xl);
-  --toast-title-family: var(--ntg-typography-font-family-title-lg);
-  --toast-title-size: var(--ntg-typography-font-size-title-lg);
-  --toast-title-line: var(--ntg-typography-line-height-title-lg);
-  --toast-title-weight: var(--ntg-typography-font-weight-title-lg);
-  --toast-title-space: var(--ntg-typography-letter-space-title-lg);
-  --toast-desc-family: var(--ntg-typography-font-family-body-lg);
-  --toast-desc-size: var(--ntg-typography-font-size-body-lg);
-  --toast-desc-line: var(--ntg-typography-line-height-body-lg);
-  --toast-desc-weight: var(--ntg-typography-font-weight-body-lg);
-  --toast-desc-space: var(--ntg-typography-letter-space-body-lg);
-}
-
-/* ═══ มือถือ ยืดเต็มจอ ยึดล่างกลาง ═══════════════════════════════ */
-
-/*
- * ⚠️ จุดตัด 768 ตรงกับ --ntg-grid-breakpoint-tablet-v
- *    @media อ่าน custom property ไม่ได้ตามข้อกำหนดของ CSS จึงต้องเขียนเลขตรงนี้
- *    ถ้าแก้ token ต้องมาแก้บรรทัดนี้ด้วย
- */
-@media (max-width: 767.98px) {
-  .viewport {
-    /* ยึดล่างกลาง กางเต็มความกว้างจอ ส่วนระยะขอบข้างไปอยู่ที่ตัวใบ */
-    inset-inline: 0;
-  }
-
-  .list {
-    align-items: stretch;
-  }
-
-  .root {
-    /* ยืดเต็มจอแล้วเว้นขอบข้างละเท่ากับระยะขอบของขนาดเดียวกัน */
-    inline-size: auto;
-    margin-inline: var(--toast-pad);
-  }
-
-  .body {
-    /* บนมือถือความกว้างมาจากจอ ไม่ใช่จาก token จึงปล่อยให้ยืดตาม */
-    flex: 1 1 auto;
-  }
-}
-
-/* ═══ ผู้ใช้ขอให้ลดการเคลื่อนไหว ═══════════════════════════════════ */
-
-/*
- * ปิดการเคลื่อนไหวทั้งหมด แบบเดียวกับที่ sonner ทำ
- * ส่วนการหยุดนับเวลาหายเองอยู่ฝั่ง TypeScript เพราะต้องหยุดนาฬิกาจริง ไม่ใช่แค่หยุดภาพ
- */
-@media (prefers-reduced-motion: reduce) {
-  .root,
-  .leaving {
-    animation: none;
-  }
-
-  .close {
-    transition: none;
-  }
-}
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root.typeDefault { --ts-bg: var(--ntg-color-background-general-secondary); --ts-shadow: var(--ntg-shadows-bottom-md); --ts-icon-color: var(--ntg-icon-general-primary); --ts-fg: var(--ntg-color-text-general-heading); --ts-desc-fg: var(--ntg-color-text-general-text); --ts-close-color: var(--ntg-icon-general-quaternary); }
+.root.typeBrand { --ts-bg: var(--ntg-color-background-brand-primary); --ts-shadow: var(--ntg-shadows-bottom-md); --ts-icon-color: var(--ntg-icon-brand-on-subtle); --ts-fg: var(--ntg-color-text-general-heading); --ts-desc-fg: var(--ntg-color-text-general-text); --ts-close-color: var(--ntg-icon-general-quaternary); }
+.root.typeError { --ts-bg: var(--ntg-color-background-system-error-primary); --ts-shadow: var(--ntg-shadows-bottom-md); --ts-icon-color: var(--ntg-icon-system-error-on-subtle); --ts-fg: var(--ntg-color-text-general-heading); --ts-desc-fg: var(--ntg-color-text-general-text); --ts-close-color: var(--ntg-icon-general-quaternary); }
+.root.typeWarning { --ts-bg: var(--ntg-color-background-system-warning-primary); --ts-shadow: var(--ntg-shadows-bottom-md); --ts-icon-color: var(--ntg-icon-system-warning-on-subtle); --ts-fg: var(--ntg-color-text-general-heading); --ts-desc-fg: var(--ntg-color-text-general-text); --ts-close-color: var(--ntg-icon-general-quaternary); }
+.root.typeSuccess { --ts-bg: var(--ntg-color-background-system-success-primary); --ts-shadow: var(--ntg-shadows-bottom-md); --ts-icon-color: var(--ntg-icon-system-success-on-subtle); --ts-fg: var(--ntg-color-text-general-heading); --ts-desc-fg: var(--ntg-color-text-general-text); --ts-close-color: var(--ntg-icon-general-quaternary); }

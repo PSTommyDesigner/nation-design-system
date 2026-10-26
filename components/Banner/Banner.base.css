@@ -1,0 +1,175 @@
+/*
+ * Banner ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --bn-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/banner.json (spec ชั้นจากไฟล์ออกแบบหน้า 19)
+ * แล้วต่อท้ายไฟล์นี้เป็น Banner.module.css ห้ามแก้ Banner.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ปุ่มปิดตอนชี้ใช้สีไอคอนของชนิดนั้น (ไฟล์ออกแบบไม่มีสถานะ hover ของปุ่มปิด) และมีพื้นที่แตะ 44px ซ่อนอยู่
+ *   2. แถบกว้างเต็มแถวของหน้า ไฟล์ออกแบบใช้ความกว้างตัวอย่าง 1232 จึงไม่ส่งไปโค้ด
+ *   3. ระดับ page กับ section ต่างกันที่มุมโค้ง (--bn-r-*) ตัวสร้างออกสองชุดตามแกน level
+ *   4. ปุ่ม action เป็น LinkButton ค่าของมันอยู่ที่ LinkButton.module.css
+ *   5. วงแหวนโฟกัสของปุ่มปิดใช้ effect style focused-ring/default โดยตรง (ไฟล์ออกแบบไม่มีสถานะโฟกัสของปุ่มปิด) เป็นข้อยกเว้นเดียวที่มีชื่อ token ในไฟล์นี้
+ */
+
+
+.root {
+  /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
+
+  /* ค่าคงที่ของเกณฑ์ WCAG 2.5.5 ไม่ใช่ค่าของระบบออกแบบ */
+  --bn-touch-target: 44px;
+
+  box-sizing: border-box;
+  /* ความกว้างมาจากกรอบแม่ ห้ามตั้ง inline-size ดูคำอธิบายที่หัวไฟล์ */
+  display: block;
+  padding: var(--bn-pt, 0) var(--bn-pr, 0) var(--bn-pb, 0) var(--bn-pl, 0);
+  background: var(--bn-bg);
+  border-radius: var(--bn-r-tl, 0) var(--bn-r-tr, 0) var(--bn-r-br, 0) var(--bn-r-bl, 0);
+}
+
+/* แถบรับโฟกัสจากการสั่งในโค้ด เช่นสรุปข้อผิดพลาดของฟอร์มตอนกดส่ง แต่ไม่อยู่ในลำดับ Tab */
+.root:focus {
+  outline: none;
+}
+
+/*
+ * ชั้นประกาศให้โปรแกรมอ่านหน้าจอ แยกออกจากตัวที่มองเห็นโดยตั้งใจ
+ *
+ * ⚠️ ห้ามย้าย aria-live หรือ role ไปอยู่บนกล่องที่มองเห็น
+ *    ถ้าใส่ไว้บนตัวที่มองเห็น โปรแกรมอ่านหน้าจอจะอ่านสองรอบ
+ *    รอบแรกตอน live region เปลี่ยน และรอบสองตอนผู้ใช้เลื่อนไปเจอแถบนั้น
+ *    Base Web เขียนเหตุผลนี้ไว้ในโค้ด และ Fluent 2 กับ Radix แยกออกมาแบบเดียวกัน
+ */
+.liveRegion {
+  /*
+   * ⚠️ 1px ตรงนี้เป็นค่าคงที่ของสูตรซ่อนแบบยังอ่านได้ ไม่ใช่ระยะของระบบออกแบบ
+   *    ต้องมีขนาดมากกว่า 0 ไม่งั้นเบราว์เซอร์บางตัวจะถอดออกจากต้นไม้การเข้าถึง
+   */
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: var(--ntg-size-space-none);
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── แถวบน ไอคอน กลุ่มข้อความ ปุ่มปิด ───────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bn-gap);
+}
+
+/* ไอคอนบอกชนิด กรอบล็อกสัดส่วน 1 ต่อ 1 และอยู่แนวเดียวกับบรรทัดแรกของหัวข้อ */
+.iconSlot {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--bn-icon);
+  block-size: var(--bn-title-line);
+  color: var(--bn-icon-color);
+}
+
+.body {
+  /* ยืดเต็มที่ว่างที่เหลือ min-inline-size 0 กันข้อความยาวดันแถวให้ล้น */
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bn-stack);
+}
+
+.title {
+  margin: var(--ntg-size-space-none);
+  color: var(--bn-fg);
+  font-family: var(--bn-title-family);
+  font-size: var(--bn-title-size);
+  line-height: var(--bn-title-line);
+  font-weight: var(--bn-title-weight);
+  letter-spacing: var(--bn-title-space);
+  overflow-wrap: anywhere;
+}
+
+.description {
+  margin: var(--ntg-size-space-none);
+  color: var(--bn-desc-fg);
+  font-family: var(--bn-desc-family);
+  font-size: var(--bn-desc-size);
+  line-height: var(--bn-desc-line);
+  font-weight: var(--bn-desc-weight);
+  letter-spacing: var(--bn-desc-space);
+  overflow-wrap: anywhere;
+}
+
+/*
+ * ปุ่มกระทำอยู่ใต้ข้อความเสมอ ไม่ใช่ท้ายแถวเดียวกัน มีได้ปุ่มเดียว
+ * ของเดิมวางไว้ท้ายแถว ซึ่งพอข้อความยาวหลายบรรทัดปุ่มจะลอยอยู่กลางอากาศ
+ */
+.actionRow {
+  display: flex;
+  /* หัก stack ออกเพราะ gap ของ body ใส่ระยะมาให้แล้วหนึ่งชั้น */
+  margin-block-start: calc(var(--bn-action-gap) - var(--bn-stack));
+}
+
+/*
+ * ปุ่มปิด เป็นพี่น้องของกลุ่มข้อความ ไม่ใช่ลูกของมัน
+ * React Aria ระบุว่าลำดับใน DOM มีผลกับสิ่งที่ผู้ใช้ได้ยิน
+ * ถ้าปุ่มปิดอยู่ก่อนเนื้อหา โปรแกรมอ่านหน้าจอจะอ่านคำว่าปิดก่อนข้อความจริง
+ */
+.close {
+  flex: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--bn-icon);
+  block-size: var(--bn-title-line);
+  padding: var(--ntg-size-space-none);
+  border: none;
+  /*
+   * กลุ่ม banner ไม่มี token มุมโค้งเต็มของตัวเอง จึงหยิบของป้ายกลมมาใช้
+   * เพราะปุ่มปิดคือของกลมชนิดเดียวกัน ไม่ใช่ใส่ค่าดิบ
+   */
+  border-radius: 50%;
+  background: none;
+  color: var(--bn-close-color);
+  cursor: pointer;
+  appearance: none;
+}
+
+/*
+ * ชั้นพื้นที่แตะ มองไม่เห็น ขยายเฉพาะพื้นที่กด ไม่ขยายกล่องจริง
+ * ถ้าขยายกล่องจริง ปุ่มจะไปทับข้อความและทับขอบแถบ
+ */
+.close::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+  min-inline-size: var(--bn-touch-target);
+  min-block-size: var(--bn-touch-target);
+}
+
+.close:hover { color: var(--bn-icon-color); }
+
+.close:focus-visible {
+  outline: none;
+  /* วงแหวนโฟกัสของปุ่ม ไม่ใช่เงายกตัวของแถบ แถบยังไม่มีเงาตามกฎที่หัวไฟล์ */
+  box-shadow: var(--ntg-focused-ring-default);
+}
+
+/* ═══ 2 ระดับ ต่างกันที่มุมโค้งอย่างเดียว ═══════════════════════════ */
+
+/*
+ * ระดับหน้า ยืนเต็มความกว้างบนสุดของหน้า มุมโค้ง 0
+ * ถ้าใส่มุมโค้งจะเห็นสีพื้นหลังโผล่ที่มุมแล้วดูเหมือนวางผิดที่
+ */
+/* ระดับกล่องเนื้อหา กว้างเท่าคอลัมน์ที่มันอยู่ มีมุมโค้งตามขนาด */
+/* ═══ ชนิด 5 ค่า ทรงเดียวคือพื้นสีอ่อน ═══════════════════════════ */

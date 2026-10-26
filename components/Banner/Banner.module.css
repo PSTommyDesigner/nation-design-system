@@ -1,64 +1,37 @@
-/**
- * Banner styles Nation Design System
- *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับไฟล์ออกแบบหน้า 19 Toasts and Banners ได้
- *
- * โครง token ที่ใช้
- *   ขนาด    --ntg-banner-padding-{size} ระยะขอบเท่ากันทั้งสี่ด้าน
- *           --ntg-banner-gap-{size} ช่องไฟระหว่างไอคอน กลุ่มข้อความ และปุ่มปิด
- *           --ntg-banner-stack-{size} ระยะระหว่างหัวข้อกับข้อความรอง
- *           --ntg-banner-action-gap-{size} ระยะจากกลุ่มข้อความลงมาถึงปุ่มกระทำ
- *           --ntg-banner-icon-{size} ขนาดไอคอนบอกชนิด ปุ่มปิดใช้ค่าเดียวกัน
- *   มุมโค้ง  --ntg-banner-radius-page (0) และ --ntg-banner-radius-section-{size}
- *   ตัวอักษร ชุดเดียวกับ Toast ทุกขั้น หัวข้อใช้ preset label/sm md lg xl และ title/lg
- *           ข้อความรองใช้ preset body/xs xs sm md lg
- *
- * ⚠️ ห้ามใส่เงา ทุกเจ้าในงานวิจัยไม่ใส่เงาให้แถบที่อยู่ในสายเนื้อหา
- *    เงาสื่อว่าของชิ้นนั้นลอยอยู่เหนือหน้า ซึ่งขัดกับความหมายของแถบในสายเนื้อหา
- *    ของเดิมในไฟล์ออกแบบใส่ shadows/bottom/xs ไว้ และถูกถอดออกแล้ว
- *    รวมถึงวงแหวนโฟกัสของตัวแถบเองก็ไม่มี เพราะแถบรับโฟกัสด้วยการสั่งจากโค้ดเท่านั้น
- *    ไม่ได้อยู่ในลำดับ Tab ของหน้า วงแหวนจึงไม่มีใครได้เห็น (ปุ่มข้างในมีวงแหวนของตัวเอง)
- *
- * ⚠️ ห้ามตั้งความกว้างและความสูง
- *    ความกว้างมาจากกรอบแม่เสมอ และความสูงมาจากเนื้อหา
- *    tokens/scale/banner.mjs เขียนกำกับไว้ว่าไม่มี token ของสองมิตินี้โดยตั้งใจ
- *    ถ้าตรึงไว้ ข้อความที่ตัดหลายบรรทัดจะล้นออกนอกแถบ
- *
- * ⚠️ ไม่มี token ระยะเยื้อง เพราะไอคอนอยู่คอลัมน์ของตัวเอง
- *    ข้อความรองและปุ่มกระทำจึงตรงแนวกับหัวข้อเองอยู่แล้วโดยไม่ต้องเยื้อง
- *
- * ⚠️ 44 คือค่าคงที่ของเกณฑ์ WCAG 2.5.5 Target Size ไม่ใช่ค่าของระบบออกแบบ
- *    ประกาศไว้ที่เดียวแบบเดียวกับที่ Tabs และ Toast ทำ
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Banner/Banner.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 19 Toasts & Banners แล้วรัน  npm run figma:layers -- banner  และ  npm run css:generate -- banner
+ *   spec: tokens/figma-layers/banner.json (ดึง 2026-10-26)
  */
+
+/*
+ * Banner ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --bn-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/banner.json (spec ชั้นจากไฟล์ออกแบบหน้า 19)
+ * แล้วต่อท้ายไฟล์นี้เป็น Banner.module.css ห้ามแก้ Banner.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ปุ่มปิดตอนชี้ใช้สีไอคอนของชนิดนั้น (ไฟล์ออกแบบไม่มีสถานะ hover ของปุ่มปิด) และมีพื้นที่แตะ 44px ซ่อนอยู่
+ *   2. แถบกว้างเต็มแถวของหน้า ไฟล์ออกแบบใช้ความกว้างตัวอย่าง 1232 จึงไม่ส่งไปโค้ด
+ *   3. ระดับ page กับ section ต่างกันที่มุมโค้ง (--bn-r-*) ตัวสร้างออกสองชุดตามแกน level
+ *   4. ปุ่ม action เป็น LinkButton ค่าของมันอยู่ที่ LinkButton.module.css
+ *   5. วงแหวนโฟกัสของปุ่มปิดใช้ effect style focused-ring/default โดยตรง (ไฟล์ออกแบบไม่มีสถานะโฟกัสของปุ่มปิด) เป็นข้อยกเว้นเดียวที่มีชื่อ token ในไฟล์นี้
+ */
+
 
 .root {
   /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
-  --banner-pad: var(--ntg-banner-padding-md);
-  --banner-gap: var(--ntg-banner-gap-md);
-  --banner-stack: var(--ntg-banner-stack-md);
-  --banner-action-gap: var(--ntg-banner-action-gap-md);
-  --banner-icon: var(--ntg-banner-icon-md);
-  --banner-radius-section: var(--ntg-banner-radius-section-md);
-  --banner-title-family: var(--ntg-typography-font-family-label-lg);
-  --banner-title-size: var(--ntg-typography-font-size-label-lg);
-  --banner-title-line: var(--ntg-typography-line-height-label-lg);
-  --banner-title-weight: var(--ntg-typography-font-weight-label-lg);
-  --banner-title-space: var(--ntg-typography-letter-space-label-lg);
-  --banner-desc-family: var(--ntg-typography-font-family-body-sm);
-  --banner-desc-size: var(--ntg-typography-font-size-body-sm);
-  --banner-desc-line: var(--ntg-typography-line-height-body-sm);
-  --banner-desc-weight: var(--ntg-typography-font-weight-body-sm);
-  --banner-desc-space: var(--ntg-typography-letter-space-body-sm);
 
   /* ค่าคงที่ของเกณฑ์ WCAG 2.5.5 ไม่ใช่ค่าของระบบออกแบบ */
-  --banner-touch-target: 44px;
+  --bn-touch-target: 44px;
 
   box-sizing: border-box;
   /* ความกว้างมาจากกรอบแม่ ห้ามตั้ง inline-size ดูคำอธิบายที่หัวไฟล์ */
   display: block;
-  padding: var(--banner-pad);
-  background: var(--banner-bg);
+  padding: var(--bn-pt, 0) var(--bn-pr, 0) var(--bn-pb, 0) var(--bn-pl, 0);
+  background: var(--bn-bg);
+  border-radius: var(--bn-r-tl, 0) var(--bn-r-tr, 0) var(--bn-r-br, 0) var(--bn-r-bl, 0);
 }
 
 /* แถบรับโฟกัสจากการสั่งในโค้ด เช่นสรุปข้อผิดพลาดของฟอร์มตอนกดส่ง แต่ไม่อยู่ในลำดับ Tab */
@@ -94,7 +67,7 @@
 .row {
   display: flex;
   align-items: flex-start;
-  gap: var(--banner-gap);
+  gap: var(--bn-gap);
 }
 
 /* ไอคอนบอกชนิด กรอบล็อกสัดส่วน 1 ต่อ 1 และอยู่แนวเดียวกับบรรทัดแรกของหัวข้อ */
@@ -103,9 +76,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  inline-size: var(--banner-icon);
-  block-size: var(--banner-title-line);
-  color: var(--banner-icon-color);
+  inline-size: var(--bn-icon);
+  block-size: var(--bn-title-line);
+  color: var(--bn-icon-color);
 }
 
 .body {
@@ -114,28 +87,28 @@
   min-inline-size: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--banner-stack);
+  gap: var(--bn-stack);
 }
 
 .title {
   margin: var(--ntg-size-space-none);
-  color: var(--ntg-color-text-general-heading);
-  font-family: var(--banner-title-family);
-  font-size: var(--banner-title-size);
-  line-height: var(--banner-title-line);
-  font-weight: var(--banner-title-weight);
-  letter-spacing: var(--banner-title-space);
+  color: var(--bn-fg);
+  font-family: var(--bn-title-family);
+  font-size: var(--bn-title-size);
+  line-height: var(--bn-title-line);
+  font-weight: var(--bn-title-weight);
+  letter-spacing: var(--bn-title-space);
   overflow-wrap: anywhere;
 }
 
 .description {
   margin: var(--ntg-size-space-none);
-  color: var(--ntg-color-text-general-text);
-  font-family: var(--banner-desc-family);
-  font-size: var(--banner-desc-size);
-  line-height: var(--banner-desc-line);
-  font-weight: var(--banner-desc-weight);
-  letter-spacing: var(--banner-desc-space);
+  color: var(--bn-desc-fg);
+  font-family: var(--bn-desc-family);
+  font-size: var(--bn-desc-size);
+  line-height: var(--bn-desc-line);
+  font-weight: var(--bn-desc-weight);
+  letter-spacing: var(--bn-desc-space);
   overflow-wrap: anywhere;
 }
 
@@ -146,7 +119,7 @@
 .actionRow {
   display: flex;
   /* หัก stack ออกเพราะ gap ของ body ใส่ระยะมาให้แล้วหนึ่งชั้น */
-  margin-block-start: calc(var(--banner-action-gap) - var(--banner-stack));
+  margin-block-start: calc(var(--bn-action-gap) - var(--bn-stack));
 }
 
 /*
@@ -161,17 +134,17 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  inline-size: var(--banner-icon);
-  block-size: var(--banner-title-line);
+  inline-size: var(--bn-icon);
+  block-size: var(--bn-title-line);
   padding: var(--ntg-size-space-none);
   border: none;
   /*
    * กลุ่ม banner ไม่มี token มุมโค้งเต็มของตัวเอง จึงหยิบของป้ายกลมมาใช้
    * เพราะปุ่มปิดคือของกลมชนิดเดียวกัน ไม่ใช่ใส่ค่าดิบ
    */
-  border-radius: var(--ntg-circular-badge-radius-full);
+  border-radius: 50%;
   background: none;
-  color: var(--ntg-icon-general-secondary);
+  color: var(--bn-close-color);
   cursor: pointer;
   appearance: none;
 }
@@ -186,11 +159,11 @@
   inset-block-start: 50%;
   inset-inline-start: 50%;
   translate: -50% -50%;
-  min-inline-size: var(--banner-touch-target);
-  min-block-size: var(--banner-touch-target);
+  min-inline-size: var(--bn-touch-target);
+  min-block-size: var(--bn-touch-target);
 }
 
-.close:hover { color: var(--ntg-icon-general-primary); }
+.close:hover { color: var(--bn-icon-color); }
 
 .close:focus-visible {
   outline: none;
@@ -204,135 +177,32 @@
  * ระดับหน้า ยืนเต็มความกว้างบนสุดของหน้า มุมโค้ง 0
  * ถ้าใส่มุมโค้งจะเห็นสีพื้นหลังโผล่ที่มุมแล้วดูเหมือนวางผิดที่
  */
-.levelPage {
-  border-radius: var(--ntg-banner-radius-page);
-}
-
 /* ระดับกล่องเนื้อหา กว้างเท่าคอลัมน์ที่มันอยู่ มีมุมโค้งตามขนาด */
-.levelSection {
-  border-radius: var(--banner-radius-section);
-}
-
 /* ═══ ชนิด 5 ค่า ทรงเดียวคือพื้นสีอ่อน ═══════════════════════════ */
 
-.typeDefault {
-  --banner-bg: var(--ntg-color-background-general-secondary);
-  --banner-icon-color: var(--ntg-icon-general-primary);
-}
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --bn-title-family: var(--ntg-typography-font-family-label-sm); --bn-title-size: var(--ntg-typography-font-size-label-sm); --bn-title-line: var(--ntg-typography-line-height-label-sm); --bn-title-weight: var(--ntg-typography-font-weight-label-sm); --bn-title-space: var(--ntg-typography-letter-space-label-sm); --bn-desc-family: var(--ntg-typography-font-family-body-xs); --bn-desc-size: var(--ntg-typography-font-size-body-xs); --bn-desc-line: var(--ntg-typography-line-height-body-xs); --bn-desc-weight: var(--ntg-typography-font-weight-body-xs); --bn-desc-space: var(--ntg-typography-letter-space-body-xs); }
+.sm { --bn-title-family: var(--ntg-typography-font-family-label-md); --bn-title-size: var(--ntg-typography-font-size-label-md); --bn-title-line: var(--ntg-typography-line-height-label-md); --bn-title-weight: var(--ntg-typography-font-weight-label-md); --bn-title-space: var(--ntg-typography-letter-space-label-md); --bn-desc-family: var(--ntg-typography-font-family-body-xs); --bn-desc-size: var(--ntg-typography-font-size-body-xs); --bn-desc-line: var(--ntg-typography-line-height-body-xs); --bn-desc-weight: var(--ntg-typography-font-weight-body-xs); --bn-desc-space: var(--ntg-typography-letter-space-body-xs); }
+.md { --bn-title-family: var(--ntg-typography-font-family-label-lg); --bn-title-size: var(--ntg-typography-font-size-label-lg); --bn-title-line: var(--ntg-typography-line-height-label-lg); --bn-title-weight: var(--ntg-typography-font-weight-label-lg); --bn-title-space: var(--ntg-typography-letter-space-label-lg); --bn-desc-family: var(--ntg-typography-font-family-body-sm); --bn-desc-size: var(--ntg-typography-font-size-body-sm); --bn-desc-line: var(--ntg-typography-line-height-body-sm); --bn-desc-weight: var(--ntg-typography-font-weight-body-sm); --bn-desc-space: var(--ntg-typography-letter-space-body-sm); }
+.lg { --bn-title-family: var(--ntg-typography-font-family-label-xl); --bn-title-size: var(--ntg-typography-font-size-label-xl); --bn-title-line: var(--ntg-typography-line-height-label-xl); --bn-title-weight: var(--ntg-typography-font-weight-label-xl); --bn-title-space: var(--ntg-typography-letter-space-label-xl); --bn-desc-family: var(--ntg-typography-font-family-body-md); --bn-desc-size: var(--ntg-typography-font-size-body-md); --bn-desc-line: var(--ntg-typography-line-height-body-md); --bn-desc-weight: var(--ntg-typography-font-weight-body-md); --bn-desc-space: var(--ntg-typography-letter-space-body-md); }
+.xl { --bn-title-family: var(--ntg-typography-font-family-title-lg); --bn-title-size: var(--ntg-typography-font-size-title-lg); --bn-title-line: var(--ntg-typography-line-height-title-lg); --bn-title-weight: var(--ntg-typography-font-weight-title-lg); --bn-title-space: var(--ntg-typography-letter-space-title-lg); --bn-desc-family: var(--ntg-typography-font-family-body-lg); --bn-desc-size: var(--ntg-typography-font-size-body-lg); --bn-desc-line: var(--ntg-typography-line-height-body-lg); --bn-desc-weight: var(--ntg-typography-font-weight-body-lg); --bn-desc-space: var(--ntg-typography-letter-space-body-lg); }
 
-.typeBrand {
-  --banner-bg: var(--ntg-color-background-brand-primary);
-  --banner-icon-color: var(--ntg-icon-brand-on-subtle);
-}
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.levelSection.xs { --bn-pt: var(--ntg-banner-padding-xs); --bn-pr: var(--ntg-banner-padding-xs); --bn-pb: var(--ntg-banner-padding-xs); --bn-pl: var(--ntg-banner-padding-xs); --bn-gap: var(--ntg-banner-gap-xs); --bn-r-tl: var(--ntg-banner-radius-section-xs); --bn-r-tr: var(--ntg-banner-radius-section-xs); --bn-r-br: var(--ntg-banner-radius-section-xs); --bn-r-bl: var(--ntg-banner-radius-section-xs); --bn-icon: var(--ntg-banner-icon-xs); --bn-action-gap: var(--ntg-banner-action-gap-xs); --bn-stack: var(--ntg-banner-stack-xs); --bn-close: var(--ntg-banner-icon-xs); }
+.root.levelSection.sm { --bn-pt: var(--ntg-banner-padding-sm); --bn-pr: var(--ntg-banner-padding-sm); --bn-pb: var(--ntg-banner-padding-sm); --bn-pl: var(--ntg-banner-padding-sm); --bn-gap: var(--ntg-banner-gap-sm); --bn-r-tl: var(--ntg-banner-radius-section-sm); --bn-r-tr: var(--ntg-banner-radius-section-sm); --bn-r-br: var(--ntg-banner-radius-section-sm); --bn-r-bl: var(--ntg-banner-radius-section-sm); --bn-icon: var(--ntg-banner-icon-sm); --bn-action-gap: var(--ntg-banner-action-gap-sm); --bn-stack: var(--ntg-banner-stack-sm); --bn-close: var(--ntg-banner-icon-sm); }
+.root.levelSection.md { --bn-pt: var(--ntg-banner-padding-md); --bn-pr: var(--ntg-banner-padding-md); --bn-pb: var(--ntg-banner-padding-md); --bn-pl: var(--ntg-banner-padding-md); --bn-gap: var(--ntg-banner-gap-md); --bn-r-tl: var(--ntg-banner-radius-section-md); --bn-r-tr: var(--ntg-banner-radius-section-md); --bn-r-br: var(--ntg-banner-radius-section-md); --bn-r-bl: var(--ntg-banner-radius-section-md); --bn-icon: var(--ntg-banner-icon-md); --bn-action-gap: var(--ntg-banner-action-gap-md); --bn-stack: var(--ntg-banner-stack-md); --bn-close: var(--ntg-banner-icon-md); }
+.root.levelSection.lg { --bn-pt: var(--ntg-banner-padding-lg); --bn-pr: var(--ntg-banner-padding-lg); --bn-pb: var(--ntg-banner-padding-lg); --bn-pl: var(--ntg-banner-padding-lg); --bn-gap: var(--ntg-banner-gap-lg); --bn-r-tl: var(--ntg-banner-radius-section-lg); --bn-r-tr: var(--ntg-banner-radius-section-lg); --bn-r-br: var(--ntg-banner-radius-section-lg); --bn-r-bl: var(--ntg-banner-radius-section-lg); --bn-icon: var(--ntg-banner-icon-lg); --bn-action-gap: var(--ntg-banner-action-gap-lg); --bn-stack: var(--ntg-banner-stack-lg); --bn-close: var(--ntg-banner-icon-lg); }
+.root.levelSection.xl { --bn-pt: var(--ntg-banner-padding-xl); --bn-pr: var(--ntg-banner-padding-xl); --bn-pb: var(--ntg-banner-padding-xl); --bn-pl: var(--ntg-banner-padding-xl); --bn-gap: var(--ntg-banner-gap-xl); --bn-r-tl: var(--ntg-banner-radius-section-xl); --bn-r-tr: var(--ntg-banner-radius-section-xl); --bn-r-br: var(--ntg-banner-radius-section-xl); --bn-r-bl: var(--ntg-banner-radius-section-xl); --bn-icon: var(--ntg-banner-icon-xl); --bn-action-gap: var(--ntg-banner-action-gap-xl); --bn-stack: var(--ntg-banner-stack-xl); --bn-close: var(--ntg-banner-icon-xl); }
+.root.levelPage.xs { --bn-pt: var(--ntg-banner-padding-xs); --bn-pr: var(--ntg-banner-padding-xs); --bn-pb: var(--ntg-banner-padding-xs); --bn-pl: var(--ntg-banner-padding-xs); --bn-gap: var(--ntg-banner-gap-xs); --bn-r-tl: var(--ntg-banner-radius-page); --bn-r-tr: var(--ntg-banner-radius-page); --bn-r-br: var(--ntg-banner-radius-page); --bn-r-bl: var(--ntg-banner-radius-page); --bn-icon: var(--ntg-banner-icon-xs); --bn-action-gap: var(--ntg-banner-action-gap-xs); --bn-stack: var(--ntg-banner-stack-xs); --bn-close: var(--ntg-banner-icon-xs); }
+.root.levelPage.sm { --bn-pt: var(--ntg-banner-padding-sm); --bn-pr: var(--ntg-banner-padding-sm); --bn-pb: var(--ntg-banner-padding-sm); --bn-pl: var(--ntg-banner-padding-sm); --bn-gap: var(--ntg-banner-gap-sm); --bn-r-tl: var(--ntg-banner-radius-page); --bn-r-tr: var(--ntg-banner-radius-page); --bn-r-br: var(--ntg-banner-radius-page); --bn-r-bl: var(--ntg-banner-radius-page); --bn-icon: var(--ntg-banner-icon-sm); --bn-action-gap: var(--ntg-banner-action-gap-sm); --bn-stack: var(--ntg-banner-stack-sm); --bn-close: var(--ntg-banner-icon-sm); }
+.root.levelPage.md { --bn-pt: var(--ntg-banner-padding-md); --bn-pr: var(--ntg-banner-padding-md); --bn-pb: var(--ntg-banner-padding-md); --bn-pl: var(--ntg-banner-padding-md); --bn-gap: var(--ntg-banner-gap-md); --bn-r-tl: var(--ntg-banner-radius-page); --bn-r-tr: var(--ntg-banner-radius-page); --bn-r-br: var(--ntg-banner-radius-page); --bn-r-bl: var(--ntg-banner-radius-page); --bn-icon: var(--ntg-banner-icon-md); --bn-action-gap: var(--ntg-banner-action-gap-md); --bn-stack: var(--ntg-banner-stack-md); --bn-close: var(--ntg-banner-icon-md); }
+.root.levelPage.lg { --bn-pt: var(--ntg-banner-padding-lg); --bn-pr: var(--ntg-banner-padding-lg); --bn-pb: var(--ntg-banner-padding-lg); --bn-pl: var(--ntg-banner-padding-lg); --bn-gap: var(--ntg-banner-gap-lg); --bn-r-tl: var(--ntg-banner-radius-page); --bn-r-tr: var(--ntg-banner-radius-page); --bn-r-br: var(--ntg-banner-radius-page); --bn-r-bl: var(--ntg-banner-radius-page); --bn-icon: var(--ntg-banner-icon-lg); --bn-action-gap: var(--ntg-banner-action-gap-lg); --bn-stack: var(--ntg-banner-stack-lg); --bn-close: var(--ntg-banner-icon-lg); }
+.root.levelPage.xl { --bn-pt: var(--ntg-banner-padding-xl); --bn-pr: var(--ntg-banner-padding-xl); --bn-pb: var(--ntg-banner-padding-xl); --bn-pl: var(--ntg-banner-padding-xl); --bn-gap: var(--ntg-banner-gap-xl); --bn-r-tl: var(--ntg-banner-radius-page); --bn-r-tr: var(--ntg-banner-radius-page); --bn-r-br: var(--ntg-banner-radius-page); --bn-r-bl: var(--ntg-banner-radius-page); --bn-icon: var(--ntg-banner-icon-xl); --bn-action-gap: var(--ntg-banner-action-gap-xl); --bn-stack: var(--ntg-banner-stack-xl); --bn-close: var(--ntg-banner-icon-xl); }
 
-.typeError {
-  --banner-bg: var(--ntg-color-background-system-error-primary);
-  --banner-icon-color: var(--ntg-icon-system-error-on-subtle);
-}
-
-.typeWarning {
-  --banner-bg: var(--ntg-color-background-system-warning-primary);
-  --banner-icon-color: var(--ntg-icon-system-warning-on-subtle);
-}
-
-.typeSuccess {
-  --banner-bg: var(--ntg-color-background-system-success-primary);
-  --banner-icon-color: var(--ntg-icon-system-success-on-subtle);
-}
-
-/* ═══ ขนาด 5 ขั้น ═══════════════════════════════════════════════ */
-
-.xs {
-  --banner-pad: var(--ntg-banner-padding-xs);
-  --banner-gap: var(--ntg-banner-gap-xs);
-  --banner-stack: var(--ntg-banner-stack-xs);
-  --banner-action-gap: var(--ntg-banner-action-gap-xs);
-  --banner-icon: var(--ntg-banner-icon-xs);
-  --banner-radius-section: var(--ntg-banner-radius-section-xs);
-  --banner-title-family: var(--ntg-typography-font-family-label-sm);
-  --banner-title-size: var(--ntg-typography-font-size-label-sm);
-  --banner-title-line: var(--ntg-typography-line-height-label-sm);
-  --banner-title-weight: var(--ntg-typography-font-weight-label-sm);
-  --banner-title-space: var(--ntg-typography-letter-space-label-sm);
-  --banner-desc-family: var(--ntg-typography-font-family-body-xs);
-  --banner-desc-size: var(--ntg-typography-font-size-body-xs);
-  --banner-desc-line: var(--ntg-typography-line-height-body-xs);
-  --banner-desc-weight: var(--ntg-typography-font-weight-body-xs);
-  --banner-desc-space: var(--ntg-typography-letter-space-body-xs);
-}
-
-.sm {
-  --banner-pad: var(--ntg-banner-padding-sm);
-  --banner-gap: var(--ntg-banner-gap-sm);
-  --banner-stack: var(--ntg-banner-stack-sm);
-  --banner-action-gap: var(--ntg-banner-action-gap-sm);
-  --banner-icon: var(--ntg-banner-icon-sm);
-  --banner-radius-section: var(--ntg-banner-radius-section-sm);
-  --banner-title-family: var(--ntg-typography-font-family-label-md);
-  --banner-title-size: var(--ntg-typography-font-size-label-md);
-  --banner-title-line: var(--ntg-typography-line-height-label-md);
-  --banner-title-weight: var(--ntg-typography-font-weight-label-md);
-  --banner-title-space: var(--ntg-typography-letter-space-label-md);
-  --banner-desc-family: var(--ntg-typography-font-family-body-xs);
-  --banner-desc-size: var(--ntg-typography-font-size-body-xs);
-  --banner-desc-line: var(--ntg-typography-line-height-body-xs);
-  --banner-desc-weight: var(--ntg-typography-font-weight-body-xs);
-  --banner-desc-space: var(--ntg-typography-letter-space-body-xs);
-}
-
-.md {
-  --banner-pad: var(--ntg-banner-padding-md);
-  --banner-gap: var(--ntg-banner-gap-md);
-  --banner-stack: var(--ntg-banner-stack-md);
-  --banner-action-gap: var(--ntg-banner-action-gap-md);
-  --banner-icon: var(--ntg-banner-icon-md);
-  --banner-radius-section: var(--ntg-banner-radius-section-md);
-  --banner-title-family: var(--ntg-typography-font-family-label-lg);
-  --banner-title-size: var(--ntg-typography-font-size-label-lg);
-  --banner-title-line: var(--ntg-typography-line-height-label-lg);
-  --banner-title-weight: var(--ntg-typography-font-weight-label-lg);
-  --banner-title-space: var(--ntg-typography-letter-space-label-lg);
-  --banner-desc-family: var(--ntg-typography-font-family-body-sm);
-  --banner-desc-size: var(--ntg-typography-font-size-body-sm);
-  --banner-desc-line: var(--ntg-typography-line-height-body-sm);
-  --banner-desc-weight: var(--ntg-typography-font-weight-body-sm);
-  --banner-desc-space: var(--ntg-typography-letter-space-body-sm);
-}
-
-.lg {
-  --banner-pad: var(--ntg-banner-padding-lg);
-  --banner-gap: var(--ntg-banner-gap-lg);
-  --banner-stack: var(--ntg-banner-stack-lg);
-  --banner-action-gap: var(--ntg-banner-action-gap-lg);
-  --banner-icon: var(--ntg-banner-icon-lg);
-  --banner-radius-section: var(--ntg-banner-radius-section-lg);
-  --banner-title-family: var(--ntg-typography-font-family-label-xl);
-  --banner-title-size: var(--ntg-typography-font-size-label-xl);
-  --banner-title-line: var(--ntg-typography-line-height-label-xl);
-  --banner-title-weight: var(--ntg-typography-font-weight-label-xl);
-  --banner-title-space: var(--ntg-typography-letter-space-label-xl);
-  --banner-desc-family: var(--ntg-typography-font-family-body-md);
-  --banner-desc-size: var(--ntg-typography-font-size-body-md);
-  --banner-desc-line: var(--ntg-typography-line-height-body-md);
-  --banner-desc-weight: var(--ntg-typography-font-weight-body-md);
-  --banner-desc-space: var(--ntg-typography-letter-space-body-md);
-}
-
-.xl {
-  --banner-pad: var(--ntg-banner-padding-xl);
-  --banner-gap: var(--ntg-banner-gap-xl);
-  --banner-stack: var(--ntg-banner-stack-xl);
-  --banner-action-gap: var(--ntg-banner-action-gap-xl);
-  --banner-icon: var(--ntg-banner-icon-xl);
-  --banner-radius-section: var(--ntg-banner-radius-section-xl);
-  --banner-title-family: var(--ntg-typography-font-family-title-lg);
-  --banner-title-size: var(--ntg-typography-font-size-title-lg);
-  --banner-title-line: var(--ntg-typography-line-height-title-lg);
-  --banner-title-weight: var(--ntg-typography-font-weight-title-lg);
-  --banner-title-space: var(--ntg-typography-letter-space-title-lg);
-  --banner-desc-family: var(--ntg-typography-font-family-body-lg);
-  --banner-desc-size: var(--ntg-typography-font-size-body-lg);
-  --banner-desc-line: var(--ntg-typography-line-height-body-lg);
-  --banner-desc-weight: var(--ntg-typography-font-weight-body-lg);
-  --banner-desc-space: var(--ntg-typography-letter-space-body-lg);
-}
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root.typeDefault { --bn-bg: var(--ntg-color-background-general-secondary); --bn-shadow: 0 0 0 0 transparent; --bn-icon-color: var(--ntg-icon-general-primary); --bn-fg: var(--ntg-color-text-general-heading); --bn-desc-fg: var(--ntg-color-text-general-text); --bn-close-color: var(--ntg-icon-general-quaternary); }
+.root.typeBrand { --bn-bg: var(--ntg-color-background-brand-primary); --bn-shadow: 0 0 0 0 transparent; --bn-icon-color: var(--ntg-icon-brand-on-subtle); --bn-fg: var(--ntg-color-text-general-heading); --bn-desc-fg: var(--ntg-color-text-general-text); --bn-close-color: var(--ntg-icon-general-quaternary); }
+.root.typeError { --bn-bg: var(--ntg-color-background-system-error-primary); --bn-shadow: 0 0 0 0 transparent; --bn-icon-color: var(--ntg-icon-system-error-on-subtle); --bn-fg: var(--ntg-color-text-general-heading); --bn-desc-fg: var(--ntg-color-text-general-text); --bn-close-color: var(--ntg-icon-general-quaternary); }
+.root.typeWarning { --bn-bg: var(--ntg-color-background-system-warning-primary); --bn-shadow: 0 0 0 0 transparent; --bn-icon-color: var(--ntg-icon-system-warning-on-subtle); --bn-fg: var(--ntg-color-text-general-heading); --bn-desc-fg: var(--ntg-color-text-general-text); --bn-close-color: var(--ntg-icon-general-quaternary); }
+.root.typeSuccess { --bn-bg: var(--ntg-color-background-system-success-primary); --bn-shadow: 0 0 0 0 transparent; --bn-icon-color: var(--ntg-icon-system-success-on-subtle); --bn-fg: var(--ntg-color-text-general-heading); --bn-desc-fg: var(--ntg-color-text-general-text); --bn-close-color: var(--ntg-icon-general-quaternary); }

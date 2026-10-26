@@ -1,0 +1,778 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "19 Toasts & Banners",
+ "reference": "Toast Component Previews",
+ "sets": {
+  "toast": {
+   "defs": {
+    "show-icon": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-support": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-action": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-close": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "type": ["default","brand","error","warning","success"],
+    "size": ["xs","sm","md","lg","xl"]
+   },
+   "layout": {
+    "xs": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "toast/gap/xs",
+     "p": ["toast/padding/xs","toast/padding/xs","toast/padding/xs","toast/padding/xs"],
+     "s": ["FIXED","HUG"],
+     "w": "toast/width/xs",
+     "r": ["toast/radius/xs","toast/radius/xs","toast/radius/xs","toast/radius/xs"],
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/xs",
+       "h": "toast/icon/xs",
+       "clip": true,
+       "ref": {
+        "visible": "show-icon"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "toast/action-gap/xs",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "text",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "toast/stack/xs",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ch": [
+          {
+           "n": "title",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/sm"
+          },
+          {
+           "n": "support",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/xs",
+           "ref": {
+            "visible": "show-support"
+           }
+          }
+         ]
+        },
+        {
+         "n": "action",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "link-button/gap/xs",
+         "p": ["link-button/padding/top/xs","link-button/padding/right/xs","link-button/padding/bottom/xs","link-button/padding/left/xs"],
+         "s": ["HUG","HUG"],
+         "clip": true,
+         "ref": {
+          "visible": "show-action"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "link-button/icon/xs",
+           "h": "link-button/icon/xs",
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "L Icon"
+           },
+           "ch": [
+            {
+             "n": "social-&-brand/link",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "Swap L Icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "close",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/xs",
+       "h": "toast/icon/xs",
+       "clip": true,
+       "ref": {
+        "visible": "show-close"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "toast/gap/sm",
+     "p": ["toast/padding/sm","toast/padding/sm","toast/padding/sm","toast/padding/sm"],
+     "s": ["FIXED","HUG"],
+     "w": "toast/width/sm",
+     "r": ["toast/radius/sm","toast/radius/sm","toast/radius/sm","toast/radius/sm"],
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/sm",
+       "h": "toast/icon/sm",
+       "clip": true,
+       "ref": {
+        "visible": "show-icon"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "toast/action-gap/sm",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "text",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "toast/stack/sm",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ch": [
+          {
+           "n": "title",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/md"
+          },
+          {
+           "n": "support",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/xs",
+           "ref": {
+            "visible": "show-support"
+           }
+          }
+         ]
+        },
+        {
+         "n": "action",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "link-button/gap/sm",
+         "p": ["link-button/padding/top/sm","link-button/padding/right/sm","link-button/padding/bottom/sm","link-button/padding/left/sm"],
+         "s": ["HUG","HUG"],
+         "clip": true,
+         "ref": {
+          "visible": "show-action"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "link-button/icon/sm",
+           "h": "link-button/icon/sm",
+           "vis": false,
+           "ref": {
+            "visible": "L Icon"
+           },
+           "ch": [
+            {
+             "n": "social-&-brand/link",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "Swap L Icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "close",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/sm",
+       "h": "toast/icon/sm",
+       "clip": true,
+       "ref": {
+        "visible": "show-close"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "toast/gap/md",
+     "p": ["toast/padding/md","toast/padding/md","toast/padding/md","toast/padding/md"],
+     "s": ["FIXED","HUG"],
+     "w": "toast/width/md",
+     "r": ["toast/radius/md","toast/radius/md","toast/radius/md","toast/radius/md"],
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/md",
+       "h": "toast/icon/md",
+       "clip": true,
+       "ref": {
+        "visible": "show-icon"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "toast/action-gap/md",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "text",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "toast/stack/md",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ch": [
+          {
+           "n": "title",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/lg"
+          },
+          {
+           "n": "support",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/sm",
+           "ref": {
+            "visible": "show-support"
+           }
+          }
+         ]
+        },
+        {
+         "n": "action",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "link-button/gap/md",
+         "p": ["link-button/padding/top/md","link-button/padding/right/md","link-button/padding/bottom/md","link-button/padding/left/md"],
+         "s": ["HUG","HUG"],
+         "clip": true,
+         "ref": {
+          "visible": "show-action"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "link-button/icon/md",
+           "h": "link-button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L Icon"
+           },
+           "ch": [
+            {
+             "n": "social-&-brand/link",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "Swap L Icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "close",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/md",
+       "h": "toast/icon/md",
+       "clip": true,
+       "ref": {
+        "visible": "show-close"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "toast/gap/lg",
+     "p": ["toast/padding/lg","toast/padding/lg","toast/padding/lg","toast/padding/lg"],
+     "s": ["FIXED","HUG"],
+     "w": "toast/width/lg",
+     "r": ["toast/radius/lg","toast/radius/lg","toast/radius/lg","toast/radius/lg"],
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/lg",
+       "h": "toast/icon/lg",
+       "clip": true,
+       "ref": {
+        "visible": "show-icon"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "toast/action-gap/lg",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "text",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "toast/stack/lg",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ch": [
+          {
+           "n": "title",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::label/xl"
+          },
+          {
+           "n": "support",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/md",
+           "ref": {
+            "visible": "show-support"
+           }
+          }
+         ]
+        },
+        {
+         "n": "action",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "link-button/gap/lg",
+         "p": ["link-button/padding/top/lg","link-button/padding/right/lg","link-button/padding/bottom/lg","link-button/padding/left/lg"],
+         "s": ["HUG","HUG"],
+         "clip": true,
+         "ref": {
+          "visible": "show-action"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "link-button/icon/lg",
+           "h": "link-button/icon/lg",
+           "vis": false,
+           "ref": {
+            "visible": "L Icon"
+           },
+           "ch": [
+            {
+             "n": "social-&-brand/link",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "Swap L Icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "close",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/lg",
+       "h": "toast/icon/lg",
+       "clip": true,
+       "ref": {
+        "visible": "show-close"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "toast/gap/xl",
+     "p": ["toast/padding/xl","toast/padding/xl","toast/padding/xl","toast/padding/xl"],
+     "s": ["FIXED","HUG"],
+     "w": "toast/width/xl",
+     "r": ["toast/radius/xl","toast/radius/xl","toast/radius/xl","toast/radius/xl"],
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/xl",
+       "h": "toast/icon/xl",
+       "clip": true,
+       "ref": {
+        "visible": "show-icon"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "content",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "toast/action-gap/xl",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "text",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "toast/stack/xl",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ch": [
+          {
+           "n": "title",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/lg"
+          },
+          {
+           "n": "support",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/lg",
+           "ref": {
+            "visible": "show-support"
+           }
+          }
+         ]
+        },
+        {
+         "n": "action",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "link-button/gap/xl",
+         "p": ["link-button/padding/top/xl","link-button/padding/right/xl","link-button/padding/bottom/xl","link-button/padding/left/xl"],
+         "s": ["HUG","HUG"],
+         "clip": true,
+         "ref": {
+          "visible": "show-action"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "link-button/icon/xl",
+           "h": "link-button/icon/xl",
+           "vis": false,
+           "ref": {
+            "visible": "L Icon"
+           },
+           "ch": [
+            {
+             "n": "social-&-brand/link",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "Swap L Icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "close",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "toast/icon/xl",
+       "h": "toast/icon/xl",
+       "clip": true,
+       "ref": {
+        "visible": "show-close"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Toast Component Previews": {
+     "type=default": 0,
+     "type=brand": 1,
+     "type=error": 2,
+     "type=warning": 3,
+     "type=success": 4
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "(root)": {
+    "fills": ["color/background/general/secondary"],
+    "fx": "effect::shadows/bottom/md"
+   },
+   "icon/vector": {
+    "fills": ["icon/general/primary"]
+   },
+   "content/text/title": {
+    "fills": ["color/text/general/heading"]
+   },
+   "content/text/support": {
+    "fills": ["color/text/general/text"]
+   },
+   "close/vector": {
+    "fills": ["icon/general/quaternary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/brand/primary"],
+    "fx": "effect::shadows/bottom/md"
+   },
+   "icon/vector": {
+    "fills": ["icon/brand/on-subtle"]
+   },
+   "content/text/title": {
+    "fills": ["color/text/general/heading"]
+   },
+   "content/text/support": {
+    "fills": ["color/text/general/text"]
+   },
+   "close/vector": {
+    "fills": ["icon/general/quaternary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/system/error-primary"],
+    "fx": "effect::shadows/bottom/md"
+   },
+   "icon/vector": {
+    "fills": ["icon/system/error-on-subtle"]
+   },
+   "content/text/title": {
+    "fills": ["color/text/general/heading"]
+   },
+   "content/text/support": {
+    "fills": ["color/text/general/text"]
+   },
+   "close/vector": {
+    "fills": ["icon/general/quaternary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/system/warning-primary"],
+    "fx": "effect::shadows/bottom/md"
+   },
+   "icon/vector": {
+    "fills": ["icon/system/warning-on-subtle"]
+   },
+   "content/text/title": {
+    "fills": ["color/text/general/heading"]
+   },
+   "content/text/support": {
+    "fills": ["color/text/general/text"]
+   },
+   "close/vector": {
+    "fills": ["icon/general/quaternary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/system/success-primary"],
+    "fx": "effect::shadows/bottom/md"
+   },
+   "icon/vector": {
+    "fills": ["icon/system/success-on-subtle"]
+   },
+   "content/text/title": {
+    "fills": ["color/text/general/heading"]
+   },
+   "content/text/support": {
+    "fills": ["color/text/general/text"]
+   },
+   "close/vector": {
+    "fills": ["icon/general/quaternary"]
+   }
+  }
+ ]
+}

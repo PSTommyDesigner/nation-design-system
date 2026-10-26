@@ -194,5 +194,30 @@
     "layoutAxes": [
       "type"
     ]
+  },
+  "toast": {
+    "page": "19 Toasts & Banners",
+    "depth": 5,
+    "reference": "Toast Component Previews",
+    "families": [
+      "Toast Component Previews"
+    ],
+    "sets": [
+      "toast"
+    ]
+  },
+  "banner": {
+    "page": "19 Toasts & Banners",
+    "depth": 5,
+    "reference": "Banner Component Previews",
+    "families": [
+      "Banner Component Previews"
+    ],
+    "sets": [
+      "banner"
+    ],
+    "layoutAxes": [
+      "level"
+    ]
   }
 }

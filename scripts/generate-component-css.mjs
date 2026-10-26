@@ -637,7 +637,61 @@ const DIVIDER = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Toast กับ Banner: หน้า 19 โครงเดียวกัน (ไอคอน + กลุ่มข้อความ + ปุ่มลิงก์ + ปุ่มปิด) แกน type 5 ชนิดคือสี
+//   Toast กว้างตายตัวต่อขนาด (toast/width) มีเงา · Banner กว้างเต็มแถว ไม่มีเงา มีแกน level (page ไม่มีมุมโค้ง section มี)
+//   ปุ่ม action เป็น instance ของ link-button ค่าข้างในเป็นของ LinkButton ไม่ใช่ของ component นี้
+// ═══════════════════════════════════════════════════════════════════════════════
+const typeClass = (v) => '.type' + v.charAt(0).toUpperCase() + v.slice(1)
+const notice = (px, specFile, baseFile, outFile, extra = {}) => ({
+  specFile, baseFile, outFile,
+  familyClass: () => '',
+  axisClass: { type: typeClass },
+  stateSelector: { default: (sel) => sel },
+  layers: {
+    '(root)': (n, W) => ({
+      ...(typeof n.w === 'string' ? { [`--${px}-w`]: W(n.w) } : {}),   // banner กว้างเต็มแถว (ค่าดิบในตัวอย่าง) ไม่ส่งไปโค้ด
+      [`--${px}-pt`]: W(n.p[0]), [`--${px}-pr`]: W(n.p[1]), [`--${px}-pb`]: W(n.p[2]), [`--${px}-pl`]: W(n.p[3]),
+      [`--${px}-gap`]: W(n.g),
+      ...(n.r ? { [`--${px}-r-tl`]: W(n.r[0]), [`--${px}-r-tr`]: W(n.r[1]), [`--${px}-r-br`]: W(n.r[2]), [`--${px}-r-bl`]: W(n.r[3]) } : {}),
+    }),
+    'icon': (n, W) => ({ [`--${px}-icon`]: W(n.w) }),
+    'icon/**': () => ({}),
+    'content': (n, W) => ({ [`--${px}-action-gap`]: W(n.g) }),
+    'content/text': (n, W) => ({ [`--${px}-stack`]: W(n.g) }),
+    'content/text/title': () => ({}),
+    'content/text/support': () => ({}),
+    'content/action': () => ({}),
+    'content/action/**': () => ({}),
+    'close': (n, W) => ({ [`--${px}-close`]: W(n.w) }),
+    'close/**': () => ({}),
+  },
+  text: [
+    { layers: ['content/text/title'], vars: { [`--${px}-title-family`]: 'font-family', [`--${px}-title-size`]: 'font-size', [`--${px}-title-line`]: 'line-height', [`--${px}-title-weight`]: 'font-weight', [`--${px}-title-space`]: 'letter-space' } },
+    { layers: ['content/text/support'], vars: { [`--${px}-desc-family`]: 'font-family', [`--${px}-desc-size`]: 'font-size', [`--${px}-desc-line`]: 'line-height', [`--${px}-desc-weight`]: 'font-weight', [`--${px}-desc-space`]: 'letter-space' } },
+  ],
+  colors: {
+    '(root)': (c, W) => ({ [`--${px}-bg`]: W(c.fills[0]), [`--${px}-shadow`]: effectVar(c.fx, `${px} effect`) }),
+    'icon/vector': (c, W) => ({ [`--${px}-icon-color`]: W(c.fills[0]) }),
+    'content/text/title': (c, W) => ({ [`--${px}-fg`]: W(c.fills[0]) }),
+    'content/text/support': (c, W) => ({ [`--${px}-desc-fg`]: W(c.fills[0]) }),
+    'close/vector': (c, W) => ({ [`--${px}-close-color`]: W(c.fills[0]) }),
+    'content/action/**': () => ({}),
+  },
+  ...extra,
+})
+const TOAST = notice('ts', 'tokens/figma-layers/toast.json', 'components/Toast/Toast.base.css', 'components/Toast/Toast.module.css', {
+  sets: { 'toast': { classes: '.root' } },
+})
+const BANNER = notice('bn', 'tokens/figma-layers/banner.json', 'components/Banner/Banner.base.css', 'components/Banner/Banner.module.css', {
+  sets: { 'banner': { classes: '.root' } },
+  layoutVariants: [
+    { key: (size) => `${size}, level=section`, cls: '.levelSection' },
+    { key: (size) => `${size}, level=page`, cls: '.levelPage' },
+  ],
+})
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -656,8 +710,8 @@ const spec = JSON.parse(fs.readFileSync(path.join(ROOT, M.specFile), 'utf8'))
 // component ที่มีไม่ครบ 5 ขนาด (เช่น ช่องกรอกมี sm md lg) ประกาศ sizes ในตารางจับคู่
 const SIZES = M.sizes || ['xs', 'sm', 'md', 'lg', 'xl']
 // ชุดที่ประกาศ layoutAxes ตอนดึง (เช่น checked) จะมี key แบบ "md, checked=true" ตารางจับคู่เลือกด้วย layoutKey
-const L = (set, size) => {
-  const key = M.layoutKey ? M.layoutKey(size) : size
+const L = (set, size, keyFn = M.layoutKey) => {
+  const key = keyFn ? keyFn(size) : size
   if (!set.layout[key]) errors.push(`ไม่มีโครง "${key}" ใน spec (มี ${Object.keys(set.layout).slice(0, 4).join(' | ')} …)`)
   return set.layout[key] || { t: 'COMPONENT' }
 }
@@ -679,7 +733,7 @@ for (const size of textGroups.length ? SIZES : []) {
     let ts = null
     for (const [setName, set] of Object.entries(spec.sets)) {
       if (M.sets[setName]?.ignoreLayout) continue
-      walk(L(set, size), '', (key, n) => {
+      walk(L(set, size, (M.layoutVariants || [{ key: M.layoutKey }])[0].key), '', (key, n) => {
         if (n.ts && g.layers.includes(key)) {
           if (ts && ts !== n.ts) errors.push(`${setName} ${size} ${key}: text style ${n.ts} ไม่ตรงกับชุดอื่น (${ts})`)
           ts = n.ts
@@ -700,9 +754,10 @@ for (const [setName, set] of Object.entries(spec.sets)) {
   const map = M.sets[setName]
   if (!map) { errors.push(`ชุด ${setName} ไม่มีในตารางจับคู่ sets`); continue }
   if (map.ignoreLayout) continue   // ชุดที่โค้ดไม่ได้วาดตามโครง (เช่น ลูกศรต้นแบบของคำใบ้ที่โค้ดวาดด้วย clip-path)
-  for (const size of SIZES) {
+  // โครงหลายแบบต่อขนาดตามแกน (เช่น banner ระดับ page กับ section ต่างกันที่มุมโค้ง) ประกาศ layoutVariants [{ key, cls }]
+  for (const lv of (M.layoutVariants || [{ key: M.layoutKey, cls: '' }])) for (const size of SIZES) {
     const vars = {}
-    walk(L(set, size), '', (key, n) => {
+    walk(L(set, size, lv.key), '', (key, n) => {
       const fn = lookup(M.layers, key)
       if (!fn) { errors.push(`${setName} ${size}: ไม่รู้จักชั้น "${key}" (เพิ่มในตาราง layers)`); return }
       // ชั้นที่ซ่อนไว้ในตัวอย่าง (เช่น ไอคอนที่ปิดด้วย property) ยังต้องการค่า ส่วนชั้นที่ซ่อนแล้วไม่มีผลกับโค้ดให้ข้าม
@@ -716,7 +771,7 @@ for (const [setName, set] of Object.entries(spec.sets)) {
       vars[prop] = toVar(name, `${setName} ${size} extras ${prop}`)
     }
     for (const cls of [].concat(map.classes)) {
-      const sel = size === 'one' ? cls : `${cls}.${size}`   // component ที่ไม่มีแกนขนาดใช้ key "one" ไม่ต้องมีคลาสขนาด
+      const sel = size === 'one' ? `${cls}${lv.cls}` : `${cls}${lv.cls}.${size}`   // component ที่ไม่มีแกนขนาดใช้ key "one" ไม่ต้องมีคลาสขนาด
       const cur = layoutBySel.get(sel) || {}
       for (const [k, v] of Object.entries(vars)) {
         if (k in cur && cur[k] !== v) errors.push(`${sel} ${k}: ชุด ${setName} ให้ ${v} แต่ชุดก่อนหน้าให้ ${cur[k]} (ไฟล์ออกแบบสองชุดไม่ตรงกัน)`)
