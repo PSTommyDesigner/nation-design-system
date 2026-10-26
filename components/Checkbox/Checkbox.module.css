@@ -1,40 +1,46 @@
-/**
- * Checkbox styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Checkbox/Checkbox.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 15 Checkbox แล้วรัน  npm run figma:layers -- checkbox  และ  npm run css:generate -- checkbox
+ *   spec: tokens/figma-layers/checkbox.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Checkbox ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 15 Checkbox ได้
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --cb-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/checkbox.json (spec ชั้นจากไฟล์ออกแบบหน้า 15)
+ * แล้วต่อท้ายไฟล์นี้เป็น Checkbox.module.css ห้ามแก้ Checkbox.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ภาพกล่องติ๊ก --ntg-checkbox-size-{ขนาด} · icon-{ขนาด} · border · radius-{มุม}-{ขนาด}
- *   แถวที่กดได้   --ntg-checkbox-row-height-{ขนาด} · row-height-touch · gap · indent-{ขนาด}
- *   ตัวอักษร      --ntg-typography-{font-size|line-height|font-weight}-label-{ขนาด} และ body-{ขนาด}
- *   สี            --ntg-color-background-* · --ntg-color-border-* · --ntg-color-text-general-* · --ntg-icon-*
- *
- * ⚠️ เครื่องหมายเต็มกล่องพอดี ไม่มีระยะขอบใน (สูตรที่ tokens/scale/checkbox.mjs)
- *    ห้ามบีบขนาดเครื่องหมายเอง ถ้าอยากให้เล็กกว่ากล่องต้องเพิ่ม token ระยะขอบในก่อน
- *
- * ⚠️ ความสูงแถวอ้างสเกลความสูงตัวควบคุมกลาง ห้ามพิมพ์ค่าตายทับ
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบใช้ box-shadow แบบ inset (ไฟล์ออกแบบใช้ stroke แบบ INSIDE) รวมกับวงแหวนโฟกัสใน box-shadow เดียว
+ *      เครื่องหมายจึงวางที่ inset 0 ของกล่องได้เลย ไม่ต้องถอยเท่าความหนาเส้น
+ *   2. สถานะในไฟล์ออกแบบเป็นแกน (checked / state) ฝั่งเว็บเป็น data attribute ของ wrapper
+ *      hover อยู่ที่แถว (label) โฟกัสอยู่ที่ input ที่ซ่อน ตัวสร้างจึงเลือกด้วย :has()
+ *   3. สถานะกด (:active) ไม่มีในไฟล์ออกแบบ แต่มี token ชุด pressed ตัวสร้าง derive ค่า --cb-*-pressed จากชื่อ token ของสถานะ default
+ *   4. input จริงซ่อนด้วยสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ (1px) ไม่ใช่ค่าออกแบบ
+ *   5. พื้นที่แตะขั้นต่ำ 48px บนอุปกรณ์สัมผัส (เกณฑ์ 48dp ของ Android ครอบ 44pt ของ Apple) เป็นเกณฑ์แพลตฟอร์ม ไม่ใช่ค่าจากไฟล์ออกแบบ
+ *      แถวในไฟล์ออกแบบสูงเท่าเนื้อหา (HUG) จึงไม่มีความสูงแถวต่อขนาดในนี้
  */
 
 .root {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--ntg-checkbox-gap);
-  font-family: var(--ntg-typography-font-family-primary);
-  color: var(--ntg-color-text-general-label);
+  gap: var(--cb-gap, 0);
+  color: var(--cb-fg, inherit);
+  font-family: var(--cb-font-family);
+  font-size: var(--cb-font-size);
+  line-height: var(--cb-line-height);
+  font-weight: var(--cb-font-weight);
+  letter-spacing: var(--cb-letter-space);
 }
-
 .row {
   display: inline-flex;
   align-items: center;
-  gap: var(--ntg-checkbox-gap);
+  gap: var(--cb-gap, 0);
   cursor: pointer;
 }
+.root[data-disabled] .row { cursor: not-allowed; }
 
-.root[data-disabled='true'] .row { cursor: not-allowed; }
-
-/* ช่องติ๊กจริงซ่อนไว้ แต่ยังรับโฟกัสและอ่านได้ด้วยโปรแกรมอ่านหน้าจอ
-   ค่า 1px ตรงนี้เป็นสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ ไม่ใช่ค่าออกแบบ จึงไม่ต้องเป็น token */
 .input {
   position: absolute;
   width: 1px;
@@ -51,212 +57,78 @@
   position: relative;
   flex: none;
   box-sizing: border-box;
-  background: var(--ntg-color-background-general-primary);
-  border: var(--ntg-checkbox-border) solid var(--ntg-color-border-general-primary);
-  /* ใช้ขั้นเวลาสั้นของระบบ เพราะเป็นการเปลี่ยนสีในที่เดิม ส่วน ease เป็นคำสงวนของ CSS ไม่ใช่ค่าออกแบบ */
-  transition:
-    background-color var(--ntg-motion-duration-fast) ease,
-    border-color var(--ntg-motion-duration-fast) ease;
+  width: var(--cb-size);
+  height: var(--cb-size);
+  border-radius: var(--cb-r-tl, 0) var(--cb-r-tr, 0) var(--cb-r-br, 0) var(--cb-r-bl, 0);
+  background: var(--cb-bg, transparent);
+  box-shadow: inset 0 0 0 var(--cb-border-w, 1px) var(--cb-border, transparent), var(--cb-ring, 0 0 0 0 transparent);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input:focus-visible { outline: none; }
+.root:not([data-disabled]) .row:active .box {
+  background: var(--cb-bg-pressed, var(--cb-bg, transparent));
+  box-shadow: inset 0 0 0 var(--cb-border-w, 1px) var(--cb-border-pressed, var(--cb-border, transparent)), var(--cb-ring, 0 0 0 0 transparent);
 }
 
-/* เครื่องหมายวางทับกล่องเต็มใบ ถอยออกเท่าความหนาเส้นขอบเพราะเครื่องหมายเท่าขนาดกล่องเต็ม
-   ไม่ใช่เท่าพื้นที่ในกรอบ ถ้าไม่ถอยจะล้นออกไปข้างละหนึ่งเท่าความหนาเส้น */
 .mark {
   position: absolute;
-  top: calc(-1 * var(--ntg-checkbox-border));
-  left: calc(-1 * var(--ntg-checkbox-border));
+  top: 0;
+  left: 0;
   display: block;
+  width: var(--cb-mark, 100%);
+  height: var(--cb-mark, 100%);
+  color: var(--cb-mark-color, currentColor);
   opacity: 0;
-  color: var(--ntg-icon-brand-on-brand-primary);
 }
-
-/* ไอคอนเต็มกรอบที่ครอบอยู่ ขนาดจริงมาจาก token ที่ตั้งให้ .mark ตามขนาด */
-.mark svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* ── สถานะ ────────────────────────────────────────────────── */
+.mark svg { display: block; width: 100%; height: 100%; }
 .root[data-checked='true'] .mark,
 .root[data-indeterminate='true'] .mark { opacity: 1; }
 
-.root[data-checked='true'] .box,
-.root[data-indeterminate='true'] .box {
-  background: var(--ntg-color-background-brand-solid);
-  border-color: var(--ntg-color-border-brand-solid);
-}
-
-/* ชี้ค้าง */
-.root:not([data-disabled='true']) .row:hover .box {
-  border-color: var(--ntg-color-border-general-primary-hover);
-}
-
-.root[data-checked='true']:not([data-disabled='true']) .row:hover .box,
-.root[data-indeterminate='true']:not([data-disabled='true']) .row:hover .box {
-  background: var(--ntg-color-background-brand-solid-hover);
-  border-color: var(--ntg-color-border-brand-solid-hover);
-}
-
-/* สถานะกด ใช้ token ชุด pressed ที่ระบบเตรียมไว้แล้ว */
-.root:not([data-disabled='true']) .row:active .box {
-  border-color: var(--ntg-color-border-general-primary-pressed);
-}
-
-.root[data-checked='true']:not([data-disabled='true']) .row:active .box,
-.root[data-indeterminate='true']:not([data-disabled='true']) .row:active .box {
-  background: var(--ntg-color-background-brand-solid-pressed);
-  border-color: var(--ntg-color-border-brand-solid-pressed);
-}
-
-/* ปิดใช้งาน ทับทุกสถานะด้านบน */
-.root[data-disabled='true'] .box {
-  background: var(--ntg-color-background-general-disabled);
-  border-color: var(--ntg-color-border-general-disabled);
-}
-
-.root[data-disabled='true'] .mark { color: var(--ntg-icon-general-disable); }
-.root[data-disabled='true'] { color: var(--ntg-color-text-general-disabled); }
-
-/* วงแหวนโฟกัส ความหนา 4px เป็นค่าคงที่ของระบบโฟกัส ไม่ใช่ค่าออกแบบรายชิ้น จึงไม่เป็น token
-   กล่องติ๊กมีพื้นหลังทึบ จึงใช้เงาได้ ไม่ต้องใช้เส้นขอบแบบปุ่มโปร่ง */
-.input:focus-visible + .box {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
-}
-
-.title {
-  font-family: var(--ntg-typography-font-family-primary);
-}
+.title { color: var(--cb-fg, inherit); }
 
 .supporting {
-  font-family: var(--ntg-typography-font-family-primary);
-  color: var(--ntg-color-text-general-supporting-text);
+  padding-inline-start: var(--cb-indent, 0);
+  color: var(--cb-sup-fg, inherit);
+  font-family: var(--cb-sup-font-family);
+  font-size: var(--cb-sup-font-size);
+  line-height: var(--cb-sup-line-height);
+  font-weight: var(--cb-sup-font-weight);
+  letter-spacing: var(--cb-sup-letter-space);
 }
 
-.root[data-disabled='true'] .supporting { color: var(--ntg-color-text-general-disabled); }
-
-/* ── ขนาด ────────────────────────────────────────────────── */
-/* การจับคู่ text preset ต่อขนาดมาจากเอกสารหน้า 15 หัวข้อ 4.3
-   หัวข้อใช้ label และข้อความช่วยใช้ body ที่ขนาดตัวอักษรเดียวกัน
-   ขนาด xl ใช้ preset ชุดเดียวกับ lg เพราะบันได preset หมดที่ xl */
-
-.xs .row { min-height: var(--ntg-checkbox-row-height-xs); }
-.xs .box {
-  width: var(--ntg-checkbox-size-xs);
-  height: var(--ntg-checkbox-size-xs);
-  border-radius:
-    var(--ntg-checkbox-radius-top-left-xs) var(--ntg-checkbox-radius-top-right-xs)
-    var(--ntg-checkbox-radius-bottom-right-xs) var(--ntg-checkbox-radius-bottom-left-xs);
-}
-.xs .mark { width: var(--ntg-checkbox-icon-xs); height: var(--ntg-checkbox-icon-xs); }
-.xs .title {
-  font-size: var(--ntg-typography-font-size-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
-  font-weight: var(--ntg-typography-font-weight-label-sm);
-}
-.xs .supporting {
-  padding-inline-start: var(--ntg-checkbox-indent-xs);
-  font-size: var(--ntg-typography-font-size-body-xs);
-  line-height: var(--ntg-typography-line-height-body-xs);
-  font-weight: var(--ntg-typography-font-weight-body-xs);
-}
-
-.sm .row { min-height: var(--ntg-checkbox-row-height-sm); }
-.sm .box {
-  width: var(--ntg-checkbox-size-sm);
-  height: var(--ntg-checkbox-size-sm);
-  border-radius:
-    var(--ntg-checkbox-radius-top-left-sm) var(--ntg-checkbox-radius-top-right-sm)
-    var(--ntg-checkbox-radius-bottom-right-sm) var(--ntg-checkbox-radius-bottom-left-sm);
-}
-.sm .mark { width: var(--ntg-checkbox-icon-sm); height: var(--ntg-checkbox-icon-sm); }
-.sm .title {
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-}
-.sm .supporting {
-  padding-inline-start: var(--ntg-checkbox-indent-sm);
-  font-size: var(--ntg-typography-font-size-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-}
-
-.md .row { min-height: var(--ntg-checkbox-row-height-md); }
-.md .box {
-  width: var(--ntg-checkbox-size-md);
-  height: var(--ntg-checkbox-size-md);
-  border-radius:
-    var(--ntg-checkbox-radius-top-left-md) var(--ntg-checkbox-radius-top-right-md)
-    var(--ntg-checkbox-radius-bottom-right-md) var(--ntg-checkbox-radius-bottom-left-md);
-}
-.md .mark { width: var(--ntg-checkbox-icon-md); height: var(--ntg-checkbox-icon-md); }
-.md .title {
-  font-size: var(--ntg-typography-font-size-label-lg);
-  line-height: var(--ntg-typography-line-height-label-lg);
-  font-weight: var(--ntg-typography-font-weight-label-lg);
-}
-.md .supporting {
-  padding-inline-start: var(--ntg-checkbox-indent-md);
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-}
-
-.lg .row { min-height: var(--ntg-checkbox-row-height-lg); }
-.lg .box {
-  width: var(--ntg-checkbox-size-lg);
-  height: var(--ntg-checkbox-size-lg);
-  border-radius:
-    var(--ntg-checkbox-radius-top-left-lg) var(--ntg-checkbox-radius-top-right-lg)
-    var(--ntg-checkbox-radius-bottom-right-lg) var(--ntg-checkbox-radius-bottom-left-lg);
-}
-.lg .mark { width: var(--ntg-checkbox-icon-lg); height: var(--ntg-checkbox-icon-lg); }
-.lg .title {
-  font-size: var(--ntg-typography-font-size-label-xl);
-  line-height: var(--ntg-typography-line-height-label-xl);
-  font-weight: var(--ntg-typography-font-weight-label-xl);
-}
-.lg .supporting {
-  padding-inline-start: var(--ntg-checkbox-indent-lg);
-  font-size: var(--ntg-typography-font-size-body-lg);
-  line-height: var(--ntg-typography-line-height-body-lg);
-  font-weight: var(--ntg-typography-font-weight-body-lg);
-}
-
-.xl .row { min-height: var(--ntg-checkbox-row-height-xl); }
-.xl .box {
-  width: var(--ntg-checkbox-size-xl);
-  height: var(--ntg-checkbox-size-xl);
-  border-radius:
-    var(--ntg-checkbox-radius-top-left-xl) var(--ntg-checkbox-radius-top-right-xl)
-    var(--ntg-checkbox-radius-bottom-right-xl) var(--ntg-checkbox-radius-bottom-left-xl);
-}
-.xl .mark { width: var(--ntg-checkbox-icon-xl); height: var(--ntg-checkbox-icon-xl); }
-.xl .title {
-  font-size: var(--ntg-typography-font-size-label-xl);
-  line-height: var(--ntg-typography-line-height-label-xl);
-  font-weight: var(--ntg-typography-font-weight-label-xl);
-}
-.xl .supporting {
-  padding-inline-start: var(--ntg-checkbox-indent-xl);
-  font-size: var(--ntg-typography-font-size-body-lg);
-  line-height: var(--ntg-typography-line-height-body-lg);
-  font-weight: var(--ntg-typography-font-weight-body-lg);
-}
-
-/* พื้นที่แตะขั้นต่ำ ใช้สเกลแถวที่กดได้ ไม่ใช่ขนาดภาพกล่องติ๊ก
-   เปิดเองบนอุปกรณ์ที่ตัวชี้หยาบ ตามข้อ 4 ของคู่มือนักพัฒนาในเอกสารหน้า 15
-   และบังคับเปิดด้วย prop touchTarget ได้เมื่อรู้ว่าจะใช้งานด้วยนิ้ว */
-.touchTarget .row { min-height: var(--ntg-checkbox-row-height-touch); }
-
-/* ยกเฉพาะขนาดที่แถวเตี้ยกว่าเกณฑ์ คือ xs 24 sm 32 md 40
-   ขนาด lg เท่ากับเกณฑ์พอดีที่ 48 และ xl สูงกว่าอยู่แล้วที่ 56 ถ้าเขียนรวมจะกลายเป็นการบีบให้เตี้ยลง */
+.touchTarget .row { min-height: 48px; }
 @media (pointer: coarse) {
-  .xs .row, .sm .row, .md .row { min-height: var(--ntg-checkbox-row-height-touch); }
+  .row { min-height: 48px; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .box { transition: none; }
 }
+
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --cb-font-family: var(--ntg-typography-font-family-label-sm); --cb-font-size: var(--ntg-typography-font-size-label-sm); --cb-line-height: var(--ntg-typography-line-height-label-sm); --cb-font-weight: var(--ntg-typography-font-weight-label-sm); --cb-letter-space: var(--ntg-typography-letter-space-label-sm); --cb-sup-font-family: var(--ntg-typography-font-family-body-xs); --cb-sup-font-size: var(--ntg-typography-font-size-body-xs); --cb-sup-line-height: var(--ntg-typography-line-height-body-xs); --cb-sup-font-weight: var(--ntg-typography-font-weight-body-xs); --cb-sup-letter-space: var(--ntg-typography-letter-space-body-xs); }
+.sm { --cb-font-family: var(--ntg-typography-font-family-label-md); --cb-font-size: var(--ntg-typography-font-size-label-md); --cb-line-height: var(--ntg-typography-line-height-label-md); --cb-font-weight: var(--ntg-typography-font-weight-label-md); --cb-letter-space: var(--ntg-typography-letter-space-label-md); --cb-sup-font-family: var(--ntg-typography-font-family-body-sm); --cb-sup-font-size: var(--ntg-typography-font-size-body-sm); --cb-sup-line-height: var(--ntg-typography-line-height-body-sm); --cb-sup-font-weight: var(--ntg-typography-font-weight-body-sm); --cb-sup-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.md { --cb-font-family: var(--ntg-typography-font-family-label-lg); --cb-font-size: var(--ntg-typography-font-size-label-lg); --cb-line-height: var(--ntg-typography-line-height-label-lg); --cb-font-weight: var(--ntg-typography-font-weight-label-lg); --cb-letter-space: var(--ntg-typography-letter-space-label-lg); --cb-sup-font-family: var(--ntg-typography-font-family-body-md); --cb-sup-font-size: var(--ntg-typography-font-size-body-md); --cb-sup-line-height: var(--ntg-typography-line-height-body-md); --cb-sup-font-weight: var(--ntg-typography-font-weight-body-md); --cb-sup-letter-space: var(--ntg-typography-letter-space-body-md); }
+.lg { --cb-font-family: var(--ntg-typography-font-family-label-xl); --cb-font-size: var(--ntg-typography-font-size-label-xl); --cb-line-height: var(--ntg-typography-line-height-label-xl); --cb-font-weight: var(--ntg-typography-font-weight-label-xl); --cb-letter-space: var(--ntg-typography-letter-space-label-xl); --cb-sup-font-family: var(--ntg-typography-font-family-body-lg); --cb-sup-font-size: var(--ntg-typography-font-size-body-lg); --cb-sup-line-height: var(--ntg-typography-line-height-body-lg); --cb-sup-font-weight: var(--ntg-typography-font-weight-body-lg); --cb-sup-letter-space: var(--ntg-typography-letter-space-body-lg); }
+.xl { --cb-font-family: var(--ntg-typography-font-family-label-xl); --cb-font-size: var(--ntg-typography-font-size-label-xl); --cb-line-height: var(--ntg-typography-line-height-label-xl); --cb-font-weight: var(--ntg-typography-font-weight-label-xl); --cb-letter-space: var(--ntg-typography-letter-space-label-xl); --cb-sup-font-family: var(--ntg-typography-font-family-body-lg); --cb-sup-font-size: var(--ntg-typography-font-size-body-lg); --cb-sup-line-height: var(--ntg-typography-line-height-body-lg); --cb-sup-font-weight: var(--ntg-typography-font-weight-body-lg); --cb-sup-letter-space: var(--ntg-typography-letter-space-body-lg); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.xs { --cb-size: var(--ntg-checkbox-size-xs); --cb-r-tl: var(--ntg-checkbox-radius-top-left-xs); --cb-r-tr: var(--ntg-checkbox-radius-top-right-xs); --cb-r-br: var(--ntg-checkbox-radius-bottom-right-xs); --cb-r-bl: var(--ntg-checkbox-radius-bottom-left-xs); --cb-mark: var(--ntg-checkbox-icon-xs); --cb-gap: var(--ntg-checkbox-gap); --cb-indent: var(--ntg-checkbox-indent-xs); }
+.root.sm { --cb-size: var(--ntg-checkbox-size-sm); --cb-r-tl: var(--ntg-checkbox-radius-top-left-sm); --cb-r-tr: var(--ntg-checkbox-radius-top-right-sm); --cb-r-br: var(--ntg-checkbox-radius-bottom-right-sm); --cb-r-bl: var(--ntg-checkbox-radius-bottom-left-sm); --cb-mark: var(--ntg-checkbox-icon-sm); --cb-gap: var(--ntg-checkbox-gap); --cb-indent: var(--ntg-checkbox-indent-sm); }
+.root.md { --cb-size: var(--ntg-checkbox-size-md); --cb-r-tl: var(--ntg-checkbox-radius-top-left-md); --cb-r-tr: var(--ntg-checkbox-radius-top-right-md); --cb-r-br: var(--ntg-checkbox-radius-bottom-right-md); --cb-r-bl: var(--ntg-checkbox-radius-bottom-left-md); --cb-mark: var(--ntg-checkbox-icon-md); --cb-gap: var(--ntg-checkbox-gap); --cb-indent: var(--ntg-checkbox-indent-md); }
+.root.lg { --cb-size: var(--ntg-checkbox-size-lg); --cb-r-tl: var(--ntg-checkbox-radius-top-left-lg); --cb-r-tr: var(--ntg-checkbox-radius-top-right-lg); --cb-r-br: var(--ntg-checkbox-radius-bottom-right-lg); --cb-r-bl: var(--ntg-checkbox-radius-bottom-left-lg); --cb-mark: var(--ntg-checkbox-icon-lg); --cb-gap: var(--ntg-checkbox-gap); --cb-indent: var(--ntg-checkbox-indent-lg); }
+.root.xl { --cb-size: var(--ntg-checkbox-size-xl); --cb-r-tl: var(--ntg-checkbox-radius-top-left-xl); --cb-r-tr: var(--ntg-checkbox-radius-top-right-xl); --cb-r-br: var(--ntg-checkbox-radius-bottom-right-xl); --cb-r-bl: var(--ntg-checkbox-radius-bottom-left-xl); --cb-mark: var(--ntg-checkbox-icon-xl); --cb-gap: var(--ntg-checkbox-gap); --cb-indent: var(--ntg-checkbox-indent-xl); }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root[data-checked="false"]:not([data-indeterminate="true"]) { --cb-bg: var(--ntg-color-background-general-primary); --cb-border: var(--ntg-color-border-general-primary); --cb-border-w: 1px; --cb-ring: 0 0 0 0 transparent; --cb-bg-pressed: var(--ntg-color-background-general-primary-pressed); --cb-border-pressed: var(--ntg-color-border-general-primary-pressed); --cb-fg: var(--ntg-color-text-general-section-heading); --cb-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"]:not([data-indeterminate="true"]),
+.root[data-indeterminate="true"] { --cb-bg: var(--ntg-color-background-brand-solid); --cb-border: var(--ntg-color-border-brand-solid); --cb-border-w: 1px; --cb-ring: 0 0 0 0 transparent; --cb-bg-pressed: var(--ntg-color-background-brand-solid-pressed); --cb-border-pressed: var(--ntg-color-border-brand-solid-pressed); --cb-mark-color: var(--ntg-icon-brand-on-brand-primary); --cb-fg: var(--ntg-color-text-general-section-heading); --cb-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"]:not([data-indeterminate="true"]):not([data-disabled]):has(.row:hover) { --cb-bg: var(--ntg-color-background-general-primary); --cb-border: var(--ntg-color-border-brand-solid); --cb-border-w: 1px; --cb-ring: 0 0 0 0 transparent; --cb-fg: var(--ntg-color-text-general-section-heading); --cb-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"]:not([data-indeterminate="true"]):not([data-disabled]):has(.row:hover),
+.root[data-indeterminate="true"]:not([data-disabled]):has(.row:hover) { --cb-bg: var(--ntg-color-background-brand-solid-hover); --cb-border: var(--ntg-color-border-brand-solid-hover); --cb-border-w: 1px; --cb-ring: 0 0 0 0 transparent; --cb-mark-color: var(--ntg-icon-brand-on-brand-primary); --cb-fg: var(--ntg-color-text-general-section-heading); --cb-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"]:not([data-indeterminate="true"]):has(.input:focus-visible) { --cb-bg: var(--ntg-color-background-general-primary); --cb-border: var(--ntg-color-border-brand-solid); --cb-border-w: 1px; --cb-ring: var(--ntg-focused-ring-default); --cb-fg: var(--ntg-color-text-general-section-heading); --cb-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"]:not([data-indeterminate="true"]):has(.input:focus-visible),
+.root[data-indeterminate="true"]:has(.input:focus-visible) { --cb-bg: var(--ntg-color-background-brand-solid-hover); --cb-border: var(--ntg-color-border-brand-solid-hover); --cb-border-w: 1px; --cb-ring: var(--ntg-focused-ring-default); --cb-mark-color: var(--ntg-icon-brand-on-brand-primary); --cb-fg: var(--ntg-color-text-general-section-heading); --cb-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"]:not([data-indeterminate="true"])[data-disabled] { --cb-bg: var(--ntg-color-background-general-disabled); --cb-border: var(--ntg-color-border-general-disabled); --cb-border-w: 1px; --cb-ring: 0 0 0 0 transparent; --cb-fg: var(--ntg-color-text-general-disabled); --cb-sup-fg: var(--ntg-color-text-general-disabled); }
+.root[data-checked="true"]:not([data-indeterminate="true"])[data-disabled],
+.root[data-indeterminate="true"][data-disabled] { --cb-bg: var(--ntg-color-background-general-disabled); --cb-border: var(--ntg-color-border-general-disabled); --cb-border-w: 1px; --cb-ring: 0 0 0 0 transparent; --cb-mark-color: var(--ntg-icon-general-disable); --cb-fg: var(--ntg-color-text-general-disabled); --cb-sup-fg: var(--ntg-color-text-general-disabled); }

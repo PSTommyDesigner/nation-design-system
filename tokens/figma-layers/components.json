@@ -106,5 +106,35 @@
       "link-button",
       "link-icon-button"
     ]
+  },
+  "checkbox": {
+    "page": "15 Checkbox",
+    "depth": 4,
+    "reference": "Checkbox",
+    "families": [
+      "Checkbox"
+    ],
+    "sets": [
+      "checkbox",
+      "text-checkbox"
+    ],
+    "layoutAxes": [
+      "checked"
+    ]
+  },
+  "radio": {
+    "page": "16 Radio",
+    "depth": 4,
+    "reference": "Radio",
+    "families": [
+      "Radio"
+    ],
+    "sets": [
+      "radio",
+      "text-radio"
+    ],
+    "layoutAxes": [
+      "checked"
+    ]
   }
 }

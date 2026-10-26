@@ -22,6 +22,8 @@
  * รูปแบบ spec ที่ได้ (ย่อให้เล็กพอ commit ได้)
  *   layout   โครงชั้นต่อ "ชุด x ขนาด" อ่านจากตระกูลอ้างอิง (Brand) สถานะ default
  *            ทุกตระกูล ทุกสถานะ ต้องมีโครงเดียวกัน ถ้าไม่เท่ากันจะฟ้องเป็น drift
+ *            ชุดที่โครงต่างกันตามแกนโดยตั้งใจ (เช่น checked ของช่องติ๊ก ที่ติ๊กแล้วมีไอคอน ยังไม่ติ๊กไม่มี)
+ *            ให้ประกาศ `layoutAxes: ["checked"]` ใน config แล้ว key ของ layout จะเป็น "xs, checked=true"
  *   colors   สี fill/stroke ของทุกชั้น ต่อ "ชุด x ตระกูล x แกนที่ไม่ใช่ขนาด" (สีต้องเท่ากันทุกขนาด)
  */
 import fs from 'node:fs'
@@ -140,6 +142,12 @@ function snap(n, depth = 0) {
     const sizeB = n.boundVariables?.size || {}
     if (n.layoutSizingHorizontal === 'FIXED') o.w = sizeB.x ? V(sizeB.x) : (n.boundVariables?.width ? V(n.boundVariables.width) : round(n.absoluteBoundingBox?.width ?? 0))
     if (n.layoutSizingVertical === 'FIXED') o.h = sizeB.y ? V(sizeB.y) : (n.boundVariables?.height ? V(n.boundVariables.height) : round(n.absoluteBoundingBox?.height ?? 0))
+  } else if (n.boundVariables?.size?.x || n.boundVariables?.size?.y) {
+    // ลูกที่วางแบบ absolute (ไม่อยู่ใน auto layout เช่น จุดกลางของ radio ไอคอนในกล่องติ๊ก) REST ไม่ให้ layoutSizing
+    // และเก็บ binding ขนาดไว้ที่ boundVariables.size.x/y เก็บเฉพาะขนาดที่ผูกตัวแปร ขนาดดิบของพวกนี้ไม่เก็บ
+    // เพราะส่วนใหญ่เป็น vector ข้างใน instance ไอคอน
+    if (n.boundVariables.size.x) o.w = V(n.boundVariables.size.x)
+    if (n.boundVariables.size.y) o.h = V(n.boundVariables.size.y)
   }
   if (n.clipsContent) o.clip = true
   if (n.visible === false) o.vis = false
@@ -232,7 +240,7 @@ for (const s of sets) {
   }
   for (const variant of set.children) {
     const axes = parseVariant(variant.name)
-    const size = axes.size || 'one'
+    const size = [axes.size || 'one', ...(cfg.layoutAxes || []).map(a => `${a}=${axes[a] ?? ''}`)].join(', ')
     const { layout, colors } = split(snap(variant))
     const key = JSON.stringify(layout, (k, v) => (k === 'ref' ? undefined : v)).replace(/,"clip":true/g, '')
     if (s.family === cfg.reference && (axes.state ?? 'default') === 'default' && (axes['default-gray'] ?? 'false') === 'false' && (!axes.hierarchy || axes.hierarchy === cfg.referenceHierarchy)) {

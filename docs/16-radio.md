@@ -70,9 +70,12 @@ sources_of_truth:
 
 | คุณสมบัติ | ชนิด | ค่าเริ่มต้น |
 |---|---|---|
-| `Title Value` | text | ข้อความหัวข้อ |
-| `Title Text` | boolean | เปิด |
-| `Supporting text` | boolean | เปิด |
+| `title` | boolean | เปิด |
+| `title-value` | text | ข้อความหัวข้อ |
+| `supporting-text` | boolean | เปิด |
+| `supporting-text-value` | text | ข้อความช่วย |
+
+> ชื่อคุณสมบัติเปลี่ยนเป็นชุดเดียวกับสวิตช์หน้า 14 และช่องติ๊กหน้า 15 เมื่อ 2026-10-26 (เดิมคือ `Title Value` `Title Text` `Supporting text` และไม่มีคุณสมบัติข้อความของข้อความช่วย) เปลี่ยนด้วย `editComponentProperty` จึงไม่กระทบข้อความที่ instance แก้ทับไว้
 
 ### 4.3 สูตรขนาด
 

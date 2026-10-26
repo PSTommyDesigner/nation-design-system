@@ -351,7 +351,106 @@ const LINK_BUTTON = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Checkbox: หน้า 15 ชุด checkbox (กล่องอย่างเดียว) กับ text-checkbox (กล่อง + ข้อความ + ข้อความช่วย)
+//   โค้ดเป็น component เดียว ทั้งสองชุดจึงจับคู่กับ .root เหมือนกัน (ค่าที่ซ้ำกันจะถูกรวม ค่าที่ขัดกันจะฟ้อง)
+//   โครงอ่านจากแกน checked=true เพราะกล่องที่ติ๊กแล้วมีไอคอน (ยังไม่ติ๊กไม่มีลูกเลย)
+//   สถานะใช้ data attribute ของ wrapper + :has() เพราะ hover อยู่ที่แถว (label) และโฟกัสอยู่ที่ input ที่ซ่อนไว้
+// ═══════════════════════════════════════════════════════════════════════════════
+const CHECKED_STATES = {
+  default: (sel) => sel,
+  hover: (sel) => `${sel}:not([data-disabled]):has(.row:hover)`,
+  focused: (sel) => `${sel}:has(.input:focus-visible)`,
+  disabled: (sel) => `${sel}[data-disabled]`,
+}
+const CHECKBOX = {
+  specFile: 'tokens/figma-layers/checkbox.json',
+  baseFile: 'components/Checkbox/Checkbox.base.css',
+  outFile: 'components/Checkbox/Checkbox.module.css',
+  layoutKey: (size) => `${size}, checked=true`,
+  sets: { 'checkbox': { classes: '.root' }, 'text-checkbox': { classes: '.root' } },
+  familyClass: () => '',
+  axisClass: { checked: (v) => (v === 'indeterminate' ? '[data-indeterminate="true"]' : `[data-checked="${v}"]:not([data-indeterminate="true"])`) },
+  stateSelector: CHECKED_STATES,
+  layers: {
+    // ชุด checkbox: root คือกล่อง (ไม่มี auto layout) · ชุด text-checkbox: root คือเฟรมแนวตั้งที่ไม่มีค่าอะไรให้โค้ด
+    '(root)': (n, W) => (n.lm ? {} : boxLayout(n, W, 'cb')),
+    'row': (n, W) => ({ '--cb-gap': W(n.g) }),
+    'row/checkbox': (n, W) => boxLayout(n, W, 'cb'),
+    '**/check': (n, W) => ({ '--cb-mark': W(n.w) }),
+    '**/check/vector': () => ({}),
+    'row/title': () => ({}),
+    'supporting': (n, W) => ({ '--cb-indent': W(n.p[3]) }),
+    'supporting/supporting-text': () => ({}),
+  },
+  text: [
+    { layers: ['row/title'], vars: { '--cb-font-family': 'font-family', '--cb-font-size': 'font-size', '--cb-line-height': 'line-height', '--cb-font-weight': 'font-weight', '--cb-letter-space': 'letter-space' } },
+    { layers: ['supporting/supporting-text'], vars: { '--cb-sup-font-family': 'font-family', '--cb-sup-font-size': 'font-size', '--cb-sup-line-height': 'line-height', '--cb-sup-font-weight': 'font-weight', '--cb-sup-letter-space': 'letter-space' } },
+  ],
+  colors: {
+    '(root)': (c, W, ctx) => boxColors(c, W, ctx, 'cb'),
+    'row/checkbox': (c, W, ctx) => boxColors(c, W, ctx, 'cb'),
+    '**/vector': (c, W, ctx) => ({ '--cb-mark-color': W(c.fills[0]), ...pressedVar(ctx, c.fills[0], '--cb-mark-color-pressed') }),
+    'row/title': (c, W, ctx) => ({ '--cb-fg': W(c.fills[0]), ...pressedVar(ctx, c.fills[0], '--cb-fg-pressed') }),
+    'supporting/supporting-text': (c, W) => ({ '--cb-sup-fg': W(c.fills[0]) }),
+  },
+}
+// กล่องติ๊ก/วงกลม: ขนาด มุมโค้ง (ใช้ร่วม checkbox กับ radio ต่างกันแค่ prefix)
+function boxLayout(n, W, px) {
+  return {
+    [`--${px}-size`]: W(n.w),
+    ...(n.r ? { [`--${px}-r-tl`]: W(n.r[0]), [`--${px}-r-tr`]: W(n.r[1]), [`--${px}-r-br`]: W(n.r[2]), [`--${px}-r-bl`]: W(n.r[3]) } : {}),
+  }
+}
+function boxColors(c, W, ctx, px) {
+  return {
+    [`--${px}-bg`]: c.fills ? W(c.fills[0]) : 'transparent',
+    [`--${px}-border`]: c.strokes ? W(c.strokes[0]) : 'transparent',
+    ...(c.strokes ? { [`--${px}-border-w`]: `${c.sw[0]}px` } : {}),
+    [`--${px}-ring`]: effectVar(c.fx, `${px} effect`),
+    ...(c.fills ? pressedVar(ctx, c.fills[0], `--${px}-bg-pressed`) : {}),
+    ...(c.strokes ? pressedVar(ctx, c.strokes[0], `--${px}-border-pressed`) : {}),
+  }
+}
+const pressedVar = (ctx, name, prop) => (ctx.pressed(name) ? { [prop]: ctx.pressed(name) } : {})
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Radio: หน้า 16 ชุด radio (วงกลมอย่างเดียว) กับ text-radio โครงเดียวกับ Checkbox แต่เครื่องหมายเป็นจุด (ELLIPSE) ไม่ใช่ไอคอน
+// ═══════════════════════════════════════════════════════════════════════════════
+const RADIO = {
+  specFile: 'tokens/figma-layers/radio.json',
+  baseFile: 'components/Radio/Radio.base.css',
+  outFile: 'components/Radio/Radio.module.css',
+  layoutKey: (size) => `${size}, checked=true`,
+  sets: { 'radio': { classes: '.root' }, 'text-radio': { classes: '.root' } },
+  familyClass: () => '',
+  axisClass: { checked: (v) => `[data-checked="${v}"]` },
+  stateSelector: CHECKED_STATES,
+  layers: {
+    '(root)': (n, W) => (n.lm ? {} : boxLayout(n, W, 'rd')),
+    'dot': (n, W) => ({ '--rd-dot': W(n.w) }),
+    'row': (n, W) => ({ '--rd-gap': W(n.g) }),
+    'row/radio': (n, W) => boxLayout(n, W, 'rd'),
+    'row/radio/dot': (n, W) => ({ '--rd-dot': W(n.w) }),
+    'row/title': () => ({}),
+    'supporting': (n, W) => ({ '--rd-indent': W(n.p[3]) }),
+    'supporting/supporting-text': () => ({}),
+  },
+  text: [
+    { layers: ['row/title'], vars: { '--rd-font-family': 'font-family', '--rd-font-size': 'font-size', '--rd-line-height': 'line-height', '--rd-font-weight': 'font-weight', '--rd-letter-space': 'letter-space' } },
+    { layers: ['supporting/supporting-text'], vars: { '--rd-sup-font-family': 'font-family', '--rd-sup-font-size': 'font-size', '--rd-sup-line-height': 'line-height', '--rd-sup-font-weight': 'font-weight', '--rd-sup-letter-space': 'letter-space' } },
+  ],
+  colors: {
+    '(root)': (c, W, ctx) => boxColors(c, W, ctx, 'rd'),
+    'row/radio': (c, W, ctx) => boxColors(c, W, ctx, 'rd'),
+    'dot': (c, W, ctx) => ({ '--rd-dot-color': W(c.fills[0]), ...pressedVar(ctx, c.fills[0], '--rd-dot-color-pressed') }),
+    'row/radio/dot': (c, W, ctx) => ({ '--rd-dot-color': W(c.fills[0]), ...pressedVar(ctx, c.fills[0], '--rd-dot-color-pressed') }),
+    'row/title': (c, W, ctx) => ({ '--rd-fg': W(c.fills[0]), ...pressedVar(ctx, c.fills[0], '--rd-fg-pressed') }),
+    'supporting/supporting-text': (c, W) => ({ '--rd-sup-fg': W(c.fills[0]) }),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -368,53 +467,74 @@ function lookup(table, key) {
 }
 const spec = JSON.parse(fs.readFileSync(path.join(ROOT, M.specFile), 'utf8'))
 const SIZES = ['xs', 'sm', 'md', 'lg', 'xl']
+// ชุดที่ประกาศ layoutAxes ตอนดึง (เช่น checked) จะมี key แบบ "md, checked=true" ตารางจับคู่เลือกด้วย layoutKey
+const L = (set, size) => {
+  const key = M.layoutKey ? M.layoutKey(size) : size
+  if (!set.layout[key]) errors.push(`ไม่มีโครง "${key}" ใน spec (มี ${Object.keys(set.layout).slice(0, 4).join(' | ')} …)`)
+  return set.layout[key] || { t: 'COMPONENT' }
+}
 const out = []
 const decl = (obj) => Object.entries(obj).map(([k, v]) => `${k}: ${v};`).join(' ')
 
 // ── 1. ตัวอักษรต่อขนาด ───────────────────────────────────────────────────────
-const tsBySize = {}
+// component มีชั้นข้อความได้หลายกลุ่ม (เช่น หัวข้อ กับ ข้อความช่วย ของช่องติ๊ก) แต่ละกลุ่มมีช่อง --x-* ของตัวเอง
+const textGroups = M.text ?? (M.textLayers?.length ? [{ layers: M.textLayers, vars: M.typography }] : [])
 function walk(node, p, fn) {
   const key = p || '(root)'
   fn(key, node)
   for (const c of node.ch || []) walk(c, p ? `${p}/${c.n}` : c.n, fn)
 }
-for (const [setName, set] of Object.entries(spec.sets)) {
-  for (const size of SIZES) {
-    walk(set.layout[size], '', (key, n) => {
-      if (n.ts && M.textLayers.includes(key)) {
-        if (tsBySize[size] && tsBySize[size] !== n.ts) errors.push(`${setName} ${size} ${key}: text style ${n.ts} ไม่ตรงกับชุดอื่น (${tsBySize[size]})`)
-        tsBySize[size] = n.ts
-      }
-    })
+if (textGroups.length) out.push('/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */')
+for (const size of textGroups.length ? SIZES : []) {
+  const vars = {}
+  for (const g of textGroups) {
+    let ts = null
+    for (const [setName, set] of Object.entries(spec.sets)) {
+      walk(L(set, size), '', (key, n) => {
+        if (n.ts && g.layers.includes(key)) {
+          if (ts && ts !== n.ts) errors.push(`${setName} ${size} ${key}: text style ${n.ts} ไม่ตรงกับชุดอื่น (${ts})`)
+          ts = n.ts
+        }
+      })
+    }
+    if (!ts) { errors.push(`${size}: ไม่พบชั้นข้อความ ${g.layers.join('/')} ในชุดไหนเลย`); continue }
+    Object.assign(vars, styleVars(ts, g.vars, `typography ${size} ${g.layers[0]}`))
   }
-}
-if (M.textLayers.length) out.push('/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */')
-for (const size of M.textLayers.length ? SIZES : []) {
-  const vars = styleVars(tsBySize[size], Object.fromEntries(Object.entries(M.typography).map(([k, v]) => [k, v])), `typography ${size}`)
   out.push(`.${size} { ${decl(vars)} }`)
 }
 
 // ── 2. โครงต่อ ชุด × ขนาด ───────────────────────────────────────────────────
 out.push('', '/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */')
+// หลายชุดจับคู่กับคลาสเดียวกันได้ (เช่น checkbox กับ text-checkbox → .root) ค่าจะรวมกัน ถ้าขัดกันจะฟ้อง
+const layoutBySel = new Map()
 for (const [setName, set] of Object.entries(spec.sets)) {
   const map = M.sets[setName]
   if (!map) { errors.push(`ชุด ${setName} ไม่มีในตารางจับคู่ sets`); continue }
   for (const size of SIZES) {
     const vars = {}
-    walk(set.layout[size], '', (key, n) => {
+    walk(L(set, size), '', (key, n) => {
       const fn = lookup(M.layers, key)
       if (!fn) { errors.push(`${setName} ${size}: ไม่รู้จักชั้น "${key}" (เพิ่มในตาราง layers)`); return }
       if (n.vis === false && key !== 'left-icon' && key !== 'close-icon' && !key.endsWith('-icon')) return
       Object.assign(vars, fn(n, (v) => toVar(v, `${setName} ${size} ${key}`)))
     })
-    for (const cls of [].concat(map.classes)) out.push(`${cls}.${size} { ${decl(vars)} }`)
+    for (const cls of [].concat(map.classes)) {
+      const sel = `${cls}.${size}`
+      const cur = layoutBySel.get(sel) || {}
+      for (const [k, v] of Object.entries(vars)) {
+        if (k in cur && cur[k] !== v) errors.push(`${sel} ${k}: ชุด ${setName} ให้ ${v} แต่ชุดก่อนหน้าให้ ${cur[k]} (ไฟล์ออกแบบสองชุดไม่ตรงกัน)`)
+        cur[k] = v
+      }
+      layoutBySel.set(sel, cur)
+    }
   }
 }
+for (const [sel, vars] of layoutBySel) out.push(`${sel} { ${decl(vars)} }`)
 
 // ── 3. สีต่อ ชุด × ตระกูล × แกน × สถานะ (รวมกฎที่ประกาศเหมือนกันไว้ selector เดียว) ──
 out.push('', '/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */')
-const groups = new Map() // declaration string → selectors[]
-const order = []
+// ขั้นแรกรวมค่าต่อ selector (หลายชุดที่จับคู่คลาสเดียวกัน เช่น checkbox กับ text-checkbox ต้องให้ค่าตรงกัน)
+const colorBySel = new Map() // selector → { rank, vars }
 for (const [setName, set] of Object.entries(spec.sets)) {
   const map = M.sets[setName]
   if (!map) continue
@@ -438,16 +558,31 @@ for (const [setName, set] of Object.entries(spec.sets)) {
         if (!fn) { errors.push(`${setName} ${family} ${combo}: ไม่รู้จักชั้นสี "${key}" (เพิ่มในตาราง colors)`); continue }
         const where = `${setName} ${family} [${combo}] ${key}`
         // pressed: สถานะที่ไฟล์ออกแบบไม่มี แต่ token มี (ตัดสิน 2026-09-04) ให้ derive จากชื่อ token ของสถานะ default
-        const pressed = (name) => { if (state !== 'default' || typeof name !== 'string') return null; const p = name.replace(/\/default$/, '/pressed'); return p !== name && cssVars.has(`--ntg-${p.replace(/\//g, '-')}`) ? toVar(p, where) : null }
+        //   รูปแบบชื่อมี 2 แบบ: ของ component (…/default → …/pressed) กับของสี semantic (…/primary → …/primary-pressed)
+        const pressed = (name) => {
+          if (state !== 'default' || typeof name !== 'string') return null
+          for (const p of [name.replace(/\/default$/, '/pressed'), `${name}-pressed`]) if (p !== name && cssVars.has(`--ntg-${p.replace(/\//g, '-')}`)) return toVar(p, where)
+          return null
+        }
         Object.assign(vars, fn(c, (v) => toVar(v, where), { state, axes, family, pressed }))
       }
-      const d = decl(vars)
-      const stateRank = { default: 0, hover: 1, focused: 2, disabled: 3 }[state] ?? 9
-      const k = `${stateRank}|${d}`
-      if (!groups.has(k)) { groups.set(k, []); order.push(k) }
-      groups.get(k).push(sel)
+      const rank = { default: 0, hover: 1, focused: 2, disabled: 3 }[state] ?? 9
+      const cur = colorBySel.get(sel) || { rank, vars: {} }
+      for (const [k, v] of Object.entries(vars)) {
+        if (k in cur.vars && cur.vars[k] !== v) errors.push(`${sel.replace(/\n/g, ' ')} ${k}: ชุด ${setName} ให้ ${v} แต่ชุดก่อนหน้าให้ ${cur.vars[k]} (ไฟล์ออกแบบสองชุดไม่ตรงกัน)`)
+        cur.vars[k] = v
+      }
+      colorBySel.set(sel, cur)
     }
   }
+}
+// ขั้นสอง รวม selector ที่ประกาศค่าเหมือนกันทุกตัวไว้กฎเดียว
+const groups = new Map() // "rank|declaration" → selectors[]
+const order = []
+for (const [sel, { rank, vars }] of colorBySel) {
+  const k = `${rank}|${decl(vars)}`
+  if (!groups.has(k)) { groups.set(k, []); order.push(k) }
+  groups.get(k).push(sel)
 }
 // เรียง default → hover → disabled เพื่อให้สถานะทับกันถูกลำดับ
 order.sort((a, b) => Number(a[0]) - Number(b[0]))

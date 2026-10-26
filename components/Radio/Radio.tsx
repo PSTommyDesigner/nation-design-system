@@ -53,9 +53,8 @@ const SIZE_CLASS: Record<RadioSize, string> = {
  * ชื่อกำกับกลุ่มมีชุด class แยกของตัวเอง ห้ามเอา SIZE_CLASS ไปใส่ที่กล่องกลุ่ม
  * เพราะลูกแต่ละตัวมี class ขนาดของตัวเองอยู่แล้ว ถ้าซ้อนกันสองชั้นจะได้ตัวอักษรของกลุ่มทับของลูก
  */
-const GROUP_SIZE_CLASS: Record<RadioSize, string> = {
-  xs: styles.groupXs, sm: styles.groupSm, md: styles.groupMd, lg: styles.groupLg, xl: styles.groupXl,
-};
+// ชื่อกลุ่มใช้ตัวอักษรชุดเดียวกับหัวข้อของตัวเลือก จึงใช้คลาสขนาดเดียวกัน (ตัวสร้าง CSS ให้ --rd-font-* ต่อขนาดไว้ที่ .xs ถึง .xl)
+const GROUP_SIZE_CLASS: Record<RadioSize, string> = SIZE_CLASS;
 
 /**
  * @example

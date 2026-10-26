@@ -1,0 +1,1679 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "15 Checkbox",
+ "reference": "Checkbox",
+ "sets": {
+  "checkbox": {
+   "defs": {
+    "checked": ["false","true","indeterminate"],
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover","focused","disabled"]
+   },
+   "layout": {
+    "xs, checked=false": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/xs",
+     "h": "checkbox/size/xs",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/xs","checkbox/radius/top-right/xs","checkbox/radius/bottom-right/xs","checkbox/radius/bottom-left/xs"]
+    },
+    "sm, checked=false": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/sm",
+     "h": "checkbox/size/sm",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"]
+    },
+    "md, checked=false": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/md",
+     "h": "checkbox/size/md",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/md","checkbox/radius/top-right/md","checkbox/radius/bottom-right/md","checkbox/radius/bottom-left/md"]
+    },
+    "lg, checked=false": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/lg",
+     "h": "checkbox/size/lg",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/lg","checkbox/radius/top-right/lg","checkbox/radius/bottom-right/lg","checkbox/radius/bottom-left/lg"]
+    },
+    "xl, checked=false": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/xl",
+     "h": "checkbox/size/xl",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/xl","checkbox/radius/top-right/xl","checkbox/radius/bottom-right/xl","checkbox/radius/bottom-left/xl"]
+    },
+    "xs, checked=true": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/xs",
+     "h": "checkbox/size/xs",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/xs","checkbox/radius/top-right/xs","checkbox/radius/bottom-right/xs","checkbox/radius/bottom-left/xs"],
+     "ch": [
+      {
+       "n": "status-&-feedback/check",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/xs",
+       "h": "checkbox/icon/xs",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, checked=true": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/sm",
+     "h": "checkbox/size/sm",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+     "ch": [
+      {
+       "n": "status-&-feedback/check",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/sm",
+       "h": "checkbox/icon/sm",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, checked=true": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/md",
+     "h": "checkbox/size/md",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/md","checkbox/radius/top-right/md","checkbox/radius/bottom-right/md","checkbox/radius/bottom-left/md"],
+     "ch": [
+      {
+       "n": "status-&-feedback/check",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/md",
+       "h": "checkbox/icon/md",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, checked=true": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/lg",
+     "h": "checkbox/size/lg",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/lg","checkbox/radius/top-right/lg","checkbox/radius/bottom-right/lg","checkbox/radius/bottom-left/lg"],
+     "ch": [
+      {
+       "n": "status-&-feedback/check",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/lg",
+       "h": "checkbox/icon/lg",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, checked=true": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/xl",
+     "h": "checkbox/size/xl",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/xl","checkbox/radius/top-right/xl","checkbox/radius/bottom-right/xl","checkbox/radius/bottom-left/xl"],
+     "ch": [
+      {
+       "n": "status-&-feedback/check",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/xl",
+       "h": "checkbox/icon/xl",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, checked=indeterminate": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/xs",
+     "h": "checkbox/size/xs",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/xs","checkbox/radius/top-right/xs","checkbox/radius/bottom-right/xs","checkbox/radius/bottom-left/xs"],
+     "ch": [
+      {
+       "n": "status-&-feedback/remove",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/xs",
+       "h": "checkbox/icon/xs",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, checked=indeterminate": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/sm",
+     "h": "checkbox/size/sm",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+     "ch": [
+      {
+       "n": "status-&-feedback/remove",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/sm",
+       "h": "checkbox/icon/sm",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, checked=indeterminate": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/md",
+     "h": "checkbox/size/md",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/md","checkbox/radius/top-right/md","checkbox/radius/bottom-right/md","checkbox/radius/bottom-left/md"],
+     "ch": [
+      {
+       "n": "status-&-feedback/remove",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/md",
+       "h": "checkbox/icon/md",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, checked=indeterminate": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/lg",
+     "h": "checkbox/size/lg",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/lg","checkbox/radius/top-right/lg","checkbox/radius/bottom-right/lg","checkbox/radius/bottom-left/lg"],
+     "ch": [
+      {
+       "n": "status-&-feedback/remove",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/lg",
+       "h": "checkbox/icon/lg",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, checked=indeterminate": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": "checkbox/size/xl",
+     "h": "checkbox/size/xl",
+     "clip": true,
+     "r": ["checkbox/radius/top-left/xl","checkbox/radius/top-right/xl","checkbox/radius/bottom-right/xl","checkbox/radius/bottom-left/xl"],
+     "ch": [
+      {
+       "n": "status-&-feedback/remove",
+       "t": "INSTANCE",
+       "w": "checkbox/icon/xl",
+       "h": "checkbox/icon/xl",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Checkbox": {
+     "checked=false, state=default": 0,
+     "checked=false, state=hover": 1,
+     "checked=false, state=focused": 2,
+     "checked=false, state=disabled": 3,
+     "checked=true, state=default": 4,
+     "checked=true, state=hover": 5,
+     "checked=true, state=focused": 6,
+     "checked=true, state=disabled": 7,
+     "checked=indeterminate, state=default": 8,
+     "checked=indeterminate, state=hover": 9,
+     "checked=indeterminate, state=focused": 10,
+     "checked=indeterminate, state=disabled": 11
+    }
+   }
+  },
+  "text-checkbox": {
+   "defs": {
+    "supporting-text-value": {
+     "type": "TEXT",
+     "def": "Supporting text"
+    },
+    "title-value": {
+     "type": "TEXT",
+     "def": "Checkbox Title"
+    },
+    "supporting-text": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "checked": ["false","true","indeterminate"],
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover","focused","disabled"]
+   },
+   "layout": {
+    "xs, checked=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/xs",
+         "h": "checkbox/size/xs",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/xs","checkbox/radius/top-right/xs","checkbox/radius/bottom-right/xs","checkbox/radius/bottom-left/xs"],
+         "inst": true
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/sm",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/xs"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/xs",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "sm, checked=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/sm",
+         "h": "checkbox/size/sm",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+         "inst": true
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/md",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/sm"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, checked=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/md",
+         "h": "checkbox/size/md",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/md","checkbox/radius/top-right/md","checkbox/radius/bottom-right/md","checkbox/radius/bottom-left/md"],
+         "inst": true
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/lg",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/md"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, checked=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/lg",
+         "h": "checkbox/size/lg",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/lg","checkbox/radius/top-right/lg","checkbox/radius/bottom-right/lg","checkbox/radius/bottom-left/lg"],
+         "inst": true
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/xl",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/lg"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/lg",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, checked=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/xl",
+         "h": "checkbox/size/xl",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/xl","checkbox/radius/top-right/xl","checkbox/radius/bottom-right/xl","checkbox/radius/bottom-left/xl"],
+         "inst": true
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/xl",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/xl"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/lg",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xs, checked=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/xs",
+         "h": "checkbox/size/xs",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/xs","checkbox/radius/top-right/xs","checkbox/radius/bottom-right/xs","checkbox/radius/bottom-left/xs"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/check",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/xs",
+           "h": "checkbox/icon/xs",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/sm",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/xs"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/xs",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "sm, checked=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/sm",
+         "h": "checkbox/size/sm",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/check",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/sm",
+           "h": "checkbox/icon/sm",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/md",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/sm"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, checked=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/md",
+         "h": "checkbox/size/md",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/md","checkbox/radius/top-right/md","checkbox/radius/bottom-right/md","checkbox/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/check",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/md",
+           "h": "checkbox/icon/md",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/lg",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/md"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, checked=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/lg",
+         "h": "checkbox/size/lg",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/lg","checkbox/radius/top-right/lg","checkbox/radius/bottom-right/lg","checkbox/radius/bottom-left/lg"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/check",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/lg",
+           "h": "checkbox/icon/lg",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/xl",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/lg"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/lg",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, checked=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/xl",
+         "h": "checkbox/size/xl",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/xl","checkbox/radius/top-right/xl","checkbox/radius/bottom-right/xl","checkbox/radius/bottom-left/xl"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/check",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/xl",
+           "h": "checkbox/icon/xl",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/xl",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/xl"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/lg",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xs, checked=indeterminate": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/xs",
+         "h": "checkbox/size/xs",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/xs","checkbox/radius/top-right/xs","checkbox/radius/bottom-right/xs","checkbox/radius/bottom-left/xs"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/remove",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/xs",
+           "h": "checkbox/icon/xs",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/sm",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/xs"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/xs",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "sm, checked=indeterminate": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/sm",
+         "h": "checkbox/size/sm",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/remove",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/sm",
+           "h": "checkbox/icon/sm",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/md",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/sm"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, checked=indeterminate": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/md",
+         "h": "checkbox/size/md",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/md","checkbox/radius/top-right/md","checkbox/radius/bottom-right/md","checkbox/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/remove",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/md",
+           "h": "checkbox/icon/md",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/lg",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/md"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, checked=indeterminate": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/lg",
+         "h": "checkbox/size/lg",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/lg","checkbox/radius/top-right/lg","checkbox/radius/bottom-right/lg","checkbox/radius/bottom-left/lg"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/remove",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/lg",
+           "h": "checkbox/icon/lg",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/xl",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/lg"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/lg",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, checked=indeterminate": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "checkbox",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "checkbox/size/xl",
+         "h": "checkbox/size/xl",
+         "clip": true,
+         "r": ["checkbox/radius/top-left/xl","checkbox/radius/top-right/xl","checkbox/radius/bottom-right/xl","checkbox/radius/bottom-left/xl"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "status-&-feedback/remove",
+           "t": "INSTANCE",
+           "w": "checkbox/icon/xl",
+           "h": "checkbox/icon/xl",
+           "clip": true,
+           "inst": true
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::label/xl",
+         "ref": {
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "checkbox/gap",
+       "p": [0,0,0,"checkbox/indent/xl"],
+       "s": ["HUG","HUG"],
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/lg",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Checkbox": {
+     "checked=false, state=default": 12,
+     "checked=false, state=hover": 13,
+     "checked=false, state=focused": 14,
+     "checked=false, state=disabled": 15,
+     "checked=true, state=default": 16,
+     "checked=true, state=hover": 17,
+     "checked=true, state=focused": 18,
+     "checked=true, state=disabled": 15,
+     "checked=indeterminate, state=default": 16,
+     "checked=indeterminate, state=hover": 17,
+     "checked=indeterminate, state=focused": 18,
+     "checked=indeterminate, state=disabled": 15
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/primary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/default"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/disabled"],
+    "strokes": ["color/border/general/disabled"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/brand/solid"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "status-&-feedback/check/vector": {
+    "fills": ["icon/brand/on-brand-primary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/brand/solid-hover"],
+    "strokes": ["color/border/brand/solid-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "status-&-feedback/check/vector": {
+    "fills": ["icon/brand/on-brand-primary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/brand/solid-hover"],
+    "strokes": ["color/border/brand/solid-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/default"
+   },
+   "status-&-feedback/check/vector": {
+    "fills": ["icon/brand/on-brand-primary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/disabled"],
+    "strokes": ["color/border/general/disabled"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "status-&-feedback/check/vector": {
+    "fills": ["icon/general/disable"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/brand/solid"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "status-&-feedback/remove/vector": {
+    "fills": ["icon/brand/on-brand-primary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/brand/solid-hover"],
+    "strokes": ["color/border/brand/solid-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "status-&-feedback/remove/vector": {
+    "fills": ["icon/brand/on-brand-primary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/brand/solid-hover"],
+    "strokes": ["color/border/brand/solid-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/default"
+   },
+   "status-&-feedback/remove/vector": {
+    "fills": ["icon/brand/on-brand-primary"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/disabled"],
+    "strokes": ["color/border/general/disabled"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "status-&-feedback/remove/vector": {
+    "fills": ["icon/general/disable"]
+   }
+  },
+  {
+   "row/checkbox": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/primary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/checkbox": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/checkbox": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/default"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/checkbox": {
+    "fills": ["color/background/general/disabled"],
+    "strokes": ["color/border/general/disabled"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/title": {
+    "fills": ["color/text/general/disabled"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/disabled"]
+   }
+  },
+  {
+   "row/checkbox": {
+    "fills": ["color/background/brand/solid"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/checkbox": {
+    "fills": ["color/background/brand/solid-hover"],
+    "strokes": ["color/border/brand/solid-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/checkbox": {
+    "fills": ["color/background/brand/solid-hover"],
+    "strokes": ["color/border/brand/solid-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/default"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  }
+ ]
+}

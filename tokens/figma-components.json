@@ -10,19 +10,45 @@
   "components": {
     "Avatar": {
       "figmaPage": "11 Avatar",
-      "figmaSets": ["avatar-image", "avatar-icon", "avatar-monogram", "avatar-number"],
+      "figmaSets": [
+        "avatar-image",
+        "avatar-icon",
+        "avatar-monogram",
+        "avatar-number"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "online-indicator": ["false", "true"],
-        "state": ["default", "hover"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "online-indicator": [
+          "false",
+          "true"
+        ],
+        "state": [
+          "default",
+          "hover"
+        ]
       },
-      "properties": ["text-value"],
+      "properties": [
+        "text-value"
+      ],
       "map": {
         "axes": {
-          "size": { "prop": "size", "type": "AvatarSize" },
-          "online-indicator": { "prop": "status" }
+          "size": {
+            "prop": "size",
+            "type": "AvatarSize"
+          },
+          "online-indicator": {
+            "prop": "status"
+          }
         },
-        "properties": { "text-value": "initials" }
+        "properties": {
+          "text-value": "initials"
+        }
       },
       "accepted": {
         "state": "default กับ hover มาจาก pseudo-class ของ CSS ตัวที่กดได้เปิดด้วย prop interactive"
@@ -33,20 +59,43 @@
       "file": "Avatar",
       "propsType": "AvatarGroupProps",
       "figmaPage": "11 Avatar",
-      "figmaSets": ["avatar-group"],
+      "figmaSets": [
+        "avatar-group"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md"],
-        "add-user-button": ["false", "true"],
-        "more-users": ["false", "true"]
+        "size": [
+          "xs",
+          "sm",
+          "md"
+        ],
+        "add-user-button": [
+          "false",
+          "true"
+        ],
+        "more-users": [
+          "false",
+          "true"
+        ]
       },
-      "properties": ["avatar-1"],
+      "properties": [
+        "avatar-1"
+      ],
       "map": {
         "axes": {
-          "size": { "prop": "size", "type": "AvatarGroupSize" },
-          "add-user-button": { "prop": "action" },
-          "more-users": { "prop": "max" }
+          "size": {
+            "prop": "size",
+            "type": "AvatarGroupSize"
+          },
+          "add-user-button": {
+            "prop": "action"
+          },
+          "more-users": {
+            "prop": "max"
+          }
         },
-        "properties": { "avatar-1": "children" }
+        "properties": {
+          "avatar-1": "children"
+        }
       },
       "notes": "ไฟล์ออกแบบมีช่อง avatar-1 ถึง avatar-10 เป็นสิบช่อง ฝั่งโค้ดรับเป็น children ช่องเดียว จึงเก็บแค่ช่องแรกเป็นตัวแทน"
     },
@@ -54,15 +103,38 @@
       "file": "Avatar",
       "propsType": "AvatarLabelProps",
       "figmaPage": "11 Avatar",
-      "figmaSets": ["avatar-label"],
+      "figmaSets": [
+        "avatar-label"
+      ],
       "axes": {
-        "size": ["sm", "md", "lg", "xl"],
-        "status-icon": ["false", "online-indicator"],
-        "state": ["default", "hover"]
+        "size": [
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "status-icon": [
+          "false",
+          "online-indicator"
+        ],
+        "state": [
+          "default",
+          "hover"
+        ]
       },
-      "properties": ["avatar", "name", "email", "show-email"],
+      "properties": [
+        "avatar",
+        "name",
+        "email",
+        "show-email"
+      ],
       "map": {
-        "axes": { "size": { "prop": "size", "type": "AvatarLabelSize" } },
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "AvatarLabelSize"
+          }
+        },
         "properties": {
           "avatar": "avatar",
           "name": "title",
@@ -77,19 +149,56 @@
     },
     "Badge": {
       "figmaPage": "22 Badge",
-      "figmaSets": ["semi-rounded-badge", "pill-badge", "semi-rounded-icon-badge", "circular-icon-badge", "link-badge"],
+      "figmaSets": [
+        "semi-rounded-badge",
+        "pill-badge",
+        "semi-rounded-icon-badge",
+        "circular-icon-badge",
+        "link-badge"
+      ],
       "axes": {
-        "hierarchy": ["primary", "secondary", "tertiary"],
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "shape": ["semi-rounded", "pill", "circular", "link"]
+        "hierarchy": [
+          "primary",
+          "secondary",
+          "tertiary"
+        ],
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "shape": [
+          "semi-rounded",
+          "pill",
+          "circular",
+          "link"
+        ]
       },
-      "axesFromSetNames": ["shape"],
-      "properties": ["badge-title", "trailing-icon", "trailing-icon-swap", "leading-icon-swap"],
+      "axesFromSetNames": [
+        "shape"
+      ],
+      "properties": [
+        "badge-title",
+        "trailing-icon",
+        "trailing-icon-swap",
+        "leading-icon-swap"
+      ],
       "map": {
         "axes": {
-          "hierarchy": { "prop": "hierarchy", "type": "BadgeHierarchy" },
-          "size": { "prop": "size", "type": "BadgeSize" },
-          "shape": { "prop": "shape", "type": "BadgeShape" }
+          "hierarchy": {
+            "prop": "hierarchy",
+            "type": "BadgeHierarchy"
+          },
+          "size": {
+            "prop": "size",
+            "type": "BadgeSize"
+          },
+          "shape": {
+            "prop": "shape",
+            "type": "BadgeShape"
+          }
         },
         "properties": {
           "badge-title": "children",
@@ -102,18 +211,49 @@
     },
     "Banner": {
       "figmaPage": "19 Toasts & Banners",
-      "figmaSets": ["banner"],
+      "figmaSets": [
+        "banner"
+      ],
       "axes": {
-        "level": ["page", "section"],
-        "type": ["default", "brand", "error", "warning", "success"],
-        "size": ["xs", "sm", "md", "lg", "xl"]
+        "level": [
+          "page",
+          "section"
+        ],
+        "type": [
+          "default",
+          "brand",
+          "error",
+          "warning",
+          "success"
+        ],
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ]
       },
-      "properties": ["show-icon", "show-support", "show-action", "show-close"],
+      "properties": [
+        "show-icon",
+        "show-support",
+        "show-action",
+        "show-close"
+      ],
       "map": {
         "axes": {
-          "level": { "prop": "level", "type": "BannerLevel" },
-          "type": { "prop": "type", "type": "BannerType" },
-          "size": { "prop": "size", "type": "BannerSize" }
+          "level": {
+            "prop": "level",
+            "type": "BannerLevel"
+          },
+          "type": {
+            "prop": "type",
+            "type": "BannerType"
+          },
+          "size": {
+            "prop": "size",
+            "type": "BannerSize"
+          }
         },
         "properties": {
           "show-icon": "showIcon",
@@ -125,19 +265,52 @@
     },
     "Button": {
       "figmaPage": "12 Buttons",
-      "figmaSets": ["semi-rounded-button", "pill-button"],
+      "figmaSets": [
+        "semi-rounded-button",
+        "pill-button"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "shape": ["semi-rounded", "pill"],
-        "icon-only": ["false"],
-        "state": ["default", "hover", "focused", "disabled"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "shape": [
+          "semi-rounded",
+          "pill"
+        ],
+        "icon-only": [
+          "false"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled"
+        ]
       },
-      "axesFromSetNames": ["shape"],
-      "properties": ["Title", "L-icon", "R-icon", "swap-L-icon", "swap-R-icon"],
+      "axesFromSetNames": [
+        "shape"
+      ],
+      "properties": [
+        "Title",
+        "L-icon",
+        "R-icon",
+        "swap-L-icon",
+        "swap-R-icon"
+      ],
       "map": {
         "axes": {
-          "size": { "prop": "size", "type": "ButtonSize" },
-          "shape": { "prop": "shape", "type": "ButtonShape" }
+          "size": {
+            "prop": "size",
+            "type": "ButtonSize"
+          },
+          "shape": {
+            "prop": "shape",
+            "type": "ButtonShape"
+          }
         },
         "properties": {
           "Title": "children",
@@ -154,21 +327,51 @@
     },
     "IconButton": {
       "figmaPage": "12 Buttons",
-      "figmaSets": ["semi-rounded-icon-button", "circular-icon-button"],
+      "figmaSets": [
+        "semi-rounded-icon-button",
+        "circular-icon-button"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "shape": ["semi-rounded", "circular"],
-        "icon-only": ["true"],
-        "state": ["default", "hover", "focused", "disabled"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "shape": [
+          "semi-rounded",
+          "circular"
+        ],
+        "icon-only": [
+          "true"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled"
+        ]
       },
-      "axesFromSetNames": ["shape"],
-      "properties": ["swap-icon"],
+      "axesFromSetNames": [
+        "shape"
+      ],
+      "properties": [
+        "swap-icon"
+      ],
       "map": {
         "axes": {
-          "size": { "prop": "size" },
-          "shape": { "prop": "shape", "type": "IconButtonShape" }
+          "size": {
+            "prop": "size"
+          },
+          "shape": {
+            "prop": "shape",
+            "type": "IconButtonShape"
+          }
         },
-        "properties": { "swap-icon": "icon" }
+        "properties": {
+          "swap-icon": "icon"
+        }
       },
       "accepted": {
         "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled เป็น attribute มาตรฐานของปุ่ม",
@@ -178,17 +381,45 @@
     },
     "LinkButton": {
       "figmaPage": "12 Buttons",
-      "figmaSets": ["link-button", "link-icon-button"],
+      "figmaSets": [
+        "link-button",
+        "link-icon-button"
+      ],
       "axes": {
-        "default-gray": ["false", "true"],
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "state": ["default", "hover", "focused", "disabled"]
+        "default-gray": [
+          "false",
+          "true"
+        ],
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled"
+        ]
       },
-      "properties": ["Title", "L Icon", "R Icon", "Swap L Icon", "Swap R Icon", "swap-icon"],
+      "properties": [
+        "Title",
+        "L Icon",
+        "R Icon",
+        "Swap L Icon",
+        "Swap R Icon",
+        "swap-icon"
+      ],
       "map": {
         "axes": {
-          "default-gray": { "prop": "defaultGray" },
-          "size": { "prop": "size" }
+          "default-gray": {
+            "prop": "defaultGray"
+          },
+          "size": {
+            "prop": "size"
+          }
         },
         "properties": {
           "Title": "children",
@@ -206,12 +437,32 @@
     },
     "Card": {
       "figmaPage": "27 Card",
-      "figmaSets": ["vertical-news-card", "horizontal-news-card", "news-list-card", "video-list-card"],
+      "figmaSets": [
+        "vertical-news-card",
+        "horizontal-news-card",
+        "news-list-card",
+        "video-list-card"
+      ],
       "axes": {
-        "Size": ["xs", "sm", "md", "lg", "xl"],
-        "Image Trailing": ["False", "True"],
-        "Play": ["False", "True"],
-        "State": ["Default", "Hover"]
+        "Size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "Image Trailing": [
+          "False",
+          "True"
+        ],
+        "Play": [
+          "False",
+          "True"
+        ],
+        "State": [
+          "Default",
+          "Hover"
+        ]
       },
       "properties": [
         "Heading",
@@ -226,9 +477,16 @@
       ],
       "map": {
         "axes": {
-          "Size": { "prop": "size", "type": "CardSize" },
-          "Image Trailing": { "prop": "imageTrailing" },
-          "Play": { "prop": "overlay" }
+          "Size": {
+            "prop": "size",
+            "type": "CardSize"
+          },
+          "Image Trailing": {
+            "prop": "imageTrailing"
+          },
+          "Play": {
+            "prop": "overlay"
+          }
         },
         "properties": {
           "Heading": "title",
@@ -249,15 +507,42 @@
     },
     "Checkbox": {
       "figmaPage": "15 Checkbox",
-      "figmaSets": ["checkbox", "text-checkbox"],
+      "figmaSets": [
+        "checkbox",
+        "text-checkbox"
+      ],
       "axes": {
-        "checked": ["false", "true", "indeterminate"],
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "state": ["default", "hover", "focused", "disabled"]
+        "checked": [
+          "false",
+          "true",
+          "indeterminate"
+        ],
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled"
+        ]
       },
-      "properties": ["title-value", "supporting-text", "supporting-text-value"],
+      "properties": [
+        "title-value",
+        "supporting-text",
+        "supporting-text-value"
+      ],
       "map": {
-        "axes": { "size": { "prop": "size", "type": "CheckboxSize" } },
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "CheckboxSize"
+          }
+        },
         "properties": {
           "title-value": "label",
           "supporting-text": "supportingText",
@@ -271,54 +556,124 @@
     },
     "Radio": {
       "figmaPage": "16 Radio",
-      "figmaSets": ["radio", "text-radio"],
+      "figmaSets": [
+        "radio",
+        "text-radio"
+      ],
       "axes": {
-        "checked": ["false", "true"],
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "state": ["default", "hover", "focused", "disabled"]
+        "checked": [
+          "false",
+          "true"
+        ],
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled"
+        ]
       },
-      "properties": ["Title Text", "Title Value", "Supporting text"],
+      "properties": [
+        "title",
+        "title-value",
+        "supporting-text",
+        "supporting-text-value"
+      ],
       "map": {
-        "axes": { "size": { "prop": "size", "type": "RadioSize" } },
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "RadioSize"
+          }
+        },
         "properties": {
-          "Title Text": "label",
-          "Title Value": "label",
-          "Supporting text": "supportingText"
+          "title": "label",
+          "title-value": "label",
+          "supporting-text": "supportingText",
+          "supporting-text-value": "supportingText"
         }
       },
       "accepted": {
         "checked": "attribute checked มาตรฐานของ input ชนิด radio ไม่ต้องมี prop ซ้ำ",
         "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled เป็น attribute มาตรฐานของ input"
-      },
-      "notes": "ชื่อคุณสมบัติของหน้า 16 ยังใช้เว้นวรรคกับตัวพิมพ์ใหญ่ ไม่ตรงกติกาตั้งชื่อ เก็บตามของจริงไว้ก่อน"
+      }
     },
     "Divider": {
       "figmaPage": "28 Dividers",
-      "figmaSets": ["horizontal-divider", "vertical-divider"],
+      "figmaSets": [
+        "horizontal-divider",
+        "vertical-divider"
+      ],
       "axes": {
-        "type": ["solid", "dash"],
-        "orientation": ["horizontal", "vertical"]
+        "type": [
+          "solid",
+          "dash"
+        ],
+        "orientation": [
+          "horizontal",
+          "vertical"
+        ]
       },
-      "axesFromSetNames": ["orientation"],
+      "axesFromSetNames": [
+        "orientation"
+      ],
       "properties": [],
       "map": {
         "axes": {
-          "type": { "prop": "type", "type": "DividerType" },
-          "orientation": { "prop": "orientation", "type": "DividerOrientation" }
+          "type": {
+            "prop": "type",
+            "type": "DividerType"
+          },
+          "orientation": {
+            "prop": "orientation",
+            "type": "DividerOrientation"
+          }
         }
       }
     },
     "Dropdown": {
       "figmaPage": "25 Dropdowns",
-      "figmaSets": ["dropdown", "dropdown-menu"],
+      "figmaSets": [
+        "dropdown",
+        "dropdown-menu"
+      ],
       "axes": {
-        "size": ["sm", "md", "lg"],
-        "state": ["default", "hover", "focused", "open", "disabled", "error", "error-hover", "error-focused", "read-only"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "open",
+          "disabled",
+          "error",
+          "error-hover",
+          "error-focused",
+          "read-only"
+        ]
       },
-      "properties": ["show-group-header"],
+      "properties": [
+        "show-group-header"
+      ],
       "map": {
-        "axes": { "size": { "prop": "size", "type": "DropdownSize" } },
-        "properties": { "show-group-header": "options" }
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "DropdownSize"
+          }
+        },
+        "properties": {
+          "show-group-header": "options"
+        }
       },
       "accepted": {
         "state": "default hover focused open มาจาก pseudo-class และสถานะภายใน ส่วน disabled error read-only มี prop แยกให้แล้วครบ"
@@ -327,16 +682,36 @@
     },
     "Slider": {
       "figmaPage": "17 Sliders",
-      "figmaSets": ["slider", "range-slider"],
+      "figmaSets": [
+        "slider",
+        "range-slider"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "disabled": ["false", "true"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "disabled": [
+          "false",
+          "true"
+        ]
       },
-      "properties": ["value-tooltip", "min-max-label"],
+      "properties": [
+        "value-tooltip",
+        "min-max-label"
+      ],
       "map": {
         "axes": {
-          "size": { "prop": "size", "type": "SliderSize" },
-          "disabled": { "prop": "disabled" }
+          "size": {
+            "prop": "size",
+            "type": "SliderSize"
+          },
+          "disabled": {
+            "prop": "disabled"
+          }
         },
         "properties": {
           "value-tooltip": "showValueTooltip",
@@ -347,21 +722,68 @@
     },
     "Tabs": {
       "figmaPage": "18 Tabs",
-      "figmaSets": ["segmented-tab", "underline-tab", "segmented-tab-group", "underline-tab-group"],
+      "figmaSets": [
+        "segmented-tab",
+        "underline-tab",
+        "segmented-tab-group",
+        "underline-tab-group"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "shape": ["segmented", "underline"],
-        "current": ["false", "true"],
-        "icon": ["false", "leading", "unread", "only"],
-        "state": ["default", "hover", "focused", "disabled"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "shape": [
+          "segmented",
+          "underline"
+        ],
+        "current": [
+          "false",
+          "true"
+        ],
+        "icon": [
+          "false",
+          "leading",
+          "unread",
+          "only"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled"
+        ]
       },
-      "axesFromSetNames": ["shape"],
-      "properties": ["text", "tab-3", "tab-4", "tab-5", "tab-6", "tab-7", "tab-8", "tab-9", "tab-10"],
+      "axesFromSetNames": [
+        "shape"
+      ],
+      "properties": [
+        "text",
+        "tab-3",
+        "tab-4",
+        "tab-5",
+        "tab-6",
+        "tab-7",
+        "tab-8",
+        "tab-9",
+        "tab-10"
+      ],
       "map": {
         "axes": {
-          "size": { "prop": "size", "type": "TabsSize" },
-          "shape": { "prop": "shape", "type": "TabsShape" },
-          "current": { "prop": "value" }
+          "size": {
+            "prop": "size",
+            "type": "TabsSize"
+          },
+          "shape": {
+            "prop": "shape",
+            "type": "TabsShape"
+          },
+          "current": {
+            "prop": "value"
+          }
         },
         "properties": {
           "text": "items",
@@ -382,10 +804,26 @@
     },
     "TextField": {
       "figmaPage": "13 Input",
-      "figmaSets": ["text-field", "text-area"],
+      "figmaSets": [
+        "text-field",
+        "text-area"
+      ],
       "axes": {
-        "size": ["sm", "md", "lg"],
-        "state": ["default", "hover", "focused", "disabled", "error", "error-hover", "error-focused", "read-only"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled",
+          "error",
+          "error-hover",
+          "error-focused",
+          "read-only"
+        ]
       },
       "properties": [
         "label",
@@ -400,7 +838,12 @@
         "trailing-divider"
       ],
       "map": {
-        "axes": { "size": { "prop": "size", "type": "TextFieldSize" } },
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "TextFieldSize"
+          }
+        },
         "properties": {
           "label": "label",
           "hint": "hint",
@@ -421,16 +864,41 @@
     },
     "Toast": {
       "figmaPage": "19 Toasts & Banners",
-      "figmaSets": ["toast"],
+      "figmaSets": [
+        "toast"
+      ],
       "axes": {
-        "type": ["default", "brand", "error", "warning", "success"],
-        "size": ["xs", "sm", "md", "lg", "xl"]
+        "type": [
+          "default",
+          "brand",
+          "error",
+          "warning",
+          "success"
+        ],
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ]
       },
-      "properties": ["show-icon", "show-support", "show-action", "show-close"],
+      "properties": [
+        "show-icon",
+        "show-support",
+        "show-action",
+        "show-close"
+      ],
       "map": {
         "axes": {
-          "type": { "prop": "type", "type": "ToastType" },
-          "size": { "prop": "size", "type": "ToastSize" }
+          "type": {
+            "prop": "type",
+            "type": "ToastType"
+          },
+          "size": {
+            "prop": "size",
+            "type": "ToastSize"
+          }
         },
         "properties": {
           "show-icon": "showIcon",
@@ -442,15 +910,41 @@
     },
     "Toggle": {
       "figmaPage": "14 Toggles",
-      "figmaSets": ["toggle"],
+      "figmaSets": [
+        "toggle"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "active": ["false", "true"],
-        "state": ["default", "hover", "focused", "disabled"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "active": [
+          "false",
+          "true"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled"
+        ]
       },
-      "properties": ["title", "title-value", "supporting-text", "supporting-text-value"],
+      "properties": [
+        "title",
+        "title-value",
+        "supporting-text",
+        "supporting-text-value"
+      ],
       "map": {
-        "axes": { "size": { "prop": "size", "type": "ToggleSize" } },
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "ToggleSize"
+          }
+        },
         "properties": {
           "title": "label",
           "title-value": "label",
@@ -465,29 +959,68 @@
     },
     "Tooltip": {
       "figmaPage": "20 Tooltips",
-      "figmaSets": ["tooltip"],
+      "figmaSets": [
+        "tooltip"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "placement": ["top", "bottom", "left", "right"],
-        "supporting-text": ["false", "true"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "placement": [
+          "top",
+          "bottom",
+          "left",
+          "right"
+        ],
+        "supporting-text": [
+          "false",
+          "true"
+        ]
       },
       "properties": [],
       "map": {
         "axes": {
-          "size": { "prop": "size", "type": "TooltipSize" },
-          "placement": { "prop": "placement", "type": "TooltipAxis" },
-          "supporting-text": { "prop": "description" }
+          "size": {
+            "prop": "size",
+            "type": "TooltipSize"
+          },
+          "placement": {
+            "prop": "placement",
+            "type": "TooltipAxis"
+          },
+          "supporting-text": {
+            "prop": "description"
+          }
         }
       },
       "notes": "ชุด value-label บนหน้า 20 เป็นของเก่าที่ยังใช้แกน Dark Mode กับ Arrow แบบเดิม ไม่ใช่ต้นทางของ component นี้"
     },
     "Pagination": {
       "figmaPage": "24 Pagination",
-      "figmaSets": ["pagination"],
-      "axes": { "size": ["xs", "sm", "md", "lg", "xl"] },
+      "figmaSets": [
+        "pagination"
+      ],
+      "axes": {
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ]
+      },
       "properties": [],
       "map": {
-        "axes": { "size": { "prop": "size", "type": "PaginationSize" } }
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "PaginationSize"
+          }
+        }
       },
       "notes": "ชุด _pagination-number-button กับ _pagination-ellipsis เป็นชิ้นส่วนข้างใน ฝั่งโค้ดไม่ได้เปิดเป็น component แยก"
     },
@@ -514,12 +1047,35 @@
     },
     "Tag": {
       "figmaPage": "21 Tags",
-      "figmaSets": ["semi-rounded-tag", "pill-tag", "link-tag", "icon-tag", "circular-icon-tag", "link-icon-tag"],
+      "figmaSets": [
+        "semi-rounded-tag",
+        "pill-tag",
+        "link-tag",
+        "icon-tag",
+        "circular-icon-tag",
+        "link-icon-tag"
+      ],
       "axes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "hierarchy": ["primary", "secondary"],
-        "default-gray": ["false", "true"],
-        "state": ["default", "hover", "disabled"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "hierarchy": [
+          "primary",
+          "secondary"
+        ],
+        "default-gray": [
+          "false",
+          "true"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "disabled"
+        ]
       },
       "properties": [
         "tag-title",
@@ -531,9 +1087,17 @@
       ],
       "map": {
         "axes": {
-          "size": { "prop": "size", "type": "TagSize" },
-          "hierarchy": { "prop": "hierarchy", "type": "TagHierarchy" },
-          "default-gray": { "prop": "defaultGray" }
+          "size": {
+            "prop": "size",
+            "type": "TagSize"
+          },
+          "hierarchy": {
+            "prop": "hierarchy",
+            "type": "TagHierarchy"
+          },
+          "default-gray": {
+            "prop": "defaultGray"
+          }
         },
         "properties": {
           "tag-title": "children",

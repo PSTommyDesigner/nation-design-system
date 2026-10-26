@@ -1,0 +1,111 @@
+/*
+ * Radio ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --rd-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/radio.json (spec ชั้นจากไฟล์ออกแบบหน้า 16)
+ * แล้วต่อท้ายไฟล์นี้เป็น Radio.module.css ห้ามแก้ Radio.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบใช้ box-shadow แบบ inset (ไฟล์ออกแบบใช้ stroke แบบ INSIDE) รวมกับวงแหวนโฟกัสใน box-shadow เดียว
+ *   2. สถานะในไฟล์ออกแบบเป็นแกน (checked / state) ฝั่งเว็บเป็น data attribute ของ wrapper
+ *      hover อยู่ที่แถว (label) โฟกัสอยู่ที่ input ที่ซ่อน ตัวสร้างจึงเลือกด้วย :has()
+ *   3. สถานะกด (:active) ไม่มีในไฟล์ออกแบบ แต่มี token ชุด pressed ตัวสร้าง derive ค่า --rd-*-pressed จากชื่อ token ของสถานะ default
+ *   4. input จริงซ่อนด้วยสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ (1px) ไม่ใช่ค่าออกแบบ
+ *   5. พื้นที่แตะขั้นต่ำ 48px บนอุปกรณ์สัมผัส (เกณฑ์ 48dp ของ Android ครอบ 44pt ของ Apple) เป็นเกณฑ์แพลตฟอร์ม ไม่ใช่ค่าจากไฟล์ออกแบบ
+ *      แถวในไฟล์ออกแบบสูงเท่าเนื้อหา (HUG) จึงไม่มีความสูงแถวต่อขนาดในนี้
+ *   6. RadioGroup (ชื่อกลุ่ม + ตัวเลือกเรียงกัน) เป็นการประกอบฝั่งเว็บ ไม่มีชุดในไฟล์ออกแบบ
+ *      ชื่อกลุ่มใช้ตัวอักษรและสีเดียวกับหัวข้อของตัวเลือก ระยะใต้ชื่อกลุ่มใช้ระยะเดียวกับช่องระหว่างวงกลมกับข้อความ
+ */
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--rd-gap, 0);
+  color: var(--rd-fg, inherit);
+  font-family: var(--rd-font-family);
+  font-size: var(--rd-font-size);
+  line-height: var(--rd-line-height);
+  font-weight: var(--rd-font-weight);
+  letter-spacing: var(--rd-letter-space);
+}
+.row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-gap, 0);
+  cursor: pointer;
+}
+.root[data-disabled] .row { cursor: not-allowed; }
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--rd-size);
+  height: var(--rd-size);
+  border-radius: var(--rd-r-tl, 0) var(--rd-r-tr, 0) var(--rd-r-br, 0) var(--rd-r-bl, 0);
+  background: var(--rd-bg, transparent);
+  box-shadow: inset 0 0 0 var(--rd-border-w, 1px) var(--rd-border, transparent), var(--rd-ring, 0 0 0 0 transparent);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input:focus-visible { outline: none; }
+.root:not([data-disabled]) .row:active .circle {
+  background: var(--rd-bg-pressed, var(--rd-bg, transparent));
+  box-shadow: inset 0 0 0 var(--rd-border-w, 1px) var(--rd-border-pressed, var(--rd-border, transparent)), var(--rd-ring, 0 0 0 0 transparent);
+}
+
+.dot {
+  flex: none;
+  width: var(--rd-dot);
+  height: var(--rd-dot);
+  border-radius: 50%;
+  background: var(--rd-dot-color, currentColor);
+  opacity: 0;
+}
+.root[data-checked='true'] .dot { opacity: 1; }
+
+.title { color: var(--rd-fg, inherit); }
+
+.supporting {
+  padding-inline-start: var(--rd-indent, 0);
+  color: var(--rd-sup-fg, inherit);
+  font-family: var(--rd-sup-font-family);
+  font-size: var(--rd-sup-font-size);
+  line-height: var(--rd-sup-line-height);
+  font-weight: var(--rd-sup-font-weight);
+  letter-spacing: var(--rd-sup-letter-space);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--rd-fg, inherit);
+  font-family: var(--rd-font-family);
+  font-size: var(--rd-font-size);
+  line-height: var(--rd-line-height);
+  font-weight: var(--rd-font-weight);
+  letter-spacing: var(--rd-letter-space);
+}
+.groupLabel { margin-block-end: var(--rd-gap, 0); }
+
+.touchTarget .row { min-height: 48px; }
+@media (pointer: coarse) {
+  .row { min-height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .circle { transition: none; }
+}

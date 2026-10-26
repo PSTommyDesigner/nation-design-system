@@ -1,43 +1,47 @@
-/**
- * Radio styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Radio/Radio.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 16 Radio แล้วรัน  npm run figma:layers -- radio  และ  npm run css:generate -- radio
+ *   spec: tokens/figma-layers/radio.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Radio ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 16 Radio ได้
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --rd-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/radio.json (spec ชั้นจากไฟล์ออกแบบหน้า 16)
+ * แล้วต่อท้ายไฟล์นี้เป็น Radio.module.css ห้ามแก้ Radio.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ภาพวงกลม    --ntg-radio-size-{ขนาด} · dot-{ขนาด} · border · radius-full
- *   แถวที่กดได้  --ntg-radio-row-height-{ขนาด} · row-height-touch · gap · indent-{ขนาด}
- *   ตัวอักษร     --ntg-typography-{font-size|line-height|font-weight}-label-{ขนาด} และ body-{ขนาด}
- *   ระยะของกลุ่ม --ntg-size-space-s1-lg (สเกลระยะกลางของระบบ ไม่ใช่ระยะของ component)
- *   สี           --ntg-color-background-* · --ntg-color-border-* · --ntg-color-text-general-* · --ntg-icon-*
- *
- * ⚠️ มุมโค้งใช้ค่าเต็มวงตัวเดียวทุกขนาด ห้ามคำนวณครึ่งหนึ่งของขนาดเอง (เอกสารหน้า 16 ข้อ 3)
- *
- * ⚠️ จุดตรงกลางไม่ใช่ครึ่งหนึ่งของวงกลม สัดส่วนอยู่ที่ 33.3 ถึง 42.9 เปอร์เซ็นต์
- *    ค่ามาจาก token รายขนาด ห้ามเขียนเป็นเปอร์เซ็นต์ของวงกลม
- *
- * ⚠️ ความสูงแถวอ้างสเกลความสูงตัวควบคุมกลาง ห้ามพิมพ์ค่าตายทับ
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบใช้ box-shadow แบบ inset (ไฟล์ออกแบบใช้ stroke แบบ INSIDE) รวมกับวงแหวนโฟกัสใน box-shadow เดียว
+ *   2. สถานะในไฟล์ออกแบบเป็นแกน (checked / state) ฝั่งเว็บเป็น data attribute ของ wrapper
+ *      hover อยู่ที่แถว (label) โฟกัสอยู่ที่ input ที่ซ่อน ตัวสร้างจึงเลือกด้วย :has()
+ *   3. สถานะกด (:active) ไม่มีในไฟล์ออกแบบ แต่มี token ชุด pressed ตัวสร้าง derive ค่า --rd-*-pressed จากชื่อ token ของสถานะ default
+ *   4. input จริงซ่อนด้วยสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ (1px) ไม่ใช่ค่าออกแบบ
+ *   5. พื้นที่แตะขั้นต่ำ 48px บนอุปกรณ์สัมผัส (เกณฑ์ 48dp ของ Android ครอบ 44pt ของ Apple) เป็นเกณฑ์แพลตฟอร์ม ไม่ใช่ค่าจากไฟล์ออกแบบ
+ *      แถวในไฟล์ออกแบบสูงเท่าเนื้อหา (HUG) จึงไม่มีความสูงแถวต่อขนาดในนี้
+ *   6. RadioGroup (ชื่อกลุ่ม + ตัวเลือกเรียงกัน) เป็นการประกอบฝั่งเว็บ ไม่มีชุดในไฟล์ออกแบบ
+ *      ชื่อกลุ่มใช้ตัวอักษรและสีเดียวกับหัวข้อของตัวเลือก ระยะใต้ชื่อกลุ่มใช้ระยะเดียวกับช่องระหว่างวงกลมกับข้อความ
  */
 
 .root {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--ntg-radio-gap);
-  font-family: var(--ntg-typography-font-family-primary);
-  color: var(--ntg-color-text-general-label);
+  gap: var(--rd-gap, 0);
+  color: var(--rd-fg, inherit);
+  font-family: var(--rd-font-family);
+  font-size: var(--rd-font-size);
+  line-height: var(--rd-line-height);
+  font-weight: var(--rd-font-weight);
+  letter-spacing: var(--rd-letter-space);
 }
-
 .row {
   display: inline-flex;
   align-items: center;
-  gap: var(--ntg-radio-gap);
+  gap: var(--rd-gap, 0);
   cursor: pointer;
 }
+.root[data-disabled] .row { cursor: not-allowed; }
 
-.root[data-disabled='true'] .row { cursor: not-allowed; }
-
-/* ปุ่มตัวเลือกจริงซ่อนไว้ แต่ยังรับโฟกัสและอ่านได้ด้วยโปรแกรมอ่านหน้าจอ
-   ค่า 1px ตรงนี้เป็นสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ ไม่ใช่ค่าออกแบบ จึงไม่ต้องเป็น token */
 .input {
   position: absolute;
   width: 1px;
@@ -56,209 +60,83 @@
   justify-content: center;
   flex: none;
   box-sizing: border-box;
-  border-radius: var(--ntg-radio-radius-full);
-  background: var(--ntg-color-background-general-primary);
-  border: var(--ntg-radio-border) solid var(--ntg-color-border-general-primary);
-  /* ใช้ขั้นเวลาสั้นของระบบ เพราะเป็นการเปลี่ยนสีในที่เดิม ส่วน ease เป็นคำสงวนของ CSS ไม่ใช่ค่าออกแบบ */
-  transition:
-    background-color var(--ntg-motion-duration-fast) ease,
-    border-color var(--ntg-motion-duration-fast) ease;
+  width: var(--rd-size);
+  height: var(--rd-size);
+  border-radius: var(--rd-r-tl, 0) var(--rd-r-tr, 0) var(--rd-r-br, 0) var(--rd-r-bl, 0);
+  background: var(--rd-bg, transparent);
+  box-shadow: inset 0 0 0 var(--rd-border-w, 1px) var(--rd-border, transparent), var(--rd-ring, 0 0 0 0 transparent);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input:focus-visible { outline: none; }
+.root:not([data-disabled]) .row:active .circle {
+  background: var(--rd-bg-pressed, var(--rd-bg, transparent));
+  box-shadow: inset 0 0 0 var(--rd-border-w, 1px) var(--rd-border-pressed, var(--rd-border, transparent)), var(--rd-ring, 0 0 0 0 transparent);
 }
 
 .dot {
   flex: none;
+  width: var(--rd-dot);
+  height: var(--rd-dot);
+  border-radius: 50%;
+  background: var(--rd-dot-color, currentColor);
   opacity: 0;
-  border-radius: var(--ntg-radio-radius-full);
-  background: var(--ntg-icon-brand-on-brand-primary);
 }
-
-/* ── สถานะ ────────────────────────────────────────────────── */
 .root[data-checked='true'] .dot { opacity: 1; }
 
-.root[data-checked='true'] .circle {
-  background: var(--ntg-color-background-brand-solid);
-  border-color: var(--ntg-color-border-brand-solid);
-}
-
-/* ชี้ค้าง */
-.root:not([data-disabled='true']) .row:hover .circle {
-  border-color: var(--ntg-color-border-general-primary-hover);
-}
-
-.root[data-checked='true']:not([data-disabled='true']) .row:hover .circle {
-  background: var(--ntg-color-background-brand-solid-hover);
-  border-color: var(--ntg-color-border-brand-solid-hover);
-}
-
-/* สถานะกด ใช้ token ชุด pressed ที่ระบบเตรียมไว้แล้ว */
-.root:not([data-disabled='true']) .row:active .circle {
-  border-color: var(--ntg-color-border-general-primary-pressed);
-}
-
-.root[data-checked='true']:not([data-disabled='true']) .row:active .circle {
-  background: var(--ntg-color-background-brand-solid-pressed);
-  border-color: var(--ntg-color-border-brand-solid-pressed);
-}
-
-/* ปิดใช้งาน ทับทุกสถานะด้านบน */
-.root[data-disabled='true'] .circle {
-  background: var(--ntg-color-background-general-disabled);
-  border-color: var(--ntg-color-border-general-disabled);
-}
-
-.root[data-disabled='true'] .dot { background: var(--ntg-icon-general-disable); }
-.root[data-disabled='true'] { color: var(--ntg-color-text-general-disabled); }
-
-/* วงแหวนโฟกัส ความหนา 4px เป็นค่าคงที่ของระบบโฟกัส ไม่ใช่ค่าออกแบบรายชิ้น จึงไม่เป็น token
-   วงกลมมีพื้นหลังทึบ จึงใช้เงาได้ ไม่ต้องใช้เส้นขอบแบบปุ่มโปร่ง */
-.input:focus-visible + .circle {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
-}
-
-.title {
-  font-family: var(--ntg-typography-font-family-primary);
-}
+.title { color: var(--rd-fg, inherit); }
 
 .supporting {
-  font-family: var(--ntg-typography-font-family-primary);
-  color: var(--ntg-color-text-general-supporting-text);
+  padding-inline-start: var(--rd-indent, 0);
+  color: var(--rd-sup-fg, inherit);
+  font-family: var(--rd-sup-font-family);
+  font-size: var(--rd-sup-font-size);
+  line-height: var(--rd-sup-line-height);
+  font-weight: var(--rd-sup-font-weight);
+  letter-spacing: var(--rd-sup-letter-space);
 }
 
-.root[data-disabled='true'] .supporting { color: var(--ntg-color-text-general-disabled); }
-
-/* ── กลุ่ม ────────────────────────────────────────────────── */
-/* ตัวเลือกเรียงลงเป็นคอลัมน์โดยไม่ต้องใส่ช่องไฟ เพราะแต่ละแถวมีความสูงของตัวเองอยู่แล้ว
-   ส่วนระยะระหว่างชื่อกลุ่มกับตัวเลือกใช้สเกลระยะกลางของระบบ ไม่ใช่ระยะของ component
-   เพราะ --ntg-radio-gap คือระยะระหว่างวงกลมกับข้อความ คนละหน้าที่กัน */
 .group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-family: var(--ntg-typography-font-family-primary);
-  color: var(--ntg-color-text-general-label);
+  color: var(--rd-fg, inherit);
+  font-family: var(--rd-font-family);
+  font-size: var(--rd-font-size);
+  line-height: var(--rd-line-height);
+  font-weight: var(--rd-font-weight);
+  letter-spacing: var(--rd-letter-space);
 }
+.groupLabel { margin-block-end: var(--rd-gap, 0); }
 
-.groupLabel {
-  margin-block-end: var(--ntg-size-space-s1-lg);
-  color: var(--ntg-color-text-general-label);
-}
-
-.group[aria-disabled='true'] .groupLabel { color: var(--ntg-color-text-general-disabled); }
-
-.groupXs .groupLabel {
-  font-size: var(--ntg-typography-font-size-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
-  font-weight: var(--ntg-typography-font-weight-label-sm);
-}
-.groupSm .groupLabel {
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-}
-.groupMd .groupLabel {
-  font-size: var(--ntg-typography-font-size-label-lg);
-  line-height: var(--ntg-typography-line-height-label-lg);
-  font-weight: var(--ntg-typography-font-weight-label-lg);
-}
-.groupLg .groupLabel,
-.groupXl .groupLabel {
-  font-size: var(--ntg-typography-font-size-label-xl);
-  line-height: var(--ntg-typography-line-height-label-xl);
-  font-weight: var(--ntg-typography-font-weight-label-xl);
-}
-
-/* ── ขนาด ────────────────────────────────────────────────── */
-/* การจับคู่ text preset ต่อขนาดมาจากเอกสารหน้า 16 หัวข้อ 4.3 ชุดเดียวกับช่องติ๊ก
-   หัวข้อใช้ label และข้อความช่วยใช้ body ที่ขนาดตัวอักษรเดียวกัน
-   ขนาด xl ใช้ preset ชุดเดียวกับ lg เพราะบันได preset หมดที่ xl */
-
-.xs .row { min-height: var(--ntg-radio-row-height-xs); }
-.xs .circle { width: var(--ntg-radio-size-xs); height: var(--ntg-radio-size-xs); }
-.xs .dot { width: var(--ntg-radio-dot-xs); height: var(--ntg-radio-dot-xs); }
-.xs .title {
-  font-size: var(--ntg-typography-font-size-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
-  font-weight: var(--ntg-typography-font-weight-label-sm);
-}
-.xs .supporting {
-  padding-inline-start: var(--ntg-radio-indent-xs);
-  font-size: var(--ntg-typography-font-size-body-xs);
-  line-height: var(--ntg-typography-line-height-body-xs);
-  font-weight: var(--ntg-typography-font-weight-body-xs);
-}
-
-.sm .row { min-height: var(--ntg-radio-row-height-sm); }
-.sm .circle { width: var(--ntg-radio-size-sm); height: var(--ntg-radio-size-sm); }
-.sm .dot { width: var(--ntg-radio-dot-sm); height: var(--ntg-radio-dot-sm); }
-.sm .title {
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-}
-.sm .supporting {
-  padding-inline-start: var(--ntg-radio-indent-sm);
-  font-size: var(--ntg-typography-font-size-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-}
-
-.md .row { min-height: var(--ntg-radio-row-height-md); }
-.md .circle { width: var(--ntg-radio-size-md); height: var(--ntg-radio-size-md); }
-.md .dot { width: var(--ntg-radio-dot-md); height: var(--ntg-radio-dot-md); }
-.md .title {
-  font-size: var(--ntg-typography-font-size-label-lg);
-  line-height: var(--ntg-typography-line-height-label-lg);
-  font-weight: var(--ntg-typography-font-weight-label-lg);
-}
-.md .supporting {
-  padding-inline-start: var(--ntg-radio-indent-md);
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-}
-
-.lg .row { min-height: var(--ntg-radio-row-height-lg); }
-.lg .circle { width: var(--ntg-radio-size-lg); height: var(--ntg-radio-size-lg); }
-.lg .dot { width: var(--ntg-radio-dot-lg); height: var(--ntg-radio-dot-lg); }
-.lg .title {
-  font-size: var(--ntg-typography-font-size-label-xl);
-  line-height: var(--ntg-typography-line-height-label-xl);
-  font-weight: var(--ntg-typography-font-weight-label-xl);
-}
-.lg .supporting {
-  padding-inline-start: var(--ntg-radio-indent-lg);
-  font-size: var(--ntg-typography-font-size-body-lg);
-  line-height: var(--ntg-typography-line-height-body-lg);
-  font-weight: var(--ntg-typography-font-weight-body-lg);
-}
-
-.xl .row { min-height: var(--ntg-radio-row-height-xl); }
-.xl .circle { width: var(--ntg-radio-size-xl); height: var(--ntg-radio-size-xl); }
-.xl .dot { width: var(--ntg-radio-dot-xl); height: var(--ntg-radio-dot-xl); }
-.xl .title {
-  font-size: var(--ntg-typography-font-size-label-xl);
-  line-height: var(--ntg-typography-line-height-label-xl);
-  font-weight: var(--ntg-typography-font-weight-label-xl);
-}
-.xl .supporting {
-  padding-inline-start: var(--ntg-radio-indent-xl);
-  font-size: var(--ntg-typography-font-size-body-lg);
-  line-height: var(--ntg-typography-line-height-body-lg);
-  font-weight: var(--ntg-typography-font-weight-body-lg);
-}
-
-/* พื้นที่แตะขั้นต่ำ ใช้สเกลแถวที่กดได้ ไม่ใช่ขนาดภาพวงกลม
-   เปิดเองบนอุปกรณ์ที่ตัวชี้หยาบ ตามข้อ 2 ของคู่มือนักพัฒนาในเอกสารหน้า 16
-   และบังคับเปิดด้วย prop touchTarget ได้เมื่อรู้ว่าจะใช้งานด้วยนิ้ว */
-.touchTarget .row { min-height: var(--ntg-radio-row-height-touch); }
-
-/* ยกเฉพาะขนาดที่แถวเตี้ยกว่าเกณฑ์ คือ xs 24 sm 32 md 40
-   ขนาด lg เท่ากับเกณฑ์พอดีที่ 48 และ xl สูงกว่าอยู่แล้วที่ 56 ถ้าเขียนรวมจะกลายเป็นการบีบให้เตี้ยลง */
+.touchTarget .row { min-height: 48px; }
 @media (pointer: coarse) {
-  .xs .row, .sm .row, .md .row { min-height: var(--ntg-radio-row-height-touch); }
+  .row { min-height: 48px; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .circle { transition: none; }
 }
+
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --rd-font-family: var(--ntg-typography-font-family-label-sm); --rd-font-size: var(--ntg-typography-font-size-label-sm); --rd-line-height: var(--ntg-typography-line-height-label-sm); --rd-font-weight: var(--ntg-typography-font-weight-label-sm); --rd-letter-space: var(--ntg-typography-letter-space-label-sm); --rd-sup-font-family: var(--ntg-typography-font-family-body-xs); --rd-sup-font-size: var(--ntg-typography-font-size-body-xs); --rd-sup-line-height: var(--ntg-typography-line-height-body-xs); --rd-sup-font-weight: var(--ntg-typography-font-weight-body-xs); --rd-sup-letter-space: var(--ntg-typography-letter-space-body-xs); }
+.sm { --rd-font-family: var(--ntg-typography-font-family-label-md); --rd-font-size: var(--ntg-typography-font-size-label-md); --rd-line-height: var(--ntg-typography-line-height-label-md); --rd-font-weight: var(--ntg-typography-font-weight-label-md); --rd-letter-space: var(--ntg-typography-letter-space-label-md); --rd-sup-font-family: var(--ntg-typography-font-family-body-sm); --rd-sup-font-size: var(--ntg-typography-font-size-body-sm); --rd-sup-line-height: var(--ntg-typography-line-height-body-sm); --rd-sup-font-weight: var(--ntg-typography-font-weight-body-sm); --rd-sup-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.md { --rd-font-family: var(--ntg-typography-font-family-label-lg); --rd-font-size: var(--ntg-typography-font-size-label-lg); --rd-line-height: var(--ntg-typography-line-height-label-lg); --rd-font-weight: var(--ntg-typography-font-weight-label-lg); --rd-letter-space: var(--ntg-typography-letter-space-label-lg); --rd-sup-font-family: var(--ntg-typography-font-family-body-md); --rd-sup-font-size: var(--ntg-typography-font-size-body-md); --rd-sup-line-height: var(--ntg-typography-line-height-body-md); --rd-sup-font-weight: var(--ntg-typography-font-weight-body-md); --rd-sup-letter-space: var(--ntg-typography-letter-space-body-md); }
+.lg { --rd-font-family: var(--ntg-typography-font-family-label-xl); --rd-font-size: var(--ntg-typography-font-size-label-xl); --rd-line-height: var(--ntg-typography-line-height-label-xl); --rd-font-weight: var(--ntg-typography-font-weight-label-xl); --rd-letter-space: var(--ntg-typography-letter-space-label-xl); --rd-sup-font-family: var(--ntg-typography-font-family-body-lg); --rd-sup-font-size: var(--ntg-typography-font-size-body-lg); --rd-sup-line-height: var(--ntg-typography-line-height-body-lg); --rd-sup-font-weight: var(--ntg-typography-font-weight-body-lg); --rd-sup-letter-space: var(--ntg-typography-letter-space-body-lg); }
+.xl { --rd-font-family: var(--ntg-typography-font-family-label-xl); --rd-font-size: var(--ntg-typography-font-size-label-xl); --rd-line-height: var(--ntg-typography-line-height-label-xl); --rd-font-weight: var(--ntg-typography-font-weight-label-xl); --rd-letter-space: var(--ntg-typography-letter-space-label-xl); --rd-sup-font-family: var(--ntg-typography-font-family-body-lg); --rd-sup-font-size: var(--ntg-typography-font-size-body-lg); --rd-sup-line-height: var(--ntg-typography-line-height-body-lg); --rd-sup-font-weight: var(--ntg-typography-font-weight-body-lg); --rd-sup-letter-space: var(--ntg-typography-letter-space-body-lg); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.xs { --rd-size: var(--ntg-radio-size-xs); --rd-r-tl: var(--ntg-radio-radius-full); --rd-r-tr: var(--ntg-radio-radius-full); --rd-r-br: var(--ntg-radio-radius-full); --rd-r-bl: var(--ntg-radio-radius-full); --rd-dot: var(--ntg-radio-dot-xs); --rd-gap: var(--ntg-radio-gap); --rd-indent: var(--ntg-radio-indent-xs); }
+.root.sm { --rd-size: var(--ntg-radio-size-sm); --rd-r-tl: var(--ntg-radio-radius-full); --rd-r-tr: var(--ntg-radio-radius-full); --rd-r-br: var(--ntg-radio-radius-full); --rd-r-bl: var(--ntg-radio-radius-full); --rd-dot: var(--ntg-radio-dot-sm); --rd-gap: var(--ntg-radio-gap); --rd-indent: var(--ntg-radio-indent-sm); }
+.root.md { --rd-size: var(--ntg-radio-size-md); --rd-r-tl: var(--ntg-radio-radius-full); --rd-r-tr: var(--ntg-radio-radius-full); --rd-r-br: var(--ntg-radio-radius-full); --rd-r-bl: var(--ntg-radio-radius-full); --rd-dot: var(--ntg-radio-dot-md); --rd-gap: var(--ntg-radio-gap); --rd-indent: var(--ntg-radio-indent-md); }
+.root.lg { --rd-size: var(--ntg-radio-size-lg); --rd-r-tl: var(--ntg-radio-radius-full); --rd-r-tr: var(--ntg-radio-radius-full); --rd-r-br: var(--ntg-radio-radius-full); --rd-r-bl: var(--ntg-radio-radius-full); --rd-dot: var(--ntg-radio-dot-lg); --rd-gap: var(--ntg-radio-gap); --rd-indent: var(--ntg-radio-indent-lg); }
+.root.xl { --rd-size: var(--ntg-radio-size-xl); --rd-r-tl: var(--ntg-radio-radius-full); --rd-r-tr: var(--ntg-radio-radius-full); --rd-r-br: var(--ntg-radio-radius-full); --rd-r-bl: var(--ntg-radio-radius-full); --rd-dot: var(--ntg-radio-dot-xl); --rd-gap: var(--ntg-radio-gap); --rd-indent: var(--ntg-radio-indent-xl); }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root[data-checked="false"] { --rd-bg: var(--ntg-color-background-general-primary); --rd-border: var(--ntg-color-border-general-primary); --rd-border-w: 1px; --rd-ring: 0 0 0 0 transparent; --rd-bg-pressed: var(--ntg-color-background-general-primary-pressed); --rd-border-pressed: var(--ntg-color-border-general-primary-pressed); --rd-fg: var(--ntg-color-text-general-section-heading); --rd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"] { --rd-bg: var(--ntg-color-background-brand-solid); --rd-border: var(--ntg-color-border-brand-solid); --rd-border-w: 1px; --rd-ring: 0 0 0 0 transparent; --rd-bg-pressed: var(--ntg-color-background-brand-solid-pressed); --rd-border-pressed: var(--ntg-color-border-brand-solid-pressed); --rd-dot-color: var(--ntg-icon-brand-on-brand-primary); --rd-fg: var(--ntg-color-text-general-section-heading); --rd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"]:not([data-disabled]):has(.row:hover) { --rd-bg: var(--ntg-color-background-general-primary); --rd-border: var(--ntg-color-border-brand-solid); --rd-border-w: 1px; --rd-ring: 0 0 0 0 transparent; --rd-fg: var(--ntg-color-text-general-section-heading); --rd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"]:not([data-disabled]):has(.row:hover) { --rd-bg: var(--ntg-color-background-brand-solid-hover); --rd-border: var(--ntg-color-border-brand-solid-hover); --rd-border-w: 1px; --rd-ring: 0 0 0 0 transparent; --rd-dot-color: var(--ntg-icon-brand-on-brand-primary); --rd-fg: var(--ntg-color-text-general-section-heading); --rd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"]:has(.input:focus-visible) { --rd-bg: var(--ntg-color-background-general-primary); --rd-border: var(--ntg-color-border-brand-solid); --rd-border-w: 1px; --rd-ring: var(--ntg-focused-ring-default); --rd-fg: var(--ntg-color-text-general-section-heading); --rd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"]:has(.input:focus-visible) { --rd-bg: var(--ntg-color-background-brand-solid-hover); --rd-border: var(--ntg-color-border-brand-solid-hover); --rd-border-w: 1px; --rd-ring: var(--ntg-focused-ring-default); --rd-dot-color: var(--ntg-icon-brand-on-brand-primary); --rd-fg: var(--ntg-color-text-general-section-heading); --rd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"][data-disabled] { --rd-bg: var(--ntg-color-background-general-disabled); --rd-border: var(--ntg-color-border-general-disabled); --rd-border-w: 1px; --rd-ring: 0 0 0 0 transparent; --rd-fg: var(--ntg-color-text-general-disabled); --rd-sup-fg: var(--ntg-color-text-general-disabled); }
+.root[data-checked="true"][data-disabled] { --rd-bg: var(--ntg-color-background-general-disabled); --rd-border: var(--ntg-color-border-general-disabled); --rd-border-w: 1px; --rd-ring: 0 0 0 0 transparent; --rd-dot-color: var(--ntg-icon-general-disable); --rd-fg: var(--ntg-color-text-general-disabled); --rd-sup-fg: var(--ntg-color-text-general-disabled); }
