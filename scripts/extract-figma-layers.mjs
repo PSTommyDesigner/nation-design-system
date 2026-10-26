@@ -168,11 +168,12 @@ function snap(n, depth = 0) {
 function split(node) {
   const colors = {}
   function strip(o, p) {
-    // sw/sa (น้ำหนักกับตำแหน่งเส้นขอบ) ไปอยู่กับสี เพราะเปลี่ยนตามสถานะ (primary ไม่มีขอบ hover เปลี่ยนสีขอบ)
-    const { fills, strokes, sw, sa, ...rest } = o
+    // sw/sa (น้ำหนักกับตำแหน่งเส้นขอบ) และ fx (effect เช่น เงา วงแหวนโฟกัส) ไปอยู่กับสี
+    // เพราะเปลี่ยนตามสถานะ (primary ไม่มีขอบ hover เปลี่ยนสีขอบ focused มีวงแหวน tertiary ไม่มีเงา)
+    const { fills, strokes, sw, sa, fx, ...rest } = o
     const here = p ? `${p}/${o.n}` : o.n
     const key = here.replace(/^\//, '') || '(root)'
-    if (fills || strokes) colors[key] = { ...(fills && { fills }), ...(strokes && { strokes, sw, sa }) }
+    if (fills || strokes || fx) colors[key] = { ...(fills && { fills }), ...(strokes && { strokes, sw, sa }), ...(fx && { fx }) }
     if (rest.ch) rest.ch = rest.ch.map(c => strip(c, here))
     return rest
   }
@@ -245,10 +246,22 @@ for (const s of sets) {
     // สี: เก็บต่อ ตระกูล x แกนอื่นที่ไม่ใช่ size แล้วเช็คว่าทุกขนาดเหมือนกัน
     const colorKey = Object.entries(axes).filter(([k]) => k !== 'size').map(([k, v]) => `${k}=${v}`).join(', ')
     const fam = (entry.colors[s.family] ||= {})
-    const ck = JSON.stringify(colors)
-    if (fam[colorKey] && JSON.stringify(fam[colorKey]) !== ck) drift.push(`สีไม่เท่ากันข้ามขนาด: ${s.setName} ${s.family} [${colorKey}] ที่ size=${size}`)
-    fam[colorKey] = colors
+    // เก็บทีละขนาดก่อน แล้วค่อยยุบตอนท้าย: ถ้าทุกขนาดเหมือนกันเก็บใต้ key ที่ไม่มี size
+    // ถ้าต่างกัน (เช่น เงาของปุ่ม Alpha โตตามขนาด ตั้งใจ) เก็บแยกใต้ key ที่มี size=
+    ;(entry._colorsBySize ||= {})[s.family] ||= {}
+    ;(entry._colorsBySize[s.family][colorKey] ||= {})[size] = colors
   }
+}
+// ยุบสีต่อขนาด
+for (const entry of Object.values(out.sets)) {
+  for (const [family, combos] of Object.entries(entry._colorsBySize || {})) {
+    for (const [colorKey, bySize] of Object.entries(combos)) {
+      const vals = Object.values(bySize).map(c => JSON.stringify(c))
+      if (vals.every(v => v === vals[0])) entry.colors[family][colorKey] = Object.values(bySize)[0]
+      else for (const [size, c] of Object.entries(bySize)) entry.colors[family][`${colorKey ? colorKey + ', ' : ''}size=${size}`] = c
+    }
+  }
+  delete entry._colorsBySize
 }
 // สรุป drift ของโครง: โครงที่ไม่ตรงกับตระกูลอ้างอิง
 for (const [setName, entry] of Object.entries(out.sets)) {

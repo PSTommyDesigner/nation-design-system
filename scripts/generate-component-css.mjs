@@ -97,7 +97,6 @@ const TAG = {
       '--tag-pt': W(n.p[0]), '--tag-pr': W(n.p[1]), '--tag-pb': W(n.p[2]), '--tag-pl': W(n.p[3]),
       '--tag-gap': W(n.g),
       ...(n.r ? { '--tag-r-tl': W(n.r[0]), '--tag-r-tr': W(n.r[1]), '--tag-r-br': W(n.r[2]), '--tag-r-bl': W(n.r[3]) } : {}),
-      '--tag-shadow': effectVar(n.fx, 'root effect'),
     }),
     // ไอคอนซ้าย/ปิดของชุดฐาน: เฟรมขนาดตายตัวผูกตัวแปร icon
     'left-icon': (n, W) => ({ '--tag-icon': W(n.w) }),
@@ -146,7 +145,7 @@ const TAG = {
   typography: { '--tag-font-family': 'font-family', '--tag-font-size': 'font-size', '--tag-line-height': 'line-height', '--tag-font-weight': 'font-weight', '--tag-letter-space': 'letter-space' },
   // ชั้น → ช่องสี  (fills[0] / strokes[0])
   colors: {
-    '(root)': (c, W) => ({ '--tag-bg': W(c.fills?.[0]), '--tag-border': c.strokes ? W(c.strokes[0]) : 'transparent', ...(c.strokes ? { '--tag-border-w': `${c.sw[0]}px` } : {}) }),
+    '(root)': (c, W) => ({ '--tag-bg': c.fills ? W(c.fills[0]) : 'transparent', '--tag-border': c.strokes ? W(c.strokes[0]) : 'transparent', ...(c.strokes ? { '--tag-border-w': `${c.sw[0]}px` } : {}), '--tag-shadow': effectVar(c.fx, 'root effect') }),
     'tag-title/Tag Title': (c, W) => ({ '--tag-fg': W(c.fills[0]) }),
     'content/title/Tag Title': (c, W) => ({ '--tag-fg': W(c.fills[0]) }),
     'left-icon/icon/vector': (c, W) => ({ '--tag-icon-color': W(c.fills[0]) }),
@@ -184,7 +183,6 @@ const BADGE = {
       '--badge-pt': W(n.p[0]), '--badge-pr': W(n.p[1]), '--badge-pb': W(n.p[2]), '--badge-pl': W(n.p[3]),
       '--badge-gap': W(n.g),
       ...(n.r ? { '--badge-r-tl': W(n.r[0]), '--badge-r-tr': W(n.r[1]), '--badge-r-br': W(n.r[2]), '--badge-r-bl': W(n.r[3]) } : {}),
-      '--badge-shadow': effectVar(n.fx, 'root effect'),
     }),
     'badge-title': (n, W) => ({ '--badge-title-pt': W(n.p[0]), '--badge-title-pr': W(n.p[1]), '--badge-title-pb': W(n.p[2]), '--badge-title-pl': W(n.p[3]) }),
     'badge-title/Badge Title': () => ({}),
@@ -198,14 +196,68 @@ const BADGE = {
   textLayers: ['badge-title/Badge Title'],
   typography: { '--badge-font-family': 'font-family', '--badge-font-size': 'font-size', '--badge-line-height': 'line-height', '--badge-font-weight': 'font-weight', '--badge-letter-space': 'letter-space' },
   colors: {
-    '(root)': (c, W) => ({ '--badge-bg': c.fills ? W(c.fills[0]) : 'transparent', '--badge-border': c.strokes ? W(c.strokes[0]) : 'transparent', ...(c.strokes ? { '--badge-border-w': `${c.sw[0]}px` } : {}) }),
+    '(root)': (c, W) => ({ '--badge-bg': c.fills ? W(c.fills[0]) : 'transparent', '--badge-border': c.strokes ? W(c.strokes[0]) : 'transparent', ...(c.strokes ? { '--badge-border-w': `${c.sw[0]}px` } : {}), '--badge-shadow': effectVar(c.fx, 'root effect') }),
     'badge-title/Badge Title': (c, W) => ({ '--badge-fg': W(c.fills[0]) }),
     'trailing-icon/**/Vector': (c, W) => ({ '--badge-icon-color': W(c.fills[0]) }),
     'leading-icon/**/Vector': (c, W) => ({ '--badge-icon-color': W(c.fills[0]) }),
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Button: หน้า 12 ปุ่มข้อความ 2 ชุด x 4 ตระกูล (Brand Neutral Error Alpha) แกน state 4 ค่า
+// ═══════════════════════════════════════════════════════════════════════════════
+const BUTTON = {
+  specFile: 'tokens/figma-layers/button.json',
+  baseFile: 'components/Button/Button.base.css',
+  outFile: 'components/Button/Button.module.css',
+  sets: {
+    'semi-rounded-button': { classes: '.root:not(.pill)' },
+    'pill-button':         { classes: '.root.pill' },
+  },
+  // โหมดเทาในโค้ดเป็นคลาสตระกูลแยก (brandGray / errorGray) ไม่ใช่คลาสเพิ่ม
+  familyClass: (f, axes = {}) => {
+    const fam = f.replace(/ Button$/, '').toLowerCase()
+    return '.' + (axes['default-gray'] === 'true' ? `${fam}Gray` : fam)
+  },
+  axisClass: { hierarchy: (v) => `.${v}` },   // icon-only ของ Alpha ไม่ใช่คลาส (ชุดไอคอนล้วนเป็น IconButton)
+  stateSelector: {
+    default: (sel) => sel,
+    hover: (sel) => `${sel}:hover:not(:disabled)`,
+    focused: (sel) => `${sel}:focus-visible`,
+    disabled: (sel) => `${sel}:disabled`,
+  },
+  layers: {
+    '(root)': (n, W) => ({
+      '--btn-h': W(n.h),
+      '--btn-pt': W(n.p[0]), '--btn-pr': W(n.p[1]), '--btn-pb': W(n.p[2]), '--btn-pl': W(n.p[3]),
+      '--btn-gap': W(n.g),
+      ...(n.r ? { '--btn-r-tl': W(n.r[0]), '--btn-r-tr': W(n.r[1]), '--btn-r-br': W(n.r[2]), '--btn-r-bl': W(n.r[3]) } : {}),
+    }),
+    'Left Icon': (n, W) => ({ '--btn-icon': W(n.w) }),
+    'Right Icon': (n, W) => ({ '--btn-icon': W(n.w) }),
+    'Left Icon/**': () => ({}),
+    'Right Icon/**': () => ({}),
+    'Title frame': (n, W) => ({ '--btn-title-pt': W(n.p[0]), '--btn-title-pr': W(n.p[1]), '--btn-title-pb': W(n.p[2]), '--btn-title-pl': W(n.p[3]), '--btn-title-gap': W(n.g) }),
+    'Title frame/Title': () => ({}),
+  },
+  textLayers: ['Title frame/Title'],
+  typography: { '--btn-font-family': 'font-family', '--btn-font-size': 'font-size', '--btn-line-height': 'line-height', '--btn-font-weight': 'font-weight', '--btn-letter-space': 'letter-space' },
+  colors: {
+    '(root)': (c, W, ctx) => ({
+      '--btn-bg': c.fills ? W(c.fills[0]) : 'transparent',
+      '--btn-border': c.strokes ? W(c.strokes[0]) : 'transparent',
+      ...(c.strokes ? { '--btn-border-w': `${c.sw[0]}px` } : {}),
+      '--btn-shadow': effectVar(c.fx, 'root effect'),
+      ...(c.fills && ctx.pressed(c.fills[0]) ? { '--btn-bg-pressed': ctx.pressed(c.fills[0]) } : {}),
+      ...(c.strokes && ctx.pressed(c.strokes[0]) ? { '--btn-border-pressed': ctx.pressed(c.strokes[0]) } : {}),
+    }),
+    'Title frame/Title': (c, W, ctx) => ({ '--btn-fg': W(c.fills[0]), ...(ctx.pressed(c.fills[0]) ? { '--btn-fg-pressed': ctx.pressed(c.fills[0]) } : {}) }),
+    'Left Icon/**/vector': (c, W, ctx) => ({ '--btn-icon-color': W(c.fills[0]), ...(ctx.pressed(c.fills[0]) ? { '--btn-icon-color-pressed': ctx.pressed(c.fills[0]) } : {}) }),
+    'Right Icon/**/vector': () => ({}),  // สีเดียวกับไอคอนซ้าย (ตรวจใน spec แล้ว)
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -273,13 +325,14 @@ for (const [setName, set] of Object.entries(spec.sets)) {
   const map = M.sets[setName]
   if (!map) continue
   for (const [family, combos] of Object.entries(set.colors)) {
-    const famClass = M.familyClass(family)
     for (const [combo, paletteId] of Object.entries(combos)) {
       const axes = Object.fromEntries(combo.split(', ').filter(Boolean).map(s => s.split('=')))
       const state = axes.state || 'default'
+      const famClass = M.familyClass(family, axes)
       const sels = [].concat(map.classes).map((cls) => {
         let sel = `${cls}${famClass}`
         for (const [axis, fn] of Object.entries(M.axisClass)) if (axis in axes) sel += fn(axes[axis])
+        if (axes.size) sel += `.${axes.size}`   // สีที่ต่างตามขนาด (เช่น เงาปุ่ม Alpha)
         return M.stateSelector[state]?.(sel)
       })
       if (sels.some((x) => !x)) { errors.push(`${setName} ${family} ${combo}: สถานะ ${state} ไม่รู้จัก`); continue }
@@ -289,10 +342,13 @@ for (const [setName, set] of Object.entries(spec.sets)) {
       for (const [key, c] of Object.entries(colors)) {
         const fn = lookup(M.colors, key)
         if (!fn) { errors.push(`${setName} ${family} ${combo}: ไม่รู้จักชั้นสี "${key}" (เพิ่มในตาราง colors)`); continue }
-        Object.assign(vars, fn(c, (v) => toVar(v, `${setName} ${family} [${combo}] ${key}`)))
+        const where = `${setName} ${family} [${combo}] ${key}`
+        // pressed: สถานะที่ไฟล์ออกแบบไม่มี แต่ token มี (ตัดสิน 2026-09-04) ให้ derive จากชื่อ token ของสถานะ default
+        const pressed = (name) => { if (state !== 'default' || typeof name !== 'string') return null; const p = name.replace(/\/default$/, '/pressed'); return p !== name && cssVars.has(`--ntg-${p.replace(/\//g, '-')}`) ? toVar(p, where) : null }
+        Object.assign(vars, fn(c, (v) => toVar(v, where), { state, axes, family, pressed }))
       }
       const d = decl(vars)
-      const stateRank = { default: 0, hover: 1, disabled: 2 }[state]
+      const stateRank = { default: 0, hover: 1, focused: 2, disabled: 3 }[state] ?? 9
       const k = `${stateRank}|${d}`
       if (!groups.has(k)) { groups.set(k, []); order.push(k) }
       groups.get(k).push(sel)
@@ -302,7 +358,7 @@ for (const [setName, set] of Object.entries(spec.sets)) {
 // เรียง default → hover → disabled เพื่อให้สถานะทับกันถูกลำดับ
 order.sort((a, b) => Number(a[0]) - Number(b[0]))
 for (const k of order) {
-  const d = k.slice(2)
+  const d = k.slice(k.indexOf('|') + 1)
   out.push(`${groups.get(k).join(',\n')} { ${d} }`)
 }
 

@@ -59,5 +59,52 @@
       "circular-icon-badge",
       "link-badge"
     ]
+  },
+  "button": {
+    "page": "12 Buttons",
+    "depth": 5,
+    "reference": "Brand Button",
+    "referenceHierarchy": "primary",
+    "families": [
+      "Brand Button",
+      "Neutral Button",
+      "Error Button",
+      "Alpha Button"
+    ],
+    "sets": [
+      "semi-rounded-button",
+      "pill-button"
+    ]
+  },
+  "icon-button": {
+    "page": "12 Buttons",
+    "depth": 5,
+    "reference": "Brand Button",
+    "referenceHierarchy": "primary",
+    "families": [
+      "Brand Button",
+      "Neutral Button",
+      "Error Button",
+      "Alpha Button"
+    ],
+    "sets": [
+      "semi-rounded-icon-button",
+      "circular-icon-button"
+    ]
+  },
+  "link-button": {
+    "page": "12 Buttons",
+    "depth": 5,
+    "reference": "Brand Button",
+    "referenceHierarchy": "primary",
+    "families": [
+      "Brand Button",
+      "Neutral Button",
+      "Error Button"
+    ],
+    "sets": [
+      "link-button",
+      "link-icon-button"
+    ]
   }
 }

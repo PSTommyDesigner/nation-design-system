@@ -1,0 +1,65 @@
+/*
+ * Button ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --btn-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/button.json (spec ชั้นจากไฟล์ออกแบบหน้า 12)
+ * แล้วต่อท้ายไฟล์นี้เป็น Button.module.css ห้ามแก้ Button.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบใช้ box-shadow แบบ inset (ไฟล์ออกแบบใช้ stroke แบบ INSIDE ไม่กินพื้นที่) รวมอยู่ใน box-shadow เดียวกับเงาและวงแหวนโฟกัส
+ *   2. สถานะกด (:active) ไม่มีในไฟล์ออกแบบ แต่มี token ชุด pressed (ตัดสิน 2026-09-04) ตัวสร้างจึง derive ค่า --btn-*-pressed
+ *      จากชื่อ token ของสถานะ default แล้วไฟล์นี้เอาไปใช้ตอนกด
+ *   3. hover/focused/disabled ใช้ pseudo-class ของปุ่มจริง ไฟล์ออกแบบเป็นแกน state
+ *   4. fullWidth เป็นความสามารถฝั่งเว็บ ไม่มีในไฟล์ออกแบบ
+ */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  height: var(--btn-h);
+  padding: var(--btn-pt, 0) var(--btn-pr, 0) var(--btn-pb, 0) var(--btn-pl, 0);
+  gap: var(--btn-gap, 0);
+  border-radius: var(--btn-r-tl, 0) var(--btn-r-tr, 0) var(--btn-r-br, 0) var(--btn-r-bl, 0);
+  background: var(--btn-bg, transparent);
+  color: var(--btn-fg, inherit);
+  box-shadow: inset 0 0 0 var(--btn-border-w, 1px) var(--btn-border, transparent), var(--btn-shadow, 0 0 0 0 transparent);
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size);
+  line-height: var(--btn-line-height);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-space);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.root:focus-visible { outline: none; }
+.root:active:not(:disabled) {
+  background: var(--btn-bg-pressed, var(--btn-bg));
+  color: var(--btn-fg-pressed, var(--btn-fg));
+  box-shadow: inset 0 0 0 var(--btn-border-w, 1px) var(--btn-border-pressed, var(--btn-border, transparent)), var(--btn-shadow, 0 0 0 0 transparent);
+}
+.root:active:not(:disabled) .icon { color: var(--btn-icon-color-pressed, var(--btn-icon-color)); }
+.root:disabled { cursor: not-allowed; }
+
+.content { display: inline-flex; align-items: center; gap: inherit; }
+.label {
+  padding: var(--btn-title-pt, 0) var(--btn-title-pr, 0) var(--btn-title-pb, 0) var(--btn-title-pl, 0);
+}
+.icon {
+  flex: none;
+  display: inline-flex;
+  width: var(--btn-icon);
+  height: var(--btn-icon);
+  color: var(--btn-icon-color, inherit);
+}
+
+.fullWidth { width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; }
+}
