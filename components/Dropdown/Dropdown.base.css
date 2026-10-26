@@ -1,0 +1,181 @@
+/*
+ * Dropdown ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --dd-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/dropdown.json (spec ชั้นจากไฟล์ออกแบบหน้า 25)
+ * แล้วต่อท้ายไฟล์นี้เป็น Dropdown.module.css ห้ามแก้ Dropdown.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นที่มีชื่อ token ในไฟล์นี้ (ไฟล์ออกแบบไม่มีชั้นให้ผูก)
+ *    ป้ายชื่อกับข้อความช่วยของช่องใช้ชุดเดียวกับช่องกรอกหน้า 13 (input/stack-gap, input/label-gap และสี/ตัวอักษรของป้าย)
+ *    ระยะแผงจากช่อง (dropdown/panel-offset) ความสูงสูงสุดของแผง (dropdown/panel-max-height*) และความสูงแถว (dropdown/row-height*)
+ *    motion ตอนหมุนลูกศร
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบช่องและแผงใช้ box-shadow inset รวมกับเงา/วงแหวนใน box-shadow เดียว
+ *   2. สถานะของช่องเป็น data attribute ของ root (open disabled readonly error) + :hover/:focus-visible ของปุ่ม
+ *   3. ชั้นข้อความในช่องของไฟล์ออกแบบเป็น placeholder ตอนพักและข้อความที่เลือกตอน hover/focused ตัวสร้างแยกเป็น --dd-placeholder / --dd-text
+ *   4. แถวที่คีย์บอร์ดชี้ (data-active) ใช้วงแหวนโฟกัสของไฟล์ออกแบบวาดเข้าด้านในเพื่อไม่ให้ล้นแผง
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-input-stack-gap);
+}
+.fieldWrap { position: relative; display: flex; flex-direction: column; }
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-input-label-gap);
+  color: var(--ntg-color-text-general-section-heading);
+  font-family: var(--ntg-typography-font-family-body-sm);
+  font-size: var(--ntg-typography-font-size-body-sm);
+  line-height: var(--ntg-typography-line-height-body-sm);
+  font-weight: var(--ntg-typography-font-weight-body-sm);
+}
+.required { color: var(--ntg-color-system-error); }
+.hint {
+  color: var(--ntg-color-text-general-text);
+  font-family: var(--ntg-typography-font-family-body-sm);
+  font-size: var(--ntg-typography-font-size-body-sm);
+  line-height: var(--ntg-typography-line-height-body-sm);
+  font-weight: var(--ntg-typography-font-weight-body-sm);
+}
+.hint[data-error='true'] { color: var(--ntg-color-text-system-error); }
+
+.field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  min-height: var(--dd-h);
+  padding-block: 0;
+  padding-inline: var(--dd-px, 0);
+  gap: var(--dd-gap, 0);
+  border: 0;
+  border-radius: var(--dd-r-tl, 0) var(--dd-r-tr, 0) var(--dd-r-br, 0) var(--dd-r-bl, 0);
+  text-align: start;
+  cursor: pointer;
+  background: var(--dd-bg, transparent);
+  box-shadow: inset 0 0 0 var(--dd-border-w, 1px) var(--dd-border, transparent), var(--dd-shadow, 0 0 0 0 transparent);
+  color: var(--dd-text, var(--ntg-color-text-general-section-heading));
+  font-family: var(--dd-font-family);
+  font-size: var(--dd-font-size);
+  line-height: var(--dd-line-height);
+  font-weight: var(--dd-font-weight);
+  letter-spacing: var(--dd-letter-space);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field:focus-visible { outline: none; }
+.root[data-readonly] .field { cursor: default; }
+.root[data-disabled] .field { cursor: not-allowed; }
+.value, .placeholder {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.placeholder { color: var(--dd-placeholder, inherit); }
+.fieldIcon, .chevron {
+  display: inline-flex;
+  flex: none;
+  width: var(--dd-icon);
+  height: var(--dd-icon);
+  color: var(--dd-icon-color, currentColor);
+}
+.chevron { transition: transform var(--ntg-motion-duration-fast) var(--ntg-motion-easing-enter); }
+.root[data-open] .chevron { transform: rotate(180deg); }
+.fieldIcon svg, .chevron svg { display: block; width: 100%; height: 100%; }
+
+.panel {
+  position: absolute;
+  top: 100%;
+  inset-inline: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-block: var(--dd-panel-py, 0);
+  border-radius: var(--dd-panel-r-tl, 0) var(--dd-panel-r-tr, 0) var(--dd-panel-r-br, 0) var(--dd-panel-r-bl, 0);
+  background: var(--dd-panel-bg, transparent);
+  box-shadow: inset 0 0 0 var(--dd-panel-border-w, 0px) var(--dd-panel-border, transparent), var(--dd-panel-shadow, 0 0 0 0 transparent);
+}
+.sm .panel { margin-top: var(--ntg-dropdown-panel-offset-sm); max-height: var(--ntg-dropdown-panel-max-height-sm); }
+.md .panel { margin-top: var(--ntg-dropdown-panel-offset-md); max-height: var(--ntg-dropdown-panel-max-height-md); }
+.lg .panel { margin-top: var(--ntg-dropdown-panel-offset-lg); max-height: var(--ntg-dropdown-panel-max-height-lg); }
+.sm[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-sm); }
+.md[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-md); }
+.lg[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-lg); }
+
+.group { display: block; }
+.groupHeader {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: var(--dd-row-py, 0) var(--dd-px, 0);
+  color: var(--dd-group-fg, inherit);
+  font-family: var(--dd-group-font-family);
+  font-size: var(--dd-group-font-size);
+  line-height: var(--dd-group-line-height);
+  font-weight: var(--dd-group-font-weight);
+  letter-spacing: var(--dd-group-letter-space);
+}
+.option {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: var(--dd-row-py, 0) var(--dd-px, 0);
+  gap: var(--dd-gap, 0);
+  cursor: pointer;
+  background: var(--dd-opt-bg, transparent);
+  box-shadow: inset var(--dd-opt-ring, 0 0 0 0 transparent);
+  color: var(--dd-opt-fg, inherit);
+  font-family: var(--dd-opt-font-family);
+  font-size: var(--dd-opt-font-size);
+  line-height: var(--dd-opt-line-height);
+  font-weight: var(--dd-opt-font-weight);
+  letter-spacing: var(--dd-opt-letter-space);
+  transition: background-color 0.15s ease;
+}
+.option[aria-disabled] { cursor: not-allowed; }
+.optionIcon, .optionCheck {
+  display: inline-flex;
+  flex: none;
+  width: var(--dd-icon);
+  height: var(--dd-icon);
+}
+.optionIcon { color: var(--dd-opt-icon, currentColor); }
+.optionCheck { width: var(--dd-check, var(--dd-icon)); height: var(--dd-check, var(--dd-icon)); color: var(--dd-check-color, currentColor); }
+.optionIcon svg, .optionCheck svg { display: block; width: 100%; height: 100%; }
+.optionAvatar { display: inline-flex; flex: none; width: var(--dd-avatar); height: var(--dd-avatar); }
+.optionText {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: var(--dd-text-gap, 0);
+}
+.optionTitle, .optionSupporting { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.optionSupporting {
+  color: var(--dd-sup-fg, inherit);
+  font-family: var(--dd-sup-font-family);
+  font-size: var(--dd-sup-font-size);
+  line-height: var(--dd-sup-line-height);
+  font-weight: var(--dd-sup-font-weight);
+  letter-spacing: var(--dd-sup-letter-space);
+}
+.empty {
+  display: flex;
+  align-items: center;
+  padding: var(--dd-row-py, 0) var(--dd-px, 0);
+  color: var(--dd-sup-fg, inherit);
+  font-family: var(--dd-opt-font-family);
+  font-size: var(--dd-opt-font-size);
+  line-height: var(--dd-opt-line-height);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field, .option, .chevron { transition: none; }
+}

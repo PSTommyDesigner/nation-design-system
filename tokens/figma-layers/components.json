@@ -275,5 +275,39 @@
       "more-users",
       "online"
     ]
+  },
+  "dropdown": {
+    "page": "25 Dropdowns",
+    "depth": 5,
+    "reference": "Dropdown Component Previews",
+    "families": [
+      "Dropdown Component Previews",
+      "Dropdown Base Components"
+    ],
+    "sets": [
+      "dropdown",
+      "dropdown-menu",
+      "_dropdown-option",
+      "_dropdown-group-header"
+    ],
+    "layoutAxes": [
+      "state"
+    ]
+  },
+  "slider": {
+    "page": "17 Sliders",
+    "depth": 5,
+    "reference": "Slider",
+    "families": [
+      "Slider"
+    ],
+    "sets": [
+      "slider",
+      "range-slider",
+      "slider-handle"
+    ],
+    "layoutAxes": [
+      "disabled"
+    ]
   }
 }

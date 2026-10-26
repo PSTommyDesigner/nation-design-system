@@ -1,0 +1,2751 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "17 Sliders",
+ "reference": "Slider",
+ "sets": {
+  "slider": {
+   "defs": {
+    "value-tooltip": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "min-max-label": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "size": ["xs","sm","md","lg","xl"],
+    "disabled": ["false","true"]
+   },
+   "layout": {
+    "xs, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/xs",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/xs",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/xs",
+             "h": "slider/handle/xs",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/xs",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/xs",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/xs",
+             "h": "slider/handle/xs",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/sm",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/sm",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/sm",
+             "h": "slider/handle/sm",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/sm",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/sm",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/sm",
+             "h": "slider/handle/sm",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "md, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/md",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/md",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/md",
+             "h": "slider/handle/md",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "md, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/md",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/md",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/md",
+             "h": "slider/handle/md",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/lg",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/lg",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/lg",
+             "h": "slider/handle/lg",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/lg",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/lg",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/lg",
+             "h": "slider/handle/lg",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/xl",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/xl",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/xl",
+             "h": "slider/handle/xl",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/xl",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/xl",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true,
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+          },
+          {
+           "n": "handle-anchor",
+           "t": "FRAME",
+           "s": ["FIXED","FILL"],
+           "w": 0.01,
+           "ch": [
+            {
+             "n": "handle",
+             "t": "INSTANCE",
+             "w": "slider/handle/xl",
+             "h": "slider/handle/xl",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Slider": {
+     "disabled=false": 0,
+     "disabled=true": 1
+    }
+   }
+  },
+  "range-slider": {
+   "defs": {
+    "value-tooltip": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "min-max-label": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "size": ["xs","sm","md","lg","xl"],
+    "disabled": ["false","true"]
+   },
+   "layout": {
+    "xs, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/xs",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/xs",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/xs",
+             "h": "slider/handle/xs",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/xs",
+             "h": "slider/handle/xs",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/xs",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/xs",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/xs",
+             "h": "slider/handle/xs",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/xs",
+             "h": "slider/handle/xs",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/sm",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/sm",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/sm",
+             "h": "slider/handle/sm",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/sm",
+             "h": "slider/handle/sm",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/sm",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/sm",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/sm",
+             "h": "slider/handle/sm",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/sm",
+             "h": "slider/handle/sm",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "md, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/md",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/md",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/md",
+             "h": "slider/handle/md",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/md",
+             "h": "slider/handle/md",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "md, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/md",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/md",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/md",
+             "h": "slider/handle/md",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/md",
+             "h": "slider/handle/md",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/lg",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/lg",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/lg",
+             "h": "slider/handle/lg",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/lg",
+             "h": "slider/handle/lg",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/lg",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/lg",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/lg",
+             "h": "slider/handle/lg",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/lg",
+             "h": "slider/handle/lg",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, disabled=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/xl",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/xl",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/xl",
+             "h": "slider/handle/xl",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/xl",
+             "h": "slider/handle/xl",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, disabled=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "size/space/s1/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "slider/row/height/xl",
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,0,0,0],
+         "s": ["FILL","FIXED"],
+         "h": "slider/track/xl",
+         "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+         "ch": [
+          {
+           "n": "space-before",
+           "t": "FRAME",
+           "s": ["FILL","FILL"]
+          },
+          {
+           "n": "fill",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+           "ch": [
+            {
+             "n": "handle-start",
+             "t": "INSTANCE",
+             "w": "slider/handle/xl",
+             "h": "slider/handle/xl",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-start",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            },
+            {
+             "n": "handle-end",
+             "t": "INSTANCE",
+             "w": "slider/handle/xl",
+             "h": "slider/handle/xl",
+             "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"],
+             "inst": true
+            },
+            {
+             "n": "value-tooltip-end",
+             "t": "INSTANCE",
+             "lm": "VERTICAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": 0,
+             "p": [0,0,0,0],
+             "s": ["HUG","HUG"],
+             "vis": false,
+             "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+             "ref": {
+              "visible": "value-tooltip"
+             },
+             "inst": true
+            }
+           ]
+          },
+          {
+           "n": "rest",
+           "t": "FRAME",
+           "s": ["FILL","FILL"],
+           "clip": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "min-max-label",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "SPACE_BETWEEN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FIXED","HUG"],
+       "w": 320,
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "min-max-label"
+       },
+       "ch": [
+        {
+         "n": "min",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        },
+        {
+         "n": "max",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xs"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Slider": {
+     "disabled=false": 2,
+     "disabled=true": 3
+    }
+   }
+  },
+  "slider-handle": {
+   "defs": {
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover","pressed","focused","disabled"]
+   },
+   "layout": {
+    "xs, disabled=": {
+     "t": "COMPONENT",
+     "w": "slider/handle/xs",
+     "h": "slider/handle/xs",
+     "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+    },
+    "sm, disabled=": {
+     "t": "COMPONENT",
+     "w": "slider/handle/sm",
+     "h": "slider/handle/sm",
+     "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+    },
+    "md, disabled=": {
+     "t": "COMPONENT",
+     "w": "slider/handle/md",
+     "h": "slider/handle/md",
+     "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+    },
+    "lg, disabled=": {
+     "t": "COMPONENT",
+     "w": "slider/handle/lg",
+     "h": "slider/handle/lg",
+     "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+    },
+    "xl, disabled=": {
+     "t": "COMPONENT",
+     "w": "slider/handle/xl",
+     "h": "slider/handle/xl",
+     "r": ["slider/radius/full","slider/radius/full","slider/radius/full","slider/radius/full"]
+    }
+   },
+   "colors": {
+    "Slider": {
+     "state=default": 4,
+     "state=hover": 5,
+     "state=pressed": 6,
+     "state=focused": 7,
+     "state=disabled": 8
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "row/track": {
+    "fills": ["color/background/general/quaternary"]
+   },
+   "row/track/fill": {
+    "fills": ["color/foreground/brand/primary"]
+   },
+   "row/track/handle-anchor/handle": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/track/handle-anchor/value-tooltip": {
+    "fx": "effect::shadows/center/xs"
+   },
+   "min-max-label/min": {
+    "fills": ["color/text/general/supporting-text"]
+   },
+   "min-max-label/max": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/track": {
+    "fills": ["color/background/general/disabled-subtle"]
+   },
+   "row/track/fill": {
+    "fills": ["color/background/general/disabled"]
+   },
+   "row/track/handle-anchor/handle": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/general/disabled"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/track/handle-anchor/value-tooltip": {
+    "fx": "effect::shadows/center/xs"
+   },
+   "min-max-label/min": {
+    "fills": ["color/text/general/supporting-text"]
+   },
+   "min-max-label/max": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/track": {
+    "fills": ["color/background/general/quaternary"]
+   },
+   "row/track/fill": {
+    "fills": ["color/foreground/brand/primary"]
+   },
+   "row/track/fill/handle-start": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/track/fill/value-tooltip-start": {
+    "fx": "effect::shadows/center/xs"
+   },
+   "row/track/fill/handle-end": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/track/fill/value-tooltip-end": {
+    "fx": "effect::shadows/center/xs"
+   },
+   "min-max-label/min": {
+    "fills": ["color/text/general/supporting-text"]
+   },
+   "min-max-label/max": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/track": {
+    "fills": ["color/background/general/disabled-subtle"]
+   },
+   "row/track/fill": {
+    "fills": ["color/background/general/disabled"]
+   },
+   "row/track/fill/handle-start": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/general/disabled"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/track/fill/value-tooltip-start": {
+    "fx": "effect::shadows/center/xs"
+   },
+   "row/track/fill/handle-end": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/general/disabled"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "row/track/fill/value-tooltip-end": {
+    "fx": "effect::shadows/center/xs"
+   },
+   "min-max-label/min": {
+    "fills": ["color/text/general/supporting-text"]
+   },
+   "min-max-label/max": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/brand/solid-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/brand/solid-pressed"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/brand"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/background/general/disabled"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   }
+  }
+ ]
+}

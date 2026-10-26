@@ -1,478 +1,238 @@
-/**
- * Dropdown styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Dropdown/Dropdown.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 25 Dropdowns แล้วรัน  npm run figma:layers -- dropdown  และ  npm run css:generate -- dropdown
+ *   spec: tokens/figma-layers/dropdown.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Dropdown ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ มุมโค้ง หรือขนาด เพื่อให้ sync กับ Figma หน้า 25 Dropdowns ได้
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --dd-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/dropdown.json (spec ชั้นจากไฟล์ออกแบบหน้า 25)
+ * แล้วต่อท้ายไฟล์นี้เป็น Dropdown.module.css ห้ามแก้ Dropdown.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ช่อง    --ntg-dropdown-height-{ขนาด} · padding-x-{ขนาด} · gap-{ขนาด} · icon-{ขนาด} · radius-{ขนาด}
- *   แผง     --ntg-dropdown-panel-offset-{ขนาด} · panel-padding-y-{ขนาด}
- *           · panel-max-height-{ขนาด} · panel-max-height-supporting-{ขนาด}
- *   แถว     --ntg-dropdown-row-height-{ขนาด} · row-height-supporting-{ขนาด} · row-padding-y-{ขนาด}
- *           · group-header-height-{ขนาด} · leading-avatar-{ขนาด}
- *   ยืมมา   --ntg-input-border · --ntg-input-stack-gap (ช่องชนิดเดียวกัน หน้า 13 Input ไม่มีตัวคู่ในกลุ่ม dropdown)
- *   เงา     --ntg-shadows-bottom-md (effect style ที่มี dropdown อยู่ในคำอธิบายอยู่แล้ว)
- *   ตัวอักษร --ntg-typography-{font-size|line-height|font-weight}-{body|label}-{ขนาด}
- *   สี      --ntg-color-background-* · --ntg-color-border-* · --ntg-color-text-* · --ntg-icon-* · --ntg-color-effect-*
+ * ⚠️ ข้อยกเว้นที่มีชื่อ token ในไฟล์นี้ (ไฟล์ออกแบบไม่มีชั้นให้ผูก)
+ *    ป้ายชื่อกับข้อความช่วยของช่องใช้ชุดเดียวกับช่องกรอกหน้า 13 (input/stack-gap, input/label-gap และสี/ตัวอักษรของป้าย)
+ *    ระยะแผงจากช่อง (dropdown/panel-offset) ความสูงสูงสุดของแผง (dropdown/panel-max-height*) และความสูงแถว (dropdown/row-height*)
+ *    motion ตอนหมุนลูกศร
  *
- * ⚠️ แถวไม่ได้ตรึงความสูง แต่หุ้มเนื้อหาแล้วคุมด้วยระยะขอบบนล่าง เหมือนในไฟล์ออกแบบ
- *    ระยะขอบบนล่างอยู่ที่กล่องข้อความ ไม่ได้อยู่ที่ตัวแถว เพราะอวาตาร์ขนาด lg (32)
- *    เว้นขอบด้านละ 8 ซึ่งน้อยกว่าระยะขอบของข้อความ (10) ถ้าเอาระยะขอบไปไว้ที่แถว แถวจะสูงเกิน 48
- *
- * ⚠️ ห้ามตรึงความกว้างของช่องและของแผง ทั้งสองยืดเต็มกรอบแม่ แล้วไปจำกัดความกว้างที่กรอบแม่แทน
- *
- * ⚠️ ห้ามวาดแถบเลื่อนเอง ใช้แถบเลื่อนของเบราว์เซอร์ (ข้อห้ามในเอกสารหน้า 25 หัวข้อ 4.6)
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบช่องและแผงใช้ box-shadow inset รวมกับเงา/วงแหวนใน box-shadow เดียว
+ *   2. สถานะของช่องเป็น data attribute ของ root (open disabled readonly error) + :hover/:focus-visible ของปุ่ม
+ *   3. ชั้นข้อความในช่องของไฟล์ออกแบบเป็น placeholder ตอนพักและข้อความที่เลือกตอน hover/focused ตัวสร้างแยกเป็น --dd-placeholder / --dd-text
+ *   4. แถวที่คีย์บอร์ดชี้ (data-active) ใช้วงแหวนโฟกัสของไฟล์ออกแบบวาดเข้าด้านในเพื่อไม่ให้ล้นแผง
  */
 
 .root {
   display: flex;
   flex-direction: column;
   gap: var(--ntg-input-stack-gap);
-  font-family: var(--ntg-typography-font-family-primary);
 }
-
-/* กรอบยึดตำแหน่งของแผง แผงเกาะขอบล่างของช่อง ไม่ใช่ขอบล่างของทั้งก้อน */
-.fieldWrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
+.fieldWrap { position: relative; display: flex; flex-direction: column; }
 .label {
   display: inline-flex;
   align-items: center;
-  color: var(--ntg-color-text-general-label);
+  gap: var(--ntg-input-label-gap);
+  color: var(--ntg-color-text-general-section-heading);
+  font-family: var(--ntg-typography-font-family-body-sm);
+  font-size: var(--ntg-typography-font-size-body-sm);
+  line-height: var(--ntg-typography-line-height-body-sm);
+  font-weight: var(--ntg-typography-font-weight-body-sm);
 }
+.required { color: var(--ntg-color-system-error); }
+.hint {
+  color: var(--ntg-color-text-general-text);
+  font-family: var(--ntg-typography-font-family-body-sm);
+  font-size: var(--ntg-typography-font-size-body-sm);
+  line-height: var(--ntg-typography-line-height-body-sm);
+  font-weight: var(--ntg-typography-font-weight-body-sm);
+}
+.hint[data-error='true'] { color: var(--ntg-color-text-system-error); }
 
-.required { color: var(--ntg-color-text-system-error); }
-
-/* ── ช่อง ─────────────────────────────────────────────────── */
 .field {
   display: flex;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
   margin: 0;
+  min-height: var(--dd-h);
+  padding-block: 0;
+  padding-inline: var(--dd-px, 0);
+  gap: var(--dd-gap, 0);
+  border: 0;
+  border-radius: var(--dd-r-tl, 0) var(--dd-r-tr, 0) var(--dd-r-br, 0) var(--dd-r-bl, 0);
   text-align: start;
   cursor: pointer;
-  background: var(--ntg-color-background-general-primary);
-  border: var(--ntg-input-border) solid var(--ntg-color-border-general-primary);
-  color: var(--ntg-color-text-general-label);
-  font-family: inherit;
-  /* ใช้ขั้นเวลาสั้นของระบบ เพราะเป็นการเปลี่ยนสีในที่เดิม ส่วน ease เป็นคำสงวนของ CSS ไม่ใช่ค่าออกแบบ */
-  transition:
-    background-color var(--ntg-motion-duration-fast) ease,
-    border-color var(--ntg-motion-duration-fast) ease;
+  background: var(--dd-bg, transparent);
+  box-shadow: inset 0 0 0 var(--dd-border-w, 1px) var(--dd-border, transparent), var(--dd-shadow, 0 0 0 0 transparent);
+  color: var(--dd-text, var(--ntg-color-text-general-section-heading));
+  font-family: var(--dd-font-family);
+  font-size: var(--dd-font-size);
+  line-height: var(--dd-line-height);
+  font-weight: var(--dd-font-weight);
+  letter-spacing: var(--dd-letter-space);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
-
-.root:not([data-disabled='true']):not([data-readonly='true']) .field:hover {
-  background: var(--ntg-color-background-general-primary-hover);
-  border-color: var(--ntg-color-border-general-primary-hover);
-}
-
-.root:not([data-disabled='true']):not([data-readonly='true']) .field:active {
-  background: var(--ntg-color-background-general-primary-pressed);
-  border-color: var(--ntg-color-border-general-primary-pressed);
-}
-
-/* วงแหวนโฟกัส ความหนา 4px เป็นค่าคงที่ของระบบโฟกัส ไม่ใช่ค่าออกแบบรายชิ้น จึงไม่เป็น token
-   ช่องมีพื้นหลังทึบ จึงใช้เงาได้ ไม่ต้องใช้เส้นขอบแบบปุ่มโปร่ง */
-.field:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
-}
-
-.root[data-error='true'] .field { border-color: var(--ntg-color-border-system-error); }
-.root[data-error='true'] .field:focus-visible {
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-error);
-}
-
-.root[data-readonly='true'] .field {
-  background: var(--ntg-color-background-general-secondary);
-  cursor: default;
-}
-
-.root[data-disabled='true'] .field {
-  background: var(--ntg-color-background-general-disabled-subtle);
-  border-color: var(--ntg-color-border-general-disabled);
-  color: var(--ntg-color-text-general-disabled);
-  cursor: not-allowed;
-}
-
-.value {
+.field:focus-visible { outline: none; }
+.root[data-readonly] .field { cursor: default; }
+.root[data-disabled] .field { cursor: not-allowed; }
+.value, .placeholder {
   flex: 1 1 auto;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.placeholder {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--ntg-color-text-general-placeholder);
-}
-
-.root[data-disabled='true'] .placeholder { color: var(--ntg-color-text-general-disabled); }
-
-.fieldIcon,
-.chevron {
+.placeholder { color: var(--dd-placeholder, inherit); }
+.fieldIcon, .chevron {
   display: inline-flex;
   flex: none;
-  color: var(--ntg-icon-general-tertiary);
+  width: var(--dd-icon);
+  height: var(--dd-icon);
+  color: var(--dd-icon-color, currentColor);
 }
+.chevron { transition: transform var(--ntg-motion-duration-fast) var(--ntg-motion-easing-enter); }
+.root[data-open] .chevron { transform: rotate(180deg); }
+.fieldIcon svg, .chevron svg { display: block; width: 100%; height: 100%; }
 
-.chevron {
-  transition: transform var(--ntg-motion-duration-fast) var(--ntg-motion-easing-enter);
-}
-
-/* สถานะเปิด แยกจากสถานะโฟกัสโดยตั้งใจ ลูกศรหมุนขึ้นเฉพาะตอนแผงเปิดจริง */
-.root[data-open='true'] .chevron { transform: rotate(180deg); }
-
-.root[data-disabled='true'] .fieldIcon,
-.root[data-disabled='true'] .chevron { color: var(--ntg-icon-general-disable); }
-
-.fieldIcon svg,
-.chevron svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* ── แผง ─────────────────────────────────────────────────── */
 .panel {
   position: absolute;
   top: 100%;
   inset-inline: 0;
-  /* ยกแผงขึ้นเหนือเนื้อหาที่ตามมาในกล่องเดียวกัน เป็นลำดับการวางทับ ไม่ใช่ค่าออกแบบ จึงไม่เป็น token */
   z-index: 1;
   box-sizing: border-box;
   overflow-y: auto;
-  /* กันการเลื่อนในแผงทะลุไปเลื่อนหน้าหลัง เป็นพฤติกรรมรอบการเลื่อนที่เอกสารหน้า 25 หัวข้อ 4.6 ระบุไว้ */
   overscroll-behavior: contain;
-  background: var(--ntg-color-background-general-primary);
-  /* ไม่มีเส้นขอบโดยตั้งใจ เพราะเพดานความสูงคิดจากแถวบวกระยะขอบบนล่างเท่านั้น
-     ถ้าเพิ่มเส้นขอบ ความสูงจริงจะเกินค่าใน token ไปเท่าความหนาเส้นสองด้าน */
-  box-shadow: var(--ntg-shadows-bottom-md);
+  padding-block: var(--dd-panel-py, 0);
+  border-radius: var(--dd-panel-r-tl, 0) var(--dd-panel-r-tr, 0) var(--dd-panel-r-br, 0) var(--dd-panel-r-bl, 0);
+  background: var(--dd-panel-bg, transparent);
+  box-shadow: inset 0 0 0 var(--dd-panel-border-w, 0px) var(--dd-panel-border, transparent), var(--dd-panel-shadow, 0 0 0 0 transparent);
 }
+.sm .panel { margin-top: var(--ntg-dropdown-panel-offset-sm); max-height: var(--ntg-dropdown-panel-max-height-sm); }
+.md .panel { margin-top: var(--ntg-dropdown-panel-offset-md); max-height: var(--ntg-dropdown-panel-max-height-md); }
+.lg .panel { margin-top: var(--ntg-dropdown-panel-offset-lg); max-height: var(--ntg-dropdown-panel-max-height-lg); }
+.sm[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-sm); }
+.md[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-md); }
+.lg[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-lg); }
 
 .group { display: block; }
-
 .groupHeader {
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  color: var(--ntg-color-text-general-supporting-text);
+  padding: var(--dd-row-py, 0) var(--dd-px, 0);
+  color: var(--dd-group-fg, inherit);
+  font-family: var(--dd-group-font-family);
+  font-size: var(--dd-group-font-size);
+  line-height: var(--dd-group-line-height);
+  font-weight: var(--dd-group-font-weight);
+  letter-spacing: var(--dd-group-letter-space);
 }
-
-/* ── แถวตัวเลือก ──────────────────────────────────────────── */
 .option {
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  padding: var(--dd-row-py, 0) var(--dd-px, 0);
+  gap: var(--dd-gap, 0);
   cursor: pointer;
-  color: var(--ntg-color-text-general-label);
-  transition: background-color var(--ntg-motion-duration-fast) ease;
+  background: var(--dd-opt-bg, transparent);
+  box-shadow: inset var(--dd-opt-ring, 0 0 0 0 transparent);
+  color: var(--dd-opt-fg, inherit);
+  font-family: var(--dd-opt-font-family);
+  font-size: var(--dd-opt-font-size);
+  line-height: var(--dd-opt-line-height);
+  font-weight: var(--dd-opt-font-weight);
+  letter-spacing: var(--dd-opt-letter-space);
+  transition: background-color 0.15s ease;
 }
-
-.option:hover,
-.option[data-active='true'] {
-  background: var(--ntg-color-background-general-primary-hover);
-}
-
-/* แถวที่ชี้อยู่ด้วยแป้นพิมพ์ โฟกัสจริงค้างอยู่ที่ช่อง แถวจึงต้องมีวงแหวนของตัวเอง
-   ความหนา 4px เป็นค่าคงที่ของระบบโฟกัสเหมือนวงแหวนของช่อง วาดเข้าด้านในเพื่อไม่ให้ล้นขอบแผง */
-.option[data-active='true'] {
-  outline: 4px solid var(--ntg-color-effect-focused-ring-brand);
-  outline-offset: -4px;
-}
-
-.option[aria-selected='true'] { background: var(--ntg-color-background-brand-primary); }
-.option[aria-selected='true']:hover,
-.option[aria-selected='true'][data-active='true'] {
-  background: var(--ntg-color-background-brand-primary-hover);
-}
-
-.option[aria-disabled='true'] {
-  cursor: not-allowed;
-  color: var(--ntg-color-text-general-disabled);
-  background: transparent;
-  outline: none;
-}
-
-.optionIcon {
+.option[aria-disabled] { cursor: not-allowed; }
+.optionIcon, .optionCheck {
   display: inline-flex;
   flex: none;
-  color: var(--ntg-icon-general-tertiary);
+  width: var(--dd-icon);
+  height: var(--dd-icon);
 }
-
-.optionIcon svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.option[aria-disabled='true'] .optionIcon { color: var(--ntg-icon-general-disable); }
-
-/* ช่องวางอวาตาร์ ขนาดมาจาก token ของหน้านี้ ส่วนตัวอวาตาร์เป็น component ของหน้า 11
-   สองค่านี้ต้องเท่ากันเสมอ ถ้าใครแก้ข้างเดียวอวาตาร์จะล้นออกนอกช่องให้เห็นทันที */
-.optionAvatar {
-  display: inline-flex;
-  flex: none;
-}
-
+.optionIcon { color: var(--dd-opt-icon, currentColor); }
+.optionCheck { width: var(--dd-check, var(--dd-icon)); height: var(--dd-check, var(--dd-icon)); color: var(--dd-check-color, currentColor); }
+.optionIcon svg, .optionCheck svg { display: block; width: 100%; height: 100%; }
+.optionAvatar { display: inline-flex; flex: none; width: var(--dd-avatar); height: var(--dd-avatar); }
 .optionText {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   min-width: 0;
+  gap: var(--dd-text-gap, 0);
 }
-
-.optionTitle,
+.optionTitle, .optionSupporting { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .optionSupporting {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: var(--dd-sup-fg, inherit);
+  font-family: var(--dd-sup-font-family);
+  font-size: var(--dd-sup-font-size);
+  line-height: var(--dd-sup-line-height);
+  font-weight: var(--dd-sup-font-weight);
+  letter-spacing: var(--dd-sup-letter-space);
 }
-
-.optionSupporting { color: var(--ntg-color-text-general-supporting-text); }
-.option[aria-disabled='true'] .optionSupporting { color: var(--ntg-color-text-general-disabled); }
-
-.optionCheck {
-  display: inline-flex;
-  flex: none;
-  color: var(--ntg-icon-brand-primary);
-}
-
-.optionCheck svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .empty {
   display: flex;
   align-items: center;
-  color: var(--ntg-color-text-general-supporting-text);
-}
-
-.hint { color: var(--ntg-color-text-general-supporting-text); }
-.hint[data-error='true'] { color: var(--ntg-color-text-system-error); }
-
-/* ── ขนาด ────────────────────────────────────────────────── */
-/* การจับคู่ preset มาจากสูตรขนาดที่ tokens/scale/dropdown.mjs
-   ข้อความในช่องและในแถวใช้ body ขั้นเดียวกับขนาด ส่วนข้อความรองและหัวกลุ่มเล็กลงหนึ่งขั้นเสมอ
-   ป้ายชื่อกับข้อความช่วยใช้ชุดเดียวกับช่องกรอกหน้า 13 เพราะสองชิ้นนี้วางคู่กันในฟอร์มเดียวกัน */
-
-.sm .field {
-  min-height: var(--ntg-dropdown-height-sm);
-  padding-inline: var(--ntg-dropdown-padding-x-sm);
-  gap: var(--ntg-dropdown-gap-sm);
-  border-radius: var(--ntg-dropdown-radius-sm);
-  font-size: var(--ntg-typography-font-size-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-}
-.sm .fieldIcon, .sm .chevron {
-  width: var(--ntg-dropdown-icon-sm);
-  height: var(--ntg-dropdown-icon-sm);
-}
-.sm .label, .sm .hint {
-  font-size: var(--ntg-typography-font-size-label-xs);
-  line-height: var(--ntg-typography-line-height-label-xs);
-  font-weight: var(--ntg-typography-font-weight-label-xs);
-}
-.sm .panel {
-  margin-top: var(--ntg-dropdown-panel-offset-sm);
-  padding-block: var(--ntg-dropdown-panel-padding-y-sm);
-  max-height: var(--ntg-dropdown-panel-max-height-sm);
-  border-radius: var(--ntg-dropdown-radius-sm);
-}
-.sm[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-sm); }
-.sm .option {
-  min-height: var(--ntg-dropdown-row-height-sm);
-  padding-inline: var(--ntg-dropdown-padding-x-sm);
-  gap: var(--ntg-dropdown-gap-sm);
-}
-.sm .option[data-supporting='true'] { min-height: var(--ntg-dropdown-row-height-supporting-sm); }
-.sm .optionText { padding-block: var(--ntg-dropdown-row-padding-y-sm); }
-.sm .optionTitle {
-  font-size: var(--ntg-typography-font-size-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-}
-.sm .optionSupporting {
-  font-size: var(--ntg-typography-font-size-body-xs);
-  line-height: var(--ntg-typography-line-height-body-xs);
-  font-weight: var(--ntg-typography-font-weight-body-xs);
-}
-.sm .optionIcon, .sm .optionCheck {
-  width: var(--ntg-dropdown-icon-sm);
-  height: var(--ntg-dropdown-icon-sm);
-}
-.sm .groupHeader {
-  min-height: var(--ntg-dropdown-group-header-height-sm);
-  padding-block: var(--ntg-dropdown-row-padding-y-sm);
-  padding-inline: var(--ntg-dropdown-padding-x-sm);
-  font-size: var(--ntg-typography-font-size-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
-  font-weight: var(--ntg-typography-font-weight-label-sm);
-}
-.sm .empty {
-  min-height: var(--ntg-dropdown-row-height-sm);
-  padding-block: var(--ntg-dropdown-row-padding-y-sm);
-  padding-inline: var(--ntg-dropdown-padding-x-sm);
-  font-size: var(--ntg-typography-font-size-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-}
-
-.md .field {
-  min-height: var(--ntg-dropdown-height-md);
-  padding-inline: var(--ntg-dropdown-padding-x-md);
-  gap: var(--ntg-dropdown-gap-md);
-  border-radius: var(--ntg-dropdown-radius-md);
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-}
-.md .fieldIcon, .md .chevron {
-  width: var(--ntg-dropdown-icon-md);
-  height: var(--ntg-dropdown-icon-md);
-}
-.md .label, .md .hint {
-  font-size: var(--ntg-typography-font-size-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
-  font-weight: var(--ntg-typography-font-weight-label-sm);
-}
-.md .panel {
-  margin-top: var(--ntg-dropdown-panel-offset-md);
-  padding-block: var(--ntg-dropdown-panel-padding-y-md);
-  max-height: var(--ntg-dropdown-panel-max-height-md);
-  border-radius: var(--ntg-dropdown-radius-md);
-}
-.md[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-md); }
-.md .option {
-  min-height: var(--ntg-dropdown-row-height-md);
-  padding-inline: var(--ntg-dropdown-padding-x-md);
-  gap: var(--ntg-dropdown-gap-md);
-}
-.md .option[data-supporting='true'] { min-height: var(--ntg-dropdown-row-height-supporting-md); }
-.md .optionText { padding-block: var(--ntg-dropdown-row-padding-y-md); }
-.md .optionTitle {
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-}
-.md .optionSupporting {
-  font-size: var(--ntg-typography-font-size-body-sm);
-  line-height: var(--ntg-typography-line-height-body-sm);
-  font-weight: var(--ntg-typography-font-weight-body-sm);
-}
-.md .optionIcon, .md .optionCheck {
-  width: var(--ntg-dropdown-icon-md);
-  height: var(--ntg-dropdown-icon-md);
-}
-.md .optionAvatar {
-  width: var(--ntg-dropdown-leading-avatar-md);
-  height: var(--ntg-dropdown-leading-avatar-md);
-}
-.md .groupHeader {
-  min-height: var(--ntg-dropdown-group-header-height-md);
-  padding-block: var(--ntg-dropdown-row-padding-y-md);
-  padding-inline: var(--ntg-dropdown-padding-x-md);
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-}
-.md .empty {
-  min-height: var(--ntg-dropdown-row-height-md);
-  padding-block: var(--ntg-dropdown-row-padding-y-md);
-  padding-inline: var(--ntg-dropdown-padding-x-md);
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-}
-
-.lg .field {
-  min-height: var(--ntg-dropdown-height-lg);
-  padding-inline: var(--ntg-dropdown-padding-x-lg);
-  gap: var(--ntg-dropdown-gap-lg);
-  border-radius: var(--ntg-dropdown-radius-lg);
-  font-size: var(--ntg-typography-font-size-body-lg);
-  line-height: var(--ntg-typography-line-height-body-lg);
-  font-weight: var(--ntg-typography-font-weight-body-lg);
-}
-.lg .fieldIcon, .lg .chevron {
-  width: var(--ntg-dropdown-icon-lg);
-  height: var(--ntg-dropdown-icon-lg);
-}
-.lg .label, .lg .hint {
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-}
-.lg .panel {
-  margin-top: var(--ntg-dropdown-panel-offset-lg);
-  padding-block: var(--ntg-dropdown-panel-padding-y-lg);
-  max-height: var(--ntg-dropdown-panel-max-height-lg);
-  border-radius: var(--ntg-dropdown-radius-lg);
-}
-.lg[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-lg); }
-.lg .option {
-  min-height: var(--ntg-dropdown-row-height-lg);
-  padding-inline: var(--ntg-dropdown-padding-x-lg);
-  gap: var(--ntg-dropdown-gap-lg);
-}
-.lg .option[data-supporting='true'] { min-height: var(--ntg-dropdown-row-height-supporting-lg); }
-.lg .optionText { padding-block: var(--ntg-dropdown-row-padding-y-lg); }
-.lg .optionTitle {
-  font-size: var(--ntg-typography-font-size-body-lg);
-  line-height: var(--ntg-typography-line-height-body-lg);
-  font-weight: var(--ntg-typography-font-weight-body-lg);
-}
-.lg .optionSupporting {
-  font-size: var(--ntg-typography-font-size-body-md);
-  line-height: var(--ntg-typography-line-height-body-md);
-  font-weight: var(--ntg-typography-font-weight-body-md);
-}
-.lg .optionIcon, .lg .optionCheck {
-  width: var(--ntg-dropdown-icon-lg);
-  height: var(--ntg-dropdown-icon-lg);
-}
-.lg .optionAvatar {
-  width: var(--ntg-dropdown-leading-avatar-lg);
-  height: var(--ntg-dropdown-leading-avatar-lg);
-}
-.lg .groupHeader {
-  min-height: var(--ntg-dropdown-group-header-height-lg);
-  padding-block: var(--ntg-dropdown-row-padding-y-lg);
-  padding-inline: var(--ntg-dropdown-padding-x-lg);
-  font-size: var(--ntg-typography-font-size-label-lg);
-  line-height: var(--ntg-typography-line-height-label-lg);
-  font-weight: var(--ntg-typography-font-weight-label-lg);
-}
-.lg .empty {
-  min-height: var(--ntg-dropdown-row-height-lg);
-  padding-block: var(--ntg-dropdown-row-padding-y-lg);
-  padding-inline: var(--ntg-dropdown-padding-x-lg);
-  font-size: var(--ntg-typography-font-size-body-lg);
-  line-height: var(--ntg-typography-line-height-body-lg);
-  font-weight: var(--ntg-typography-font-weight-body-lg);
-}
-
-/* พื้นที่กดบนอุปกรณ์ที่ตัวชี้หยาบ
-   ค่า 44px เป็นเกณฑ์ขั้นต่ำของ WCAG 2.5.5 Target Size (Enhanced) ไม่ใช่ค่าออกแบบของระบบ จึงไม่เป็น token
-   ยกเฉพาะ sm (32) กับ md (40) ที่เตี้ยกว่าเกณฑ์ ส่วน lg (48) สูงกว่าอยู่แล้ว ถ้าเขียนรวมจะกลายเป็นการบีบให้เตี้ยลง
-   ตรงกับข้อห้ามในเอกสารหน้า 25 ที่ว่าห้ามใช้ sm เป็นเป้ากดหลักบนมือถือ */
-@media (pointer: coarse) {
-  .sm .field, .md .field { min-height: 44px; }
-  .sm .option, .md .option { min-height: 44px; }
+  padding: var(--dd-row-py, 0) var(--dd-px, 0);
+  color: var(--dd-sup-fg, inherit);
+  font-family: var(--dd-opt-font-family);
+  font-size: var(--dd-opt-font-size);
+  line-height: var(--dd-opt-line-height);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .field, .chevron, .option { transition: none; }
+  .field, .option, .chevron { transition: none; }
 }
+
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.sm { --dd-font-family: var(--ntg-typography-font-family-body-sm); --dd-font-size: var(--ntg-typography-font-size-body-sm); --dd-line-height: var(--ntg-typography-line-height-body-sm); --dd-font-weight: var(--ntg-typography-font-weight-body-sm); --dd-letter-space: var(--ntg-typography-letter-space-body-sm); --dd-opt-font-family: var(--ntg-typography-font-family-body-sm); --dd-opt-font-size: var(--ntg-typography-font-size-body-sm); --dd-opt-line-height: var(--ntg-typography-line-height-body-sm); --dd-opt-font-weight: var(--ntg-typography-font-weight-body-sm); --dd-opt-letter-space: var(--ntg-typography-letter-space-body-sm); --dd-sup-font-family: var(--ntg-typography-font-family-body-xs); --dd-sup-font-size: var(--ntg-typography-font-size-body-xs); --dd-sup-line-height: var(--ntg-typography-line-height-body-xs); --dd-sup-font-weight: var(--ntg-typography-font-weight-body-xs); --dd-sup-letter-space: var(--ntg-typography-letter-space-body-xs); --dd-group-font-family: var(--ntg-typography-font-family-label-sm); --dd-group-font-size: var(--ntg-typography-font-size-label-sm); --dd-group-line-height: var(--ntg-typography-line-height-label-sm); --dd-group-font-weight: var(--ntg-typography-font-weight-label-sm); --dd-group-letter-space: var(--ntg-typography-letter-space-label-sm); }
+.md { --dd-font-family: var(--ntg-typography-font-family-body-md); --dd-font-size: var(--ntg-typography-font-size-body-md); --dd-line-height: var(--ntg-typography-line-height-body-md); --dd-font-weight: var(--ntg-typography-font-weight-body-md); --dd-letter-space: var(--ntg-typography-letter-space-body-md); --dd-opt-font-family: var(--ntg-typography-font-family-body-md); --dd-opt-font-size: var(--ntg-typography-font-size-body-md); --dd-opt-line-height: var(--ntg-typography-line-height-body-md); --dd-opt-font-weight: var(--ntg-typography-font-weight-body-md); --dd-opt-letter-space: var(--ntg-typography-letter-space-body-md); --dd-sup-font-family: var(--ntg-typography-font-family-body-sm); --dd-sup-font-size: var(--ntg-typography-font-size-body-sm); --dd-sup-line-height: var(--ntg-typography-line-height-body-sm); --dd-sup-font-weight: var(--ntg-typography-font-weight-body-sm); --dd-sup-letter-space: var(--ntg-typography-letter-space-body-sm); --dd-group-font-family: var(--ntg-typography-font-family-label-md); --dd-group-font-size: var(--ntg-typography-font-size-label-md); --dd-group-line-height: var(--ntg-typography-line-height-label-md); --dd-group-font-weight: var(--ntg-typography-font-weight-label-md); --dd-group-letter-space: var(--ntg-typography-letter-space-label-md); }
+.lg { --dd-font-family: var(--ntg-typography-font-family-body-lg); --dd-font-size: var(--ntg-typography-font-size-body-lg); --dd-line-height: var(--ntg-typography-line-height-body-lg); --dd-font-weight: var(--ntg-typography-font-weight-body-lg); --dd-letter-space: var(--ntg-typography-letter-space-body-lg); --dd-opt-font-family: var(--ntg-typography-font-family-body-lg); --dd-opt-font-size: var(--ntg-typography-font-size-body-lg); --dd-opt-line-height: var(--ntg-typography-line-height-body-lg); --dd-opt-font-weight: var(--ntg-typography-font-weight-body-lg); --dd-opt-letter-space: var(--ntg-typography-letter-space-body-lg); --dd-sup-font-family: var(--ntg-typography-font-family-body-md); --dd-sup-font-size: var(--ntg-typography-font-size-body-md); --dd-sup-line-height: var(--ntg-typography-line-height-body-md); --dd-sup-font-weight: var(--ntg-typography-font-weight-body-md); --dd-sup-letter-space: var(--ntg-typography-letter-space-body-md); --dd-group-font-family: var(--ntg-typography-font-family-label-lg); --dd-group-font-size: var(--ntg-typography-font-size-label-lg); --dd-group-line-height: var(--ntg-typography-line-height-label-lg); --dd-group-font-weight: var(--ntg-typography-font-weight-label-lg); --dd-group-letter-space: var(--ntg-typography-letter-space-label-lg); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.sm .field { --dd-h: var(--ntg-dropdown-height-sm); --dd-px: var(--ntg-dropdown-padding-x-sm); --dd-gap: var(--ntg-dropdown-gap-sm); --dd-r-tl: var(--ntg-dropdown-radius-sm); --dd-r-tr: var(--ntg-dropdown-radius-sm); --dd-r-br: var(--ntg-dropdown-radius-sm); --dd-r-bl: var(--ntg-dropdown-radius-sm); --dd-icon: var(--ntg-dropdown-icon-sm); }
+.md .field { --dd-h: var(--ntg-dropdown-height-md); --dd-px: var(--ntg-dropdown-padding-x-md); --dd-gap: var(--ntg-dropdown-gap-md); --dd-r-tl: var(--ntg-dropdown-radius-md); --dd-r-tr: var(--ntg-dropdown-radius-md); --dd-r-br: var(--ntg-dropdown-radius-md); --dd-r-bl: var(--ntg-dropdown-radius-md); --dd-icon: var(--ntg-dropdown-icon-md); }
+.lg .field { --dd-h: var(--ntg-dropdown-height-lg); --dd-px: var(--ntg-dropdown-padding-x-lg); --dd-gap: var(--ntg-dropdown-gap-lg); --dd-r-tl: var(--ntg-dropdown-radius-lg); --dd-r-tr: var(--ntg-dropdown-radius-lg); --dd-r-br: var(--ntg-dropdown-radius-lg); --dd-r-bl: var(--ntg-dropdown-radius-lg); --dd-icon: var(--ntg-dropdown-icon-lg); }
+.sm .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-sm); --dd-panel-r-tl: var(--ntg-dropdown-radius-sm); --dd-panel-r-tr: var(--ntg-dropdown-radius-sm); --dd-panel-r-br: var(--ntg-dropdown-radius-sm); --dd-panel-r-bl: var(--ntg-dropdown-radius-sm); }
+.md .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-md); --dd-panel-r-tl: var(--ntg-dropdown-radius-md); --dd-panel-r-tr: var(--ntg-dropdown-radius-md); --dd-panel-r-br: var(--ntg-dropdown-radius-md); --dd-panel-r-bl: var(--ntg-dropdown-radius-md); }
+.lg .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-lg); --dd-panel-r-tl: var(--ntg-dropdown-radius-lg); --dd-panel-r-tr: var(--ntg-dropdown-radius-lg); --dd-panel-r-br: var(--ntg-dropdown-radius-lg); --dd-panel-r-bl: var(--ntg-dropdown-radius-lg); }
+.sm .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-sm); --dd-px: var(--ntg-dropdown-padding-x-sm); --dd-gap: var(--ntg-dropdown-gap-sm); --dd-icon: var(--ntg-dropdown-icon-sm); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-sm); }
+.md .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-md); --dd-px: var(--ntg-dropdown-padding-x-md); --dd-gap: var(--ntg-dropdown-gap-md); --dd-icon: var(--ntg-dropdown-icon-md); --dd-avatar: var(--ntg-dropdown-leading-avatar-md); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-md); }
+.lg .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-lg); --dd-px: var(--ntg-dropdown-padding-x-lg); --dd-gap: var(--ntg-dropdown-gap-lg); --dd-icon: var(--ntg-dropdown-icon-lg); --dd-avatar: var(--ntg-dropdown-leading-avatar-lg); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-lg); }
+.sm .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-sm); --dd-px: var(--ntg-dropdown-padding-x-sm); --dd-gap: 0; }
+.md .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-md); --dd-px: var(--ntg-dropdown-padding-x-md); --dd-gap: 0; }
+.lg .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-lg); --dd-px: var(--ntg-dropdown-padding-x-lg); --dd-gap: 0; }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.field { --dd-bg: var(--ntg-color-background-general-primary); --dd-border: var(--ntg-color-border-general-primary); --dd-border-w: 1px; --dd-shadow: 0 0 0 0 transparent; --dd-placeholder: var(--ntg-color-text-general-placeholder); --dd-icon-color: var(--ntg-color-text-general-placeholder); }
+.panel { --dd-panel-bg: var(--ntg-color-background-general-primary); --dd-panel-border: var(--ntg-color-border-general-primary); --dd-panel-border-w: 1px; --dd-panel-shadow: var(--ntg-shadows-bottom-md); }
+.sm .option,
+.md .option,
+.lg .option { --dd-opt-icon: var(--ntg-icon-general-quaternary); --dd-opt-fg: var(--ntg-color-text-general-text); --dd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.groupHeader { --dd-group-fg: var(--ntg-color-text-general-label); }
+.root:not([data-error]):not([data-disabled]):not([data-readonly]) .field:hover { --dd-bg: var(--ntg-color-background-general-primary-hover); --dd-border: var(--ntg-color-border-general-primary-hover); --dd-border-w: 1px; --dd-shadow: var(--ntg-shadows-bottom-xs); --dd-text: var(--ntg-color-text-general-heading); --dd-icon-color: var(--ntg-color-text-general-heading); }
+.root[data-disabled] .field { --dd-bg: var(--ntg-color-background-general-disabled-subtle); --dd-border: var(--ntg-color-border-general-disabled-subtle); --dd-border-w: 1px; --dd-shadow: 0 0 0 0 transparent; --dd-placeholder: var(--ntg-color-text-general-placeholder-subtle); --dd-icon-color: var(--ntg-color-text-general-placeholder-subtle); }
+.sm .option:hover:not([aria-disabled]):not([aria-selected="true"]),
+.md .option:hover:not([aria-disabled]):not([aria-selected="true"]),
+.lg .option:hover:not([aria-disabled]):not([aria-selected="true"]) { --dd-opt-bg: var(--ntg-color-background-general-primary-hover); --dd-opt-ring: 0 0 0 0 transparent; --dd-opt-icon: var(--ntg-icon-general-quaternary); --dd-opt-fg: var(--ntg-color-text-general-text); --dd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.sm .option[aria-disabled],
+.md .option[aria-disabled],
+.lg .option[aria-disabled] { --dd-opt-icon: var(--ntg-icon-general-quaternary); --dd-opt-fg: var(--ntg-color-text-general-disabled); --dd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root:not([data-error]) .field:focus-visible { --dd-bg: var(--ntg-color-background-general-primary); --dd-border: var(--ntg-color-border-brand-solid); --dd-border-w: 1px; --dd-shadow: var(--ntg-focused-ring-brand); --dd-text: var(--ntg-color-text-general-heading); --dd-icon-color: var(--ntg-color-text-general-heading); }
+.sm .option[data-active]:not([aria-selected="true"]),
+.md .option[data-active]:not([aria-selected="true"]),
+.lg .option[data-active]:not([aria-selected="true"]) { --dd-opt-ring: var(--ntg-focused-ring-default); --dd-opt-icon: var(--ntg-icon-general-quaternary); --dd-opt-fg: var(--ntg-color-text-general-text); --dd-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-open] .field { --dd-bg: var(--ntg-color-background-general-primary); --dd-border: var(--ntg-color-border-brand-solid); --dd-border-w: 1px; --dd-shadow: var(--ntg-focused-ring-brand); --dd-text: var(--ntg-color-text-general-heading); --dd-icon-color: var(--ntg-color-text-general-heading); }
+.sm .option[aria-selected="true"],
+.md .option[aria-selected="true"],
+.lg .option[aria-selected="true"] { --dd-opt-bg: var(--ntg-color-background-brand-primary-alt); --dd-opt-ring: 0 0 0 0 transparent; --dd-opt-icon: var(--ntg-icon-general-quaternary); --dd-opt-fg: var(--ntg-color-text-brand-primary); --dd-sup-fg: var(--ntg-color-text-general-supporting-text); --dd-check-color: var(--ntg-color-text-brand-primary); }
+.sm .option[aria-selected="true"]:hover:not([aria-disabled]), .sm .option[aria-selected="true"][data-active],
+.md .option[aria-selected="true"]:hover:not([aria-disabled]), .md .option[aria-selected="true"][data-active],
+.lg .option[aria-selected="true"]:hover:not([aria-disabled]), .lg .option[aria-selected="true"][data-active] { --dd-opt-bg: var(--ntg-color-background-brand-primary-alt-hover); --dd-opt-ring: 0 0 0 0 transparent; --dd-opt-icon: var(--ntg-icon-general-quaternary); --dd-opt-fg: var(--ntg-color-text-brand-primary); --dd-sup-fg: var(--ntg-color-text-general-supporting-text); --dd-check-color: var(--ntg-color-text-brand-primary); }
+.root[data-error] .field { --dd-bg: var(--ntg-color-background-general-primary); --dd-border: var(--ntg-color-system-error); --dd-border-w: 1px; --dd-shadow: 0 0 0 0 transparent; --dd-placeholder: var(--ntg-color-text-general-placeholder); --dd-icon-color: var(--ntg-color-text-general-placeholder); }
+.root[data-error]:not([data-disabled]):not([data-readonly]) .field:hover { --dd-bg: var(--ntg-color-background-general-primary-hover); --dd-border: var(--ntg-color-system-error-hover); --dd-border-w: 1px; --dd-shadow: var(--ntg-shadows-bottom-xs); --dd-text: var(--ntg-color-text-general-heading); --dd-icon-color: var(--ntg-color-text-general-heading); }
+.root[data-error] .field:focus-visible { --dd-bg: var(--ntg-color-background-general-primary); --dd-border: var(--ntg-color-border-system-error-solid); --dd-border-w: 1px; --dd-shadow: var(--ntg-focused-ring-error); --dd-text: var(--ntg-color-text-general-heading); --dd-icon-color: var(--ntg-color-text-general-heading); }
+.root[data-readonly] .field { --dd-bg: var(--ntg-color-background-general-secondary); --dd-border: var(--ntg-color-border-general-secondary); --dd-border-w: 1px; --dd-shadow: 0 0 0 0 transparent; --dd-placeholder: var(--ntg-color-text-general-placeholder); --dd-icon-color: var(--ntg-color-text-general-placeholder); }

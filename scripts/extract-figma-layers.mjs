@@ -250,7 +250,8 @@ for (const s of sets) {
     const size = [axes.size || 'one', ...(cfg.layoutAxes || []).map(a => `${a}=${axes[a] ?? ''}`)].join(', ')
     const { layout, colors } = split(snap(variant))
     const key = JSON.stringify(layout, (k, v) => (k === 'ref' ? undefined : v)).replace(/,"clip":true/g, '')
-    if (s.family === refFamilyOf[s.setName] && (axes.state ?? 'default') === 'default' && (axes['default-gray'] ?? 'false') === 'false' && (!axes.hierarchy || axes.hierarchy === cfg.referenceHierarchy)) {
+    // ถ้า state เป็นแกนโครง (เช่น option ของ dropdown ที่สถานะ selected มีไอคอนติ๊ก) ทุกสถานะมีโครงอ้างอิงของตัวเอง
+    if (s.family === refFamilyOf[s.setName] && ((cfg.layoutAxes || []).includes('state') || (axes.state ?? 'default') === 'default') && (axes['default-gray'] ?? 'false') === 'false' && (!axes.hierarchy || axes.hierarchy === cfg.referenceHierarchy)) {
       entry.layout[size] = layout
     }
     // โครงต้องเท่ากันทุกตระกูลทุกสถานะ ไม่งั้นแปลว่ามีตระกูลที่หลุดจากต้นแบบ

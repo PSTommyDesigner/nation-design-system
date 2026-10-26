@@ -1,159 +1,130 @@
-/**
- * Slider styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Slider/Slider.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 17 Sliders แล้วรัน  npm run figma:layers -- slider  และ  npm run css:generate -- slider
+ *   spec: tokens/figma-layers/slider.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Slider ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับไฟล์ออกแบบหน้า 17 Sliders ได้
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --sl-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/slider.json (spec ชั้นจากไฟล์ออกแบบหน้า 17)
+ * แล้วต่อท้ายไฟล์นี้เป็น Slider.module.css ห้ามแก้ Slider.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ขนาด    --ntg-slider-handle-{size} · track-{size} · row-height-{size}
- *           · row-height-touch-{size} · inset-{size} · overhang-{size}
- *   มุมโค้ง  --ntg-slider-radius-full (ทั้งรางและปุ่มจับเป็นทรงเต็มมุม)
- *   สี      ราง --ntg-color-background-general-quaternary
- *           แถบเติม --ntg-color-foreground-brand-primary
- *           ปุ่มจับ พื้น --ntg-color-background-general-primary ขอบ --ntg-color-background-brand-solid*
+ * ⚠️ ข้อยกเว้นที่มีชื่อ token: ความสูงแถวบนจอสัมผัส (slider/row/height-touch) และป้ายค่าเหนือปุ่มจับ
+ *    ซึ่งในไฟล์ออกแบบเป็น instance ของคำใบ้ (tooltip) ค่าของมันอยู่ที่ Tooltip จึงอ้าง token ของคำใบ้โดยตรง
  *
- * ⚠️ ห้ามให้กรอบไหนตัดขอบ ปุ่มจับล้นพ้นรางขึ้นลงข้างละเท่ากับ overhang
- * ⚠️ สถานะกดเปลี่ยนแค่สีขอบปุ่มจับ ห้ามขยับขนาด
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ช่วงที่เติม (fill) วางด้วยเปอร์เซ็นต์จากค่า ไฟล์ออกแบบใช้ auto layout ยืดตามสัดส่วนภาพ
+ *   2. ปุ่มจับวางกึ่งกลางรางด้วย translate เส้นขอบปุ่มจับใช้ box-shadow inset รวมกับวงแหวนโฟกัส
+ *   3. สถานะของปุ่มจับ (hover pressed focused) มาจากชุด slider-handle ส่วน disabled มาจาก data-disabled ของ root
  */
 
 .root {
-  --slider-handle: var(--ntg-slider-handle-md);
-  --slider-track: var(--ntg-slider-track-md);
-  --slider-row: var(--ntg-slider-row-height-md);
-  --slider-row-touch: var(--ntg-slider-row-height-touch-md);
-
   display: flex;
   flex-direction: column;
-  gap: var(--ntg-size-space-s1-sm);
+  gap: var(--sl-gap, 0);
   inline-size: 100%;
-  font-family: var(--ntg-typography-font-family-primary);
 }
-
-/* ── ชั้นที่สอง แถวที่กดได้ คือพื้นที่แตะจริง ───────────────── */
 .row {
   display: flex;
   align-items: center;
-  block-size: var(--slider-row);
+  block-size: var(--sl-row);
   overflow: visible;
 }
-
-.touchTarget .row { block-size: var(--slider-row-touch); }
-
-/* ── ชั้นที่หนึ่ง ภาพ ────────────────────────────────────── */
+.touchTarget .row { block-size: var(--ntg-slider-row-height-touch-md); }
 .track {
   position: relative;
   inline-size: 100%;
-  block-size: var(--slider-track);
-  border-radius: var(--ntg-slider-radius-full);
-  background: var(--ntg-color-background-general-quaternary);
+  block-size: var(--sl-track);
+  border-radius: var(--sl-r, 9999px);
+  background: var(--sl-track-bg, transparent);
   cursor: pointer;
   overflow: visible;
   touch-action: none;
 }
-
 .fill {
   position: absolute;
   inset-block: 0;
-  border-radius: var(--ntg-slider-radius-full);
-  background: var(--ntg-color-foreground-brand-primary);
+  border-radius: var(--sl-r, 9999px);
+  background: var(--sl-fill, currentColor);
 }
-
 .handle {
   position: absolute;
   inset-block-start: 50%;
-  inline-size: var(--slider-handle);
-  block-size: var(--slider-handle);
+  inline-size: var(--sl-handle);
+  block-size: var(--sl-handle);
   translate: -50% -50%;
-  border-radius: var(--ntg-slider-radius-full);
-  background: var(--ntg-color-background-general-primary);
-  border: 1px solid var(--ntg-color-background-brand-solid);
+  border-radius: 50%;
+  background: var(--sl-handle-bg, transparent);
+  box-shadow: inset 0 0 0 var(--sl-handle-border-w, 1px) var(--sl-handle-border, transparent), var(--sl-handle-ring, 0 0 0 0 transparent);
   box-sizing: border-box;
   cursor: grab;
   touch-action: none;
+  transition: box-shadow 0.15s ease;
 }
+.handle:focus-visible { outline: none; }
+.handle:active { cursor: grabbing; }
+.root[data-disabled] .track, .root[data-disabled] .handle { cursor: default; }
 
-.handle:hover { border-color: var(--ntg-color-background-brand-solid-hover); }
-
-.handle:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
-}
-
-/* วางหลัง :focus-visible เพื่อให้สีตอนกดชนะสีตอนโฟกัส แต่วงแหวนยังอยู่ */
-.handle:active {
-  border-color: var(--ntg-color-background-brand-solid-pressed);
-  cursor: grabbing;
-}
-
-/* ── ป้ายค่าเหนือปุ่มจับ ─────────────────────────────────── */
 .tooltip {
   position: absolute;
-  inset-block-end: calc(100% + var(--ntg-size-space-s1-sm));
+  inset-block-end: calc(100% + var(--ntg-tooltip-offset-md));
   inset-inline-start: 50%;
   translate: -50% 0;
-  padding: var(--ntg-size-space-s1-xs) var(--ntg-size-space-s1-sm);
-  border-radius: var(--ntg-card-radius-top-left);
+  padding: var(--ntg-tooltip-padding-xs) var(--ntg-tooltip-padding-sm);
+  border-radius: var(--ntg-tooltip-radius-md);
   background: var(--ntg-color-background-general-primary);
   color: var(--ntg-color-text-general-section-heading);
-  box-shadow: var(--ntg-shadows-bottom-sm);
+  box-shadow: var(--ntg-shadows-center-xs);
   white-space: nowrap;
   pointer-events: none;
-  font-size: var(--ntg-typography-font-size-label-xs);
-  line-height: var(--ntg-typography-line-height-label-xs);
-  font-weight: var(--ntg-typography-font-weight-label-xs);
-  letter-spacing: var(--ntg-typography-letter-space-label-xs);
+  font-family: var(--sl-label-font-family);
+  font-size: var(--sl-label-font-size);
+  line-height: var(--sl-label-line-height);
+  font-weight: var(--sl-label-font-weight);
+  letter-spacing: var(--sl-label-letter-space);
 }
-
-/* ── ป้ายค่าต่ำสุดสูงสุดใต้ราง ───────────────────────────── */
 .minMax {
   display: flex;
   justify-content: space-between;
-  color: var(--ntg-color-text-general-supporting-text);
-  font-size: var(--ntg-typography-font-size-label-xs);
-  line-height: var(--ntg-typography-line-height-label-xs);
-  font-weight: var(--ntg-typography-font-weight-label-xs);
-  letter-spacing: var(--ntg-typography-letter-space-label-xs);
+  color: var(--sl-label-fg, inherit);
+  font-family: var(--sl-label-font-family);
+  font-size: var(--sl-label-font-size);
+  line-height: var(--sl-label-line-height);
+  font-weight: var(--sl-label-font-weight);
+  letter-spacing: var(--sl-label-letter-space);
 }
 
-/* ── ปิดใช้งาน เปลี่ยนทั้งราง แถบเติม และปุ่มจับ ──────────── */
-.root[data-disabled='true'] .track {
-  background: var(--ntg-color-background-general-disabled-subtle);
-  cursor: default;
-}
-.root[data-disabled='true'] .fill { background: var(--ntg-color-background-general-disabled); }
-.root[data-disabled='true'] .handle {
-  border-color: var(--ntg-color-background-general-disabled);
-  cursor: default;
+@media (prefers-reduced-motion: reduce) {
+  .handle { transition: none; }
 }
 
-/* ── ขนาด ────────────────────────────────────────────────── */
-.xs {
-  --slider-handle: var(--ntg-slider-handle-xs);
-  --slider-track: var(--ntg-slider-track-xs);
-  --slider-row: var(--ntg-slider-row-height-xs);
-  --slider-row-touch: var(--ntg-slider-row-height-touch-xs);
-}
-.sm {
-  --slider-handle: var(--ntg-slider-handle-sm);
-  --slider-track: var(--ntg-slider-track-sm);
-  --slider-row: var(--ntg-slider-row-height-sm);
-  --slider-row-touch: var(--ntg-slider-row-height-touch-sm);
-}
-.md {
-  --slider-handle: var(--ntg-slider-handle-md);
-  --slider-track: var(--ntg-slider-track-md);
-  --slider-row: var(--ntg-slider-row-height-md);
-  --slider-row-touch: var(--ntg-slider-row-height-touch-md);
-}
-.lg {
-  --slider-handle: var(--ntg-slider-handle-lg);
-  --slider-track: var(--ntg-slider-track-lg);
-  --slider-row: var(--ntg-slider-row-height-lg);
-  --slider-row-touch: var(--ntg-slider-row-height-touch-lg);
-}
-.xl {
-  --slider-handle: var(--ntg-slider-handle-xl);
-  --slider-track: var(--ntg-slider-track-xl);
-  --slider-row: var(--ntg-slider-row-height-xl);
-  --slider-row-touch: var(--ntg-slider-row-height-touch-xl);
-}
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --sl-label-font-family: var(--ntg-typography-font-family-label-xs); --sl-label-font-size: var(--ntg-typography-font-size-label-xs); --sl-label-line-height: var(--ntg-typography-line-height-label-xs); --sl-label-font-weight: var(--ntg-typography-font-weight-label-xs); --sl-label-letter-space: var(--ntg-typography-letter-space-label-xs); }
+.sm { --sl-label-font-family: var(--ntg-typography-font-family-label-xs); --sl-label-font-size: var(--ntg-typography-font-size-label-xs); --sl-label-line-height: var(--ntg-typography-line-height-label-xs); --sl-label-font-weight: var(--ntg-typography-font-weight-label-xs); --sl-label-letter-space: var(--ntg-typography-letter-space-label-xs); }
+.md { --sl-label-font-family: var(--ntg-typography-font-family-label-xs); --sl-label-font-size: var(--ntg-typography-font-size-label-xs); --sl-label-line-height: var(--ntg-typography-line-height-label-xs); --sl-label-font-weight: var(--ntg-typography-font-weight-label-xs); --sl-label-letter-space: var(--ntg-typography-letter-space-label-xs); }
+.lg { --sl-label-font-family: var(--ntg-typography-font-family-label-xs); --sl-label-font-size: var(--ntg-typography-font-size-label-xs); --sl-label-line-height: var(--ntg-typography-line-height-label-xs); --sl-label-font-weight: var(--ntg-typography-font-weight-label-xs); --sl-label-letter-space: var(--ntg-typography-letter-space-label-xs); }
+.xl { --sl-label-font-family: var(--ntg-typography-font-family-label-xs); --sl-label-font-size: var(--ntg-typography-font-size-label-xs); --sl-label-line-height: var(--ntg-typography-line-height-label-xs); --sl-label-font-weight: var(--ntg-typography-font-weight-label-xs); --sl-label-letter-space: var(--ntg-typography-letter-space-label-xs); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.xs { --sl-gap: var(--ntg-size-space-s1-sm); --sl-row: var(--ntg-slider-row-height-xs); --sl-track: var(--ntg-slider-track-xs); --sl-r: var(--ntg-slider-radius-full); --sl-handle: var(--ntg-slider-handle-xs); }
+.root.sm { --sl-gap: var(--ntg-size-space-s1-sm); --sl-row: var(--ntg-slider-row-height-sm); --sl-track: var(--ntg-slider-track-sm); --sl-r: var(--ntg-slider-radius-full); --sl-handle: var(--ntg-slider-handle-sm); }
+.root.md { --sl-gap: var(--ntg-size-space-s1-sm); --sl-row: var(--ntg-slider-row-height-md); --sl-track: var(--ntg-slider-track-md); --sl-r: var(--ntg-slider-radius-full); --sl-handle: var(--ntg-slider-handle-md); }
+.root.lg { --sl-gap: var(--ntg-size-space-s1-sm); --sl-row: var(--ntg-slider-row-height-lg); --sl-track: var(--ntg-slider-track-lg); --sl-r: var(--ntg-slider-radius-full); --sl-handle: var(--ntg-slider-handle-lg); }
+.root.xl { --sl-gap: var(--ntg-size-space-s1-sm); --sl-row: var(--ntg-slider-row-height-xl); --sl-track: var(--ntg-slider-track-xl); --sl-r: var(--ntg-slider-radius-full); --sl-handle: var(--ntg-slider-handle-xl); }
+.xs .handle { --sl-handle: var(--ntg-slider-handle-xs); }
+.sm .handle { --sl-handle: var(--ntg-slider-handle-sm); }
+.md .handle { --sl-handle: var(--ntg-slider-handle-md); }
+.lg .handle { --sl-handle: var(--ntg-slider-handle-lg); }
+.xl .handle { --sl-handle: var(--ntg-slider-handle-xl); }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root:not([data-disabled]) { --sl-track-bg: var(--ntg-color-background-general-quaternary); --sl-fill: var(--ntg-color-foreground-brand-primary); --sl-label-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-disabled] { --sl-track-bg: var(--ntg-color-background-general-disabled-subtle); --sl-fill: var(--ntg-color-background-general-disabled); --sl-label-fg: var(--ntg-color-text-general-supporting-text); }
+.handle { --sl-handle-bg: var(--ntg-color-background-general-primary); --sl-handle-border: var(--ntg-color-background-brand-solid); --sl-handle-border-w: 1px; --sl-handle-ring: 0 0 0 0 transparent; }
+.handle:hover { --sl-handle-bg: var(--ntg-color-background-general-primary); --sl-handle-border: var(--ntg-color-background-brand-solid-hover); --sl-handle-border-w: 1px; --sl-handle-ring: 0 0 0 0 transparent; }
+.handle:active { --sl-handle-bg: var(--ntg-color-background-general-primary); --sl-handle-border: var(--ntg-color-background-brand-solid-pressed); --sl-handle-border-w: 1px; --sl-handle-ring: 0 0 0 0 transparent; }
+.handle:focus-visible { --sl-handle-bg: var(--ntg-color-background-general-primary); --sl-handle-border: var(--ntg-color-background-brand-solid); --sl-handle-border-w: 1px; --sl-handle-ring: var(--ntg-focused-ring-brand); }
+.root[data-disabled] .handle { --sl-handle-bg: var(--ntg-color-background-general-primary); --sl-handle-border: var(--ntg-color-background-general-disabled); --sl-handle-border-w: 1px; --sl-handle-ring: 0 0 0 0 transparent; }

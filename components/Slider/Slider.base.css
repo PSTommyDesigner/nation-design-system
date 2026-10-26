@@ -1,0 +1,95 @@
+/*
+ * Slider ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --sl-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/slider.json (spec ชั้นจากไฟล์ออกแบบหน้า 17)
+ * แล้วต่อท้ายไฟล์นี้เป็น Slider.module.css ห้ามแก้ Slider.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นที่มีชื่อ token: ความสูงแถวบนจอสัมผัส (slider/row/height-touch) และป้ายค่าเหนือปุ่มจับ
+ *    ซึ่งในไฟล์ออกแบบเป็น instance ของคำใบ้ (tooltip) ค่าของมันอยู่ที่ Tooltip จึงอ้าง token ของคำใบ้โดยตรง
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ช่วงที่เติม (fill) วางด้วยเปอร์เซ็นต์จากค่า ไฟล์ออกแบบใช้ auto layout ยืดตามสัดส่วนภาพ
+ *   2. ปุ่มจับวางกึ่งกลางรางด้วย translate เส้นขอบปุ่มจับใช้ box-shadow inset รวมกับวงแหวนโฟกัส
+ *   3. สถานะของปุ่มจับ (hover pressed focused) มาจากชุด slider-handle ส่วน disabled มาจาก data-disabled ของ root
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sl-gap, 0);
+  inline-size: 100%;
+}
+.row {
+  display: flex;
+  align-items: center;
+  block-size: var(--sl-row);
+  overflow: visible;
+}
+.touchTarget .row { block-size: var(--ntg-slider-row-height-touch-md); }
+.track {
+  position: relative;
+  inline-size: 100%;
+  block-size: var(--sl-track);
+  border-radius: var(--sl-r, 9999px);
+  background: var(--sl-track-bg, transparent);
+  cursor: pointer;
+  overflow: visible;
+  touch-action: none;
+}
+.fill {
+  position: absolute;
+  inset-block: 0;
+  border-radius: var(--sl-r, 9999px);
+  background: var(--sl-fill, currentColor);
+}
+.handle {
+  position: absolute;
+  inset-block-start: 50%;
+  inline-size: var(--sl-handle);
+  block-size: var(--sl-handle);
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: var(--sl-handle-bg, transparent);
+  box-shadow: inset 0 0 0 var(--sl-handle-border-w, 1px) var(--sl-handle-border, transparent), var(--sl-handle-ring, 0 0 0 0 transparent);
+  box-sizing: border-box;
+  cursor: grab;
+  touch-action: none;
+  transition: box-shadow 0.15s ease;
+}
+.handle:focus-visible { outline: none; }
+.handle:active { cursor: grabbing; }
+.root[data-disabled] .track, .root[data-disabled] .handle { cursor: default; }
+
+.tooltip {
+  position: absolute;
+  inset-block-end: calc(100% + var(--ntg-tooltip-offset-md));
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  padding: var(--ntg-tooltip-padding-xs) var(--ntg-tooltip-padding-sm);
+  border-radius: var(--ntg-tooltip-radius-md);
+  background: var(--ntg-color-background-general-primary);
+  color: var(--ntg-color-text-general-section-heading);
+  box-shadow: var(--ntg-shadows-center-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: var(--sl-label-font-family);
+  font-size: var(--sl-label-font-size);
+  line-height: var(--sl-label-line-height);
+  font-weight: var(--sl-label-font-weight);
+  letter-spacing: var(--sl-label-letter-space);
+}
+.minMax {
+  display: flex;
+  justify-content: space-between;
+  color: var(--sl-label-fg, inherit);
+  font-family: var(--sl-label-font-family);
+  font-size: var(--sl-label-font-size);
+  line-height: var(--sl-label-line-height);
+  font-weight: var(--sl-label-font-weight);
+  letter-spacing: var(--sl-label-letter-space);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handle { transition: none; }
+}

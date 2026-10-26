@@ -890,7 +890,139 @@ const AVATAR = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Dropdown: หน้า 25 ช่อง (9 สถานะเหมือนช่องกรอก) แผง option (6 สถานะ) และหัวกลุ่ม คลาสขนาดอยู่ที่ root
+//   สถานะของช่องเป็น data attribute ของ root + :hover/:focus-visible ของปุ่ม · option ใช้ aria-selected / data-active / aria-disabled
+//   ชั้นข้อความในช่องเป็น placeholder ตอนพัก (ชื่อ token มีคำว่า placeholder) และข้อความที่เลือกตอน hover/focused เหมือน TextField
+// ═══════════════════════════════════════════════════════════════════════════════
+const ddRoot = (sel, attrs) => (sel.includes(' ') ? sel.replace(' ', `${attrs} `) : `.root${attrs} ${sel}`)
+const DROPDOWN_FIELD_STATES = {
+  default: (sel) => sel,
+  hover: (sel) => `${ddRoot(sel, ':not([data-error]):not([data-disabled]):not([data-readonly])')}:hover`,
+  focused: (sel) => `${ddRoot(sel, ':not([data-error])')}:focus-visible`,
+  open: (sel) => ddRoot(sel, '[data-open]'),
+  error: (sel) => ddRoot(sel, '[data-error]'),
+  'error-hover': (sel) => `${ddRoot(sel, '[data-error]:not([data-disabled]):not([data-readonly])')}:hover`,
+  'error-focused': (sel) => `${ddRoot(sel, '[data-error]')}:focus-visible`,
+  'read-only': (sel) => ddRoot(sel, '[data-readonly]'),
+  disabled: (sel) => ddRoot(sel, '[data-disabled]'),
+}
+const DROPDOWN_OPTION_STATES = {
+  default: (sel) => sel,
+  hover: (sel) => `${sel}:hover:not([aria-disabled]):not([aria-selected="true"])`,
+  focused: (sel) => `${sel}[data-active]:not([aria-selected="true"])`,
+  selected: (sel) => `${sel}[aria-selected="true"]`,
+  'selected-hover': (sel) => `${sel}[aria-selected="true"]:hover:not([aria-disabled]), ${sel}[aria-selected="true"][data-active]`,
+  disabled: (sel) => `${sel}[aria-disabled]`,
+}
+const DROPDOWN = {
+  specFile: 'tokens/figma-layers/dropdown.json',
+  baseFile: 'components/Dropdown/Dropdown.base.css',
+  outFile: 'components/Dropdown/Dropdown.module.css',
+  sizes: ['sm', 'md', 'lg'],
+  sets: { 'dropdown': { classes: '.field' }, 'dropdown-menu': { classes: '.panel' }, '_dropdown-option': { classes: '.option' }, '_dropdown-group-header': { classes: '.groupHeader' } },
+  sizeSel: (sel, size) => `.${size} ${sel}`,
+  layoutVariants: [{ key: (size, set) => (set === '_dropdown-option' ? `${size}, state=selected` : set === 'dropdown' ? `${size}, state=default` : `${size}, state=`), cls: '' }],
+  hiddenLayers: ['leading-avatar', 'text/supporting-text', 'group-header', 'group-divider'],
+  familyClass: () => '',
+  axisClass: {},
+  stateSelector: { ...DROPDOWN_FIELD_STATES, selected: DROPDOWN_OPTION_STATES.selected, 'selected-hover': DROPDOWN_OPTION_STATES['selected-hover'] },
+  stateRank: { default: 0, hover: 1, focused: 2, open: 3, selected: 4, 'selected-hover': 5, error: 6, 'error-hover': 7, 'error-focused': 8, 'read-only': 9, disabled: 10 },
+  // option กับช่องใช้ตัวเลือก selector คนละชุด แยกด้วยชื่อชุดใน stateSelectorBySet
+  stateSelectorBySet: { '_dropdown-option': DROPDOWN_OPTION_STATES },
+  layers: {
+    '(root)': (n, W, ctx) => {
+      if (ctx.set === 'dropdown') return { '--dd-h': W(n.h), '--dd-px': W(n.p[1]), '--dd-gap': W(n.g), ...(n.r ? { '--dd-r-tl': W(n.r[0]), '--dd-r-tr': W(n.r[1]), '--dd-r-br': W(n.r[2]), '--dd-r-bl': W(n.r[3]) } : {}) }
+      if (ctx.set === 'dropdown-menu') return { '--dd-panel-py': W(n.p[0]), ...(n.r ? { '--dd-panel-r-tl': W(n.r[0]), '--dd-panel-r-tr': W(n.r[1]), '--dd-panel-r-br': W(n.r[2]), '--dd-panel-r-bl': W(n.r[3]) } : {}) }
+      return { '--dd-row-py': W(n.p[0]), '--dd-px': W(n.p[1]), '--dd-gap': W(n.g) }
+    },
+    'เลือกตัวเลือก': () => ({}),
+    'chevron': (n, W) => ({ '--dd-icon': W(n.w) }),
+    'chevron/**': () => ({}),
+    'checkbox': () => ({}), 'checkbox/**': () => ({}),
+    'leading-icon': (n, W) => ({ '--dd-icon': W(n.w) }),
+    'leading-icon/**': () => ({}),
+    'leading-avatar': (n, W) => ({ '--dd-avatar': W(n.w) }),
+    'leading-avatar/**': () => ({}),
+    'text': (n, W) => ({ '--dd-text-gap': W(n.g) }),
+    'text/**': () => ({}),
+    'status-&-feedback/check': (n, W) => ({ '--dd-check': W(n.w) }),
+    'status-&-feedback/check/**': () => ({}),
+    'ชื่อกลุ่ม': () => ({}),
+    'group-header': () => ({}), 'group-header/**': () => ({}),
+    'group-divider': () => ({}), 'group-divider/**': () => ({}),
+    '_dropdown-option': () => ({}), '_dropdown-option/**': () => ({}),
+  },
+  text: [
+    { sets: ['dropdown'], layers: ['เลือกตัวเลือก'], vars: { '--dd-font-family': 'font-family', '--dd-font-size': 'font-size', '--dd-line-height': 'line-height', '--dd-font-weight': 'font-weight', '--dd-letter-space': 'letter-space' } },
+    { sets: ['_dropdown-option'], layers: ['text/ตัวเลือก'], vars: { '--dd-opt-font-family': 'font-family', '--dd-opt-font-size': 'font-size', '--dd-opt-line-height': 'line-height', '--dd-opt-font-weight': 'font-weight', '--dd-opt-letter-space': 'letter-space' } },
+    { sets: ['_dropdown-option'], layers: ['text/supporting-text'], vars: { '--dd-sup-font-family': 'font-family', '--dd-sup-font-size': 'font-size', '--dd-sup-line-height': 'line-height', '--dd-sup-font-weight': 'font-weight', '--dd-sup-letter-space': 'letter-space' } },
+    { sets: ['_dropdown-group-header'], layers: ['ชื่อกลุ่ม'], vars: { '--dd-group-font-family': 'font-family', '--dd-group-font-size': 'font-size', '--dd-group-line-height': 'line-height', '--dd-group-font-weight': 'font-weight', '--dd-group-letter-space': 'letter-space' } },
+  ],
+  colors: {
+    '(root)': (c, W, ctx) => {
+      if (ctx.set === 'dropdown') return { '--dd-bg': W(c.fills[0]), '--dd-border': c.strokes ? W(c.strokes[0]) : 'transparent', '--dd-border-w': c.strokes ? `${c.sw[0]}px` : '0px', '--dd-shadow': effectVar(c.fx, 'dropdown effect') }
+      if (ctx.set === 'dropdown-menu') return { '--dd-panel-bg': W(c.fills[0]), '--dd-panel-border': c.strokes ? W(c.strokes[0]) : 'transparent', '--dd-panel-border-w': c.strokes ? `${c.sw[0]}px` : '0px', '--dd-panel-shadow': effectVar(c.fx, 'panel effect') }
+      return { ...(c.fills ? { '--dd-opt-bg': W(c.fills[0]) } : {}), '--dd-opt-ring': effectVar(c.fx, 'option effect') }
+    },
+    'เลือกตัวเลือก': (c, W) => (/placeholder/.test(c.fills[0]) ? { '--dd-placeholder': W(c.fills[0]) } : { '--dd-text': W(c.fills[0]) }),
+    'chevron/vector': (c, W) => ({ '--dd-icon-color': W(c.fills[0]) }),
+    'text/ตัวเลือก': (c, W) => ({ '--dd-opt-fg': W(c.fills[0]) }),
+    'text/supporting-text': (c, W) => ({ '--dd-sup-fg': W(c.fills[0]) }),
+    'leading-icon/vector': (c, W) => ({ '--dd-opt-icon': W(c.fills[0]) }),
+    'status-&-feedback/check/vector': (c, W) => ({ '--dd-check-color': W(c.fills[0]) }),
+    'ชื่อกลุ่ม': (c, W) => ({ '--dd-group-fg': W(c.fills[0]) }),
+    'checkbox': () => ({}), 'checkbox/**': () => ({}), 'leading-avatar/**': () => ({}),
+    'group-header/**': () => ({}), 'group-divider/**': () => ({}), '_dropdown-option': () => ({}), '_dropdown-option/**': () => ({}),
+  },
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Slider: หน้า 17 แถบเลื่อนค่าเดียวกับช่วง (โครงเดียวกัน ต่างที่จำนวนปุ่มจับ) และปุ่มจับฐาน 5 สถานะ
+//   ค่าของปุ่มจับอ่านจากชุด slider-handle (ชุดแถบเลื่อนมีแค่พัก/ปิดใช้) ป้ายค่าเป็น instance ของคำใบ้ ค่าอยู่ที่ Tooltip
+// ═══════════════════════════════════════════════════════════════════════════════
+const SLIDER = {
+  specFile: 'tokens/figma-layers/slider.json',
+  baseFile: 'components/Slider/Slider.base.css',
+  outFile: 'components/Slider/Slider.module.css',
+  sets: { 'slider': { classes: '.root' }, 'range-slider': { classes: '.root' }, 'slider-handle': { classes: '.handle' } },
+  sizeSel: (sel, size) => (sel.startsWith('.root') ? `.root.${size}${sel.slice(5)}` : `.${size} ${sel}`),
+  layoutVariants: [{ key: (size, set) => (set === 'slider-handle' ? `${size}, disabled=` : `${size}, disabled=false`), cls: '' }],
+  hiddenLayers: ['min-max-label'],
+  familyClass: () => '',
+  axisClass: { disabled: (v) => (v === 'true' ? '[data-disabled]' : ':not([data-disabled])') },
+  stateSelector: {
+    default: (sel) => sel,
+    hover: (sel) => `${sel}:hover`,
+    pressed: (sel) => `${sel}:active`,
+    focused: (sel) => `${sel}:focus-visible`,
+    disabled: (sel) => (sel.includes(' ') ? sel.replace(' ', '[data-disabled] ') : `.root[data-disabled] ${sel}`),
+  },
+  stateRank: { default: 0, hover: 1, pressed: 2, focused: 3, disabled: 4 },
+  layers: {
+    '(root)': (n, W, ctx) => (ctx.set === 'slider-handle' ? { '--sl-handle': W(n.w) } : { '--sl-gap': W(n.g) }),
+    'row': (n, W) => ({ '--sl-row': W(n.h) }),
+    'row/track': (n, W) => ({ '--sl-track': W(n.h), ...(n.r ? { '--sl-r': W(n.r[0]) } : {}) }),
+    'row/track/fill': () => ({}),
+    'row/track/handle-anchor/handle': (n, W) => ({ '--sl-handle': W(n.w) }),
+    'row/track/fill/handle-start': (n, W) => ({ '--sl-handle': W(n.w) }),
+    'row/track/fill/handle-end': () => ({}),
+    'min-max-label': () => ({}),
+    'min-max-label/**': () => ({}),
+    '**': () => ({}),
+  },
+  text: [{ sets: ['slider', 'range-slider'], layers: ['min-max-label/min'], vars: { '--sl-label-font-family': 'font-family', '--sl-label-font-size': 'font-size', '--sl-label-line-height': 'line-height', '--sl-label-font-weight': 'font-weight', '--sl-label-letter-space': 'letter-space' } }],
+  colors: {
+    '(root)': (c, W) => ({ '--sl-handle-bg': W(c.fills[0]), '--sl-handle-border': c.strokes ? W(c.strokes[0]) : 'transparent', '--sl-handle-border-w': c.strokes ? `${c.sw[0]}px` : '0px', '--sl-handle-ring': effectVar(c.fx, 'handle effect') }),
+    'row/track': (c, W) => ({ '--sl-track-bg': W(c.fills[0]) }),
+    'row/track/fill': (c, W) => ({ '--sl-fill': W(c.fills[0]) }),
+    'min-max-label/min': (c, W) => ({ '--sl-label-fg': W(c.fills[0]) }),
+    'min-max-label/max': () => ({}),
+    '**': () => ({}),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -1002,7 +1134,7 @@ for (const [setName, set] of Object.entries(spec.sets)) {
         let sel = `${cls}${famClass}`
         for (const [axis, fn] of Object.entries(M.axisClass)) if (axis in axes) sel += fn(axes[axis], setName)
         if (axes.size) sel = M.sizeSel ? M.sizeSel(sel, axes.size) : `${sel}.${axes.size}`   // สีที่ต่างตามขนาด (เช่น เงาปุ่ม Alpha)
-        return M.stateSelector[state]?.(sel)
+        return (M.stateSelectorBySet?.[setName] || M.stateSelector)[state]?.(sel)
       })
       if (sels.some((x) => !x)) { errors.push(`${setName} ${family} ${combo}: สถานะ ${state} ไม่รู้จัก`); continue }
       const sel = sels.join(',\n')
