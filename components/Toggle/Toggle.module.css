@@ -1,37 +1,46 @@
-/**
- * Toggle styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Toggle/Toggle.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 14 Toggles แล้วรัน  npm run figma:layers -- toggle  และ  npm run css:generate -- toggle
+ *   spec: tokens/figma-layers/toggle.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Toggle ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 14 Toggles ได้
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --tg-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/toggle.json (spec ชั้นจากไฟล์ออกแบบหน้า 14)
+ * แล้วต่อท้ายไฟล์นี้เป็น Toggle.module.css ห้ามแก้ Toggle.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ภาพสวิตช์  --ntg-toggle-track-{width|height}-{size} · knob-size-{size} · travel-{size} · inset
- *   แถวที่กดได้ --ntg-toggle-row-height-{size} · row-height-touch · gap · indent-{size}
- *   มุมโค้ง     --ntg-toggle-radius-full
- *
- * ⚠️ ห้ามให้ปุ่มกลมขยายหรือยืดตอนกดเด็ดขาด (ตัดสิน 2026-09-04 ผู้ใช้สั่ง)
- *    สถานะกดบอกด้วยสีอย่างเดียว
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ตำแหน่งปุ่มกลม: ไฟล์ออกแบบจัดชิดซ้าย (ปิด) หรือชิดขวา (เปิด) ด้วย auto layout ฝั่งเว็บเลื่อนด้วย transform
+ *      ระยะเลื่อน = ความกว้างราง - ปุ่มกลม - ระยะขอบใน x 2 คำนวณจากค่าที่ตัวสร้างให้ ไม่ต้องมี token ระยะเลื่อนแยก
+ *   2. สถานะในไฟล์ออกแบบเป็นแกน (active / state) ฝั่งเว็บเป็น data attribute ของ wrapper
+ *      hover อยู่ที่แถว (label) โฟกัสอยู่ที่ input ที่ซ่อน ตัวสร้างจึงเลือกด้วย :has()
+ *   3. สถานะกด (:active) ไม่มีในไฟล์ออกแบบ แต่มี token ชุด pressed ตัวสร้าง derive ค่า --tg-*-pressed จากชื่อ token ของสถานะ default
+ *   4. input จริงซ่อนด้วยสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ (1px) ไม่ใช่ค่าออกแบบ
+ *   5. พื้นที่แตะขั้นต่ำ 48px บนอุปกรณ์สัมผัส (เกณฑ์ 48dp ของ Android ครอบ 44pt ของ Apple) เป็นเกณฑ์แพลตฟอร์ม ไม่ใช่ค่าจากไฟล์ออกแบบ
+ *      แถวในไฟล์ออกแบบสูงเท่าเนื้อหา (HUG) จึงไม่มีความสูงแถวต่อขนาดในนี้
  */
 
 .root {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--ntg-toggle-gap);
-  font-family: var(--ntg-typography-font-family-primary);
-  color: var(--ntg-color-text-general-label);
+  gap: var(--tg-gap, 0);
+  color: var(--tg-fg, inherit);
+  font-family: var(--tg-font-family);
+  font-size: var(--tg-font-size);
+  line-height: var(--tg-line-height);
+  font-weight: var(--tg-font-weight);
+  letter-spacing: var(--tg-letter-space);
 }
-
 .row {
   display: inline-flex;
   align-items: center;
-  gap: var(--ntg-toggle-gap);
+  gap: var(--tg-gap, 0);
   cursor: pointer;
 }
+.root[data-disabled] .row { cursor: not-allowed; }
 
-.root[data-disabled='true'] .row { cursor: not-allowed; }
-
-/* ช่องติ๊กจริงซ่อนไว้ แต่ยังรับโฟกัสและอ่านได้ด้วยโปรแกรมอ่านหน้าจอ
-   ค่า 1px ตรงนี้เป็นสูตรมาตรฐานของการซ่อนแบบเข้าถึงได้ ไม่ใช่ค่าออกแบบ จึงไม่ต้องเป็น token */
 .input {
   position: absolute;
   width: 1px;
@@ -48,92 +57,72 @@
   position: relative;
   flex: none;
   box-sizing: border-box;
-  border-radius: var(--ntg-toggle-radius-full);
-  background: var(--ntg-color-background-general-disabled);
-  transition: background-color 0.15s ease;
+  width: var(--tg-track-w);
+  height: var(--tg-track-h);
+  border-radius: var(--tg-r-tl, 0) var(--tg-r-tr, 0) var(--tg-r-br, 0) var(--tg-r-bl, 0);
+  background: var(--tg-track-bg, transparent);
+  box-shadow: var(--tg-ring, 0 0 0 0 transparent);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
+.input:focus-visible { outline: none; }
+.root:not([data-disabled]) .row:active .track { background: var(--tg-track-bg-pressed, var(--tg-track-bg, transparent)); }
 
 .knob {
   position: absolute;
-  top: var(--ntg-toggle-inset);
-  left: var(--ntg-toggle-inset);
-  border-radius: var(--ntg-toggle-radius-full);
-  background: var(--ntg-icon-brand-on-brand-primary);
+  top: var(--tg-inset, 0);
+  left: var(--tg-inset, 0);
+  width: var(--tg-knob);
+  height: var(--tg-knob);
+  border-radius: 50%;
+  background: var(--tg-knob-bg, currentColor);
+  box-shadow: var(--tg-knob-shadow, 0 0 0 0 transparent);
   transition: transform 0.15s ease;
 }
-
-/* เปิดอยู่ */
-.root[data-checked='true'] .track { background: var(--ntg-color-background-brand-solid); }
-.row:hover .root[data-checked='true'] .track,
-.root[data-checked='true'] .row:hover .track { background: var(--ntg-color-background-brand-solid-hover); }
-
-/* สถานะกด ใช้ token ชุด pressed ที่ไฟล์ออกแบบกำหนดไว้เมื่อ 2026-09-04 */
-.row:active .root[data-checked='true'] .track,
-.root[data-checked='true'] .row:active .track { background: var(--ntg-color-background-brand-solid-pressed); }
-
-/* ปิดใช้งาน ใช้สีเดียวกับสถานะปิด ตรงกับไฟล์ออกแบบ เป็นข้อจำกัดที่รู้ตัว */
-.root[data-disabled='true'] .track { background: var(--ntg-color-background-general-disabled); }
-.root[data-disabled='true'] { color: var(--ntg-color-text-general-disabled); }
-
-.input:focus-visible + .track {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
+.root[data-checked='true'] .knob {
+  transform: translateX(calc(var(--tg-track-w) - var(--tg-knob) - 2 * var(--tg-inset, 0px)));
 }
+
+.title { color: var(--tg-fg, inherit); }
 
 .supporting {
-  color: var(--ntg-color-text-general-supporting-text);
+  padding-inline-start: var(--tg-indent, 0);
+  color: var(--tg-sup-fg, inherit);
+  font-family: var(--tg-sup-font-family);
+  font-size: var(--tg-sup-font-size);
+  line-height: var(--tg-sup-line-height);
+  font-weight: var(--tg-sup-font-weight);
+  letter-spacing: var(--tg-sup-letter-space);
 }
 
-/* ── ขนาด ────────────────────────────────────────────────── */
-.xs .row { min-height: var(--ntg-toggle-row-height-xs); }
-.xs .track { width: var(--ntg-toggle-track-width-xs); height: var(--ntg-toggle-track-height-xs); }
-.xs .knob { width: var(--ntg-toggle-knob-size-xs); height: var(--ntg-toggle-knob-size-xs); }
-.xs[data-checked='true'] .knob { transform: translateX(var(--ntg-toggle-travel-xs)); }
-.xs .supporting { padding-inline-start: var(--ntg-toggle-indent-xs); }
-.xs .title, .xs .supporting {
-  font-size: var(--ntg-typography-font-size-label-xs);
-  line-height: var(--ntg-typography-line-height-label-xs);
+.touchTarget .row { min-height: 48px; }
+@media (pointer: coarse) {
+  .row { min-height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track, .knob { transition: none; }
 }
 
-.sm .row { min-height: var(--ntg-toggle-row-height-sm); }
-.sm .track { width: var(--ntg-toggle-track-width-sm); height: var(--ntg-toggle-track-height-sm); }
-.sm .knob { width: var(--ntg-toggle-knob-size-sm); height: var(--ntg-toggle-knob-size-sm); }
-.sm[data-checked='true'] .knob { transform: translateX(var(--ntg-toggle-travel-sm)); }
-.sm .supporting { padding-inline-start: var(--ntg-toggle-indent-sm); }
-.sm .title, .sm .supporting {
-  font-size: var(--ntg-typography-font-size-label-xs);
-  line-height: var(--ntg-typography-line-height-label-xs);
-}
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --tg-font-family: var(--ntg-typography-font-family-title-xs); --tg-font-size: var(--ntg-typography-font-size-title-xs); --tg-line-height: var(--ntg-typography-line-height-title-xs); --tg-font-weight: var(--ntg-typography-font-weight-title-xs); --tg-letter-space: var(--ntg-typography-letter-space-title-xs); --tg-sup-font-family: var(--ntg-typography-font-family-body-xs); --tg-sup-font-size: var(--ntg-typography-font-size-body-xs); --tg-sup-line-height: var(--ntg-typography-line-height-body-xs); --tg-sup-font-weight: var(--ntg-typography-font-weight-body-xs); --tg-sup-letter-space: var(--ntg-typography-letter-space-body-xs); }
+.sm { --tg-font-family: var(--ntg-typography-font-family-title-sm); --tg-font-size: var(--ntg-typography-font-size-title-sm); --tg-line-height: var(--ntg-typography-line-height-title-sm); --tg-font-weight: var(--ntg-typography-font-weight-title-sm); --tg-letter-space: var(--ntg-typography-letter-space-title-sm); --tg-sup-font-family: var(--ntg-typography-font-family-body-sm); --tg-sup-font-size: var(--ntg-typography-font-size-body-sm); --tg-sup-line-height: var(--ntg-typography-line-height-body-sm); --tg-sup-font-weight: var(--ntg-typography-font-weight-body-sm); --tg-sup-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.md { --tg-font-family: var(--ntg-typography-font-family-title-md); --tg-font-size: var(--ntg-typography-font-size-title-md); --tg-line-height: var(--ntg-typography-line-height-title-md); --tg-font-weight: var(--ntg-typography-font-weight-title-md); --tg-letter-space: var(--ntg-typography-letter-space-title-md); --tg-sup-font-family: var(--ntg-typography-font-family-body-md); --tg-sup-font-size: var(--ntg-typography-font-size-body-md); --tg-sup-line-height: var(--ntg-typography-line-height-body-md); --tg-sup-font-weight: var(--ntg-typography-font-weight-body-md); --tg-sup-letter-space: var(--ntg-typography-letter-space-body-md); }
+.lg { --tg-font-family: var(--ntg-typography-font-family-title-lg); --tg-font-size: var(--ntg-typography-font-size-title-lg); --tg-line-height: var(--ntg-typography-line-height-title-lg); --tg-font-weight: var(--ntg-typography-font-weight-title-lg); --tg-letter-space: var(--ntg-typography-letter-space-title-lg); --tg-sup-font-family: var(--ntg-typography-font-family-body-lg); --tg-sup-font-size: var(--ntg-typography-font-size-body-lg); --tg-sup-line-height: var(--ntg-typography-line-height-body-lg); --tg-sup-font-weight: var(--ntg-typography-font-weight-body-lg); --tg-sup-letter-space: var(--ntg-typography-letter-space-body-lg); }
+.xl { --tg-font-family: var(--ntg-typography-font-family-title-xl); --tg-font-size: var(--ntg-typography-font-size-title-xl); --tg-line-height: var(--ntg-typography-line-height-title-xl); --tg-font-weight: var(--ntg-typography-font-weight-title-xl); --tg-letter-space: var(--ntg-typography-letter-space-title-xl); --tg-sup-font-family: var(--ntg-typography-font-family-body-xl); --tg-sup-font-size: var(--ntg-typography-font-size-body-xl); --tg-sup-line-height: var(--ntg-typography-line-height-body-xl); --tg-sup-font-weight: var(--ntg-typography-font-weight-body-xl); --tg-sup-letter-space: var(--ntg-typography-letter-space-body-xl); }
 
-.md .row { min-height: var(--ntg-toggle-row-height-md); }
-.md .track { width: var(--ntg-toggle-track-width-md); height: var(--ntg-toggle-track-height-md); }
-.md .knob { width: var(--ntg-toggle-knob-size-md); height: var(--ntg-toggle-knob-size-md); }
-.md[data-checked='true'] .knob { transform: translateX(var(--ntg-toggle-travel-md)); }
-.md .supporting { padding-inline-start: var(--ntg-toggle-indent-md); }
-.md .title, .md .supporting {
-  font-size: var(--ntg-typography-font-size-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
-}
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.xs { --tg-gap: var(--ntg-toggle-gap); --tg-track-w: var(--ntg-toggle-track-width-xs); --tg-track-h: var(--ntg-toggle-track-height-xs); --tg-inset: var(--ntg-toggle-inset); --tg-r-tl: var(--ntg-toggle-radius-full); --tg-r-tr: var(--ntg-toggle-radius-full); --tg-r-br: var(--ntg-toggle-radius-full); --tg-r-bl: var(--ntg-toggle-radius-full); --tg-knob: var(--ntg-toggle-knob-size-xs); --tg-indent: var(--ntg-toggle-indent-xs); }
+.root.sm { --tg-gap: var(--ntg-toggle-gap); --tg-track-w: var(--ntg-toggle-track-width-sm); --tg-track-h: var(--ntg-toggle-track-height-sm); --tg-inset: var(--ntg-toggle-inset); --tg-r-tl: var(--ntg-toggle-radius-full); --tg-r-tr: var(--ntg-toggle-radius-full); --tg-r-br: var(--ntg-toggle-radius-full); --tg-r-bl: var(--ntg-toggle-radius-full); --tg-knob: var(--ntg-toggle-knob-size-sm); --tg-indent: var(--ntg-toggle-indent-sm); }
+.root.md { --tg-gap: var(--ntg-toggle-gap); --tg-track-w: var(--ntg-toggle-track-width-md); --tg-track-h: var(--ntg-toggle-track-height-md); --tg-inset: var(--ntg-toggle-inset); --tg-r-tl: var(--ntg-toggle-radius-full); --tg-r-tr: var(--ntg-toggle-radius-full); --tg-r-br: var(--ntg-toggle-radius-full); --tg-r-bl: var(--ntg-toggle-radius-full); --tg-knob: var(--ntg-toggle-knob-size-md); --tg-indent: var(--ntg-toggle-indent-md); }
+.root.lg { --tg-gap: var(--ntg-toggle-gap); --tg-track-w: var(--ntg-toggle-track-width-lg); --tg-track-h: var(--ntg-toggle-track-height-lg); --tg-inset: var(--ntg-toggle-inset); --tg-r-tl: var(--ntg-toggle-radius-full); --tg-r-tr: var(--ntg-toggle-radius-full); --tg-r-br: var(--ntg-toggle-radius-full); --tg-r-bl: var(--ntg-toggle-radius-full); --tg-knob: var(--ntg-toggle-knob-size-lg); --tg-indent: var(--ntg-toggle-indent-lg); }
+.root.xl { --tg-gap: var(--ntg-toggle-gap); --tg-track-w: var(--ntg-toggle-track-width-xl); --tg-track-h: var(--ntg-toggle-track-height-xl); --tg-inset: var(--ntg-toggle-inset); --tg-r-tl: var(--ntg-toggle-radius-full); --tg-r-tr: var(--ntg-toggle-radius-full); --tg-r-br: var(--ntg-toggle-radius-full); --tg-r-bl: var(--ntg-toggle-radius-full); --tg-knob: var(--ntg-toggle-knob-size-xl); --tg-indent: var(--ntg-toggle-indent-xl); }
 
-.lg .row { min-height: var(--ntg-toggle-row-height-lg); }
-.lg .track { width: var(--ntg-toggle-track-width-lg); height: var(--ntg-toggle-track-height-lg); }
-.lg .knob { width: var(--ntg-toggle-knob-size-lg); height: var(--ntg-toggle-knob-size-lg); }
-.lg[data-checked='true'] .knob { transform: translateX(var(--ntg-toggle-travel-lg)); }
-.lg .supporting { padding-inline-start: var(--ntg-toggle-indent-lg); }
-.lg .title, .lg .supporting {
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-}
-
-.xl .row { min-height: var(--ntg-toggle-row-height-xl); }
-.xl .track { width: var(--ntg-toggle-track-width-xl); height: var(--ntg-toggle-track-height-xl); }
-.xl .knob { width: var(--ntg-toggle-knob-size-xl); height: var(--ntg-toggle-knob-size-xl); }
-.xl[data-checked='true'] .knob { transform: translateX(var(--ntg-toggle-travel-xl)); }
-.xl .supporting { padding-inline-start: var(--ntg-toggle-indent-xl); }
-.xl .title, .xl .supporting {
-  font-size: var(--ntg-typography-font-size-label-lg);
-  line-height: var(--ntg-typography-line-height-label-lg);
-}
-
-/* พื้นที่แตะขั้นต่ำบนจอสัมผัส ใช้สเกลแถวที่กดได้ ไม่ใช่ขนาดภาพสวิตช์ */
-.touchTarget .row { min-height: var(--ntg-toggle-row-height-touch); }
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root[data-checked="true"] { --tg-track-bg: var(--ntg-color-background-brand-solid); --tg-ring: 0 0 0 0 transparent; --tg-track-bg-pressed: var(--ntg-color-background-brand-solid-pressed); --tg-knob-bg: var(--ntg-icon-brand-on-brand-primary); --tg-knob-shadow: var(--ntg-shadows-bottom-sm); --tg-fg: var(--ntg-color-text-general-section-heading); --tg-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"] { --tg-track-bg: var(--ntg-color-background-general-disabled); --tg-ring: 0 0 0 0 transparent; --tg-knob-bg: var(--ntg-icon-brand-on-brand-primary); --tg-knob-shadow: var(--ntg-shadows-bottom-sm); --tg-fg: var(--ntg-color-text-general-section-heading); --tg-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"]:not([data-disabled]):has(.row:hover) { --tg-track-bg: var(--ntg-color-background-brand-solid-hover); --tg-ring: 0 0 0 0 transparent; --tg-knob-bg: var(--ntg-icon-brand-on-brand-primary); --tg-knob-shadow: var(--ntg-shadows-bottom-sm); --tg-fg: var(--ntg-color-text-general-section-heading); --tg-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"]:not([data-disabled]):has(.row:hover) { --tg-track-bg: var(--ntg-color-background-general-disabled); --tg-ring: 0 0 0 0 transparent; --tg-knob-bg: var(--ntg-icon-brand-on-brand-primary); --tg-knob-shadow: var(--ntg-shadows-bottom-sm); --tg-fg: var(--ntg-color-text-general-section-heading); --tg-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"]:has(.input:focus-visible) { --tg-track-bg: var(--ntg-color-background-brand-solid); --tg-ring: var(--ntg-focused-ring-brand); --tg-knob-bg: var(--ntg-icon-brand-on-brand-primary); --tg-knob-shadow: var(--ntg-shadows-bottom-sm); --tg-fg: var(--ntg-color-text-general-section-heading); --tg-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="false"]:has(.input:focus-visible) { --tg-track-bg: var(--ntg-color-background-general-disabled); --tg-ring: var(--ntg-focused-ring-default); --tg-knob-bg: var(--ntg-icon-brand-on-brand-primary); --tg-knob-shadow: var(--ntg-shadows-bottom-sm); --tg-fg: var(--ntg-color-text-general-section-heading); --tg-sup-fg: var(--ntg-color-text-general-supporting-text); }
+.root[data-checked="true"][data-disabled],
+.root[data-checked="false"][data-disabled] { --tg-track-bg: var(--ntg-color-background-general-disabled); --tg-ring: 0 0 0 0 transparent; --tg-knob-bg: var(--ntg-icon-brand-on-brand-primary); --tg-knob-shadow: var(--ntg-shadows-bottom-sm); --tg-fg: var(--ntg-color-text-general-disabled); --tg-sup-fg: var(--ntg-color-text-general-disabled); }

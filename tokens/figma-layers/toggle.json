@@ -1,0 +1,978 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "14 Toggles",
+ "reference": "Toggle",
+ "sets": {
+  "toggle": {
+   "defs": {
+    "title": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "supporting-text": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "title-value": {
+     "type": "TEXT",
+     "def": "Toggle Title"
+    },
+    "supporting-text-value": {
+     "type": "TEXT",
+     "def": "Supporting text"
+    },
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover","focused","disabled"],
+    "active": ["false","true"]
+   },
+   "layout": {
+    "xs, active=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MAX",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/xs",
+         "h": "toggle/track/height/xs",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/xs",
+           "h": "toggle/knob/size/xs"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/xs",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/xs"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/xs",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "sm, active=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MAX",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/sm",
+         "h": "toggle/track/height/sm",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/sm",
+           "h": "toggle/knob/size/sm"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/sm",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/sm"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, active=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MAX",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/md",
+         "h": "toggle/track/height/md",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/md",
+           "h": "toggle/knob/size/md"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/md",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/md"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, active=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MAX",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/lg",
+         "h": "toggle/track/height/lg",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/lg",
+           "h": "toggle/knob/size/lg"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/lg",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/lg"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/lg",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, active=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MAX",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/xl",
+         "h": "toggle/track/height/xl",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/xl",
+           "h": "toggle/knob/size/xl"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/xl",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/xl"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/xl",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xs, active=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/xs",
+         "h": "toggle/track/height/xs",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/xs",
+           "h": "toggle/knob/size/xs"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/xs",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/xs"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/xs",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "sm, active=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/sm",
+         "h": "toggle/track/height/sm",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/sm",
+           "h": "toggle/knob/size/sm"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/sm",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/sm"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "md, active=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/md",
+         "h": "toggle/track/height/md",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/md",
+           "h": "toggle/knob/size/md"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/md",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/md"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/md",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "lg, active=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/lg",
+         "h": "toggle/track/height/lg",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/lg",
+           "h": "toggle/knob/size/lg"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/lg",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/lg"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/lg",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "xl, active=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 260,
+     "clip": true,
+     "ch": [
+      {
+       "n": "row",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": "toggle/gap",
+       "p": [0,0,0,0],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "track",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": 0,
+         "p": ["toggle/inset","toggle/inset","toggle/inset","toggle/inset"],
+         "s": ["FIXED","FIXED"],
+         "w": "toggle/track/width/xl",
+         "h": "toggle/track/height/xl",
+         "r": ["toggle/radius/full","toggle/radius/full","toggle/radius/full","toggle/radius/full"],
+         "ch": [
+          {
+           "n": "knob",
+           "t": "ELLIPSE",
+           "s": ["FIXED","FIXED"],
+           "w": "toggle/knob/size/xl",
+           "h": "toggle/knob/size/xl"
+          }
+         ]
+        },
+        {
+         "n": "title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::title/xl",
+         "ref": {
+          "visible": "title",
+          "characters": "title-value"
+         }
+        }
+       ]
+      },
+      {
+       "n": "supporting",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "CENTER",
+       "g": 0,
+       "p": [0,0,0,"toggle/indent/xl"],
+       "s": ["HUG","HUG"],
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "supporting-text"
+       },
+       "ch": [
+        {
+         "n": "supporting-text",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/xl",
+         "ref": {
+          "characters": "supporting-text-value"
+         }
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Toggle": {
+     "state=default, active=true": 0,
+     "state=hover, active=true": 1,
+     "state=focused, active=true": 2,
+     "state=disabled, active=true": 3,
+     "state=default, active=false": 4,
+     "state=hover, active=false": 4,
+     "state=focused, active=false": 5,
+     "state=disabled, active=false": 3
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "row/track": {
+    "fills": ["color/background/brand/solid"]
+   },
+   "row/track/knob": {
+    "fills": ["icon/brand/on-brand-primary"],
+    "fx": "effect::shadows/bottom/sm"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/track": {
+    "fills": ["color/background/brand/solid-hover"]
+   },
+   "row/track/knob": {
+    "fills": ["icon/brand/on-brand-primary"],
+    "fx": "effect::shadows/bottom/sm"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/track": {
+    "fills": ["color/background/brand/solid"],
+    "fx": "effect::focused-ring/brand"
+   },
+   "row/track/knob": {
+    "fills": ["icon/brand/on-brand-primary"],
+    "fx": "effect::shadows/bottom/sm"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/track": {
+    "fills": ["color/background/general/disabled"]
+   },
+   "row/track/knob": {
+    "fills": ["icon/brand/on-brand-primary"],
+    "fx": "effect::shadows/bottom/sm"
+   },
+   "row/title": {
+    "fills": ["color/text/general/disabled"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/disabled"]
+   }
+  },
+  {
+   "row/track": {
+    "fills": ["color/background/general/disabled"]
+   },
+   "row/track/knob": {
+    "fills": ["icon/brand/on-brand-primary"],
+    "fx": "effect::shadows/bottom/sm"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  },
+  {
+   "row/track": {
+    "fills": ["color/background/general/disabled"],
+    "fx": "effect::focused-ring/default"
+   },
+   "row/track/knob": {
+    "fills": ["icon/brand/on-brand-primary"],
+    "fx": "effect::shadows/bottom/sm"
+   },
+   "row/title": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "supporting/supporting-text": {
+    "fills": ["color/text/general/supporting-text"]
+   }
+  }
+ ]
+}

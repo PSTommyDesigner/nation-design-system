@@ -450,7 +450,46 @@ const RADIO = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Toggle: หน้า 14 ชุดเดียว (ราง + ปุ่มกลม + หัวข้อ + ข้อความช่วย) แกน active แทน checked
+//   ตำแหน่งปุ่มกลมในไฟล์ออกแบบคือการจัดชิดซ้าย/ขวาของ auto layout ฝั่งเว็บเลื่อนด้วย transform จากขนาดราง ปุ่ม และระยะขอบใน
+//   ข้อความช่วยในตัวอย่างปิดไว้ (property supporting-text=false) แต่โค้ดยังต้องการระยะเยื้องของมัน
+// ═══════════════════════════════════════════════════════════════════════════════
+const TOGGLE = {
+  specFile: 'tokens/figma-layers/toggle.json',
+  baseFile: 'components/Toggle/Toggle.base.css',
+  outFile: 'components/Toggle/Toggle.module.css',
+  layoutKey: (size) => `${size}, active=true`,
+  hiddenLayers: ['supporting'],
+  sets: { 'toggle': { classes: '.root' } },
+  familyClass: () => '',
+  axisClass: { active: (v) => `[data-checked="${v}"]` },
+  stateSelector: CHECKED_STATES,
+  layers: {
+    '(root)': () => ({}),
+    'row': (n, W) => ({ '--tg-gap': W(n.g) }),
+    'row/track': (n, W) => ({
+      '--tg-track-w': W(n.w), '--tg-track-h': W(n.h), '--tg-inset': W(n.p[0]),
+      ...(n.r ? { '--tg-r-tl': W(n.r[0]), '--tg-r-tr': W(n.r[1]), '--tg-r-br': W(n.r[2]), '--tg-r-bl': W(n.r[3]) } : {}),
+    }),
+    'row/track/knob': (n, W) => ({ '--tg-knob': W(n.w) }),
+    'row/title': () => ({}),
+    'supporting': (n, W) => ({ '--tg-indent': W(n.p[3]) }),
+    'supporting/supporting-text': () => ({}),
+  },
+  text: [
+    { layers: ['row/title'], vars: { '--tg-font-family': 'font-family', '--tg-font-size': 'font-size', '--tg-line-height': 'line-height', '--tg-font-weight': 'font-weight', '--tg-letter-space': 'letter-space' } },
+    { layers: ['supporting/supporting-text'], vars: { '--tg-sup-font-family': 'font-family', '--tg-sup-font-size': 'font-size', '--tg-sup-line-height': 'line-height', '--tg-sup-font-weight': 'font-weight', '--tg-sup-letter-space': 'letter-space' } },
+  ],
+  colors: {
+    'row/track': (c, W, ctx) => ({ '--tg-track-bg': W(c.fills[0]), '--tg-ring': effectVar(c.fx, 'track effect'), ...pressedVar(ctx, c.fills[0], '--tg-track-bg-pressed') }),
+    'row/track/knob': (c, W) => ({ '--tg-knob-bg': W(c.fills[0]), '--tg-knob-shadow': effectVar(c.fx, 'knob effect') }),
+    'row/title': (c, W) => ({ '--tg-fg': W(c.fills[0]) }),
+    'supporting/supporting-text': (c, W) => ({ '--tg-sup-fg': W(c.fills[0]) }),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -515,7 +554,8 @@ for (const [setName, set] of Object.entries(spec.sets)) {
     walk(L(set, size), '', (key, n) => {
       const fn = lookup(M.layers, key)
       if (!fn) { errors.push(`${setName} ${size}: ไม่รู้จักชั้น "${key}" (เพิ่มในตาราง layers)`); return }
-      if (n.vis === false && key !== 'left-icon' && key !== 'close-icon' && !key.endsWith('-icon')) return
+      // ชั้นที่ซ่อนไว้ในตัวอย่าง (เช่น ไอคอนที่ปิดด้วย property) ยังต้องการค่า ส่วนชั้นที่ซ่อนแล้วไม่มีผลกับโค้ดให้ข้าม
+      if (n.vis === false && key !== 'left-icon' && key !== 'close-icon' && !key.endsWith('-icon') && !(M.hiddenLayers || []).includes(key)) return
       Object.assign(vars, fn(n, (v) => toVar(v, `${setName} ${size} ${key}`)))
     })
     for (const cls of [].concat(map.classes)) {

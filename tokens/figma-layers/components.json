@@ -136,5 +136,19 @@
     "layoutAxes": [
       "checked"
     ]
+  },
+  "toggle": {
+    "page": "14 Toggles",
+    "depth": 4,
+    "reference": "Toggle",
+    "families": [
+      "Toggle"
+    ],
+    "sets": [
+      "toggle"
+    ],
+    "layoutAxes": [
+      "active"
+    ]
   }
 }
