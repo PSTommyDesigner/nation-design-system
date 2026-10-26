@@ -1,98 +1,56 @@
-/**
- * Tabs styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Tabs/Tabs.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 18 Tabs แล้วรัน  npm run figma:layers -- tabs  และ  npm run css:generate -- tabs
+ *   spec: tokens/figma-layers/tabs.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Tabs ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับไฟล์ออกแบบหน้า 18 Tabs ได้
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ค่าทุกค่ามาจาก --tab-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/tabs.json (spec ชั้นจากไฟล์ออกแบบหน้า 18)
+ * แล้วต่อท้ายไฟล์นี้เป็น Tabs.module.css ห้ามแก้ Tabs.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ขนาด    --ntg-tab-height-{size} · padding-x-{size} · padding-y-{size}
- *           · icon-only-padding-{ด้าน}-{size} · gap-{size} · icon-{size} · unread-{size}
- *   เส้น    --ntg-tab-indicator (2) ขีดใต้แท็บปัจจุบัน
- *           --ntg-tab-rail (1) เส้นรางที่แท็บอื่นวางอยู่ ของทรงขีดเส้นใต้
- *           --ntg-tab-divider (1) เส้นแบ่งระหว่างแท็บและเส้นขอบกล่องครอบ ของทรงกล่อง
- *   มุมโค้ง  --ntg-tab-radius-group-{size} (4 ถึง 8) โตตามขนาด มีแต่ทรงกล่อง
- *           ทรงขีดเส้นใต้ไม่มีกล่องจึงไม่มีมุมโค้ง
- *   ตัวอักษร preset label/{size} ครบทั้ง 5 ชั้น (family · size · line-height · weight · letter-space)
+ * ⚠️ ข้อยกเว้น: วงแหวนโฟกัสของแผง (panel) ใช้ effect style focused-ring/default โดยตรง เพราะแผงไม่มีในไฟล์ออกแบบ
  *
- * ⚠️ ความหนาสองเส้นห้ามใช้ตัวเดียวกัน แท็บปัจจุบันใช้ --ntg-tab-indicator
- *    แท็บอื่นใช้ --ntg-tab-rail ถ้ารวมเป็นตัวเดียว พอตัวชี้หนาขึ้นเส้นรางจะหนาตามไปด้วย
- *
- * ⚠️ ความสูงมาจาก min-block-size บวกระยะขอบบนล่าง ไม่ใช่ block-size ตายตัว
- *    ขีดใต้และเส้นรางวาดด้วย ::after ที่ลอยอยู่ก้นกล่อง ไม่ใช่ border-bottom
- *    เพราะ border 1 เทียบ 2 จะดันเนื้อหาขึ้นลง 1px ตอนสลับแท็บ
- *
- * ⚠️ ความกว้างมาจากเนื้อหา ห้ามตั้ง inline-size ให้แท็บ (ข้อห้ามในเอกสาร 18 Tabs)
- * ⚠️ ห้ามทำตัวอักษรหนาขึ้นตอนเป็นแท็บปัจจุบัน ความกว้างจะขยับแล้วแถวทั้งแถวเลื่อน
- *
- * ⚠️ วงแหวนโฟกัสเป็นเส้นทึบหนา 2 ยิงเข้าด้านใน ไม่ใช่เงาฟุ้งยิงออกนอกแบบ component อื่น
- *    เหตุผล 1 แท็บวางติดกัน วงแหวนที่ยิงออกนอกจะทับแท็บข้างเคียง
- *    เหตุผล 2 แถบแท็บเลื่อนแนวนอนได้ จึงเป็นกรอบตัด วงแหวนที่ยิงออกนอกจะถูกตัดหายทั้งเส้น
- *    เหตุผล 3 ตลาดใช้เส้นทึบ 2 ทั้ง 6 เจ้าที่สำรวจ ไม่มีเจ้าไหนใช้เงาฟุ้งกับแท็บ
- *            (Primer ยิงเข้าในด้วยเหตุผลเดียวกัน ดูงานวิจัยหัวข้อวงแหวนโฟกัส)
- *    ผูกกับ effect style focused-ring/inset ซึ่งมีอยู่จริงในไฟล์ออกแบบแล้ว สองฝั่งจึงตรงกัน
- *    ทรงขีดเส้นใต้ซ่อนขีดใต้ตอนโฟกัส ไม่ให้เป็นเส้นคู่กับขอบล่างของวงแหวน
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นของแท็บวาดด้วย box-shadow inset: segmented ใช้ด้านขวาเป็นเส้นคั่น (--tab-divider-w) underline ใช้ด้านล่างเป็นราง/ตัวชี้ (--tab-line-w)
+ *   2. กรอบกลุ่ม segmented (เส้นขอบ มุมโค้ง เงา) อยู่ที่ .tablist ตามชุด segmented-tab-group แท็บใบแรก/สุดท้ายลบมุมตามกรอบ
+ *   3. แท็บสูงตามเนื้อหา (HUG ในไฟล์ออกแบบ) พื้นที่แตะ 44px บนจอสัมผัสเป็นเกณฑ์แพลตฟอร์ม
+ *   4. สถานะในไฟล์ออกแบบเป็นแกน ฝั่งเว็บคือ aria-selected (current) data-icon (icon) aria-disabled และ :hover/:focus-visible
  */
 
 .root {
-  /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
-  --tab-height: var(--ntg-tab-height-md);
-  --tab-pad-x: var(--ntg-tab-padding-x-md);
-  --tab-pad-y: var(--ntg-tab-padding-y-md);
-  --tab-gap: var(--ntg-tab-gap-md);
-  --tab-icon: var(--ntg-tab-icon-md);
-  --tab-unread: var(--ntg-tab-unread-md);
-  --tab-radius-group: var(--ntg-tab-radius-group-md);
-  --tab-icon-color: var(--ntg-icon-general-quaternary);
-  --tab-icon-pad-top: var(--ntg-tab-icon-only-padding-top-md);
-  --tab-icon-pad-right: var(--ntg-tab-icon-only-padding-right-md);
-  --tab-icon-pad-bottom: var(--ntg-tab-icon-only-padding-bottom-md);
-  --tab-icon-pad-left: var(--ntg-tab-icon-only-padding-left-md);
-  --tab-font-family: var(--ntg-typography-font-family-label-md);
-  --tab-font-size: var(--ntg-typography-font-size-label-md);
-  --tab-line-height: var(--ntg-typography-line-height-label-md);
-  --tab-font-weight: var(--ntg-typography-font-weight-label-md);
-  --tab-letter-space: var(--ntg-typography-letter-space-label-md);
-
-  /*
-   * ⚠️ 44 คือค่าคงที่ของเกณฑ์ WCAG 2.5.5 Target Size ไม่ใช่ค่าของระบบออกแบบ
-   *    tokens/scale/tabs.mjs เขียนกำกับไว้ว่า "ไม่มี token ของเรื่องนี้ เพราะเป็นค่าคงที่ของมาตรฐาน"
-   *    จึงประกาศไว้ที่เดียวตรงนี้ แล้วให้ชั้นพื้นที่แตะอ้างตัวนี้ ไม่กระจายเป็นค่าดิบหลายจุด
-   */
-  --tab-touch-target: 44px;
-
   display: flex;
   flex-direction: column;
   font-family: var(--tab-font-family);
 }
-
-/* ── แถบแท็บ เลื่อนแนวนอนได้เมื่อแท็บล้น ─────────────────────── */
 .tablist {
   display: flex;
   align-items: stretch;
+  align-self: flex-start;      /* กลุ่มกว้างเท่าแท็บ (HUG ในไฟล์ออกแบบ) ไม่ยืดเต็มแถว */
+  max-inline-size: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  /* กันการเด้งขึ้นลงตอนปัดแนวนอนบนมือถือ */
   overscroll-behavior-x: contain;
   scrollbar-width: none;
+  border-radius: var(--tab-r-tl, 0) var(--tab-r-tr, 0) var(--tab-r-br, 0) var(--tab-r-bl, 0);
+  box-shadow: inset 0 0 0 var(--tab-group-border-w, 0px) var(--tab-group-border, transparent), var(--tab-group-shadow, 0 0 0 0 transparent);
 }
-
 .tablist::-webkit-scrollbar { display: none; }
 
-/* ── แท็บหนึ่งอัน ─────────────────────────────────────────── */
 .tab {
   position: relative;
   flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--tab-gap);
+  gap: var(--tab-gap, 0);
   box-sizing: border-box;
-  /* ความกว้างมาจากเนื้อหา ตั้งแค่ความสูงขั้นต่ำ */
-  min-block-size: var(--tab-height);
-  padding: var(--tab-pad-y) var(--tab-pad-x);
+  padding: var(--tab-pt, 0) var(--tab-pr, 0) var(--tab-pb, 0) var(--tab-pl, 0);
   border: none;
-  background: var(--tab-bg);
-  color: var(--tab-fg);
+  background: var(--tab-bg, transparent);
+  color: var(--tab-fg, inherit);
   font-family: inherit;
   font-size: var(--tab-font-size);
   line-height: var(--tab-line-height);
@@ -101,16 +59,13 @@
   white-space: nowrap;
   cursor: pointer;
   appearance: none;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  box-shadow:
+    inset calc(-1 * var(--tab-divider-w, 0px)) 0 0 0 var(--tab-line, transparent),
+    inset 0 calc(-1 * var(--tab-line-w, 0px)) 0 0 var(--tab-line, transparent);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
-
+.tab:focus-visible { outline: none; }
 .tab[aria-disabled='true'] { cursor: not-allowed; }
-
-/*
- * ชั้นพื้นที่แตะ มองไม่เห็น มีเฉพาะอุปกรณ์ที่ตัวชี้หยาบ (นิ้ว)
- * ยกความสูงของ "พื้นที่กด" ไม่ใช่ความสูงของตัวแท็บ ตามข้อกำหนดในเอกสาร 18 Tabs
- * ที่ห้ามยืดตัวแท็บเพราะจะไปทับแผงเนื้อหาด้านล่างหรือหัวข้อด้านบน
- */
 @media (pointer: coarse) {
   .tab::before {
     content: '';
@@ -118,276 +73,181 @@
     inset-inline: 0;
     inset-block-start: 50%;
     translate: 0 -50%;
-    min-block-size: var(--tab-touch-target);
+    min-block-size: 44px;
   }
 }
 
-/* ── ไอคอนนำหน้า กรอบล็อกสัดส่วน 1 ต่อ 1 ───────────────────── */
 .icon {
   flex: none;
   display: inline-flex;
   inline-size: var(--tab-icon);
   block-size: var(--tab-icon);
-  /* สีไอคอนจางลงพร้อมข้อความตอนปิดใช้งาน (ตัดสิน 2026-10-01 ให้ตรงกับไฟล์ออกแบบ) */
-  color: var(--tab-icon-color);
+  color: var(--tab-icon-color, currentColor);
 }
-
-/* ── จุดแจ้งเตือนนำหน้า บอกว่ามีของใหม่ยังไม่ได้อ่าน ───────────── */
 .unread {
   flex: none;
   inline-size: var(--tab-unread);
   block-size: var(--tab-unread);
-  /*
-   * กลุ่ม tab ไม่มี token มุมโค้งเต็มของตัวเอง (tokens/scale/tabs.mjs ให้แค่ radius.group)
-   * จึงหยิบของป้ายกลมมาใช้ เพราะจุดแจ้งเตือนคือของกลมชนิดเดียวกัน ไม่ใช่ใส่ค่าดิบ
-   */
-  border-radius: var(--ntg-circular-badge-radius-full);
-  background: var(--tab-unread-color);
+  border-radius: 50%;
+  background: var(--tab-unread-color, currentColor);
+}
+.label { display: inline-block; }
+.iconOnly { gap: 0; }
+
+.segmented .tab:first-child {
+  border-start-start-radius: calc(var(--tab-r-tl, 0px) - var(--tab-group-border-w, 0px));
+  border-end-start-radius: calc(var(--tab-r-bl, 0px) - var(--tab-group-border-w, 0px));
+}
+.segmented .tab:last-child {
+  border-start-end-radius: calc(var(--tab-r-tr, 0px) - var(--tab-group-border-w, 0px));
+  border-end-end-radius: calc(var(--tab-r-br, 0px) - var(--tab-group-border-w, 0px));
+  --tab-divider-w: 0px;
 }
 
-.label { display: inline-block; }
-
-/* ── แผงเนื้อหา ───────────────────────────────────────────── */
 .panel[hidden] { display: none; }
-
 .panel:focus-visible {
   outline: none;
-  /* แผงเนื้อหาไม่ได้วางติดกับอะไร จึงใช้วงแหวนแบบยิงออกนอกตามปกติของระบบ */
   box-shadow: var(--ntg-focused-ring-default);
 }
 
-/* ═══ ทรงขีดเส้นใต้ ค่าเริ่มต้นของระบบ ═══════════════════════ */
-
-.underline {
-  --tab-bg: var(--ntg-color-background-general-primary);
-  --tab-fg: var(--ntg-color-text-general-section-heading);
-  --tab-line: var(--ntg-color-border-general-primary);
-  --tab-line-size: var(--ntg-tab-rail);
-  --tab-unread-color: var(--ntg-color-foreground-system-success-primary);
+@media (prefers-reduced-motion: reduce) {
+  .tab { transition: none; }
 }
 
-/* ขีดใต้แท็บ วาดด้วย ::after จึงสลับความหนา 1 เทียบ 2 ได้โดยเนื้อหาไม่ขยับ */
-.underline .tab::after {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: 0;
-  block-size: var(--tab-line-size);
-  background: var(--tab-line);
-}
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --tab-font-family: var(--ntg-typography-font-family-label-xs); --tab-font-size: var(--ntg-typography-font-size-label-xs); --tab-line-height: var(--ntg-typography-line-height-label-xs); --tab-font-weight: var(--ntg-typography-font-weight-label-xs); --tab-letter-space: var(--ntg-typography-letter-space-label-xs); }
+.sm { --tab-font-family: var(--ntg-typography-font-family-label-sm); --tab-font-size: var(--ntg-typography-font-size-label-sm); --tab-line-height: var(--ntg-typography-line-height-label-sm); --tab-font-weight: var(--ntg-typography-font-weight-label-sm); --tab-letter-space: var(--ntg-typography-letter-space-label-sm); }
+.md { --tab-font-family: var(--ntg-typography-font-family-label-md); --tab-font-size: var(--ntg-typography-font-size-label-md); --tab-line-height: var(--ntg-typography-line-height-label-md); --tab-font-weight: var(--ntg-typography-font-weight-label-md); --tab-letter-space: var(--ntg-typography-letter-space-label-md); }
+.lg { --tab-font-family: var(--ntg-typography-font-family-label-lg); --tab-font-size: var(--ntg-typography-font-size-label-lg); --tab-line-height: var(--ntg-typography-line-height-label-lg); --tab-font-weight: var(--ntg-typography-font-weight-label-lg); --tab-letter-space: var(--ntg-typography-letter-space-label-lg); }
+.xl { --tab-font-family: var(--ntg-typography-font-family-label-xl); --tab-font-size: var(--ntg-typography-font-size-label-xl); --tab-line-height: var(--ntg-typography-line-height-label-xl); --tab-font-weight: var(--ntg-typography-font-weight-label-xl); --tab-letter-space: var(--ntg-typography-letter-space-label-xl); }
 
-/* แท็บปัจจุบัน แกน current คนละเรื่องกับ state ซ้อนกับสถานะอื่นได้ */
-.underline .tab[aria-selected='true'] {
-  --tab-fg: var(--ntg-color-text-brand-primary);
-  --tab-line: var(--ntg-color-border-brand-solid);
-  --tab-line-size: var(--ntg-tab-indicator);
-}
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.segmented.xs .tab { --tab-pt: var(--ntg-tab-padding-y-xs); --tab-pr: var(--ntg-tab-padding-x-xs); --tab-pb: var(--ntg-tab-padding-y-xs); --tab-pl: var(--ntg-tab-padding-x-xs); --tab-gap: var(--ntg-tab-gap-xs); --tab-icon: var(--ntg-tab-icon-xs); }
+.segmented.sm .tab { --tab-pt: var(--ntg-tab-padding-y-sm); --tab-pr: var(--ntg-tab-padding-x-sm); --tab-pb: var(--ntg-tab-padding-y-sm); --tab-pl: var(--ntg-tab-padding-x-sm); --tab-gap: var(--ntg-tab-gap-sm); --tab-icon: var(--ntg-tab-icon-sm); }
+.segmented.md .tab { --tab-pt: var(--ntg-tab-padding-y-md); --tab-pr: var(--ntg-tab-padding-x-md); --tab-pb: var(--ntg-tab-padding-y-md); --tab-pl: var(--ntg-tab-padding-x-md); --tab-gap: var(--ntg-tab-gap-md); --tab-icon: var(--ntg-tab-icon-md); }
+.segmented.lg .tab { --tab-pt: var(--ntg-tab-padding-y-lg); --tab-pr: var(--ntg-tab-padding-x-lg); --tab-pb: var(--ntg-tab-padding-y-lg); --tab-pl: var(--ntg-tab-padding-x-lg); --tab-gap: var(--ntg-tab-gap-lg); --tab-icon: var(--ntg-tab-icon-lg); }
+.segmented.xl .tab { --tab-pt: var(--ntg-tab-padding-y-xl); --tab-pr: var(--ntg-tab-padding-x-xl); --tab-pb: var(--ntg-tab-padding-y-xl); --tab-pl: var(--ntg-tab-padding-x-xl); --tab-gap: var(--ntg-tab-gap-xl); --tab-icon: var(--ntg-tab-icon-xl); }
+.segmented.xs .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-xs); --tab-pr: var(--ntg-tab-padding-x-xs); --tab-pb: var(--ntg-tab-padding-y-xs); --tab-pl: var(--ntg-tab-padding-x-xs); --tab-gap: var(--ntg-tab-gap-xs); --tab-unread: var(--ntg-tab-unread-xs); }
+.segmented.sm .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-sm); --tab-pr: var(--ntg-tab-padding-x-sm); --tab-pb: var(--ntg-tab-padding-y-sm); --tab-pl: var(--ntg-tab-padding-x-sm); --tab-gap: var(--ntg-tab-gap-sm); --tab-unread: var(--ntg-tab-unread-sm); }
+.segmented.md .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-md); --tab-pr: var(--ntg-tab-padding-x-md); --tab-pb: var(--ntg-tab-padding-y-md); --tab-pl: var(--ntg-tab-padding-x-md); --tab-gap: var(--ntg-tab-gap-md); --tab-unread: var(--ntg-tab-unread-md); }
+.segmented.lg .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-lg); --tab-pr: var(--ntg-tab-padding-x-lg); --tab-pb: var(--ntg-tab-padding-y-lg); --tab-pl: var(--ntg-tab-padding-x-lg); --tab-gap: var(--ntg-tab-gap-lg); --tab-unread: var(--ntg-tab-unread-lg); }
+.segmented.xl .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-xl); --tab-pr: var(--ntg-tab-padding-x-xl); --tab-pb: var(--ntg-tab-padding-y-xl); --tab-pl: var(--ntg-tab-padding-x-xl); --tab-gap: var(--ntg-tab-gap-xl); --tab-unread: var(--ntg-tab-unread-xl); }
+.segmented.xs .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-xs); --tab-pr: var(--ntg-tab-icon-only-padding-right-xs); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-xs); --tab-pl: var(--ntg-tab-icon-only-padding-left-xs); --tab-gap: var(--ntg-tab-gap-xs); --tab-icon: var(--ntg-tab-icon-xs); }
+.segmented.sm .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-sm); --tab-pr: var(--ntg-tab-icon-only-padding-right-sm); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-sm); --tab-pl: var(--ntg-tab-icon-only-padding-left-sm); --tab-gap: var(--ntg-tab-gap-sm); --tab-icon: var(--ntg-tab-icon-sm); }
+.segmented.md .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-md); --tab-pr: var(--ntg-tab-icon-only-padding-right-md); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-md); --tab-pl: var(--ntg-tab-icon-only-padding-left-md); --tab-gap: var(--ntg-tab-gap-md); --tab-icon: var(--ntg-tab-icon-md); }
+.segmented.lg .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-lg); --tab-pr: var(--ntg-tab-icon-only-padding-right-lg); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-lg); --tab-pl: var(--ntg-tab-icon-only-padding-left-lg); --tab-gap: var(--ntg-tab-gap-lg); --tab-icon: var(--ntg-tab-icon-lg); }
+.segmented.xl .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-xl); --tab-pr: var(--ntg-tab-icon-only-padding-right-xl); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-xl); --tab-pl: var(--ntg-tab-icon-only-padding-left-xl); --tab-gap: var(--ntg-tab-gap-xl); --tab-icon: var(--ntg-tab-icon-xl); }
+.underline.xs .tab { --tab-pt: var(--ntg-tab-padding-y-xs); --tab-pr: var(--ntg-tab-padding-x-xs); --tab-pb: var(--ntg-tab-padding-y-xs); --tab-pl: var(--ntg-tab-padding-x-xs); --tab-gap: var(--ntg-tab-gap-xs); --tab-icon: var(--ntg-tab-icon-xs); }
+.underline.sm .tab { --tab-pt: var(--ntg-tab-padding-y-sm); --tab-pr: var(--ntg-tab-padding-x-sm); --tab-pb: var(--ntg-tab-padding-y-sm); --tab-pl: var(--ntg-tab-padding-x-sm); --tab-gap: var(--ntg-tab-gap-sm); --tab-icon: var(--ntg-tab-icon-sm); }
+.underline.md .tab { --tab-pt: var(--ntg-tab-padding-y-md); --tab-pr: var(--ntg-tab-padding-x-md); --tab-pb: var(--ntg-tab-padding-y-md); --tab-pl: var(--ntg-tab-padding-x-md); --tab-gap: var(--ntg-tab-gap-md); --tab-icon: var(--ntg-tab-icon-md); }
+.underline.lg .tab { --tab-pt: var(--ntg-tab-padding-y-lg); --tab-pr: var(--ntg-tab-padding-x-lg); --tab-pb: var(--ntg-tab-padding-y-lg); --tab-pl: var(--ntg-tab-padding-x-lg); --tab-gap: var(--ntg-tab-gap-lg); --tab-icon: var(--ntg-tab-icon-lg); }
+.underline.xl .tab { --tab-pt: var(--ntg-tab-padding-y-xl); --tab-pr: var(--ntg-tab-padding-x-xl); --tab-pb: var(--ntg-tab-padding-y-xl); --tab-pl: var(--ntg-tab-padding-x-xl); --tab-gap: var(--ntg-tab-gap-xl); --tab-icon: var(--ntg-tab-icon-xl); }
+.underline.xs .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-xs); --tab-pr: var(--ntg-tab-padding-x-xs); --tab-pb: var(--ntg-tab-padding-y-xs); --tab-pl: var(--ntg-tab-padding-x-xs); --tab-gap: var(--ntg-tab-gap-xs); --tab-unread: var(--ntg-tab-unread-xs); }
+.underline.sm .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-sm); --tab-pr: var(--ntg-tab-padding-x-sm); --tab-pb: var(--ntg-tab-padding-y-sm); --tab-pl: var(--ntg-tab-padding-x-sm); --tab-gap: var(--ntg-tab-gap-sm); --tab-unread: var(--ntg-tab-unread-sm); }
+.underline.md .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-md); --tab-pr: var(--ntg-tab-padding-x-md); --tab-pb: var(--ntg-tab-padding-y-md); --tab-pl: var(--ntg-tab-padding-x-md); --tab-gap: var(--ntg-tab-gap-md); --tab-unread: var(--ntg-tab-unread-md); }
+.underline.lg .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-lg); --tab-pr: var(--ntg-tab-padding-x-lg); --tab-pb: var(--ntg-tab-padding-y-lg); --tab-pl: var(--ntg-tab-padding-x-lg); --tab-gap: var(--ntg-tab-gap-lg); --tab-unread: var(--ntg-tab-unread-lg); }
+.underline.xl .tab[data-icon="unread"] { --tab-pt: var(--ntg-tab-padding-y-xl); --tab-pr: var(--ntg-tab-padding-x-xl); --tab-pb: var(--ntg-tab-padding-y-xl); --tab-pl: var(--ntg-tab-padding-x-xl); --tab-gap: var(--ntg-tab-gap-xl); --tab-unread: var(--ntg-tab-unread-xl); }
+.underline.xs .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-xs); --tab-pr: var(--ntg-tab-icon-only-padding-right-xs); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-xs); --tab-pl: var(--ntg-tab-icon-only-padding-left-xs); --tab-gap: var(--ntg-tab-gap-xs); --tab-icon: var(--ntg-tab-icon-xs); }
+.underline.sm .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-sm); --tab-pr: var(--ntg-tab-icon-only-padding-right-sm); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-sm); --tab-pl: var(--ntg-tab-icon-only-padding-left-sm); --tab-gap: var(--ntg-tab-gap-sm); --tab-icon: var(--ntg-tab-icon-sm); }
+.underline.md .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-md); --tab-pr: var(--ntg-tab-icon-only-padding-right-md); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-md); --tab-pl: var(--ntg-tab-icon-only-padding-left-md); --tab-gap: var(--ntg-tab-gap-md); --tab-icon: var(--ntg-tab-icon-md); }
+.underline.lg .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-lg); --tab-pr: var(--ntg-tab-icon-only-padding-right-lg); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-lg); --tab-pl: var(--ntg-tab-icon-only-padding-left-lg); --tab-gap: var(--ntg-tab-gap-lg); --tab-icon: var(--ntg-tab-icon-lg); }
+.underline.xl .tab[data-icon="only"] { --tab-pt: var(--ntg-tab-icon-only-padding-top-xl); --tab-pr: var(--ntg-tab-icon-only-padding-right-xl); --tab-pb: var(--ntg-tab-icon-only-padding-bottom-xl); --tab-pl: var(--ntg-tab-icon-only-padding-left-xl); --tab-gap: var(--ntg-tab-gap-xl); --tab-icon: var(--ntg-tab-icon-xl); }
+.segmented.xs .tablist { --tab-r-tl: var(--ntg-tab-radius-group-xs); --tab-r-tr: var(--ntg-tab-radius-group-xs); --tab-r-br: var(--ntg-tab-radius-group-xs); --tab-r-bl: var(--ntg-tab-radius-group-xs); }
+.segmented.sm .tablist { --tab-r-tl: var(--ntg-tab-radius-group-sm); --tab-r-tr: var(--ntg-tab-radius-group-sm); --tab-r-br: var(--ntg-tab-radius-group-sm); --tab-r-bl: var(--ntg-tab-radius-group-sm); }
+.segmented.md .tablist { --tab-r-tl: var(--ntg-tab-radius-group-md); --tab-r-tr: var(--ntg-tab-radius-group-md); --tab-r-br: var(--ntg-tab-radius-group-md); --tab-r-bl: var(--ntg-tab-radius-group-md); }
+.segmented.lg .tablist { --tab-r-tl: var(--ntg-tab-radius-group-lg); --tab-r-tr: var(--ntg-tab-radius-group-lg); --tab-r-br: var(--ntg-tab-radius-group-lg); --tab-r-bl: var(--ntg-tab-radius-group-lg); }
+.segmented.xl .tablist { --tab-r-tl: var(--ntg-tab-radius-group-xl); --tab-r-tr: var(--ntg-tab-radius-group-xl); --tab-r-br: var(--ntg-tab-radius-group-xl); --tab-r-bl: var(--ntg-tab-radius-group-xl); }
+.segmented.xs .tablist[data-icon="unread"] { --tab-r-tl: var(--ntg-tab-radius-group-xs); --tab-r-tr: var(--ntg-tab-radius-group-xs); --tab-r-br: var(--ntg-tab-radius-group-xs); --tab-r-bl: var(--ntg-tab-radius-group-xs); }
+.segmented.sm .tablist[data-icon="unread"] { --tab-r-tl: var(--ntg-tab-radius-group-sm); --tab-r-tr: var(--ntg-tab-radius-group-sm); --tab-r-br: var(--ntg-tab-radius-group-sm); --tab-r-bl: var(--ntg-tab-radius-group-sm); }
+.segmented.md .tablist[data-icon="unread"] { --tab-r-tl: var(--ntg-tab-radius-group-md); --tab-r-tr: var(--ntg-tab-radius-group-md); --tab-r-br: var(--ntg-tab-radius-group-md); --tab-r-bl: var(--ntg-tab-radius-group-md); }
+.segmented.lg .tablist[data-icon="unread"] { --tab-r-tl: var(--ntg-tab-radius-group-lg); --tab-r-tr: var(--ntg-tab-radius-group-lg); --tab-r-br: var(--ntg-tab-radius-group-lg); --tab-r-bl: var(--ntg-tab-radius-group-lg); }
+.segmented.xl .tablist[data-icon="unread"] { --tab-r-tl: var(--ntg-tab-radius-group-xl); --tab-r-tr: var(--ntg-tab-radius-group-xl); --tab-r-br: var(--ntg-tab-radius-group-xl); --tab-r-bl: var(--ntg-tab-radius-group-xl); }
+.segmented.xs .tablist[data-icon="only"] { --tab-r-tl: var(--ntg-tab-radius-group-xs); --tab-r-tr: var(--ntg-tab-radius-group-xs); --tab-r-br: var(--ntg-tab-radius-group-xs); --tab-r-bl: var(--ntg-tab-radius-group-xs); }
+.segmented.sm .tablist[data-icon="only"] { --tab-r-tl: var(--ntg-tab-radius-group-sm); --tab-r-tr: var(--ntg-tab-radius-group-sm); --tab-r-br: var(--ntg-tab-radius-group-sm); --tab-r-bl: var(--ntg-tab-radius-group-sm); }
+.segmented.md .tablist[data-icon="only"] { --tab-r-tl: var(--ntg-tab-radius-group-md); --tab-r-tr: var(--ntg-tab-radius-group-md); --tab-r-br: var(--ntg-tab-radius-group-md); --tab-r-bl: var(--ntg-tab-radius-group-md); }
+.segmented.lg .tablist[data-icon="only"] { --tab-r-tl: var(--ntg-tab-radius-group-lg); --tab-r-tr: var(--ntg-tab-radius-group-lg); --tab-r-br: var(--ntg-tab-radius-group-lg); --tab-r-bl: var(--ntg-tab-radius-group-lg); }
+.segmented.xl .tablist[data-icon="only"] { --tab-r-tl: var(--ntg-tab-radius-group-xl); --tab-r-tr: var(--ntg-tab-radius-group-xl); --tab-r-br: var(--ntg-tab-radius-group-xl); --tab-r-bl: var(--ntg-tab-radius-group-xl); }
+.underline.xs .tablist { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.sm .tablist { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.md .tablist { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.lg .tablist { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.xl .tablist { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.xs .tablist[data-icon="unread"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.sm .tablist[data-icon="unread"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.md .tablist[data-icon="unread"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.lg .tablist[data-icon="unread"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.xl .tablist[data-icon="unread"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.xs .tablist[data-icon="only"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.sm .tablist[data-icon="only"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.md .tablist[data-icon="only"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.lg .tablist[data-icon="only"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
+.underline.xl .tablist[data-icon="only"] { --tab-pt: 0; --tab-pr: 0; --tab-pb: 0; --tab-pl: 0; --tab-gap: 0; }
 
-.underline .tab:hover:not([aria-disabled='true']) {
-  --tab-bg: var(--ntg-color-background-general-primary-hover);
-  --tab-fg: var(--ntg-color-text-general-heading);
-  --tab-line: var(--ntg-color-border-general-primary-hover);
-  --tab-unread-color: var(--ntg-color-foreground-system-success-secondary-hover);
-}
-
-/* แท็บปัจจุบันตอนชี้ สีข้อความคงเป็นสีแบรนด์ ไม่กลายเป็นสีหัวข้อ */
-.underline .tab[aria-selected='true']:hover:not([aria-disabled='true']) {
-  --tab-fg: var(--ntg-color-text-brand-primary);
-}
-
-/* วางหลังสุดเพื่อให้ชนะทั้งแกน current และสถานะชี้ */
-.underline .tab[aria-disabled='true'] {
-  --tab-bg: var(--ntg-color-background-general-primary);
-  --tab-fg: var(--ntg-color-text-general-disabled-subtle);
-  --tab-icon-color: var(--ntg-icon-general-disable-subtle);
-  --tab-line: var(--ntg-color-border-general-disabled);
-  --tab-unread-color: var(--ntg-color-foreground-general-disable-subtle);
-}
-
-/* สถานะโฟกัสบอกด้วยพื้นแบรนด์ ข้อความแบรนด์ และขีดใต้สีแบรนด์ ไม่ใช่วงแหวน */
-.underline .tab:focus-visible {
-  outline: none;
-  --tab-bg: var(--ntg-color-background-brand-primary-hover);
-  --tab-fg: var(--ntg-color-text-brand-primary);
-  --tab-line: var(--ntg-color-border-brand-solid);
-}
-
-/* ═══ ทรงกล่อง ใช้กับชุดตัวเลือกสั้นในกล่องหรือแผงตั้งค่า ═══════ */
-
-.segmented {
-  --tab-bg: var(--ntg-color-background-general-primary);
-  --tab-fg: var(--ntg-color-text-general-section-heading);
-  --tab-border: var(--ntg-color-border-general-primary);
-  --tab-unread-color: var(--ntg-color-foreground-system-success-primary);
-
-  /*
-   * เส้นขอบกล่องครอบใช้ inset box-shadow ไม่ใช่ border
-   * เพราะ border จะบวกความสูงเกินสเกลกลางไป 2px (ฝั่ง Figma เป็น stroke แบบ inside)
-   * ความหนาอ้าง --ntg-tab-divider ซึ่งเป็น token ความหนาเส้นแบ่งของทรงกล่องโดยเฉพาะ
-   */
-  box-shadow:
-    inset var(--ntg-size-effect-position-0) var(--ntg-size-effect-position-0)
-      var(--ntg-size-effect-blur-0) var(--ntg-tab-divider)
-      var(--ntg-color-border-general-primary),
-    var(--ntg-shadows-bottom-xs);
-  border-radius: var(--tab-radius-group);
-  background: var(--ntg-color-background-general-primary);
-}
-
-/* มุมของช่องหัวท้ายต้องเล็กกว่ามุมกล่องเท่าความหนาเส้นขอบ ไม่งั้นจะเห็นมุมโผล่ */
-.segmented .tab:first-child {
-  border-start-start-radius: calc(var(--tab-radius-group) - var(--ntg-tab-divider));
-  border-end-start-radius: calc(var(--tab-radius-group) - var(--ntg-tab-divider));
-}
-
-.segmented .tab:last-child {
-  border-start-end-radius: calc(var(--tab-radius-group) - var(--ntg-tab-divider));
-  border-end-end-radius: calc(var(--tab-radius-group) - var(--ntg-tab-divider));
-}
-
-.segmented .tab {
-  box-shadow: inset var(--ntg-size-effect-position-0) var(--ntg-size-effect-position-0)
-    var(--ntg-size-effect-blur-0) var(--ntg-tab-divider) var(--tab-border);
-}
-
-/* แท็บปัจจุบันของทรงกล่อง คือช่องพื้นเทา ไม่ใช่ขีดเส้นใต้ */
-.segmented .tab[aria-selected='true'] {
-  --tab-bg: var(--ntg-color-background-general-secondary);
-}
-
-.segmented .tab:hover:not([aria-disabled='true']) {
-  --tab-bg: var(--ntg-color-background-general-primary-hover);
-  --tab-fg: var(--ntg-color-text-general-heading);
-  --tab-border: var(--ntg-color-border-general-primary-hover);
-  --tab-unread-color: var(--ntg-color-foreground-system-success-secondary-hover);
-}
-
-/* แท็บปัจจุบันตอนชี้ ใช้พื้นของตัวเองที่เข้มขึ้น ไม่ใช่พื้นชี้ทั่วไป จะได้ยังแยกออกว่าแท็บไหนเปิดอยู่ */
-.segmented .tab[aria-selected='true']:hover:not([aria-disabled='true']) {
-  --tab-bg: var(--ntg-color-background-general-secondary-hover);
-}
-
-/* แท็บปัจจุบันตอนปิดใช้งาน ใช้พื้นเทาที่จางกว่าตอนใช้งานได้ */
-.segmented .tab[aria-selected='true'][aria-disabled='true'] {
-  --tab-bg: var(--ntg-color-background-general-tertiary);
-}
-
-/* ไม่แตะพื้นหลังของแท็บทั่วไป ค่าเริ่มต้นถูกอยู่แล้ว */
-.segmented .tab[aria-disabled='true'] {
-  --tab-fg: var(--ntg-color-text-general-disabled-subtle);
-  --tab-icon-color: var(--ntg-icon-general-disable-subtle);
-  --tab-border: var(--ntg-color-border-general-disabled);
-  --tab-unread-color: var(--ntg-color-foreground-general-disable-subtle);
-}
-
-/* สถานะโฟกัสบอกด้วยพื้นแบรนด์กับข้อความแบรนด์ เส้นขอบคงเดิม ไม่ใช้วงแหวน */
-.segmented .tab:focus-visible {
-  outline: none;
-  --tab-bg: var(--ntg-color-background-brand-primary-hover);
-  --tab-fg: var(--ntg-color-text-brand-primary);
-  --tab-border: var(--ntg-color-border-general-primary);
-}
-
-/* ── แบบไอคอนอย่างเดียว ระยะขอบเท่ากันทุกด้าน จึงได้ช่องสี่เหลี่ยมจัตุรัส ──── */
-.iconOnly {
-  padding: var(--tab-icon-pad-top) var(--tab-icon-pad-right) var(--tab-icon-pad-bottom)
-    var(--tab-icon-pad-left);
-  /* มีลูกตัวเดียว ไม่ใช้ช่องไฟ */
-  gap: var(--ntg-size-space-none);
-}
-
-/* ── ขนาด ────────────────────────────────────────────────── */
-.xs {
-  --tab-height: var(--ntg-tab-height-xs);
-  --tab-pad-x: var(--ntg-tab-padding-x-xs);
-  --tab-pad-y: var(--ntg-tab-padding-y-xs);
-  --tab-gap: var(--ntg-tab-gap-xs);
-  --tab-icon: var(--ntg-tab-icon-xs);
-  --tab-unread: var(--ntg-tab-unread-xs);
-  --tab-radius-group: var(--ntg-tab-radius-group-xs);
-  --tab-icon-pad-top: var(--ntg-tab-icon-only-padding-top-xs);
-  --tab-icon-pad-right: var(--ntg-tab-icon-only-padding-right-xs);
-  --tab-icon-pad-bottom: var(--ntg-tab-icon-only-padding-bottom-xs);
-  --tab-icon-pad-left: var(--ntg-tab-icon-only-padding-left-xs);
-  --tab-font-family: var(--ntg-typography-font-family-label-xs);
-  --tab-font-size: var(--ntg-typography-font-size-label-xs);
-  --tab-line-height: var(--ntg-typography-line-height-label-xs);
-  --tab-font-weight: var(--ntg-typography-font-weight-label-xs);
-  --tab-letter-space: var(--ntg-typography-letter-space-label-xs);
-}
-
-.sm {
-  --tab-height: var(--ntg-tab-height-sm);
-  --tab-pad-x: var(--ntg-tab-padding-x-sm);
-  --tab-pad-y: var(--ntg-tab-padding-y-sm);
-  --tab-gap: var(--ntg-tab-gap-sm);
-  --tab-icon: var(--ntg-tab-icon-sm);
-  --tab-unread: var(--ntg-tab-unread-sm);
-  --tab-radius-group: var(--ntg-tab-radius-group-sm);
-  --tab-icon-pad-top: var(--ntg-tab-icon-only-padding-top-sm);
-  --tab-icon-pad-right: var(--ntg-tab-icon-only-padding-right-sm);
-  --tab-icon-pad-bottom: var(--ntg-tab-icon-only-padding-bottom-sm);
-  --tab-icon-pad-left: var(--ntg-tab-icon-only-padding-left-sm);
-  --tab-font-family: var(--ntg-typography-font-family-label-sm);
-  --tab-font-size: var(--ntg-typography-font-size-label-sm);
-  --tab-line-height: var(--ntg-typography-line-height-label-sm);
-  --tab-font-weight: var(--ntg-typography-font-weight-label-sm);
-  --tab-letter-space: var(--ntg-typography-letter-space-label-sm);
-}
-
-.md {
-  --tab-height: var(--ntg-tab-height-md);
-  --tab-pad-x: var(--ntg-tab-padding-x-md);
-  --tab-pad-y: var(--ntg-tab-padding-y-md);
-  --tab-gap: var(--ntg-tab-gap-md);
-  --tab-icon: var(--ntg-tab-icon-md);
-  --tab-unread: var(--ntg-tab-unread-md);
-  --tab-radius-group: var(--ntg-tab-radius-group-md);
-  --tab-icon-pad-top: var(--ntg-tab-icon-only-padding-top-md);
-  --tab-icon-pad-right: var(--ntg-tab-icon-only-padding-right-md);
-  --tab-icon-pad-bottom: var(--ntg-tab-icon-only-padding-bottom-md);
-  --tab-icon-pad-left: var(--ntg-tab-icon-only-padding-left-md);
-  --tab-font-family: var(--ntg-typography-font-family-label-md);
-  --tab-font-size: var(--ntg-typography-font-size-label-md);
-  --tab-line-height: var(--ntg-typography-line-height-label-md);
-  --tab-font-weight: var(--ntg-typography-font-weight-label-md);
-  --tab-letter-space: var(--ntg-typography-letter-space-label-md);
-}
-
-.lg {
-  --tab-height: var(--ntg-tab-height-lg);
-  --tab-pad-x: var(--ntg-tab-padding-x-lg);
-  --tab-pad-y: var(--ntg-tab-padding-y-lg);
-  --tab-gap: var(--ntg-tab-gap-lg);
-  --tab-icon: var(--ntg-tab-icon-lg);
-  --tab-unread: var(--ntg-tab-unread-lg);
-  --tab-radius-group: var(--ntg-tab-radius-group-lg);
-  --tab-icon-pad-top: var(--ntg-tab-icon-only-padding-top-lg);
-  --tab-icon-pad-right: var(--ntg-tab-icon-only-padding-right-lg);
-  --tab-icon-pad-bottom: var(--ntg-tab-icon-only-padding-bottom-lg);
-  --tab-icon-pad-left: var(--ntg-tab-icon-only-padding-left-lg);
-  --tab-font-family: var(--ntg-typography-font-family-label-lg);
-  --tab-font-size: var(--ntg-typography-font-size-label-lg);
-  --tab-line-height: var(--ntg-typography-line-height-label-lg);
-  --tab-font-weight: var(--ntg-typography-font-weight-label-lg);
-  --tab-letter-space: var(--ntg-typography-letter-space-label-lg);
-}
-
-.xl {
-  --tab-height: var(--ntg-tab-height-xl);
-  --tab-pad-x: var(--ntg-tab-padding-x-xl);
-  --tab-pad-y: var(--ntg-tab-padding-y-xl);
-  --tab-gap: var(--ntg-tab-gap-xl);
-  --tab-icon: var(--ntg-tab-icon-xl);
-  --tab-unread: var(--ntg-tab-unread-xl);
-  --tab-radius-group: var(--ntg-tab-radius-group-xl);
-  --tab-icon-pad-top: var(--ntg-tab-icon-only-padding-top-xl);
-  --tab-icon-pad-right: var(--ntg-tab-icon-only-padding-right-xl);
-  --tab-icon-pad-bottom: var(--ntg-tab-icon-only-padding-bottom-xl);
-  --tab-icon-pad-left: var(--ntg-tab-icon-only-padding-left-xl);
-  --tab-font-family: var(--ntg-typography-font-family-label-xl);
-  --tab-font-size: var(--ntg-typography-font-size-label-xl);
-  --tab-line-height: var(--ntg-typography-line-height-label-xl);
-  --tab-font-weight: var(--ntg-typography-font-weight-label-xl);
-  --tab-letter-space: var(--ntg-typography-letter-space-label-xl);
-}
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.segmented .tab[aria-selected="false"][data-icon="none"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-fg: var(--ntg-color-text-general-section-heading); }
+.segmented .tab[aria-selected="false"][data-icon="leading"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-quaternary); --tab-fg: var(--ntg-color-text-general-section-heading); }
+.segmented .tab[aria-selected="false"][data-icon="unread"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-unread-color: var(--ntg-color-foreground-system-success-primary); --tab-fg: var(--ntg-color-text-general-section-heading); }
+.segmented .tab[aria-selected="false"][data-icon="only"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-quaternary); }
+.segmented .tab[aria-selected="true"][data-icon="none"] { --tab-bg: var(--ntg-color-background-general-secondary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-fg: var(--ntg-color-text-general-section-heading); }
+.segmented .tab[aria-selected="true"][data-icon="leading"] { --tab-bg: var(--ntg-color-background-general-secondary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-quaternary); --tab-fg: var(--ntg-color-text-general-section-heading); }
+.segmented .tab[aria-selected="true"][data-icon="unread"] { --tab-bg: var(--ntg-color-background-general-secondary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-unread-color: var(--ntg-color-foreground-system-success-primary); --tab-fg: var(--ntg-color-text-general-section-heading); }
+.segmented .tab[aria-selected="true"][data-icon="only"] { --tab-bg: var(--ntg-color-background-general-secondary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-quaternary); }
+.underline .tab[aria-selected="false"][data-icon="none"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-fg: var(--ntg-color-text-general-section-heading); }
+.underline .tab[aria-selected="false"][data-icon="leading"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-general-quaternary); --tab-fg: var(--ntg-color-text-general-section-heading); }
+.underline .tab[aria-selected="false"][data-icon="unread"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-unread-color: var(--ntg-color-foreground-system-success-primary); --tab-fg: var(--ntg-color-text-general-section-heading); }
+.underline .tab[aria-selected="false"][data-icon="only"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-general-quaternary); }
+.underline .tab[aria-selected="true"][data-icon="none"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="leading"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-brand-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="unread"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-unread-color: var(--ntg-color-foreground-system-success-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="only"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-brand-primary); }
+.segmented .tablist { --tab-group-border: var(--ntg-color-border-general-primary); --tab-group-border-w: 1px; --tab-group-shadow: var(--ntg-shadows-bottom-xs); }
+.underline .tablist {  }
+.segmented .tab[aria-selected="false"][data-icon="none"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-fg: var(--ntg-color-text-general-heading); }
+.segmented .tab[aria-selected="false"][data-icon="leading"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-quaternary); --tab-fg: var(--ntg-color-text-general-heading); }
+.segmented .tab[aria-selected="false"][data-icon="unread"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-unread-color: var(--ntg-color-foreground-system-success-secondary-hover); --tab-fg: var(--ntg-color-text-general-heading); }
+.segmented .tab[aria-selected="false"][data-icon="only"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-quaternary); }
+.segmented .tab[aria-selected="true"][data-icon="none"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-secondary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-fg: var(--ntg-color-text-general-heading); }
+.segmented .tab[aria-selected="true"][data-icon="leading"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-secondary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-quaternary); --tab-fg: var(--ntg-color-text-general-heading); }
+.segmented .tab[aria-selected="true"][data-icon="unread"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-secondary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-unread-color: var(--ntg-color-foreground-system-success-secondary-hover); --tab-fg: var(--ntg-color-text-general-heading); }
+.segmented .tab[aria-selected="true"][data-icon="only"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-secondary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-quaternary); }
+.underline .tab[aria-selected="false"][data-icon="none"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-fg: var(--ntg-color-text-general-heading); }
+.underline .tab[aria-selected="false"][data-icon="leading"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-general-quaternary); --tab-fg: var(--ntg-color-text-general-heading); }
+.underline .tab[aria-selected="false"][data-icon="unread"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-unread-color: var(--ntg-color-foreground-system-success-secondary-hover); --tab-fg: var(--ntg-color-text-general-heading); }
+.underline .tab[aria-selected="false"][data-icon="only"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-general-primary-hover); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-general-quaternary); }
+.underline .tab[aria-selected="true"][data-icon="none"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="leading"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-brand-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="unread"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-unread-color: var(--ntg-color-foreground-system-success-secondary-hover); --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="only"]:hover:not([aria-disabled="true"]) { --tab-bg: var(--ntg-color-background-general-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-brand-primary); }
+.segmented .tab[aria-selected="false"][data-icon="none"]:focus-visible,
+.segmented .tab[aria-selected="true"][data-icon="none"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-fg: var(--ntg-color-text-brand-primary); }
+.segmented .tab[aria-selected="false"][data-icon="leading"]:focus-visible,
+.segmented .tab[aria-selected="true"][data-icon="leading"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-brand-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.segmented .tab[aria-selected="false"][data-icon="unread"]:focus-visible,
+.segmented .tab[aria-selected="true"][data-icon="unread"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-unread-color: var(--ntg-color-foreground-system-success-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.segmented .tab[aria-selected="false"][data-icon="only"]:focus-visible,
+.segmented .tab[aria-selected="true"][data-icon="only"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-general-primary); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-brand-primary); }
+.underline .tab[aria-selected="false"][data-icon="none"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="false"][data-icon="leading"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-brand-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="false"][data-icon="unread"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-unread-color: var(--ntg-color-foreground-system-success-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="false"][data-icon="only"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="none"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="leading"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-brand-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="unread"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-unread-color: var(--ntg-color-foreground-system-success-primary); --tab-fg: var(--ntg-color-text-brand-primary); }
+.underline .tab[aria-selected="true"][data-icon="only"]:focus-visible { --tab-bg: var(--ntg-color-background-brand-primary-hover); --tab-line: var(--ntg-color-border-brand-solid); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-brand-primary); }
+.segmented .tab[aria-selected="false"][data-icon="none"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.segmented .tab[aria-selected="false"][data-icon="leading"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-disable-subtle); --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.segmented .tab[aria-selected="false"][data-icon="unread"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-unread-color: var(--ntg-color-foreground-general-disable-subtle); --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.segmented .tab[aria-selected="false"][data-icon="only"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-disable-subtle); }
+.segmented .tab[aria-selected="true"][data-icon="none"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-tertiary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.segmented .tab[aria-selected="true"][data-icon="leading"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-tertiary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-disable-subtle); --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.segmented .tab[aria-selected="true"][data-icon="unread"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-tertiary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-unread-color: var(--ntg-color-foreground-general-disable-subtle); --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.segmented .tab[aria-selected="true"][data-icon="only"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-tertiary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 0px; --tab-divider-w: 1px; --tab-icon-color: var(--ntg-icon-general-disable-subtle); }
+.underline .tab[aria-selected="false"][data-icon="none"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.underline .tab[aria-selected="false"][data-icon="leading"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-general-disable-subtle); --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.underline .tab[aria-selected="false"][data-icon="unread"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-unread-color: var(--ntg-color-foreground-general-disable-subtle); --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.underline .tab[aria-selected="false"][data-icon="only"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 1px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-general-disable-subtle); }
+.underline .tab[aria-selected="true"][data-icon="none"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.underline .tab[aria-selected="true"][data-icon="leading"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-general-disable-subtle); --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.underline .tab[aria-selected="true"][data-icon="unread"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-unread-color: var(--ntg-color-foreground-general-disable-subtle); --tab-fg: var(--ntg-color-text-general-disabled-subtle); }
+.underline .tab[aria-selected="true"][data-icon="only"][aria-disabled="true"] { --tab-bg: var(--ntg-color-background-general-primary); --tab-line: var(--ntg-color-border-general-disabled); --tab-line-w: 2px; --tab-divider-w: 0px; --tab-icon-color: var(--ntg-icon-general-disable-subtle); }

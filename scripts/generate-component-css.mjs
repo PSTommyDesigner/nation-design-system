@@ -691,7 +691,126 @@ const BANNER = notice('bn', 'tokens/figma-layers/banner.json', 'components/Banne
   ],
 })
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Tabs: หน้า 18 ชุดแท็บเดี่ยว 2 ทรง (segmented / underline) แกน current icon size state และชุดกลุ่ม 2 ทรง
+//   คลาสขนาดอยู่ที่ root (.segmented.md) แต่ชั้นอยู่ที่ .tab จึงใช้ sizeSel · ไอคอนเป็น data-icon ของปุ่ม current เป็น aria-selected
+//   เส้นของแท็บ: segmented มี stroke ขวา (เส้นคั่น) underline มี stroke ล่าง (ราง 1 / ตัวชี้ 2) ตัวสร้างส่งความหนาทั้งสองด้านให้
+// ═══════════════════════════════════════════════════════════════════════════════
+const tabRootLayout = (n, W) => ({
+  '--tab-pt': W(n.p[0]), '--tab-pr': W(n.p[1]), '--tab-pb': W(n.p[2]), '--tab-pl': W(n.p[3]), '--tab-gap': W(n.g),
+})
+const TABS = {
+  specFile: 'tokens/figma-layers/tabs.json',
+  baseFile: 'components/Tabs/Tabs.base.css',
+  outFile: 'components/Tabs/Tabs.module.css',
+  sets: {
+    'segmented-tab': { classes: '.segmented .tab' }, 'underline-tab': { classes: '.underline .tab' },
+    'segmented-tab-group': { classes: '.segmented .tablist' }, 'underline-tab-group': { classes: '.underline .tablist' },
+  },
+  sizeSel: (sel, size) => sel.replace(/^(\.[\w-]+)/, `$1.${size}`),
+  layoutVariants: [
+    { key: (size, set) => (set.endsWith('group') ? `${size}, icon=false, current=` : `${size}, icon=leading, current=false`), cls: '' },
+    { key: (size, set) => (set.endsWith('group') ? `${size}, icon=false, current=` : `${size}, icon=unread, current=false`), cls: '[data-icon="unread"]' },
+    { key: (size, set) => (set.endsWith('group') ? `${size}, icon=false, current=` : `${size}, icon=only, current=false`), cls: '[data-icon="only"]' },
+  ],
+  familyClass: () => '',
+  axisClass: {
+    current: (v, set) => (set.endsWith('group') ? '' : `[aria-selected="${v}"]`),
+    icon: (v, set) => (set.endsWith('group') ? '' : `[data-icon="${v === 'false' ? 'none' : v}"]`),
+  },
+  stateSelector: {
+    default: (sel) => sel,
+    hover: (sel) => `${sel}:hover:not([aria-disabled="true"])`,
+    focused: (sel) => `${sel}:focus-visible`,
+    disabled: (sel) => `${sel}[aria-disabled="true"]`,
+  },
+  layers: {
+    '(root)': (n, W) => (n.r ? { '--tab-r-tl': W(n.r[0]), '--tab-r-tr': W(n.r[1]), '--tab-r-br': W(n.r[2]), '--tab-r-bl': W(n.r[3]) } : (n.p ? tabRootLayout(n, W) : {})),
+    'icon': (n, W) => ({ '--tab-icon': W(n.w) }),
+    'icon/**': () => ({}),
+    'unread': (n, W) => ({ '--tab-unread': W(n.w) }),
+    'unread/**': () => ({}),
+    'Text': () => ({}),
+    'segmented-tab': () => ({}), 'segmented-tab/**': () => ({}),
+    'underline-tab': () => ({}), 'underline-tab/**': () => ({}),
+  },
+  text: [{ layers: ['Text'], vars: { '--tab-font-family': 'font-family', '--tab-font-size': 'font-size', '--tab-line-height': 'line-height', '--tab-font-weight': 'font-weight', '--tab-letter-space': 'letter-space' } }],
+  colors: {
+    '(root)': (c, W, ctx) => {
+      const isGroup = /group/.test(ctx.set)
+      if (isGroup) return {
+        '--tab-group-border': c.strokes ? W(c.strokes[0]) : 'transparent',
+        '--tab-group-border-w': c.strokes ? `${Math.max(...c.sw)}px` : '0px',
+        '--tab-group-shadow': effectVar(c.fx, 'tab group effect'),
+      }
+      return {
+        '--tab-bg': c.fills ? W(c.fills[0]) : 'transparent',
+        '--tab-line': c.strokes ? W(c.strokes[0]) : 'transparent',
+        '--tab-line-w': c.strokes ? `${c.sw[2]}px` : '0px',
+        '--tab-divider-w': c.strokes ? `${c.sw[1]}px` : '0px',
+      }
+    },
+    'Text': (c, W) => ({ '--tab-fg': W(c.fills[0]) }),
+    'icon/**/vector': (c, W) => ({ '--tab-icon-color': W(c.fills[0]) }),
+    'unread/Dot': (c, W) => ({ '--tab-unread-color': W(c.fills[0]) }),
+    'segmented-tab': () => ({}), 'segmented-tab/**': () => ({}),
+    'underline-tab': () => ({}), 'underline-tab/**': () => ({}),
+  },
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Pagination: หน้า 24 ชุด pagination (ลูกศรเป็น instance ของ semi-rounded-button Neutral secondary + กลุ่มตัวเลข)
+//   กับชุดฐาน _pagination-number-button (6 สถานะ) และ _pagination-ellipsis คลาสขนาดอยู่ที่ root
+// ═══════════════════════════════════════════════════════════════════════════════
+const PAGINATION = {
+  specFile: 'tokens/figma-layers/pagination.json',
+  baseFile: 'components/Pagination/Pagination.base.css',
+  outFile: 'components/Pagination/Pagination.module.css',
+  sets: { 'pagination': { classes: '.root' }, '_pagination-number-button': { classes: '.control' }, '_pagination-ellipsis': { classes: '.ellipsis' } },
+  sizeSel: (sel, size) => (sel.startsWith('.root') ? `.root.${size}${sel.slice(5)}` : `.${size} ${sel}`),
+  familyClass: () => '',
+  axisClass: {},
+  stateSelector: {
+    default: (sel) => sel,
+    hover: (sel) => `${sel}:hover:not([aria-current="page"]):not(:disabled):not([aria-disabled="true"])`,
+    pressed: (sel) => `${sel}:active:not([aria-current="page"]):not(:disabled):not([aria-disabled="true"])`,
+    focused: (sel) => `${sel}:focus-visible`,
+    current: (sel) => `${sel}[aria-current="page"]`,
+    disabled: (sel) => `${sel}:disabled, ${sel}[aria-disabled="true"]`,
+  },
+  stateRank: { default: 0, hover: 1, pressed: 2, focused: 3, current: 4, disabled: 5 },
+  layers: {
+    '(root)': (n, W, ctx) => (n.w === 724 || typeof n.w === 'number' ? { '--pg-group-gap': W(n.g) } : { '--pg-h': W(n.h), '--pg-px': W(n.p[1]), ...(n.r ? { '--pg-r-tl': W(n.r[0]), '--pg-r-tr': W(n.r[1]), '--pg-r-br': W(n.r[2]), '--pg-r-bl': W(n.r[3]) } : {}) }),
+    'semi-rounded-button': (n, W) => ({
+      '--pg-arrow-h': W(n.h), '--pg-arrow-gap': W(n.g),
+      '--pg-arrow-pt': W(n.p[0]), '--pg-arrow-pr': W(n.p[1]), '--pg-arrow-pb': W(n.p[2]), '--pg-arrow-pl': W(n.p[3]),
+      ...(n.r ? { '--pg-arrow-r-tl': W(n.r[0]), '--pg-arrow-r-tr': W(n.r[1]), '--pg-arrow-r-br': W(n.r[2]), '--pg-arrow-r-bl': W(n.r[3]) } : {}),
+    }),
+    'semi-rounded-button/Left Icon': (n, W) => ({ '--pg-icon': W(n.w) }),
+    'semi-rounded-button/Right Icon': (n, W) => ({ '--pg-icon': W(n.w) }),
+    'semi-rounded-button/**': () => ({}),
+    'numbers': (n, W) => ({ '--pg-gap': W(n.g) }),
+    'numbers/**': () => ({}),
+    '1': () => ({}),
+    '…': () => ({}),
+  },
+  text: [{ layers: ['1', '…'], vars: { '--pg-font-family': 'font-family', '--pg-font-size': 'font-size', '--pg-line-height': 'line-height', '--pg-font-weight': 'font-weight', '--pg-letter-space': 'letter-space' } }],
+  colors: {
+    '(root)': (c, W) => ({ '--pg-bg': c.fills ? W(c.fills[0]) : 'transparent', '--pg-ring': effectVar(c.fx, 'pagination effect') }),
+    '1': (c, W) => ({ '--pg-fg': W(c.fills[0]) }),
+    '…': (c, W) => ({ '--pg-fg': W(c.fills[0]) }),
+    'semi-rounded-button': (c, W) => ({
+      '--pg-arrow-bg': c.fills ? W(c.fills[0]) : 'transparent',
+      '--pg-arrow-border': c.strokes ? W(c.strokes[0]) : 'transparent',
+      '--pg-arrow-border-w': c.strokes ? `${c.sw[0]}px` : '0px',
+      '--pg-arrow-shadow': effectVar(c.fx, 'pagination arrow effect'),
+    }),
+    'semi-rounded-button/**': () => ({}),
+    'numbers/**': () => ({}),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -733,7 +852,8 @@ for (const size of textGroups.length ? SIZES : []) {
     let ts = null
     for (const [setName, set] of Object.entries(spec.sets)) {
       if (M.sets[setName]?.ignoreLayout) continue
-      walk(L(set, size, (M.layoutVariants || [{ key: M.layoutKey }])[0].key), '', (key, n) => {
+      const k0 = (M.layoutVariants || [{ key: M.layoutKey }])[0].key
+      walk(L(set, size, k0 && ((sz) => k0(sz, setName))), '', (key, n) => {
         if (n.ts && g.layers.includes(key)) {
           if (ts && ts !== n.ts) errors.push(`${setName} ${size} ${key}: text style ${n.ts} ไม่ตรงกับชุดอื่น (${ts})`)
           ts = n.ts
@@ -757,12 +877,12 @@ for (const [setName, set] of Object.entries(spec.sets)) {
   // โครงหลายแบบต่อขนาดตามแกน (เช่น banner ระดับ page กับ section ต่างกันที่มุมโค้ง) ประกาศ layoutVariants [{ key, cls }]
   for (const lv of (M.layoutVariants || [{ key: M.layoutKey, cls: '' }])) for (const size of SIZES) {
     const vars = {}
-    walk(L(set, size, lv.key), '', (key, n) => {
+    walk(L(set, size, lv.key && ((sz) => lv.key(sz, setName))), '', (key, n) => {
       const fn = lookup(M.layers, key)
       if (!fn) { errors.push(`${setName} ${size}: ไม่รู้จักชั้น "${key}" (เพิ่มในตาราง layers)`); return }
       // ชั้นที่ซ่อนไว้ในตัวอย่าง (เช่น ไอคอนที่ปิดด้วย property) ยังต้องการค่า ส่วนชั้นที่ซ่อนแล้วไม่มีผลกับโค้ดให้ข้าม
       if (n.vis === false && key !== 'left-icon' && key !== 'close-icon' && !key.endsWith('-icon') && !(M.hiddenLayers || []).includes(key)) return
-      Object.assign(vars, fn(n, (v) => toVar(v, `${setName} ${size} ${key}`)))
+      Object.assign(vars, fn(n, (v) => toVar(v, `${setName} ${size} ${key}`), { set: setName, size }))
     })
     // token ที่มีใน Figma แต่ไม่มีชั้นให้ผูก (เช่น ระยะจากตัวกระตุ้น ความกว้างสูงสุดของคำใบ้) ประกาศผ่าน extras
     // ตัวสร้างตรวจว่าชื่อนั้นมีจริงทั้งในไฟล์ token และในตาราง id ของ Figma (tokens/figma-variable-ids.json)
@@ -771,7 +891,8 @@ for (const [setName, set] of Object.entries(spec.sets)) {
       vars[prop] = toVar(name, `${setName} ${size} extras ${prop}`)
     }
     for (const cls of [].concat(map.classes)) {
-      const sel = size === 'one' ? `${cls}${lv.cls}` : `${cls}${lv.cls}.${size}`   // component ที่ไม่มีแกนขนาดใช้ key "one" ไม่ต้องมีคลาสขนาด
+      // component ที่ไม่มีแกนขนาดใช้ key "one" ไม่ต้องมีคลาสขนาด · คลาสขนาดอยู่ท้าย selector เว้นแต่ตารางจับคู่กำหนด sizeSel (เช่น ขนาดอยู่ที่ root แต่ชั้นอยู่ลึกกว่า)
+      const sel = size === 'one' ? `${cls}${lv.cls}` : (M.sizeSel ? M.sizeSel(`${cls}${lv.cls}`, size) : `${cls}${lv.cls}.${size}`)
       const cur = layoutBySel.get(sel) || {}
       for (const [k, v] of Object.entries(vars)) {
         if (k in cur && cur[k] !== v) errors.push(`${sel} ${k}: ชุด ${setName} ให้ ${v} แต่ชุดก่อนหน้าให้ ${cur[k]} (ไฟล์ออกแบบสองชุดไม่ตรงกัน)`)
@@ -797,8 +918,8 @@ for (const [setName, set] of Object.entries(spec.sets)) {
       const famClass = M.familyClass(family, axes)
       const sels = [].concat(map.classes).map((cls) => {
         let sel = `${cls}${famClass}`
-        for (const [axis, fn] of Object.entries(M.axisClass)) if (axis in axes) sel += fn(axes[axis])
-        if (axes.size) sel += `.${axes.size}`   // สีที่ต่างตามขนาด (เช่น เงาปุ่ม Alpha)
+        for (const [axis, fn] of Object.entries(M.axisClass)) if (axis in axes) sel += fn(axes[axis], setName)
+        if (axes.size) sel = M.sizeSel ? M.sizeSel(sel, axes.size) : `${sel}.${axes.size}`   // สีที่ต่างตามขนาด (เช่น เงาปุ่ม Alpha)
         return M.stateSelector[state]?.(sel)
       })
       if (sels.some((x) => !x)) { errors.push(`${setName} ${family} ${combo}: สถานะ ${state} ไม่รู้จัก`); continue }
@@ -816,7 +937,7 @@ for (const [setName, set] of Object.entries(spec.sets)) {
           for (const p of [name.replace(/\/default$/, '/pressed'), `${name}-pressed`]) if (p !== name && cssVars.has(`--ntg-${p.replace(/\//g, '-')}`)) return toVar(p, where)
           return null
         }
-        Object.assign(vars, fn(c, (v) => toVar(v, where), { state, axes, family, pressed }))
+        Object.assign(vars, fn(c, (v) => toVar(v, where), { state, axes, family, pressed, set: setName }))
       }
       const rank = (M.stateRank || { default: 0, hover: 1, focused: 2, disabled: 3 })[state] ?? 9
       const cur = colorBySel.get(sel) || { rank, vars: {} }

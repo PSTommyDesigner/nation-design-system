@@ -93,10 +93,13 @@ for (const famName of cfg.families) {
     for (const c of n.children || []) walk(c)
   })(fam)
   for (const s of cfg.sets) {
-    if (!found[s]) throw new Error(`ตระกูล ${famName} ไม่มีชุด ${s}`)
+    // ตระกูลที่เป็น "สี" ต้องมีทุกชุด แต่บางหน้าแยกชุดคนละเฟรม (เช่น Pagination Component Previews กับ Pagination Base Components)
+    // จึงยอมให้ชุดหายในบางเฟรม แล้วตรวจตอนท้ายว่าทุกชุดมีอย่างน้อยหนึ่งเฟรม
+    if (!found[s]) { if (cfg.families.length === 1) throw new Error(`ตระกูล ${famName} ไม่มีชุด ${s}`); continue }
     sets.push({ family: famName, setName: s, id: found[s] })
   }
 }
+for (const s of cfg.sets) if (!sets.some(x => x.setName === s)) throw new Error(`ไม่พบชุด ${s} ในเฟรมตระกูลไหนเลย (${cfg.families.join(', ')})`)
 
 // ── 2. ดึงชุดทีละก้อน (เต็มความลึก) ───────────────────────────────────────────
 const nodeById = {}
@@ -232,6 +235,9 @@ function parseVariant(name) {
 }
 
 const out = { capturedAt: new Date().toISOString().slice(0, 10), page: cfg.page, reference: cfg.reference, sets: {} }
+// ตระกูลอ้างอิงของแต่ละชุด: ปกติคือ cfg.reference แต่ชุดที่ไม่อยู่ในเฟรมนั้น (แยกเฟรม) ใช้เฟรมแรกที่มีชุดนั้น
+const refFamilyOf = {}
+for (const s of sets) if (!refFamilyOf[s.setName] || s.family === cfg.reference) refFamilyOf[s.setName] = s.family
 const drift = []
 for (const s of sets) {
   const set = nodeById[s.id]
@@ -244,7 +250,7 @@ for (const s of sets) {
     const size = [axes.size || 'one', ...(cfg.layoutAxes || []).map(a => `${a}=${axes[a] ?? ''}`)].join(', ')
     const { layout, colors } = split(snap(variant))
     const key = JSON.stringify(layout, (k, v) => (k === 'ref' ? undefined : v)).replace(/,"clip":true/g, '')
-    if (s.family === cfg.reference && (axes.state ?? 'default') === 'default' && (axes['default-gray'] ?? 'false') === 'false' && (!axes.hierarchy || axes.hierarchy === cfg.referenceHierarchy)) {
+    if (s.family === refFamilyOf[s.setName] && (axes.state ?? 'default') === 'default' && (axes['default-gray'] ?? 'false') === 'false' && (!axes.hierarchy || axes.hierarchy === cfg.referenceHierarchy)) {
       entry.layout[size] = layout
     }
     // โครงต้องเท่ากันทุกตระกูลทุกสถานะ ไม่งั้นแปลว่ามีตระกูลที่หลุดจากต้นแบบ

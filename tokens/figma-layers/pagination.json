@@ -1,0 +1,1523 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "24 Pagination",
+ "reference": "Pagination Component Previews",
+ "sets": {
+  "pagination": {
+   "defs": {
+    "size": ["xs","sm","md","lg","xl"]
+   },
+   "layout": {
+    "xs": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "pagination/group-gap/xs",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 528,
+     "ch": [
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/xs",
+       "p": ["button/padding/top/xs","button/padding/right/xs","button/padding/bottom/xs","button/padding/left/xs"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/xs",
+       "clip": true,
+       "r": ["button/radius/top-left/xs","button/radius/top-right/xs","button/radius/bottom-right/xs","button/radius/bottom-left/xs"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/xs",
+         "h": "button/icon/xs",
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "navigation-&-arrows/chevron-left",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "numbers",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "pagination/gap/xs",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xs",
+         "r": ["pagination/radius/xs","pagination/radius/xs","pagination/radius/xs","pagination/radius/xs"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xs"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xs",
+         "r": ["pagination/radius/xs","pagination/radius/xs","pagination/radius/xs","pagination/radius/xs"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xs"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xs",
+         "r": ["pagination/radius/xs","pagination/radius/xs","pagination/radius/xs","pagination/radius/xs"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xs"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-ellipsis",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xs",
+         "inst": true,
+         "ch": [
+          {
+           "n": "…",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xs"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xs",
+         "r": ["pagination/radius/xs","pagination/radius/xs","pagination/radius/xs","pagination/radius/xs"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xs"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xs",
+         "r": ["pagination/radius/xs","pagination/radius/xs","pagination/radius/xs","pagination/radius/xs"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xs"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xs",
+         "r": ["pagination/radius/xs","pagination/radius/xs","pagination/radius/xs","pagination/radius/xs"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xs"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/xs",
+       "p": ["button/padding/top/xs","button/padding/right/xs","button/padding/bottom/xs","button/padding/left/xs"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/xs",
+       "clip": true,
+       "r": ["button/radius/top-left/xs","button/radius/top-right/xs","button/radius/bottom-right/xs","button/radius/bottom-left/xs"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/xs",
+         "h": "button/icon/xs",
+         "vis": false,
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "pagination/group-gap/sm",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 625,
+     "ch": [
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/sm",
+       "p": ["button/padding/top/sm","button/padding/right/sm","button/padding/bottom/sm","button/padding/left/sm"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/sm",
+       "clip": true,
+       "r": ["button/radius/top-left/sm","button/radius/top-right/sm","button/radius/bottom-right/sm","button/radius/bottom-left/sm"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/sm",
+         "h": "button/icon/sm",
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "navigation-&-arrows/chevron-left",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "numbers",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "pagination/gap/sm",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/sm",
+         "r": ["pagination/radius/sm","pagination/radius/sm","pagination/radius/sm","pagination/radius/sm"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/sm",
+         "r": ["pagination/radius/sm","pagination/radius/sm","pagination/radius/sm","pagination/radius/sm"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/sm",
+         "r": ["pagination/radius/sm","pagination/radius/sm","pagination/radius/sm","pagination/radius/sm"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-ellipsis",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/sm",
+         "inst": true,
+         "ch": [
+          {
+           "n": "…",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/sm",
+         "r": ["pagination/radius/sm","pagination/radius/sm","pagination/radius/sm","pagination/radius/sm"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/sm",
+         "r": ["pagination/radius/sm","pagination/radius/sm","pagination/radius/sm","pagination/radius/sm"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/sm",
+         "r": ["pagination/radius/sm","pagination/radius/sm","pagination/radius/sm","pagination/radius/sm"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/sm"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/sm",
+       "p": ["button/padding/top/sm","button/padding/right/sm","button/padding/bottom/sm","button/padding/left/sm"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/sm",
+       "clip": true,
+       "r": ["button/radius/top-left/sm","button/radius/top-right/sm","button/radius/bottom-right/sm","button/radius/bottom-left/sm"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/sm",
+         "h": "button/icon/sm",
+         "vis": false,
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "pagination/group-gap/md",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 724,
+     "ch": [
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/md",
+       "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/md",
+       "clip": true,
+       "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/md",
+         "h": "button/icon/md",
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "navigation-&-arrows/chevron-left",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "numbers",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "pagination/gap/md",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/md",
+         "r": ["pagination/radius/md","pagination/radius/md","pagination/radius/md","pagination/radius/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/md"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/md",
+         "r": ["pagination/radius/md","pagination/radius/md","pagination/radius/md","pagination/radius/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/md"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/md",
+         "r": ["pagination/radius/md","pagination/radius/md","pagination/radius/md","pagination/radius/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/md"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-ellipsis",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/md",
+         "inst": true,
+         "ch": [
+          {
+           "n": "…",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/md"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/md",
+         "r": ["pagination/radius/md","pagination/radius/md","pagination/radius/md","pagination/radius/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/md"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/md",
+         "r": ["pagination/radius/md","pagination/radius/md","pagination/radius/md","pagination/radius/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/md"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/md",
+         "r": ["pagination/radius/md","pagination/radius/md","pagination/radius/md","pagination/radius/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/md"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/md",
+       "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/md",
+       "clip": true,
+       "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/md",
+         "h": "button/icon/md",
+         "vis": false,
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "pagination/group-gap/lg",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 823,
+     "ch": [
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/lg",
+       "p": ["button/padding/top/lg","button/padding/right/lg","button/padding/bottom/lg","button/padding/left/lg"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/lg",
+       "clip": true,
+       "r": ["button/radius/top-left/lg","button/radius/top-right/lg","button/radius/bottom-right/lg","button/radius/bottom-left/lg"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/lg",
+         "h": "button/icon/lg",
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "navigation-&-arrows/chevron-left",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "numbers",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "pagination/gap/lg",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/lg",
+         "r": ["pagination/radius/lg","pagination/radius/lg","pagination/radius/lg","pagination/radius/lg"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/lg"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/lg",
+         "r": ["pagination/radius/lg","pagination/radius/lg","pagination/radius/lg","pagination/radius/lg"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/lg"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/lg",
+         "r": ["pagination/radius/lg","pagination/radius/lg","pagination/radius/lg","pagination/radius/lg"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/lg"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-ellipsis",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/lg",
+         "inst": true,
+         "ch": [
+          {
+           "n": "…",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/lg"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/lg",
+         "r": ["pagination/radius/lg","pagination/radius/lg","pagination/radius/lg","pagination/radius/lg"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/lg"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/lg",
+         "r": ["pagination/radius/lg","pagination/radius/lg","pagination/radius/lg","pagination/radius/lg"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/lg"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/lg",
+         "r": ["pagination/radius/lg","pagination/radius/lg","pagination/radius/lg","pagination/radius/lg"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/lg"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/lg",
+       "p": ["button/padding/top/lg","button/padding/right/lg","button/padding/bottom/lg","button/padding/left/lg"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/lg",
+       "clip": true,
+       "r": ["button/radius/top-left/lg","button/radius/top-right/lg","button/radius/bottom-right/lg","button/radius/bottom-left/lg"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/lg",
+         "h": "button/icon/lg",
+         "vis": false,
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xl": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "MIN",
+     "ca": "CENTER",
+     "g": "pagination/group-gap/xl",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 922,
+     "ch": [
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/xl",
+       "p": ["button/padding/top/xl","button/padding/right/xl","button/padding/bottom/xl","button/padding/left/xl"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/xl",
+       "clip": true,
+       "r": ["button/radius/top-left/xl","button/radius/top-right/xl","button/radius/bottom-right/xl","button/radius/bottom-left/xl"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/xl",
+         "h": "button/icon/xl",
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "navigation-&-arrows/chevron-left",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "numbers",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "pagination/gap/xl",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xl",
+         "r": ["pagination/radius/xl","pagination/radius/xl","pagination/radius/xl","pagination/radius/xl"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xl"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xl",
+         "r": ["pagination/radius/xl","pagination/radius/xl","pagination/radius/xl","pagination/radius/xl"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xl"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xl",
+         "r": ["pagination/radius/xl","pagination/radius/xl","pagination/radius/xl","pagination/radius/xl"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xl"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-ellipsis",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xl",
+         "inst": true,
+         "ch": [
+          {
+           "n": "…",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xl"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xl",
+         "r": ["pagination/radius/xl","pagination/radius/xl","pagination/radius/xl","pagination/radius/xl"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xl"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xl",
+         "r": ["pagination/radius/xl","pagination/radius/xl","pagination/radius/xl","pagination/radius/xl"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xl"
+          }
+         ]
+        },
+        {
+         "n": "_pagination-number-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": 0,
+         "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+         "s": ["HUG","FIXED"],
+         "h": "pagination/height/xl",
+         "r": ["pagination/radius/xl","pagination/radius/xl","pagination/radius/xl","pagination/radius/xl"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "1",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::label/xl"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "semi-rounded-button",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "button/gap/xl",
+       "p": ["button/padding/top/xl","button/padding/right/xl","button/padding/bottom/xl","button/padding/left/xl"],
+       "s": ["HUG","FIXED"],
+       "h": "button/size/xl",
+       "clip": true,
+       "r": ["button/radius/top-left/xl","button/radius/top-right/xl","button/radius/bottom-right/xl","button/radius/bottom-left/xl"],
+       "inst": true,
+       "ch": [
+        {
+         "n": "Left Icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "button/icon/xl",
+         "h": "button/icon/xl",
+         "vis": false,
+         "ref": {
+          "visible": "L-icon"
+         },
+         "ch": [
+          {
+           "n": "status-&-feedback/add",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-L-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Pagination Component Previews": {
+     "": 0
+    }
+   }
+  },
+  "_pagination-number-button": {
+   "defs": {
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover","pressed","focused","disabled","current"]
+   },
+   "layout": {
+    "xs": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/xs",
+     "r": ["pagination/radius/xs","pagination/radius/xs","pagination/radius/xs","pagination/radius/xs"],
+     "ch": [
+      {
+       "n": "1",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      }
+     ]
+    },
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/sm",
+     "r": ["pagination/radius/sm","pagination/radius/sm","pagination/radius/sm","pagination/radius/sm"],
+     "ch": [
+      {
+       "n": "1",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/md",
+     "r": ["pagination/radius/md","pagination/radius/md","pagination/radius/md","pagination/radius/md"],
+     "ch": [
+      {
+       "n": "1",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/lg",
+     "r": ["pagination/radius/lg","pagination/radius/lg","pagination/radius/lg","pagination/radius/lg"],
+     "ch": [
+      {
+       "n": "1",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      }
+     ]
+    },
+    "xl": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/xl",
+     "r": ["pagination/radius/xl","pagination/radius/xl","pagination/radius/xl","pagination/radius/xl"],
+     "ch": [
+      {
+       "n": "1",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Pagination Base Components": {
+     "state=default": 1,
+     "state=hover": 2,
+     "state=pressed": 2,
+     "state=focused": 3,
+     "state=disabled": 4,
+     "state=current": 5
+    }
+   }
+  },
+  "_pagination-ellipsis": {
+   "defs": {
+    "size": ["xs","sm","md","lg","xl"]
+   },
+   "layout": {
+    "xs": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/xs",0,"pagination/padding-x/xs"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/xs",
+     "ch": [
+      {
+       "n": "…",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      }
+     ]
+    },
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/sm",0,"pagination/padding-x/sm"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/sm",
+     "ch": [
+      {
+       "n": "…",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/md",0,"pagination/padding-x/md"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/md",
+     "ch": [
+      {
+       "n": "…",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/lg",0,"pagination/padding-x/lg"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/lg",
+     "ch": [
+      {
+       "n": "…",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      }
+     ]
+    },
+    "xl": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,"pagination/padding-x/xl",0,"pagination/padding-x/xl"],
+     "s": ["HUG","FIXED"],
+     "h": "pagination/height/xl",
+     "ch": [
+      {
+       "n": "…",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Pagination Base Components": {
+     "": 6
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "semi-rounded-button": {
+    "fills": ["button/color/neutral/background/secondary/default"],
+    "strokes": ["button/color/neutral/border/secondary/default"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "numbers/_pagination-number-button": {
+    "fills": ["color/background/brand/primary-alt"]
+   },
+   "numbers/_pagination-number-button/1": {
+    "fills": ["button/color/brand-gray/text/tertiary/default"]
+   },
+   "numbers/_pagination-ellipsis/…": {
+    "fills": ["button/color/brand-gray/text/tertiary/disabled"]
+   }
+  },
+  {
+   "1": {
+    "fills": ["button/color/brand-gray/text/tertiary/default"]
+   }
+  },
+  {
+   "1": {
+    "fills": ["button/color/brand-gray/text/tertiary/hover"]
+   },
+   "(root)": {
+    "fills": ["button/color/brand-gray/background/tertiary/hover"]
+   }
+  },
+  {
+   "1": {
+    "fills": ["button/color/brand-gray/text/tertiary/default"]
+   },
+   "(root)": {
+    "fx": "effect::focused-ring/default"
+   }
+  },
+  {
+   "1": {
+    "fills": ["button/color/brand-gray/text/tertiary/disabled"]
+   }
+  },
+  {
+   "1": {
+    "fills": ["color/text/brand/primary"]
+   },
+   "(root)": {
+    "fills": ["color/background/brand/primary-alt"]
+   }
+  },
+  {
+   "…": {
+    "fills": ["button/color/brand-gray/text/tertiary/disabled"]
+   }
+  }
+ ]
+}

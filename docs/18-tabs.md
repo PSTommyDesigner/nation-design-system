@@ -142,7 +142,7 @@ sources_of_truth:
 | false | focused | `background/brand/primary-hover` | `border/brand/solid` | `text/brand/primary` |
 | false | disabled | `background/general/primary` | `border/general/disabled` | `text/general/disabled-subtle` |
 | true | default | `background/general/primary` | `border/brand/solid` | `text/brand/primary` |
-| true | hover | `background/general/primary-hover` | `border/general/primary-hover` | `text/brand/primary` |
+| true | hover | `background/general/primary-hover` | `border/brand/solid` | `text/brand/primary` |
 | true | focused | `background/brand/primary-hover` | `border/brand/solid` | `text/brand/primary` |
 | true | disabled | `background/general/primary` | `border/general/disabled` | `text/general/disabled-subtle` |
 
@@ -182,6 +182,8 @@ sources_of_truth:
 | `docs/research/tabs-component.md` | งานวิจัยที่ใช้ตัดสินโครง |
 
 ## 5. ข้อจำกัดและข้อห้าม (Constraints)
+
+- **ปรับไฟล์ออกแบบ 2026-10-26 จากท่อสร้าง CSS** underline-tab แบบ current=true icon=only สถานะ hover เคยหลุดเป็นเส้นใต้ border/general/primary-hover และไอคอน quaternary แก้ให้เหมือนแบบอื่น (brand/solid + icon/brand/primary) · segmented-tab แบบ current=true focused สีข้อความเคยเป็น text/brand/primary-hover แก้เป็น text/brand/primary ทั้ง 20 แบบ · เฟรมกลุ่ม underline-tab-group เคยมีเส้นขอบบน 1px ที่ระดับกลุ่ม เอาออกแล้ว 15 แบบ · ฝั่งเว็บ CSS ของหน้านี้สร้างจากไฟล์ออกแบบ (Tabs.base.css + ส่วนที่สร้าง) ความสูงแท็บตามเนื้อหาเหมือนไฟล์ ไม่ใช้ token tab/height แล้ว
 
 - **ห้ามใช้แท็บแทนตัวกรอง** ถ้าทุกแท็บแสดงข้อมูลชุดเดียวกันแค่กรองให้แคบลง ให้ใช้ตัวกรอง เพราะโปรแกรมอ่านหน้าจอจะประกาศว่าเป็นแผงเนื้อหาคนละแผง ซึ่งไม่จริง
 - **ห้ามใช้ `state=focused` แทนแท็บปัจจุบัน** ของเดิมในไฟล์เคยทำแบบนี้และแก้แล้วเมื่อ 2026-09-29

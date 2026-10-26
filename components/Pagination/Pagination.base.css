@@ -1,0 +1,106 @@
+/*
+ * Pagination ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ค่าทุกค่ามาจาก --pg-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/pagination.json (spec ชั้นจากไฟล์ออกแบบหน้า 24)
+ * แล้วต่อท้ายไฟล์นี้เป็น Pagination.module.css ห้ามแก้ Pagination.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ปุ่มก่อนหน้า/ถัดไปในไฟล์ออกแบบเป็น instance ของ semi-rounded-button (Neutral secondary) ตัวสร้างอ่านค่าของ instance นั้นมาเป็น --pg-arrow-*
+ *      ส่วนสถานะ hover/focused/disabled ของลูกศรใช้ชุดเดียวกับปุ่มตัวเลข (ไฟล์ออกแบบมีลูกศรแค่สถานะพัก)
+ *   2. ปุ่มตัวเลขกว้างตามเนื้อหา (HUG ในไฟล์ออกแบบ) ไม่บังคับความกว้างขั้นต่ำ
+ *   3. บนจอแคบซ่อนข้อความของลูกศรแบบเข้าถึงได้ เหลือแต่ไอคอน
+ */
+
+.root { display: block; }
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pg-group-gap, 0) var(--pg-gap, 0);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.item { display: flex; flex: none; }
+.previous { margin-inline-end: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px)); }
+.next { margin-inline-start: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px)); }
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--pg-gap, 0);
+  block-size: var(--pg-h);
+  padding-block: 0;
+  padding-inline: var(--pg-px, 0);
+  border: 0;
+  border-radius: var(--pg-r-tl, 0) var(--pg-r-tr, 0) var(--pg-r-br, 0) var(--pg-r-bl, 0);
+  background: var(--pg-bg, transparent);
+  box-shadow: var(--pg-ring, 0 0 0 0 transparent);
+  color: var(--pg-fg, inherit);
+  font-family: var(--pg-font-family);
+  font-size: var(--pg-font-size);
+  font-weight: var(--pg-font-weight);
+  line-height: var(--pg-line-height);
+  letter-spacing: var(--pg-letter-space);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.control:focus-visible { outline: none; }
+.control:disabled,
+.control[aria-disabled='true'] { cursor: not-allowed; }
+.number { font-variant-numeric: tabular-nums; }
+
+.arrow {
+  white-space: nowrap;
+  gap: var(--pg-arrow-gap, var(--pg-gap, 0));
+  block-size: var(--pg-arrow-h, var(--pg-h));
+  padding: var(--pg-arrow-pt, 0) var(--pg-arrow-pr, 0) var(--pg-arrow-pb, 0) var(--pg-arrow-pl, 0);
+  border-radius: var(--pg-arrow-r-tl, 0) var(--pg-arrow-r-tr, 0) var(--pg-arrow-r-br, 0) var(--pg-arrow-r-bl, 0);
+  background: var(--pg-arrow-bg, var(--pg-bg, transparent));
+  box-shadow: inset 0 0 0 var(--pg-arrow-border-w, 0px) var(--pg-arrow-border, transparent), var(--pg-arrow-shadow, 0 0 0 0 transparent), var(--pg-ring, 0 0 0 0 transparent);
+}
+.icon {
+  flex: none;
+  inline-size: var(--pg-icon);
+  block-size: var(--pg-icon);
+}
+.arrowText { flex: none; }
+
+.ellipsisItem { display: flex; }
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  block-size: var(--pg-h);
+  padding-inline: var(--pg-px, 0);
+  color: var(--pg-fg, inherit);
+  font-family: var(--pg-font-family);
+  font-size: var(--pg-font-size);
+  font-weight: var(--pg-font-weight);
+  line-height: var(--pg-line-height);
+  letter-spacing: var(--pg-letter-space);
+  user-select: none;
+}
+
+@media (max-width: 767.98px) {
+  .arrowText {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .control { transition: none; }
+}

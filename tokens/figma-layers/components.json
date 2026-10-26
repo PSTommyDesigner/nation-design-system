@@ -219,5 +219,37 @@
     "layoutAxes": [
       "level"
     ]
+  },
+  "tabs": {
+    "page": "18 Tabs",
+    "depth": 4,
+    "reference": "Tab",
+    "families": [
+      "Tab"
+    ],
+    "sets": [
+      "segmented-tab",
+      "underline-tab",
+      "segmented-tab-group",
+      "underline-tab-group"
+    ],
+    "layoutAxes": [
+      "icon",
+      "current"
+    ]
+  },
+  "pagination": {
+    "page": "24 Pagination",
+    "depth": 5,
+    "reference": "Pagination Component Previews",
+    "families": [
+      "Pagination Component Previews",
+      "Pagination Base Components"
+    ],
+    "sets": [
+      "pagination",
+      "_pagination-number-button",
+      "_pagination-ellipsis"
+    ]
   }
 }
