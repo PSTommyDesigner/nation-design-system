@@ -65,7 +65,9 @@ const preview: Preview = {
       const argTypes = { ...context.argTypes }
       for (const [name, argType] of Object.entries(argTypes)) {
         const summary = String(argType?.table?.type?.summary ?? argType?.type?.name ?? '')
-        if (/ReactNode|ReactElement|Element/.test(summary)) argTypes[name] = { ...argType, control: false }
+        if (!/ReactNode|ReactElement|Element/.test(summary)) continue
+        // children เป็นข้อความธรรมดาในทุก story ให้เป็นช่องข้อความ ไม่ใช่ object (ที่โชว์เครื่องหมายคำพูดครอบ)
+        argTypes[name] = name === 'children' ? { ...argType, control: 'text' } : { ...argType, control: false }
       }
       return argTypes
     },

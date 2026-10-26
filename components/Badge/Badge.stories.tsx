@@ -112,7 +112,7 @@ export const Tertiary: Story = { tags: ['!dev'], args: { hierarchy: 'tertiary' }
 export const Pill: Story = { tags: ['!dev'], args: { shape: 'pill', hierarchy: 'secondary' }, parameters: { docs: { section: 'ชุด' } } }
 export const LinkStyle: Story = {
   tags: ['!dev'],
-  args: { shape: 'link', children: 'อ่านต่อ', family: 'blue' },
+  args: { shape: 'link', children: 'อ่านต่อ' },
   parameters: { docs: { section: 'ชุด' } },
 }
 
@@ -176,4 +176,4 @@ export const GoodAndBad: Story = {
 export const PillBadge: Story = { tags: ['!autodocs'], name: 'Pill-badge', args: { shape: 'pill' }, parameters: controls(TEXT_BADGE) }
 export const SemiRoundedIconBadge: Story = { tags: ['!autodocs'], name: 'Semi-rounded-icon-badge', args: { children: undefined, shape: 'semi-rounded', icon: 'check', label: 'ยืนยันแล้ว' }, parameters: controls(ICON_BADGE) }
 export const CircularIconBadge: Story = { tags: ['!autodocs'], name: 'Circular-icon-badge', args: { children: undefined, shape: 'circular', icon: 'check', label: 'ยืนยันแล้ว' }, parameters: controls(ICON_BADGE) }
-export const LinkBadge: Story = { tags: ['!autodocs'], name: 'Link-badge', args: { shape: 'link', children: 'อ่านต่อ', family: 'blue' }, parameters: controls(LINK_BADGE) }
+export const LinkBadge: Story = { tags: ['!autodocs'], name: 'Link-badge', args: { shape: 'link', children: 'อ่านต่อ' }, parameters: controls(LINK_BADGE) }
