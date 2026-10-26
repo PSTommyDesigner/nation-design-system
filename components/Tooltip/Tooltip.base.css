@@ -1,0 +1,336 @@
+/*
+ * Tooltip ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --tt-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/tooltip.json (spec ชั้นจากไฟล์ออกแบบหน้า 20)
+ * แล้วต่อท้ายไฟล์นี้เป็น Tooltip.module.css ห้ามแก้ Tooltip.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นของไฟล์นี้: มีชื่อ token อยู่บ้าง เฉพาะพฤติกรรมที่ไฟล์ออกแบบแสดงไม่ได้
+ *    คือ motion (ระยะเวลาและ easing ตอนโผล่/หาย) ชั้นซ้อน (layer) ระยะเลื่อนตอนโผล่ (slide) และเขตผ่อนผันของตัวชี้ (grace)
+ *    ค่าเหล่านี้ไม่มีชั้นใน Figma ให้ผูก และไม่ใช่ตัวแปรของ component ในไฟล์ออกแบบ ส่วนอื่นทั้งหมดต้องมาจาก --tt-*
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ลูกศรวาดด้วย clip-path จากความกว้างฐาน (--tt-arrow) และความสูง (--tt-arrow-h) ไฟล์ออกแบบใช้ instance ลูกศร 4 ทิศ
+ *   2. ตำแหน่ง (placement) และการจัดชิด (align) เป็นคลาส axisTop ถึง axisRight กับ alignCenter/alignStart/alignEnd ฝั่งเว็บ ไฟล์ออกแบบมีแค่ 4 ทิศกึ่งกลาง
+ *   3. ระยะจากตัวกระตุ้น ความกว้างสูงสุด และความกว้างข้อความ เป็นตัวแปรใน Figma ที่ไม่มีชั้นให้ผูก ตัวสร้างใส่ให้ผ่าน extras
+ *   4. กล่องตั้ง inline-size: max-content เพราะกล่องที่วางแบบ absolute จะย่อตามความกว้างของตัวกระตุ้น ทำให้ข้อความถูกตัดบรรทัดทีละคำเมื่อตัวกระตุ้นแคบ
+ *   5. เขตผ่อนผัน (::before) ขยายพื้นที่จับตัวชี้ระหว่างตัวกระตุ้นกับกล่อง เป็นพฤติกรรมฝั่งเว็บล้วน
+ */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ═══ กล่องคำใบ้ ชั้นวางตำแหน่ง ══════════════════════════════════ */
+
+/*
+ * แยกเป็น 2 ชั้นโดยตั้งใจ
+ *   .box     คุมตำแหน่งกับความกว้างสูงสุด ใช้ translate สำหรับจัดกลาง
+ *   .surface คุมรูปร่างกับการเคลื่อนไหว ใช้ translate สำหรับเลื่อนตอนโผล่
+ * ถ้ารวมเป็นชั้นเดียว translate ของการจัดกลางกับของการเคลื่อนไหวจะทับกันเอง
+ * แล้วกล่องที่จัดกลางไว้จะกระโดดไปครึ่งความกว้างตอนเริ่มเล่นภาพ
+ */
+.box {
+  /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
+
+  /* เวลาและเส้นโค้ง ขาเข้ากับขาออกใช้ชั้นเวลาเดียวกันคือ fast ตามที่ตัดสินไว้ */
+  --tooltip-enter-duration: var(--ntg-motion-duration-fast);
+  --tooltip-exit-duration: var(--ntg-motion-duration-fast);
+  --tooltip-enter-ease: var(--ntg-motion-easing-enter);
+  --tooltip-exit-ease: var(--ntg-motion-easing-exit);
+
+  /*
+   * ระยะเลื่อนตอนโผล่ ค่าตั้งต้นคือไม่เลื่อน แล้วคลาสแกนเป็นคนใส่ทิศให้
+   * ระยะ 2 คือ --ntg-size-space-s1-xs ซึ่งตรงกับที่ Untitled UI ใช้ (slide 0.5 ของ Tailwind)
+   */
+  --tooltip-slide-x: var(--ntg-size-space-none);
+  --tooltip-slide-y: var(--ntg-size-space-none);
+
+  /* ระยะเผื่อของสะพานพื้นที่ปลอดภัย ตรงกับ PADDING ของ useSafeArea ที่ Spectrum ใช้ */
+  --tooltip-grace: var(--ntg-size-space-s1-lg);
+
+  position: absolute;
+  /*
+   * ⚠️ --tooltip-layer ตั้งใจไม่ประกาศค่าไว้ จะได้ตกไปใช้ token เป็นค่าตั้งต้น
+   *    ถ้าแอปปลายทางมีชั้นที่สูงกว่านี้ ให้ตั้ง --tooltip-layer จากข้างนอก
+   *    แทนการแก้ไฟล์นี้ วิธีเดียวกับที่ Toast ทำกับ --toast-layer
+   */
+  z-index: var(--tooltip-layer, var(--ntg-layer-floating));
+  inline-size: max-content;   /* กล่องกว้างตามข้อความ ไม่ย่อตามตัวกระตุ้นที่แคบ (กล่อง absolute จะยึดความกว้างของตัวกระตุ้นถ้าไม่ตั้ง) */
+  max-inline-size: var(--tt-max-width);
+  /* ปิดไว้ตอนยังไม่เปิด แต่ยังอยู่ใน DOM ดูเหตุผลที่ Tooltip.tsx */
+  display: none;
+}
+
+/*
+ * สถานะที่มองเห็น มี 2 ค่า คือกำลังเปิด และกำลังเล่นภาพขาออก
+ * ขาออกต้องยังมองเห็น ไม่งั้นภาพจะถูกตัดจบทันทีที่สั่งปิด
+ */
+.box[data-state='open'],
+.box[data-state='exiting'] {
+  display: block;
+}
+
+/* ═══ กล่องคำใบ้ ชั้นรูปร่าง ═══════════════════════════════════════ */
+
+.surface {
+  position: relative;
+  box-sizing: border-box;
+  /* ห้ามตั้งความกว้างและความสูง ดูคำอธิบายที่หัวไฟล์ */
+  padding: var(--tt-pad);
+  border-radius: var(--tt-r-tl, 0) var(--tt-r-tr, 0) var(--tt-r-br, 0) var(--tt-r-bl, 0);
+  background: var(--tt-bg);
+  box-shadow: var(--tt-shadow, 0 0 0 0 transparent);
+  /* กล่องรับตัวชี้ได้ ห้ามใส่ pointer-events none ดูคำอธิบายที่หัวไฟล์ */
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tt-stack);
+}
+
+.box[data-state='open'] .surface {
+  animation: tooltip-enter var(--tooltip-enter-duration) var(--tooltip-enter-ease) both;
+}
+
+.box[data-state='exiting'] .surface {
+  animation: tooltip-exit var(--tooltip-exit-duration) var(--tooltip-exit-ease) both;
+}
+
+/*
+ * ข้ามภาพทิ้งเมื่อเปิดต่อจากตัวที่เพิ่งปิดไปในช่วงผ่อนผัน
+ * ถ้าไม่ข้าม การไล่ตัวชี้ผ่านแถบปุ่มไอคอน 5 ปุ่มจะเห็นกล่องเลือนเข้าเลือนออก 5 รอบ
+ * Spectrum ตั้งชื่อตัวแปรนี้ว่า shouldSkipAnimation และ Zag ส่งออกเป็น data-instant
+ */
+.box[data-instant='true'] .surface {
+  animation: none;
+}
+
+/*
+ * ⚠️ ค่าความทึบ 0 กับ 1 ไม่ใช่ค่าของระบบออกแบบ จึงไม่มี token
+ *    เป็นปลายทั้งสองข้างของการเลือน คือมองไม่เห็นเลย กับเห็นเต็มที่
+ */
+@keyframes tooltip-enter {
+  from { opacity: 0; translate: var(--tooltip-slide-x) var(--tooltip-slide-y); }
+  to { opacity: 1; translate: var(--ntg-size-space-none) var(--ntg-size-space-none); }
+}
+
+@keyframes tooltip-exit {
+  from { opacity: 1; translate: var(--ntg-size-space-none) var(--ntg-size-space-none); }
+  to { opacity: 0; translate: var(--tooltip-slide-x) var(--tooltip-slide-y); }
+}
+
+/* ═══ ตัวหนังสือ หัวข้อกับข้อความรองต่างกันที่น้ำหนักอย่างเดียว ═══ */
+
+/*
+ * ⚠️ สีเดียวกันทั้งคู่ คือ --ntg-color-text-general-const-white
+ *    ของเดิมในไฟล์ออกแบบใช้เทาอ่อนกับข้อความรอง ซึ่งบนพื้นเข้มได้คอนทราสต์ 3.79
+ *    ไม่ผ่านเกณฑ์ 4.5 ของ WCAG 1.4.3 จึงใช้ขาวทั้งคู่แล้วแยกด้วยน้ำหนัก
+ */
+.title,
+.description {
+  margin: var(--ntg-size-space-none);
+  color: var(--tt-fg);
+}
+.description { color: var(--tt-desc-fg, var(--tt-fg));
+  /*
+   * ความกว้างสูงสุดของตัวข้อความ ต้องตั้งที่นี่ด้วย ไม่ใช่ตั้งแค่ที่กล่อง
+   * ดูคำอธิบายที่หัวไฟล์
+   */
+  max-inline-size: var(--tt-text-max-width);
+  /* ข้อความยาวตัดบรรทัดลงมา ห้ามจำกัดบรรทัดและห้ามตัดด้วยจุดสามจุด */
+  overflow-wrap: anywhere;
+}
+
+.title {
+  font-family: var(--tt-title-family);
+  font-size: var(--tt-title-size);
+  line-height: var(--tt-title-line);
+  font-weight: var(--tt-title-weight);
+  letter-spacing: var(--tt-title-space);
+}
+
+.description {
+  font-family: var(--tt-desc-family);
+  font-size: var(--tt-desc-size);
+  line-height: var(--tt-desc-line);
+  font-weight: var(--tt-desc-weight);
+  letter-spacing: var(--tt-desc-space);
+}
+
+/* ═══ ลูกศร เปิดปิดได้ แยกจากแกนตำแหน่ง ══════════════════════════ */
+
+/*
+ * ⚠️ ลูกศรใช้ clip-path ไม่ใช่สี่เหลี่ยมหมุน 45 องศา
+ *    เพราะอัตราส่วนฐานต่อความสูงเป็น 2 ต่อ 1 ซึ่งสี่เหลี่ยมหมุนทำไม่ได้
+ *    และ clip-path ตัดเงาทิ้งไปด้วย ซึ่งตรงกับข้อกำหนดว่าลูกศรไม่มีเงา
+ */
+.arrow {
+  position: absolute;
+  background: var(--tt-arrow-bg, var(--tt-bg));
+}
+
+/* ═══ แกนตำแหน่ง 4 ค่า ชื่อคือที่ที่กล่องไปอยู่ ไม่ใช่ทิศที่ลูกศรชี้ ══ */
+
+.axisTop {
+  inset-block-end: calc(100% + var(--tt-offset));
+  /* กล่องอยู่เหนือตัวกระตุ้น จึงเลื่อนขึ้นจากด้านล่างตอนโผล่ */
+  --tooltip-slide-y: var(--ntg-size-space-s1-xs);
+}
+
+.axisBottom {
+  inset-block-start: calc(100% + var(--tt-offset));
+  --tooltip-slide-y: calc(-1 * var(--ntg-size-space-s1-xs));
+}
+
+.axisLeft {
+  inset-inline-end: calc(100% + var(--tt-offset));
+  --tooltip-slide-x: var(--ntg-size-space-s1-xs);
+}
+
+.axisRight {
+  inset-inline-start: calc(100% + var(--tt-offset));
+  --tooltip-slide-x: calc(-1 * var(--ntg-size-space-s1-xs));
+}
+
+/* ── การชิดขอบบนแกนตั้ง (กล่องอยู่บนหรือล่าง) ─────────────────── */
+
+.axisTop.alignCenter,
+.axisBottom.alignCenter {
+  inset-inline-start: 50%;
+  translate: -50% var(--ntg-size-space-none);
+}
+
+.axisTop.alignStart,
+.axisBottom.alignStart {
+  inset-inline-start: var(--ntg-size-space-none);
+}
+
+.axisTop.alignEnd,
+.axisBottom.alignEnd {
+  inset-inline-end: var(--ntg-size-space-none);
+}
+
+/* ── การชิดขอบบนแกนนอน (กล่องอยู่ซ้ายหรือขวา) ─────────────────── */
+
+.axisLeft.alignCenter,
+.axisRight.alignCenter {
+  inset-block-start: 50%;
+  translate: var(--ntg-size-space-none) -50%;
+}
+
+.axisLeft.alignStart,
+.axisRight.alignStart {
+  inset-block-start: var(--ntg-size-space-none);
+}
+
+.axisLeft.alignEnd,
+.axisRight.alignEnd {
+  inset-block-end: var(--ntg-size-space-none);
+}
+
+/* ── ลูกศรตามแกน ชี้กลับไปหาตัวกระตุ้นเสมอ ───────────────────── */
+
+.axisTop .arrow {
+  inset-block-start: 100%;
+  inline-size: var(--tt-arrow);
+  block-size: var(--tt-arrow-h);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+.axisBottom .arrow {
+  inset-block-end: 100%;
+  inline-size: var(--tt-arrow);
+  block-size: var(--tt-arrow-h);
+  clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+}
+
+.axisLeft .arrow {
+  inset-inline-start: 100%;
+  inline-size: var(--tt-arrow-h);
+  block-size: var(--tt-arrow);
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.axisRight .arrow {
+  inset-inline-end: 100%;
+  inline-size: var(--tt-arrow-h);
+  block-size: var(--tt-arrow);
+  clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+}
+
+/*
+ * ตำแหน่งลูกศรบนแกนขวาง
+ * แบบจัดกลางวางกลางด้าน แบบชิดขอบเว้นจากขอบเท่ามุมโค้ง
+ * เพื่อไม่ให้ลูกศรไปโผล่ตรงส่วนที่มุมโค้งกินไปแล้ว
+ */
+.axisTop.alignCenter .arrow,
+.axisBottom.alignCenter .arrow {
+  inset-inline-start: 50%;
+  translate: -50% var(--ntg-size-space-none);
+}
+
+.axisTop.alignStart .arrow,
+.axisBottom.alignStart .arrow {
+  inset-inline-start: var(--tt-r-tl);
+}
+
+.axisTop.alignEnd .arrow,
+.axisBottom.alignEnd .arrow {
+  inset-inline-end: var(--tt-r-tl);
+}
+
+.axisLeft.alignCenter .arrow,
+.axisRight.alignCenter .arrow {
+  inset-block-start: 50%;
+  translate: var(--ntg-size-space-none) -50%;
+}
+
+.axisLeft.alignStart .arrow,
+.axisRight.alignStart .arrow {
+  inset-block-start: var(--tt-r-tl);
+}
+
+.axisLeft.alignEnd .arrow,
+.axisRight.alignEnd .arrow {
+  inset-block-end: var(--tt-r-tl);
+}
+
+/* ═══ สะพานพื้นที่ปลอดภัย ปิดช่องว่างระหว่างตัวกระตุ้นกับกล่อง ═══ */
+
+/*
+ * ทำให้ย้ายตัวชี้จากตัวกระตุ้นเข้าไปในกล่องได้โดยไม่ออกนอกเขต
+ * ซึ่งเป็นข้อ Hoverable ของ WCAG 1.4.13 ที่ตลาดตกมากที่สุด
+ *
+ * ⚠️ ด้านที่หันเข้าหาตัวกระตุ้นสูงเท่า --ntg-tooltip-offset-{size} พอดี ห้ามเกิน
+ *    เพราะช่องว่างมีขนาดเท่านั้นเป๊ะ ถ้าเกินจะทับตัวกระตุ้นแล้วกดไม่ได้
+ *    ส่วนระยะเผื่อ 8 ไปอยู่แกนขวาง ดูคำอธิบายที่หัวไฟล์
+ */
+.surface::before {
+  content: '';
+  position: absolute;
+}
+
+.axisTop .surface::before {
+  inset-block-start: 100%;
+  block-size: var(--tt-offset);
+  inset-inline: calc(-1 * var(--tooltip-grace));
+}
+
+.axisBottom .surface::before {
+  inset-block-end: 100%;
+  block-size: var(--tt-offset);
+  inset-inline: calc(-1 * var(--tooltip-grace));
+}
+
+.axisLeft .surface::before {
+  inset-inline-start: 100%;
+  inline-size: var(--tt-offset);
+  inset-block: calc(-1 * var(--tooltip-grace));
+}
+
+.axisRight .surface::before {
+  inset-inline-end: 100%;
+  inline-size: var(--tt-offset);
+  inset-block: calc(-1 * var(--tooltip-grace));
+}

@@ -1,68 +1,66 @@
-/**
- * Divider styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Divider/Divider.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 28 Dividers แล้วรัน  npm run figma:layers -- divider  และ  npm run css:generate -- divider
+ *   spec: tokens/figma-layers/divider.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Divider ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือความหนา เพื่อให้ sync กับ Figma หน้า 28 Dividers ได้
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --dv-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/divider.json (spec ชั้นจากไฟล์ออกแบบหน้า 28)
+ * แล้วต่อท้ายไฟล์นี้เป็น Divider.module.css ห้ามแก้ Divider.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ความหนา   --ntg-divider-thickness (ตัวแปรของหน้านี้เอง คนละตัวกับ tab/divider)
- *   สี        --ntg-color-border-general-primary
- *   ระยะประ   --ntg-size-space-s1-lg (8 เว้น 8 ตามเอกสาร docs/28-dividers.md หัวข้อ 4.3)
- *
- * ⚠️ ระยะประเป็น token ได้เฉพาะฝั่งโค้ด เพราะ Figma ผูกตัวแปรกับระยะประไม่ได้
- *    จึงอ้างสเกลระยะห่างกลางของระบบแทนการตั้งค่าใหม่ของตัวเอง
- *
- * ⚠️ ห้ามใส่ความยาวให้เส้น ทุกคลาสในไฟล์นี้คุมแค่ความหนา ความยาวมาจากกรอบแม่
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นทึบวาดด้วยพื้นหลังของกล่องบาง ๆ แทน stroke ของ vector ความหนาคือ --dv-thickness
+ *   2. เส้นประวาดด้วย repeating-linear-gradient จากช่วงขีดกับช่วงเว้น (--dv-dash-on / --dv-dash-off)
+ *      เพราะ border-style: dashed ให้เบราว์เซอร์คำนวณระยะประเอง คุมให้ตรงไฟล์ออกแบบไม่ได้
  */
 
 .root {
-  /* ไม่ให้ flex บีบความหนาของเส้น ส่วนความยาวปล่อยให้ยืดตามกรอบแม่ */
   flex: none;
   border: 0;
   padding: 0;
   margin: 0;
 }
-
-/* ── แนวของเส้น ─────────────────────────────────────────── */
-
-/* ยืดเต็มความกว้างของกรอบแม่ ทั้งกรอบแบบ block และกรอบแบบ flex */
 .horizontal {
   width: 100%;
   align-self: stretch;
-  height: var(--ntg-divider-thickness);
+  height: var(--dv-thickness);
 }
-
-/* ยืดเต็มความสูงของกรอบแม่ ทั้งกรอบที่กำหนดความสูงไว้และกรอบแบบ flex */
 .vertical {
   height: 100%;
   align-self: stretch;
-  width: var(--ntg-divider-thickness);
+  width: var(--dv-thickness);
 }
-
-/* ── ชนิดของเส้น ────────────────────────────────────────── */
-
-.solid {
-  background-color: var(--ntg-color-border-general-primary);
-}
-
-/* เส้นประวาดด้วยแถบสีซ้ำแทน border-style: dashed
-   เพราะ dashed ให้ระยะประตามที่เบราว์เซอร์คำนวณเอง ผูกกับ token ไม่ได้ */
+.solid { background-color: var(--dv-color); }
 .dash.horizontal {
   background-image: repeating-linear-gradient(
     to right,
-    var(--ntg-color-border-general-primary) 0,
-    var(--ntg-color-border-general-primary) var(--ntg-size-space-s1-lg),
-    transparent var(--ntg-size-space-s1-lg),
-    transparent calc(var(--ntg-size-space-s1-lg) * 2)
+    var(--dv-color) 0,
+    var(--dv-color) var(--dv-dash-on),
+    transparent var(--dv-dash-on),
+    transparent calc(var(--dv-dash-on) + var(--dv-dash-off))
   );
 }
-
 .dash.vertical {
   background-image: repeating-linear-gradient(
     to bottom,
-    var(--ntg-color-border-general-primary) 0,
-    var(--ntg-color-border-general-primary) var(--ntg-size-space-s1-lg),
-    transparent var(--ntg-size-space-s1-lg),
-    transparent calc(var(--ntg-size-space-s1-lg) * 2)
+    var(--dv-color) 0,
+    var(--dv-color) var(--dv-dash-on),
+    transparent var(--dv-dash-on),
+    transparent calc(var(--dv-dash-on) + var(--dv-dash-off))
   );
 }
+
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.horizontal { --dv-thickness: var(--ntg-divider-thickness); }
+.root.vertical { --dv-thickness: var(--ntg-divider-thickness); }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root.horizontal.solid,
+.root.vertical.solid { --dv-color: var(--ntg-color-border-general-primary); --dv-stroke: 1px; }
+.root.horizontal.dash,
+.root.vertical.dash { --dv-color: var(--ntg-color-border-general-primary); --dv-stroke: 1px; --dv-dash-on: 8px; --dv-dash-off: 8px; }

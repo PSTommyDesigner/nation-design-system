@@ -27,6 +27,8 @@ for (const f of ['variables.css', 'typography.css']) {
   for (const m of fs.readFileSync(p, 'utf8').matchAll(/^\s*(--ntg-[\w-]+)\s*:/gm)) cssVars.add(m[1])
 }
 const errors = []
+// ชื่อตัวแปรที่มีจริงใน Figma (ตารางสะสมจากการดึง spec) ใช้ตรวจ extras
+const FIGMA_VAR_NAMES = new Set(Object.values(JSON.parse(fs.readFileSync(path.join(ROOT, 'tokens/figma-variable-ids.json'), 'utf8'))).map((n) => String(n).replace(/^component::/, '')))
 const toVar = (figmaName, where) => {
   if (typeof figmaName === 'number') return figmaName === 0 ? '0' : `${figmaName}px`
   if (typeof figmaName !== 'string') { errors.push(`${where}: ค่าแปลก ${JSON.stringify(figmaName)}`); return '0' }
@@ -43,9 +45,11 @@ const styleVars = (style, parts, where) => {
   const key = m[1].replace(/\//g, '-')
   const out = {}
   for (const [prop, tok] of Object.entries(parts)) {
-    const name = `--ntg-typography-${tok}-${key}`
-    if (!cssVars.has(name)) errors.push(`${where}: token ไม่มี ${name}`)
-    out[prop] = `var(${name})`
+    // preset หมวด meta (เช่น meta/credit) ออก token ต่อบทบาทโดยไม่มีคำว่า meta นำหน้า (--ntg-typography-font-size-credit)
+    const candidates = [`--ntg-typography-${tok}-${key}`, `--ntg-typography-${tok}-${key.replace(/^meta-/, '')}`]
+    const name = candidates.find((c) => cssVars.has(c))
+    if (!name) errors.push(`${where}: token ไม่มี ${candidates[0]}`)
+    out[prop] = `var(${name || candidates[0]})`
   }
   return out
 }
@@ -561,7 +565,79 @@ const TEXT_FIELD = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Tooltip: หน้า 20 ชุด tooltip (กล่อง + หัวข้อ + ข้อความรอง + ลูกศร) โครงอ่านจาก placement=top ที่มีข้อความรอง
+//   ลูกศรในโค้ดวาดด้วย clip-path จากความกว้างฐานและความสูง (placement ซ้าย/ขวา สลับสองค่านี้ในไฟล์ออกแบบ)
+//   ระยะจากตัวกระตุ้น ความกว้างสูงสุด และความกว้างข้อความ เป็นตัวแปรใน Figma ที่ไม่มีชั้นให้ผูก จึงประกาศผ่าน extras
+//   ชุด tooltip-arrow คือลูกศรต้นแบบขนาดเดียว โค้ดไม่ได้ใช้โครงของมัน เอาแค่สี
+// ═══════════════════════════════════════════════════════════════════════════════
+const TOOLTIP = {
+  specFile: 'tokens/figma-layers/tooltip.json',
+  baseFile: 'components/Tooltip/Tooltip.base.css',
+  outFile: 'components/Tooltip/Tooltip.module.css',
+  layoutKey: (size) => `${size}, placement=top, supporting-text=true, direction=`,
+  sets: { 'tooltip': { classes: '.box' }, 'tooltip-arrow': { classes: '.box', ignoreLayout: true } },
+  familyClass: () => '',
+  axisClass: {},
+  stateSelector: { default: (sel) => sel },
+  extras: (size) => ({
+    '--tt-offset': `tooltip/offset/${size}`,
+    '--tt-max-width': `tooltip/max-width/${size}`,
+    '--tt-max-width-mobile': `tooltip/max-width-mobile/${size}`,
+    '--tt-text-max-width': `tooltip/text-max-width/${size}`,
+  }),
+  layers: {
+    '(root)': (n, W) => ({
+      '--tt-pad': W(n.p[0]), '--tt-stack': W(n.g),
+      ...(n.r ? { '--tt-r-tl': W(n.r[0]), '--tt-r-tr': W(n.r[1]), '--tt-r-br': W(n.r[2]), '--tt-r-bl': W(n.r[3]) } : {}),
+    }),
+    'title': () => ({}),
+    'support': () => ({}),
+    'arrow': (n, W) => ({ '--tt-arrow': W(n.w), '--tt-arrow-h': W(n.h) }),
+    'arrow/**': () => ({}),
+  },
+  text: [
+    { layers: ['title'], vars: { '--tt-title-family': 'font-family', '--tt-title-size': 'font-size', '--tt-title-line': 'line-height', '--tt-title-weight': 'font-weight', '--tt-title-space': 'letter-space' } },
+    { layers: ['support'], vars: { '--tt-desc-family': 'font-family', '--tt-desc-size': 'font-size', '--tt-desc-line': 'line-height', '--tt-desc-weight': 'font-weight', '--tt-desc-space': 'letter-space' } },
+  ],
+  colors: {
+    '(root)': (c, W) => ({ '--tt-bg': W(c.fills[0]), '--tt-shadow': effectVar(c.fx, 'tooltip effect') }),
+    'title': (c, W) => ({ '--tt-fg': W(c.fills[0]) }),
+    'support': (c, W) => ({ '--tt-desc-fg': W(c.fills[0]) }),
+    'arrow/shape': (c, W) => ({ '--tt-arrow-bg': W(c.fills[0]) }),
+    'shape': (c, W) => ({ '--tt-arrow-bg': W(c.fills[0]) }),
+  },
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Divider: หน้า 28 ชุด horizontal-divider กับ vertical-divider แกน type (solid/dash) ไม่มีแกนขนาด (key "one")
+//   เส้นในไฟล์ออกแบบเป็น stroke ของ vector เส้นประคือ strokeDashes (ผูกตัวแปรไม่ได้ใน Figma) ส่งเป็นค่าดิบ --dv-dash-*
+// ═══════════════════════════════════════════════════════════════════════════════
+const DIVIDER = {
+  specFile: 'tokens/figma-layers/divider.json',
+  baseFile: 'components/Divider/Divider.base.css',
+  outFile: 'components/Divider/Divider.module.css',
+  sizes: ['one'],
+  layoutKey: (size) => `${size}, type=solid`,
+  sets: { 'horizontal-divider': { classes: '.root.horizontal' }, 'vertical-divider': { classes: '.root.vertical' } },
+  familyClass: () => '',
+  axisClass: { type: (v) => `.${v}` },
+  stateSelector: { default: (sel) => sel },
+  layers: {
+    '(root)': (n, W) => (n.w ? { '--dv-thickness': W(n.w) } : {}),
+    'Frame': (n, W) => ({ '--dv-thickness': W(n.h ?? n.w) }),
+    'Frame/Path': () => ({}),
+  },
+  colors: {
+    'Frame/Path': (c, W) => ({
+      '--dv-color': W(c.strokes[0]),
+      '--dv-stroke': `${c.sw[0]}px`,
+      ...(c.sd ? { '--dv-dash-on': `${c.sd[0]}px`, '--dv-dash-off': `${c.sd[1] ?? c.sd[0]}px` } : {}),
+    }),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -602,6 +678,7 @@ for (const size of textGroups.length ? SIZES : []) {
   for (const g of textGroups) {
     let ts = null
     for (const [setName, set] of Object.entries(spec.sets)) {
+      if (M.sets[setName]?.ignoreLayout) continue
       walk(L(set, size), '', (key, n) => {
         if (n.ts && g.layers.includes(key)) {
           if (ts && ts !== n.ts) errors.push(`${setName} ${size} ${key}: text style ${n.ts} ไม่ตรงกับชุดอื่น (${ts})`)
@@ -622,6 +699,7 @@ const layoutBySel = new Map()
 for (const [setName, set] of Object.entries(spec.sets)) {
   const map = M.sets[setName]
   if (!map) { errors.push(`ชุด ${setName} ไม่มีในตารางจับคู่ sets`); continue }
+  if (map.ignoreLayout) continue   // ชุดที่โค้ดไม่ได้วาดตามโครง (เช่น ลูกศรต้นแบบของคำใบ้ที่โค้ดวาดด้วย clip-path)
   for (const size of SIZES) {
     const vars = {}
     walk(L(set, size), '', (key, n) => {
@@ -631,8 +709,14 @@ for (const [setName, set] of Object.entries(spec.sets)) {
       if (n.vis === false && key !== 'left-icon' && key !== 'close-icon' && !key.endsWith('-icon') && !(M.hiddenLayers || []).includes(key)) return
       Object.assign(vars, fn(n, (v) => toVar(v, `${setName} ${size} ${key}`)))
     })
+    // token ที่มีใน Figma แต่ไม่มีชั้นให้ผูก (เช่น ระยะจากตัวกระตุ้น ความกว้างสูงสุดของคำใบ้) ประกาศผ่าน extras
+    // ตัวสร้างตรวจว่าชื่อนั้นมีจริงทั้งในไฟล์ token และในตาราง id ของ Figma (tokens/figma-variable-ids.json)
+    if (M.extras) for (const [prop, name] of Object.entries(M.extras(size))) {
+      if (!FIGMA_VAR_NAMES.has(name)) errors.push(`${setName} ${size} extras ${prop}: ไฟล์ออกแบบไม่มีตัวแปร ${name}`)
+      vars[prop] = toVar(name, `${setName} ${size} extras ${prop}`)
+    }
     for (const cls of [].concat(map.classes)) {
-      const sel = `${cls}.${size}`
+      const sel = size === 'one' ? cls : `${cls}.${size}`   // component ที่ไม่มีแกนขนาดใช้ key "one" ไม่ต้องมีคลาสขนาด
       const cur = layoutBySel.get(sel) || {}
       for (const [k, v] of Object.entries(vars)) {
         if (k in cur && cur[k] !== v) errors.push(`${sel} ${k}: ชุด ${setName} ให้ ${v} แต่ชุดก่อนหน้าให้ ${cur[k]} (ไฟล์ออกแบบสองชุดไม่ตรงกัน)`)

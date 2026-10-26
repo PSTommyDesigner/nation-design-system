@@ -161,6 +161,7 @@ function snap(n, depth = 0) {
     const w = n.individualStrokeWeights
     o.sw = w ? [w.top, w.right, w.bottom, w.left] : [n.strokeWeight, n.strokeWeight, n.strokeWeight, n.strokeWeight]
     o.sa = n.strokeAlign
+    if (n.strokeDashes && n.strokeDashes.length) o.sd = n.strokeDashes   // เส้นประ (เช่น divider type=dash)
   }
   if (n.styles?.effect) o.fx = styleNames[n.styles.effect] || `?${n.styles.effect}`
   if (n.type === 'TEXT') o.ts = n.styles?.text ? (styleNames[n.styles.text] || `?${n.styles.text}`) : null
@@ -178,10 +179,10 @@ function split(node) {
   function strip(o, p) {
     // sw/sa (น้ำหนักกับตำแหน่งเส้นขอบ) และ fx (effect เช่น เงา วงแหวนโฟกัส) ไปอยู่กับสี
     // เพราะเปลี่ยนตามสถานะ (primary ไม่มีขอบ hover เปลี่ยนสีขอบ focused มีวงแหวน tertiary ไม่มีเงา)
-    const { fills, strokes, sw, sa, fx, ...rest } = o
+    const { fills, strokes, sw, sa, sd, fx, ...rest } = o
     const here = p ? `${p}/${o.n}` : o.n
     const key = here.replace(/^\//, '') || '(root)'
-    if (fills || strokes || fx) colors[key] = { ...(fills && { fills }), ...(strokes && { strokes, sw, sa }), ...(fx && { fx }) }
+    if (fills || strokes || fx) colors[key] = { ...(fills && { fills }), ...(strokes && { strokes, sw, sa, ...(sd && { sd }) }), ...(fx && { fx }) }
     if (rest.ch) rest.ch = rest.ch.map(c => strip(c, here))
     return rest
   }

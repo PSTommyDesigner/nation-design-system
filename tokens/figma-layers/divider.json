@@ -1,0 +1,172 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "28 Dividers",
+ "reference": "Divider Component Previews",
+ "sets": {
+  "horizontal-divider": {
+   "defs": {
+    "type": ["solid","dash"]
+   },
+   "layout": {
+    "one, type=solid": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["FILL","HUG"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "divider/thickness",
+       "ch": [
+        {
+         "n": "Path",
+         "t": "VECTOR",
+         "s": ["FILL","FIXED"],
+         "h": 0
+        }
+       ]
+      }
+     ]
+    },
+    "one, type=dash": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 8,
+     "p": [0,0,0,0],
+     "s": ["FILL","HUG"],
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FILL","FIXED"],
+       "h": "divider/thickness",
+       "ch": [
+        {
+         "n": "Path",
+         "t": "VECTOR",
+         "s": ["FILL","FIXED"],
+         "h": 0
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Divider Component Previews": {
+     "type=solid": 0,
+     "type=dash": 1
+    }
+   }
+  },
+  "vertical-divider": {
+   "defs": {
+    "type": ["solid","dash"]
+   },
+   "layout": {
+    "one, type=solid": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FILL"],
+     "w": "divider/thickness",
+     "clip": true,
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FILL"],
+       "w": "divider/thickness",
+       "ch": [
+        {
+         "n": "Path",
+         "t": "VECTOR",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      }
+     ]
+    },
+    "one, type=dash": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": [0,0,0,0],
+     "s": ["FIXED","FILL"],
+     "w": "divider/thickness",
+     "clip": true,
+     "ch": [
+      {
+       "n": "Frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": 8,
+       "p": [0,0,0,0],
+       "s": ["FIXED","FILL"],
+       "w": "divider/thickness",
+       "ch": [
+        {
+         "n": "Path",
+         "t": "VECTOR",
+         "s": ["FILL","FILL"]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Divider Component Previews": {
+     "type=solid": 0,
+     "type=dash": 1
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "Frame/Path": {
+    "strokes": ["color/border/general/primary"],
+    "sw": [1,1,1,1],
+    "sa": "CENTER"
+   }
+  },
+  {
+   "Frame/Path": {
+    "strokes": ["color/border/general/primary"],
+    "sw": [1,1,1,1],
+    "sa": "CENTER",
+    "sd": [8,8]
+   }
+  }
+ ]
+}

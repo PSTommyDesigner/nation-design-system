@@ -1,0 +1,1525 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "20 Tooltips",
+ "reference": "Tooltip Component Previews",
+ "sets": {
+  "tooltip": {
+   "defs": {
+    "supporting-text": ["false","true"],
+    "placement": ["top","bottom","left","right"],
+    "size": ["xs","sm","md","lg","xl"]
+   },
+   "layout": {
+    "xs, placement=top, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xs",
+     "p": ["tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/xs",
+       "h": "tooltip/arrow-height/xs",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, placement=top, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/sm",
+     "p": ["tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/sm",
+       "h": "tooltip/arrow-height/sm",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, placement=top, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/md",
+     "p": ["tooltip/padding/md","tooltip/padding/md","tooltip/padding/md","tooltip/padding/md"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/md",
+       "h": "tooltip/arrow-height/md",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, placement=top, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/lg",
+     "p": ["tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/lg",
+       "h": "tooltip/arrow-height/lg",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, placement=top, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xl",
+     "p": ["tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/xl",
+       "h": "tooltip/arrow-height/xl",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, placement=bottom, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xs",
+     "p": ["tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/xs",
+       "h": "tooltip/arrow-height/xs",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, placement=bottom, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/sm",
+     "p": ["tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/sm",
+       "h": "tooltip/arrow-height/sm",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, placement=bottom, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/md",
+     "p": ["tooltip/padding/md","tooltip/padding/md","tooltip/padding/md","tooltip/padding/md"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/md",
+       "h": "tooltip/arrow-height/md",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, placement=bottom, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/lg",
+     "p": ["tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/lg",
+       "h": "tooltip/arrow-height/lg",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, placement=bottom, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xl",
+     "p": ["tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/xl",
+       "h": "tooltip/arrow-height/xl",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, placement=left, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xs",
+     "p": ["tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/xs",
+       "h": "tooltip/arrow/xs",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, placement=left, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/sm",
+     "p": ["tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/sm",
+       "h": "tooltip/arrow/sm",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, placement=left, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/md",
+     "p": ["tooltip/padding/md","tooltip/padding/md","tooltip/padding/md","tooltip/padding/md"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/md",
+       "h": "tooltip/arrow/md",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, placement=left, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/lg",
+     "p": ["tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/lg",
+       "h": "tooltip/arrow/lg",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, placement=left, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xl",
+     "p": ["tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/xl",
+       "h": "tooltip/arrow/xl",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, placement=right, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xs",
+     "p": ["tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/xs",
+       "h": "tooltip/arrow/xs",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, placement=right, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/sm",
+     "p": ["tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/sm",
+       "h": "tooltip/arrow/sm",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, placement=right, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/md",
+     "p": ["tooltip/padding/md","tooltip/padding/md","tooltip/padding/md","tooltip/padding/md"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/md",
+       "h": "tooltip/arrow/md",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, placement=right, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/lg",
+     "p": ["tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/lg",
+       "h": "tooltip/arrow/lg",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, placement=right, supporting-text=false, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xl",
+     "p": ["tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/xl",
+       "h": "tooltip/arrow/xl",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, placement=top, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xs",
+     "p": ["tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::meta/credit"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/xs",
+       "h": "tooltip/arrow-height/xs",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, placement=top, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/sm",
+     "p": ["tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/xs"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/sm",
+       "h": "tooltip/arrow-height/sm",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, placement=top, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/md",
+     "p": ["tooltip/padding/md","tooltip/padding/md","tooltip/padding/md","tooltip/padding/md"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/sm"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/md",
+       "h": "tooltip/arrow-height/md",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, placement=top, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/lg",
+     "p": ["tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/md"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/lg",
+       "h": "tooltip/arrow-height/lg",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, placement=top, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xl",
+     "p": ["tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/lg"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/xl",
+       "h": "tooltip/arrow-height/xl",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, placement=bottom, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xs",
+     "p": ["tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::meta/credit"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/xs",
+       "h": "tooltip/arrow-height/xs",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, placement=bottom, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/sm",
+     "p": ["tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/xs"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/sm",
+       "h": "tooltip/arrow-height/sm",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, placement=bottom, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/md",
+     "p": ["tooltip/padding/md","tooltip/padding/md","tooltip/padding/md","tooltip/padding/md"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/sm"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/md",
+       "h": "tooltip/arrow-height/md",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, placement=bottom, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/lg",
+     "p": ["tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/md"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/lg",
+       "h": "tooltip/arrow-height/lg",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, placement=bottom, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xl",
+     "p": ["tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/lg"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow/xl",
+       "h": "tooltip/arrow-height/xl",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, placement=left, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xs",
+     "p": ["tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::meta/credit"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/xs",
+       "h": "tooltip/arrow/xs",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, placement=left, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/sm",
+     "p": ["tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/xs"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/sm",
+       "h": "tooltip/arrow/sm",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, placement=left, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/md",
+     "p": ["tooltip/padding/md","tooltip/padding/md","tooltip/padding/md","tooltip/padding/md"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/sm"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/md",
+       "h": "tooltip/arrow/md",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, placement=left, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/lg",
+     "p": ["tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/md"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/lg",
+       "h": "tooltip/arrow/lg",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, placement=left, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xl",
+     "p": ["tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/lg"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/xl",
+       "h": "tooltip/arrow/xl",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xs, placement=right, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xs",
+     "p": ["tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs","tooltip/padding/xs"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs","tooltip/radius/xs"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xs"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::meta/credit"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/xs",
+       "h": "tooltip/arrow/xs",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "sm, placement=right, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/sm",
+     "p": ["tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm","tooltip/padding/sm"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm","tooltip/radius/sm"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/sm"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/xs"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/sm",
+       "h": "tooltip/arrow/sm",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "md, placement=right, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/md",
+     "p": ["tooltip/padding/md","tooltip/padding/md","tooltip/padding/md","tooltip/padding/md"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/md","tooltip/radius/md","tooltip/radius/md","tooltip/radius/md"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/md"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/sm"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/md",
+       "h": "tooltip/arrow/md",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "lg, placement=right, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/lg",
+     "p": ["tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg","tooltip/padding/lg"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg","tooltip/radius/lg"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/lg"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/md"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/lg",
+       "h": "tooltip/arrow/lg",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    },
+    "xl, placement=right, supporting-text=true, direction=": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "tooltip/stack/xl",
+     "p": ["tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl","tooltip/padding/xl"],
+     "s": ["HUG","HUG"],
+     "r": ["tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl","tooltip/radius/xl"],
+     "ch": [
+      {
+       "n": "title",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::label/xl"
+      },
+      {
+       "n": "support",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/lg"
+      },
+      {
+       "n": "arrow",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "tooltip/arrow-height/xl",
+       "h": "tooltip/arrow/xl",
+       "inst": true,
+       "ch": [
+        {
+         "n": "shape",
+         "t": "VECTOR"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Tooltip Component Previews": {
+     "supporting-text=false, placement=top": 0,
+     "supporting-text=false, placement=bottom": 0,
+     "supporting-text=false, placement=left": 0,
+     "supporting-text=false, placement=right": 0,
+     "supporting-text=true, placement=top": 1,
+     "supporting-text=true, placement=bottom": 1,
+     "supporting-text=true, placement=left": 1,
+     "supporting-text=true, placement=right": 1
+    }
+   }
+  },
+  "tooltip-arrow": {
+   "defs": {
+    "direction": ["up","down","left","right"]
+   },
+   "layout": {
+    "one, placement=, supporting-text=, direction=up": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": 12,
+     "h": 6,
+     "ch": [
+      {
+       "n": "shape",
+       "t": "VECTOR"
+      }
+     ]
+    },
+    "one, placement=, supporting-text=, direction=down": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": 12,
+     "h": 6,
+     "ch": [
+      {
+       "n": "shape",
+       "t": "VECTOR"
+      }
+     ]
+    },
+    "one, placement=, supporting-text=, direction=left": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": 6,
+     "h": 12,
+     "ch": [
+      {
+       "n": "shape",
+       "t": "VECTOR"
+      }
+     ]
+    },
+    "one, placement=, supporting-text=, direction=right": {
+     "t": "COMPONENT",
+     "s": ["FIXED","FIXED"],
+     "w": 6,
+     "h": 12,
+     "ch": [
+      {
+       "n": "shape",
+       "t": "VECTOR"
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Tooltip Component Previews": {
+     "direction=up": 2,
+     "direction=down": 2,
+     "direction=left": 2,
+     "direction=right": 2
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "(root)": {
+    "fills": ["color/background/general/solid"],
+    "fx": "effect::shadows/bottom/md"
+   },
+   "title": {
+    "fills": ["color/text/general/const-white"]
+   },
+   "arrow/shape": {
+    "fills": ["color/background/general/solid"]
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/solid"],
+    "fx": "effect::shadows/bottom/md"
+   },
+   "title": {
+    "fills": ["color/text/general/const-white"]
+   },
+   "support": {
+    "fills": ["color/text/general/const-white"]
+   },
+   "arrow/shape": {
+    "fills": ["color/background/general/solid"]
+   }
+  },
+  {
+   "shape": {
+    "fills": ["color/background/general/solid"]
+   }
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+/*
+ * Divider ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --dv-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/divider.json (spec ชั้นจากไฟล์ออกแบบหน้า 28)
+ * แล้วต่อท้ายไฟล์นี้เป็น Divider.module.css ห้ามแก้ Divider.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นทึบวาดด้วยพื้นหลังของกล่องบาง ๆ แทน stroke ของ vector ความหนาคือ --dv-thickness
+ *   2. เส้นประวาดด้วย repeating-linear-gradient จากช่วงขีดกับช่วงเว้น (--dv-dash-on / --dv-dash-off)
+ *      เพราะ border-style: dashed ให้เบราว์เซอร์คำนวณระยะประเอง คุมให้ตรงไฟล์ออกแบบไม่ได้
+ */
+
+.root {
+  flex: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.horizontal {
+  width: 100%;
+  align-self: stretch;
+  height: var(--dv-thickness);
+}
+.vertical {
+  height: 100%;
+  align-self: stretch;
+  width: var(--dv-thickness);
+}
+.solid { background-color: var(--dv-color); }
+.dash.horizontal {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--dv-color) 0,
+    var(--dv-color) var(--dv-dash-on),
+    transparent var(--dv-dash-on),
+    transparent calc(var(--dv-dash-on) + var(--dv-dash-off))
+  );
+}
+.dash.vertical {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--dv-color) 0,
+    var(--dv-color) var(--dv-dash-on),
+    transparent var(--dv-dash-on),
+    transparent calc(var(--dv-dash-on) + var(--dv-dash-off))
+  );
+}

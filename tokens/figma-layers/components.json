@@ -162,5 +162,37 @@
       "text-field",
       "text-area"
     ]
+  },
+  "tooltip": {
+    "page": "20 Tooltips",
+    "depth": 4,
+    "reference": "Tooltip Component Previews",
+    "families": [
+      "Tooltip Component Previews"
+    ],
+    "sets": [
+      "tooltip",
+      "tooltip-arrow"
+    ],
+    "layoutAxes": [
+      "placement",
+      "supporting-text",
+      "direction"
+    ]
+  },
+  "divider": {
+    "page": "28 Dividers",
+    "depth": 4,
+    "reference": "Divider Component Previews",
+    "families": [
+      "Divider Component Previews"
+    ],
+    "sets": [
+      "horizontal-divider",
+      "vertical-divider"
+    ],
+    "layoutAxes": [
+      "type"
+    ]
   }
 }

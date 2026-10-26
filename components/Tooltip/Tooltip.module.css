@@ -1,76 +1,28 @@
-/**
- * Tooltip styles Nation Design System
- *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ มุมโค้ง หรือเวลา เพื่อให้ sync กับไฟล์ออกแบบหน้า 20 Tooltips ได้
- *
- * โครง token ที่ใช้
- *   ขนาด    --ntg-tooltip-padding-{size} ระยะขอบเท่ากันทั้งสี่ด้าน
- *           --ntg-tooltip-stack-{size} ระยะระหว่างหัวข้อกับข้อความรอง
- *           --ntg-tooltip-arrow-{size} ความกว้างฐานลูกศร
- *           --ntg-tooltip-arrow-height-{size} ความสูงลูกศร ครึ่งหนึ่งของฐานเสมอ
- *           --ntg-tooltip-offset-{size} ระยะจากตัวกระตุ้นถึงขอบกล่อง ไม่รวมลูกศร
- *           --ntg-tooltip-max-width-{size} ความกว้างสูงสุดบนเดสก์ท็อป
- *           --ntg-tooltip-max-width-mobile-{size} ความกว้างสูงสุดบนมือถือ
- *           --ntg-tooltip-text-max-width-{size} ความกว้างสูงสุดของตัวข้อความ (ค่าอนุพันธ์)
- *   มุมโค้ง  --ntg-tooltip-radius-{size}
- *   สี       พื้น --ntg-color-background-general-solid
- *           ตัวหนังสือ --ntg-color-text-general-const-white ทั้งหัวข้อและข้อความรอง
- *   เงา      --ntg-shadows-bottom-md ที่กล่อง ส่วนลูกศรไม่มีเงา
- *   เคลื่อนไหว --ntg-motion-duration-fast กับ --ntg-motion-easing-enter และ exit
- *   ชั้นซ้อน --ntg-layer-floating (200)
- *
- * ⚠️ ทรงเดียว ไม่มีแกนโหมดมืด
- *    พื้นกับตัวหนังสืออ้าง variable ที่พลิกค่าเองตามโหมดของระบบ
- *    ถ้าทำแกนโหมดมืดเพิ่ม จะมีกล่องที่สีไม่ตรงกับโหมดของหน้าที่มันอยู่
- *
- * ⚠️ ห้ามตั้งความกว้างและความสูงตายตัว ใช้ max-width เท่านั้น
- *    tokens/scale/tooltip.mjs เขียนกำกับไว้ว่าไม่มีสูตรความกว้างและความสูงโดยตั้งใจ
- *    ของเดิมในไฟล์ออกแบบตรึงความกว้างไว้ที่ 320 ทำให้ข้อความสั้นก็ยังกินกล่องเต็ม
- *
- * ⚠️ max-width ต้องตั้ง 2 ที่ คือที่กล่องและที่ตัวข้อความ
- *    --ntg-tooltip-text-max-width-{size} เป็นค่าอนุพันธ์ของ
- *    ความกว้างสูงสุด ลบ ระยะขอบสองข้าง ซึ่งพบตอนประกอบจริง 2026-10-06
- *    ว่าถ้าตั้งแค่ที่กล่อง ข้อความรองจะล้นออกนอกกล่อง
- *
- * ⚠️ ห้ามจำกัดจำนวนบรรทัด และห้ามตัดข้อความด้วยจุดสามจุด
- *    Atlassian ประกาศว่าการตัดข้อความใน tooltip ไม่รองรับการเข้าถึง
- *    ข้อความยาวให้ตัดบรรทัดลงมา ไม่ใช่หายไป
- *
- * ⚠️ ห้ามใช้ pointer-events none เด็ดขาด
- *    เป็นสาเหตุที่ตลาด 3 เจ้าตกข้อ WCAG 1.4.13 Hoverable
- *    กล่องนี้รับตัวชี้ได้ และมีสะพานพื้นที่ปลอดภัยปิดช่องว่างระหว่างตัวกระตุ้นกับกล่อง
- *
- * ⚠️ สะพานพื้นที่ปลอดภัยเผื่อ 8 ไปทางด้านข้างเท่านั้น ไม่เผื่อไปทางตัวกระตุ้น
- *    ด้านที่หันเข้าหาตัวกระตุ้นปิดช่องว่างพอดีเท่า --ntg-tooltip-offset-{size}
- *    ถ้าเผื่อเกินไปกว่านั้น สะพานจะไปทับตัวกระตุ้นแล้วกดตัวกระตุ้นไม่ได้
- *    ส่วนระยะเผื่อ 8 ของ Spectrum ย้ายไปอยู่แกนขวาง ซึ่งเป็นทิศที่ตัวชี้ไหลออกจริง
- *
- * ⚠️ ซ่อนบนจอสัมผัส เป็นกฎของหน้า 20 ไม่ใช่ทางเลือก
- *    ตลาดฝั่งเว็บ 6 เจ้าเลือกซ่อน ไม่มีเจ้าไหนบนเว็บแปลงเป็นท่ากดค้าง
- *    ชั้น CSS ซ่อนด้วย (hover: none) และชั้น TypeScript ไม่รับ pointerType touch
- *
- * ⚠️ จุดตัด 768 ตรงกับ --ntg-grid-breakpoint-tablet-v
- *    @media อ่าน custom property ไม่ได้ตามข้อกำหนดของ CSS จึงต้องเขียนเลขตรงนี้
- *    ถ้าแก้ token ต้องมาแก้บรรทัดนี้ด้วย เป็นกรณีเดียวกับที่ Toast ทำ
- *
- * ⚠️ ตัวเลขร้อยละในไฟล์นี้ไม่ใช่ค่าของระบบออกแบบ จึงไม่มี token
- *    50 กับ 100 ร้อยละคือการอ้างขนาดของกล่องแม่ตามไวยากรณ์ของ CSS เอง
- *    และตัวเลขใน clip-path คือพิกัดของรูปสามเหลี่ยม ไม่ใช่ระยะ
- *    ทุกระยะจริงในไฟล์นี้อ้าง token ทั้งหมด
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Tooltip/Tooltip.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 20 Tooltips แล้วรัน  npm run figma:layers -- tooltip  และ  npm run css:generate -- tooltip
+ *   spec: tokens/figma-layers/tooltip.json (ดึง 2026-10-26)
  */
-
-/* ═══ กล่องครอบตัวกระตุ้น ไม่มีรูปร่างของตัวเอง ══════════════════ */
 
 /*
- * มีหน้าที่ 2 อย่างเท่านั้น
- *   1 เป็นหลักอ้างอิงตำแหน่งให้กล่องคำใบ้ (position relative)
- *   2 เป็นเขตรับตัวชี้และโฟกัสของทั้งชุด ทั้งตัวกระตุ้นและกล่องคำใบ้อยู่ข้างใน
- *     จึงย้ายตัวชี้จากตัวกระตุ้นเข้าไปในกล่องได้โดยไม่หลุดเขต
+ * Tooltip ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ⚠️ ห้ามตั้งขนาดหรือระยะขอบ ขนาดมาจากตัวกระตุ้นข้างในเท่านั้น
- *    ถ้าตั้ง จะไปดันผังของหน้าที่หยิบไปใช้
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --tt-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/tooltip.json (spec ชั้นจากไฟล์ออกแบบหน้า 20)
+ * แล้วต่อท้ายไฟล์นี้เป็น Tooltip.module.css ห้ามแก้ Tooltip.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นของไฟล์นี้: มีชื่อ token อยู่บ้าง เฉพาะพฤติกรรมที่ไฟล์ออกแบบแสดงไม่ได้
+ *    คือ motion (ระยะเวลาและ easing ตอนโผล่/หาย) ชั้นซ้อน (layer) ระยะเลื่อนตอนโผล่ (slide) และเขตผ่อนผันของตัวชี้ (grace)
+ *    ค่าเหล่านี้ไม่มีชั้นใน Figma ให้ผูก และไม่ใช่ตัวแปรของ component ในไฟล์ออกแบบ ส่วนอื่นทั้งหมดต้องมาจาก --tt-*
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ลูกศรวาดด้วย clip-path จากความกว้างฐาน (--tt-arrow) และความสูง (--tt-arrow-h) ไฟล์ออกแบบใช้ instance ลูกศร 4 ทิศ
+ *   2. ตำแหน่ง (placement) และการจัดชิด (align) เป็นคลาส axisTop ถึง axisRight กับ alignCenter/alignStart/alignEnd ฝั่งเว็บ ไฟล์ออกแบบมีแค่ 4 ทิศกึ่งกลาง
+ *   3. ระยะจากตัวกระตุ้น ความกว้างสูงสุด และความกว้างข้อความ เป็นตัวแปรใน Figma ที่ไม่มีชั้นให้ผูก ตัวสร้างใส่ให้ผ่าน extras
+ *   4. กล่องตั้ง inline-size: max-content เพราะกล่องที่วางแบบ absolute จะย่อตามความกว้างของตัวกระตุ้น ทำให้ข้อความถูกตัดบรรทัดทีละคำเมื่อตัวกระตุ้นแคบ
+ *   5. เขตผ่อนผัน (::before) ขยายพื้นที่จับตัวชี้ระหว่างตัวกระตุ้นกับกล่อง เป็นพฤติกรรมฝั่งเว็บล้วน
  */
+
 .wrapper {
   position: relative;
   display: inline-flex;
@@ -87,25 +39,6 @@
  */
 .box {
   /* ── ขนาด md เป็นค่าเริ่มต้น ─────────────────────────────── */
-  --tooltip-pad: var(--ntg-tooltip-padding-md);
-  --tooltip-stack: var(--ntg-tooltip-stack-md);
-  --tooltip-arrow: var(--ntg-tooltip-arrow-md);
-  --tooltip-arrow-height: var(--ntg-tooltip-arrow-height-md);
-  --tooltip-offset: var(--ntg-tooltip-offset-md);
-  --tooltip-max-width: var(--ntg-tooltip-max-width-md);
-  --tooltip-max-width-mobile: var(--ntg-tooltip-max-width-mobile-md);
-  --tooltip-text-max-width: var(--ntg-tooltip-text-max-width-md);
-  --tooltip-radius: var(--ntg-tooltip-radius-md);
-  --tooltip-title-family: var(--ntg-typography-font-family-label-md);
-  --tooltip-title-size: var(--ntg-typography-font-size-label-md);
-  --tooltip-title-line: var(--ntg-typography-line-height-label-md);
-  --tooltip-title-weight: var(--ntg-typography-font-weight-label-md);
-  --tooltip-title-space: var(--ntg-typography-letter-space-label-md);
-  --tooltip-desc-family: var(--ntg-typography-font-family-body-sm);
-  --tooltip-desc-size: var(--ntg-typography-font-size-body-sm);
-  --tooltip-desc-line: var(--ntg-typography-line-height-body-sm);
-  --tooltip-desc-weight: var(--ntg-typography-font-weight-body-sm);
-  --tooltip-desc-space: var(--ntg-typography-letter-space-body-sm);
 
   /* เวลาและเส้นโค้ง ขาเข้ากับขาออกใช้ชั้นเวลาเดียวกันคือ fast ตามที่ตัดสินไว้ */
   --tooltip-enter-duration: var(--ntg-motion-duration-fast);
@@ -130,7 +63,8 @@
    *    แทนการแก้ไฟล์นี้ วิธีเดียวกับที่ Toast ทำกับ --toast-layer
    */
   z-index: var(--tooltip-layer, var(--ntg-layer-floating));
-  max-inline-size: var(--tooltip-max-width);
+  inline-size: max-content;   /* กล่องกว้างตามข้อความ ไม่ย่อตามตัวกระตุ้นที่แคบ (กล่อง absolute จะยึดความกว้างของตัวกระตุ้นถ้าไม่ตั้ง) */
+  max-inline-size: var(--tt-max-width);
   /* ปิดไว้ตอนยังไม่เปิด แต่ยังอยู่ใน DOM ดูเหตุผลที่ Tooltip.tsx */
   display: none;
 }
@@ -150,15 +84,15 @@
   position: relative;
   box-sizing: border-box;
   /* ห้ามตั้งความกว้างและความสูง ดูคำอธิบายที่หัวไฟล์ */
-  padding: var(--tooltip-pad);
-  border-radius: var(--tooltip-radius);
-  background: var(--ntg-color-background-general-solid);
-  box-shadow: var(--ntg-shadows-bottom-md);
+  padding: var(--tt-pad);
+  border-radius: var(--tt-r-tl, 0) var(--tt-r-tr, 0) var(--tt-r-br, 0) var(--tt-r-bl, 0);
+  background: var(--tt-bg);
+  box-shadow: var(--tt-shadow, 0 0 0 0 transparent);
   /* กล่องรับตัวชี้ได้ ห้ามใส่ pointer-events none ดูคำอธิบายที่หัวไฟล์ */
   pointer-events: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--tooltip-stack);
+  gap: var(--tt-stack);
 }
 
 .box[data-state='open'] .surface {
@@ -202,30 +136,32 @@
 .title,
 .description {
   margin: var(--ntg-size-space-none);
-  color: var(--ntg-color-text-general-const-white);
+  color: var(--tt-fg);
+}
+.description { color: var(--tt-desc-fg, var(--tt-fg));
   /*
    * ความกว้างสูงสุดของตัวข้อความ ต้องตั้งที่นี่ด้วย ไม่ใช่ตั้งแค่ที่กล่อง
    * ดูคำอธิบายที่หัวไฟล์
    */
-  max-inline-size: var(--tooltip-text-max-width);
+  max-inline-size: var(--tt-text-max-width);
   /* ข้อความยาวตัดบรรทัดลงมา ห้ามจำกัดบรรทัดและห้ามตัดด้วยจุดสามจุด */
   overflow-wrap: anywhere;
 }
 
 .title {
-  font-family: var(--tooltip-title-family);
-  font-size: var(--tooltip-title-size);
-  line-height: var(--tooltip-title-line);
-  font-weight: var(--tooltip-title-weight);
-  letter-spacing: var(--tooltip-title-space);
+  font-family: var(--tt-title-family);
+  font-size: var(--tt-title-size);
+  line-height: var(--tt-title-line);
+  font-weight: var(--tt-title-weight);
+  letter-spacing: var(--tt-title-space);
 }
 
 .description {
-  font-family: var(--tooltip-desc-family);
-  font-size: var(--tooltip-desc-size);
-  line-height: var(--tooltip-desc-line);
-  font-weight: var(--tooltip-desc-weight);
-  letter-spacing: var(--tooltip-desc-space);
+  font-family: var(--tt-desc-family);
+  font-size: var(--tt-desc-size);
+  line-height: var(--tt-desc-line);
+  font-weight: var(--tt-desc-weight);
+  letter-spacing: var(--tt-desc-space);
 }
 
 /* ═══ ลูกศร เปิดปิดได้ แยกจากแกนตำแหน่ง ══════════════════════════ */
@@ -237,29 +173,29 @@
  */
 .arrow {
   position: absolute;
-  background: var(--ntg-color-background-general-solid);
+  background: var(--tt-arrow-bg, var(--tt-bg));
 }
 
 /* ═══ แกนตำแหน่ง 4 ค่า ชื่อคือที่ที่กล่องไปอยู่ ไม่ใช่ทิศที่ลูกศรชี้ ══ */
 
 .axisTop {
-  inset-block-end: calc(100% + var(--tooltip-offset));
+  inset-block-end: calc(100% + var(--tt-offset));
   /* กล่องอยู่เหนือตัวกระตุ้น จึงเลื่อนขึ้นจากด้านล่างตอนโผล่ */
   --tooltip-slide-y: var(--ntg-size-space-s1-xs);
 }
 
 .axisBottom {
-  inset-block-start: calc(100% + var(--tooltip-offset));
+  inset-block-start: calc(100% + var(--tt-offset));
   --tooltip-slide-y: calc(-1 * var(--ntg-size-space-s1-xs));
 }
 
 .axisLeft {
-  inset-inline-end: calc(100% + var(--tooltip-offset));
+  inset-inline-end: calc(100% + var(--tt-offset));
   --tooltip-slide-x: var(--ntg-size-space-s1-xs);
 }
 
 .axisRight {
-  inset-inline-start: calc(100% + var(--tooltip-offset));
+  inset-inline-start: calc(100% + var(--tt-offset));
   --tooltip-slide-x: calc(-1 * var(--ntg-size-space-s1-xs));
 }
 
@@ -303,29 +239,29 @@
 
 .axisTop .arrow {
   inset-block-start: 100%;
-  inline-size: var(--tooltip-arrow);
-  block-size: var(--tooltip-arrow-height);
+  inline-size: var(--tt-arrow);
+  block-size: var(--tt-arrow-h);
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
 }
 
 .axisBottom .arrow {
   inset-block-end: 100%;
-  inline-size: var(--tooltip-arrow);
-  block-size: var(--tooltip-arrow-height);
+  inline-size: var(--tt-arrow);
+  block-size: var(--tt-arrow-h);
   clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
 }
 
 .axisLeft .arrow {
   inset-inline-start: 100%;
-  inline-size: var(--tooltip-arrow-height);
-  block-size: var(--tooltip-arrow);
+  inline-size: var(--tt-arrow-h);
+  block-size: var(--tt-arrow);
   clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
 }
 
 .axisRight .arrow {
   inset-inline-end: 100%;
-  inline-size: var(--tooltip-arrow-height);
-  block-size: var(--tooltip-arrow);
+  inline-size: var(--tt-arrow-h);
+  block-size: var(--tt-arrow);
   clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
 }
 
@@ -342,12 +278,12 @@
 
 .axisTop.alignStart .arrow,
 .axisBottom.alignStart .arrow {
-  inset-inline-start: var(--tooltip-radius);
+  inset-inline-start: var(--tt-r-tl);
 }
 
 .axisTop.alignEnd .arrow,
 .axisBottom.alignEnd .arrow {
-  inset-inline-end: var(--tooltip-radius);
+  inset-inline-end: var(--tt-r-tl);
 }
 
 .axisLeft.alignCenter .arrow,
@@ -358,12 +294,12 @@
 
 .axisLeft.alignStart .arrow,
 .axisRight.alignStart .arrow {
-  inset-block-start: var(--tooltip-radius);
+  inset-block-start: var(--tt-r-tl);
 }
 
 .axisLeft.alignEnd .arrow,
 .axisRight.alignEnd .arrow {
-  inset-block-end: var(--tooltip-radius);
+  inset-block-end: var(--tt-r-tl);
 }
 
 /* ═══ สะพานพื้นที่ปลอดภัย ปิดช่องว่างระหว่างตัวกระตุ้นกับกล่อง ═══ */
@@ -383,200 +319,42 @@
 
 .axisTop .surface::before {
   inset-block-start: 100%;
-  block-size: var(--tooltip-offset);
+  block-size: var(--tt-offset);
   inset-inline: calc(-1 * var(--tooltip-grace));
 }
 
 .axisBottom .surface::before {
   inset-block-end: 100%;
-  block-size: var(--tooltip-offset);
+  block-size: var(--tt-offset);
   inset-inline: calc(-1 * var(--tooltip-grace));
 }
 
 .axisLeft .surface::before {
   inset-inline-start: 100%;
-  inline-size: var(--tooltip-offset);
+  inline-size: var(--tt-offset);
   inset-block: calc(-1 * var(--tooltip-grace));
 }
 
 .axisRight .surface::before {
   inset-inline-end: 100%;
-  inline-size: var(--tooltip-offset);
+  inline-size: var(--tt-offset);
   inset-block: calc(-1 * var(--tooltip-grace));
 }
 
-/* ═══ ขนาด 5 ขั้น ═══════════════════════════════════════════════ */
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --tt-title-family: var(--ntg-typography-font-family-label-xs); --tt-title-size: var(--ntg-typography-font-size-label-xs); --tt-title-line: var(--ntg-typography-line-height-label-xs); --tt-title-weight: var(--ntg-typography-font-weight-label-xs); --tt-title-space: var(--ntg-typography-letter-space-label-xs); --tt-desc-family: var(--ntg-typography-font-family-credit); --tt-desc-size: var(--ntg-typography-font-size-credit); --tt-desc-line: var(--ntg-typography-line-height-credit); --tt-desc-weight: var(--ntg-typography-font-weight-credit); --tt-desc-space: var(--ntg-typography-letter-space-credit); }
+.sm { --tt-title-family: var(--ntg-typography-font-family-label-sm); --tt-title-size: var(--ntg-typography-font-size-label-sm); --tt-title-line: var(--ntg-typography-line-height-label-sm); --tt-title-weight: var(--ntg-typography-font-weight-label-sm); --tt-title-space: var(--ntg-typography-letter-space-label-sm); --tt-desc-family: var(--ntg-typography-font-family-body-xs); --tt-desc-size: var(--ntg-typography-font-size-body-xs); --tt-desc-line: var(--ntg-typography-line-height-body-xs); --tt-desc-weight: var(--ntg-typography-font-weight-body-xs); --tt-desc-space: var(--ntg-typography-letter-space-body-xs); }
+.md { --tt-title-family: var(--ntg-typography-font-family-label-md); --tt-title-size: var(--ntg-typography-font-size-label-md); --tt-title-line: var(--ntg-typography-line-height-label-md); --tt-title-weight: var(--ntg-typography-font-weight-label-md); --tt-title-space: var(--ntg-typography-letter-space-label-md); --tt-desc-family: var(--ntg-typography-font-family-body-sm); --tt-desc-size: var(--ntg-typography-font-size-body-sm); --tt-desc-line: var(--ntg-typography-line-height-body-sm); --tt-desc-weight: var(--ntg-typography-font-weight-body-sm); --tt-desc-space: var(--ntg-typography-letter-space-body-sm); }
+.lg { --tt-title-family: var(--ntg-typography-font-family-label-lg); --tt-title-size: var(--ntg-typography-font-size-label-lg); --tt-title-line: var(--ntg-typography-line-height-label-lg); --tt-title-weight: var(--ntg-typography-font-weight-label-lg); --tt-title-space: var(--ntg-typography-letter-space-label-lg); --tt-desc-family: var(--ntg-typography-font-family-body-md); --tt-desc-size: var(--ntg-typography-font-size-body-md); --tt-desc-line: var(--ntg-typography-line-height-body-md); --tt-desc-weight: var(--ntg-typography-font-weight-body-md); --tt-desc-space: var(--ntg-typography-letter-space-body-md); }
+.xl { --tt-title-family: var(--ntg-typography-font-family-label-xl); --tt-title-size: var(--ntg-typography-font-size-label-xl); --tt-title-line: var(--ntg-typography-line-height-label-xl); --tt-title-weight: var(--ntg-typography-font-weight-label-xl); --tt-title-space: var(--ntg-typography-letter-space-label-xl); --tt-desc-family: var(--ntg-typography-font-family-body-lg); --tt-desc-size: var(--ntg-typography-font-size-body-lg); --tt-desc-line: var(--ntg-typography-line-height-body-lg); --tt-desc-weight: var(--ntg-typography-font-weight-body-lg); --tt-desc-space: var(--ntg-typography-letter-space-body-lg); }
 
-/*
- * ⚠️ ขนาด md ของตัวอักษรไม่ตรงกับตลาด โดยจำเป็น
- *    ตลาดใช้ 12 ซึ่งในระบบเราคือ label/sm จึงตรงกับขั้น sm ไม่ใช่ md
- *    ถ้าต้องการความหนาแน่นเท่าที่ตลาดใช้ ให้เลือก sm
- *    เหตุผลเต็มอยู่ที่หัวไฟล์ tokens/scale/tooltip.mjs
- */
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.box.xs { --tt-pad: var(--ntg-tooltip-padding-xs); --tt-stack: var(--ntg-tooltip-stack-xs); --tt-r-tl: var(--ntg-tooltip-radius-xs); --tt-r-tr: var(--ntg-tooltip-radius-xs); --tt-r-br: var(--ntg-tooltip-radius-xs); --tt-r-bl: var(--ntg-tooltip-radius-xs); --tt-arrow: var(--ntg-tooltip-arrow-xs); --tt-arrow-h: var(--ntg-tooltip-arrow-height-xs); --tt-offset: var(--ntg-tooltip-offset-xs); --tt-max-width: var(--ntg-tooltip-max-width-xs); --tt-max-width-mobile: var(--ntg-tooltip-max-width-mobile-xs); --tt-text-max-width: var(--ntg-tooltip-text-max-width-xs); }
+.box.sm { --tt-pad: var(--ntg-tooltip-padding-sm); --tt-stack: var(--ntg-tooltip-stack-sm); --tt-r-tl: var(--ntg-tooltip-radius-sm); --tt-r-tr: var(--ntg-tooltip-radius-sm); --tt-r-br: var(--ntg-tooltip-radius-sm); --tt-r-bl: var(--ntg-tooltip-radius-sm); --tt-arrow: var(--ntg-tooltip-arrow-sm); --tt-arrow-h: var(--ntg-tooltip-arrow-height-sm); --tt-offset: var(--ntg-tooltip-offset-sm); --tt-max-width: var(--ntg-tooltip-max-width-sm); --tt-max-width-mobile: var(--ntg-tooltip-max-width-mobile-sm); --tt-text-max-width: var(--ntg-tooltip-text-max-width-sm); }
+.box.md { --tt-pad: var(--ntg-tooltip-padding-md); --tt-stack: var(--ntg-tooltip-stack-md); --tt-r-tl: var(--ntg-tooltip-radius-md); --tt-r-tr: var(--ntg-tooltip-radius-md); --tt-r-br: var(--ntg-tooltip-radius-md); --tt-r-bl: var(--ntg-tooltip-radius-md); --tt-arrow: var(--ntg-tooltip-arrow-md); --tt-arrow-h: var(--ntg-tooltip-arrow-height-md); --tt-offset: var(--ntg-tooltip-offset-md); --tt-max-width: var(--ntg-tooltip-max-width-md); --tt-max-width-mobile: var(--ntg-tooltip-max-width-mobile-md); --tt-text-max-width: var(--ntg-tooltip-text-max-width-md); }
+.box.lg { --tt-pad: var(--ntg-tooltip-padding-lg); --tt-stack: var(--ntg-tooltip-stack-lg); --tt-r-tl: var(--ntg-tooltip-radius-lg); --tt-r-tr: var(--ntg-tooltip-radius-lg); --tt-r-br: var(--ntg-tooltip-radius-lg); --tt-r-bl: var(--ntg-tooltip-radius-lg); --tt-arrow: var(--ntg-tooltip-arrow-lg); --tt-arrow-h: var(--ntg-tooltip-arrow-height-lg); --tt-offset: var(--ntg-tooltip-offset-lg); --tt-max-width: var(--ntg-tooltip-max-width-lg); --tt-max-width-mobile: var(--ntg-tooltip-max-width-mobile-lg); --tt-text-max-width: var(--ntg-tooltip-text-max-width-lg); }
+.box.xl { --tt-pad: var(--ntg-tooltip-padding-xl); --tt-stack: var(--ntg-tooltip-stack-xl); --tt-r-tl: var(--ntg-tooltip-radius-xl); --tt-r-tr: var(--ntg-tooltip-radius-xl); --tt-r-br: var(--ntg-tooltip-radius-xl); --tt-r-bl: var(--ntg-tooltip-radius-xl); --tt-arrow: var(--ntg-tooltip-arrow-xl); --tt-arrow-h: var(--ntg-tooltip-arrow-height-xl); --tt-offset: var(--ntg-tooltip-offset-xl); --tt-max-width: var(--ntg-tooltip-max-width-xl); --tt-max-width-mobile: var(--ntg-tooltip-max-width-mobile-xl); --tt-text-max-width: var(--ntg-tooltip-text-max-width-xl); }
 
-.xs {
-  --tooltip-pad: var(--ntg-tooltip-padding-xs);
-  --tooltip-stack: var(--ntg-tooltip-stack-xs);
-  --tooltip-arrow: var(--ntg-tooltip-arrow-xs);
-  --tooltip-arrow-height: var(--ntg-tooltip-arrow-height-xs);
-  --tooltip-offset: var(--ntg-tooltip-offset-xs);
-  --tooltip-max-width: var(--ntg-tooltip-max-width-xs);
-  --tooltip-max-width-mobile: var(--ntg-tooltip-max-width-mobile-xs);
-  --tooltip-text-max-width: var(--ntg-tooltip-text-max-width-xs);
-  --tooltip-radius: var(--ntg-tooltip-radius-xs);
-  --tooltip-title-family: var(--ntg-typography-font-family-label-xs);
-  --tooltip-title-size: var(--ntg-typography-font-size-label-xs);
-  --tooltip-title-line: var(--ntg-typography-line-height-label-xs);
-  --tooltip-title-weight: var(--ntg-typography-font-weight-label-xs);
-  --tooltip-title-space: var(--ntg-typography-letter-space-label-xs);
-  /*
-   * ขั้น xs ใช้ meta/credit เป็นข้อความรอง เพราะเป็น preset น้ำหนักปกติตัวเดียวที่ขนาด 10
-   * ชื่อ token ของหมวด meta แบนชั้นหมวดทิ้งไปแล้ว จึงเป็น credit ไม่ใช่ meta-credit
-   */
-  --tooltip-desc-family: var(--ntg-typography-font-family-credit);
-  --tooltip-desc-size: var(--ntg-typography-font-size-credit);
-  --tooltip-desc-line: var(--ntg-typography-line-height-credit);
-  --tooltip-desc-weight: var(--ntg-typography-font-weight-credit);
-  --tooltip-desc-space: var(--ntg-typography-letter-space-credit);
-}
-
-.sm {
-  --tooltip-pad: var(--ntg-tooltip-padding-sm);
-  --tooltip-stack: var(--ntg-tooltip-stack-sm);
-  --tooltip-arrow: var(--ntg-tooltip-arrow-sm);
-  --tooltip-arrow-height: var(--ntg-tooltip-arrow-height-sm);
-  --tooltip-offset: var(--ntg-tooltip-offset-sm);
-  --tooltip-max-width: var(--ntg-tooltip-max-width-sm);
-  --tooltip-max-width-mobile: var(--ntg-tooltip-max-width-mobile-sm);
-  --tooltip-text-max-width: var(--ntg-tooltip-text-max-width-sm);
-  --tooltip-radius: var(--ntg-tooltip-radius-sm);
-  --tooltip-title-family: var(--ntg-typography-font-family-label-sm);
-  --tooltip-title-size: var(--ntg-typography-font-size-label-sm);
-  --tooltip-title-line: var(--ntg-typography-line-height-label-sm);
-  --tooltip-title-weight: var(--ntg-typography-font-weight-label-sm);
-  --tooltip-title-space: var(--ntg-typography-letter-space-label-sm);
-  --tooltip-desc-family: var(--ntg-typography-font-family-body-xs);
-  --tooltip-desc-size: var(--ntg-typography-font-size-body-xs);
-  --tooltip-desc-line: var(--ntg-typography-line-height-body-xs);
-  --tooltip-desc-weight: var(--ntg-typography-font-weight-body-xs);
-  --tooltip-desc-space: var(--ntg-typography-letter-space-body-xs);
-}
-
-.md {
-  --tooltip-pad: var(--ntg-tooltip-padding-md);
-  --tooltip-stack: var(--ntg-tooltip-stack-md);
-  --tooltip-arrow: var(--ntg-tooltip-arrow-md);
-  --tooltip-arrow-height: var(--ntg-tooltip-arrow-height-md);
-  --tooltip-offset: var(--ntg-tooltip-offset-md);
-  --tooltip-max-width: var(--ntg-tooltip-max-width-md);
-  --tooltip-max-width-mobile: var(--ntg-tooltip-max-width-mobile-md);
-  --tooltip-text-max-width: var(--ntg-tooltip-text-max-width-md);
-  --tooltip-radius: var(--ntg-tooltip-radius-md);
-  --tooltip-title-family: var(--ntg-typography-font-family-label-md);
-  --tooltip-title-size: var(--ntg-typography-font-size-label-md);
-  --tooltip-title-line: var(--ntg-typography-line-height-label-md);
-  --tooltip-title-weight: var(--ntg-typography-font-weight-label-md);
-  --tooltip-title-space: var(--ntg-typography-letter-space-label-md);
-  --tooltip-desc-family: var(--ntg-typography-font-family-body-sm);
-  --tooltip-desc-size: var(--ntg-typography-font-size-body-sm);
-  --tooltip-desc-line: var(--ntg-typography-line-height-body-sm);
-  --tooltip-desc-weight: var(--ntg-typography-font-weight-body-sm);
-  --tooltip-desc-space: var(--ntg-typography-letter-space-body-sm);
-}
-
-.lg {
-  --tooltip-pad: var(--ntg-tooltip-padding-lg);
-  --tooltip-stack: var(--ntg-tooltip-stack-lg);
-  --tooltip-arrow: var(--ntg-tooltip-arrow-lg);
-  --tooltip-arrow-height: var(--ntg-tooltip-arrow-height-lg);
-  --tooltip-offset: var(--ntg-tooltip-offset-lg);
-  --tooltip-max-width: var(--ntg-tooltip-max-width-lg);
-  --tooltip-max-width-mobile: var(--ntg-tooltip-max-width-mobile-lg);
-  --tooltip-text-max-width: var(--ntg-tooltip-text-max-width-lg);
-  --tooltip-radius: var(--ntg-tooltip-radius-lg);
-  --tooltip-title-family: var(--ntg-typography-font-family-label-lg);
-  --tooltip-title-size: var(--ntg-typography-font-size-label-lg);
-  --tooltip-title-line: var(--ntg-typography-line-height-label-lg);
-  --tooltip-title-weight: var(--ntg-typography-font-weight-label-lg);
-  --tooltip-title-space: var(--ntg-typography-letter-space-label-lg);
-  --tooltip-desc-family: var(--ntg-typography-font-family-body-md);
-  --tooltip-desc-size: var(--ntg-typography-font-size-body-md);
-  --tooltip-desc-line: var(--ntg-typography-line-height-body-md);
-  --tooltip-desc-weight: var(--ntg-typography-font-weight-body-md);
-  --tooltip-desc-space: var(--ntg-typography-letter-space-body-md);
-}
-
-.xl {
-  --tooltip-pad: var(--ntg-tooltip-padding-xl);
-  --tooltip-stack: var(--ntg-tooltip-stack-xl);
-  --tooltip-arrow: var(--ntg-tooltip-arrow-xl);
-  --tooltip-arrow-height: var(--ntg-tooltip-arrow-height-xl);
-  --tooltip-offset: var(--ntg-tooltip-offset-xl);
-  --tooltip-max-width: var(--ntg-tooltip-max-width-xl);
-  --tooltip-max-width-mobile: var(--ntg-tooltip-max-width-mobile-xl);
-  --tooltip-text-max-width: var(--ntg-tooltip-text-max-width-xl);
-  --tooltip-radius: var(--ntg-tooltip-radius-xl);
-  --tooltip-title-family: var(--ntg-typography-font-family-label-xl);
-  --tooltip-title-size: var(--ntg-typography-font-size-label-xl);
-  --tooltip-title-line: var(--ntg-typography-line-height-label-xl);
-  --tooltip-title-weight: var(--ntg-typography-font-weight-label-xl);
-  --tooltip-title-space: var(--ntg-typography-letter-space-label-xl);
-  --tooltip-desc-family: var(--ntg-typography-font-family-body-lg);
-  --tooltip-desc-size: var(--ntg-typography-font-size-body-lg);
-  --tooltip-desc-line: var(--ntg-typography-line-height-body-lg);
-  --tooltip-desc-weight: var(--ntg-typography-font-weight-body-lg);
-  --tooltip-desc-space: var(--ntg-typography-letter-space-body-lg);
-}
-
-/* ═══ มือถือ ความกว้างสูงสุดแคบลง ═══════════════════════════════ */
-
-/*
- * ⚠️ จุดตัด 768 ตรงกับ --ntg-grid-breakpoint-tablet-v ดูคำอธิบายที่หัวไฟล์
- */
-@media (max-width: 767.98px) {
-  .box {
-    max-inline-size: var(--tooltip-max-width-mobile);
-  }
-
-  /*
-   * ความกว้างสูงสุดของตัวข้อความบนมือถือไม่มี token ของตัวเอง
-   * tokens/scale/tooltip.mjs คิด text-max-width จากความกว้างฝั่งเดสก์ท็อปเท่านั้น
-   * ถ้าคงค่าเดสก์ท็อปไว้ ข้อความจะกว้างเกินกล่องที่แคบลงแล้ว
-   * จึงปล่อยให้ตัวข้อความเต็มพื้นที่ที่กล่องเหลือให้ ซึ่งเท่ากับ
-   * ความกว้างสูงสุดบนมือถือ ลบ ระยะขอบสองข้าง อยู่แล้วตามกล่องเนื้อหา
-   */
-  .title,
-  .description {
-    max-inline-size: 100%;
-  }
-}
-
-/* ═══ จอสัมผัส ซ่อนทั้งหมด ═══════════════════════════════════════ */
-
-/*
- * ⚠️ ต้องอยู่หลังกฎที่เปิดการมองเห็น เพราะความเฉพาะเจาะจงเท่ากัน
- *    ตัวที่อยู่หลังเป็นผู้ชนะ จึงไม่ต้องใช้ important
- *
- * (hover: none) ครอบอุปกรณ์ที่ตัวชี้หลักชี้ค้างไม่ได้ คือจอสัมผัส
- * (pointer: coarse) ครอบอุปกรณ์ที่ตัวชี้หยาบ เผื่ออุปกรณ์ที่รายงานค่าแรกไม่ตรง
- */
-@media (hover: none), (pointer: coarse) {
-  .box[data-state='open'],
-  .box[data-state='exiting'] {
-    display: none;
-  }
-}
-
-/* ═══ ผู้ใช้ขอให้ลดการเคลื่อนไหว ═══════════════════════════════════ */
-
-/*
- * ปิดภาพทั้งขาเข้าและขาออก ส่วนการหน่วงเวลาเปิดปิดยังอยู่
- * เพราะการหน่วงไม่ใช่การเคลื่อนไหว แต่เป็นจังหวะที่กันกล่องโผล่เรี่ยราด
- * ฝั่ง TypeScript ตัดเวลารอภาพขาออกเป็นศูนย์ด้วย ไม่ใช่แค่หยุดภาพ
- */
-@media (prefers-reduced-motion: reduce) {
-  .box[data-state='open'] .surface,
-  .box[data-state='exiting'] .surface {
-    animation: none;
-  }
-}
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.box { --tt-bg: var(--ntg-color-background-general-solid); --tt-shadow: var(--ntg-shadows-bottom-md); --tt-fg: var(--ntg-color-text-general-const-white); --tt-arrow-bg: var(--ntg-color-background-general-solid); --tt-desc-fg: var(--ntg-color-text-general-const-white); }
