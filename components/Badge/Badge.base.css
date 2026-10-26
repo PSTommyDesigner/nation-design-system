@@ -1,0 +1,45 @@
+/*
+ * Badge ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ของเบราว์เซอร์เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว
+ * ค่าทุกค่ามาจาก custom property --badge-* ซึ่ง scripts/generate-component-css.mjs สร้างให้จาก
+ * tokens/figma-layers/badge.json (spec ชั้นที่ดึงจากไฟล์ออกแบบหน้า 22) แล้วต่อท้ายไฟล์นี้เป็น Badge.module.css
+ * ห้ามแก้ Badge.module.css ตรง ๆ (หลักการเดียวกับ Tag ดู components/Tag/Tag.base.css)
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ป้ายเป็นของนิ่ง ไม่มี hover focus disabled โดยตั้งใจ (ไฟล์ออกแบบไม่มีแกน state) ของกดได้ให้ใช้ Tag
+ *   2. เส้นขอบใช้ box-shadow แบบ inset เพราะไฟล์ออกแบบใช้ stroke แบบ INSIDE ซึ่งไม่กินพื้นที่ ป้ายไม่มีลูกชนขอบจึงไม่ต้องใช้ชั้นซ้อนทับแบบ Tag
+ *   3. ระดับ quaternary เป็นของเก่าในโค้ด (ข้อความล้วน) ไฟล์ออกแบบแยกไปเป็นชุด link-badge แล้ว ตัวสร้างจึงให้มันใช้สีของ link-badge
+ */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+  background: var(--badge-bg, transparent);
+  color: var(--badge-fg, inherit);
+  padding: var(--badge-pt, 0) var(--badge-pr, 0) var(--badge-pb, 0) var(--badge-pl, 0);
+  gap: var(--badge-gap, 0);
+  border-radius: var(--badge-r-tl, 0) var(--badge-r-tr, 0) var(--badge-r-br, 0) var(--badge-r-bl, 0);
+  box-shadow: inset 0 0 0 var(--badge-border-w, 1px) var(--badge-border, transparent), var(--badge-shadow, 0 0 0 0 transparent);
+  font-family: var(--badge-font-family);
+  font-size: var(--badge-font-size);
+  line-height: var(--badge-line-height);
+  font-weight: var(--badge-font-weight);
+  letter-spacing: var(--badge-letter-space);
+}
+
+.title {
+  display: inline-block;
+  padding: var(--badge-title-pt, 0) var(--badge-title-pr, 0) var(--badge-title-pb, 0) var(--badge-title-pl, 0);
+}
+.icon {
+  display: inline-flex;
+  flex: none;
+  width: var(--badge-icon);
+  height: var(--badge-icon);
+  color: var(--badge-icon-color, inherit);
+}
+.icon > * { width: 100%; height: 100%; }

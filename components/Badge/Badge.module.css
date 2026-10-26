@@ -1,195 +1,247 @@
-/**
- * Badge styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/Badge/Badge.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 22 Badge แล้วรัน  npm run figma:layers -- badge  และ  npm run css:generate -- badge
+ *   spec: tokens/figma-layers/badge.json (ดึง 2026-10-26)
+ */
+
+/*
+ * Badge ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 22 Badge ได้
+ * ไฟล์นี้คือ "วิธีวาด" ของเบราว์เซอร์เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว
+ * ค่าทุกค่ามาจาก custom property --badge-* ซึ่ง scripts/generate-component-css.mjs สร้างให้จาก
+ * tokens/figma-layers/badge.json (spec ชั้นที่ดึงจากไฟล์ออกแบบหน้า 22) แล้วต่อท้ายไฟล์นี้เป็น Badge.module.css
+ * ห้ามแก้ Badge.module.css ตรง ๆ (หลักการเดียวกับ Tag ดู components/Tag/Tag.base.css)
  *
- * โครง token ที่ใช้
- *   ขนาด    --ntg-{ทรง}-badge-size-{size} · padding-{top|bottom|left|right}-{size} · title-padding-{left|right}-{size}
- *           · icon-{size} · icon-padding-{size} · gap-{size}
- *   มุมโค้ง  --ntg-semi-rounded-badge-radius-{size}-{corner} · --ntg-pill-badge-radius-full · --ntg-circular-badge-radius-full
- *   สี      --ntg-color-utility-u-{family}-{50|300|400|600}
- *   ตัวอักษร --ntg-typography-*-label-{preset} ตาม text preset ของแต่ละขนาด
- *
- * ⚠️ ป้ายเป็นของนิ่ง ไม่มี hover focus หรือ disabled โดยตั้งใจ
- *    ถ้าที่ไหนต้องการของกดได้ ให้ใช้ Tag ไม่ใช่ Badge
- *
- * ⚠️ ขอบใช้ box-shadow แบบ inset ไม่ใช่ border (แก้ 2026-10-19 ตามไฟล์ออกแบบ)
- *    ของเดิมใช้ `border: 1px solid` ซึ่งถึงจะโปร่งใสก็ยังกินพื้นที่ในกล่องแบบ border-box
- *    ผลคือกล่องสูงกว่าไฟล์ออกแบบ 2px ทุกขนาด เพราะ border(2) + padding(2) + ความสูงบรรทัด
- *    รวมกันเกิน min-height ที่ตั้งไว้ กล่องเลยขยายตามเนื้อหาแทนที่จะหยุดที่ min-height
- *    ไฟล์ออกแบบใช้เส้นขอบแบบ INSIDE ซึ่งไม่กินพื้นที่กรอบ box-shadow แบบ inset จึงตรงกว่า border
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ป้ายเป็นของนิ่ง ไม่มี hover focus disabled โดยตั้งใจ (ไฟล์ออกแบบไม่มีแกน state) ของกดได้ให้ใช้ Tag
+ *   2. เส้นขอบใช้ box-shadow แบบ inset เพราะไฟล์ออกแบบใช้ stroke แบบ INSIDE ซึ่งไม่กินพื้นที่ ป้ายไม่มีลูกชนขอบจึงไม่ต้องใช้ชั้นซ้อนทับแบบ Tag
+ *   3. ระดับ quaternary เป็นของเก่าในโค้ด (ข้อความล้วน) ไฟล์ออกแบบแยกไปเป็นชุด link-badge แล้ว ตัวสร้างจึงให้มันใช้สีของ link-badge
  */
 
 .root {
-  --badge-bg: transparent;
-  --badge-fg: inherit;
-  --badge-border: transparent;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  font-family: var(--ntg-typography-font-family-primary);
   white-space: nowrap;
-  background: var(--badge-bg);
-  color: var(--badge-fg);
-  box-shadow: inset 0 0 0 1px var(--badge-border);
+  background: var(--badge-bg, transparent);
+  color: var(--badge-fg, inherit);
+  padding: var(--badge-pt, 0) var(--badge-pr, 0) var(--badge-pb, 0) var(--badge-pl, 0);
+  gap: var(--badge-gap, 0);
+  border-radius: var(--badge-r-tl, 0) var(--badge-r-tr, 0) var(--badge-r-br, 0) var(--badge-r-bl, 0);
+  box-shadow: inset 0 0 0 var(--badge-border-w, 1px) var(--badge-border, transparent), var(--badge-shadow, 0 0 0 0 transparent);
+  font-family: var(--badge-font-family);
+  font-size: var(--badge-font-size);
+  line-height: var(--badge-line-height);
+  font-weight: var(--badge-font-weight);
+  letter-spacing: var(--badge-letter-space);
 }
 
 .title {
   display: inline-block;
+  padding: var(--badge-title-pt, 0) var(--badge-title-pr, 0) var(--badge-title-pb, 0) var(--badge-title-pl, 0);
 }
-
 .icon {
   display: inline-flex;
   flex: none;
+  width: var(--badge-icon);
+  height: var(--badge-icon);
+  color: var(--badge-icon-color, inherit);
 }
+.icon > * { width: 100%; height: 100%; }
 
-/* ── ขนาด ────────────────────────────────────────────────── */
-.xs {
-  min-height: var(--ntg-semi-rounded-badge-size-xs);
-  padding: var(--ntg-semi-rounded-badge-padding-top-xs) var(--ntg-semi-rounded-badge-padding-right-xs)
-           var(--ntg-semi-rounded-badge-padding-bottom-xs) var(--ntg-semi-rounded-badge-padding-left-xs);
-  gap: var(--ntg-semi-rounded-badge-gap-xs);
-  font-size: var(--ntg-typography-font-size-label-xs);
-  line-height: var(--ntg-typography-line-height-label-xs);
-  font-weight: var(--ntg-typography-font-weight-label-xs);
-  letter-spacing: var(--ntg-typography-letter-space-label-xs);
-}
-.xs .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-xs) var(--ntg-semi-rounded-badge-title-padding-right-xs); }
-.xs .icon { width: var(--ntg-semi-rounded-badge-icon-xs); height: var(--ntg-semi-rounded-badge-icon-xs); }
-.xs.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-xs); }
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --badge-font-family: var(--ntg-typography-font-family-label-xs); --badge-font-size: var(--ntg-typography-font-size-label-xs); --badge-line-height: var(--ntg-typography-line-height-label-xs); --badge-font-weight: var(--ntg-typography-font-weight-label-xs); --badge-letter-space: var(--ntg-typography-letter-space-label-xs); }
+.sm { --badge-font-family: var(--ntg-typography-font-family-label-xs); --badge-font-size: var(--ntg-typography-font-size-label-xs); --badge-line-height: var(--ntg-typography-line-height-label-xs); --badge-font-weight: var(--ntg-typography-font-weight-label-xs); --badge-letter-space: var(--ntg-typography-letter-space-label-xs); }
+.md { --badge-font-family: var(--ntg-typography-font-family-label-sm); --badge-font-size: var(--ntg-typography-font-size-label-sm); --badge-line-height: var(--ntg-typography-line-height-label-sm); --badge-font-weight: var(--ntg-typography-font-weight-label-sm); --badge-letter-space: var(--ntg-typography-letter-space-label-sm); }
+.lg { --badge-font-family: var(--ntg-typography-font-family-label-md); --badge-font-size: var(--ntg-typography-font-size-label-md); --badge-line-height: var(--ntg-typography-line-height-label-md); --badge-font-weight: var(--ntg-typography-font-weight-label-md); --badge-letter-space: var(--ntg-typography-letter-space-label-md); }
+.xl { --badge-font-family: var(--ntg-typography-font-family-label-lg); --badge-font-size: var(--ntg-typography-font-size-label-lg); --badge-line-height: var(--ntg-typography-line-height-label-lg); --badge-font-weight: var(--ntg-typography-font-weight-label-lg); --badge-letter-space: var(--ntg-typography-letter-space-label-lg); }
 
-.sm {
-  min-height: var(--ntg-semi-rounded-badge-size-sm);
-  padding: var(--ntg-semi-rounded-badge-padding-top-sm) var(--ntg-semi-rounded-badge-padding-right-sm)
-           var(--ntg-semi-rounded-badge-padding-bottom-sm) var(--ntg-semi-rounded-badge-padding-left-sm);
-  gap: var(--ntg-semi-rounded-badge-gap-sm);
-  font-size: var(--ntg-typography-font-size-label-xs);
-  line-height: var(--ntg-typography-line-height-label-xs);
-  font-weight: var(--ntg-typography-font-weight-label-xs);
-  letter-spacing: var(--ntg-typography-letter-space-label-xs);
-}
-.sm .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-sm) var(--ntg-semi-rounded-badge-title-padding-right-sm); }
-.sm .icon { width: var(--ntg-semi-rounded-badge-icon-sm); height: var(--ntg-semi-rounded-badge-icon-sm); }
-.sm.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-sm); }
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.semiRounded:not(.iconOnly).xs { --badge-pt: var(--ntg-semi-rounded-badge-padding-top-xs); --badge-pr: var(--ntg-semi-rounded-badge-padding-right-xs); --badge-pb: var(--ntg-semi-rounded-badge-padding-bottom-xs); --badge-pl: var(--ntg-semi-rounded-badge-padding-left-xs); --badge-gap: var(--ntg-semi-rounded-badge-gap-xs); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-xs-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-xs-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-xs-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-xs-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-semi-rounded-badge-title-padding-right-xs); --badge-title-pb: 0; --badge-title-pl: var(--ntg-semi-rounded-badge-title-padding-left-xs); --badge-icon: var(--ntg-semi-rounded-badge-icon-xs); }
+.semiRounded:not(.iconOnly).sm { --badge-pt: var(--ntg-semi-rounded-badge-padding-top-sm); --badge-pr: var(--ntg-semi-rounded-badge-padding-right-sm); --badge-pb: var(--ntg-semi-rounded-badge-padding-bottom-sm); --badge-pl: var(--ntg-semi-rounded-badge-padding-left-sm); --badge-gap: var(--ntg-semi-rounded-badge-gap-sm); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-sm-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-sm-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-sm-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-sm-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-semi-rounded-badge-title-padding-right-sm); --badge-title-pb: 0; --badge-title-pl: var(--ntg-semi-rounded-badge-title-padding-left-sm); --badge-icon: var(--ntg-semi-rounded-badge-icon-sm); }
+.semiRounded:not(.iconOnly).md { --badge-pt: var(--ntg-semi-rounded-badge-padding-top-md); --badge-pr: var(--ntg-semi-rounded-badge-padding-right-md); --badge-pb: var(--ntg-semi-rounded-badge-padding-bottom-md); --badge-pl: var(--ntg-semi-rounded-badge-padding-left-md); --badge-gap: var(--ntg-semi-rounded-badge-gap-md); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-md-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-md-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-md-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-md-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-semi-rounded-badge-title-padding-right-md); --badge-title-pb: 0; --badge-title-pl: var(--ntg-semi-rounded-badge-title-padding-left-md); --badge-icon: var(--ntg-semi-rounded-badge-icon-md); }
+.semiRounded:not(.iconOnly).lg { --badge-pt: var(--ntg-semi-rounded-badge-padding-top-lg); --badge-pr: var(--ntg-semi-rounded-badge-padding-right-lg); --badge-pb: var(--ntg-semi-rounded-badge-padding-bottom-lg); --badge-pl: var(--ntg-semi-rounded-badge-padding-left-lg); --badge-gap: var(--ntg-semi-rounded-badge-gap-lg); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-lg-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-lg-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-lg-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-lg-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-semi-rounded-badge-title-padding-right-lg); --badge-title-pb: 0; --badge-title-pl: var(--ntg-semi-rounded-badge-title-padding-left-lg); --badge-icon: var(--ntg-semi-rounded-badge-icon-lg); }
+.semiRounded:not(.iconOnly).xl { --badge-pt: var(--ntg-semi-rounded-badge-padding-top-xl); --badge-pr: var(--ntg-semi-rounded-badge-padding-right-xl); --badge-pb: var(--ntg-semi-rounded-badge-padding-bottom-xl); --badge-pl: var(--ntg-semi-rounded-badge-padding-left-xl); --badge-gap: var(--ntg-semi-rounded-badge-gap-xl); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-xl-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-xl-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-xl-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-xl-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-semi-rounded-badge-title-padding-right-xl); --badge-title-pb: 0; --badge-title-pl: var(--ntg-semi-rounded-badge-title-padding-left-xl); --badge-icon: var(--ntg-semi-rounded-badge-icon-xl); }
+.pill:not(.iconOnly).xs { --badge-pt: var(--ntg-pill-badge-padding-top-xs); --badge-pr: var(--ntg-pill-badge-padding-right-xs); --badge-pb: var(--ntg-pill-badge-padding-bottom-xs); --badge-pl: var(--ntg-pill-badge-padding-left-xs); --badge-gap: var(--ntg-pill-badge-gap-xs); --badge-r-tl: var(--ntg-pill-badge-radius-full); --badge-r-tr: var(--ntg-pill-badge-radius-full); --badge-r-br: var(--ntg-pill-badge-radius-full); --badge-r-bl: var(--ntg-pill-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-pill-badge-title-padding-right-xs); --badge-title-pb: 0; --badge-title-pl: var(--ntg-pill-badge-title-padding-left-xs); --badge-icon: var(--ntg-pill-badge-icon-xs); }
+.pill:not(.iconOnly).sm { --badge-pt: var(--ntg-pill-badge-padding-top-sm); --badge-pr: var(--ntg-pill-badge-padding-right-sm); --badge-pb: var(--ntg-pill-badge-padding-bottom-sm); --badge-pl: var(--ntg-pill-badge-padding-left-sm); --badge-gap: var(--ntg-pill-badge-gap-sm); --badge-r-tl: var(--ntg-pill-badge-radius-full); --badge-r-tr: var(--ntg-pill-badge-radius-full); --badge-r-br: var(--ntg-pill-badge-radius-full); --badge-r-bl: var(--ntg-pill-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-pill-badge-title-padding-right-sm); --badge-title-pb: 0; --badge-title-pl: var(--ntg-pill-badge-title-padding-left-sm); --badge-icon: var(--ntg-pill-badge-icon-sm); }
+.pill:not(.iconOnly).md { --badge-pt: var(--ntg-pill-badge-padding-top-md); --badge-pr: var(--ntg-pill-badge-padding-right-md); --badge-pb: var(--ntg-pill-badge-padding-bottom-md); --badge-pl: var(--ntg-pill-badge-padding-left-md); --badge-gap: var(--ntg-pill-badge-gap-md); --badge-r-tl: var(--ntg-pill-badge-radius-full); --badge-r-tr: var(--ntg-pill-badge-radius-full); --badge-r-br: var(--ntg-pill-badge-radius-full); --badge-r-bl: var(--ntg-pill-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-pill-badge-title-padding-right-md); --badge-title-pb: 0; --badge-title-pl: var(--ntg-pill-badge-title-padding-left-md); --badge-icon: var(--ntg-pill-badge-icon-md); }
+.pill:not(.iconOnly).lg { --badge-pt: var(--ntg-pill-badge-padding-top-lg); --badge-pr: var(--ntg-pill-badge-padding-right-lg); --badge-pb: var(--ntg-pill-badge-padding-bottom-lg); --badge-pl: var(--ntg-pill-badge-padding-left-lg); --badge-gap: var(--ntg-pill-badge-gap-lg); --badge-r-tl: var(--ntg-pill-badge-radius-full); --badge-r-tr: var(--ntg-pill-badge-radius-full); --badge-r-br: var(--ntg-pill-badge-radius-full); --badge-r-bl: var(--ntg-pill-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-pill-badge-title-padding-right-lg); --badge-title-pb: 0; --badge-title-pl: var(--ntg-pill-badge-title-padding-left-lg); --badge-icon: var(--ntg-pill-badge-icon-lg); }
+.pill:not(.iconOnly).xl { --badge-pt: var(--ntg-pill-badge-padding-top-xl); --badge-pr: var(--ntg-pill-badge-padding-right-xl); --badge-pb: var(--ntg-pill-badge-padding-bottom-xl); --badge-pl: var(--ntg-pill-badge-padding-left-xl); --badge-gap: var(--ntg-pill-badge-gap-xl); --badge-r-tl: var(--ntg-pill-badge-radius-full); --badge-r-tr: var(--ntg-pill-badge-radius-full); --badge-r-br: var(--ntg-pill-badge-radius-full); --badge-r-bl: var(--ntg-pill-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-pill-badge-title-padding-right-xl); --badge-title-pb: 0; --badge-title-pl: var(--ntg-pill-badge-title-padding-left-xl); --badge-icon: var(--ntg-pill-badge-icon-xl); }
+.semiRounded.iconOnly.xs { --badge-pt: var(--ntg-semi-rounded-badge-icon-badge-padding-xs); --badge-pr: var(--ntg-semi-rounded-badge-icon-badge-padding-xs); --badge-pb: var(--ntg-semi-rounded-badge-icon-badge-padding-xs); --badge-pl: var(--ntg-semi-rounded-badge-icon-badge-padding-xs); --badge-gap: var(--ntg-semi-rounded-badge-icon-badge-gap-xs); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-xs-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-xs-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-xs-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-xs-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-semi-rounded-badge-icon-badge-icon-xs); }
+.semiRounded.iconOnly.sm { --badge-pt: var(--ntg-semi-rounded-badge-icon-badge-padding-sm); --badge-pr: var(--ntg-semi-rounded-badge-icon-badge-padding-sm); --badge-pb: var(--ntg-semi-rounded-badge-icon-badge-padding-sm); --badge-pl: var(--ntg-semi-rounded-badge-icon-badge-padding-sm); --badge-gap: var(--ntg-semi-rounded-badge-icon-badge-gap-sm); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-sm-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-sm-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-sm-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-sm-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-semi-rounded-badge-icon-badge-icon-sm); }
+.semiRounded.iconOnly.md { --badge-pt: var(--ntg-semi-rounded-badge-icon-badge-padding-md); --badge-pr: var(--ntg-semi-rounded-badge-icon-badge-padding-md); --badge-pb: var(--ntg-semi-rounded-badge-icon-badge-padding-md); --badge-pl: var(--ntg-semi-rounded-badge-icon-badge-padding-md); --badge-gap: var(--ntg-semi-rounded-badge-icon-badge-gap-md); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-md-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-md-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-md-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-md-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-semi-rounded-badge-icon-badge-icon-md); }
+.semiRounded.iconOnly.lg { --badge-pt: var(--ntg-semi-rounded-badge-icon-badge-padding-lg); --badge-pr: var(--ntg-semi-rounded-badge-icon-badge-padding-lg); --badge-pb: var(--ntg-semi-rounded-badge-icon-badge-padding-lg); --badge-pl: var(--ntg-semi-rounded-badge-icon-badge-padding-lg); --badge-gap: var(--ntg-semi-rounded-badge-icon-badge-gap-lg); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-lg-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-lg-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-lg-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-lg-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-semi-rounded-badge-icon-badge-icon-lg); }
+.semiRounded.iconOnly.xl { --badge-pt: var(--ntg-semi-rounded-badge-icon-badge-padding-xl); --badge-pr: var(--ntg-semi-rounded-badge-icon-badge-padding-xl); --badge-pb: var(--ntg-semi-rounded-badge-icon-badge-padding-xl); --badge-pl: var(--ntg-semi-rounded-badge-icon-badge-padding-xl); --badge-gap: var(--ntg-semi-rounded-badge-icon-badge-gap-xl); --badge-r-tl: var(--ntg-semi-rounded-badge-radius-xl-top-left); --badge-r-tr: var(--ntg-semi-rounded-badge-radius-xl-top-right); --badge-r-br: var(--ntg-semi-rounded-badge-radius-xl-bottom-right); --badge-r-bl: var(--ntg-semi-rounded-badge-radius-xl-bottom-left); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-semi-rounded-badge-icon-badge-icon-xl); }
+.circular.iconOnly.xs { --badge-pt: var(--ntg-circular-badge-padding-xs); --badge-pr: var(--ntg-circular-badge-padding-xs); --badge-pb: var(--ntg-circular-badge-padding-xs); --badge-pl: var(--ntg-circular-badge-padding-xs); --badge-gap: var(--ntg-circular-badge-gap-xs); --badge-r-tl: var(--ntg-circular-badge-radius-full); --badge-r-tr: var(--ntg-circular-badge-radius-full); --badge-r-br: var(--ntg-circular-badge-radius-full); --badge-r-bl: var(--ntg-circular-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-circular-badge-icon-xs); }
+.circular.iconOnly.sm { --badge-pt: var(--ntg-circular-badge-padding-sm); --badge-pr: var(--ntg-circular-badge-padding-sm); --badge-pb: var(--ntg-circular-badge-padding-sm); --badge-pl: var(--ntg-circular-badge-padding-sm); --badge-gap: var(--ntg-circular-badge-gap-sm); --badge-r-tl: var(--ntg-circular-badge-radius-full); --badge-r-tr: var(--ntg-circular-badge-radius-full); --badge-r-br: var(--ntg-circular-badge-radius-full); --badge-r-bl: var(--ntg-circular-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-circular-badge-icon-sm); }
+.circular.iconOnly.md { --badge-pt: var(--ntg-circular-badge-padding-md); --badge-pr: var(--ntg-circular-badge-padding-md); --badge-pb: var(--ntg-circular-badge-padding-md); --badge-pl: var(--ntg-circular-badge-padding-md); --badge-gap: var(--ntg-circular-badge-gap-md); --badge-r-tl: var(--ntg-circular-badge-radius-full); --badge-r-tr: var(--ntg-circular-badge-radius-full); --badge-r-br: var(--ntg-circular-badge-radius-full); --badge-r-bl: var(--ntg-circular-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-circular-badge-icon-md); }
+.circular.iconOnly.lg { --badge-pt: var(--ntg-circular-badge-padding-lg); --badge-pr: var(--ntg-circular-badge-padding-lg); --badge-pb: var(--ntg-circular-badge-padding-lg); --badge-pl: var(--ntg-circular-badge-padding-lg); --badge-gap: var(--ntg-circular-badge-gap-lg); --badge-r-tl: var(--ntg-circular-badge-radius-full); --badge-r-tr: var(--ntg-circular-badge-radius-full); --badge-r-br: var(--ntg-circular-badge-radius-full); --badge-r-bl: var(--ntg-circular-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-circular-badge-icon-lg); }
+.circular.iconOnly.xl { --badge-pt: var(--ntg-circular-badge-padding-xl); --badge-pr: var(--ntg-circular-badge-padding-xl); --badge-pb: var(--ntg-circular-badge-padding-xl); --badge-pl: var(--ntg-circular-badge-padding-xl); --badge-gap: var(--ntg-circular-badge-gap-xl); --badge-r-tl: var(--ntg-circular-badge-radius-full); --badge-r-tr: var(--ntg-circular-badge-radius-full); --badge-r-br: var(--ntg-circular-badge-radius-full); --badge-r-bl: var(--ntg-circular-badge-radius-full); --badge-shadow: 0 0 0 0 transparent; --badge-icon: var(--ntg-circular-badge-icon-xl); }
+.link.xs { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-xs); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-xs); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-xs); --badge-icon: var(--ntg-link-badge-icon-xs); }
+.quaternary:not(.link).xs { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-xs); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-xs); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-xs); --badge-icon: var(--ntg-link-badge-icon-xs); }
+.link.sm { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-sm); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-sm); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-sm); --badge-icon: var(--ntg-link-badge-icon-sm); }
+.quaternary:not(.link).sm { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-sm); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-sm); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-sm); --badge-icon: var(--ntg-link-badge-icon-sm); }
+.link.md { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-md); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-md); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-md); --badge-icon: var(--ntg-link-badge-icon-md); }
+.quaternary:not(.link).md { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-md); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-md); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-md); --badge-icon: var(--ntg-link-badge-icon-md); }
+.link.lg { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-lg); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-lg); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-lg); --badge-icon: var(--ntg-link-badge-icon-lg); }
+.quaternary:not(.link).lg { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-lg); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-lg); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-lg); --badge-icon: var(--ntg-link-badge-icon-lg); }
+.link.xl { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-xl); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-xl); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-xl); --badge-icon: var(--ntg-link-badge-icon-xl); }
+.quaternary:not(.link).xl { --badge-pt: var(--ntg-link-badge-padding-no); --badge-pr: var(--ntg-link-badge-padding-no); --badge-pb: var(--ntg-link-badge-padding-no); --badge-pl: var(--ntg-link-badge-padding-no); --badge-gap: var(--ntg-link-badge-gap-xl); --badge-shadow: 0 0 0 0 transparent; --badge-title-pt: 0; --badge-title-pr: var(--ntg-link-badge-title-padding-right-xl); --badge-title-pb: 0; --badge-title-pl: var(--ntg-link-badge-title-padding-left-xl); --badge-icon: var(--ntg-link-badge-icon-xl); }
 
-.md {
-  min-height: var(--ntg-semi-rounded-badge-size-md);
-  padding: var(--ntg-semi-rounded-badge-padding-top-md) var(--ntg-semi-rounded-badge-padding-right-md)
-           var(--ntg-semi-rounded-badge-padding-bottom-md) var(--ntg-semi-rounded-badge-padding-left-md);
-  gap: var(--ntg-semi-rounded-badge-gap-md);
-  font-size: var(--ntg-typography-font-size-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
-  font-weight: var(--ntg-typography-font-weight-label-sm);
-  letter-spacing: var(--ntg-typography-letter-space-label-sm);
-}
-.md .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-md) var(--ntg-semi-rounded-badge-title-padding-right-md); }
-.md .icon { width: var(--ntg-semi-rounded-badge-icon-md); height: var(--ntg-semi-rounded-badge-icon-md); }
-.md.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-md); }
-
-.lg {
-  min-height: var(--ntg-semi-rounded-badge-size-lg);
-  padding: var(--ntg-semi-rounded-badge-padding-top-lg) var(--ntg-semi-rounded-badge-padding-right-lg)
-           var(--ntg-semi-rounded-badge-padding-bottom-lg) var(--ntg-semi-rounded-badge-padding-left-lg);
-  gap: var(--ntg-semi-rounded-badge-gap-lg);
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-  font-weight: var(--ntg-typography-font-weight-label-md);
-  letter-spacing: var(--ntg-typography-letter-space-label-md);
-}
-.lg .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-lg) var(--ntg-semi-rounded-badge-title-padding-right-lg); }
-.lg .icon { width: var(--ntg-semi-rounded-badge-icon-lg); height: var(--ntg-semi-rounded-badge-icon-lg); }
-.lg.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-lg); }
-
-.xl {
-  min-height: var(--ntg-semi-rounded-badge-size-xl);
-  padding: var(--ntg-semi-rounded-badge-padding-top-xl) var(--ntg-semi-rounded-badge-padding-right-xl)
-           var(--ntg-semi-rounded-badge-padding-bottom-xl) var(--ntg-semi-rounded-badge-padding-left-xl);
-  gap: var(--ntg-semi-rounded-badge-gap-xl);
-  font-size: var(--ntg-typography-font-size-label-lg);
-  line-height: var(--ntg-typography-line-height-label-lg);
-  font-weight: var(--ntg-typography-font-weight-label-lg);
-  letter-spacing: var(--ntg-typography-letter-space-label-lg);
-}
-.xl .title { padding-inline: var(--ntg-semi-rounded-badge-title-padding-left-xl) var(--ntg-semi-rounded-badge-title-padding-right-xl); }
-.xl .icon { width: var(--ntg-semi-rounded-badge-icon-xl); height: var(--ntg-semi-rounded-badge-icon-xl); }
-.xl.iconOnly { padding: var(--ntg-semi-rounded-badge-icon-badge-padding-xl); }
-
-/* ── ทรง ─────────────────────────────────────────────────── */
-.semiRounded.xs { border-radius: var(--ntg-semi-rounded-badge-radius-xs-top-left) var(--ntg-semi-rounded-badge-radius-xs-top-right) var(--ntg-semi-rounded-badge-radius-xs-bottom-right) var(--ntg-semi-rounded-badge-radius-xs-bottom-left); }
-.semiRounded.sm { border-radius: var(--ntg-semi-rounded-badge-radius-sm-top-left) var(--ntg-semi-rounded-badge-radius-sm-top-right) var(--ntg-semi-rounded-badge-radius-sm-bottom-right) var(--ntg-semi-rounded-badge-radius-sm-bottom-left); }
-.semiRounded.md { border-radius: var(--ntg-semi-rounded-badge-radius-md-top-left) var(--ntg-semi-rounded-badge-radius-md-top-right) var(--ntg-semi-rounded-badge-radius-md-bottom-right) var(--ntg-semi-rounded-badge-radius-md-bottom-left); }
-.semiRounded.lg { border-radius: var(--ntg-semi-rounded-badge-radius-lg-top-left) var(--ntg-semi-rounded-badge-radius-lg-top-right) var(--ntg-semi-rounded-badge-radius-lg-bottom-right) var(--ntg-semi-rounded-badge-radius-lg-bottom-left); }
-.semiRounded.xl { border-radius: var(--ntg-semi-rounded-badge-radius-xl-top-left) var(--ntg-semi-rounded-badge-radius-xl-top-right) var(--ntg-semi-rounded-badge-radius-xl-bottom-right) var(--ntg-semi-rounded-badge-radius-xl-bottom-left); }
-.pill { border-radius: var(--ntg-pill-badge-radius-full); }
-.circular { border-radius: var(--ntg-circular-badge-radius-full); }
-
-/**
- * ทรง link ข้อความล้วน
- * ระยะขอบเป็นศูนย์ทุกด้าน ความสูงมาจากความสูงบรรทัดของ preset ตรง ๆ
- * --badge-border เป็น transparent อยู่แล้วสำหรับทรงนี้ (ดูด้านล่าง) จึงไม่ต้องรีเซ็ตขอบเพิ่ม
- */
-.link {
-  border-radius: 0;
-}
-.link.xs { min-height: var(--ntg-link-badge-size-xs); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-xs); }
-.link.sm { min-height: var(--ntg-link-badge-size-sm); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-sm); }
-.link.md { min-height: var(--ntg-link-badge-size-md); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-md); }
-.link.lg { min-height: var(--ntg-link-badge-size-lg); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-lg); }
-.link.xl { min-height: var(--ntg-link-badge-size-xl); padding: var(--ntg-link-badge-padding-no); gap: var(--ntg-link-badge-gap-xl); }
-
-.link.xs .title { padding-inline: var(--ntg-link-badge-title-padding-left-xs) var(--ntg-link-badge-title-padding-right-xs); }
-.link.sm .title { padding-inline: var(--ntg-link-badge-title-padding-left-sm) var(--ntg-link-badge-title-padding-right-sm); }
-.link.md .title { padding-inline: var(--ntg-link-badge-title-padding-left-md) var(--ntg-link-badge-title-padding-right-md); }
-.link.lg .title { padding-inline: var(--ntg-link-badge-title-padding-left-lg) var(--ntg-link-badge-title-padding-right-lg); }
-.link.xl .title { padding-inline: var(--ntg-link-badge-title-padding-left-xl) var(--ntg-link-badge-title-padding-right-xl); }
-
-.link.xs .icon { width: var(--ntg-link-badge-icon-xs); height: var(--ntg-link-badge-icon-xs); }
-.link.sm .icon { width: var(--ntg-link-badge-icon-sm); height: var(--ntg-link-badge-icon-sm); }
-.link.md .icon { width: var(--ntg-link-badge-icon-md); height: var(--ntg-link-badge-icon-md); }
-.link.lg .icon { width: var(--ntg-link-badge-icon-lg); height: var(--ntg-link-badge-icon-lg); }
-.link.xl .icon { width: var(--ntg-link-badge-icon-xl); height: var(--ntg-link-badge-icon-xl); }
-
-/* ── ตระกูลสี ระบุเฉพาะ 3 ขั้นที่ใช้จริง ───────────────────── */
-.brand   { --badge-ramp-50: var(--ntg-color-utility-u-brand-50);   --badge-ramp-300: var(--ntg-color-utility-u-brand-300);   --badge-ramp-400: var(--ntg-color-utility-u-brand-400);   --badge-ramp-600: var(--ntg-color-utility-u-brand-600); }
-.neutral { --badge-ramp-50: var(--ntg-color-utility-u-gray-50);    --badge-ramp-300: var(--ntg-color-utility-u-gray-300);   --badge-ramp-400: var(--ntg-color-utility-u-gray-400);    --badge-ramp-600: var(--ntg-color-utility-u-gray-600); }
-.red     { --badge-ramp-50: var(--ntg-color-utility-u-red-50);     --badge-ramp-300: var(--ntg-color-utility-u-red-300);   --badge-ramp-400: var(--ntg-color-utility-u-red-400);     --badge-ramp-600: var(--ntg-color-utility-u-red-600); }
-.green   { --badge-ramp-50: var(--ntg-color-utility-u-green-50);   --badge-ramp-300: var(--ntg-color-utility-u-green-300);   --badge-ramp-400: var(--ntg-color-utility-u-green-400);   --badge-ramp-600: var(--ntg-color-utility-u-green-600); }
-.yellow  { --badge-ramp-50: var(--ntg-color-utility-u-yellow-50);  --badge-ramp-300: var(--ntg-color-utility-u-yellow-300);   --badge-ramp-400: var(--ntg-color-utility-u-yellow-400);  --badge-ramp-600: var(--ntg-color-utility-u-yellow-600); }
-.cyan    { --badge-ramp-50: var(--ntg-color-utility-u-cyan-50);    --badge-ramp-300: var(--ntg-color-utility-u-cyan-300);   --badge-ramp-400: var(--ntg-color-utility-u-cyan-400);    --badge-ramp-600: var(--ntg-color-utility-u-cyan-600); }
-.blue    { --badge-ramp-50: var(--ntg-color-utility-u-blue-50);    --badge-ramp-300: var(--ntg-color-utility-u-blue-300);   --badge-ramp-400: var(--ntg-color-utility-u-blue-400);    --badge-ramp-600: var(--ntg-color-utility-u-blue-600); }
-.purple  { --badge-ramp-50: var(--ntg-color-utility-u-purple-50);  --badge-ramp-300: var(--ntg-color-utility-u-purple-300);   --badge-ramp-400: var(--ntg-color-utility-u-purple-400);  --badge-ramp-600: var(--ntg-color-utility-u-purple-600); }
-.pink    { --badge-ramp-50: var(--ntg-color-utility-u-pink-50);    --badge-ramp-300: var(--ntg-color-utility-u-pink-300);   --badge-ramp-400: var(--ntg-color-utility-u-pink-400);    --badge-ramp-600: var(--ntg-color-utility-u-pink-600); }
-.bamboo  { --badge-ramp-50: var(--ntg-color-utility-u-bamboo-50);  --badge-ramp-300: var(--ntg-color-utility-u-bamboo-300);   --badge-ramp-400: var(--ntg-color-utility-u-bamboo-400);  --badge-ramp-600: var(--ntg-color-utility-u-bamboo-600); }
-.brown   { --badge-ramp-50: var(--ntg-color-utility-u-brown-50);   --badge-ramp-300: var(--ntg-color-utility-u-brown-300);   --badge-ramp-400: var(--ntg-color-utility-u-brown-400);   --badge-ramp-600: var(--ntg-color-utility-u-brown-600); }
-
-/* ── ระดับความเด่น ───────────────────────────────────────── */
-.primary {
-  --badge-bg: var(--badge-ramp-600);
-  --badge-fg: var(--ntg-color-text-general-const-white);
-}
-.secondary {
-  --badge-bg: var(--badge-ramp-50);
-  --badge-fg: var(--badge-ramp-600);
-}
-.tertiary {
-  --badge-bg: var(--ntg-color-background-general-primary);
-  --badge-border: var(--badge-ramp-300);
-  --badge-fg: var(--badge-ramp-600);
-}
-.quaternary {
-  --badge-fg: var(--badge-ramp-600);
-}
-
-/**
- * ⚠️ ต้องอยู่ท้ายสุดของไฟล์ เพราะทรง link ไม่สนแกน hierarchy
- *    ชุด link-badge ในไฟล์ออกแบบไม่มีแกนนี้ และใช้สีขั้น 400 ไม่ใช่ 600
- *    ความจำเพาะเท่ากับคลาสของ hierarchy จึงต้องพึ่งลำดับในไฟล์เป็นตัวตัดสิน
- */
-.link {
-  --badge-bg: transparent;
-  --badge-border: transparent;
-  --badge-fg: var(--badge-ramp-400);
-}
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.semiRounded:not(.iconOnly).brand.primary,
+.pill:not(.iconOnly).brand.primary { --badge-bg: var(--ntg-color-background-brand-solid); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).brand.secondary,
+.pill:not(.iconOnly).brand.secondary { --badge-bg: var(--ntg-color-utility-u-brand-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-brand-600); --badge-icon-color: var(--ntg-color-utility-u-brand-600); }
+.semiRounded:not(.iconOnly).brand.tertiary,
+.pill:not(.iconOnly).brand.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-brand-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-brand-600); --badge-icon-color: var(--ntg-color-utility-u-brand-600); }
+.semiRounded:not(.iconOnly).neutral.primary,
+.pill:not(.iconOnly).neutral.primary { --badge-bg: var(--ntg-color-utility-u-gray-600); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).neutral.secondary,
+.pill:not(.iconOnly).neutral.secondary { --badge-bg: var(--ntg-color-utility-u-gray-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-gray-600); --badge-icon-color: var(--ntg-color-utility-u-gray-600); }
+.semiRounded:not(.iconOnly).neutral.tertiary,
+.pill:not(.iconOnly).neutral.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-gray-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-gray-600); --badge-icon-color: var(--ntg-color-utility-u-gray-600); }
+.semiRounded:not(.iconOnly).red.primary,
+.pill:not(.iconOnly).red.primary { --badge-bg: var(--ntg-color-utility-u-red-600); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).red.secondary,
+.pill:not(.iconOnly).red.secondary { --badge-bg: var(--ntg-color-utility-u-red-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-red-600); --badge-icon-color: var(--ntg-color-utility-u-red-600); }
+.semiRounded:not(.iconOnly).red.tertiary,
+.pill:not(.iconOnly).red.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-red-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-red-600); --badge-icon-color: var(--ntg-color-utility-u-red-600); }
+.semiRounded:not(.iconOnly).green.primary,
+.pill:not(.iconOnly).green.primary { --badge-bg: var(--ntg-color-utility-u-green-600); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).green.secondary,
+.pill:not(.iconOnly).green.secondary { --badge-bg: var(--ntg-color-utility-u-green-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-green-600); --badge-icon-color: var(--ntg-color-utility-u-green-600); }
+.semiRounded:not(.iconOnly).green.tertiary,
+.pill:not(.iconOnly).green.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-green-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-green-600); --badge-icon-color: var(--ntg-color-utility-u-green-600); }
+.semiRounded:not(.iconOnly).yellow.primary,
+.pill:not(.iconOnly).yellow.primary { --badge-bg: var(--ntg-color-utility-u-yellow-600); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).yellow.secondary,
+.pill:not(.iconOnly).yellow.secondary { --badge-bg: var(--ntg-color-utility-u-yellow-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-yellow-600); --badge-icon-color: var(--ntg-color-utility-u-yellow-600); }
+.semiRounded:not(.iconOnly).yellow.tertiary,
+.pill:not(.iconOnly).yellow.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-yellow-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-yellow-600); --badge-icon-color: var(--ntg-color-utility-u-yellow-600); }
+.semiRounded:not(.iconOnly).cyan.primary,
+.pill:not(.iconOnly).cyan.primary { --badge-bg: var(--ntg-color-utility-u-cyan-400); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).cyan.secondary,
+.pill:not(.iconOnly).cyan.secondary { --badge-bg: var(--ntg-color-utility-u-cyan-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-cyan-400); --badge-icon-color: var(--ntg-color-utility-u-cyan-400); }
+.semiRounded:not(.iconOnly).cyan.tertiary,
+.pill:not(.iconOnly).cyan.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-cyan-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-cyan-400); --badge-icon-color: var(--ntg-color-utility-u-cyan-400); }
+.semiRounded:not(.iconOnly).blue.primary,
+.pill:not(.iconOnly).blue.primary { --badge-bg: var(--ntg-color-utility-u-blue-400); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).blue.secondary,
+.pill:not(.iconOnly).blue.secondary { --badge-bg: var(--ntg-color-utility-u-blue-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-blue-400); --badge-icon-color: var(--ntg-color-utility-u-blue-400); }
+.semiRounded:not(.iconOnly).blue.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-blue-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-blue-500); --badge-icon-color: var(--ntg-color-utility-u-blue-500); }
+.semiRounded:not(.iconOnly).purple.primary,
+.pill:not(.iconOnly).purple.primary { --badge-bg: var(--ntg-color-utility-u-purple-600); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).purple.secondary,
+.pill:not(.iconOnly).purple.secondary { --badge-bg: var(--ntg-color-utility-u-purple-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-purple-600); --badge-icon-color: var(--ntg-color-utility-u-purple-600); }
+.semiRounded:not(.iconOnly).purple.tertiary,
+.pill:not(.iconOnly).purple.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-purple-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-purple-600); --badge-icon-color: var(--ntg-color-utility-u-purple-600); }
+.semiRounded:not(.iconOnly).pink.primary,
+.pill:not(.iconOnly).pink.primary { --badge-bg: var(--ntg-color-utility-u-pink-400); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).pink.secondary,
+.pill:not(.iconOnly).pink.secondary { --badge-bg: var(--ntg-color-utility-u-pink-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-pink-400); --badge-icon-color: var(--ntg-color-utility-u-pink-400); }
+.semiRounded:not(.iconOnly).pink.tertiary,
+.pill:not(.iconOnly).pink.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-pink-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-pink-400); --badge-icon-color: var(--ntg-color-utility-u-pink-400); }
+.semiRounded:not(.iconOnly).bamboo.primary,
+.pill:not(.iconOnly).bamboo.primary { --badge-bg: var(--ntg-color-utility-u-bamboo-500); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).bamboo.secondary,
+.pill:not(.iconOnly).bamboo.secondary { --badge-bg: var(--ntg-color-utility-u-bamboo-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-bamboo-400); --badge-icon-color: var(--ntg-color-utility-u-bamboo-400); }
+.semiRounded:not(.iconOnly).bamboo.tertiary,
+.pill:not(.iconOnly).bamboo.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-bamboo-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-bamboo-400); --badge-icon-color: var(--ntg-color-utility-u-bamboo-400); }
+.semiRounded:not(.iconOnly).brown.primary,
+.pill:not(.iconOnly).brown.primary { --badge-bg: var(--ntg-color-utility-u-brown-400); --badge-border: transparent; --badge-fg: var(--ntg-color-text-general-const-white); --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded:not(.iconOnly).brown.secondary,
+.pill:not(.iconOnly).brown.secondary { --badge-bg: var(--ntg-color-utility-u-brown-50); --badge-border: transparent; --badge-fg: var(--ntg-color-utility-u-brown-400); --badge-icon-color: var(--ntg-color-utility-u-brown-400); }
+.semiRounded:not(.iconOnly).brown.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-brown-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-brown-500); --badge-icon-color: var(--ntg-color-utility-u-brown-500); }
+.pill:not(.iconOnly).blue.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-blue-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-blue-400); --badge-icon-color: var(--ntg-color-utility-u-blue-400); }
+.pill:not(.iconOnly).brown.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-brown-300); --badge-border-w: 1px; --badge-fg: var(--ntg-color-utility-u-brown-400); --badge-icon-color: var(--ntg-color-utility-u-brown-400); }
+.semiRounded.iconOnly.brand.primary,
+.circular.iconOnly.brand.primary { --badge-bg: var(--ntg-color-background-brand-solid); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.brand.secondary,
+.circular.iconOnly.brand.secondary { --badge-bg: var(--ntg-color-utility-u-brand-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-brand-600); }
+.semiRounded.iconOnly.brand.tertiary,
+.circular.iconOnly.brand.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-brand-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-brand-600); }
+.semiRounded.iconOnly.neutral.primary,
+.circular.iconOnly.neutral.primary { --badge-bg: var(--ntg-color-utility-u-gray-600); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.neutral.secondary,
+.circular.iconOnly.neutral.secondary { --badge-bg: var(--ntg-color-utility-u-gray-100); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-gray-600); }
+.semiRounded.iconOnly.neutral.tertiary,
+.circular.iconOnly.neutral.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-gray-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-gray-600); }
+.semiRounded.iconOnly.red.primary,
+.circular.iconOnly.red.primary { --badge-bg: var(--ntg-color-utility-u-red-600); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.red.secondary,
+.circular.iconOnly.red.secondary { --badge-bg: var(--ntg-color-utility-u-red-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-red-600); }
+.semiRounded.iconOnly.red.tertiary,
+.circular.iconOnly.red.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-red-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-red-600); }
+.semiRounded.iconOnly.green.primary,
+.circular.iconOnly.green.primary { --badge-bg: var(--ntg-color-utility-u-green-600); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.green.secondary,
+.circular.iconOnly.green.secondary { --badge-bg: var(--ntg-color-utility-u-green-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-green-600); }
+.semiRounded.iconOnly.green.tertiary,
+.circular.iconOnly.green.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-green-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-green-600); }
+.semiRounded.iconOnly.yellow.primary,
+.circular.iconOnly.yellow.primary { --badge-bg: var(--ntg-color-utility-u-yellow-600); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.yellow.secondary,
+.circular.iconOnly.yellow.secondary { --badge-bg: var(--ntg-color-utility-u-yellow-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-yellow-600); }
+.semiRounded.iconOnly.yellow.tertiary,
+.circular.iconOnly.yellow.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-yellow-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-yellow-600); }
+.semiRounded.iconOnly.cyan.primary,
+.circular.iconOnly.cyan.primary { --badge-bg: var(--ntg-color-utility-u-cyan-400); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.cyan.secondary,
+.circular.iconOnly.cyan.secondary { --badge-bg: var(--ntg-color-utility-u-cyan-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-cyan-400); }
+.semiRounded.iconOnly.cyan.tertiary,
+.circular.iconOnly.cyan.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-cyan-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-cyan-400); }
+.semiRounded.iconOnly.blue.primary,
+.circular.iconOnly.blue.primary { --badge-bg: var(--ntg-color-utility-u-blue-400); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.blue.secondary,
+.circular.iconOnly.blue.secondary { --badge-bg: var(--ntg-color-utility-u-blue-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-blue-400); }
+.semiRounded.iconOnly.blue.tertiary,
+.circular.iconOnly.blue.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-blue-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-blue-400); }
+.semiRounded.iconOnly.purple.primary,
+.circular.iconOnly.purple.primary { --badge-bg: var(--ntg-color-utility-u-purple-600); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.purple.secondary,
+.circular.iconOnly.purple.secondary { --badge-bg: var(--ntg-color-utility-u-purple-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-purple-600); }
+.semiRounded.iconOnly.purple.tertiary,
+.circular.iconOnly.purple.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-purple-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-purple-600); }
+.semiRounded.iconOnly.pink.primary,
+.circular.iconOnly.pink.primary { --badge-bg: var(--ntg-color-utility-u-pink-400); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.pink.secondary,
+.circular.iconOnly.pink.secondary { --badge-bg: var(--ntg-color-utility-u-pink-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-pink-400); }
+.semiRounded.iconOnly.pink.tertiary,
+.circular.iconOnly.pink.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-pink-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-pink-400); }
+.semiRounded.iconOnly.bamboo.primary,
+.circular.iconOnly.bamboo.primary { --badge-bg: var(--ntg-color-utility-u-bamboo-400); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.bamboo.secondary,
+.circular.iconOnly.bamboo.secondary { --badge-bg: var(--ntg-color-utility-u-bamboo-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-bamboo-600); }
+.semiRounded.iconOnly.bamboo.tertiary,
+.circular.iconOnly.bamboo.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-bamboo-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-bamboo-600); }
+.semiRounded.iconOnly.brown.primary,
+.circular.iconOnly.brown.primary { --badge-bg: var(--ntg-color-utility-u-brown-400); --badge-border: transparent; --badge-icon-color: var(--ntg-icon-general-const-white); }
+.semiRounded.iconOnly.brown.secondary,
+.circular.iconOnly.brown.secondary { --badge-bg: var(--ntg-color-utility-u-brown-50); --badge-border: transparent; --badge-icon-color: var(--ntg-color-utility-u-brown-400); }
+.semiRounded.iconOnly.brown.tertiary,
+.circular.iconOnly.brown.tertiary { --badge-bg: var(--ntg-color-background-general-primary); --badge-border: var(--ntg-color-utility-u-brown-300); --badge-border-w: 1px; --badge-icon-color: var(--ntg-color-utility-u-brown-400); }
+.link.brand,
+.quaternary:not(.link).brand { --badge-fg: var(--ntg-color-utility-u-brand-600); --badge-icon-color: var(--ntg-color-utility-u-brand-600); }
+.link.neutral,
+.quaternary:not(.link).neutral { --badge-fg: var(--ntg-color-utility-u-gray-600); --badge-icon-color: var(--ntg-color-utility-u-gray-600); }
+.link.red,
+.quaternary:not(.link).red { --badge-fg: var(--ntg-color-utility-u-red-600); --badge-icon-color: var(--ntg-color-utility-u-red-600); }
+.link.green,
+.quaternary:not(.link).green { --badge-fg: var(--ntg-color-utility-u-green-600); --badge-icon-color: var(--ntg-color-utility-u-green-600); }
+.link.yellow,
+.quaternary:not(.link).yellow { --badge-fg: var(--ntg-color-utility-u-yellow-600); --badge-icon-color: var(--ntg-color-utility-u-yellow-600); }
+.link.cyan,
+.quaternary:not(.link).cyan { --badge-fg: var(--ntg-color-utility-u-cyan-400); --badge-icon-color: var(--ntg-color-utility-u-cyan-400); }
+.link.blue,
+.quaternary:not(.link).blue { --badge-fg: var(--ntg-color-utility-u-blue-400); --badge-icon-color: var(--ntg-color-utility-u-blue-400); }
+.link.purple,
+.quaternary:not(.link).purple { --badge-fg: var(--ntg-color-utility-u-purple-600); --badge-icon-color: var(--ntg-color-utility-u-purple-600); }
+.link.pink,
+.quaternary:not(.link).pink { --badge-fg: var(--ntg-color-utility-u-pink-400); --badge-icon-color: var(--ntg-color-utility-u-pink-400); }
+.link.bamboo,
+.quaternary:not(.link).bamboo { --badge-fg: var(--ntg-color-utility-u-bamboo-400); --badge-icon-color: var(--ntg-color-utility-u-bamboo-400); }
+.link.brown,
+.quaternary:not(.link).brown { --badge-fg: var(--ntg-color-utility-u-brown-400); --badge-icon-color: var(--ntg-color-utility-u-brown-400); }

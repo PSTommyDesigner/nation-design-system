@@ -49,8 +49,9 @@ const styleVars = (style, parts, where) => {
   }
   return out
 }
+// ไม่มี effect ให้คืนเงาโปร่งใส ไม่ใช่ none เพราะ base css อาจเอาไปต่อกับเงาอื่นใน box-shadow เดียวกัน (none จะทำให้ทั้งค่าพัง)
 const effectVar = (fx, where) => {
-  if (!fx) return 'none'
+  if (!fx) return '0 0 0 0 transparent'
   const m = /^effect::(.+)$/.exec(fx)
   if (!m) { errors.push(`${where}: effect แปลก ${fx}`); return 'none' }
   const name = `--ntg-${m[1].replace(/\//g, '-')}`
@@ -160,10 +161,65 @@ const TAG = {
   },
 }
 
-const COMPONENTS = { tag: TAG }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Badge: หน้า 22 ป้ายเป็นของนิ่ง ไม่มีแกน state  5 ชุด x 11 ตระกูล
+// ═══════════════════════════════════════════════════════════════════════════════
+const BADGE = {
+  specFile: 'tokens/figma-layers/badge.json',
+  baseFile: 'components/Badge/Badge.base.css',
+  outFile: 'components/Badge/Badge.module.css',
+  sets: {
+    'semi-rounded-badge':      { classes: '.semiRounded:not(.iconOnly)' },
+    'pill-badge':              { classes: '.pill:not(.iconOnly)' },
+    'semi-rounded-icon-badge': { classes: '.semiRounded.iconOnly' },
+    'circular-icon-badge':     { classes: '.circular.iconOnly' },
+    // quaternary เป็นระดับเก่าในโค้ด (ข้อความล้วน) ไฟล์ออกแบบแยกไปเป็น link-badge แล้ว ให้ใช้สีของ link-badge
+    'link-badge':              { classes: ['.link', '.quaternary:not(.link)'] },
+  },
+  familyClass: (f) => '.' + f.replace(/ Badge$/, '').toLowerCase(),
+  axisClass: { hierarchy: (v) => `.${v}` },
+  stateSelector: { default: (sel) => sel },
+  layers: {
+    '(root)': (n, W) => ({
+      '--badge-pt': W(n.p[0]), '--badge-pr': W(n.p[1]), '--badge-pb': W(n.p[2]), '--badge-pl': W(n.p[3]),
+      '--badge-gap': W(n.g),
+      ...(n.r ? { '--badge-r-tl': W(n.r[0]), '--badge-r-tr': W(n.r[1]), '--badge-r-br': W(n.r[2]), '--badge-r-bl': W(n.r[3]) } : {}),
+      '--badge-shadow': effectVar(n.fx, 'root effect'),
+    }),
+    'badge-title': (n, W) => ({ '--badge-title-pt': W(n.p[0]), '--badge-title-pr': W(n.p[1]), '--badge-title-pb': W(n.p[2]), '--badge-title-pl': W(n.p[3]) }),
+    'badge-title/Badge Title': () => ({}),
+    'trailing-icon': (n, W) => ({ '--badge-icon': W(n.w) }),
+    'trailing-icon/**/Vector': () => ({}),
+    'trailing-icon/**': () => ({}),   // instance ไอคอน ชื่อเปลี่ยนตามไอคอนที่สลับ
+    'leading-icon': (n, W) => ({ '--badge-icon': W(n.w) }),
+    'leading-icon/**/Vector': () => ({}),
+    'leading-icon/**': () => ({}),
+  },
+  textLayers: ['badge-title/Badge Title'],
+  typography: { '--badge-font-family': 'font-family', '--badge-font-size': 'font-size', '--badge-line-height': 'line-height', '--badge-font-weight': 'font-weight', '--badge-letter-space': 'letter-space' },
+  colors: {
+    '(root)': (c, W) => ({ '--badge-bg': c.fills ? W(c.fills[0]) : 'transparent', '--badge-border': c.strokes ? W(c.strokes[0]) : 'transparent', ...(c.strokes ? { '--badge-border-w': `${c.sw[0]}px` } : {}) }),
+    'badge-title/Badge Title': (c, W) => ({ '--badge-fg': W(c.fills[0]) }),
+    'trailing-icon/**/Vector': (c, W) => ({ '--badge-icon-color': W(c.fills[0]) }),
+    'leading-icon/**/Vector': (c, W) => ({ '--badge-icon-color': W(c.fills[0]) }),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
+// หา entry ในตารางจับคู่ ตรงตัวก่อน ไม่เจอค่อยลอง key ที่มี wildcard ตามลำดับที่ประกาศ
+//   *  = ชั้นเดียวที่ไม่มี / ในชื่อ   ** = อะไรก็ได้รวมชื่อที่มี / (เช่น instance ไอคอน Material design(2)/NOTIFICATION/...)
+function lookup(table, key) {
+  if (table[key]) return table[key]
+  for (const [k, fn] of Object.entries(table)) {
+    if (!k.includes('*')) continue
+    const re = new RegExp('^' + k.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '\u0000').replace(/\*/g, '[^/]+').replace(/\u0000/g, '.+') + '$')
+    if (re.test(key)) return fn
+  }
+  return null
+}
 const spec = JSON.parse(fs.readFileSync(path.join(ROOT, M.specFile), 'utf8'))
 const SIZES = ['xs', 'sm', 'md', 'lg', 'xl']
 const out = []
@@ -200,12 +256,12 @@ for (const [setName, set] of Object.entries(spec.sets)) {
   for (const size of SIZES) {
     const vars = {}
     walk(set.layout[size], '', (key, n) => {
-      const fn = M.layers[key]
+      const fn = lookup(M.layers, key)
       if (!fn) { errors.push(`${setName} ${size}: ไม่รู้จักชั้น "${key}" (เพิ่มในตาราง layers)`); return }
       if (n.vis === false && key !== 'left-icon' && key !== 'close-icon' && !key.endsWith('-icon')) return
       Object.assign(vars, fn(n, (v) => toVar(v, `${setName} ${size} ${key}`)))
     })
-    out.push(`${map.classes}.${size} { ${decl(vars)} }`)
+    for (const cls of [].concat(map.classes)) out.push(`${cls}.${size} { ${decl(vars)} }`)
   }
 }
 
@@ -221,14 +277,17 @@ for (const [setName, set] of Object.entries(spec.sets)) {
     for (const [combo, paletteId] of Object.entries(combos)) {
       const axes = Object.fromEntries(combo.split(', ').filter(Boolean).map(s => s.split('=')))
       const state = axes.state || 'default'
-      let sel = `${map.classes}${famClass}`
-      for (const [axis, fn] of Object.entries(M.axisClass)) if (axis in axes) sel += fn(axes[axis])
-      sel = M.stateSelector[state]?.(sel)
-      if (!sel) { errors.push(`${setName} ${family} ${combo}: สถานะ ${state} ไม่รู้จัก`); continue }
+      const sels = [].concat(map.classes).map((cls) => {
+        let sel = `${cls}${famClass}`
+        for (const [axis, fn] of Object.entries(M.axisClass)) if (axis in axes) sel += fn(axes[axis])
+        return M.stateSelector[state]?.(sel)
+      })
+      if (sels.some((x) => !x)) { errors.push(`${setName} ${family} ${combo}: สถานะ ${state} ไม่รู้จัก`); continue }
+      const sel = sels.join(',\n')
       const colors = spec.palette[paletteId]
       const vars = {}
       for (const [key, c] of Object.entries(colors)) {
-        const fn = M.colors[key]
+        const fn = lookup(M.colors, key)
         if (!fn) { errors.push(`${setName} ${family} ${combo}: ไม่รู้จักชั้นสี "${key}" (เพิ่มในตาราง colors)`); continue }
         Object.assign(vars, fn(c, (v) => toVar(v, `${setName} ${family} [${combo}] ${key}`)))
       }

@@ -5,17 +5,59 @@
     "reference": "Brand Tags",
     "referenceHierarchy": "secondary",
     "families": [
-      "Brand Tags", "Neutral Tags", "Red Tags", "Green Tags", "Yellow Tags",
-      "Cyan Tags", "Blue Tags", "Purple Tags", "Pink Tags", "Bamboo Tags", "Brown Tags"
+      "Brand Tags",
+      "Neutral Tags",
+      "Red Tags",
+      "Green Tags",
+      "Yellow Tags",
+      "Cyan Tags",
+      "Blue Tags",
+      "Purple Tags",
+      "Pink Tags",
+      "Bamboo Tags",
+      "Brown Tags"
     ],
     "sets": [
-      "semi-rounded-tag", "pill-tag",
-      "number-tag", "pill-number-tag",
-      "image-tag", "pill-image-tag",
-      "checkbox-tag", "pill-checkbox-tag",
-      "indicator-tag", "pill-indicator-tag",
-      "icon-tag", "circular-icon-tag",
-      "link-tag", "link-icon-tag"
+      "semi-rounded-tag",
+      "pill-tag",
+      "number-tag",
+      "pill-number-tag",
+      "image-tag",
+      "pill-image-tag",
+      "checkbox-tag",
+      "pill-checkbox-tag",
+      "indicator-tag",
+      "pill-indicator-tag",
+      "icon-tag",
+      "circular-icon-tag",
+      "link-tag",
+      "link-icon-tag"
+    ]
+  },
+  "badge": {
+    "page": "22 Badge",
+    "depth": 5,
+    "reference": "Brand Badge",
+    "referenceHierarchy": "primary",
+    "families": [
+      "Brand Badge",
+      "Neutral Badge",
+      "Red Badge",
+      "Green Badge",
+      "Yellow Badge",
+      "Cyan Badge",
+      "Blue Badge",
+      "Purple Badge",
+      "Pink Badge",
+      "Bamboo Badge",
+      "Brown Badge"
+    ],
+    "sets": [
+      "semi-rounded-badge",
+      "pill-badge",
+      "semi-rounded-icon-badge",
+      "circular-icon-badge",
+      "link-badge"
     ]
   }
 }
