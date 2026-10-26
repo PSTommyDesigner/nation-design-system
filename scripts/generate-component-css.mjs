@@ -105,7 +105,6 @@ const TAG = {
     'left-icon/icon/vector': () => ({}),
     'close-icon/navigation-&-arrows/close': () => ({}),
     'close-icon/navigation-&-arrows/close/vector': () => ({}),
-    'content/left-icon/icon/vector': () => ({}),
     'content/right-icon/icon/vector': () => ({}),
     'tag-title': (n, W) => ({ '--tag-title-pt': W(n.p[0]), '--tag-title-pr': W(n.p[1]), '--tag-title-pb': W(n.p[2]), '--tag-title-pl': W(n.p[3]) }),
     'tag-title/Tag Title': () => ({}),
@@ -116,17 +115,15 @@ const TAG = {
     }),
     'content/title': (n, W) => ({ '--tag-title-pt': W(n.p[0]), '--tag-title-pr': W(n.p[1]), '--tag-title-pb': W(n.p[2]), '--tag-title-pl': W(n.p[3]) }),
     'content/title/Tag Title': () => ({}),
-    'content/left-icon': () => ({}),   // เฟรม HUG ขนาดอยู่ที่ไอคอนข้างใน (ชื่อชั้นในไฟล์ออกแบบยังเป็น left-icon แม้อยู่ขวา)
-    'content/right-icon': () => ({}),
-    'content/left-icon/icon': (n, W) => ({ '--tag-icon': W(n.h) }),
+    'content/right-icon': () => ({}),   // เฟรม HUG ขนาดอยู่ที่ไอคอนข้างใน (เปลี่ยนชื่อจาก left-icon ตามตำแหน่งจริง 2026-10-26)
     'content/right-icon/icon': (n, W) => ({ '--tag-icon': W(n.h) }),
-    // ช่องตัวเลข / ช่องรูป ชนขอบซ้าย (ชื่อชั้น right-number เป็นชื่อเก่าในไฟล์ออกแบบ)
-    'right-number': (n, W) => ({
+    // ช่องตัวเลข / ช่องรูป ชนขอบซ้าย (เปลี่ยนชื่อจาก right-number ตามตำแหน่งจริง 2026-10-26)
+    'left-number': (n, W) => ({
       '--tag-lead-w': W(n.w),
       ...(n.s[1] === 'FILL' ? { '--tag-lead-h': 'auto', '--tag-lead-align': 'stretch' } : { '--tag-lead-h': W(n.h) }),
       '--tag-lead-pl': W(n.p[3]), '--tag-lead-pr': W(n.p[1]),
     }),
-    'right-number/1': () => ({}),
+    'left-number/1': () => ({}),
     'left-image': (n, W) => ({
       '--tag-lead-w': W(n.w),
       ...(n.s[1] === 'FILL' ? { '--tag-lead-h': 'auto', '--tag-lead-align': 'stretch' } : { '--tag-lead-h': W(n.h) }),
@@ -144,7 +141,7 @@ const TAG = {
     'icon/vector': () => ({}),
   },
   // text style ของข้อความ → ตัวอักษร (เก็บต่อขนาด ต้องเหมือนกันทุกชุด)
-  textLayers: ['tag-title/Tag Title', 'content/title/Tag Title', 'right-number/1'],
+  textLayers: ['tag-title/Tag Title', 'content/title/Tag Title', 'left-number/1'],
   typography: { '--tag-font-family': 'font-family', '--tag-font-size': 'font-size', '--tag-line-height': 'line-height', '--tag-font-weight': 'font-weight', '--tag-letter-space': 'letter-space' },
   // ชั้น → ช่องสี  (fills[0] / strokes[0])
   colors: {
@@ -155,8 +152,8 @@ const TAG = {
     'close-icon/navigation-&-arrows/close/vector': (c, W) => ({ '--tag-icon-color': W(c.fills[0]) }),
     'icon/vector': (c, W) => ({ '--tag-icon-color': W(c.fills[0]) }),
     // ช่องตัวเลข: ไม่วาดเส้นซ้าย 1px ของตัวเอง (ซ้อนใต้เส้นขอบกล่องนอก) ดู Tag.base.css ข้อ 5
-    'right-number': (c, W) => ({ '--tag-lead-bg': W(c.fills[0]) }),
-    'right-number/1': (c, W) => ({ '--tag-lead-fg': W(c.fills[0]) }),
+    'left-number': (c, W) => ({ '--tag-lead-bg': W(c.fills[0]) }),
+    'left-number/1': (c, W) => ({ '--tag-lead-fg': W(c.fills[0]) }),
     'left-image': () => ({}), // fill เป็นรูป
     'left-checkbox': (c, W) => ({ '--tag-checkbox-bg': W(c.fills[0]), '--tag-checkbox-border': W(c.strokes[0]), '--tag-checkbox-border-w': `${c.sw[0]}px` }),
     'indicator/_dot/dot': (c, W) => ({ '--tag-dot-color': W(c.fills[0]) }),

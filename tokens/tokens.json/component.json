@@ -6518,6 +6518,33 @@
           "$value": "18px",
           "$description": "ช่องติ๊กในแท็กขนาด xl เท่ากับ 18px"
         }
+      },
+      "radius": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด xs เท่ากับ 2px ตาม Brand checkbox-tag"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด sm เท่ากับ 2px ตาม Brand checkbox-tag"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "3px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด md เท่ากับ 3px ตาม Brand checkbox-tag"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "3px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด lg เท่ากับ 3px ตาม Brand checkbox-tag"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "3px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด xl เท่ากับ 3px ตาม Brand checkbox-tag"
+        }
       }
     },
     "indicator-tag": {
@@ -8314,6 +8341,33 @@
           "$type": "dimension",
           "$value": "18px",
           "$description": "ช่องติ๊กในแท็กขนาด xl เท่ากับ 18px"
+        }
+      },
+      "radius": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด xs เท่ากับ 2px ตาม Brand checkbox-tag"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด sm เท่ากับ 2px ตาม Brand checkbox-tag"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "3px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด md เท่ากับ 3px ตาม Brand checkbox-tag"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "3px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด lg เท่ากับ 3px ตาม Brand checkbox-tag"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "3px",
+          "$description": "มุมโค้งช่องติ๊กในแท็กขนาด xl เท่ากับ 3px ตาม Brand checkbox-tag"
         }
       }
     },

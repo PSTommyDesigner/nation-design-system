@@ -1,5 +1,5 @@
 {
- "capturedAt": "2026-10-22",
+ "capturedAt": "2026-10-26",
  "page": "21 Tags",
  "reference": "Brand Tags",
  "sets": {
@@ -1437,7 +1437,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -1491,7 +1491,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -1534,7 +1534,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -1588,7 +1588,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -1631,7 +1631,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -1685,7 +1685,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -1728,7 +1728,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -1782,7 +1782,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -1825,7 +1825,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -1879,7 +1879,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2030,7 +2030,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -2083,7 +2083,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2126,7 +2126,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -2151,7 +2151,7 @@
        "lm": "HORIZONTAL",
        "al": "MIN",
        "ca": "CENTER",
-       "g": "pill-tag/number-tag/content-gap/xs",
+       "g": "pill-tag/number-tag/content-gap/sm",
        "p": ["pill-tag/number-tag/padding/no","pill-tag/number-tag/padding/right/sm","pill-tag/number-tag/padding/no","pill-tag/number-tag/padding/left/sm"],
        "s": ["HUG","HUG"],
        "clip": true,
@@ -2179,7 +2179,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2222,7 +2222,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -2247,7 +2247,7 @@
        "lm": "HORIZONTAL",
        "al": "MIN",
        "ca": "CENTER",
-       "g": "pill-tag/number-tag/content-gap/xs",
+       "g": "pill-tag/number-tag/content-gap/md",
        "p": ["pill-tag/number-tag/padding/no","pill-tag/number-tag/padding/right/md","pill-tag/number-tag/padding/no","pill-tag/number-tag/padding/left/md"],
        "s": ["HUG","HUG"],
        "clip": true,
@@ -2275,7 +2275,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2318,7 +2318,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -2343,7 +2343,7 @@
        "lm": "HORIZONTAL",
        "al": "MIN",
        "ca": "CENTER",
-       "g": "pill-tag/number-tag/content-gap/xs",
+       "g": "pill-tag/number-tag/content-gap/lg",
        "p": ["pill-tag/number-tag/padding/no","pill-tag/number-tag/padding/right/lg","pill-tag/number-tag/padding/no","pill-tag/number-tag/padding/left/lg"],
        "s": ["HUG","HUG"],
        "clip": true,
@@ -2371,7 +2371,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2414,7 +2414,7 @@
      "fx": "effect::shadows/bottom/xs",
      "ch": [
       {
-       "n": "right-number",
+       "n": "left-number",
        "t": "FRAME",
        "lm": "HORIZONTAL",
        "al": "CENTER",
@@ -2439,7 +2439,7 @@
        "lm": "HORIZONTAL",
        "al": "MIN",
        "ca": "CENTER",
-       "g": "pill-tag/number-tag/content-gap/xs",
+       "g": "pill-tag/number-tag/content-gap/xl",
        "p": ["pill-tag/number-tag/padding/no","pill-tag/number-tag/padding/right/xl","pill-tag/number-tag/padding/no","pill-tag/number-tag/padding/left/xl"],
        "s": ["HUG","HUG"],
        "clip": true,
@@ -2467,7 +2467,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2664,7 +2664,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2753,7 +2753,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2842,7 +2842,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -2931,7 +2931,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -3020,7 +3020,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -3216,7 +3216,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -3304,7 +3304,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -3392,7 +3392,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -3480,7 +3480,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -3568,7 +3568,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -3725,7 +3725,7 @@
        "w": "semi-rounded-tag/checkbox-tag/checkbox/xs",
        "h": "semi-rounded-tag/checkbox-tag/checkbox/xs",
        "clip": true,
-       "r": ["checkbox/radius/top-left/xs","checkbox/radius/top-right/xs","checkbox/radius/bottom-right/xs","checkbox/radius/bottom-left/xs"],
+       "r": ["semi-rounded-tag/checkbox-tag/radius/xs","semi-rounded-tag/checkbox-tag/radius/xs","semi-rounded-tag/checkbox-tag/radius/xs","semi-rounded-tag/checkbox-tag/radius/xs"],
        "inst": true
       },
       {
@@ -3810,7 +3810,7 @@
        "w": "semi-rounded-tag/checkbox-tag/checkbox/sm",
        "h": "semi-rounded-tag/checkbox-tag/checkbox/sm",
        "clip": true,
-       "r": ["checkbox/radius/top-left/xs","checkbox/radius/top-right/xs","checkbox/radius/bottom-right/xs","checkbox/radius/bottom-left/xs"],
+       "r": ["semi-rounded-tag/checkbox-tag/radius/sm","semi-rounded-tag/checkbox-tag/radius/sm","semi-rounded-tag/checkbox-tag/radius/sm","semi-rounded-tag/checkbox-tag/radius/sm"],
        "inst": true
       },
       {
@@ -3895,7 +3895,7 @@
        "w": "semi-rounded-tag/checkbox-tag/checkbox/md",
        "h": "semi-rounded-tag/checkbox-tag/checkbox/md",
        "clip": true,
-       "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+       "r": ["semi-rounded-tag/checkbox-tag/radius/md","semi-rounded-tag/checkbox-tag/radius/md","semi-rounded-tag/checkbox-tag/radius/md","semi-rounded-tag/checkbox-tag/radius/md"],
        "inst": true
       },
       {
@@ -3981,7 +3981,7 @@
        "w": "semi-rounded-tag/checkbox-tag/checkbox/lg",
        "h": "semi-rounded-tag/checkbox-tag/checkbox/lg",
        "clip": true,
-       "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+       "r": ["semi-rounded-tag/checkbox-tag/radius/lg","semi-rounded-tag/checkbox-tag/radius/lg","semi-rounded-tag/checkbox-tag/radius/lg","semi-rounded-tag/checkbox-tag/radius/lg"],
        "inst": true
       },
       {
@@ -4066,7 +4066,7 @@
        "w": "semi-rounded-tag/checkbox-tag/checkbox/xl",
        "h": "semi-rounded-tag/checkbox-tag/checkbox/xl",
        "clip": true,
-       "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+       "r": ["semi-rounded-tag/checkbox-tag/radius/xl","semi-rounded-tag/checkbox-tag/radius/xl","semi-rounded-tag/checkbox-tag/radius/xl","semi-rounded-tag/checkbox-tag/radius/xl"],
        "inst": true
       },
       {
@@ -4260,7 +4260,7 @@
        "w": "pill-tag/checkbox-tag/checkbox/xs",
        "h": "pill-tag/checkbox-tag/checkbox/xs",
        "clip": true,
-       "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+       "r": ["pill-tag/checkbox-tag/radius/xs","pill-tag/checkbox-tag/radius/xs","pill-tag/checkbox-tag/radius/xs","pill-tag/checkbox-tag/radius/xs"],
        "inst": true
       },
       {
@@ -4297,7 +4297,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -4346,7 +4346,7 @@
        "w": "pill-tag/checkbox-tag/checkbox/sm",
        "h": "pill-tag/checkbox-tag/checkbox/sm",
        "clip": true,
-       "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+       "r": ["pill-tag/checkbox-tag/radius/sm","pill-tag/checkbox-tag/radius/sm","pill-tag/checkbox-tag/radius/sm","pill-tag/checkbox-tag/radius/sm"],
        "inst": true
       },
       {
@@ -4383,7 +4383,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -4432,7 +4432,7 @@
        "w": "pill-tag/checkbox-tag/checkbox/md",
        "h": "pill-tag/checkbox-tag/checkbox/md",
        "clip": true,
-       "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+       "r": ["pill-tag/checkbox-tag/radius/md","pill-tag/checkbox-tag/radius/md","pill-tag/checkbox-tag/radius/md","pill-tag/checkbox-tag/radius/md"],
        "inst": true
       },
       {
@@ -4469,7 +4469,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -4518,7 +4518,7 @@
        "w": "pill-tag/checkbox-tag/checkbox/lg",
        "h": "pill-tag/checkbox-tag/checkbox/lg",
        "clip": true,
-       "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+       "r": ["pill-tag/checkbox-tag/radius/lg","pill-tag/checkbox-tag/radius/lg","pill-tag/checkbox-tag/radius/lg","pill-tag/checkbox-tag/radius/lg"],
        "inst": true
       },
       {
@@ -4555,7 +4555,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -4604,7 +4604,7 @@
        "w": "pill-tag/checkbox-tag/checkbox/xl",
        "h": "pill-tag/checkbox-tag/checkbox/xl",
        "clip": true,
-       "r": ["checkbox/radius/top-left/sm","checkbox/radius/top-right/sm","checkbox/radius/bottom-right/sm","checkbox/radius/bottom-left/sm"],
+       "r": ["pill-tag/checkbox-tag/radius/xl","pill-tag/checkbox-tag/radius/xl","pill-tag/checkbox-tag/radius/xl","pill-tag/checkbox-tag/radius/xl"],
        "inst": true
       },
       {
@@ -4641,7 +4641,7 @@
          ]
         },
         {
-         "n": "left-icon",
+         "n": "right-icon",
          "t": "FRAME",
          "lm": "HORIZONTAL",
          "al": "MIN",
@@ -7825,13 +7825,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/foreground/brand/secondary"],
     "strokes": ["color/border/brand/primary"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -7845,13 +7845,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/foreground/brand/secondary-hover"],
     "strokes": ["color/border/brand/solid"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -7865,13 +7865,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/background/general/secondary-hover"],
     "strokes": ["color/border/general/primary"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/disabled-subtle"]
    },
    "content/title/Tag Title": {
@@ -7885,13 +7885,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/background/general/solid-secondary"],
     "strokes": ["color/border/general/primary"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -7905,13 +7905,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/background/general/solid"],
     "strokes": ["color/background/general/solid"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -7925,13 +7925,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-red-600"],
     "strokes": ["color/utility/u-red-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -7945,13 +7945,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-red-700"],
     "strokes": ["color/utility/u-red-700"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -7965,13 +7965,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-green-600"],
     "strokes": ["color/utility/u-green-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -7985,13 +7985,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-green-700"],
     "strokes": ["color/utility/u-green-700"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8005,13 +8005,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-yellow-600"],
     "strokes": ["color/utility/u-yellow-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8025,13 +8025,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-yellow-700"],
     "strokes": ["color/utility/u-yellow-700"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8045,13 +8045,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-cyan-400"],
     "strokes": ["color/utility/u-cyan-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8065,13 +8065,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-cyan-600"],
     "strokes": ["color/utility/u-cyan-600"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8085,13 +8085,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-blue-400"],
     "strokes": ["color/utility/u-blue-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8105,13 +8105,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-blue-500"],
     "strokes": ["color/utility/u-blue-500"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8125,13 +8125,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-purple-600"],
     "strokes": ["color/utility/u-purple-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8145,13 +8145,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-purple-700"],
     "strokes": ["color/utility/u-purple-700"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8165,13 +8165,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-pink-400"],
     "strokes": ["color/utility/u-pink-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8185,13 +8185,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-pink-600"],
     "strokes": ["color/utility/u-pink-600"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8205,13 +8205,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-bamboo-400"],
     "strokes": ["color/utility/u-bamboo-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8225,13 +8225,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-bamboo-600"],
     "strokes": ["color/utility/u-bamboo-600"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8245,13 +8245,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-brown-400"],
     "strokes": ["color/utility/u-brown-300"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {
@@ -8265,13 +8265,13 @@
     "sw": [1,1,1,1],
     "sa": "INSIDE"
    },
-   "right-number": {
+   "left-number": {
     "fills": ["color/utility/u-brown-500"],
     "strokes": ["color/utility/u-brown-500"],
     "sw": [0,0,0,1],
     "sa": "INSIDE"
    },
-   "right-number/1": {
+   "left-number/1": {
     "fills": ["color/text/general/const-white"]
    },
    "content/title/Tag Title": {

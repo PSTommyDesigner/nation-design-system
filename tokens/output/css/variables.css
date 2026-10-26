@@ -1476,6 +1476,11 @@
   --ntg-semi-rounded-tag-checkbox-tag-checkbox-md: 14px; /** ช่องติ๊กในแท็กขนาด md เท่ากับ 14px */
   --ntg-semi-rounded-tag-checkbox-tag-checkbox-lg: 16px; /** ช่องติ๊กในแท็กขนาด lg เท่ากับ 16px */
   --ntg-semi-rounded-tag-checkbox-tag-checkbox-xl: 18px; /** ช่องติ๊กในแท็กขนาด xl เท่ากับ 18px */
+  --ntg-semi-rounded-tag-checkbox-tag-radius-xs: 2px; /** มุมโค้งช่องติ๊กในแท็กขนาด xs เท่ากับ 2px ตาม Brand checkbox-tag */
+  --ntg-semi-rounded-tag-checkbox-tag-radius-sm: 2px; /** มุมโค้งช่องติ๊กในแท็กขนาด sm เท่ากับ 2px ตาม Brand checkbox-tag */
+  --ntg-semi-rounded-tag-checkbox-tag-radius-md: 3px; /** มุมโค้งช่องติ๊กในแท็กขนาด md เท่ากับ 3px ตาม Brand checkbox-tag */
+  --ntg-semi-rounded-tag-checkbox-tag-radius-lg: 3px; /** มุมโค้งช่องติ๊กในแท็กขนาด lg เท่ากับ 3px ตาม Brand checkbox-tag */
+  --ntg-semi-rounded-tag-checkbox-tag-radius-xl: 3px; /** มุมโค้งช่องติ๊กในแท็กขนาด xl เท่ากับ 3px ตาม Brand checkbox-tag */
   --ntg-semi-rounded-tag-indicator-tag-padding-left-xs: 4px; /** ระยะขอบซ้ายของกล่องแท็กชนิด indicator-tag ขนาด xs เท่ากับ 4px */
   --ntg-semi-rounded-tag-indicator-tag-padding-left-sm: 5px; /** ระยะขอบซ้ายของกล่องแท็กชนิด indicator-tag ขนาด sm เท่ากับ 5px */
   --ntg-semi-rounded-tag-indicator-tag-padding-left-md: 6px; /** ระยะขอบซ้ายของกล่องแท็กชนิด indicator-tag ขนาด md เท่ากับ 6px */
@@ -1801,6 +1806,11 @@
   --ntg-pill-tag-checkbox-tag-checkbox-md: 14px; /** ช่องติ๊กในแท็กขนาด md เท่ากับ 14px */
   --ntg-pill-tag-checkbox-tag-checkbox-lg: 16px; /** ช่องติ๊กในแท็กขนาด lg เท่ากับ 16px */
   --ntg-pill-tag-checkbox-tag-checkbox-xl: 18px; /** ช่องติ๊กในแท็กขนาด xl เท่ากับ 18px */
+  --ntg-pill-tag-checkbox-tag-radius-xs: 2px; /** มุมโค้งช่องติ๊กในแท็กขนาด xs เท่ากับ 2px ตาม Brand checkbox-tag */
+  --ntg-pill-tag-checkbox-tag-radius-sm: 2px; /** มุมโค้งช่องติ๊กในแท็กขนาด sm เท่ากับ 2px ตาม Brand checkbox-tag */
+  --ntg-pill-tag-checkbox-tag-radius-md: 3px; /** มุมโค้งช่องติ๊กในแท็กขนาด md เท่ากับ 3px ตาม Brand checkbox-tag */
+  --ntg-pill-tag-checkbox-tag-radius-lg: 3px; /** มุมโค้งช่องติ๊กในแท็กขนาด lg เท่ากับ 3px ตาม Brand checkbox-tag */
+  --ntg-pill-tag-checkbox-tag-radius-xl: 3px; /** มุมโค้งช่องติ๊กในแท็กขนาด xl เท่ากับ 3px ตาม Brand checkbox-tag */
   --ntg-pill-tag-indicator-tag-padding-left-xs: 6px; /** ระยะขอบซ้ายของกล่องแท็กชนิด indicator-tag ขนาด xs เท่ากับ 6px */
   --ntg-pill-tag-indicator-tag-padding-left-sm: 7px; /** ระยะขอบซ้ายของกล่องแท็กชนิด indicator-tag ขนาด sm เท่ากับ 7px */
   --ntg-pill-tag-indicator-tag-padding-left-md: 8px; /** ระยะขอบซ้ายของกล่องแท็กชนิด indicator-tag ขนาด md เท่ากับ 8px */

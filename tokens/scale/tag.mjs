@@ -62,6 +62,10 @@ export const GAP_FLUSH = 0;    // ชนิดที่ของนำหน้�
 export const ICON = { base: 10, step: 2 };          // 10 · 12 · 14 · 16 · 18  ไอคอนปิดของชุดฐาน
 export const ICON_LEADING = { base: 12, step: 2 };  // 12 · 14 · 16 · 18 · 20  ชนิดที่มีของนำหน้า
 export const CHECKBOX = { base: 10, step: 2 };      // 10 · 12 · 14 · 16 · 18
+// มุมโค้งช่องติ๊กในแท็ก (หัวหน้าตัดสิน 2026-10-26 ยึดตาม Brand checkbox-tag)
+//   ช่องติ๊กในแท็กเล็กกว่า component ช่องติ๊กจริง (12..28) จึงยืม variant xs ที่ xs/sm และ sm ที่ md ขึ้นไป
+//   แล้วประกาศเป็นตัวแปรของแท็กเองแทนการอ้างมุมโค้งของ component ช่องติ๊ก
+export const CHECKBOX_RADIUS = { xs: 2, sm: 2, md: 3, lg: 3, xl: 3 };
 export const INDICATOR_PADDING = 2;                  // ระยะขอบรอบจุดสถานะ เท่ากันทุกขนาด
 // มุมโค้งทรงมุมมนโตตามขนาด สูตรอยู่ที่ global-scale.config.mjs เพราะมุมโค้งเป็นบุคลิกของแบรนด์
 export const RADIUS_CORNER = RADIUS_FORMULA.tag;     // 3 · 3.5 · 4 · 4.5 · 5
@@ -232,6 +236,7 @@ export function build(dim) {
       }
       if (type === 'checkbox-tag') {
         node.checkbox = grow(CHECKBOX, (v, s) => `ช่องติ๊กในแท็กขนาด ${s} เท่ากับ ${v}px`);
+        node.radius = table(CHECKBOX_RADIUS, (v, s) => `มุมโค้งช่องติ๊กในแท็กขนาด ${s} เท่ากับ ${v}px ตาม Brand checkbox-tag`);
       }
       if (type === 'indicator-tag') {
         node.dot = table(DOT, (v, s) => `จุดสถานะในแท็กขนาด ${s} เท่ากับ ${v}px`);
