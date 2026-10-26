@@ -1,0 +1,46 @@
+/*
+ * LinkButton ส่วนโครงที่เขียนมือ (Nation Design System)
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ค่าทุกค่ามาจาก --lb-* ที่ scripts/generate-component-css.mjs สร้างจาก
+ * tokens/figma-layers/link-button.json แล้วต่อท้ายเป็น LinkButton.module.css ห้ามแก้ไฟล์นั้นตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บ
+ *   1. ไม่มีพื้นไม่มีขอบ ความสูงมาจากความสูงบรรทัดของ text style (ตามกฎห้ามทำสูตรความสูงให้ของที่ text style คุม)
+ *   2. สถานะโฟกัสในไฟล์ออกแบบคือเส้นขอบล่าง 1px (stroke เฉพาะด้านล่าง) วาดด้วย box-shadow inset ด้านล่าง
+ *   3. :active ใช้ token ชุด pressed ที่ตัวสร้าง derive ให้ (ตัดสิน 2026-09-04)
+ *   4. ข้อความไม่มีระยะขอบซ้ายขวา เพื่อให้ชิดแนวเนื้อหาที่วางต่อท้าย (ตัดสิน 2026-09-02) ค่า --lb-title-* ของไฟล์ออกแบบ
+ *      เป็น padding ของกรอบข้อความซึ่งซ้ำกับ padding ของกล่องนอก จึงใช้แค่ของกล่องนอก
+ */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  padding: var(--lb-pt, 0) var(--lb-pr, 0) var(--lb-pb, 0) var(--lb-pl, 0);
+  gap: var(--lb-gap, 0);
+  color: var(--lb-fg, inherit);
+  box-shadow: inset 0 calc(-1 * var(--lb-underline-w, 0px)) 0 var(--lb-underline, transparent);
+  font-family: var(--lb-font-family);
+  font-size: var(--lb-font-size);
+  line-height: var(--lb-line-height);
+  font-weight: var(--lb-font-weight);
+  letter-spacing: var(--lb-letter-space);
+  transition: color 0.15s ease, box-shadow 0.15s ease;
+}
+.root:focus-visible { outline: none; }
+.root:active:not(:disabled) { color: var(--lb-fg-pressed, var(--lb-fg)); }
+.root:active:not(:disabled) .icon { color: var(--lb-icon-color-pressed, var(--lb-icon-color)); }
+.root:disabled { cursor: not-allowed; }
+
+.content { display: inline-flex; align-items: center; gap: inherit; }
+.label { padding: 0; }
+.icon { flex: none; display: inline-flex; width: var(--lb-icon); height: var(--lb-icon); color: var(--lb-icon-color, inherit); }
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; }
+}

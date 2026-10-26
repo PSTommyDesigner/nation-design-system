@@ -1,0 +1,39 @@
+/*
+ * IconButton ส่วนโครงที่เขียนมือ (Nation Design System)
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ค่าทุกค่ามาจาก --btn-* ที่ scripts/generate-component-css.mjs สร้างจาก
+ * tokens/figma-layers/icon-button.json แล้วต่อท้ายเป็น IconButton.module.css ห้ามแก้ไฟล์นั้นตรง ๆ
+ * การตัดสินใจฝั่งเว็บเหมือน Button.base.css ทุกข้อ (เส้นขอบ box-shadow inset, :active ใช้ token ชุด pressed)
+ * ปุ่มไอคอนกว้างเท่าสูงตามตัวแปร icon-button/size (ไฟล์ออกแบบตั้งกว้างและสูงตายตัวทั้งคู่)
+ */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  border: 0;
+  width: var(--btn-w);
+  height: var(--btn-h);
+  padding: var(--btn-pt, 0) var(--btn-pr, 0) var(--btn-pb, 0) var(--btn-pl, 0);
+  gap: var(--btn-gap, 0);
+  border-radius: var(--btn-r-tl, 0) var(--btn-r-tr, 0) var(--btn-r-br, 0) var(--btn-r-bl, 0);
+  background: var(--btn-bg, transparent);
+  color: var(--btn-icon-color, inherit);
+  box-shadow: inset 0 0 0 var(--btn-border-w, 1px) var(--btn-border, transparent), var(--btn-shadow, 0 0 0 0 transparent);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.root:focus-visible { outline: none; }
+.root:active:not(:disabled) {
+  background: var(--btn-bg-pressed, var(--btn-bg));
+  color: var(--btn-icon-color-pressed, var(--btn-icon-color));
+  box-shadow: inset 0 0 0 var(--btn-border-w, 1px) var(--btn-border-pressed, var(--btn-border, transparent)), var(--btn-shadow, 0 0 0 0 transparent);
+}
+.root:disabled { cursor: not-allowed; }
+
+.icon { flex: none; display: inline-flex; width: var(--btn-icon); height: var(--btn-icon); }
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; }
+}

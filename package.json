@@ -27,7 +27,7 @@
     "verify:families": "node scripts/verify-color-families.mjs",
     "figma:layers": "node scripts/extract-figma-layers.mjs",
     "css:generate": "node scripts/generate-component-css.mjs",
-    "verify:css": "node scripts/generate-component-css.mjs tag --check && node scripts/generate-component-css.mjs badge --check && node scripts/generate-component-css.mjs button --check",
+    "verify:css": "node scripts/generate-component-css.mjs tag --check && node scripts/generate-component-css.mjs badge --check && node scripts/generate-component-css.mjs button --check && node scripts/generate-component-css.mjs icon-button --check && node scripts/generate-component-css.mjs link-button --check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

@@ -1,0 +1,1103 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "12 Buttons",
+ "reference": "Brand Button",
+ "sets": {
+  "link-button": {
+   "defs": {
+    "Title": {
+     "type": "TEXT",
+     "def": "Link"
+    },
+    "L Icon": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "Swap L Icon": {
+     "type": "INSTANCE_SWAP",
+     "def": "8843:130"
+    },
+    "Swap R Icon": {
+     "type": "INSTANCE_SWAP",
+     "def": "8843:130"
+    },
+    "R Icon": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "default-gray": ["false","true"],
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover","focused","disabled"]
+   },
+   "layout": {
+    "xs": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "link-button/gap/xs",
+     "p": ["link-button/padding/top/xs","link-button/padding/right/xs","link-button/padding/bottom/xs","link-button/padding/left/xs"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "Left Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/xs",
+       "h": "link-button/icon/xs",
+       "clip": true,
+       "ref": {
+        "visible": "L Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap L Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Title frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "link-button/gap/xs",
+       "p": ["link-button/padding/top/xs","link-button/padding/right/xs","link-button/padding/bottom/xs","link-button/padding/left/xs"],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/md",
+         "ref": {
+          "characters": "Title"
+         }
+        }
+       ]
+      },
+      {
+       "n": "Right Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/xs",
+       "h": "link-button/icon/xs",
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "R Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap R Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "link-button/gap/sm",
+     "p": ["link-button/padding/top/sm","link-button/padding/right/sm","link-button/padding/bottom/sm","link-button/padding/left/sm"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "Left Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/sm",
+       "h": "link-button/icon/sm",
+       "clip": true,
+       "ref": {
+        "visible": "L Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap L Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Title frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "link-button/gap/sm",
+       "p": ["link-button/padding/top/sm","link-button/padding/right/sm","link-button/padding/bottom/sm","link-button/padding/left/sm"],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/md",
+         "ref": {
+          "characters": "Title"
+         }
+        }
+       ]
+      },
+      {
+       "n": "Right Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/sm",
+       "h": "link-button/icon/sm",
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "R Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap R Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "link-button/gap/md",
+     "p": ["link-button/padding/top/md","link-button/padding/right/md","link-button/padding/bottom/md","link-button/padding/left/md"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "Left Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/md",
+       "h": "link-button/icon/md",
+       "ref": {
+        "visible": "L Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap L Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Title frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "link-button/gap/md",
+       "p": ["link-button/padding/top/md","link-button/padding/right/md","link-button/padding/bottom/md","link-button/padding/left/md"],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/lg",
+         "ref": {
+          "characters": "Title"
+         }
+        }
+       ]
+      },
+      {
+       "n": "Right Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/md",
+       "h": "link-button/icon/md",
+       "vis": false,
+       "ref": {
+        "visible": "R Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap R Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "link-button/gap/lg",
+     "p": ["link-button/padding/top/lg","link-button/padding/right/lg","link-button/padding/bottom/lg","link-button/padding/left/lg"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "Left Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/lg",
+       "h": "link-button/icon/lg",
+       "clip": true,
+       "ref": {
+        "visible": "L Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap L Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Title frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "link-button/gap/lg",
+       "p": ["link-button/padding/top/lg","link-button/padding/right/lg","link-button/padding/bottom/lg","link-button/padding/left/lg"],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/lg",
+         "ref": {
+          "characters": "Title"
+         }
+        }
+       ]
+      },
+      {
+       "n": "Right Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/lg",
+       "h": "link-button/icon/lg",
+       "clip": true,
+       "vis": false,
+       "ref": {
+        "visible": "R Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap R Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xl": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "link-button/gap/xl",
+     "p": ["link-button/padding/top/xl","link-button/padding/right/xl","link-button/padding/bottom/xl","link-button/padding/left/xl"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "Left Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/xl",
+       "h": "link-button/icon/xl",
+       "ref": {
+        "visible": "L Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap L Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Title frame",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "link-button/gap/xl",
+       "p": ["link-button/padding/top/xl","link-button/padding/right/xl","link-button/padding/bottom/xl","link-button/padding/left/xl"],
+       "s": ["HUG","HUG"],
+       "ch": [
+        {
+         "n": "Title",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::label/xl",
+         "ref": {
+          "characters": "Title"
+         }
+        }
+       ]
+      },
+      {
+       "n": "Right Icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/xl",
+       "h": "link-button/icon/xl",
+       "vis": false,
+       "ref": {
+        "visible": "R Icon"
+       },
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "Swap R Icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Brand Button": {
+     "default-gray=false, state=default": 0,
+     "default-gray=false, state=hover": 1,
+     "default-gray=false, state=focused": 2,
+     "default-gray=false, state=disabled": 3,
+     "default-gray=true, state=default": 4,
+     "default-gray=true, state=hover": 5,
+     "default-gray=true, state=focused": 6,
+     "default-gray=true, state=disabled": 7
+    },
+    "Neutral Button": {
+     "state=default": 8,
+     "state=hover": 9,
+     "state=focused": 10,
+     "state=disabled": 11
+    },
+    "Error Button": {
+     "default-gray=false, state=default": 12,
+     "default-gray=false, state=hover": 13,
+     "default-gray=false, state=focused": 14,
+     "default-gray=false, state=disabled": 15,
+     "default-gray=true, state=default": 16,
+     "default-gray=true, state=hover": 17,
+     "default-gray=true, state=focused": 18,
+     "default-gray=true, state=disabled": 19
+    }
+   }
+  },
+  "link-icon-button": {
+   "defs": {
+    "swap-icon": {
+     "type": "INSTANCE_SWAP",
+     "def": "8843:130"
+    },
+    "default-gray": ["false","true"],
+    "size": ["xs","sm","md","lg","xl"],
+    "state": ["default","hover","focused","disabled"]
+   },
+   "layout": {
+    "xs": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": ["link-icon-button/icon-only-padding/top/xs","link-icon-button/icon-only-padding/right/xs","link-icon-button/icon-only-padding/bottom/xs","link-icon-button/icon-only-padding/left/xs"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/xs",
+       "h": "link-button/icon/xs",
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "swap-icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": ["link-icon-button/icon-only-padding/top/sm","link-icon-button/icon-only-padding/right/sm","link-icon-button/icon-only-padding/bottom/sm","link-icon-button/icon-only-padding/left/sm"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/sm",
+       "h": "link-button/icon/sm",
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "swap-icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": ["link-icon-button/icon-only-padding/top/md","link-icon-button/icon-only-padding/right/md","link-icon-button/icon-only-padding/bottom/md","link-icon-button/icon-only-padding/left/md"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/md",
+       "h": "link-button/icon/md",
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "swap-icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": ["link-icon-button/icon-only-padding/top/lg","link-icon-button/icon-only-padding/right/lg","link-icon-button/icon-only-padding/bottom/lg","link-icon-button/icon-only-padding/left/lg"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/lg",
+       "h": "link-button/icon/lg",
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "swap-icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "xl": {
+     "t": "COMPONENT",
+     "lm": "HORIZONTAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": 0,
+     "p": ["link-icon-button/icon-only-padding/top/xl","link-icon-button/icon-only-padding/right/xl","link-icon-button/icon-only-padding/bottom/xl","link-icon-button/icon-only-padding/left/xl"],
+     "s": ["HUG","HUG"],
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "FRAME",
+       "s": ["FIXED","FIXED"],
+       "w": "link-button/icon/xl",
+       "h": "link-button/icon/xl",
+       "ch": [
+        {
+         "n": "social-&-brand/link",
+         "t": "INSTANCE",
+         "clip": true,
+         "ref": {
+          "mainComponent": "swap-icon"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Brand Button": {
+     "default-gray=false, state=default": 20,
+     "default-gray=false, state=hover": 21,
+     "default-gray=false, state=focused": 22,
+     "default-gray=false, state=disabled": 23,
+     "default-gray=true, state=default": 24,
+     "default-gray=true, state=hover": 25,
+     "default-gray=true, state=focused": 26,
+     "default-gray=true, state=disabled": 27
+    },
+    "Neutral Button": {
+     "state=default": 28,
+     "state=hover": 29,
+     "state=focused": 30,
+     "state=disabled": 31
+    },
+    "Error Button": {
+     "default-gray=false, state=default": 32,
+     "default-gray=false, state=hover": 33,
+     "default-gray=false, state=focused": 34,
+     "default-gray=false, state=disabled": 35,
+     "default-gray=true, state=default": 36,
+     "default-gray=true, state=hover": 37,
+     "default-gray=true, state=focused": 38,
+     "default-gray=true, state=disabled": 39
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/brand/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/hover"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/brand/text/hover"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["color/border/brand/solid"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["icon/brand/primary"]
+   },
+   "Title frame/Title": {
+    "fills": ["color/text/brand/primary"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/disabled"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/brand/text/disabled"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/disabled"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/brand-gray/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/hover"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/brand-gray/text/hover"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["icon/general/quaternary"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/brand-gray/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/disabled"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/brand-gray/text/disabled"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/disabled"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/gray/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/hover"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/gray/text/hover"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["icon/general/quaternary"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/gray/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/disabled"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/gray/text/disabled"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/disabled"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/error/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/hover"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/error/text/hover"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["color/border/system/error-solid"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/error/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/disabled"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/error/text/disabled"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/disabled"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/error-gray/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/hover"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/error-gray/text/hover"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["icon/general/quaternary"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/default"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/error-gray/text/default"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/default"]
+   }
+  },
+  {
+   "Left Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/disabled"]
+   },
+   "Title frame/Title": {
+    "fills": ["button/color/link/error-gray/text/disabled"]
+   },
+   "Right Icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/disabled"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["color/border/brand/solid"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand/icon/disabled"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["icon/general/quaternary"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/brand-gray/icon/disabled"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["icon/general/quaternary"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/gray/icon/disabled"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["color/border/system/error-solid"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error/icon/disabled"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/hover"]
+   }
+  },
+  {
+   "(root)": {
+    "strokes": ["icon/general/quaternary"],
+    "sw": [0,0,1,0],
+    "sa": "INSIDE"
+   },
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/default"]
+   }
+  },
+  {
+   "icon/social-&-brand/link/vector": {
+    "fills": ["button/color/link/error-gray/icon/disabled"]
+   }
+  }
+ ]
+}

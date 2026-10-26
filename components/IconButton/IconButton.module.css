@@ -1,339 +1,213 @@
-/**
- * IconButton styles Nation Design System
- *
- * ปุ่มไอคอนล้วน ครอบคลุมทรง semi-rounded และ circular
- * ค่าขนาด/ระยะ/มุมโค้งมาจากกลุ่ม token `icon-button/*`
- * ค่าสีใช้ร่วมกับปุ่มข้อความ (`button/color/*`) ตามที่ Figma ผูกไว้
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/IconButton/IconButton.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 12 Buttons แล้วรัน  npm run figma:layers -- icon-button  และ  npm run css:generate -- icon-button
+ *   spec: tokens/figma-layers/icon-button.json (ดึง 2026-10-26)
+ */
+
+/*
+ * IconButton ส่วนโครงที่เขียนมือ (Nation Design System)
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ค่าทุกค่ามาจาก --btn-* ที่ scripts/generate-component-css.mjs สร้างจาก
+ * tokens/figma-layers/icon-button.json แล้วต่อท้ายเป็น IconButton.module.css ห้ามแก้ไฟล์นั้นตรง ๆ
+ * การตัดสินใจฝั่งเว็บเหมือน Button.base.css ทุกข้อ (เส้นขอบ box-shadow inset, :active ใช้ token ชุด pressed)
+ * ปุ่มไอคอนกว้างเท่าสูงตามตัวแปร icon-button/size (ไฟล์ออกแบบตั้งกว้างและสูงตายตัวทั้งคู่)
  */
 
 .root {
-  --btn-bg: transparent;
-  --btn-bg-hover: var(--btn-bg);
-  --btn-bg-pressed: var(--btn-bg);
-  --btn-bg-focus: var(--btn-bg);
-  --btn-bg-disabled: transparent;
-  --btn-fg: inherit;
-  --btn-fg-hover: var(--btn-fg);
-  --btn-fg-pressed: var(--btn-fg);
-  --btn-fg-focus: var(--btn-fg);
-  --btn-fg-disabled: inherit;
-  --btn-border: transparent;
-  --btn-border-hover: var(--btn-border);
-  --btn-border-pressed: var(--btn-border);
-  --btn-border-focus: var(--btn-border);
-  --btn-border-disabled: transparent;
-  --btn-ring: var(--ntg-color-effect-focused-ring-brand);
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
-  background: var(--btn-bg);
-  color: var(--btn-fg);
-  border: 1px solid var(--btn-border);
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  border: 0;
+  width: var(--btn-w);
+  height: var(--btn-h);
+  padding: var(--btn-pt, 0) var(--btn-pr, 0) var(--btn-pb, 0) var(--btn-pl, 0);
+  gap: var(--btn-gap, 0);
+  border-radius: var(--btn-r-tl, 0) var(--btn-r-tr, 0) var(--btn-r-br, 0) var(--btn-r-bl, 0);
+  background: var(--btn-bg, transparent);
+  color: var(--btn-icon-color, inherit);
+  box-shadow: inset 0 0 0 var(--btn-border-w, 1px) var(--btn-border, transparent), var(--btn-shadow, 0 0 0 0 transparent);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
-
-.root:hover:not(:disabled) {
-  background: var(--btn-bg-hover);
-  color: var(--btn-fg-hover);
-  border-color: var(--btn-border-hover);
-}
-.root:focus-visible {
-  outline: none;
-  background: var(--btn-bg-focus);
-  color: var(--btn-fg-focus);
-  border-color: var(--btn-border-focus);
-  box-shadow: 0 0 0 4px var(--btn-ring);
-}
-/* สถานะกด ใช้ token ชุด pressed ที่ไฟล์ออกแบบกำหนดไว้เมื่อ 2026-09-04
-   วางไว้หลัง :focus-visible เพื่อให้สีตอนกดชนะสีตอนโฟกัส แต่วงแหวนโฟกัสยังอยู่ */
+.root:focus-visible { outline: none; }
 .root:active:not(:disabled) {
-  background: var(--btn-bg-pressed);
-  color: var(--btn-fg-pressed);
-  border-color: var(--btn-border-pressed);
+  background: var(--btn-bg-pressed, var(--btn-bg));
+  color: var(--btn-icon-color-pressed, var(--btn-icon-color));
+  box-shadow: inset 0 0 0 var(--btn-border-w, 1px) var(--btn-border-pressed, var(--btn-border, transparent)), var(--btn-shadow, 0 0 0 0 transparent);
 }
+.root:disabled { cursor: not-allowed; }
 
-.root:disabled,
-.root[aria-disabled='true'] {
-  background: var(--btn-bg-disabled);
-  color: var(--btn-fg-disabled);
-  border-color: var(--btn-border-disabled);
-  cursor: not-allowed;
-}
-
-/* ── ขนาด (icon-button มีชุด token ของตัวเอง) ────── */
-.xs {
-  width: var(--ntg-icon-button-size-xs); height: var(--ntg-icon-button-size-xs);
-  padding: var(--ntg-icon-button-padding-top-xs) var(--ntg-icon-button-padding-right-xs)
-           var(--ntg-icon-button-padding-bottom-xs) var(--ntg-icon-button-padding-left-xs);
-  border-radius: var(--ntg-icon-button-radius-top-left-xs) var(--ntg-icon-button-radius-top-right-xs)
-                 var(--ntg-icon-button-radius-bottom-right-xs) var(--ntg-icon-button-radius-bottom-left-xs);
-}
-.sm {
-  width: var(--ntg-icon-button-size-sm); height: var(--ntg-icon-button-size-sm);
-  padding: var(--ntg-icon-button-padding-top-sm) var(--ntg-icon-button-padding-right-sm)
-           var(--ntg-icon-button-padding-bottom-sm) var(--ntg-icon-button-padding-left-sm);
-  border-radius: var(--ntg-icon-button-radius-top-left-sm) var(--ntg-icon-button-radius-top-right-sm)
-                 var(--ntg-icon-button-radius-bottom-right-sm) var(--ntg-icon-button-radius-bottom-left-sm);
-}
-.md {
-  width: var(--ntg-icon-button-size-md); height: var(--ntg-icon-button-size-md);
-  padding: var(--ntg-icon-button-padding-top-md) var(--ntg-icon-button-padding-right-md)
-           var(--ntg-icon-button-padding-bottom-md) var(--ntg-icon-button-padding-left-md);
-  border-radius: var(--ntg-icon-button-radius-top-left-md) var(--ntg-icon-button-radius-top-right-md)
-                 var(--ntg-icon-button-radius-bottom-right-md) var(--ntg-icon-button-radius-bottom-left-md);
-}
-.lg {
-  width: var(--ntg-icon-button-size-lg); height: var(--ntg-icon-button-size-lg);
-  padding: var(--ntg-icon-button-padding-top-lg) var(--ntg-icon-button-padding-right-lg)
-           var(--ntg-icon-button-padding-bottom-lg) var(--ntg-icon-button-padding-left-lg);
-  border-radius: var(--ntg-icon-button-radius-top-left-lg) var(--ntg-icon-button-radius-top-right-lg)
-                 var(--ntg-icon-button-radius-bottom-right-lg) var(--ntg-icon-button-radius-bottom-left-lg);
-}
-.xl {
-  width: var(--ntg-icon-button-size-xl); height: var(--ntg-icon-button-size-xl);
-  padding: var(--ntg-icon-button-padding-top-xl) var(--ntg-icon-button-padding-right-xl)
-           var(--ntg-icon-button-padding-bottom-xl) var(--ntg-icon-button-padding-left-xl);
-  border-radius: var(--ntg-icon-button-radius-top-left-xl) var(--ntg-icon-button-radius-top-right-xl)
-                 var(--ntg-icon-button-radius-bottom-right-xl) var(--ntg-icon-button-radius-bottom-left-xl);
-}
-
-/* ทรงวงกลม */
-.circular { border-radius: var(--ntg-icon-button-radius-full); }
-
-.icon { flex: none; display: inline-flex; }
-.xs .icon { width: var(--ntg-icon-button-icon-xs); height: var(--ntg-icon-button-icon-xs); }
-.sm .icon { width: var(--ntg-icon-button-icon-sm); height: var(--ntg-icon-button-icon-sm); }
-.md .icon { width: var(--ntg-icon-button-icon-md); height: var(--ntg-icon-button-icon-md); }
-.lg .icon { width: var(--ntg-icon-button-icon-lg); height: var(--ntg-icon-button-icon-lg); }
-.xl .icon { width: var(--ntg-icon-button-icon-xl); height: var(--ntg-icon-button-icon-xl); }
+.icon { flex: none; display: inline-flex; width: var(--btn-icon); height: var(--btn-icon); }
 
 @media (prefers-reduced-motion: reduce) {
-    .root { transition: none; }
+  .root { transition: none; }
 }
 
-/* ── ตระกูลสี × ลำดับความสำคัญ (ใช้ token ชุดเดียวกับปุ่มข้อความ) ── */
-.brand.primary {
-  --btn-bg: var(--ntg-button-color-brand-background-primary-default);
-  --btn-bg-hover: var(--ntg-button-color-brand-background-primary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-brand-background-primary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-brand-background-primary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-brand-background-primary-disabled);
-  --btn-fg: var(--ntg-button-color-brand-icon-primary-default);
-  --btn-fg-hover: var(--ntg-button-color-brand-icon-primary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-brand-icon-primary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-brand-icon-primary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-brand-icon-primary-disabled);
-}
-.brand.secondary {
-  --btn-bg: var(--ntg-button-color-brand-background-secondary-default);
-  --btn-bg-hover: var(--ntg-button-color-brand-background-secondary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-brand-background-secondary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-brand-background-secondary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-brand-background-secondary-disabled);
-  --btn-fg: var(--ntg-button-color-brand-icon-secondary-default);
-  --btn-fg-hover: var(--ntg-button-color-brand-icon-secondary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-brand-icon-secondary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-brand-icon-secondary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-brand-icon-secondary-disabled);
-  --btn-border: var(--ntg-button-color-brand-border-secondary-default);
-  --btn-border-hover: var(--ntg-button-color-brand-border-secondary-hover);
-  --btn-border-pressed: var(--ntg-button-color-brand-border-secondary-pressed);
-  --btn-border-focus: var(--ntg-button-color-brand-border-secondary-focused);
-  --btn-border-disabled: var(--ntg-button-color-brand-border-secondary-disabled);
-}
-.brand.tertiary {
-  --btn-bg-hover: var(--ntg-button-color-brand-background-tertiary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-brand-background-tertiary-pressed);
-  --btn-fg: var(--ntg-button-color-brand-icon-tertiary-default);
-  --btn-fg-hover: var(--ntg-button-color-brand-icon-tertiary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-brand-icon-tertiary-pressed);
-  --btn-fg-disabled: var(--ntg-button-color-brand-icon-tertiary-disabled);
-  --btn-bg-focus: var(--ntg-button-color-brand-background-tertiary-focused);
-  --btn-fg-focus: var(--ntg-button-color-brand-icon-tertiary-focused);
-}
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
 
-.brandGray.primary {
-  --btn-bg: var(--ntg-button-color-brand-gray-background-primary-default);
-  --btn-bg-hover: var(--ntg-button-color-brand-gray-background-primary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-brand-gray-background-primary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-brand-gray-background-primary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-brand-gray-background-primary-disabled);
-  --btn-fg: var(--ntg-button-color-brand-gray-icon-primary-default);
-  --btn-fg-hover: var(--ntg-button-color-brand-gray-icon-primary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-brand-gray-icon-primary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-brand-gray-icon-primary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-brand-gray-icon-primary-disabled);
-}
-.brandGray.secondary {
-  --btn-bg: var(--ntg-button-color-brand-gray-background-secondary-default);
-  --btn-bg-hover: var(--ntg-button-color-brand-gray-background-secondary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-brand-gray-background-secondary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-brand-gray-background-secondary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-brand-gray-background-secondary-disabled);
-  --btn-fg: var(--ntg-button-color-brand-gray-icon-secondary-default);
-  --btn-fg-hover: var(--ntg-button-color-brand-gray-icon-secondary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-brand-gray-icon-secondary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-brand-gray-icon-secondary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-brand-gray-icon-secondary-disabled);
-  --btn-border: var(--ntg-button-color-brand-gray-border-secondary-default);
-  --btn-border-hover: var(--ntg-button-color-brand-gray-border-secondary-hover);
-  --btn-border-pressed: var(--ntg-button-color-brand-gray-border-secondary-pressed);
-  --btn-border-focus: var(--ntg-button-color-brand-gray-border-secondary-focused);
-  --btn-border-disabled: var(--ntg-button-color-brand-gray-border-secondary-disabled);
-}
-.brandGray.tertiary {
-  --btn-bg-hover: var(--ntg-button-color-brand-gray-background-tertiary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-brand-gray-background-tertiary-pressed);
-  --btn-fg: var(--ntg-button-color-brand-gray-icon-tertiary-default);
-  --btn-fg-hover: var(--ntg-button-color-brand-gray-icon-tertiary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-brand-gray-icon-tertiary-pressed);
-  --btn-fg-disabled: var(--ntg-button-color-brand-gray-icon-tertiary-disabled);
-  --btn-bg-focus: var(--ntg-button-color-brand-gray-background-tertiary-focused);
-  --btn-fg-focus: var(--ntg-button-color-brand-gray-icon-tertiary-focused);
-}
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root:not(.circular).xs { --btn-w: var(--ntg-icon-button-size-xs); --btn-h: var(--ntg-icon-button-size-xs); --btn-pt: var(--ntg-icon-button-padding-top-xs); --btn-pr: var(--ntg-icon-button-padding-right-xs); --btn-pb: var(--ntg-icon-button-padding-bottom-xs); --btn-pl: var(--ntg-icon-button-padding-left-xs); --btn-gap: var(--ntg-icon-button-gap-xs); --btn-r-tl: var(--ntg-icon-button-radius-top-left-xs); --btn-r-tr: var(--ntg-icon-button-radius-top-right-xs); --btn-r-br: var(--ntg-icon-button-radius-bottom-right-xs); --btn-r-bl: var(--ntg-icon-button-radius-bottom-left-xs); --btn-icon: var(--ntg-icon-button-icon-xs); }
+.root:not(.circular).sm { --btn-w: var(--ntg-icon-button-size-sm); --btn-h: var(--ntg-icon-button-size-sm); --btn-pt: var(--ntg-icon-button-padding-top-sm); --btn-pr: var(--ntg-icon-button-padding-right-sm); --btn-pb: var(--ntg-icon-button-padding-bottom-sm); --btn-pl: var(--ntg-icon-button-padding-left-sm); --btn-gap: var(--ntg-icon-button-gap-sm); --btn-r-tl: var(--ntg-icon-button-radius-top-left-sm); --btn-r-tr: var(--ntg-icon-button-radius-top-right-sm); --btn-r-br: var(--ntg-icon-button-radius-bottom-right-sm); --btn-r-bl: var(--ntg-icon-button-radius-bottom-left-sm); --btn-icon: var(--ntg-icon-button-icon-sm); }
+.root:not(.circular).md { --btn-w: var(--ntg-icon-button-size-md); --btn-h: var(--ntg-icon-button-size-md); --btn-pt: var(--ntg-icon-button-padding-top-md); --btn-pr: var(--ntg-icon-button-padding-right-md); --btn-pb: var(--ntg-icon-button-padding-bottom-md); --btn-pl: var(--ntg-icon-button-padding-left-md); --btn-gap: var(--ntg-icon-button-gap-md); --btn-r-tl: var(--ntg-icon-button-radius-top-left-md); --btn-r-tr: var(--ntg-icon-button-radius-top-right-md); --btn-r-br: var(--ntg-icon-button-radius-bottom-right-md); --btn-r-bl: var(--ntg-icon-button-radius-bottom-left-md); --btn-icon: var(--ntg-icon-button-icon-md); }
+.root:not(.circular).lg { --btn-w: var(--ntg-icon-button-size-lg); --btn-h: var(--ntg-icon-button-size-lg); --btn-pt: var(--ntg-icon-button-padding-top-lg); --btn-pr: var(--ntg-icon-button-padding-right-lg); --btn-pb: var(--ntg-icon-button-padding-bottom-lg); --btn-pl: var(--ntg-icon-button-padding-left-lg); --btn-gap: var(--ntg-icon-button-gap-lg); --btn-r-tl: var(--ntg-icon-button-radius-top-left-lg); --btn-r-tr: var(--ntg-icon-button-radius-top-right-lg); --btn-r-br: var(--ntg-icon-button-radius-bottom-right-lg); --btn-r-bl: var(--ntg-icon-button-radius-bottom-left-lg); --btn-icon: var(--ntg-icon-button-icon-lg); }
+.root:not(.circular).xl { --btn-w: var(--ntg-icon-button-size-xl); --btn-h: var(--ntg-icon-button-size-xl); --btn-pt: var(--ntg-icon-button-padding-top-xl); --btn-pr: var(--ntg-icon-button-padding-right-xl); --btn-pb: var(--ntg-icon-button-padding-bottom-xl); --btn-pl: var(--ntg-icon-button-padding-left-xl); --btn-gap: var(--ntg-icon-button-gap-xl); --btn-r-tl: var(--ntg-icon-button-radius-top-left-xl); --btn-r-tr: var(--ntg-icon-button-radius-top-right-xl); --btn-r-br: var(--ntg-icon-button-radius-bottom-right-xl); --btn-r-bl: var(--ntg-icon-button-radius-bottom-left-xl); --btn-icon: var(--ntg-icon-button-icon-xl); }
+.root.circular.xs { --btn-w: var(--ntg-icon-button-size-xs); --btn-h: var(--ntg-icon-button-size-xs); --btn-pt: var(--ntg-icon-button-padding-top-xs); --btn-pr: var(--ntg-icon-button-padding-right-xs); --btn-pb: var(--ntg-icon-button-padding-bottom-xs); --btn-pl: var(--ntg-icon-button-padding-left-xs); --btn-gap: var(--ntg-icon-button-gap-xs); --btn-r-tl: var(--ntg-button-radius-full); --btn-r-tr: var(--ntg-button-radius-full); --btn-r-br: var(--ntg-button-radius-full); --btn-r-bl: var(--ntg-button-radius-full); --btn-icon: var(--ntg-icon-button-icon-xs); }
+.root.circular.sm { --btn-w: var(--ntg-icon-button-size-sm); --btn-h: var(--ntg-icon-button-size-sm); --btn-pt: var(--ntg-icon-button-padding-top-sm); --btn-pr: var(--ntg-icon-button-padding-right-sm); --btn-pb: var(--ntg-icon-button-padding-bottom-sm); --btn-pl: var(--ntg-icon-button-padding-left-sm); --btn-gap: var(--ntg-icon-button-gap-sm); --btn-r-tl: var(--ntg-button-radius-full); --btn-r-tr: var(--ntg-button-radius-full); --btn-r-br: var(--ntg-button-radius-full); --btn-r-bl: var(--ntg-button-radius-full); --btn-icon: var(--ntg-icon-button-icon-sm); }
+.root.circular.md { --btn-w: var(--ntg-icon-button-size-md); --btn-h: var(--ntg-icon-button-size-md); --btn-pt: var(--ntg-icon-button-padding-top-md); --btn-pr: var(--ntg-icon-button-padding-right-md); --btn-pb: var(--ntg-icon-button-padding-bottom-md); --btn-pl: var(--ntg-icon-button-padding-left-md); --btn-gap: var(--ntg-icon-button-gap-md); --btn-r-tl: var(--ntg-button-radius-full); --btn-r-tr: var(--ntg-button-radius-full); --btn-r-br: var(--ntg-button-radius-full); --btn-r-bl: var(--ntg-button-radius-full); --btn-icon: var(--ntg-icon-button-icon-md); }
+.root.circular.lg { --btn-w: var(--ntg-icon-button-size-lg); --btn-h: var(--ntg-icon-button-size-lg); --btn-pt: var(--ntg-icon-button-padding-top-lg); --btn-pr: var(--ntg-icon-button-padding-right-lg); --btn-pb: var(--ntg-icon-button-padding-bottom-lg); --btn-pl: var(--ntg-icon-button-padding-left-lg); --btn-gap: var(--ntg-icon-button-gap-lg); --btn-r-tl: var(--ntg-button-radius-full); --btn-r-tr: var(--ntg-button-radius-full); --btn-r-br: var(--ntg-button-radius-full); --btn-r-bl: var(--ntg-button-radius-full); --btn-icon: var(--ntg-icon-button-icon-lg); }
+.root.circular.xl { --btn-w: var(--ntg-icon-button-size-xl); --btn-h: var(--ntg-icon-button-size-xl); --btn-pt: var(--ntg-icon-button-padding-top-xl); --btn-pr: var(--ntg-icon-button-padding-right-xl); --btn-pb: var(--ntg-icon-button-padding-bottom-xl); --btn-pl: var(--ntg-icon-button-padding-left-xl); --btn-gap: var(--ntg-icon-button-gap-xl); --btn-r-tl: var(--ntg-button-radius-full); --btn-r-tr: var(--ntg-button-radius-full); --btn-r-br: var(--ntg-button-radius-full); --btn-r-bl: var(--ntg-button-radius-full); --btn-icon: var(--ntg-icon-button-icon-xl); }
 
-.neutral.primary {
-  --btn-bg: var(--ntg-button-color-neutral-background-primary-default);
-  --btn-bg-hover: var(--ntg-button-color-neutral-background-primary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-neutral-background-primary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-neutral-background-primary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-neutral-background-primary-disabled);
-  --btn-fg: var(--ntg-button-color-neutral-icon-primary-default);
-  --btn-fg-hover: var(--ntg-button-color-neutral-icon-primary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-neutral-icon-primary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-neutral-icon-primary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-neutral-icon-primary-disabled);
-  --btn-ring: var(--ntg-color-effect-focused-ring-default);
-}
-.neutral.secondary {
-  --btn-bg: var(--ntg-button-color-neutral-background-secondary-default);
-  --btn-bg-hover: var(--ntg-button-color-neutral-background-secondary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-neutral-background-secondary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-neutral-background-secondary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-neutral-background-secondary-disabled);
-  --btn-fg: var(--ntg-button-color-neutral-icon-secondary-default);
-  --btn-fg-hover: var(--ntg-button-color-neutral-icon-secondary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-neutral-icon-secondary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-neutral-icon-secondary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-neutral-icon-secondary-disabled);
-  --btn-border: var(--ntg-button-color-neutral-border-secondary-default);
-  --btn-border-hover: var(--ntg-button-color-neutral-border-secondary-hover);
-  --btn-border-pressed: var(--ntg-button-color-neutral-border-secondary-pressed);
-  --btn-border-focus: var(--ntg-button-color-neutral-border-secondary-focused);
-  --btn-border-disabled: var(--ntg-button-color-neutral-border-secondary-disabled);
-  --btn-ring: var(--ntg-color-effect-focused-ring-default);
-}
-.neutral.tertiary {
-  --btn-bg-hover: var(--ntg-button-color-neutral-background-tertiary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-neutral-background-tertiary-pressed);
-  --btn-fg: var(--ntg-button-color-neutral-icon-tertiary-default);
-  --btn-fg-hover: var(--ntg-button-color-neutral-icon-tertiary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-neutral-icon-tertiary-pressed);
-  --btn-fg-disabled: var(--ntg-button-color-neutral-icon-tertiary-disabled);
-  --btn-bg-focus: var(--ntg-button-color-neutral-background-tertiary-focused);
-  --btn-fg-focus: var(--ntg-button-color-neutral-icon-tertiary-focused);
-  --btn-ring: var(--ntg-color-effect-focused-ring-default);
-}
-
-.error.primary {
-  --btn-bg: var(--ntg-button-color-error-background-primary-default);
-  --btn-bg-hover: var(--ntg-button-color-error-background-primary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-error-background-primary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-error-background-primary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-error-background-primary-disabled);
-  --btn-fg: var(--ntg-button-color-error-icon-primary-default);
-  --btn-fg-hover: var(--ntg-button-color-error-icon-primary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-error-icon-primary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-error-icon-primary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-error-icon-primary-disabled);
-  --btn-ring: var(--ntg-color-effect-focused-ring-error);
-}
-.error.secondary {
-  --btn-bg: var(--ntg-button-color-error-background-secondary-default);
-  --btn-bg-hover: var(--ntg-button-color-error-background-secondary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-error-background-secondary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-error-background-secondary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-error-background-secondary-disabled);
-  --btn-fg: var(--ntg-button-color-error-icon-secondary-default);
-  --btn-fg-hover: var(--ntg-button-color-error-icon-secondary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-error-icon-secondary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-error-icon-secondary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-error-icon-secondary-disabled);
-  --btn-border: var(--ntg-button-color-error-border-secondary-default);
-  --btn-border-hover: var(--ntg-button-color-error-border-secondary-hover);
-  --btn-border-pressed: var(--ntg-button-color-error-border-secondary-pressed);
-  --btn-border-focus: var(--ntg-button-color-error-border-secondary-focused);
-  --btn-border-disabled: var(--ntg-button-color-error-border-secondary-disabled);
-  --btn-ring: var(--ntg-color-effect-focused-ring-error);
-}
-.error.tertiary {
-  --btn-bg-hover: var(--ntg-button-color-error-background-tertiary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-error-background-tertiary-pressed);
-  --btn-fg: var(--ntg-button-color-error-icon-tertiary-default);
-  --btn-fg-hover: var(--ntg-button-color-error-icon-tertiary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-error-icon-tertiary-pressed);
-  --btn-fg-disabled: var(--ntg-button-color-error-icon-tertiary-disabled);
-  --btn-bg-focus: var(--ntg-button-color-error-background-tertiary-focused);
-  --btn-fg-focus: var(--ntg-button-color-error-icon-tertiary-focused);
-  --btn-ring: var(--ntg-color-effect-focused-ring-error);
-}
-
-.errorGray.primary {
-  --btn-bg: var(--ntg-button-color-error-gray-background-primary-default);
-  --btn-bg-hover: var(--ntg-button-color-error-gray-background-primary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-error-gray-background-primary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-error-gray-background-primary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-error-gray-background-primary-disabled);
-  --btn-fg: var(--ntg-button-color-error-gray-icon-primary-default);
-  --btn-fg-hover: var(--ntg-button-color-error-gray-icon-primary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-error-gray-icon-primary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-error-gray-icon-primary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-error-gray-icon-primary-disabled);
-  --btn-ring: var(--ntg-color-effect-focused-ring-error);
-}
-.errorGray.secondary {
-  --btn-bg: var(--ntg-button-color-error-gray-background-secondary-default);
-  --btn-bg-hover: var(--ntg-button-color-error-gray-background-secondary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-error-gray-background-secondary-pressed);
-  --btn-bg-focus: var(--ntg-button-color-error-gray-background-secondary-focused);
-  --btn-bg-disabled: var(--ntg-button-color-error-gray-background-secondary-disabled);
-  --btn-fg: var(--ntg-button-color-error-gray-icon-secondary-default);
-  --btn-fg-hover: var(--ntg-button-color-error-gray-icon-secondary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-error-gray-icon-secondary-pressed);
-  --btn-fg-focus: var(--ntg-button-color-error-gray-icon-secondary-focused);
-  --btn-fg-disabled: var(--ntg-button-color-error-gray-icon-secondary-disabled);
-  --btn-border: var(--ntg-button-color-error-gray-border-secondary-default);
-  --btn-border-hover: var(--ntg-button-color-error-gray-border-secondary-hover);
-  --btn-border-pressed: var(--ntg-button-color-error-gray-border-secondary-pressed);
-  --btn-border-focus: var(--ntg-button-color-error-gray-border-secondary-focused);
-  --btn-border-disabled: var(--ntg-button-color-error-gray-border-secondary-disabled);
-  --btn-ring: var(--ntg-color-effect-focused-ring-error);
-}
-.errorGray.tertiary {
-  --btn-bg-hover: var(--ntg-button-color-error-gray-background-tertiary-hover);
-  --btn-bg-pressed: var(--ntg-button-color-error-gray-background-tertiary-pressed);
-  --btn-fg: var(--ntg-button-color-error-gray-icon-tertiary-default);
-  --btn-fg-hover: var(--ntg-button-color-error-gray-icon-tertiary-hover);
-  --btn-fg-pressed: var(--ntg-button-color-error-gray-icon-tertiary-pressed);
-  --btn-fg-disabled: var(--ntg-button-color-error-gray-icon-tertiary-disabled);
-  --btn-bg-focus: var(--ntg-button-color-error-gray-background-tertiary-focused);
-  --btn-fg-focus: var(--ntg-button-color-error-gray-icon-tertiary-focused);
-  --btn-ring: var(--ntg-color-effect-focused-ring-error);
-}
-
-.alpha {
-  --btn-bg: var(--ntg-button-color-alpha-background-default);
-  --btn-bg-hover: var(--ntg-button-color-alpha-background-hover);
-  --btn-bg-pressed: var(--ntg-button-color-alpha-background-pressed);
-  --btn-bg-focus: var(--ntg-button-color-alpha-background-focused);
-  --btn-bg-disabled: var(--ntg-button-color-alpha-background-disabled);
-  --btn-fg: var(--ntg-button-color-alpha-icon-default);
-  --btn-fg-hover: var(--ntg-button-color-alpha-icon-hover);
-  --btn-fg-pressed: var(--ntg-button-color-alpha-icon-pressed);
-  --btn-fg-focus: var(--ntg-button-color-alpha-icon-focused);
-  --btn-fg-disabled: var(--ntg-button-color-alpha-icon-disabled);
-}
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root:not(.circular).brand.primary,
+.root.circular.brand.primary { --btn-bg: var(--ntg-button-color-brand-background-primary-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-brand-background-primary-pressed); --btn-icon-color: var(--ntg-button-color-brand-icon-primary-default); --btn-icon-color-pressed: var(--ntg-button-color-brand-icon-primary-pressed); }
+.root:not(.circular).brandGray.primary,
+.root.circular.brandGray.primary { --btn-bg: var(--ntg-button-color-brand-gray-background-primary-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-brand-gray-background-primary-pressed); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-primary-default); --btn-icon-color-pressed: var(--ntg-button-color-brand-gray-icon-primary-pressed); }
+.root:not(.circular).brand.secondary,
+.root.circular.brand.secondary { --btn-bg: var(--ntg-button-color-brand-background-secondary-default); --btn-border: var(--ntg-button-color-brand-border-secondary-default); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-brand-background-secondary-pressed); --btn-border-pressed: var(--ntg-button-color-brand-border-secondary-pressed); --btn-icon-color: var(--ntg-button-color-brand-icon-secondary-default); --btn-icon-color-pressed: var(--ntg-button-color-brand-icon-secondary-pressed); }
+.root:not(.circular).brandGray.secondary,
+.root.circular.brandGray.secondary { --btn-bg: var(--ntg-button-color-brand-gray-background-secondary-default); --btn-border: var(--ntg-button-color-brand-gray-border-secondary-default); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-brand-gray-background-secondary-pressed); --btn-border-pressed: var(--ntg-button-color-brand-gray-border-secondary-pressed); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-secondary-default); --btn-icon-color-pressed: var(--ntg-button-color-brand-gray-icon-secondary-pressed); }
+.root:not(.circular).brand.tertiary,
+.root.circular.brand.tertiary { --btn-icon-color: var(--ntg-button-color-brand-icon-tertiary-default); --btn-icon-color-pressed: var(--ntg-button-color-brand-icon-tertiary-pressed); }
+.root:not(.circular).brandGray.tertiary,
+.root.circular.brandGray.tertiary { --btn-icon-color: var(--ntg-button-color-brand-gray-icon-tertiary-default); --btn-icon-color-pressed: var(--ntg-button-color-brand-gray-icon-tertiary-pressed); }
+.root:not(.circular).neutral.primary,
+.root.circular.neutral.primary { --btn-bg: var(--ntg-button-color-neutral-background-primary-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-neutral-background-primary-pressed); --btn-icon-color: var(--ntg-button-color-neutral-icon-primary-default); --btn-icon-color-pressed: var(--ntg-button-color-neutral-icon-primary-pressed); }
+.root:not(.circular).neutral.secondary,
+.root.circular.neutral.secondary { --btn-bg: var(--ntg-button-color-neutral-background-secondary-default); --btn-border: var(--ntg-button-color-neutral-border-secondary-default); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-neutral-background-secondary-pressed); --btn-border-pressed: var(--ntg-button-color-neutral-border-secondary-pressed); --btn-icon-color: var(--ntg-button-color-neutral-icon-secondary-default); --btn-icon-color-pressed: var(--ntg-button-color-neutral-icon-secondary-pressed); }
+.root:not(.circular).neutral.tertiary,
+.root.circular.neutral.tertiary { --btn-icon-color: var(--ntg-button-color-neutral-icon-tertiary-default); --btn-icon-color-pressed: var(--ntg-button-color-neutral-icon-tertiary-pressed); }
+.root:not(.circular).error.primary,
+.root.circular.error.primary { --btn-bg: var(--ntg-button-color-error-background-primary-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-error-background-primary-pressed); --btn-icon-color: var(--ntg-button-color-error-icon-primary-default); --btn-icon-color-pressed: var(--ntg-button-color-error-icon-primary-pressed); }
+.root:not(.circular).error.secondary,
+.root.circular.error.secondary { --btn-bg: var(--ntg-button-color-error-background-secondary-default); --btn-border: var(--ntg-button-color-error-border-secondary-default); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-error-background-secondary-pressed); --btn-border-pressed: var(--ntg-button-color-error-border-secondary-pressed); --btn-icon-color: var(--ntg-button-color-error-icon-secondary-default); --btn-icon-color-pressed: var(--ntg-button-color-error-icon-secondary-pressed); }
+.root:not(.circular).error.tertiary,
+.root.circular.error.tertiary { --btn-icon-color: var(--ntg-button-color-error-icon-tertiary-default); --btn-icon-color-pressed: var(--ntg-button-color-error-icon-tertiary-pressed); }
+.root:not(.circular).errorGray.primary,
+.root.circular.errorGray.primary { --btn-bg: var(--ntg-button-color-error-gray-background-primary-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-error-gray-background-primary-pressed); --btn-icon-color: var(--ntg-button-color-error-gray-icon-primary-default); --btn-icon-color-pressed: var(--ntg-button-color-error-gray-icon-primary-pressed); }
+.root:not(.circular).errorGray.secondary,
+.root.circular.errorGray.secondary { --btn-bg: var(--ntg-button-color-error-gray-background-secondary-default); --btn-border: var(--ntg-button-color-error-gray-border-secondary-default); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-error-gray-background-secondary-pressed); --btn-border-pressed: var(--ntg-button-color-error-gray-border-secondary-pressed); --btn-icon-color: var(--ntg-button-color-error-gray-icon-secondary-default); --btn-icon-color-pressed: var(--ntg-button-color-error-gray-icon-secondary-pressed); }
+.root:not(.circular).errorGray.tertiary,
+.root.circular.errorGray.tertiary { --btn-icon-color: var(--ntg-button-color-error-gray-icon-tertiary-default); --btn-icon-color-pressed: var(--ntg-button-color-error-gray-icon-tertiary-pressed); }
+.root:not(.circular).alpha.xs,
+.root.circular.alpha.xs { --btn-bg: var(--ntg-button-color-alpha-background-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-bg-pressed: var(--ntg-button-color-alpha-background-pressed); --btn-icon-color: var(--ntg-button-color-alpha-icon-default); --btn-icon-color-pressed: var(--ntg-button-color-alpha-icon-pressed); }
+.root:not(.circular).alpha.sm,
+.root.circular.alpha.sm { --btn-bg: var(--ntg-button-color-alpha-background-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-sm); --btn-bg-pressed: var(--ntg-button-color-alpha-background-pressed); --btn-icon-color: var(--ntg-button-color-alpha-icon-default); --btn-icon-color-pressed: var(--ntg-button-color-alpha-icon-pressed); }
+.root:not(.circular).alpha.md,
+.root.circular.alpha.md { --btn-bg: var(--ntg-button-color-alpha-background-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-md); --btn-bg-pressed: var(--ntg-button-color-alpha-background-pressed); --btn-icon-color: var(--ntg-button-color-alpha-icon-default); --btn-icon-color-pressed: var(--ntg-button-color-alpha-icon-pressed); }
+.root:not(.circular).alpha.lg,
+.root.circular.alpha.lg { --btn-bg: var(--ntg-button-color-alpha-background-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-lg); --btn-bg-pressed: var(--ntg-button-color-alpha-background-pressed); --btn-icon-color: var(--ntg-button-color-alpha-icon-default); --btn-icon-color-pressed: var(--ntg-button-color-alpha-icon-pressed); }
+.root:not(.circular).alpha.xl,
+.root.circular.alpha.xl { --btn-bg: var(--ntg-button-color-alpha-background-default); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xl); --btn-bg-pressed: var(--ntg-button-color-alpha-background-pressed); --btn-icon-color: var(--ntg-button-color-alpha-icon-default); --btn-icon-color-pressed: var(--ntg-button-color-alpha-icon-pressed); }
+.root:not(.circular).brand.primary:hover:not(:disabled),
+.root.circular.brand.primary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-brand-background-primary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-icon-primary-hover); }
+.root:not(.circular).brandGray.primary:hover:not(:disabled),
+.root.circular.brandGray.primary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-brand-gray-background-primary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-primary-hover); }
+.root:not(.circular).brand.secondary:hover:not(:disabled),
+.root.circular.brand.secondary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-brand-background-secondary-hover); --btn-border: var(--ntg-button-color-brand-border-secondary-hover); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-icon-secondary-hover); }
+.root:not(.circular).brandGray.secondary:hover:not(:disabled),
+.root.circular.brandGray.secondary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-brand-gray-background-secondary-hover); --btn-border: var(--ntg-button-color-brand-gray-border-secondary-hover); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-secondary-hover); }
+.root:not(.circular).brand.tertiary:hover:not(:disabled),
+.root.circular.brand.tertiary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-brand-background-tertiary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-icon-tertiary-hover); }
+.root:not(.circular).brandGray.tertiary:hover:not(:disabled),
+.root.circular.brandGray.tertiary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-brand-gray-background-tertiary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-tertiary-hover); }
+.root:not(.circular).neutral.primary:hover:not(:disabled),
+.root.circular.neutral.primary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-neutral-background-primary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-neutral-icon-primary-hover); }
+.root:not(.circular).neutral.secondary:hover:not(:disabled),
+.root.circular.neutral.secondary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-neutral-background-secondary-hover); --btn-border: var(--ntg-button-color-neutral-border-secondary-hover); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-neutral-icon-secondary-hover); }
+.root:not(.circular).neutral.tertiary:hover:not(:disabled),
+.root.circular.neutral.tertiary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-neutral-background-tertiary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-neutral-icon-tertiary-hover); }
+.root:not(.circular).error.primary:hover:not(:disabled),
+.root.circular.error.primary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-error-background-primary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-icon-primary-hover); }
+.root:not(.circular).error.secondary:hover:not(:disabled),
+.root.circular.error.secondary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-error-background-secondary-hover); --btn-border: var(--ntg-button-color-error-border-secondary-hover); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-icon-secondary-hover); }
+.root:not(.circular).error.tertiary:hover:not(:disabled),
+.root.circular.error.tertiary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-error-background-tertiary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-icon-tertiary-hover); }
+.root:not(.circular).errorGray.primary:hover:not(:disabled),
+.root.circular.errorGray.primary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-error-gray-background-primary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-gray-icon-primary-hover); }
+.root:not(.circular).errorGray.secondary:hover:not(:disabled),
+.root.circular.errorGray.secondary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-error-gray-background-secondary-hover); --btn-border: var(--ntg-button-color-error-gray-border-secondary-hover); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-gray-icon-secondary-hover); }
+.root:not(.circular).errorGray.tertiary:hover:not(:disabled),
+.root.circular.errorGray.tertiary:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-error-gray-background-tertiary-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-gray-icon-tertiary-hover); }
+.root:not(.circular).alpha.xs:hover:not(:disabled),
+.root.circular.alpha.xs:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-alpha-background-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-alpha-icon-hover); }
+.root:not(.circular).alpha.sm:hover:not(:disabled),
+.root.circular.alpha.sm:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-alpha-background-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-sm); --btn-icon-color: var(--ntg-button-color-alpha-icon-hover); }
+.root:not(.circular).alpha.md:hover:not(:disabled),
+.root.circular.alpha.md:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-alpha-background-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-md); --btn-icon-color: var(--ntg-button-color-alpha-icon-hover); }
+.root:not(.circular).alpha.lg:hover:not(:disabled),
+.root.circular.alpha.lg:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-alpha-background-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-lg); --btn-icon-color: var(--ntg-button-color-alpha-icon-hover); }
+.root:not(.circular).alpha.xl:hover:not(:disabled),
+.root.circular.alpha.xl:hover:not(:disabled) { --btn-bg: var(--ntg-button-color-alpha-background-hover); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xl); --btn-icon-color: var(--ntg-button-color-alpha-icon-hover); }
+.root:not(.circular).brand.primary:focus-visible,
+.root.circular.brand.primary:focus-visible { --btn-bg: var(--ntg-button-color-brand-background-primary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-brand); --btn-icon-color: var(--ntg-button-color-brand-icon-primary-focused); }
+.root:not(.circular).brandGray.primary:focus-visible,
+.root.circular.brandGray.primary:focus-visible { --btn-bg: var(--ntg-button-color-brand-gray-background-primary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-brand); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-primary-focused); }
+.root:not(.circular).brand.secondary:focus-visible,
+.root.circular.brand.secondary:focus-visible { --btn-bg: var(--ntg-button-color-brand-background-secondary-focused); --btn-border: var(--ntg-button-color-brand-border-secondary-focused); --btn-border-w: 1px; --btn-shadow: var(--ntg-focused-ring-brand); --btn-icon-color: var(--ntg-button-color-brand-icon-secondary-focused); }
+.root:not(.circular).brandGray.secondary:focus-visible,
+.root.circular.brandGray.secondary:focus-visible { --btn-bg: var(--ntg-button-color-brand-gray-background-secondary-focused); --btn-border: var(--ntg-button-color-brand-gray-border-secondary-focused); --btn-border-w: 1px; --btn-shadow: var(--ntg-focused-ring-brand); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-secondary-focused); }
+.root:not(.circular).brand.tertiary:focus-visible,
+.root.circular.brand.tertiary:focus-visible { --btn-bg: var(--ntg-button-color-brand-background-tertiary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-brand); --btn-icon-color: var(--ntg-button-color-brand-icon-tertiary-focused); }
+.root:not(.circular).brandGray.tertiary:focus-visible,
+.root.circular.brandGray.tertiary:focus-visible { --btn-bg: var(--ntg-button-color-brand-gray-background-tertiary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-brand); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-tertiary-focused); }
+.root:not(.circular).neutral.primary:focus-visible,
+.root.circular.neutral.primary:focus-visible { --btn-bg: var(--ntg-button-color-neutral-background-primary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-default); --btn-icon-color: var(--ntg-button-color-neutral-icon-primary-focused); }
+.root:not(.circular).neutral.secondary:focus-visible,
+.root.circular.neutral.secondary:focus-visible { --btn-bg: var(--ntg-button-color-neutral-background-secondary-focused); --btn-border: var(--ntg-button-color-neutral-border-secondary-focused); --btn-border-w: 1px; --btn-shadow: var(--ntg-focused-ring-default); --btn-icon-color: var(--ntg-button-color-neutral-icon-secondary-focused); }
+.root:not(.circular).neutral.tertiary:focus-visible,
+.root.circular.neutral.tertiary:focus-visible { --btn-bg: var(--ntg-button-color-neutral-background-tertiary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-default); --btn-icon-color: var(--ntg-button-color-neutral-icon-tertiary-focused); }
+.root:not(.circular).error.primary:focus-visible,
+.root.circular.error.primary:focus-visible { --btn-bg: var(--ntg-button-color-error-background-primary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-error); --btn-icon-color: var(--ntg-button-color-error-icon-primary-focused); }
+.root:not(.circular).error.secondary:focus-visible,
+.root.circular.error.secondary:focus-visible { --btn-bg: var(--ntg-button-color-error-background-secondary-focused); --btn-border: var(--ntg-button-color-error-border-secondary-focused); --btn-border-w: 1px; --btn-shadow: var(--ntg-focused-ring-error); --btn-icon-color: var(--ntg-button-color-error-icon-secondary-focused); }
+.root:not(.circular).error.tertiary:focus-visible,
+.root.circular.error.tertiary:focus-visible { --btn-bg: var(--ntg-button-color-error-background-tertiary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-error); --btn-icon-color: var(--ntg-button-color-error-icon-tertiary-focused); }
+.root:not(.circular).errorGray.primary:focus-visible,
+.root.circular.errorGray.primary:focus-visible { --btn-bg: var(--ntg-button-color-error-gray-background-primary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-error); --btn-icon-color: var(--ntg-button-color-error-gray-icon-primary-focused); }
+.root:not(.circular).errorGray.secondary:focus-visible,
+.root.circular.errorGray.secondary:focus-visible { --btn-bg: var(--ntg-button-color-error-gray-background-secondary-focused); --btn-border: var(--ntg-button-color-error-gray-border-secondary-focused); --btn-border-w: 1px; --btn-shadow: var(--ntg-focused-ring-error); --btn-icon-color: var(--ntg-button-color-error-gray-icon-secondary-focused); }
+.root:not(.circular).errorGray.tertiary:focus-visible,
+.root.circular.errorGray.tertiary:focus-visible { --btn-bg: var(--ntg-button-color-error-gray-background-tertiary-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-error); --btn-icon-color: var(--ntg-button-color-error-gray-icon-tertiary-focused); }
+.root:not(.circular).alpha:focus-visible,
+.root.circular.alpha:focus-visible { --btn-bg: var(--ntg-button-color-alpha-background-focused); --btn-border: transparent; --btn-shadow: var(--ntg-focused-ring-default); --btn-icon-color: var(--ntg-button-color-alpha-icon-focused); }
+.root:not(.circular).brand.primary:disabled,
+.root.circular.brand.primary:disabled { --btn-bg: var(--ntg-button-color-brand-background-primary-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-icon-primary-disabled); }
+.root:not(.circular).brandGray.primary:disabled,
+.root.circular.brandGray.primary:disabled { --btn-bg: var(--ntg-button-color-brand-gray-background-primary-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-primary-disabled); }
+.root:not(.circular).brand.secondary:disabled,
+.root.circular.brand.secondary:disabled { --btn-bg: var(--ntg-button-color-brand-background-secondary-disabled); --btn-border: var(--ntg-button-color-brand-border-secondary-disabled); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-icon-secondary-disabled); }
+.root:not(.circular).brandGray.secondary:disabled,
+.root.circular.brandGray.secondary:disabled { --btn-bg: var(--ntg-button-color-brand-gray-background-secondary-disabled); --btn-border: var(--ntg-button-color-brand-gray-border-secondary-disabled); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-brand-gray-icon-secondary-disabled); }
+.root:not(.circular).brand.tertiary:disabled,
+.root.circular.brand.tertiary:disabled { --btn-icon-color: var(--ntg-button-color-brand-icon-tertiary-disabled); }
+.root:not(.circular).brandGray.tertiary:disabled,
+.root.circular.brandGray.tertiary:disabled { --btn-icon-color: var(--ntg-button-color-brand-gray-icon-tertiary-disabled); }
+.root:not(.circular).neutral.primary:disabled,
+.root.circular.neutral.primary:disabled { --btn-bg: var(--ntg-button-color-neutral-background-primary-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-neutral-icon-primary-disabled); }
+.root:not(.circular).neutral.secondary:disabled,
+.root.circular.neutral.secondary:disabled { --btn-bg: var(--ntg-button-color-neutral-background-secondary-disabled); --btn-border: var(--ntg-button-color-neutral-border-secondary-disabled); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-neutral-icon-secondary-disabled); }
+.root:not(.circular).neutral.tertiary:disabled,
+.root.circular.neutral.tertiary:disabled { --btn-icon-color: var(--ntg-button-color-neutral-icon-tertiary-disabled); }
+.root:not(.circular).error.primary:disabled,
+.root.circular.error.primary:disabled { --btn-bg: var(--ntg-button-color-error-background-primary-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-icon-primary-disabled); }
+.root:not(.circular).error.secondary:disabled,
+.root.circular.error.secondary:disabled { --btn-bg: var(--ntg-button-color-error-background-secondary-disabled); --btn-border: var(--ntg-button-color-error-border-secondary-disabled); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-icon-secondary-disabled); }
+.root:not(.circular).error.tertiary:disabled,
+.root.circular.error.tertiary:disabled { --btn-icon-color: var(--ntg-button-color-error-icon-tertiary-disabled); }
+.root:not(.circular).errorGray.primary:disabled,
+.root.circular.errorGray.primary:disabled { --btn-bg: var(--ntg-button-color-error-gray-background-primary-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-gray-icon-primary-disabled); }
+.root:not(.circular).errorGray.secondary:disabled,
+.root.circular.errorGray.secondary:disabled { --btn-bg: var(--ntg-button-color-error-gray-background-secondary-disabled); --btn-border: var(--ntg-button-color-error-gray-border-secondary-disabled); --btn-border-w: 1px; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-error-gray-icon-secondary-disabled); }
+.root:not(.circular).errorGray.tertiary:disabled,
+.root.circular.errorGray.tertiary:disabled { --btn-icon-color: var(--ntg-button-color-error-gray-icon-tertiary-disabled); }
+.root:not(.circular).alpha.xs:disabled,
+.root.circular.alpha.xs:disabled { --btn-bg: var(--ntg-button-color-alpha-background-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xs); --btn-icon-color: var(--ntg-button-color-alpha-icon-disabled); }
+.root:not(.circular).alpha.sm:disabled,
+.root.circular.alpha.sm:disabled { --btn-bg: var(--ntg-button-color-alpha-background-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-sm); --btn-icon-color: var(--ntg-button-color-alpha-icon-disabled); }
+.root:not(.circular).alpha.md:disabled,
+.root.circular.alpha.md:disabled { --btn-bg: var(--ntg-button-color-alpha-background-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-md); --btn-icon-color: var(--ntg-button-color-alpha-icon-disabled); }
+.root:not(.circular).alpha.lg:disabled,
+.root.circular.alpha.lg:disabled { --btn-bg: var(--ntg-button-color-alpha-background-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-lg); --btn-icon-color: var(--ntg-button-color-alpha-icon-disabled); }
+.root:not(.circular).alpha.xl:disabled,
+.root.circular.alpha.xl:disabled { --btn-bg: var(--ntg-button-color-alpha-background-disabled); --btn-border: transparent; --btn-shadow: var(--ntg-shadows-bottom-xl); --btn-icon-color: var(--ntg-button-color-alpha-icon-disabled); }

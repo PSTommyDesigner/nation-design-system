@@ -257,7 +257,101 @@ const BUTTON = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON }
+// ═══════════════════════════════════════════════════════════════════════════════
+// IconButton: หน้า 12 ปุ่มไอคอนล้วน 2 ชุด x 4 ตระกูล (Neutral มีแต่แกน default-gray=true ซึ่งคือสีของตัวเอง)
+// ═══════════════════════════════════════════════════════════════════════════════
+const grayFamilyClass = (suffix) => (f, axes = {}) => {
+  const fam = f.replace(new RegExp(` ${suffix}$`), '').toLowerCase()
+  const grayCapable = fam === 'brand' || fam === 'error'
+  return '.' + (grayCapable && axes['default-gray'] === 'true' ? `${fam}Gray` : fam)
+}
+const BUTTON_STATES = {
+  default: (sel) => sel,
+  hover: (sel) => `${sel}:hover:not(:disabled)`,
+  focused: (sel) => `${sel}:focus-visible`,
+  disabled: (sel) => `${sel}:disabled`,
+}
+const ICON_BUTTON = {
+  specFile: 'tokens/figma-layers/icon-button.json',
+  baseFile: 'components/IconButton/IconButton.base.css',
+  outFile: 'components/IconButton/IconButton.module.css',
+  sets: {
+    'semi-rounded-icon-button': { classes: '.root:not(.circular)' },
+    'circular-icon-button':     { classes: '.root.circular' },
+  },
+  familyClass: grayFamilyClass('Button'),
+  axisClass: { hierarchy: (v) => `.${v}` },
+  stateSelector: BUTTON_STATES,
+  layers: {
+    '(root)': (n, W) => ({
+      '--btn-w': W(n.w), '--btn-h': W(n.h),
+      '--btn-pt': W(n.p[0]), '--btn-pr': W(n.p[1]), '--btn-pb': W(n.p[2]), '--btn-pl': W(n.p[3]),
+      '--btn-gap': W(n.g),
+      ...(n.r ? { '--btn-r-tl': W(n.r[0]), '--btn-r-tr': W(n.r[1]), '--btn-r-br': W(n.r[2]), '--btn-r-bl': W(n.r[3]) } : {}),
+    }),
+    'icon': (n, W) => ({ '--btn-icon': W(n.w) }),
+    'icon/**': () => ({}),
+  },
+  textLayers: [],
+  typography: {},
+  colors: {
+    '(root)': (c, W, ctx) => ({
+      '--btn-bg': c.fills ? W(c.fills[0]) : 'transparent',
+      '--btn-border': c.strokes ? W(c.strokes[0]) : 'transparent',
+      ...(c.strokes ? { '--btn-border-w': `${c.sw[0]}px` } : {}),
+      '--btn-shadow': effectVar(c.fx, 'root effect'),
+      ...(c.fills && ctx.pressed(c.fills[0]) ? { '--btn-bg-pressed': ctx.pressed(c.fills[0]) } : {}),
+      ...(c.strokes && ctx.pressed(c.strokes[0]) ? { '--btn-border-pressed': ctx.pressed(c.strokes[0]) } : {}),
+    }),
+    'icon/**/vector': (c, W, ctx) => ({ '--btn-icon-color': W(c.fills[0]), ...(ctx.pressed(c.fills[0]) ? { '--btn-icon-color-pressed': ctx.pressed(c.fills[0]) } : {}) }),
+  },
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// LinkButton: หน้า 12 ปุ่มลิงก์ 2 ชุด x 3 ตระกูล (Brand Neutral Error) ไม่มีพื้นไม่มีขอบ โฟกัสเป็นเส้นใต้ 1px
+// ═══════════════════════════════════════════════════════════════════════════════
+const LINK_BUTTON = {
+  specFile: 'tokens/figma-layers/link-button.json',
+  baseFile: 'components/LinkButton/LinkButton.base.css',
+  outFile: 'components/LinkButton/LinkButton.module.css',
+  sets: {
+    'link-button':      { classes: '.root:not(.iconOnly)' },
+    'link-icon-button': { classes: '.root.iconOnly' },
+  },
+  // โค้ดเรียกตระกูล Neutral ว่า gray (token button/color/link/gray/*)
+  familyClass: (f, axes = {}) => { const c = grayFamilyClass('Button')(f, axes); return c === '.neutral' ? '.gray' : c },
+  axisClass: {},
+  stateSelector: BUTTON_STATES,
+  layers: {
+    '(root)': (n, W) => ({
+      '--lb-pt': W(n.p[0]), '--lb-pr': W(n.p[1]), '--lb-pb': W(n.p[2]), '--lb-pl': W(n.p[3]),
+      '--lb-gap': W(n.g),
+    }),
+    'Left Icon': (n, W) => ({ '--lb-icon': W(n.w) }),
+    'Right Icon': (n, W) => ({ '--lb-icon': W(n.w) }),
+    'Left Icon/**': () => ({}),
+    'Right Icon/**': () => ({}),
+    'icon': (n, W) => ({ '--lb-icon': W(n.w) }),
+    'icon/**': () => ({}),
+    'Title frame': (n, W) => ({ '--lb-title-pt': W(n.p[0]), '--lb-title-pr': W(n.p[1]), '--lb-title-pb': W(n.p[2]), '--lb-title-pl': W(n.p[3]) }),
+    'Title frame/Title': () => ({}),
+  },
+  textLayers: ['Title frame/Title'],
+  typography: { '--lb-font-family': 'font-family', '--lb-font-size': 'font-size', '--lb-line-height': 'line-height', '--lb-font-weight': 'font-weight', '--lb-letter-space': 'letter-space' },
+  colors: {
+    // เส้นขอบล่างอย่างเดียว (sw = [0,0,1,0]) คือเส้นใต้ตอนโฟกัส
+    '(root)': (c, W) => ({
+      '--lb-underline': c.strokes && c.sw[2] ? W(c.strokes[0]) : 'transparent',
+      '--lb-underline-w': c.strokes && c.sw[2] ? `${c.sw[2]}px` : '0px',
+    }),
+    'Title frame/Title': (c, W, ctx) => ({ '--lb-fg': W(c.fills[0]), ...(ctx.pressed(c.fills[0]) ? { '--lb-fg-pressed': ctx.pressed(c.fills[0]) } : {}) }),
+    'Left Icon/**/vector': (c, W, ctx) => ({ '--lb-icon-color': W(c.fills[0]), ...(ctx.pressed(c.fills[0]) ? { '--lb-icon-color-pressed': ctx.pressed(c.fills[0]) } : {}) }),
+    'Right Icon/**/vector': () => ({}),
+    'icon/**/vector': (c, W, ctx) => ({ '--lb-icon-color': W(c.fills[0]), ...(ctx.pressed(c.fills[0]) ? { '--lb-icon-color-pressed': ctx.pressed(c.fills[0]) } : {}) }),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -294,8 +388,8 @@ for (const [setName, set] of Object.entries(spec.sets)) {
     })
   }
 }
-out.push('/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */')
-for (const size of SIZES) {
+if (M.textLayers.length) out.push('/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */')
+for (const size of M.textLayers.length ? SIZES : []) {
   const vars = styleVars(tsBySize[size], Object.fromEntries(Object.entries(M.typography).map(([k, v]) => [k, v])), `typography ${size}`)
   out.push(`.${size} { ${decl(vars)} }`)
 }

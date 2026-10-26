@@ -1,17 +1,23 @@
-/**
- * LinkButton styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/LinkButton/LinkButton.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 12 Buttons แล้วรัน  npm run figma:layers -- link-button  และ  npm run css:generate -- link-button
+ *   spec: tokens/figma-layers/link-button.json (ดึง 2026-10-26)
+ */
+
+/*
+ * LinkButton ส่วนโครงที่เขียนมือ (Nation Design System)
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ค่าทุกค่ามาจาก --lb-* ที่ scripts/generate-component-css.mjs สร้างจาก
+ * tokens/figma-layers/link-button.json แล้วต่อท้ายเป็น LinkButton.module.css ห้ามแก้ไฟล์นั้นตรง ๆ
  *
- * ปุ่มแบบลิงก์ (ไม่มีพื้นหลัง ไม่มีเส้นขอบ) ครอบคลุมทั้งแบบมีข้อความและไอคอนล้วน
- * ขนาด/ระยะจากกลุ่ม token `link-button/*` · สีจาก `button/color/link/*`
+ * การตัดสินใจฝั่งเว็บ
+ *   1. ไม่มีพื้นไม่มีขอบ ความสูงมาจากความสูงบรรทัดของ text style (ตามกฎห้ามทำสูตรความสูงให้ของที่ text style คุม)
+ *   2. สถานะโฟกัสในไฟล์ออกแบบคือเส้นขอบล่าง 1px (stroke เฉพาะด้านล่าง) วาดด้วย box-shadow inset ด้านล่าง
+ *   3. :active ใช้ token ชุด pressed ที่ตัวสร้าง derive ให้ (ตัดสิน 2026-09-04)
+ *   4. ข้อความไม่มีระยะขอบซ้ายขวา เพื่อให้ชิดแนวเนื้อหาที่วางต่อท้าย (ตัดสิน 2026-09-02) ค่า --lb-title-* ของไฟล์ออกแบบ
+ *      เป็น padding ของกรอบข้อความซึ่งซ้ำกับ padding ของกล่องนอก จึงใช้แค่ของกล่องนอก
  */
 
 .root {
-  --lb-fg: inherit;
-  --lb-fg-hover: var(--lb-fg);
-  --lb-fg-pressed: var(--lb-fg);
-  --lb-fg-disabled: inherit;
-  --lb-underline: var(--ntg-color-border-brand-solid);
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -20,148 +26,89 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: var(--ntg-typography-font-family-primary);
-  font-weight: var(--ntg-typography-font-weight-medium);
-  color: var(--lb-fg);
   text-decoration: none;
-  transition: color 0.15s ease;
+  padding: var(--lb-pt, 0) var(--lb-pr, 0) var(--lb-pb, 0) var(--lb-pl, 0);
+  gap: var(--lb-gap, 0);
+  color: var(--lb-fg, inherit);
+  box-shadow: inset 0 calc(-1 * var(--lb-underline-w, 0px)) 0 var(--lb-underline, transparent);
+  font-family: var(--lb-font-family);
+  font-size: var(--lb-font-size);
+  line-height: var(--lb-line-height);
+  font-weight: var(--lb-font-weight);
+  letter-spacing: var(--lb-letter-space);
+  transition: color 0.15s ease, box-shadow 0.15s ease;
 }
-
-.root:hover:not(:disabled) { color: var(--lb-fg-hover); }
-.root:focus-visible {
-  outline: none;
-  box-shadow: inset 0 -1px 0 var(--lb-underline);
-}
-/* สถานะกด ใช้ token ชุด pressed ที่ไฟล์ออกแบบกำหนดไว้เมื่อ 2026-09-04
-   วางไว้หลัง :focus-visible เพื่อให้สีตอนกดชนะสีตอนโฟกัส แต่วงแหวนโฟกัสยังอยู่ */
-.root:active:not(:disabled) { color: var(--lb-fg-pressed); }
-
-.root:disabled,
-.root[aria-disabled='true'] { color: var(--lb-fg-disabled); cursor: not-allowed; }
-
-/* ── ขนาด ─────────────────────────────────────────── */
-.xs {
-  height: var(--ntg-link-button-height-xs); gap: var(--ntg-link-button-gap-xs);
-  padding: var(--ntg-link-button-padding-top-xs) var(--ntg-link-button-padding-right-xs)
-           var(--ntg-link-button-padding-bottom-xs) var(--ntg-link-button-padding-left-xs);
-  font-size: var(--ntg-typography-font-size-text-xs);
-  line-height: var(--ntg-typography-line-height-text-xs);
-}
-.sm {
-  height: var(--ntg-link-button-height-sm); gap: var(--ntg-link-button-gap-sm);
-  padding: var(--ntg-link-button-padding-top-sm) var(--ntg-link-button-padding-right-sm)
-           var(--ntg-link-button-padding-bottom-sm) var(--ntg-link-button-padding-left-sm);
-  font-size: var(--ntg-typography-font-size-text-sm);
-  line-height: var(--ntg-typography-line-height-text-sm);
-}
-.md {
-  height: var(--ntg-link-button-height-md); gap: var(--ntg-link-button-gap-md);
-  padding: var(--ntg-link-button-padding-top-md) var(--ntg-link-button-padding-right-md)
-           var(--ntg-link-button-padding-bottom-md) var(--ntg-link-button-padding-left-md);
-  font-size: var(--ntg-typography-font-size-text-md);
-  line-height: var(--ntg-typography-line-height-text-md);
-}
-.lg {
-  height: var(--ntg-link-button-height-lg); gap: var(--ntg-link-button-gap-lg);
-  padding: var(--ntg-link-button-padding-top-lg) var(--ntg-link-button-padding-right-lg)
-           var(--ntg-link-button-padding-bottom-lg) var(--ntg-link-button-padding-left-lg);
-  font-size: var(--ntg-typography-font-size-text-lg);
-  line-height: var(--ntg-typography-line-height-text-lg);
-}
-.xl {
-  height: var(--ntg-link-button-height-xl); gap: var(--ntg-link-button-gap-xl);
-  padding: var(--ntg-link-button-padding-top-xl) var(--ntg-link-button-padding-right-xl)
-           var(--ntg-link-button-padding-bottom-xl) var(--ntg-link-button-padding-left-xl);
-  font-size: var(--ntg-typography-font-size-text-xl);
-  line-height: var(--ntg-typography-line-height-text-xl);
-}
-
-/* ไอคอนล้วน ใช้ระยะชุด icon-only */
-.iconOnly.xs { padding: var(--ntg-link-icon-button-icon-only-padding-top-xs) var(--ntg-link-icon-button-icon-only-padding-right-xs) var(--ntg-link-icon-button-icon-only-padding-bottom-xs) var(--ntg-link-icon-button-icon-only-padding-left-xs); }
-.iconOnly.sm { padding: var(--ntg-link-icon-button-icon-only-padding-top-sm) var(--ntg-link-icon-button-icon-only-padding-right-sm) var(--ntg-link-icon-button-icon-only-padding-bottom-sm) var(--ntg-link-icon-button-icon-only-padding-left-sm); }
-.iconOnly.md { padding: var(--ntg-link-icon-button-icon-only-padding-top-md) var(--ntg-link-icon-button-icon-only-padding-right-md) var(--ntg-link-icon-button-icon-only-padding-bottom-md) var(--ntg-link-icon-button-icon-only-padding-left-md); }
-.iconOnly.lg { padding: var(--ntg-link-icon-button-icon-only-padding-top-lg) var(--ntg-link-icon-button-icon-only-padding-right-lg) var(--ntg-link-icon-button-icon-only-padding-bottom-lg) var(--ntg-link-icon-button-icon-only-padding-left-lg); }
-.iconOnly.xl { padding: var(--ntg-link-icon-button-icon-only-padding-top-xl) var(--ntg-link-icon-button-icon-only-padding-right-xl) var(--ntg-link-icon-button-icon-only-padding-bottom-xl) var(--ntg-link-icon-button-icon-only-padding-left-xl); }
-
-/* ข้อความไม่มีระยะขอบ ทุกขนาด (ตัดสิน 2026-09-02)
-   ปุ่มลิงก์ต้องชิดแนวเนื้อหาที่วางต่อท้าย ถ้าใส่ระยะขอบตัวอักษรตัวแรกจะเยื้องออก
-   เดิมโค้ดใส่ 4px ซ้ายขวาจาก token title-padding ซึ่งไม่ตรงกับไฟล์ออกแบบ จึงตัดออก */
-.label { padding-left: 0; padding-right: 0; }
-
-.icon { flex: none; display: inline-flex; }
-.xs .icon { width: var(--ntg-link-button-icon-xs); height: var(--ntg-link-button-icon-xs); }
-.sm .icon { width: var(--ntg-link-button-icon-sm); height: var(--ntg-link-button-icon-sm); }
-.md .icon { width: var(--ntg-link-button-icon-md); height: var(--ntg-link-button-icon-md); }
-.lg .icon { width: var(--ntg-link-button-icon-lg); height: var(--ntg-link-button-icon-lg); }
-.xl .icon { width: var(--ntg-link-button-icon-xl); height: var(--ntg-link-button-icon-xl); }
+.root:focus-visible { outline: none; }
+.root:active:not(:disabled) { color: var(--lb-fg-pressed, var(--lb-fg)); }
+.root:active:not(:disabled) .icon { color: var(--lb-icon-color-pressed, var(--lb-icon-color)); }
+.root:disabled { cursor: not-allowed; }
 
 .content { display: inline-flex; align-items: center; gap: inherit; }
+.label { padding: 0; }
+.icon { flex: none; display: inline-flex; width: var(--lb-icon); height: var(--lb-icon); color: var(--lb-icon-color, inherit); }
+
 @media (prefers-reduced-motion: reduce) {
-    .root { transition: none; }
+  .root { transition: none; }
 }
 
-/* ── ตระกูลสี ─────────────────────────────────────── */
-.brand {
-  --lb-fg: var(--ntg-button-color-link-brand-text-default);
-  --lb-fg-hover: var(--ntg-button-color-link-brand-text-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-brand-text-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-brand-text-disabled);
-}
-.brand.iconOnly {
-  --lb-fg: var(--ntg-button-color-link-brand-icon-default);
-  --lb-fg-hover: var(--ntg-button-color-link-brand-icon-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-brand-icon-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-brand-icon-disabled);
-}
-.brandGray {
-  --lb-fg: var(--ntg-button-color-link-brand-gray-text-default);
-  --lb-fg-hover: var(--ntg-button-color-link-brand-gray-text-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-brand-gray-text-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-brand-gray-text-disabled);
-  --lb-underline: var(--ntg-icon-general-quaternary);
-}
-.brandGray.iconOnly {
-  --lb-fg: var(--ntg-button-color-link-brand-gray-icon-default);
-  --lb-fg-hover: var(--ntg-button-color-link-brand-gray-icon-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-brand-gray-icon-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-brand-gray-icon-disabled);
-}
-.gray {
-  --lb-fg: var(--ntg-button-color-link-gray-text-default);
-  --lb-fg-hover: var(--ntg-button-color-link-gray-text-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-gray-text-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-gray-text-disabled);
-  --lb-underline: var(--ntg-icon-general-quaternary);
-}
-.gray.iconOnly {
-  --lb-fg: var(--ntg-button-color-link-gray-icon-default);
-  --lb-fg-hover: var(--ntg-button-color-link-gray-icon-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-gray-icon-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-gray-icon-disabled);
-}
-.error {
-  --lb-fg: var(--ntg-button-color-link-error-text-default);
-  --lb-fg-hover: var(--ntg-button-color-link-error-text-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-error-text-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-error-text-disabled);
-  --lb-underline: var(--ntg-color-border-system-error-solid);
-}
-.error.iconOnly {
-  --lb-fg: var(--ntg-button-color-link-error-icon-default);
-  --lb-fg-hover: var(--ntg-button-color-link-error-icon-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-error-icon-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-error-icon-disabled);
-}
-.errorGray {
-  --lb-fg: var(--ntg-button-color-link-error-gray-text-default);
-  --lb-fg-hover: var(--ntg-button-color-link-error-gray-text-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-error-gray-text-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-error-gray-text-disabled);
-  --lb-underline: var(--ntg-icon-general-quaternary);
-}
-.errorGray.iconOnly {
-  --lb-fg: var(--ntg-button-color-link-error-gray-icon-default);
-  --lb-fg-hover: var(--ntg-button-color-link-error-gray-icon-hover);
-  --lb-fg-pressed: var(--ntg-button-color-link-error-gray-icon-pressed);
-  --lb-fg-disabled: var(--ntg-button-color-link-error-gray-icon-disabled);
-}
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --lb-font-family: var(--ntg-typography-font-family-label-md); --lb-font-size: var(--ntg-typography-font-size-label-md); --lb-line-height: var(--ntg-typography-line-height-label-md); --lb-font-weight: var(--ntg-typography-font-weight-label-md); --lb-letter-space: var(--ntg-typography-letter-space-label-md); }
+.sm { --lb-font-family: var(--ntg-typography-font-family-label-md); --lb-font-size: var(--ntg-typography-font-size-label-md); --lb-line-height: var(--ntg-typography-line-height-label-md); --lb-font-weight: var(--ntg-typography-font-weight-label-md); --lb-letter-space: var(--ntg-typography-letter-space-label-md); }
+.md { --lb-font-family: var(--ntg-typography-font-family-label-lg); --lb-font-size: var(--ntg-typography-font-size-label-lg); --lb-line-height: var(--ntg-typography-line-height-label-lg); --lb-font-weight: var(--ntg-typography-font-weight-label-lg); --lb-letter-space: var(--ntg-typography-letter-space-label-lg); }
+.lg { --lb-font-family: var(--ntg-typography-font-family-label-lg); --lb-font-size: var(--ntg-typography-font-size-label-lg); --lb-line-height: var(--ntg-typography-line-height-label-lg); --lb-font-weight: var(--ntg-typography-font-weight-label-lg); --lb-letter-space: var(--ntg-typography-letter-space-label-lg); }
+.xl { --lb-font-family: var(--ntg-typography-font-family-label-xl); --lb-font-size: var(--ntg-typography-font-size-label-xl); --lb-line-height: var(--ntg-typography-line-height-label-xl); --lb-font-weight: var(--ntg-typography-font-weight-label-xl); --lb-letter-space: var(--ntg-typography-letter-space-label-xl); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root:not(.iconOnly).xs { --lb-pt: var(--ntg-link-button-padding-top-xs); --lb-pr: var(--ntg-link-button-padding-right-xs); --lb-pb: var(--ntg-link-button-padding-bottom-xs); --lb-pl: var(--ntg-link-button-padding-left-xs); --lb-gap: var(--ntg-link-button-gap-xs); --lb-icon: var(--ntg-link-button-icon-xs); --lb-title-pt: var(--ntg-link-button-padding-top-xs); --lb-title-pr: var(--ntg-link-button-padding-right-xs); --lb-title-pb: var(--ntg-link-button-padding-bottom-xs); --lb-title-pl: var(--ntg-link-button-padding-left-xs); }
+.root:not(.iconOnly).sm { --lb-pt: var(--ntg-link-button-padding-top-sm); --lb-pr: var(--ntg-link-button-padding-right-sm); --lb-pb: var(--ntg-link-button-padding-bottom-sm); --lb-pl: var(--ntg-link-button-padding-left-sm); --lb-gap: var(--ntg-link-button-gap-sm); --lb-icon: var(--ntg-link-button-icon-sm); --lb-title-pt: var(--ntg-link-button-padding-top-sm); --lb-title-pr: var(--ntg-link-button-padding-right-sm); --lb-title-pb: var(--ntg-link-button-padding-bottom-sm); --lb-title-pl: var(--ntg-link-button-padding-left-sm); }
+.root:not(.iconOnly).md { --lb-pt: var(--ntg-link-button-padding-top-md); --lb-pr: var(--ntg-link-button-padding-right-md); --lb-pb: var(--ntg-link-button-padding-bottom-md); --lb-pl: var(--ntg-link-button-padding-left-md); --lb-gap: var(--ntg-link-button-gap-md); --lb-icon: var(--ntg-link-button-icon-md); --lb-title-pt: var(--ntg-link-button-padding-top-md); --lb-title-pr: var(--ntg-link-button-padding-right-md); --lb-title-pb: var(--ntg-link-button-padding-bottom-md); --lb-title-pl: var(--ntg-link-button-padding-left-md); }
+.root:not(.iconOnly).lg { --lb-pt: var(--ntg-link-button-padding-top-lg); --lb-pr: var(--ntg-link-button-padding-right-lg); --lb-pb: var(--ntg-link-button-padding-bottom-lg); --lb-pl: var(--ntg-link-button-padding-left-lg); --lb-gap: var(--ntg-link-button-gap-lg); --lb-icon: var(--ntg-link-button-icon-lg); --lb-title-pt: var(--ntg-link-button-padding-top-lg); --lb-title-pr: var(--ntg-link-button-padding-right-lg); --lb-title-pb: var(--ntg-link-button-padding-bottom-lg); --lb-title-pl: var(--ntg-link-button-padding-left-lg); }
+.root:not(.iconOnly).xl { --lb-pt: var(--ntg-link-button-padding-top-xl); --lb-pr: var(--ntg-link-button-padding-right-xl); --lb-pb: var(--ntg-link-button-padding-bottom-xl); --lb-pl: var(--ntg-link-button-padding-left-xl); --lb-gap: var(--ntg-link-button-gap-xl); --lb-icon: var(--ntg-link-button-icon-xl); --lb-title-pt: var(--ntg-link-button-padding-top-xl); --lb-title-pr: var(--ntg-link-button-padding-right-xl); --lb-title-pb: var(--ntg-link-button-padding-bottom-xl); --lb-title-pl: var(--ntg-link-button-padding-left-xl); }
+.root.iconOnly.xs { --lb-pt: var(--ntg-link-icon-button-icon-only-padding-top-xs); --lb-pr: var(--ntg-link-icon-button-icon-only-padding-right-xs); --lb-pb: var(--ntg-link-icon-button-icon-only-padding-bottom-xs); --lb-pl: var(--ntg-link-icon-button-icon-only-padding-left-xs); --lb-gap: 0; --lb-icon: var(--ntg-link-button-icon-xs); }
+.root.iconOnly.sm { --lb-pt: var(--ntg-link-icon-button-icon-only-padding-top-sm); --lb-pr: var(--ntg-link-icon-button-icon-only-padding-right-sm); --lb-pb: var(--ntg-link-icon-button-icon-only-padding-bottom-sm); --lb-pl: var(--ntg-link-icon-button-icon-only-padding-left-sm); --lb-gap: 0; --lb-icon: var(--ntg-link-button-icon-sm); }
+.root.iconOnly.md { --lb-pt: var(--ntg-link-icon-button-icon-only-padding-top-md); --lb-pr: var(--ntg-link-icon-button-icon-only-padding-right-md); --lb-pb: var(--ntg-link-icon-button-icon-only-padding-bottom-md); --lb-pl: var(--ntg-link-icon-button-icon-only-padding-left-md); --lb-gap: 0; --lb-icon: var(--ntg-link-button-icon-md); }
+.root.iconOnly.lg { --lb-pt: var(--ntg-link-icon-button-icon-only-padding-top-lg); --lb-pr: var(--ntg-link-icon-button-icon-only-padding-right-lg); --lb-pb: var(--ntg-link-icon-button-icon-only-padding-bottom-lg); --lb-pl: var(--ntg-link-icon-button-icon-only-padding-left-lg); --lb-gap: 0; --lb-icon: var(--ntg-link-button-icon-lg); }
+.root.iconOnly.xl { --lb-pt: var(--ntg-link-icon-button-icon-only-padding-top-xl); --lb-pr: var(--ntg-link-icon-button-icon-only-padding-right-xl); --lb-pb: var(--ntg-link-icon-button-icon-only-padding-bottom-xl); --lb-pl: var(--ntg-link-icon-button-icon-only-padding-left-xl); --lb-gap: 0; --lb-icon: var(--ntg-link-button-icon-xl); }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root:not(.iconOnly).brand { --lb-icon-color: var(--ntg-button-color-link-brand-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-brand-icon-pressed); --lb-fg: var(--ntg-button-color-link-brand-text-default); --lb-fg-pressed: var(--ntg-button-color-link-brand-text-pressed); }
+.root:not(.iconOnly).brandGray { --lb-icon-color: var(--ntg-button-color-link-brand-gray-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-brand-gray-icon-pressed); --lb-fg: var(--ntg-button-color-link-brand-gray-text-default); --lb-fg-pressed: var(--ntg-button-color-link-brand-gray-text-pressed); }
+.root:not(.iconOnly).gray { --lb-icon-color: var(--ntg-button-color-link-gray-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-gray-icon-pressed); --lb-fg: var(--ntg-button-color-link-gray-text-default); --lb-fg-pressed: var(--ntg-button-color-link-gray-text-pressed); }
+.root:not(.iconOnly).error { --lb-icon-color: var(--ntg-button-color-link-error-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-error-icon-pressed); --lb-fg: var(--ntg-button-color-link-error-text-default); --lb-fg-pressed: var(--ntg-button-color-link-error-text-pressed); }
+.root:not(.iconOnly).errorGray { --lb-icon-color: var(--ntg-button-color-link-error-gray-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-error-gray-icon-pressed); --lb-fg: var(--ntg-button-color-link-error-gray-text-default); --lb-fg-pressed: var(--ntg-button-color-link-error-gray-text-pressed); }
+.root.iconOnly.brand { --lb-icon-color: var(--ntg-button-color-link-brand-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-brand-icon-pressed); }
+.root.iconOnly.brandGray { --lb-icon-color: var(--ntg-button-color-link-brand-gray-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-brand-gray-icon-pressed); }
+.root.iconOnly.gray { --lb-icon-color: var(--ntg-button-color-link-gray-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-gray-icon-pressed); }
+.root.iconOnly.error { --lb-icon-color: var(--ntg-button-color-link-error-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-error-icon-pressed); }
+.root.iconOnly.errorGray { --lb-icon-color: var(--ntg-button-color-link-error-gray-icon-default); --lb-icon-color-pressed: var(--ntg-button-color-link-error-gray-icon-pressed); }
+.root:not(.iconOnly).brand:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-brand-icon-hover); --lb-fg: var(--ntg-button-color-link-brand-text-hover); }
+.root:not(.iconOnly).brandGray:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-brand-gray-icon-hover); --lb-fg: var(--ntg-button-color-link-brand-gray-text-hover); }
+.root:not(.iconOnly).gray:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-gray-icon-hover); --lb-fg: var(--ntg-button-color-link-gray-text-hover); }
+.root:not(.iconOnly).error:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-error-icon-hover); --lb-fg: var(--ntg-button-color-link-error-text-hover); }
+.root:not(.iconOnly).errorGray:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-error-gray-icon-hover); --lb-fg: var(--ntg-button-color-link-error-gray-text-hover); }
+.root.iconOnly.brand:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-brand-icon-hover); }
+.root.iconOnly.brandGray:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-brand-gray-icon-hover); }
+.root.iconOnly.gray:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-gray-icon-hover); }
+.root.iconOnly.error:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-error-icon-hover); }
+.root.iconOnly.errorGray:hover:not(:disabled) { --lb-icon-color: var(--ntg-button-color-link-error-gray-icon-hover); }
+.root:not(.iconOnly).brand:focus-visible { --lb-underline: var(--ntg-color-border-brand-solid); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-icon-brand-primary); --lb-fg: var(--ntg-color-text-brand-primary); }
+.root:not(.iconOnly).brandGray:focus-visible { --lb-underline: var(--ntg-icon-general-quaternary); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-brand-gray-icon-default); --lb-fg: var(--ntg-button-color-link-brand-gray-text-default); }
+.root:not(.iconOnly).gray:focus-visible { --lb-underline: var(--ntg-icon-general-quaternary); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-gray-icon-default); --lb-fg: var(--ntg-button-color-link-gray-text-default); }
+.root:not(.iconOnly).error:focus-visible { --lb-underline: var(--ntg-color-border-system-error-solid); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-error-icon-default); --lb-fg: var(--ntg-button-color-link-error-text-default); }
+.root:not(.iconOnly).errorGray:focus-visible { --lb-underline: var(--ntg-icon-general-quaternary); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-error-gray-icon-default); --lb-fg: var(--ntg-button-color-link-error-gray-text-default); }
+.root.iconOnly.brand:focus-visible { --lb-underline: var(--ntg-color-border-brand-solid); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-brand-icon-default); }
+.root.iconOnly.brandGray:focus-visible { --lb-underline: var(--ntg-icon-general-quaternary); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-brand-gray-icon-default); }
+.root.iconOnly.gray:focus-visible { --lb-underline: var(--ntg-icon-general-quaternary); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-gray-icon-default); }
+.root.iconOnly.error:focus-visible { --lb-underline: var(--ntg-color-border-system-error-solid); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-error-icon-default); }
+.root.iconOnly.errorGray:focus-visible { --lb-underline: var(--ntg-icon-general-quaternary); --lb-underline-w: 1px; --lb-icon-color: var(--ntg-button-color-link-error-gray-icon-default); }
+.root:not(.iconOnly).brand:disabled { --lb-icon-color: var(--ntg-button-color-link-brand-icon-disabled); --lb-fg: var(--ntg-button-color-link-brand-text-disabled); }
+.root:not(.iconOnly).brandGray:disabled { --lb-icon-color: var(--ntg-button-color-link-brand-gray-icon-disabled); --lb-fg: var(--ntg-button-color-link-brand-gray-text-disabled); }
+.root:not(.iconOnly).gray:disabled { --lb-icon-color: var(--ntg-button-color-link-gray-icon-disabled); --lb-fg: var(--ntg-button-color-link-gray-text-disabled); }
+.root:not(.iconOnly).error:disabled { --lb-icon-color: var(--ntg-button-color-link-error-icon-disabled); --lb-fg: var(--ntg-button-color-link-error-text-disabled); }
+.root:not(.iconOnly).errorGray:disabled { --lb-icon-color: var(--ntg-button-color-link-error-gray-icon-disabled); --lb-fg: var(--ntg-button-color-link-error-gray-text-disabled); }
+.root.iconOnly.brand:disabled { --lb-icon-color: var(--ntg-button-color-link-brand-icon-disabled); }
+.root.iconOnly.brandGray:disabled { --lb-icon-color: var(--ntg-button-color-link-brand-gray-icon-disabled); }
+.root.iconOnly.gray:disabled { --lb-icon-color: var(--ntg-button-color-link-gray-icon-disabled); }
+.root.iconOnly.error:disabled { --lb-icon-color: var(--ntg-button-color-link-error-icon-disabled); }
+.root.iconOnly.errorGray:disabled { --lb-icon-color: var(--ntg-button-color-link-error-gray-icon-disabled); }
