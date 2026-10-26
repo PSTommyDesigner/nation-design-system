@@ -1,0 +1,100 @@
+/*
+ * TextField ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --tf-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/text-field.json (spec ชั้นจากไฟล์ออกแบบหน้า 13)
+ * แล้วต่อท้ายไฟล์นี้เป็น TextField.module.css ห้ามแก้ TextField.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบใช้ box-shadow แบบ inset (ไฟล์ออกแบบใช้ stroke แบบ INSIDE) รวมกับเงาและวงแหวนโฟกัสใน box-shadow เดียว
+ *   2. สถานะในไฟล์ออกแบบเป็นแกน state 8 ค่า ฝั่งเว็บเป็น data attribute ของ root (error disabled readonly)
+ *      ร่วมกับ :hover ของกล่องและ :focus-visible ของ input ตัวสร้างเลือกด้วย :has()
+ *   3. ไฟล์ออกแบบมีชั้นข้อความในกล่องชั้นเดียว เป็น placeholder ตอนพักและเป็นข้อความที่พิมพ์ตอน hover/focused
+ *      ตัวสร้างแยกตามชื่อ token: --tf-placeholder ให้ ::placeholder ส่วน --tf-text ให้ข้อความที่พิมพ์
+ *      สถานะที่ไฟล์ให้แต่ placeholder ข้อความที่พิมพ์จะใช้สีป้ายชื่อของสถานะนั้นแทน
+ *   4. กล่องหลายบรรทัด (text-area) สูงตามเนื้อหา ไฟล์ออกแบบไม่กำหนดความสูง จึงไม่มี --tf-h และใช้ rows ของ textarea
+ *   5. เส้นคั่นในไฟล์ออกแบบสูงตายตัวต่อขนาด (--tf-divider-h) ไม่ได้ยืดเต็มกล่อง
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tf-stack-gap, 0);
+}
+
+.labelRow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tf-label-gap, 0);
+  color: var(--tf-label-fg, inherit);
+  font-family: var(--tf-label-font-family);
+  font-size: var(--tf-label-font-size);
+  line-height: var(--tf-label-line-height);
+  font-weight: var(--tf-label-font-weight);
+  letter-spacing: var(--tf-label-letter-space);
+}
+.required { color: var(--tf-required-fg, inherit); }
+
+.box {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--tf-h, auto);
+  padding: var(--tf-pt, 0) var(--tf-pr, 0) var(--tf-pb, 0) var(--tf-pl, 0);
+  gap: var(--tf-gap, 0);
+  border-radius: var(--tf-r-tl, 0) var(--tf-r-tr, 0) var(--tf-r-br, 0) var(--tf-r-bl, 0);
+  background: var(--tf-bg, transparent);
+  box-shadow: inset 0 0 0 var(--tf-border-w, 1px) var(--tf-border, transparent), var(--tf-shadow, 0 0 0 0 transparent);
+  color: var(--tf-text, var(--tf-label-fg, inherit));
+  font-family: var(--tf-font-family);
+  font-size: var(--tf-font-size);
+  line-height: var(--tf-line-height);
+  font-weight: var(--tf-font-weight);
+  letter-spacing: var(--tf-letter-space);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.root[data-disabled] .box { cursor: not-allowed; }
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: 0;
+}
+.input::placeholder { color: var(--tf-placeholder, inherit); }
+.input:disabled { cursor: not-allowed; }
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  width: var(--tf-icon);
+  height: var(--tf-icon);
+}
+.icon svg { width: 100%; height: 100%; }
+.divider {
+  flex: none;
+  width: var(--tf-divider-w, 1px);
+  height: var(--tf-divider-h, auto);
+  background: var(--tf-border, transparent);
+}
+
+.hint {
+  color: var(--tf-hint-fg, inherit);
+  font-family: var(--tf-hint-font-family);
+  font-size: var(--tf-hint-font-size);
+  line-height: var(--tf-hint-line-height);
+  font-weight: var(--tf-hint-font-weight);
+  letter-spacing: var(--tf-hint-letter-space);
+}
+
+.multiline .box { align-items: flex-start; }
+.multiline .input { resize: vertical; }
+
+@media (prefers-reduced-motion: reduce) {
+  .box { transition: none; }
+}

@@ -579,6 +579,7 @@
   --ntg-scale-input-radius-step: 1px;
   --ntg-scale-input-border: 1px;
   --ntg-scale-input-stack-gap: 4px;
+  --ntg-scale-input-label-gap: 2px;
   --ntg-scale-input-textarea-padding-base: 4px;
   --ntg-scale-input-textarea-padding-step: 2px;
   --ntg-scale-badge-height-base: 18px;
@@ -934,6 +935,7 @@
   --ntg-input-tag-tag-gap-sm: 4px; /** ช่องไฟระหว่างแท็กในช่องแท็กขนาด sm ทั้งแนวนอนและตอนขึ้นบรรทัดใหม่ เท่ากับ 4px */
   --ntg-input-tag-tag-gap-md: 8px; /** ช่องไฟระหว่างแท็กในช่องแท็กขนาด md ทั้งแนวนอนและตอนขึ้นบรรทัดใหม่ เท่ากับ 8px */
   --ntg-input-tag-tag-gap-lg: 8px; /** ช่องไฟระหว่างแท็กในช่องแท็กขนาด lg ทั้งแนวนอนและตอนขึ้นบรรทัดใหม่ เท่ากับ 8px */
+  --ntg-input-label-gap: 2px; /** ช่องไฟระหว่างป้ายชื่อกับดอกจันบังคับกรอก 2px ทุกขนาด */
   --ntg-info-card-radius-top-left: 12px;
   --ntg-info-card-radius-top-right: 12px;
   --ntg-info-card-radius-bottom-right: 12px;

@@ -1,61 +1,65 @@
-/**
- * TextField styles Nation Design System
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/TextField/TextField.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 13 Input แล้วรัน  npm run figma:layers -- text-field  และ  npm run css:generate -- text-field
+ *   spec: tokens/figma-layers/text-field.json (ดึง 2026-10-26)
+ */
+
+/*
+ * TextField ส่วนโครงที่เขียนมือ (Nation Design System)
  *
- * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 13 Input ได้
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --tf-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/text-field.json (spec ชั้นจากไฟล์ออกแบบหน้า 13)
+ * แล้วต่อท้ายไฟล์นี้เป็น TextField.module.css ห้ามแก้ TextField.module.css ตรง ๆ
  *
- * โครง token ที่ใช้
- *   ขนาด    --ntg-input-height-{size} · padding-{top|bottom|left|right}-{size} · gap-{size}
- *           · icon-{size} · border · stack-gap
- *   มุมโค้ง  --ntg-input-radius-{corner}-{size}
- *
- * ⚠️ มีแค่ 3 ขนาด คือ sm md lg ต่างจาก component อื่นที่มี 5 ขนาด
- *    เพราะช่องกรอกใช้จริงแค่ 3 ขนาด ตรงกับไฟล์ออกแบบ
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบใช้ box-shadow แบบ inset (ไฟล์ออกแบบใช้ stroke แบบ INSIDE) รวมกับเงาและวงแหวนโฟกัสใน box-shadow เดียว
+ *   2. สถานะในไฟล์ออกแบบเป็นแกน state 8 ค่า ฝั่งเว็บเป็น data attribute ของ root (error disabled readonly)
+ *      ร่วมกับ :hover ของกล่องและ :focus-visible ของ input ตัวสร้างเลือกด้วย :has()
+ *   3. ไฟล์ออกแบบมีชั้นข้อความในกล่องชั้นเดียว เป็น placeholder ตอนพักและเป็นข้อความที่พิมพ์ตอน hover/focused
+ *      ตัวสร้างแยกตามชื่อ token: --tf-placeholder ให้ ::placeholder ส่วน --tf-text ให้ข้อความที่พิมพ์
+ *      สถานะที่ไฟล์ให้แต่ placeholder ข้อความที่พิมพ์จะใช้สีป้ายชื่อของสถานะนั้นแทน
+ *   4. กล่องหลายบรรทัด (text-area) สูงตามเนื้อหา ไฟล์ออกแบบไม่กำหนดความสูง จึงไม่มี --tf-h และใช้ rows ของ textarea
+ *   5. เส้นคั่นในไฟล์ออกแบบสูงตายตัวต่อขนาด (--tf-divider-h) ไม่ได้ยืดเต็มกล่อง
  */
 
 .root {
   display: flex;
   flex-direction: column;
-  gap: var(--ntg-input-stack-gap);
-  font-family: var(--ntg-typography-font-family-primary);
+  gap: var(--tf-stack-gap, 0);
 }
 
 .labelRow {
   display: inline-flex;
   align-items: center;
-  color: var(--ntg-color-text-general-label);
+  gap: var(--tf-label-gap, 0);
+  color: var(--tf-label-fg, inherit);
+  font-family: var(--tf-label-font-family);
+  font-size: var(--tf-label-font-size);
+  line-height: var(--tf-label-line-height);
+  font-weight: var(--tf-label-font-weight);
+  letter-spacing: var(--tf-label-letter-space);
 }
-
-.required { color: var(--ntg-color-text-system-error); }
+.required { color: var(--tf-required-fg, inherit); }
 
 .box {
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  background: var(--ntg-color-background-general-primary);
-  border: var(--ntg-input-border) solid var(--ntg-color-border-general-primary);
-  color: var(--ntg-color-text-general-label);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  min-height: var(--tf-h, auto);
+  padding: var(--tf-pt, 0) var(--tf-pr, 0) var(--tf-pb, 0) var(--tf-pl, 0);
+  gap: var(--tf-gap, 0);
+  border-radius: var(--tf-r-tl, 0) var(--tf-r-tr, 0) var(--tf-r-br, 0) var(--tf-r-bl, 0);
+  background: var(--tf-bg, transparent);
+  box-shadow: inset 0 0 0 var(--tf-border-w, 1px) var(--tf-border, transparent), var(--tf-shadow, 0 0 0 0 transparent);
+  color: var(--tf-text, var(--tf-label-fg, inherit));
+  font-family: var(--tf-font-family);
+  font-size: var(--tf-font-size);
+  line-height: var(--tf-line-height);
+  font-weight: var(--tf-font-weight);
+  letter-spacing: var(--tf-letter-space);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
-
-.box:hover:not([data-disabled='true']):not([data-readonly='true']) {
-  background: var(--ntg-color-background-general-primary-hover);
-  border-color: var(--ntg-color-border-general-primary-hover);
-}
-
-.box:focus-within {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--ntg-color-effect-focused-ring-brand);
-}
-
-.box[data-error='true'] { border-color: var(--ntg-color-border-system-error); }
-.box[data-disabled='true'] {
-  background: var(--ntg-color-background-general-disabled-subtle);
-  border-color: var(--ntg-color-border-general-disabled);
-  color: var(--ntg-color-text-general-disabled);
-  cursor: not-allowed;
-}
-.box[data-readonly='true'] { background: var(--ntg-color-background-general-secondary); }
+.root[data-disabled] .box { cursor: not-allowed; }
 
 .input {
   flex: 1 1 auto;
@@ -65,59 +69,70 @@
   background: transparent;
   color: inherit;
   font: inherit;
+  letter-spacing: inherit;
   padding: 0;
 }
-.input::placeholder { color: var(--ntg-color-text-general-placeholder); }
+.input::placeholder { color: var(--tf-placeholder, inherit); }
+.input:disabled { cursor: not-allowed; }
 
-.icon { display: inline-flex; flex: none; }
-.divider { flex: none; align-self: stretch; width: var(--ntg-input-border); background: var(--ntg-color-border-general-primary); }
-
-.hint { color: var(--ntg-color-text-general-supporting-text); }
-.hint[data-error='true'] { color: var(--ntg-color-text-system-error); }
-
-/* ── ขนาด ────────────────────────────────────────────────── */
-.sm .box {
-  min-height: var(--ntg-input-height-sm);
-  padding: var(--ntg-input-padding-top-sm) var(--ntg-input-padding-right-sm)
-           var(--ntg-input-padding-bottom-sm) var(--ntg-input-padding-left-sm);
-  gap: var(--ntg-input-gap-sm);
-  border-radius: var(--ntg-input-radius-top-left-sm) var(--ntg-input-radius-top-right-sm)
-                 var(--ntg-input-radius-bottom-right-sm) var(--ntg-input-radius-bottom-left-sm);
+.icon {
+  display: inline-flex;
+  flex: none;
+  width: var(--tf-icon);
+  height: var(--tf-icon);
 }
-.sm .icon { width: var(--ntg-input-icon-sm); height: var(--ntg-input-icon-sm); }
-.sm .labelRow, .sm .hint, .sm .input {
-  font-size: var(--ntg-typography-font-size-label-xs);
-  line-height: var(--ntg-typography-line-height-label-xs);
+.icon svg { width: 100%; height: 100%; }
+.divider {
+  flex: none;
+  width: var(--tf-divider-w, 1px);
+  height: var(--tf-divider-h, auto);
+  background: var(--tf-border, transparent);
 }
 
-.md .box {
-  min-height: var(--ntg-input-height-md);
-  padding: var(--ntg-input-padding-top-md) var(--ntg-input-padding-right-md)
-           var(--ntg-input-padding-bottom-md) var(--ntg-input-padding-left-md);
-  gap: var(--ntg-input-gap-md);
-  border-radius: var(--ntg-input-radius-top-left-md) var(--ntg-input-radius-top-right-md)
-                 var(--ntg-input-radius-bottom-right-md) var(--ntg-input-radius-bottom-left-md);
-}
-.md .icon { width: var(--ntg-input-icon-md); height: var(--ntg-input-icon-md); }
-.md .labelRow, .md .hint, .md .input {
-  font-size: var(--ntg-typography-font-size-label-sm);
-  line-height: var(--ntg-typography-line-height-label-sm);
+.hint {
+  color: var(--tf-hint-fg, inherit);
+  font-family: var(--tf-hint-font-family);
+  font-size: var(--tf-hint-font-size);
+  line-height: var(--tf-hint-line-height);
+  font-weight: var(--tf-hint-font-weight);
+  letter-spacing: var(--tf-hint-letter-space);
 }
 
-.lg .box {
-  min-height: var(--ntg-input-height-lg);
-  padding: var(--ntg-input-padding-top-lg) var(--ntg-input-padding-right-lg)
-           var(--ntg-input-padding-bottom-lg) var(--ntg-input-padding-left-lg);
-  gap: var(--ntg-input-gap-lg);
-  border-radius: var(--ntg-input-radius-top-left-lg) var(--ntg-input-radius-top-right-lg)
-                 var(--ntg-input-radius-bottom-right-lg) var(--ntg-input-radius-bottom-left-lg);
-}
-.lg .icon { width: var(--ntg-input-icon-lg); height: var(--ntg-input-icon-lg); }
-.lg .labelRow, .lg .hint, .lg .input {
-  font-size: var(--ntg-typography-font-size-label-md);
-  line-height: var(--ntg-typography-line-height-label-md);
-}
-
-/* ช่องหลายบรรทัด ความสูงโตตามเนื้อหา ไม่ผูกความสูงตายตัว */
 .multiline .box { align-items: flex-start; }
 .multiline .input { resize: vertical; }
+
+@media (prefers-reduced-motion: reduce) {
+  .box { transition: none; }
+}
+
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.sm { --tf-label-font-family: var(--ntg-typography-font-family-body-sm); --tf-label-font-size: var(--ntg-typography-font-size-body-sm); --tf-label-line-height: var(--ntg-typography-line-height-body-sm); --tf-label-font-weight: var(--ntg-typography-font-weight-body-sm); --tf-label-letter-space: var(--ntg-typography-letter-space-body-sm); --tf-font-family: var(--ntg-typography-font-family-body-md); --tf-font-size: var(--ntg-typography-font-size-body-md); --tf-line-height: var(--ntg-typography-line-height-body-md); --tf-font-weight: var(--ntg-typography-font-weight-body-md); --tf-letter-space: var(--ntg-typography-letter-space-body-md); --tf-hint-font-family: var(--ntg-typography-font-family-body-sm); --tf-hint-font-size: var(--ntg-typography-font-size-body-sm); --tf-hint-line-height: var(--ntg-typography-line-height-body-sm); --tf-hint-font-weight: var(--ntg-typography-font-weight-body-sm); --tf-hint-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.md { --tf-label-font-family: var(--ntg-typography-font-family-body-sm); --tf-label-font-size: var(--ntg-typography-font-size-body-sm); --tf-label-line-height: var(--ntg-typography-line-height-body-sm); --tf-label-font-weight: var(--ntg-typography-font-weight-body-sm); --tf-label-letter-space: var(--ntg-typography-letter-space-body-sm); --tf-font-family: var(--ntg-typography-font-family-body-md); --tf-font-size: var(--ntg-typography-font-size-body-md); --tf-line-height: var(--ntg-typography-line-height-body-md); --tf-font-weight: var(--ntg-typography-font-weight-body-md); --tf-letter-space: var(--ntg-typography-letter-space-body-md); --tf-hint-font-family: var(--ntg-typography-font-family-body-sm); --tf-hint-font-size: var(--ntg-typography-font-size-body-sm); --tf-hint-line-height: var(--ntg-typography-line-height-body-sm); --tf-hint-font-weight: var(--ntg-typography-font-weight-body-sm); --tf-hint-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.lg { --tf-label-font-family: var(--ntg-typography-font-family-body-sm); --tf-label-font-size: var(--ntg-typography-font-size-body-sm); --tf-label-line-height: var(--ntg-typography-line-height-body-sm); --tf-label-font-weight: var(--ntg-typography-font-weight-body-sm); --tf-label-letter-space: var(--ntg-typography-letter-space-body-sm); --tf-font-family: var(--ntg-typography-font-family-body-md); --tf-font-size: var(--ntg-typography-font-size-body-md); --tf-line-height: var(--ntg-typography-line-height-body-md); --tf-font-weight: var(--ntg-typography-font-weight-body-md); --tf-letter-space: var(--ntg-typography-letter-space-body-md); --tf-hint-font-family: var(--ntg-typography-font-family-body-sm); --tf-hint-font-size: var(--ntg-typography-font-size-body-sm); --tf-hint-line-height: var(--ntg-typography-line-height-body-sm); --tf-hint-font-weight: var(--ntg-typography-font-weight-body-sm); --tf-hint-letter-space: var(--ntg-typography-letter-space-body-sm); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root:not(.multiline).sm { --tf-stack-gap: var(--ntg-input-stack-gap); --tf-label-gap: var(--ntg-input-label-gap); --tf-h: var(--ntg-input-height-sm); --tf-pt: var(--ntg-input-padding-top-sm); --tf-pr: var(--ntg-input-padding-right-sm); --tf-pb: var(--ntg-input-padding-bottom-sm); --tf-pl: var(--ntg-input-padding-left-sm); --tf-gap: var(--ntg-input-gap-sm); --tf-r-tl: var(--ntg-input-radius-top-left-sm); --tf-r-tr: var(--ntg-input-radius-top-right-sm); --tf-r-br: var(--ntg-input-radius-bottom-right-sm); --tf-r-bl: var(--ntg-input-radius-bottom-left-sm); --tf-icon: var(--ntg-input-icon-sm); --tf-divider-w: 1px; --tf-divider-h: 24px; }
+.root:not(.multiline).md { --tf-stack-gap: var(--ntg-input-stack-gap); --tf-label-gap: var(--ntg-input-label-gap); --tf-h: var(--ntg-input-height-md); --tf-pt: var(--ntg-input-padding-top-md); --tf-pr: var(--ntg-input-padding-right-md); --tf-pb: var(--ntg-input-padding-bottom-md); --tf-pl: var(--ntg-input-padding-left-md); --tf-gap: var(--ntg-input-gap-md); --tf-r-tl: var(--ntg-input-radius-top-left-md); --tf-r-tr: var(--ntg-input-radius-top-right-md); --tf-r-br: var(--ntg-input-radius-bottom-right-md); --tf-r-bl: var(--ntg-input-radius-bottom-left-md); --tf-icon: var(--ntg-input-icon-md); --tf-divider-w: 1px; --tf-divider-h: 24px; }
+.root:not(.multiline).lg { --tf-stack-gap: var(--ntg-input-stack-gap); --tf-label-gap: var(--ntg-input-label-gap); --tf-h: var(--ntg-input-height-lg); --tf-pt: var(--ntg-input-padding-top-lg); --tf-pr: var(--ntg-input-padding-right-lg); --tf-pb: var(--ntg-input-padding-bottom-lg); --tf-pl: var(--ntg-input-padding-left-lg); --tf-gap: var(--ntg-input-gap-lg); --tf-r-tl: var(--ntg-input-radius-top-left-lg); --tf-r-tr: var(--ntg-input-radius-top-right-lg); --tf-r-br: var(--ntg-input-radius-bottom-right-lg); --tf-r-bl: var(--ntg-input-radius-bottom-left-lg); --tf-icon: var(--ntg-input-icon-lg); --tf-divider-w: 1px; --tf-divider-h: 24px; }
+.root.multiline.sm { --tf-stack-gap: var(--ntg-input-stack-gap); --tf-pt: var(--ntg-input-text-area-padding-top-sm); --tf-pr: var(--ntg-input-padding-right-sm); --tf-pb: var(--ntg-input-text-area-padding-bottom-sm); --tf-pl: var(--ntg-input-padding-left-sm); --tf-gap: var(--ntg-input-gap-sm); --tf-r-tl: var(--ntg-input-radius-top-left-sm); --tf-r-tr: var(--ntg-input-radius-top-right-sm); --tf-r-br: var(--ntg-input-radius-bottom-right-sm); --tf-r-bl: var(--ntg-input-radius-bottom-left-sm); }
+.root.multiline.md { --tf-stack-gap: var(--ntg-input-stack-gap); --tf-pt: var(--ntg-input-text-area-padding-top-md); --tf-pr: var(--ntg-input-padding-right-md); --tf-pb: var(--ntg-input-text-area-padding-bottom-md); --tf-pl: var(--ntg-input-padding-left-md); --tf-gap: var(--ntg-input-gap-md); --tf-r-tl: var(--ntg-input-radius-top-left-md); --tf-r-tr: var(--ntg-input-radius-top-right-md); --tf-r-br: var(--ntg-input-radius-bottom-right-md); --tf-r-bl: var(--ntg-input-radius-bottom-left-md); }
+.root.multiline.lg { --tf-stack-gap: var(--ntg-input-stack-gap); --tf-pt: var(--ntg-input-text-area-padding-top-lg); --tf-pr: var(--ntg-input-padding-right-lg); --tf-pb: var(--ntg-input-text-area-padding-bottom-lg); --tf-pl: var(--ntg-input-padding-left-lg); --tf-gap: var(--ntg-input-gap-lg); --tf-r-tl: var(--ntg-input-radius-top-left-lg); --tf-r-tr: var(--ntg-input-radius-top-right-lg); --tf-r-br: var(--ntg-input-radius-bottom-right-lg); --tf-r-bl: var(--ntg-input-radius-bottom-left-lg); }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root:not(.multiline) { --tf-label-fg: var(--ntg-color-text-general-section-heading); --tf-required-fg: var(--ntg-color-system-error); --tf-bg: var(--ntg-color-background-general-primary); --tf-border: var(--ntg-color-border-general-primary); --tf-border-w: 1px; --tf-shadow: 0 0 0 0 transparent; --tf-placeholder: var(--ntg-color-text-general-placeholder); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root.multiline { --tf-label-fg: var(--ntg-color-text-general-section-heading); --tf-bg: var(--ntg-color-background-general-primary); --tf-border: var(--ntg-color-border-general-primary); --tf-border-w: 1px; --tf-shadow: 0 0 0 0 transparent; --tf-placeholder: var(--ntg-color-text-general-placeholder); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root:not(.multiline):not([data-error]):not([data-disabled]):not([data-readonly]):has(.box:hover) { --tf-label-fg: var(--ntg-color-text-general-label); --tf-required-fg: var(--ntg-color-system-error); --tf-bg: var(--ntg-color-background-general-primary-hover); --tf-border: var(--ntg-color-border-general-primary-hover); --tf-border-w: 1px; --tf-shadow: var(--ntg-shadows-bottom-xs); --tf-text: var(--ntg-color-text-general-heading); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root.multiline:not([data-error]):not([data-disabled]):not([data-readonly]):has(.box:hover) { --tf-label-fg: var(--ntg-color-text-general-label); --tf-bg: var(--ntg-color-background-general-primary-hover); --tf-border: var(--ntg-color-border-general-primary-hover); --tf-border-w: 1px; --tf-shadow: var(--ntg-shadows-bottom-xs); --tf-text: var(--ntg-color-text-general-heading); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root:not(.multiline):not([data-error]):has(.input:focus-visible) { --tf-label-fg: var(--ntg-color-text-brand-primary); --tf-required-fg: var(--ntg-color-system-error); --tf-bg: var(--ntg-color-background-general-primary); --tf-border: var(--ntg-color-border-brand-solid); --tf-border-w: 1px; --tf-shadow: var(--ntg-focused-ring-brand); --tf-text: var(--ntg-color-text-general-heading); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root.multiline:not([data-error]):has(.input:focus-visible) { --tf-label-fg: var(--ntg-color-text-brand-primary); --tf-bg: var(--ntg-color-background-general-primary); --tf-border: var(--ntg-color-border-brand-solid); --tf-border-w: 1px; --tf-shadow: var(--ntg-focused-ring-brand); --tf-text: var(--ntg-color-text-general-heading); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root:not(.multiline)[data-error] { --tf-label-fg: var(--ntg-color-text-system-error); --tf-required-fg: var(--ntg-color-system-error); --tf-bg: var(--ntg-color-background-general-primary); --tf-border: var(--ntg-color-system-error); --tf-border-w: 1px; --tf-shadow: 0 0 0 0 transparent; --tf-placeholder: var(--ntg-color-text-general-placeholder); --tf-hint-fg: var(--ntg-color-text-system-error); }
+.root.multiline[data-error] { --tf-label-fg: var(--ntg-color-text-system-error); --tf-bg: var(--ntg-color-background-general-primary); --tf-border: var(--ntg-color-system-error); --tf-border-w: 1px; --tf-shadow: 0 0 0 0 transparent; --tf-placeholder: var(--ntg-color-text-general-placeholder); --tf-hint-fg: var(--ntg-color-text-system-error); }
+.root:not(.multiline)[data-error]:not([data-disabled]):not([data-readonly]):has(.box:hover) { --tf-label-fg: var(--ntg-color-text-system-error-hover); --tf-required-fg: var(--ntg-color-system-error); --tf-bg: var(--ntg-color-background-general-primary-hover); --tf-border: var(--ntg-color-system-error-hover); --tf-border-w: 1px; --tf-shadow: var(--ntg-shadows-bottom-xs); --tf-text: var(--ntg-color-text-general-heading); --tf-hint-fg: var(--ntg-color-text-system-error); }
+.root.multiline[data-error]:not([data-disabled]):not([data-readonly]):has(.box:hover) { --tf-label-fg: var(--ntg-color-text-system-error-hover); --tf-bg: var(--ntg-color-background-general-primary-hover); --tf-border: var(--ntg-color-system-error-hover); --tf-border-w: 1px; --tf-shadow: var(--ntg-shadows-bottom-xs); --tf-text: var(--ntg-color-text-general-heading); --tf-hint-fg: var(--ntg-color-text-system-error); }
+.root:not(.multiline)[data-error]:has(.input:focus-visible) { --tf-label-fg: var(--ntg-color-text-system-error); --tf-required-fg: var(--ntg-color-system-error); --tf-bg: var(--ntg-color-background-general-primary); --tf-border: var(--ntg-color-border-system-error-solid); --tf-border-w: 1px; --tf-shadow: var(--ntg-focused-ring-error); --tf-text: var(--ntg-color-text-general-heading); --tf-hint-fg: var(--ntg-color-text-system-error); }
+.root.multiline[data-error]:has(.input:focus-visible) { --tf-label-fg: var(--ntg-color-text-system-error); --tf-bg: var(--ntg-color-background-general-primary); --tf-border: var(--ntg-color-border-system-error-solid); --tf-border-w: 1px; --tf-shadow: var(--ntg-focused-ring-error); --tf-text: var(--ntg-color-text-general-heading); --tf-hint-fg: var(--ntg-color-text-system-error); }
+.root:not(.multiline)[data-readonly] { --tf-label-fg: var(--ntg-color-text-general-section-heading); --tf-required-fg: var(--ntg-color-system-error); --tf-bg: var(--ntg-color-background-general-secondary); --tf-border: var(--ntg-color-border-general-secondary); --tf-border-w: 1px; --tf-shadow: 0 0 0 0 transparent; --tf-placeholder: var(--ntg-color-text-general-placeholder); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root.multiline[data-readonly] { --tf-label-fg: var(--ntg-color-text-general-section-heading); --tf-bg: var(--ntg-color-background-general-secondary); --tf-border: var(--ntg-color-border-general-secondary); --tf-border-w: 1px; --tf-shadow: 0 0 0 0 transparent; --tf-placeholder: var(--ntg-color-text-general-placeholder); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root:not(.multiline)[data-disabled] { --tf-label-fg: var(--ntg-color-text-general-section-heading); --tf-required-fg: var(--ntg-color-system-error); --tf-bg: var(--ntg-color-background-general-disabled-subtle); --tf-border: var(--ntg-color-border-general-disabled-subtle); --tf-border-w: 1px; --tf-shadow: 0 0 0 0 transparent; --tf-placeholder: var(--ntg-color-text-general-placeholder-subtle); --tf-hint-fg: var(--ntg-color-text-general-text); }
+.root.multiline[data-disabled] { --tf-label-fg: var(--ntg-color-text-general-section-heading); --tf-bg: var(--ntg-color-background-general-disabled-subtle); --tf-border: var(--ntg-color-border-general-disabled-subtle); --tf-border-w: 1px; --tf-shadow: 0 0 0 0 transparent; --tf-placeholder: var(--ntg-color-text-general-placeholder-subtle); --tf-hint-fg: var(--ntg-color-text-general-text); }

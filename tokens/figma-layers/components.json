@@ -150,5 +150,17 @@
     "layoutAxes": [
       "active"
     ]
+  },
+  "text-field": {
+    "page": "13 Input",
+    "depth": 5,
+    "reference": "Input Components",
+    "families": [
+      "Input Components"
+    ],
+    "sets": [
+      "text-field",
+      "text-area"
+    ]
   }
 }

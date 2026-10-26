@@ -489,7 +489,79 @@ const TOGGLE = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE }
+// ═══════════════════════════════════════════════════════════════════════════════
+// TextField: หน้า 13 ชุด text-field (บรรทัดเดียว) กับ text-area (หลายบรรทัด = prop multiline)
+//   สถานะ 8 ค่า: default hover focused disabled error error-hover error-focused read-only
+//   ฝั่งเว็บเป็น data attribute ของ root (error / disabled / readonly) + :hover ของกล่อง + :focus-visible ของ input
+//   ชั้น Text ในไฟล์ออกแบบเป็น placeholder ในสถานะพัก แต่เป็นข้อความที่พิมพ์ในสถานะ hover/focused (ไฟล์ไม่แยกสองชั้น)
+//   จึงแยกตามชื่อ token: ชื่อที่มีคำว่า placeholder ไปช่อง --tf-placeholder ที่เหลือไปช่อง --tf-text
+// ═══════════════════════════════════════════════════════════════════════════════
+const TEXT_FIELD_STATES = {
+  default: (sel) => sel,
+  hover: (sel) => `${sel}:not([data-error]):not([data-disabled]):not([data-readonly]):has(.box:hover)`,
+  focused: (sel) => `${sel}:not([data-error]):has(.input:focus-visible)`,
+  error: (sel) => `${sel}[data-error]`,
+  'error-hover': (sel) => `${sel}[data-error]:not([data-disabled]):not([data-readonly]):has(.box:hover)`,
+  'error-focused': (sel) => `${sel}[data-error]:has(.input:focus-visible)`,
+  'read-only': (sel) => `${sel}[data-readonly]`,
+  disabled: (sel) => `${sel}[data-disabled]`,
+}
+const TEXT_FIELD = {
+  specFile: 'tokens/figma-layers/text-field.json',
+  sizes: ['sm', 'md', 'lg'],
+  baseFile: 'components/TextField/TextField.base.css',
+  outFile: 'components/TextField/TextField.module.css',
+  hiddenLayers: ['field/input-box/leading-divider', 'field/input-box/trailing-divider', 'field/label-row/required-asterisk'],
+  sets: { 'text-field': { classes: '.root:not(.multiline)' }, 'text-area': { classes: '.root.multiline' } },
+  familyClass: () => '',
+  axisClass: {},
+  stateSelector: TEXT_FIELD_STATES,
+  stateRank: { default: 0, hover: 1, focused: 2, error: 3, 'error-hover': 4, 'error-focused': 5, 'read-only': 6, disabled: 7 },
+  layers: {
+    '(root)': (n, W) => ({ '--tf-stack-gap': W(n.g) }),
+    'field': () => ({}),
+    'field/label-row': (n, W) => ({ '--tf-label-gap': W(n.g) }),
+    'field/label-row/Label': () => ({}),
+    'field/label-row/required-asterisk': () => ({}),
+    'field/Label': () => ({}),
+    'field/input-box': (n, W) => ({
+      ...(n.h ? { '--tf-h': W(n.h) } : {}),
+      '--tf-pt': W(n.p[0]), '--tf-pr': W(n.p[1]), '--tf-pb': W(n.p[2]), '--tf-pl': W(n.p[3]),
+      '--tf-gap': W(n.g),
+      ...(n.r ? { '--tf-r-tl': W(n.r[0]), '--tf-r-tr': W(n.r[1]), '--tf-r-br': W(n.r[2]), '--tf-r-bl': W(n.r[3]) } : {}),
+    }),
+    'field/input-box/leading-icon': (n, W) => ({ '--tf-icon': W(n.w) }),
+    'field/input-box/trailing-icon': (n, W) => ({ '--tf-icon': W(n.w) }),
+    'field/input-box/*-icon/**': () => ({}),
+    'field/input-box/leading-divider': (n, W) => ({ '--tf-divider-w': W(n.w), '--tf-divider-h': W(n.h) }),
+    'field/input-box/trailing-divider': (n, W) => ({ '--tf-divider-w': W(n.w), '--tf-divider-h': W(n.h) }),
+    'field/input-box/*-divider/**': () => ({}),
+    'field/input-box/Text': () => ({}),
+    'Hint text': () => ({}),
+  },
+  text: [
+    { layers: ['field/label-row/Label', 'field/Label'], vars: { '--tf-label-font-family': 'font-family', '--tf-label-font-size': 'font-size', '--tf-label-line-height': 'line-height', '--tf-label-font-weight': 'font-weight', '--tf-label-letter-space': 'letter-space' } },
+    { layers: ['field/input-box/Text'], vars: { '--tf-font-family': 'font-family', '--tf-font-size': 'font-size', '--tf-line-height': 'line-height', '--tf-font-weight': 'font-weight', '--tf-letter-space': 'letter-space' } },
+    { layers: ['Hint text'], vars: { '--tf-hint-font-family': 'font-family', '--tf-hint-font-size': 'font-size', '--tf-hint-line-height': 'line-height', '--tf-hint-font-weight': 'font-weight', '--tf-hint-letter-space': 'letter-space' } },
+  ],
+  colors: {
+    'field/label-row/Label': (c, W) => ({ '--tf-label-fg': W(c.fills[0]) }),
+    'field/Label': (c, W) => ({ '--tf-label-fg': W(c.fills[0]) }),
+    'field/label-row/required-asterisk': (c, W) => ({ '--tf-required-fg': W(c.fills[0]) }),
+    'field/input-box': (c, W) => ({
+      '--tf-bg': c.fills ? W(c.fills[0]) : 'transparent',
+      '--tf-border': c.strokes ? W(c.strokes[0]) : 'transparent',
+      ...(c.strokes ? { '--tf-border-w': `${c.sw[0]}px` } : {}),
+      '--tf-shadow': effectVar(c.fx, 'input-box effect'),
+    }),
+    'field/input-box/Text': (c, W) => (/placeholder/.test(c.fills[0]) ? { '--tf-placeholder': W(c.fills[0]) } : { '--tf-text': W(c.fills[0]) }),
+    'field/input-box/*-divider/**': () => ({}),
+    'field/input-box/*-icon/**': () => ({}),
+    'Hint text': (c, W) => ({ '--tf-hint-fg': W(c.fills[0]) }),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 
@@ -505,7 +577,8 @@ function lookup(table, key) {
   return null
 }
 const spec = JSON.parse(fs.readFileSync(path.join(ROOT, M.specFile), 'utf8'))
-const SIZES = ['xs', 'sm', 'md', 'lg', 'xl']
+// component ที่มีไม่ครบ 5 ขนาด (เช่น ช่องกรอกมี sm md lg) ประกาศ sizes ในตารางจับคู่
+const SIZES = M.sizes || ['xs', 'sm', 'md', 'lg', 'xl']
 // ชุดที่ประกาศ layoutAxes ตอนดึง (เช่น checked) จะมี key แบบ "md, checked=true" ตารางจับคู่เลือกด้วย layoutKey
 const L = (set, size) => {
   const key = M.layoutKey ? M.layoutKey(size) : size
@@ -606,7 +679,7 @@ for (const [setName, set] of Object.entries(spec.sets)) {
         }
         Object.assign(vars, fn(c, (v) => toVar(v, where), { state, axes, family, pressed }))
       }
-      const rank = { default: 0, hover: 1, focused: 2, disabled: 3 }[state] ?? 9
+      const rank = (M.stateRank || { default: 0, hover: 1, focused: 2, disabled: 3 })[state] ?? 9
       const cur = colorBySel.get(sel) || { rank, vars: {} }
       for (const [k, v] of Object.entries(vars)) {
         if (k in cur.vars && cur.vars[k] !== v) errors.push(`${sel.replace(/\n/g, ' ')} ${k}: ชุด ${setName} ให้ ${v} แต่ชุดก่อนหน้าให้ ${cur.vars[k]} (ไฟล์ออกแบบสองชุดไม่ตรงกัน)`)

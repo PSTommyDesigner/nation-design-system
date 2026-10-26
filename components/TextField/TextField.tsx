@@ -101,7 +101,12 @@ export function TextField({
   );
 
   return (
-    <div className={classes}>
+    <div
+      className={classes}
+      data-error={error ? 'true' : undefined}
+      data-disabled={disabled ? 'true' : undefined}
+      data-readonly={readOnly ? 'true' : undefined}
+    >
       {label ? (
         <label className={styles.labelRow} htmlFor={inputId}>
           {label}
@@ -109,12 +114,7 @@ export function TextField({
         </label>
       ) : null}
 
-      <div
-        className={styles.box}
-        data-error={error ? 'true' : undefined}
-        data-disabled={disabled ? 'true' : undefined}
-        data-readonly={readOnly ? 'true' : undefined}
-      >
+      <div className={styles.box}>
         {leadingIcon ? <span className={styles.icon} aria-hidden="true"><Icon name={leadingIcon} /></span> : null}
         {leadingDivider ? <span className={styles.divider} aria-hidden="true" /> : null}
         {field}
@@ -123,7 +123,7 @@ export function TextField({
       </div>
 
       {hint ? (
-        <span className={styles.hint} id={hintId} data-error={error ? 'true' : undefined}>{hint}</span>
+        <span className={styles.hint} id={hintId}>{hint}</span>
       ) : null}
     </div>
   );

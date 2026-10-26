@@ -183,6 +183,10 @@
         "$type": "dimension",
         "$value": "4px"
       },
+      "label-gap": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
       "textarea": {
         "padding": {
           "base": {

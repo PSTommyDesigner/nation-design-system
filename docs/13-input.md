@@ -116,7 +116,7 @@ sources_of_truth:
 | `default` | `color/border/general/primary` | ไม่มี |
 | `hover` | `color/border/general/primary-hover` | `shadows/bottom/xs` |
 | `focused` | `color/border/brand/solid` | `focused-ring/brand` |
-| `disabled` | `color/text/general/disabled-subtle` | ไม่มี |
+| `disabled` | `color/border/general/disabled-subtle` | ไม่มี |
 | `read-only` | `color/border/general/secondary` | ไม่มี |
 | `error` | `color/system/error` | ไม่มี |
 | `error-hover` | `color/system/error-hover` | `shadows/bottom/xs` |
@@ -124,9 +124,11 @@ sources_of_truth:
 
 **`read-only` ต่างจาก `disabled` อย่างไร** อันหลังแปลว่าตอนนี้ใช้ไม่ได้ ค่าไม่ถูกส่ง คัดลอกไม่ได้ และโปรแกรมอ่านหน้าจอมักข้ามไป ส่วน `read-only` แปลว่าค่าถูกต้องแล้วแต่แก้ไม่ได้ **ค่ายังถูกส่ง คัดลอกได้ โฟกัสได้ และโปรแกรมอ่านหน้าจออ่านให้ฟัง** ถ้าเอาข้อมูลที่ผู้ใช้ต้องรู้ไปใส่ช่อง disabled คนใช้โปรแกรมอ่านหน้าจอจะไม่ได้ยินข้อมูลนั้นเลย
 
+**สีป้ายชื่อเปลี่ยนตามสถานะ** พัก `color/text/general/section-heading` hover `color/text/general/label` focused `color/text/brand/primary` error และ error-focused `color/text/system/error` error-hover `color/text/system/error-hover` ส่วน disabled กับ read-only กลับเป็น section-heading ทั้ง text-field และ text-area ใช้ชุดเดียวกัน (ตัดสิน 2026-10-26 เดิม text-area ป้ายชื่อไม่เปลี่ยนสี และมีเงา shadows/bottom/xs ทุกสถานะ ปรับให้เงามีเฉพาะ hover เหมือน text-field แล้ว) · สีข้อความในกล่อง พักเป็น `color/text/general/placeholder` (ชั้นนี้ในไฟล์ออกแบบคือ placeholder) hover และ focused เป็น `color/text/general/heading` disabled เป็น `color/text/general/placeholder-subtle` · เส้นขอบ read-only ผูกกับ `color/border/general/secondary` ใน collection component (เดิมหลุดไปผูก collection semantics แก้แล้ว 2026-10-26)
+
 **ทำไมมี `error-hover` และ `error-focused`** เพราะสถานะความผิดพลาดซ้อนกับสถานะการโต้ตอบได้จริง Material 3 ยืนยันด้วย token `ErrorHover` และ `ErrorFocus` ของตัวเอง
 
-### 4.6 ตัวแปรทั้ง 41 ตัว
+### 4.6 ตัวแปรทั้ง 42 ตัว
 
 | ตัวแปร Figma | CSS | ค่า |
 |---|---|---|
@@ -136,6 +138,7 @@ sources_of_truth:
 | `input/icon/sm .. lg` | `--ntg-space-input-icon-*` | 18, 20, 22 |
 | `input/border` | `--ntg-space-input-border` | 1 |
 | `input/stack-gap` | `--ntg-space-input-stack-gap` | 4 |
+| `input/label-gap` | `--ntg-input-label-gap` | 2 (ช่องไฟระหว่างป้ายชื่อกับดอกจัน เพิ่ม 2026-10-26 เดิมเป็นค่าดิบ) |
 | `input/textarea/padding/top และ bottom/sm .. lg` | `--ntg-space-input-textarea-padding-*` | 6, 8, 10 |
 | `input/radius/<มุม>/sm .. lg` | `--ntg-input-radius-*` | 7, 8, 9 |
 | `input/padding/top และ bottom/sm .. lg` | `--ntg-space-input-padding-*` | 0 ทุกขนาด |

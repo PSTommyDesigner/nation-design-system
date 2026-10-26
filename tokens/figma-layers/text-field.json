@@ -1,0 +1,1088 @@
+{
+ "capturedAt": "2026-10-26",
+ "page": "13 Input",
+ "reference": "Input Components",
+ "sets": {
+  "text-field": {
+   "defs": {
+    "show-label": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-hint": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "label": {
+     "type": "TEXT",
+     "def": "Label"
+    },
+    "placeholder": {
+     "type": "TEXT",
+     "def": "Placeholder"
+    },
+    "hint": {
+     "type": "TEXT",
+     "def": "This is a hint text to help user."
+    },
+    "required": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "leading-icon": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "trailing-icon": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "leading-divider": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "trailing-divider": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "size": ["sm","md","lg"],
+    "state": ["default","hover","focused","disabled","error","error-hover","error-focused","read-only"]
+   },
+   "layout": {
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": 320,
+     "h": 88,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "label-row",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/label-gap",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ref": {
+          "visible": "show-label"
+         },
+         "ch": [
+          {
+           "n": "Label",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::body/sm",
+           "ref": {
+            "characters": "label"
+           }
+          },
+          {
+           "n": "required-asterisk",
+           "t": "TEXT",
+           "s": ["FIXED","FIXED"],
+           "w": 7,
+           "h": 24,
+           "vis": false,
+           "ts": "text::body/sm",
+           "ref": {
+            "visible": "required"
+           }
+          }
+         ]
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/gap/sm",
+         "p": ["input/padding/top/sm","input/padding/right/sm","input/padding/bottom/sm","input/padding/left/sm"],
+         "s": ["FILL","FIXED"],
+         "h": "input/height/sm",
+         "clip": true,
+         "r": ["input/radius/top-left/sm","input/radius/top-right/sm","input/radius/bottom-right/sm","input/radius/bottom-left/sm"],
+         "ch": [
+          {
+           "n": "leading-icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "input/icon/sm",
+           "h": "input/icon/sm",
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "leading-icon"
+           },
+           "inst": true
+          },
+          {
+           "n": "leading-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FIXED"],
+           "w": 1,
+           "h": 24,
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "leading-divider"
+           },
+           "inst": true
+          },
+          {
+           "n": "Text",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::body/md",
+           "ref": {
+            "characters": "placeholder"
+           }
+          },
+          {
+           "n": "trailing-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FIXED"],
+           "w": 1,
+           "h": 24,
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "trailing-divider"
+           },
+           "inst": true
+          },
+          {
+           "n": "trailing-icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "input/icon/sm",
+           "h": "input/icon/sm",
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "trailing-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": 320,
+     "h": 96,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "label-row",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/label-gap",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ref": {
+          "visible": "show-label"
+         },
+         "ch": [
+          {
+           "n": "Label",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::body/sm",
+           "ref": {
+            "characters": "label"
+           }
+          },
+          {
+           "n": "required-asterisk",
+           "t": "TEXT",
+           "s": ["FIXED","FIXED"],
+           "w": 7,
+           "h": 24,
+           "vis": false,
+           "ts": "text::body/sm",
+           "ref": {
+            "visible": "required"
+           }
+          }
+         ]
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/gap/md",
+         "p": ["input/padding/top/md","input/padding/right/md","input/padding/bottom/md","input/padding/left/md"],
+         "s": ["FILL","FIXED"],
+         "h": "input/height/md",
+         "clip": true,
+         "r": ["input/radius/top-left/md","input/radius/top-right/md","input/radius/bottom-right/md","input/radius/bottom-left/md"],
+         "ch": [
+          {
+           "n": "leading-icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "input/icon/md",
+           "h": "input/icon/md",
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "leading-icon"
+           },
+           "inst": true
+          },
+          {
+           "n": "leading-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FIXED"],
+           "w": 1,
+           "h": 24,
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "leading-divider"
+           },
+           "inst": true
+          },
+          {
+           "n": "Text",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::body/md",
+           "ref": {
+            "characters": "placeholder"
+           }
+          },
+          {
+           "n": "trailing-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FIXED"],
+           "w": 1,
+           "h": 24,
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "trailing-divider"
+           },
+           "inst": true
+          },
+          {
+           "n": "trailing-icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "input/icon/md",
+           "h": "input/icon/md",
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "trailing-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": 320,
+     "h": 104,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "label-row",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/label-gap",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ref": {
+          "visible": "show-label"
+         },
+         "ch": [
+          {
+           "n": "Label",
+           "t": "TEXT",
+           "s": ["HUG","HUG"],
+           "ts": "text::body/sm",
+           "ref": {
+            "characters": "label"
+           }
+          },
+          {
+           "n": "required-asterisk",
+           "t": "TEXT",
+           "s": ["FIXED","FIXED"],
+           "w": 7,
+           "h": 24,
+           "vis": false,
+           "ts": "text::body/sm",
+           "ref": {
+            "visible": "required"
+           }
+          }
+         ]
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/gap/lg",
+         "p": ["input/padding/top/lg","input/padding/right/lg","input/padding/bottom/lg","input/padding/left/lg"],
+         "s": ["FILL","FIXED"],
+         "h": "input/height/lg",
+         "clip": true,
+         "r": ["input/radius/top-left/lg","input/radius/top-right/lg","input/radius/bottom-right/lg","input/radius/bottom-left/lg"],
+         "ch": [
+          {
+           "n": "leading-icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "input/icon/lg",
+           "h": "input/icon/lg",
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "leading-icon"
+           },
+           "inst": true
+          },
+          {
+           "n": "leading-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FIXED"],
+           "w": 1,
+           "h": 24,
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "leading-divider"
+           },
+           "inst": true
+          },
+          {
+           "n": "Text",
+           "t": "TEXT",
+           "s": ["FILL","FILL"],
+           "ts": "text::body/md",
+           "ref": {
+            "characters": "placeholder"
+           }
+          },
+          {
+           "n": "trailing-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FIXED"],
+           "w": 1,
+           "h": 24,
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "trailing-divider"
+           },
+           "inst": true
+          },
+          {
+           "n": "trailing-icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "input/icon/lg",
+           "h": "input/icon/lg",
+           "clip": true,
+           "vis": false,
+           "ref": {
+            "visible": "trailing-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Input Components": {
+     "state=default": 0,
+     "state=hover": 1,
+     "state=focused": 2,
+     "state=disabled": 3,
+     "state=error": 4,
+     "state=error-hover": 5,
+     "state=error-focused": 6,
+     "state=read-only": 7
+    }
+   }
+  },
+  "text-area": {
+   "defs": {
+    "show-label": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-hint": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "label": {
+     "type": "TEXT",
+     "def": "Label"
+    },
+    "placeholder": {
+     "type": "TEXT",
+     "def": "Placeholder"
+    },
+    "hint": {
+     "type": "TEXT",
+     "def": "This is a hint text to help user."
+    },
+    "size": ["sm","md","lg"],
+    "state": ["default","error","hover","error-hover","focused","error-focused","disabled","read-only"]
+   },
+   "layout": {
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Label",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "visible": "show-label",
+          "characters": "label"
+         }
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "input/gap/sm",
+         "p": ["input/text-area/padding/top/sm","input/padding/right/sm","input/text-area/padding/bottom/sm","input/padding/left/sm"],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "r": ["input/radius/top-left/sm","input/radius/top-right/sm","input/radius/bottom-right/sm","input/radius/bottom-left/sm"],
+         "ch": [
+          {
+           "n": "Text",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/md",
+           "ref": {
+            "characters": "placeholder"
+           }
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Label",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "visible": "show-label",
+          "characters": "label"
+         }
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "input/gap/md",
+         "p": ["input/text-area/padding/top/md","input/padding/right/md","input/text-area/padding/bottom/md","input/padding/left/md"],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "r": ["input/radius/top-left/md","input/radius/top-right/md","input/radius/bottom-right/md","input/radius/bottom-left/md"],
+         "ch": [
+          {
+           "n": "Text",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/md",
+           "ref": {
+            "characters": "placeholder"
+           }
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","HUG"],
+     "w": 320,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Label",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "visible": "show-label",
+          "characters": "label"
+         }
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "input/gap/lg",
+         "p": ["input/text-area/padding/top/lg","input/padding/right/lg","input/text-area/padding/bottom/lg","input/padding/left/lg"],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "r": ["input/radius/top-left/lg","input/radius/top-right/lg","input/radius/bottom-right/lg","input/radius/bottom-left/lg"],
+         "ch": [
+          {
+           "n": "Text",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/md",
+           "ref": {
+            "characters": "placeholder"
+           }
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Input Components": {
+     "state=default": 8,
+     "state=error": 9,
+     "state=hover": 10,
+     "state=error-hover": 11,
+     "state=focused": 12,
+     "state=error-focused": 13,
+     "state=disabled": 14,
+     "state=read-only": 15
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "field/label-row/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/label-row/required-asterisk": {
+    "fills": ["color/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/primary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/label-row/Label": {
+    "fills": ["color/text/general/label"]
+   },
+   "field/label-row/required-asterisk": {
+    "fills": ["color/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/border/general/primary-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/label-row/Label": {
+    "fills": ["color/text/brand/primary"]
+   },
+   "field/label-row/required-asterisk": {
+    "fills": ["color/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/brand"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/label-row/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/label-row/required-asterisk": {
+    "fills": ["color/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/disabled-subtle"],
+    "strokes": ["color/border/general/disabled-subtle"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/placeholder-subtle"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/label-row/Label": {
+    "fills": ["color/text/system/error"]
+   },
+   "field/label-row/required-asterisk": {
+    "fills": ["color/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/system/error"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/label-row/Label": {
+    "fills": ["color/text/system/error-hover"]
+   },
+   "field/label-row/required-asterisk": {
+    "fills": ["color/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/system/error-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/label-row/Label": {
+    "fills": ["color/text/system/error"]
+   },
+   "field/label-row/required-asterisk": {
+    "fills": ["color/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/system/error-solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/error"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/label-row/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/label-row/required-asterisk": {
+    "fills": ["color/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/secondary"],
+    "strokes": ["color/border/general/secondary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/primary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/system/error"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/general/label"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/border/general/primary-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/system/error-hover"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/system/error-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/brand/primary"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/brand"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/system/error-solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/error"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/heading"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/disabled-subtle"],
+    "strokes": ["color/border/general/disabled-subtle"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/placeholder-subtle"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/secondary"],
+    "strokes": ["color/border/general/secondary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  }
+ ]
+}

@@ -45,6 +45,7 @@ export const BORDER = 1;                           // เส้นขอบ 1px 
 // ระยะห่างแนวตั้งของกองป้ายกำกับ ช่องกรอก และข้อความช่วย
 // ค่าเดิมในไฟล์คือ 4 ทุกที่ คงไว้เพราะไม่ผูกกับขนาดช่อง
 export const STACK_GAP = 4;
+export const LABEL_GAP = 2;                        // ช่องไฟระหว่างป้ายชื่อกับดอกจันบังคับกรอก (ค่าเดิมในไฟล์ ตัดสิน 2026-10-26)
 
 // ── text area ────────────────────────────────────────────────
 // ระยะขอบซ้ายขวาเท่ากับช่องบรรทัดเดียวทุกขนาด (ตลาดทำแบบนี้ทุกเจ้า ต่างกันมากสุด 1px)
@@ -107,6 +108,7 @@ export function build(dim) {
       `ไอคอนในช่องกรอกขนาด ${s} เท่ากับ ${v}px ได้ระยะเว้นขอบบนล่าง ${(h(s) - v) / 2}px จากการจัดกลางใน ${h(s)}px`),
     border: { ...dim(BORDER), $description: `เส้นขอบช่องกรอก ${BORDER}px ทุกขนาด` },
     'stack-gap': { ...dim(STACK_GAP), $description: `ระยะแนวตั้งระหว่างป้ายกำกับ ช่องกรอก และข้อความช่วย ${STACK_GAP}px ไม่ผูกกับขนาดช่อง` },
+    'label-gap': { ...dim(LABEL_GAP), $description: `ช่องไฟระหว่างป้ายชื่อกับดอกจันบังคับกรอก ${LABEL_GAP}px ทุกขนาด` },
     textarea: {
       padding: {
         t: grow(TEXTAREA_PADDING_Y.base, TEXTAREA_PADDING_Y.step, (v, s) => `ระยะขอบบนของช่องหลายบรรทัดขนาด ${s} เท่ากับ ${v}px`),
@@ -157,6 +159,7 @@ export function build(dim) {
     radius: { base: dim(RADIUS.base), step: dim(RADIUS.step) },
     border: dim(BORDER),
     'stack-gap': dim(STACK_GAP),
+    'label-gap': dim(LABEL_GAP),
     textarea: { padding: { base: dim(TEXTAREA_PADDING_Y.base), step: dim(TEXTAREA_PADDING_Y.step) } },
   };
 
