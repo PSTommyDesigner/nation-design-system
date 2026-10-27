@@ -1,0 +1,82 @@
+/* แกลเลอรีค้นหาไอคอน ใช้คู่กับ icon-gallery.tsx ทุกค่าผูก token ไม่มีค่าดิบ
+   โหลด global ใน preview.tsx เหมือน docs-blocks.css */
+
+.ntg-icon-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-lg);
+  width: 100%;
+}
+.ntg-icon-gallery-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ntg-size-space-s2-sm);
+}
+.ntg-icon-gallery-toolbar > :first-child { flex: 1 1 280px; max-width: 480px; }
+
+.ntg-icon-gallery-count,
+.ntg-icon-gallery-empty {
+  font-family: var(--ntg-typography-font-family-label-sm);
+  font-size: var(--ntg-typography-font-size-label-sm);
+  line-height: var(--ntg-typography-line-height-label-sm);
+  font-weight: var(--ntg-typography-font-weight-label-sm);
+  letter-spacing: var(--ntg-typography-letter-space-label-sm);
+  color: var(--ntg-color-text-general-supporting-text);
+  margin: 0;
+}
+
+.ntg-icon-gallery-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-xs);
+}
+.ntg-icon-gallery-heading {
+  font-family: var(--ntg-typography-font-family-title-sm);
+  font-size: var(--ntg-typography-font-size-title-sm);
+  line-height: var(--ntg-typography-line-height-title-sm);
+  font-weight: var(--ntg-typography-font-weight-title-sm);
+  letter-spacing: var(--ntg-typography-letter-space-title-sm);
+  color: var(--ntg-color-text-general-heading);
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--ntg-size-space-s1-sm);
+}
+
+.ntg-icon-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--ntg-size-space-s1-sm);
+}
+
+/* ช่องไอคอน ยึดสไตล์ info-card (พื้น secondary ขอบ primary มุมโค้งของ info-card) เหมือนการ์ด ควร/ไม่ควร */
+.ntg-icon-gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-sm);
+  padding: var(--ntg-size-space-s2-xs) var(--ntg-size-space-s1-sm);
+  background: var(--ntg-color-background-general-secondary);
+  border: 1px solid var(--ntg-color-border-general-primary);
+  border-radius: var(--ntg-info-card-radius-top-left) var(--ntg-info-card-radius-top-right)
+    var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
+  color: var(--ntg-color-text-general-heading);
+  cursor: pointer;
+  min-width: 0;
+}
+.ntg-icon-gallery-item:hover { background: var(--ntg-color-background-general-secondary-hover); }
+.ntg-icon-gallery-item:focus-visible { outline: 2px solid var(--ntg-color-border-brand-primary); outline-offset: 2px; }
+.ntg-icon-gallery-item.is-copied { border-color: var(--ntg-color-border-brand-primary); }
+
+.ntg-icon-gallery-glyph { display: inline-flex; }
+.ntg-icon-gallery-name {
+  font-family: var(--ntg-typography-font-family-label-xs);
+  font-size: var(--ntg-typography-font-size-label-xs);
+  line-height: var(--ntg-typography-line-height-label-xs);
+  font-weight: var(--ntg-typography-font-weight-label-xs);
+  letter-spacing: var(--ntg-typography-letter-space-label-xs);
+  color: var(--ntg-color-text-general-text);
+  text-align: center;
+  overflow-wrap: anywhere;
+}

@@ -93,6 +93,7 @@ sources_of_truth:
 | `components/NationHouseIcon/icons.ts` | registry ชุดแบรนด์: `nationHouseIcons`, `nationHouseIconNames`, type `NationHouseIconName` |
 | `components/NationHouseIcon/svg/*.svg` | ไฟล์ SVG ชุดแบรนด์ (150 ไฟล์ ชั้นเส้น `stroke="currentColor"`) |
 | `prototype/icons.html` | หน้ารวมไอคอน + ค้นหา (เฉพาะ Nation UI Icons) |
+| `components/Icon/Icon.stories.tsx`, `components/NationHouseIcon/NationHouseIcon.stories.tsx` | หน้า Docs ใน Storybook เป็นแกลเลอรีค้นหา (ครบทุกตัว จัดตามหมวดของ `iconCategories` กดเพื่อคัดลอกชื่อ) บวกหัวข้อขนาด สถานะ ควรไม่ควร ตัวแกลเลอรีอยู่ที่ `.storybook/icon-gallery.tsx` ใช้ TextField ของระบบเป็นช่องค้นหา (2026-10-27) |
 
 ## 5. ข้อควรระวังและปัญหาที่พบบ่อย (Constraints)
 

@@ -7,6 +7,8 @@ import { CustomDocsPage } from './CustomDocsPage'
 import '../tokens/output/css/variables.css'
 // สไตล์ของบล็อกประกอบเอกสาร (preview · labeled · do-dont) ดู docs-blocks.tsx
 import './docs-blocks.css'
+// สไตล์แกลเลอรีค้นหาไอคอน (หน้า Docs ของ Icon กับ NationHouseIcon) ดู icon-gallery.tsx
+import './icon-gallery.css'
 
 /**
  * ธีมของหน้า Docs (หน้า prop table + ตัวอย่างของแต่ละ component) เท่านั้น

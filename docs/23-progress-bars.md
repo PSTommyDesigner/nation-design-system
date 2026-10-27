@@ -199,6 +199,7 @@ sources_of_truth:
 | `tokens/scale/progress.mjs` | สูตรขนาด ด่านตรวจ และสมการปิด 3 สมการ |
 | `tokens/output/css/variables.css` | ผลลัพธ์ที่ build แล้ว ห้ามแก้มือ |
 | `components/Progress/` | โค้ดฝั่ง React |
+| `components/Progress/Progress.stories.tsx` | หน้า Docs ใน Storybook 5 หัวข้อ (ส่วนประกอบ ชุด ขนาด สถานะ ควรไม่ควร) เมนูย่อยตามชุดจริง 3 ชุด ภาพขนาด md ตรงกับไฟล์ออกแบบแล้ว 2026-10-27 |
 | `docs/research/progress-component.md` | งานวิจัยเทียบ 15 เจ้า |
 
 ## 5. ข้อจำกัดและข้อห้าม (Constraints)

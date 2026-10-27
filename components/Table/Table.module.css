@@ -55,6 +55,9 @@
   font-size: var(--ntg-typography-font-size-title-xs);
   line-height: var(--ntg-typography-line-height-title-xs);
   font-weight: var(--ntg-typography-font-weight-title-xs);
+  /* เส้นคั่นระหว่างแถวชื่อตารางกับแถวหัว เส้นเดียวกับเส้นแถว (หัวหน้าตัดสิน 2026-10-27)
+     ไฟล์ออกแบบหน้า 26 เพิ่มแถว caption ให้ตรงกันในรอบเดียวกัน */
+  border-bottom: var(--ntg-divider-thickness) solid var(--ntg-color-border-general-primary);
 }
 
 /* คำบรรยายตารางที่ซ่อนจากสายตาแต่ยังให้โปรแกรมอ่านหน้าจออ่านได้

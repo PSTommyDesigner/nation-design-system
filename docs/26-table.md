@@ -48,10 +48,11 @@ sources_of_truth:
 
 ## 4. โครงสร้างข้อมูลและ UI (Structure)
 
-### 4.1 เซลทั้ง 15 ชนิด
+### 4.1 เซลทั้ง 16 ชนิด
 
 | เซล | ใช้กับข้อมูลแบบไหน | ความสูง |
 |---|---|---:|
+| `caption-table-cell` | ชื่อตาราง วางเป็นแถวแรกเหนือแถวหัว ภายในกรอบตาราง (เพิ่ม 2026-10-27) | 48 |
 | `header-table-cell` | หัวคอลัมน์ | 48 |
 | `header-select-table-cell` | หัวคอลัมน์ที่มีช่องติ๊กเลือกทั้งหมด | 48 |
 | `select-table-cell` | ช่องติ๊กเลือกแถว | 40 |
@@ -129,6 +130,10 @@ sources_of_truth:
 | หน้าตา | `zebra` `stickyHeader` |
 | เลือกแถว | `selectable` `selectedIds` `defaultSelectedIds` `onSelectionChange` `isRowDisabled` |
 | เรียงลำดับ | `sort` `onSortChange` วนเป็น ไม่เรียง แล้วน้อยไปมาก แล้วมากไปน้อย |
+
+### 4.6 หน้า Docs ใน Storybook
+
+`components/Table/Table.stories.tsx` เป็นหน้า Docs 5 หัวข้อ (ส่วนประกอบ ชุด ขนาด สถานะ ควรไม่ควร) ตารางไม่มีชุดในไฟล์ออกแบบ หัวข้อชุดจึงแสดงเซล 15 ชนิดในตารางเดียว เซลผสม (badge tag user avatar-group progress-bar star icon action) ประกอบจาก component ของระบบผ่าน `render` ภาพของ story หลักตรงกับเฟรม Team members ในไฟล์ออกแบบ (หัว 48 แถว 70 ป้ายขนาด md) ตรวจแล้ว 2026-10-27 แถว caption มีเส้นใต้คั่นกับแถวหัว (หัวหน้าตัดสิน 2026-10-27) ทั้งสองฝั่ง ฝั่งไฟล์ออกแบบเป็น component `caption-table-cell` ใน Head cells และ caption-row ในเฟรม Team members
 
 ## 5. ข้อจำกัดและข้อห้าม (Constraints)
 
