@@ -1,0 +1,266 @@
+# IconButton in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/IconButton/, docs/12-buttons.md, the Figma file (page 12 Buttons, read 2026-10-27)
+# and tokens/figma-layers/icon-button.json
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: icon-button
+name: IconButton
+description: >-
+  A button that shows only an icon and runs an action. It matches the Figma sets semi-rounded-icon-button and
+  circular-icon-button on page 12 Buttons, one pair of sets in each of the frames Brand Button, Neutral Button,
+  Error Button and Alpha Button. It exists so actions with no room for a text label, such as close or more options,
+  use the same button colors and states as Button, and always carry a name that screen readers can read.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [action]
+  status: {status: beta}
+  aliases: [semi-rounded-icon-button, circular-icon-button]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use for an action shown as an icon only.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use IconButton for an action that needs a visible text label. IconButton renders no text.
+          Use Button, which takes leftIcon and rightIcon next to its label.
+        alternatives:
+          - to: button
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use IconButton to take the user to another page. It always renders a button element and takes no href.
+          LinkButton with href renders an a element, and with no children it is the icon-only link-icon-button.
+        alternatives:
+          - to: link-button
+        checkedBy: manual
+      # NEEDS CLARIFICATION: same question as button.dsds.yaml. Figma page 12 has no filled or bordered icon link, and LinkButton (link-icon-button) has no fill. May an icon-only link look like an IconButton, or must every icon-only link use LinkButton with href?
+      - level: must-not
+        statement: Make a warning or success icon button. Those buttons were removed on purpose, because warning and success colors belong to alerts and badges.
+        alternatives:
+          - to: banner
+          - to: badge
+        checkedBy: manual
+      # NEEDS CLARIFICATION: when should shape circular be used instead of semi-rounded? Figma has both sets in every family, and code, README and Storybook show both (the README example is a circular alpha close button), but no source says when to pick which.
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Set color only with the family prop and weight only with the hierarchy prop.
+        checkedBy: manual
+      - level: must
+        statement: Hover, focus and pressed come from CSS pseudo-classes, and disabled from the disabled attribute. Don't pass a state prop or add state classes.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass the icon as a name from Nation UI Icons in the icon prop (listed in context/icons/icon-names.md).
+          IconButton takes no children, so don't put an svg or another element inside it.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          In one group of buttons that sit together and that the user chooses between at one time, such as the buttons
+          at the end of a dialog, use hierarchy primary on one button at most. Icon buttons count in that group, because
+          they use the same hierarchy as text buttons.
+        checkedBy: manual
+      - level: must-not
+        statement: Set icon button colors, size, padding or radius with className or style. Button colors change at the button tokens, never per screen.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Accessibility notes on Figma page 12 ask for a touch area of at least 44 by 44 and recommend size md and up, but md is 40 (--ntg-icon-button-size-md) and IconButton has no touch target option. What minimum size, or what extra touch area, must an IconButton have on touch screens?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - level: must
+        statement: >-
+          The icon has at least 4.5:1 contrast with the fill behind it, which is the button fill, or the page behind a
+          tertiary button at rest, in both light and dark themes. The Accessibility notes on Figma page 12 ask this of
+          text and icons alike.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Every IconButton can be reached with Tab and run with Enter and Space, and a disabled one is skipped.
+          The native button element does this, so don't add tabIndex, a role or key handlers that change it.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+            role: WCAG 2.2 SC 2.1.1 (A)
+        checkedBy: manual
+      - level: must-not
+        statement: Leave out the label prop or pass an empty string. It is the only name a screen reader gets.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: IconButton always sets title to label, so the browser shows its own tooltip. The example in components/Tooltip/Tooltip.tsx wraps an IconButton with no label in a Tooltip with relationship label. Inside a Tooltip, is label still required, and should IconButton drop title so two tooltips don't show?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF you need a gray icon button that turns to the brand or error color on hover THEN use defaultGray with family brand or error. IF you need a gray icon button that stays gray THEN use family neutral.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the action deletes data or destroys something THEN use family error. IF the action is close, cancel or back
+          THEN use family neutral, because a gray close button that turns brand on hover reads as a confirm button.
+          ELSE use family brand.
+        checkedBy: assisted
+      - level: should
+        statement: IF the icon button sits on top of an image or video THEN use family alpha.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the icon button repeats in a toolbar or on every row of a long list THEN set defaultGray, so the color shows
+          only on hover. A delete button at the end of each row is family error with defaultGray.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the icon-only action sits inside running text, or must have no fill and no border THEN use LinkButton with
+          leftIcon and label and no children. ELSE use IconButton.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Container
+        definition: >-
+          The button box, as wide as it is high. Width and height are --ntg-icon-button-size-<size> (24, 32, 40, 48, 56,
+          the same as --ntg-button-size-<size>), padding is --ntg-icon-button-padding-<side>-<size>, corner radius is
+          --ntg-icon-button-radius-<corner>-<size> for shape semi-rounded and --ntg-button-radius-full for shape circular.
+          Fill is --ntg-button-color-<family>-background-<hierarchy>-<state>, and for family alpha
+          --ntg-button-color-alpha-background-<state>. Tertiary has no fill at rest or when disabled, only on hover, focus and press.
+      # NEEDS CLARIFICATION: components/IconButton/README.md says circular uses icon-button/radius/full, but Figma binds button/radius/full and the code uses --ntg-button-radius-full. --ntg-icon-button-radius-full exists and nothing uses it. Which one is meant?
+      - term: Shadow and focus ring
+        definition: >-
+          Shadow is --ntg-shadows-bottom-xs, except family alpha, whose shadow grows with size (--ntg-shadows-bottom-<size>).
+          Tertiary has no shadow at rest or when disabled. On keyboard focus the shadow is replaced by --ntg-focused-ring-brand
+          for brand, --ntg-focused-ring-error for error and --ntg-focused-ring-default for neutral and alpha.
+      - term: Border
+        definition: Secondary hierarchy only. --ntg-button-color-<family>-border-secondary-<state>, drawn as an inset box-shadow so it takes no space.
+      - term: Icon
+        definition: >-
+          The icon prop, an Icon from Nation UI Icons. Figma property swap-icon. Size is --ntg-icon-button-icon-<size>
+          (16, 18, 20, 22, 24, the same as --ntg-button-icon-<size>). Color is --ntg-button-color-<family>-icon-<hierarchy>-<state>,
+          and for family alpha --ntg-button-color-alpha-icon-<state>. Rendered with no title, so it is aria-hidden.
+      - term: Accessible name
+        definition: The label prop, set on the button as both aria-label and title. The icon itself adds nothing for screen readers.
+      - term: Gray and neutral
+        definition: >-
+          defaultGray means gray at rest and the family color on hover (tokens brand-gray and error-gray).
+          family neutral means gray in every state. They are different looks, not two names for one. In Figma the frame
+          Neutral Button holds the neutral sets, with default-gray true and neutral-color true.
+
+uses:
+  - to: icon
+
+alternatives:
+  - to: button
+  - to: link-button
+
+refs:
+  - href: ../../components/IconButton/IconButton.tsx
+    rel: source
+    role: Import IconButton from components/IconButton
+  - href: ../../components/IconButton/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/IconButton/IconButton.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/12-buttons.md
+    rel: relates-to
+    role: Thai page doc for Figma page 12 Buttons
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7232
+    rel: design
+    role: Figma page 12 Buttons
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: family
+    description: The color family. Default brand. In Figma each family is its own frame with its own pair of sets.
+    values:
+      - id: brand
+        description: The main brand color. The default.
+      - id: neutral
+        description: Gray in every state. Has all three hierarchies, in Figma and in code.
+      - id: error
+        description: Destructive or dangerous actions.
+      - id: alpha
+        description: A see-through fill for icon buttons placed on images or video. Has no hierarchy.
+  # NEEDS CLARIFICATION: docs/12-buttons.md section 5 item 3 says neutral is secondary and tertiary only, but the Figma frame Neutral Button and the code both have a neutral primary icon button. Is neutral primary allowed for icon buttons?
+  - traitType: variant
+    kind: enum
+    id: hierarchy
+    description: How much weight the icon button carries. Figma variant hierarchy. Default primary.
+    values:
+      - id: primary
+        description: Solid fill. The default.
+      - id: secondary
+        description: Light fill with a border.
+      - id: tertiary
+        description: No fill until hover.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Width and height, padding, radius and icon size. The first value is the default.
+    values:
+      - id: md
+        description: 40 by 40. The default.
+      - id: xs
+        description: 24 by 24.
+      - id: sm
+        description: 32 by 32.
+      - id: lg
+        description: 48 by 48.
+      - id: xl
+        description: 56 by 56.
+  - traitType: variant
+    kind: enum
+    id: shape
+    description: Corner shape. In Figma this is two separate sets, semi-rounded-icon-button and circular-icon-button.
+    values:
+      - id: semi-rounded
+        description: Corner radius from the size formula. The default.
+      - id: circular
+        description: A full circle.
+  - traitType: variant
+    kind: boolean
+    id: defaultGray
+    description: Gray at rest, family color on hover. Figma variant default-gray. Works with brand and error only. Default false.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: The native disabled attribute. Uses the disabled tokens and can't be pressed.
+
+combos:
+  - subject: defaultGray
+    level: must-not
+    items: [family.neutral, family.alpha]
+    note: Only brand and error have a gray mode. On other families the prop does nothing.
+  - subject: family.alpha
+    level: must-not
+    items: [hierarchy]
+    note: Alpha has a single look. The hierarchy prop is ignored for it.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "12 Buttons"
+    figmaSets: [semi-rounded-icon-button, circular-icon-button]

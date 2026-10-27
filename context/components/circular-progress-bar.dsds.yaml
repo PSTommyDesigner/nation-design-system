@@ -1,0 +1,211 @@
+# CircularProgressBar in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Progress/ (CircularProgressBar.tsx, types.ts, Progress.module.css, README.md,
+# Progress.stories.tsx), docs/23-progress-bars.md, tokens/scale/progress.mjs and the Figma page 23 Progress Bars (read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: circular-progress-bar
+name: CircularProgressBar
+description: >-
+  A full progress ring with the percentage in the middle, for places too narrow for a bar. With no value it spins to show
+  that work is going on. It lives in components/Progress with ProgressBar and matches the Figma set circular-progress-bar
+  on page 23 Progress Bars. It exists so progress in a small card or a table row still uses the same sizes, colors and
+  screen reader values as the bar.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [feedback, progress]
+  status: {status: beta}
+  aliases: [circular-progress-bar]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use when the horizontal space is too narrow for a bar, such as in a small card, a table row or a button.
+        checkedBy: manual
+      - level: should-not
+        statement: Show any progress indicator for a wait shorter than 1 second.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Use a full ring as a gauge for a value measured against a ceiling on a dashboard, such as sales against target.
+          The half ring is the gauge.
+        alternatives:
+          - to: semi-circular-progress-bar
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use a ring for values that are compared in a list. People judge length better than angle,
+          so two rows 5 percent apart look the same as rings.
+        alternatives:
+          - to: progress-bar
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          IF how far the task has got is unknown THEN leave value out, and the ring spins. Never pass 0 for unknown.
+          0 means the task is known and has not moved yet.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set the box size, ring diameter or stroke with className or style. The box is derived, the diameter plus the
+          stroke, and a box set by hand clips the ring.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the track or fill color, or color the ring by status. There is no color axis on purpose.
+          Say failed or done in text next to the ring.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put your own text inside or over the ring, such as a count, or set showLabel to false and write the number
+          yourself. Text inside role progressbar is not read by screen readers, and your number would not be rounded
+          the same way. Pass valueText instead.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Point a ring at the semi-circular-progress-bar tokens, or the other way round, even where the values are equal
+          today. tokens/scale/progress.mjs builds two token groups on purpose.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Always pass label, a name for the task such as ความคืบหน้าการซิงก์. It becomes the aria-label of the box
+          with role progressbar and is not shown on screen.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          IF the percentage alone doesn't say what is happening THEN pass valueText. The number in the middle sits inside
+          role progressbar, whose children screen readers don't read, so the value reaches them only through aria-valuenow
+          and aria-valuetext.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/23-progress-bars.md section 4.10 says an indeterminate ring should set aria-valuetext to say work is going on, but CircularProgressBar.tsx removes aria-valuetext whenever value is left out. Which is right?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF the values are compared in a list THEN use ProgressBar for every row instead of rings.
+        checkedBy: assisted
+      - level: should
+        statement: IF the ring is a small status in a table cell THEN use size xs.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the ring sits in a form or a crowded panel THEN use size sm. IF it must be seen at once THEN use lg.
+          IF it is read from a distance on a large screen THEN use xl. ELSE use md.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Box
+        definition: >-
+          The div with role progressbar and the aria values. Width and height are --ntg-circular-progress-bar-size-<size>
+          (44, 62, 80, 98, 116), derived as diameter plus stroke because the stroke is drawn on the middle of the path
+          and spills half its width outside it.
+      - term: Ring
+        definition: >-
+          An svg with aria-hidden and focusable false that holds two circles, the track and the fill. Diameter is
+          --ntg-circular-progress-bar-diameter-<size> (40, 56, 72, 88, 104), stroke --ntg-circular-progress-bar-stroke-<size>
+          (4, 6, 8, 10, 12), with round ends. Track color --ntg-color-background-general-tertiary, fill color
+          --ntg-color-background-brand-solid. The radius and center are set in CSS, not as svg attributes, and pathLength is 100
+          so the dash length equals the percentage.
+      - term: Fill
+        definition: >-
+          Starts at 12 o'clock and sweeps clockwise. A change of value moves with --ntg-motion-duration-default and
+          --ntg-motion-easing-enter, and jumps at once with reduced motion. At 0 the fill is hidden with visibility,
+          because a round end would still show a dot.
+      - term: Indeterminate ring
+        definition: >-
+          When value is left out, an arc a quarter of the ring long spins in a loop of 2000ms and the number is hidden.
+          With reduced motion the arc stops and fades in and out instead of standing still.
+      - term: Number
+        definition: >-
+          Shown in the middle when showLabel is true and value is set. The percentage rounded to a whole number, with
+          aria-hidden. Text style label/<size>, color --ntg-color-text-general-heading, tabular digits.
+
+alternatives:
+  - to: progress-bar
+  - to: semi-circular-progress-bar
+
+refs:
+  - href: ../../components/Progress/CircularProgressBar.tsx
+    rel: source
+    role: Import CircularProgressBar from components/Progress
+  - href: ../../components/Progress/types.ts
+    rel: relates-to
+    role: Shared props, motion and geometry constants, and readProgress for all three progress components
+  - href: ../../components/Progress/README.md
+    rel: relates-to
+    role: Thai README with the props table for all three progress components
+  - href: ../../components/Progress/Progress.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook), story Circular-progress-bar
+  - href: ../../docs/23-progress-bars.md
+    rel: relates-to
+    role: Thai page doc for Figma page 23 Progress Bars
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7243
+    rel: design
+    role: Figma page 23 Progress Bars
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Box, diameter, stroke and the text style of the number. Default md.
+    values:
+      - id: md
+        description: 80 box, 72 diameter, 8 stroke. The default.
+      - id: xs
+        description: 44 box, 40 diameter, 4 stroke. A small status in a table cell.
+      - id: sm
+        description: 62 box, 56 diameter, 6 stroke. Forms and crowded panels.
+      - id: lg
+        description: 98 box, 88 diameter, 10 stroke. Screens where the ring must be seen at once.
+      - id: xl
+        description: 116 box, 104 diameter, 12 stroke. Large screens read from a distance.
+  - traitType: variant
+    kind: boolean
+    id: showLabel
+    description: Shows the number in the middle. Figma property show-label. Default true. Never shown while indeterminate.
+  - traitType: state
+    kind: boolean
+    id: indeterminate
+    description: >-
+      Not a prop. It is on whenever value is left out. Figma property indeterminate. The arc spins, the number is hidden,
+      and aria-valuenow, aria-valuemin, aria-valuemax and aria-valuetext are removed.
+  # NEEDS CLARIFICATION: the Figma property indeterminate on circular-progress-bar is not wired to any layer, so turning it on changes nothing on the canvas. How should a designer show the indeterminate look?
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "23 Progress Bars"
+    figmaSets: [circular-progress-bar]

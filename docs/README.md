@@ -25,7 +25,7 @@ sources_of_truth:
 | ค่ากลาง (token) | `tokens/tokens.json/*.json` รูปแบบ W3C DTCG แยกไฟล์ตาม collection | Figma แล้ว export ลงมา |
 | ผลลัพธ์ที่เอาไปใช้ | `tokens/output/css/*.css` และ `tokens/output/js/*.mjs` | สร้างอัตโนมัติ ห้ามแก้มือ |
 | ชิ้นงานฝั่งโค้ด | `components/` | โค้ด |
-| ตัวอย่างสำหรับส่งต่อ | `prototype/` | โค้ด |
+| prototype ของแต่ละโปรเจค ทีละหน้า | `prototype/<โปรเจค>/` เป็น Storybook story ที่ใช้ component จริง | โค้ด |
 | เว็บพรีวิว component library | `npm run storybook` (dev) หรือ `.storybook/` + `*.stories.tsx` ในแต่ละโฟลเดอร์ component | โค้ด |
 
 ตัวแปร CSS ใช้คำนำหน้า `--ntg-` ทั้งระบบ แบรนด์ในเครือใช้ตัวย่อ 3 ตัวอักษร ดู [brand-codes.md](brand-codes.md)
@@ -79,7 +79,7 @@ tokens/output/css + js             ← เอาไปใช้จริง
 
 ## 5. กฎที่ห้ามฝ่าฝืน
 
-รายละเอียดเต็มอยู่ใน [CLAUDE.md](../CLAUDE.md) ที่รากโปรเจกต์ สรุปหัวใจ
+รายละเอียดเต็มอยู่ใน [AGENTS.md](../AGENTS.md) ที่รากโปรเจกต์ (CLAUDE.md ดึงไฟล์นี้ไปใช้) และไฟล์ที่ระบุใน [context/index.md](../context/index.md) สรุปหัวใจ
 
 - **ห้ามใช้สีดิบ** ทุกสีต้องผูกตัวแปร และผูกจาก collection `component` เท่านั้น
 - **ตัวอักษรใช้ preset เท่านั้น** ห้ามจับคู่ family กับขนาดเอง ห้าม override ความสูงบรรทัดหรือน้ำหนัก

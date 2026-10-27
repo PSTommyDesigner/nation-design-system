@@ -1,0 +1,334 @@
+# Badge in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Badge/, docs/22-badge.md, docs/research/badge-component.md,
+# tokens/figma-components.json and the Figma page 22 Badge (read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: badge
+name: Badge
+description: >-
+  A label that shows the status of the thing it sits on. The system sets its value and users can't press it,
+  so it has no hover, focus or disabled state. It matches the Figma sets semi-rounded-badge, pill-badge,
+  semi-rounded-icon-badge, circular-icon-badge and link-badge on page 22 Badge, each drawn in 11 color families.
+  It exists so every site in the group shows labels such as ด่วน, สด, ล่าสุด and notification counts with the same
+  look and size, and so users can tell a label they can't press from a Tag they can.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [label, status]
+  status: {status: beta}
+  aliases: [semi-rounded-badge, pill-badge, semi-rounded-icon-badge, circular-icon-badge, link-badge]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use for a status the system sets and users can't press, attached to the thing it describes,
+          such as ด่วน on a news card or a notification count on an icon.
+        checkedBy: manual
+      - level: should-not
+        statement: Put more than one Badge on one element. Several labels on one element are Tags.
+        alternatives:
+          - to: tag
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use a Badge for something users tap, filter, select or close. Ask who changes the value.
+          The system means Badge, the user means Tag.
+        alternatives:
+          - to: tag
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Place a Badge on its own. It is always attached to another element, such as a card, a title, an icon
+          or an avatar. A label that stands on its own is a Tag.
+        alternatives:
+          - to: tag
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Set color only with the family prop, weight only with hierarchy, corner shape only with shape
+          and size only with size.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Use shape circular only for an icon-only badge, and shapes pill and link only for a badge with text.
+          Figma has no circular badge with text and no icon-only pill or link badge. The code warns in the console
+          for circular with text and for link without text.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Give one meaning one family everywhere in the product, such as red for ด่วน and green for ใหม่.
+          Don't give two meanings the same family, and don't show one meaning in two families.
+        checkedBy: manual
+      - level: should
+        statement: Keep the text to one short word, such as ด่วน, ใหม่ or ไลฟ์.
+        checkedBy: manual
+      - level: should
+        statement: Pick the size from the element the badge is attached to, not from how important the status is.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make a Badge react to the user. Don't add onClick, tabIndex, role button, a hover style or a state prop.
+          It has no hover, focus or disabled on purpose. Use Tag for a label that reacts to hover or press.
+        alternatives:
+          - to: tag
+        checkedBy: manual
+      - level: must-not
+        statement: Attach a tooltip to the badge itself. Attach it to the element the badge sits on.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use hierarchy quaternary in new code. It is an old value kept so existing code doesn't break.
+          The text-only look moved to its own Figma set link-badge on 2026-09-22, so use shape link.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change a badge's padding, height, radius, icon size or color with className or style.
+          They come from the badge tokens for the chosen shape and size, and from the family colors bound in Figma.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Figma badges use icons from the Material design(2) set (default priority_high), and docs/22-badge.md section 5 item 9 says the switch to Nation UI Icons is not decided, while Badge.tsx takes an IconName from Nation UI Icons. Which icon set is right for a badge?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - level: must
+        statement: >-
+          IF the badge has no children and shows only icon THEN pass label. It is the only name the badge has,
+          and the code warns in the console without it.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+            role: WCAG 2.2 SC 1.1.1 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: an icon-only Badge puts label in aria-label on a span with no role. ARIA 1.2 does not allow naming an element with no role, so screen readers may skip it, while Tag renders its label as screen-reader-only text. Should Badge do the same, or add a role?
+      # NEEDS CLARIFICATION: shared-a11y text-contrast asks for 4.5:1, but many family colors bound in Figma (and in Badge.module.css) fall short in the light theme, computed from tokens/output/css/variables.css. White text on primary: cyan 1.89, bamboo 2.17 (text sets) and 1.64 (icon sets), blue 2.31, pink 2.61, yellow 3.06, green 3.73. Secondary text on its 50 fill: red 4.44, brown 3.86, yellow 2.94. Only brand, neutral and purple pass in all three hierarchies. Are these colors accepted, or must they change?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF the system sets the value and users can't press it THEN use Badge ELSE use Tag.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the badge needs an icon THEN pass an icon name as a string, such as icon="check" or
+          trailingIcon="chevron-right". Badge draws and sizes the Icon itself, unlike Tag, which takes an Icon element.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF you need an icon-only badge THEN leave children out and pass icon and label.
+          Badge turns icon-only only when children is undefined, and ignores icon whenever children is set.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the status must be seen before everything else, such as breaking news, THEN use hierarchy primary.
+          IF the badge sits on a background that already has color THEN use hierarchy tertiary.
+          ELSE keep the default secondary.
+        checkedBy: assisted
+      - level: should
+        statement: IF the badge must not pull the eye away from the content THEN use shape link.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF there is no room for a word THEN use an icon-only badge with shape semi-rounded.
+          IF the badge sits on the corner of an icon or an avatar THEN use an icon-only badge with shape circular.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the badge sits next to pill tags or must look softer THEN use shape pill
+          ELSE keep the default semi-rounded, which suits cards and tables.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF a Badge sits in one row with a Tag THEN give both the same size name.
+          Heights are equal at every size (18, 22, 26, 30, 34).
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: no source maps families to meanings. Storybook pairs red with ด่วน, green with ใหม่ and brand with ไลฟ์, and Badge.tsx defaults family to neutral. Is there a fixed list of which family stands for which status that an agent must follow?
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Container
+        definition: >-
+          The badge box, a span. Padding is --ntg-<shape>-badge-padding-<side>-<size> (shape semi-rounded or pill),
+          and the gap between text and icon is --ntg-<shape>-badge-gap-<size>. No height is set: the height is the
+          top and bottom padding plus the line height of the text style, 18, 22, 26, 30 and 34 for xs to xl, the same
+          as --ntg-<shape>-badge-size-<size> and the same as Tag at every size. Corner radius is
+          --ntg-semi-rounded-badge-radius-<size>-<corner> for semi-rounded (3 to 5 in half-pixel steps)
+          and --ntg-pill-badge-radius-full for pill.
+      - term: Border
+        definition: >-
+          Hierarchy tertiary only, 1px wide, drawn as an inset box-shadow because the Figma stroke is INSIDE and takes
+          no space. Color is --ntg-color-utility-u-<family>-300.
+      - term: Title
+        definition: >-
+          The children, in a span with left and right padding --ntg-<shape>-badge-title-padding-<side>-<size>.
+          Text style is label/xs for sizes xs and sm, label/sm for md, label/md for lg and label/lg for xl.
+          sm keeps the xs text style on purpose. Figma property badge-title.
+      - term: Trailing icon
+        definition: >-
+          Optional, set with trailingIcon, drawn after the title with aria-hidden. Size is --ntg-<shape>-badge-icon-<size>
+          (10, 12, 14, 16, 18) and --ntg-link-badge-icon-<size> for link. Figma properties trailing-icon and
+          trailing-icon-swap.
+      - term: Icon-only badge
+        definition: >-
+          Drawn when children is undefined and icon is set. One icon with aria-hidden, and label as the aria-label of
+          the box. The box is square: padding on all four sides is --ntg-semi-rounded-badge-icon-badge-padding-<size>
+          for semi-rounded or --ntg-circular-badge-padding-<size> for circular, and the icon is
+          --ntg-semi-rounded-badge-icon-badge-icon-<size> or --ntg-circular-badge-icon-<size>.
+          Radius is --ntg-semi-rounded-badge-radius-<size>-<corner> or --ntg-circular-badge-radius-full.
+          Figma sets semi-rounded-icon-badge and circular-icon-badge, property leading-icon-swap.
+      - term: Link shape
+        definition: >-
+          Text with an optional trailing icon, no fill and no border. Padding is --ntg-link-badge-padding-no on every
+          side, the title padding is --ntg-link-badge-title-padding-<side>-<size>, and the height is the text line height,
+          --ntg-link-badge-size-<size> (16, 16, 22, 24, 26). It ignores hierarchy. Figma set link-badge, which has a size
+          axis only.
+      - term: Color
+        definition: >-
+          Fill, border, text and icon come from family and hierarchy, generated from Figma into Badge.module.css.
+          Primary is a solid fill, --ntg-color-background-brand-solid for brand and --ntg-color-utility-u-<family>-<step>
+          for the others (neutral uses gray), with text --ntg-color-text-general-const-white and icon
+          --ntg-icon-general-const-white. Secondary is the light fill --ntg-color-utility-u-<family>-50 with text in the family step.
+          Tertiary is --ntg-color-background-general-primary with a border and text in the family step.
+          The step is 600 for brand, neutral, red, green, yellow and purple, and 400 for cyan, blue, pink, bamboo and brown,
+          with outliers, so read colors from Figma one set and family at a time, never by formula.
+      - term: Hierarchy names
+        definition: >-
+          Badge secondary is a light fill and Badge tertiary has a border, while Tag secondary has a border.
+          The same name is a different look on the two components. This is known and accepted (docs/22-badge.md section 5 item 8).
+      # NEEDS CLARIFICATION: Figma (and so Badge.module.css) has color outliers inside one family. Bamboo primary fill is step 500 on semi-rounded-badge and pill-badge but 400 on the icon sets. Blue and brown tertiary text is 500 on semi-rounded-badge but 400 on pill-badge. Neutral secondary fill is gray-100 on the icon sets but gray-50 on the text sets. Are these intended?
+      # NEEDS CLARIFICATION: README.md and Badge.tsx say shape link uses step 600 of the family, like the other shapes, but Figma and Badge.module.css use 400 for cyan, blue, pink, bamboo and brown. Which is right?
+
+uses:
+  - to: icon
+
+alternatives:
+  - to: tag
+
+refs:
+  - href: ../../components/Badge/Badge.tsx
+    rel: source
+    role: Import Badge from components/Badge
+  - href: ../../components/Badge/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/Badge/Badge.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/22-badge.md
+    rel: relates-to
+    role: Thai page doc for Figma page 22 Badge
+  - href: ../../docs/research/badge-component.md
+    rel: relates-to
+    role: Research on Badge versus Tag and the four checks for choosing
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=8672-5101
+    rel: design
+    role: Figma page 22 Badge
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: family
+    description: The color family, one of 11 Figma frames on page 22 Badge. Default neutral.
+    values:
+      - id: neutral
+        description: Gray. The default.
+      - id: brand
+        description: The main brand color.
+      - id: red
+        description: Red.
+      - id: green
+        description: Green.
+      - id: yellow
+        description: Yellow.
+      - id: cyan
+        description: Cyan.
+      - id: blue
+        description: Blue.
+      - id: purple
+        description: Purple.
+      - id: pink
+        description: Pink.
+      - id: bamboo
+        description: Bamboo.
+      - id: brown
+        description: Brown.
+  - traitType: variant
+    kind: enum
+    id: hierarchy
+    description: >-
+      How much weight the badge carries. Default secondary. Figma axis hierarchy with three values.
+      Ignored for shape link.
+    values:
+      - id: secondary
+        description: Light fill, no border. The default, for general work.
+      - id: primary
+        description: Solid fill with white text. For a status that must be seen first, such as breaking news.
+      - id: tertiary
+        description: White fill with a border. For a badge on a background that already has color.
+      - id: quaternary
+        description: >-
+          Old code value for text only, not in Figma and hidden from the Storybook controls. Kept so existing code
+          doesn't break. It takes the link-badge look. Use shape link instead.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Height, padding, icon size and text style. Default md. Heights match Tag at every size.
+    values:
+      - id: md
+        description: Medium, 26 high. The default.
+      - id: xs
+        description: Extra small, 18 high.
+      - id: sm
+        description: Small, 22 high. Taller than xs with the same text style.
+      - id: lg
+        description: Large, 30 high.
+      - id: xl
+        description: Extra large, 34 high.
+  - traitType: variant
+    kind: enum
+    id: shape
+    description: Corner shape. In Figma each shape is a separate set.
+    values:
+      - id: semi-rounded
+        description: Corner radius from the size formula. The default. Sets semi-rounded-badge and semi-rounded-icon-badge.
+      - id: pill
+        description: Capsule. Text badges only. Set pill-badge.
+      - id: circular
+        description: A circle. Icon-only badges only. Set circular-icon-badge.
+      - id: link
+        description: Text only, no fill and no border. Ignores hierarchy. Badges with text only. Set link-badge.
+
+combos:
+  - subject: shape.link
+    level: must-not
+    items: [hierarchy]
+    note: The Figma set link-badge has no hierarchy axis and one look. The code ignores the hierarchy prop for it.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "22 Badge"
+    figmaSets: [semi-rounded-badge, pill-badge, semi-rounded-icon-badge, circular-icon-badge, link-badge]

@@ -1,0 +1,275 @@
+# Checkbox in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Checkbox/, docs/15-checkbox.md, tokens/scale/checkbox.mjs, tokens/figma-components.json
+# and the Figma file page 15 Checkbox (sets, properties, bound variables and the Checkbox Usage frame, read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: checkbox
+name: Checkbox
+description: >-
+  A checkbox whose change takes effect only when the user saves, with an optional title and supporting text.
+  It matches the Figma sets checkbox (the box alone) and text-checkbox (box, title and supporting text) on page 15 Checkbox.
+  In code it is one component, and leaving out label gives the checkbox set. The indeterminate state is the result of its
+  children and is set through the indeterminate property in JavaScript only, which the indeterminate prop does.
+  It exists so every multi-select list and every consent line uses the same box sizes, states and touch area,
+  and so the box size changes for every product from one formula in tokens/scale/checkbox.mjs.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [form, selection]
+  status: {status: beta}
+  aliases: [checkbox, text-checkbox]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      # The old registry entry said "or when the user can pick several options". The Figma Checkbox Usage frame asks both questions in order, so both must hold
+      - level: should
+        statement: >-
+          Use when the change takes effect only after the user saves, and the user can pick several options
+          or accepts one condition, such as agreeing to the terms.
+        checkedBy: manual
+      - level: must-not
+        statement: Use a Checkbox when the change takes effect at once.
+        alternatives:
+          - to: toggle
+        checkedBy: manual
+      - level: must-not
+        statement: Use checkboxes for options where only one can be picked.
+        alternatives:
+          - to: radio-group
+        checkedBy: manual
+      - level: must-not
+        statement: Use a Checkbox as a button that runs an action as soon as it is pressed.
+        alternatives:
+          - to: button
+          - to: toggle
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put controls that save at once, such as Toggle, and controls that wait for a save button, such as Checkbox,
+          in the same form. Users can't tell what is already saved.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Write the label as the name of what is picked, as a statement that is true when the box is checked,
+          such as จำฉันไว้ในเครื่องนี้. Never on or off, a question, or a negative sentence.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set checked, indeterminate and disabled only with their props. Hover, focus and pressed come from CSS
+          pseudo-classes. Don't pass a state prop or add state classes.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Show the indeterminate look only with the indeterminate prop. It sets the input's indeterminate property
+          and aria-checked mixed together. Don't set aria-checked yourself.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass supporting text in the supportingText prop. It lines up under the title at --ntg-checkbox-indent-<size>
+          and is tied to the input. Don't set the indent yourself.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Change box size, radius, indent or row height only in tokens/scale/checkbox.mjs, then run npm run tokens:build
+          and copy the values to the Figma variables. Never change them in the Figma file first.
+        checkedBy: manual
+      - level: should
+        statement: Show supporting text when the user needs to know what the choice causes. Leave it out when the title says it all.
+        checkedBy: manual
+      - level: must-not
+        statement: Let the user put a Checkbox into the indeterminate state by pressing it. That state only comes from children that are partly checked.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make the mark smaller than the box, or change box size, radius, border or colors with className or style.
+          The mark fills the box on purpose, and a smaller mark needs a new inset token first.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/15-checkbox.md (Developer steps 3 and 4) and the Figma Checkbox Usage frame say to always wrap the box in a row as tall as --ntg-checkbox-row-height-<size> (24 to 56). No checkbox/row/height variable is bound anywhere on Figma page 15, and Checkbox.base.css lets the row hug its content, adding only min-height 48px (a typed value, not --ntg-checkbox-row-height-touch as Checkbox.tsx says) on a coarse pointer or with touchTarget. A box-only xs Checkbox is then 12 by 12 on desktop. Must the row use --ntg-checkbox-row-height-<size>?
+      # NEEDS CLARIFICATION: Figma text-checkbox has no space between the row and the supporting text (heights 44, 48, 52, 56, 56 in docs/15-checkbox.md section 4.3), but Checkbox.base.css puts --ntg-checkbox-gap (8) there, so code is 8 taller. Which one is right?
+      # NEEDS CLARIFICATION: Checkbox.tsx says it works both controlled and uncontrolled, but the box look comes from data-checked, which it computes from the checked and defaultChecked props only. With defaultChecked the mark and fill don't change when the user presses the box (the Storybook stories use defaultChecked). Must callers always pass checked with onChange, or should Checkbox follow the input's own state?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Tie the visible text to the box with the label prop. It renders a label element around the input,
+          so pressing the text checks the box. Text placed next to the Checkbox is not enough.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html
+            role: WCAG 2.2 SC 1.3.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: Give a Checkbox without label an aria-label, such as เลือกแถวนี้. It is the only name a screen reader gets.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: there is no CheckboxGroup, and no source says how a list of related checkboxes gets one group name. Must it be a fieldset with a legend, or role group with aria-labelledby?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the change takes effect at once THEN use Toggle. IF the user picks exactly one of several options THEN use
+          RadioGroup with Radio. ELSE use Checkbox.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the label is already shown outside the Checkbox, such as a table column header THEN leave out label
+          and pass aria-label ELSE pass label.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF a group header Checkbox has some but not all of its children checked THEN set indeterminate on it.
+          IF all children are checked THEN set checked. IF none are THEN set neither.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the Checkbox sits in a dense list or a table row THEN use size xs or sm. IF it is a main choice of the page
+          THEN use size lg or xl. ELSE use size md.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the layout is built for touch screens THEN set touchTarget. A coarse pointer already gets the 48 row
+          on its own, and touchTarget forces it everywhere.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: when the user presses a group header Checkbox that is indeterminate, should every child become checked or every child unchecked? No source says.
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Two-layer model
+        definition: >-
+          The box has its own scale (12, 16, 20, 24, 28), which is never derived from the control height.
+          The row is the layer meant for touch and alignment, and its tokens --ntg-checkbox-row-height-<size>
+          (24, 32, 40, 48, 56) come from the shared control height scale (CONTROL_HEIGHT in
+          tokens/scale/global-scale.config.mjs) that Button and TextField use.
+      - term: Root
+        definition: >-
+          An inline column that holds the row and the supporting text. It carries data-checked, data-indeterminate
+          and data-disabled, which the generated CSS reads for every color.
+      - term: Row
+        definition: >-
+          A label element around the hidden input, the box and the title, so a press anywhere on it toggles the box.
+          The gap between box and title is --ntg-checkbox-gap (8). Its height follows the content. On a coarse pointer,
+          or with touchTarget, it is at least 48 high.
+      - term: Input
+        definition: >-
+          The native input type checkbox, hidden in the accessible way (1 pixel, clipped). It takes checked, disabled,
+          the indeterminate property, aria-checked mixed while indeterminate, and aria-describedby pointing at the supporting text.
+      - term: Box
+        definition: >-
+          The square the user sees, hidden from screen readers. Size is --ntg-checkbox-size-<size>, corner radius is
+          --ntg-checkbox-radius-<corner>-<size> (2 to 6), border width is --ntg-checkbox-border (1) drawn as an inset box-shadow.
+          Unchecked: fill --ntg-color-background-general-primary and border --ntg-color-border-general-primary, hover and
+          focused border --ntg-color-border-brand-solid. Checked and indeterminate: fill --ntg-color-background-brand-solid and
+          border --ntg-color-border-brand-solid, hover and focused --ntg-color-background-brand-solid-hover and
+          --ntg-color-border-brand-solid-hover. Focused adds --ntg-focused-ring-default. Pressed is code only and uses
+          --ntg-color-background-general-primary-pressed and --ntg-color-border-general-primary-pressed, or the
+          brand-solid-pressed pair when checked. Disabled in every checked value: --ntg-color-background-general-disabled
+          and --ntg-color-border-general-disabled.
+      - term: Mark
+        definition: >-
+          The Nation UI Icons icon check when checked, and remove when indeterminate (Figma status-&-feedback/check and
+          status-&-feedback/remove). Size is --ntg-checkbox-icon-<size>, the same as the box, with no inset.
+          Color is --ntg-icon-brand-on-brand-primary, and --ntg-icon-general-disable when disabled.
+      - term: Title
+        definition: >-
+          The label prop, Figma property title-value. Text style label/sm, label/md, label/lg, label/xl and label/xl for
+          xs, sm, md, lg and xl. xl shares lg's text because the label presets stop at 18. Color is
+          --ntg-color-text-general-section-heading, and --ntg-color-text-general-disabled when disabled.
+      - term: Supporting text
+        definition: >-
+          The supportingText prop, Figma properties supporting-text and supporting-text-value. Indented by
+          --ntg-checkbox-indent-<size> (box plus gap, 20 to 36) so it starts under the title. Text style body/xs, body/sm,
+          body/md, body/lg and body/lg for xs to xl. Color is --ntg-color-text-general-supporting-text, and
+          --ntg-color-text-general-disabled when disabled. In Figma it is on by default, in code it shows only when passed.
+
+uses:
+  - to: icon
+
+alternatives:
+  - to: toggle
+  - to: radio-group
+
+refs:
+  - href: ../../components/Checkbox/Checkbox.tsx
+    rel: source
+    role: Import Checkbox from components/Checkbox
+  - href: ../../components/Checkbox/Checkbox.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/15-checkbox.md
+    rel: relates-to
+    role: Thai page doc for Figma page 15 Checkbox
+  - href: ../../tokens/scale/checkbox.mjs
+    rel: relates-to
+    role: Size formulas and build checks, the source of every checkbox size
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7235
+    rel: design
+    role: Figma page 15 Checkbox
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Box size, radius, mark, indent and text style. The first value is the default.
+    values:
+      - id: md
+        description: Box 20, title label/lg. The default.
+      - id: xs
+        description: Box 12, title label/sm. Dense lists and table rows.
+      - id: sm
+        description: Box 16, title label/md. Dense lists and table rows.
+      - id: lg
+        description: Box 24, title label/xl. A main choice of the page.
+      - id: xl
+        description: Box 28, title label/xl (the same text as lg). A main choice of the page.
+  - traitType: variant
+    kind: boolean
+    id: touchTarget
+    description: Makes the row at least 48 high on every pointer, for touch layouts. Code only, not in Figma. Default false.
+  - traitType: state
+    kind: boolean
+    id: checked
+    description: The native checked attribute. Figma checked true. Brand fill with the check mark.
+  - traitType: state
+    kind: boolean
+    id: indeterminate
+    description: >-
+      Some but not all children are checked. Figma checked indeterminate. Set with the indeterminate prop, which sets
+      the input property and aria-checked mixed. Shows the remove mark and wins over checked for the look. Default false.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: The native disabled attribute. Figma state disabled. Uses the disabled tokens and can't be pressed.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "15 Checkbox"
+    figmaSets: [checkbox, text-checkbox]

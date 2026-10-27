@@ -1,0 +1,202 @@
+# Icon in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Icon/, docs/02-icons.md, components/NationHouseIcon/ and Figma page 02 Icon
+# (frame Nation UI Icons, the 02 Icon Documentation frame and the size/icon variables, read 2026-10-27)
+# Every icon name is listed by category in icon-names.md (generated from components/Icon/icons.ts)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: icon
+name: Icon
+description: >-
+  One icon from Nation UI Icons, the main icon set of the system: 151 filled-vector icons in 13 categories on a 24dp grid,
+  colored with currentColor. Figma page 02 Icon, frame Nation UI Icons. It exists so every product uses one icon set,
+  sized by tokens and colored by the text or foreground color around it.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [visual, icon]
+  status: {status: beta}
+  aliases: [Nation UI Icons]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use Icon for interface icons. Nation UI Icons is the main icon set of the system, the one set every site in the
+          group shares (docs/02-icons.md sections 2 and 4.1).
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Draw your own SVG or take an icon from another set when Nation UI Icons has none that fits.
+          Ask the Design System team to add it on Figma page 02 first.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/02-icons.md, Icon.tsx and Icon.stories.tsx don't say when a screen should show an icon at all, or when text alone is enough. Which rules apply?
+      # NEEDS CLARIFICATION: docs/02-icons.md, Icon.tsx and Icon.stories.tsx don't say when to use Icon rather than NationHouseIcon. Only NationHouseIcon.stories.tsx does (NationHouseIcon for menus and home pages of internal systems such as Nation House and HRM at 40px or larger, Icon in buttons, fields and tables of general screens), while the Figma 02 Icon Documentation frame calls the House set an old set kept for reference that is still in use. Is that the rule for both components?
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Use only names listed under Nation UI Icons in context/icons/icon-names.md, through the Icon component from components/Icon.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Choose the icon by the meaning of its name, not by how it looks. For example delete for ลบ, not close,
+          and close for ปิด, not cancel-circle.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set the color only through currentColor: set color on the icon or its parent with an --ntg-icon-* or
+          --ntg-color-foreground-* token, or let the icon take the text color around it. Never put a fill value on the icon.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set the size with a size token in the size prop: xs 12, sm 16, md 20, lg 24 (the default), xl 32 or 2xl 40,
+          from --ntg-size-icon-*.
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Pass a number or CSS length to size only to fill a slot that a component sizes for the icon,
+          such as size="100%" inside Tag or Toast.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Put an icon much larger than the text beside it, so the line gets taller. Pick the size token closest to the
+          line height of that text.
+        checkedBy: manual
+      - level: must-not
+        statement: Edit components/Icon/icons.ts or svg/ by hand. They are generated from Figma page 02. Change the icon in Figma, then regenerate.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use a name from the Material Icons, Document Icons or Other frames on Figma page 02. Code has only Nation UI Icons (Icon)
+          and Nation House Icons (NationHouseIcon). The 1,355 Material Icons are there for reference, and the Filled Material icons were removed for good.
+        checkedBy: manual
+      - level: must-not
+        statement: Stretch an icon to a width that differs from its height. The size prop sets both, and the 24 grid must not be distorted.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: An icon that carries meaning has at least 3:1 contrast against its background.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
+            role: WCAG 2.2 SC 1.4.11 (AA)
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Pass title to an icon that sits next to text saying the same thing. Without title the icon is aria-hidden,
+          so the meaning is read once, from the text.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF a design uses an icon that is not in icon-names.md THEN use text only and tell the Design System team which icon is missing. Never substitute a look-alike without asking.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the icon is a menu or home page icon of an internal system, such as Nation House or HRM, shown at 40px or larger
+          THEN use NationHouseIcon ELSE use Icon.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: several pairs look alike, such as close and cancel, error and warning, arrow and chevron. Which meaning does each one carry? (Icon.stories.tsx only settles close for ปิด and delete for ลบ)
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: SVG
+        definition: >-
+          An svg element whose width and height are both the size value, with viewBox 0 0 24 24 (ICON_VIEWBOX) and fill currentColor.
+          Other SVG props pass through to it.
+      - term: Glyph
+        definition: >-
+          One filled vector path per icon, not a stroke, drawn in a live area of 16 centered on the 24 grid with 4 on each side,
+          so it isn't clipped inside a rounded or circular box. In Figma each icon is a component named <category>/<name>,
+          such as navigation-&-arrows/menu.
+      # The Figma 02 Icon Documentation frame says the live area is 20 with a 2 margin, but the 151 components and icons.ts draw in 16 with a 4 margin, as docs/02-icons.md section 4.1 says
+      - term: Color
+        definition: >-
+          The path fills with currentColor, so the icon takes the color set on it or on its parent. In Figma every Nation UI icon
+          binds icon/general/quaternary (--ntg-icon-general-quaternary). In code there is no default beyond the inherited text color.
+      # NEEDS CLARIFICATION: which color should an icon get when the design names none? Figma binds all 151 Nation UI icons to icon/general/quaternary, docs/02-icons.md section 4.1 says icon/general/tertiary, and Icon in code takes the inherited text color
+      - term: Size
+        definition: >-
+          The size prop maps xs, sm, md, lg, xl and 2xl to --ntg-size-icon-xs to --ntg-size-icon-2xl (12, 16, 20, 24, 32, 40),
+          the Figma variables size/icon/*. Default lg, 24, the full grid.
+      - term: Accessible name
+        definition: >-
+          With title the svg gets role img, aria-label and a title element. Without title it gets aria-hidden true and
+          focusable false, so screen readers skip it.
+      - term: Unknown name
+        definition: A name that isn't in the set draws nothing, and outside production Icon warns in the console.
+      - term: Categories
+        definition: >-
+          13 categories in iconCategories (icons.ts), in the same order as icon-names.md and the Storybook gallery:
+          Navigation & Arrows, Layout & View, Search & Content, Media & Player, Text & Editor, Files & Data, Communication,
+          Social & Brand, Engagement & Reactions, Account & Auth, Status & Feedback, Commerce & Money, Currency.
+
+alternatives:
+  - to: nation-house-icon
+
+refs:
+  - href: ./icon-names.md
+    rel: relates-to
+    role: Every icon name by category (generated)
+  - href: ../../components/Icon/Icon.tsx
+    rel: source
+    role: Import Icon from components/Icon
+  - href: ../../components/Icon/README.md
+    rel: relates-to
+    role: README
+  - href: ../../components/Icon/Icon.stories.tsx
+    rel: demo
+    role: Storybook stories with the searchable gallery (npm run storybook)
+  - href: ../../docs/02-icons.md
+    rel: relates-to
+    role: Thai page doc for Figma page 02 Icon
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=502-2747
+    rel: design
+    role: Figma page 02 Icon
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: >-
+      Icon size from --ntg-size-icon-*. The first value is the default. A number or CSS length also works, only to fill a slot
+      that a component sizes for the icon.
+    values:
+      - id: lg
+        description: 24px, the full grid. The default.
+      - id: xs
+        description: 12px.
+      - id: sm
+        description: 16px.
+      - id: md
+        description: 20px.
+      - id: xl
+        description: 32px.
+      - id: 2xl
+        description: 40px.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "02 Icon"
+    figmaFrame: Nation UI Icons

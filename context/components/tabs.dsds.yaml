@@ -1,0 +1,358 @@
+# Tabs in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Tabs/, docs/18-tabs.md, docs/research/tabs-component.md, tokens/figma-components.json,
+# tokens/figma-layers/tabs.json and the Figma file (page 18 Tabs, read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: tabs
+name: Tabs
+description: >-
+  A row of tabs that switches between sets of content within one page, in an underline or a segmented shape.
+  It matches the Figma sets underline-tab, segmented-tab, underline-tab-group and segmented-tab-group on page 18 Tabs.
+  It exists so every screen that shows one of several sets of content in the same place uses the same sizes, states,
+  touch area and keyboard behavior, and so a tab row lines up with a Button or TextField of the same size.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [navigation]
+  status: {status: beta}
+  aliases: [segmented-tab, underline-tab, segmented-tab-group, underline-tab-group]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use when several sets of content sit at the same level and the user looks at one at a time in the same place,
+          such as a news page that switches between ล่าสุด, ยอดนิยม and ที่เกี่ยวข้อง.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Tabs to filter one set of data, where every tab shows the same items narrowed down. Tabs declares role tab
+          and role tabpanel, so a screen reader announces separate panels that don't exist.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Tabs.stories.tsx (story "2 ทรง") says the segmented shape switches views of the same content, but README.md and docs/18-tabs.md say Tabs must not switch views of the same data and that a segmented control used that way needs aria-pressed or radiogroup, which is another component. Tabs.tsx and docs/18-tabs.md say segmented is for a short set of options in a box or settings panel. Which is right, and which component should a view switcher (grid or list) use? docs/research/tabs-component.md question 7 is still open
+      - level: must-not
+        statement: Use Tabs for steps of a task, such as ขั้นที่ 1, 2 and 3. Tabs switch views, they are not an order of work.
+        checkedBy: manual
+      - level: must-not
+        statement: Use Tabs to go to another URL. A tab is a button with role tab and no href, and Tabs only switches content within one page.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: no source says what to use for a row of links between pages, such as section navigation on a news site
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Tabs is controlled. Pass value, and set it to the id that onValueChange returns. If value is not updated,
+          pressing a tab changes nothing.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set value to the id of one item, so there is always a current tab. When value matches no item, no tab is
+          announced as selected.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Show the current tab only through value, which sets aria-selected. Never use the focused look (Figma
+          state=focused) to mark the current tab. The current tab and keyboard focus are different things and can be on
+          the same tab at once.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Disable a tab only with disabled on its item. Hover and focus come from CSS pseudo-classes. Don't pass a state
+          prop or add state classes.
+        checkedBy: manual
+      - level: must
+        statement: Give icon a name from the DS icon set (IconName). Tabs takes no custom icon element.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          In Figma, build a tab row from segmented-tab-group or underline-tab-group and show tabs 3 to 10 with the
+          properties tab-3 to tab-10. Don't place single tabs side by side yourself.
+        checkedBy: manual
+      - level: should
+        statement: Use 2 to 6 tabs, each with a label of one or two short words.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Tabs.stories.tsx (do and don't) says 2 to 6 tabs, the Figma group sets hold up to 10 tabs (tab-3 to tab-10), and Tabs.tsx and docs/18-tabs.md give 10 categories as their example. What is the maximum number of tabs?
+      - level: must-not
+        statement: >-
+          Set a tab width, or tab colors, padding, radius or line width, with className or style. Width comes from the
+          content and Tabs has no width prop on purpose.
+        checkedBy: manual
+      - level: must-not
+        statement: Make the label bolder on the current tab. The tab gets wider and the whole row shifts. Color and the underline already mark it.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make a tab taller to reach a 44px touch area. The tab height stays on the shared control height scale
+          (24, 32, 40, 48, 56) so it lines up with buttons and fields. Tabs adds an invisible 44px touch layer itself.
+        checkedBy: manual
+      - level: must-not
+        statement: Use size xs on mobile. Its text is 10px and its box is 24 high. Size xs is only for dense settings panels on desktop.
+        checkedBy: manual
+      - level: must-not
+        statement: Add a pressed state, vertical tabs or left and right scroll buttons. None of them exist yet in the Figma file or in code.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/18-tabs.md (developer step 9) says to show left and right arrow buttons on desktop when tabs overflow, but README.md says this version only scrolls sideways and arrow buttons are later work. Which applies now?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Name the tab list with label, or with labelledBy pointing at the id of a visible heading. Tabs puts it on the
+          element with role tablist.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
+            role: WAI-ARIA Authoring Practices, Tabs pattern
+        checkedBy: manual
+      - level: must
+        statement: >-
+          A tab with iconOnly also takes ariaLabel. Without it the tab has no name, and Tabs warns in the console outside
+          production.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+            role: WCAG 2.2 SC 1.1.1 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/18-tabs.md section 5 says an icon-only tab must always have aria-label and a tooltip, and README.md says it should have a tooltip. TabItem has no tooltip field and Tabs renders the tab buttons itself, so a Tooltip can't wrap one tab. How should the tooltip be added?
+      - level: must
+        statement: >-
+          Use manual activation. Arrow keys only move focus, and Enter or Space switches the content. Tabs does this,
+          so don't switch content on focus. News tabs load new data on every switch, and moving through 10 categories
+          with the arrows would send 10 requests.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
+            role: WAI-ARIA Authoring Practices, Tabs pattern
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Only the current tab is in the page's Tab order (tabindex 0). The other tabs get tabindex -1 (roving tabindex),
+          so a keyboard user reaches the content with one press of Tab. The panel takes focus with tabindex 0.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
+            role: WAI-ARIA Authoring Practices, Tabs pattern
+        checkedBy: manual
+      - level: must
+        statement: >-
+          A disabled tab stays on the page with aria-disabled, and the arrow keys skip it. Don't remove it from items
+          to disable it.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Let the unread dot be the only sign that a tab has something new. The dot is aria-hidden and only a color,
+          so the same fact must also be given in text.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
+            role: WCAG 2.2 SC 1.4.1 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Tabs.tsx, README.md and docs/18-tabs.md say the unread dot always needs text with it, but TabItem has no field for that text. Should it go in label (for example "บันทึกไว้ (ใหม่)") or in hidden text, and who writes it?
+      # NEEDS CLARIFICATION: shared-a11y#focus-visible says keyboard focus shows a focus ring that is never removed. docs/18-tabs.md (decision 2026-10-02), the Figma state=focused variants and Tabs.module.css show focus on a tab with the brand fill --ntg-color-background-brand-primary-hover and brand text instead, with no ring. README.md section "วงแหวนโฟกัสยิงเข้าด้านใน" still says the tab draws an inset focused-ring/default ring. Is the tab an accepted exception to shared-a11y#focus-visible?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the tabs switch the main content of a page THEN use shape underline (the default). IF the tabs are a short
+          set of options inside a box or a settings panel THEN use shape segmented.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF a tab has no text THEN set icon, iconOnly and ariaLabel together. IF iconOnly is set without icon THEN the
+          tab shows nothing, so always pass icon with it.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the panel content is rendered by Tabs THEN pass it in the item's panel, which gives the tab aria-controls and
+          the panel role tabpanel. ELSE leave panel out.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: README.md says panel can be left out when the panel lives elsewhere, but the tab ids come from useId and are not exported, so a panel outside Tabs can't point aria-labelledby at its tab and the tab gets no aria-controls. How should an outside panel be connected?
+      - level: should
+        statement: >-
+          IF the tabs sit in a dense panel THEN use size sm. IF the tabs lead the page THEN use size lg or xl.
+          IF the tabs are in a dense settings panel on desktop only THEN size xs is allowed. ELSE use size md.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF a Tabs row sits in one row with a Button or TextField THEN give them the same size name. The tab height
+          comes from the same control height scale (24, 32, 40, 48, 56).
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Root
+        definition: A div that stacks the tab list and the panels in a column. className goes here.
+      - term: Tab list
+        definition: >-
+          The element with role tablist, named by label or labelledBy. It is as wide as its tabs (Figma HUG), never wider
+          than its parent, and scrolls sideways with no visible scrollbar when the tabs don't fit. The focused tab is
+          scrolled into view. For shape segmented it has a border of --ntg-color-border-general-primary (Figma weight
+          tab/divider, --ntg-tab-divider), corner radius --ntg-tab-radius-group-<size> and shadow --ntg-shadows-bottom-xs.
+          The first and last tab take the group's corner radius. For shape underline it has no border, radius or shadow.
+      - term: Tab
+        definition: >-
+          A native button with role tab and aria-selected. Padding is --ntg-tab-padding-x-<size> left and right and
+          --ntg-tab-padding-y-<size> top and bottom, or --ntg-tab-icon-only-padding-<side>-<size> for an icon-only tab.
+          The gap between parts is --ntg-tab-gap-<size>. Height comes from the content (Figma HUG) and is 24, 32, 40, 48 or
+          56 for xs to xl. --ntg-tab-height-<size> exists but is not used. Text style is label/xs to label/xl, matching the size.
+      - term: Line
+        definition: >-
+          Drawn as an inset box-shadow so it takes no space and the content doesn't move when the current tab changes.
+          Shape underline draws a line under every tab, 1px (Figma tab/rail, --ntg-tab-rail) under the other tabs and
+          2px (Figma tab/indicator, --ntg-tab-indicator) under the current tab. Shape segmented draws a 1px line on the
+          right of each tab except the last (Figma tab/divider, --ntg-tab-divider).
+      # README.md says the lines are drawn with ::after; Tabs.base.css draws them with an inset box-shadow
+      # Tabs.module.css (generated) writes the line widths as 1px and 2px, while Figma binds them to tab/rail, tab/indicator and tab/divider
+      - term: Underline colors
+        definition: >-
+          Fill, line and text by state. Default --ntg-color-background-general-primary, --ntg-color-border-general-primary,
+          --ntg-color-text-general-section-heading. Hover --ntg-color-background-general-primary-hover,
+          --ntg-color-border-general-primary-hover, --ntg-color-text-general-heading. Focused
+          --ntg-color-background-brand-primary-hover, --ntg-color-border-brand-solid, --ntg-color-text-brand-primary.
+          Disabled --ntg-color-background-general-primary, --ntg-color-border-general-disabled,
+          --ntg-color-text-general-disabled-subtle. The current tab uses line --ntg-color-border-brand-solid and text
+          --ntg-color-text-brand-primary at rest, on hover (fill --ntg-color-background-general-primary-hover) and when
+          focused, and the disabled colors when disabled.
+      - term: Segmented colors
+        definition: >-
+          Fill, divider line and text by state. Default --ntg-color-background-general-primary,
+          --ntg-color-border-general-primary, --ntg-color-text-general-section-heading. Hover
+          --ntg-color-background-general-primary-hover, --ntg-color-border-general-primary-hover,
+          --ntg-color-text-general-heading. Focused --ntg-color-background-brand-primary-hover,
+          --ntg-color-border-general-primary, --ntg-color-text-brand-primary. Disabled
+          --ntg-color-background-general-primary, --ntg-color-border-general-disabled,
+          --ntg-color-text-general-disabled-subtle. The current tab has a gray fill instead,
+          --ntg-color-background-general-secondary at rest, --ntg-color-background-general-secondary-hover on hover and
+          --ntg-color-background-general-tertiary when disabled, with the same text colors.
+      - term: Icon
+        definition: >-
+          Optional Icon from the DS icon set, set with icon. Size is --ntg-tab-icon-<size> (16 to 24). Color is
+          --ntg-icon-general-quaternary at rest and on hover, --ntg-icon-brand-primary when focused and on the current
+          underline tab, and --ntg-icon-general-disable-subtle when disabled. Decorative, rendered with aria-hidden.
+      # docs/18-tabs.md section 4.6 (icon table) and README.md ("สีไอคอนคงที่ทุกสถานะ") say the icon is --ntg-icon-general-quaternary when focused and on the current tab. Figma (read 2026-10-27) and Tabs.module.css use --ntg-icon-brand-primary there, after the fix logged in docs/18-tabs.md section 5 on 2026-10-26
+      - term: Unread dot
+        definition: >-
+          Shown when unread is true and the tab is not icon-only, before the label. It takes the icon's place, so an item
+          with both icon and unread shows only the dot. A circle of --ntg-tab-unread-<size>
+          (6 to 10). Color is --ntg-color-foreground-system-success-primary, on hover
+          --ntg-color-foreground-system-success-secondary-hover, and when disabled --ntg-color-foreground-general-disable-subtle.
+          It means there is something new not yet read, not a status. Rendered with aria-hidden.
+      - term: Label
+        definition: The item's label, on one line (no wrapping). Not rendered when the tab is icon-only.
+      - term: Panel
+        definition: >-
+          Rendered for each item that has panel. A div with role tabpanel, aria-labelledby pointing at its tab and
+          tabindex 0. Every panel except the current one is hidden. On :focus-visible it shows --ntg-focused-ring-default,
+          because a panel is a large area that doesn't touch its neighbors.
+      - term: Touch area
+        definition: >-
+          On touch screens (@media pointer coarse) an invisible ::before layer at least 44px high covers each tab,
+          without changing the tab's own height. 44 is the WCAG 2.5.5 number, not a system value, so it has no token.
+
+  - kind: definitions
+    for: all
+    title: Exports
+    items:
+      - term: tabIconKind
+        definition: >-
+          tabIconKind(item) returns the Figma icon value for one item. only when iconOnly and icon are both set,
+          else unread when unread is true, else leading when icon is set, else none (Figma icon=false).
+
+uses:
+  - to: icon
+
+refs:
+  - href: ../../components/Tabs/Tabs.tsx
+    rel: source
+    role: Import Tabs from components/Tabs
+  - href: ../../components/Tabs/README.md
+    rel: relates-to
+    role: Thai README with the props tables
+  - href: ../../components/Tabs/Tabs.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/18-tabs.md
+    rel: relates-to
+    role: Thai page doc for Figma page 18 Tabs
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7237
+    rel: design
+    role: Figma page 18 Tabs
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: shape
+    description: >-
+      The tab shape. Default underline. In Figma this is two separate sets each, underline-tab with underline-tab-group
+      and segmented-tab with segmented-tab-group, with the same structure.
+    values:
+      - id: underline
+        description: Text with a rail under the row and a brand line under the current tab. For the main content of a page. The default.
+      - id: segmented
+        description: Boxes joined in one bordered bar with dividers, the current tab filled gray. For a short set of options in a box or settings panel.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Padding, gap, icon, unread dot, group radius and text style. The first value is the default.
+    values:
+      - id: md
+        description: 40 high, label/md. The default.
+      - id: xs
+        description: 24 high, label/xs (10px). Dense settings panels on desktop only. Never on mobile.
+      - id: sm
+        description: 32 high, label/sm. Dense panels.
+      - id: lg
+        description: 48 high, label/lg. Tabs that lead the page.
+      - id: xl
+        description: 56 high, label/xl. Tabs that lead the page.
+  - traitType: variant
+    kind: enum
+    id: icon
+    description: >-
+      Set per tab from the item's fields, not as a prop. Figma axis icon, where false is none. The group sets in Figma
+      have only false, leading and only.
+    values:
+      - id: none
+        description: label only. The default.
+      - id: leading
+        description: label and icon, the icon before the text.
+      - id: unread
+        description: label and unread, a dot before the text.
+      - id: only
+        description: icon and iconOnly, no text. Needs ariaLabel.
+  - traitType: state
+    kind: boolean
+    id: current
+    description: >-
+      The tab whose id equals value. Announced with aria-selected and is the one tab in the page's Tab order.
+      Figma axis current.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: >-
+      Set per tab with the item's disabled. Announced with aria-disabled, can't be activated, and skipped by the arrow
+      keys. Uses the disabled tokens. Figma state disabled.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "18 Tabs"
+    figmaSets: [segmented-tab, underline-tab, segmented-tab-group, underline-tab-group]

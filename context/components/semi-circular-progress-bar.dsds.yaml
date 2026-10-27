@@ -1,0 +1,198 @@
+# SemiCircularProgressBar in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Progress/ (SemiCircularProgressBar.tsx, types.ts, Progress.module.css, README.md,
+# Progress.stories.tsx), docs/23-progress-bars.md, tokens/scale/progress.mjs and the Figma page 23 Progress Bars (read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: semi-circular-progress-bar
+name: SemiCircularProgressBar
+description: >-
+  A half-ring gauge that shows where one value stands against a clear ceiling on a dashboard, such as sales against
+  target or storage used, with the percentage under the arc. It is not a loading indicator, so it has no indeterminate
+  mode and value is required. It lives in components/Progress with ProgressBar and matches the Figma set
+  semi-circular-progress-bar on page 23 Progress Bars. It exists so dashboard gauges use the same sizes, colors and
+  screen reader values as the other progress components.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [feedback, data]
+  status: {status: beta}
+  aliases: [semi-circular-progress-bar]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use as a gauge for one value on a dashboard, when the value has a clear ceiling and the reader wants to see
+          where it stands now, such as sales against the monthly target.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use it to show loading or task progress. A gauge reads as a value measured now, not a task moving to its end.
+        alternatives:
+          - to: progress-bar
+          - to: circular-progress-bar
+        checkedBy: manual
+      - level: must-not
+        statement: Use it for values that are compared in a list. People judge length better than angle.
+        alternatives:
+          - to: progress-bar
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Always pass value as a real number. TypeScript requires it. A value that is not a finite number, such as null
+          or NaN from an API, draws the gauge at 0 and warns in the console in development. It never throws and never
+          renders empty (decided 2026-10-09), so check the data before it reaches the gauge.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set the box width or height, the diameter or the stroke with className or style. The height is derived,
+          half the diameter plus the full stroke, because the round ends spill below the center line.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the track or fill color, or color the gauge by status, such as red when below target.
+          There is no color axis on purpose. Say the status in text next to the gauge.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put your own text inside or over the gauge, or set showLabel to false and write the number yourself.
+          Text inside role progressbar is not read by screen readers. Pass valueText instead.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Point the gauge at the circular-progress-bar tokens, or the other way round, even where the values are equal
+          today. tokens/scale/progress.mjs builds two token groups on purpose.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Always pass label, a name for the gauge such as ยอดขายเทียบเป้าประจำเดือน. It becomes the aria-label of the box
+          with role progressbar and is not shown on screen.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          IF the value has a real unit, such as baht or gigabytes, THEN pass valueText with it, such as
+          7.4 ล้านบาท จากเป้า 10 ล้านบาท. Without it a screen reader user hears only 74 percent and not of what.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the value is not known yet or the task is still loading THEN use ProgressBar or CircularProgressBar with no
+          value. Never use SemiCircularProgressBar for it.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the value comes in another unit THEN pass value and max in that unit, such as value 7.4 and max 10 for
+          millions of baht. The gauge shows the percentage, so put the unit in valueText.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the gauge is the main gauge of a dashboard or is read from a distance THEN use size xl.
+          IF it sits in a crowded panel THEN use sm. ELSE use md.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Box
+        definition: >-
+          The div with role progressbar, aria-label, aria-valuemin 0, aria-valuemax, aria-valuenow and aria-valuetext.
+          Width is --ntg-semi-circular-progress-bar-size-<size> (44, 62, 80, 98, 116), height
+          --ntg-semi-circular-progress-bar-height-<size> (24, 34, 44, 54, 64), derived as half the diameter plus the full stroke.
+      - term: Arc
+        definition: >-
+          An svg with aria-hidden and focusable false that holds two circles, the track and the fill, with only the top half
+          drawn as a dash. Diameter is --ntg-semi-circular-progress-bar-diameter-<size> (40 to 104), stroke
+          --ntg-semi-circular-progress-bar-stroke-<size> (4 to 12), with round ends. Track color
+          --ntg-color-background-general-tertiary, fill color --ntg-color-background-brand-solid.
+      - term: Fill
+        definition: >-
+          Starts at 9 o'clock and sweeps clockwise over the top to 3 o'clock, 180 degrees for 100 percent, from the same
+          point as the track. A change of value moves with --ntg-motion-duration-default and --ntg-motion-easing-enter, and
+          jumps at once with reduced motion. At 0 the fill is hidden with visibility.
+      - term: Number
+        definition: >-
+          Shown when showLabel is true, at the bottom center of the box under the arc. The percentage rounded to a whole
+          number, with aria-hidden. Text style label/<size>, color --ntg-color-text-general-heading, tabular digits.
+
+alternatives:
+  - to: progress-bar
+  - to: circular-progress-bar
+
+refs:
+  - href: ../../components/Progress/SemiCircularProgressBar.tsx
+    rel: source
+    role: Import SemiCircularProgressBar from components/Progress
+  - href: ../../components/Progress/types.ts
+    rel: relates-to
+    role: Shared props, motion and geometry constants, and readProgress for all three progress components
+  - href: ../../components/Progress/README.md
+    rel: relates-to
+    role: Thai README with the props table for all three progress components
+  - href: ../../components/Progress/Progress.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook), story Semi-circular-progress-bar
+  - href: ../../docs/23-progress-bars.md
+    rel: relates-to
+    role: Thai page doc for Figma page 23 Progress Bars
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7243
+    rel: design
+    role: Figma page 23 Progress Bars
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Box, diameter, stroke and the text style of the number. Default md.
+    values:
+      - id: md
+        description: 80 wide, 44 high. The default.
+      - id: xs
+        description: 44 wide, 24 high.
+      - id: sm
+        description: 62 wide, 34 high. Crowded panels.
+      - id: lg
+        description: 98 wide, 54 high.
+      - id: xl
+        description: 116 wide, 64 high. The main gauge of a dashboard, or a large screen read from a distance.
+  - traitType: variant
+    kind: boolean
+    id: showLabel
+    description: Shows the number under the arc. Figma property show-label. Default true.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "23 Progress Bars"
+    figmaSets: [semi-circular-progress-bar]

@@ -1,0 +1,70 @@
+# Getting started in DSDS format
+# Facts come from docs/README.md, .storybook/preview.tsx, .storybook/preview-head.html, tsconfig.json and the component READMEs
+
+kind: entry
+id: getting-started
+name: Getting started with the Nation Design System
+description: >-
+  Load the token CSS, load the fonts, set the theme and render a first component. It exists so every project is set
+  up the same way and tokens work from the first page.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [onboarding]
+  status: {status: beta}
+
+sections:
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Load tokens/output/css/variables.css once at the app root, and tokens/output/css/typography.css when you use the preset classes.
+        checkedBy: manual
+      - level: must
+        statement: The project that uses the library loads the fonts Prompt and Sarabun (weights 300 to 700). The library doesn't load fonts.
+        checkedBy: manual
+      - level: must-not
+        statement: Edit the generated files in tokens/output/. Change tokens and build again instead.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: there is no published package or version yet. How should a product repo (HRM, Nation News Center, Nation House, AMS, the news websites) get the components and tokens, and which version should it pin?
+
+  - kind: steps
+    for: all
+    items:
+      - title: Load the tokens
+        description: Import tokens/output/css/variables.css at the app root. Light values sit on :root.
+      - title: Load the fonts
+        description: Load Prompt and Sarabun. Storybook does it with Google Fonts in .storybook/preview-head.html.
+      - title: Set the theme
+        description: Light is the default. For dark, set data-theme="dark" on the html element.
+      - title: Render your first component
+        description: Import Button from components/Button and render it with family brand and hierarchy primary.
+        uses:
+          - to: button
+
+  - kind: section
+    for: all
+    title: Starter code
+    freeform:
+      - title: Example
+        body: |
+          ```tsx
+          import '../tokens/output/css/variables.css';
+          import '../tokens/output/css/typography.css';
+          import { Button } from '@/components/Button';
+
+          <html lang="th" data-theme="light">
+            <Button family="brand" hierarchy="primary" size="md">บันทึก</Button>
+          </html>
+          ```
+      - title: Preview
+        body: Run npm run storybook to see every component at localhost:6006. Every push to main deploys the static build to GitHub Pages.
+
+refs:
+  - href: ../../docs/README.md
+    rel: relates-to
+    role: Thai overview of the system
+  - href: ../../.storybook/preview.tsx
+    rel: demo
+    role: How Storybook loads the tokens

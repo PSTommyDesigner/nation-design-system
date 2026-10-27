@@ -8,7 +8,7 @@ status: "active"
 sources_of_truth:
   figma_page: "02 Icon (node 502:2747) ไฟล์ QgmoT5"
   code: "components/Icon/"
-  prototype: "prototype/icons.html"
+  storybook: "components/Icon/Icon.stories.tsx"
 ---
 
 # 02 Icons Nation Design System
@@ -46,7 +46,7 @@ sources_of_truth:
 ### สำหรับการแก้ไข/เพิ่มไอคอน (Sync)
 1. แก้/เพิ่มไอคอนใน Figma หน้า `02 Icon` (ตาม anatomy)
 2. Export SVG จาก component → regenerate `components/Icon/` (อย่าแก้ `icons.ts`/`svg/` ด้วยมือ)
-3. ตรวจ `prototype/icons.html` ว่าครบและถูกต้อง
+3. ตรวจแกลเลอรีไอคอนใน Storybook (`components/Icon/Icon.stories.tsx`) ว่าครบและถูกต้อง
 
 ## 4. โครงสร้างข้อมูลและ UI (Structure)
 
@@ -92,7 +92,6 @@ sources_of_truth:
 | `components/NationHouseIcon/NationHouseIcon.tsx` | React component ชุดแบรนด์ (name/size/filled/title) |
 | `components/NationHouseIcon/icons.ts` | registry ชุดแบรนด์: `nationHouseIcons`, `nationHouseIconNames`, type `NationHouseIconName` |
 | `components/NationHouseIcon/svg/*.svg` | ไฟล์ SVG ชุดแบรนด์ (150 ไฟล์ ชั้นเส้น `stroke="currentColor"`) |
-| `prototype/icons.html` | หน้ารวมไอคอน + ค้นหา (เฉพาะ Nation UI Icons) |
 | `components/Icon/Icon.stories.tsx`, `components/NationHouseIcon/NationHouseIcon.stories.tsx` | หน้า Docs ใน Storybook เป็นแกลเลอรีค้นหา (ครบทุกตัว จัดตามหมวดของ `iconCategories` กดเพื่อคัดลอกชื่อ) บวกหัวข้อขนาด สถานะ ควรไม่ควร ตัวแกลเลอรีอยู่ที่ `.storybook/icon-gallery.tsx` ใช้ TextField ของระบบเป็นช่องค้นหา (2026-10-27) |
 
 ## 5. ข้อควรระวังและปัญหาที่พบบ่อย (Constraints)

@@ -1,0 +1,127 @@
+# Component template in DSDS 0.23 format
+# Copy this file to <component-id>.dsds.yaml and replace every value in < >
+# Anything the code, the README, the Thai page doc in docs/ or the Figma file doesn't answer:
+# write a comment line that starts with "# NEEDS CLARIFICATION:" in the place the rule would go. Don't guess
+# When done, add the file to refs in context/design-system.dsds.yaml, remove the component's stub there,
+# and run node scripts/check-dsds.mjs
+#
+# Where the facts come from in this repo
+# - components/<Name>/<Name>.tsx         props, defaults, the header comment (often holds when-to-use rules)
+# - components/<Name>/README.md          usage and props table (Thai)
+# - docs/<NN>-<page>.md                  the Thai page doc for the Figma page (sections 3 and 5 hold the rules)
+# - tokens/figma-components.json         Figma set names (aliases) and how Figma axes map to props (traits)
+# - tokens/output/css/variables.css      the real --ntg- token names for the anatomy. Search it, never read it whole
+#
+# How to write it
+# - description is the one place that says what this is and why it exists
+# - level is must, should, may, should-not or must-not (as defined in RFC 2119), in that order
+# - A statement must be checkable as pass or fail. Never write looks good, easy to use or appropriate
+# - checkedBy: automated needs checks pointing at a real script in this repo (see scripts/ and package.json)
+# - Accessibility rules link to a shared rule with same-as, or name the WCAG criterion in evidence
+# - Never change an id once it's in use. Rename with name
+
+kind: component
+id: my-component
+name: <name in code>
+description: >-
+  <what it is>. It matches the Figma set <set name> on page <NN Page>.
+  It exists so <what the user gets>.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-01-01}
+  tags: [<category>]
+  status: {status: beta}
+  aliases: [<Figma set names, when they differ from the code name>]
+
+sections:
+  # Should I use it at all? Always comes first
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: <when to use it>
+      - level: must-not
+        statement: <when not to use it>
+        alternatives:
+          - to: <id of the component to use instead>
+        checkedBy: manual
+
+  # If so, how do I use it?
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: <a checkable rule>
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+
+  # Rules for AI, written as IF / THEN
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF <condition> THEN <do this> ELSE <do that>
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: <part>
+        definition: <what it does, and which --ntg- token it uses>
+
+uses:
+  - to: <id of a component it is built from>
+
+alternatives:
+  - to: <id of a component that can be used instead>
+
+refs:
+  - href: ../../components/<Name>/<Name>.tsx
+    rel: source
+    role: Import <Name> from components/<Name>
+  - href: ../../components/<Name>/<Name>.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/<NN>-<page>.md
+    rel: relates-to
+    role: Thai page doc for Figma page <NN Page>
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=<page-node-id>
+    rel: design
+    role: Figma page <NN Page>
+
+traits:
+  # variant = chosen by the caller (a prop), state = happens at runtime
+  - traitType: variant
+    kind: enum
+    id: <prop name>
+    description: <what it changes>
+    values:
+      - id: <value>
+        description: <when to use it>
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: <how it looks and behaves>
+
+# Rules for using traits together
+combos:
+  - subject: <trait>
+    level: must-not
+    items: [<trait it must not be combined with>]
+    note: <why>
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "<NN Page>"
+    figmaSets: [<set names from tokens/figma-components.json>]

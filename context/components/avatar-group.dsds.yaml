@@ -1,0 +1,190 @@
+# AvatarGroup in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Avatar/ (AvatarGroup lives in Avatar.tsx), docs/11-avatar.md, the Figma page 11 Avatar
+# (read 2026-10-27), tokens/figma-components.json, tokens/figma-layers/avatar.json and tokens/scale/avatar.mjs
+# components/Avatar has no README.md, so there is no Thai props table to cite
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: avatar-group
+name: AvatarGroup
+description: >-
+  A row of overlapping Avatars that shows up to 5 faces, then one count for the rest, with an optional add-person button
+  at the end. It matches the Figma set avatar-group on page 11 Avatar and lives in Avatar.tsx. It exists so a set of
+  people, such as the collaborators on a document, takes little room and looks the same everywhere, with the same
+  overlap, the same limit and the same count.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [identity]
+  status: {status: beta}
+  aliases: [avatar-group]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use to show several people at once, such as the collaborators on a document.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use AvatarGroup when each person's name must be read. The faces overlap and the rest turn into a count.
+          Show the people as AvatarLabel instead.
+        alternatives:
+          - to: avatar-label
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Give every child Avatar the same size as the group. AvatarGroup doesn't pass its size down. Only the count it
+          makes takes the group size, so in a group of size xs or sm a child left at the Avatar default md is drawn at 40.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass one Avatar per person as children and let AvatarGroup make the count. Don't add a count Avatar yourself.
+          A child is always counted as a person.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          For an add-person action, pass an IconButton in action with shape circular, family neutral, hierarchy tertiary
+          and the same size as the group. Don't build a new button for avatars. The old _avatar/add-button set was
+          deleted on 2026-09-01.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set max above 5. The group shows at most 5 faces. The count and the add-person button don't count toward
+          the 5.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the overlap, the gap or the rings with className or style. The overlap comes from
+          --ntg-avatar-group-overlap-<size>, and each Avatar's own ring is what separates the faces.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Figma set avatar-group has 10 boolean properties avatar-1 to avatar-10, but only avatar-1 to avatar-5 are bound to layers, and docs/11-avatar.md, the Figma Avatar Guide and AVATAR_GROUP_MAX all say 5. docs/research/avatar-component.md section 16.6 (draft) proposes allowing up to 10 on wide screens. Should avatar-6 to avatar-10 be removed from Figma, or is a higher max planned?
+      # NEEDS CLARIFICATION: should AvatarGroup set its size on the children itself? Avatar.stories.tsx (GoodAndBad, Do) and Table.stories.tsx both put Avatars with no size (md) inside a group of size sm or xs.
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - level: should
+        statement: >-
+          Give the group an aria-label that says who the people are and how many, such as "ผู้ร่วมงาน 8 คน".
+          AvatarGroup renders role group, which has no name of its own.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Give each child Avatar alt or name. A child with neither is hidden from screen readers, and only the count
+          is read.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the AvatarGroup example in Avatar.tsx passes aria-label, but no story in Avatar.stories.tsx or Table.stories.tsx does. Is aria-label required on every AvatarGroup?
+      # NEEDS CLARIFICATION: Avatar.stories.tsx names each face (alt="ผู้ใช้ 1"), while Table.stories.tsx passes alt="" to every face in a group with the text "N คน" next to it. When may the faces be hidden from screen readers?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF there are more than 5 people THEN pass all of them as children and leave max at 5 or lower.
+          AvatarGroup shows the first max and one count of the rest, read as "อีก N คน".
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the group needs an add-person action THEN pass
+          `<IconButton shape="circular" family="neutral" hierarchy="tertiary" size={groupSize} icon="add" label="..." />`
+          in action, with a Thai label that says what it adds.
+        checkedBy: assisted
+      - level: should
+        statement: IF the group shows the people related to an item, such as the collaborators on a document, THEN use size sm.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Root
+        definition: >-
+          A div with role group, laid out in a row. It holds the faces, then the count, then the action.
+          In Figma the faces and the count sit in their own frame, and a gap of 8 separates that frame from the action.
+      # NEEDS CLARIFICATION: the gap between the faces and the add-person button is a raw 8 in Figma (not bound to a variable) and a raw 8px in Avatar.module.css. docs/11-avatar.md section 5 lists it as the one raw value left on page 11. Which token should it use?
+      # NEEDS CLARIFICATION: Figma keeps the overlap and the 8 gap on two separate frames, but Avatar.module.css puts gap 8px and the negative margin on the same row. In code every face then sits 8px further right than in Figma (net -4 at md, 0 at sm, +4 at xs, so xs faces don't overlap), and the action gets the overlap as well. Is the code to be fixed to match Figma?
+      - term: Faces
+        definition: >-
+          The children, cut to the first max (default 5, AVATAR_GROUP_MAX). Each face after the first overlaps the one
+          before it by --ntg-avatar-group-overlap-<size> (-4, -8, -12), a negative margin in code because a gap can't be
+          negative. Each face keeps its own ring (--ntg-avatar-ring), which separates it from the one under it.
+          There is no separate separator token.
+      - term: Count
+        definition: >-
+          Added only when there are more children than max. An Avatar of the number type at the group size, showing
+          the number left followed by +, with countLabel "อีก N คน" for screen readers. It doesn't count toward max.
+          Figma axis more-users.
+      - term: Action
+        definition: >-
+          Optional, the action prop, placed last. In Figma it is circular-icon-button, neutral, tertiary, at the group
+          size (24, 32, 40), with the icon status-&-feedback/add, which is add in code. It doesn't count toward max.
+          Figma axis add-user-button.
+
+uses:
+  - to: avatar
+  - to: icon-button
+
+alternatives:
+  - to: avatar-label
+
+refs:
+  - href: ../../components/Avatar/Avatar.tsx
+    rel: source
+    role: Import AvatarGroup from components/Avatar
+  - href: ../../components/Avatar/Avatar.stories.tsx
+    rel: demo
+    role: Storybook stories Avatar-group and กลุ่ม (AvatarGroup) (npm run storybook)
+  - href: ../../docs/11-avatar.md
+    rel: relates-to
+    role: Thai page doc for Figma page 11 Avatar
+  - href: ../../docs/research/avatar-component.md
+    rel: relates-to
+    role: Research on 12 design systems (draft, its proposals are not decisions)
+  - href: ../../tokens/scale/avatar.mjs
+    rel: relates-to
+    role: Size formula for the overlap and GROUP_MAX
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7231
+    rel: design
+    role: Figma page 11 Avatar
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: >-
+      The overlap, and the size of the count it makes. Only 3 sizes, because the overlap formula has 3 steps.
+      Children are not resized. The first value is the default.
+    values:
+      - id: md
+        description: Faces 40, overlap -12. The default.
+      - id: xs
+        description: Faces 24, overlap -4.
+      - id: sm
+        description: Faces 32, overlap -8.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "11 Avatar"
+    figmaSets: [avatar-group]

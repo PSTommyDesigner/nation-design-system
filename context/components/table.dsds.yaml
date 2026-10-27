@@ -1,0 +1,361 @@
+# Table in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Table/, docs/26-table.md, tokens/scale/table.mjs, tokens/figma-components.json
+# and the Figma file (read 2026-10-27). Table has no README.md
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: table
+name: Table
+description: >-
+  A data table for product screens. It takes the rows as an array and the columns as a config, and renders real table,
+  thead, tbody, th and td elements, with optional row selection, sorting, alternating row fills and a sticky header.
+  Figma page 26 Table has no table-level set: it has 16 single cell components whose names end in -table-cell, and the
+  frame Team members inside Data table shows them put together. It exists so every table in the group uses the same
+  cell padding, row lines and cell types, because uneven spacing in the densest screens stops the eye from following
+  data across a row.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [data]
+  status: {status: beta}
+  # The 16 cell components on page 26, read from Figma 2026-10-27
+  aliases:
+    - caption-table-cell
+    - header-table-cell
+    - header-select-table-cell
+    - select-table-cell
+    - text-table-cell
+    - number-table-cell
+    - badge-table-cell
+    - tag-table-cell
+    - user-table-cell
+    - link-table-cell
+    - action-table-cell
+    - avatar-group-table-cell
+    - progress-bar-table-cell
+    - star-table-cell
+    - icon-table-cell
+    - date-table-cell
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use for data in rows and columns on a product screen, such as members or news items in a back office.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Write table rows yourself or draw cells by hand. Use Table with a columns config, and in Figma use instances
+          of the components ending in -table-cell.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Use real table, thead, tbody, th and td elements. Never div elements made to look like a table.
+        checkedBy: manual
+      - level: must
+        statement: Row selection uses the system Checkbox at size sm. Never a hand-made checkbox.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Give a column of numbers variant number. It aligns to the end and uses tabular numbers, so the digits line up
+          in every row and can be compared by eye.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Build a mixed cell (badge, tag, user, avatar-group, progress-bar, star, icon, action) with the column's render,
+          from system components such as Badge, Tag, AvatarLabel, AvatarGroup, ProgressBar, Icon, IconButton and LinkButton.
+          Never draw the content yourself.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: in Figma badge-table-cell, tag-table-cell and progress-bar-table-cell draw the badge, tag and bar by hand (frames, a rectangle and text, the badge text in color/utility/u-green-700) and action-table-cell holds a bare more-vert icon, while Table.stories.tsx builds them from Badge (secondary, md), Tag (neutral, secondary, md), ProgressBar (sm) and IconButton (neutral, tertiary, sm). Which component settings match each Figma cell?
+      - level: must
+        statement: >-
+          Sort the data yourself. Table only shows the sort state and calls onSortChange with the next state
+          (none, then asc, then desc, then none again). It never reorders data.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Set rowHeader on the one column that identifies a row, such as a person's name. That column renders th scope row.
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Turn on zebra for alternating row fills, stickyHeader to keep the header row on screen while scrolling down,
+          and set emptyMessage for the text shown when data is empty (default ไม่มีข้อมูล).
+        checkedBy: manual
+      - level: must-not
+        statement: Set a fixed row height. Every cell grows with its content, from 40 to 70 pixels.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make a dense or roomy table by changing the cell padding. Cell padding has one value, 12 on every side,
+          and no density tokens exist yet.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the cell padding, row lines, fills or corner radius with className or style. They come from
+          --ntg-table-* and the shared border and background tokens.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the column width prop takes any CSS length such as '180px' or '20%' (Table.tsx), but the shared rule tokens-only forbids typed px. Is a px column width allowed, or must widths be percentages or left out?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Pass caption, which says what the table is and is read before the table. Set captionHidden when a heading on
+          the page already says it. The caption is then hidden from sight but still read.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html
+            role: WCAG 2.2 SC 1.3.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass scrollRegionLabel when there is no caption. The scroll box always takes keyboard focus so keyboard users
+          can scroll to the right columns, and it gets role region only when caption or scrollRegionLabel names it.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+            role: WCAG 2.2 SC 2.1.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Make a column sortable only with sortable and onSortChange. Table then puts a real button in the th and sets
+          aria-sort. A click handler on header text gets neither.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      - level: should
+        statement: >-
+          With selectable, pass getRowSelectLabel and return text that names the row, such as เลือก สมชาย ใจดี.
+          The default, เลือกแถวที่ and the row number, doesn't say which row it is.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html
+            role: WCAG 2.2 SC 2.4.6 (AA)
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Give an action cell IconButton with a label that names the row, such as จัดการ สมชาย ใจดี.
+          The label is the only name a screen reader gets.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+            role: WCAG 2.2 SC 1.1.1 (A)
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put Table in a parent that cuts off overflow, or remove the tabIndex of its scroll box. A table wider than the
+          screen must scroll sideways, and the scroll box must take keyboard focus.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+            role: WCAG 2.2 SC 2.1.1 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: shared-a11y focus-visible names a --ntg-focused-ring-* token, but Table.module.css draws the focus ring of the scroll box and the sort button as a typed 0 0 0 4px shadow with the color --ntg-color-effect-focused-ring-brand. Should Table use --ntg-focused-ring-brand?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the column holds numbers THEN set variant number. IF it holds dates THEN set variant date. IF it holds a
+          link THEN set variant link. IF it holds plain text with an optional second line THEN keep variant text and
+          pass accessor and supporting. IF it holds row icons or a row menu THEN set variant icon or action. ELSE
+          (badge, tag, user, avatar-group, progress-bar, star) set variant custom with render, and set inline when the
+          cell has more than one child.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the user can pick rows THEN set selectable, and pass selectedIds with onSelectionChange when the screen
+          owns the selection, or defaultSelectedIds when Table may own it. IF some rows can't be picked THEN pass isRowDisabled.
+        checkedBy: assisted
+      - level: should
+        statement: IF the table has more rows than fit on one page THEN put Pagination at size sm under it.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Scroll box
+        definition: >-
+          The root div. It scrolls sideways, takes keyboard focus (tabIndex 0) and has role region when caption or
+          scrollRegionLabel names it. Fill --ntg-color-background-general-primary, border --ntg-divider-thickness solid
+          --ntg-color-border-general-primary, corner radius --ntg-table-radius-<corner> (8). In Figma this is the frame
+          around the rows, such as Team members, with table/radius bound.
+      - term: Caption
+        definition: >-
+          The caption element, Figma caption-table-cell (added 2026-10-27), the first row inside the frame above the header
+          row. Padding --ntg-table-padding-<side>, text style title/xs, color --ntg-color-text-general-heading, and a line
+          under it of --ntg-divider-thickness solid --ntg-color-border-general-primary. captionHidden hides it from sight only.
+      - term: Header cell
+        definition: >-
+          A th with scope col, Figma header-table-cell. Fill --ntg-color-background-general-primary, text style title/xs,
+          color --ntg-color-text-general-heading, no wrapping. With sortable the header text sits in a button with the
+          sort Icon at the far end (unfold-more unsorted, arrow-up asc, arrow-down desc) in --ntg-icon-general-quaternary,
+          gap --ntg-table-gap. On a coarse pointer the button is at least 44 pixels high. Figma toggle show-sort.
+      - term: Select cells
+        definition: >-
+          Shown with selectable. Figma header-select-table-cell (show-checkbox, show-sort) and select-table-cell.
+          A Checkbox at size sm in each row, and one in the header that picks every row that isn't disabled and shows
+          indeterminate when only some are picked. The column is as wide as --ntg-checkbox-size-sm plus
+          --ntg-table-padding-left and --ntg-table-padding-right.
+      - term: Body cell
+        definition: >-
+          A td, or a th with scope row when rowHeader is set. Padding --ntg-table-padding-<side> (12 on every side),
+          vertically centered, and a line under it of --ntg-divider-thickness solid --ntg-color-border-general-primary,
+          except in the last row. Its height comes from its content: 12 plus the content plus 12, from 40 (select) to
+          70 (text with a second line). inline lays the children out in a row with gap --ntg-table-gap (8).
+      - term: Cell types
+        definition: >-
+          Set with the column's variant. text (text-table-cell) is title/xs in --ntg-color-text-general-text, and its
+          supporting line is meta/caption in --ntg-color-text-general-supporting-text. number (number-table-cell) is
+          meta/caption in --ntg-color-text-general-text with tabular numbers, aligned to the end. date (date-table-cell)
+          is body/sm with no wrapping. link (link-table-cell) is label/md in --ntg-color-text-brand-primary. icon and action
+          (icon-table-cell, action-table-cell) color icons with --ntg-button-color-link-gray-icon-default and lay them out
+          inline. custom adds no style and is filled by render.
+      - term: Row states
+        definition: >-
+          At rest a row is --ntg-color-background-general-primary and on hover --ntg-color-background-general-primary-hover.
+          A selected row is --ntg-color-background-brand-primary-alt and its checkbox is checked. A disabled row is
+          --ntg-color-background-general-disabled with text --ntg-color-text-general-disabled and can't be selected.
+          With zebra every even row is --ntg-color-background-general-secondary. Fills change over --ntg-motion-duration-fast.
+      # NEEDS CLARIFICATION: docs/26 (pending work) says the row fills for hover, selected, zebra and disabled have no values in Figma, only state names, so the values above come from Table.module.css alone. Are they approved?
+      - term: Empty row
+        definition: >-
+          Shown when data is empty. One cell across every column with emptyMessage, centered, text style body/sm,
+          color --ntg-color-text-general-supporting-text.
+      - term: Not part of Table
+        definition: >-
+          The -color-cell components on page 26 (light-color-cell, dark-color-cell, header-color-cell, number-color-cell,
+          description-color-cell and the set hierarchy-color-cell) and doc-table belong to the documentation system.
+          They have no code on purpose, and products don't use them.
+
+uses:
+  - to: checkbox
+  - to: icon
+
+refs:
+  - href: ../../components/Table/Table.tsx
+    rel: source
+    role: Import Table from components/Table
+  - href: ../../components/Table/Table.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/26-table.md
+    rel: relates-to
+    role: Thai page doc for Figma page 26 Table
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=9377-29760
+    rel: design
+    role: Figma page 26 Table
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: variant
+    description: >-
+      Set per column (columns[].variant), not on Table. Picks the text style, color and alignment of the cells.
+      The first value is the default.
+    values:
+      - id: text
+        description: Text with an optional second line. Figma text-table-cell. The default.
+      - id: number
+        description: Numbers, aligned to the end with tabular numbers. Figma number-table-cell.
+      - id: date
+        description: A date that doesn't wrap. Figma date-table-cell.
+      - id: link
+        description: A link in the brand text color. Figma link-table-cell.
+      - id: icon
+        description: A row of icons, laid out inline. Figma icon-table-cell.
+      - id: action
+        description: A row action such as a menu button, laid out inline. Figma action-table-cell.
+      - id: custom
+        description: No style of its own. Filled by render from system components.
+  - traitType: variant
+    kind: enum
+    id: align
+    description: >-
+      Set per column (columns[].align). Aligns the cell content and the header. Defaults to end for variant number
+      and to start for every other variant.
+    values:
+      - id: start
+        description: Aligned to the start. The default for every variant but number.
+      - id: center
+        description: Centered.
+      - id: end
+        description: Aligned to the end. The default for variant number.
+  - traitType: variant
+    kind: boolean
+    id: sortable
+    description: Set per column. Puts a sort button with an icon in the header cell and sets aria-sort. Figma toggle show-sort. Default false.
+  - traitType: variant
+    kind: boolean
+    id: rowHeader
+    description: Set per column. The column's cells render as th scope row. Use on one column only. Default false.
+  - traitType: variant
+    kind: boolean
+    id: selectable
+    description: Adds the select column with a Checkbox at size sm in every row and in the header. Default false.
+  - traitType: variant
+    kind: boolean
+    id: zebra
+    description: Fills every even row with --ntg-color-background-general-secondary. Code only, not in Figma. Default false.
+  - traitType: variant
+    kind: boolean
+    id: stickyHeader
+    description: Keeps the header row at the top while the parent scrolls down. Code only, not in Figma. Default false.
+  - traitType: variant
+    kind: boolean
+    id: captionHidden
+    description: Hides the caption from sight while screen readers still read it. Default false.
+  - traitType: state
+    kind: boolean
+    id: selected
+    description: A row whose id is in the selection. Its checkbox is checked and it has the selected fill.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: A row for which isRowDisabled returns true. It can't be selected and its text is faded.
+
+combos:
+  - subject: variant.number
+    level: must-not
+    items: [align.start, align.center]
+    note: A column of numbers aligns to the end, so the digits line up in every row.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "26 Table"
+    figmaSets: []
+    figmaCells:
+      - caption-table-cell
+      - header-table-cell
+      - header-select-table-cell
+      - select-table-cell
+      - text-table-cell
+      - number-table-cell
+      - badge-table-cell
+      - tag-table-cell
+      - user-table-cell
+      - link-table-cell
+      - action-table-cell
+      - avatar-group-table-cell
+      - progress-bar-table-cell
+      - star-table-cell
+      - icon-table-cell
+      - date-table-cell

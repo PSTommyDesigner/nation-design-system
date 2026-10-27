@@ -1,0 +1,261 @@
+# Pagination in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Pagination/, docs/24-pagination.md, docs/research/pagination-component.md,
+# tokens/figma-components.json, tokens/figma-layers/pagination.json and the Figma file (read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: pagination
+name: Pagination
+description: >-
+  A bar that picks a page of a list longer than one page: a previous button, the page numbers with an ellipsis for
+  skipped pages, and a next button. It matches the Figma set pagination on page 24 Pagination, which is built from the
+  internal sets _pagination-number-button and _pagination-ellipsis, with previous and next drawn as semi-rounded-button
+  instances (neutral, secondary). It exists so every back office and search page picks pages with the same sizes,
+  states and link markup that screen readers understand, and so the number of page buttons comes from the data
+  instead of from separate designs.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [navigation]
+  status: {status: beta}
+  aliases: [pagination, _pagination-number-button, _pagination-ellipsis]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use in a back office or on a search results page, for a list longer than one page where the user needs to
+          know which page they are on out of how many, jump to a page far away, or share a link to page N.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Pagination on a news reading page or a news feed people scroll through. A survey of 12 pages of the
+          group's sites on 2026-10-12 found no page numbers, and those pages use a load more button or endless scroll.
+          The load more button is not in the system yet.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Pass href whenever page N has a real URL. Pass onPageChange alone only when there is no URL to point at,
+          such as a dashboard whose state lives in app memory. With onPageChange alone the user loses link sharing,
+          the back button and opening in a new tab, and search bots can't follow the pages.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass href and onPageChange together for a page change without a full page load. The items stay real links,
+          and a plain click calls onPageChange. A click with Ctrl, Cmd, Shift or Alt held, or a middle click,
+          is left to the browser.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set how many page buttons show only with siblingCount (pages on each side of the current page, default 1,
+          minimum 0) and boundaryCount (pages fixed at each end, default 1, minimum 1). The bar always has
+          boundaryCount times 2 plus siblingCount times 2 plus 3 slots, 7 with the defaults, so it doesn't shift as
+          the user steps through pages.
+        checkedBy: manual
+      - level: should
+        statement: Use size md unless the screen gives a reason for another size.
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Leave Pagination out yourself when totalPages is 1. The component still draws one page button with both
+          arrows disabled, because when to hide the bar belongs to the page, not to the component.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Fix the width of the bar. It always stretches to its parent and has no width prop. To make it narrower,
+          limit the parent. A fixed width made the first and last page numbers get cut off in narrow columns.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: in Figma the five pagination variants have FIXED width (528, 625, 724, 823, 922), but Pagination.tsx, README.md and docs/24 section 5 say the bar always stretches to its parent and its width must never be fixed, and docs/24 section 3 tells designers to set it to fill. Should the Figma variants be set to fill?
+      - level: must-not
+        statement: >-
+          Add a screen size prop, or switch between designs by screen size. The row wraps by itself when space runs out,
+          and the previous and next text hides by itself below 768 pixels.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Draw your own page bar, or a Figma variant with a fixed number of page buttons such as the old No.8, No.9
+          and No.10 properties. The number of pages is data.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set Pagination sizes, colors or spacing with className or style. className on the nav is only for placing
+          the bar in its parent, such as aligning it left instead of center. Sizes change in tokens/scale/pagination.mjs.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Figma _pagination-number-button binds pagination/min-width (equal to the height, 24 to 56) and README.md says number buttons use a minimum width so one digit gives a square, but Pagination.base.css (decision 2) and the docs/24 section 4.2 note of 2026-10-26 say number buttons hug their content with no minimum width because Figma has no min-width variable. Should the code apply --ntg-pagination-min-width-<size>?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - level: must
+        statement: >-
+          Always pass label. It becomes the aria-label of the nav and is not shown on screen. When one page has two
+          Paginations, such as above and below a list, give each a different label, such as ตัวแบ่งหน้าบน and ตัวแบ่งหน้าล่าง.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html
+            role: WCAG 2.2 SC 1.3.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          After a page change without a full page load (onPageChange), move focus to the heading of the results with
+          focusResultsHeading once the new data is on screen, and put pageStatusText in a polite live region
+          (role status, aria-live polite) that is in the DOM from the first render and sits next to the results.
+          Pagination does neither. With href alone and a full page load, nothing more is needed.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html
+            role: WCAG 2.2 SC 4.1.3 (AA)
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html
+            role: WCAG 2.2 SC 2.4.3 (A)
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use size xs on a news reading page. Its 24 pixel buttons meet the WCAG 2.5.8 target size of 24 by 24 with
+          no margin, so a neighbor that sits close fails it. xs is for very dense back office screens only
+          (decided 2026-10-12, more than 70 percent of readers are on mobile and the audience goes up to age 55).
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+            role: WCAG 2.2 SC 2.5.8 (AA)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: guidelines.dsds.yaml says on-screen copy is in Thai, but previousLabel and nextLabel default to the English Previous and Next (types.ts says the default follows the Figma file). Must callers always pass Thai labels such as ก่อนหน้า and ถัดไป?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the list is a news feed or sits on a news reading page THEN don't use Pagination. The load more button that
+          page needs is not in the system yet, so ask the Design System team before building anything.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the page number is in the URL (such as ?page=3) THEN pass href, and also onPageChange for a change without
+          a full page load. IF the page state lives only in app memory THEN pass onPageChange alone.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the bar sits under a table in a general back office THEN use size sm. IF it is a very dense back office
+          screen THEN use size xs. IF the list is the main content of the page THEN use size lg. IF the screen is large
+          and read from far away THEN use size xl. ELSE use size md.
+        checkedBy: assisted
+      - level: may
+        statement: >-
+          IF the bar sits in a narrow panel THEN set siblingCount to 0, which shows the first, current and last page
+          (5 slots). IF the screen is wide THEN set siblingCount and boundaryCount to 2, which gives 11 slots.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Nav
+        definition: >-
+          The root, a nav element named by label, holding a ul with one li per item. It renders nothing when totalPages
+          is below 1. Items sit in one centered row that wraps. The gap between number items is --ntg-pagination-gap-<size>
+          (2, 3, 4, 5, 6) and between the previous button, the number group and the next button it is
+          --ntg-pagination-group-gap-<size> (12, 16, 20, 24, 28). No fill and no shadow.
+      - term: Previous and next button
+        definition: >-
+          A link with rel prev or rel next when href is passed, a button otherwise. A chevron-left or chevron-right Icon
+          and the previousLabel or nextLabel text. It takes the look of semi-rounded-button neutral secondary from
+          Figma, built by the pagination code because Button can only render a button element: height
+          --ntg-button-size-<size>, padding --ntg-button-padding-<side>-<size>, gap --ntg-button-gap-<size>,
+          corner radius --ntg-button-radius-<corner>-<size>, icon --ntg-button-icon-<size>, fill
+          --ntg-button-color-neutral-background-secondary-default, border --ntg-button-color-neutral-border-secondary-default
+          drawn inset, shadow --ntg-shadows-bottom-xs. Below 768 pixels the text is hidden visually but stays the
+          accessible name. On the first or last page it is disabled, not hidden, so the row doesn't jump.
+          A disabled link has no href, role link, aria-disabled true and tabindex -1, so it leaves the Tab order like a
+          disabled button. Figma draws the arrows at rest only, so hover, pressed, focus and disabled text colors and the
+          focus ring follow the number button.
+      - term: Number button
+        definition: >-
+          One page, Figma set _pagination-number-button with states default, hover, pressed, focused, disabled and current.
+          Height --ntg-pagination-height-<size> (24, 32, 40, 48, 56, the same as --ntg-button-size-<size>), left and right
+          padding --ntg-pagination-padding-x-<size>, corner radius --ntg-pagination-radius-<size> (6, 7, 8, 9, 10).
+          Text style label/xs, label/sm, label/md, label/lg or label/xl by size, with tabular numbers, and the number is
+          written with th-TH grouping, such as 2,278. At rest it has no fill and text
+          --ntg-button-color-brand-gray-text-tertiary-default. Hover and pressed share one look, fill
+          --ntg-button-color-brand-gray-background-tertiary-hover and text --ntg-button-color-brand-gray-text-tertiary-hover.
+          Focus adds --ntg-focused-ring-default. Disabled text is --ntg-button-color-brand-gray-text-tertiary-disabled.
+      - term: Current page
+        definition: >-
+          The number button of currentPage, one per bar, marked with aria-current page, and its style is tied to that
+          attribute. Fill --ntg-color-background-brand-primary-alt and text --ntg-color-text-brand-primary. It doesn't react
+          to hover, so current and hover never look the same. currentPage outside 1 to totalPages is clamped with a
+          warning during development.
+      - term: Ellipsis
+        definition: >-
+          Figma set _pagination-ellipsis. Marks skipped pages. Its li has aria-hidden true and it can't be pressed.
+          Same height and padding as a number button, text --ntg-button-color-brand-gray-text-tertiary-disabled.
+          When the gap is exactly one page, that page's number shows instead, because the ellipsis takes the same space.
+      - term: Page list helpers
+        definition: >-
+          Exported from components/Pagination. buildPageItems is the pure function that picks the page numbers.
+          focusResultsHeading moves focus to a results heading (adds tabindex -1 when missing). pageStatusText returns
+          text such as หน้า 3 จาก 48 for the live region, plus the item range when firstItem, lastItem and totalItems are passed.
+
+uses:
+  - to: icon
+
+refs:
+  - href: ../../components/Pagination/Pagination.tsx
+    rel: source
+    role: Import Pagination from components/Pagination
+  - href: ../../components/Pagination/types.ts
+    rel: source
+    role: Page list formula, prop checks and the two helpers for after a page change
+  - href: ../../components/Pagination/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/Pagination/Pagination.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/24-pagination.md
+    rel: relates-to
+    role: Thai page doc for Figma page 24 Pagination
+  - href: ../../docs/research/pagination-component.md
+    rel: relates-to
+    role: Thai research comparing 12 design systems and the group's news sites
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7125-910
+    rel: design
+    role: Figma page 24 Pagination
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: >-
+      Height, padding, gaps, radius, icon size and text style of every part. Figma axis size. The first value is the default.
+    values:
+      - id: md
+        description: 40 high. The default.
+      - id: xs
+        description: 24 high. Very dense back office screens only. Never on a news reading page.
+      - id: sm
+        description: 32 high. Under a table in a general back office.
+      - id: lg
+        description: 48 high. A list that is the main content of the page.
+      - id: xl
+        description: 56 high. Large screens read from far away.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "24 Pagination"
+    figmaSets: [pagination]
+    figmaInternalSets: [_pagination-number-button, _pagination-ellipsis]

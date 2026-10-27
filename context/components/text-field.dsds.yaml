@@ -1,0 +1,334 @@
+# TextField in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/TextField/, docs/13-input.md, tokens/scale/input.mjs, tokens/figma-components.json
+# and the Figma page 13 Input (frames Input Components, 13 Input Documentation and Input Guide), read 2026-10-27
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: text-field
+name: TextField
+description: >-
+  A text input with an optional label, icons and hint. It matches the Figma sets text-field and text-area
+  on page 13 Input, and the multiline prop gives the text-area set. It exists so every form across the products
+  uses the same input sizes, states and way of showing an error, and so a TextField and a Button of the same size
+  line up in one row at the same height.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [input, form]
+  status: {status: beta}
+  aliases: [text-field, text-area]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use for a value the user types as text. Single-line is the first choice. Use multiline for long text over several lines.
+        checkedBy: manual
+      # README.md note 2 (build tag-field from Tag) and the comments in TextField.stories.tsx (tag-field has no code yet)
+      # were written before TagField existed and are out of date
+      - level: must-not
+        statement: >-
+          Use TextField, or TextField with Tag inside, for a field that holds several values shown as tags.
+          TagField was split out of TextField on 2026-10-27 for this.
+        alternatives:
+          - to: tag-field
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make a separate card number field component. The payment-field set was deleted on 2026-09-01 because it was a
+          text-field with a leading icon. Number grouping and card brand checks belong in code, on a TextField.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/13-input.md section 4.1 and the 13 Input Documentation frame say to build the card number field from text-field with leading-icon swapped for a card logo from page 09 Third-party Logos (such as visa-md), but TextField's leadingIcon takes only a Nation UI Icons name. How must code show the card logo?
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Always pass label. Use placeholder only for an example value, such as "08x xxx xxxx", never in place of the label.
+          A placeholder disappears once the user types, and screen readers don't treat it as a label.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Figma has a show-label property and TextField renders no label when label is empty. Is a field with no visible label ever allowed (for example a search box in a toolbar), and if so must it take aria-label?
+      - level: must
+        statement: Pass help text and error text in the hint prop. Don't render it as a separate element under the field.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Mark a field the user must fill with required, which draws the asterisk. Mark the required fields, never the
+          optional ones.
+        checkedBy: manual
+      - level: must
+        statement: When a form has a required field, state at the top of the form what the asterisk means.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set error, disabled and readOnly only with their props. Hover and focus come from CSS pseudo-classes.
+          Don't pass a state prop or add state classes.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change TextField height or padding with className, style or an extra wrapper. Height comes from the shared control
+          height scale (CONTROL_HEIGHT in tokens/scale/global-scale.config.mjs) that Button also uses, and left and right
+          padding is set once, on the box.
+        checkedBy: manual
+      - level: must-not
+        statement: Set a fixed height on a multiline TextField with className or style. Its height is set in lines, not in pixels.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/13-input.md section 4.1 says a text-area is at least 3 lines and tokens have --ntg-input-text-area-min-lines (3), and README.md says it grows with the content. But TextField doesn't use that token: the textarea opens at rows lines (default 4), doesn't grow with the content and can be dragged taller (resize vertical), and the Figma text-area box has an unbound minimum height of 90. Must rows be at least 3, and must the box grow with the content?
+      - level: must-not
+        statement: Pass leadingIcon or trailingIcon to a multiline TextField. The text-area set has no icon slots.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put information the user must read or copy into a disabled field. Use readOnly. A disabled value is not submitted,
+          can't be copied and is often skipped by screen readers.
+        checkedBy: manual
+      - level: must-not
+        statement: Use readOnly for a value the user is allowed to edit.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Remove the top, left and right borders to make an underline field. The underline set was deleted on 2026-09-01,
+          because research found people did not see an underline as a field they could click.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Add a character counter, a text prefix or suffix, or a warning or success state.
+          None of them exist yet in the Figma file or in code.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Tie the label to the input. The label prop does this with a label element whose for matches the input id.
+          A label you render yourself must use aria-labelledby. Text placed next to the field is not enough.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html
+            role: WCAG 2.2 SC 1.3.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Tie help and error text to the input with aria-describedby. The hint prop does this. A caller's own
+          aria-describedby prop replaces that link, so don't pass both.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html
+            role: WCAG 2.2 SC 1.3.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          When error is true, set hint to text that says how to fix the value, such as "ต้องยาวอย่างน้อย 8 ตัว",
+          not only that it is wrong. The red color alone fails WCAG (failure technique F81).
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html
+            role: WCAG 2.2 SC 3.3.1 (A)
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html
+            role: WCAG 2.2 SC 3.3.3 (AA)
+        checkedBy: manual
+      - level: must
+        statement: Set autocomplete to the matching type on a field that collects the user's own data, such as email or tel.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html
+            role: WCAG 2.2 SC 1.3.5 (AA)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: required only draws an asterisk with aria-hidden, and TextField does not pass it to the input as the required attribute or aria-required (TagField and Dropdown set aria-required). Must callers add aria-required themselves, or should TextField forward it?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the value is correct but the user can't change it and still needs to read or copy it THEN use readOnly.
+          IF the field can't be used at the moment THEN use disabled.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF a single-line field needs an icon THEN set leadingIcon or trailingIcon, plus leadingDivider or trailingDivider
+          for a line between icon and text. Don't build a new input component.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: docs 13 section 3 says to use the slot for a button inside the field too, but trailingIcon renders a decorative Icon (aria-hidden, no click handler). How should a clickable action in the field, such as clear or show password, be built?
+      - level: should
+        statement: IF the text is long and runs over several lines THEN set multiline ELSE leave multiline off.
+        checkedBy: assisted
+      - level: should
+        statement: IF the field sits in a table filter row or a dense toolbar THEN use size sm. IF the form is designed for mobile THEN use size lg. ELSE use size md.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF a TextField sits in one row with a Button THEN give both the same size (sm, md or lg).
+          Only the same size name gives the same height (32, 40 or 48).
+        checkedBy: assisted
+      - level: may
+        statement: >-
+          IF the field is the main field of the page, the value the whole form exists to collect, THEN use size lg on
+          desktop too, with the other fields at md.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Stack
+        definition: The root. A vertical stack of label row, box and hint, with --ntg-input-stack-gap (4) between them.
+      - term: Label row
+        definition: >-
+          Shown when label is set (Figma show-label). A label element tied to the input. Text style body/sm. Color at rest,
+          disabled and read-only is --ntg-color-text-general-section-heading, hover --ntg-color-text-general-label,
+          focused --ntg-color-text-brand-primary, error and error-focused --ntg-color-text-system-error, error-hover
+          --ntg-color-text-system-error-hover. text-field and text-area use the same label colors.
+      - term: Required asterisk
+        definition: >-
+          The * after the label when required is true, Figma layer required-asterisk. Hidden from screen readers, gap
+          --ntg-input-label-gap from the label, text style body/sm, color --ntg-color-system-error. Only the text-field set
+          has it. With multiline the code still draws it, in the label color.
+      - term: Box
+        definition: >-
+          Always present, Figma layer input-box. Height is --ntg-input-height-<size> (32, 40, 48, the same as
+          --ntg-button-size-<size>), left and right padding is --ntg-input-padding-<side>-<size> (top and bottom are 0),
+          the gap between parts is --ntg-input-gap-<size>, corner radius is --ntg-input-radius-<corner>-<size> (7, 8, 9),
+          border width is --ntg-input-border (1). Fill at rest, focused and in error is --ntg-color-background-general-primary,
+          on hover and error-hover --ntg-color-background-general-primary-hover, read-only
+          --ntg-color-background-general-secondary, disabled --ntg-color-background-general-disabled-subtle.
+      - term: Border and effect
+        definition: >-
+          Border color by state: default --ntg-color-border-general-primary, hover --ntg-color-border-general-primary-hover,
+          focused --ntg-color-border-brand-solid, disabled --ntg-color-border-general-disabled-subtle,
+          read-only --ntg-color-border-general-secondary, error --ntg-color-system-error, error-hover --ntg-color-system-error-hover,
+          error-focused --ntg-color-border-system-error-solid. Hover and error-hover add --ntg-shadows-bottom-xs,
+          focused adds --ntg-focused-ring-brand, error-focused adds --ntg-focused-ring-error. Other states have no effect.
+          The border is drawn as an inset box-shadow (an inside stroke in Figma).
+      - term: Text
+        definition: >-
+          The input, or a textarea when multiline is true. Text style body/md at every size. Placeholder color is
+          --ntg-color-text-general-placeholder, and --ntg-color-text-general-placeholder-subtle when disabled (the Figma
+          layer Text shows the placeholder). Typed text is --ntg-color-text-general-heading on hover and focus, and takes
+          the label color of the state otherwise.
+      - term: Leading and trailing icon
+        definition: >-
+          Optional Icon from Nation UI Icons, set with leadingIcon and trailingIcon (Figma leading-icon and trailing-icon,
+          defaults search and chevron-down). Size is --ntg-input-icon-<size> (18, 20, 22). Decorative, rendered with
+          aria-hidden. text-field only.
+      - term: Leading and trailing divider
+        definition: >-
+          Optional line between an icon and the text, set with leadingDivider and trailingDivider. In Figma it is the
+          vertical-divider from page 28 Dividers, --ntg-divider-thickness wide and 24 high. In code it takes the border color
+          of the state. Rendered with aria-hidden. text-field only.
+      - term: Hint
+        definition: >-
+          Shown when hint is set (Figma show-hint). Tied to the input with aria-describedby. Text style body/sm. Color is
+          --ntg-color-text-general-text, and --ntg-color-text-system-error when error is true.
+      - term: Multiline box
+        definition: >-
+          With multiline the box has no fixed height. Top and bottom padding is --ntg-input-text-area-padding-<side>-<size>
+          (6, 8, 10), left and right padding is --ntg-input-padding-<side>-<size>, the same as a single-line field.
+          rows sets the textarea rows attribute, default 4, and the user can drag the box taller.
+
+uses:
+  - to: icon
+
+alternatives:
+  - to: tag-field
+
+refs:
+  - href: ../../components/TextField/TextField.tsx
+    rel: source
+    role: Import TextField from components/TextField
+  - href: ../../components/TextField/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/TextField/TextField.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/13-input.md
+    rel: relates-to
+    role: Thai page doc for Figma page 13 Input
+  - href: ../../tokens/scale/input.mjs
+    rel: relates-to
+    role: Size formula for height, padding, gap, icon and radius, shared with Dropdown
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7233
+    rel: design
+    role: Figma page 13 Input
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: >-
+      Box height, padding, gap, icon size and radius. Figma axis size. Only 3 sizes, unlike the 5 of other components.
+      There is no xs or xl on purpose.
+    values:
+      - id: md
+        description: 40 high. General forms. The default.
+      - id: sm
+        description: 32 high. Table filter rows and dense toolbars.
+      - id: lg
+        description: 48 high. Forms designed for mobile, and the main field of a page.
+  - traitType: variant
+    kind: boolean
+    id: multiline
+    description: >-
+      Switches to the text-area set, a textarea whose height is set by rows (default 4) and that the user can drag taller.
+      Default false. The rows prop only works with multiline.
+  - traitType: variant
+    kind: boolean
+    id: required
+    description: >-
+      Shows an asterisk after the label, hidden from screen readers. Figma property required, on the text-field set only.
+      Default false. It is not passed to the input as the required attribute.
+    # NEEDS CLARIFICATION: may a multiline TextField be required? The Figma text-area set has no required property or asterisk layer, but the Text-area story offers a required control and the code draws the asterisk, in the label color instead of --ntg-color-system-error.
+  - traitType: variant
+    kind: boolean
+    id: leadingDivider
+    description: Line between the leading icon and the text. Figma property leading-divider, on the text-field set only. Default false.
+  - traitType: variant
+    kind: boolean
+    id: trailingDivider
+    description: Line between the text and the trailing icon. Figma property trailing-divider, on the text-field set only. Default false.
+  - traitType: state
+    kind: boolean
+    id: error
+    description: >-
+      Error border and label color, red hint, and aria-invalid on the input. Covers the Figma states error,
+      error-hover and error-focused. Default false.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: >-
+      The native disabled attribute. Figma state disabled. Uses the disabled tokens. The value is not submitted, can't be
+      copied, Tab skips it, and screen readers often skip it.
+  - traitType: state
+    kind: boolean
+    id: readOnly
+    description: >-
+      The native readOnly attribute. Figma state read-only. The value stays focusable, copyable and submitted,
+      and screen readers read it.
+
+# Answers the earlier question on whether a multiline TextField may take icons or dividers: the Figma text-area set has
+# no leading-icon, trailing-icon, leading-divider or trailing-divider property, and the Text-area story offers none
+combos:
+  - subject: multiline
+    level: must-not
+    items: [leadingDivider, trailingDivider]
+    note: The text-area set has no icon or divider slots. The code renders them anyway, so leave them off.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "13 Input"
+    figmaSets: [text-field, text-area]

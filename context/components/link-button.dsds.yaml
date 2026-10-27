@@ -1,0 +1,231 @@
+# LinkButton in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/LinkButton/, docs/12-buttons.md, the Figma file (page 12 Buttons, read 2026-10-27)
+# and tokens/figma-layers/link-button.json
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: link-button
+name: LinkButton
+description: >-
+  A button that looks like a link, with no background or border. It renders an a element when href is given and a
+  button element otherwise, and with no children it shows only an icon. It matches the Figma sets link-button and
+  link-icon-button on page 12 Buttons, one pair of sets in each of the frames Brand Button, Neutral Button and Error Button.
+  It exists so a secondary action placed in or next to content lines up with the text around it, while it still uses
+  the button color tokens and states.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [action, navigation]
+  status: {status: beta}
+  aliases: [link-button, link-icon-button]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use for a secondary action that sits in or next to content, such as อ่านต่อ after a summary, and for a link to
+          another page that should look like an action.
+        checkedBy: manual
+      - level: should-not
+        statement: Use LinkButton for the main action of a group of buttons. A link button has no fill, so it carries the least weight.
+        alternatives:
+          - to: button
+        checkedBy: manual
+      - level: must-not
+        statement: Use LinkButton on top of an image or video. It has no alpha family.
+        alternatives:
+          - to: icon-button
+          - to: button
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Set color only with the family prop and the defaultGray prop. LinkButton has no hierarchy.
+        checkedBy: manual
+      - level: must
+        statement: Hover, focus and pressed come from CSS pseudo-classes, and disabled from the disabled attribute. Don't pass a state prop or add state classes.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Place link buttons of different families side by side in one group, such as บันทึก in brand, ลบ in error and
+          ยกเลิก in neutral. The user can't tell which one matters.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set link button colors, padding or height with className or style. Padding is 0 on purpose, so the first letter
+          lines up with the edge of the content it follows and the box doesn't push other lines of a paragraph. The height
+          is the line height of the text style, so it changes only when the preset changes.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Pass disabled together with href. An a element has no disabled attribute, so disabled works only when LinkButton
+          renders a button element.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: how should a link that can't be used right now look and behave? Storybook says disabled works only without href, and no source says whether to drop href, use aria-disabled, or hide the link.
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      # NEEDS CLARIFICATION: shared-a11y#focus-visible asks for a --ntg-focused-ring-* token on focus, but Figma (link-button and link-icon-button, state focused) and LinkButton.module.css draw a 1px line under the box instead, with no focus ring. Is the underline an accepted exception for LinkButton, or must it get a focus ring?
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - level: must
+        statement: >-
+          When LinkButton has no children, pass label. It becomes the aria-label and title. Without it the button or link
+          has no name, and TypeScript does not catch this because label is optional.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Accessibility notes on Figma page 12 ask for a touch area of at least 44 by 44, but a link button is only as high as its text line and has no touch target option. What touch area must a LinkButton have on touch screens?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF you need a gray link button that turns to the brand or error color on hover THEN use defaultGray with family brand or error. IF you need a gray link button that stays gray THEN use family neutral.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF you add an action to a Toast or a Banner THEN use their action prop, which renders LinkButton family neutral.
+          Don't place your own LinkButton or any other button in them.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the LinkButton takes the user to another page THEN pass href, so it renders an a element.
+          ELSE leave href out, so it renders a button element with type button.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the action deletes data or destroys something THEN use family error. IF the action is close, cancel or back
+          THEN use family neutral. ELSE use family brand.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the action has no text and needs a fill, a border or the alpha look THEN use IconButton.
+          ELSE use LinkButton with leftIcon and label and no children.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Root
+        definition: >-
+          An a element when href is given, else a button element with type button. No fill and no border.
+          With children, padding is --ntg-link-button-padding-<side>-<size> (0 on every side) and the gap between icon and
+          text is --ntg-link-button-gap-<size> (3, 4, 5, 6, 7). With no children, padding is
+          --ntg-link-icon-button-icon-only-padding-<side>-<size> (3) and the gap is 0.
+      - term: Label
+        definition: >-
+          The children. Figma property Title. Color is --ntg-button-color-link-<subfamily>-text-<state>, where state is
+          default, hover, pressed or disabled. Text style is label/md for sizes xs and sm, label/lg for md and lg, label/xl
+          for xl, and its line height sets the height of the whole button.
+      # NEEDS CLARIFICATION: Figma and LinkButton.module.css use label/md, label/md, label/lg, label/lg, label/xl for xs to xl, but docs/12-buttons.md section 5 item 8, TEXT_PRESET in tokens/scale/link-button.mjs and the descriptions of --ntg-link-button-height-<size> say meta/overline, label/md, label/lg, label/xl, title/lg (heights 22, 24, 26, 28, 30). The icon-only padding of 3 is computed from those heights. Which text styles are right?
+      - term: Left and right icon
+        definition: >-
+          Optional Icon from Nation UI Icons, set with leftIcon and rightIcon. Figma properties L Icon and R Icon with
+          Swap L Icon and Swap R Icon. Size is --ntg-link-button-icon-<size> (16, 18, 20, 22, 24). Color is
+          --ntg-button-color-link-<subfamily>-icon-<state>. Rendered with no title, so it is aria-hidden.
+      - term: Icon-only mode
+        definition: >-
+          LinkButton with no children, the Figma set link-icon-button. It shows one icon, passed as leftIcon (Figma property
+          swap-icon), and label becomes the aria-label and title. label is ignored when there are children.
+      - term: Focus underline
+        definition: >-
+          On keyboard focus a 1px line shows under the box, drawn as an inset box-shadow. Its color is
+          --ntg-color-border-brand-solid for brand, --ntg-color-border-system-error-solid for error and
+          --ntg-icon-general-quaternary for neutral and both gray modes. On brand the text turns --ntg-color-text-brand-primary
+          and the icon --ntg-icon-brand-primary. The other families keep their default text and icon colors.
+      - term: Color subfamily
+        definition: >-
+          The <subfamily> part of the link color tokens. family brand uses brand, family error uses error, family neutral
+          uses gray. With defaultGray, brand uses brand-gray and error uses error-gray: gray at rest and the family color on
+          hover. family neutral is gray in every state. They are different looks, not two names for one.
+
+uses:
+  - to: icon
+
+alternatives:
+  - to: button
+  - to: icon-button
+
+refs:
+  - href: ../../components/LinkButton/LinkButton.tsx
+    rel: source
+    role: Import LinkButton from components/LinkButton
+  - href: ../../components/LinkButton/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/LinkButton/LinkButton.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/12-buttons.md
+    rel: relates-to
+    role: Thai page doc for Figma page 12 Buttons
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7232
+    rel: design
+    role: Figma page 12 Buttons
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: family
+    description: The color family. Default brand. In Figma each family is its own frame with its own pair of sets.
+    values:
+      - id: brand
+        description: The main brand color. The default.
+      - id: neutral
+        description: Gray in every state. Uses the link gray tokens, --ntg-button-color-link-gray-*.
+      - id: error
+        description: Destructive or dangerous actions.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Text style, icon size and gap. The height follows the line height of the text style. The first value is the default.
+    values:
+      - id: md
+        description: Medium, text style label/lg. The default.
+      - id: xs
+        description: Extra small, text style label/md.
+      - id: sm
+        description: Small, text style label/md.
+      - id: lg
+        description: Large, text style label/lg.
+      - id: xl
+        description: Extra large, text style label/xl.
+  - traitType: variant
+    kind: boolean
+    id: defaultGray
+    description: Gray at rest, family color on hover. Figma variant default-gray. Works with brand and error only. Default false.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: The native disabled attribute, only when LinkButton renders a button element. Uses the disabled tokens and can't be pressed.
+
+combos:
+  - subject: defaultGray
+    level: must-not
+    items: [family.neutral]
+    note: Only brand and error have a gray mode. The Figma frame Neutral Button has no default-gray variant, and in code the prop does nothing on neutral.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "12 Buttons"
+    figmaSets: [link-button, link-icon-button]

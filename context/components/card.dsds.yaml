@@ -1,0 +1,281 @@
+# Card in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Card/, docs/27-card.md, tokens/scale/card.mjs, tokens/figma-components.json,
+# tokens/figma-layers/card.json and the Figma file (read 2026-10-27). Card has no README.md
+# docs/27-card.md still says the code is not written (frontmatter and pending work). That part is out of date
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: card
+name: Card
+description: >-
+  A news card for the news websites: an image with an optional tag on it, then a category, a title, a lead and a meta
+  row, and the whole card can be one link. One component covers four Figma sets on page 27 Card through props:
+  vertical-news-card (variant vertical), horizontal-news-card (variant horizontal), news-list-card (variant list) and
+  video-list-card (variant list with overlay and meta). It exists so news cards on every site share one set of image
+  sizes, the shared spacing scale and the text presets, and grow with their content instead of having fixed heights.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [content, news]
+  status: {status: beta}
+  aliases: [vertical-news-card, horizontal-news-card, news-list-card, video-list-card]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use for one news item on a home page or a section page of a news website: an image and a title that lead
+          to the article.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Build the other card sets of page 27 from Card: text-on-image-square-card, text-on-image-wide-card,
+          ranking-item-card, ranking-list-card, wide-ranking-image-card, portrait-ranking-image-card, timeline-image-card,
+          wide-image-card or portrait-image-card. They have no code yet, because the system has no scrim token for text on
+          an image, no code for _ranking-number and the timeline parts, and no image ratio token other than 16:9.
+          Ask the Design System team.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Pass href to make the whole card one link. Never put a link or a button inside a card that has href, in tag,
+          overlay or meta, because a link inside a link breaks.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: video-list-card in Figma has a More Button property (a link-button in the date row) and Card.tsx says meta holds the video list card's link button, yet Card.tsx and docs/27 section 5 forbid a link or button inside a card with href. Is a video-list-card with More Button always a card without href?
+      - level: must
+        statement: >-
+          Make cards in one row the same height only with titleLines and leadLines, which cut the title and the lead
+          to that many lines. Never fix the height of the card or of its text box, because titles differ in length.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass a system component into tag, the label at the top left of the image. Never make a label just for the card.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: which component goes in tag? Figma uses pill-badge, hierarchy tertiary, from page 22 Badge (size sm at card size xs, lg at xl), and docs/27 agrees, but the Card.tsx example passes Tag, and its comment names "page 20 Badges or page 21 Tags" (page 20 is Tooltips). Storybook Anatomy passes a hand-made span with typed values.
+      - level: may
+        statement: >-
+          Set responsive to make the card as wide as its parent with a 16:9 image, and to turn a horizontal card into a
+          vertical one below 768 pixels. It is code only, because the Figma sets are drawn at fixed image widths.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Pass an image whose ratio is not 16:9 to a vertical or horizontal card, or not square to a list card.
+          The frame keeps its size and crops the image.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Pass lead at size xs. The xs variants in Figma have no supporting text layer, and the code has no text style
+          for lead at xs, so the text would fall back to the parent's font.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change card spacing, image size, radius or colors with className or style. Spacing comes from the shared
+          --ntg-size-space-* scale and image sizes from --ntg-card-image-*, set per variant and size.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - level: must
+        statement: >-
+          Leave alt empty when the image only decorates and the title already says what it shows. Pass alt that
+          describes the image when it shows something the title doesn't say.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+            role: WCAG 2.2 SC 1.1.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Put the image on the right only with imageTrailing. It reverses the order on screen only, so screen readers and
+          the keyboard still meet the image before the text. Don't reorder the parts yourself.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html
+            role: WCAG 2.2 SC 1.3.2 (A)
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put information in overlay that the title or meta doesn't also give. Card hides overlay from screen readers.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+            role: WCAG 2.2 SC 1.1.1 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: in Figma video-list-card Play=True is a bar along the bottom of the image (alpha black-50 fill) with a pause icon and the video length 00:00:00 in body/sm, while Card.tsx centers overlay on the image as a decorative play button hidden from screen readers. Where does the video length go, and should it be read out?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the image sits above the text THEN use variant vertical. IF the image sits beside the text THEN use variant
+          horizontal. IF the card is a row in a list of news, a bordered box with a square image THEN use variant list.
+          IF that row is a video THEN use variant list and pass the play mark in overlay.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the layout gives the image a fixed width THEN pick the size by that width: xs 184, sm 288, md 392, lg 496,
+          xl 600. IF the card must fill its column THEN set responsive.
+        checkedBy: assisted
+      - level: should
+        statement: IF several cards sit in one row THEN pass the same titleLines, and the same leadLines, to all of them.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the news item has no photo THEN leave src out, so the image area shows its placeholder fill. Don't remove the
+          image area.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Root
+        definition: >-
+          An a element when href is set, so the whole card is one link with the focus ring --ntg-focused-ring-brand,
+          or an article otherwise. target _blank adds rel noopener noreferrer. The gap between image and text is, for
+          vertical, --ntg-size-space-s1-lg at xs and sm, s1-xl at md, s2-xs at lg and s2-sm at xl, and for horizontal,
+          --ntg-size-space-s2-sm at xs and sm and s2-lg at md, lg and xl. Vertical and horizontal cards have no box,
+          fill or shadow.
+      - term: Image
+        definition: >-
+          Figma Image frame. Width --ntg-card-image-width-<size> and height --ntg-card-image-height-<size>
+          (184 by 104, 288 by 162, 392 by 220, 496 by 278, 600 by 336, about 16:9). The image covers the frame and loads
+          lazily. Without src the frame shows the fill --ntg-color-background-general-quaternary. In variant list the
+          image is square, --ntg-card-list-image (112) on both sides. In Figma the 16:9 frame is still an instance from an
+          outside library.
+      - term: Tag on image
+        definition: >-
+          The tag slot, at the top left of the image with a margin of --ntg-size-space-s1-sm at xs, s1-md at sm,
+          s1-lg at md, s1-xl at lg and s2-xs at xl (in Figma an absolute position, which can't bind a variable).
+          In Figma it is pill-badge, hierarchy tertiary, from page 22 Badge, filled --ntg-color-background-general-primary
+          with border --ntg-color-border-brand-primary. Figma property Tag on image on horizontal-news-card.
+      - term: Overlay
+        definition: >-
+          The overlay slot, centered on the image and hidden from screen readers. In variant list its fill is
+          --ntg-color-background-alpha-black-50 and its color --ntg-color-text-general-const-white. Figma axis Play
+          on video-list-card.
+      - term: Category
+        definition: >-
+          The category prop, above the title. Figma layer Subheading (property Supheading on vertical-news-card,
+          Subheading on horizontal-news-card). Text style label/sm at xs, sm and md, label/md at lg, title/md at xl.
+          Color --ntg-color-text-brand-primary.
+      - term: Title
+        definition: >-
+          The title prop, the only required one. Figma layer Heading. Text style title/xs, title/sm, title/md,
+          title/lg or title/xl by size. Color --ntg-color-text-general-heading. In variant list Figma uses title/sm.
+      - term: Lead
+        definition: >-
+          The lead prop. Figma layer Supporting text. Text style body/sm at sm and md, body/md at lg, body/xl at xl,
+          and none at xs. Color --ntg-color-text-general-text. In variant list it is the date row, body/sm in Figma.
+      - term: Meta
+        definition: >-
+          The meta prop, the last row, for a time, an author or the video list card's link button. Its parts sit in a row
+          with gap --ntg-size-space-s1-lg. It uses the lead text style, and in variant list the color
+          --ntg-color-text-general-text. Figma property More Button on video-list-card, off by default.
+      - term: List box
+        definition: >-
+          Variant list only. Fill --ntg-color-background-general-primary, a 1 pixel border --ntg-color-border-general-tertiary
+          drawn inset, shadow --ntg-shadows-center-xs, corner radius --ntg-card-radius-<corner> (4). The text box has padding
+          --ntg-size-space-s1-lg and gap --ntg-size-space-s1-sm. Only a list card with href reacts to hover, with fill
+          --ntg-color-background-general-primary-hover and border --ntg-color-border-general-tertiary-hover. Figma axis State
+          (Default, Hover). Vertical and horizontal cards have no state axis in Figma.
+      # NEEDS CLARIFICATION: Figma sets title/sm on the news-list-card and video-list-card heading and body/sm on the date, but the generated Card.module.css never defines --card-list-title-font-* or --card-list-meta-font-*, so in code the title, lead and meta of a list card take the parent's font. Should the CSS generator emit them?
+      # NEEDS CLARIFICATION: Figma vertical-news-card and horizontal-news-card have no time or author row, yet Card renders meta on them in the lead text style (the Storybook default passes meta 5 นาทีที่แล้ว) and docs/27 section 4.4 says the time uses body/sm. Which text style should meta use on news cards, and at size xs where lead has none?
+      # NEEDS CLARIFICATION: for news-list-card, figma-components.json maps Supporting text to lead and the Card.tsx example puts the date in lead, but the News-list-card story puts the date in meta and leaves lead out. Which prop holds the date?
+      - term: Not part of Card
+        definition: >-
+          do-info-card, dont-info-card and how-to-read-info-card on page 27 belong to the documentation system. They have
+          no code on purpose, and products don't use them.
+
+uses:
+  - to: badge
+  - to: link-button
+
+refs:
+  - href: ../../components/Card/Card.tsx
+    rel: source
+    role: Import Card from components/Card
+  - href: ../../components/Card/Card.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/27-card.md
+    rel: relates-to
+    role: Thai page doc for Figma page 27 Card
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7130-26
+    rel: design
+    role: Figma page 27 Card
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: variant
+    description: The layout. In Figma each value is its own set. The first value is the default.
+    values:
+      - id: vertical
+        description: Image on top, text below. Figma vertical-news-card. The default.
+      - id: horizontal
+        description: Image on the left, text on the right. Figma horizontal-news-card.
+      - id: list
+        description: >-
+          A bordered box with a square image and a smaller title. Figma news-list-card, and video-list-card when overlay
+          and meta are passed. Has one size only.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: >-
+      Image size, gaps and text styles of vertical and horizontal cards. Figma axis Size. No effect on variant list.
+      The first value is the default.
+    values:
+      - id: md
+        description: Image 392 by 220. The default.
+      - id: xs
+        description: Image 184 by 104. Has no lead.
+      - id: sm
+        description: Image 288 by 162.
+      - id: lg
+        description: Image 496 by 278.
+      - id: xl
+        description: Image 600 by 336.
+  - traitType: variant
+    kind: boolean
+    id: imageTrailing
+    description: Puts the image on the right, on screen only. Figma axis Image Trailing on news-list-card. Default false.
+  - traitType: variant
+    kind: boolean
+    id: responsive
+    description: >-
+      Full width with a 16:9 image, and a horizontal card turns vertical below 768 pixels. Code only, not in Figma.
+      Default false.
+
+combos:
+  - subject: variant.list
+    level: must-not
+    items: [size]
+    note: The list sets have one size in Figma. The size prop is ignored for them.
+  - subject: imageTrailing
+    level: must-not
+    items: [variant.vertical]
+    note: Figma has Image Trailing on news-list-card only. On a vertical card the code turns the column into a reversed row.
+
+# NEEDS CLARIFICATION: may a horizontal card take imageTrailing? The Storybook AllTypes story says horizontal-news-card can swap the image to the right with imageTrailing, but horizontal-news-card in Figma has no Image Trailing axis.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "27 Card"
+    figmaSets: [vertical-news-card, horizontal-news-card, news-list-card, video-list-card]

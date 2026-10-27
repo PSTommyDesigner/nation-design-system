@@ -1,0 +1,507 @@
+# Tag in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Tag/, components/Badge/README.md, docs/21-tags.md, docs/22-badge.md, tokens/figma-components.json
+# and Figma page 21 Tags (14 sets in 11 family frames, the Tags Guide and 21 Tags Documentation frames, read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: tag
+name: Tag
+description: >-
+  A label users can tap, filter, select or close. It matches the Figma sets semi-rounded-tag, pill-tag and link-tag,
+  the sets with a leading item (number, image, checkbox, indicator) and the icon-only sets icon-tag, circular-icon-tag
+  and link-icon-tag on page 21 Tags. It exists so every site in the group shows tags with the same look, size and name,
+  and so a category color or the tag height changes for every site from one place.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [label, selection]
+  status: {status: beta}
+  # Figma page 21 has these 14 set names, each once in every one of the 11 family frames (154 sets).
+  # tokens/figma-components.json lists only the first 6
+  aliases:
+    - semi-rounded-tag
+    - pill-tag
+    - link-tag
+    - icon-tag
+    - circular-icon-tag
+    - link-icon-tag
+    - number-tag
+    - pill-number-tag
+    - image-tag
+    - pill-image-tag
+    - checkbox-tag
+    - pill-checkbox-tag
+    - indicator-tag
+    - pill-indicator-tag
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use for a label the user can tap, filter, select or close, such as a news category, a search term or a filter the user picked.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Use Tag, not Badge, when the label must react to hover or press, when it stands on its own
+          instead of being attached to another element, or when one element needs more than one label.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Tag for a status the system sets and users can't press. Ask who changes the value.
+          The user means Tag, the system means Badge.
+        alternatives:
+          - to: badge
+        checkedBy: manual
+      - level: must-not
+        statement: Use a Tag in place of a button. IF pressing it runs an action THEN use Button.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Build a field that holds several values from Tags placed inside a TextField. Use TagField, which shows its values as Tags.
+        alternatives:
+          - to: tag-field
+        checkedBy: manual
+      # NEEDS CLARIFICATION: may a Tag take the user to another page (for example a news category tag)? Tag renders a span with no href, yet Tag.tsx shows shape="link" with the text อ่านต่อ
+      # NEEDS CLARIFICATION: when is leading left-indicator the right choice? docs/21-tags.md section 4.1 says indicator-tag shows a status, and the Figma 21 Tags Documentation frame says tags show the category or status of content, but the Tag vs Badge rule (Tag.tsx, README) says a status the system sets is a Badge. The dot is also --ntg-icon-system-success-secondary in every family in Figma and in Tag.module.css, so it can't show more than one status
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Give every tag in one group, or in one row, the same size.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Hover comes from CSS pseudo-classes and disabled from the disabled prop.
+          Don't pass a state prop or add state classes. The hover look shows only on a tag that has onSelect.
+        checkedBy: manual
+      - level: must
+        statement: IF the tag can be removed THEN pass closable and onClose. The close button is off by default.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          IF leading is left-number THEN pass count. IF leading is left-image THEN pass imageSrc.
+          Without imageSrc no image box is drawn.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass leftIcon, closeIcon and icon as `<Icon name="..." size="100%" />`. Without size="100%"
+          the icon keeps its own 24px default and doesn't fit the slot the tag sizes for it.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Use shape circular only for an icon-only tag. Figma has only the set circular-icon-tag,
+          so the code turns icon-only mode on for circular.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Keep the text to 1 or 2 words, such as a news category or a search term, so it reads at a glance.
+          Tags don't wrap, so long text stretches the tag until it looks like a button and is wider than the content it labels.
+        checkedBy: manual
+      - level: should
+        statement: Use one family for a group of tags whose meanings are on the same level.
+        checkedBy: manual
+      - level: should-not
+        statement: Give tags in one group different families when the colors carry no meaning. The color then decorates instead of naming a category.
+        checkedBy: manual
+      - level: should-not
+        statement: Mix kinds or shapes in one group without a reason.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change a tag's padding, height, radius, icon size or color with className or style.
+          They come from the tag variables for the chosen shape, kind and size.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Pass leftIcon when leading is not none. Kinds with a leading item have no left icon,
+          because the leading item takes the left slot, and the code drops it.
+        checkedBy: manual
+      - level: must-not
+        statement: Pass closable on a tag that only labels a category and that the user can't remove. Pressing the close button would do nothing the user expects.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Pass closable with leading left-indicator. The Figma sets indicator-tag and pill-indicator-tag have no close icon,
+          but the code still draws the close button.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use iconOnly with shape pill. Figma has no pill icon-only set, and Tag.module.css has no styles for it,
+          so the tag renders with no padding, icon size or color.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use a tag CSS variable name that isn't in tokens/output/css/variables.css. A missing name makes
+          var() return nothing, and the property falls back to the browser default with no error.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - level: must
+        statement: >-
+          IF iconOnly is true or shape is circular THEN pass label. It is rendered as screen-reader-only text
+          and is the only name the tag has.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+            role: WCAG 2.2 SC 1.1.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Make a tag pressable only with onSelect. onSelect is what gives the tag role button, tabIndex 0
+          and the Enter and Space keys. An onClick passed on its own gets none of these.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+            role: WCAG 2.2 SC 2.1.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          IF leading is left-checkbox THEN pass checked and onSelect. The tag reports checked as aria-pressed,
+          which only has meaning on the button role that onSelect adds.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Give a tag with onSelect, and the close button of a closable tag, a touch area of at least 44px by adding space
+          around the tag. Don't make the tag itself larger to get it.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
+            role: WCAG 2.2 SC 2.5.5 (AAA)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          The close button of a closable tag can be reached with the Tab key. Tag renders it as a native button named by
+          closeLabel (default ลบแท็ก), so don't replace it with an element that can't take focus.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+            role: WCAG 2.2 SC 2.1.1 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Figma 21 Tags Documentation frame (Accessibility) says a disabled tag must not show its state by color alone and needs text or a symbol, but Tag with disabled only changes colors and sets aria-disabled, and the Figma disabled variants add no symbol either. What must a disabled tag show?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF you need a tag that is gray at rest and shows the family color on hover THEN set defaultGray
+          with any family except neutral. IF you need a gray tag THEN use family neutral and leave defaultGray off.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: the DefaultGray story in Tag.stories.tsx says brand has no gray mode because the brand color must always be seen, but the Figma Brand Tags frame has the default-gray axis on all 14 sets and Tag.tsx applies defaultGray to brand. May brand use defaultGray?
+      - level: must
+        statement: >-
+          IF the combination you need is not on Figma page 21 Tags THEN ask a person before building it.
+          Don't change values on an instance to get it.
+        checkedBy: manual
+      - level: should
+        statement: IF users can pick several values at once THEN use leading left-checkbox.
+        checkedBy: assisted
+      - level: should
+        statement: IF the tag stands for a person or a brand THEN use leading left-image.
+        checkedBy: assisted
+      - level: should
+        statement: IF the tag shows a count that belongs to it THEN use leading left-number.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the tag is the focal point of its row and must be seen before the others THEN use hierarchy primary
+          ELSE keep the default secondary, which is also the choice when several tags sit together.
+        checkedBy: assisted
+      - level: should
+        statement: IF the tag must not pull the eye away from the content THEN use shape link.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: which family should an agent use when the task names none, and which family stands for which meaning? docs/21-tags.md section 3 says Brand when there is no specific reason, Tag.tsx and README default family to neutral, the Tag.stories.tsx default args use brand, and the Figma Tags Guide says a family carries a meaning without saying which
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Container
+        definition: >-
+          The tag box, a span that never wraps its text. It has no set height: as in Figma, height comes from the top and bottom
+          padding plus the line height of the text style. The result equals --ntg-<shape>-tag-size-<size> (18, 22, 26, 30, 34
+          for semi-rounded and pill), the same as --ntg-semi-rounded-badge-size-<size>, so a Tag and a Badge sit in one row.
+          TagField on page 13 Input works out its padding from this height in tokens/scale/input.mjs.
+          Padding is --ntg-<shape>-tag-padding-<side>-<size>, or --ntg-<shape>-tag-<kind>-padding-<side>-<size> in a kind with
+          a leading item. Gap is --ntg-<shape>-tag-gap-<size>. Corner radius is --ntg-semi-rounded-tag-radius-<size>-<corner>
+          for semi-rounded and --ntg-pill-tag-radius-full for pill and circular. Shadow is --ntg-shadows-bottom-xs on every shape except link.
+      - term: Border
+        definition: >-
+          A 1px ring in the family border color, drawn as an inset box-shadow on a layer above the children so the number
+          box at the left edge can't cover it. It takes no space, like the INSIDE stroke in Figma.
+      - term: Link shape
+        definition: >-
+          Shape link has no fill, no border and no shadow, padding --ntg-link-tag-padding-no on every side, gap
+          --ntg-link-tag-gap-<size>, and a height equal to the text line, --ntg-link-tag-size-<size> (16, 16, 22, 24, 26).
+      - term: Label
+        definition: >-
+          The children. Left and right padding is --ntg-<shape>-tag-title-padding-<side>-<size>
+          (--ntg-link-tag-title-padding-<side>-<size> for link, --ntg-<shape>-tag-<kind>-title-padding-<side>-<size> in a kind
+          with a leading item). Text style is label/xs for sizes xs and sm, label/sm for md, label/md for lg and label/lg for xl.
+          sm keeps the xs text style on purpose.
+      - term: Content
+        definition: >-
+          The layer that holds the left icon, the label and the close button, matching the Figma layer content in the number,
+          image and checkbox sets. In those kinds its gap is --ntg-<shape>-tag-<kind>-content-gap-<size>. In other kinds it adds
+          no padding and uses the gap of the box.
+      - term: Leading item
+        definition: >-
+          Set with leading and always at the far left, before the content (Figma layers left-number, left-image, left-checkbox
+          and indicator). The number and image boxes fill the full height, so the box has no top or bottom padding
+          (--ntg-<shape>-tag-<kind>-padding-no) and --ntg-<shape>-tag-<kind>-title-padding-<side>-<size> on the label sets the height.
+          Sizes are --ntg-<shape>-tag-number-tag-number-<size>, --ntg-<shape>-tag-image-tag-image-<size>,
+          --ntg-<shape>-tag-checkbox-tag-checkbox-<size> and --ntg-<shape>-tag-indicator-tag-dot-<size>.
+          The number box takes the family solid color with --ntg-color-text-general-const-white text. The image has an empty alt text, so only the label names it.
+          The dot is --ntg-icon-system-success-secondary in every family.
+      - term: Checkbox
+        definition: >-
+          The tick box of leading left-checkbox. It is the tag's own part, not the Checkbox component, with its own radius
+          --ntg-<shape>-tag-checkbox-tag-radius-<size>. Unchecked it is --ntg-color-background-general-primary with a
+          --ntg-color-border-general-primary border. Checked it fills with the tag text color and shows the check icon in
+          --ntg-color-text-general-const-white.
+      - term: Left icon
+        definition: >-
+          Optional Icon from Nation UI Icons, set with leftIcon (Figma left-icon and left-icon-swap).
+          Only in the base sets and link-tag (leading none) and never in icon-only mode.
+      - term: Close button
+        definition: >-
+          A native button at the far right, drawn when closable is true and disabled is false. Its accessible name
+          is closeLabel, default ลบแท็ก. The icon is closeIcon, default the close icon (Figma right-icon-swap).
+          Icon size is --ntg-<shape>-tag-icon-<size>, --ntg-<shape>-tag-<kind>-icon-<size> in a kind with a leading item,
+          and --ntg-link-tag-icon-<size> for link. Pressing it calls onClose and does not call onSelect.
+      - term: Icon-only
+        definition: >-
+          iconOnly, or shape circular, draws one icon (icon, default the close icon, Figma swap-icon) and label as screen-reader-only text.
+          The box is padding around the icon: --ntg-semi-rounded-tag-icon-tag-padding-<side>-<size> (icon-tag),
+          --ntg-circular-tag-padding-<side>-<size> (circular-icon-tag) or --ntg-link-tag-icon-tag-padding-<side>-<size> (link-icon-tag),
+          which gives the heights in --ntg-semi-rounded-tag-icon-tag-size-<size>, --ntg-circular-tag-size-<size> and
+          --ntg-link-tag-icon-tag-size-<size>. Icon size is --ntg-semi-rounded-tag-icon-tag-icon-<size>,
+          --ntg-circular-tag-icon-<size> or --ntg-link-tag-icon-tag-icon-<size>.
+      - term: Color
+        definition: >-
+          Fill, border, text and icon come from the family and are bound in Tag.module.css, which is generated from Figma.
+          variables.css has no tag color variables. Red, green, yellow, cyan, blue, purple, pink, bamboo and brown use
+          --ntg-color-utility-u-<family>-<step>. Brand uses brand tokens such as --ntg-color-background-brand-solid, and neutral uses
+          general tokens such as --ntg-color-background-general-solid-secondary. Primary text is --ntg-color-text-general-const-white,
+          and the secondary fill is --ntg-color-background-general-primary. Steps differ by family, so read them from Figma one
+          family at a time, never by formula. The solid fill is step 600 for red, green, yellow and purple, and step 400 for
+          cyan, blue, bamboo, pink and brown. Hover is step 500 for blue and brown, and step 600 for cyan, bamboo and pink.
+      - term: Gray and neutral
+        definition: >-
+          defaultGray means gray at rest and the family color on hover. family neutral is gray already, so defaultGray
+          does nothing on it and Figma has no default-gray axis for neutral. They are different looks, not two names for one.
+      - term: Focus ring
+        definition: >-
+          A tag with onSelect shows a 4px ring in --ntg-color-effect-focused-ring-brand on :focus-visible, added to its shadow.
+      - term: Variable names
+        definition: >-
+          Every tag variable carries its shape, and a kind with a leading item carries the kind too:
+          --ntg-<shape>-tag-<dimension>-<size> or --ntg-<shape>-tag-<kind>-<dimension>-<size>, with shape semi-rounded,
+          pill, link or circular. No name works for every shape. Names without the shape were removed on 2026-09-18.
+
+uses:
+  - to: icon
+
+alternatives:
+  - to: badge
+
+refs:
+  - href: ../../components/Tag/Tag.tsx
+    rel: source
+    role: Import Tag from components/Tag
+  - href: ../../components/Tag/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/Tag/Tag.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/21-tags.md
+    rel: relates-to
+    role: Thai page doc for Figma page 21 Tags
+  - href: ../../tokens/scale/tag.mjs
+    rel: relates-to
+    role: Size formulas and padding tables
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7240
+    rel: design
+    role: Figma page 21 Tags
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: family
+    description: The color family, one of 11 Figma frames on page 21 Tags. Default neutral.
+    values:
+      - id: neutral
+        description: Gray. The default. Has no gray mode, so defaultGray does nothing.
+      - id: brand
+        description: The main brand color.
+      - id: red
+        description: Red.
+      - id: green
+        description: Green.
+      - id: yellow
+        description: Yellow.
+      - id: cyan
+        description: Cyan.
+      - id: blue
+        description: Blue.
+      - id: purple
+        description: Purple.
+      - id: pink
+        description: Pink.
+      - id: bamboo
+        description: Bamboo.
+      - id: brown
+        description: Brown.
+  - traitType: variant
+    kind: enum
+    id: hierarchy
+    description: >-
+      How much weight the tag carries. Default secondary. Ignored for shape link, and fixed to secondary when leading
+      is not none. Tag secondary has a border, while Badge secondary is a light fill, so the same name is a different look.
+    values:
+      - id: secondary
+        description: Border, no solid fill. The default, for general work and for several tags together.
+      - id: primary
+        description: Solid fill with white text. For the one tag that must be seen first.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Height, padding, icon size and text style. Default md. Heights match Badge at every size.
+    values:
+      - id: md
+        description: 26 high. The default.
+      - id: xs
+        description: 18 high.
+      - id: sm
+        description: 22 high. Taller than xs with the same text style.
+      - id: lg
+        description: 30 high.
+      - id: xl
+        description: 34 high.
+  - traitType: variant
+    kind: enum
+    id: shape
+    description: Corner shape. In Figma each shape is a separate set.
+    values:
+      - id: semi-rounded
+        description: Corner radius from the size formula. The default. Sets semi-rounded-tag, the semi-rounded sets with a leading item, and icon-tag.
+      - id: pill
+        description: Capsule, wider than tall. Set pill-tag and the pill sets with a leading item. Has no icon-only set.
+      - id: circular
+        description: Width equals height. Icon-only only, so the code turns iconOnly on. Set circular-icon-tag.
+      - id: link
+        description: Text only, no fill, no border and no shadow. Supports leading none only and ignores hierarchy. Sets link-tag and link-icon-tag.
+  - traitType: variant
+    kind: enum
+    id: leading
+    description: >-
+      The leading item, always at the far left. Each kind is a separate Figma set. Every value except none
+      fixes hierarchy to secondary and removes the left icon.
+    values:
+      - id: none
+        description: The base set. Text with an optional left icon and close button. The default.
+      - id: left-indicator
+        description: A status dot. Sets indicator-tag and pill-indicator-tag, which have no close button.
+      - id: left-checkbox
+        description: A tick box, for picking several values at once. Sets checkbox-tag and pill-checkbox-tag.
+      - id: left-image
+        description: An image box flush with the left edge, for a tag that stands for a person or brand. Needs imageSrc. Sets image-tag and pill-image-tag.
+      - id: left-number
+        description: >-
+          A number box flush with the left edge, for a count that belongs to the tag. Needs count.
+          Sets number-tag and pill-number-tag, Figma layer left-number.
+  - traitType: variant
+    kind: boolean
+    id: defaultGray
+    description: Gray at rest, family color on hover. Figma variant default-gray. Does nothing on family neutral.
+  - traitType: variant
+    kind: boolean
+    id: closable
+    description: >-
+      Shows the close button at the far right. Default false, matching Figma right-icon. Not drawn while disabled.
+      The indicator sets have no right-icon.
+  - traitType: variant
+    kind: boolean
+    id: iconOnly
+    description: >-
+      Icon-only mode, Figma sets icon-tag, circular-icon-tag and link-icon-tag. Draws icon and label only.
+      The children, leading item, left icon and close button are not drawn. There is no pill icon-only set.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: Sets aria-disabled, turns off onSelect and keyboard focus, and hides the close button. Figma state disabled.
+  - traitType: state
+    kind: boolean
+    id: checked
+    description: The tick in the left checkbox, set by the caller. Reported as aria-pressed. Used only with leading left-checkbox.
+
+combos:
+  - subject: defaultGray
+    level: must-not
+    items: [family.neutral]
+    note: Neutral is gray already. The prop does nothing on it, and Figma has no default-gray axis for neutral.
+  - subject: hierarchy.primary
+    level: must-not
+    items: [leading.left-indicator, leading.left-checkbox, leading.left-image, leading.left-number]
+    note: The Figma sets with a leading item have no hierarchy axis and one look, a border with no solid fill. The code forces secondary.
+  - subject: shape.link
+    level: must-not
+    items: [hierarchy]
+    note: Link has no fill or border and sets its own colors. The hierarchy prop is ignored for it.
+  - subject: shape.link
+    level: must-not
+    items: [leading.left-indicator, leading.left-checkbox, leading.left-image, leading.left-number]
+    note: Figma has only the base link-tag set. The code forces leading back to none.
+  - subject: iconOnly
+    level: must-not
+    items: [leading.left-indicator, leading.left-checkbox, leading.left-image, leading.left-number]
+    note: Icon-only mode has no text for an item to lead. The code forces leading back to none.
+  - subject: iconOnly
+    level: must-not
+    items: [shape.pill]
+    note: Figma has no pill icon-only set, and Tag.module.css has no styles for the pair.
+  - subject: closable
+    level: must-not
+    items: [leading.left-indicator]
+    note: The Figma indicator sets have no right-icon property. The code would still draw a close button.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "21 Tags"
+    figmaSets:
+      - semi-rounded-tag
+      - pill-tag
+      - link-tag
+      - icon-tag
+      - circular-icon-tag
+      - link-icon-tag
+      - number-tag
+      - pill-number-tag
+      - image-tag
+      - pill-image-tag
+      - checkbox-tag
+      - pill-checkbox-tag
+      - indicator-tag
+      - pill-indicator-tag

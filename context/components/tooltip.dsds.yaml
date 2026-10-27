@@ -1,0 +1,391 @@
+# Tooltip in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Tooltip/, docs/20-tooltips.md, docs/research/tooltip-component.md, tokens/figma-components.json,
+# tokens/figma-layers/tooltip.json and the Figma file (page 20 Tooltips, read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: tooltip
+name: Tooltip
+description: >-
+  A short text box that appears when the pointer rests on, or keyboard focus reaches, the element it wraps (the trigger),
+  says what that element is or does, and disappears when the pointer or focus leaves. It holds text only, nothing
+  that can be pressed, and is never shown on touch screens. It matches the Figma set tooltip on page 20 Tooltips,
+  with its arrow from the set tooltip-arrow. It exists so every icon or button whose meaning is not clear is explained
+  with the same placement, timing and screen reader wiring, mainly in back-office tools used with a mouse and keyboard.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [overlay]
+  status: {status: beta}
+  aliases: [tooltip]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use to give the name of an icon-only button, or a short extra explanation of a control, in back-office tools
+          such as the CMS and dashboards. On news pages it works on desktop only.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put information the user needs to do the task in a tooltip, such as ลบแล้วกู้คืนไม่ได้. Tooltips never show on
+          touch screens, and more than 70 percent of the group's traffic is mobile. Put that information on the page.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put a link, button or field in a tooltip, or use a tooltip for content that opens on click and stays open.
+          Keyboard and touch users can't reach anything pressable in a tooltip, and W3C rules it out. That job belongs to a
+          popover, which is not in the system yet.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
+            role: WAI-ARIA Authoring Practices, Tooltip pattern
+        checkedBy: manual
+      # NEEDS CLARIFICATION: README.md and docs/20-tooltips.md send pressable or click-opened content to a popover, and docs/20-tooltips.md section 4.1 says popover is not in the system yet. What should be used until it exists?
+      - level: must-not
+        statement: Use the browser title attribute instead of Tooltip. It fails all three parts of WCAG 1.4.13 and does not show on touch screens either.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus
+            role: WCAG 2.2 SC 1.4.13 (AA)
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Tooltip to show the current value of a control, such as a slider. That is the value-label set on Figma page 20,
+          which looks the same but stays next to the control all the time.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: value-label exists only in Figma (with the old Dark Mode and Arrow axes) and has no code component. What should code use to show a control's current value?
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Always pass relationship. It has no default on purpose, because a wrong choice leaves the trigger with no name, which can't be seen on screen.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass exactly one element as children. Tooltip adds aria-labelledby or aria-describedby to that element, so plain
+          text or several elements don't work.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Tooltip opens on keyboard focus only when the trigger can take focus. May a tooltip wrap an element that can't take focus, such as a plain Icon or a text span, and if so how do keyboard users open it?
+      - level: must
+        statement: >-
+          Pass title and description as plain text. They take a string only, not a React node, so a link or button can't be
+          put inside. Don't change those types to get around it.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Keep the content to a title and an optional description, short enough to read at a glance. Text that needs
+          paragraphs or sub-headings belongs in a popover.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Choose a placement that keeps the box inside the screen. There is no flip or shift yet, so a box that hits the
+          screen edge overflows it.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Keep the trigger out of an ancestor with overflow hidden, or move it out. Tooltip uses no portal, so such an
+          ancestor cuts the box off.
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Use the 8 aligned placements (top-start to right-end) in code. Figma page 20 draws only the 4 centered ones,
+          so the aligned ones have no picture to compare against.
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Raise the tooltip's layer by setting --tooltip-layer on an outer element, when an app has a layer above
+          --ntg-layer-floating. Never edit the component files for it.
+        checkedBy: manual
+      - level: must-not
+        statement: Limit the number of lines or cut the text with an ellipsis. Long text wraps onto the next line.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set a fixed width on the tooltip. The box shrinks to its content up to --ntg-tooltip-max-width-<size>, and the
+          description also stops at --ntg-tooltip-text-max-width-<size>.
+        checkedBy: manual
+      - level: must-not
+        statement: Set pointer-events none on the tooltip box. The pointer must be able to move into the box without it closing.
+        checkedBy: manual
+      - level: must-not
+        statement: Make a tooltip close on a timer. It stays until the pointer leaves, focus leaves or Escape is pressed.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set tooltip colors with className or style, or add a light look or a dark mode variant. There is one look, a dark
+          fill with white text, and its colors switch with the theme on their own.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Name a placement by the direction the arrow points, or use names like top-left. A placement names where the box
+          sits next to the trigger, so top means the box is above and the arrow points down.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - level: must
+        statement: >-
+          Escape closes an open tooltip, and the key press stops there, so it does not also close a dialog or side panel
+          around it. Tooltip does this.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus
+            role: WCAG 2.2 SC 1.4.13 (AA), dismissible
+        checkedBy: manual
+      - level: must
+        statement: >-
+          The pointer can move from the trigger into the box without the box closing. Tooltip covers the gap between them
+          with an invisible bridge.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus
+            role: WCAG 2.2 SC 1.4.13 (AA), hoverable
+        checkedBy: manual
+      - level: must
+        statement: The box stays open until the pointer leaves, focus leaves or Escape is pressed. It has no timer.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus
+            role: WCAG 2.2 SC 1.4.13 (AA), persistent
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Keyboard focus opens the tooltip at once, and only on :focus-visible, so a mouse click on the trigger does not
+          leave a box open after the click.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          IF relationship is label THEN the trigger has no aria-label. An aria-label wins over the tooltip's
+          aria-labelledby and the tooltip text is never read. Tooltip warns in the console outside production.
+        evidence:
+          - href: https://www.w3.org/TR/accname-1.2/
+            role: Accessible Name and Description Computation 1.2
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put anything that can take focus inside a tooltip. Tooltip warns in the console outside production when it
+          finds a, button, input, select, textarea or an element with tabindex in the box.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
+            role: WAI-ARIA Authoring Practices, Tooltip pattern
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Tooltip.tsx and README.md say a CSS layer hides tooltips on touch screens with (hover: none) and (pointer: coarse), and that prefers-reduced-motion turns off the enter and exit motion. Tooltip.base.css has no @media rule at all, so touch is only filtered by pointerType in TypeScript and with reduced motion only the exit wait is cut (the enter animation still plays). Should the CSS rules be added, or should the docs change?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the trigger has no accessible name, such as an icon-only button that is not IconButton THEN use relationship
+          label. IF the trigger already has a name and the tooltip adds information THEN use relationship description.
+          IF the tooltip text repeats the trigger's name THEN use relationship inaccessible.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the trigger is an IconButton THEN use relationship inaccessible, because IconButton already sets aria-label
+          and title from its label.
+        checkedBy: assisted
+      # Tooltip.stories.tsx (Default, Relationships, Sizes, do and don't) wraps IconButton with relationship label, which makes Tooltip warn in the console. README.md and the code say inaccessible
+      # IconButton also sets the browser title attribute, so a second browser tooltip appears. README.md says this has to be fixed in IconButton, not in Tooltip
+      - level: must
+        statement: IF the content needs a link, a button or a click to open THEN don't use Tooltip, and ask which component to use.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the tooltip is in a very dense back-office toolbar THEN use size xs.
+          IF it must match the density other design systems use (12px text) THEN use size sm.
+          IF the page uses larger than normal text THEN use size lg.
+          IF the screen is a large display read from a distance THEN use size xl.
+          ELSE use size md, the default for general back-office screens and news pages on desktop.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Wrapper
+        definition: >-
+          An inline-flex span around the trigger and the box, with no size of its own. It listens for the pointer
+          entering and leaving (ignoring touch) and for focus and blur. wrapperClassName goes here, for laying out a
+          trigger that must stretch.
+      - term: Trigger
+        definition: >-
+          The single child element. With relationship label it gets aria-labelledby, with description aria-describedby,
+          both pointing at the box id and added to any ids it already has. With inaccessible it gets nothing.
+      - term: Box
+        definition: >-
+          A div with role tooltip and aria-hidden true, set together on purpose. aria-hidden stops screen readers reading
+          the box as a separate thing, while the name and description computed through aria-labelledby and
+          aria-describedby still read its text. It stays in the DOM and is hidden with CSS when closed, so a label
+          relationship works all the time. Its layer is --tooltip-layer, else --ntg-layer-floating (200).
+          It is as wide as its text, up to --ntg-tooltip-max-width-<size> (200 to 360), and sits
+          --ntg-tooltip-offset-<size> (4 to 8) from the trigger, measured from the box edge without the arrow.
+          className goes here.
+      - term: Surface
+        definition: >-
+          The visible shape inside the box. Padding is --ntg-tooltip-padding-<size> (8 to 16), corner radius is
+          --ntg-tooltip-radius-<size> (4 to 12), fill is --ntg-color-background-general-solid, shadow is
+          --ntg-shadows-bottom-md, and the gap between title and description is --ntg-tooltip-stack-<size> (2 to 6).
+          Height comes from the content.
+      - term: Title
+        definition: >-
+          The required title prop. Color is --ntg-color-text-general-const-white. Text style is label/xs to label/xl,
+          matching the size.
+      - term: Description
+        definition: >-
+          Optional text under the title, shown when description is a non-empty string. Figma variant supporting-text=true.
+          Color is --ntg-color-text-general-const-white, the same as the title (a lighter gray reached only 3.79:1 on the dark fill),
+          so the two differ by weight only. Text style is meta/credit for size xs, body/xs for sm, body/sm for md,
+          body/md for lg and body/lg for xl. It stops at --ntg-tooltip-text-max-width-<size> and wraps.
+      - term: Arrow
+        definition: >-
+          Shown when arrow is true, on the box edge that faces the trigger, pointing back at it. A triangle cut with
+          clip-path, base --ntg-tooltip-arrow-<size> (8 to 16) and height --ntg-tooltip-arrow-height-<size> (half the base,
+          4 to 8), filled with --ntg-color-background-general-solid and with no shadow. It is centered, or for a -start or
+          -end placement set in from the corner by the corner radius. Its tip touches the trigger, because the offset
+          equals the arrow height. In Figma it is an instance of tooltip-arrow, whose direction names where the tip points.
+      - term: Safe area
+        definition: >-
+          An invisible ::before on the surface that fills the gap to the trigger, exactly --ntg-tooltip-offset-<size> deep
+          and wider by --ntg-size-space-s1-lg (8) on both sides along the edge, so the pointer can cross the gap.
+          It never reaches over the trigger.
+      - term: Motion
+        definition: >-
+          Enter and exit both use --ntg-motion-duration-fast (150ms), with --ntg-motion-easing-enter and
+          --ntg-motion-easing-exit. The box fades in while sliding --ntg-size-space-s1-xs (2px) from the side it sits on,
+          with no scaling. A tooltip that opens right after another one closed skips the enter motion.
+      # NEEDS CLARIFICATION: context/styles/styles.dsds.yaml says --ntg-motion-duration-default (250ms) is for the entry of tooltips, but Tooltip.base.css, Tooltip.tsx (TOOLTIP_MOTION) and README.md use --ntg-motion-duration-fast (150ms) for both enter and exit. Which is right?
+      - term: Timing
+        definition: >-
+          From TOOLTIP_TIMING, the same everywhere, with no prop to change it. The pointer opens it after 300ms and it
+          closes 150ms after the pointer leaves. Keyboard focus opens it at once, and blur or Escape closes it at once.
+          Within 300ms after any tooltip on the page closed (the grace period), the next one opens at once.
+      - term: Mobile width
+        definition: >-
+          --ntg-tooltip-max-width-mobile-<size> (160 to 320) is set on the box but no CSS rule uses it yet.
+
+  - kind: definitions
+    for: all
+    title: Exports
+    items:
+      - term: TOOLTIP_TIMING
+        definition: >-
+          openDelayMs 300, closeDelayMs 150 and graceMs 300, the only place these times are set. There is no token for
+          them on purpose, because Figma variables have no place for time units.
+      - term: TOOLTIP_MOTION
+        definition: >-
+          enterMs 150 and exitMs 150, a copy of --ntg-motion-duration-fast for JavaScript, which needs to wait for the exit
+          motion before hiding the box. When the token changes, TOOLTIP_MOTION must change with it.
+      - term: isTooltipWarm
+        definition: >-
+          isTooltipWarm(now) is true while any tooltip on the page is open or closed no more than graceMs ago.
+          The warm state is shared by the whole page, not kept per tooltip.
+      - term: resetTooltipWarmth
+        definition: Clears the shared warm state. For tests to call between cases.
+      - term: splitTooltipPlacement
+        definition: splitTooltipPlacement(placement) returns the axis (top, bottom, left or right) and the align (center, start or end).
+
+refs:
+  - href: ../../components/Tooltip/Tooltip.tsx
+    rel: source
+    role: Import Tooltip from components/Tooltip
+  - href: ../../components/Tooltip/README.md
+    rel: relates-to
+    role: Thai README with the props table and the Tooltip or popover table
+  - href: ../../components/Tooltip/Tooltip.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/20-tooltips.md
+    rel: relates-to
+    role: Thai page doc for Figma page 20 Tooltips
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7239
+    rel: design
+    role: Figma page 20 Tooltips
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: relationship
+    description: >-
+      How the tooltip is tied to the trigger. Required, with no default. The first value below is not a default here,
+      the order is only the order of the TypeScript union.
+    values:
+      - id: label
+        description: The trigger has no name, such as an icon-only button. The tooltip is its name, tied with aria-labelledby.
+      - id: description
+        description: The trigger already has a name. The tooltip adds information, tied with aria-describedby.
+      - id: inaccessible
+        description: The text repeats the trigger's name. Nothing is tied, so it is not read twice.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Padding, gap, radius, arrow, offset, maximum widths and text styles. The first value is the default.
+    values:
+      - id: md
+        description: 14px text. General back-office screens and news pages on desktop. The default.
+      - id: xs
+        description: 10px text. Very dense back-office toolbars.
+      - id: sm
+        description: 12px text. The density other design systems use.
+      - id: lg
+        description: 16px text. Pages with larger than normal text.
+      - id: xl
+        description: 18px text. Large screens read from a distance.
+  - traitType: variant
+    kind: enum
+    id: placement
+    description: >-
+      Where the box sits next to the trigger, not where the arrow points. The first word is the side and the optional
+      second word aligns the box with the start or end of the trigger. Default top. Figma draws only top, bottom, left and right.
+    values:
+      - id: top
+        description: Above the trigger, centered, arrow pointing down. The default.
+      - id: bottom
+        description: Below the trigger, centered, arrow pointing up.
+      - id: left
+        description: Left of the trigger, centered, arrow pointing right.
+      - id: right
+        description: Right of the trigger, centered, arrow pointing left.
+      - id: top-start
+        description: Above, lined up with the start edge of the trigger. Code only.
+      - id: top-end
+        description: Above, lined up with the end edge of the trigger. Code only.
+      - id: bottom-start
+        description: Below, lined up with the start edge of the trigger. Code only.
+      - id: bottom-end
+        description: Below, lined up with the end edge of the trigger. Code only.
+      - id: left-start
+        description: Left, lined up with the top edge of the trigger. Code only.
+      - id: left-end
+        description: Left, lined up with the bottom edge of the trigger. Code only.
+      - id: right-start
+        description: Right, lined up with the top edge of the trigger. Code only.
+      - id: right-end
+        description: Right, lined up with the bottom edge of the trigger. Code only.
+  - traitType: variant
+    kind: boolean
+    id: arrow
+    description: Shows the arrow. Default true. A switch of its own, separate from placement.
+  # NEEDS CLARIFICATION: Tooltip.tsx has an arrow prop and docs/20-tooltips.md (designer step 5) says to turn the arrow on or off with a property of the set, but the Figma tooltip set (read 2026-10-27) has no such property, only the variant axes supporting-text, placement and size. Should Figma get a show-arrow property?
+  - traitType: state
+    kind: boolean
+    id: open
+    description: >-
+      The box is showing (data-state open, then exiting while the exit motion plays). Set by Tooltip from pointer,
+      focus, blur and Escape. There is no open or onOpenChange prop yet. Code only, not in Figma.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "20 Tooltips"
+    figmaSets: [tooltip]

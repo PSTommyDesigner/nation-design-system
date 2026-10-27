@@ -23,6 +23,8 @@
     "types/**/*.d.ts",
     "components/**/*.ts",
     "components/**/*.tsx",
+    "prototype/**/*.ts",
+    "prototype/**/*.tsx",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx"
   ],

@@ -1,0 +1,213 @@
+# The main design system file, in Design System Doc Spec (DSDS) 0.23 format
+# https://designsystemdocspec.org
+#
+# This file is the registry: it says what the system has and which file holds each part,
+# links the spec file of every component in code (one file each in components/, and Icon in icons/),
+# and keeps deprecated items along with what to use instead.
+# Check the whole set with: node scripts/check-dsds.mjs
+#
+# Status: on 2026-10-27 no version of the library has been released yet, so every component is beta.
+# The Design System team changes a component to stable when it is released. TagField is experimental
+# because it was split out of TextField on 2026-10-27.
+
+schemaVersion: "0.23.0"
+
+name: Nation Design System
+
+entries:
+  - kind: system
+    id: nation-design-system
+    name: Nation Design System
+    description: >-
+      The shared design system of Nation Group (Thailand), used by the group's news websites and internal systems
+      (HRM, Nation News Center, Nation House, AMS). Code is React and TypeScript with CSS Modules, tokens build to CSS
+      variables with the prefix --ntg-, and the design source is the Figma file QgmoT5Uuvv3elB96F4nsTq.
+      It exists so every team builds screens that look and behave the same, without making the same decisions again.
+    metadata:
+      owner: Nation Design System team
+      status: {status: beta}
+      organization: Nation Group (Thailand)
+      platforms: [react]
+    sections:
+      - kind: guidelines
+        for: all
+        title: Shared rules
+        items:
+          - id: tokens-only
+            level: must
+            statement: >-
+              Color, spacing, radius, size, shadow, motion and layer order use --ntg- tokens only. No hex, rgb,
+              typed px or typed shadow values. The token list is context/tokens/token-list.md.
+            checkedBy: manual
+          - id: component-collection
+            level: must
+            statement: >-
+              In Figma, bind variables from the component collection only. In code, use a component-collection token
+              when one exists for the job, and fall back to a semantic token only when none does.
+            checkedBy: manual
+          - id: preset-typography
+            level: must
+            statement: >-
+              Text uses a typography preset, a .ntg-typography-* class in code or a text style in Figma. Font family, size,
+              weight, line height and letter spacing are never set one by one.
+            checkedBy: manual
+          - id: reuse-first
+            level: must
+            statement: Use a component listed in this file first. If none fits the task, propose a new one to the Design System team before building it.
+            checkedBy: manual
+          - id: no-primitives
+            level: must-not
+            statement: Use primitive tokens, such as --ntg-color-brand-500, --ntg-color-gray-light-300 or --ntg-color-alpha-brand-20.
+            checkedBy: manual
+          - id: no-deprecated
+            level: must-not
+            statement: Use an entry or trait value whose status is deprecated. Use the one in its replacedBy instead.
+            checkedBy: manual
+      # NEEDS CLARIFICATION: there is no automated check for raw values in product code yet. The patterns below
+      # are ready for a lint script. Until one exists, every rule above is checked by hand.
+    $extensions:
+      com.nationgroup:
+        figmaFileKey: QgmoT5Uuvv3elB96F4nsTq
+        cssPrefix: "--ntg-"
+        forbiddenValues:
+          - pattern: "#[0-9A-Fa-f]{3,8}\\b"
+            message: Use a color token instead of a hex value
+          - pattern: "rgba?\\("
+            message: Use a color token instead of an rgb value
+          - pattern: "\\b[1-9][0-9]*px\\b"
+            message: Use a space, size or radius token instead of a px value
+          - pattern: "--ntg-color-(brand|ams|gray-light|gray-dark|blue|green|cyan|purple|pink|rose|red|orange|yellow|gold|fuchsia|bamboo|brown|ntgds1|ntgds2)-[0-9]+\\b"
+            message: Primitive color. Use a component or semantic color token
+          - pattern: "--ntg-color-(alpha-(brand|ams|red|green|yellow|blue|gray)|base|effect-(overlay|focus-ring))-"
+            message: Primitive color. Use a component or semantic color token
+          - pattern: "--nation-"
+            message: Old prefix, replaced by --ntg- on 2026-07-16
+          - pattern: "ntg-typography-(heading|text)-"
+            message: Old typography preset name that is no longer built. Use a current preset from context/tokens/tokens.dsds.yaml
+
+  # Deprecated components, kept so AI knows what to use instead.
+  # Every component in code has its own spec file, linked in refs below. The icon entry is in icons/icon.dsds.yaml.
+  - kind: component
+    id: list-item
+    name: List Item
+    description: The list item sets from the old Lists page in Figma. Deprecated.
+    metadata:
+      status:
+        status: deprecated
+        deprecationNotice: >-
+          The Lists page was folded into page 25 Dropdowns on 2026-10-12. Leading icon, leading avatar, supporting text,
+          multi-select checkbox, group header and panel divider moved into the dropdown option. The other list sets were removed.
+        replacedBy:
+          - to: dropdown
+      aliases: [List Item / Dropdown, List Item / Dropdown&Check]
+    sections:
+      - kind: guidelines
+        for: all
+        framing: when-to-use
+        items:
+          - level: must-not
+            statement: Use List Item in new work. Its sets were folded into Dropdown options on 2026-10-12.
+            alternatives:
+              - to: dropdown
+            checkedBy: manual
+
+refs:
+  - href: ./setup/getting-started.dsds.yaml
+    rel: file
+    role: Use the tokens and components in a project
+  - href: ./tokens/tokens.dsds.yaml
+    rel: file
+    role: Token rules and themes
+  - href: ./styles/styles.dsds.yaml
+    rel: file
+    role: Layout, grid, elevation, layers and motion
+  - href: ./components/avatar.dsds.yaml
+    rel: file
+    role: Avatar
+  - href: ./components/avatar-group.dsds.yaml
+    rel: file
+    role: AvatarGroup
+  - href: ./components/avatar-label.dsds.yaml
+    rel: file
+    role: AvatarLabel
+  - href: ./components/badge.dsds.yaml
+    rel: file
+    role: Badge
+  - href: ./components/banner.dsds.yaml
+    rel: file
+    role: Banner
+  - href: ./components/button.dsds.yaml
+    rel: file
+    role: Button
+  - href: ./components/card.dsds.yaml
+    rel: file
+    role: Card
+  - href: ./components/checkbox.dsds.yaml
+    rel: file
+    role: Checkbox
+  - href: ./components/circular-progress-bar.dsds.yaml
+    rel: file
+    role: CircularProgressBar
+  - href: ./components/divider.dsds.yaml
+    rel: file
+    role: Divider
+  - href: ./components/dropdown.dsds.yaml
+    rel: file
+    role: Dropdown
+  - href: ./components/icon-button.dsds.yaml
+    rel: file
+    role: IconButton
+  - href: ./components/link-button.dsds.yaml
+    rel: file
+    role: LinkButton
+  - href: ./components/nation-house-icon.dsds.yaml
+    rel: file
+    role: NationHouseIcon
+  - href: ./components/pagination.dsds.yaml
+    rel: file
+    role: Pagination
+  - href: ./components/progress-bar.dsds.yaml
+    rel: file
+    role: ProgressBar
+  - href: ./components/radio.dsds.yaml
+    rel: file
+    role: Radio
+  - href: ./components/radio-group.dsds.yaml
+    rel: file
+    role: RadioGroup
+  - href: ./components/semi-circular-progress-bar.dsds.yaml
+    rel: file
+    role: SemiCircularProgressBar
+  - href: ./components/slider.dsds.yaml
+    rel: file
+    role: Slider
+  - href: ./components/table.dsds.yaml
+    rel: file
+    role: Table
+  - href: ./components/tabs.dsds.yaml
+    rel: file
+    role: Tabs
+  - href: ./components/tag.dsds.yaml
+    rel: file
+    role: Tag
+  - href: ./components/tag-field.dsds.yaml
+    rel: file
+    role: TagField
+  - href: ./components/text-field.dsds.yaml
+    rel: file
+    role: TextField
+  - href: ./components/toast.dsds.yaml
+    rel: file
+    role: Toast
+  - href: ./components/toggle.dsds.yaml
+    rel: file
+    role: Toggle
+  - href: ./components/tooltip.dsds.yaml
+    rel: file
+    role: Tooltip
+  - href: ./icons/icon.dsds.yaml
+    rel: file
+    role: Icon set and sizes
+  - href: ./guidelines/guidelines.dsds.yaml
+    rel: file
+    role: Writing rules and accessibility rules shared by every component

@@ -1,0 +1,147 @@
+# How tokens combine at page level, in DSDS format
+# Every number comes from tokens. This file only says how to arrange things.
+# Facts come from docs/04-grid.md, docs/05-effect.md, docs/07-space.md and the descriptions in tokens/tokens.json/component.json
+
+schemaVersion: "0.23.0"
+
+name: Nation Design System Styles
+
+entries:
+  - kind: entry
+    id: layout
+    name: Layout and grid
+    description: >-
+      Breakpoints, grid systems and page spacing. They exist so every page lines content up on the same columns,
+      and users don't have to look for things again when they move between pages.
+    metadata:
+      tags: [layout]
+      status: {status: beta}
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: >-
+              Use one grid system per project. Group news websites use Version 2022 (v2022), and new mobile work for them uses v2026.
+              Nation Digital projects use nation-digital. The only allowed mix is v2026 on mobile with v2022 on tablet and desktop.
+            checkedBy: manual
+          - level: must
+            statement: Use the grid tokens, such as --ntg-grid-v2022-desktop-container, and the breakpoint tokens --ntg-grid-breakpoint-*. Never type values such as 1224px.
+            checkedBy: manual
+          - level: must
+            statement: Column width is computed, not stored. In code use repeat(<columns>, 1fr).
+            checkedBy: manual
+          - level: must
+            statement: Content sits on the columns. A width of n columns is n × column width + (n - 1) × gutter. If it doesn't add up, the piece is off the grid.
+            checkedBy: manual
+          - level: must
+            statement: Page and section spacing uses the layout spacing scale --ntg-size-space-*. See size.space in context/tokens/tokens.dsds.yaml.
+            checkedBy: manual
+          - level: must-not
+            statement: Change v2022 mobile values to get a different mobile grid. v2022 is published and old work depends on it. Use v2026.
+            checkedBy: manual
+      - kind: section
+        for: all
+        title: Breakpoints and grids
+        freeform:
+          - title: Breakpoints
+            body: |
+              | Screen | Width | Token |
+              | --- | --- | --- |
+              | Full HD | 1920 | --ntg-grid-breakpoint-fullhd |
+              | Desktop | 1440 | --ntg-grid-breakpoint-desktop |
+              | Tablet landscape | 1024 | --ntg-grid-breakpoint-tablet-h |
+              | Tablet portrait | 768 | --ntg-grid-breakpoint-tablet-v |
+              | Mobile | 375 | --ntg-grid-breakpoint-mobile |
+          - title: Version 2022 (group news websites)
+            body: |
+              | Screen | Columns | Gutter | Margin | Container | Column |
+              | --- | --- | --- | --- | --- | --- |
+              | Desktop 1440 | 12 | 24 | 108 | 1224 | 80 |
+              | Tablet landscape 1024 | 10 | 16 | 80 | 864 | 72 |
+              | Tablet portrait 768 | 8 | 16 | 40 | 688 | 72 |
+              | Mobile 375 | 4 | 5 | 20 | 335 | 80 |
+          - title: v2026 (new mobile work, designed at 360 wide)
+            body: |
+              | Screen | Columns | Gutter | Margin |
+              | --- | --- | --- | --- |
+              | Mobile 360 | 4 | 8 | 24 |
+
+              Tokens: --ntg-grid-v2026-mobile-columns, -gutter, -margin. Container and column width are not tokens.
+          - title: Nation Digital
+            body: |
+              | Screen | Columns | Gutter | Margin | Container | Column |
+              | --- | --- | --- | --- | --- | --- |
+              | Full HD 1920 | 10 | 12 | 186 | 1548 | 144 |
+              | Desktop 1440 | 8 | 12 | 102 | 1236 | 144 |
+              | Tablet landscape 1024 | 6 | 12 | 50 | 924 | 144 |
+              | Tablet portrait 768 | 4 | 12 | 78 | 612 | 144 |
+              | Mobile 375 | 2 | 15 | 15 | 345 | 165 |
+
+  - kind: entry
+    id: elevation
+    name: Elevation and layers
+    description: >-
+      Which layer a thing sits on and which shadow it gets. It exists so users can tell what floats for a moment and can be
+      closed, and so floating things always stack in the same order.
+    metadata:
+      tags: [surface]
+      status: {status: beta}
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: Set z-index only with the layer tokens --ntg-layer-content, -sticky, -floating, -overlay and -notification. Never a typed number.
+            checkedBy: manual
+          - level: must
+            statement: Notifications sit on the top layer, above dialogs, so the result of an action can still be read while a dialog is open.
+            checkedBy: manual
+      - kind: definitions
+        for: all
+        context: terms
+        items:
+          - term: content
+            definition: --ntg-layer-content (0). Normal page content that floats over nothing. No shadow or --ntg-shadows-bottom-xs for cards.
+          - term: sticky
+            definition: --ntg-layer-sticky (100). Bars fixed to an edge of the screen, such as a header that stays while scrolling. Above content, below anything the user just opened. Bars fixed at the bottom use --ntg-shadows-top-*.
+          - term: floating
+            definition: --ntg-layer-floating (200). Things that open from what the user points at or presses, such as tooltips and dropdown panels. Shadow --ntg-shadows-bottom-md.
+          - term: overlay
+            definition: --ntg-layer-overlay (300). Panels that take the whole page's attention, such as dialogs and the dark backdrop. Above all content. Shadow --ntg-shadows-bottom-xl, backdrop blur --ntg-effect-background-blur-md or -lg.
+          - term: notification
+            definition: --ntg-layer-notification (400). Floating messages such as toasts. The highest layer on purpose.
+
+  - kind: entry
+    id: motion
+    name: Motion
+    description: >-
+      Durations and easing curves for things that change or move. They exist so things enter, leave and react at the
+      same speed everywhere.
+    metadata:
+      tags: [motion]
+      status: {status: beta}
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: Use --ntg-motion-duration-* and --ntg-motion-easing-* for transitions and animations. Never typed durations or curves.
+            checkedBy: manual
+          - level: must
+            statement: An exit is faster than or as fast as its entry.
+            checkedBy: manual
+      - kind: definitions
+        for: all
+        context: terms
+        items:
+          - term: fast
+            definition: --ntg-motion-duration-fast (150ms). Changes in place, such as color on hover, and the exit of things that float over content.
+          - term: default
+            definition: --ntg-motion-duration-default (250ms). The system default. The entry of things that float over content, such as toasts, tooltips and dropdown panels.
+          - term: slow
+            definition: --ntg-motion-duration-slow (400ms). Things that travel far, such as a panel that slides in from the edge of the screen. Feels sluggish on small things.
+          - term: enter
+            definition: --ntg-motion-easing-enter. Starts fast and settles, so things that appear seem to stop on their own.
+          - term: exit
+            definition: --ntg-motion-easing-exit. Starts slow and speeds away, so things that leave don't hold the eye.

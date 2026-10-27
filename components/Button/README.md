@@ -29,4 +29,4 @@ import { Button } from '@/components/Button';
 - ทุกค่าสี ระยะ มุมโค้ง มาจาก CSS variable ของ design token ไม่มีค่า hard-code
 - สถานะ hover / focus / disabled จัดการด้วย CSS pseudo-class ไม่ต้องส่ง prop
 
-ดูตัวอย่างครบทุกแบบที่ [prototype/buttons.html](../../prototype/buttons.html)
+ดูตัวอย่างครบทุกแบบใน Storybook ที่ [Button.stories.tsx](Button.stories.tsx)

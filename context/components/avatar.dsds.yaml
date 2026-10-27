@@ -1,0 +1,295 @@
+# Avatar in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Avatar/, docs/11-avatar.md, the Figma page 11 Avatar (read 2026-10-27),
+# tokens/figma-components.json, tokens/figma-layers/avatar.json and tokens/scale/avatar.mjs
+# components/Avatar has no README.md, so there is no Thai props table to cite
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default, except status, which has no default
+
+kind: component
+id: avatar
+name: Avatar
+description: >-
+  A circle that shows who one person is, as their photo, their initials, a person icon, or a count of more people.
+  It matches the Figma sets avatar-image, avatar-icon, avatar-monogram and avatar-number on page 11 Avatar, plus the
+  internal set _avatar-online-indicator for the status dot. Avatar picks the set from the props it gets. It exists so
+  every place that shows a person (news authors, commenters, users of internal systems) uses the same sizes, shape and
+  fallback when there is no photo, and no place is left empty.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [identity]
+  status: {status: beta}
+  aliases: [avatar-image, avatar-icon, avatar-monogram, avatar-number]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use to show who one person is, as their photo, their initials or a person icon.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Put several Avatars side by side to show a set of people. AvatarGroup is the set for that, with the overlap,
+          the 5-face limit and the remaining count built in.
+        alternatives:
+          - to: avatar-group
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Place your own name text next to an Avatar. When the name, and a second line such as an email, is shown with
+          the picture, use AvatarLabel.
+        alternatives:
+          - to: avatar-label
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use a count (the avatar-number set) to stand for a person. Readers take a number in a circle as a rank.
+          A count only says how many more people there are.
+        alternatives:
+          - to: avatar-group
+        checkedBy: manual
+      - level: must-not
+        statement: Put a picture that is not a person, such as a logo, in an Avatar.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Avatar.stories.tsx (GoodAndBad) forbids a logo in an Avatar, but no source says what to use instead for a news brand, a company or an AI agent. docs/research/avatar-component.md section 16.7 notes that Primer and Fluent use a square shape for these, and that is not decided. What should show a non-person?
+      # NEEDS CLARIFICATION: docs/11-avatar.md section 5 and the Figma Avatar Guide allow avatar-number "to stand for a number, such as how many more people are in a group", the public count prop allows it anywhere, and docs/research/avatar-component.md section 16.6 (draft) proposes making it an internal part of the group only. May a single Avatar with count be used outside AvatarGroup, and where?
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Choose the type from the data you have. Pass src when there is a real photo of the person. With no photo but a
+          known name, pass name (or initials) for the initials. With neither, pass none of them and the person icon shows.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set status only when the system knows the person's real online status. Leave it out for people who have no
+          online status at all, such as the author of a news article.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Leave at least --ntg-avatar-ring (2px) of free space around every Avatar. The ring is drawn outside the box,
+          so it takes no room inside the stated size and can touch or be cut by a neighbor.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set interactive only when the Avatar sits inside something the user can press, such as a link to the profile.
+          interactive adds the Figma hover look only. It adds no click handler, no focus and no role.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Use a square photo, or check that the face is not cut off. A photo that is not square is cropped to fill the
+          circle.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change an Avatar's width, height, padding, border, radius or colors with className or style. Size comes only from
+          the size prop. The ring is an outside box-shadow, and a border or padding makes the photo smaller than its size.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Pass status offline when the status is unknown. Leave status out, because readers take offline as the person
+          being away.
+        checkedBy: manual
+      - level: must-not
+        statement: Pass src and count together. The photo wins and the count is not shown.
+        checkedBy: manual
+      - level: must-not
+        statement: Pass initials longer than 2 letters.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/11-avatar.md section 2 says no place is left empty when there is no photo, but Avatar.tsx has no fallback when src is set and the photo fails to load (no onError), so a broken image shows. Should Avatar fall back to initials or the icon, and must callers check the URL first?
+      # NEEDS CLARIFICATION: Figma avatar-number shows the text 99+ and Avatar.tsx renders count followed by + with no upper limit, so 150 shows 150+. Is the count capped at 99+, and does a 3-digit count fit at size xs?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Give an Avatar that stands alone a name: alt that says who is in the photo, or name. An Avatar with no alt
+          (or alt=""), no name and no status is hidden from screen readers with aria-hidden.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+            role: WCAG 2.2 SC 1.1.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Keep the Avatar itself out of the Tab order (no tabIndex). It has no focused or disabled state. IF it opens
+          something THEN wrap it in a link or button, and that wrapper takes the focus ring and the disabled state.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+            role: WCAG 2.2 SC 2.1.1 (A)
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Pass countLabel with a count, such as "อีก 9 คน". Without it a screen reader reads the visible "9+".
+          AvatarGroup sets it for the count it makes.
+        checkedBy: manual
+      - level: may
+        statement: Pass statusLabel to change the status text screen readers read. The defaults are ออนไลน์ and ออฟไลน์.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the online dot (green) and the offline dot (gray) differ only by color on screen. Avatar.tsx adds screen-reader text, but shared-a11y#color-not-only says a status also needs text or an icon, and docs/research/avatar-component.md section 16.4 warns that a 6px dot can't be told apart by color-blind users. Must a visible text or a different shape go with the dot?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF a name in Thai starts with a leading vowel (เ แ โ ใ ไ) THEN pass initials yourself. The code takes the first
+          character of each of the first 2 words, so เกรียงศักดิ์ would show เ alone.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: there is no rule for Thai initials. Avatar.tsx says to pass initials yourself for every Thai name, docs/11-avatar.md section 5 says the rule must be decided before avatar-monogram is used widely with Thai names, Avatar.stories.tsx (GoodAndBad, Do) passes name="สมชาย ใจดี" and lets the code make the initials, and docs/research/avatar-component.md section 16.5 (draft) proposes the person icon for Thai names until a rule is tested. Which one applies, and what initials does a Thai name get?
+      - level: must
+        statement: >-
+          IF the person is an option in a Dropdown THEN set avatarSrc and avatarName on the option instead of placing an
+          Avatar. Dropdown uses Avatar xs at size md and sm at size lg, and size sm has no avatar.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF your own layout needs the size of an avatar THEN use --ntg-avatar-size-<size>, never --ntg-button-size-<size>.
+          The values match today, but the two formulas were split on purpose on 2026-08-27.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the Avatar sits in a dense list row or a table row THEN use size xs. IF it sits in a general list THEN use sm.
+          IF it sits in a card or a navigation bar THEN use md. IF it is on a small profile THEN use lg.
+          IF it is the main picture of a profile page THEN use xl.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    # docs/11-avatar.md section 4.5 and the Figma Avatar Space frame list the CSS names with a space- prefix
+    # (ntg-space-avatar-size-* and so on). The build emits them without it, as --ntg-avatar-size-<size> and so on
+    items:
+      - term: Type
+        definition: >-
+          Avatar has no type prop. It sets data-variant from the props, in this order: image when src is set, number when
+          count is set, monogram when initials or name is set, else icon. Each type is one Figma set (avatar-image,
+          avatar-number, avatar-monogram, avatar-icon), and all four share the same sizes, ring and status dot.
+      - term: Box
+        definition: >-
+          The circle. Width and height are both --ntg-avatar-size-<size> (24, 32, 40, 48, 56), the size the photo really
+          shows. Corner radius is --ntg-avatar-radius-full at every size. It has no padding. Fill is
+          --ntg-color-background-general-primary for a photo and --ntg-color-background-brand-primary-alt for the icon,
+          initials and count, with --ntg-color-background-brand-primary-alt-hover on hover when interactive is set.
+      - term: Ring
+        definition: >-
+          Always drawn, outside the box so it doesn't shrink the photo. Width is --ntg-avatar-ring (2px) in Figma.
+          Color is --ntg-color-border-general-tertiary, and --ntg-color-border-brand-solid on hover when interactive is set.
+          In a group, this ring is what separates the overlapping avatars.
+      # NEEDS CLARIFICATION: Figma binds the ring width to avatar/ring and the dot ring to avatar/indicator-ring, but the generated Avatar.module.css writes 2px and 1px instead of var(--ntg-avatar-ring) and var(--ntg-avatar-indicator-ring). Should scripts/generate-component-css.mjs emit the tokens?
+      # NEEDS CLARIFICATION: in Figma avatar-image with online-indicator=true and state=hover keeps the ring at color/border/general/tertiary (and the generated CSS copies it), while avatar-icon, avatar-monogram and avatar-number turn the ring to color/border/brand/solid on hover with the dot on. Is the avatar-image variant a mistake?
+      - term: Photo
+        definition: >-
+          The image type. An img that fills the box and is cropped to cover it. Its alt is alt, or name when alt is left
+          out.
+      - term: Person icon
+        definition: >-
+          The icon type. Icon person from Nation UI Icons (Figma account-&-auth/person), size --ntg-avatar-icon-<size>
+          (16, 20, 24, 28, 32), centered. The space around it (4, 6, 8, 10, 12) is the result of centering, not padding.
+          Color is --ntg-icon-brand-primary, and --ntg-icon-brand-primary-hover on hover when interactive is set.
+      - term: Initials
+        definition: >-
+          The monogram type. initials, or the first letter of the first 2 words of name in capitals, hidden from screen
+          readers. Text style is title/xs at size xs, section-heading/xs at sm, section-heading/sm at md,
+          section-heading/lg at lg and section-heading/xl at xl. Color is --ntg-color-text-brand-primary, and
+          --ntg-color-text-brand-primary-hover on hover when interactive is set. Figma property text-value.
+      - term: Count
+        definition: >-
+          The number type. count followed by +. Text style is meta/micro at size xs, title/xs at sm, title/sm at md,
+          section-heading/xs at lg and section-heading/sm at xl. Colors are the same as the initials. Figma property text-value.
+      - term: Status dot
+        definition: >-
+          Shown when status is set. A circle on the bottom right corner, size --ntg-avatar-indicator-<size>
+          (6, 8, 10, 12, 14), with a ring of --ntg-avatar-indicator-ring (1px) in --ntg-color-border-general-tertiary drawn
+          outside it. Fill is --ntg-color-foreground-system-success-primary for online and
+          --ntg-color-foreground-general-disable-subtle for offline. Figma set _avatar-online-indicator. Hidden from screen
+          readers, which read the status text instead.
+      # NEEDS CLARIFICATION: the Figma avatar sets have only online-indicator true or false, which is the green dot. The gray dot exists only as _avatar-online-indicator online=false, while Avatar.tsx and Avatar.stories.tsx offer status offline. Is offline a supported state, and should the avatar sets get it?
+      - term: Screen-reader text
+        definition: >-
+          Text hidden on screen. For the icon and initials it is alt or name, for the count it is countLabel, and for the
+          status dot it is statusLabel or the default ออนไลน์ or ออฟไลน์.
+
+uses:
+  - to: icon
+
+alternatives:
+  - to: avatar-label
+  - to: avatar-group
+
+refs:
+  - href: ../../components/Avatar/Avatar.tsx
+    rel: source
+    role: Import Avatar from components/Avatar
+  - href: ../../components/Avatar/Avatar.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/11-avatar.md
+    rel: relates-to
+    role: Thai page doc for Figma page 11 Avatar
+  - href: ../../docs/research/avatar-component.md
+    rel: relates-to
+    role: Research on 12 design systems (draft, its proposals are not decisions)
+  - href: ../../tokens/scale/avatar.mjs
+    rel: relates-to
+    role: Size formula for every avatar token
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7231
+    rel: design
+    role: Figma page 11 Avatar
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Box, icon and status dot size, and the text style of the initials and count. The first value is the default.
+    values:
+      - id: md
+        description: 40. Cards and navigation bars. The default.
+      - id: xs
+        description: 24. Dense list rows and table rows.
+      - id: sm
+        description: 32. General lists.
+      - id: lg
+        description: 48. Small profiles.
+      - id: xl
+        description: 56. The main picture of a profile page.
+  # status has no default in Avatar.tsx: leaving it out draws no dot. online is listed first only because it is first in the union
+  - traitType: variant
+    kind: enum
+    id: status
+    description: >-
+      The status dot. Optional with no default. Leave it out and no dot is drawn, which is the right choice whenever
+      the real status is unknown. Figma axis online-indicator.
+    values:
+      - id: online
+        description: Green dot. The person is online right now.
+      - id: offline
+        description: Gray dot. The system knows the person is offline. Not for an unknown status.
+  - traitType: variant
+    kind: boolean
+    id: interactive
+    description: >-
+      Turns on the Figma state hover (brand ring and a darker fill) when the pointer is over the Avatar. Default false.
+      For an Avatar inside a link or button only. It doesn't make the Avatar focusable or pressable.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "11 Avatar"
+    figmaSets: [avatar-image, avatar-icon, avatar-monogram, avatar-number]

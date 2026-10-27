@@ -1,0 +1,376 @@
+# Dropdown in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Dropdown/, docs/25-dropdowns.md, docs/rules/layer-scope.md, tokens/scale/dropdown.mjs,
+# tokens/figma-components.json and the Figma page 25 Dropdowns (frames 25 Dropdowns Documentation, Dropdown Usage,
+# Dropdown Accessibility, Dropdown Component Previews and Dropdown Base Components), read 2026-10-27
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: dropdown
+name: Dropdown
+description: >-
+  A field that opens a panel of options so the user picks one value. It matches the Figma sets dropdown (the field)
+  and dropdown-menu (the panel) on page 25 Dropdowns, whose rows are the internal sets _dropdown-option and
+  _dropdown-group-header. In code it is one component, and the panel opens when the field is pressed.
+  It exists so a Dropdown and a TextField in the same form share height, padding and radius at every size,
+  and so option rows can carry an icon, an avatar, supporting text or a group header, which the native select can't.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [form]
+  status: {status: beta}
+  aliases: [dropdown-menu, _dropdown-option, _dropdown-group-header, List Item / Dropdown, List Item / Dropdown&Check]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: must
+        statement: >-
+          For a plain form choice where no option needs an icon, an avatar, supporting text or a group header,
+          use the browser's native select element. It brings each device's own behavior, including the bottom sheet on mobile.
+        checkedBy: manual
+      # Answers the earlier question on exactly 5 options: the Dropdown Usage table in Figma gives 2 to 4 options to Radio
+      # and 5 to about 15 to Dropdown, the same as docs/25-dropdowns.md section 2. The GoodAndBad story still says more than 5
+      - level: should
+        statement: Use to pick exactly one value from a list of 5 to 15 options.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Use Dropdown for 2 to 4 options when a radio group fits the space. Use the radio group, or Toggle for an on and
+          off choice.
+        alternatives:
+          - to: radio-group
+          - to: toggle
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Use Dropdown for more than 15 options, or for options loaded from the server. Long lists need a field with
+          type-to-filter, which the system doesn't have yet.
+        checkedBy: manual
+      - level: should-not
+        statement: Use Dropdown to pick a date. A date picker shows what a date means better than a list, and the system doesn't have one yet.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Use Dropdown as a command menu whose items run an action and keep no value. A Dropdown remembers the value picked,
+          and a command menu doesn't exist in the system yet.
+        checkedBy: manual
+      - level: should-not
+        statement: Use Dropdown rows as a settings list with switches. The panel closes after one pick, and a switch must stay on screen to be pressed again.
+        alternatives:
+          - to: toggle
+          - to: checkbox
+        checkedBy: manual
+      - level: must-not
+        statement: Use Dropdown to pick more than one value. Code has no multi-select, even though the Figma row _dropdown-option has a show-checkbox toggle.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: until the type-to-filter field, multi-select and a date picker exist, what must a screen use for more than 15 options, to pick several values, or to pick a date? The Dropdown Usage table in Figma only says they are not in the system yet and must be raised before use.
+      # NEEDS CLARIFICATION: the 25 Dropdowns Documentation frame says dropdown-menu can be used alone as a menu, but the Dropdown Usage table says a command menu is not in the system yet, and code has no standalone panel. What must code use for a menu that isn't attached to a field?
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Hover, focused and open come from CSS pseudo-classes and the component's own state. disabled, error and readOnly are props. Don't pass a state prop or add state classes.
+        checkedBy: manual
+      - level: must
+        statement: Give every option a value that no other option in the same options list has.
+        checkedBy: manual
+      - level: must
+        statement: Give either every option in one list a leadingIcon or none of them. When only some rows have one, the labels don't line up.
+        checkedBy: manual
+      - level: must
+        statement: Place options that share a group next to each other in the options array. Options of one group that are split apart show that group header twice.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Change the height, padding, gap, icon size or radius only in tokens/scale/input.mjs, never in tokens/scale/dropdown.mjs.
+          Dropdown borrows all five from TextField, and npm run tokens:build stops if only one side changes.
+        checkedBy: manual
+      - level: should
+        statement: Write the placeholder as a verb phrase that says what to do, such as เลือกจังหวัด (choose a province).
+        checkedBy: manual
+      - level: should-not
+        statement: Preselect an option the user has not chosen with value or defaultValue. The form would send a value the user didn't pick.
+        checkedBy: manual
+      - level: must-not
+        statement: Set a fixed width on the field or the panel. Both stretch to the full width of the parent, and the parent limits the width.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Draw your own option rows, or your own scrollbar in the panel. Rows come from the options prop
+          (in Figma, _dropdown-option at the same size as the field), and the panel scrolls with the browser scrollbar.
+        checkedBy: manual
+      - level: must-not
+        statement: Put a text input inside the field, or change Dropdown to add filtering or multi-select. A field you can type in is a different component.
+        checkedBy: manual
+      - level: must-not
+        statement: Use a group name in place of the field label. A group header names a set of options, not the field, and can't be picked.
+        checkedBy: manual
+      - level: must-not
+        statement: Give options an avatar (avatarSrc or avatarName) at size sm. sm has no avatar size, so the avatar is not shown and a console warning appears in development.
+        checkedBy: manual
+      - level: must-not
+        statement: Mark an option with a colored dot. No component in the system draws one, and color alone can't carry meaning. Use leadingIcon or an avatar instead.
+        checkedBy: manual
+      - level: must-not
+        statement: Add a variant or prop for the number of options. The number of options is data, not shape.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the panel renders inside the field wrapper with no portal, so a parent with overflow hidden clips it. docs/25-dropdowns.md (common problems) and the Dropdown Accessibility frame in Figma say to move the panel out of the clipping container and wire it back to the field, but Dropdown has no way to do that. May a Dropdown sit inside a clipping container such as a Table cell, and if so how must the panel escape it?
+      # NEEDS CLARIFICATION: the Dropdown Accessibility frame in Figma leaves flipping the panel at the edge of the screen to code, but Dropdown always opens the panel downward. Must the panel flip up when there is no room below?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          The field has role combobox with aria-haspopup listbox, and aria-expanded is true only while the panel is open.
+          The panel has role listbox, and each row has role option with aria-selected.
+          Focus stays on the field, and the active row is announced with aria-activedescendant.
+          A group header names its group (role group) and is not an option.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Keyboard works as follows. Tab moves focus in and out and closes the panel. Enter or Space opens the panel and picks the active row.
+          Arrow Down and Arrow Up open the panel and move between enabled rows without wrapping, and Alt with Arrow Up closes it.
+          While the panel is open, Home and End jump to the first and last enabled row. Escape closes the panel without
+          changing the value and returns focus to the field. Typing letters moves to the first enabled option whose label
+          starts with them, and picks it when the panel is closed.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+            role: WCAG 2.2 SC 2.1.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Give every Dropdown a name that screen readers read. The chevron is not a name. The label prop gives the name
+          through aria-labelledby.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      # Narrowed from the earlier question "must every Dropdown have a visible label", which the rule above now answers in part
+      # NEEDS CLARIFICATION: the Dropdown Accessibility frame in Figma allows a field with no visible label if it has a label screen readers read, but label is the only way DropdownProps names the field, and an aria-label passed to Dropdown lands on the root div, not on the field. How must a Dropdown with no visible label be named in code?
+      - level: must
+        statement: When error is true, also pass a hint that says what is wrong. Red alone is not enough. The hint is tied to the field with aria-describedby.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html
+            role: WCAG 2.2 SC 3.3.1 (A)
+        checkedBy: manual
+      - level: must-not
+        statement: Use size sm as the main tap target on mobile. sm (32) and md (40) pass the 24 minimum but not the stricter 44. lg (48) passes both.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+            role: WCAG 2.2 SC 2.5.8 (AA)
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html
+            role: WCAG 2.2 SC 2.5.5 (AAA)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Dropdown Accessibility frame in Figma says leading icons and avatars are hidden from screen readers because they repeat the label, but Dropdown passes avatarName to Avatar, which gives the photo that alt text or announces the name, so screen readers read the name a second time. Must the leading avatar be hidden?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF a Dropdown sits beside a TextField in the same form THEN give both the same size.
+        checkedBy: assisted
+      - level: should
+        statement: IF the form is for mobile THEN use size lg. IF the Dropdown sits in a dense panel or a table row THEN use size sm. ELSE use size md.
+        checkedBy: assisted
+      - level: should
+        statement: IF the options are people THEN set avatarName on each option, plus avatarSrc when there is a photo, and use size md or lg.
+        checkedBy: assisted
+      - level: should
+        statement: IF the options are kinds such as file types or contact channels THEN set leadingIcon on every option.
+        checkedBy: assisted
+      - level: should
+        statement: IF the label alone doesn't tell options apart, such as two people with the same name in different departments, THEN add supportingText.
+        checkedBy: assisted
+      - level: should
+        statement: IF a long list splits into clear categories THEN set group on each option.
+        checkedBy: assisted
+      - level: should
+        statement: IF the value must be sent with a native form submit THEN set name, which adds one hidden input.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Label
+        definition: >-
+          The label prop, above the field, with --ntg-input-stack-gap between label, field and hint. It names the field for
+          screen readers through aria-labelledby. Text style body/sm, color --ntg-color-text-general-section-heading in every
+          state. With required, a * in --ntg-color-system-error follows it, --ntg-input-label-gap away, hidden from screen readers.
+      - term: Field
+        definition: >-
+          The button that opens and closes the panel, Figma set dropdown with 9 states. Height is --ntg-dropdown-height-<size>,
+          side padding is --ntg-dropdown-padding-x-<size> (no top or bottom padding, the height sets it),
+          space between icon, text and chevron is --ntg-dropdown-gap-<size>, icon size is --ntg-dropdown-icon-<size>
+          and corner radius is --ntg-dropdown-radius-<size>. All five come from TextField. Text style is body/sm, body/md or
+          body/lg for sm, md and lg.
+      - term: Field states
+        definition: >-
+          The same colors and effects as the TextField box. Fill --ntg-color-background-general-primary, on hover
+          --ntg-color-background-general-primary-hover, read-only --ntg-color-background-general-secondary, disabled
+          --ntg-color-background-general-disabled-subtle. Border --ntg-color-border-general-primary, hover
+          --ntg-color-border-general-primary-hover, focused and open --ntg-color-border-brand-solid, read-only
+          --ntg-color-border-general-secondary, disabled --ntg-color-border-general-disabled-subtle, error --ntg-color-system-error,
+          error-hover --ntg-color-system-error-hover, error-focused --ntg-color-border-system-error-solid. Hover and error-hover
+          add --ntg-shadows-bottom-xs, focused and open add --ntg-focused-ring-brand, error-focused adds --ntg-focused-ring-error.
+      - term: Value and placeholder
+        definition: >-
+          The selected option's label, with its leadingIcon before it when it has one. With no value, the placeholder shows
+          in --ntg-color-text-general-placeholder, or --ntg-color-text-general-placeholder-subtle when disabled. The value
+          turns --ntg-color-text-general-heading on hover, focus and open. The default placeholder is เลือก.
+      - term: Chevron
+        definition: >-
+          The Nation UI Icons chevron-down at the end of the field, in the placeholder color at rest,
+          --ntg-color-text-general-heading on hover, focus and open, and --ntg-color-text-general-placeholder-subtle when
+          disabled. It turns up while the panel is open (Figma swaps in chevron-up, code rotates it with
+          --ntg-motion-duration-fast and --ntg-motion-easing-enter), which is why Figma keeps open as a state separate from focused.
+      - term: Panel
+        definition: >-
+          The listbox under the field, Figma set dropdown-menu. Fill --ntg-color-background-general-primary, a 1 wide border in
+          --ntg-color-border-general-primary, shadow --ntg-shadows-bottom-md. Gap from the field is --ntg-dropdown-panel-offset-<size>,
+          top and bottom padding is --ntg-dropdown-panel-padding-y-<size>, corner radius is --ntg-dropdown-radius-<size>.
+          Max height is --ntg-dropdown-panel-max-height-<size>, or
+          --ntg-dropdown-panel-max-height-supporting-<size> for the whole panel when any option has supportingText.
+          The max height is row height times 5.5 plus padding, so half of the sixth row shows as a sign that the list scrolls.
+          The panel always opens downward, and pressing outside it closes it.
+          In Figma, show it by setting the field to state open and placing dropdown-menu of the same size under it.
+      - term: Option row
+        definition: >-
+          One option, Figma set _dropdown-option at the same size as the field. Height equals --ntg-dropdown-row-height-<size>,
+          the field height, or --ntg-dropdown-row-height-supporting-<size> with supporting text, made of
+          --ntg-dropdown-row-padding-y-<size> above and below the text. Side padding and gap are the field's. Label text is
+          body/sm, body/md or body/lg for sm, md and lg, in --ntg-color-text-general-text, or --ntg-color-text-general-disabled
+          when the option is disabled. Figma states are default, hover, focused, selected, selected-hover and disabled.
+          Hover fill is --ntg-color-background-general-primary-hover. The keyboard's active row gets --ntg-focused-ring-default
+          drawn inside the row. Mouse hover doesn't move the keyboard pointer, so the hover fill and the keyboard ring are separate signals.
+      - term: Selected row
+        definition: >-
+          Fill --ntg-color-background-brand-primary-alt, or --ntg-color-background-brand-primary-alt-hover on hover and while
+          active, with the label in --ntg-color-text-brand-primary. A check icon in the same color sits at the end of the row
+          (Nation UI Icons check, status-&-feedback/check in Figma), so selected is not shown by background color alone.
+      - term: Leading icon
+        definition: >-
+          Optional, set with leadingIcon on the option. A name from Nation UI Icons only, size --ntg-dropdown-icon-<size>,
+          color --ntg-icon-general-quaternary. Figma toggle show-leading-icon, default account-&-auth/person.
+      - term: Leading avatar
+        definition: >-
+          Optional, set with avatarSrc and avatarName on the option. It is the Avatar component, Avatar xs at size md and Avatar sm at size lg,
+          matching --ntg-dropdown-leading-avatar-md and --ntg-dropdown-leading-avatar-lg. Size sm has no avatar.
+          avatarName gives the initials when there is no photo. Figma toggle show-leading-avatar.
+      - term: Supporting text
+        definition: >-
+          Optional, set with supportingText on the option. A second line under the label, one text step smaller
+          (body/xs, body/sm or body/md for sm, md and lg), in --ntg-color-text-general-supporting-text. Figma toggle show-supporting-text.
+      - term: Group header
+        definition: >-
+          Set with group on the option. Options with the same group get one header, Figma set _dropdown-group-header,
+          and the group has role group named by the header. The header can't be picked, and the arrow keys skip it.
+          Color --ntg-color-text-general-label, with the row's padding. In Figma its height is
+          --ntg-dropdown-group-header-height-<size> (30, 38, 46) and its text style is label/sm, label/md or label/lg.
+          In Figma the dropdown-menu toggle show-group-header turns on the header and the Horizontal divider from page 28 together.
+          Code has no such toggle, the header comes from the options.
+        # NEEDS CLARIFICATION: Figma (show-group-header) and the RichOptions story say a group gets a header and a divider, but the code draws no divider between groups, and the generated Dropdown.module.css sets no text style for the header, so it doesn't get label/sm, label/md or label/lg. Must the code draw the divider and the header text style?
+      - term: Checkbox
+        definition: Figma only. The _dropdown-option toggle show-checkbox puts a Checkbox from page 15 in the row for multi-select. Code doesn't support it yet.
+      - term: Hint
+        definition: >-
+          The hint prop, under the field, tied to it with aria-describedby. Text style body/sm, color
+          --ntg-color-text-general-text, or --ntg-color-text-system-error when error is true.
+      - term: Empty message
+        definition: emptyText, shown in the panel when options is empty, with the row's padding in the supporting text color. The default is ไม่มีรายการ.
+      - term: Hidden input
+        definition: When name is set, one hidden input carries the selected value for form submission.
+      - term: Old List Item rows
+        definition: >-
+          The Figma sets List Item / Dropdown and List Item / Dropdown&Check from the old Lists page are gone.
+          Their leading icon, leading avatar, supporting text and checkbox became toggles on _dropdown-option,
+          and the group header and divider moved into the panel.
+
+uses:
+  - to: icon
+  - to: avatar
+
+alternatives:
+  - to: radio-group
+  - to: toggle
+
+refs:
+  - href: ../../components/Dropdown/Dropdown.tsx
+    rel: source
+    role: Import Dropdown from components/Dropdown
+  - href: ../../components/Dropdown/Dropdown.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/25-dropdowns.md
+    rel: relates-to
+    role: Thai page doc for Figma page 25 Dropdowns
+  - href: ../../docs/rules/layer-scope.md
+    rel: relates-to
+    role: Thai rule doc, section 5.1 says why the Lists page was folded into page 25
+  - href: ../../tokens/scale/dropdown.mjs
+    rel: relates-to
+    role: Size formula for the panel, rows, group header and avatar, with the checks against tokens/scale/input.mjs
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7125-911
+    rel: design
+    role: Figma page 25 Dropdowns
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Height, padding, gap, icon size and radius, the same as TextField. Rows in the panel follow it. Figma axis size. There is no xs or xl.
+    values:
+      - id: md
+        description: 40 high. The default. For most forms.
+      - id: sm
+        description: 32 high. For dense panels and table rows. Has no avatar.
+      - id: lg
+        description: 48 high. For forms on mobile.
+  - traitType: variant
+    kind: boolean
+    id: required
+    description: Adds a * after the label, hidden from screen readers, and sets aria-required on the field. Not a Figma axis. Default false.
+  - traitType: state
+    kind: boolean
+    id: open
+    description: >-
+      The panel is showing. The component sets it on click or keyboard, it is not a prop. Figma state open.
+      aria-expanded is true and the chevron turns up. Separate from focused, because a focused field can be closed.
+  - traitType: state
+    kind: boolean
+    id: error
+    description: The error prop. Figma states error, error-hover and error-focused. Sets aria-invalid and turns the hint red. Default false.
+  - traitType: state
+    kind: boolean
+    id: readOnly
+    description: The readOnly prop, Figma state read-only. The field stays in the Tab order and takes focus, but the panel can't open. Sets aria-readonly. Default false.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: The native disabled attribute on the field. Figma state disabled. The field leaves the Tab order and the panel can't open. Default false.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "25 Dropdowns"
+    figmaSets: [dropdown, dropdown-menu]

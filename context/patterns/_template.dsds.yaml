@@ -1,0 +1,66 @@
+# Pattern template in DSDS 0.23 format (a pattern is kind: entry)
+# Copy this file to <pattern-id>.dsds.yaml and replace every value in < >
+# Every pattern should link to at least one page that gets it right (rel: demo)
+# Anything the team hasn't decided: write a comment line "# NEEDS CLARIFICATION: <question>". Don't guess
+#
+# To draft one with AI: pick 3 to 5 screens that look alike, ask the AI to find what they all share
+# (components, tokens, spacing, radius) and draft this file. Rules every screen follows become must,
+# rules most screens follow become should, and differences become NEEDS CLARIFICATION.
+
+kind: entry
+id: my-pattern
+name: <pattern name>
+description: >-
+  <what this page or section is>. It exists to <prevent which problem, or give the user what>.
+
+metadata:
+  owner: <owning team>
+  updated: {date: 2026-01-01}
+  tags: [pattern]
+  status: {status: beta}
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: must
+        statement: <when to use it>
+        checkedBy: manual
+      - level: should-not
+        statement: <when not to use it, and what to use instead>
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: <a checkable page rule>
+        checkedBy: manual
+
+  # Edge cases written as IF / THEN for AI
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF <edge case> THEN <do this>
+        checkedBy: assisted
+
+  # Parts of the page, top to bottom
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: <part 1>
+        definition: <which component it uses, which grid columns it spans, and what it does>
+
+uses:
+  - to: <id of a component it uses>
+
+refs:
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=<node-id>
+    rel: design
+    role: Figma example
+  - href: <path to a page that gets it right>
+    rel: demo
+    role: Correct example

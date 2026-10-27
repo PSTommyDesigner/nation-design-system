@@ -1,0 +1,182 @@
+# NationHouseIcon in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/NationHouseIcon/, docs/02-icons.md and Figma page 02 Icon
+# (frame Nation House Icons (document) and the 02 Icon Documentation frame, read 2026-10-27)
+# Every icon name is listed under Nation House Icons in context/icons/icon-names.md (generated from components/NationHouseIcon/icons.ts)
+# The interface icon set has its own spec: context/icons/icon.dsds.yaml
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: nation-house-icon
+name: NationHouseIcon
+description: >-
+  One icon from the Nation House brand set: 150 icons on a 40dp grid, each with a line layer that follows currentColor
+  and a solid brand color layer that is off until filled is set. Figma page 02 Icon, frame Nation House Icons (document),
+  components named nation-house/<name>. It exists so the menus and home pages of internal systems show the same brand icons
+  as Figma, with the same two layers, from one registry in code.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [visual, icon]
+  status: {status: beta}
+  aliases: [Nation House Icons]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use in the menus and home pages of internal systems, such as Nation House and HRM, where the icon is a focal point
+          shown at 40px or larger.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use NationHouseIcon in place of Icon in buttons, fields or tables of general screens. This set is too detailed
+          for 16 to 24px.
+        alternatives:
+          - to: icon
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Mix NationHouseIcon and Icon in the same row of UI. The two sets are drawn differently (lines on a 40 grid against
+          one filled path on a 24 grid) and can't stand in for each other.
+        alternatives:
+          - to: icon
+        checkedBy: manual
+      # NEEDS CLARIFICATION: is NationHouseIcon for new work? NationHouseIcon.stories.tsx presents it as the set for internal system menus, but the Figma 02 Icon Documentation frame calls the House set an old set kept for reference (still in use, not deleted) and Nation UI Icons the main set
+      # NEEDS CLARIFICATION: which internal systems may use it? NationHouseIcon.stories.tsx names Nation House and HRM only. May AMS or Nation News Center screens use it too?
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Use only names listed under Nation House Icons in context/icons/icon-names.md, through NationHouseIcon from
+          components/NationHouseIcon. A name from Nation UI Icons that isn't in that list, such as wallet, does not exist here.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set the line color only through currentColor: set color on the icon or its parent with an --ntg-icon-* token.
+          Figma binds the line to icon/general/primary (--ntg-icon-general-primary).
+        checkedBy: manual
+      - level: should
+        statement: Show the icon at 40px, the native size of its grid and the default of size.
+        checkedBy: manual
+      - level: should
+        statement: Turn on filled only for the selected item or the one focal point of the page.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Filled story in NationHouseIcon.stories.tsx says not to turn filled on for every icon at once, but the Do example in the same file shows two menu icons (leave and time-attendance) both filled. How many filled icons may one menu show?
+      # NEEDS CLARIFICATION: size takes a number or any CSS length and has no token, and every example passes typed numbers (24, 32, 40, 48, 64), while AGENTS.md forbids typed px for size. Should callers pass a --ntg-size-icon-* token, such as var(--ntg-size-icon-2xl) for 40?
+      - level: should-not
+        statement: Show the icon smaller than 24px. Below that the details of the solid layer start to disappear.
+        checkedBy: manual
+      - level: must-not
+        statement: Color the solid layer yourself. It is always --ntg-icon-brand-primary, as bound in Figma.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Edit components/NationHouseIcon/icons.ts or svg/ by hand, or regenerate them with the Figma SVG export.
+          They are generated from each layer's vectorNetwork through the Figma REST API, which keeps strokes as strokes.
+          The Figma export turns every stroke into a filled outline, about 150 KB per icon, with a raw hex color.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF no Nation House icon in icon-names.md has the meaning you need THEN tell the Design System team which icon is missing.
+          Don't draw one, take one from another set, or swap in a look-alike.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the icon is a menu or home page icon of an internal system, such as Nation House or HRM, shown at 40px or larger
+          THEN use NationHouseIcon ELSE use Icon.
+        checkedBy: assisted
+      - level: should
+        statement: IF the icon marks the selected menu item or the one focal point of the page THEN set filled ELSE leave filled off.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: SVG
+        definition: >-
+          An svg element whose width and height are both the size value (default 40), with viewBox 0 0 40 40 (NATION_HOUSE_VIEWBOX)
+          and fill none. Other SVG props pass through to it.
+      - term: Line layer
+        definition: >-
+          Always drawn. Paths stroked with currentColor at stroke width 1 on the 40 grid, so the line gets thinner as the icon
+          gets smaller. In Figma this is the layer stroke, bound to icon/general/primary (--ntg-icon-general-primary).
+      # In Figma 2 of the 150 line layers bind other variables: cursor uses color/border/general/solid and create-tv-programe uses color/text/general/heading
+      - term: Solid layer
+        definition: >-
+          Drawn under the line layer only when filled is true, filled with --ntg-icon-brand-primary. In Figma this is the layer
+          primary-vector (icon/brand/primary), hidden on all 150 components and turned on per instance with the boolean
+          property primary-vector.
+      - term: Size
+        definition: >-
+          size takes a number or any CSS length and defaults to 40, the native grid. It has no token and no named sizes,
+          unlike Icon.
+      - term: Accessible name
+        definition: >-
+          With title the svg gets role img, aria-label and a title element. Without title it gets aria-hidden true and
+          focusable false, so screen readers skip it.
+      - term: Unknown name
+        definition: A name that isn't in the set draws nothing, and outside production NationHouseIcon warns in the console.
+      - term: Names shared with Icon
+        definition: >-
+          Some names, such as home, search, calendar and warning, exist in both sets as different drawings.
+          The component you import decides which one you get.
+
+alternatives:
+  - to: icon
+
+refs:
+  - href: ../../components/NationHouseIcon/NationHouseIcon.tsx
+    rel: source
+    role: Import NationHouseIcon from components/NationHouseIcon
+  - href: ../../components/NationHouseIcon/README.md
+    rel: relates-to
+    role: README with the two layers and how the set is kept in sync
+  - href: ../../components/NationHouseIcon/NationHouseIcon.stories.tsx
+    rel: demo
+    role: Storybook stories with the searchable gallery (npm run storybook)
+  - href: ../icons/icon-names.md
+    rel: relates-to
+    role: Every Nation House icon name (generated)
+  - href: ../../docs/02-icons.md
+    rel: relates-to
+    role: Thai page doc for Figma page 02 Icon
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=502-2747
+    rel: design
+    role: Figma page 02 Icon
+
+traits:
+  - traitType: variant
+    kind: boolean
+    id: filled
+    description: >-
+      Draws the solid brand color layer under the line. Default false. Matches the Figma boolean property primary-vector,
+      which is off on all 150 components.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "02 Icon"
+    figmaFrame: Nation House Icons (document)

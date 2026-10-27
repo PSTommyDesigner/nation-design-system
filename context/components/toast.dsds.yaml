@@ -1,0 +1,425 @@
+# Toast in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Toast/, docs/19-toasts-banners.md, tokens/scale/toast.mjs, tokens/figma-components.json
+# and Figma page 19 Toasts & Banners (set toast and the Toast Information frame, read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: toast
+name: Toast
+description: >-
+  A floating message over the content that reports the result of something that just happened,
+  then goes away by itself. Type error is the exception and stays until the user closes it.
+  It matches the Figma set toast on page 19 Toasts & Banners. In an app it is shown through ToastStack,
+  which places the toasts, stacks up to 3 and announces them to screen readers.
+  It exists so every screen tells users what just happened with the same colors, sizes, icons,
+  timing and screen reader announcement.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [feedback]
+  status: {status: beta}
+  aliases: [toast]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use to report the result of an action the user just took, when that matter is finished and the user has nothing left to do, such as an article that was just saved.
+        checkedBy: manual
+      - level: should
+        statement: Use type error to report that an action failed, such as a failed upload. Type error stays until the user closes it.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Toast for a state that is still ongoing, such as maintenance planned for tonight,
+          or for anything the user must still see after coming back to the page. Once a toast is gone the user can't get it back.
+        alternatives:
+          - to: banner
+        checkedBy: manual
+      - level: must-not
+        statement: Use Toast for the error summary of a form on submit. That summary must be able to take focus and must stay until the user has fixed the fields, and a toast never takes focus.
+        alternatives:
+          - to: banner
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Toast for an error the user must fix in a form field, such as an email address in the wrong format.
+          Show it at the field with the TextField error and hint props, or in a Banner.
+        alternatives:
+          - to: banner
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put a decision the user must make into a toast, such as a question to confirm or cancel.
+          A toast is not a dialog, and a message that goes away by itself can be gone before the user decides.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Choose type by meaning, not by the color you want. default is a general message that is neither good nor bad,
+          brand draws attention to something such as a new feature, success says what the user asked for succeeded,
+          warning says nothing is broken yet but going on this way will cause a problem, and error says what the user
+          asked for did not succeed. Use error only for that case.
+        checkedBy: manual
+      - level: must
+        statement: Pass ToastStack items in order from oldest to newest, with the newest item last. ToastStack shows the end of the list, so a reversed list hides new toasts.
+        checkedBy: manual
+      - level: should
+        statement: In an app, show toasts through ToastStack. It sets the floating position, the stacking and the screen reader announcements.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Write title as what happened, such as บันทึกร่างเรียบร้อย, on one line when you can. Put why it happened
+          or what to do next in description.
+        checkedBy: manual
+      - level: may
+        statement: Render a single Toast without ToastStack in docs, in demo pages, or in a container that sets the position itself. Toast sets no position of its own.
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Override the auto-dismiss time with duration in milliseconds, or pass null to keep the toast until it is closed.
+          Left unset, it is 5000 ms, 10000 ms when the toast has an action, and never for type error.
+        checkedBy: manual
+      - level: should-not
+        statement: Set showIcon to false. The icon is what tells the types apart without relying on color.
+        checkedBy: manual
+      - level: should-not
+        statement: Pass leaving yourself. ToastStack sets it while the exit animation plays.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Set ToastStack max above 3. 3 is the decided number (TOAST_STACK_MAX), and Figma page 19 says not to stack
+          toasts until they cover the content.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put more than one action in a toast, or build the action from anything other than the action prop.
+          The action prop renders one LinkButton family neutral under the text for every type, matching the link-button instances on Figma page 19.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: what may the action do? Toast.stories.tsx (do and don't) says only an undo that works at once, such as เลิกทำ, and never a move to another page. The Figma Toast Information frame calls it a shortcut to do something related. Toast.tsx and components/Toast/README.md show a retry action (ลองอีกครั้ง) on an error toast
+      - level: must-not
+        statement: Use size xs on mobile. Size xs is only for dense settings panels on desktop.
+        checkedBy: manual
+      - level: must-not
+        statement: Set a fixed height on the toast. Height comes from the content, and a fixed height makes wrapped text overflow the box.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Cut title or description short with an ellipsis or a line clamp. Long text wraps onto more lines,
+          so the whole message can be read.
+        checkedBy: manual
+      - level: must-not
+        statement: Set toast spacing, width, radius or color with typed numbers in className or style. Every value comes from the toast tokens and the system tokens.
+        checkedBy: manual
+      - level: must-not
+        statement: Add a type info. It was ruled out on 2026-10-02 because its color would be too close to brand to tell apart.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make a solid fill or an outlined toast. Toast has one look, a light fill with dark gray text.
+          A solid fill with white text fails contrast at warning (3.06) and success (3.73), and outline borders reach only 1.29 to 1.94 against white.
+        checkedBy: manual
+      - level: must-not
+        statement: Give the toast box a disabled, hover or focused state. Only the buttons inside it have states.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Each new toast is announced through a hidden live region that is separate from the visible box,
+          polite for types default and brand and assertive for types error, warning and success. Toast and ToastStack do this already.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/status-messages
+            note: WCAG 4.1.3 Status Messages
+        checkedBy: manual
+      - level: must
+        statement: >-
+          The auto-dismiss timer stops while the pointer is over the toast, while focus is inside it,
+          and while prefers-reduced-motion is on, and then continues from the time left, not from the full time.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable
+            note: WCAG 2.2.1 Timing Adjustable
+        checkedBy: manual
+      - level: must
+        statement: The touch area of the close button is at least 44px, made larger with a pseudo element, not by growing the visible button.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
+            note: WCAG 2.5.5 Target Size (Enhanced)
+        checkedBy: manual
+      - level: must
+        statement: The type icon and the close button have at least 3:1 contrast against the toast fill in all 5 types.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
+            note: WCAG 1.4.11 Non-text Contrast
+        checkedBy: manual
+      - level: must-not
+        statement: Pass aria-live or role to Toast. A live region on the visible box makes screen readers read the message twice.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/status-messages
+            note: WCAG 4.1.3 Status Messages
+        checkedBy: manual
+      - level: must-not
+        statement: Move focus to a toast when it appears. It shows up without the user asking, and taking focus pulls a user who is typing away from their place.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/status-messages
+            note: WCAG 4.1.3 Status Messages
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make a type error toast close by itself, for example by passing a number to duration.
+          An error message is often the only place that information lives, so a timer on it fails WCAG 2.2.1 Level A.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable
+            note: WCAG 2.2.1 Timing Adjustable
+        checkedBy: manual
+      # NEEDS CLARIFICATION: should Escape close a toast, and if so one toast or the whole stack? And which shortcut, if any, jumps to the stack (F6, F8 or Alt+T)? Both are parked until checked against CMS shortcuts
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the message reports the result of an action the user just took and nothing is left to do THEN use Toast.
+          IF the matter is still ongoing or the user must still act THEN use Banner.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF what the user asked for did not succeed THEN use type error.
+          IF what the user asked for succeeded THEN use type success.
+          IF nothing is broken yet but going on this way will cause a problem THEN use type warning.
+          IF the toast draws attention to something, such as something new THEN use type brand.
+          ELSE use type default.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF you show a toast in an app THEN append the item with a new id, such as crypto.randomUUID(), to the end of the items
+          state passed to ToastStack, and in onDismiss remove the item with that id from that state.
+        checkedBy: assisted
+      - level: must
+        statement: IF title or description is not a plain string or number THEN pass announcement with the text to read. Outside production, Toast warns in the console when it has no text to announce.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the toast is one short line in a dense settings panel on desktop THEN use size xs.
+          IF the screen is an internal tool or a content management page with many items on screen THEN use size sm.
+          IF the page uses larger than normal text THEN use size lg.
+          IF the screen is a large display read from a distance, such as a newsroom screen THEN use size xl.
+          ELSE use size md, the default for news sites of every brand.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the same text can show twice in a row and must be announced both times THEN make announcement differ each time,
+          such as by adding a count. A live region does not announce the same text twice in a row.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Stack viewport
+        definition: >-
+          The outer box of ToastStack, fixed to the bottom right of the screen with an inset of --ntg-toast-padding-md
+          from the bottom and end edges. Clicks pass through it to the page, and only the toasts take clicks.
+          Its layer is --ntg-layer-notification (400), the highest layer in the system.
+          An app with a higher layer overrides it from an outer element with the component's own --ts-layer custom property, never by editing the component files.
+      # components/Toast/README.md names the override --toast-layer, but Toast.base.css and Toast.module.css read --ts-layer
+      # NEEDS CLARIFICATION: Figma page 19 (Toast Information), docs/19-toasts-banners.md section 4.9 and components/Toast/README.md say toasts sit at the bottom center on mobile, narrower than 768px (--ntg-grid-breakpoint-tablet-v), stretched to the screen width minus --ntg-toast-padding-<size> on each side. Toast.base.css and Toast.module.css have no @media rule today, so the stack stays at the bottom right at the desktop width on every screen. Is the mobile layout still wanted, and should the code add it back?
+      - term: Stack list
+        definition: >-
+          An ordered list (ol) named by the label prop, with --ntg-size-space-s1-lg between toasts. It shows the last
+          max items (default 3) as a list, not a card deck, and new toasts enter at the bottom. Each toast in it is an li.
+          When there are more items than max, the oldest are not drawn until a shown one is removed, but each item is
+          announced when it is added.
+      - term: Container
+        definition: >-
+          The toast box, a div on its own or an li in ToastStack. Padding is --ntg-toast-padding-<size> on all four sides,
+          corner radius is --ntg-toast-radius-<size>, shadow is --ntg-shadows-bottom-md.
+          Width is --ntg-toast-width-<size> (280 to 440px). Height comes from the content.
+          --ntg-toast-gap-<size> separates the icon, the text group and the close button, and --ntg-toast-text-width-<size> is the width left for the text group.
+      - term: Type colors
+        definition: >-
+          One look for every type, a light fill with dark gray text. Fill and icon color per type are
+          default --ntg-color-background-general-secondary and --ntg-icon-general-primary,
+          brand --ntg-color-background-brand-primary and --ntg-icon-brand-on-subtle,
+          error --ntg-color-background-system-error-primary and --ntg-icon-system-error-on-subtle,
+          warning --ntg-color-background-system-warning-primary and --ntg-icon-system-warning-on-subtle,
+          success --ntg-color-background-system-success-primary and --ntg-icon-system-success-on-subtle.
+      - term: Type icon
+        definition: >-
+          Shown when showIcon is true. Size is --ntg-toast-icon-<size> (20 to 28px), and its box is as tall as the first
+          title line so the icon centers on it. The default icon is info-circle for default and brand,
+          error-circle for error, warning for warning and check-circle for success. The icon prop swaps it for another icon name from the DS icon set and takes no custom element.
+      - term: Title
+        definition: >-
+          The required title prop, the first line. Color is --ntg-color-text-general-heading, medium weight.
+          Text style is label/sm for size xs, label/md for sm, label/lg for md, label/xl for lg and title/lg for xl.
+      - term: Description
+        definition: >-
+          Optional text under the title, shown when description is passed and showDescription isn't false (Figma property show-support).
+          Color is --ntg-color-text-general-text, regular weight.
+          Text style is body/xs for sizes xs and sm, body/sm for md, body/md for lg and body/lg for xl. The gap above it is --ntg-toast-stack-<size>.
+      - term: Action
+        definition: >-
+          One LinkButton family neutral at the toast size, built from the action prop (label, onClick and an optional icon shown as leftIcon).
+          It sits on its own row under the text, never on the row with the icon and close button. The gap above it is --ntg-toast-action-gap-<size>.
+          Shown when action is passed and showAction isn't false.
+      - term: Close button
+        definition: >-
+          A native button with the close icon from Nation UI Icons, at the same size as the type icon. Color is
+          --ntg-icon-general-quaternary in every type, as bound in Figma, and on hover it takes the type icon color.
+          Keyboard focus shows --ntg-focused-ring-default. It comes after the text group as its sibling, not inside it,
+          so screen readers read the message before the word close. Its accessible name is closeLabel, default ปิดข้อความแจ้ง.
+          Pressing it calls onClose. Shown when showClose is true.
+      # components/Toast/README.md still says the close icon uses --ntg-icon-general-secondary. Figma, the generated Toast.module.css and docs/19 section 4.7 use --ntg-icon-general-quaternary
+      - term: Live region
+        definition: >-
+          A hidden span with aria-live set by type and aria-atomic true, outside the visible content. It reads announcement,
+          or else the plain text of title and description joined by a space. A single Toast renders it when announce is true.
+          ToastStack instead has two of its own, one polite and one assertive, because switching aria-live on one region midway makes some screen readers skip that announcement.
+      - term: Motion
+        definition: >-
+          Enter uses --ntg-motion-duration-default (250ms) and --ntg-motion-easing-enter, sliding up 50 percent from below while fading in.
+          Exit uses --ntg-motion-duration-fast (150ms) and --ntg-motion-easing-exit, sliding down 15 percent while fading out.
+          With prefers-reduced-motion the timer stops and ToastStack removes a closed toast at once.
+      # NEEDS CLARIFICATION: components/Toast/README.md says prefers-reduced-motion turns all toast motion off, but Toast.base.css has no prefers-reduced-motion rule, so the enter and exit animations still play. Should the CSS turn them off?
+
+  - kind: definitions
+    for: all
+    title: Exports
+    items:
+      - term: ToastStack
+        definition: >-
+          The floating stack for app toasts. Props are items (required, oldest to newest), onDismiss(id) (required, called after the exit animation ends),
+          max (default 3), label (the list's screen reader name, default ข้อความแจ้งของระบบ) and className.
+          Each item takes the Toast props plus a required id, except as, announce, leaving and onClose, which ToastStack sets.
+      - term: TOAST_DURATION
+        definition: >-
+          The auto-dismiss times in milliseconds, default 5000 and withAction 10000. This is the only place they are set.
+          There is no token for them on purpose, because Figma variables have no place for time units.
+      - term: resolveToastDuration
+        definition: >-
+          resolveToastDuration(type, hasAction, override) returns override when one is passed, null for type error,
+          and otherwise TOAST_DURATION.withAction or TOAST_DURATION.default. null means the toast never closes by itself.
+      - term: TOAST_POLITENESS
+        definition: The aria-live value per type, polite for default and brand, assertive for error, warning and success.
+      - term: TOAST_MOTION
+        definition: >-
+          enterMs 250 and leaveMs 150, a copy of --ntg-motion-duration-default and --ntg-motion-duration-fast for JavaScript,
+          which ToastStack needs to wait for the exit animation. When either token changes, TOAST_MOTION must change with it.
+      - term: TOAST_STACK_MAX
+        definition: 3, the decided number of toasts shown in the stack at once and the default of max.
+      - term: toastAnnouncement
+        definition: Returns the text a toast announces, announcement when it is passed, otherwise the plain text of title and description joined by a space.
+
+uses:
+  - to: icon
+  - to: link-button
+
+alternatives:
+  - to: banner
+
+refs:
+  - href: ../../components/Toast/Toast.tsx
+    rel: source
+    role: Import Toast and ToastStack from components/Toast
+  - href: ../../components/Toast/README.md
+    rel: relates-to
+    role: Thai README with the props tables for Toast and ToastStack
+  - href: ../../components/Toast/Toast.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/19-toasts-banners.md
+    rel: relates-to
+    role: Thai page doc for Figma page 19 Toasts & Banners
+  - href: ../../tokens/scale/toast.mjs
+    rel: relates-to
+    role: Size formulas and the reason for every value
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7238
+    rel: design
+    role: Figma page 19 Toasts & Banners
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: type
+    description: The fill, the icon and its color, how the announcement interrupts, and for error the timing. Default default.
+    values:
+      - id: default
+        description: Gray fill, announced polite. A general message that is neither good nor bad. The default.
+      - id: brand
+        description: Brand color fill, announced polite. Draws attention to something, such as something new.
+      - id: error
+        description: Red fill. What the user asked for did not succeed. Announced assertive, and never closes by itself.
+      - id: warning
+        description: Yellow fill, announced assertive. Nothing is broken yet, but going on this way will cause a problem.
+      - id: success
+        description: Green fill, announced assertive. What the user asked for succeeded.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Padding, gap, radius, width, icon size, text styles and the action size. Default md.
+    values:
+      - id: md
+        description: 360 wide. The default. News sites of every brand.
+      - id: xs
+        description: 280 wide. One short line in a dense settings panel on desktop. Never on mobile.
+      - id: sm
+        description: 320 wide. Internal tools and content management pages with many items on screen.
+      - id: lg
+        description: 400 wide. Pages with larger than normal text.
+      - id: xl
+        description: 440 wide. Large screens read from a distance, such as newsroom screens.
+  - traitType: variant
+    kind: boolean
+    id: showIcon
+    description: Shows the type icon. Default true. Figma property show-icon.
+  - traitType: variant
+    kind: boolean
+    id: showDescription
+    description: Shows the description. By default it shows whenever description is passed. Figma property show-support.
+  - traitType: variant
+    kind: boolean
+    id: showAction
+    description: Shows the action. By default it shows whenever action is passed. Figma property show-action.
+  - traitType: variant
+    kind: boolean
+    id: showClose
+    description: Shows the close button. Default true. Figma property show-close.
+  - traitType: variant
+    kind: boolean
+    id: announce
+    description: Renders the toast's own live region. Default true. ToastStack sets it to false on every toast because the stack announces for all of them. Code only, not in Figma.
+  - traitType: state
+    kind: boolean
+    id: leaving
+    description: The exit animation is playing and the timer is stopped. ToastStack sets it. Code only, not in Figma.
+
+# NEEDS CLARIFICATION: may showClose be false on a type error toast? Error never closes by itself, so without the close button only the app can remove it
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "19 Toasts & Banners"
+    figmaSets: [toast]

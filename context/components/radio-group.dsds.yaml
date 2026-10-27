@@ -1,0 +1,184 @@
+# RadioGroup in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Radio/Radio.tsx, Radio.base.css, Radio.stories.tsx, docs/16-radio.md
+# and the Figma file page 16 Radio (the Radio Usage frame, read 2026-10-27). Figma has no set for the group
+# Rules about one option (label, sizes, look) live in radio.dsds.yaml
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: radio-group
+name: RadioGroup
+description: >-
+  Groups radios with role radiogroup and one name for the whole group, names the group once with its label, and holds
+  which value is picked. Every Radio sits inside one. It lives in components/Radio and has no Figma set: it is composed
+  in code from the radio and text-radio sets on page 16 Radio. It exists so every single-choice question has one group name,
+  one Tab stop with arrow keys between the options, and one place that holds the value.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [form, selection]
+  status: {status: beta}
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - id: min-two-options
+        level: must
+        statement: >-
+          Put at least 2 Radio options in a group. With only one option use a Checkbox, or a Toggle when it takes effect
+          at once, because a lone radio can't be unpicked once picked.
+        alternatives:
+          - to: checkbox
+          - to: toggle
+        checkedBy: manual
+      - level: should
+        statement: Use for 2 to 5 options where the user picks exactly one and needs to see all of them at once.
+        checkedBy: manual
+      - level: should-not
+        statement: Use a RadioGroup for more than 5 options. A radio group takes space for every option.
+        alternatives:
+          - to: dropdown
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/16-radio.md (Designer step 3) and the Figma Radio Usage frame say more than five options goes to the select field on page 13 Input, while the Storybook do and don't says 2 to 5 is fine and more than 6 goes to Dropdown (page 25 Dropdowns). Is 6 options a RadioGroup or a Dropdown, and is the select field of page 13 the Dropdown?
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Preselect one option with value or defaultValue. If no option is safe to preselect, add an option that means
+          no choice to the group and preselect that.
+        checkedBy: manual
+      - level: must
+        statement: Give every Radio in the group a value that no other Radio in the same group has.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          When you pass value, update it from onValueChange. With value set, the group shows only what you pass.
+          With defaultValue the group keeps the value itself.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Set size, disabled and touchTarget on the RadioGroup so every option gets them. Set them on one Radio only
+          when that option must differ, because a Radio's own prop wins over the group's.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Pass name on a Radio inside a RadioGroup. The group gives one name to every input, and a different name takes
+          the option out of the group's single choice and arrow keys.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: RadioGroup stacks options in a column with no space between them, and Figma has no group set. What space goes between options, and may options sit in a row?
+      # NEEDS CLARIFICATION: Radio.base.css (note 6) says the group label uses the option title's text and color and has --ntg-radio-gap under it, but the generated CSS sets --rd-fg and --rd-gap only on each Radio's root, so the group label inherits its color and has no space under it. Which is intended?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - id: group-name
+        level: must
+        statement: >-
+          Pass label to every RadioGroup. It is shown once above the options and names the group through aria-labelledby,
+          instead of naming each option.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html
+            role: WCAG 2.2 SC 1.3.1 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: label is optional in RadioGroupProps, and aria-label or aria-labelledby passed to RadioGroup lands on the radiogroup element. When the question is already shown as a heading, may the group take aria-labelledby pointing at it instead of label?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the options come from data THEN give each Radio a string value and compare against the string that
+          onValueChange returns. The group compares values as strings.
+        checkedBy: assisted
+      - level: should
+        statement: IF the layout is built for touch screens THEN set touchTarget on the RadioGroup.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Group
+        definition: >-
+          A div with role radiogroup, aria-labelledby pointing at the group label, and aria-disabled when disabled is true.
+          It stacks its children in a column. It takes the size class for the label's text.
+      - term: Group label
+        definition: >-
+          The label prop, rendered once above the options. Text style is the option title's preset for the group size,
+          label/sm, label/md, label/lg, label/xl and label/xl for xs to xl.
+      - term: Options
+        definition: >-
+          The Radio children. Each gets the group's name, its picked state from the group's value, and the group's size,
+          disabled and touchTarget unless it sets its own.
+      - term: Shared name
+        definition: >-
+          The name prop, or an id made for the group when name is left out. Every input in the group gets it, which gives
+          the group one Tab stop and lets arrow keys move between options. This is the browser's own behavior for inputs
+          that share a name.
+      - term: Value
+        definition: >-
+          The picked option's value as a string. value makes the group controlled, defaultValue lets it hold the value itself,
+          and onValueChange gets the new value either way.
+
+uses:
+  - to: radio
+
+alternatives:
+  - to: dropdown
+  - to: checkbox
+  - to: toggle
+
+refs:
+  - href: ../../components/Radio/Radio.tsx
+    rel: source
+    role: Import RadioGroup from components/Radio
+  - href: ../../components/Radio/Radio.stories.tsx
+    rel: demo
+    role: Storybook stories, RadioGroup and the do and don't examples (npm run storybook)
+  - href: ../../docs/16-radio.md
+    rel: relates-to
+    role: Thai page doc for Figma page 16 Radio
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7125-909
+    rel: design
+    role: Figma page 16 Radio, the Radio Usage frame holds the group rules
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: The label's text style, and the size of every Radio that sets none. The first value is the default.
+    values:
+      - id: md
+        description: The default.
+      - id: xs
+        description: Dense lists.
+      - id: sm
+        description: Dense lists.
+      - id: lg
+        description: A main choice of the page.
+      - id: xl
+        description: A main choice of the page.
+  - traitType: variant
+    kind: boolean
+    id: touchTarget
+    description: Passed to every Radio that sets none, so each row is at least 48 high on every pointer. Default false.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: Sets aria-disabled on the group and disables every Radio that sets none. Default false.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "16 Radio"
+    # No Figma set. RadioGroup is put together in code (Radio.base.css note 6)

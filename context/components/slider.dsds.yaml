@@ -1,0 +1,287 @@
+# Slider in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Slider/, docs/17-sliders.md, docs/research/slider-component.md, tokens/scale/slider.mjs,
+# tokens/figma-components.json and the Figma file page 17 Sliders (sets, properties, bound variables and the
+# Slider Usage frame, read 2026-10-27)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: slider
+name: Slider
+description: >-
+  Picks a number in a set range, as one value or a range depending on the value given: a number gives one handle
+  (Figma set slider) and a pair of numbers gives two handles (Figma set range-slider). Both Figma sets use the set
+  slider-handle for the handle, on page 17 Sliders. In code it is one component, because both work the same.
+  It exists so every number picker uses the same sizes, states, touch area and keyboard keys, and so a Slider and a
+  TextField of the same size line up in one row.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [input, form]
+  status: {status: beta}
+  aliases: [slider, range-slider, slider-handle]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use for a continuous number where the exact value doesn't matter and seeing the whole range helps,
+          such as a price range filter in a search tool or a calculator on a business site.
+        checkedBy: manual
+      - level: should-not
+        statement: Use Slider for a date range.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/17-sliders.md (Designer step 7) and the Figma Slider Usage frame say to use a date picker for a date range, but the system has no date picker component. What must a screen use until one exists?
+      - level: should-not
+        statement: Use Slider for a text size with 3 to 5 steps. The range is too short to drag to the right step.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Figma Slider Usage frame says to use zoom buttons or a grouped choice for a text size with 3 to 5 steps. Which components are those, RadioGroup, segmented Tabs or Button?
+      - level: should-not
+        statement: Use Slider to show reading or loading progress. The user can't change progress.
+        alternatives:
+          - to: progress-bar
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Use Slider as the seek bar of an audio or video player. A seek bar changes value on its own while playing and
+          shows a loaded part, which Slider doesn't have.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/17-sliders.md (constraint 12) and the Figma Slider Usage frame say a media seek bar should be a separate component that may reuse the slider track and handle tokens, but no such component exists, and context/tokens/tokens.dsds.yaml says a component's spacing token must not be used on another component. What does a player use now, and may it use --ntg-slider-* tokens?
+      - level: must-not
+        statement: Use a Slider alone when the user must enter an exact value, such as an amount of money.
+        alternatives:
+          - to: text-field
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Keep value in state and update it from onValueChange. Slider has no state of its own and doesn't move without it.
+          onValueChange returns the same shape that value has, a number or a pair.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          For a range, place two number TextFields with the Slider, one for the low value and one for the high value.
+          User tests found more than half of people misread a range slider without the numbers.
+        checkedBy: manual
+        uses:
+          - to: text-field
+      # NEEDS CLARIFICATION: docs/17-sliders.md (Designer step 2, constraint 9), components/Slider/README.md and the Figma Slider Usage frame say the paired number fields are a must (ต้อง), but the Figma description of the range-slider set says should (ควร). Which level is it?
+      - level: must
+        statement: >-
+          In Figma, set the handle position by the width of the fill layer in the instance, and for a range also the width
+          of space-before for the start handle. There is no variant for the position.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Change handle, track or row sizes only in tokens/scale/slider.mjs, then run npm run tokens:build and
+          npm run tokens:verify, and copy the values to the Figma variables. Never change them in the Figma file first.
+        checkedBy: manual
+      - level: must-not
+        statement: Set a fixed width on a Slider. It fills the width of its parent, and there is no length token on purpose.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put a Slider in a parent that clips its content, such as overflow hidden or clip content in Figma.
+          The handle reaches past the track by --ntg-slider-overhang-<size> and the value tooltip sits above the handle.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the handle size or shape on hover, press or focus. The states change color only, because a handle that
+          grows while dragged shifts the value.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Add an error or read-only look to Slider. Neither exists in Figma or in code. Show an error in the hint of the
+          paired TextField.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Slider renders no visible label, and an aria-labelledby passed to Slider lands on the root div, not on the handles. Must a Slider have a visible label, as TextField does, and how is it tied to the handles?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - level: must
+        statement: >-
+          Pass label on every Slider. It becomes the aria-label of each handle and is the only name screen readers get.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      - level: should
+        statement: >-
+          For a range, pass rangeLabels with one name per handle, such as ['ราคาต่ำสุด', 'ราคาสูงสุด'].
+          Without it both handles get the same name from label.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Pass formatValue when the number needs a unit, such as 1,200 บาท. It sets aria-valuetext and the text of the
+          value tooltip and the min and max labels.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+            role: WAI-ARIA Authoring Practices, Slider pattern
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: should
+        statement: >-
+          IF the Slider sits in a dense settings panel THEN use size xs or sm. IF it is the main control of the page
+          THEN use size lg or xl. ELSE use size md.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF a Slider sits in one row with a TextField THEN give both the same size, sm, md or lg.
+          Only the same size name gives the same height (32, 40 or 48).
+        checkedBy: assisted
+      - level: should
+        statement: IF the user needs to see the current value, such as a brightness level THEN set showValueTooltip.
+        checkedBy: assisted
+      - level: should
+        statement: IF the layout is built for touch screens THEN set touchTarget.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: docs/17-sliders.md (Developer step 2) says the touch row is --ntg-slider-row-height-touch-<size> (48, and 56 for xl), but Slider.base.css uses --ntg-slider-row-height-touch-md for every size, so an xl Slider with touchTarget gets 48, lower than its normal 56. Slider also has no coarse pointer rule, unlike Checkbox and Radio. Which is intended?
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Two-layer model
+        definition: >-
+          The track and the handle have their own scales, never derived from the control height. The row is the layer
+          for touch, and its height comes from the shared control height scale that Button and TextField use.
+          WCAG 2.5.8 counts the whole slider as one target, so the row height, not the handle, is the target size.
+      - term: Root
+        definition: >-
+          A column that fills the width of its parent and holds the row and the min and max labels.
+          The gap between them is --ntg-size-space-s1-sm (4), the Figma variable size/space/s1/sm.
+      # NEEDS CLARIFICATION: the root gap uses the layout spacing token --ntg-size-space-s1-sm, in Figma and in code, while context/tokens/tokens.dsds.yaml says the layout scale must not be used for spacing inside a component. Should Slider get its own gap token?
+      - term: Row
+        definition: >-
+          The area the user can press. Height is --ntg-slider-row-height-<size> (24, 32, 40, 48, 56), the same values as
+          --ntg-slider-row-handle-target-<size>. The handle sits centered with --ntg-slider-inset-<size> (4 to 12) above
+          and below it. With touchTarget the height is --ntg-slider-row-height-touch-md.
+      - term: Track
+        definition: >-
+          The full range. Height is --ntg-slider-track-<size> (4, 6, 8, 10, 12), corner radius --ntg-slider-radius-full,
+          color --ntg-color-background-general-quaternary, and --ntg-color-background-general-disabled-subtle when disabled.
+          Pressing anywhere on it moves the nearest handle there and lets the user drag, so one tap is enough (WCAG 2.5.7).
+      - term: Fill
+        definition: >-
+          The picked part of the track, from the minimum to the handle, or between the two handles of a range. Same height
+          and radius as the track. Color --ntg-color-foreground-brand-primary, and --ntg-color-background-general-disabled
+          when disabled. In Figma the slider set lays out fill, handle-anchor and rest, and the range-slider set lays out
+          space-before, fill and rest with both handles inside fill.
+      - term: Handle
+        definition: >-
+          The round knob, Figma set slider-handle (states default, hover, pressed, focused, disabled). Size is
+          --ntg-slider-handle-<size> (16, 20, 24, 28, 32), corner radius --ntg-slider-radius-full, fill
+          --ntg-color-background-general-primary, 1 wide inset border --ntg-color-background-brand-solid, on hover
+          --ntg-color-background-brand-solid-hover, pressed --ntg-color-background-brand-solid-pressed, and
+          --ntg-color-background-general-disabled when disabled. Focus adds --ntg-focused-ring-brand on :focus-visible.
+          It reaches past the track by --ntg-slider-overhang-<size> (6 to 10). Each handle has role slider, its own Tab stop,
+          aria-valuemin, aria-valuemax, aria-valuenow and aria-orientation horizontal. In a range the two handles can't cross,
+          because each one's limit is the other's value.
+      - term: Keyboard
+        definition: >-
+          Following the WAI-ARIA Authoring Practices. Arrow Right and Arrow Up add step, Arrow Left and Arrow Down take
+          step away, Page Up and Page Down move by largeStep (default step times 10), Home goes to the minimum and End to
+          the maximum. A disabled Slider leaves the Tab order and ignores keys and pointer.
+      - term: Value tooltip
+        definition: >-
+          Shown above every handle when showValueTooltip is true, Figma property value-tooltip. It shows formatValue's text,
+          or the plain number. Gap above the handle is --ntg-tooltip-offset-md, padding --ntg-tooltip-padding-xs top and bottom
+          and --ntg-tooltip-padding-sm left and right, radius --ntg-tooltip-radius-md, fill --ntg-color-background-general-primary,
+          text --ntg-color-text-general-section-heading in label/xs, shadow --ntg-shadows-center-xs. In Figma it is an instance
+          of the value-label set from page 20 Tooltips.
+      # NEEDS CLARIFICATION: the value tooltip text is label/xs in code, but in Figma the value-label instance uses the text style Text/xs semibold from an outside library, not a local preset. Which preset is right?
+      - term: Min and max labels
+        definition: >-
+          Shown under the track when showMinMaxLabel is true, Figma property min-max-label. The minimum sits at the start and
+          the maximum at the end, in formatValue's text. Text style label/xs at every size, color
+          --ntg-color-text-general-supporting-text. Hidden from screen readers, which read the range from the handles.
+
+alternatives:
+  - to: text-field
+  - to: progress-bar
+
+refs:
+  - href: ../../components/Slider/Slider.tsx
+    rel: source
+    role: Import Slider from components/Slider
+  - href: ../../components/Slider/README.md
+    rel: relates-to
+    role: Thai README with the props table and keyboard keys
+  - href: ../../components/Slider/Slider.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/17-sliders.md
+    rel: relates-to
+    role: Thai page doc for Figma page 17 Sliders
+  - href: ../../docs/research/slider-component.md
+    rel: relates-to
+    role: Thai research on 15 design systems that the page structure is based on
+  - href: ../../tokens/scale/slider.mjs
+    rel: relates-to
+    role: Size formulas and build checks, the source of every slider size
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7236
+    rel: design
+    role: Figma page 17 Sliders
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Handle, track and row height. The text of the labels is label/xs at every size. The first value is the default.
+    values:
+      - id: md
+        description: Handle 24, track 8, row 40. The default.
+      - id: xs
+        description: Handle 16, track 4, row 24. Dense settings panels.
+      - id: sm
+        description: Handle 20, track 6, row 32. Dense settings panels.
+      - id: lg
+        description: Handle 28, track 10, row 48. The main control of the page.
+      - id: xl
+        description: Handle 32, track 12, row 56. The main control of the page.
+  - traitType: variant
+    kind: boolean
+    id: showValueTooltip
+    description: Shows the value above every handle. Figma property value-tooltip. Default false.
+  - traitType: variant
+    kind: boolean
+    id: showMinMaxLabel
+    description: Shows the minimum and maximum under the track. Figma property min-max-label. Default false.
+  - traitType: variant
+    kind: boolean
+    id: touchTarget
+    description: Raises the row to the touch height. Code only, not in Figma. Default false.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: >-
+      Figma axis disabled. Track, fill and handle turn gray, the handles leave the Tab order with aria-disabled, and
+      pointer and keys do nothing. Default false.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "17 Sliders"
+    figmaSets: [slider, range-slider, slider-handle]

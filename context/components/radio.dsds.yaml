@@ -1,0 +1,261 @@
+# Radio in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Radio/, docs/16-radio.md, tokens/scale/radio.mjs, tokens/figma-components.json
+# and the Figma file page 16 Radio (sets, properties, bound variables and the Radio Usage frame, read 2026-10-27)
+# Rules about the group (how many options, preselection, group name) live in radio-group.dsds.yaml
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: radio
+name: Radio
+description: >-
+  A radio button for picking exactly one option, with an optional title and supporting text. It has no indeterminate
+  state and is always grouped with RadioGroup. It matches the Figma sets radio (the circle alone) and text-radio
+  (circle, title and supporting text) on page 16 Radio. In code it is one component, and leaving out label gives the radio set.
+  It exists so every single choice looks, sizes and responds the same, and its sizes match Checkbox at every step,
+  so the two can swap in one form without the rows moving.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [form, selection]
+  status: {status: beta}
+  aliases: [radio, text-radio]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use when the user picks exactly one option from options shown at the same time.
+        checkedBy: manual
+      - refs:
+          - to: radio-group#min-two-options
+            rel: same-as
+      - level: must-not
+        statement: Use radios when the user can pick several options.
+        alternatives:
+          - to: checkbox
+        checkedBy: manual
+      - level: must-not
+        statement: Use radios when the change takes effect at once.
+        alternatives:
+          - to: toggle
+        checkedBy: manual
+      - level: must-not
+        statement: Use a Radio as a button that runs an action as soon as it is pressed.
+        alternatives:
+          - to: button
+          - to: toggle
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Place every Radio inside a RadioGroup and give it a value. The group passes the shared name and decides
+          which Radio is picked.
+        checkedBy: manual
+        uses:
+          - to: radio-group
+      - level: must
+        statement: >-
+          Inside a RadioGroup, set which option is picked only with value or defaultValue on the group.
+          Don't pass checked or defaultChecked on the Radio. A prop set on the Radio wins over the group's.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Set disabled only with its prop, on the Radio or on the whole RadioGroup. Hover, focus and pressed come
+          from CSS pseudo-classes. Don't pass a state prop or add state classes.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass supporting text in the supportingText prop. It lines up under the title at --ntg-radio-indent-<size>
+          and is tied to the input. Don't set the indent yourself.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Change circle, dot, indent or row sizes only in tokens/scale/radio.mjs, then run npm run tokens:build and copy
+          the values to the Figma variables. Never change them in the Figma file first.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Give the circle a radius per size or half its size. The corners use --ntg-radio-radius-full only,
+          so the circle stays round at every size.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the dot, circle, border or colors with className or style. The dot is 33 to 43 percent of the circle
+          on purpose, so a small circle still shows a ring around the dot.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: docs/16-radio.md (Developer steps 1 and 2) and the Figma Radio Usage frame say to always wrap the circle in a row as tall as --ntg-radio-row-height-<size> (24 to 56). No radio/row/height variable is bound anywhere on Figma page 16, and Radio.base.css lets the row hug its content, adding only min-height 48px (a typed value, not --ntg-radio-row-height-touch as Radio.tsx says) on a coarse pointer or with touchTarget. Must the row use --ntg-radio-row-height-<size>?
+      # NEEDS CLARIFICATION: Figma text-radio has no space between the row and the supporting text (heights 44, 48, 52, 56, 56, the same as Checkbox), but Radio.base.css puts --ntg-radio-gap (8) there, so code is 8 taller. Which one is right?
+      # NEEDS CLARIFICATION: Figma text-radio has a title boolean (default on), and docs/16-radio.md section 4.2 lists it, but text-checkbox removed its title boolean on 2026-09-14 because the box-only set already covers no title. In code no label means the radio set. May a designer turn title off on text-radio, or must they use the radio set?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - refs:
+          - to: radio-group#group-name
+            rel: same-as
+      - level: must
+        statement: >-
+          Tie the visible text to the circle with the label prop. It renders a label element around the input,
+          so pressing the text picks the option. Text placed next to the Radio is not enough.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html
+            role: WCAG 2.2 SC 1.3.1 (A)
+        checkedBy: manual
+      - level: must
+        statement: Give a Radio without label an aria-label, such as เลือกแถวนี้. It is the only name a screen reader gets.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the change takes effect at once THEN use Toggle. IF the user can pick several options or accepts one condition
+          THEN use Checkbox. IF the user picks exactly one of several options shown together THEN use Radio inside RadioGroup.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the label is already shown outside the Radio, such as in a list row THEN leave out label and pass aria-label
+          ELSE pass label.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the options sit in a dense list THEN use size xs or sm. IF they are a main choice of the page THEN use size
+          lg or xl. ELSE use size md.
+        checkedBy: assisted
+      - level: should
+        statement: IF a Radio and a Checkbox sit in the same form THEN give both the same size, so their rows line up.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Two-layer model
+        definition: >-
+          The circle has its own scale (12, 16, 20, 24, 28), which is never derived from the control height.
+          The row is the layer meant for touch and alignment, and its tokens --ntg-radio-row-height-<size>
+          (24, 32, 40, 48, 56) come from the shared control height scale that Button, TextField and Checkbox use.
+      - term: Root
+        definition: >-
+          An inline column that holds the row and the supporting text. It carries data-checked and data-disabled,
+          which the generated CSS reads for every color.
+      - term: Row
+        definition: >-
+          A label element around the hidden input, the circle and the title, so a press anywhere on it picks the option.
+          The gap between circle and title is --ntg-radio-gap (8). Its height follows the content. On a coarse pointer,
+          or with touchTarget, it is at least 48 high.
+      - term: Input
+        definition: >-
+          The native input type radio, hidden in the accessible way (1 pixel, clipped). It takes the group's name, value,
+          checked and disabled, and aria-describedby pointing at the supporting text. Arrow keys move between inputs
+          that share a name, which is the browser's own behavior.
+      - term: Circle
+        definition: >-
+          The ring the user sees, hidden from screen readers. Size is --ntg-radio-size-<size>, corner radius is
+          --ntg-radio-radius-full, border width is --ntg-radio-border (1) drawn as an inset box-shadow.
+          Not picked: fill --ntg-color-background-general-primary and border --ntg-color-border-general-primary, hover and
+          focused border --ntg-color-border-brand-solid. Picked: fill --ntg-color-background-brand-solid and border
+          --ntg-color-border-brand-solid, hover and focused --ntg-color-background-brand-solid-hover and
+          --ntg-color-border-brand-solid-hover. Focused adds --ntg-focused-ring-default. Pressed is code only and uses
+          --ntg-color-background-general-primary-pressed and --ntg-color-border-general-primary-pressed, or the
+          brand-solid-pressed pair when picked. Disabled: --ntg-color-background-general-disabled and
+          --ntg-color-border-general-disabled.
+      - term: Dot
+        definition: >-
+          The filled center, shown only when picked. Size is --ntg-radio-dot-<size> (4, 6, 8, 10, 12), not half of the circle.
+          Color is --ntg-icon-brand-on-brand-primary, and --ntg-icon-general-disable when disabled.
+      - term: Title
+        definition: >-
+          The label prop, Figma property title-value. Text style label/sm, label/md, label/lg, label/xl and label/xl for
+          xs, sm, md, lg and xl, the same as Checkbox. Color is --ntg-color-text-general-section-heading, and
+          --ntg-color-text-general-disabled when disabled.
+      - term: Supporting text
+        definition: >-
+          The supportingText prop, Figma properties supporting-text and supporting-text-value. Indented by
+          --ntg-radio-indent-<size> (circle plus gap, 20 to 36) so it starts under the title. Text style body/xs, body/sm,
+          body/md, body/lg and body/lg for xs to xl. Color is --ntg-color-text-general-supporting-text, and
+          --ntg-color-text-general-disabled when disabled. In Figma it is on by default, in code it shows only when passed.
+
+alternatives:
+  - to: checkbox
+  - to: toggle
+
+refs:
+  - href: ../../components/Radio/Radio.tsx
+    rel: source
+    role: Import Radio from components/Radio
+  - href: ../../components/Radio/Radio.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/16-radio.md
+    rel: relates-to
+    role: Thai page doc for Figma page 16 Radio
+  - href: ../../tokens/scale/radio.mjs
+    rel: relates-to
+    role: Size formulas and build checks, the source of every radio size
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7125-909
+    rel: design
+    role: Figma page 16 Radio
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: >-
+      Circle size, dot, indent and text style. The first value is the default. Inside a RadioGroup a Radio without
+      size takes the group's size.
+    values:
+      - id: md
+        description: Circle 20, dot 8, title label/lg. The default.
+      - id: xs
+        description: Circle 12, dot 4, title label/sm. Dense lists.
+      - id: sm
+        description: Circle 16, dot 6, title label/md. Dense lists.
+      - id: lg
+        description: Circle 24, dot 10, title label/xl. A main choice of the page.
+      - id: xl
+        description: Circle 28, dot 12, title label/xl (the same text as lg). A main choice of the page.
+  - traitType: variant
+    kind: boolean
+    id: touchTarget
+    description: >-
+      Makes the row at least 48 high on every pointer, for touch layouts. Code only, not in Figma. Default false,
+      or the group's value inside a RadioGroup.
+  - traitType: state
+    kind: boolean
+    id: checked
+    description: The option is picked. Figma checked true. Inside a RadioGroup it comes from the group's value. Shows the dot on a brand fill.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: >-
+      The native disabled attribute. Figma state disabled. Uses the disabled tokens and can't be picked.
+      Inside a RadioGroup a Radio without disabled takes the group's value.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "16 Radio"
+    figmaSets: [radio, text-radio]

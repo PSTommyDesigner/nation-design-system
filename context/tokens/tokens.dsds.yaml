@@ -1,0 +1,352 @@
+# Token usage rules and themes in DSDS format
+# Real values live in tokens/tokens.json/*.json (W3C DTCG) and build to tokens/output/css/variables.css.
+# This file says when to use each group of tokens and when not to. Facts come from docs/01-color.md,
+# docs/03-typography.md, docs/05-effect.md, docs/06-shape.md, docs/07-space.md and tokens/tokens.json/component.json.
+# The full list of token names for screens is generated: context/tokens/token-list.md
+
+schemaVersion: "0.23.0"
+
+name: Nation Design System Tokens
+
+entries:
+  - kind: token
+    id: color.text.general
+    name: Text colors
+    description: >-
+      Text colors for screens: heading, section-heading, label, text, supporting-text, caption, footer-text, placeholder,
+      placeholder-subtle, disabled, disabled-subtle, const-white and const-black. For example --ntg-color-text-general-heading.
+    metadata:
+      status: {status: beta}
+      group: color.text
+    sections:
+      - kind: guidelines
+        for: all
+        framing: when-to-use
+        items:
+          - level: should
+            statement: Use for text on the general backgrounds.
+          - level: must-not
+            statement: Use for text on a solid brand fill.
+            alternatives:
+              - to: color.brand
+            checkedBy: manual
+    tokenType: color
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: color.brand
+    name: Brand text and on-brand colors
+    description: >-
+      Brand-colored text (tertiary, secondary-alt, tertiary-alt with hover and pressed) and text placed on a brand fill
+      (on-brand-primary, on-brand-secondary, on-brand-tertiary). For example --ntg-color-brand-on-brand-primary.
+      Not the brand ramp: --ntg-color-brand-500 is a primitive.
+    metadata:
+      status: {status: beta}
+      group: color.brand
+    tokenType: color
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: color.background.general
+    name: Background colors
+    description: >-
+      Page and surface fills: primary, secondary, tertiary, quaternary, with hover and pressed for primary and secondary,
+      plus active, disabled, disabled-subtle, solid, solid-secondary, const-white and const-black.
+      For example --ntg-color-background-general-primary.
+    metadata:
+      status: {status: beta}
+      group: color.background
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: Text on these fills uses color.text.general, and both pass shared-a11y text-contrast.
+            checkedBy: manual
+    tokenType: color
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: color.border.general
+    name: Border colors
+    description: >-
+      The component collection holds border colors for hover, pressed, solid and disabled states only
+      (for example --ntg-color-border-general-primary-hover). The rest-state borders primary, secondary and tertiary
+      exist only in the semantic collection: --ntg-color-border-general-primary, -secondary and -tertiary.
+    metadata:
+      status: {status: beta}
+      group: color.border
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: may
+            statement: In code, use the semantic --ntg-color-border-general-primary, -secondary or -tertiary for a border at rest, because the component collection has none.
+      # NEEDS CLARIFICATION: in Figma the rule is component collection only, so which variable should a rest-state border bind to?
+    tokenType: color
+    source: ../../tokens/tokens.json/semantics-light-mode.json
+
+  - kind: token
+    id: color.foreground.general
+    name: Icon and graphic colors
+    description: >-
+      Colors for icons and graphics: --ntg-icon-general-* (primary to quinary with hover and pressed, disable, const-white,
+      const-black), --ntg-icon-brand-*, --ntg-icon-system-* and --ntg-icon-ams-*, and the matching --ntg-color-foreground-* tokens.
+    metadata:
+      status: {status: beta}
+      group: color.foreground
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: An icon takes its color through currentColor, set with an icon or foreground token on the icon or its parent. Never a fill value in the SVG.
+            checkedBy: manual
+    tokenType: color
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: color.system
+    name: Status colors
+    description: >-
+      Error, warning and success colors: --ntg-color-system-error, -warning, -success with hover, pressed and alt forms,
+      plus the semantic fills --ntg-color-background-system-<status>-<variant> and --ntg-icon-system-*.
+    metadata:
+      status: {status: beta}
+      group: color.system
+    sections:
+      - kind: guidelines
+        for: all
+        framing: when-to-use
+        items:
+          - level: should
+            statement: Use for error, warning and success status, such as banners, toasts, badges and field errors.
+          - level: must-not
+            statement: Use warning or success colors on buttons. Those buttons were removed on purpose.
+            checkedBy: manual
+          - refs:
+              - to: shared-a11y#color-not-only
+                rel: same-as
+    tokenType: color
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: color.ams
+    name: AMS colors
+    description: >-
+      The AMS product's own color family, separate from the group brand: --ntg-color-ams-*, --ntg-color-background-ams-*,
+      --ntg-color-border-ams-* and --ntg-icon-ams-*.
+    metadata:
+      status: {status: beta}
+      group: color.ams
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must-not
+            statement: Use the primitive AMS ramp (--ntg-color-ams-600 and the like). Use the role tokens above.
+            checkedBy: manual
+      # NEEDS CLARIFICATION: are the ams tokens for AMS screens only, or may other products use them?
+    tokenType: color
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: color.utility
+    name: Utility colors
+    description: >-
+      Colors by hue for keylines, charts, status and decoration, for example --ntg-color-utility-u-gray-400.
+      Semantic collection only.
+    metadata:
+      status: {status: beta}
+      group: color.utility
+    sections:
+      - kind: guidelines
+        for: all
+        framing: when-to-use
+        items:
+          - level: should
+            statement: Use for keylines, charts, status marks and decoration.
+          - level: must-not
+            statement: Use a utility color for text or a surface when a text, background or border token exists for the job.
+            checkedBy: manual
+    tokenType: color
+    source: ../../tokens/tokens.json/semantics-light-mode.json
+
+  - kind: token
+    id: color.other
+    name: Fixed colors
+    description: >-
+      Fixed colors for file types and fixed icons: excel, pdf, powerpoint, word, bin-blue, icon-dark, icon-gray.
+      For example --ntg-color-other-pdf. They don't change with the theme.
+    metadata:
+      status: {status: beta}
+      group: color.other
+    tokenType: color
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: size.space
+    name: Layout spacing scale
+    description: >-
+      26 spacing values in 5 groups for layout: none 0, s1 2 to 10 (tight spacing inside a content group, such as a heading
+      and its summary or a label and its value), s2 12 to 28 (between pieces in a group, card grid gaps, padding of a content box),
+      s3 32 to 64 (section level), s4 72 to 104 (page level), s5 112 to 144 (very large page openings).
+      Each group has xs, sm, md, lg, xl, for example --ntg-size-space-s2-sm is 16px.
+    metadata:
+      status: {status: beta}
+      group: size.space
+    sections:
+      - kind: guidelines
+        for: all
+        framing: when-to-use
+        items:
+          - level: should
+            statement: Use for layout spacing of pages, sections and groups. Pick the group by the range the space belongs to.
+          - level: must-not
+            statement: Use the layout scale for spacing inside a component. Components use their own tokens, such as --ntg-button-padding-left-md.
+            checkedBy: manual
+      - kind: guidelines
+        for: all
+        items:
+          - level: must-not
+            statement: Use a component's spacing token on another component.
+            checkedBy: manual
+          - level: must-not
+            statement: Use a spacing value that is not in the scale, or add a step without approval.
+            checkedBy: manual
+    tokenType: dimension
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: radius
+    name: Corner radius
+    description: >-
+      There is no shared radius token. Each component has its own, such as --ntg-card-radius-top-left or
+      --ntg-button-radius-top-left-md, computed from RADIUS_SCALE (none 0, xs 2, sm 4, md 8, lg 12, xl 16, full 9999).
+    metadata:
+      status: {status: beta}
+      group: radius
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: For nested boxes, the outer radius equals the inner radius plus 8. If the inner result is negative, use 0. When the inner box touches the edge with no inset, it uses the outer radius.
+            checkedBy: manual
+          - level: must-not
+            statement: Use corner-shape squircle or corner smoothing.
+            checkedBy: manual
+          - level: must-not
+            statement: Use radius as the only sign of a difference in meaning.
+            checkedBy: manual
+      # NEEDS CLARIFICATION: which radius token should a screen-level box that is not a component (a panel, a section box) use?
+    tokenType: dimension
+    source: ../../tokens/tokens.json/component.json
+
+  - kind: token
+    id: shadows
+    name: Shadows
+    description: >-
+      15 shadows named by direction and size, --ntg-shadows-<bottom|top|center>-<xs|sm|md|lg|xl>. bottom is for most things that
+      float, top for bars fixed to the bottom of the screen, center for things floating with no light direction.
+      bottom-xs is the system default (cards, bars), bottom-md tooltips and dropdowns, bottom-xl dialogs.
+    metadata:
+      status: {status: beta}
+      group: shadows
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: Use box-shadow with a --ntg-shadows-* token. Never type shadow values, even when you know the numbers.
+            checkedBy: manual
+          - level: must-not
+            statement: Add shadows for the dark theme, two-layer shadows or inset shadows. None of them are part of the system yet.
+            checkedBy: manual
+    tokenType: shadow
+    source: ../../tokens/tokens.json/shadows.json
+
+  - kind: token
+    id: focused-ring
+    name: Focus rings
+    description: >-
+      Focus ring shadows --ntg-focused-ring-brand (main buttons and links), -default (neutral buttons and fields),
+      -error (fields in error, delete buttons), -warning and -success.
+    metadata:
+      status: {status: beta}
+      group: effect
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - refs:
+              - to: shared-a11y#focus-visible
+                rel: same-as
+    tokenType: shadow
+    source: ../../tokens/tokens.json/shadows.json
+
+  - kind: token
+    id: effect.background-blur
+    name: Background blur
+    description: >-
+      Blur amounts for backdrop-filter, --ntg-effect-background-blur-<xs|sm|md|lg|xl> (4, 8, 16, 24, 40).
+      xs for a bar over content that must stay readable, sm for a see-through navigation bar, md and lg behind dialogs.
+    metadata:
+      status: {status: beta}
+      group: effect
+    tokenType: dimension
+    source: ../../tokens/tokens.json/primitive.json
+
+  - kind: token
+    id: typography
+    name: Typography presets
+    description: >-
+      48 presets in 9 families, as .ntg-typography-<family>-<size> classes in tokens/output/css/typography.css.
+      display (hero), page-heading (page title, H1), section-heading (H2 to H4), title (card, module and list titles),
+      body (general UI text), article (article body, reading pages only), article-pullquote, meta (byline, overline,
+      timestamp, caption, read-time, helper, credit, micro) and label (labels on components such as buttons, tags and tabs).
+    metadata:
+      status: {status: beta}
+      group: typography
+    sections:
+      - kind: guidelines
+        for: all
+        framing: when-to-use
+        items:
+          - level: must
+            statement: Pick the preset by role, not by size. For example a page title uses page-heading, an article body uses article, a button label uses label.
+            checkedBy: manual
+          - level: must-not
+            statement: Use article or article-pullquote outside a page where people read an article. Interface text uses body.
+            checkedBy: manual
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: Prompt is the font for interface roles (display, headings, title, body, meta, label). Sarabun is for article roles only. Never swap them.
+            checkedBy: manual
+          - level: must-not
+            statement: Override line height, weight, letter spacing or font family of a preset. If no preset fits, ask for a new one.
+            checkedBy: manual
+    tokenType: typography
+    source: ../../tokens/tokens.json/typography.json
+
+  - kind: theme
+    id: light
+    name: Light
+    description: The default theme. Its values sit under :root in tokens/output/css/variables.css.
+    metadata:
+      status: {status: beta}
+    colorScheme: light
+    source: ../../tokens/tokens.json/semantics-light-mode.json
+
+  - kind: theme
+    id: dark
+    name: Dark
+    description: >-
+      Turned on with data-theme="dark" on the html element or an ancestor, which matches the [data-theme="dark"] selector.
+      Every semantic color has a dark pair. Effects (shadows) have no dark version yet, by decision.
+    metadata:
+      status: {status: beta}
+    colorScheme: dark
+    source: ../../tokens/tokens.json/semantics-dark-mode.json

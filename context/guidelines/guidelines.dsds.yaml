@@ -1,0 +1,89 @@
+# Rules shared by every component, in DSDS format
+# Rules in shared are written once, and components link to them with rel: same-as instead of copying the text.
+# Keep the id of every item. Other files link to these ids.
+# Facts come from CLAUDE.md (before 2026-10-27), docs/01-color.md, docs/05-effect.md, docs/06-shape.md,
+# components/Icon/README.md, components/IconButton/README.md and the team's stated defaults for Thai products.
+
+schemaVersion: "0.23.0"
+
+name: Nation Design System Guidelines
+
+entries:
+  - kind: entry
+    id: content
+    name: Writing
+    description: >-
+      Wording and punctuation for on-screen copy and for every text in the Figma file. It exists so products read the
+      same way for Thai users, and the same separators and formats appear everywhere.
+    metadata:
+      tags: [content]
+      status: {status: beta}
+    sections:
+      - kind: guidelines
+        for: all
+        items:
+          - level: must
+            statement: On-screen copy and labels are in Thai.
+            checkedBy: manual
+          - level: must
+            statement: Dates shown to users use the Buddhist Era year, for example 27 ต.ค. 2569.
+            checkedBy: manual
+          - level: must
+            statement: An error message says how to fix the value, not only that it is wrong.
+            checkedBy: manual
+          - level: must
+            statement: Separate numbers in a sequence with commas.
+            checkedBy: manual
+          - level: must-not
+            statement: Use the em dash character (U+2014) anywhere, in copy or in names.
+            checkedBy: manual
+          - level: must-not
+            statement: >-
+              Use the middle dot in on-screen copy or in any text in the Figma file. Use a space instead. In markdown docs it is
+              allowed in list lines only, never in paragraphs, tables, headings, quotes or titles.
+            checkedBy: manual
+      # NEEDS CLARIFICATION: there is no agreed word list yet (one concept, one word). Add it here as definitions with context: terms
+      # NEEDS CLARIFICATION: date and time formats beyond the year (short or long month names, 24-hour time) are not written down yet
+
+shared:
+  - id: shared-a11y
+    name: Shared accessibility rules
+    description: Accessibility rules every component must pass, written once and linked from every component.
+    sections:
+      - kind: guidelines
+        for: all
+        title: Accessibility
+        tags: [accessibility]
+        items:
+          - id: focus-visible
+            level: must
+            statement: >-
+              Keyboard focus shows a focus ring, a --ntg-focused-ring-* token on :focus-visible only, never on :focus, so it
+              doesn't flash on mouse clicks. The ring is never removed. If it overlaps a neighbor, add space instead.
+            evidence:
+              - href: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible
+                role: WCAG 2.2 SC 2.4.7 (AA)
+            checkedBy: manual
+          - id: text-contrast
+            level: must
+            statement: Normal-size text has at least 4.5:1 contrast with its background, in both light and dark themes.
+            evidence:
+              - href: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum
+                role: WCAG 2.2 SC 1.4.3 (AA)
+            checkedBy: manual
+          - id: icon-name
+            level: must
+            statement: >-
+              An icon that carries meaning has an accessible name. Icon takes title (without it the icon is decorative and
+              aria-hidden). IconButton takes label, which becomes its aria-label and title.
+            evidence:
+              - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+                role: WCAG 2.2 SC 1.1.1 (A)
+            checkedBy: manual
+          - id: color-not-only
+            level: must-not
+            statement: Use color, or corner shape, as the only way to show a meaning. A status also needs text or an icon.
+            evidence:
+              - href: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
+                role: WCAG 2.2 SC 1.4.1 (A)
+            checkedBy: manual

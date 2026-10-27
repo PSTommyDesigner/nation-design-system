@@ -5,7 +5,7 @@ import type { StorybookConfig } from '@storybook/react-vite'
 // (Chromatic, Vitest/Playwright testing addon, addon-a11y, addon-mcp)
 // รอบนี้ทำแค่ core + docs เท่านั้น ส่วน a11y/interaction addon ไว้ทำแยกทีหลัง
 const config: StorybookConfig = {
-  stories: ['../components/**/*.stories.@(ts|tsx)'],
+  stories: ['../components/**/*.stories.@(ts|tsx)', '../prototype/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-docs'],
   framework: {
     name: '@storybook/react-vite',

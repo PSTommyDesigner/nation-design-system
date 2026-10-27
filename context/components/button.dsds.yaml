@@ -1,0 +1,272 @@
+# Button in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Button/, docs/12-buttons.md, tokens/scale/button.mjs, tokens/figma-components.json
+# and the Figma page 12 Buttons (frames Brand Button, Neutral Button, Error Button, Alpha Button, Buttons Families,
+# Buttons Hierarchy and 12 Buttons Documentation), read 2026-10-27
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: button
+name: Button
+description: >-
+  A text button that runs an action. It matches the Figma sets semi-rounded-button and pill-button on page 12 Buttons,
+  one pair in each of the frames Brand Button, Neutral Button, Error Button and Alpha Button. It exists so every action
+  across the products looks, sizes and responds the same, and so button colors change for the whole system from one set
+  of button tokens.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [action]
+  status: {status: beta}
+  aliases: [semi-rounded-button, pill-button, Brand Button, Neutral Button, Error Button, Alpha Button]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use for an action that has a text label.
+        checkedBy: manual
+      - level: must-not
+        statement: Use Button for a button with only an icon. Icon-only buttons are a separate component in code.
+        alternatives:
+          - to: icon-button
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make a warning or success button. Those buttons were removed on purpose, because warning and success colors
+          report a result and belong to banners and badges, not to actions.
+        alternatives:
+          - to: banner
+          - to: badge
+        checkedBy: manual
+      # NEEDS CLARIFICATION: may a Button take the user to another page, or must navigation always use LinkButton with href? Button.tsx always renders a button element and takes no href, and neither docs/12-buttons.md nor the Figma page says.
+
+  - kind: guidelines
+    for: all
+    items:
+      # Answers the earlier question on how many primary buttons a screen may have: Figma frame Buttons Hierarchy,
+      # the Usage Do / Don't on 12 Buttons Documentation and the GoodAndBad story all limit it per action group
+      - level: must
+        statement: >-
+          Use at most one primary button in an action group, the buttons placed together that the user chooses between
+          at once, such as the buttons at the end of a dialog or a form. Make the others secondary or tertiary.
+        checkedBy: manual
+      - level: must
+        statement: Set color only with the family prop and weight only with the hierarchy prop.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Hover, focus and pressed come from CSS pseudo-classes (:hover, :focus-visible, :active), and disabled from the
+          disabled attribute. Don't pass a state prop or add state classes.
+        checkedBy: manual
+      - level: must-not
+        statement: Set button colors, padding, height or radius with className or style. Button colors change at the button tokens, never per screen.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - level: must
+        statement: >-
+          Tab reaches the button, Enter and Space run it, and Tab skips a disabled button. Button renders a native button
+          element, which does all three, so don't render it as another element.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+            role: WCAG 2.2 SC 2.1.1 (A)
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Accessibility section of 12 Buttons Documentation in Figma says the tap area must be at least 44 by 44 and recommends size md and up, but md is 40 high (--ntg-button-size-md). Which sizes may be the main tap target on mobile?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF you need a gray button that turns to the brand or error color on hover THEN use defaultGray with family brand
+          or error. IF you need a gray button that stays gray THEN use family neutral.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF the button submits a form THEN set type="submit". Button sets type="button" by default, so without it the
+          button doesn't submit the form.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the action deletes data or can't be undone, such as delete for good or cancel a subscription, THEN use
+          family error.
+        checkedBy: assisted
+      - level: should
+        statement: IF the action carries no brand meaning, such as close a window or go back, THEN use family neutral.
+        checkedBy: assisted
+      # NEEDS CLARIFICATION: the Figma frame Buttons Families gives cancel as a neutral action, but the Buttons Hierarchy example and the GoodAndBad story show cancel as a brand tertiary or secondary button. Which family must a cancel button use?
+      - level: should
+        statement: >-
+          IF the same action repeats on every row of a long list or sits in a toolbar THEN use defaultGray, with family
+          brand for an ordinary action and family error for a destructive one.
+        checkedBy: assisted
+      - level: should
+        statement: IF the button sits on top of an image or a video THEN use family alpha.
+        checkedBy: assisted
+      - level: may
+        statement: IF the button ends a form designed for mobile THEN set fullWidth.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Container
+        definition: >-
+          The button box. Fill is --ntg-button-color-<family>-background-<hierarchy>-<state>, where state is default,
+          hover, focused, pressed or disabled. Tertiary has a fill only on hover, focused and pressed. Height is
+          --ntg-button-size-<size> (24, 32, 40, 48, 56), left and right padding is --ntg-button-padding-<side>-<size>
+          (top and bottom are 0), the gap between icon and label is --ntg-button-gap-<size>, and corner radius is
+          --ntg-button-radius-<corner>-<size> (6 to 10), or --ntg-button-radius-full for shape pill.
+      - term: Shadow and focus ring
+        definition: >-
+          Primary and secondary carry --ntg-shadows-bottom-xs at rest, and every hierarchy carries it on hover. Tertiary
+          has no shadow at rest. Alpha's shadow grows with size, --ntg-shadows-bottom-<size>. On :focus-visible the
+          shadow is replaced by the focus ring of the family, --ntg-focused-ring-brand for brand, --ntg-focused-ring-error
+          for error, and --ntg-focused-ring-default for neutral and alpha.
+      - term: Border
+        definition: >-
+          Secondary hierarchy only. --ntg-button-color-<family>-border-secondary-<state>, 1 wide, drawn as an inset
+          box-shadow so it takes no space (an inside stroke in Figma).
+      - term: Label
+        definition: >-
+          The children, Figma text property Title. Color is --ntg-button-color-<family>-text-<hierarchy>-<state>.
+          Text style is label/md for sizes xs and sm, label/lg for md and lg, label/xl for xl. The label frame adds
+          --ntg-button-title-padding-<side>-<size> (4 left and right, 0 top and bottom), which keeps the text balanced
+          when only one icon is turned on.
+      - term: Left and right icon
+        definition: >-
+          Optional Icon from Nation UI Icons, set with leftIcon and rightIcon (Figma L-icon and R-icon with swap-L-icon and
+          swap-R-icon, default status-&-feedback/add). Color is --ntg-button-color-<family>-icon-<hierarchy>-<state>.
+          In Figma the icon frame is --ntg-button-icon-<size> (16, 18, 20, 22, 24). The icon is decorative, rendered with
+          no title, so it is hidden from screen readers.
+        # NEEDS CLARIFICATION: Figma binds the icon frame to button/icon/<size>, but the generated Button.module.css never sets --btn-icon (scripts/generate-component-css.mjs skips the hidden Left Icon and Right Icon layers), so in code the icon box gets no size from --ntg-button-icon-<size>. Is the code meant to size the icon from that token?
+      - term: Alpha colors
+        definition: >-
+          Alpha has no hierarchy, so its tokens drop that level: --ntg-button-color-alpha-background-<state>,
+          --ntg-button-color-alpha-text-<state> and --ntg-button-color-alpha-icon-<state>.
+      - term: Gray and neutral
+        definition: >-
+          defaultGray means gray at rest and the family color on hover (tokens brand-gray and error-gray in place of
+          <family>). family neutral means gray in every state. They look the same at rest and differ on hover, so they are
+          different meanings, not two names for one look. A close button in gray that turns brand on hover reads as a
+          confirm button.
+
+uses:
+  - to: icon
+
+alternatives:
+  - to: icon-button
+  - to: link-button
+
+refs:
+  - href: ../../components/Button/Button.tsx
+    rel: source
+    role: Import Button from components/Button
+  - href: ../../components/Button/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/Button/Button.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/12-buttons.md
+    rel: relates-to
+    role: Thai page doc for Figma page 12 Buttons
+  - href: ../../tokens/scale/button.mjs
+    rel: relates-to
+    role: Size formula for height, padding, gap, icon and radius
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7232
+    rel: design
+    role: Figma page 12 Buttons
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: family
+    description: The color family. In Figma each family is its own frame with its own pair of sets.
+    values:
+      - id: brand
+        description: The main brand color, for ordinary actions the user is meant to take next. The default.
+      - id: neutral
+        description: Gray in every state, with all three hierarchies. For actions with no brand meaning, such as close or back.
+      - id: error
+        description: Destructive actions, or actions that can't be undone.
+      - id: alpha
+        description: A see-through fill for buttons placed on images or video. Has no hierarchy, and its shadow grows with size.
+  - traitType: variant
+    kind: enum
+    id: hierarchy
+    description: How much weight the button carries in its action group. Figma axis hierarchy. Not used by family alpha.
+    values:
+      - id: primary
+        description: Solid fill, no border. At most one per action group. The default.
+      - id: secondary
+        description: Light fill with a border, and text in the family color.
+      - id: tertiary
+        description: No fill and no border at rest. A fill shows on hover, focus and press.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Height, padding, gap, radius, icon size and text style, from tokens/scale/button.mjs. Figma axis size.
+    values:
+      - id: md
+        description: 40 high, label/lg. The default.
+      - id: xs
+        description: 24 high, label/md.
+      - id: sm
+        description: 32 high, label/md.
+      - id: lg
+        description: 48 high, label/lg.
+      - id: xl
+        description: 56 high, label/xl.
+  - traitType: variant
+    kind: enum
+    id: shape
+    description: Corner shape. In Figma this is two separate sets, semi-rounded-button and pill-button.
+    values:
+      - id: semi-rounded
+        description: Corner radius from the size formula, 6 at xs up to 10 at xl. The default.
+      - id: pill
+        description: Capsule shape, --ntg-button-radius-full.
+  - traitType: variant
+    kind: boolean
+    id: defaultGray
+    description: Gray at rest, family color on hover. Figma axis default-gray. Works with brand and error only. Default false.
+  - traitType: variant
+    kind: boolean
+    id: fullWidth
+    description: Stretches to the width of the parent. Code only, not in Figma. Default false.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: The native disabled attribute. Figma state disabled. Uses the disabled tokens, can't be pressed and is skipped by Tab.
+
+combos:
+  - subject: defaultGray
+    level: must-not
+    items: [family.neutral, family.alpha]
+    note: Only brand and error have a gray mode. On other families the prop does nothing, and their Figma sets have no default-gray axis.
+  - subject: family.alpha
+    level: must-not
+    items: [hierarchy]
+    note: Alpha has a single look. The hierarchy prop is ignored for it, and its Figma sets have no hierarchy axis.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "12 Buttons"
+    figmaSets: [semi-rounded-button, pill-button]

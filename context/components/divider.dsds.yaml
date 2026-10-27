@@ -1,0 +1,159 @@
+# Divider in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Divider/, docs/28-dividers.md, tokens/scale/divider.mjs, tokens/figma-components.json,
+# tokens/figma-layers/divider.json and the Figma file (read 2026-10-27). Divider has no README.md
+# docs/28-dividers.md still says the code is not written (frontmatter and pending work). That part is out of date
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: divider
+name: Divider
+description: >-
+  A solid or dashed line between groups of content, horizontal or vertical. It matches the Figma sets horizontal-divider
+  and vertical-divider on page 28 Dividers, each with the axis type (solid, dash). It is decorative, so it is always
+  hidden from screen readers, and it always stretches to its parent. It exists so every place that splits content uses
+  the same thickness, color and dash, from one thickness token.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [layout]
+  status: {status: beta}
+  aliases: [horizontal-divider, vertical-divider]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use between groups of content on different topics when space alone doesn't split them clearly.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Put a divider between every item of one list when the spacing already shows the split. The lines crowd the page.
+          Use space instead.
+        checkedBy: manual
+      - level: must-not
+        statement: Use a divider as the border of a box. Use the box's own border.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Divider for the line between tabs. That line is tab/divider, a part inside Tabs with its own token,
+          even though both are 1 thick today.
+        alternatives:
+          - to: tabs
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Pick orientation from the way the content runs. Content that runs top to bottom takes horizontal, such as rows in
+          a panel or a form. Content that runs left to right takes vertical, such as groups of buttons in a toolbar.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Use type solid, the default, when both sides are content of the same level. Use type dash only when the split is
+          temporary or not settled, such as the edge of an area where things can be dropped.
+        checkedBy: manual
+      - level: must-not
+        statement: Fix the length of a divider. It stretches to its parent, so its length belongs to the layout.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the thickness, color or dash of a divider with className or style. Thickness is --ntg-divider-thickness and
+          color is --ntg-color-border-general-primary, for all four variants.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - level: must-not
+        statement: Use a divider as the only sign that content is split into groups. Use group headings for that.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html
+            role: WCAG 2.2 SC 1.3.1 (A)
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Try to make a divider readable by screen readers with role, aria-hidden or aria-orientation. Divider sets
+          role presentation and aria-hidden true after the props it is given, so they can't be overridden.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the items stack top to bottom THEN use orientation horizontal. IF they sit side by side THEN use orientation
+          vertical, inside a parent that has a height, such as a flex row.
+        checkedBy: assisted
+      - level: should
+        statement: IF the boundary is temporary or not settled THEN use type dash ELSE use type solid.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Line
+        definition: >-
+          The only part, a div with no children. Horizontal is as wide as its parent and --ntg-divider-thickness (1) high.
+          Vertical is as high as its parent and --ntg-divider-thickness wide, so its parent needs a height or must stretch it.
+          Color is --ntg-color-border-general-primary. Solid is a filled box. Dash is a repeating gradient of 8 on and
+          8 off, a fixed value with no token because Figma can't bind a variable to a dash pattern. In Figma the line is a
+          vector whose stroke weight is bound to divider/thickness and stroke to color/border/general/primary, with dash
+          pattern 8, 8 on type dash.
+      - term: Divider and tab divider
+        definition: >-
+          --ntg-divider-thickness belongs to this component, a line placed on its own between sections. tab/divider on
+          page 18 is the line between tabs inside Tabs. They are 1 thick by chance and change apart.
+
+alternatives:
+  - to: tabs
+
+refs:
+  - href: ../../components/Divider/Divider.tsx
+    rel: source
+    role: Import Divider from components/Divider
+  - href: ../../components/Divider/Divider.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/28-dividers.md
+    rel: relates-to
+    role: Thai page doc for Figma page 28 Dividers
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7130-30
+    rel: design
+    role: Figma page 28 Dividers
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: orientation
+    description: >-
+      Which way the line runs. In Figma this is two separate sets, horizontal-divider and vertical-divider.
+      The first value is the default.
+    values:
+      - id: horizontal
+        description: A line across, between content that runs top to bottom. The default.
+      - id: vertical
+        description: A line up and down, between content that runs left to right.
+  - traitType: variant
+    kind: enum
+    id: type
+    description: The line style. Figma axis type on both sets. The first value is the default.
+    values:
+      - id: solid
+        description: A solid line. Both sides are content of the same level. The default.
+      - id: dash
+        description: 8 on, 8 off. The split is temporary or not settled.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "28 Dividers"
+    figmaSets: [horizontal-divider, vertical-divider]

@@ -1,0 +1,157 @@
+# AvatarLabel in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Avatar/ (AvatarLabel lives in Avatar.tsx), docs/11-avatar.md, the Figma page 11 Avatar
+# (read 2026-10-27), tokens/figma-components.json, tokens/figma-layers/avatar.json and tokens/scale/avatar.mjs
+# components/Avatar has no README.md, so there is no Thai props table to cite
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: avatar-label
+name: AvatarLabel
+description: >-
+  An Avatar followed by the person's name and an optional second line, such as an email. It matches the Figma set
+  avatar-label on page 11 Avatar and lives in Avatar.tsx. It exists so a person shown with their name, as in a user
+  list, always has the same gap, text styles and colors, and nobody places name text next to an Avatar by hand.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [identity]
+  status: {status: beta}
+  aliases: [avatar-label]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use to show a person's picture with their name, and a second line such as an email when needed, for example
+          in a user list or a table row.
+        checkedBy: manual
+      - level: must-not
+        statement: Use AvatarLabel to show several people in little room. Use AvatarGroup.
+        alternatives:
+          - to: avatar-group
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Pass an Avatar whose size is the same as the AvatarLabel size (sm with sm, md with md, and so on). AvatarLabel
+          doesn't resize the Avatar it gets.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Pass the person's name in title and the second line in supportingText. To hide the second line, leave
+          supportingText out. There is no separate toggle.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Show the online status by setting status on the Avatar you pass in avatar. AvatarLabel has no status prop of its
+          own.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set a height on AvatarLabel or on its text. Its height comes from the line heights of the text styles, and there
+          is no height token on purpose.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the gap, text styles or text colors with className or style. They come from the size prop and the
+          avatar-label tokens.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the Figma set avatar-label has a boolean property avatar that hides the picture, but the avatar prop is required in code. Is an AvatarLabel with no picture allowed?
+      # NEEDS CLARIFICATION: no source says what happens to a name or email too long for its column. Should the text be cut with an ellipsis, wrap, or stay on one line?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      # NEEDS CLARIFICATION: when title already shows the name, a named Avatar makes screen readers read the name twice. Avatar.stories.tsx passes alt="ผู้เขียนข่าว" to the Avatar in AvatarLabel, Table.stories.tsx passes alt="", and docs/research/avatar-component.md section 16.5 (draft) proposes an empty alt next to a visible name. Must the Avatar inside AvatarLabel have alt="" and no name?
+      # NEEDS CLARIFICATION: the Figma state hover changes only the Avatar (brand ring and a darker fill), not the text. AvatarLabel has no interactive prop, and interactive on the inner Avatar only reacts when the pointer is over the picture. How should a pressable AvatarLabel, such as a link to a profile, be built and get that hover?
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: should
+        statement: IF a list row shows a person's name and email THEN use AvatarLabel size md.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Root
+        definition: >-
+          A row with the Avatar first and the text after it, centered on the vertical axis. The gap is
+          --ntg-avatar-label-gap-<size> (8, 12, 16, 20 for sm, md, lg, xl). No height is set, so the height follows the
+          text styles.
+      - term: Avatar
+        definition: >-
+          The avatar prop, an Avatar at the same size as the label. In Figma it is an avatar-icon instance by default.
+          Figma axis status-icon is the status dot of this Avatar.
+      - term: Name
+        definition: >-
+          The title prop. Text style title/xs at sizes sm and md, and title/md at lg and xl.
+          Color is --ntg-color-text-general-section-heading. Figma property name.
+      - term: Supporting text
+        definition: >-
+          The supportingText prop, under the name with no gap. In code the text style is body/xs at size sm, body/sm at
+          md and body/md at lg and xl. Color is --ntg-color-text-general-supporting-text. Figma properties email and
+          show-email.
+      # NEEDS CLARIFICATION: the Figma file read on 2026-10-27 has body/md for the supporting text at all 4 sizes (label heights 50, 50, 54, 56), while Avatar.module.css, the snapshot tokens/figma-layers/avatar.json of 2026-10-26 and docs/11-avatar.md section 5 (a lead decision) give body/xs, body/sm, body/md and body/md for sm, md, lg and xl. docs/11-avatar.md section 4.3 also lists the heights as 40, 44, 52, 56. Which is right?
+
+uses:
+  - to: avatar
+
+alternatives:
+  - to: avatar
+  - to: avatar-group
+
+refs:
+  - href: ../../components/Avatar/Avatar.tsx
+    rel: source
+    role: Import AvatarLabel from components/Avatar
+  - href: ../../components/Avatar/Avatar.stories.tsx
+    rel: demo
+    role: Storybook stories Avatar-label and ป้ายชื่อ (AvatarLabel) (npm run storybook)
+  - href: ../../docs/11-avatar.md
+    rel: relates-to
+    role: Thai page doc for Figma page 11 Avatar
+  - href: ../../tokens/scale/avatar.mjs
+    rel: relates-to
+    role: Size formula for the label gap
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7231
+    rel: design
+    role: Figma page 11 Avatar
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: >-
+      The gap and the text styles. It doesn't resize the Avatar, which takes its own size prop.
+      Only 4 sizes. There is no xs, because two lines of text don't fit next to a 24 Avatar. The first value is the default.
+    values:
+      - id: md
+        description: Gap 12, for an Avatar md. List rows with a name and an email. The default.
+      - id: sm
+        description: Gap 8, for an Avatar sm.
+      - id: lg
+        description: Gap 16, for an Avatar lg.
+      - id: xl
+        description: Gap 20, for an Avatar xl.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "11 Avatar"
+    figmaSets: [avatar-label]

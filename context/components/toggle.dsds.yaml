@@ -1,0 +1,228 @@
+# Toggle in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Toggle/, docs/14-toggles.md, docs/research/toggle-component.md,
+# the Figma file (page 14 Toggles, read 2026-10-27) and tokens/figma-layers/toggle.json
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: toggle
+name: Toggle
+description: >-
+  An on and off switch for a setting that takes effect at once. It is a native checkbox input with role switch, drawn
+  as a track and a knob, with an optional label and supporting text. It matches the Figma set toggle on page 14 Toggles
+  (40 variants: 5 sizes, active false or true, 4 states). It exists so every settings screen uses one switch with the
+  same sizes, states and touch area, and so users never think a change is saved when it still waits for a save button.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [input]
+  status: {status: beta}
+  aliases: [toggle]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use for an on and off setting that is saved and takes effect as soon as the user switches it, with no save button.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Toggle in a form whose values are saved only when the user presses a save, submit or confirm button, such as
+          ยอมรับข้อตกลงการใช้งาน. A switch tells the user the change is already saved.
+        alternatives:
+          - to: checkbox
+        checkedBy: manual
+      - level: must-not
+        statement: Mix controls that save at once with controls that wait for a save button in one form. The user can't tell what is already saved.
+        checkedBy: manual
+      - level: must-not
+        statement: Use Toggle for a choice that needs a partly selected state. Toggle has only on and off.
+        alternatives:
+          - to: checkbox
+        checkedBy: manual
+      - level: must-not
+        statement: Use Toggle to pick one option out of more than two.
+        alternatives:
+          - to: radio
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          The label is the name of the thing being switched, such as แจ้งเตือนทางอีเมล, and stays the same when on and off.
+          Never use เปิด, ปิด, เปิดอยู่ or ปิดอยู่ as the label. Screen readers already announce the state.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/switch/
+            role: WAI-ARIA Authoring Practices, Switch pattern
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Leave out label only when the name of the setting is already shown next to the Toggle, such as in a table row
+          or a settings row with the name on the left.
+        checkedBy: manual
+      - level: must
+        statement: Pass text that explains the effect of the switch in the supportingText prop. Don't render it as a separate element under the Toggle.
+        checkedBy: manual
+      - level: should
+        statement: Add supportingText only when the effect of switching needs explaining, such as ระบบจะส่งสรุปข่าวให้ทุกเช้า. Leave it out otherwise.
+        checkedBy: manual
+      - level: must-not
+        statement: Make the knob grow or stretch when pressed. The pressed state is shown by color only.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change the track, knob, gap or supporting-text indent with className, style or typed numbers. They are results
+          of the formula in tokens/scale/toggle.mjs: track width is track height times 2, and the knob is track height
+          minus 2 times the inset.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Toggle draws on and off from data-checked, which is read from checked ?? defaultChecked when it renders. With only defaultChecked (uncontrolled, as in every Storybook story) a click changes the input but not the knob or the track. Must callers always pass checked and onChange, or should Toggle keep its own state?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Every Toggle has a name screen readers read: the label prop, or aria-label or aria-labelledby when label is left
+          out, such as aria-label="เปิดแจ้งเตือน".
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+            role: WCAG 2.2 SC 4.1.2 (A)
+        checkedBy: manual
+      - level: should
+        statement: >-
+          When a Toggle is disabled, say why in supportingText, such as บัญชีนี้ไม่มีสิทธิ์เปิดใช้. Off and disabled use the
+          same track color, so they can't be told apart by sight.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Figma page 14 (Anatomy, Sizes, Accessibility) and docs/14-toggles.md (developer step 3) say the row is always --ntg-toggle-row-height-<size> high (24, 32, 40, 48, 56), and the Figma variables toggle/row/height/* exist. But the Figma toggle component row hugs its content and binds none of them, and Toggle.base.css gives the row no height per size and uses a typed 48px instead of --ntg-toggle-row-height-touch on touch screens. Must the row take the row height tokens?
+      # NEEDS CLARIFICATION: when should touchTarget be set? Toggle.base.css already gives the row a 48px minimum height under pointer coarse, and the prop comment says only "use on touch screens".
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF the change waits for a save or submit button THEN use Checkbox ELSE use Toggle.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the Toggle is the main setting the whole page exists for THEN use size lg. IF it sits in a dense list or a
+          table row THEN use size sm. ELSE use size md.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Root
+        definition: >-
+          A vertical stack of the row and the supporting text, with --ntg-toggle-gap (8) between them. It carries
+          data-checked and data-disabled, which pick the colors.
+      - term: Row
+        definition: >-
+          A label element tied to the input, holding the input, the track and the title with --ntg-toggle-gap between them.
+          It is the area that takes the click or tap, and has no fill. Its height follows the content, with a minimum
+          of 48 under pointer coarse or when touchTarget is true.
+      - term: Input
+        definition: >-
+          A native input type checkbox with role switch. checked, defaultChecked, disabled, onChange and other input props go
+          here. It is hidden with clip-path, not display none, so it still takes focus and screen readers read it.
+          aria-describedby points at the supporting text when there is one.
+      - term: Track
+        definition: >-
+          The capsule behind the knob, hidden from screen readers. Width is --ntg-toggle-track-width-<size> (32 to 64),
+          height --ntg-toggle-track-height-<size> (16 to 32), radius --ntg-toggle-radius-full. Fill when on is
+          --ntg-color-background-brand-solid, on hover --ntg-color-background-brand-solid-hover, when pressed
+          --ntg-color-background-brand-solid-pressed. Fill when off, and when disabled on or off, is
+          --ntg-color-background-general-disabled. Keyboard focus adds --ntg-focused-ring-brand when on and
+          --ntg-focused-ring-default when off.
+      - term: Knob
+        definition: >-
+          A circle of --ntg-toggle-knob-size-<size> (12 to 28), --ntg-toggle-inset (2) from the track edge. Fill is
+          --ntg-icon-brand-on-brand-primary, shadow --ntg-shadows-bottom-sm. Left when off, right when on. It moves by track
+          width minus knob minus 2 times the inset, the same value as --ntg-toggle-travel-<size>, and keeps its size in every state.
+      - term: Title
+        definition: >-
+          The label prop. Figma properties title and title-value. Text style title/<size> (title/xs to title/xl).
+          Color is --ntg-color-text-general-section-heading, and --ntg-color-text-general-disabled when disabled.
+      # NEEDS CLARIFICATION: docs/14-toggles.md section 4.3 and the Figma frame Toggle Anatomy say the title uses label/<size>, but the Figma toggle component, Toggle.module.css and Storybook use title/<size>. Which preset is right?
+      - term: Supporting text
+        definition: >-
+          The supportingText prop. Figma properties supporting-text and supporting-text-value. Text style body/<size>.
+          Color is --ntg-color-text-general-supporting-text, and --ntg-color-text-general-disabled when disabled.
+          Indented by --ntg-toggle-indent-<size> (track width plus gap, 40 to 72) so it lines up with the title.
+      # NEEDS CLARIFICATION: in Figma the supporting-text property defaults to false, but docs/14-toggles.md section 4.2 says it defaults to true and that the default toggle comes with both title and supporting text. Which default is meant?
+
+alternatives:
+  - to: checkbox
+  - to: radio
+
+refs:
+  - href: ../../components/Toggle/Toggle.tsx
+    rel: source
+    role: Import Toggle from components/Toggle
+  - href: ../../components/Toggle/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/Toggle/Toggle.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/14-toggles.md
+    rel: relates-to
+    role: Thai page doc for Figma page 14 Toggles
+  - href: ../../docs/research/toggle-component.md
+    rel: relates-to
+    role: Thai research comparing 12 design systems, the source of the size and usage decisions
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7234
+    rel: design
+    role: Figma page 14 Toggles
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Track, knob, indent and text styles. The first value is the default.
+    values:
+      - id: md
+        description: Track 48 by 24, title/md. The default for most settings.
+      - id: xs
+        description: Track 32 by 16, title/xs.
+      - id: sm
+        description: Track 40 by 20, title/sm. Dense lists and table rows.
+      - id: lg
+        description: Track 56 by 28, title/lg. The main setting of a page.
+      - id: xl
+        description: Track 64 by 32, title/xl.
+  - traitType: variant
+    kind: boolean
+    id: touchTarget
+    description: Gives the row a minimum height of 48 on any screen. Code only, not in Figma. Default false.
+  - traitType: state
+    kind: boolean
+    id: checked
+    description: On or off. The native checked attribute, Figma variant active. Off by default.
+  - traitType: state
+    kind: boolean
+    id: disabled
+    description: >-
+      The native disabled attribute. The track turns --ntg-color-background-general-disabled and the text
+      --ntg-color-text-general-disabled, and the Toggle can't be switched.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "14 Toggles"
+    figmaSets: [toggle]

@@ -1,0 +1,359 @@
+# Banner in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Banner/, components/Toast/, docs/19-toasts-banners.md, docs/research/toast-banner-component.md,
+# tokens/figma-components.json, tokens/figma-layers/banner.json and the Figma file (page 19 Toasts & Banners, read 2026-10-27)
+# Banner and Toast share types, sizes, colors and text styles. Keep the wording of the two specs the same
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: banner
+name: Banner
+description: >-
+  A bar inside the content flow that reports a status that is still in effect, and stays until the user closes it
+  or the matter ends. It never closes by itself. It matches the Figma set banner on page 19 Toasts & Banners, in two
+  levels, page across the top of the page and section inside a content box. It exists so every screen shows an
+  ongoing status with the same colors, sizes, icons and screen reader behavior as Toast, while Toast reports what just
+  happened.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-27}
+  tags: [feedback]
+  status: {status: beta}
+  aliases: [banner]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use for a status that stays in effect until the user closes it or the matter ends, which the user must still
+          see after coming back to the page or may still have to act on, such as maintenance planned for tonight or an
+          article that was suspended from publishing.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Use type error for the error summary of a form on submit. That summary must be able to take focus and must
+          stay until the user has fixed the fields.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use a Banner to report the result of something that just happened, when the matter is finished and the user
+          has nothing left to do, such as an article that was just saved.
+        alternatives:
+          - to: toast
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: Choose type by meaning, not by the color you want. Use error only when the action the user asked for did not succeed.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: when should a banner use warning, and when default rather than brand? The sources only give examples (warning for maintenance, brand for a new feature, error for a form summary), the same open question as in toast.dsds.yaml
+      - level: must
+        statement: Use level page when the matter affects the whole page, and level section when it affects only one content box.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Place a level page banner at the top of the page, outside any container with padding, so its 0 corner radius
+          meets both edges of the screen. Place a level section banner at the top of its content box.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Remove or hide the banner yourself in onClose. Banner never hides itself, the close button only calls onClose.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: once the user closes a banner, does it come back on the next visit while the matter is still ongoing, and where is that remembered? No source says. docs/research/toast-banner-component.md notes the market splits on this
+      - level: should
+        statement: >-
+          Set showClose to false while the matter is not over or the user still has to act on it, such as a form error
+          summary that stays until the fields are fixed.
+        checkedBy: manual
+      - level: should-not
+        statement: Set showIcon to false. The icon is what tells the types apart without relying on color.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Show more than one level page banner at a time, or stack several banners in one place. Users can't tell which
+          one matters.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: Banner.stories.tsx says one level page banner at a time and no stacked banners, and docs/19-toasts-banners.md section 4.9 says banners don't stack. When two statuses are active at once, which banner is shown, and may a page banner and a section banner be on screen together?
+      - level: must-not
+        statement: >-
+          Put more than one action in a banner, or build the action from anything other than the action prop.
+          The action prop renders one LinkButton family neutral under the text for every type, matching the link-button instances on Figma page 19.
+        checkedBy: manual
+      - level: must-not
+        statement: Give the banner a shadow. A shadow says the box floats above the page, and a banner sits in the content flow.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set a width or a fixed height on the banner. Width always comes from the parent and height from the content,
+          and a fixed height makes wrapped text overflow the box. Banner has no width prop and no width token on purpose.
+        checkedBy: manual
+      - level: must-not
+        statement: Set banner spacing, radius or color with typed numbers in className or style. Every value comes from the banner tokens and the system tokens.
+        checkedBy: manual
+      - level: must-not
+        statement: Add a type info. It was ruled out on 2026-10-02 because its color would be too close to brand to tell apart.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Make a solid fill or an outlined banner. Banner has one look, a light fill with dark gray text.
+          A solid fill with white text fails contrast at warning (3.06) and success (3.73), and outline borders reach only 1.29 to 1.94 against white.
+        checkedBy: manual
+      - level: must-not
+        statement: Give the banner a disabled state or a hover state. Only the buttons inside it have states.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#icon-name
+            rel: same-as
+      - level: must
+        statement: >-
+          A banner that is announced uses a hidden live region that is separate from the visible box,
+          polite for types default and brand and assertive for types error, warning and success. Banner does this when announce is true.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/status-messages
+            role: WCAG 2.2 SC 4.1.3 (AA)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Leave announce false for a banner that is on the page when it loads, and set it to true only when the banner
+          appears because of something the user just did, such as the form error summary on submit. Announcing every
+          banner at load makes users listen to things that did not just change.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/status-messages
+            role: WCAG 2.2 SC 4.1.3 (AA)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          When a form submit fails, move focus to the error summary banner by calling focus() on the ref passed to Banner.
+          The banner takes focus from code (tabIndex -1) but is not in the page's Tab order.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: shared-a11y#focus-visible says keyboard focus shows a ring that is never removed, but Banner.base.css sets outline none on :focus with no ring, and README.md says the banner needs no ring because it is not in the Tab order. When focus is moved to an error summary banner, should a focus ring show?
+      - level: must
+        statement: The touch area of the close button is at least 44px, made larger with a pseudo element, not by growing the visible button.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
+            role: WCAG 2.2 SC 2.5.5 (AAA)
+        checkedBy: manual
+      - level: must
+        statement: The type icon and the close button have at least 3:1 contrast against the banner fill in all 5 types.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
+            role: WCAG 2.2 SC 1.4.11 (AA)
+        checkedBy: manual
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must-not
+        statement: >-
+          Pass aria-live or role to Banner. The banner is a role group named by its title, and a live region on the visible
+          box makes screen readers read the message twice, once when it changes and again when the user reaches it.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/status-messages
+            role: WCAG 2.2 SC 4.1.3 (AA)
+        checkedBy: manual
+      - level: must-not
+        statement: Pass tabIndex 0 to Banner. It is kept out of the page's Tab order on purpose, and the buttons inside it are reachable with Tab.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the message reports a status that is still in effect, or something the user must still see or act on THEN use
+          Banner ELSE (the result of an action the user just took, with nothing left to do) use Toast.
+        checkedBy: assisted
+      - level: must
+        statement: IF the matter affects the whole page THEN use level page ELSE use level section (the default).
+        checkedBy: assisted
+      - level: must
+        statement: IF the action the user asked for did not succeed THEN use type error ELSE use a type other than error.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF announce is true and title or description is not a plain string or number THEN pass announcement with the text to read.
+          Outside production, Banner warns in the console when it has no text to announce.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the banner is the error summary of a form THEN use type error, set announce, set showClose to false, pass an
+          action that takes the user to the first field to fix, and call focus() on it after a failed submit.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the banner sits in a settings panel or a small card with little vertical space THEN use size xs.
+          IF it sits in a form or a content box with many items on screen THEN use size sm.
+          IF it is a level page banner that must be seen as soon as the page opens THEN use size lg.
+          IF the screen is a large display read from a distance, or the whole page uses large text THEN use size xl.
+          ELSE use size md, the default for news sites of every brand.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Container
+        definition: >-
+          A div with role group, aria-labelledby pointing at the title, and tabIndex -1. className and the ref go here.
+          Padding is --ntg-banner-padding-<size> on all four sides (8 to 24). Corner radius is --ntg-banner-radius-page (0)
+          for level page and --ntg-banner-radius-section-<size> (8 to 24) for level section. The two levels differ only in
+          radius, not in color. No shadow. Width comes from the parent and height from the content.
+      - term: Type colors
+        definition: >-
+          The same as Toast. One look for every type, a light fill with dark gray text. Fill and icon color per type are
+          default --ntg-color-background-general-secondary and --ntg-icon-general-primary,
+          brand --ntg-color-background-brand-primary and --ntg-icon-brand-on-subtle,
+          error --ntg-color-background-system-error-primary and --ntg-icon-system-error-on-subtle,
+          warning --ntg-color-background-system-warning-primary and --ntg-icon-system-warning-on-subtle,
+          success --ntg-color-background-system-success-primary and --ntg-icon-system-success-on-subtle.
+      - term: Row
+        definition: The type icon, the text group and the close button in one row, with --ntg-banner-gap-<size> between them (8 to 24).
+      - term: Type icon
+        definition: >-
+          Shown when showIcon is true. Size is --ntg-banner-icon-<size> (20 to 28px), in a box as tall as the title's
+          line, so it lines up with the first line. The default icon is info-circle for default and brand, error-circle
+          for error, warning for warning and check-circle for success, the same as Toast. The icon prop swaps it for another
+          icon name from the DS icon set and takes no custom element.
+      - term: Title
+        definition: >-
+          The required title prop, the first line. Color is --ntg-color-text-general-heading, medium weight.
+          Text style is label/sm for size xs, label/md for sm, label/lg for md, label/xl for lg and title/lg for xl.
+      - term: Description
+        definition: >-
+          Optional text under the title, shown when description is passed and showDescription isn't false. Color is
+          --ntg-color-text-general-text, regular weight. Text style is body/xs for sizes xs and sm, body/sm for md,
+          body/md for lg and body/lg for xl. The gap above it is --ntg-banner-stack-<size> (0 to 4).
+      - term: Action
+        definition: >-
+          One LinkButton family neutral at the banner size, built from the action prop (label, onClick and an optional icon shown as leftIcon).
+          It sits on its own row under the text, never at the end of the row with the icon and close button. The gap above it is
+          --ntg-banner-action-gap-<size> (4 to 12). Shown when action is passed and showAction isn't false.
+      - term: Close button
+        definition: >-
+          A native button with the close icon, at the same size as the type icon. It comes after the text group as its sibling, not inside it,
+          so screen readers read the message before the word close. Its accessible name is closeLabel, default ปิดแถบแจ้ง.
+          Color is --ntg-icon-general-quaternary, and the type icon color on hover. On :focus-visible it shows
+          --ntg-focused-ring-default. Pressing it calls onClose. Shown when showClose is true.
+      # NEEDS CLARIFICATION: is the close icon color --ntg-icon-general-secondary (components/Banner/README.md) or --ntg-icon-general-quaternary (the Figma binding read 2026-10-27, Banner.module.css and docs/19-toasts-banners.md section 4.7)? The same question is open in toast.dsds.yaml
+      - term: Live region
+        definition: >-
+          A hidden span with aria-live set by type and aria-atomic true, outside the visible content, rendered only when announce is true.
+          It reads announcement, or else the plain text of title and description joined by a space.
+
+  - kind: definitions
+    for: all
+    title: Exports
+    items:
+      - term: BANNER_POLITENESS
+        definition: The aria-live value per type, polite for default and brand, assertive for error, warning and success. The same values as Toast.
+      - term: bannerAnnouncement
+        definition: Returns the text a banner announces, announcement when it is passed, otherwise the plain text of title and description joined by a space.
+
+uses:
+  - to: icon
+  - to: link-button
+
+alternatives:
+  - to: toast
+
+refs:
+  - href: ../../components/Banner/Banner.tsx
+    rel: source
+    role: Import Banner from components/Banner
+  - href: ../../components/Banner/README.md
+    rel: relates-to
+    role: Thai README with the props table and the Banner or Toast table
+  - href: ../../components/Banner/Banner.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/19-toasts-banners.md
+    rel: relates-to
+    role: Thai page doc for Figma page 19 Toasts & Banners
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7121-7238
+    rel: design
+    role: Figma page 19 Toasts & Banners
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: type
+    description: The fill, the icon and its color, and how the announcement interrupts. Default default.
+    values:
+      - id: default
+        description: Gray fill, announced polite. The default.
+      - id: brand
+        description: Brand color fill, announced polite.
+      - id: error
+        description: The action the user asked for did not succeed. Announced assertive.
+      - id: warning
+        description: Warning color fill, announced assertive.
+      - id: success
+        description: Success color fill, announced assertive.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Padding, gap, radius, icon size, text styles and the action size. Default md.
+    values:
+      - id: md
+        description: The default. News sites of every brand.
+      - id: xs
+        description: A settings panel or a small card with little vertical space.
+      - id: sm
+        description: Forms and content boxes with many items on screen.
+      - id: lg
+        description: A level page banner that must be seen as soon as the page opens.
+      - id: xl
+        description: Large screens read from a distance, or pages with large text throughout.
+  - traitType: variant
+    kind: enum
+    id: level
+    description: Where the banner sits. Changes only the corner radius. Default section.
+    values:
+      - id: section
+        description: Inside a content box, as wide as its column, with a radius by size. The default.
+      - id: page
+        description: Across the top of the page, touching both screen edges, with radius 0.
+  - traitType: variant
+    kind: boolean
+    id: showIcon
+    description: Shows the type icon. Default true. Figma property show-icon.
+  - traitType: variant
+    kind: boolean
+    id: showDescription
+    description: Shows the description. By default it shows whenever description is passed. Figma property show-support.
+  - traitType: variant
+    kind: boolean
+    id: showAction
+    description: Shows the action. By default it shows whenever action is passed. Figma property show-action.
+  - traitType: variant
+    kind: boolean
+    id: showClose
+    description: Shows the close button. Default true. Figma property show-close.
+  - traitType: variant
+    kind: boolean
+    id: announce
+    description: >-
+      Renders the banner's own live region. Default false, unlike Toast, because a banner is usually on the page from
+      the start. Code only, not in Figma.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "19 Toasts & Banners"
+    figmaSets: [banner]
