@@ -1,0 +1,122 @@
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/TagField/TagField.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 13 Input แล้วรัน  npm run figma:layers -- tag-field  และ  npm run css:generate -- tag-field
+ *   spec: tokens/figma-layers/tag-field.json (ดึง 2026-10-27)
+ */
+
+/*
+ * TagField ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --tgf-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/tag-field.json (spec ชั้นจากไฟล์ออกแบบหน้า 13 ชุด tag-field)
+ * แล้วต่อท้ายไฟล์นี้เป็น TagField.module.css ห้ามแก้ TagField.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นที่มีชื่อ token: ช่องไฟระหว่างป้ายชื่อกับดอกจัน (input/label-gap ชุดเดียวกับช่องกรอก ไฟล์ออกแบบของช่องแท็กไม่มีดอกจัน)
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบใช้ box-shadow inset (stroke INSIDE) รวมกับเงาและวงแหวนโฟกัสใน box-shadow เดียว
+ *   2. สถานะเป็น data attribute ของ root (error disabled readonly) + :hover ของกล่อง + :focus-visible ของ input เหมือนช่องกรอก
+ *   3. แท็กขึ้นบรรทัดใหม่เมื่อเต็มแถว (flex-wrap) ช่องสูงตามจำนวนแท็ก ไฟล์ออกแบบวางแถวเดียว
+ *   4. ชั้นข้อความในกล่องเป็น placeholder ตอนพักและข้อความที่พิมพ์ตอน hover/focused ตัวสร้างแยกเป็น --tgf-placeholder / --tgf-text
+ *   5. แท็กกับปุ่มเพิ่มเป็น Tag กับ LinkButton ค่าของมันอยู่ที่ไฟล์ของตัวเอง
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tgf-stack-gap, 0);
+}
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-input-label-gap);
+  color: var(--tgf-label-fg, inherit);
+  font-family: var(--tgf-label-font-family);
+  font-size: var(--tgf-label-font-size);
+  line-height: var(--tgf-label-line-height);
+  font-weight: var(--tgf-label-font-weight);
+  letter-spacing: var(--tgf-label-letter-space);
+}
+.required { color: var(--tgf-required-fg, var(--tgf-label-fg)); }
+
+.box {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: var(--tgf-pt, 0) var(--tgf-pr, 0) var(--tgf-pb, 0) var(--tgf-pl, 0);
+  gap: var(--tgf-gap, 0);
+  border-radius: var(--tgf-r-tl, 0) var(--tgf-r-tr, 0) var(--tgf-r-br, 0) var(--tgf-r-bl, 0);
+  background: var(--tgf-bg, transparent);
+  box-shadow: inset 0 0 0 var(--tgf-border-w, 1px) var(--tgf-border, transparent), var(--tgf-shadow, 0 0 0 0 transparent);
+  color: var(--tgf-text, var(--tgf-label-fg, inherit));
+  font-family: var(--tgf-font-family);
+  font-size: var(--tgf-font-size);
+  line-height: var(--tgf-line-height);
+  font-weight: var(--tgf-font-weight);
+  letter-spacing: var(--tgf-letter-space);
+  cursor: text;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.root[data-disabled] .box { cursor: not-allowed; }
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tgf-tag-gap, 0);
+  min-width: 0;
+}
+.input {
+  flex: 1 1 4em;
+  min-width: 4em;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: 0;
+}
+.input::placeholder { color: var(--tgf-placeholder, inherit); }
+.input:disabled { cursor: not-allowed; }
+.divider {
+  flex: none;
+  align-self: stretch;
+  width: var(--tgf-divider-w, 1px);
+  background: var(--tgf-border, transparent);
+}
+.add { flex: none; }
+
+.hint {
+  color: var(--tgf-hint-fg, inherit);
+  font-family: var(--tgf-hint-font-family);
+  font-size: var(--tgf-hint-font-size);
+  line-height: var(--tgf-hint-line-height);
+  font-weight: var(--tgf-hint-font-weight);
+  letter-spacing: var(--tgf-hint-letter-space);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box { transition: none; }
+}
+
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.sm { --tgf-label-font-family: var(--ntg-typography-font-family-body-sm); --tgf-label-font-size: var(--ntg-typography-font-size-body-sm); --tgf-label-line-height: var(--ntg-typography-line-height-body-sm); --tgf-label-font-weight: var(--ntg-typography-font-weight-body-sm); --tgf-label-letter-space: var(--ntg-typography-letter-space-body-sm); --tgf-font-family: var(--ntg-typography-font-family-body-xs); --tgf-font-size: var(--ntg-typography-font-size-body-xs); --tgf-line-height: var(--ntg-typography-line-height-body-xs); --tgf-font-weight: var(--ntg-typography-font-weight-body-xs); --tgf-letter-space: var(--ntg-typography-letter-space-body-xs); --tgf-hint-font-family: var(--ntg-typography-font-family-body-sm); --tgf-hint-font-size: var(--ntg-typography-font-size-body-sm); --tgf-hint-line-height: var(--ntg-typography-line-height-body-sm); --tgf-hint-font-weight: var(--ntg-typography-font-weight-body-sm); --tgf-hint-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.md { --tgf-label-font-family: var(--ntg-typography-font-family-body-sm); --tgf-label-font-size: var(--ntg-typography-font-size-body-sm); --tgf-label-line-height: var(--ntg-typography-line-height-body-sm); --tgf-label-font-weight: var(--ntg-typography-font-weight-body-sm); --tgf-label-letter-space: var(--ntg-typography-letter-space-body-sm); --tgf-font-family: var(--ntg-typography-font-family-body-sm); --tgf-font-size: var(--ntg-typography-font-size-body-sm); --tgf-line-height: var(--ntg-typography-line-height-body-sm); --tgf-font-weight: var(--ntg-typography-font-weight-body-sm); --tgf-letter-space: var(--ntg-typography-letter-space-body-sm); --tgf-hint-font-family: var(--ntg-typography-font-family-body-sm); --tgf-hint-font-size: var(--ntg-typography-font-size-body-sm); --tgf-hint-line-height: var(--ntg-typography-line-height-body-sm); --tgf-hint-font-weight: var(--ntg-typography-font-weight-body-sm); --tgf-hint-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.lg { --tgf-label-font-family: var(--ntg-typography-font-family-body-sm); --tgf-label-font-size: var(--ntg-typography-font-size-body-sm); --tgf-label-line-height: var(--ntg-typography-line-height-body-sm); --tgf-label-font-weight: var(--ntg-typography-font-weight-body-sm); --tgf-label-letter-space: var(--ntg-typography-letter-space-body-sm); --tgf-font-family: var(--ntg-typography-font-family-body-sm); --tgf-font-size: var(--ntg-typography-font-size-body-sm); --tgf-line-height: var(--ntg-typography-line-height-body-sm); --tgf-font-weight: var(--ntg-typography-font-weight-body-sm); --tgf-letter-space: var(--ntg-typography-letter-space-body-sm); --tgf-hint-font-family: var(--ntg-typography-font-family-body-sm); --tgf-hint-font-size: var(--ntg-typography-font-size-body-sm); --tgf-hint-line-height: var(--ntg-typography-line-height-body-sm); --tgf-hint-font-weight: var(--ntg-typography-font-weight-body-sm); --tgf-hint-letter-space: var(--ntg-typography-letter-space-body-sm); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.sm { --tgf-stack-gap: var(--ntg-input-stack-gap); --tgf-pt: var(--ntg-input-tag-padding-top-sm); --tgf-pr: var(--ntg-input-tag-padding-right-sm); --tgf-pb: var(--ntg-input-tag-padding-bottom-sm); --tgf-pl: var(--ntg-input-tag-padding-left-sm); --tgf-gap: var(--ntg-input-tag-gap-sm); --tgf-r-tl: var(--ntg-input-radius-top-left-sm); --tgf-r-tr: var(--ntg-input-radius-top-right-sm); --tgf-r-br: var(--ntg-input-radius-bottom-right-sm); --tgf-r-bl: var(--ntg-input-radius-bottom-left-sm); --tgf-tag-gap: var(--ntg-input-tag-tag-gap-sm); --tgf-divider-w: var(--ntg-divider-thickness); --tgf-add: 22px; }
+.root.md { --tgf-stack-gap: var(--ntg-input-stack-gap); --tgf-pt: var(--ntg-input-tag-padding-top-md); --tgf-pr: var(--ntg-input-tag-padding-right-md); --tgf-pb: var(--ntg-input-tag-padding-bottom-md); --tgf-pl: var(--ntg-input-tag-padding-left-md); --tgf-gap: var(--ntg-input-tag-gap-md); --tgf-r-tl: var(--ntg-input-radius-top-left-md); --tgf-r-tr: var(--ntg-input-radius-top-right-md); --tgf-r-br: var(--ntg-input-radius-bottom-right-md); --tgf-r-bl: var(--ntg-input-radius-bottom-left-md); --tgf-tag-gap: var(--ntg-input-tag-tag-gap-md); --tgf-divider-w: var(--ntg-divider-thickness); --tgf-add: 26px; }
+.root.lg { --tgf-stack-gap: var(--ntg-input-stack-gap); --tgf-pt: var(--ntg-input-tag-padding-top-lg); --tgf-pr: var(--ntg-input-tag-padding-right-lg); --tgf-pb: var(--ntg-input-tag-padding-bottom-lg); --tgf-pl: var(--ntg-input-tag-padding-left-lg); --tgf-gap: var(--ntg-input-tag-gap-lg); --tgf-r-tl: var(--ntg-input-radius-top-left-lg); --tgf-r-tr: var(--ntg-input-radius-top-right-lg); --tgf-r-br: var(--ntg-input-radius-bottom-right-lg); --tgf-r-bl: var(--ntg-input-radius-bottom-left-lg); --tgf-tag-gap: var(--ntg-input-tag-tag-gap-lg); --tgf-divider-w: var(--ntg-divider-thickness); --tgf-add: 28px; }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root { --tgf-label-fg: var(--ntg-color-text-general-section-heading); --tgf-bg: var(--ntg-color-background-general-primary); --tgf-border: var(--ntg-color-border-general-primary); --tgf-border-w: 1px; --tgf-shadow: 0 0 0 0 transparent; --tgf-placeholder: var(--ntg-color-text-general-placeholder); --tgf-hint-fg: var(--ntg-color-text-general-text); }
+.root:not([data-error]):not([data-disabled]):not([data-readonly]):has(.box:hover) { --tgf-label-fg: var(--ntg-color-text-general-label); --tgf-bg: var(--ntg-color-background-general-primary-hover); --tgf-border: var(--ntg-color-border-general-primary-hover); --tgf-border-w: 1px; --tgf-shadow: var(--ntg-shadows-bottom-xs); --tgf-placeholder: var(--ntg-color-text-general-placeholder); --tgf-hint-fg: var(--ntg-color-text-general-text); }
+.root:not([data-error]):has(.input:focus-visible) { --tgf-label-fg: var(--ntg-color-text-brand-primary); --tgf-bg: var(--ntg-color-background-general-primary); --tgf-border: var(--ntg-color-border-brand-solid); --tgf-border-w: 1px; --tgf-shadow: var(--ntg-focused-ring-brand); --tgf-placeholder: var(--ntg-color-text-general-placeholder); --tgf-hint-fg: var(--ntg-color-text-general-text); }
+.root[data-error] { --tgf-label-fg: var(--ntg-color-text-system-error); --tgf-bg: var(--ntg-color-background-general-primary); --tgf-border: var(--ntg-color-system-error); --tgf-border-w: 1px; --tgf-shadow: 0 0 0 0 transparent; --tgf-placeholder: var(--ntg-color-text-general-placeholder); --tgf-hint-fg: var(--ntg-color-text-system-error); }
+.root[data-error]:not([data-disabled]):not([data-readonly]):has(.box:hover) { --tgf-label-fg: var(--ntg-color-text-system-error-hover); --tgf-bg: var(--ntg-color-background-general-primary-hover); --tgf-border: var(--ntg-color-system-error-hover); --tgf-border-w: 1px; --tgf-shadow: var(--ntg-shadows-bottom-xs); --tgf-placeholder: var(--ntg-color-text-general-placeholder); --tgf-hint-fg: var(--ntg-color-text-system-error); }
+.root[data-error]:has(.input:focus-visible) { --tgf-label-fg: var(--ntg-color-text-system-error); --tgf-bg: var(--ntg-color-background-general-primary); --tgf-border: var(--ntg-color-border-system-error-solid); --tgf-border-w: 1px; --tgf-shadow: var(--ntg-focused-ring-error); --tgf-placeholder: var(--ntg-color-text-general-placeholder); --tgf-hint-fg: var(--ntg-color-text-system-error); }
+.root[data-readonly] { --tgf-label-fg: var(--ntg-color-text-general-section-heading); --tgf-bg: var(--ntg-color-background-general-secondary); --tgf-border: var(--ntg-color-border-general-secondary); --tgf-border-w: 1px; --tgf-shadow: 0 0 0 0 transparent; --tgf-placeholder: var(--ntg-color-text-general-placeholder); --tgf-hint-fg: var(--ntg-color-text-general-text); }
+.root[data-disabled] { --tgf-label-fg: var(--ntg-color-text-general-section-heading); --tgf-bg: var(--ntg-color-background-general-disabled-subtle); --tgf-border: var(--ntg-color-border-general-disabled-subtle); --tgf-border-w: 1px; --tgf-shadow: 0 0 0 0 transparent; --tgf-text: var(--ntg-color-text-general-disabled-subtle); --tgf-hint-fg: var(--ntg-color-text-general-text); }

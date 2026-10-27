@@ -860,7 +860,7 @@
         "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled error read-only มี prop แยกให้แล้วครบ",
         "placeholder": "เป็น attribute มาตรฐานของ input ส่งผ่านได้อยู่แล้ว ไม่ต้องประกาศซ้ำ"
       },
-      "notes": "ชุด tag-field ของหน้า 13 ยังไม่มีฝั่งโค้ด จึงไม่ได้เก็บแกนกับคุณสมบัติของชุดนั้น ชุด text-area คือ prop multiline ของ TextField"
+      "notes": "ชุด text-area คือ prop multiline ของ TextField ส่วน tag-field แยกเป็น TagField ตั้งแต่ 2026-10-27"
     },
     "Toast": {
       "figmaPage": "19 Toasts & Banners",
@@ -1111,6 +1111,67 @@
       "accepted": {
         "state": "สถานะ default กับ hover มาจาก pseudo-class ของ CSS ส่วน disabled เป็น prop disabled อยู่แล้ว ไม่ต้องมีแกนให้เลือกเอง"
       }
+    },
+    "TagField": {
+      "figmaPage": "13 Input",
+      "figmaSets": [
+        "tag-field"
+      ],
+      "axes": {
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "state": [
+          "default",
+          "hover",
+          "focused",
+          "disabled",
+          "error",
+          "error-hover",
+          "error-focused",
+          "read-only"
+        ]
+      },
+      "properties": [
+        "show-label",
+        "show-hint",
+        "tag-1",
+        "tag-2",
+        "tag-3",
+        "tag-4",
+        "tag-5",
+        "show-input-text",
+        "label",
+        "placeholder",
+        "hint"
+      ],
+      "map": {
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "TagFieldSize"
+          }
+        },
+        "properties": {
+          "show-label": "label",
+          "label": "label",
+          "show-hint": "hint",
+          "hint": "hint",
+          "tag-1": "tags",
+          "tag-2": "tags",
+          "tag-3": "tags",
+          "tag-4": "tags",
+          "tag-5": "tags"
+        }
+      },
+      "accepted": {
+        "state": "default hover focused มาจาก pseudo-class ของ CSS ส่วน disabled error read-only มี prop แยกให้แล้วครบ",
+        "show-input-text": "ช่องพิมพ์มีเสมอฝั่งเว็บ เพราะเป็นที่รับค่าใหม่ ไฟล์ออกแบบซ่อนได้เพื่อโชว์แบบที่มีแต่แท็ก",
+        "placeholder": "เป็น attribute มาตรฐานของ input ส่งผ่านได้อยู่แล้ว (ค่าเริ่มต้น เพิ่ม) ไม่ต้องประกาศซ้ำ"
+      },
+      "notes": "ไฟล์ออกแบบมีช่อง tag-1 ถึง tag-5 ฝั่งโค้ดรับเป็น tags รายการเดียว ไม่จำกัดจำนวน (จำกัดด้วย maxTags) สร้างโค้ด 2026-10-27 ตามที่หัวหน้าตัดสิน"
     }
   }
 }

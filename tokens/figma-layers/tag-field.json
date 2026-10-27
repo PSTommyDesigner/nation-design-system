@@ -1,0 +1,1064 @@
+{
+ "capturedAt": "2026-10-27",
+ "page": "13 Input",
+ "reference": "Input Components",
+ "sets": {
+  "tag-field": {
+   "defs": {
+    "show-label": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-hint": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "tag-1": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "tag-2": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "tag-3": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "tag-4": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "tag-5": {
+     "type": "BOOLEAN",
+     "def": false
+    },
+    "show-input-text": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "label": {
+     "type": "TEXT",
+     "def": "Label"
+    },
+    "placeholder": {
+     "type": "TEXT",
+     "def": "เพิ่ม"
+    },
+    "hint": {
+     "type": "TEXT",
+     "def": "This is a hint text to help user."
+    },
+    "size": ["sm","md","lg"],
+    "state": ["default","hover","focused","disabled","error","error-hover","error-focused","read-only"]
+   },
+   "layout": {
+    "sm": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": 320,
+     "h": 88,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Label",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "visible": "show-label",
+          "characters": "label"
+         }
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/tag/gap/sm",
+         "p": ["input/tag/padding/top/sm","input/tag/padding/right/sm","input/tag/padding/bottom/sm","input/tag/padding/left/sm"],
+         "s": ["FILL","HUG"],
+         "r": ["input/radius/top-left/sm","input/radius/top-right/sm","input/radius/bottom-right/sm","input/radius/bottom-left/sm"],
+         "ch": [
+          {
+           "n": "Content",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "MIN",
+           "ca": "CENTER",
+           "g": "input/tag/tag-gap/sm",
+           "p": [0,0,0,0],
+           "s": ["FILL","HUG"],
+           "ch": [
+            {
+             "n": "tag-1",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/sm",
+             "p": ["semi-rounded-tag/padding/top/sm","semi-rounded-tag/padding/right/sm","semi-rounded-tag/padding/bottom/sm","semi-rounded-tag/padding/left/sm"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "r": ["semi-rounded-tag/radius/sm/top-left","semi-rounded-tag/radius/sm/top-right","semi-rounded-tag/radius/sm/bottom-right","semi-rounded-tag/radius/sm/bottom-left"],
+             "ref": {
+              "visible": "tag-1"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-2",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/sm",
+             "p": ["semi-rounded-tag/padding/top/sm","semi-rounded-tag/padding/right/sm","semi-rounded-tag/padding/bottom/sm","semi-rounded-tag/padding/left/sm"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "r": ["semi-rounded-tag/radius/sm/top-left","semi-rounded-tag/radius/sm/top-right","semi-rounded-tag/radius/sm/bottom-right","semi-rounded-tag/radius/sm/bottom-left"],
+             "ref": {
+              "visible": "tag-2"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-3",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/sm",
+             "p": ["semi-rounded-tag/padding/top/sm","semi-rounded-tag/padding/right/sm","semi-rounded-tag/padding/bottom/sm","semi-rounded-tag/padding/left/sm"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/sm/top-left","semi-rounded-tag/radius/sm/top-right","semi-rounded-tag/radius/sm/bottom-right","semi-rounded-tag/radius/sm/bottom-left"],
+             "ref": {
+              "visible": "tag-3"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-4",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/sm",
+             "p": ["semi-rounded-tag/padding/top/sm","semi-rounded-tag/padding/right/sm","semi-rounded-tag/padding/bottom/sm","semi-rounded-tag/padding/left/sm"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/sm/top-left","semi-rounded-tag/radius/sm/top-right","semi-rounded-tag/radius/sm/bottom-right","semi-rounded-tag/radius/sm/bottom-left"],
+             "ref": {
+              "visible": "tag-4"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-5",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/sm",
+             "p": ["semi-rounded-tag/padding/top/sm","semi-rounded-tag/padding/right/sm","semi-rounded-tag/padding/bottom/sm","semi-rounded-tag/padding/left/sm"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/sm/top-left","semi-rounded-tag/radius/sm/top-right","semi-rounded-tag/radius/sm/bottom-right","semi-rounded-tag/radius/sm/bottom-left"],
+             "ref": {
+              "visible": "tag-5"
+             },
+             "inst": true
+            },
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["HUG","HUG"],
+             "ts": "text::body/xs",
+             "ref": {
+              "visible": "show-input-text",
+              "characters": "placeholder"
+             }
+            }
+           ]
+          },
+          {
+           "n": "vertical-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FILL"],
+           "w": "divider/thickness",
+           "clip": true,
+           "inst": true
+          },
+          {
+           "n": "link-icon-button",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": ["link-icon-button/icon-only-padding/top/xs","link-icon-button/icon-only-padding/right/xs","link-icon-button/icon-only-padding/bottom/xs","link-icon-button/icon-only-padding/left/xs"],
+           "s": ["FIXED","FIXED"],
+           "w": 22,
+           "h": 22,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    },
+    "md": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": 320,
+     "h": 96,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Label",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "visible": "show-label",
+          "characters": "label"
+         }
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/tag/gap/md",
+         "p": ["input/tag/padding/top/md","input/tag/padding/right/md","input/tag/padding/bottom/md","input/tag/padding/left/md"],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "r": ["input/radius/top-left/md","input/radius/top-right/md","input/radius/bottom-right/md","input/radius/bottom-left/md"],
+         "ch": [
+          {
+           "n": "Content",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "MIN",
+           "ca": "CENTER",
+           "g": "input/tag/tag-gap/md",
+           "p": [0,0,0,0],
+           "s": ["FILL","HUG"],
+           "ch": [
+            {
+             "n": "tag-1",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/md",
+             "p": ["semi-rounded-tag/padding/top/md","semi-rounded-tag/padding/right/md","semi-rounded-tag/padding/bottom/md","semi-rounded-tag/padding/left/md"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "r": ["semi-rounded-tag/radius/md/top-left","semi-rounded-tag/radius/md/top-right","semi-rounded-tag/radius/md/bottom-right","semi-rounded-tag/radius/md/bottom-left"],
+             "ref": {
+              "visible": "tag-1"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-2",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/md",
+             "p": ["semi-rounded-tag/padding/top/md","semi-rounded-tag/padding/right/md","semi-rounded-tag/padding/bottom/md","semi-rounded-tag/padding/left/md"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "r": ["semi-rounded-tag/radius/md/top-left","semi-rounded-tag/radius/md/top-right","semi-rounded-tag/radius/md/bottom-right","semi-rounded-tag/radius/md/bottom-left"],
+             "ref": {
+              "visible": "tag-2"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-3",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/md",
+             "p": ["semi-rounded-tag/padding/top/md","semi-rounded-tag/padding/right/md","semi-rounded-tag/padding/bottom/md","semi-rounded-tag/padding/left/md"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/md/top-left","semi-rounded-tag/radius/md/top-right","semi-rounded-tag/radius/md/bottom-right","semi-rounded-tag/radius/md/bottom-left"],
+             "ref": {
+              "visible": "tag-3"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-4",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/md",
+             "p": ["semi-rounded-tag/padding/top/md","semi-rounded-tag/padding/right/md","semi-rounded-tag/padding/bottom/md","semi-rounded-tag/padding/left/md"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/md/top-left","semi-rounded-tag/radius/md/top-right","semi-rounded-tag/radius/md/bottom-right","semi-rounded-tag/radius/md/bottom-left"],
+             "ref": {
+              "visible": "tag-4"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-5",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/md",
+             "p": ["semi-rounded-tag/padding/top/md","semi-rounded-tag/padding/right/md","semi-rounded-tag/padding/bottom/md","semi-rounded-tag/padding/left/md"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/md/top-left","semi-rounded-tag/radius/md/top-right","semi-rounded-tag/radius/md/bottom-right","semi-rounded-tag/radius/md/bottom-left"],
+             "ref": {
+              "visible": "tag-5"
+             },
+             "inst": true
+            },
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["HUG","HUG"],
+             "ts": "text::body/sm",
+             "ref": {
+              "visible": "show-input-text",
+              "characters": "placeholder"
+             }
+            }
+           ]
+          },
+          {
+           "n": "vertical-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FILL"],
+           "w": "divider/thickness",
+           "clip": true,
+           "inst": true
+          },
+          {
+           "n": "link-icon-button",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": ["link-icon-button/icon-only-padding/top/md","link-icon-button/icon-only-padding/right/md","link-icon-button/icon-only-padding/bottom/md","link-icon-button/icon-only-padding/left/md"],
+           "s": ["FIXED","FIXED"],
+           "w": 26,
+           "h": 26,
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    },
+    "lg": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": "input/stack-gap",
+     "p": [0,0,0,0],
+     "s": ["FIXED","FIXED"],
+     "w": 320,
+     "h": 104,
+     "ch": [
+      {
+       "n": "field",
+       "t": "FRAME",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "input/stack-gap",
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "ch": [
+        {
+         "n": "Label",
+         "t": "TEXT",
+         "s": ["HUG","HUG"],
+         "ts": "text::body/sm",
+         "ref": {
+          "visible": "show-label",
+          "characters": "label"
+         }
+        },
+        {
+         "n": "input-box",
+         "t": "FRAME",
+         "lm": "HORIZONTAL",
+         "al": "MIN",
+         "ca": "CENTER",
+         "g": "input/tag/gap/lg",
+         "p": ["input/tag/padding/top/lg","input/tag/padding/right/lg","input/tag/padding/bottom/lg","input/tag/padding/left/lg"],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "r": ["input/radius/top-left/lg","input/radius/top-right/lg","input/radius/bottom-right/lg","input/radius/bottom-left/lg"],
+         "ch": [
+          {
+           "n": "Content",
+           "t": "FRAME",
+           "lm": "HORIZONTAL",
+           "al": "MIN",
+           "ca": "CENTER",
+           "g": "input/tag/tag-gap/lg",
+           "p": [0,0,0,0],
+           "s": ["FILL","HUG"],
+           "ch": [
+            {
+             "n": "tag-1",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/lg",
+             "p": ["semi-rounded-tag/padding/top/lg","semi-rounded-tag/padding/right/lg","semi-rounded-tag/padding/bottom/lg","semi-rounded-tag/padding/left/lg"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "r": ["semi-rounded-tag/radius/lg/top-left","semi-rounded-tag/radius/lg/top-right","semi-rounded-tag/radius/lg/bottom-right","semi-rounded-tag/radius/lg/bottom-left"],
+             "ref": {
+              "visible": "tag-1"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-2",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/lg",
+             "p": ["semi-rounded-tag/padding/top/lg","semi-rounded-tag/padding/right/lg","semi-rounded-tag/padding/bottom/lg","semi-rounded-tag/padding/left/lg"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "r": ["semi-rounded-tag/radius/lg/top-left","semi-rounded-tag/radius/lg/top-right","semi-rounded-tag/radius/lg/bottom-right","semi-rounded-tag/radius/lg/bottom-left"],
+             "ref": {
+              "visible": "tag-2"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-3",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/lg",
+             "p": ["semi-rounded-tag/padding/top/lg","semi-rounded-tag/padding/right/lg","semi-rounded-tag/padding/bottom/lg","semi-rounded-tag/padding/left/lg"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/lg/top-left","semi-rounded-tag/radius/lg/top-right","semi-rounded-tag/radius/lg/bottom-right","semi-rounded-tag/radius/lg/bottom-left"],
+             "ref": {
+              "visible": "tag-3"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-4",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/lg",
+             "p": ["semi-rounded-tag/padding/top/lg","semi-rounded-tag/padding/right/lg","semi-rounded-tag/padding/bottom/lg","semi-rounded-tag/padding/left/lg"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/lg/top-left","semi-rounded-tag/radius/lg/top-right","semi-rounded-tag/radius/lg/bottom-right","semi-rounded-tag/radius/lg/bottom-left"],
+             "ref": {
+              "visible": "tag-4"
+             },
+             "inst": true
+            },
+            {
+             "n": "tag-5",
+             "t": "INSTANCE",
+             "lm": "HORIZONTAL",
+             "al": "CENTER",
+             "ca": "CENTER",
+             "g": "semi-rounded-tag/gap/lg",
+             "p": ["semi-rounded-tag/padding/top/lg","semi-rounded-tag/padding/right/lg","semi-rounded-tag/padding/bottom/lg","semi-rounded-tag/padding/left/lg"],
+             "s": ["HUG","HUG"],
+             "clip": true,
+             "vis": false,
+             "r": ["semi-rounded-tag/radius/lg/top-left","semi-rounded-tag/radius/lg/top-right","semi-rounded-tag/radius/lg/bottom-right","semi-rounded-tag/radius/lg/bottom-left"],
+             "ref": {
+              "visible": "tag-5"
+             },
+             "inst": true
+            },
+            {
+             "n": "Text",
+             "t": "TEXT",
+             "s": ["HUG","HUG"],
+             "ts": "text::body/sm",
+             "ref": {
+              "visible": "show-input-text",
+              "characters": "placeholder"
+             }
+            }
+           ]
+          },
+          {
+           "n": "vertical-divider",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": [0,0,0,0],
+           "s": ["FIXED","FILL"],
+           "w": "divider/thickness",
+           "clip": true,
+           "inst": true
+          },
+          {
+           "n": "link-icon-button",
+           "t": "INSTANCE",
+           "lm": "HORIZONTAL",
+           "al": "CENTER",
+           "ca": "CENTER",
+           "g": 0,
+           "p": ["link-icon-button/icon-only-padding/top/lg","link-icon-button/icon-only-padding/right/lg","link-icon-button/icon-only-padding/bottom/lg","link-icon-button/icon-only-padding/left/lg"],
+           "s": ["FIXED","FIXED"],
+           "w": 28,
+           "h": 28,
+           "clip": true,
+           "inst": true
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "Hint text",
+       "t": "TEXT",
+       "s": ["FILL","HUG"],
+       "ts": "text::body/sm",
+       "ref": {
+        "visible": "show-hint",
+        "characters": "hint"
+       }
+      }
+     ]
+    }
+   },
+   "colors": {
+    "Input Components": {
+     "state=default": 0,
+     "state=hover": 1,
+     "state=focused": 2,
+     "state=disabled": 3,
+     "state=error": 4,
+     "state=error-hover": 5,
+     "state=error-focused": 6,
+     "state=read-only": 7
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "field/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/general/primary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Content/tag-1": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-2": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-3": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-4": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-5": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/general/label"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/border/general/primary-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-1": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-2": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-3": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-4": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-5": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/brand/primary"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/brand/solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/brand"
+   },
+   "field/input-box/Content/tag-1": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-2": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-3": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-4": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-5": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/disabled-subtle"],
+    "strokes": ["color/border/general/disabled-subtle"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Content/tag-1": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-2": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-3": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-4": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-5": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/Text": {
+    "fills": ["color/text/general/disabled-subtle"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/system/error"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Content/tag-1": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-2": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-3": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-4": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-5": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/system/error-hover"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary-hover"],
+    "strokes": ["color/system/error-hover"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-1": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-2": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-3": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-4": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-5": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/system/error"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/border/system/error-solid"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::focused-ring/error"
+   },
+   "field/input-box/Content/tag-1": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-2": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-3": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-4": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-5": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/system/error"]
+   }
+  },
+  {
+   "field/Label": {
+    "fills": ["color/text/general/section-heading"]
+   },
+   "field/input-box": {
+    "fills": ["color/background/general/secondary"],
+    "strokes": ["color/border/general/secondary"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE"
+   },
+   "field/input-box/Content/tag-1": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-2": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-3": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-4": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/tag-5": {
+    "fills": ["color/background/general/primary"],
+    "strokes": ["color/utility/u-gray-300"],
+    "sw": [1,1,1,1],
+    "sa": "INSIDE",
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "field/input-box/Content/Text": {
+    "fills": ["color/text/general/placeholder"]
+   },
+   "Hint text": {
+    "fills": ["color/text/general/text"]
+   }
+  }
+ ]
+}

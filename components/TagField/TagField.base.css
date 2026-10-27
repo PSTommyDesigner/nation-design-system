@@ -1,0 +1,95 @@
+/*
+ * TagField ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --tgf-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/tag-field.json (spec ชั้นจากไฟล์ออกแบบหน้า 13 ชุด tag-field)
+ * แล้วต่อท้ายไฟล์นี้เป็น TagField.module.css ห้ามแก้ TagField.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นที่มีชื่อ token: ช่องไฟระหว่างป้ายชื่อกับดอกจัน (input/label-gap ชุดเดียวกับช่องกรอก ไฟล์ออกแบบของช่องแท็กไม่มีดอกจัน)
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. เส้นขอบใช้ box-shadow inset (stroke INSIDE) รวมกับเงาและวงแหวนโฟกัสใน box-shadow เดียว
+ *   2. สถานะเป็น data attribute ของ root (error disabled readonly) + :hover ของกล่อง + :focus-visible ของ input เหมือนช่องกรอก
+ *   3. แท็กขึ้นบรรทัดใหม่เมื่อเต็มแถว (flex-wrap) ช่องสูงตามจำนวนแท็ก ไฟล์ออกแบบวางแถวเดียว
+ *   4. ชั้นข้อความในกล่องเป็น placeholder ตอนพักและข้อความที่พิมพ์ตอน hover/focused ตัวสร้างแยกเป็น --tgf-placeholder / --tgf-text
+ *   5. แท็กกับปุ่มเพิ่มเป็น Tag กับ LinkButton ค่าของมันอยู่ที่ไฟล์ของตัวเอง
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tgf-stack-gap, 0);
+}
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-input-label-gap);
+  color: var(--tgf-label-fg, inherit);
+  font-family: var(--tgf-label-font-family);
+  font-size: var(--tgf-label-font-size);
+  line-height: var(--tgf-label-line-height);
+  font-weight: var(--tgf-label-font-weight);
+  letter-spacing: var(--tgf-label-letter-space);
+}
+.required { color: var(--tgf-required-fg, var(--tgf-label-fg)); }
+
+.box {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: var(--tgf-pt, 0) var(--tgf-pr, 0) var(--tgf-pb, 0) var(--tgf-pl, 0);
+  gap: var(--tgf-gap, 0);
+  border-radius: var(--tgf-r-tl, 0) var(--tgf-r-tr, 0) var(--tgf-r-br, 0) var(--tgf-r-bl, 0);
+  background: var(--tgf-bg, transparent);
+  box-shadow: inset 0 0 0 var(--tgf-border-w, 1px) var(--tgf-border, transparent), var(--tgf-shadow, 0 0 0 0 transparent);
+  color: var(--tgf-text, var(--tgf-label-fg, inherit));
+  font-family: var(--tgf-font-family);
+  font-size: var(--tgf-font-size);
+  line-height: var(--tgf-line-height);
+  font-weight: var(--tgf-font-weight);
+  letter-spacing: var(--tgf-letter-space);
+  cursor: text;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.root[data-disabled] .box { cursor: not-allowed; }
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tgf-tag-gap, 0);
+  min-width: 0;
+}
+.input {
+  flex: 1 1 4em;
+  min-width: 4em;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: 0;
+}
+.input::placeholder { color: var(--tgf-placeholder, inherit); }
+.input:disabled { cursor: not-allowed; }
+.divider {
+  flex: none;
+  align-self: stretch;
+  width: var(--tgf-divider-w, 1px);
+  background: var(--tgf-border, transparent);
+}
+.add { flex: none; }
+
+.hint {
+  color: var(--tgf-hint-fg, inherit);
+  font-family: var(--tgf-hint-font-family);
+  font-size: var(--tgf-hint-font-size);
+  line-height: var(--tgf-hint-line-height);
+  font-weight: var(--tgf-hint-font-weight);
+  letter-spacing: var(--tgf-hint-letter-space);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box { transition: none; }
+}

@@ -1080,7 +1080,59 @@ const CARD = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER, card: CARD }
+// ═══════════════════════════════════════════════════════════════════════════════
+// TagField: หน้า 13 ชุด tag-field (ช่องที่เก็บหลายค่าเป็นแท็ก) สถานะ 8 ค่าเหมือนช่องกรอก ใช้ selector ชุดเดียวกัน
+//   แท็กข้างในเป็น instance ของ semi-rounded-tag (Neutral secondary) ปุ่มเพิ่มเป็น link-icon-button ค่าของสองอย่างนี้เป็นของมันเอง
+// ═══════════════════════════════════════════════════════════════════════════════
+const TAG_FIELD = {
+  specFile: 'tokens/figma-layers/tag-field.json',
+  baseFile: 'components/TagField/TagField.base.css',
+  outFile: 'components/TagField/TagField.module.css',
+  sizes: ['sm', 'md', 'lg'],
+  sets: { 'tag-field': { classes: '.root' } },
+  familyClass: () => '',
+  axisClass: {},
+  stateSelector: TEXT_FIELD_STATES,
+  stateRank: { default: 0, hover: 1, focused: 2, error: 3, 'error-hover': 4, 'error-focused': 5, 'read-only': 6, disabled: 7 },
+  layers: {
+    '(root)': (n, W) => ({ '--tgf-stack-gap': W(n.g) }),
+    'field': () => ({}),
+    'field/Label': () => ({}),
+    'field/input-box': (n, W) => ({
+      '--tgf-pt': W(n.p[0]), '--tgf-pr': W(n.p[1]), '--tgf-pb': W(n.p[2]), '--tgf-pl': W(n.p[3]),
+      '--tgf-gap': W(n.g),
+      ...(n.r ? { '--tgf-r-tl': W(n.r[0]), '--tgf-r-tr': W(n.r[1]), '--tgf-r-br': W(n.r[2]), '--tgf-r-bl': W(n.r[3]) } : {}),
+    }),
+    'field/input-box/Content': (n, W) => ({ '--tgf-tag-gap': W(n.g) }),
+    'field/input-box/Content/**': () => ({}),
+    'field/input-box/vertical-divider': (n, W) => ({ '--tgf-divider-w': W(n.w) }),
+    'field/input-box/vertical-divider/**': () => ({}),
+    'field/input-box/link-icon-button': (n, W) => ({ '--tgf-add': W(n.w) }),
+    'field/input-box/link-icon-button/**': () => ({}),
+    'Hint text': () => ({}),
+  },
+  text: [
+    { layers: ['field/Label'], vars: { '--tgf-label-font-family': 'font-family', '--tgf-label-font-size': 'font-size', '--tgf-label-line-height': 'line-height', '--tgf-label-font-weight': 'font-weight', '--tgf-label-letter-space': 'letter-space' } },
+    { layers: ['field/input-box/Content/Text'], vars: { '--tgf-font-family': 'font-family', '--tgf-font-size': 'font-size', '--tgf-line-height': 'line-height', '--tgf-font-weight': 'font-weight', '--tgf-letter-space': 'letter-space' } },
+    { layers: ['Hint text'], vars: { '--tgf-hint-font-family': 'font-family', '--tgf-hint-font-size': 'font-size', '--tgf-hint-line-height': 'line-height', '--tgf-hint-font-weight': 'font-weight', '--tgf-hint-letter-space': 'letter-space' } },
+  ],
+  colors: {
+    'field/Label': (c, W) => ({ '--tgf-label-fg': W(c.fills[0]) }),
+    'field/input-box': (c, W) => ({
+      '--tgf-bg': c.fills ? W(c.fills[0]) : 'transparent',
+      '--tgf-border': c.strokes ? W(c.strokes[0]) : 'transparent',
+      ...(c.strokes ? { '--tgf-border-w': `${c.sw[0]}px` } : {}),
+      '--tgf-shadow': effectVar(c.fx, 'tag-field effect'),
+    }),
+    'field/input-box/Content/Text': (c, W) => (/placeholder/.test(c.fills[0]) ? { '--tgf-placeholder': W(c.fills[0]) } : { '--tgf-text': W(c.fills[0]) }),
+    'field/input-box/Content/tag-*': () => ({}),
+    'field/input-box/Content/tag-*/**': () => ({}),
+    'field/input-box/**': () => ({}),
+    'Hint text': (c, W) => ({ '--tgf-hint-fg': W(c.fills[0]) }),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER, card: CARD, 'tag-field': TAG_FIELD }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 

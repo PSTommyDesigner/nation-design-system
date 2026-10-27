@@ -327,5 +327,16 @@
       "image trailing",
       "play"
     ]
+  },
+  "tag-field": {
+    "page": "13 Input",
+    "depth": 6,
+    "reference": "Input Components",
+    "families": [
+      "Input Components"
+    ],
+    "sets": [
+      "tag-field"
+    ]
   }
 }
