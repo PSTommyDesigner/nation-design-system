@@ -110,12 +110,13 @@
 .alignEnd { text-align: end; }
 
 /* ── ปุ่มเรียงลำดับในหัวตาราง ───────────────────────────── */
-/* หัวตารางของจริงวางชื่อคอลัมน์ไว้ซ้าย แล้วดันไอคอนไปชิดขวาสุดของคอลัมน์
-   ช่องไฟขั้นต่ำระหว่างสองชิ้นคือระยะภายในเซล */
+/* ไอคอนเรียงต่อท้ายชื่อคอลัมน์ ห่างกันเท่าช่องไฟของเซล ตาม header-table-cell หน้า 26
+   ที่กลุ่ม content เป็น HUG (ของเดิมดันไอคอนไปชิดขวาสุดของคอลัมน์ ไม่ตรงแบบ แก้ 2026-10-28)
+   ปุ่มยังกว้างเต็มคอลัมน์ กดตรงไหนของหัวก็เรียงได้ */
 .sortButton {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--ntg-table-gap);
   width: 100%;
   padding: 0;
@@ -131,8 +132,7 @@
 .alignCenter .sortButton { justify-content: center; }
 
 /* คอลัมน์ที่ชิดขวา กลับทิศให้ไอคอนอยู่ซ้ายของชื่อ แล้วดันทั้งคู่ไปชิดขอบขวาของคอลัมน์
-   ในทิศ row-reverse จุดเริ่มต้นอยู่ทางขวา flex-start จึงหมายถึงชิดขวาที่ตามองเห็น
-   ถ้าใช้ space-between เหมือนคอลัมน์ชิดซ้าย ไอคอนจะกระเด็นไปอยู่สุดขอบซ้ายของคอลัมน์ */
+   ในทิศ row-reverse จุดเริ่มต้นอยู่ทางขวา flex-start จึงหมายถึงชิดขวาที่ตามองเห็น */
 .alignEnd .sortButton {
   flex-direction: row-reverse;
   justify-content: flex-start;
