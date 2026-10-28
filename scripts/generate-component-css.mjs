@@ -780,7 +780,7 @@ const PAGINATION = {
   },
   stateRank: { default: 0, hover: 1, pressed: 2, focused: 3, current: 4, disabled: 5 },
   layers: {
-    '(root)': (n, W, ctx) => (n.w === 724 || typeof n.w === 'number' ? { '--pg-group-gap': W(n.g) } : { '--pg-h': W(n.h), '--pg-px': W(n.p[1]), ...(n.r ? { '--pg-r-tl': W(n.r[0]), '--pg-r-tr': W(n.r[1]), '--pg-r-br': W(n.r[2]), '--pg-r-bl': W(n.r[3]) } : {}) }),
+    '(root)': (n, W, ctx) => (n.w === 724 || typeof n.w === 'number' ? { '--pg-group-gap': W(n.g) } : { '--pg-h': W(n.h), '--pg-px': W(n.p[1]), ...(n.minW ? { '--pg-min-w': W(n.minW) } : {}), ...(n.r ? { '--pg-r-tl': W(n.r[0]), '--pg-r-tr': W(n.r[1]), '--pg-r-br': W(n.r[2]), '--pg-r-bl': W(n.r[3]) } : {}) }),
     'semi-rounded-button': (n, W) => ({
       '--pg-arrow-h': W(n.h), '--pg-arrow-gap': W(n.g),
       '--pg-arrow-pt': W(n.p[0]), '--pg-arrow-pr': W(n.p[1]), '--pg-arrow-pb': W(n.p[2]), '--pg-arrow-pl': W(n.p[3]),

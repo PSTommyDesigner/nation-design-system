@@ -1732,5 +1732,10 @@
   "10949:4": "component::input/tag/gap/md",
   "10949:5": "component::input/tag/tag-gap/md",
   "10949:6": "component::input/tag/gap/lg",
-  "10949:7": "component::input/tag/tag-gap/lg"
+  "10949:7": "component::input/tag/tag-gap/lg",
+  "11279:7": "component::pagination/min-width/xs",
+  "11279:8": "component::pagination/min-width/sm",
+  "11279:9": "component::pagination/min-width/md",
+  "11279:10": "component::pagination/min-width/lg",
+  "11279:11": "component::pagination/min-width/xl"
 }

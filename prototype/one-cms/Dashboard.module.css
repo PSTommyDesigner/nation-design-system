@@ -1,0 +1,251 @@
+/* หน้า Dashboard ของ One CMS (Figma CMS เฟรม Dashboard / Home D 15626:38637)
+ * ค่าระยะทั้งหมดอ่านจากเฟรมจริง แล้วใช้ token ขนาดเดียวกัน
+ * ชิ้นที่ระบบยังไม่มี 3 ชิ้น (เลขอันดับ การ์ดตัวเลข กล่องรอกราฟ) ประกอบในไฟล์นี้จาก token เท่านั้น */
+
+.page {
+  min-height: 100vh;
+  background: var(--ntg-color-background-general-primary);
+}
+
+/* ── แถบหัว (_Header / CMS System) ระบบยังไม่มี header ของแอป ประกอบจาก Button กับ Avatar ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ntg-size-space-s2-sm) var(--ntg-size-space-s2-lg);
+  background: var(--ntg-color-background-general-primary);
+  border-bottom: 1px solid var(--ntg-color-border-general-primary);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+}
+
+/* ใช้ขนาดจริงของไฟล์ SVG (40 x 40 ตามต้นฉบับในหน้า 08 Logo) */
+.brandLogo {
+  display: block;
+}
+
+.brandName {
+  margin: 0;
+  color: var(--ntg-color-text-general-heading);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s2-sm);
+}
+
+/* ── ชื่อหน้า (_Header / Page) ── */
+.pageHead {
+  padding: var(--ntg-size-space-s2-lg);
+  border-bottom: 1px solid var(--ntg-color-border-general-primary);
+}
+
+.pageTitle {
+  margin: 0;
+  color: var(--ntg-color-text-general-heading);
+}
+
+/* ── section เต็มความกว้าง ซ้อนลงมา 3 ส่วน ── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s3-sm);
+  padding: var(--ntg-size-space-s3-sm) var(--ntg-size-space-s2-lg);
+}
+
+/* section แรกช่องไฟแคบกว่า (24) ตามแบบ */
+.sectionTight {
+  gap: var(--ntg-size-space-s2-lg);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ntg-size-space-s2-sm);
+}
+
+/* หัว section (_Header / Section) ชื่อกับคำอธิบายห่างกัน 2 */
+.sectionTitle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-xs);
+}
+
+.heading {
+  margin: 0;
+  color: var(--ntg-color-text-general-heading);
+}
+
+.supporting {
+  margin: 0;
+  color: var(--ntg-color-text-general-supporting-text);
+}
+
+/* ── ตัวกรองของจัดอันดับ: ช่องกรอก 2 ช่องกว้างเท่าคอลัมน์อันดับ แล้วแถวแท็กหมวด ── */
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-sm);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--ntg-size-space-s2-lg);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ntg-size-space-s1-lg);
+}
+
+/* ── จัดอันดับข่าว: 4 คอลัมน์ คอลัมน์ละ 10 ข่าว ห่างกัน 16 ── */
+.ranking {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--ntg-size-space-s2-lg);
+}
+
+.rankList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rankItem {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+  min-width: 0;
+}
+
+/* เลขอันดับในวงกลม ระบบยังไม่มี (Avatar แบบตัวเลขแสดงเป็น 3+) ใช้ขนาดเดียวกับอวาตาร์ sm คือ 32 */
+.rankNumber {
+  flex: none;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: var(--ntg-avatar-size-sm);
+  height: var(--ntg-avatar-size-sm);
+  border: 1px solid var(--ntg-color-border-general-primary);
+  border-radius: var(--ntg-card-radius-full);
+  background: var(--ntg-color-background-general-primary);
+  color: var(--ntg-color-text-general-section-heading);
+}
+
+.rankBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* หัวข่าวบรรทัดเดียว ยาวเกินตัดท้ายด้วย … ตามแบบ */
+.rankTitle {
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--ntg-color-text-general-section-heading);
+}
+
+.rankViews {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+}
+
+/* ── จำนวนข่าว: ซ้ายหัวกับตัวกรอง ขวาการ์ดตัวเลข 2 ใบ ── */
+.countTop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--ntg-size-space-s2-lg);
+  align-items: stretch;
+}
+
+.countHead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-lg);
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--ntg-size-space-s2-lg);
+}
+
+/* การ์ดตัวเลข ระบบยังไม่มี ขอบใช้ radius ของ card (4) เพราะไม่มี radius ทั่วไปขนาด 8 แบบในไฟล์ออกแบบ */
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--ntg-size-space-s1-lg);
+  padding: var(--ntg-size-space-s2-sm) var(--ntg-size-space-s2-lg);
+  border: 1px solid var(--ntg-color-border-general-primary);
+  border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
+  background: var(--ntg-color-background-general-primary);
+}
+
+.statLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+  margin: 0;
+  color: var(--ntg-color-text-general-supporting-text);
+}
+
+/* จุดบอกชุดข้อมูลของกราฟ ขนาด 12 เท่าไอคอน xs */
+.dot {
+  flex: none;
+  width: var(--ntg-size-icon-xs);
+  height: var(--ntg-size-icon-xs);
+  border-radius: var(--ntg-card-radius-full);
+}
+
+/* สีของ 2 ชุดข้อมูลตามแบบ จะย้ายไปเป็น token ของ component กราฟเมื่อออกแบบเสร็จ */
+.dotCreated {
+  background: var(--ntg-color-foreground-brand-primary);
+}
+
+.dotViews {
+  background: var(--ntg-color-utility-u-blue-200);
+}
+
+.statValue {
+  margin: 0;
+  color: var(--ntg-color-text-general-section-heading);
+}
+
+/* กล่องรอ component กราฟของ ntgds (ผู้ใช้ตัดสิน 2026-10-28 ให้ทำหน้า Dashboard ก่อน) ในแบบกราฟสูง 382 */
+.chartSlot {
+  display: grid;
+  place-items: center;
+  padding: var(--ntg-size-space-s5-xl) var(--ntg-size-space-s2-lg);
+  border: 1px dashed var(--ntg-color-border-general-secondary);
+  border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
+  background: var(--ntg-color-background-general-secondary);
+  color: var(--ntg-color-text-general-supporting-text);
+  text-align: center;
+}
+
+/* ── นักข่าว: ตาราง แล้วแถบแบ่งหน้าชิดขวา ── */
+.tableBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-lg);
+}
+
+/* แถบแบ่งหน้าของ ntgds กว้างเต็มกรอบแม่ เลขอยู่กลาง (ผู้ใช้ตัดสิน 2026-10-28 ให้ใช้ของ ntgds แทน Button Pagination ของ library เก่าในแบบ) */
+.pagination {
+  display: block;
+}
