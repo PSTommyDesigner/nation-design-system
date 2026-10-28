@@ -945,6 +945,28 @@
           "$value": "2px"
         }
       }
+    },
+    "modal": {
+      "width": {
+        "base": {
+          "$type": "dimension",
+          "$value": "184px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "208px"
+        }
+      },
+      "padding": {
+        "base": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "step": {
+          "$type": "dimension",
+          "$value": "4px"
+        }
+      }
     }
   }
 }
