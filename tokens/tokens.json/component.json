@@ -11403,6 +11403,21 @@
         "$type": "color",
         "$value": "{color.text.quaternary.default}",
         "$description": "ป้ายแกน x แกน y และชื่อแกนของกราฟ สีเดียวกับ text general caption"
+      },
+      "line": {
+        "$type": "color",
+        "$value": "{color.utility.u-orange-600}",
+        "$description": "เส้นและขอบจุดของชุดข้อมูลแบบเส้น สีส้มให้แยกจากแท่งสีน้ำเงิน บนพื้นขาว contrast 3.49:1 โหมดมืด 10.25:1"
+      },
+      "point-fill": {
+        "$type": "color",
+        "$value": "{color.background.primary.default}",
+        "$description": "พื้นของจุดบนเส้น สีเดียวกับพื้นหน้า จุดจึงเป็นวงกลมกลวงขอบสีเส้น"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{color.background.secondary.default}",
+        "$description": "แถบพื้นหลังของหมวดที่ชี้หรือโฟกัสอยู่ (เช่นหนึ่งวัน) วางใต้แท่งและเส้น"
       }
     },
     "radius": {
@@ -11414,6 +11429,16 @@
         "$type": "dimension",
         "$value": "2px"
       }
+    },
+    "line-width": {
+      "$type": "dimension",
+      "$value": "2px",
+      "$description": "ความหนาเส้นของชุดข้อมูลแบบเส้น 2px คงที่ เพราะกราฟไม่มีหลายขนาด"
+    },
+    "point-size": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "ความกว้างจุดบนเส้น 8px วงกลม พื้น chart/color/point-fill ขอบ chart/color/line ใหญ่กว่าเส้นอย่างน้อยเท่าตัวและไม่เกินความกว้างแท่ง 12"
     }
   }
 }
