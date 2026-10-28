@@ -10,6 +10,7 @@
 //   subtask '02 งานค้าง'   = comment ใบเดียวตลอด เขียนทับใบเดิมเสมอ ห้ามโพสต์ใบใหม่
 //
 // ก่อนส่ง Asana จะสำเนา worklog ทั้งหมดไป Obsidian vault ด้วย worklog-obsidian.mjs (user สั่ง 2026-10-27)
+// และสำเนากฎกับงานของ One CMS ไป vault ของโปรเจกต์ด้วย one-cms-obsidian.mjs (user สั่ง 2026-10-28)
 import { readFileSync, existsSync } from 'node:fs'
 import { worklogPath, todayISO } from './worklog-path.mjs'
 
@@ -36,6 +37,14 @@ if (!process.argv.includes('--dry')) {
     console.log(`📓 Obsidian ${r.days} วัน ${r.months} เดือน เขียน ${r.written.length} ไฟล์ ลบไฟล์เก่า ${r.removed.length} ไฟล์`)
   } catch (e) {
     console.warn(`⚠️ สำเนาไป Obsidian ไม่สำเร็จ ส่ง Asana ต่อตามปกติ: ${e.message}`)
+  }
+  // vault ของ One CMS (เพิ่ม 2026-10-28) แยกจาก worklog vault พังเองก็ไม่ขวางอย่างอื่น
+  try {
+    const { syncOneCms } = await import('./one-cms-obsidian.mjs')
+    const r = syncOneCms()
+    console.log(`📓 One CMS กฎ ${r.rules} ไฟล์ งานรายวัน ${r.days} วัน เขียน ${r.written.length} ไฟล์ ลบไฟล์เก่า ${r.removed.length} ไฟล์`)
+  } catch (e) {
+    console.warn(`⚠️ สำเนาไป vault One CMS ไม่สำเร็จ ส่ง Asana ต่อตามปกติ: ${e.message}`)
   }
 }
 

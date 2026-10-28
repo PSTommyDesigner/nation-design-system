@@ -13,7 +13,7 @@
 // โครงใน vault (user กำหนด 2026-10-27)
 //   Worklog 2026/หน้าหลัก.md
 //   Worklog 2026/10 October/Summarize 10 October.md
-//   Worklog 2026/10 October/Week4 Tue 27.md
+//   Worklog 2026/10 October/Oct Week4 Tue27.md
 //   ชื่อเดือนและชื่อไฟล์ไม่มีปี (user สั่ง) ปีอยู่ที่โฟลเดอร์บนสุด 1 ปี 1 โฟลเดอร์ ขึ้นปีใหม่สคริปต์สร้างโฟลเดอร์ใหม่เอง
 //   ชื่อโน้ตซ้ำกันได้ข้ามเดือนข้ามปี ลิงก์ทุกตัวจึงใส่ path เต็มจากราก vault ไม่ใช้ชื่ออย่างเดียว
 //   เลขสัปดาห์มาจาก weekOfMonth() ของ worklog-path.mjs ตรงกับ W ในชื่อไฟล์ของ repo
@@ -47,11 +47,11 @@ const EN_DAY = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 const BANNER = 'สร้างอัตโนมัติจาก worklog รายวันใน repo nation-design-system'
 const HOWTO = 'แก้ที่ไฟล์ต้นทางใน repo แล้วรัน `npm run worklog:obsidian` (รันเองตอน 16:30 พร้อมการส่ง Asana) ถ้าแก้ในนี้จะถูกเขียนทับรอบถัดไป'
 
-const expandHome = (p) => p.replace(/^~(?=\/|$)/, homedir())
+export const expandHome = (p) => p.replace(/^~(?=\/|$)/, homedir())
 const q = (s) => JSON.stringify(s)   // ค่า string ใน frontmatter (JSON string เป็น YAML ที่ถูกต้อง)
 const p2 = (n) => String(n).padStart(2, '0')
 
-function envValue(key) {
+export function envValue(key) {
   if (process.env[key]) return process.env[key]
   if (!existsSync('.env')) return ''
   for (const l of readFileSync('.env', 'utf8').split('\n')) {
@@ -69,28 +69,28 @@ export function vaultPath(argv = process.argv.slice(2)) {
   return join(homedir(), 'Documents', 'Obsidian Vault')
 }
 
-function parts(iso) {
+export function parts(iso) {
   const [y, m, d] = iso.split('-').map(Number)
   return { y, m, d, dow: new Date(Date.UTC(y, m - 1, d, 12)).getUTCDay() }
 }
 /** 'อังคาร 27 ตุลาคม 2569' */
-const dayLabel = (iso) => { const { y, m, d, dow } = parts(iso); return `${TH_DAY[dow]} ${d} ${TH_MONTH[m - 1]} ${y + 543}` }
+export const dayLabel = (iso) => { const { y, m, d, dow } = parts(iso); return `${TH_DAY[dow]} ${d} ${TH_MONTH[m - 1]} ${y + 543}` }
 /** โฟลเดอร์เดือน '10 October' */
-const monthName = (iso) => { const { m } = parts(iso); return `${p2(m)} ${EN_MONTH[m - 1]}` }
+export const monthName = (iso) => { const { m } = parts(iso); return `${p2(m)} ${EN_MONTH[m - 1]}` }
 /** โฟลเดอร์ปี 'Worklog 2026' */
 const yearRoot = (iso) => `Worklog ${parts(iso).y}`
 /** โฟลเดอร์เดือนจากราก vault 'Worklog 2026/10 October' */
 const monthDir = (iso) => `${yearRoot(iso)}/${monthName(iso)}`
 /** 'Summarize 10 October' */
 const summaryName = (iso) => `Summarize ${monthName(iso)}`
-/** บันทึกรายวัน 'Week4 Tue 27' */
-const noteName = (iso) => { const { d, dow } = parts(iso); return `Week${weekOfMonth(iso)} ${EN_DAY[dow]} ${d}` }
+/** บันทึกรายวัน 'Oct Week4 Tue27' ชื่อย่อเดือนนำหน้า (user สั่ง 2026-10-28) */
+export const noteName = (iso) => { const { m, d, dow } = parts(iso); return `${EN_MONTH[m - 1].slice(0, 3)} Week${weekOfMonth(iso)} ${EN_DAY[dow]}${d}` }
 /** path ของโน้ตจากราก vault ไม่มี .md ใช้ในลิงก์ */
 const notePath = (iso) => `${monthDir(iso)}/${noteName(iso)}`
 const summaryPath = (iso) => `${monthDir(iso)}/${summaryName(iso)}`
 const indexPath = (iso) => `${yearRoot(iso)}/${INDEX}`
 const link = (iso, label) => `[[${notePath(iso)}|${label}]]`
-const isNone = (line) => /^\s*-\s+(ไม่มี|-)\s*$/.test(line)
+export const isNone = (line) => /^\s*-\s+(ไม่มี|-)\s*$/.test(line)
 
 // ── tag ──
 const TAG_KINDS = ['project', 'system', 'feature', 'component']
@@ -295,14 +295,14 @@ function indexNote(days, byMonth, years) {
 }
 
 // ── เขียนและเก็บกวาด ──
-function put(path, content, dry, stat) {
+export function put(path, content, dry, stat) {
   stat.keep.add(path)
   if (existsSync(path) && readFileSync(path, 'utf8') === content) { stat.unchanged++; return }
   if (!dry) { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, content) }
   stat.written.push(path)
 }
 
-function walk(dir) {
+export function walk(dir) {
   if (!existsSync(dir)) return []
   return readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)])
