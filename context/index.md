@@ -43,6 +43,7 @@
 - [components/avatar-label.dsds.yaml](components/avatar-label.dsds.yaml): AvatarLabel (Figma avatar-label)
 - [components/badge.dsds.yaml](components/badge.dsds.yaml): Badge (Figma semi-rounded-badge, pill-badge, semi-rounded-icon-badge, circular-icon-badge, link-badge)
 - [components/banner.dsds.yaml](components/banner.dsds.yaml): Banner (Figma banner)
+- [components/bar-chart.dsds.yaml](components/bar-chart.dsds.yaml): BarChart (Figma bar-chart, _bar-chart-bar)
 - [components/button.dsds.yaml](components/button.dsds.yaml): Button (Figma semi-rounded-button, pill-button, Brand Button, Neutral Button, Error Button, Alpha Button)
 - [components/card.dsds.yaml](components/card.dsds.yaml): Card (Figma vertical-news-card, horizontal-news-card, news-list-card, video-list-card)
 - [components/checkbox.dsds.yaml](components/checkbox.dsds.yaml): Checkbox (Figma checkbox, text-checkbox)

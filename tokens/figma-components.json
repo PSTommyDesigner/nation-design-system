@@ -1172,6 +1172,24 @@
         "placeholder": "เป็น attribute มาตรฐานของ input ส่งผ่านได้อยู่แล้ว (ค่าเริ่มต้น เพิ่ม) ไม่ต้องประกาศซ้ำ"
       },
       "notes": "ไฟล์ออกแบบมีช่อง tag-1 ถึง tag-5 ฝั่งโค้ดรับเป็น tags รายการเดียว ไม่จำกัดจำนวน (จำกัดด้วย maxTags) สร้างโค้ด 2026-10-27 ตามที่หัวหน้าตัดสิน"
+    },
+    "BarChart": {
+      "figmaPage": "29 Chart",
+      "figmaSets": [
+        "bar-chart"
+      ],
+      "axes": {},
+      "properties": [
+        "show-legend",
+        "show-right-axis"
+      ],
+      "map": {
+        "properties": {
+          "show-legend": "showLegend",
+          "show-right-axis": "showRightAxis"
+        }
+      },
+      "notes": "bar-chart เป็น component เดี่ยว ไม่ใช่ชุด variant (node 11797:2) ชิ้นส่วนแท่ง _bar-chart-bar (11796:5) ขึ้นต้นด้วย _ จึงไม่เก็บ ชุดข้อมูล ป้ายแกน และ summary เป็นข้อมูลฝั่งโค้ด ไม่มีคู่ใน Figma"
     }
   }
 }

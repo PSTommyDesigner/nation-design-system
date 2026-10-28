@@ -136,6 +136,9 @@ refs:
   - href: ./components/banner.dsds.yaml
     rel: file
     role: Banner
+  - href: ./components/bar-chart.dsds.yaml
+    rel: file
+    role: BarChart
   - href: ./components/button.dsds.yaml
     rel: file
     role: Button
