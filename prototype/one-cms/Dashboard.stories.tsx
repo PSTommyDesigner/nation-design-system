@@ -9,6 +9,7 @@ import { Dropdown } from '../../components/Dropdown'
 import { Tabs } from '../../components/Tabs'
 import { Table, type TableSort } from '../../components/Table'
 import { Pagination } from '../../components/Pagination'
+import { BarChart, type BarChartSeries } from '../../components/BarChart'
 import '../../tokens/output/css/typography.css'
 import styles from './Dashboard.module.css'
 
@@ -96,6 +97,17 @@ const MONTHS = [
   { value: '2569-09', label: 'กันยายน 2569' },
   { value: '2569-08', label: 'สิงหาคม 2569' },
 ]
+
+// ข้อมูลกราฟรายวันของเดือน ตัวเลขมาจากความสูงแท่งในแบบ (Figma CMS เฟรม Home D) ชุดเดียวกับ story ของ BarChart
+// ข่าวที่สร้างเป็นแท่งเข้มบนแกนขวา การเข้าชมเป็นแท่งอ่อนบนแกนซ้าย ตัวเลขในกล่องสรุปคือผลรวมของกราฟ
+const CHART_DAYS = Array.from({ length: 31 }, (_, i) => String(i + 1))
+const CHART_NEWS = [80, 66, 58, 71, 47, 57, 75, 80, 45, 28, 47, 57, 66, 58, 71, 31, 75, 45, 51, 47, 80, 66, 58, 47, 71, 31, 57, 75, 45, 28, 47]
+const CHART_VIEWS = [216000, 169412, 139765, 105176, 114353, 155294, 194824, 220941, 127059, 126353, 110824, 157412, 217412, 126353, 180000, 69882, 74118, 93176, 126353, 110824, 228000, 170118, 165176, 110824, 187765, 74824, 163765, 177882, 93176, 72706, 110824]
+const CHART_SERIES: BarChartSeries[] = [
+  { label: 'ข่าวที่สร้าง', values: CHART_NEWS, axis: 'right' },
+  { label: 'การเข้าชม', values: CHART_VIEWS, axis: 'left' },
+]
+const sum = (values: number[]) => values.reduce((a, b) => a + b, 0)
 
 const PERIODS = [
   { id: 'day', label: 'วัน' },
@@ -215,22 +227,23 @@ function DashboardPage() {
                   <span className={`${styles.dot} ${styles.dotCreated}`} aria-hidden="true" />
                   ข่าวที่สร้าง
                 </p>
-                <p className={`${styles.statValue} ntg-typography-page-heading-sm`}>{fmt(1284)}</p>
+                <p className={`${styles.statValue} ntg-typography-page-heading-sm`}>{fmt(sum(CHART_NEWS))}</p>
               </div>
               <div className={styles.stat}>
                 <p className={`${styles.statLabel} ntg-typography-label-xl`}>
                   <span className={`${styles.dot} ${styles.dotViews}`} aria-hidden="true" />
                   การเข้าชม
                 </p>
-                <p className={`${styles.statValue} ntg-typography-page-heading-sm`}>{fmt(2457300)}</p>
+                <p className={`${styles.statValue} ntg-typography-page-heading-sm`}>{fmt(sum(CHART_VIEWS))}</p>
               </div>
             </div>
           </div>
-          <div className={`${styles.chartSlot} ntg-typography-body-sm`} role="img" aria-label="กราฟแท่งข่าวที่สร้างเทียบการเข้าชม ยังไม่มี component">
-            กราฟแท่ง ข่าวที่สร้างเทียบการเข้าชม รายวันของเดือน แกนซ้ายจำนวนการเข้าชม แกนขวาจำนวนข่าว
-            <br />
-            รอ component กราฟของ ntgds
-          </div>
+          <BarChart
+            categories={CHART_DAYS}
+            series={CHART_SERIES}
+            categoryLabel="วันที่"
+            summary={`ข่าวที่สร้างและการเข้าชมรายวัน ${MONTHS.find((m) => m.value === month)?.label ?? ''} ข่าวสูงสุด ${Math.max(...CHART_NEWS)} ข่าว การเข้าชมสูงสุด ${fmt(Math.max(...CHART_VIEWS))} ครั้ง`}
+          />
         </section>
 
         <section className={styles.section} aria-labelledby="reporter-title">

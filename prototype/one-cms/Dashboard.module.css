@@ -212,30 +212,20 @@
   border-radius: var(--ntg-card-radius-full);
 }
 
-/* สีของ 2 ชุดข้อมูลตามแบบ จะย้ายไปเป็น token ของ component กราฟเมื่อออกแบบเสร็จ */
+/* สีของ 2 ชุดข้อมูล ใช้ token ของ BarChart ให้ตรงกับแท่งในกราฟ ชุดอ่อนมีขอบ 1px เพื่อผ่าน contrast 3:1 */
 .dotCreated {
-  background: var(--ntg-color-foreground-brand-primary);
+  background: var(--ntg-chart-color-series-1);
 }
 
 .dotViews {
-  background: var(--ntg-color-utility-u-blue-200);
+  box-sizing: border-box;
+  border: 1px solid var(--ntg-chart-color-series-2-border);
+  background: var(--ntg-chart-color-series-2);
 }
 
 .statValue {
   margin: 0;
   color: var(--ntg-color-text-general-section-heading);
-}
-
-/* กล่องรอ component กราฟของ ntgds (ผู้ใช้ตัดสิน 2026-10-28 ให้ทำหน้า Dashboard ก่อน) ในแบบกราฟสูง 382 */
-.chartSlot {
-  display: grid;
-  place-items: center;
-  padding: var(--ntg-size-space-s5-xl) var(--ntg-size-space-s2-lg);
-  border: 1px dashed var(--ntg-color-border-general-secondary);
-  border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
-  background: var(--ntg-color-background-general-secondary);
-  color: var(--ntg-color-text-general-supporting-text);
-  text-align: center;
 }
 
 /* ── นักข่าว: ตาราง แล้วแถบแบ่งหน้าชิดขวา ── */
