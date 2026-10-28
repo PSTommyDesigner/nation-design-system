@@ -8,8 +8,11 @@
  * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
  *   1. ปุ่มก่อนหน้า/ถัดไปในไฟล์ออกแบบเป็น instance ของ semi-rounded-button (Neutral secondary) ตัวสร้างอ่านค่าของ instance นั้นมาเป็น --pg-arrow-*
  *      ส่วนสถานะ hover/focused/disabled ของลูกศรใช้ชุดเดียวกับปุ่มตัวเลข (ไฟล์ออกแบบมีลูกศรแค่สถานะพัก)
- *   2. ปุ่มตัวเลขกว้างตามเนื้อหา (HUG ในไฟล์ออกแบบ) ไม่บังคับความกว้างขั้นต่ำ
+ *   2. ปุ่มตัวเลขกับจุดไข่ปลากว้างตามเนื้อหา (HUG ในไฟล์ออกแบบ) แต่ไม่แคบกว่า --pg-min-w ที่ผูกกับ pagination/min-width
+ *      ของเดิมไม่มีความกว้างขั้นต่ำ ปุ่มจึงแคบกว่าแบบ (21 แทน 40 ที่ขนาด md พบ 2026-10-28)
  *   3. บนจอแคบซ่อนข้อความของลูกศรแบบเข้าถึงได้ เหลือแต่ไอคอน
+ *   4. แถบยืดเต็มกรอบแม่ ลูกศรก่อนหน้าชิดซ้าย ถัดไปชิดขวา กลุ่มตัวเลขอยู่กลาง ตามไฟล์ออกแบบที่กลุ่ม numbers เป็น FILL จัดกลาง
+ *      ระยะระหว่างลูกศรกับกลุ่มตัวเลขไม่น้อยกว่า --pg-group-gap แม้พื้นที่แคบ
  */
 
 .root { display: block; }
@@ -24,8 +27,14 @@
   list-style: none;
 }
 .item { display: flex; flex: none; }
-.previous { margin-inline-end: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px)); }
-.next { margin-inline-start: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px)); }
+.previous {
+  margin-inline-end: auto;
+  padding-inline-end: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px));
+}
+.next {
+  margin-inline-start: auto;
+  padding-inline-start: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px));
+}
 
 .control {
   display: inline-flex;
@@ -34,6 +43,7 @@
   box-sizing: border-box;
   gap: var(--pg-gap, 0);
   block-size: var(--pg-h);
+  min-inline-size: var(--pg-min-w, 0);
   padding-block: 0;
   padding-inline: var(--pg-px, 0);
   border: 0;
@@ -78,6 +88,7 @@
   justify-content: center;
   box-sizing: border-box;
   block-size: var(--pg-h);
+  min-inline-size: var(--pg-min-w, 0);
   padding-inline: var(--pg-px, 0);
   color: var(--pg-fg, inherit);
   font-family: var(--pg-font-family);
@@ -89,6 +100,9 @@
 }
 
 @media (max-width: 767.98px) {
+  /* ไฟล์ออกแบบไม่มีแบบจอแคบ ปุ่มเลขหน้ากว้าง 40 ครบ 7 ปุ่มรวมลูกศรเกินจอ 375 แล้วขึ้นบรรทัดใหม่ บนจอแคบจึงกว้างตามเนื้อหาเหมือนเดิม */
+  .control,
+  .ellipsis { min-inline-size: 0; }
   .arrowText {
     position: absolute;
     inline-size: 1px;

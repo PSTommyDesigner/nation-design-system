@@ -91,7 +91,13 @@ sections:
           Set Pagination sizes, colors or spacing with className or style. className on the nav is only for placing
           the bar in its parent, such as aligning it left instead of center. Sizes change in tokens/scale/pagination.mjs.
         checkedBy: manual
-      # NEEDS CLARIFICATION: Figma _pagination-number-button binds pagination/min-width (equal to the height, 24 to 56) and README.md says number buttons use a minimum width so one digit gives a square, but Pagination.base.css (decision 2) and the docs/24 section 4.2 note of 2026-10-26 say number buttons hug their content with no minimum width because Figma has no min-width variable. Should the code apply --ntg-pagination-min-width-<size>?
+      - level: must
+        statement: >-
+          Number buttons and the ellipsis are at least --ntg-pagination-min-width-<size> wide (equal to the height),
+          as bound in Figma _pagination-number-button, so one digit gives a square and longer numbers grow. Below 768
+          wide they hug their content, because Figma has no narrow layout and 7 buttons of 40 do not fit a 375 screen.
+          Decided by the user 2026-10-28.
+        checkedBy: manual
 
   - kind: guidelines
     for: all
@@ -167,7 +173,8 @@ sections:
       - term: Nav
         definition: >-
           The root, a nav element named by label, holding a ul with one li per item. It renders nothing when totalPages
-          is below 1. Items sit in one centered row that wraps. The gap between number items is --ntg-pagination-gap-<size>
+          is below 1. The bar stretches to its parent: previous at the start, next at the end, the number group centered
+          between them, as the FILL numbers frame in Figma. The row wraps when it does not fit. The gap between number items is --ntg-pagination-gap-<size>
           (2, 3, 4, 5, 6) and between the previous button, the number group and the next button it is
           --ntg-pagination-group-gap-<size> (12, 16, 20, 24, 28). No fill and no shadow.
       - term: Previous and next button

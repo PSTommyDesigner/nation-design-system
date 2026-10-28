@@ -1,7 +1,7 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/Pagination/Pagination.base.css
  *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 24 Pagination แล้วรัน  npm run figma:layers -- pagination  และ  npm run css:generate -- pagination
- *   spec: tokens/figma-layers/pagination.json (ดึง 2026-10-26)
+ *   spec: tokens/figma-layers/pagination.json (ดึง 2026-10-28)
  */
 
 /*
@@ -14,8 +14,11 @@
  * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
  *   1. ปุ่มก่อนหน้า/ถัดไปในไฟล์ออกแบบเป็น instance ของ semi-rounded-button (Neutral secondary) ตัวสร้างอ่านค่าของ instance นั้นมาเป็น --pg-arrow-*
  *      ส่วนสถานะ hover/focused/disabled ของลูกศรใช้ชุดเดียวกับปุ่มตัวเลข (ไฟล์ออกแบบมีลูกศรแค่สถานะพัก)
- *   2. ปุ่มตัวเลขกว้างตามเนื้อหา (HUG ในไฟล์ออกแบบ) ไม่บังคับความกว้างขั้นต่ำ
+ *   2. ปุ่มตัวเลขกับจุดไข่ปลากว้างตามเนื้อหา (HUG ในไฟล์ออกแบบ) แต่ไม่แคบกว่า --pg-min-w ที่ผูกกับ pagination/min-width
+ *      ของเดิมไม่มีความกว้างขั้นต่ำ ปุ่มจึงแคบกว่าแบบ (21 แทน 40 ที่ขนาด md พบ 2026-10-28)
  *   3. บนจอแคบซ่อนข้อความของลูกศรแบบเข้าถึงได้ เหลือแต่ไอคอน
+ *   4. แถบยืดเต็มกรอบแม่ ลูกศรก่อนหน้าชิดซ้าย ถัดไปชิดขวา กลุ่มตัวเลขอยู่กลาง ตามไฟล์ออกแบบที่กลุ่ม numbers เป็น FILL จัดกลาง
+ *      ระยะระหว่างลูกศรกับกลุ่มตัวเลขไม่น้อยกว่า --pg-group-gap แม้พื้นที่แคบ
  */
 
 .root { display: block; }
@@ -30,8 +33,14 @@
   list-style: none;
 }
 .item { display: flex; flex: none; }
-.previous { margin-inline-end: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px)); }
-.next { margin-inline-start: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px)); }
+.previous {
+  margin-inline-end: auto;
+  padding-inline-end: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px));
+}
+.next {
+  margin-inline-start: auto;
+  padding-inline-start: calc(var(--pg-group-gap, 0px) - var(--pg-gap, 0px));
+}
 
 .control {
   display: inline-flex;
@@ -40,6 +49,7 @@
   box-sizing: border-box;
   gap: var(--pg-gap, 0);
   block-size: var(--pg-h);
+  min-inline-size: var(--pg-min-w, 0);
   padding-block: 0;
   padding-inline: var(--pg-px, 0);
   border: 0;
@@ -84,6 +94,7 @@
   justify-content: center;
   box-sizing: border-box;
   block-size: var(--pg-h);
+  min-inline-size: var(--pg-min-w, 0);
   padding-inline: var(--pg-px, 0);
   color: var(--pg-fg, inherit);
   font-family: var(--pg-font-family);
@@ -95,6 +106,9 @@
 }
 
 @media (max-width: 767.98px) {
+  /* ไฟล์ออกแบบไม่มีแบบจอแคบ ปุ่มเลขหน้ากว้าง 40 ครบ 7 ปุ่มรวมลูกศรเกินจอ 375 แล้วขึ้นบรรทัดใหม่ บนจอแคบจึงกว้างตามเนื้อหาเหมือนเดิม */
+  .control,
+  .ellipsis { min-inline-size: 0; }
   .arrowText {
     position: absolute;
     inline-size: 1px;
@@ -125,16 +139,16 @@
 .root.md { --pg-group-gap: var(--ntg-pagination-group-gap-md); --pg-arrow-h: var(--ntg-button-size-md); --pg-arrow-gap: var(--ntg-button-gap-md); --pg-arrow-pt: var(--ntg-button-padding-top-md); --pg-arrow-pr: var(--ntg-button-padding-right-md); --pg-arrow-pb: var(--ntg-button-padding-bottom-md); --pg-arrow-pl: var(--ntg-button-padding-left-md); --pg-arrow-r-tl: var(--ntg-button-radius-top-left-md); --pg-arrow-r-tr: var(--ntg-button-radius-top-right-md); --pg-arrow-r-br: var(--ntg-button-radius-bottom-right-md); --pg-arrow-r-bl: var(--ntg-button-radius-bottom-left-md); --pg-icon: var(--ntg-button-icon-md); --pg-gap: var(--ntg-pagination-gap-md); }
 .root.lg { --pg-group-gap: var(--ntg-pagination-group-gap-lg); --pg-arrow-h: var(--ntg-button-size-lg); --pg-arrow-gap: var(--ntg-button-gap-lg); --pg-arrow-pt: var(--ntg-button-padding-top-lg); --pg-arrow-pr: var(--ntg-button-padding-right-lg); --pg-arrow-pb: var(--ntg-button-padding-bottom-lg); --pg-arrow-pl: var(--ntg-button-padding-left-lg); --pg-arrow-r-tl: var(--ntg-button-radius-top-left-lg); --pg-arrow-r-tr: var(--ntg-button-radius-top-right-lg); --pg-arrow-r-br: var(--ntg-button-radius-bottom-right-lg); --pg-arrow-r-bl: var(--ntg-button-radius-bottom-left-lg); --pg-icon: var(--ntg-button-icon-lg); --pg-gap: var(--ntg-pagination-gap-lg); }
 .root.xl { --pg-group-gap: var(--ntg-pagination-group-gap-xl); --pg-arrow-h: var(--ntg-button-size-xl); --pg-arrow-gap: var(--ntg-button-gap-xl); --pg-arrow-pt: var(--ntg-button-padding-top-xl); --pg-arrow-pr: var(--ntg-button-padding-right-xl); --pg-arrow-pb: var(--ntg-button-padding-bottom-xl); --pg-arrow-pl: var(--ntg-button-padding-left-xl); --pg-arrow-r-tl: var(--ntg-button-radius-top-left-xl); --pg-arrow-r-tr: var(--ntg-button-radius-top-right-xl); --pg-arrow-r-br: var(--ntg-button-radius-bottom-right-xl); --pg-arrow-r-bl: var(--ntg-button-radius-bottom-left-xl); --pg-icon: var(--ntg-button-icon-xl); --pg-gap: var(--ntg-pagination-gap-xl); }
-.xs .control { --pg-h: var(--ntg-pagination-height-xs); --pg-px: var(--ntg-pagination-padding-x-xs); --pg-r-tl: var(--ntg-pagination-radius-xs); --pg-r-tr: var(--ntg-pagination-radius-xs); --pg-r-br: var(--ntg-pagination-radius-xs); --pg-r-bl: var(--ntg-pagination-radius-xs); }
-.sm .control { --pg-h: var(--ntg-pagination-height-sm); --pg-px: var(--ntg-pagination-padding-x-sm); --pg-r-tl: var(--ntg-pagination-radius-sm); --pg-r-tr: var(--ntg-pagination-radius-sm); --pg-r-br: var(--ntg-pagination-radius-sm); --pg-r-bl: var(--ntg-pagination-radius-sm); }
-.md .control { --pg-h: var(--ntg-pagination-height-md); --pg-px: var(--ntg-pagination-padding-x-md); --pg-r-tl: var(--ntg-pagination-radius-md); --pg-r-tr: var(--ntg-pagination-radius-md); --pg-r-br: var(--ntg-pagination-radius-md); --pg-r-bl: var(--ntg-pagination-radius-md); }
-.lg .control { --pg-h: var(--ntg-pagination-height-lg); --pg-px: var(--ntg-pagination-padding-x-lg); --pg-r-tl: var(--ntg-pagination-radius-lg); --pg-r-tr: var(--ntg-pagination-radius-lg); --pg-r-br: var(--ntg-pagination-radius-lg); --pg-r-bl: var(--ntg-pagination-radius-lg); }
-.xl .control { --pg-h: var(--ntg-pagination-height-xl); --pg-px: var(--ntg-pagination-padding-x-xl); --pg-r-tl: var(--ntg-pagination-radius-xl); --pg-r-tr: var(--ntg-pagination-radius-xl); --pg-r-br: var(--ntg-pagination-radius-xl); --pg-r-bl: var(--ntg-pagination-radius-xl); }
-.xs .ellipsis { --pg-h: var(--ntg-pagination-height-xs); --pg-px: var(--ntg-pagination-padding-x-xs); }
-.sm .ellipsis { --pg-h: var(--ntg-pagination-height-sm); --pg-px: var(--ntg-pagination-padding-x-sm); }
-.md .ellipsis { --pg-h: var(--ntg-pagination-height-md); --pg-px: var(--ntg-pagination-padding-x-md); }
-.lg .ellipsis { --pg-h: var(--ntg-pagination-height-lg); --pg-px: var(--ntg-pagination-padding-x-lg); }
-.xl .ellipsis { --pg-h: var(--ntg-pagination-height-xl); --pg-px: var(--ntg-pagination-padding-x-xl); }
+.xs .control { --pg-h: var(--ntg-pagination-height-xs); --pg-px: var(--ntg-pagination-padding-x-xs); --pg-min-w: var(--ntg-pagination-min-width-xs); --pg-r-tl: var(--ntg-pagination-radius-xs); --pg-r-tr: var(--ntg-pagination-radius-xs); --pg-r-br: var(--ntg-pagination-radius-xs); --pg-r-bl: var(--ntg-pagination-radius-xs); }
+.sm .control { --pg-h: var(--ntg-pagination-height-sm); --pg-px: var(--ntg-pagination-padding-x-sm); --pg-min-w: var(--ntg-pagination-min-width-sm); --pg-r-tl: var(--ntg-pagination-radius-sm); --pg-r-tr: var(--ntg-pagination-radius-sm); --pg-r-br: var(--ntg-pagination-radius-sm); --pg-r-bl: var(--ntg-pagination-radius-sm); }
+.md .control { --pg-h: var(--ntg-pagination-height-md); --pg-px: var(--ntg-pagination-padding-x-md); --pg-min-w: var(--ntg-pagination-min-width-md); --pg-r-tl: var(--ntg-pagination-radius-md); --pg-r-tr: var(--ntg-pagination-radius-md); --pg-r-br: var(--ntg-pagination-radius-md); --pg-r-bl: var(--ntg-pagination-radius-md); }
+.lg .control { --pg-h: var(--ntg-pagination-height-lg); --pg-px: var(--ntg-pagination-padding-x-lg); --pg-min-w: var(--ntg-pagination-min-width-lg); --pg-r-tl: var(--ntg-pagination-radius-lg); --pg-r-tr: var(--ntg-pagination-radius-lg); --pg-r-br: var(--ntg-pagination-radius-lg); --pg-r-bl: var(--ntg-pagination-radius-lg); }
+.xl .control { --pg-h: var(--ntg-pagination-height-xl); --pg-px: var(--ntg-pagination-padding-x-xl); --pg-min-w: var(--ntg-pagination-min-width-xl); --pg-r-tl: var(--ntg-pagination-radius-xl); --pg-r-tr: var(--ntg-pagination-radius-xl); --pg-r-br: var(--ntg-pagination-radius-xl); --pg-r-bl: var(--ntg-pagination-radius-xl); }
+.xs .ellipsis { --pg-h: var(--ntg-pagination-height-xs); --pg-px: var(--ntg-pagination-padding-x-xs); --pg-min-w: var(--ntg-pagination-min-width-xs); }
+.sm .ellipsis { --pg-h: var(--ntg-pagination-height-sm); --pg-px: var(--ntg-pagination-padding-x-sm); --pg-min-w: var(--ntg-pagination-min-width-sm); }
+.md .ellipsis { --pg-h: var(--ntg-pagination-height-md); --pg-px: var(--ntg-pagination-padding-x-md); --pg-min-w: var(--ntg-pagination-min-width-md); }
+.lg .ellipsis { --pg-h: var(--ntg-pagination-height-lg); --pg-px: var(--ntg-pagination-padding-x-lg); --pg-min-w: var(--ntg-pagination-min-width-lg); }
+.xl .ellipsis { --pg-h: var(--ntg-pagination-height-xl); --pg-px: var(--ntg-pagination-padding-x-xl); --pg-min-w: var(--ntg-pagination-min-width-xl); }
 
 /* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
 .root { --pg-arrow-bg: var(--ntg-button-color-neutral-background-secondary-default); --pg-arrow-border: var(--ntg-button-color-neutral-border-secondary-default); --pg-arrow-border-w: 1px; --pg-arrow-shadow: var(--ntg-shadows-bottom-xs); }

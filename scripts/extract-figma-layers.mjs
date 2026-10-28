@@ -152,6 +152,9 @@ function snap(n, depth = 0) {
     if (n.boundVariables.size.x) o.w = V(n.boundVariables.size.x)
     if (n.boundVariables.size.y) o.h = V(n.boundVariables.size.y)
   }
+  // ความกว้างขั้นต่ำ เช่นปุ่มเลขหน้าที่ HUG แต่ผูก pagination/min-width ไว้ ของเดิมไม่เก็บ โค้ดจึงแคบกว่าแบบ (พบ 2026-10-28)
+  if (n.boundVariables?.minWidth) o.minW = V(n.boundVariables.minWidth)
+  else if (n.minWidth) o.minW = round(n.minWidth)
   if (n.clipsContent) o.clip = true
   if (n.visible === false) o.vis = false
   const rc = n.boundVariables?.rectangleCornerRadii
