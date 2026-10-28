@@ -146,6 +146,8 @@
   max-inline-size: var(--tt-text-max-width);
   /* ข้อความยาวตัดบรรทัดลงมา ห้ามจำกัดบรรทัดและห้ามตัดด้วยจุดสามจุด */
   overflow-wrap: anywhere;
+  /* ขึ้นบรรทัดใหม่ตาม \n ในข้อความ ให้ข้อมูลหลายรายการแยกบรรทัด เช่น tooltip ของ BarChart (2026-10-28) */
+  white-space: pre-line;
 }
 
 .title {
