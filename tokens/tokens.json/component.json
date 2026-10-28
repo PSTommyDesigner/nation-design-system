@@ -11376,5 +11376,34 @@
         }
       }
     }
+  },
+  "chart": {
+    "color": {
+      "series-1": {
+        "$type": "color",
+        "$value": "{color.foreground.brand.primary}",
+        "$description": "สีชุดข้อมูลที่ 1 ของกราฟ (แท่งสีเข้ม) สีเดียวกับ foreground brand primary"
+      },
+      "series-2": {
+        "$type": "color",
+        "$value": "{color.utility.u-brand-200}",
+        "$description": "สีชุดข้อมูลที่ 2 ของกราฟ (แท่งสีอ่อน) บนพื้นขาวได้ contrast 1.46:1 ต้องใช้คู่กับ series-2-border เสมอ"
+      },
+      "series-2-border": {
+        "$type": "color",
+        "$value": "{color.foreground.brand.primary}",
+        "$description": "ขอบ 1px ของแท่งและจุด legend ของชุดที่ 2 ให้ผ่าน WCAG 1.4.11 (3:1) ที่มา docs/research/chart-component.md"
+      },
+      "grid": {
+        "$type": "color",
+        "$value": "{color.border.general.primary}",
+        "$description": "เส้นกริดแนวนอนและเส้นฐานของกราฟ"
+      },
+      "axis-text": {
+        "$type": "color",
+        "$value": "{color.text.quaternary.default}",
+        "$description": "ป้ายแกน x แกน y และชื่อแกนของกราฟ สีเดียวกับ text general caption"
+      }
+    }
   }
 }

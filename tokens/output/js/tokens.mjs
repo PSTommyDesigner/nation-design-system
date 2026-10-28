@@ -4005,6 +4005,11 @@ export const CircularTagPaddingBottomSm = "4px"; // ระยะขอบล่�
 export const CircularTagPaddingBottomMd = "5px"; // ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด md เท่ากับ 5px คำนวณจาก (ความสูง 26 ลบไอคอน 16) หารสอง
 export const CircularTagPaddingBottomLg = "6px"; // ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด lg เท่ากับ 6px คำนวณจาก (ความสูง 30 ลบไอคอน 18) หารสอง
 export const CircularTagPaddingBottomXl = "7px"; // ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด xl เท่ากับ 7px คำนวณจาก (ความสูง 34 ลบไอคอน 20) หารสอง
+export const ChartColorSeries1 = "#1e58f2"; // สีชุดข้อมูลที่ 1 ของกราฟ (แท่งสีเข้ม) สีเดียวกับ foreground brand primary
+export const ChartColorSeries2 = "#bdd8ff"; // สีชุดข้อมูลที่ 2 ของกราฟ (แท่งสีอ่อน) บนพื้นขาวได้ contrast 1.46:1 ต้องใช้คู่กับ series-2-border เสมอ
+export const ChartColorSeries2Border = "#1e58f2"; // ขอบ 1px ของแท่งและจุด legend ของชุดที่ 2 ให้ผ่าน WCAG 1.4.11 (3:1) ที่มา docs/research/chart-component.md
+export const ChartColorGrid = "#d0d5dd"; // เส้นกริดแนวนอนและเส้นฐานของกราฟ
+export const ChartColorAxisText = "#667085"; // ป้ายแกน x แกน y และชื่อแกนของกราฟ สีเดียวกับ text general caption
 export const ShadowsCenterXs = {
   color: "rgba(0, 0, 0, 0.05)",
   offsetX: "0px",
