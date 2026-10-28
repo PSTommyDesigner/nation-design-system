@@ -131,11 +131,10 @@
 
 .alignCenter .sortButton { justify-content: center; }
 
-/* คอลัมน์ที่ชิดขวา กลับทิศให้ไอคอนอยู่ซ้ายของชื่อ แล้วดันทั้งคู่ไปชิดขอบขวาของคอลัมน์
-   ในทิศ row-reverse จุดเริ่มต้นอยู่ทางขวา flex-start จึงหมายถึงชิดขวาที่ตามองเห็น */
+/* คอลัมน์ที่ชิดขวา ดันชื่อกับไอคอนไปชิดขอบขวาของคอลัมน์ ไอคอนยังต่อท้ายชื่อเหมือนทุกคอลัมน์
+   เพราะ header-table-cell ใน Figma มีแบบเดียว ไอคอนอยู่หลังชื่อเสมอ (ของเดิมกลับทิศให้ไอคอนอยู่หน้าชื่อ แก้ 2026-10-28) */
 .alignEnd .sortButton {
-  flex-direction: row-reverse;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .sortButton:focus-visible {
@@ -171,7 +170,7 @@
   font-weight: var(--ntg-typography-font-weight-caption);
 }
 
-/* number-table-cell ใช้ preset meta/caption */
+/* number-table-cell currency-table-cell และ index-table-cell ใช้ preset meta/caption ตัวเลขกว้างเท่ากันทุกหลัก ต่างกันแค่การจัดชิด */
 .number {
   color: var(--ntg-color-text-general-text);
   font-size: var(--ntg-typography-font-size-caption);

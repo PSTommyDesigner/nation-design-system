@@ -25,6 +25,8 @@ import styles from './Table.module.css';
 export type TableCellVariant =
   | 'text'
   | 'number'
+  | 'currency'
+  | 'index'
   | 'date'
   | 'link'
   | 'icon'
@@ -58,7 +60,10 @@ export interface TableColumn<T> {
   render?: (row: T, rowIndex: number) => React.ReactNode;
   /** ชนิดของเซล มีผลกับชุดตัวอักษรและสี ค่าตั้งต้นคือ text */
   variant?: TableCellVariant;
-  /** การจัดชิด ค่าตั้งต้นคือ end สำหรับ number และ start สำหรับชนิดอื่น */
+  /**
+   * การจัดชิด ค่าตั้งต้นตามกฎของตาราง (ผู้ใช้ตัดสิน 2026-10-28)
+   * currency (เงิน) ชิดขวา index (ลำดับแถว) จัดกลาง ชนิดอื่นทั้งหมดชิดซ้าย รวมทั้ง number ที่เป็นตัวเลขทั่วไป
+   */
   align?: TableAlign;
   /**
    * จัดลูกในเซลให้เรียงเป็นแถวเดียว เว้นช่องไฟเท่าระยะภายในเซลของตาราง
@@ -117,6 +122,8 @@ export interface TableProps<T>
 const VARIANT_CLASS: Record<TableCellVariant, string | undefined> = {
   text: styles.text,
   number: styles.number,
+  currency: styles.number,
+  index: styles.number,
   date: styles.date,
   link: styles.link,
   icon: styles.icon,
@@ -143,7 +150,9 @@ const SORT_ICON = {
 } as const;
 
 function defaultAlign(variant: TableCellVariant): TableAlign {
-  return variant === 'number' ? 'end' : 'start';
+  if (variant === 'currency') return 'end';
+  if (variant === 'index') return 'center';
+  return 'start';
 }
 
 /** วนสถานะการเรียง ไม่เรียง ขึ้น ลง แล้วกลับมาไม่เรียง ตามที่เอกสารหน้า 26 หัวข้อ States กำหนด */

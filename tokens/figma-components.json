@@ -1029,7 +1029,7 @@
       "figmaSets": [],
       "axes": {},
       "properties": [],
-      "notes": "หน้า 26 ไม่มีชุดระดับตาราง มีแต่ช่องตาราง 15 ชนิดที่เป็น component เดี่ยว กับช่องของเอกสารสีอีก 5 ตัว ฝั่งโค้ดสร้างช่องจาก prop columns ชนิดช่องอยู่ที่ TableCellVariant ไม่ใช่แกน variant"
+      "notes": "หน้า 26 ไม่มีชุดระดับตาราง มีแต่ช่องตาราง 18 ชนิดที่เป็น component เดี่ยว (เพิ่ม currency-table-cell กับ index-table-cell 2026-10-28) กับช่องของเอกสารสีอีก 5 ตัว ฝั่งโค้ดสร้างช่องจาก prop columns ชนิดช่องอยู่ที่ TableCellVariant ไม่ใช่แกน variant number currency index ต่างกันแค่การจัดชิด"
     },
     "Icon": {
       "figmaPage": "02 Icon",

@@ -51,6 +51,10 @@ const BASIC: TableColumn<Row>[] = [
   { id: 'joined', header: 'เข้าร่วม', accessor: (r) => r.joined, variant: 'date' },
 ]
 
+// คอลัมน์ลำดับแถวกับเงิน ใช้ในตัวอย่างการจัดชิด (กฎตัดสิน 2026-10-28)
+const INDEX_COL: TableColumn<Row> = { id: 'no', header: 'ที่', accessor: (_r, i) => i + 1, variant: 'index' }
+const CURRENCY_COL: TableColumn<Row> = { id: 'revenue', header: 'รายได้โฆษณา', accessor: (r) => (r.views * 0.35).toLocaleString('th-TH', { style: 'currency', currency: 'THB' }), variant: 'currency', sortable: true }
+
 // ตารางอ้างอิงตามเฟรม Team members ในไฟล์ออกแบบ (select, user, text, badge, date)
 const TEAM: TableColumn<Row>[] = [
   { id: 'user', header: 'ชื่อ', rowHeader: true, sortable: true, render: (r) => <AvatarLabel size="md" avatar={<Avatar src={IMG(r.avatar)} alt="" />} title={r.name} supportingText={r.position} /> },
@@ -108,7 +112,7 @@ export const Anatomy: Story = {
 export const CellTypes: Story = {
   tags: ['!dev'],
   name: 'เซล 15 ชนิด',
-  parameters: { docs: { section: 'ชุด', description: { story: 'ไฟล์ออกแบบไม่มีชุดตาราง มีแต่เซล 15 ชนิดที่ประกอบกันเป็นตาราง เซลพื้นฐาน 4 ชนิดตั้งด้วย variant (text number date link) ส่วนเซลผสม (badge tag user avatar-group progress-bar star icon action) ใช้ render แล้วประกอบจาก component ของระบบ ใส่ inline เมื่อเซล custom มีลูกหลายชิ้น เซล header, header-select และ select ตารางสร้างให้เอง' } } },
+  parameters: { docs: { section: 'ชุด', description: { story: 'ไฟล์ออกแบบไม่มีชุดตาราง มีแต่เซล 17 ชนิดที่ประกอบกันเป็นตาราง เซลพื้นฐาน 6 ชนิดตั้งด้วย variant (text number currency index date link) currency ชิดขวา index จัดกลาง ที่เหลือชิดซ้าย ส่วนเซลผสม (badge tag user avatar-group progress-bar star icon action) ใช้ render แล้วประกอบจาก component ของระบบ ใส่ inline เมื่อเซล custom มีลูกหลายชิ้น เซล header, header-select และ select ตารางสร้างให้เอง' } } },
   render: () => (
     <Table<Row>
       caption="เซลทุกชนิดในตารางเดียว"
@@ -119,7 +123,9 @@ export const CellTypes: Story = {
       columns={[
         { id: 'user', header: 'user', rowHeader: true, render: (r) => <AvatarLabel size="md" avatar={<Avatar src={IMG(r.avatar)} alt="" />} title={r.name} supportingText={r.position} /> },
         { id: 'text', header: 'text', accessor: (r) => r.role, supporting: (r) => r.team },
+        { id: 'index', header: 'index', accessor: (_r, i) => i + 1, variant: 'index' },
         { id: 'number', header: 'number', accessor: (r) => r.views.toLocaleString('th-TH'), variant: 'number' },
+        { id: 'currency', header: 'currency', accessor: (r) => (r.views * 0.35).toLocaleString('th-TH', { style: 'currency', currency: 'THB' }), variant: 'currency' },
         { id: 'date', header: 'date', accessor: (r) => r.joined, variant: 'date' },
         { id: 'badge', header: 'badge', render: (r) => <Badge family={STATUS[r.status].family} hierarchy="secondary" size="md">{STATUS[r.status].label}</Badge> },
         { id: 'tag', header: 'tag', render: (r) => <Tag family="neutral" hierarchy="secondary" size="md">{r.team}</Tag> },
@@ -193,11 +199,11 @@ export const GoodAndBad: Story = {
   parameters: { docs: { section: 'ควรไม่ควร', hideCode: true } },
   render: () => (
     <DoDont>
-      <Do text="คอลัมน์ตัวเลขใช้ variant number ให้ชิดขวา หลักเลขตรงกันทุกแถว เทียบด้วยสายตาได้">
-        <Table<Row> columns={[BASIC[0], BASIC[2]]} data={ROWS} getRowId={(r) => r.id} caption="ตัวเลขชิดขวา" captionHidden />
+      <Do text="คอลัมน์เงินใช้ variant currency ชิดขวา ลำดับแถวใช้ index จัดกลาง ตัวเลขทั่วไป ข้อความ และวันที่ชิดซ้าย">
+        <Table<Row> columns={[INDEX_COL, BASIC[2], CURRENCY_COL]} data={ROWS} getRowId={(r) => r.id} caption="จัดชิดตามชนิดข้อมูล" captionHidden />
       </Do>
-      <Dont text="ปล่อยตัวเลขเป็นข้อความชิดซ้าย หลักหน่วยไม่ตรงกัน อ่านเทียบยาก">
-        <Table<Row> columns={[BASIC[0], { ...BASIC[2], variant: 'text', align: 'start' }]} data={ROWS} getRowId={(r) => r.id} caption="ตัวเลขชิดซ้าย" captionHidden />
+      <Dont text="ตั้ง align ให้ตัวเลขทั่วไปชิดขวาเพื่อให้ดูเหมือนเงิน หรือให้เงินชิดซ้าย ผิดกฎการจัดชิดของตาราง">
+        <Table<Row> columns={[{ ...BASIC[2], align: 'end' }, { ...CURRENCY_COL, align: 'start' }]} data={ROWS} getRowId={(r) => r.id} caption="จัดชิดผิดชนิด" captionHidden />
       </Dont>
       <Do text="ใส่ caption บอกว่าตารางนี้คืออะไร ซ่อนด้วย captionHidden ได้ถ้าหัวข้อบนหน้าบอกอยู่แล้ว โปรแกรมอ่านหน้าจอยังอ่าน">
         <Table<Row> columns={[BASIC[0], BASIC[1]]} data={ROWS.slice(0, 2)} getRowId={(r) => r.id} caption="นักข่าวที่เข้าเวรวันนี้" />

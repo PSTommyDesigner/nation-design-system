@@ -58,7 +58,7 @@
 - [components/radio-group.dsds.yaml](components/radio-group.dsds.yaml): RadioGroup (no Figma set, built in code)
 - [components/semi-circular-progress-bar.dsds.yaml](components/semi-circular-progress-bar.dsds.yaml): SemiCircularProgressBar (Figma semi-circular-progress-bar)
 - [components/slider.dsds.yaml](components/slider.dsds.yaml): Slider (Figma slider, range-slider, slider-handle)
-- [components/table.dsds.yaml](components/table.dsds.yaml): Table (Figma the 16 *-table-cell components on page 26)
+- [components/table.dsds.yaml](components/table.dsds.yaml): Table (Figma the 18 *-table-cell components on page 26)
 - [components/tabs.dsds.yaml](components/tabs.dsds.yaml): Tabs (Figma segmented-tab, underline-tab, segmented-tab-group, underline-tab-group)
 - [components/tag.dsds.yaml](components/tag.dsds.yaml): Tag (Figma the 14 tag sets on page 21)
 - [components/tag-field.dsds.yaml](components/tag-field.dsds.yaml): TagField (Figma tag-field), experimental

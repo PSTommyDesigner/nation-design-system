@@ -11,17 +11,17 @@ name: Table
 description: >-
   A data table for product screens. It takes the rows as an array and the columns as a config, and renders real table,
   thead, tbody, th and td elements, with optional row selection, sorting, alternating row fills and a sticky header.
-  Figma page 26 Table has no table-level set: it has 16 single cell components whose names end in -table-cell, and the
+  Figma page 26 Table has no table-level set: it has 18 single cell components whose names end in -table-cell, and the
   frame Team members inside Data table shows them put together. It exists so every table in the group uses the same
   cell padding, row lines and cell types, because uneven spacing in the densest screens stops the eye from following
   data across a row.
 
 metadata:
   owner: Nation Design System team
-  updated: {date: 2026-10-27}
+  updated: {date: 2026-10-28}
   tags: [data]
   status: {status: beta}
-  # The 16 cell components on page 26, read from Figma 2026-10-27
+  # The 18 cell components on page 26, read from Figma 2026-10-27, currency and index added 2026-10-28
   aliases:
     - caption-table-cell
     - header-table-cell
@@ -29,6 +29,8 @@ metadata:
     - select-table-cell
     - text-table-cell
     - number-table-cell
+    - currency-table-cell
+    - index-table-cell
     - badge-table-cell
     - tag-table-cell
     - user-table-cell
@@ -65,8 +67,10 @@ sections:
         checkedBy: manual
       - level: must
         statement: >-
-          Give a column of numbers variant number. It aligns to the end and uses tabular numbers, so the digits line up
-          in every row and can be compared by eye.
+          Align columns by what they hold (decided by the user 2026-10-28). A column of money uses variant currency,
+          which aligns to the end so the digits and decimals line up for comparing amounts. The row number column
+          ("ที่") uses variant index, which is centered. Every other column aligns to the start: text, dates, plain
+          numbers such as counts and views (variant number), and the rest.
         checkedBy: manual
       - level: must
         statement: >-
@@ -207,7 +211,8 @@ sections:
         definition: >-
           A th with scope col, Figma header-table-cell. Fill --ntg-color-background-general-primary, text style title/xs,
           color --ntg-color-text-general-heading, no wrapping. With sortable the header text sits in a button with the
-          sort Icon at the far end (unfold-more unsorted, arrow-up asc, arrow-down desc) in --ntg-icon-general-quaternary,
+          sort Icon right after the text in every column, also when the column aligns to the end (unfold-more unsorted,
+          arrow-up asc, arrow-down desc) in --ntg-icon-general-quaternary,
           gap --ntg-table-gap. On a coarse pointer the button is at least 44 pixels high. Figma toggle show-sort.
       - term: Select cells
         definition: >-
@@ -224,8 +229,9 @@ sections:
       - term: Cell types
         definition: >-
           Set with the column's variant. text (text-table-cell) is title/xs in --ntg-color-text-general-text, and its
-          supporting line is meta/caption in --ntg-color-text-general-supporting-text. number (number-table-cell) is
-          meta/caption in --ntg-color-text-general-text with tabular numbers, aligned to the end. date (date-table-cell)
+          supporting line is meta/caption in --ntg-color-text-general-supporting-text. number, currency and index
+          (number-table-cell, currency-table-cell, index-table-cell) are meta/caption in --ntg-color-text-general-text
+          with tabular numbers, aligned to the start, the end and the center in that order. date (date-table-cell)
           is body/sm with no wrapping. link (link-table-cell) is label/md in --ntg-color-text-brand-primary. icon and action
           (icon-table-cell, action-table-cell) color icons with --ntg-button-color-link-gray-icon-default and lay them out
           inline. custom adds no style and is filled by render.
@@ -275,7 +281,11 @@ traits:
       - id: text
         description: Text with an optional second line. Figma text-table-cell. The default.
       - id: number
-        description: Numbers, aligned to the end with tabular numbers. Figma number-table-cell.
+        description: Plain numbers such as counts and views, aligned to the start with tabular numbers. Figma number-table-cell.
+      - id: currency
+        description: Money, aligned to the end with tabular numbers. Figma currency-table-cell.
+      - id: index
+        description: The row number, centered with tabular numbers. Figma index-table-cell.
       - id: date
         description: A date that doesn't wrap. Figma date-table-cell.
       - id: link
@@ -290,15 +300,15 @@ traits:
     kind: enum
     id: align
     description: >-
-      Set per column (columns[].align). Aligns the cell content and the header. Defaults to end for variant number
-      and to start for every other variant.
+      Set per column (columns[].align). Aligns the cell content and the header. Defaults to end for variant currency,
+      center for variant index, and start for every other variant.
     values:
       - id: start
-        description: Aligned to the start. The default for every variant but number.
+        description: Aligned to the start. The default for every variant but currency and index.
       - id: center
-        description: Centered.
+        description: Centered. The default for variant index.
       - id: end
-        description: Aligned to the end. The default for variant number.
+        description: Aligned to the end. The default for variant currency.
   - traitType: variant
     kind: boolean
     id: sortable
@@ -333,10 +343,18 @@ traits:
     description: A row for which isRowDisabled returns true. It can't be selected and its text is faded.
 
 combos:
-  - subject: variant.number
+  - subject: variant.currency
     level: must-not
     items: [align.start, align.center]
-    note: A column of numbers aligns to the end, so the digits line up in every row.
+    note: A column of money aligns to the end, so the digits and decimals line up in every row.
+  - subject: variant.index
+    level: must-not
+    items: [align.start, align.end]
+    note: The row number column is centered.
+  - subject: variant.number
+    level: must-not
+    items: [align.center, align.end]
+    note: Plain numbers align to the start like every other column. Only money aligns to the end.
 
 $extensions:
   com.nationgroup:
@@ -349,6 +367,8 @@ $extensions:
       - select-table-cell
       - text-table-cell
       - number-table-cell
+      - currency-table-cell
+      - index-table-cell
       - badge-table-cell
       - tag-table-cell
       - user-table-cell
