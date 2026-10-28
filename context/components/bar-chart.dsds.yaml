@@ -1,7 +1,8 @@
 # BarChart in DSDS 0.23 format https://designsystemdocspec.org
 # Facts come from components/BarChart/ (BarChart.tsx, BarChart.module.css, README.md, BarChart.stories.tsx),
 # docs/research/chart-component.md section 9, tokens/scale/chart.mjs
-# and the Figma page 29 Chart (bar-chart 11797:2, _bar-chart-bar 11796:5, read 2026-10-28)
+# and the Figma page 29 Chart (bar-chart 11797:2, _bar-chart-bar 11796:5, read 2026-10-28, bar and line combo with
+# the hover state added the same day)
 # Levels go in this order: must, should, may, should-not, must-not
 # The first value of every enum trait is its default
 
@@ -10,7 +11,8 @@ id: bar-chart
 name: BarChart
 description: >-
   A vertical grouped bar chart with a y axis on the left and an optional y axis on the right, one group of bars per
-  category and one bar per series. It matches the Figma component bar-chart on page 29 Chart, first used on the
+  category and one bar per bar series, with an optional line series drawn over the bars. Hovering or focusing a category
+  shows a band and a tooltip with the full numbers, and a button swaps the chart for a data table. It matches the Figma component bar-chart on page 29 Chart, first used on the
   One CMS dashboard. It exists so every dashboard draws bars, grid lines, axis labels and the legend with the same
   tokens and gives screen readers the same summary and data table.
 
@@ -19,7 +21,7 @@ metadata:
   updated: {date: 2026-10-28}
   tags: [data-display, chart]
   status: {status: beta}
-  aliases: [bar-chart, _bar-chart-bar]
+  aliases: [bar-chart, _bar-chart-bar, combo chart, bar and line chart]
 
 sections:
   - kind: guidelines
@@ -39,7 +41,9 @@ sections:
           - to: progress-bar
         checkedBy: manual
       - level: must-not
-        statement: Pass more than 2 series. Only 2 series colors exist, and extra series are not drawn.
+        statement: >-
+          Pass more than 2 bar series or more than 1 line series. Only 2 bar colors and 1 line color exist, and extra
+          series are not drawn.
         checkedBy: manual
 
   - kind: guidelines
@@ -48,7 +52,17 @@ sections:
       - level: must
         statement: >-
           Always pass summary, one sentence that states what the chart shows and its main finding.
-          It becomes the aria-label of the chart and the caption of the hidden data table.
+          It becomes the name of the figure (a visually hidden figcaption) and the caption of both data tables.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Pass unit on every series, such as ข่าว or ครั้ง, and pass categoryLabel, such as วันที่. The tooltip, the name
+          of each category and the table headers are built from them, for example วันที่ 10 ข่าวที่สร้าง 28 ข่าว.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          IF one series is a total that changes slowly and the other is a count of events, such as page views and news
+          created, THEN draw the total as type line on its own axis and keep the count as bars.
         checkedBy: manual
       - level: must
         statement: >-
@@ -83,11 +97,39 @@ sections:
             rel: same-as
       - level: must
         statement: >-
-          Keep the hidden data table. It sits next to the role img node, not inside it, and shows full numbers such as
-          240,000. Pass categoryLabel so its first column has a real header, such as วันที่.
+          Keep the hidden data table while the chart shows. It shows full numbers such as 240,000. Pass categoryLabel so
+          its first column has a real header, such as วันที่. When the table toggle is on, the visible Table replaces it.
         evidence:
           - href: https://www.w3.org/WAI/tutorials/images/complex/
             role: W3C WAI Complex Images tutorial
+        checkedBy: manual
+      - level: must
+        statement: >-
+          The plot is a role group with a single tab stop (roving tabindex) across the category slots. Left and Right
+          arrows move one category, Home and End jump to the first and last, and Escape hides the tooltip. Each slot has
+          role img and a name with the full data, such as วันที่ 10 ข่าวที่สร้าง 28 ข่าว การเข้าชม 126,353 ครั้ง, so the
+          Tooltip uses relationship inaccessible and is not read twice. The figure is not role img, because role img
+          hides every child from assistive tech.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
+            role: WAI-ARIA APG roving tabindex
+        checkedBy: manual
+      - level: must
+        statement: >-
+          The focused slot shows the hover band with the focus ring --ntg-focused-ring-brand, so focus is always visible.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
+            role: WCAG 2.2 SC 2.4.7 (AA)
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Exception to the Tooltip spec, which says not to put needed information in a tooltip because touch screens
+          never show it. The full numbers in this tooltip are also in the table behind the toggle button and in the
+          hidden table, so the tooltip is a shortcut, not the only way to the data. Keep showTableToggle on where touch
+          users need exact numbers.
+        refs:
+          - to: tooltip
+            rel: relates-to
         checkedBy: manual
       - level: must
         statement: >-
@@ -103,7 +145,8 @@ sections:
     items:
       - level: must
         statement: >-
-          IF the data has more than 2 series THEN ask for a new series color token before building ELSE use BarChart.
+          IF the data has more than 2 bar series or more than 1 line series THEN ask for a new series color token before
+          building ELSE use BarChart.
         checkedBy: assisted
       - level: should
         statement: >-
@@ -117,13 +160,22 @@ sections:
     items:
       - term: Root
         definition: >-
-          A figure that fills the parent width. Inside, a node with role img holds the legend and the plot, with a gap of
-          --ntg-size-space-s2-sm (16). Beside it is the hidden data table.
+          A figure that fills the parent width, named by a visually hidden figcaption with summary. Inside, the legend
+          row and the plot (or the visible table) with a gap of --ntg-size-space-s2-sm (16). Beside it is the hidden data
+          table.
       - term: Legend
         definition: >-
-          A row with space-between. Left are the series on the left axis, right are the series on the right axis.
-          Each item is a dot of --ntg-size-space-s2-xs (12) and the label, gap --ntg-size-space-s1-lg (8), text preset
-          meta/caption, color --ntg-chart-color-axis-text. Figma property show-legend.
+          A row with a gap of --ntg-size-space-s2-sm (16). Left are the series on the left axis, right are the series on
+          the right axis, then the table toggle at the end. A bar series item is a dot of --ntg-size-space-s2-xs (12);
+          a line series item is a short line, a point and a short line (--ntg-size-space-s1-sm 4, --ntg-chart-point-size 8,
+          4, line --ntg-chart-line-width 2 thick). Label gap --ntg-size-space-s1-lg (8), text preset meta/caption, color
+          --ntg-chart-color-axis-text. Figma property show-legend.
+      - term: Table toggle
+        definition: >-
+          A Button family neutral, hierarchy secondary, size sm, with aria-pressed, labelled ดูเป็นตาราง or ดูเป็นกราฟ. It
+          sits at the end of the legend row, or on its own row when the legend is off. On, the plot is replaced by a Table
+          with categoryLabel as the row header column and one number column per series, header label plus unit in
+          brackets, full numbers, aligned to the start per the Table rules. Prop showTableToggle, default true.
       - term: Y axis labels
         definition: >-
           A column --ntg-size-space-s3-md (48) wide on each side, gap --ntg-size-space-s1-lg (8) to the plot, 5 labels
@@ -137,15 +189,32 @@ sections:
           step niceCeil(max / 4) from 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8 times a power of ten, starting at 0.
       - term: Bar group
         definition: >-
-          Groups are spaced between with padding --ntg-size-space-s1-xl (10) top and bottom and --ntg-size-space-s2-xs (12)
-          left and right, and stand on the bottom grid line. Bars in a group are --ntg-size-space-s1-sm (4) apart.
-          A group is never wider than 0.7 of its slot, so bars get thinner on narrow screens.
+          Each category slot is --ntg-size-space-s2-xl (28) wide. Slots are spaced between with padding
+          --ntg-size-space-s1-xl (10) top and bottom and --ntg-size-space-s2-xs (12) left and right, and stand on the
+          bottom grid line. Bars are centered in the slot: one bar series gives one 12 wide bar, two give two bars
+          --ntg-size-space-s1-sm (4) apart. Only bar series take room in the slot. A slot is never wider than 0.7 of the
+          space per category, so bars get thinner on narrow screens.
       - term: Bar
         definition: >-
           --ntg-size-space-s2-xs (12) wide at full size. Top corners --ntg-chart-radius-top-left and
           --ntg-chart-radius-top-right (2), bottom corners square. Series 1 fill --ntg-chart-color-series-1.
           Series 2 fill --ntg-chart-color-series-2 with a 1px inside border --ntg-chart-color-series-2-border.
           Height is the value as a percent of the top tick. A value of 0 draws nothing.
+      - term: Line and points
+        definition: >-
+          One point per category at the slot center, at the value's height on the line series' own axis: a circle
+          --ntg-chart-point-size (8), fill --ntg-chart-color-point-fill, border --ntg-chart-line-width in
+          --ntg-chart-color-line. An SVG polyline without viewBox joins the points, stroke --ntg-chart-color-line, width
+          --ntg-chart-line-width, round joins and caps. Layers from the bottom are grid, hover band, bars, line, points.
+          Points render on the server with CSS; the line appears after mount, once the point positions are measured.
+      - term: Hover band and tooltip
+        definition: >-
+          Hovering anywhere in a category slot (full plot height) or focusing it shows a band --ntg-size-space-s3-sm (40)
+          wide, full plot height, --ntg-chart-color-hover, centered on the category, behind bars and line, and a Tooltip
+          size sm above the highest of the bar top and the point. Placement is top, or top-start and top-end for the
+          categories so close to an edge that a centered tooltip would leave the chart. Title is categoryLabel and the
+          category, such as วันที่ 10; description is one entry per series, label, full number and unit, newline
+          separated. Figma property show-tooltip is a design-only preview of this state and has no prop.
       - term: X axis labels
         definition: >-
           One label per group, as wide as the group and centered under it, text preset meta/caption, color
@@ -153,10 +222,11 @@ sections:
           With a slot under 14px the plot and x labels scroll sideways while the y axes stay in place.
       - term: Data table
         definition: >-
-          A real table, visually hidden, with summary as its caption, categoryLabel and the series labels as column headers,
-          and full numbers formatted with Intl.NumberFormat th-TH.
+          A real table, visually hidden, with summary as its caption, categoryLabel and the series labels (with unit) as
+          column headers, and full numbers formatted with Intl.NumberFormat th-TH. Rendered while the chart shows.
 
 alternatives:
+  - to: table
   - to: progress-bar
   - to: semi-circular-progress-bar
 
@@ -188,6 +258,11 @@ traits:
     description: >-
       Shows the right y axis labels and the right legend. Figma property show-right-axis. Default true when any series
       uses axis right.
+  - traitType: variant
+    kind: boolean
+    id: showTableToggle
+    description: >-
+      Shows the ดูเป็นตาราง button that swaps the chart for a visible Table. No Figma property. Default true.
 
 $extensions:
   com.nationgroup:

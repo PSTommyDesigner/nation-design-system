@@ -1181,13 +1181,17 @@
       "axes": {},
       "properties": [
         "show-legend",
-        "show-right-axis"
+        "show-right-axis",
+        "show-tooltip"
       ],
       "map": {
         "properties": {
           "show-legend": "showLegend",
           "show-right-axis": "showRightAxis"
         }
+      },
+      "accepted": {
+        "show-tooltip": "ภาพตัวอย่างสถานะ hover ในไฟล์ออกแบบเท่านั้น ฝั่งโค้ดแถบ hover กับคำใบ้โผล่เองเมื่อชี้หรือโฟกัสหมวด ไม่มี prop"
       },
       "notes": "bar-chart เป็น component เดี่ยว ไม่ใช่ชุด variant (node 11797:2) ชิ้นส่วนแท่ง _bar-chart-bar (11796:5) ขึ้นต้นด้วย _ จึงไม่เก็บ ชุดข้อมูล ป้ายแกน และ summary เป็นข้อมูลฝั่งโค้ด ไม่มีคู่ใน Figma"
     }
