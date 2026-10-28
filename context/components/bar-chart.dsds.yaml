@@ -1,0 +1,195 @@
+# BarChart in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/BarChart/ (BarChart.tsx, BarChart.module.css, README.md, BarChart.stories.tsx),
+# docs/research/chart-component.md section 9, tokens/scale/chart.mjs
+# and the Figma page 29 Chart (bar-chart 11797:2, _bar-chart-bar 11796:5, read 2026-10-28)
+# Levels go in this order: must, should, may, should-not, must-not
+# The first value of every enum trait is its default
+
+kind: component
+id: bar-chart
+name: BarChart
+description: >-
+  A vertical grouped bar chart with a y axis on the left and an optional y axis on the right, one group of bars per
+  category and one bar per series. It matches the Figma component bar-chart on page 29 Chart, first used on the
+  One CMS dashboard. It exists so every dashboard draws bars, grid lines, axis labels and the legend with the same
+  tokens and gives screen readers the same summary and data table.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-28}
+  tags: [data-display, chart]
+  status: {status: beta}
+  aliases: [bar-chart, _bar-chart-bar]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use to compare one or two numbers across a list of categories, such as news created and page views for each
+          day of a month.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use for a single value against a ceiling, such as sales against target. Use a progress component instead.
+        alternatives:
+          - to: semi-circular-progress-bar
+          - to: progress-bar
+        checkedBy: manual
+      - level: must-not
+        statement: Pass more than 2 series. Only 2 series colors exist, and extra series are not drawn.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Always pass summary, one sentence that states what the chart shows and its main finding.
+          It becomes the aria-label of the chart and the caption of the hidden data table.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          IF the two series have different units, such as a count of news and a count of views, THEN put each on its own
+          axis with axis left and axis right ELSE put both on the left axis and leave the right axis off.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set showRightAxis to false while a series uses axis right. That series would have no scale to read.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set a width on the chart. It always fills its parent. To make it narrower, limit the parent.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change bar, grid or text colors, spacing or the bar radius with className or style. They come from the chart
+          and space tokens.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: the research (section 9 item 5) suggests a minimum height of 2 for a bar whose value is not 0, as Polaris does. The code does not do this yet. Should it?
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Keep the hidden data table. It sits next to the role img node, not inside it, and shows full numbers such as
+          240,000. Pass categoryLabel so its first column has a real header, such as วันที่.
+        evidence:
+          - href: https://www.w3.org/WAI/tutorials/images/complex/
+            role: W3C WAI Complex Images tutorial
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Keep the 1px border on the light bars and the light legend dot. The light fill alone has a contrast of 1.46 to 1
+          on white, and the border brings it to 3 to 1.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html
+            role: WCAG 2.2 SC 1.4.11 (AA)
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the data has more than 2 series THEN ask for a new series color token before building ELSE use BarChart.
+        checkedBy: assisted
+      - level: should
+        statement: >-
+          IF the surrounding card title already names what each color means THEN set showLegend to false ELSE keep it on.
+          IF there are two axes THEN keep the legend on, because it is the title of each axis.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Root
+        definition: >-
+          A figure that fills the parent width. Inside, a node with role img holds the legend and the plot, with a gap of
+          --ntg-size-space-s2-sm (16). Beside it is the hidden data table.
+      - term: Legend
+        definition: >-
+          A row with space-between. Left are the series on the left axis, right are the series on the right axis.
+          Each item is a dot of --ntg-size-space-s2-xs (12) and the label, gap --ntg-size-space-s1-lg (8), text preset
+          meta/caption, color --ntg-chart-color-axis-text. Figma property show-legend.
+      - term: Y axis labels
+        definition: >-
+          A column --ntg-size-space-s3-md (48) wide on each side, gap --ntg-size-space-s1-lg (8) to the plot, 5 labels
+          spaced between top and bottom, right aligned on the left and left aligned on the right. Text preset meta/caption,
+          color --ntg-chart-color-axis-text. Labels use Intl.NumberFormat th-TH compact (240K) unless formatValue is passed.
+          The right column shows only with showRightAxis (Figma show-right-axis).
+      - term: Grid
+        definition: >-
+          5 horizontal lines 1px thick in --ntg-chart-color-grid, spaced between top and bottom with an inset of
+          --ntg-size-space-s1-xl (10), so each line sits at the middle of its y label. Ticks are 4 intervals on both axes,
+          step niceCeil(max / 4) from 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8 times a power of ten, starting at 0.
+      - term: Bar group
+        definition: >-
+          Groups are spaced between with padding --ntg-size-space-s1-xl (10) top and bottom and --ntg-size-space-s2-xs (12)
+          left and right, and stand on the bottom grid line. Bars in a group are --ntg-size-space-s1-sm (4) apart.
+          A group is never wider than 0.7 of its slot, so bars get thinner on narrow screens.
+      - term: Bar
+        definition: >-
+          --ntg-size-space-s2-xs (12) wide at full size. Top corners --ntg-chart-radius-top-left and
+          --ntg-chart-radius-top-right (2), bottom corners square. Series 1 fill --ntg-chart-color-series-1.
+          Series 2 fill --ntg-chart-color-series-2 with a 1px inside border --ntg-chart-color-series-2-border.
+          Height is the value as a percent of the top tick. A value of 0 draws nothing.
+      - term: X axis labels
+        definition: >-
+          One label per group, as wide as the group and centered under it, text preset meta/caption, color
+          --ntg-chart-color-axis-text. With a slot under 24px only labels 1, 5, 10, 15, 20, 25 and 30 show.
+          With a slot under 14px the plot and x labels scroll sideways while the y axes stay in place.
+      - term: Data table
+        definition: >-
+          A real table, visually hidden, with summary as its caption, categoryLabel and the series labels as column headers,
+          and full numbers formatted with Intl.NumberFormat th-TH.
+
+alternatives:
+  - to: progress-bar
+  - to: semi-circular-progress-bar
+
+refs:
+  - href: ../../components/BarChart/BarChart.tsx
+    rel: source
+    role: Import BarChart from components/BarChart
+  - href: ../../components/BarChart/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/BarChart/BarChart.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/research/chart-component.md
+    rel: relates-to
+    role: Research on chart components with the decisions in section 9
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=11793-2
+    rel: design
+    role: Figma page 29 Chart
+
+traits:
+  - traitType: variant
+    kind: boolean
+    id: showLegend
+    description: Shows the legend above the plot. Figma property show-legend. Default true.
+  - traitType: variant
+    kind: boolean
+    id: showRightAxis
+    description: >-
+      Shows the right y axis labels and the right legend. Figma property show-right-axis. Default true when any series
+      uses axis right.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "29 Chart"
+    figmaSets: [bar-chart]

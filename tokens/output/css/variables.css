@@ -2354,6 +2354,8 @@
   --ntg-circular-tag-padding-bottom-md: 5px; /** ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด md เท่ากับ 5px คำนวณจาก (ความสูง 26 ลบไอคอน 16) หารสอง */
   --ntg-circular-tag-padding-bottom-lg: 6px; /** ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด lg เท่ากับ 6px คำนวณจาก (ความสูง 30 ลบไอคอน 18) หารสอง */
   --ntg-circular-tag-padding-bottom-xl: 7px; /** ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด xl เท่ากับ 7px คำนวณจาก (ความสูง 34 ลบไอคอน 20) หารสอง */
+  --ntg-chart-radius-top-left: 2px;
+  --ntg-chart-radius-top-right: 2px;
   --ntg-shadows-center-xs: 0px 0px 4px 0px rgba(0, 0, 0, 0.05); /** element เล็กที่ต้องมีเงารอบด้าน เช่น หัวลูกศร tooltip · slider · progress */
   --ntg-shadows-center-sm: 0px 0px 4px 2px rgba(0, 0, 0, 0.05); /** ตาราง · กริด · การ์ดที่ต้องการเงารอบด้านเท่ากัน */
   --ntg-shadows-center-md: 0px 0px 8px 2px rgba(0, 0, 0, 0.1); /** element ลอยรอบด้านขนาดกลาง (ใช้น้อย) */
@@ -3750,6 +3752,11 @@
   --ntg-button-color-link-gray-icon-hover: var(--ntg-color-foreground-quaternary-hover);
   --ntg-button-color-link-gray-icon-disabled: var(--ntg-color-foreground-system-disabled-subtle);
   --ntg-button-color-link-gray-icon-pressed: var(--ntg-color-foreground-quaternary-pressed);
+  --ntg-chart-color-series-1: var(--ntg-color-foreground-brand-primary); /** สีชุดข้อมูลที่ 1 ของกราฟ (แท่งสีเข้ม) สีเดียวกับ foreground brand primary */
+  --ntg-chart-color-series-2: var(--ntg-color-utility-u-brand-200); /** สีชุดข้อมูลที่ 2 ของกราฟ (แท่งสีอ่อน) บนพื้นขาวได้ contrast 1.46:1 ต้องใช้คู่กับ series-2-border เสมอ */
+  --ntg-chart-color-series-2-border: var(--ntg-color-foreground-brand-primary); /** ขอบ 1px ของแท่งและจุด legend ของชุดที่ 2 ให้ผ่าน WCAG 1.4.11 (3:1) ที่มา docs/research/chart-component.md */
+  --ntg-chart-color-grid: var(--ntg-color-border-general-primary); /** เส้นกริดแนวนอนและเส้นฐานของกราฟ */
+  --ntg-chart-color-axis-text: var(--ntg-color-text-quaternary-default); /** ป้ายแกน x แกน y และชื่อแกนของกราฟ สีเดียวกับ text general caption */
   --ntg-icon-general-const-white: var(--ntg-color-foreground-general-const-white);
   --ntg-icon-general-const-black: var(--ntg-color-foreground-general-const-black);
 }

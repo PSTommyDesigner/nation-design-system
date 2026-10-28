@@ -1,0 +1,200 @@
+/*
+ * BarChart (Nation Design System)
+ *
+ * ไฟล์นี้เขียนมือ ไม่ได้สร้างจาก scripts/generate-component-css.mjs
+ *   ตัวสร้างต้องมี spec ชั้นจากไฟล์ออกแบบที่ tokens/figma-layers/<id>.json ซึ่งกราฟยังไม่มี
+ *   (เหมือน components/Progress) ถ้าวันหน้าดึง spec ของหน้า 29 Chart ได้ ให้แยกเป็น BarChart.base.css
+ *   แล้วให้ตัวสร้างเขียนไฟล์นี้แทน
+ *
+ * ที่มาของค่า ไฟล์ออกแบบหน้า 29 Chart (bar-chart 11797:2, _bar-chart-bar 11796:5)
+ *   ระยะห่าง     --ntg-size-space-*  (16 ระหว่างคำอธิบายสีกับกราฟ, 8 ระหว่างแถวและคอลัมน์,
+ *                48 คอลัมน์แกน y, 10 ขอบบนล่างของกริด, 12 ขอบซ้ายขวาของแถวแท่งและความกว้างแท่ง,
+ *                4 ระหว่างแท่งในกลุ่ม)
+ *   สี          --ntg-chart-color-*  เท่านั้น
+ *   มุมโค้งแท่ง   --ntg-chart-radius-top-left / top-right (มุมล่างเหลี่ยม)
+ *   ตัวอักษร     preset meta/caption ครบ 5 ค่า (--ntg-typography-*-caption) ห้ามประกอบเอง
+ *                เขียนผ่านตัวแปรของ preset แทนคลาส .ntg-typography-meta-caption เหมือน component อื่นในโฟลเดอร์นี้
+ *                เพราะไลบรารีไม่บังคับให้โปรเจกต์โหลด typography.css ค่าทั้งสองทางเท่ากัน
+ *
+ * ค่าที่ไม่ใช่ token โดยตั้งใจ
+ *   1px          ความหนาเส้นกริดและขอบแท่ง series-2 ไฟล์ออกแบบไม่ได้ผูก stroke weight กับตัวแปร
+ *                (เหมือน --dv-stroke ของ Divider กับ --badge-border-w ของ Badge) ระบบยังไม่มี token ความหนาเส้นของกราฟ
+ *   50%          ทำจุดคำอธิบายสีให้กลม เป็นสัดส่วน ไม่ใช่ขนาด
+ *   --bc-plot-h  ความสูงพื้นที่กราฟ มาจาก prop height (ค่าผังของหน้า)
+ *   --bc-group-max, --bc-series-count  มาจากการวัดและจากข้อมูล ตั้งใน BarChart.tsx
+ */
+
+.root {
+  --bc-stroke: 1px;
+  --bc-axis-w: var(--ntg-size-space-s3-md);
+  --bc-gap: var(--ntg-size-space-s1-lg);
+  --bc-bar-w: var(--ntg-size-space-s2-xs);
+  --bc-bar-gap: var(--ntg-size-space-s1-sm);
+  --bc-inset-y: var(--ntg-size-space-s1-xl);
+  --bc-inset-x: var(--ntg-size-space-s2-xs);
+  --bc-group-w: calc(var(--bc-series-count) * var(--bc-bar-w) + (var(--bc-series-count) - 1) * var(--bc-bar-gap));
+
+  position: relative;
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.graphic {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-sm);
+  min-width: 0;
+}
+
+/* ทุกข้อความในกราฟใช้ preset meta/caption สี axis-text */
+.legend,
+.yAxis,
+.xAxis {
+  font-family: var(--ntg-typography-font-family-caption);
+  font-size: var(--ntg-typography-font-size-caption);
+  font-weight: var(--ntg-typography-font-weight-caption);
+  line-height: var(--ntg-typography-line-height-caption);
+  letter-spacing: var(--ntg-typography-letter-space-caption);
+  color: var(--ntg-chart-color-axis-text);
+}
+
+/* ── คำอธิบายสี: ซ้ายคือชุดของแกนซ้าย ขวาคือชุดของแกนขวา ── */
+.legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.legendGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ntg-size-space-s2-sm);
+}
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+}
+.dot {
+  flex: none;
+  box-sizing: border-box;
+  width: var(--ntg-size-space-s2-xs);
+  height: var(--ntg-size-space-s2-xs);
+  border-radius: 50%;
+}
+
+/* ── ตัวกราฟ: แกน y ซ้าย | พื้นที่กราฟกับแกน x (เลื่อนได้) | แกน y ขวา ── */
+.body {
+  display: grid;
+  grid-template-columns: var(--bc-axis-w) minmax(0, 1fr);
+  column-gap: var(--bc-gap);
+  align-items: start;
+}
+.body.withRight {
+  grid-template-columns: var(--bc-axis-w) minmax(0, 1fr) var(--bc-axis-w);
+}
+
+.yAxis {
+  height: var(--bc-plot-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+.yAxisLeft { text-align: right; }
+.yAxisRight { text-align: left; }
+
+.scroll { min-width: 0; }
+.scrolling { overflow-x: auto; }
+
+.scrollInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bc-gap);
+}
+
+.plot {
+  position: relative;
+  height: var(--bc-plot-h);
+}
+
+/* เส้นกริด 5 เส้น เว้นขอบบนล่างให้แต่ละเส้นอยู่กึ่งกลางป้ายแกน y */
+.grid {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding-block: var(--bc-inset-y);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.gridLine {
+  display: block;
+  height: var(--bc-stroke);
+  background-color: var(--ntg-chart-color-grid);
+}
+
+/* แถวแท่ง ฐานแท่งชิดเส้นกริดล่างสุด แท่งเต็มสเกลสูงเท่าพื้นที่ลบขอบบนล่าง */
+.bars {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: var(--bc-inset-y) var(--bc-inset-x);
+  display: flex;
+  justify-content: space-between;
+}
+.group {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--bc-bar-gap);
+  height: 100%;
+  width: var(--bc-group-w);
+  max-width: var(--bc-group-max, none);
+}
+
+/* ฐานเท่ากันทุกแท่ง (ไม่ใช่ 0) แท่งที่มีขอบจึงไม่กว้างกว่าแท่งทึบ และหดเท่ากันเมื่อกลุ่มแคบลง */
+.bar {
+  flex: 0 1 var(--bc-bar-w);
+  min-width: 0;
+  box-sizing: border-box;
+  border-top-left-radius: var(--ntg-chart-radius-top-left);
+  border-top-right-radius: var(--ntg-chart-radius-top-right);
+}
+.bar.empty { visibility: hidden; }
+
+.series1 { background-color: var(--ntg-chart-color-series-1); }
+.series2 {
+  background-color: var(--ntg-chart-color-series-2);
+  border: var(--bc-stroke) solid var(--ntg-chart-color-series-2-border);
+}
+
+/* ป้ายแกน x กว้างเท่ากลุ่มแท่ง จุดกึ่งกลางจึงตรงกับกลุ่ม */
+.xAxis {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--bc-inset-x);
+}
+.xLabel {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  width: var(--bc-group-w);
+  max-width: var(--bc-group-max, none);
+  white-space: nowrap;
+}
+.xLabelHidden { visibility: hidden; }
+
+/* ตารางสำหรับโปรแกรมอ่านหน้าจอ ซ่อนจากสายตาแต่ยังอยู่ใน accessibility tree (รูปแบบ visually-hidden มาตรฐาน) */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

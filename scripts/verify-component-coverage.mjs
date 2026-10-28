@@ -26,6 +26,7 @@ const ALIAS = {
   input: 'TextField',
   progress: 'Progress',
   tabs: 'Tabs',
+  chart: 'BarChart',
 }
 
 const pascal = (s) => s.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join('')
