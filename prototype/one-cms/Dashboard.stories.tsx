@@ -2,7 +2,10 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '../../components/Button'
 import { LinkButton } from '../../components/LinkButton'
-import { Avatar } from '../../components/Avatar'
+import { Avatar, AvatarLabel } from '../../components/Avatar'
+import { IconButton } from '../../components/IconButton'
+import { Card } from '../../components/Card'
+import { Modal } from '../../components/Modal'
 import { TextField } from '../../components/TextField'
 import { Tag } from '../../components/Tag'
 import { Dropdown } from '../../components/Dropdown'
@@ -19,7 +22,8 @@ const brandLogo = new URL('./assets/bangkokbiznews-logo-square.svg', import.meta
 // ผู้ใช้เปลี่ยนจากเฟรม C เป็น D เมื่อ 2026-10-28: 3 section เต็มความกว้างซ้อนลงมา จัดอันดับ 40 ข่าว 4 คอลัมน์
 // มีช่องค้นหา ช่วงวันที่ และแท็กหมวด กราฟเต็มความกว้าง ข้อมูลนักข่าวเป็นตาราง
 // ส่วนนักข่าวคงตัวกรองวัน สัปดาห์ เดือน ปี ไว้ตามกฎโปรเจกต์ แม้เฟรม D ไม่มี
-// กราฟเป็น component ใหม่ของ ntgds ที่จะทำทีหลัง หน้านี้จึงวางกล่องรอไว้
+// กดพาดหัวข่าวในอันดับเปิด Modal รายละเอียดข่าว (md ไม่มีหัว) ตามเฟรม Modal / Dashboard v2 (15626:38085)
+// กดชื่อนักข่าวในตารางเปิด Modal ข่าวของนักข่าว (lg) ออกแบบกับผู้ใช้จากชิ้นส่วน DS 2026-10-28 ยังไม่มีเฟรม
 // ข้อมูลตัวอย่างเป็นของกรุงเทพธุรกิจ (bkk) เป็นข้อมูลสมมุติทั้งหมด
 
 const MENU = ['Dashboard', 'Back Office', 'Webpage Control', 'Admin Tool', 'Documents']
@@ -77,6 +81,35 @@ const RANKING = HEADLINES.map((title, i) => ({
   ga: 41000 - i * 800,
   th: 36000 - i * 700,
 }))
+type RankNews = (typeof RANKING)[number]
+
+// รายละเอียดสมมุติของข่าวแต่ละอันดับ เวลาไล่จากเช้าวันที่ 28
+const pad = (n: number) => String(n).padStart(2, '0')
+const newsDetail = (item: RankNews) => {
+  const reporter = REPORTERS[(item.rank - 1) % REPORTERS.length]
+  const hour = 6 + ((item.rank - 1) % 8)
+  return {
+    id: String(1302400 + item.rank),
+    history: [
+      { label: 'สร้าง', at: `28/10/2569 ${pad(hour)}:05`, by: reporter.name },
+      { label: 'แก้ไข', at: `28/10/2569 ${pad(hour)}:40`, by: 'บรรณาธิการข่าว' },
+      { label: 'เผยแพร่', at: `28/10/2569 ${pad(hour + 1)}:00`, by: 'บรรณาธิการข่าว' },
+    ],
+  }
+}
+
+// ข่าวสมมุติของนักข่าวหนึ่งคน วนใช้พาดหัวชุดเดียวกับอันดับ
+const reporterNews = (r: { id: string; created: number; published: number }) =>
+  Array.from({ length: r.created }, (_, i) => {
+    const day = 28 - Math.floor(i / 3)
+    return {
+      id: `${r.id}-${i}`,
+      title: HEADLINES[(i * 7 + Number(r.id.slice(1))) % HEADLINES.length],
+      published: i < r.published,
+      at: `${day}/10/2569 ${pad(16 - (i % 3) * 3)}:00`,
+      pv: 26000 - i * 410,
+    }
+  })
 
 const REPORTERS = [
   { id: 'r1', name: 'ชนิดา ศรีสุข', desk: 'โต๊ะข่าวเศรษฐกิจ', created: 42, published: 38, updated: '28/10/2569' },
@@ -118,12 +151,14 @@ const PERIODS = [
 
 const fmt = (n: number) => n.toLocaleString('th-TH')
 
-function RankItem({ item }: { item: (typeof RANKING)[number] }) {
+function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) => void }) {
   return (
     <li className={styles.rankItem}>
       <span className={`${styles.rankNumber} ntg-typography-label-md`}>{item.rank}</span>
       <div className={styles.rankBody}>
-        <p className={`${styles.rankTitle} ntg-typography-title-xs`} title={item.title}>{item.title}</p>
+        <button type="button" className={`${styles.rankTitle} ${styles.textButton} ntg-typography-title-xs`} title={item.title} onClick={() => onOpen(item)}>
+          {item.title}
+        </button>
         <div className={styles.rankViews}>
           <LinkButton href="#" family="brand" defaultGray size="xs">PV:{fmt(item.pv)}</LinkButton>
           <LinkButton href="#" family="brand" defaultGray size="xs">GA:{fmt(item.ga)}</LinkButton>
@@ -141,6 +176,10 @@ function DashboardPage() {
   const [reporterPeriod, setReporterPeriod] = useState('month')
   const [sort, setSort] = useState<TableSort | null>(null)
   const [page, setPage] = useState(1)
+  const [news, setNews] = useState<RankNews | null>(null)
+  const [reporter, setReporter] = useState<Reporter | null>(null)
+  const [reporterTab, setReporterTab] = useState('published')
+  const openReporter = (r: Reporter) => { setReporterTab('published'); setReporter(r) }
 
   return (
     <div className={styles.page}>
@@ -201,7 +240,7 @@ function DashboardPage() {
           <div className={styles.ranking}>
             {[0, 10, 20, 30].map((start) => (
               <ol key={start} className={styles.rankList} start={start + 1}>
-                {RANKING.slice(start, start + 10).map((item) => <RankItem key={item.rank} item={item} />)}
+                {RANKING.slice(start, start + 10).map((item) => <RankItem key={item.rank} item={item} onOpen={setNews} />)}
               </ol>
             ))}
           </div>
@@ -261,7 +300,7 @@ function DashboardPage() {
               onSortChange={setSort}
               columns={[
                 { id: 'no', header: 'ที่', variant: 'index', accessor: (_r, i) => (page - 1) * 10 + i + 1 },
-                { id: 'name', header: 'ผู้ลงข่าว', rowHeader: true, sortable: true, accessor: (r) => r.name, supporting: (r) => r.desk },
+                { id: 'name', header: 'ผู้ลงข่าว', rowHeader: true, sortable: true, accessor: (r) => <button type="button" className={styles.textButton} onClick={() => openReporter(r)}>{r.name}</button>, supporting: (r) => r.desk },
                 { id: 'total', header: 'ทั้งหมด', variant: 'number', sortable: true, accessor: (r) => fmt(r.created) },
                 { id: 'published', header: 'เผยแพร่แล้ว', variant: 'number', sortable: true, accessor: (r) => fmt(r.published) },
                 { id: 'unpublished', header: 'ยังไม่เผยแพร่', variant: 'number', sortable: true, accessor: (r) => fmt(r.created - r.published) },
@@ -274,7 +313,90 @@ function DashboardPage() {
           </div>
         </section>
       </main>
+
+      <NewsDetailModal item={news} onClose={() => setNews(null)} />
+      <ReporterModal reporter={reporter} tab={reporterTab} onTabChange={setReporterTab} onClose={() => setReporter(null)} />
     </div>
+  )
+}
+
+// ── Modal รายละเอียดข่าว: md ไม่มีหัว ปุ่มปิดวงกลมลอยทับมุมขวาบนของรูป ──
+// รูปกับแถวสถิติอยู่ในกรอบเดียวกันตามเฟรม ใช้ radius ของ card (4)
+function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: () => void }) {
+  // คงข้อมูลชิ้นล่าสุดไว้ระหว่างเล่นขาออก ไม่งั้นเนื้อหาหายก่อนกล่องปิด
+  const [last, setLast] = useState<RankNews | null>(item)
+  if (item && item !== last) setLast(item)
+  const shown = item ?? last
+  const detail = shown ? newsDetail(shown) : null
+  return (
+    <Modal open={item !== null} onClose={onClose} size="md" header={false} aria-label={shown?.title ?? 'รายละเอียดข่าว'}>
+      {shown && detail ? (
+        <div className={styles.detail}>
+          <div className={styles.detailMedia}>
+            <div className={styles.detailImage} role="img" aria-label="ภาพประกอบข่าว" />
+            <div className={styles.detailStats}>
+              <p className={`${styles.detailStatsText} ntg-typography-label-sm`}>
+                <span>อันดับ {shown.rank}</span>
+                <span>Pageviews {fmt(shown.pv)}</span>
+                <span>GA {fmt(shown.ga)}</span>
+                <span>Truehits {fmt(shown.th)}</span>
+              </p>
+              <span className={styles.detailId}>
+                <span className="ntg-typography-label-sm">ID {detail.id}</span>
+                <IconButton icon="copy" label={`คัดลอก ID ${detail.id}`} family="neutral" hierarchy="tertiary" size="xs"
+                  onClick={() => navigator.clipboard?.writeText(detail.id)} />
+              </span>
+            </div>
+          </div>
+          <h2 className={`${styles.detailTitle} ntg-typography-title-lg`}>{shown.title}</h2>
+          <ul className={styles.detailHistory}>
+            {detail.history.map((h) => (
+              <li key={h.label} className="ntg-typography-body-sm">{h.label} {h.at} โดย {h.by}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </Modal>
+  )
+}
+
+// ── Modal ข่าวของนักข่าว: lg หัวเป็น AvatarLabel ตัวเลขรวมเป็นคำอธิบาย แท็บแยกเผยแพร่แล้วกับยังไม่เผยแพร่ ──
+function ReporterModal({ reporter, tab, onTabChange, onClose }: {
+  reporter: Reporter | null; tab: string; onTabChange: (id: string) => void; onClose: () => void
+}) {
+  const [last, setLast] = useState<Reporter | null>(reporter)
+  if (reporter && reporter !== last) setLast(reporter)
+  const shown = reporter ?? last
+  const list = shown ? reporterNews(shown) : []
+  const panel = (items: typeof list, verb: string) => (
+    <ul className={styles.newsList}>
+      {items.map((n) => (
+        <li key={n.id}>
+          <Card variant="list" title={n.title} titleLines={2} meta={`${verb} ${n.at}${n.published ? `  PV ${fmt(n.pv)}` : ''}`} />
+        </li>
+      ))}
+    </ul>
+  )
+  return (
+    <Modal
+      open={reporter !== null}
+      onClose={onClose}
+      size="lg"
+      title={shown ? <AvatarLabel size="lg" avatar={<Avatar initials={shown.name.split(' ').map((w) => w[0]).join('')} alt="" size="lg" />} title={shown.name} supportingText={shown.desk} /> : 'ข่าวของนักข่าว'}
+      description={shown ? `ข่าวทั้งหมด ${fmt(shown.created)} ข่าว` : undefined}
+    >
+      {shown ? (
+        <Tabs
+          label="สถานะข่าว"
+          value={tab}
+          onValueChange={onTabChange}
+          items={[
+            { id: 'published', label: `เผยแพร่แล้ว ${fmt(shown.published)}`, panel: panel(list.filter((n) => n.published), 'เผยแพร่') },
+            { id: 'draft', label: `ยังไม่เผยแพร่ ${fmt(shown.created - shown.published)}`, panel: panel(list.filter((n) => !n.published), 'แก้ไขล่าสุด') },
+          ]}
+        />
+      ) : null}
+    </Modal>
   )
 }
 

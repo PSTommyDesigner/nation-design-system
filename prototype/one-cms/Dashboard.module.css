@@ -239,3 +239,77 @@
 .pagination {
   display: block;
 }
+
+/* ── ปุ่มเปิด Modal: พาดหัวในอันดับ และชื่อนักข่าวในตาราง ──
+   หน้าตาเหมือนข้อความเดิม ต่างแค่กดได้ ขีดเส้นใต้ตอนชี้ และมีวงแหวนโฟกัส */
+:where(.textButton) {
+  display: block;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+  border-radius: var(--ntg-card-radius-top-left);
+}
+.textButton:hover { text-decoration: underline; }
+.textButton:focus-visible { outline: none; box-shadow: var(--ntg-focused-ring-brand); }
+
+/* ── Modal รายละเอียดข่าว ── */
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-lg);
+}
+.detailMedia {
+  border: 1px solid var(--ntg-color-border-general-secondary);
+  border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
+  overflow: hidden;
+  margin-block-end: var(--ntg-size-space-s2-sm);
+}
+.detailImage {
+  aspect-ratio: 16 / 9;
+  background: var(--ntg-color-background-general-quaternary);
+}
+.detailStats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ntg-size-space-s2-sm);
+  padding: var(--ntg-size-space-s1-lg) var(--ntg-size-space-s2-xs);
+  color: var(--ntg-color-text-general-section-heading);
+}
+.detailStatsText {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ntg-size-space-s2-sm);
+  margin: 0;
+}
+.detailId {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-sm);
+}
+.detailTitle {
+  margin: 0;
+  color: var(--ntg-color-text-general-heading);
+}
+.detailHistory {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ntg-color-text-general-supporting-text);
+}
+
+/* ── Modal ข่าวของนักข่าว ── */
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-sm);
+  margin: 0;
+  padding: var(--ntg-size-space-s2-sm) 0 0;
+  list-style: none;
+}
