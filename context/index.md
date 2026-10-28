@@ -52,6 +52,7 @@
 - [components/dropdown.dsds.yaml](components/dropdown.dsds.yaml): Dropdown (Figma dropdown-menu, _dropdown-option, _dropdown-group-header, List Item / Dropdown, List Item / Dropdown&Check)
 - [components/icon-button.dsds.yaml](components/icon-button.dsds.yaml): IconButton (Figma semi-rounded-icon-button, circular-icon-button)
 - [components/link-button.dsds.yaml](components/link-button.dsds.yaml): LinkButton (Figma link-button, link-icon-button)
+- [components/modal.dsds.yaml](components/modal.dsds.yaml): Modal (Figma modal)
 - [components/nation-house-icon.dsds.yaml](components/nation-house-icon.dsds.yaml): NationHouseIcon (Figma Nation House Icons)
 - [components/pagination.dsds.yaml](components/pagination.dsds.yaml): Pagination (Figma pagination, _pagination-number-button, _pagination-ellipsis)
 - [components/progress-bar.dsds.yaml](components/progress-bar.dsds.yaml): ProgressBar (Figma progress-bar)

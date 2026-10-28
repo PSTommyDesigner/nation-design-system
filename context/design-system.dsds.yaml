@@ -163,6 +163,9 @@ refs:
   - href: ./components/link-button.dsds.yaml
     rel: file
     role: LinkButton
+  - href: ./components/modal.dsds.yaml
+    rel: file
+    role: Modal
   - href: ./components/nation-house-icon.dsds.yaml
     rel: file
     role: NationHouseIcon

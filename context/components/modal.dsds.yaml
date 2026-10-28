@@ -1,0 +1,224 @@
+# Modal in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/Modal/, docs/research/modal-component.md, tokens/scale/modal.mjs, tokens/figma-components.json,
+# tokens/figma-layers/modal.json and the Figma file (page 30 Modal, read 2026-10-28)
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+
+kind: component
+id: modal
+name: Modal
+description: >-
+  A dialog in the middle of the screen that opens over the whole page, with a dark blurred backdrop, so the user
+  reads or decides one thing before going back to the page. The page behind can't be used or scrolled until it closes.
+  It matches the Figma set modal on page 30 Modal (axes size and header, slots body and footer).
+  It exists so every dialog in the group's products opens, closes, traps focus and returns focus the same way,
+  built on the browser's own dialog element opened with showModal().
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-10-28}
+  tags: [overlay]
+  status: {status: beta}
+  aliases: [modal]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use for one short task or decision that has to finish before the user goes on, such as confirming a delete,
+          a short form, or the details of one item.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Modal for a message that needs no answer, such as saved or failed to save. Use Toast for that.
+        alternatives:
+          - to: toast
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use Modal for content wider than 8 columns or a flow with many steps. That content belongs on its own page.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: a side panel (Drawer) was ruled out of this component in the research. What should be used for a panel that slides in from the screen edge until one exists?
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Control it from outside. Pass open and onClose, and set open to false inside onClose. Escape, a backdrop click
+          and the close button only call onClose.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Give it a name. With a header pass title. With header false pass aria-label. The types require one of the two
+          and Modal warns in the console outside production.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Open at most one Modal on top of another, and only a confirm dialog of size sm. Never stack a third.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Use size sm for a confirm or a single message with at most two buttons, md (the default) for a short form or
+          the details of one item, and lg for content with tabs or a list of several items.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Put the actions in footer, with cancel first and the main action last on the right. In a confirm dialog for an
+          action that can't be undone, pass initialFocusRef pointing at cancel.
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Use header false (bare) when the body starts with a full width image. The circular close button floats over the
+          image at the top right.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Set a height on the Modal or on its body. The box grows with its content up to the screen height minus the
+          margins, and then only the body scrolls.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change its width, padding, radius or colors with className or style. Choose a size instead.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#focus-visible
+            rel: same-as
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - level: must
+        statement: >-
+          Focus moves into the Modal when it opens (to initialFocusRef or the first element that can take focus), stays
+          inside while it is open, and goes back to the element that had focus before it opened. Modal does this.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+            role: WAI-ARIA Authoring Practices, Dialog (Modal) pattern
+        checkedBy: manual
+      - level: must
+        statement: Escape closes the Modal. Modal does this through the dialog cancel event.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+            role: WAI-ARIA Authoring Practices, Dialog (Modal) pattern
+        checkedBy: manual
+      - level: must
+        statement: The open and close motion is turned off when the user sets prefers-reduced-motion.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions
+            role: WCAG 2.2 SC 2.3.3 (AAA)
+        checkedBy: manual
+      - level: must-not
+        statement: Hide the close button (showClose false) unless the footer has a button that closes the Modal.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the Modal asks the user to confirm an action that can't be undone THEN use size sm, a footer with cancel and
+          a Button family error, and initialFocusRef on cancel ELSE use size md unless the content needs lg.
+        checkedBy: assisted
+      - level: must
+        statement: IF header is false THEN pass aria-label and don't pass title or description.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Panel
+        definition: >-
+          The dialog element itself. Width --ntg-modal-width-sm, -md or -lg (392, 600, 808, that is 4, 6 and 8 grid
+          columns). Padding --ntg-modal-padding-sm, -md or -lg (20, 24, 28) on all sides, 16 on screens narrower than
+          768 (--ntg-size-space-s2-sm). Background --ntg-color-background-general-primary, radius --ntg-modal-radius-*,
+          shadow --ntg-shadows-bottom-xl. Max height is the screen height minus --ntg-size-space-s3-xs on each side
+          (--ntg-size-space-s2-sm on narrow screens).
+      - term: Backdrop
+        definition: >-
+          The dialog ::backdrop. Color --ntg-modal-color-backdrop with a blur of --ntg-effect-background-blur-md.
+          Clicking it calls onClose unless closeOnBackdrop is false.
+      - term: Header
+        definition: >-
+          Only when header is true. A row with gap --ntg-size-space-s2-sm and padding-bottom --ntg-size-space-s2-sm.
+          It holds the title (h2, preset title/lg, --ntg-color-text-general-heading), the description (preset body/md,
+          --ntg-color-text-general-supporting-text) with gap --ntg-size-space-s1-sm, and the close button.
+      - term: Close button
+        definition: >-
+          With a header, IconButton neutral tertiary md semi-rounded with the close icon. With header false, IconButton
+          alpha circular sm, placed --ntg-size-space-s1-lg inside the padding at the top right.
+      - term: Body
+        definition: >-
+          The children slot, preset body/md, color --ntg-color-text-general-text. The only part that scrolls.
+      - term: Footer
+        definition: >-
+          The footer slot. A row aligned right with gap --ntg-size-space-s2-xs and padding-top --ntg-size-space-s2-lg.
+
+uses:
+  - to: icon-button
+  - to: button
+
+alternatives:
+  - to: toast
+
+refs:
+  - href: ../../components/Modal/Modal.tsx
+    rel: source
+    role: Import Modal from components/Modal
+  - href: ../../components/Modal/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/Modal/Modal.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/research/modal-component.md
+    rel: relates-to
+    role: Research on modal components across 11 design systems
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=11804-2106
+    rel: design
+    role: Figma page 30 Modal
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Width and padding. Figma axis size.
+    values:
+      - id: md
+        description: Default. A short form or the details of one item.
+      - id: sm
+        description: A confirm or a single message with at most two buttons.
+      - id: lg
+        description: Content with tabs or a list of several items.
+  - traitType: variant
+    kind: boolean
+    id: header
+    description: >-
+      Shows the header with title, description and close button. Figma axis header. Default true. False is the bare
+      mode with a floating circular close button.
+  - traitType: variant
+    kind: boolean
+    id: showClose
+    description: Shows the close button. Figma property show-close. Default true.
+  - traitType: variant
+    kind: boolean
+    id: closeOnBackdrop
+    description: A click on the backdrop calls onClose. Code only. Default true.
+  - traitType: state
+    kind: boolean
+    id: open
+    description: Open or closed. Opening fades in and scales up from 0.95, closing fades out.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "30 Modal"
+    figmaSets: [modal]
