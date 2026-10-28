@@ -28,13 +28,22 @@
   overflow-y: hidden;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
+  position: relative;
   border-radius: var(--tab-r-tl, 0) var(--tab-r-tr, 0) var(--tab-r-br, 0) var(--tab-r-bl, 0);
-  /* เส้นกรอบกลุ่มวาดด้วย outline ด้านใน เพราะ outline วาดทับลูก ส่วน box-shadow inset วาดใต้ลูก
-     ของเดิมใช้ inset แล้วพื้นของแท็บทับจนกรอบนอกหาย (พบในหน้า Dashboard ของ One CMS 2026-10-28)
-     ไม่ใช้ padding เพราะจะทำให้กลุ่มใหญ่กว่าในไฟล์ออกแบบ 2px */
-  outline: var(--tab-group-border-w, 0px) solid var(--tab-group-border, transparent);
-  outline-offset: calc(var(--tab-group-border-w, 0px) * -1);
   box-shadow: var(--tab-group-shadow, 0 0 0 0 transparent);
+}
+/* เส้นกรอบกลุ่มเป็นชั้นบนสุด เหมือนเส้นขอบของเฟรมใน Figma ที่วาดทับลูก
+   ของเดิมวาดด้วย box-shadow inset ที่ .tablist แล้วพื้นของแท็บทับจนกรอบนอกหาย (พบในหน้า Dashboard ของ One CMS 2026-10-28)
+   ใช้ outline ก็ไม่ได้ เพราะ .tab เป็น position relative จึงถูกวาดทับ outline ของแม่
+   ไม่ใช้ padding เพราะจะทำให้กลุ่มใหญ่กว่าในไฟล์ออกแบบ 2px */
+.tablist::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 var(--tab-group-border-w, 0px) var(--tab-group-border, transparent);
+  pointer-events: none;
 }
 .tablist::-webkit-scrollbar { display: none; }
 
