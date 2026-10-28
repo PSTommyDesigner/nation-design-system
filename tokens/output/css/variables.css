@@ -2354,6 +2354,8 @@
   --ntg-circular-tag-padding-bottom-md: 5px; /** ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด md เท่ากับ 5px คำนวณจาก (ความสูง 26 ลบไอคอน 16) หารสอง */
   --ntg-circular-tag-padding-bottom-lg: 6px; /** ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด lg เท่ากับ 6px คำนวณจาก (ความสูง 30 ลบไอคอน 18) หารสอง */
   --ntg-circular-tag-padding-bottom-xl: 7px; /** ระยะขอบล่างของแท็กไอคอนล้วนทรง circular ขนาด xl เท่ากับ 7px คำนวณจาก (ความสูง 34 ลบไอคอน 20) หารสอง */
+  --ntg-chart-radius-top-left: 2px;
+  --ntg-chart-radius-top-right: 2px;
   --ntg-shadows-center-xs: 0px 0px 4px 0px rgba(0, 0, 0, 0.05); /** element เล็กที่ต้องมีเงารอบด้าน เช่น หัวลูกศร tooltip · slider · progress */
   --ntg-shadows-center-sm: 0px 0px 4px 2px rgba(0, 0, 0, 0.05); /** ตาราง · กริด · การ์ดที่ต้องการเงารอบด้านเท่ากัน */
   --ntg-shadows-center-md: 0px 0px 8px 2px rgba(0, 0, 0, 0.1); /** element ลอยรอบด้านขนาดกลาง (ใช้น้อย) */

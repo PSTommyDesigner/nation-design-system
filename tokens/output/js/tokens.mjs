@@ -4010,6 +4010,8 @@ export const ChartColorSeries2 = "#bdd8ff"; // สีชุดข้อมูล
 export const ChartColorSeries2Border = "#1e58f2"; // ขอบ 1px ของแท่งและจุด legend ของชุดที่ 2 ให้ผ่าน WCAG 1.4.11 (3:1) ที่มา docs/research/chart-component.md
 export const ChartColorGrid = "#d0d5dd"; // เส้นกริดแนวนอนและเส้นฐานของกราฟ
 export const ChartColorAxisText = "#667085"; // ป้ายแกน x แกน y และชื่อแกนของกราฟ สีเดียวกับ text general caption
+export const ChartRadiusTopLeft = "2px";
+export const ChartRadiusTopRight = "2px";
 export const ShadowsCenterXs = {
   color: "rgba(0, 0, 0, 0.05)",
   offsetX: "0px",

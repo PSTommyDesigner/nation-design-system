@@ -11404,6 +11404,16 @@
         "$value": "{color.text.quaternary.default}",
         "$description": "ป้ายแกน x แกน y และชื่อแกนของกราฟ สีเดียวกับ text general caption"
       }
+    },
+    "radius": {
+      "top-left": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "top-right": {
+        "$type": "dimension",
+        "$value": "2px"
+      }
     }
   }
 }
