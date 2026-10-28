@@ -39,6 +39,10 @@ They do different jobs. Don't mix them up.
 1. Card created: custom field Assign Date, set when the card is created
 2. Work started: Start date (`start_on`), set when work starts, together with moving the status to `In Progress (Design Phase)`
 3. Work done: Due date (`due_on`), set after the worklog is pushed as a comment, then close the card
+- Asana refuses `start_on` without `due_on` (400 `start_on_requires_due_on_or_due_at`), so the dates go in one of 2 ways (set by the user 2026-10-27)
+  - A card whose work starts when it is opened: send `start_on` as the start day together with a temporary `due_on`. On closing, change `due_on` to the day the work was done
+  - A card opened backwards, for work already done: send no dates when opening. On closing, send `start_on` and `due_on` together
+  - Assign Date is a custom field and is set on creation in both cases
 - Not filled in backwards: start and due dates are recorded only for cards picked up after 2026-08-18
 - A card with no due date sinks to the bottom of the board and gets lost (happened on 2026-08-18)
 

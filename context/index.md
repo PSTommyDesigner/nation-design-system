@@ -79,4 +79,5 @@
 - [guidelines/guidelines.dsds.yaml](guidelines/guidelines.dsds.yaml): writing rules and the shared accessibility rules
 
 ## Features
-- No project folder yet. Rules for one project are recorded in `features/<project>/` as its prototype pages are built. [features/_template/AGENTS.md](features/_template/AGENTS.md) is the template
+- [features/one-cms/AGENTS.md](features/one-cms/AGENTS.md): One CMS, the back office of the group's news websites
+- Rules for one project are recorded in `features/<project>/` as its prototype pages are built. [features/_template/AGENTS.md](features/_template/AGENTS.md) is the template
