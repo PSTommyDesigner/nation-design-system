@@ -8,6 +8,8 @@
 // ปลายทาง 2 ที่ คนละกติกากัน (user สั่ง 2026-09-10)
 //   subtask '01 งานที่ทำ'  = 1 วัน 1 comment หาใบของวันนั้นแล้วเขียนทับ ไม่เจอค่อยโพสต์ใบใหม่
 //   subtask '02 งานค้าง'   = comment ใบเดียวตลอด เขียนทับใบเดิมเสมอ ห้ามโพสต์ใบใหม่
+//
+// ก่อนส่ง Asana จะสำเนา worklog ทั้งหมดไป Obsidian vault ด้วย worklog-obsidian.mjs (user สั่ง 2026-10-27)
 import { readFileSync, existsSync } from 'node:fs'
 import { worklogPath, todayISO } from './worklog-path.mjs'
 
@@ -25,6 +27,18 @@ function loadEnv() {
     }
   return o
 }
+// ── สำเนาไป Obsidian ก่อน (เพิ่ม 2026-10-27) ──
+// ทำก่อนส่ง Asana เพื่อให้ Asana พังหรือไม่มี token แล้วฝั่ง Obsidian ยังได้ของ พังเองก็ไม่ขวางการส่ง Asana
+if (!process.argv.includes('--dry')) {
+  try {
+    const { syncObsidian } = await import('./worklog-obsidian.mjs')
+    const r = syncObsidian()
+    console.log(`📓 Obsidian ${r.days} วัน ${r.months} เดือน เขียน ${r.written.length} ไฟล์ ลบไฟล์เก่า ${r.removed.length} ไฟล์`)
+  } catch (e) {
+    console.warn(`⚠️ สำเนาไป Obsidian ไม่สำเร็จ ส่ง Asana ต่อตามปกติ: ${e.message}`)
+  }
+}
+
 const env = loadEnv()
 const TOKEN = env.ASANA_TOKEN
 if (!TOKEN) { console.error('✗ ไม่พบ ASANA_TOKEN ใน .env'); process.exit(1) }
