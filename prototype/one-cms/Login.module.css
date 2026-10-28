@@ -1,0 +1,46 @@
+/* หน้า Login ของ One CMS (Figma CMS เฟรม 12967:4778)
+ * ฟอร์มวางบนกริด v2022 desktop 12 คอลัมน์ กว้าง 4 คอลัมน์กลางจอ (5 ถึง 8)
+ * ในแบบกว้าง 400 ซึ่งไม่ลงกริดและไม่มี token จึงใช้ 4 คอลัมน์ตามกฎกริดของระบบแทน */
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(var(--ntg-grid-v2022-desktop-columns), var(--ntg-grid-v2022-desktop-column-width));
+  column-gap: var(--ntg-grid-v2022-desktop-gutter);
+  background: var(--ntg-color-background-general-primary);
+  border-bottom: 1px solid var(--ntg-color-border-general-tertiary);
+}
+
+.form {
+  grid-column: 5 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-lg);
+}
+
+/* ใช้ขนาดจริงของไฟล์ SVG ไม่ยืดตามความกว้างฟอร์ม ต้นฉบับใน DS สูง 40 แต่ในแบบขยายเป็นสูง 80
+ * จึงตั้ง width และ height ในไฟล์เป็น 352 x 80 (viewBox เดิม) เพราะไม่มี token ขนาดโลโก้ */
+.logo {
+  display: block;
+  align-self: flex-start;
+}
+
+.title {
+  margin: 0;
+  color: var(--ntg-color-text-general-heading);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s2-sm);
+}
+
+/* ในแบบลืมรหัสผ่านเป็นปุ่ม tertiary ที่มีช่องว่างในตัว 18 แต่ LinkButton ไม่มี จึงเว้นด้วย gap แทน */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s2-sm);
+}
