@@ -247,7 +247,7 @@ function DashboardPage() {
               sort={sort}
               onSortChange={setSort}
               columns={[
-                { id: 'no', header: 'ที่', variant: 'number', accessor: (_r, i) => (page - 1) * 10 + i + 1 },
+                { id: 'no', header: 'ที่', variant: 'index', accessor: (_r, i) => (page - 1) * 10 + i + 1 },
                 { id: 'name', header: 'ผู้ลงข่าว', rowHeader: true, sortable: true, accessor: (r) => r.name, supporting: (r) => r.desk },
                 { id: 'total', header: 'ทั้งหมด', variant: 'number', sortable: true, accessor: (r) => fmt(r.created) },
                 { id: 'published', header: 'เผยแพร่แล้ว', variant: 'number', sortable: true, accessor: (r) => fmt(r.published) },
