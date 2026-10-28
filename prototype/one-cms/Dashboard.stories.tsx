@@ -247,11 +247,11 @@ function DashboardPage() {
               sort={sort}
               onSortChange={setSort}
               columns={[
-                { id: 'no', header: 'ที่', variant: 'number', align: 'start', accessor: (_r, i) => (page - 1) * 10 + i + 1 },
+                { id: 'no', header: 'ที่', variant: 'number', accessor: (_r, i) => (page - 1) * 10 + i + 1 },
                 { id: 'name', header: 'ผู้ลงข่าว', rowHeader: true, sortable: true, accessor: (r) => r.name, supporting: (r) => r.desk },
-                { id: 'total', header: 'ทั้งหมด', variant: 'number', align: 'start', sortable: true, accessor: (r) => fmt(r.created) },
-                { id: 'published', header: 'เผยแพร่แล้ว', variant: 'number', align: 'start', sortable: true, accessor: (r) => fmt(r.published) },
-                { id: 'unpublished', header: 'ยังไม่เผยแพร่', variant: 'number', align: 'start', sortable: true, accessor: (r) => fmt(r.created - r.published) },
+                { id: 'total', header: 'ทั้งหมด', variant: 'number', sortable: true, accessor: (r) => fmt(r.created) },
+                { id: 'published', header: 'เผยแพร่แล้ว', variant: 'number', sortable: true, accessor: (r) => fmt(r.published) },
+                { id: 'unpublished', header: 'ยังไม่เผยแพร่', variant: 'number', sortable: true, accessor: (r) => fmt(r.created - r.published) },
                 { id: 'updated', header: 'อัปเดตล่าสุด', variant: 'date', sortable: true, accessor: (r) => r.updated },
               ]}
             />
