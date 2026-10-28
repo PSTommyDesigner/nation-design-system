@@ -37,6 +37,7 @@
  */
 import React, { useCallback, useEffect, useId, useRef } from 'react';
 import { IconButton } from '../IconButton';
+import { MODAL_OPEN_EVENT } from '../Toast/Toast';
 import styles from './Modal.module.css';
 
 export type ModalSize = 'sm' | 'md' | 'lg';
@@ -213,6 +214,8 @@ export function Modal(props: ModalProps) {
       if (dialog.open) return;
       restoreRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       dialog.showModal();
+      // ให้ ToastStack ยกตัวขึ้นไปเหนือกล่องนี้ใน top layer ดู MODAL_OPEN_EVENT ใน Toast.tsx
+      window.dispatchEvent(new CustomEvent(MODAL_OPEN_EVENT));
       if (!lockedRef.current) {
         lockedRef.current = true;
         lockScroll();

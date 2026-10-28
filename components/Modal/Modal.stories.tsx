@@ -2,6 +2,7 @@ import { useRef, useState, type ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Modal, type ModalProps, type ModalSize } from './Modal'
 import { Button } from '../Button'
+import { ToastStack, type ToastStackItem } from '../Toast'
 import { Preview } from '../../.storybook/docs-blocks'
 
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
@@ -152,4 +153,31 @@ export const Confirm: Story = {
     return <Inner />
   },
   parameters: { docs: { section: 'แบบ', description: { story: 'กล่องยืนยันขนาด sm โฟกัสแรกอยู่ที่ยกเลิก (initialFocusRef) เพื่อกัน Enter ลบโดยไม่ตั้งใจ ซ้อนบนกล่องอื่นได้แค่ใบเดียว' } } },
+}
+
+export const ToastOverModal: Story = {
+  name: 'ข้อความแจ้งเหนือกล่อง',
+  render: () => {
+    const Inner = () => {
+      const [open, setOpen] = useState(false)
+      const [toasts, setToasts] = useState<ToastStackItem[]>([])
+      const save = () => setToasts((list) => [...list, { id: String(Date.now()), type: 'success', title: 'บันทึกแล้ว' }])
+      return (
+        <>
+          <Button family="neutral" hierarchy="secondary" onClick={() => setOpen(true)}>เปิดกล่องโต้ตอบ</Button>
+          <Modal
+            open={open}
+            onClose={() => setOpen(false)}
+            title="แก้ไขรายละเอียดข่าว"
+            footer={<Button onClick={save}>บันทึก</Button>}
+          >
+            กดบันทึกแล้วข้อความแจ้งต้องลอยอยู่เหนือฉากหลังและเหนือกล่องนี้
+          </Modal>
+          <ToastStack items={toasts} onDismiss={(id) => setToasts((list) => list.filter((t) => t.id !== id))} />
+        </>
+      )
+    }
+    return <Inner />
+  },
+  parameters: { docs: { section: 'แบบ', description: { story: 'ToastStack เปิดเป็น popover ใน top layer และยกตัวขึ้นเหนือกล่องทุกครั้งที่กล่องเปิด (เหตุการณ์ ntg:modal-open) ข้อความแจ้งจึงไม่ถูกฉากหลังทับ' } } },
 }

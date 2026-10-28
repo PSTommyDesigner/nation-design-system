@@ -410,6 +410,9 @@ export interface ToastStackProps {
 /** จำนวนใบที่ซ้อนได้ ตัดสินแล้วว่า 3 ใบ */
 export const TOAST_STACK_MAX = 3;
 
+/** เหตุการณ์ที่ Modal ส่งออกมาทุกครั้งที่เปิด ToastStack ใช้ยกตัวเองขึ้นไปอยู่เหนือ Modal */
+export const MODAL_OPEN_EVENT = 'ntg:modal-open';
+
 /**
  * กองข้อความแจ้งลอย ยึดล่างขวาบนเดสก์ท็อป และล่างกลางบนมือถือ
  *
@@ -479,8 +482,29 @@ export function ToastStack({
   // ใบใหม่เข้าด้านล่าง จึงหยิบท้ายรายการมาแสดง ใบที่เกินรออยู่จนกว่าใบเก่าจะหาย
   const visible = items.slice(-Math.max(1, max));
 
+  // ⚠️ ชั้นของข้อความแจ้งเมื่อมี Modal เปิดอยู่ (ตัดสิน 2026-10-28)
+  //    Modal เปิดด้วย showModal() จึงอยู่ใน top layer ซึ่ง z-index แซงไม่ได้ ข้อความแจ้งจะถูกฉากหลังทับ
+  //    จึงเปิดกล่องนี้เป็น popover="manual" ให้อยู่ใน top layer ด้วย ของใน top layer เรียงตามลำดับที่เข้า
+  //    ทุกครั้งที่ Modal เปิด (เหตุการณ์ ntg:modal-open) ปิดแล้วเปิดใหม่ เพื่อขึ้นไปอยู่เหนือ Modal
+  //    เบราว์เซอร์ที่ไม่มี popover ตกไปใช้ z-index เดิม
+  const viewportRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = viewportRef.current;
+    if (!el || typeof el.showPopover !== 'function') return;
+    const raise = () => {
+      if (el.matches(':popover-open')) el.hidePopover();
+      el.showPopover();
+    };
+    raise();
+    window.addEventListener(MODAL_OPEN_EVENT, raise);
+    return () => {
+      window.removeEventListener(MODAL_OPEN_EVENT, raise);
+      if (el.matches(':popover-open')) el.hidePopover();
+    };
+  }, []);
+
   return (
-    <div className={[styles.viewport, className].filter(Boolean).join(' ')}>
+    <div ref={viewportRef} popover="manual" className={[styles.viewport, className].filter(Boolean).join(' ')}>
       {/* 2 ช่องแยกตามระดับเสียง อยู่นอกตัวใบที่มองเห็น ดูคำอธิบายด้านบน */}
       <span className={styles.liveRegion} aria-live="polite" aria-atomic="true">{politeText}</span>
       <span className={styles.liveRegion} aria-live="assertive" aria-atomic="true">{assertiveText}</span>

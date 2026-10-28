@@ -6,6 +6,7 @@ export {
   TOAST_MOTION,
   TOAST_POLITENESS,
   TOAST_STACK_MAX,
+  MODAL_OPEN_EVENT,
   resolveToastDuration,
   toastAnnouncement,
 } from './Toast';
