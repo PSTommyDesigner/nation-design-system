@@ -129,6 +129,26 @@
   min-width: 0;
 }
 
+/* ชี้แล้วเปลี่ยนสีตาม card / bullet-b แบบ hover=true ในไฟล์ CMS วงเลขเป็นพื้นแบรนด์เลขขาว หัวข่าวเป็นสีแบรนด์
+   การคลิกเปิด Modal รายละเอียดข่าวจะต่อเมื่อ component Modal ของ ntgds เสร็จ (ผู้ใช้ตัดสิน 2026-10-28) */
+.rankItem:hover {
+  cursor: pointer;
+}
+
+.rankItem:hover .rankNumber {
+  background: var(--ntg-color-background-brand-solid);
+  color: var(--ntg-color-text-general-const-white);
+}
+
+.rankItem:hover .rankTitle {
+  color: var(--ntg-color-text-brand-primary);
+}
+
+.rankNumber,
+.rankTitle {
+  transition: background-color var(--ntg-motion-duration-fast), color var(--ntg-motion-duration-fast);
+}
+
 /* เลขอันดับในวงกลม ระบบยังไม่มี (Avatar แบบตัวเลขแสดงเป็น 3+) ใช้ขนาดเดียวกับอวาตาร์ sm คือ 32 */
 .rankNumber {
   flex: none;
