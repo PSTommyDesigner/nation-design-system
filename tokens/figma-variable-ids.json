@@ -2156,5 +2156,10 @@
   "11804:2103": "component::modal/radius/top-right",
   "11804:2104": "component::modal/radius/bottom-right",
   "11804:2105": "component::modal/radius/bottom-left",
-  "10205:367": "component::size/space/s3/xs"
+  "10205:367": "component::size/space/s3/xs",
+  "10017:6": "component::semi-rounded-tag/radius/full",
+  "10028:2": "component::info-card/radius/top-left",
+  "10028:3": "component::info-card/radius/top-right",
+  "10028:4": "component::info-card/radius/bottom-right",
+  "10028:5": "component::info-card/radius/bottom-left"
 }

@@ -144,3 +144,19 @@
   background: repeating-linear-gradient(45deg, var(--ntg-color-background-brand-solid) 0 var(--ntg-size-space-s1-lg), var(--ntg-color-background-general-primary) 0 var(--ntg-size-space-s2-sm));
 }
 .effectBlur { width: 100%; height: 100%; background: var(--ntg-color-background-alpha-white-30); }
+
+/* กล่องมุมโค้ง (06 Shape) ขนาดเท่าไฟล์ออกแบบ 240x120 ยืมสเกลระยะ เพราะยังไม่มี token ขนาดของเอกสาร */
+.radiusRow { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s2-md); padding: var(--ntg-size-space-s2-lg) 0; }
+.radiusItem { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-lg); width: calc(var(--ntg-size-space-s5-sm) * 2); }
+.radiusBox {
+  box-sizing: border-box;
+  width: calc(var(--ntg-size-space-s5-sm) * 2);
+  height: var(--ntg-size-space-s5-sm);
+  border: var(--ntg-divider-thickness) solid var(--ntg-color-border-general-primary);
+  background: var(--ntg-color-background-general-primary);
+}
+.warn { color: var(--ntg-color-text-system-error); }
+
+/* ภาพหลักการกล่องซ้อน ระยะขอบ 8 ตามสูตรของหน้า ความสูงกล่องในใกล้เคียง 180 ในไฟล์ออกแบบ */
+.nestedOuter { box-sizing: border-box; width: 100%; padding: var(--ntg-size-space-s1-lg); }
+.nestedInner { height: calc(var(--ntg-size-space-s5-xl) + var(--ntg-size-space-s3-sm)); }

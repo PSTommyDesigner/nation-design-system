@@ -15,6 +15,8 @@ import styles from './AtomDoc.module.css'
  * ⚠️ ภาพ grid ตั้งความกว้างแคนวาสตามไฟล์ออกแบบ (ผู้ใช้ตัดสิน 2026-11-02) เพราะมือถือรุ่น 2026 ใช้แคนวาส 360 ซึ่งไม่มี token
  *    คอลัมน์ ร่อง ขอบ และพื้นที่เนื้อหายังอ่านจาก token --ntg-grid-* ทั้งหมด
  *    สามจุดนี้คือข้อยกเว้นเดียวของกฎ ดู foundations/AGENTS.md
+ * ⚠️ ภาพหลักการกล่องซ้อน (06 Shape Nested Radius) ใช้มุมโค้งตามตัวเลขในไฟล์ออกแบบ (ผู้ใช้ตัดสิน 2026-11-02)
+ *    เพราะเป็นตัวเลขใหญ่ที่ตั้งใจให้เห็นความต่าง ไม่ใช่ค่าจริงของระบบ และไม่มี token สีพื้นยังผูกตัวแปร
  * ⚠️ ภาพเอฟเฟคผูกตัวแปรเงา เบลอ และวงแหวนโฟกัสจริง วงแหวนโฟกัสวงรอบกล่องตัวอย่าง ไม่ใช่ปุ่ม (ผู้ใช้ตัดสิน 2026-11-02
  *    เพราะ Button ในโค้ดไม่มีตระกูล warning กับ success)
  */
@@ -32,7 +34,11 @@ type Block =
   | { type: 'specimen'; sample: string; style: string; className: string; meta: string; usage: string }
   | { type: 'scale'; name: string; spec: string; sample: string; family: string; size: string; lineHeight: string }
   | { type: 'fontFamily'; sample: string; family: string; title: string; usage: string; weights: { label: string; weight: string }[] }
+  | { type: 'radii'; items: RadiusItem[] }
+  | { type: 'nestedPair'; items: NestedItem[] }
   | { type: 'grid'; name: string; canvas: number; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
+type RadiusItem = { step: string; label: string; meta: string; corners: (string | null)[]; figma: number[]; fill: string | null; stroke: string | null }
+type NestedItem = { kind: 'do' | 'dont'; title: string; caption: string; outer: number; inner: number; outerFill: string | null; innerFill: string | null }
 type EffectItem = { kind: 'shadow' | 'blur' | 'ring'; style: string; cssVar: string; label: string }
 type Doc = { id: string; name: string; title: string; subtitle: string; blocks: Block[] }
 export type AtomDocData = { documents: unknown[] }
@@ -120,6 +126,41 @@ const EffectSample = ({ item: it }: { item: EffectItem }) => {
     </div>
   )
 }
+
+// กล่องมุมโค้งหนึ่งขั้น มุมทั้งสี่ผูกตัวแปรของ component ที่ใช้ขั้นนั้นจริง ค่าใต้กล่องอ่านจากที่เบราว์เซอร์คำนวณ
+// ขั้นที่ไม่มี token (none) หรือผูกตัวแปรที่ไม่มีในโค้ดเป็นมุมฉาก และขึ้นเตือนใต้กล่อง
+const RadiusSample = ({ item: it }: { item: RadiusItem }) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const [v, setV] = useState('')
+  useLayoutEffect(() => { if (ref.current) setV(getComputedStyle(ref.current).borderRadius) }, [it])
+  const r = it.corners.map(c => (c ? `var(${c})` : '0'))
+  const unbound = it.figma.some((f, i) => f !== 0 && !it.corners[i])
+  return (
+    <div className={styles.radiusItem}>
+      <div
+        ref={ref}
+        className={styles.radiusBox}
+        style={{
+          borderRadius: r.join(' '),
+          background: it.fill ? `var(${it.fill})` : undefined,
+          borderColor: it.stroke ? `var(${it.stroke})` : undefined,
+        }}
+      />
+      <code className="ntg-typography-title-xs">{it.label}</code>
+      <span className={`ntg-typography-body-xs ${styles.muted}`}>{clean(it.meta)}</span>
+      {it.corners[0] && <code className={`ntg-typography-body-xs ${styles.muted}`}>{it.corners[0].replace(/-top-left/, '-*')}</code>}
+      <code className={`ntg-typography-body-xs ${styles.muted}`}>border-radius: {v}</code>
+      {unbound && <span className={`ntg-typography-body-xs ${styles.warn}`}>ตัวแปรใน Figma ไม่มีในโค้ด ดู radiusMismatch</span>}
+    </div>
+  )
+}
+
+// ภาพหลักการกล่องซ้อน ข้อยกเว้นของกฎ ดูหมายเหตุบนสุดของไฟล์
+const NestedSample = ({ item: it }: { item: NestedItem }) => (
+  <div className={styles.nestedOuter} style={{ borderRadius: `${it.outer}px`, background: it.outerFill ? `var(${it.outerFill})` : undefined }}>
+    <div className={styles.nestedInner} style={{ borderRadius: `${it.inner}px`, background: it.innerFill ? `var(${it.innerFill})` : undefined }} />
+  </div>
+)
 
 const EffectRow = ({ items }: { items: EffectItem[] }) => (
   <div className={styles.effectRow}>{items.map((it, i) => <EffectSample key={i} item={it} />)}</div>
@@ -237,6 +278,17 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       return <GridSpecimen block={block} />
     case 'effects':
       return <EffectRow items={block.items} />
+    case 'radii':
+      return <div className={styles.radiusRow}>{block.items.map((it, i) => <RadiusSample key={i} item={it} />)}</div>
+    case 'nestedPair':
+      return (
+        <DoDont>
+          {block.items.map((it, i) => {
+            const Card = it.kind === 'do' ? Do : Dont
+            return <Card key={i} text={`${clean(it.title)} ${clean(it.caption)}`}><NestedSample item={it} /></Card>
+          })}
+        </DoDont>
+      )
     case 'swatches':
       return (
         <div className={styles.swatchRow}>

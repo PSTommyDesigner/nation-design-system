@@ -38,6 +38,7 @@ const PAGES = {
   typography: { page: '03 Typography', folder: 'Typography', skip: [] },
   grid: { page: '04 Grid', folder: 'Grid', skip: [] },
   effect: { page: '05 Effect', folder: 'Effect', skip: ['Base Components (internal)'] },
+  shape: { page: '06 Shape', folder: 'Shape', skip: [] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -146,6 +147,45 @@ function checkEffect(where, kind, cssVar, fx) {
 }
 const STYLE_NAME = /^[a-z]+(-[a-z]+)*(\/[a-z0-9-]+)+$/
 
+// มุมโค้ง (06 Shape) REST เก็บ binding ของมุมไว้ที่ rectangleCornerRadii หรือแยกต่อมุม
+const CORNER_KEYS = [['RECTANGLE_TOP_LEFT_CORNER_RADIUS', 'topLeftRadius'], ['RECTANGLE_TOP_RIGHT_CORNER_RADIUS', 'topRightRadius'], ['RECTANGLE_BOTTOM_RIGHT_CORNER_RADIUS', 'bottomRightRadius'], ['RECTANGLE_BOTTOM_LEFT_CORNER_RADIUS', 'bottomLeftRadius']]
+const radiusMismatch = []
+function radiusVars(n, where) {
+  const bv = n.boundVariables ?? {}
+  const radii = n.rectangleCornerRadii ?? (n.cornerRadius != null ? [n.cornerRadius, n.cornerRadius, n.cornerRadius, n.cornerRadius] : [0, 0, 0, 0])
+  return CORNER_KEYS.map(([rest, plugin], i) => {
+    const id = (bv.rectangleCornerRadii?.[rest] ?? bv[plugin])?.id
+    if (!id) return { figma: radii[i], name: null, cssVar: null }
+    const key = id.replace(/^VariableID:/, '')
+    const full = VAR_NAMES[key]
+    if (!full) { missing.add(key); return { figma: radii[i], name: null, cssVar: null } }
+    const name = full.split('::')[1]
+    const cssVar = '--ntg-' + name.replace(/\//g, '-')
+    if (!CSS_VARS.has(cssVar)) { radiusMismatch.push(`${where}: ตัวแปร ${name} ใน Figma ไม่มีในโค้ด (${cssVar})`); return { figma: radii[i], name, cssVar: null } }
+    if (parseFloat(ROOT_VALUES[cssVar]) !== radii[i]) radiusMismatch.push(`${where}: ${name} ไฟล์ออกแบบ ${radii[i]} token ${ROOT_VALUES[cssVar]}`)
+    return { figma: radii[i], name, cssVar }
+  })
+}
+// กล่องตัวอย่างมุมโค้งหนึ่งขั้น = เฟรมที่มีลูกชื่อ swatch กับข้อความกำกับ
+const isRadiusSample = (n) => n.type === 'FRAME' && n.children?.some(c => c.name === 'swatch' && c.type === 'FRAME') && n.children.some(c => c.type === 'TEXT')
+function radiusBlock(n, where) {
+  const sw = n.children.find(c => c.name === 'swatch')
+  const corners = radiusVars(sw, `${where} ${n.name}`)
+  const [label = '', meta = ''] = texts(n).map(t => t.trim())
+  // ชื่อตัวแปรที่พิมพ์ในไฟล์ออกแบบต้องตรงกับตัวแปรที่ผูกจริง ถ้าไม่ตรงจดเป็นงานค้างของหน้านั้น
+  const real = corners[0].name?.replace(/\/(top|bottom)-(left|right)(?=\/|$)/, '') ?? null
+  // ป้ายย่อขั้นขนาดได้ เช่น input/radius แทน input/radius/md ถือว่าตรง ถ้าชื่อ component ต่างกันจึงจด
+  if (real && !real.startsWith(label)) { const msg = `${where}: ป้าย ${label} ตัวแปรที่ผูกจริงคือ ${real}`; if (!stale.includes(msg)) stale.push(msg) }
+  return { type: 'radius', step: n.name, label: real ?? label, meta, corners: corners.map(c => c.cssVar), figma: corners.map(c => c.figma), fill: cssVarOf(sw, `${where} ${n.name}`), stroke: strokeVarOf(sw) }
+}
+const strokeVarOf = (n) => {
+  const id = n?.boundVariables?.strokes?.[0]?.id
+  const full = id && VAR_NAMES[id.replace(/^VariableID:/, '')]
+  return full ? '--ntg-' + full.split('::')[1].replace(/\//g, '-') : null
+}
+// ภาพหลักการกล่องซ้อน (Nested Radius) มุมโค้งเป็นตัวเลขใหญ่เพื่อให้เห็นความต่าง ไม่ใช่ค่าจริงของระบบ
+// จึงเก็บค่าจากไฟล์ออกแบบตรง ๆ (ผู้ใช้ตัดสิน 2026-11-02) สีพื้นยังอ่านจากตัวแปร
+
 // ภาพเอฟเฟค = INSTANCE หรือ COMPONENT ที่มีกล่อง Preview และป้าย Info บอกชื่อ effect style
 const isEffect = (n) => (n.type === 'INSTANCE' || n.type === 'COMPONENT') && n.children?.some(c => c.name === 'Preview') && n.children.some(c => c.name === 'Info' && effectOf(texts(c)[0]?.trim() ?? ''))
 function effectBlock(n, where, label) {
@@ -176,6 +216,15 @@ function extract(doc) {
     if (b.type === 'effect') {
       if (last?.type === 'effects') { last.items.push(b); return }
       out.blocks.push({ type: 'effects', items: [b] }); return
+    }
+    // กล่องมุมโค้งที่อยู่ติดกันรวมเป็นแถวเดียว ภาพกล่องซ้อนถูกผิดก็เช่นกัน
+    if (b.type === 'radius') {
+      if (last?.type === 'radii') { last.items.push(b); return }
+      out.blocks.push({ type: 'radii', items: [b] }); return
+    }
+    if (b.type === 'nested') {
+      if (last?.type === 'nestedPair') { last.items.push(b); return }
+      out.blocks.push({ type: 'nestedPair', items: [b] }); return
     }
     out.blocks.push(b)
   }
@@ -263,6 +312,14 @@ function extract(doc) {
       return
     }
     if (isEffect(n)) { push(effectBlock(n, doc.name, '')); return }
+    if (isRadiusSample(n)) { push(radiusBlock(n, doc.name)); return }
+    if (n.type === 'FRAME' && n.children?.some(c => c.name === 'outer-box' && c.children?.some(x => x.name === 'inner-box'))) {
+      const outer = n.children.find(c => c.name === 'outer-box'), inner = outer.children.find(c => c.name === 'inner-box')
+      const [title = '', caption = ''] = n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim())
+      const r = (x) => x.rectangleCornerRadii?.[0] ?? x.cornerRadius ?? 0
+      push({ type: 'nested', kind: /wrong/.test(n.name) ? 'dont' : 'do', title, caption, outer: r(outer), inner: r(inner), outerFill: cssVarOf(outer, `${doc.name} outer-box`), innerFill: cssVarOf(inner, `${doc.name} inner-box`) })
+      return
+    }
     if ((n.type === 'INSTANCE' || n.type === 'COMPONENT') && n.layoutGrids?.some(g => g.pattern === 'COLUMNS')) {
       // ภาพ grid หนึ่งขนาดจอ คอลัมน์ ร่อง และขอบอ่านจาก token ส่วนความกว้างแคนวาสเก็บจากไฟล์ออกแบบ (ผู้ใช้ตัดสิน 2026-11-02
       // เพราะมือถือรุ่น 2026 ออกแบบบนแคนวาส 360 ซึ่งไม่มี token) ตัวเลขกำกับในภาพไม่ใช่เนื้อหา จึงไม่อ่าน
@@ -337,6 +394,8 @@ const json = {
   ...(gridMismatch.length ? { gridMismatch } : {}),
   // ค่าเอฟเฟคในไฟล์ออกแบบที่ไม่ตรงกับ token
   ...(effectMismatch.length ? { effectMismatch } : {}),
+  // มุมโค้งในไฟล์ออกแบบที่ไม่ตรงกับ token หรือผูกตัวแปรที่ไม่มีในโค้ด
+  ...(radiusMismatch.length ? { radiusMismatch: [...new Set(radiusMismatch)] } : {}),
   documents,
 }
 fs.mkdirSync(path.dirname(OUT), { recursive: true })
@@ -345,5 +404,6 @@ const count = (t) => documents.reduce((s, d) => s + d.blocks.filter(b => b.type 
 const rows = documents.reduce((s, d) => s + d.blocks.filter(b => b.type === 'colorTable').reduce((a, b) => a + b.rows.length, 0), 0)
 if (gridMismatch.length) console.log(`ค่า grid ไม่ตรงกับ token ${gridMismatch.length} จุด\n  ` + gridMismatch.join('\n  '))
 if (effectMismatch.length) console.log(`ค่าเอฟเฟคไม่ตรงกับ token ${effectMismatch.length} จุด\n  ` + effectMismatch.join('\n  '))
+if (radiusMismatch.length) { const u = [...new Set(radiusMismatch)]; console.log(`มุมโค้งไม่ตรงกับ token ${u.length} จุด\n  ` + u.join('\n  ')) }
 if (stale.length) console.log(`ป้ายสีในไฟล์ออกแบบไม่ตรงกับตัวแปรจริง ${stale.length} แถว ดู staleLabels ใน ${path.relative(ROOT, OUT)}`)
 console.log(`เขียน ${path.relative(ROOT, OUT)} เอกสาร ${documents.length} ใบ แถวสี ${rows} ตาราง ${count('table')} แรมป์ ${count('ramp')} การ์ด ${count('card')} ตัวอย่างสไตล์ ${count('specimen')} ขั้นขนาด ${count('scale')} ตระกูลฟอนต์ ${count('fontFamily')} ภาพ grid ${count('grid')} แถวเอฟเฟค ${count('effects')} ภาพเอฟเฟค ${documents.reduce((a, d) => a + d.blocks.filter(b => b.type === 'effects').reduce((x, b) => x + b.items.length, 0), 0)}`)

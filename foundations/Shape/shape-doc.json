@@ -1,0 +1,789 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 06 Shape ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- shape",
+  "page": "06 Shape",
+  "documents": [
+    {
+      "id": "9991:2",
+      "name": "06 Shape Documentation",
+      "title": "06 Shape Documentation",
+      "subtitle": "• ระบบมุมโค้งของ Nation Design System\n• สเกลกลางอยู่ในโค้ด ตัวแปรใน Figma มีชั้นเดียวคือระดับ component",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview"
+        },
+        {
+          "type": "p",
+          "text": "หน้านี้เก็บระบบมุมโค้งทั้งหมดของ Nation Design System"
+        },
+        {
+          "type": "p",
+          "text": "มุมโค้งบอกบุคลิกของแบรนด์แบบเงียบ ๆ ยิ่งโค้งมากยิ่งอ่านว่าเป็นมิตร ยิ่งคมยิ่งอ่านว่าจริงจัง"
+        },
+        {
+          "type": "p",
+          "text": "กติกาสั้นที่สุดของหน้านี้คือ ค่าตัวเลขโค้ดเป็นคนตัดสินโดยคำนวณจากสเกลกลาง แล้ว Figma รับค่ามาเป็นตัวแปร"
+        },
+        {
+          "type": "p",
+          "text": "ตัวแปรที่ผูกกับชิ้นงานได้มีชั้นเดียวคือระดับ component ตอนนี้มี 93 ตัว ครอบคลุม 10 component แบ่งเป็นของโปรดักต์ 7 ตัว และของระบบเอกสาร 3 ตัว"
+        },
+        {
+          "type": "h",
+          "text": "Anatomy"
+        },
+        {
+          "type": "p",
+          "text": "มุมโค้งไม่มีชิ้นส่วนให้ผ่า แต่มี 4 มุมที่คุมแยกกันได้"
+        },
+        {
+          "type": "p",
+          "text": "section นี้ไม่มีภาพประกอบ เพราะมุมโค้งไม่ใช่ของที่มีชิ้นส่วนอยู่ข้างใน มันคือค่าตัวเลขค่าเดียวที่ใส่ให้กล่อง สิ่งที่ใกล้เคียงกับกายวิภาคที่สุดคือ ทุกกล่องมี 4 มุมที่ตั้งค่าแยกกันได้ ตัวแปรของเราจึงแตกเป็น top-left top-right bottom-right bottom-left ทุกตัว แม้ปกติจะใส่ค่าเท่ากันทั้งสี่มุม การแยกไว้ทำให้ทำของอย่างแท็บที่โค้งเฉพาะมุมบนได้โดยไม่ต้องพิมพ์ค่าดิบ ดูของจริงที่เอกสาร Nested Radius บนหน้านี้"
+        },
+        {
+          "type": "radii",
+          "items": [
+            {
+              "type": "radius",
+              "step": "md",
+              "label": "input/radius/md",
+              "meta": "8px ขั้น md ใช้โดย input",
+              "corners": [
+                "--ntg-input-radius-top-left-md",
+                "--ntg-input-radius-top-right-md",
+                "--ntg-input-radius-bottom-right-md",
+                "--ntg-input-radius-bottom-left-md"
+              ],
+              "figma": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants"
+        },
+        {
+          "type": "p",
+          "text": "ไม่มี variant เพราะมุมโค้งเป็นค่า ไม่ใช่ component"
+        },
+        {
+          "type": "p",
+          "text": "section นี้ไม่มีภาพประกอบ เพราะหน้านี้ไม่มี component ของตัวเองสักตัว มุมโค้งเป็นค่าที่ component อื่นหยิบไปใช้ ไม่ใช่ของที่วางบนหน้าจอได้เอง สิ่งที่ทำหน้าที่แทน variant คือขั้นในสเกลกลาง 7 ขั้น ซึ่งอยู่ใน section Sizes ส่วนภาพของจริงว่าแต่ละ component ใช้ขั้นไหน อยู่ที่เอกสาร Radius By Component บนหน้านี้"
+        },
+        {
+          "type": "radii",
+          "items": [
+            {
+              "type": "radius",
+              "step": "none",
+              "label": "ไม่มี token",
+              "meta": "0px ขั้น none ไม่มี token ประจำขั้น ใช้ค่า 0 ตรง ๆ",
+              "corners": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "figma": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "md",
+              "label": "input/radius/md",
+              "meta": "8px ขั้น md ใช้โดย input",
+              "corners": [
+                "--ntg-input-radius-top-left-md",
+                "--ntg-input-radius-top-right-md",
+                "--ntg-input-radius-bottom-right-md",
+                "--ntg-input-radius-bottom-left-md"
+              ],
+              "figma": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "full",
+              "label": "pill-tag/radius/full",
+              "meta": "9999px ขั้น full ใช้โดย tag badge card",
+              "corners": [
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full"
+              ],
+              "figma": [
+                9999,
+                9999,
+                9999,
+                9999
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy"
+        },
+        {
+          "type": "p",
+          "text": "มุมโค้งซ้อน กล่องนอกต้องโค้งมากกว่ากล่องใน"
+        },
+        {
+          "type": "p",
+          "text": "section นี้ไม่มีภาพประกอบ แต่มีกติกาที่ต้องรู้ เมื่อกล่องหนึ่งอยู่ในอีกกล่องหนึ่ง มุมโค้งของกล่องนอกต้องมากกว่ากล่องใน เท่ากับระยะขอบในที่คั่นอยู่ ถ้าใช้ค่าเท่ากันทั้งสองชั้น กล่องในจะดูเหมือนล้นออกมาที่มุม สูตรและตัวอย่างของจริงอยู่ที่เอกสาร Nested Radius บนหน้านี้"
+        },
+        {
+          "type": "h",
+          "text": "Sizes"
+        },
+        {
+          "type": "p",
+          "text": "ชุดค่าที่ระบบอนุญาต อ่านรายละเอียดที่เอกสาร Radius Scale"
+        },
+        {
+          "type": "p",
+          "text": "• none 0\n• xs 2\n• sm 4\n• md 8\n• lg 12\n• xl 16\n• full 9999"
+        },
+        {
+          "type": "p",
+          "text": "• ค่าทั้งหมดมาจากการสำรวจของจริงในไฟล์ ไม่ใช่ตัวเลขที่ตั้งขึ้นเอง\n• 4 คือค่าที่ใช้มากที่สุดทั้งไฟล์ และ 9999 คือทรงแคปซูล"
+        },
+        {
+          "type": "radii",
+          "items": [
+            {
+              "type": "radius",
+              "step": "none",
+              "label": "ไม่มี token",
+              "meta": "0px ขั้น none ไม่มี token ประจำขั้น ใช้ค่า 0 ตรง ๆ",
+              "corners": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "figma": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "sm",
+              "label": "card/radius",
+              "meta": "4px ขั้น sm ใช้โดย card tag badge",
+              "corners": [
+                "--ntg-card-radius-top-left",
+                "--ntg-card-radius-top-right",
+                "--ntg-card-radius-bottom-right",
+                "--ntg-card-radius-bottom-left"
+              ],
+              "figma": [
+                4,
+                4,
+                4,
+                4
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "md",
+              "label": "input/radius/md",
+              "meta": "8px ขั้น md ใช้โดย input",
+              "corners": [
+                "--ntg-input-radius-top-left-md",
+                "--ntg-input-radius-top-right-md",
+                "--ntg-input-radius-bottom-right-md",
+                "--ntg-input-radius-bottom-left-md"
+              ],
+              "figma": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "lg",
+              "label": "info-card/radius",
+              "meta": "12px ขั้น lg ใช้โดย info-card",
+              "corners": [
+                "--ntg-info-card-radius-top-left",
+                "--ntg-info-card-radius-top-right",
+                "--ntg-info-card-radius-bottom-right",
+                "--ntg-info-card-radius-bottom-left"
+              ],
+              "figma": [
+                12,
+                12,
+                12,
+                12
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "full",
+              "label": "pill-tag/radius/full",
+              "meta": "9999px ขั้น full ใช้โดย tag badge card",
+              "corners": [
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full"
+              ],
+              "figma": [
+                9999,
+                9999,
+                9999,
+                9999
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States"
+        },
+        {
+          "type": "p",
+          "text": "มุมโค้งไม่เปลี่ยนตามสถานะ"
+        },
+        {
+          "type": "p",
+          "text": "section นี้ไม่มีภาพประกอบ เพราะมุมโค้งของชิ้นงานหนึ่งชิ้นเป็นค่าคงที่ ไม่เปลี่ยนตอน hover โฟกัส หรือปิดใช้งาน สิ่งที่เปลี่ยนตามสถานะคือสีและเงา ไม่ใช่รูปทรง กติกานี้ตั้งใจให้เป็นแบบนี้ เพราะรูปทรงที่ขยับตอนโต้ตอบทำให้สายตาไล่ตามยากและอ่านว่าของกำลังเปลี่ยนขนาด"
+        },
+        {
+          "type": "h",
+          "text": "Usage Do and Don’t"
+        },
+        {
+          "type": "p",
+          "text": "กติกาที่ต้องถือทุกครั้งที่ใส่มุมโค้ง"
+        },
+        {
+          "type": "p",
+          "text": "ควร ผูกตัวแปรของ component ที่ทำอยู่ เช่นการ์ดใช้ card/radius แท็กใช้ tag/radius\nควร ใช้ตัว full ของ component นั้นเมื่อต้องการทรงแคปซูล\nควร ลดมุมโค้งของกล่องที่ซ้อนข้างในตามสูตร ลูกเท่ากับแม่ลบ padding"
+        },
+        {
+          "type": "p",
+          "text": "ไม่ควร พิมพ์ตัวเลขมุมโค้งลงชิ้นงาน\nไม่ควร แก้ค่าที่ Figma เพราะรอบหน้าที่ build จะถูกทับ\nไม่ควร สร้างตัวแปรมุมโค้งชั้นกลางใน Figma เพราะเคยมีมาแล้ว 2 รุ่นและถูกลบทิ้งทั้งคู่\nไม่ควร เปิด corner smoothing ต้องเป็น 0 เสมอ"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "Do",
+          "body": "• เลือกขั้นจากสเกลกลางเสมอ\n• ให้ชิ้นงานที่อยู่ในตระกูลเดียวกันใช้สูตรมุมโค้งเดียวกัน\n• กล่องที่ซ้อนกันให้มุมชั้นในเล็กกว่ามุมชั้นนอก"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "Don’t",
+          "body": "• พิมพ์ค่ามุมโค้งลงไปตรง ๆ โดยไม่ผูกตัวแปร\n• ตั้งขั้นใหม่เองนอกสเกลกลาง ต้องขออนุมัติก่อน\n• ใช้มุมโค้งบอกสถานะ เพราะมุมโค้งเป็นรูปทรง ไม่ใช่การโต้ตอบ"
+        },
+        {
+          "type": "h",
+          "text": "Accessibility"
+        },
+        {
+          "type": "p",
+          "text": "มุมโค้งไม่ใช่เรื่องความงามอย่างเดียว"
+        },
+        {
+          "type": "p",
+          "text": "มุมโค้งห้ามใช้เป็นสัญญาณเดียวที่บอกสถานะหรือความหมาย ต้องมีสีหรือข้อความประกอบเสมอ เพราะคนที่มองเห็นไม่ชัดแยกความต่างของมุมไม่ออก"
+        },
+        {
+          "type": "p",
+          "text": "ปุ่มและช่องกรอกที่โค้งมาก พื้นที่กดจริงจะเล็กลงที่มุม ให้คุมความสูงขั้นต่ำตามที่หน้า Buttons กำหนดไว้"
+        },
+        {
+          "type": "h",
+          "text": "Design Tokens"
+        },
+        {
+          "type": "p",
+          "text": "รายการทั้งหมดอยู่ที่เอกสาร Shape Token"
+        },
+        {
+          "type": "p",
+          "text": "ชื่อในโค้ดขึ้นต้นด้วย --ntg- ตามด้วยชื่อ component เช่น --ntg-card-radius-top-left"
+        },
+        {
+          "type": "p",
+          "text": "อยากเปลี่ยนค่า ให้แก้ที่ tokens/scale แล้วรัน npm run tokens:build ไม่ใช่แก้ที่ Figma"
+        },
+        {
+          "type": "h",
+          "text": "Specs"
+        },
+        {
+          "type": "p",
+          "text": "ค่าจริงและที่มาของแต่ละขั้น"
+        },
+        {
+          "type": "p",
+          "text": "สเกลกลาง 7 ขั้น none 0, xs 2, sm 4, md 8, lg 12, xl 16, full 9999 ทุกค่ามาจากการสำรวจของที่ใช้จริงในไฟล์ ไม่ใช่ตัวเลขที่ตั้งขึ้นเอง ขั้น sm ที่ 4 คือค่าที่พบมากที่สุดทั้งไฟล์ และ full ที่ 9999 ใช้แทนการคำนวณครึ่งหนึ่งของความสูงทีละตัว แก้ขนาดแล้วมุมโค้งไม่ต้องตามแก้ component ที่มุมโค้งผันตามขนาดมีสูตรของตัวเองคือปุ่มและช่องกรอก เริ่มที่ 6 เพิ่มทีละ 1 ตารางค่าเต็มอยู่ที่เอกสาร Shape Token Document"
+        },
+        {
+          "type": "h",
+          "text": "Related"
+        },
+        {
+          "type": "p",
+          "text": "เอกสารลูกของหน้านี้ และหน้าที่ใช้ระบบนี้ต่อ"
+        },
+        {
+          "type": "p",
+          "text": "Radius Scale สเกลกลาง 7 ขั้นในโค้ด\nRadius By Component ตารางว่า component ไหนใช้เท่าไหร่\nNested Radius สูตรของกล่องที่ซ้อนกัน\nShape Token ตารางชื่อ Figma คู่กับชื่อในโค้ด"
+        },
+        {
+          "type": "p",
+          "text": "• หน้าที่ผูกตัวแปรของระบบนี้อยู่จริง 12 Buttons\n• 13 Input\n• 21 Tags\n• 22 Badge\n• 25 Card\n• ส่วนกรอบตารางในเอกสาร ผูกอยู่ที่หน้า 00\n• 01\n• 02\n• 03\n• 04\n• 05\n• 06"
+        }
+      ]
+    },
+    {
+      "id": "9991:94",
+      "name": "Shape Token Document",
+      "title": "Shape Token",
+      "subtitle": "จับคู่ชื่อใน Figma กับชื่อในโค้ด พร้อมค่าจริงและที่ใช้งาน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อมุมโค้งที่เห็นใน Figma กับชื่อที่ใช้ในโค้ด พร้อมค่าจริงและที่ใช้งาน"
+        },
+        {
+          "type": "p",
+          "text": "ค่าตัวเลขทั้งหมดโค้ดเป็นคนตัดสิน โดยคำนวณจากสเกลกลางที่ tokens/scale/global-scale.config.mjs แล้ว Figma รับค่าที่คำนวณเสร็จแล้วมาเป็นตัวแปร แปลว่าถ้าจะเปลี่ยนค่า ต้องแก้ที่โค้ดแล้ว build ใหม่ ไม่ใช่แก้ที่ Figma"
+        },
+        {
+          "type": "p",
+          "text": "ตัวแปรที่ผูกกับชิ้นงานได้มีชั้นเดียวคือระดับ component ไม่มีชั้นกลางใน Figma โดยตั้งใจ เพราะไฟล์นี้เคยมีมาแล้ว 2 รุ่นและถูกลบทิ้งทั้งคู่ ทิ้งของค้างไว้ 3,467 จุด (อ่านเหตุผลเต็มที่ docs/06-shape.md ข้อ 6)"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ผูกตัวแปรของ component ที่ทำอยู่ เช่นการ์ดใช้ card/radius ห้ามพิมพ์ตัวเลขเอง"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "เรียก CSS variable ชื่อเดียวกัน เช่น var(--ntg-card-radius-top-left)"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token"
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "button/radius/<มุม>/<ขนาด> 21 ตัว",
+              "--ntg-button-radius-top-left-md ",
+              "6 ถึง 10",
+              "ปุ่มทั่วไปทุกตระกูล"
+            ],
+            [
+              "icon-button/radius/<มุม>/<ขนาด> 21 ตัว",
+              "--ntg-icon-button-radius-top-left-md ",
+              "6 ถึง 10",
+              "ปุ่มไอคอนล้วน"
+            ],
+            [
+              "link-button/radius/<มุม>/<ขนาด> 20 ตัว",
+              "--ntg-link-button-radius-top-left-md ",
+              "0",
+              "ปุ่มลิงก์"
+            ],
+            [
+              "card/radius/<มุม> 5 ตัว",
+              "--ntg-card-radius-top-left ",
+              "4",
+              "การ์ดข่าว การ์ดวิดีโอ"
+            ],
+            [
+              "tag/radius/<มุม> 5 ตัว",
+              "--ntg-tag-radius-top-left ",
+              "4",
+              "แท็กหมวดข่าว 2 ทรง"
+            ],
+            [
+              "badge/radius/<มุม> 5 ตัว",
+              "--ntg-badge-radius-top-left ",
+              "4",
+              "ป้ายสถานะ 2 ทรง"
+            ],
+            [
+              "input/radius/<มุม> 4 ตัว",
+              "--ntg-input-radius-top-left ",
+              "8",
+              "text field และ text area"
+            ],
+            [
+              "info-card/radius/<มุม> 4 ตัว",
+              "--ntg-info-card-radius-top-left ",
+              "12",
+              "การ์ดข้อมูลในระบบเอกสาร"
+            ],
+            [
+              "doc-table/radius/<มุม> 4 ตัว",
+              "--ntg-doc-table-radius-top-left ",
+              "8",
+              "กรอบตารางในเอกสาร 11 จุด 7 หน้า"
+            ],
+            [
+              "table/radius/<มุม> 4 ตัว",
+              "--ntg-table-radius-top-left ",
+              "8",
+              "ตารางข้อมูลของโปรดักต์ หน้า 28"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• มุมโค้งเป็นค่าตัวเลข แหล่งความจริงจึงอยู่ที่โค้ด แก้ที่ tokens/scale แล้วรัน npm run tokens:build\n• ห้ามแก้ค่ามุมโค้งที่ Figma เพราะรอบหน้าที่ generate จะถูกทับ\n• ค่าที่ไม่ใช่ตัวเลข เช่น สีและตัวอักษร ยังใช้ Figma เป็นแหล่งความจริงตามเดิม\n• ห้ามพิมพ์ค่าดิบลงงานตรง ๆ ให้อ้างชื่อ token เสมอ"
+        }
+      ]
+    },
+    {
+      "id": "9991:70",
+      "name": "Radius Scale",
+      "title": "Radius Scale",
+      "subtitle": "สเกลกลาง 7 ขั้นที่อยู่ในโค้ด ใช้เป็นชุดค่าที่ระบบอนุญาตให้ component เลือกใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สเกลกลางในโค้ด 7 ขั้น"
+        },
+        {
+          "type": "p",
+          "text": "ชุดค่าที่ระบบอนุญาตให้เลือกใช้ อยู่ที่ tokens/scale/global-scale.config.mjs ตัวสเกลเองไม่ได้เป็นตัวแปรใน Figma กล่องตัวอย่างด้านล่างจึงผูกกับตัวแปรของ component ที่ใช้ขั้นนั้นจริง เพื่อให้เห็นว่าขั้นไหนถูกใช้ที่ไหน"
+        },
+        {
+          "type": "radii",
+          "items": [
+            {
+              "type": "radius",
+              "step": "none",
+              "label": "ไม่มี token",
+              "meta": "0px ขั้น none ไม่มี token ประจำขั้น ใช้ค่า 0 ตรง ๆ",
+              "corners": [
+                null,
+                null,
+                null,
+                null
+              ],
+              "figma": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "sm",
+              "label": "card/radius",
+              "meta": "4px ขั้น sm ใช้โดย card tag badge",
+              "corners": [
+                "--ntg-card-radius-top-left",
+                "--ntg-card-radius-top-right",
+                "--ntg-card-radius-bottom-right",
+                "--ntg-card-radius-bottom-left"
+              ],
+              "figma": [
+                4,
+                4,
+                4,
+                4
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "md",
+              "label": "input/radius/md",
+              "meta": "8px ขั้น md ใช้โดย input",
+              "corners": [
+                "--ntg-input-radius-top-left-md",
+                "--ntg-input-radius-top-right-md",
+                "--ntg-input-radius-bottom-right-md",
+                "--ntg-input-radius-bottom-left-md"
+              ],
+              "figma": [
+                8,
+                8,
+                8,
+                8
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "lg",
+              "label": "info-card/radius",
+              "meta": "12px ขั้น lg ใช้โดย info-card",
+              "corners": [
+                "--ntg-info-card-radius-top-left",
+                "--ntg-info-card-radius-top-right",
+                "--ntg-info-card-radius-bottom-right",
+                "--ntg-info-card-radius-bottom-left"
+              ],
+              "figma": [
+                12,
+                12,
+                12,
+                12
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            },
+            {
+              "type": "radius",
+              "step": "full",
+              "label": "pill-tag/radius/full",
+              "meta": "9999px ขั้น full ใช้โดย tag badge card",
+              "corners": [
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full",
+                "--ntg-pill-tag-radius-full"
+              ],
+              "figma": [
+                9999,
+                9999,
+                9999,
+                9999
+              ],
+              "fill": "--ntg-color-background-general-primary",
+              "stroke": "--ntg-color-border-general-primary"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "ขั้นที่ยังไม่มี component ไหนใช้ xs 2px และ xl 16px สองขั้นนี้มีอยู่ในสเกลของโค้ดแต่ยังไม่มีตัวแปรใน Figma เพราะตัวแปรจะถูกสร้างก็ต่อเมื่อมี component มาใช้จริง"
+        }
+      ]
+    },
+    {
+      "id": "9991:78",
+      "name": "Radius By Component",
+      "title": "Radius By Component",
+      "subtitle": "component ตัวไหนใช้มุมโค้งเท่าไหร่ และหยิบมาจากขั้นไหนของสเกลกลาง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "มุมโค้งต่อ component"
+        },
+        {
+          "type": "p",
+          "text": "ทุกค่ามาจากสเกลกลางในโค้ด ไม่มีค่าไหนพิมพ์ลง Figma เอง ปุ่มเป็นตัวเดียวที่มุมโค้งขยับตามขนาด"
+        },
+        {
+          "type": "table",
+          "head": [
+            "component",
+            "ค่า",
+            "มาจากไหน"
+          ],
+          "rows": [
+            [
+              "button ปุ่มทั่วไป",
+              "6, 7, 8, 9, 10 ตาม xs ถึง xl",
+              "สูตร base 6 step 1 RADIUS_FORMULA.button"
+            ],
+            [
+              "icon-button ปุ่มไอคอน",
+              "6, 7, 8, 9, 10 ตาม xs ถึง xl",
+              "สูตรเดียวกับปุ่ม RADIUS_FORMULA.button"
+            ],
+            [
+              "link-button ปุ่มลิงก์",
+              "0 ทุกขนาด",
+              "ไม่มีพื้นหลังจึงไม่มีมุมโค้ง RADIUS_SCALE.none"
+            ],
+            [
+              "card การ์ดข่าว",
+              "4 และ full 9999",
+              "ขั้น sm full ใช้กับป้ายในการ์ด"
+            ],
+            [
+              "tag แท็ก 2 ทรง",
+              "4 และ full 9999",
+              "ขั้น sm และ full ทรงปกติกับทรงแคปซูล"
+            ],
+            [
+              "badge ป้าย 2 ทรง",
+              "4 และ full 9999",
+              "ขั้น sm และ full ทรงปกติกับทรงกลม"
+            ],
+            [
+              "input ช่องกรอก",
+              "8 ทุกมุม",
+              "ขั้น md text field และ text area"
+            ],
+            [
+              "info-card การ์ดข้อมูลในเอกสาร",
+              "12 ทุกมุม",
+              "ขั้น lg RADIUS_SCALE.lg"
+            ],
+            [
+              "doc-table กรอบตารางในเอกสาร",
+              "8 ทุกมุม",
+              "ขั้น md ใช้ 11 จุด 7 หน้า"
+            ],
+            [
+              "table ตารางข้อมูลของโปรดักต์",
+              "8 ทุกมุม",
+              "ขั้น md ตารางจริงบนหน้า 28"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9991:86",
+      "name": "Nested Radius",
+      "title": "Nested Radius",
+      "subtitle": "มุมโค้งของกล่องที่ซ้อนอยู่ในกล่องอื่น ต้องลดลงตาม padding",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "มุมโค้งของกล่องซ้อนกล่อง"
+        },
+        {
+          "type": "p",
+          "text": "กล่องที่ซ้อนอยู่ในกล่องอื่นต้องโค้งน้อยกว่ากรอบนอกเท่ากับระยะขอบ ส่วนโค้งสองชั้นจึงจะขนานกัน"
+        },
+        {
+          "type": "p",
+          "text": "กรอบนอก = กล่องใน + 8"
+        },
+        {
+          "type": "p",
+          "text": "ระยะขอบมาตรฐานระหว่างกล่องซ้อนคือ 8 กล่องในจึงเท่ากับกรอบนอกลบ 8 ถ้าติดลบให้ใช้ 0 ยกเว้นกรณีชิดขอบที่ไม่มีระยะขอบ กล่องในต้องเท่ากรอบนอก"
+        },
+        {
+          "type": "p",
+          "text": "ภาพประกอบหลักการ ใช้ตัวเลขใหญ่เพื่อให้เห็นความต่าง ไม่ใช่ค่าจริงของระบบ ค่าจริงดูที่ตารางด้านล่าง"
+        },
+        {
+          "type": "nestedPair",
+          "items": [
+            {
+              "type": "nested",
+              "kind": "do",
+              "title": "ถูก  กล่องใน 40",
+              "caption": "ขนาดกรอบใน (40px) กรอบนอก (48px) หลักการคือ (ขนาด Radius กรอบใน + 8px = ขนาด Radius กรอบนอก) ช่องว่างที่มุมจะขนานใกล้เคียงกันกับด้านตรง",
+              "outer": 48,
+              "inner": 40,
+              "outerFill": "--ntg-color-background-general-tertiary",
+              "innerFill": "--ntg-color-background-general-solid"
+            },
+            {
+              "type": "nested",
+              "kind": "dont",
+              "title": "ผิด  กล่องใน 48",
+              "caption": "ใช้ค่าเดียวกับกรอบนอก ส่วนโค้งด้านในกว้างเกิน ช่องว่างที่มุมบีบแคบกว่าด้านตรง",
+              "outer": 48,
+              "inner": 48,
+              "outerFill": "--ntg-color-background-general-tertiary",
+              "innerFill": "--ntg-color-background-general-solid"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "ค่าจริงในระบบ"
+        },
+        {
+          "type": "table",
+          "head": [
+            "กรณีที่เจอจริง",
+            "กรอบนอก",
+            "ระยะขอบ",
+            "กล่องใน",
+            "token ที่ใช้"
+          ],
+          "rows": [
+            [
+              "การ์ดข่าว ภาพชิดขอบบน พบมากที่สุด",
+              "4 ",
+              "0 ไม่มีระยะขอบ",
+              "4 เท่ากรอบนอก",
+              "card/radius ภาพใช้ตัวเดียวกับการ์ด"
+            ],
+            [
+              "กล่องข้างใน info-card ในระบบเอกสาร",
+              "12 ",
+              "8 ระยะขอบมาตรฐาน",
+              "4 12 ลบ 8",
+              "info-card/radius และ card/radius กล่องในใช้ค่า 4"
+            ],
+            [
+              "การ์ดข่าว ภาพมีระยะขอบ การ์ดแบบมีกรอบ",
+              "4 ",
+              "8 ระยะขอบมาตรฐาน",
+              "0 ติดลบจึงใช้ 0",
+              "ไม่ต้องใส่มุมโค้ง ปล่อยเป็นมุมฉาก"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
