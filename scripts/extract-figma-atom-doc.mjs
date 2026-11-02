@@ -41,7 +41,8 @@ const PAGES = {
   shape: { page: '06 Shape', folder: 'Shape', skip: [] },
   space: { page: '07 Space', folder: 'Space', skip: [] },
   logo: { page: '08 Logo', folder: 'Logo', skip: [], logos: true },
-  'third-party': { page: '09 Third-party Logos', folder: 'ThirdPartyLogos', skip: [], logos: true },
+  // ไม่เอาธงประเทศ (ผู้ใช้สั่ง 2026-10-28) ธงคือต้นฉบับขนาด 32x24 ซึ่งไม่มีกลุ่มอื่นใช้ขนาดนี้
+  'third-party': { page: '09 Third-party Logos', folder: 'ThirdPartyLogos', skip: [], logos: true, noLogo: (w, h) => w === 32 && h === 24 },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -129,6 +130,7 @@ const spaceMismatch = []
 // ต้นฉบับโลโก้ที่เอกสารใช้ ชื่อไฟล์ -> id ของ component แม่ เก็บไว้ export เป็น SVG ตอนท้าย (ผู้ใช้ตัดสิน 2026-11-02 ให้ไฟล์อยู่เฉพาะหน้าเอกสาร)
 const logoFiles = new Map()
 const isLogo = (n) => Boolean(PAGES[KEY].logos) && (n.type === 'COMPONENT' || n.type === 'INSTANCE') && !/header|info-card|-cell$/i.test(n.name)
+const isExcludedLogo = (n) => { const b = n?.absoluteBoundingBox; return Boolean(b && PAGES[KEY].noLogo?.(Math.round(b.width), Math.round(b.height))) }
 const logoOf = (n) => n.children?.find(isLogo) ?? n.children?.find(c => c.name === 'box')?.children?.find(isLogo)
 // ขนาดอ่านจากชิ้นงานจริง ตัวอย่างที่ผิดตั้งใจยืดสัดส่วน ขนาดจึงต่างจากต้นฉบับได้
 function logoBlock(n, label, frame) {
@@ -356,6 +358,9 @@ function extract(doc) {
     }
     if (isEffect(n)) { push(effectBlock(n, doc.name, '')); return }
     if (isRadiusSample(n)) { push(radiusBlock(n, doc.name)); return }
+    // หัวข้อและกริดของกลุ่มที่ไม่เอาข้ามทั้งชุด ส่วนภาพตัวอย่างในเอกสารเหลือแค่คำบรรยาย
+    if (n.type === 'FRAME' && n.children?.some(c => c.name === 'grid' && logoOf(c.children?.[0] ?? {}) && isExcludedLogo(logoOf(c.children[0])))) return
+    if (n.type === 'FRAME' && logoOf(n) && isExcludedLogo(logoOf(n))) { push({ type: 'logo', file: null, label: n.children.find(c => c.type === 'TEXT').characters.trim(), width: 0, height: 0 }); return }
     if (n.type === 'FRAME' && logoOf(n) && n.children.some(c => c.type === 'TEXT')) { push(logoBlock(logoOf(n), n.children.find(c => c.type === 'TEXT').characters.trim(), n)); return }
     if (PAGES[KEY].logos && n.type === 'FRAME' && n.name === 'item' && n.children?.length === 1 && n.children[0].type === 'TEXT') { push({ type: 'logo', file: null, label: n.children[0].characters.trim(), width: 0, height: 0 }); return }
     if (isSpaceRow(n)) { push(spaceBlock(n, doc.name)); return }
