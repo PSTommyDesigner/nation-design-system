@@ -1194,6 +1194,49 @@
         "show-tooltip": "ภาพตัวอย่างสถานะ hover ในไฟล์ออกแบบเท่านั้น ฝั่งโค้ดแถบ hover กับคำใบ้โผล่เองเมื่อชี้หรือโฟกัสหมวด ไม่มี prop"
       },
       "notes": "bar-chart เป็น component เดี่ยว ไม่ใช่ชุด variant (node 11797:2) ชิ้นส่วนแท่ง _bar-chart-bar (11796:5) ขึ้นต้นด้วย _ จึงไม่เก็บ ชุดข้อมูล ป้ายแกน และ summary เป็นข้อมูลฝั่งโค้ด ไม่มีคู่ใน Figma"
+    },
+    "Modal": {
+      "figmaPage": "30 Modal",
+      "figmaSets": [
+        "modal"
+      ],
+      "axes": {
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "header": [
+          "true",
+          "false"
+        ]
+      },
+      "properties": [
+        "show-description",
+        "show-close",
+        "show-footer",
+        "body",
+        "footer"
+      ],
+      "map": {
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "ModalSize"
+          },
+          "header": {
+            "prop": "header"
+          }
+        },
+        "properties": {
+          "show-description": "description",
+          "show-close": "showClose",
+          "show-footer": "footer",
+          "body": "children",
+          "footer": "footer"
+        }
+      },
+      "notes": "modal เป็นชุดเดียว (11805:182) body กับ footer เป็นคุณสมบัติชนิด SLOT ฝั่งโค้ดคือ children กับ footer ที่รับ React node ส่วน show-footer คือมีหรือไม่มี footer show-description คือมีหรือไม่มี description"
     }
   }
 }

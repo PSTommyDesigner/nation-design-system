@@ -26,5 +26,6 @@ import * as pagination from './pagination.mjs';
 import * as dropdown from './dropdown.mjs';
 import * as divider from './divider.mjs';
 import * as chart from './chart.mjs';
+import * as modal from './modal.mjs';
 
-export const COMPONENTS = [avatar, button, input, badge, card, tag, linkButton, infoCard, docTable, table, toggle, checkbox, radio, slider, tabs, toast, banner, tooltip, progress, pagination, dropdown, divider, chart];
+export const COMPONENTS = [avatar, button, input, badge, card, tag, linkButton, infoCard, docTable, table, toggle, checkbox, radio, slider, tabs, toast, banner, tooltip, progress, pagination, dropdown, divider, chart, modal];

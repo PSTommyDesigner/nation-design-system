@@ -1,0 +1,172 @@
+/*
+ * Modal ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --md-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/modal.json (spec ชั้นจากไฟล์ออกแบบหน้า 30)
+ * แล้วต่อท้ายไฟล์นี้เป็น Modal.module.css ห้ามแก้ Modal.module.css ตรง ๆ
+ *
+ * ⚠️ ข้อยกเว้นของไฟล์นี้: มีชื่อ token อยู่บ้าง เฉพาะพฤติกรรมที่ไฟล์ออกแบบแสดงไม่ได้
+ *    คือ motion (ระยะเวลาและ easing ตอนเปิด/ปิด) ชั้นซ้อน (layer) และความเบลอของฉากหลัง
+ *    ค่าเหล่านี้ไม่มีชั้นใน Figma ให้ผูก ส่วนอื่นทั้งหมดต้องมาจาก --md-*
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. ตัวกล่องคือ <dialog> เอง เปิดด้วย showModal() จึงอยู่ใน top layer ชั้น --ntg-layer-overlay เป็นแค่ค่าสำรอง
+ *   2. ความสูงหดตามเนื้อหา และชนเพดานที่ความสูงจอลบขอบบนล่าง หัวกับท้ายอยู่กับที่ ส่วน body เลื่อนเอง
+ *   3. ขอบจอ 32 (s3-xs) บนจอใหญ่ และ 16 (s2-sm) บนจอแคบ ตามงานวิจัยข้อ 2
+ *   4. จอแคบกว่า 768 (--ntg-grid-breakpoint-tablet-v) กล่องกว้างเต็มจอลบขอบข้างละ 16 และระยะขอบเหลือ 16 ทุกขนาด
+ *      ตัวแปร CSS ใช้ใน media query ไม่ได้ จึงเขียนเลขตรงแบบที่ Pagination ทำ (767.98px)
+ *   5. ฉากหลังอ่าน --md-backdrop ที่สืบทอดจาก <dialog> และมีค่าสำรองเป็น token ตรง ๆ (อ้าง :root)
+ *      เพราะ Safari และ Firefox รุ่นเก่ายังไม่ให้ ::backdrop สืบทอดค่าจากองค์ประกอบต้นทาง (งานวิจัยข้อ 3)
+ *      ความเบลออ้าง token ตรง ๆ เพราะเป็นตัวแปร effect ไม่มีชั้นใน Figma ให้ผูก
+ *   6. ขาออกเล่นด้วย @keyframes ตอนมี data-closing แล้ว JS ค่อยเรียก close() หลังจบ
+ *      ไม่ใช้ @starting-style กับ transition-behavior: allow-discrete เพราะ Firefox ยังเปลี่ยน overlay ไม่ได้
+ *      ถ้าใช้วิธีนั้น ขาออกจะหายวับบน Firefox ส่วนวิธีนี้ทำงานเหมือนกันทุกเบราว์เซอร์
+ *   7. ขยายตอนเปิดเริ่มที่ 0.95 ตามที่ตัดสินไว้ ไม่มี token ของสเกลการเคลื่อนไหว
+ */
+
+.dialog {
+  /* ── ค่าตั้งต้นของ <dialog> จากเบราว์เซอร์ ล้างทิ้งให้หมด ── */
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border: 0;
+  z-index: var(--ntg-layer-overlay);
+
+  box-sizing: border-box;
+  inline-size: var(--md-w);
+  max-inline-size: calc(100% - 2 * var(--md-margin));
+  block-size: fit-content;
+  max-block-size: calc(100dvh - 2 * var(--md-margin));
+  padding: var(--md-pt) var(--md-pr) var(--md-pb) var(--md-pl);
+  overflow: hidden;
+
+  background: var(--md-bg);
+  color: var(--md-body-fg);
+  border-radius: var(--md-r-tl) var(--md-r-tr) var(--md-r-br) var(--md-r-bl);
+  box-shadow: var(--md-shadow);
+}
+
+/* ปิดอยู่ = ไม่แสดง (ค่าตั้งต้นของเบราว์เซอร์) เปิดแล้วค่อยวางเป็นคอลัมน์ */
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: modal-in var(--ntg-motion-duration-default) var(--ntg-motion-easing-enter);
+}
+
+.dialog::backdrop {
+  background: var(--md-backdrop, var(--ntg-modal-color-backdrop));
+  -webkit-backdrop-filter: blur(var(--ntg-effect-background-blur-md));
+  backdrop-filter: blur(var(--ntg-effect-background-blur-md));
+}
+.dialog[open]::backdrop {
+  animation: modal-fade-in var(--ntg-motion-duration-default) var(--ntg-motion-easing-enter);
+}
+
+/* ขาออก: JS ใส่ data-closing แล้วรอให้ภาพจบก่อนเรียก close() */
+.dialog[data-closing] {
+  animation: modal-out var(--ntg-motion-duration-fast) var(--ntg-motion-easing-exit) forwards;
+  pointer-events: none;
+}
+.dialog[data-closing]::backdrop {
+  animation: modal-fade-out var(--ntg-motion-duration-fast) var(--ntg-motion-easing-exit) forwards;
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes modal-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modal-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ═══ หัว ═══════════════════════════════════════════════════ */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--md-head-gap);
+  padding-block-end: var(--md-head-pb);
+  flex: none;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-stack);
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.title {
+  margin: 0;
+  color: var(--md-title-fg);
+  overflow-wrap: anywhere;
+}
+
+.description {
+  margin: 0;
+  color: var(--md-desc-fg);
+  overflow-wrap: anywhere;
+}
+
+.close {
+  flex: none;
+}
+
+/* ═══ เนื้อหา ส่วนเดียวที่เลื่อนได้ ═══════════════════════════ */
+.body {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* ═══ ท้าย ═════════════════════════════════════════════════ */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: var(--md-foot-gap);
+  padding-block-start: var(--md-foot-pt);
+  flex: none;
+}
+
+/* ═══ โหมด bare (header=false) ปุ่มปิดวงกลมลอยมุมบนขวา ═══════ */
+.floatingClose {
+  position: absolute;
+  inset-block-start: calc(var(--md-pt) + var(--md-close-inset));
+  inset-inline-end: calc(var(--md-pr) + var(--md-close-inset));
+  z-index: 1;
+}
+
+/* ═══ จอแคบกว่า tablet-v (768) ═══════════════════════════════ */
+@media (max-width: 767.98px) {
+  .dialog {
+    inline-size: calc(100% - 2 * var(--md-margin-mobile));
+    max-inline-size: none;
+    max-block-size: calc(100dvh - 2 * var(--md-margin-mobile));
+    padding: var(--md-pad-mobile);
+  }
+  .floatingClose {
+    inset-block-start: calc(var(--md-pad-mobile) + var(--md-close-inset));
+    inset-inline-end: calc(var(--md-pad-mobile) + var(--md-close-inset));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open],
+  .dialog[open]::backdrop,
+  .dialog[data-closing],
+  .dialog[data-closing]::backdrop {
+    animation: none;
+  }
+}

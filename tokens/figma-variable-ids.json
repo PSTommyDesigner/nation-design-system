@@ -2144,5 +2144,17 @@
   "4652:21412": "component::color/background/system/error-solid-hover",
   "10597:39888": "component::color/background/system/error-solid-pressed",
   "10597:39902": "component::color/text/brand/secondary-pressed",
-  "10597:14": "semantics::color/border/brand/default-pressed"
+  "10597:14": "semantics::color/border/brand/default-pressed",
+  "11804:2095": "component::modal/color/backdrop",
+  "11804:2096": "component::modal/width/sm",
+  "11804:2097": "component::modal/width/md",
+  "11804:2098": "component::modal/width/lg",
+  "11804:2099": "component::modal/padding/sm",
+  "11804:2100": "component::modal/padding/md",
+  "11804:2101": "component::modal/padding/lg",
+  "11804:2102": "component::modal/radius/top-left",
+  "11804:2103": "component::modal/radius/top-right",
+  "11804:2104": "component::modal/radius/bottom-right",
+  "11804:2105": "component::modal/radius/bottom-left",
+  "10205:367": "component::size/space/s3/xs"
 }

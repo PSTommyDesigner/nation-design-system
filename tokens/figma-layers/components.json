@@ -338,5 +338,19 @@
     "sets": [
       "tag-field"
     ]
+  },
+  "modal": {
+    "page": "30 Modal",
+    "depth": 3,
+    "reference": "modal",
+    "families": [
+      "modal"
+    ],
+    "sets": [
+      "modal"
+    ],
+    "layoutAxes": [
+      "header"
+    ]
   }
 }

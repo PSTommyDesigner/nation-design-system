@@ -46,6 +46,9 @@
 - Reporter statistics MUST show, per reporter, how many news items they created, how many are published and how many are not published yet
 - Reporter statistics MUST have a filter by day, week, month and year (`Tabs` segmented sm at the right of the section heading). Frame D has no filter, but this rule keeps it
 - Reporter statistics MUST use the ntgds `pagination` below the table, full width with the numbers centered. The design used `Button Pagination` from an old library, and frame D was changed to the ntgds one on 2026-10-28
+- Clicking a ranked headline MUST open the news detail `Modal` (md, no header, set by the user 2026-10-28) following frame `Modal / Dashboard v2` (`15626:38085`): a 16:9 image with the circular close button over its top right, a row with the rank, Pageviews, GA, Truehits and the news ID with a copy button, the headline (`title-lg`), then the created, edited and published lines with date, time and author
+- Clicking a reporter's name in the table MUST open the reporter news `Modal` (lg, decided with the user 2026-10-28, no Figma frame yet): the header is `AvatarLabel` lg with the name and desk, the description is the total count, and the body is `Tabs` with published and not published yet, each listing news as `Card` variant list
+- NEEDS CLARIFICATION: should a click anywhere on a reporter row open the modal. The Table has no row click yet, so only the name opens it
 - The page is built for desktop 1440 only. Smaller screens are not done yet
 - NEEDS CLARIFICATION: does a week start on Monday, or is it the last 7 days. The same question for month and year
 - NEEDS CLARIFICATION: does "not published yet" include drafts, items waiting for review and scheduled items, or only some of them
@@ -54,7 +57,7 @@
 ## Components
 - Chosen with the user page by page, from `../../design-system.dsds.yaml`
 - Login: TextField md, Checkbox sm, Button brand primary lg, LinkButton brand lg
-- Dashboard: Button pill sm (header menu, brand primary for the current page, neutral tertiary for the rest), Avatar md, TextField md, Tag pill lg neutral, LinkButton brand gray xs, Dropdown md, Table, Tabs segmented sm, Pagination md
+- Dashboard: Button pill sm (header menu, brand primary for the current page, neutral tertiary for the rest), Avatar md, TextField md, Tag pill lg neutral, LinkButton brand gray xs, Dropdown md, Table, Tabs segmented sm, Pagination md, BarChart, Modal md and lg (beta), IconButton neutral tertiary xs, AvatarLabel lg, Tabs underline md, Card list
 - Built inside the story from tokens because the system doesn't have them: the rank number in a circle (32, the size of Avatar sm) and the number card (border, dot and number)
 - NEEDS CLARIFICATION: should the rank number and the number card become ntgds components
 - Chart: decided 2026-10-28 that it is a new ntgds component, not a one-off. It is being built in its own session. The dot colors on the number cards (`color-foreground-brand-primary` and `color-utility-u-blue-200`, as bound in the design) move to the chart's tokens once it exists

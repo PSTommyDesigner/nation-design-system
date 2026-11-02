@@ -268,7 +268,11 @@
     "component::chart/color": "8:oazep0",
     "component::chart/radius": "2:1iby8tw",
     "component::chart/line-width": "1:1pr53gj",
-    "component::chart/point-size": "1:nainsy"
+    "component::chart/point-size": "1:nainsy",
+    "component::modal/color": "1:14v0p8x",
+    "component::modal/width": "3:1on1jx0",
+    "component::modal/padding": "3:pzh0w3",
+    "component::modal/radius": "4:7c0f0v"
   },
   "groupsValue": {
     "primitive::color/base": "60:9jlreo",
@@ -528,7 +532,11 @@
     "component::chart/color": "8:1q66n27",
     "component::chart/radius": "2:6w3hhw",
     "component::chart/line-width": "1:1islq7g",
-    "component::chart/point-size": "1:75aixz"
+    "component::chart/point-size": "1:75aixz",
+    "component::modal/color": "1:1l5jnej",
+    "component::modal/width": "3:1cmp19z",
+    "component::modal/padding": "3:yzvblc",
+    "component::modal/radius": "4:1xg783z"
   },
   "$noteValue": "ลายนิ้วมือของ \"ค่า\" รายกลุ่ม เฉพาะ collection ที่มี mode เดียว คือ component กับ primitive ใช้ปิดช่องที่ด่านเทียบชื่ออย่างเดียวจับไม่ได้ เช่น ชื่อครบแต่ค่าผิด (เพิ่ม 2026-10-15)"
 }

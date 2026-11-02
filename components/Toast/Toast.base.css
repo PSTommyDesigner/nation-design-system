@@ -30,6 +30,18 @@
    *    แทนการแก้ไฟล์นี้ ถ้ามาประกาศค่าไว้ที่นี่ ตัวตั้งต้นจะถูกบังจนทับจากข้างนอกไม่ได้ผล
    */
   z-index: var(--ts-layer, var(--ntg-layer-notification));
+  /*
+   * กล่องนี้เป็น popover="manual" เพื่อให้อยู่เหนือ Modal ใน top layer (ดู ToastStack ใน Toast.tsx)
+   * ล้างค่าตั้งต้นของเบราว์เซอร์ที่ใส่ให้ [popover] ไม่งั้นกล่องจะลอยกลางจอ มีกรอบ และมีพื้นขาว
+   */
+  inset-block-start: auto;
+  inset-inline-start: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  overflow: visible;
   display: flex;
   flex-direction: column;
   /* ปล่อยให้คลิกผ่านไปโดนเนื้อหาข้างหลังได้ มีแต่ตัวใบที่รับการคลิก */

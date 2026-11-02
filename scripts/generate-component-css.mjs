@@ -1132,7 +1132,66 @@ const TAG_FIELD = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER, card: CARD, 'tag-field': TAG_FIELD }
+// ═══════════════════════════════════════════════════════════════════════════════
+// Modal: หน้า 30 ชุด modal แกน size (sm md lg) กับ header (true false) โครงอ่านทั้งสองค่าของ header
+//   header=false คือโหมด bare ไม่มีหัว ปุ่มปิดวงกลมลอยมุมบนขวา (คลาส .bare)
+//   ปุ่มปิดเป็น instance ของ IconButton และปุ่มใน footer เป็น instance ของ Button ค่าข้างในเป็นของ component นั้น
+//   body กับ footer เป็นชั้น SLOT ใน Figma ข้อความ placeholder ใน body ให้แค่สีตัวอักษรตั้งต้นของเนื้อหา
+//   ขอบจอ ระยะปุ่มปิดลอย ระยะบนมือถือ และสีฉากหลัง เป็นตัวแปรใน Figma ที่ไม่มีชั้นให้ผูก จึงประกาศผ่าน extras
+// ═══════════════════════════════════════════════════════════════════════════════
+const MODAL = {
+  specFile: 'tokens/figma-layers/modal.json',
+  baseFile: 'components/Modal/Modal.base.css',
+  outFile: 'components/Modal/Modal.module.css',
+  sizes: ['sm', 'md', 'lg'],
+  layoutVariants: [
+    { key: (size) => `${size}, header=true`, cls: '' },
+    { key: (size) => `${size}, header=false`, cls: '.bare' },
+  ],
+  sets: { 'modal': { classes: '.dialog' } },
+  familyClass: () => '',
+  axisClass: { header: (v) => (v === 'false' ? '.bare' : '') },
+  stateSelector: { default: (sel) => sel },
+  extras: () => ({
+    '--md-backdrop': 'modal/color/backdrop',
+    '--md-close-inset': 'size/space/s1/lg',
+    '--md-margin': 'size/space/s3/xs',
+    '--md-margin-mobile': 'size/space/s2/sm',
+    '--md-pad-mobile': 'size/space/s2/sm',
+  }),
+  layers: {
+    '(root)': (n, W) => ({
+      '--md-w': W(n.w),
+      '--md-pt': W(n.p[0]), '--md-pr': W(n.p[1]), '--md-pb': W(n.p[2]), '--md-pl': W(n.p[3]),
+      ...(n.r ? { '--md-r-tl': W(n.r[0]), '--md-r-tr': W(n.r[1]), '--md-r-br': W(n.r[2]), '--md-r-bl': W(n.r[3]) } : {}),
+    }),
+    'header': (n, W) => ({ '--md-head-gap': W(n.g), '--md-head-pb': W(n.p[2]) }),
+    'header/title-group': (n, W) => ({ '--md-stack': W(n.g) }),
+    'header/title-group/title': () => ({}),
+    'header/title-group/description': () => ({}),
+    'header/close': () => ({}),
+    'header/close/**': () => ({}),
+    'close': () => ({}),
+    'close/**': () => ({}),
+    'body': () => ({}),
+    'body/**': () => ({}),
+    'footer': (n, W) => ({ '--md-foot-gap': W(n.g), '--md-foot-pt': W(n.p[0]) }),
+    'footer/**': () => ({}),
+  },
+  colors: {
+    '(root)': (c, W) => ({ '--md-bg': W(c.fills[0]), '--md-shadow': effectVar(c.fx, 'modal effect') }),
+    'header/title-group/title': (c, W) => ({ '--md-title-fg': W(c.fills[0]) }),
+    'header/title-group/description': (c, W) => ({ '--md-desc-fg': W(c.fills[0]) }),
+    'body/placeholder': (c, W) => ({ '--md-body-fg': W(c.fills[0]) }),
+    'header/close': () => ({}),
+    'header/close/**': () => ({}),
+    'close': () => ({}),
+    'close/**': () => ({}),
+    'footer/**': () => ({}),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER, card: CARD, 'tag-field': TAG_FIELD, modal: MODAL }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 

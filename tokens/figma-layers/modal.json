@@ -1,0 +1,1214 @@
+{
+ "capturedAt": "2026-10-28",
+ "page": "30 Modal",
+ "reference": "modal",
+ "sets": {
+  "modal": {
+   "defs": {
+    "body": {
+     "type": "SLOT",
+     "def": {
+      "guid": {
+       "sessionID": -1,
+       "localID": -1
+      }
+     }
+    },
+    "footer": {
+     "type": "SLOT",
+     "def": {
+      "guid": {
+       "sessionID": -1,
+       "localID": -1
+      }
+     }
+    },
+    "show-description": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-close": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "show-footer": {
+     "type": "BOOLEAN",
+     "def": true
+    },
+    "size": ["sm","md","lg"],
+    "header": ["true","false"]
+   },
+   "layout": {
+    "sm, header=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": ["modal/padding/sm","modal/padding/sm","modal/padding/sm","modal/padding/sm"],
+     "s": ["FIXED","HUG"],
+     "w": "modal/width/sm",
+     "clip": true,
+     "r": ["modal/radius/top-left","modal/radius/top-right","modal/radius/bottom-right","modal/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "header",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s2/sm",
+       "p": [0,0,"size/space/s2/sm",0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "title-group",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "size/space/s1/sm",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ch": [
+          {
+           "n": "title",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/lg"
+          },
+          {
+           "n": "description",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/md",
+           "ref": {
+            "visible": "show-description"
+           }
+          }
+         ]
+        },
+        {
+         "n": "close",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "icon-button/gap/md",
+         "p": ["icon-button/padding/top/md","icon-button/padding/right/md","icon-button/padding/bottom/md","icon-button/padding/left/md"],
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/size/md",
+         "h": "icon-button/size/md",
+         "clip": true,
+         "r": ["icon-button/radius/top-left/md","icon-button/radius/top-right/md","icon-button/radius/bottom-right/md","icon-button/radius/bottom-left/md"],
+         "ref": {
+          "visible": "show-close"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "icon-button/icon/md",
+           "h": "icon-button/icon/md",
+           "ch": [
+            {
+             "n": "navigation-&-arrows/close",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "body",
+       "t": "SLOT",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "slotContentId": "body"
+       },
+       "ch": [
+        {
+         "n": "placeholder",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md"
+        }
+       ]
+      },
+      {
+       "n": "footer",
+       "t": "SLOT",
+       "lm": "HORIZONTAL",
+       "al": "MAX",
+       "ca": "MIN",
+       "g": "size/space/s2/xs",
+       "p": ["size/space/s2/lg",0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "visible": "show-footer",
+        "slotContentId": "footer"
+       },
+       "ch": [
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, header=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": ["modal/padding/md","modal/padding/md","modal/padding/md","modal/padding/md"],
+     "s": ["FIXED","HUG"],
+     "w": "modal/width/md",
+     "clip": true,
+     "r": ["modal/radius/top-left","modal/radius/top-right","modal/radius/bottom-right","modal/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "header",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s2/sm",
+       "p": [0,0,"size/space/s2/sm",0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "title-group",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "size/space/s1/sm",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ch": [
+          {
+           "n": "title",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/lg"
+          },
+          {
+           "n": "description",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/md",
+           "ref": {
+            "visible": "show-description"
+           }
+          }
+         ]
+        },
+        {
+         "n": "close",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "icon-button/gap/md",
+         "p": ["icon-button/padding/top/md","icon-button/padding/right/md","icon-button/padding/bottom/md","icon-button/padding/left/md"],
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/size/md",
+         "h": "icon-button/size/md",
+         "clip": true,
+         "r": ["icon-button/radius/top-left/md","icon-button/radius/top-right/md","icon-button/radius/bottom-right/md","icon-button/radius/bottom-left/md"],
+         "ref": {
+          "visible": "show-close"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "icon-button/icon/md",
+           "h": "icon-button/icon/md",
+           "ch": [
+            {
+             "n": "navigation-&-arrows/close",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "body",
+       "t": "SLOT",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "slotContentId": "body"
+       },
+       "ch": [
+        {
+         "n": "placeholder",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md"
+        }
+       ]
+      },
+      {
+       "n": "footer",
+       "t": "SLOT",
+       "lm": "HORIZONTAL",
+       "al": "MAX",
+       "ca": "MIN",
+       "g": "size/space/s2/xs",
+       "p": ["size/space/s2/lg",0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "visible": "show-footer",
+        "slotContentId": "footer"
+       },
+       "ch": [
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "lg, header=true": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": ["modal/padding/lg","modal/padding/lg","modal/padding/lg","modal/padding/lg"],
+     "s": ["FIXED","HUG"],
+     "w": "modal/width/lg",
+     "clip": true,
+     "r": ["modal/radius/top-left","modal/radius/top-right","modal/radius/bottom-right","modal/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "header",
+       "t": "FRAME",
+       "lm": "HORIZONTAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": "size/space/s2/sm",
+       "p": [0,0,"size/space/s2/sm",0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ch": [
+        {
+         "n": "title-group",
+         "t": "FRAME",
+         "lm": "VERTICAL",
+         "al": "MIN",
+         "ca": "MIN",
+         "g": "size/space/s1/sm",
+         "p": [0,0,0,0],
+         "s": ["FILL","HUG"],
+         "clip": true,
+         "ch": [
+          {
+           "n": "title",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::title/lg"
+          },
+          {
+           "n": "description",
+           "t": "TEXT",
+           "s": ["FILL","HUG"],
+           "ts": "text::body/md",
+           "ref": {
+            "visible": "show-description"
+           }
+          }
+         ]
+        },
+        {
+         "n": "close",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "icon-button/gap/md",
+         "p": ["icon-button/padding/top/md","icon-button/padding/right/md","icon-button/padding/bottom/md","icon-button/padding/left/md"],
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/size/md",
+         "h": "icon-button/size/md",
+         "clip": true,
+         "r": ["icon-button/radius/top-left/md","icon-button/radius/top-right/md","icon-button/radius/bottom-right/md","icon-button/radius/bottom-left/md"],
+         "ref": {
+          "visible": "show-close"
+         },
+         "inst": true,
+         "ch": [
+          {
+           "n": "icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "icon-button/icon/md",
+           "h": "icon-button/icon/md",
+           "ch": [
+            {
+             "n": "navigation-&-arrows/close",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "body",
+       "t": "SLOT",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "slotContentId": "body"
+       },
+       "ch": [
+        {
+         "n": "placeholder",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md"
+        }
+       ]
+      },
+      {
+       "n": "footer",
+       "t": "SLOT",
+       "lm": "HORIZONTAL",
+       "al": "MAX",
+       "ca": "MIN",
+       "g": "size/space/s2/xs",
+       "p": ["size/space/s2/lg",0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "visible": "show-footer",
+        "slotContentId": "footer"
+       },
+       "ch": [
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "sm, header=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": ["modal/padding/sm","modal/padding/sm","modal/padding/sm","modal/padding/sm"],
+     "s": ["FIXED","HUG"],
+     "w": "modal/width/sm",
+     "clip": true,
+     "r": ["modal/radius/top-left","modal/radius/top-right","modal/radius/bottom-right","modal/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "body",
+       "t": "SLOT",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "slotContentId": "body"
+       },
+       "ch": [
+        {
+         "n": "placeholder",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md"
+        }
+       ]
+      },
+      {
+       "n": "footer",
+       "t": "SLOT",
+       "lm": "HORIZONTAL",
+       "al": "MAX",
+       "ca": "MIN",
+       "g": "size/space/s2/xs",
+       "p": ["size/space/s2/lg",0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "visible": "show-footer",
+        "slotContentId": "footer"
+       },
+       "ch": [
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "close",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/sm",
+       "p": ["icon-button/padding/top/sm","icon-button/padding/right/sm","icon-button/padding/bottom/sm","icon-button/padding/left/sm"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/sm",
+       "h": "icon-button/size/sm",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "ref": {
+        "visible": "show-close"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/sm",
+         "h": "icon-button/icon/sm",
+         "ch": [
+          {
+           "n": "navigation-&-arrows/close",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "md, header=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": ["modal/padding/md","modal/padding/md","modal/padding/md","modal/padding/md"],
+     "s": ["FIXED","HUG"],
+     "w": "modal/width/md",
+     "clip": true,
+     "r": ["modal/radius/top-left","modal/radius/top-right","modal/radius/bottom-right","modal/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "body",
+       "t": "SLOT",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "slotContentId": "body"
+       },
+       "ch": [
+        {
+         "n": "placeholder",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md"
+        }
+       ]
+      },
+      {
+       "n": "footer",
+       "t": "SLOT",
+       "lm": "HORIZONTAL",
+       "al": "MAX",
+       "ca": "MIN",
+       "g": "size/space/s2/xs",
+       "p": ["size/space/s2/lg",0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "visible": "show-footer",
+        "slotContentId": "footer"
+       },
+       "ch": [
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "close",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/sm",
+       "p": ["icon-button/padding/top/sm","icon-button/padding/right/sm","icon-button/padding/bottom/sm","icon-button/padding/left/sm"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/sm",
+       "h": "icon-button/size/sm",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "ref": {
+        "visible": "show-close"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/sm",
+         "h": "icon-button/icon/sm",
+         "ch": [
+          {
+           "n": "navigation-&-arrows/close",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "lg, header=false": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "MIN",
+     "ca": "MIN",
+     "g": 0,
+     "p": ["modal/padding/lg","modal/padding/lg","modal/padding/lg","modal/padding/lg"],
+     "s": ["FIXED","HUG"],
+     "w": "modal/width/lg",
+     "clip": true,
+     "r": ["modal/radius/top-left","modal/radius/top-right","modal/radius/bottom-right","modal/radius/bottom-left"],
+     "ch": [
+      {
+       "n": "body",
+       "t": "SLOT",
+       "lm": "VERTICAL",
+       "al": "MIN",
+       "ca": "MIN",
+       "g": 0,
+       "p": [0,0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "slotContentId": "body"
+       },
+       "ch": [
+        {
+         "n": "placeholder",
+         "t": "TEXT",
+         "s": ["FILL","HUG"],
+         "ts": "text::body/md"
+        }
+       ]
+      },
+      {
+       "n": "footer",
+       "t": "SLOT",
+       "lm": "HORIZONTAL",
+       "al": "MAX",
+       "ca": "MIN",
+       "g": "size/space/s2/xs",
+       "p": ["size/space/s2/lg",0,0,0],
+       "s": ["FILL","HUG"],
+       "clip": true,
+       "ref": {
+        "visible": "show-footer",
+        "slotContentId": "footer"
+       },
+       "ch": [
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "n": "semi-rounded-button",
+         "t": "INSTANCE",
+         "lm": "HORIZONTAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "button/gap/md",
+         "p": ["button/padding/top/md","button/padding/right/md","button/padding/bottom/md","button/padding/left/md"],
+         "s": ["HUG","FIXED"],
+         "h": "button/size/md",
+         "clip": true,
+         "r": ["button/radius/top-left/md","button/radius/top-right/md","button/radius/bottom-right/md","button/radius/bottom-left/md"],
+         "inst": true,
+         "ch": [
+          {
+           "n": "Left Icon",
+           "t": "FRAME",
+           "s": ["FIXED","FIXED"],
+           "w": "button/icon/md",
+           "h": "button/icon/md",
+           "vis": false,
+           "ref": {
+            "visible": "L-icon"
+           },
+           "ch": [
+            {
+             "n": "status-&-feedback/add",
+             "t": "INSTANCE",
+             "clip": true,
+             "ref": {
+              "mainComponent": "swap-L-icon"
+             },
+             "inst": true
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "n": "close",
+       "t": "INSTANCE",
+       "lm": "HORIZONTAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "icon-button/gap/sm",
+       "p": ["icon-button/padding/top/sm","icon-button/padding/right/sm","icon-button/padding/bottom/sm","icon-button/padding/left/sm"],
+       "s": ["FIXED","FIXED"],
+       "w": "icon-button/size/sm",
+       "h": "icon-button/size/sm",
+       "clip": true,
+       "r": ["button/radius/full","button/radius/full","button/radius/full","button/radius/full"],
+       "ref": {
+        "visible": "show-close"
+       },
+       "inst": true,
+       "ch": [
+        {
+         "n": "icon",
+         "t": "FRAME",
+         "s": ["FIXED","FIXED"],
+         "w": "icon-button/icon/sm",
+         "h": "icon-button/icon/sm",
+         "ch": [
+          {
+           "n": "navigation-&-arrows/close",
+           "t": "INSTANCE",
+           "clip": true,
+           "ref": {
+            "mainComponent": "swap-icon"
+           },
+           "inst": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "colors": {
+    "modal": {
+     "header=true": 0,
+     "header=false": 1
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "fx": "effect::shadows/bottom/xl"
+   },
+   "header/title-group/title": {
+    "fills": ["color/text/general/heading"]
+   },
+   "header/title-group/description": {
+    "fills": ["color/text/general/supporting-text"]
+   },
+   "body/placeholder": {
+    "fills": ["color/text/general/text"]
+   },
+   "footer/semi-rounded-button": {
+    "fills": ["button/color/brand/background/primary/default"],
+    "fx": "effect::shadows/bottom/xs"
+   }
+  },
+  {
+   "(root)": {
+    "fills": ["color/background/general/primary"],
+    "fx": "effect::shadows/bottom/xl"
+   },
+   "body/placeholder": {
+    "fills": ["color/text/general/text"]
+   },
+   "footer/semi-rounded-button": {
+    "fills": ["button/color/brand/background/primary/default"],
+    "fx": "effect::shadows/bottom/xs"
+   },
+   "close": {
+    "fills": ["button/color/alpha/background/default"],
+    "fx": "effect::shadows/bottom/sm"
+   }
+  }
+ ]
+}

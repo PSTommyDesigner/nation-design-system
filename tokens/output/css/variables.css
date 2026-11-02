@@ -726,6 +726,10 @@
   --ntg-scale-dropdown-panel-rows-step: 0px;
   --ntg-scale-dropdown-panel-padding-y-base: 2px;
   --ntg-scale-dropdown-panel-padding-y-step: 2px;
+  --ntg-scale-modal-width-base: 184px;
+  --ntg-scale-modal-width-step: 208px;
+  --ntg-scale-modal-padding-base: 16px;
+  --ntg-scale-modal-padding-step: 4px;
   --ntg-button-size-xs: 24px;
   --ntg-button-size-sm: 32px;
   --ntg-button-size-md: 40px;
@@ -2358,6 +2362,16 @@
   --ntg-chart-radius-top-right: 2px;
   --ntg-chart-line-width: 2px; /** ความหนาเส้นของชุดข้อมูลแบบเส้น 2px คงที่ เพราะกราฟไม่มีหลายขนาด */
   --ntg-chart-point-size: 8px; /** ความกว้างจุดบนเส้น 8px วงกลม พื้น chart/color/point-fill ขอบ chart/color/line ใหญ่กว่าเส้นอย่างน้อยเท่าตัวและไม่เกินความกว้างแท่ง 12 */
+  --ntg-modal-width-sm: 392px; /** ความกว้างกล่องโต้ตอบขนาด sm เท่ากับ 392px คือ 4 คอลัมน์ของกริด v2022 เดสก์ท็อป ยืนยันหรือแจ้งเรื่องเดียว มีข้อความสั้นกับปุ่มไม่เกินสองปุ่ม บนจอที่แคบกว่านี้กล่องกว้างเต็มจอลบขอบข้างละ 16 */
+  --ntg-modal-width-md: 600px; /** ความกว้างกล่องโต้ตอบขนาด md เท่ากับ 600px คือ 6 คอลัมน์ของกริด v2022 เดสก์ท็อป ค่าเริ่มต้น ฟอร์มสั้นหรือรายละเอียดของรายการเดียว เช่นรายละเอียดข่าว บนจอที่แคบกว่านี้กล่องกว้างเต็มจอลบขอบข้างละ 16 */
+  --ntg-modal-width-lg: 808px; /** ความกว้างกล่องโต้ตอบขนาด lg เท่ากับ 808px คือ 8 คอลัมน์ของกริด v2022 เดสก์ท็อป เนื้อหาที่มีแท็บหรือรายการหลายชิ้น เช่นรายการข่าวของนักข่าวหนึ่งคน บนจอที่แคบกว่านี้กล่องกว้างเต็มจอลบขอบข้างละ 16 */
+  --ntg-modal-padding-sm: 20px; /** ระยะขอบกล่องโต้ตอบขนาด sm เท่ากับ 20px เท่ากันทั้งสี่ด้าน ใช้กับหัว เนื้อหา และท้ายกล่อง บนมือถือลดเหลือ 16 ทุกขนาด */
+  --ntg-modal-padding-md: 24px; /** ระยะขอบกล่องโต้ตอบขนาด md เท่ากับ 24px เท่ากันทั้งสี่ด้าน ใช้กับหัว เนื้อหา และท้ายกล่อง บนมือถือลดเหลือ 16 ทุกขนาด */
+  --ntg-modal-padding-lg: 28px; /** ระยะขอบกล่องโต้ตอบขนาด lg เท่ากับ 28px เท่ากันทั้งสี่ด้าน ใช้กับหัว เนื้อหา และท้ายกล่อง บนมือถือลดเหลือ 16 ทุกขนาด */
+  --ntg-modal-radius-top-left: 12px;
+  --ntg-modal-radius-top-right: 12px;
+  --ntg-modal-radius-bottom-right: 12px;
+  --ntg-modal-radius-bottom-left: 12px;
   --ntg-shadows-center-xs: 0px 0px 4px 0px rgba(0, 0, 0, 0.05); /** element เล็กที่ต้องมีเงารอบด้าน เช่น หัวลูกศร tooltip · slider · progress */
   --ntg-shadows-center-sm: 0px 0px 4px 2px rgba(0, 0, 0, 0.05); /** ตาราง · กริด · การ์ดที่ต้องการเงารอบด้านเท่ากัน */
   --ntg-shadows-center-md: 0px 0px 8px 2px rgba(0, 0, 0, 0.1); /** element ลอยรอบด้านขนาดกลาง (ใช้น้อย) */
@@ -3762,6 +3776,7 @@
   --ntg-chart-color-line: var(--ntg-color-utility-u-orange-600); /** เส้นและขอบจุดของชุดข้อมูลแบบเส้น สีส้มให้แยกจากแท่งสีน้ำเงิน บนพื้นขาว contrast 3.49:1 โหมดมืด 10.25:1 */
   --ntg-chart-color-point-fill: var(--ntg-color-background-primary-default); /** พื้นของจุดบนเส้น สีเดียวกับพื้นหน้า จุดจึงเป็นวงกลมกลวงขอบสีเส้น */
   --ntg-chart-color-hover: var(--ntg-color-background-secondary-default); /** แถบพื้นหลังของหมวดที่ชี้หรือโฟกัสอยู่ (เช่นหนึ่งวัน) วางใต้แท่งและเส้น */
+  --ntg-modal-color-backdrop: var(--ntg-color-alpha-constant-black-50); /** ฉากหลังมืดของกล่องโต้ตอบ ดำโปร่ง 50 เปอร์เซ็นต์ เท่ากันทั้งโหมดสว่างและโหมดมืด ใช้คู่กับ effect background-blur md เพื่อกันสายตาจากหน้าข้างหลัง */
   --ntg-icon-general-const-white: var(--ntg-color-foreground-general-const-white);
   --ntg-icon-general-const-black: var(--ntg-color-foreground-general-const-black);
 }
