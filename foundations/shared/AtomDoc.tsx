@@ -1,5 +1,4 @@
-/// <reference types="vite/client" />
-import { type CSSProperties, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { type CSSProperties, createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Table, type TableColumn } from '../../components/Table'
 import { Do, Dont, DoDont } from '../../.storybook/docs-blocks'
 import styles from './AtomDoc.module.css'
@@ -85,12 +84,13 @@ const HexOf = ({ cssVar }: { cssVar: string }) => {
 }
 
 // ภาพ grid ตัวเลขใต้ภาพวัดจากของที่เบราว์เซอร์วาดจริง ใช้ยืนยันว่า token ให้ผลเท่าไฟล์ออกแบบ
-// ไฟล์โลโก้ของทุกหน้า Atoms ที่ export มาจากไฟล์ออกแบบ
-const LOGO_URLS = import.meta.glob<string>('../*/assets/*.svg', { eager: true, query: '?url', import: 'default' })
-const logoUrl = (file: string) => Object.entries(LOGO_URLS).find(([p]) => p.endsWith(`/${file}.svg`))?.[1]
+// ไฟล์โลโก้ส่งมาจาก story ของหน้านั้น หน้าอื่นจะได้ไม่ต้องโหลดโลโก้ 545 ตัวไปด้วย
+const LogoUrls = createContext<Record<string, string>>({})
 // ตัวอย่างที่ตั้งใจยืดผิดสัดส่วน (natural) ต้องยืดด้วย transform เพราะ SVG ใน <img> รักษาสัดส่วนเองเสมอ
 const LogoImage = ({ item }: { item: LogoItem }) => {
-  const img = <img src={logoUrl(item.file ?? '')} alt={item.label || item.file || ''} style={{ width: item.natural ?? item.width, height: item.height, ...(item.natural ? { transform: `scaleX(${item.width / item.natural})` } : {}) }} className={item.natural ? styles.logoStretched : undefined} />
+  const urls = useContext(LogoUrls)
+  const src = Object.entries(urls).find(([p]) => p.endsWith(`/${item.file}.svg`))?.[1]
+  const img = <img src={src} loading="lazy" alt={item.label || item.file || ''} style={{ width: item.natural ?? item.width, height: item.height, ...(item.natural ? { transform: `scaleX(${item.width / item.natural})` } : {}) }} className={item.natural ? styles.logoStretched : undefined} />
   return item.natural ? <span className={styles.logoStretchBox} style={{ width: item.width }}>{img}</span> : img
 }
 
@@ -354,7 +354,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
   }
 }
 
-export const AtomDoc = ({ data, name }: { data: AtomDocData; name: string }) => {
+export const AtomDoc = ({ data, name, logos = {} }: { data: AtomDocData; name: string; logos?: Record<string, string> }) => {
   const d = (data.documents as Doc[]).find(x => x.name === name)
   if (!d) return <p className="ntg-typography-body-md">ไม่พบเอกสาร {name}</p>
   // การ์ด do กับ don't ที่อยู่ติดกันวางคู่กันเหมือนในไฟล์ออกแบบ
@@ -365,6 +365,7 @@ export const AtomDoc = ({ data, name }: { data: AtomDocData; name: string }) => 
     else items.push(b.type === 'card' ? [b] : b)
   }
   return (
+    <LogoUrls.Provider value={logos}>
     <article className={styles.page}>
       <header className={styles.header}>
         <h1 className={`ntg-typography-display-xl ${styles.heading}`}>{clean(d.title)}</h1>
@@ -376,5 +377,6 @@ export const AtomDoc = ({ data, name }: { data: AtomDocData; name: string }) => 
           : <BlockView key={i} block={it} index={i} />,
       )}
     </article>
+    </LogoUrls.Provider>
   )
 }

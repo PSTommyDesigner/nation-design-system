@@ -41,6 +41,7 @@ const PAGES = {
   shape: { page: '06 Shape', folder: 'Shape', skip: [] },
   space: { page: '07 Space', folder: 'Space', skip: [] },
   logo: { page: '08 Logo', folder: 'Logo', skip: [], logos: true },
+  'third-party': { page: '09 Third-party Logos', folder: 'ThirdPartyLogos', skip: [], logos: true },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -131,8 +132,12 @@ const isLogo = (n) => Boolean(PAGES[KEY].logos) && (n.type === 'COMPONENT' || n.
 const logoOf = (n) => n.children?.find(isLogo) ?? n.children?.find(c => c.name === 'box')?.children?.find(isLogo)
 // ขนาดอ่านจากชิ้นงานจริง ตัวอย่างที่ผิดตั้งใจยืดสัดส่วน ขนาดจึงต่างจากต้นฉบับได้
 function logoBlock(n, label, frame) {
-  const file = n.name.replace(/[^a-z0-9-]+/gi, '-')
-  logoFiles.set(file, n.componentId ?? n.id)
+  // ชื่อต้นฉบับซ้ำกันได้ เช่น c++ กับ c# หรือธง 2 ชิ้นชื่อเดียวกัน ไฟล์จึงแยกตาม id ของต้นฉบับ
+  const id = n.componentId ?? n.id
+  const base = n.name.replace(/[^a-z0-9-]+/gi, '-')
+  let file = base
+  for (let i = 2; logoFiles.has(file) && logoFiles.get(file) !== id; i++) file = `${base}-${i}`
+  logoFiles.set(file, id)
   const { width, height } = n.absoluteBoundingBox
   // ในตารางต้นฉบับโลโก้วางบนกล่องพื้นสี ความกว้างกล่องกับช่องอ่านจากไฟล์ออกแบบ ส่วนภาพตัวอย่างในเอกสารวางลอย
   const box = frame?.children?.find(c => c.name === 'box')?.absoluteBoundingBox.width
@@ -424,7 +429,12 @@ if (logoFiles.size) {
   const entries = [...logoFiles]
   for (let i = 0; i < entries.length; i += 20) {
     const part = entries.slice(i, i + 20)
-    const r = await fetch(`https://api.figma.com/v1/images/${FILE}?format=svg&ids=${encodeURIComponent(part.map(e => e[1]).join(','))}`, { headers: { 'X-Figma-Token': TOKEN } })
+    let r
+    for (let attempt = 0; ; attempt++) {
+      r = await fetch(`https://api.figma.com/v1/images/${FILE}?format=svg&ids=${encodeURIComponent(part.map(e => e[1]).join(','))}`, { headers: { 'X-Figma-Token': TOKEN } })
+      if (r.status !== 429 || attempt >= 6) break
+      await sleep(Number(r.headers.get('retry-after')) * 1000 || 20000 * (attempt + 1))
+    }
     if (!r.ok) throw new Error(`Figma images ${r.status}: ${(await r.text()).slice(0, 200)}`)
     const { images } = await r.json()
     for (const [file, id] of part) {
@@ -434,7 +444,7 @@ if (logoFiles.size) {
   }
   // ตัวอย่างที่ตั้งใจยืดผิดสัดส่วน SVG ในเบราว์เซอร์จะรักษาสัดส่วนเอง จึงเก็บความกว้างจริงของไฟล์ไว้ให้หน้าเอกสารยืดด้วย transform
   const natural = (file) => Number(fs.readFileSync(path.join(dir, `${file}.svg`), 'utf8').match(/width="([\d.]+)"/)[1])
-  for (const d of documents) for (const b of d.blocks) for (const it of [...(b.logos ?? []), ...(b.type === 'logos' ? b.items : [])]) if (it.file && natural(it.file) !== it.width) it.natural = natural(it.file)
+  for (const d of documents) for (const b of d.blocks) for (const it of [...(b.logos ?? []), ...(b.type === 'logos' ? b.items : [])]) if (it.file && Math.abs(natural(it.file) - it.width) > 1) it.natural = natural(it.file)
 }
 if (missing.size) {
   fs.writeFileSync(MISSING, JSON.stringify([...missing], null, 2) + '\n')

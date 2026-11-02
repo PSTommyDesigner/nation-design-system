@@ -1,0 +1,4957 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 09 Third-party Logos ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- third-party",
+  "page": "09 Third-party Logos",
+  "documents": [
+    {
+      "id": "10252:164",
+      "name": "09 Third-party Logos Documentation",
+      "title": "09 Third-party Logos Documentation",
+      "subtitle": "โลโก้ที่ไม่ใช่อัตลักษณ์ของเครือ 505 ตัว แยกออกมาจากหน้า 08 Logo",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "หน้านี้คืออะไร"
+        },
+        {
+          "type": "p",
+          "text": "หน้า 09 เก็บโลโก้ที่ไม่ใช่ของแบรนด์ในเครือ 505 ตัว แบ่ง 3 กลุ่ม คือช่องทางชำระเงิน 15 ตัว บริการภายนอก 232 ตัว และธงประเทศ 258 ตัว"
+        },
+        {
+          "type": "p",
+          "text": "ของชุดนี้ติดมากับไฟล์ตั้งแต่ต้น ไม่ได้วาดขึ้นเอง และไม่ใช่อัตลักษณ์ของเครือ แยกออกมาจากหน้า 08 Logo เมื่อ 2026-08-27 เพื่อให้หน้า 08 เหลือเฉพาะโลโก้ในเครือ"
+        },
+        {
+          "type": "p",
+          "text": "การแยกหน้าครั้งนั้นทำให้เลขหน้าตั้งแต่ 09 เดิมเลื่อนขึ้นหนึ่งทั้งหมด"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "visa-md",
+              "label": "ช่องทางชำระเงิน",
+              "width": 46,
+              "height": 32,
+              "natural": 54
+            },
+            {
+              "type": "logo",
+              "file": "th-thailand",
+              "label": "ธงประเทศ",
+              "width": 32,
+              "height": 24
+            },
+            {
+              "type": "logo",
+              "file": "visa-lg",
+              "label": "ขนาด lg ของกลุ่มชำระเงิน",
+              "width": 58,
+              "height": 40,
+              "natural": 66
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "โลโก้เป็นภาพชั้นเดียว สิ่งที่ต้องคุมคือกล่องครอบ"
+        },
+        {
+          "type": "p",
+          "text": "โลโก้แต่ละตัวเป็นภาพเวกเตอร์ชั้นเดียว ไม่มีชิ้นส่วนข้างในให้แยก ทุกตัววางอยู่ในกล่องครอบชื่อ box ซึ่งเป็นตัวกำหนดขนาดและระยะว่างรอบภาพ ตอนหยิบไปใช้ให้ปรับที่กล่องครอบ ห้ามยืดตัวภาพเอง"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "visa-lg",
+              "label": "โลโก้อยู่ในกล่องครอบชื่อ box ซึ่งคุมขนาดและระยะว่างรอบภาพ",
+              "width": 58,
+              "height": 40,
+              "natural": 66
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "3 กลุ่มในหน้านี้ แต่ละกลุ่มคืออะไร"
+        },
+        {
+          "type": "p",
+          "text": "ช่องทางชำระเงิน 15 ตัว เช่น visa applepay googlepay mastercard แต่ละแบรนด์มี 3 ขนาดคือ sm md lg ตั้งชื่อเป็น ชื่อแบรนด์ ขีดกลาง ขนาด เช่น visa-sm"
+        },
+        {
+          "type": "p",
+          "text": "โลโก้บริการภายนอก 232 ตัว เช่น github adobe dribbble แบ่งกลุ่มย่อยตามประเภทการใช้งาน ตั้งชื่อเป็น กลุ่มย่อย ขีดกลาง ชื่อบริการ เช่น design-adobe_photoshop"
+        },
+        {
+          "type": "p",
+          "text": "ธงประเทศ 258 ตัว ตั้งชื่อด้วยรหัสประเทศ 2 ตัวอักษรตามด้วยชื่อประเทศ เช่น th-thailand"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "visa-md",
+              "label": "ช่องทางชำระเงิน 15 ตัว",
+              "width": 46,
+              "height": 32,
+              "natural": 54
+            },
+            {
+              "type": "logo",
+              "file": "th-thailand",
+              "label": "ธงประเทศ 258 ตัว",
+              "width": 32,
+              "height": 24
+            },
+            {
+              "type": "logo",
+              "file": "mastercard-md",
+              "label": "อีกตัวอย่างของกลุ่มชำระเงิน",
+              "width": 46,
+              "height": 32,
+              "natural": 54
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "โลโก้ของคนอื่นต้องไม่เด่นกว่าของเรา"
+        },
+        {
+          "type": "p",
+          "text": "ในหน้าที่มีทั้งโลโก้ในเครือและโลโก้ภายนอก โลโก้ในเครือต้องเด่นกว่าเสมอ ทั้งขนาดและตำแหน่ง โลโก้ภายนอกวางเป็นตัวรอง เช่นแถวช่องทางชำระเงินที่ท้ายหน้า หรือไอคอนบริการที่เชื่อมต่อในหน้าตั้งค่า ถ้าวางขนาดเท่ากันติดกัน ผู้ใช้จะเข้าใจว่าเป็นบริษัทในเครือเดียวกัน ซึ่งเป็นเรื่องที่ผิดทั้งทางกฎหมายและทางแบรนด์"
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "สามขนาดเฉพาะกลุ่มช่องทางชำระเงิน"
+        },
+        {
+          "type": "p",
+          "text": "กลุ่มช่องทางชำระเงินมี 3 ขนาดคือ sm md lg ตั้งชื่อลงท้ายด้วยขนาด เช่น visa-sm visa-md visa-lg\nกลุ่มบริการภายนอกและกลุ่มธงประเทศมีขนาดเดียว ไม่ได้แยกขนาด\nย่อขยายให้คงสัดส่วนเสมอ ห้ามยืดด้านเดียว"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "visa-sm",
+              "label": "sm",
+              "width": 34,
+              "height": 24,
+              "natural": 42
+            },
+            {
+              "type": "logo",
+              "file": "visa-md",
+              "label": "md",
+              "width": 46,
+              "height": 32,
+              "natural": 54
+            },
+            {
+              "type": "logo",
+              "file": "visa-lg",
+              "label": "lg",
+              "width": 58,
+              "height": 40,
+              "natural": 66
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "สถานะการใช้งานจริงของแต่ละตัว สำรวจ 27 สิงหาคม 2569"
+        },
+        {
+          "type": "p",
+          "text": "สำรวจแล้วพบว่า 502 จาก 505 ตัวไม่มีใครใช้เลยแม้แต่ที่เดียวในไฟล์นี้"
+        },
+        {
+          "type": "p",
+          "text": "ที่ใช้จริงมี 3 ตัว รวม 30 จุด เกือบทั้งหมดเป็นโลโก้ visa ที่หน้า 13 Input"
+        },
+        {
+          "type": "p",
+          "text": "ธงประเทศทั้ง 258 ตัวไม่มีใครใช้เลยสักตัว ถ้าจะลดของตายกลุ่มนี้ตัดได้ก่อนโดยไม่กระทบไฟล์นี้"
+        },
+        {
+          "type": "p",
+          "text": "ข้อควรระวัง คำสั่งที่ใช้ตรวจเห็นเฉพาะในไฟล์นี้ ถ้าไฟล์งานอื่นดึงไลบรารีไปใช้จะมองไม่เห็น การลบจึงยังมีความเสี่ยง"
+        },
+        {
+          "type": "h",
+          "text": "Usage Do and Don’t",
+          "sub": "ใช้ได้แค่ไหน และห้ามทำอะไร"
+        },
+        {
+          "type": "p",
+          "text": "ตรวจสิทธิ์การใช้งานก่อนเอาไปใช้ทุกครั้ง โลโก้ของบริษัทอื่นมีเงื่อนไขของเจ้าของ ไม่ใช่ของที่เราแจกได้เอง"
+        },
+        {
+          "type": "p",
+          "text": "ห้ามเอาโลโก้ในหน้านี้ไปวางคู่กับโลโก้ในเครือในลักษณะที่ทำให้เข้าใจว่าเป็นบริษัทในเครือ"
+        },
+        {
+          "type": "p",
+          "text": "ห้ามแก้สีหรือดัดแปลงรูป เพราะเป็นอัตลักษณ์ของเจ้าของแบรนด์นั้น"
+        },
+        {
+          "type": "p",
+          "text": "หน้านี้เหมือนหน้า 08 คือสีเป็นสีอัตลักษณ์ ห้ามผูกตัวแปรสี"
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "โลโก้ภายนอกต้องมีชื่อกำกับเสมอ"
+        },
+        {
+          "type": "p",
+          "text": "โลโก้ที่บอกว่ารับชำระด้วยช่องทางไหน ต้องมีข้อความแทนภาพที่เป็นชื่อช่องทางนั้น เพราะเป็นข้อมูลที่ผู้ใช้ต้องรู้ก่อนตัดสินใจ\nธงประเทศห้ามใช้แทนภาษา เพราะประเทศกับภาษาไม่ใช่สิ่งเดียวกัน ให้เขียนชื่อภาษาเป็นตัวอักษรแทน\nโลโก้ที่เป็นของประดับซ้ำกับข้อความข้าง ๆ ให้ตั้งเป็นของประดับ\nต้องมีความต่างจากพื้นหลังพอที่จะอ่านออก"
+        },
+        {
+          "type": "h",
+          "text": "Design Tokens",
+          "sub": "หน้านี้ไม่มี token และไม่ควรมี"
+        },
+        {
+          "type": "p",
+          "text": "หน้านี้ไม่มีตัวแปรสีเลย เหมือนหน้า 08 Logo เพราะสีเป็นอัตลักษณ์ของเจ้าของแบรนด์นั้น ไม่ใช่สีของระบบเรา ถ้าผูกตัวแปรแล้ววันหนึ่งมีคนแก้ค่ากลาง สีโลโก้ของบริษัทอื่นจะเพี้ยน ซึ่งนอกจากผิดแล้วยังอาจผิดเงื่อนไขการใช้งานของเจ้าของด้วย"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "จำนวนและการตั้งชื่อของแต่ละกลุ่ม"
+        },
+        {
+          "type": "p",
+          "text": "ช่องทางชำระเงิน 15 ตัว ตั้งชื่อเป็น ชื่อแบรนด์ ขีด ขนาด เช่น visa-sm\nบริการภายนอก 232 ตัว ตั้งชื่อเป็น กลุ่มย่อย ขีด ชื่อบริการ\nธงประเทศ 258 ตัว ตั้งชื่อเป็น รหัสประเทศสองตัวอักษร ขีด ชื่อประเทศ เช่น th-thailand\nรวม 505 ตัว ทั้งหมดเป็น COMPONENT เดี่ยว ไม่มีชุด variant และไม่มีคุณสมบัติให้ปรับ"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้อง"
+        },
+        {
+          "type": "p",
+          "text": "08 Logo เก็บโลโก้ของแบรนด์ในเครือ 40 ตัว ซึ่งเป็นอัตลักษณ์จริงของเรา"
+        },
+        {
+          "type": "p",
+          "text": "02 Icon เก็บชุดไอคอนของระบบ คนละชุดกับโลโก้"
+        },
+        {
+          "type": "p",
+          "text": "รายชื่อหน้าทั้งหมดพร้อมเลขล่าสุดอยู่ที่ docs/figma-pages.md"
+        }
+      ]
+    },
+    {
+      "id": "10255:172",
+      "name": "Third-party Logos",
+      "title": "Third-party Logos",
+      "subtitle": "ต้นฉบับ 505 ตัว แยกตามหมวด ทุกตัวมีชื่อกำกับใต้ภาพ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Payment",
+          "sub": "โลโก้ช่องทางชำระเงิน แต่ละแบรนด์มี 3 ขนาด sm md lg"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "visa-sm",
+              "label": "visa/sm",
+              "width": 34,
+              "height": 24,
+              "box": 120,
+              "cell": 120,
+              "natural": 42
+            },
+            {
+              "type": "logo",
+              "file": "visa-md",
+              "label": "visa/md",
+              "width": 46,
+              "height": 32,
+              "box": 120,
+              "cell": 120,
+              "natural": 54
+            },
+            {
+              "type": "logo",
+              "file": "visa-lg",
+              "label": "visa/lg",
+              "width": 58,
+              "height": 40,
+              "box": 120,
+              "cell": 120,
+              "natural": 66
+            },
+            {
+              "type": "logo",
+              "file": "applepay-sm",
+              "label": "applepay/sm/applepay",
+              "width": 34,
+              "height": 24,
+              "box": 120,
+              "cell": 120,
+              "natural": 42
+            },
+            {
+              "type": "logo",
+              "file": "applepay-md",
+              "label": "applepay/md/applepay",
+              "width": 46,
+              "height": 32,
+              "box": 120,
+              "cell": 120,
+              "natural": 54
+            },
+            {
+              "type": "logo",
+              "file": "applepay-lg",
+              "label": "applepay/lg/applepay",
+              "width": 58,
+              "height": 40,
+              "box": 120,
+              "cell": 120,
+              "natural": 66
+            },
+            {
+              "type": "logo",
+              "file": "googlepay-sm",
+              "label": "googlepay/sm",
+              "width": 34,
+              "height": 24,
+              "box": 120,
+              "cell": 120,
+              "natural": 42
+            },
+            {
+              "type": "logo",
+              "file": "googlepay-md",
+              "label": "googlepay/md",
+              "width": 46,
+              "height": 32,
+              "box": 120,
+              "cell": 120,
+              "natural": 54
+            },
+            {
+              "type": "logo",
+              "file": "googlepay-lg",
+              "label": "googlepay/lg",
+              "width": 58,
+              "height": 40,
+              "box": 120,
+              "cell": 120,
+              "natural": 66
+            },
+            {
+              "type": "logo",
+              "file": "mastercard-sm",
+              "label": "mastercard/sm",
+              "width": 34,
+              "height": 24,
+              "box": 120,
+              "cell": 120,
+              "natural": 42
+            },
+            {
+              "type": "logo",
+              "file": "mastercard-md",
+              "label": "mastercard/md",
+              "width": 46,
+              "height": 32,
+              "box": 120,
+              "cell": 120,
+              "natural": 54
+            },
+            {
+              "type": "logo",
+              "file": "mastercard-lg",
+              "label": "mastercard/lg",
+              "width": 58,
+              "height": 40,
+              "box": 120,
+              "cell": 120,
+              "natural": 66
+            },
+            {
+              "type": "logo",
+              "file": "amazon-sm",
+              "label": "amazon/sm",
+              "width": 34,
+              "height": 24,
+              "box": 120,
+              "cell": 120,
+              "natural": 42
+            },
+            {
+              "type": "logo",
+              "file": "amazon-md",
+              "label": "amazon/md",
+              "width": 46,
+              "height": 32,
+              "box": 120,
+              "cell": 120,
+              "natural": 54
+            },
+            {
+              "type": "logo",
+              "file": "amazon-lg",
+              "label": "amazon/lg",
+              "width": 58,
+              "height": 40,
+              "box": 120,
+              "cell": 120,
+              "natural": 66
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Coding",
+          "sub": "เครื่องมือสำหรับงานพัฒนา"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "icoding-git",
+              "label": "git",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-css-3",
+              "label": "css_3",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-html-5",
+              "label": "html_5",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-js",
+              "label": "js",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-node-js",
+              "label": "node_js",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-bitbucket",
+              "label": "bitbucket",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-codepen",
+              "label": "codepen",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jquery",
+              "label": "jquery",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-appcode",
+              "label": "jb_appcode",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-clion",
+              "label": "jb_clion",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-rider",
+              "label": "jb_rider",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-resharper",
+              "label": "jb_resharper",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-resharper-c-",
+              "label": "jb_resharper_c++",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-datagrip",
+              "label": "jb_datagrip",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-goland",
+              "label": "jb_goland",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-phpstorm",
+              "label": "jb_phpstorm",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-pycharm",
+              "label": "jb_pycharm",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-rubymine",
+              "label": "jb_rubymine",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-webstorm",
+              "label": "jb_webstorm",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-dotcover",
+              "label": "jb_dotcover",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-dotmemory",
+              "label": "jb_dotmemory",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-dotpeek",
+              "label": "jb_dotpeek",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-dottrace",
+              "label": "jb_dottrace",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-atom",
+              "label": "atom",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-vs-code",
+              "label": "vs_code",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-sublime-text",
+              "label": "sublime_text",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-hub",
+              "label": "jb_hub",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-weebly",
+              "label": "weebly",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-yii-1",
+              "label": "yii-1",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-pycharm-edu",
+              "label": "jb_pycharm_edu",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-teamcity",
+              "label": "jb_teamcity",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-upsource",
+              "label": "jb_upsource",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-youtrack",
+              "label": "jb_youtrack",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-intellij-idea",
+              "label": "jb_intellij-idea",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-kotlin",
+              "label": "jb_kotlin",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-jb-toolbox-app",
+              "label": "jb_toolbox_app",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-c-",
+              "label": "c++",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-java",
+              "label": "java",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-python",
+              "label": "python",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-ruby",
+              "label": "ruby",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-php",
+              "label": "php",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-swift",
+              "label": "swift",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-r-lang",
+              "label": "r_lang",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-go",
+              "label": "go",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-c--2",
+              "label": "c#",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-docker",
+              "label": "docker",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-angular",
+              "label": "angular",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-vue",
+              "label": "vue",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-wordpress",
+              "label": "wordpress",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-react",
+              "label": "react",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-npm",
+              "label": "npm",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-redux",
+              "label": "redux",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-joomla",
+              "label": "joomla",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-drupal",
+              "label": "drupal",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "icoding-adobe-dreamweaver",
+              "label": "adobe_dreamweaver",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Productivity",
+          "sub": "เครื่องมือทำงานและจัดการงาน"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "productivity-dropbox",
+              "label": "dropbox",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-evernote",
+              "label": "evernote",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-amazon",
+              "label": "amazon",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-asana",
+              "label": "asana",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-basecamp",
+              "label": "basecamp",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-atlassian",
+              "label": "atlassian",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-confluence",
+              "label": "confluence",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-jira",
+              "label": "jira",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-trello",
+              "label": "trello",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-jira-service-desk",
+              "label": "jira_service_desk",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-jira-ops",
+              "label": "jira_ops",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-jira-core",
+              "label": "jira_core",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-statuspage",
+              "label": "statuspage",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-opsgenie",
+              "label": "opsgenie",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-bamboo",
+              "label": "bamboo",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-sourcetree",
+              "label": "sourcetree",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-flowmapp",
+              "label": "flowmapp",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-mailchimp",
+              "label": "mailchimp",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-gmail",
+              "label": "gmail",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-ms-excel",
+              "label": "ms_excel",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-ms-word",
+              "label": "ms_word",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-ms-onenote",
+              "label": "ms_onenote",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-ms-outlook",
+              "label": "ms_outlook",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-ms-powerpoint",
+              "label": "ms_powerpoint",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-ms-sharepoint",
+              "label": "ms_sharepoint",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-teams",
+              "label": "teams",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-ms-yammer",
+              "label": "ms_yammer",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-ms-onedrive",
+              "label": "ms_onedrive",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-zendesk",
+              "label": "zendesk",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-kayako",
+              "label": "kayako",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-intercom",
+              "label": "intercom",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-treehouse",
+              "label": "treehouse",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-finder",
+              "label": "finder",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-zapier",
+              "label": "zapier",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-notion",
+              "label": "notion",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-things",
+              "label": "things",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-workflowy",
+              "label": "workflowy",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-google-drive",
+              "label": "google_drive",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-g-calendar",
+              "label": "g-calendar",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-google-docs",
+              "label": "google-docs",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-google-meet",
+              "label": "google-meet",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-google-maps",
+              "label": "google-maps",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-loom",
+              "label": "loom",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-linear",
+              "label": "linear",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-gitlab",
+              "label": "gitlab",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "productivity-github",
+              "label": "github",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Social Networks",
+          "sub": "เครือข่ายสังคมออนไลน์"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "social-networks-x",
+              "label": "x",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-linkedin",
+              "label": "linkedin",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-instagram",
+              "label": "instagram",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-snapchat",
+              "label": "snapchat",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-quora",
+              "label": "quora",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-tinder",
+              "label": "tinder",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-reddit",
+              "label": "reddit",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-weibo",
+              "label": "weibo",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-qzone",
+              "label": "qzone",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-tumbler",
+              "label": "tumbler",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-stack-overflow",
+              "label": "stack_overflow",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-foursquare",
+              "label": "foursquare",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-tiktok",
+              "label": "tiktok",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-pinterest",
+              "label": "pinterest",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-badoo",
+              "label": "badoo",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-facebook",
+              "label": "facebook",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-ok",
+              "label": "ok",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-askfm",
+              "label": "askfm",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-vk",
+              "label": "vk",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-patreon",
+              "label": "patreon",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "social-networks-blockdit",
+              "label": "blockdit",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Other",
+          "sub": "บริการอื่นที่ไม่เข้าหมวดใด"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "other-product-hunt",
+              "label": "product_hunt",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-medium",
+              "label": "medium",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-angel-list",
+              "label": "angel_list",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-airbnb",
+              "label": "airbnb",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-google-ads",
+              "label": "google_ads",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-playstation",
+              "label": "playstation",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-tripadvisor",
+              "label": "tripadvisor",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-envato",
+              "label": "envato",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-steam",
+              "label": "steam",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-app-store",
+              "label": "app_store",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-google-play",
+              "label": "google_play",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-tech-crunch",
+              "label": "tech_crunch",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-ms-xbox",
+              "label": "ms_xbox",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-amd",
+              "label": "amd",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-general-electric",
+              "label": "general_electric",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-dell",
+              "label": "dell",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-ibm",
+              "label": "ibm",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-stumble-upon",
+              "label": "stumble_upon",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-kickstarter",
+              "label": "kickstarter",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-bluetooth",
+              "label": "bluetooth",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-google",
+              "label": "google",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "other-intel",
+              "label": "intel",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Messengers",
+          "sub": "แอปรับส่งข้อความ"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "messengers-telegram",
+              "label": "telegram",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-viber",
+              "label": "viber",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-slack",
+              "label": "slack",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-fb-messenger",
+              "label": "fb_messenger",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-line",
+              "label": "line",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-wechat",
+              "label": "wechat",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-kakao-talk",
+              "label": "kakao_talk",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-ms-skype",
+              "label": "ms_skype",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-google-hangouts",
+              "label": "google_hangouts",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-whatsapp",
+              "label": "whatsapp",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-messages",
+              "label": "messages",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-spectrum",
+              "label": "spectrum",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-discord",
+              "label": "discord",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-zoom",
+              "label": "zoom",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "messengers-facetime",
+              "label": "facetime",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Finance",
+          "sub": "บริการการเงิน"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "finance-paypal",
+              "label": "paypal",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-yandex-kassa",
+              "label": "yandex_kassa",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-stripe",
+              "label": "stripe",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-mastercard",
+              "label": "mastercard",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-visa",
+              "label": "visa",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-qiwi",
+              "label": "qiwi",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-alfa-bank",
+              "label": "alfa_bank",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-shopify",
+              "label": "shopify",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-sberbank",
+              "label": "sberbank",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-american-express",
+              "label": "american_express",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-swift",
+              "label": "swift",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-world-pay",
+              "label": "world_pay",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-tinkoff",
+              "label": "tinkoff",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-direct-debit",
+              "label": "direct_debit",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-webmoney",
+              "label": "webmoney",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-jcb",
+              "label": "jcb",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "finance-western-union",
+              "label": "western_union",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Design",
+          "sub": "เครื่องมือออกแบบ"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "design-procreate",
+              "label": "procreate",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-dribbble",
+              "label": "dribbble",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-behance",
+              "label": "behance",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-invision",
+              "label": "invision",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-autodesk",
+              "label": "autodesk",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-adobe-lightroom",
+              "label": "adobe_lightroom",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-adobe-illustrator",
+              "label": "adobe_illustrator",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-adobe-after-effects",
+              "label": "adobe_after_effects",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-adobe-photoshop",
+              "label": "adobe_photoshop",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-adobe-indesign",
+              "label": "adobe_indesign",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-adobe-xd",
+              "label": "adobe_xd",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-sketch",
+              "label": "sketch",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-figma",
+              "label": "figma",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-zeplin",
+              "label": "zeplin",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-adobe",
+              "label": "adobe",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-framer",
+              "label": "framer",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "design-marvel",
+              "label": "marvel",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration OS",
+          "sub": "ระบบปฏิบัติการ"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "os-ubuntu",
+              "label": "ubuntu",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-apple",
+              "label": "apple",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-microsoft",
+              "label": "microsoft",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-android",
+              "label": "android",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-ios",
+              "label": "ios",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-macos",
+              "label": "macos",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-freebsd",
+              "label": "freebsd",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-linux",
+              "label": "linux",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-blackberry",
+              "label": "blackberry",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-chrome-os",
+              "label": "chrome_os",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-elementary",
+              "label": "elementary",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-gnome",
+              "label": "gnome",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-linux-mint",
+              "label": "linux-mint",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "os-fedora",
+              "label": "fedora",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Browsers",
+          "sub": "เบราว์เซอร์"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "browsers-firefox",
+              "label": "firefox",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "browsers-safari",
+              "label": "safari",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "browsers-opera",
+              "label": "opera",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "browsers-chrome",
+              "label": "chrome",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "browsers-ie",
+              "label": "ie",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "browsers-uc",
+              "label": "uc",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "browsers-edge",
+              "label": "edge",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "browsers-tor",
+              "label": "tor",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "browsers-yandex",
+              "label": "yandex",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Video",
+          "sub": "บริการวิดีโอ"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "video-youtube",
+              "label": "youtube",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "video-vimeo",
+              "label": "vimeo",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "video-twitch",
+              "label": "twitch",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "video-appearin",
+              "label": "appearin",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "video-igtv",
+              "label": "igtv",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "video-flickr",
+              "label": "flickr",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "video-netflix",
+              "label": "netflix",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "video-coub",
+              "label": "coub",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Integration Music",
+          "sub": "บริการเพลง"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "music-sound-cloud",
+              "label": "sound_cloud",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "music-grooveshark",
+              "label": "grooveshark",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "music-spotify",
+              "label": "spotify",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "music-apple-music",
+              "label": "apple_music",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "music-google-play-music",
+              "label": "google_play_music",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "music-shazam",
+              "label": "shazam",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "music-youtube-music",
+              "label": "youtube_music",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "music-yandex-music",
+              "label": "yandex_music",
+              "width": 32,
+              "height": 32,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Flag",
+          "sub": "ธงประเทศ 258 ผืน เรียงตามรหัสประเทศ ยังไม่มีที่ไหนในไฟล์ใช้เลยสักผืน"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "ad-andorra",
+              "label": "ad-andorra",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ae-united-arab-emirates",
+              "label": "ae-united-arab-emirates",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "af-afghanistan",
+              "label": "af-afghanistan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ag-antigua-and-barbuda",
+              "label": "ag-antigua-and-barbuda",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ai-anguilla",
+              "label": "ai-anguilla",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "al-albania",
+              "label": "al-albania",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "am-armenia",
+              "label": "am-armenia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ao-angola",
+              "label": "ao-angola",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "aq-antarctica",
+              "label": "aq-antarctica",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ar-argentina",
+              "label": "ar-argentina",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "as-american-samoa",
+              "label": "as-american-samoa",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "at-austria",
+              "label": "at-austria",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "au-australia",
+              "label": "au-australia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "aw-aruba",
+              "label": "aw-aruba",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ax-aland-islands",
+              "label": "ax-aland-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "az-azerbaijan",
+              "label": "az-azerbaijan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ba-bosnia-and-herzegovina",
+              "label": "ba-bosnia-and-herzegovina",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bb-barbados",
+              "label": "bb-barbados",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bd-bangladesh",
+              "label": "bd-bangladesh",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "be-belgium",
+              "label": "be-belgium",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bf-burkina-faso",
+              "label": "bf-burkina-faso",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bg-bulgaria",
+              "label": "bg-bulgaria",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bh-bahrain",
+              "label": "bh-bahrain",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bi-burundi",
+              "label": "bi-burundi",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bj-benin",
+              "label": "bj-benin",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bl-saint-barth-lemy",
+              "label": "bl-saint-barthélemy",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bm-bermuda",
+              "label": "bm-bermuda",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bn-brunei-darussalam",
+              "label": "bn-brunei-darussalam",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bo-bolivia",
+              "label": "bo-bolivia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bq-bo-bonaire",
+              "label": "bq-bo-bonaire",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bq-sa-saba",
+              "label": "bq-sa-saba",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bq-se-sint-eustatius",
+              "label": "bq-se-sint-eustatius",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "br-brazil",
+              "label": "br-brazil",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bs-bahamas",
+              "label": "bs-bahamas",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bt-bhutan",
+              "label": "bt-bhutan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bv-bouvet-island",
+              "label": "bv-bouvet-island",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bw-botswana",
+              "label": "bw-botswana",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "by-belarus",
+              "label": "by-belarus",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "bz-belize",
+              "label": "bz-belize",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ca-canada",
+              "label": "ca-canada",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cc-cocos--keeling--islands",
+              "label": "cc-cocos-(keeling)-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cd-democratic-republic-of-the-congo",
+              "label": "cd-democratic-republic-of-the-congo",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cf-central-african-republic",
+              "label": "cf-central-african-republic",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cg-republic-of-the-congo",
+              "label": "cg-republic-of-the-congo",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ch-switzerland",
+              "label": "ch-switzerland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ci-c-te-d-ivoire--ivory-coast-",
+              "label": "ci-côte-d'ivoire-(ivory-coast)",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ck-cook-islands",
+              "label": "ck-cook-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cl-chile",
+              "label": "cl-chile",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cm-cameroon",
+              "label": "cm-cameroon",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cn-china",
+              "label": "cn-china",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "co-colombia",
+              "label": "co-colombia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cr-costa-rica",
+              "label": "cr-costa-rica",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cu-cuba",
+              "label": "cu-cuba",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cv-cabo-verde",
+              "label": "cv-cabo-verde",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cw-cura-ao",
+              "label": "cw-curaçao",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cx-christmas-island",
+              "label": "cx-christmas-island",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cy-cyprus",
+              "label": "cy-cyprus",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "cz-czech-republic",
+              "label": "cz-czech-republic",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "de-germany",
+              "label": "de-germany",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "dj-djibouti",
+              "label": "dj-djibouti",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "dk-denmark",
+              "label": "dk-denmark",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "dm-dominica",
+              "label": "dm-dominica",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "do-dominican-republic",
+              "label": "do-dominican-republic",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "dz-algeria",
+              "label": "dz-algeria",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ec-ecuador",
+              "label": "ec-ecuador",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ee-estonia",
+              "label": "ee-estonia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "eg-egypt",
+              "label": "eg-egypt",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "eh-western-sahara",
+              "label": "eh-western-sahara",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "er-eritrea",
+              "label": "er-eritrea",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "es-spain",
+              "label": "es-spain",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "et-ethiopia",
+              "label": "et-ethiopia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "fi-finland",
+              "label": "fi-finland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "fj-fiji",
+              "label": "fj-fiji",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "fk-falkland-islands",
+              "label": "fk-falkland-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "fm-federated-states-of-micronesia",
+              "label": "fm-federated-states-of-micronesia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "fo-faroe-islands",
+              "label": "fo-faroe-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "fr-france",
+              "label": "fr-france",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ga-gabon",
+              "label": "ga-gabon",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gb-england",
+              "label": "gb-england",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gb-nir-northern-ireland",
+              "label": "gb-nir-northern-ireland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gb-sct-scotland",
+              "label": "gb-sct-scotland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gb-ukm-united-kingdom",
+              "label": "gb-ukm-united-kingdom",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gb-wls-wales",
+              "label": "gb-wls-wales",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gd-grenada",
+              "label": "gd-grenada",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ge-georgia",
+              "label": "ge-georgia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gf-french-guiana",
+              "label": "gf-french-guiana",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gg-guernsey",
+              "label": "gg-guernsey",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gh-ghana",
+              "label": "gh-ghana",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gi-gibraltar",
+              "label": "gi-gibraltar",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gl-greenland",
+              "label": "gl-greenland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gm-gambia",
+              "label": "gm-gambia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gn-guinea",
+              "label": "gn-guinea",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gp-guadeloupe",
+              "label": "gp-guadeloupe",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gp-guadeloupe-2",
+              "label": "gp-guadeloupe",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gq-equatorial-guinea",
+              "label": "gq-equatorial-guinea",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gr-greece",
+              "label": "gr-greece",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gs-s--georgia-and-s--sandwich-islands",
+              "label": "gs-s.-georgia-and-s.-sandwich-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gt-guatemala",
+              "label": "gt-guatemala",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gu-guam",
+              "label": "gu-guam",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gw-guinea-bissau",
+              "label": "gw-guinea-bissau",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "gy-guyana",
+              "label": "gy-guyana",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "hk-hong-kong",
+              "label": "hk-hong-kong",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "hm-heard-and-mcdonald-islands",
+              "label": "hm-heard-and-mcdonald-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "hn-honduras",
+              "label": "hn-honduras",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "hr-croatia--hrvatska-",
+              "label": "hr-croatia-(hrvatska)",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ht-haiti",
+              "label": "ht-haiti",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "hu-hungary",
+              "label": "hu-hungary",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "id-indonesia",
+              "label": "id-indonesia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ie-ireland",
+              "label": "ie-ireland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "il-isreal",
+              "label": "il-isreal",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "im-isle-of-man",
+              "label": "im-isle-of-man",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "in-india",
+              "label": "in-india",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "io-british-indian-ocean-territory",
+              "label": "io-british-indian-ocean-territory",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "iq-iraq",
+              "label": "iq-iraq",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ir-iran",
+              "label": "ir-iran",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "is-iceland",
+              "label": "is-iceland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "it-italy",
+              "label": "it-italy",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "je-jersey",
+              "label": "je-jersey",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "jm-jamaica",
+              "label": "jm-jamaica",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "jo-jordan",
+              "label": "jo-jordan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "jp-japan",
+              "label": "jp-japan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ke-kenia",
+              "label": "ke-kenia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "kg-kyrgyzstan",
+              "label": "kg-kyrgyzstan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "kh-cambodia",
+              "label": "kh-cambodia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ki-kiribati",
+              "label": "ki-kiribati",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "km-comoros",
+              "label": "km-comoros",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "kn-saint-kitts-and-nevis",
+              "label": "kn-saint-kitts-and-nevis",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "kp-korea--north-",
+              "label": "kp-korea-(north)",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "kr-korea--south-",
+              "label": "kr-korea-(south)",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "kw-kuwait",
+              "label": "kw-kuwait",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ky-cayman-islands",
+              "label": "ky-cayman-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "kz-kazakhstan",
+              "label": "kz-kazakhstan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "la-laos",
+              "label": "la-laos",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "lb-lebanon",
+              "label": "lb-lebanon",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "lc-saint-lucia",
+              "label": "lc-saint-lucia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "li-liechtenstein",
+              "label": "li-liechtenstein",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "lk-sri-lanka",
+              "label": "lk-sri-lanka",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "lr-liberia",
+              "label": "lr-liberia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ls-lesotho",
+              "label": "ls-lesotho",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "lt-lithuania",
+              "label": "lt-lithuania",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "lu-luxembourg",
+              "label": "lu-luxembourg",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "lv-latvia",
+              "label": "lv-latvia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ly-libya",
+              "label": "ly-libya",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ma-morocco",
+              "label": "ma-morocco",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mc-monaco",
+              "label": "mc-monaco",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "md-moldova",
+              "label": "md-moldova",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "me-montenegro",
+              "label": "me-montenegro",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mf-saint-martin",
+              "label": "mf-saint-martin",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mg-madagascar",
+              "label": "mg-madagascar",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mh-marshall-islands",
+              "label": "mh-marshall-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mk-north-macedonia",
+              "label": "mk-north-macedonia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ml-mali",
+              "label": "ml-mali",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mm-myanmar",
+              "label": "mm-myanmar",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mn-mongolia",
+              "label": "mn-mongolia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mo-macao",
+              "label": "mo-macao",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mp-northern-mariana-islands",
+              "label": "mp-northern-mariana-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mq-martinique",
+              "label": "mq-martinique",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mq-martinique-2",
+              "label": "mq-martinique",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mr-mauritania",
+              "label": "mr-mauritania",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ms-montserrat",
+              "label": "ms-montserrat",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mt-malta",
+              "label": "mt-malta",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mu-mauritius",
+              "label": "mu-mauritius",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mv-maldives",
+              "label": "mv-maldives",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mw-malawi",
+              "label": "mw-malawi",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mx-mexico",
+              "label": "mx-mexico",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "my-malaysia",
+              "label": "my-malaysia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "mz-mozambique",
+              "label": "mz-mozambique",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "na-namibia",
+              "label": "na-namibia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "nc-new-caledonia",
+              "label": "nc-new-caledonia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ne-niger",
+              "label": "ne-niger",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "nf-norfolk-island",
+              "label": "nf-norfolk-island",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ng-nigeria",
+              "label": "ng-nigeria",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ni-nicaragua",
+              "label": "ni-nicaragua",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "nl-netherlands",
+              "label": "nl-netherlands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "no-norway",
+              "label": "no-norway",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "np-nepal",
+              "label": "np-nepal",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "nr-nauru",
+              "label": "nr-nauru",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "nu-niue",
+              "label": "nu-niue",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "nz-new-zealand--aotearoa-",
+              "label": "nz-new-zealand-(aotearoa)",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "om-oman",
+              "label": "om-oman",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pa-panama",
+              "label": "pa-panama",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pe-peru",
+              "label": "pe-peru",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pf-french-polynesia",
+              "label": "pf-french-polynesia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pg-papua-new-guinea",
+              "label": "pg-papua-new-guinea",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ph-philippines",
+              "label": "ph-philippines",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pk-pakistan",
+              "label": "pk-pakistan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pl-poland",
+              "label": "pl-poland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pm-saint-pierre-and-miquelon",
+              "label": "pm-saint-pierre-and-miquelon",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pm-st--pierre---miquelon",
+              "label": "pm-st.-pierre-&-miquelon",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pn-pitcairn-islands",
+              "label": "pn-pitcairn-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pr-puerto-rico",
+              "label": "pr-puerto-rico",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ps-palestinian-territory",
+              "label": "ps-palestinian-territory",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pt-portugal",
+              "label": "pt-portugal",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "pw-palau",
+              "label": "pw-palau",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "py-paraguay",
+              "label": "py-paraguay",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "qa-qatar",
+              "label": "qa-qatar",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "re-reunion",
+              "label": "re-reunion",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ro-romania",
+              "label": "ro-romania",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "rs-serbia",
+              "label": "rs-serbia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ru-russian-federation",
+              "label": "ru-russian-federation",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "rw-rwanda",
+              "label": "rw-rwanda",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sa-saudi-arabia",
+              "label": "sa-saudi-arabia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sb-solomon-islands",
+              "label": "sb-solomon-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sc-seychelles",
+              "label": "sc-seychelles",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sd-sudan",
+              "label": "sd-sudan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "se-sweden",
+              "label": "se-sweden",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sg-singapore",
+              "label": "sg-singapore",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sh-saint-helena",
+              "label": "sh-saint-helena",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "si-slovenia",
+              "label": "si-slovenia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sj-svalbard-and-jan-mayen",
+              "label": "sj-svalbard-and-jan-mayen",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sk-slovakia",
+              "label": "sk-slovakia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sl-sierra-leone",
+              "label": "sl-sierra-leone",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sm-san-marino",
+              "label": "sm-san-marino",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sn-senegal",
+              "label": "sn-senegal",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "so-somalia",
+              "label": "so-somalia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sr-suriname",
+              "label": "sr-suriname",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ss-south-sudan",
+              "label": "ss-south-sudan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "st-sao-tome-and-principe",
+              "label": "st-sao-tome-and-principe",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sv-el-salvador",
+              "label": "sv-el-salvador",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sx-sint-maarten",
+              "label": "sx-sint-maarten",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sy-syria",
+              "label": "sy-syria",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "sz-swaziland",
+              "label": "sz-swaziland",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tc-turks-and-caicos-islands",
+              "label": "tc-turks-and-caicos-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "td-chad",
+              "label": "td-chad",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tf-french-southern-and-antarctic-lands",
+              "label": "tf-french-southern-and-antarctic-lands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tg-togo",
+              "label": "tg-togo",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "th-thailand",
+              "label": "th-thailand",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tj-tajikistan",
+              "label": "tj-tajikistan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tk-tokelau",
+              "label": "tk-tokelau",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tl-timor-leste",
+              "label": "tl-timor-leste",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tm-turkmenistan",
+              "label": "tm-turkmenistan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tn-tunisia",
+              "label": "tn-tunisia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "to-tonga",
+              "label": "to-tonga",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tr-turkey",
+              "label": "tr-turkey",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tt-trinidad-and-tobago",
+              "label": "tt-trinidad-and-tobago",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tv-tuvalu",
+              "label": "tv-tuvalu",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tw-taiwan",
+              "label": "tw-taiwan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "tz-tanzania",
+              "label": "tz-tanzania",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ua-ukraine",
+              "label": "ua-ukraine",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ug-uganda",
+              "label": "ug-uganda",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "um-united-states-minor-outlying-islands",
+              "label": "um-united-states-minor-outlying-islands",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "us-united-states",
+              "label": "us-united-states",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "uy-uruguay",
+              "label": "uy-uruguay",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "uz-uzbekistan",
+              "label": "uz-uzbekistan",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "va-vatican-city-state",
+              "label": "va-vatican-city-state",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "vc-saint-vincent-and-the-grenadines",
+              "label": "vc-saint-vincent-and-the-grenadines",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ve-venezuela",
+              "label": "ve-venezuela",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "vg-virgin-islands--british-",
+              "label": "vg-virgin-islands-(british)",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "vi-virgin-islands--u-s-",
+              "label": "vi-virgin-islands-(u.s.)",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "vn-vietnam",
+              "label": "vn-vietnam",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "vu-vanuatu",
+              "label": "vu-vanuatu",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "wf-wallis-and-futuna",
+              "label": "wf-wallis-and-futuna",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ws-samoa",
+              "label": "ws-samoa",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "ye-yemen",
+              "label": "ye-yemen",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "yt-unf-mayotte",
+              "label": "yt-unf-mayotte",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "za-south-africa",
+              "label": "za-south-africa",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "zm-zambia",
+              "label": "zm-zambia",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            },
+            {
+              "type": "logo",
+              "file": "zw-zimbabwe",
+              "label": "zw-zimbabwe",
+              "width": 32,
+              "height": 24,
+              "box": 120,
+              "cell": 120
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
