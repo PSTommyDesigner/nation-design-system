@@ -1,0 +1,796 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 08 Logo ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- logo",
+  "page": "08 Logo",
+  "documents": [
+    {
+      "id": "10235:172",
+      "name": "08 Logo Documentation",
+      "title": "08 Logo Documentation",
+      "subtitle": "โลโก้ของทุกแบรนด์ในเครือ 13 แบรนด์ รวม 40 ต้นฉบับ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "หน้านี้คืออะไร และไม่ครอบคลุมอะไร"
+        },
+        {
+          "type": "p",
+          "text": "หน้า 08 Logo เก็บโลโก้ของทุกแบรนด์ในเครือ 13 แบรนด์ รวม 40 ต้นฉบับ แยกเป็น 3 ชนิดตามการใช้งาน อยู่ในเฟรม Nation Brand Logos"
+        },
+        {
+          "type": "p",
+          "text": "สิ่งที่หน้านี้ไม่ครอบคลุมคือโลโก้บริษัทนอก ธงประเทศ และช่องทางชำระเงิน 505 ตัว ซึ่งย้ายไปอยู่หน้า 09 Third-party Logos แล้วเมื่อ 2026-08-27 และกลุ่ม Draft ที่เป็นงานร่างอีก 19 ชิ้นที่ยังอยู่ในหน้านี้"
+        },
+        {
+          "type": "p",
+          "text": "หน้านี้ได้รับการยกเว้นถาวรเรื่องสีดิบ 5,958 จุด เพราะสีโลโก้เป็นอัตลักษณ์แบรนด์ที่ต้องตายตัว ห้ามผูกตัวแปรสีให้โลโก้"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "nation-group-fixed-height",
+              "label": "โลโก้เต็มของเครือ",
+              "width": 180,
+              "height": 40
+            },
+            {
+              "type": "logo",
+              "file": "bangkokbiznews-fixed-height",
+              "label": "โลโก้เต็มของแบรนด์ในเครือ",
+              "width": 176,
+              "height": 40
+            },
+            {
+              "type": "logo",
+              "file": "nation-tv-1-1",
+              "label": "ทรงจัตุรัส ใช้ตอนพื้นที่จำกัด",
+              "width": 40,
+              "height": 40
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "โลโก้เป็นภาพชั้นเดียว สิ่งที่ต้องคุมคือพื้นที่ว่างรอบตัว"
+        },
+        {
+          "type": "p",
+          "text": "โลโก้แต่ละตัวเป็นภาพเวกเตอร์ชั้นเดียว ไม่มีชิ้นส่วนข้างในให้แยกหรือปิดเปิด สิ่งเดียวที่ต้องคุมคือพื้นที่ว่างรอบโลโก้ ต้องเว้นอย่างน้อยเท่ากับความสูงของตัวอักษรในโลโก้นั้น ห้ามให้ของอื่นล้ำเข้ามาในพื้นที่นี้ เพราะโลโก้จะอ่านยากและดูเหมือนเป็นส่วนหนึ่งของของข้างเคียง"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "nation-group-fixed-height",
+              "label": "โลโก้เต็ม สูง 40 เท่ากันทุกแบรนด์ พื้นที่ว่างรอบตัวต้องเว้นอย่างน้อยเท่าความสูงตัวอักษรในโลโก้",
+              "width": 180,
+              "height": 40
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "โลโก้ 3 ชนิด แต่ละชนิดใช้ตอนไหน"
+        },
+        {
+          "type": "p",
+          "text": "ชนิดที่ 1 โลโก้ทรงจัตุรัส ชื่อลงท้าย 1:1 ขนาด 40 คูณ 40 ใช้ตอนพื้นที่จำกัด หรือตอนต้องการให้ทุกแบรนด์มีทรงเท่ากัน"
+        },
+        {
+          "type": "p",
+          "text": "ชนิดที่ 2 โลโก้เต็ม ชื่อลงท้าย fixed-height สูง 40 เท่ากันทุกแบรนด์ ความกว้างต่างกันตามรูปโลโก้"
+        },
+        {
+          "type": "p",
+          "text": "ชนิดที่ 3 favicon ขนาด 48 คูณ 48 ใช้เป็นไอคอนประจำเว็บ"
+        },
+        {
+          "type": "p",
+          "text": "ครบ 13 แบรนด์ทั้งสามชนิด ยกเว้น favicon ที่มีตัวพิเศษเพิ่มคือ ams ขนาด 40 คูณ 40 ซึ่งเป็นระบบภายใน ไม่ใช่แบรนด์ในเครือ"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "nation-group-1-1",
+              "label": "ทรงจัตุรัส 40 คูณ 40",
+              "width": 40,
+              "height": 40
+            },
+            {
+              "type": "logo",
+              "file": "nation-group-fixed-height",
+              "label": "โลโก้เต็ม สูง 40",
+              "width": 180,
+              "height": 40
+            },
+            {
+              "type": "logo",
+              "file": null,
+              "label": "favicon 48 คูณ 48",
+              "width": 0,
+              "height": 0
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "โลโก้เครือกับโลโก้แบรนด์ลูก ตัวไหนนำ"
+        },
+        {
+          "type": "p",
+          "text": "ในหน้าที่มีทั้งโลโก้เครือและโลโก้แบรนด์ ให้ตัวที่เป็นเจ้าของเนื้อหานำเสมอ หน้าข่าวของ bangkokbiznews ให้โลโก้ bangkokbiznews นำ ส่วนโลโก้เครือวางเป็นตัวรองที่ท้ายหน้าหรือในส่วนเครดิต ห้ามวางสองตัวขนาดเท่ากันติดกัน เพราะผู้ใช้จะอ่านไม่ออกว่ากำลังอยู่ในเว็บของใคร"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "bangkokbiznews-fixed-height",
+              "label": "เจ้าของเนื้อหานำ  หน้าข่าวของ bangkokbiznews ให้โลโก้แบรนด์เป็นตัวนำ",
+              "width": 176,
+              "height": 40
+            },
+            {
+              "type": "logo",
+              "file": "nation-group-1-1",
+              "label": "โลโก้เครือเป็นตัวรอง  วางท้ายหน้าหรือในส่วนเครดิต ขนาดเล็กกว่า",
+              "width": 40,
+              "height": 40
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "ความสูงคงที่ ความกว้างตามรูป"
+        },
+        {
+          "type": "p",
+          "text": "โลโก้เต็มสูง 40 ทุกแบรนด์ ความกว้างแคบสุดคือ khobsanam ที่ 44 และกว้างสุดคือ the-nation ที่ 208"
+        },
+        {
+          "type": "p",
+          "text": "ย่อขยายให้คงสัดส่วนเสมอ ถ้าต้องการขนาดอื่นให้ปรับจากความสูงแล้วปล่อยความกว้างตามไป"
+        },
+        {
+          "type": "p",
+          "text": "ทรงจัตุรัสกับ favicon เป็นขนาดตายตัว ไม่ควรย่อให้เล็กกว่าที่กำหนด เพราะรายละเอียดในโลโก้จะอ่านไม่ออก"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "khobsanam-fixed-height",
+              "label": "แคบที่สุด  กว้าง 44",
+              "width": 44,
+              "height": 40
+            },
+            {
+              "type": "logo",
+              "file": "nation-tv-fixed-height",
+              "label": "ขนาดกลาง",
+              "width": 116,
+              "height": 40
+            },
+            {
+              "type": "logo",
+              "file": "the-nation-fixed-height",
+              "label": "กว้างที่สุด  กว้าง 208",
+              "width": 208,
+              "height": 40
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "โลโก้ไม่มีสถานะ แต่มีเรื่องพื้นหลัง"
+        },
+        {
+          "type": "p",
+          "text": "section นี้ไม่มีภาพประกอบเรื่องสถานะ เพราะโลโก้ไม่ใช่ตัวควบคุม ไม่มี hover โฟกัส หรือปิดใช้งาน สิ่งที่ต้องระวังแทนคือพื้นหลัง โลโก้ทุกตัวออกแบบมาสำหรับพื้นสว่าง ถ้าต้องวางบนพื้นมืดต้องขอไฟล์รุ่นสำหรับพื้นมืดจากเจ้าของแบรนด์ ห้ามกลับสีเองหรือใส่กรอบขาวรองให้"
+        },
+        {
+          "type": "h",
+          "text": "Usage Do and Don’t",
+          "sub": "สิ่งที่ทำได้และห้ามทำ"
+        },
+        {
+          "type": "p",
+          "text": "หยิบไปใช้ด้วยการวางสำเนาของต้นฉบับเสมอ ห้ามคัดลอกภาพออกไปวางเอง เพราะจะไม่ได้อัปเดตตอนโลโก้เปลี่ยน"
+        },
+        {
+          "type": "p",
+          "text": "ห้ามเปลี่ยนสี ห้ามยืดผิดสัดส่วน ห้ามหมุน ห้ามใส่เงา และห้ามวางทับพื้นหลังที่ทำให้อ่านไม่ออก"
+        },
+        {
+          "type": "p",
+          "text": "ห้ามผูกตัวแปรสีให้โลโก้ เพราะถ้าใครแก้ค่ากลางวันหนึ่ง สีโลโก้จะเพี้ยนทั้งเครือ"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "วางสำเนาของต้นฉบับตามสัดส่วนเดิม",
+          "effects": [],
+          "logos": [
+            {
+              "type": "logo",
+              "file": "nation-group-fixed-height",
+              "label": "",
+              "width": 180,
+              "height": 40
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "ยืดด้านเดียวจนสัดส่วนเพี้ยน โลโก้เสียรูปทันที",
+          "effects": [],
+          "logos": [
+            {
+              "type": "logo",
+              "file": "nation-group-fixed-height",
+              "label": "",
+              "width": 324,
+              "height": 40,
+              "natural": 180
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "โลโก้ต้องอ่านออกและมีชื่อกำกับ"
+        },
+        {
+          "type": "p",
+          "text": "โลโก้ที่เป็นลิงก์กลับหน้าแรกต้องมีข้อความแทนภาพที่บอกชื่อแบรนด์ ไม่ใช่คำว่าโลโก้\nโลโก้ที่วางเป็นของประดับซ้ำกับข้อความที่มีอยู่แล้ว ให้ตั้งเป็นของประดับ โปรแกรมอ่านหน้าจอจะได้ไม่อ่านซ้ำ\nต้องมีความต่างจากพื้นหลังพอที่จะอ่านออก ห้ามวางบนภาพที่มีลายจนกลืน\nโลโก้ที่กดได้ต้องมีพื้นที่กดอย่างน้อย 44 ให้ขยายที่กล่องครอบ ไม่ใช่ขยายตัวโลโก้"
+        },
+        {
+          "type": "h",
+          "text": "Design Tokens",
+          "sub": "โลโก้ไม่มี token สี และนั่นคือความตั้งใจ"
+        },
+        {
+          "type": "p",
+          "text": "หน้านี้ไม่มีตัวแปรสีเลย และได้รับการยกเว้นถาวรจากกฎห้ามสีดิบ รวม 5,958 จุด เหตุผลคือสีโลโก้เป็นอัตลักษณ์ของแต่ละแบรนด์ที่ต้องตายตัว ถ้าผูกกับตัวแปรกลางแล้ววันหนึ่งมีคนแก้ค่ากลาง สีโลโก้จะเพี้ยนทั้งเครือพร้อมกันโดยไม่มีใครรู้ตัว สิ่งที่เป็น token ของหน้านี้มีอย่างเดียวคือรหัสแบรนด์ 3 ตัวอักษรที่ docs/brand-codes.md ซึ่งใช้ตอนตั้งชื่อ token และ theme ของแต่ละแบรนด์"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "ขนาดจริงของทั้งสามชนิด"
+        },
+        {
+          "type": "p",
+          "text": "ทรงจัตุรัส 40 คูณ 40 ทุกแบรนด์\nโลโก้เต็ม สูง 40 เท่ากันทุกแบรนด์ ความกว้างต่างกันตามรูป แคบสุดคือ khobsanam ที่ 44 กว้างสุดคือ the-nation ที่ 208\nfavicon 48 คูณ 48 ยกเว้น ams ที่ 40 คูณ 40 เพราะเป็นระบบภายในไม่ใช่แบรนด์ข่าว\nย่อขยายให้คงสัดส่วนเสมอ ปรับจากความสูงแล้วปล่อยความกว้างตามไป"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้อง"
+        },
+        {
+          "type": "p",
+          "text": "02 Icon เก็บชุดไอคอนของระบบ คนละชุดกับโลโก้"
+        },
+        {
+          "type": "p",
+          "text": "รหัสแบรนด์ 3 ตัวอักษรอยู่ที่ docs/brand-codes.md ใช้ตอนตั้งชื่อ token และ theme ของแต่ละแบรนด์"
+        },
+        {
+          "type": "p",
+          "text": "ข้อสังเกต tnews มีโลโก้ครบทั้ง 3 ชนิดในหน้านี้ แต่ยังไม่มีรหัสแบรนด์ในเอกสารรหัส ควรตัดสินว่าจะเพิ่มรหัสให้หรือไม่"
+        },
+        {
+          "type": "p",
+          "text": "เอกสารประจำหน้าฝั่งโค้ดอยู่ที่ docs/08-logo.md"
+        }
+      ]
+    },
+    {
+      "id": "10251:26",
+      "name": "Draft Logos",
+      "title": "Draft Logos",
+      "subtitle": "ของร่าง 19 ชิ้นที่ยังค้างอยู่ในหน้านี้ คืออะไรและควรทำอย่างไรต่อ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ของร่าง 19 ชิ้น",
+          "sub": "กลุ่ม Draft เป็นที่ทิ้งของระหว่างทาง ไม่มีชิ้นไหนเป็นต้นฉบับที่หยิบไปใช้ได้ จึงไม่มีใครใช้อยู่และลบได้โดยไม่กระทบงานไหน\nเก็บไว้เป็นร่องรอยว่าเคยลองอะไรไปบ้าง แต่ต้องรู้ว่าอันไหนคือของที่เลิกใช้แล้ว จะได้ไม่หยิบผิด"
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชื่อในหน้า",
+            "จำนวน",
+            "ขนาด",
+            "เป็นอะไร และควรทำยังไงต่อ"
+          ],
+          "rows": [
+            [
+              "Fab",
+              "4 ชิ้น",
+              "40 x 40",
+              "ปุ่มลอยที่เคยลองทำ ไม่ใช่โลโก้แบรนด์ ไม่เกี่ยวกับหน้านี้"
+            ],
+            [
+              "Noogle",
+              "3 ชิ้น",
+              "40 x 40",
+              "งานทดลอง ไม่ใช่โลโก้แบรนด์ในเครือ"
+            ],
+            [
+              "AMS",
+              "1 ชิ้น",
+              "40 x 40",
+              "ระบบภายใน ตัวจริงอยู่ในกลุ่ม favicon แล้ว ชิ้นนี้ซ้ำ"
+            ],
+            [
+              "OK nation และ OK Nation",
+              "3 ชิ้น",
+              "40 x 40 ถึง 44 x 40",
+              "แบรนด์ที่เลิกใช้แล้ว เก็บเป็นประวัติได้ แต่ห้ามหยิบไปใช้"
+            ],
+            [
+              "Nation Group และ Nation group",
+              "2 ชิ้น",
+              "40 x 40 และ 80 x 40",
+              "รุ่นเก่าของโลโก้ที่มีตัวจริงแล้ว ชื่อซ้ำกันต่างแค่ตัวพิมพ์"
+            ],
+            [
+              "Nation TV",
+              "1 ชิ้น",
+              "42 x 40",
+              "รุ่นเก่า ตัวจริงอยู่ในกลุ่มโลโก้เต็มความสูงแล้ว"
+            ],
+            [
+              "Kom chad luek",
+              "1 ชิ้น",
+              "136 x 40",
+              "รุ่นเก่า ชื่อเขียนแยกคำ ตัวจริงคือ komchadluek"
+            ],
+            [
+              "The nation thailand",
+              "1 ชิ้น",
+              "102 x 40",
+              "รุ่นเก่า ตัวจริงคือ the-nation"
+            ],
+            [
+              "Thai news",
+              "1 ชิ้น",
+              "92 x 40",
+              "รุ่นเก่า ตัวจริงคือ thainews"
+            ],
+            [
+              "Bangkokbiznew",
+              "1 ชิ้น",
+              "176 x 40",
+              "รุ่นเก่า ชื่อสะกดตกตัวอักษร ตัวจริงคือ bangkokbiznews"
+            ],
+            [
+              "Logo",
+              "1 ชิ้น",
+              "48 x 48",
+              "ชื่อไม่บอกอะไรเลย ไม่รู้ว่าของแบรนด์ไหน ต้องเปิดดูถึงจะรู้"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "สรุปคือ 12 จาก 19 ชิ้นเป็นโลโก้รุ่นเก่าที่มีตัวจริงแล้ว อีก 7 ชิ้นไม่เกี่ยวกับโลโก้แบรนด์เลย ทั้งหมดไม่ใช่ต้นฉบับจึงไม่มีใครใช้ได้ ถ้าจะเก็บต่อควรย้ายไปหน้า Work in Progress เพื่อไม่ให้ปนกับของที่ใช้งานจริง"
+        }
+      ]
+    },
+    {
+      "id": "10233:164",
+      "name": "Nation Brand Logos",
+      "title": "Nation Brand Logos",
+      "subtitle": "โลโก้ของทุกแบรนด์ในเครือ แยกตามชนิดการใช้งาน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Logo Square 1:1",
+          "sub": "ใช้ตอนพื้นที่จำกัด หรือตอนต้องการให้ทุกแบรนด์มีทรงเท่ากัน ขนาด 40 คูณ 40 ทุกตัว"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "nation-group-1-1",
+              "label": "nation-group-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "bangkokbiznews-1-1",
+              "label": "bangkokbiznews-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "post-today-1-1",
+              "label": "post-today-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "tnews-1-1",
+              "label": "tnews-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "thansettakij-1-1",
+              "label": "thansettakij-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "nation-story-1-1",
+              "label": "nation-story-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "nation-tv-1-1",
+              "label": "nation-tv-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "the-nation-1-1",
+              "label": "the-nation-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "springnews-1-1",
+              "label": "springnews-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "the-people-1-1",
+              "label": "the-people-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "komchadluek-1-1",
+              "label": "komchadluek-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "thainews-1-1",
+              "label": "thainews-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "khobsanam-1-1",
+              "label": "khobsanam-1:1",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Logo Fixed Height 40",
+          "sub": "ใช้ในหัวเว็บ เอกสาร และงานนำเสนอ สูง 40 เท่ากันทุกแบรนด์ ความกว้างต่างกันตามรูปโลโก้"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "nation-group-fixed-height",
+              "label": "nation-group-fixed-height",
+              "width": 180,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "bangkokbiznews-fixed-height",
+              "label": "bangkokbiznews-fixed-height",
+              "width": 176,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "thansettakij-fixed-height",
+              "label": "thansettakij-fixed-height",
+              "width": 108,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "post-today-fixed-height",
+              "label": "post-today-fixed-height",
+              "width": 108,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "nation-tv-fixed-height",
+              "label": "nation-tv-fixed-height",
+              "width": 116,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "tnews-fixed-height",
+              "label": "tnews-fixed-height",
+              "width": 80,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "the-nation-fixed-height",
+              "label": "the-nation-fixed-height",
+              "width": 208,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "nation-story-fixed-height",
+              "label": "nation-story-fixed-height",
+              "width": 102,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "komchadluek-fixed-height",
+              "label": "komchadluek-fixed-height",
+              "width": 156,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "thainews-fixed-height",
+              "label": "thainews-fixed-height",
+              "width": 132,
+              "height": 40,
+              "box": 224,
+              "cell": 224,
+              "natural": 133
+            },
+            {
+              "type": "logo",
+              "file": "khobsanam-fixed-height",
+              "label": "khobsanam-fixed-height",
+              "width": 44,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "springnews-fixed-height",
+              "label": "springnews-fixed-height",
+              "width": 202,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            },
+            {
+              "type": "logo",
+              "file": "the-people-fixed-height",
+              "label": "the-people-fixed-height",
+              "width": 142,
+              "height": 40,
+              "box": 224,
+              "cell": 224
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Favicon 48",
+          "sub": "ใช้เป็นไอคอนประจำเว็บ ขนาด 48 คูณ 48 ยกเว้น ams ที่เป็น 40 คูณ 40"
+        },
+        {
+          "type": "logos",
+          "items": [
+            {
+              "type": "logo",
+              "file": "nation-group",
+              "label": "nation-group",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "bangkokbiznews",
+              "label": "bangkokbiznews",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "thansettakij",
+              "label": "thansettakij",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "komchadluek",
+              "label": "komchadluek",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "post-today",
+              "label": "post-today",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "nation-tv",
+              "label": "nation-tv",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "springnews",
+              "label": "springnews",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "thainews",
+              "label": "thainews",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "tnews",
+              "label": "tnews",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "the-nation",
+              "label": "the-nation",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "the-people",
+              "label": "the-people",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "khobsanam",
+              "label": "khobsanam",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "nation-story",
+              "label": "nation-story",
+              "width": 48,
+              "height": 48,
+              "box": 64,
+              "cell": 100
+            },
+            {
+              "type": "logo",
+              "file": "ams",
+              "label": "ams",
+              "width": 40,
+              "height": 40,
+              "box": 64,
+              "cell": 100
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

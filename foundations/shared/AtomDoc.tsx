@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import { type CSSProperties, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Table, type TableColumn } from '../../components/Table'
 import { Do, Dont, DoDont } from '../../.storybook/docs-blocks'
@@ -17,16 +18,19 @@ import styles from './AtomDoc.module.css'
  *    สามจุดนี้คือข้อยกเว้นเดียวของกฎ ดู foundations/AGENTS.md
  * ⚠️ ภาพหลักการกล่องซ้อน (06 Shape Nested Radius) ใช้มุมโค้งตามตัวเลขในไฟล์ออกแบบ (ผู้ใช้ตัดสิน 2026-11-02)
  *    เพราะเป็นตัวเลขใหญ่ที่ตั้งใจให้เห็นความต่าง ไม่ใช่ค่าจริงของระบบ และไม่มี token สีพื้นยังผูกตัวแปร
+ * ⚠️ โลโก้ (08 Logo) เป็นไฟล์ SVG ข้างเอกสาร ขนาดมาจากไฟล์ออกแบบ เพราะความกว้างต่างกันทุกแบรนด์และไม่มี token
+ *    สีในไฟล์เป็นค่าดิบโดยตั้งใจ เป็นข้อยกเว้นถาวรของหน้านี้ (ตัดสิน 2026-08-18)
  * ⚠️ ภาพเอฟเฟคผูกตัวแปรเงา เบลอ และวงแหวนโฟกัสจริง วงแหวนโฟกัสวงรอบกล่องตัวอย่าง ไม่ใช่ปุ่ม (ผู้ใช้ตัดสิน 2026-11-02
  *    เพราะ Button ในโค้ดไม่มีตระกูล warning กับ success)
  */
 
 type ColorRow = { no: string; name: string; level: string; light: string; dark: string; description: string; cssVar: string; darkVar: string }
+type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number }
 type SpaceItem = { name: string; cssVar: string; value: string; usage: string; fill: string | null }
 type Block =
   | { type: 'h'; text: string; sub?: string }
   | { type: 'h3' | 'p'; text: string }
-  | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[] }
+  | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[]; logos?: LogoItem[] }
   | { type: 'effects'; items: EffectItem[] }
   | { type: 'table'; head: string[]; rows: string[][] }
   | { type: 'ramp'; label: string; path: string; steps: { step: number; cssVar: string }[] }
@@ -38,6 +42,7 @@ type Block =
   | { type: 'radii'; items: RadiusItem[] }
   | { type: 'nestedPair'; items: NestedItem[] }
   | { type: 'spaces'; items: SpaceItem[] }
+  | { type: 'logos'; items: LogoItem[] }
   | { type: 'grid'; name: string; canvas: number; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
 type RadiusItem = { step: string; label: string; meta: string; corners: (string | null)[]; figma: number[]; fill: string | null; stroke: string | null }
 type NestedItem = { kind: 'do' | 'dont'; title: string; caption: string; outer: number; inner: number; outerFill: string | null; innerFill: string | null }
@@ -80,6 +85,15 @@ const HexOf = ({ cssVar }: { cssVar: string }) => {
 }
 
 // ภาพ grid ตัวเลขใต้ภาพวัดจากของที่เบราว์เซอร์วาดจริง ใช้ยืนยันว่า token ให้ผลเท่าไฟล์ออกแบบ
+// ไฟล์โลโก้ของทุกหน้า Atoms ที่ export มาจากไฟล์ออกแบบ
+const LOGO_URLS = import.meta.glob<string>('../*/assets/*.svg', { eager: true, query: '?url', import: 'default' })
+const logoUrl = (file: string) => Object.entries(LOGO_URLS).find(([p]) => p.endsWith(`/${file}.svg`))?.[1]
+// ตัวอย่างที่ตั้งใจยืดผิดสัดส่วน (natural) ต้องยืดด้วย transform เพราะ SVG ใน <img> รักษาสัดส่วนเองเสมอ
+const LogoImage = ({ item }: { item: LogoItem }) => {
+  const img = <img src={logoUrl(item.file ?? '')} alt={item.label || item.file || ''} style={{ width: item.natural ?? item.width, height: item.height, ...(item.natural ? { transform: `scaleX(${item.width / item.natural})` } : {}) }} className={item.natural ? styles.logoStretched : undefined} />
+  return item.natural ? <span className={styles.logoStretchBox} style={{ width: item.width }}>{img}</span> : img
+}
+
 const GridSpecimen = ({ block: b }: { block: Extract<Block, { type: 'grid' }> }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [m, setM] = useState('')
@@ -220,8 +234,8 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
         ? <h3 className={`ntg-typography-title-lg ${styles.heading}`}>{block.text}</h3>
         : <div className={`ntg-typography-body-lg ${styles.body}`}>{clean(block.text).split('\n').map((l, i) => <p key={i}>{l}</p>)}</div>
     case 'card':
-      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}</Do>
-      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}</Dont>
+      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}</Do>
+      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}</Dont>
       return (
         <div className="ntg-docs-card">
           <span className="ntg-typography-title-sm">{clean(block.title)}</span>
@@ -282,6 +296,26 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       return <EffectRow items={block.items} />
     case 'radii':
       return <div className={styles.radiusRow}>{block.items.map((it, i) => <RadiusSample key={i} item={it} />)}</div>
+    case 'logos':
+      return (
+        <div className={styles.logoGrid}>
+          {block.items.map((it, i) => (
+            it.box
+              ? (
+                <div key={i} className={styles.logoCell} style={{ width: it.cell }}>
+                  <span className={styles.logoBox} style={{ width: it.box }}><LogoImage item={it} /></span>
+                  <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>
+                </div>
+              )
+              : (
+                <div key={i} className={styles.logoItem}>
+                  <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>
+                  {it.file && <LogoImage item={it} />}
+                </div>
+              )
+          ))}
+        </div>
+      )
     case 'spaces':
       return (
         <div className={styles.spaceList}>

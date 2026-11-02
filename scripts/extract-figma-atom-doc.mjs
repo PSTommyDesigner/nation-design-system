@@ -40,6 +40,7 @@ const PAGES = {
   effect: { page: '05 Effect', folder: 'Effect', skip: ['Base Components (internal)'] },
   shape: { page: '06 Shape', folder: 'Shape', skip: [] },
   space: { page: '07 Space', folder: 'Space', skip: [] },
+  logo: { page: '08 Logo', folder: 'Logo', skip: [], logos: true },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -124,6 +125,19 @@ const gridMismatch = []
 function needVar(v, where) { if (!CSS_VARS.has(v)) badVars.push(`${where}: ${v} ไม่มีใน variables.css`); return v }
 const effectMismatch = []
 const spaceMismatch = []
+// ต้นฉบับโลโก้ที่เอกสารใช้ ชื่อไฟล์ -> id ของ component แม่ เก็บไว้ export เป็น SVG ตอนท้าย (ผู้ใช้ตัดสิน 2026-11-02 ให้ไฟล์อยู่เฉพาะหน้าเอกสาร)
+const logoFiles = new Map()
+const isLogo = (n) => Boolean(PAGES[KEY].logos) && (n.type === 'COMPONENT' || n.type === 'INSTANCE') && !/header|info-card|-cell$/i.test(n.name)
+const logoOf = (n) => n.children?.find(isLogo) ?? n.children?.find(c => c.name === 'box')?.children?.find(isLogo)
+// ขนาดอ่านจากชิ้นงานจริง ตัวอย่างที่ผิดตั้งใจยืดสัดส่วน ขนาดจึงต่างจากต้นฉบับได้
+function logoBlock(n, label, frame) {
+  const file = n.name.replace(/[^a-z0-9-]+/gi, '-')
+  logoFiles.set(file, n.componentId ?? n.id)
+  const { width, height } = n.absoluteBoundingBox
+  // ในตารางต้นฉบับโลโก้วางบนกล่องพื้นสี ความกว้างกล่องกับช่องอ่านจากไฟล์ออกแบบ ส่วนภาพตัวอย่างในเอกสารวางลอย
+  const box = frame?.children?.find(c => c.name === 'box')?.absoluteBoundingBox.width
+  return { type: 'logo', file, label, width: Math.round(width), height: Math.round(height), ...(box ? { box: Math.round(box), cell: Math.round(frame.absoluteBoundingBox.width) } : {}) }
+}
 // แถวสเกลระยะห่าง ชื่อตัวแปร + ค่า + แถบความยาว ชื่อและค่าที่แสดงมาจาก token ส่วนตัวเลขในไฟล์ออกแบบใช้เทียบเท่านั้น
 const isSpaceRow = (n) => n.type === 'FRAME' && n.children?.some(c => c.name === 'track') && /^size\/space\//.test(n.children?.find(c => c.type === 'TEXT')?.characters.trim() ?? '')
 function spaceBlock(n, where) {
@@ -241,6 +255,10 @@ function extract(doc) {
       if (last?.type === 'spaces') { last.items.push(b); return }
       out.blocks.push({ type: 'spaces', items: [b] }); return
     }
+    if (b.type === 'logo') {
+      if (last?.type === 'logos') { last.items.push(b); return }
+      out.blocks.push({ type: 'logos', items: [b] }); return
+    }
     if (b.type === 'nested') {
       if (last?.type === 'nestedPair') { last.items.push(b); return }
       out.blocks.push({ type: 'nestedPair', items: [b] }); return
@@ -321,7 +339,8 @@ function extract(doc) {
       // คู่ถูกผิดของหน้า Effect ข้อความ + ภาพเอฟเฟคในแถวเดียวกัน
       const t = n.children.find(c => c.type === 'TEXT').characters
       const effects = findAll(n, isEffect).map(x => effectBlock(x, doc.name, ''))
-      push({ type: 'card', kind: t.startsWith('\u2705') ? 'do' : 'dont', title: '', body: t.replace(/^[\u2705\u274c]\s*(ถูก|ผิด)?\s*/, ''), effects })
+      const logos = n.children.filter(isLogo).map(x => logoBlock(x, ''))
+      push({ type: 'card', kind: t.startsWith('\u2705') ? 'do' : 'dont', title: '', body: t.replace(/^[\u2705\u274c]\s*(ถูก|ผิด)?\s*/, ''), effects, logos })
       return
     }
     if (n.type === 'FRAME' && n.name === 'item' && n.children?.some(isEffect)) {
@@ -332,6 +351,8 @@ function extract(doc) {
     }
     if (isEffect(n)) { push(effectBlock(n, doc.name, '')); return }
     if (isRadiusSample(n)) { push(radiusBlock(n, doc.name)); return }
+    if (n.type === 'FRAME' && logoOf(n) && n.children.some(c => c.type === 'TEXT')) { push(logoBlock(logoOf(n), n.children.find(c => c.type === 'TEXT').characters.trim(), n)); return }
+    if (PAGES[KEY].logos && n.type === 'FRAME' && n.name === 'item' && n.children?.length === 1 && n.children[0].type === 'TEXT') { push({ type: 'logo', file: null, label: n.children[0].characters.trim(), width: 0, height: 0 }); return }
     if (isSpaceRow(n)) { push(spaceBlock(n, doc.name)); return }
     if (n.type === 'FRAME' && n.children?.some(c => c.name === 'outer-box' && c.children?.some(x => x.name === 'inner-box'))) {
       const outer = n.children.find(c => c.name === 'outer-box'), inner = outer.children.find(c => c.name === 'inner-box')
@@ -396,6 +417,25 @@ const res = await api(`/nodes?ids=${encodeURIComponent(frames.map(f => f.id).joi
 const documents = frames.map(f => extract(res.nodes[f.id].document))
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true })
+if (logoFiles.size) {
+  // export ทีละ 20 ตัว ไฟล์ SVG เก็บข้างเอกสาร ใช้แสดงในหน้าเอกสารเท่านั้น สีโลโก้เป็นอัตลักษณ์จึงเป็นค่าดิบโดยตั้งใจ
+  const dir = path.join(path.dirname(OUT), 'assets')
+  fs.mkdirSync(dir, { recursive: true })
+  const entries = [...logoFiles]
+  for (let i = 0; i < entries.length; i += 20) {
+    const part = entries.slice(i, i + 20)
+    const r = await fetch(`https://api.figma.com/v1/images/${FILE}?format=svg&ids=${encodeURIComponent(part.map(e => e[1]).join(','))}`, { headers: { 'X-Figma-Token': TOKEN } })
+    if (!r.ok) throw new Error(`Figma images ${r.status}: ${(await r.text()).slice(0, 200)}`)
+    const { images } = await r.json()
+    for (const [file, id] of part) {
+      if (!images[id]) throw new Error(`export ${file} ไม่ได้`)
+      fs.writeFileSync(path.join(dir, `${file}.svg`), await (await fetch(images[id])).text())
+    }
+  }
+  // ตัวอย่างที่ตั้งใจยืดผิดสัดส่วน SVG ในเบราว์เซอร์จะรักษาสัดส่วนเอง จึงเก็บความกว้างจริงของไฟล์ไว้ให้หน้าเอกสารยืดด้วย transform
+  const natural = (file) => Number(fs.readFileSync(path.join(dir, `${file}.svg`), 'utf8').match(/width="([\d.]+)"/)[1])
+  for (const d of documents) for (const b of d.blocks) for (const it of [...(b.logos ?? []), ...(b.type === 'logos' ? b.items : [])]) if (it.file && natural(it.file) !== it.width) it.natural = natural(it.file)
+}
 if (missing.size) {
   fs.writeFileSync(MISSING, JSON.stringify([...missing], null, 2) + '\n')
   console.error(`เจอ id ตัวแปรที่ไม่รู้จัก ${missing.size} ตัว เขียนไว้ที่ ${path.relative(ROOT, MISSING)} เติมชื่อใน tokens/figma-variable-ids.json แล้วรันใหม่`)

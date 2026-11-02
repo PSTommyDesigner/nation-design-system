@@ -167,3 +167,11 @@
 .spaceValue { min-width: var(--ntg-size-space-s4-xs); color: var(--ntg-color-text-general-text); }
 .spaceTrack { display: block; width: var(--ntg-size-space-s5-xl); height: var(--ntg-size-space-s2-lg); }
 .spaceBar { display: block; height: 100%; }
+
+.logoGrid { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s2-lg); }
+.logoItem { display: flex; flex-direction: column; align-items: flex-start; gap: var(--ntg-size-space-s1-lg); }
+.logoCell { display: flex; flex-direction: column; align-items: center; gap: var(--ntg-size-space-s1-lg); text-align: center; }
+.logoBox { display: flex; align-items: center; justify-content: center; height: var(--ntg-size-space-s3-xl); border-radius: var(--ntg-info-card-radius-top-left); background: var(--ntg-color-background-general-secondary); }
+.logoLabel { color: var(--ntg-color-text-general-supporting-text); overflow-wrap: anywhere; }
+.logoStretchBox { display: block; }
+.logoStretched { display: block; transform-origin: left center; }
