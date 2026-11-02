@@ -1,10 +1,6 @@
 {
   "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 05 Effect ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- effect",
   "page": "05 Effect",
-  "effectMismatch": [
-    "05 Effect Documentation focused-ring/default-focused-ring: ไฟล์ออกแบบ 0 0 0 4 30 88 242 0.2 token 0 0 0 4 71 84 103 0.1",
-    "Blur and Focus Ring Components focused-ring/default-focused-ring: ไฟล์ออกแบบ 0 0 0 4 30 88 242 0.2 token 0 0 0 4 71 84 103 0.1"
-  ],
   "documents": [
     {
       "id": "9910:2",
@@ -265,7 +261,8 @@
               "cssVar": "--ntg-shadows-bottom-md",
               "label": ""
             }
-          ]
+          ],
+          "logos": []
         },
         {
           "type": "card",
@@ -287,7 +284,8 @@
               "cssVar": "--ntg-shadows-bottom-md",
               "label": ""
             }
-          ]
+          ],
+          "logos": []
         },
         {
           "type": "card",
@@ -302,7 +300,8 @@
               "cssVar": "--ntg-focused-ring-error",
               "label": ""
             }
-          ]
+          ],
+          "logos": []
         },
         {
           "type": "card",
@@ -317,7 +316,8 @@
               "cssVar": "--ntg-focused-ring-brand",
               "label": ""
             }
-          ]
+          ],
+          "logos": []
         },
         {
           "type": "h",
