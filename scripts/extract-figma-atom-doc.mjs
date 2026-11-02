@@ -39,6 +39,7 @@ const PAGES = {
   grid: { page: '04 Grid', folder: 'Grid', skip: [] },
   effect: { page: '05 Effect', folder: 'Effect', skip: ['Base Components (internal)'] },
   shape: { page: '06 Shape', folder: 'Shape', skip: [] },
+  space: { page: '07 Space', folder: 'Space', skip: [] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -122,6 +123,20 @@ const GRID_DEVICE = { 'full-hd': 'fullhd', desktop: 'desktop', 'tablet-horizonta
 const gridMismatch = []
 function needVar(v, where) { if (!CSS_VARS.has(v)) badVars.push(`${where}: ${v} ไม่มีใน variables.css`); return v }
 const effectMismatch = []
+const spaceMismatch = []
+// แถวสเกลระยะห่าง ชื่อตัวแปร + ค่า + แถบความยาว ชื่อและค่าที่แสดงมาจาก token ส่วนตัวเลขในไฟล์ออกแบบใช้เทียบเท่านั้น
+const isSpaceRow = (n) => n.type === 'FRAME' && n.children?.some(c => c.name === 'track') && /^size\/space\//.test(n.children?.find(c => c.type === 'TEXT')?.characters.trim() ?? '')
+function spaceBlock(n, where) {
+  const [nameNode, pxNode, usageNode] = n.children.filter(c => c.type === 'TEXT')
+  const name = nameNode.characters.trim()
+  const cssVar = needVar('--ntg-' + name.replace(/\//g, '-'), where)
+  const px = parseFloat(ROOT_VALUES[cssVar])
+  const bar = findAll(n.children.find(c => c.name === 'track'), x => x.name === 'bar')[0]
+  const figPx = parseFloat(pxNode.characters)
+  if (figPx !== px) spaceMismatch.push(`${where}: ${name} ป้ายเขียน ${figPx} token ${px}`)
+  if ((bar ? Math.round(bar.absoluteBoundingBox.width) : 0) !== px) spaceMismatch.push(`${where}: ${name} แถบยาว ${bar ? Math.round(bar.absoluteBoundingBox.width) : 0} token ${px}`)
+  return { type: 'space', name, cssVar, value: ROOT_VALUES[cssVar], usage: usageNode?.characters.trim() ?? '', fill: bar ? cssVarOf(bar, `${where} ${name}`) : null }
+}
 // ชื่อ effect style ในไฟล์ออกแบบ จับคู่กับตัวแปร CSS
 function effectOf(styleName) {
   let m
@@ -222,6 +237,10 @@ function extract(doc) {
       if (last?.type === 'radii') { last.items.push(b); return }
       out.blocks.push({ type: 'radii', items: [b] }); return
     }
+    if (b.type === 'space') {
+      if (last?.type === 'spaces') { last.items.push(b); return }
+      out.blocks.push({ type: 'spaces', items: [b] }); return
+    }
     if (b.type === 'nested') {
       if (last?.type === 'nestedPair') { last.items.push(b); return }
       out.blocks.push({ type: 'nestedPair', items: [b] }); return
@@ -313,6 +332,7 @@ function extract(doc) {
     }
     if (isEffect(n)) { push(effectBlock(n, doc.name, '')); return }
     if (isRadiusSample(n)) { push(radiusBlock(n, doc.name)); return }
+    if (isSpaceRow(n)) { push(spaceBlock(n, doc.name)); return }
     if (n.type === 'FRAME' && n.children?.some(c => c.name === 'outer-box' && c.children?.some(x => x.name === 'inner-box'))) {
       const outer = n.children.find(c => c.name === 'outer-box'), inner = outer.children.find(c => c.name === 'inner-box')
       const [title = '', caption = ''] = n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim())
@@ -348,6 +368,8 @@ function extract(doc) {
         return
       }
       const fs_ = fontSize(n)
+      // ชื่อกลุ่มที่อยู่เหนือแถวสเกลระยะห่างเป็นหัวข้อย่อย ไม่ใช่ย่อหน้า
+      if (n.parent?.children?.some(isSpaceRow)) { push({ type: 'h3', text: s }); return }
       // ข้อความเล็กกว่า 14 คือป้ายกำกับในภาพตัวอย่าง ไม่ใช่เนื้อหา ยกเว้นย่อหน้าท้ายบล็อกที่เป็นคำอธิบาย 14
       if (fs_ < 14 || /^#[0-9A-F]{6}$/i.test(s) || /^\d+$/.test(s)) return
       if (fs_ >= 24) push({ type: 'h', text: s })
@@ -396,6 +418,8 @@ const json = {
   ...(effectMismatch.length ? { effectMismatch } : {}),
   // มุมโค้งในไฟล์ออกแบบที่ไม่ตรงกับ token หรือผูกตัวแปรที่ไม่มีในโค้ด
   ...(radiusMismatch.length ? { radiusMismatch: [...new Set(radiusMismatch)] } : {}),
+  // ระยะห่างในไฟล์ออกแบบที่ไม่ตรงกับ token
+  ...(spaceMismatch.length ? { spaceMismatch: [...new Set(spaceMismatch)] } : {}),
   documents,
 }
 fs.mkdirSync(path.dirname(OUT), { recursive: true })
@@ -405,5 +429,6 @@ const rows = documents.reduce((s, d) => s + d.blocks.filter(b => b.type === 'col
 if (gridMismatch.length) console.log(`ค่า grid ไม่ตรงกับ token ${gridMismatch.length} จุด\n  ` + gridMismatch.join('\n  '))
 if (effectMismatch.length) console.log(`ค่าเอฟเฟคไม่ตรงกับ token ${effectMismatch.length} จุด\n  ` + effectMismatch.join('\n  '))
 if (radiusMismatch.length) { const u = [...new Set(radiusMismatch)]; console.log(`มุมโค้งไม่ตรงกับ token ${u.length} จุด\n  ` + u.join('\n  ')) }
+if (spaceMismatch.length) { const u = [...new Set(spaceMismatch)]; console.log(`ระยะห่างไม่ตรงกับ token ${u.length} จุด\n  ` + u.join('\n  ')) }
 if (stale.length) console.log(`ป้ายสีในไฟล์ออกแบบไม่ตรงกับตัวแปรจริง ${stale.length} แถว ดู staleLabels ใน ${path.relative(ROOT, OUT)}`)
 console.log(`เขียน ${path.relative(ROOT, OUT)} เอกสาร ${documents.length} ใบ แถวสี ${rows} ตาราง ${count('table')} แรมป์ ${count('ramp')} การ์ด ${count('card')} ตัวอย่างสไตล์ ${count('specimen')} ขั้นขนาด ${count('scale')} ตระกูลฟอนต์ ${count('fontFamily')} ภาพ grid ${count('grid')} แถวเอฟเฟค ${count('effects')} ภาพเอฟเฟค ${documents.reduce((a, d) => a + d.blocks.filter(b => b.type === 'effects').reduce((x, b) => x + b.items.length, 0), 0)}`)

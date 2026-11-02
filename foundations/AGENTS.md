@@ -2,7 +2,7 @@
 
 Open this file before editing anything in `foundations/`.
 
-This folder holds the Storybook pages of the Atoms (Identity) layer: one folder per Figma page (`Color/` for 01 Color, `Typography/` for 03 Typography, `Grid/` for 04 Grid, `Effect/` for 05 Effect, `Shape/` for 06 Shape, and so on).
+This folder holds the Storybook pages of the Atoms (Identity) layer: one folder per Figma page (`Color/` for 01 Color, `Typography/` for 03 Typography, `Grid/` for 04 Grid, `Effect/` for 05 Effect, `Shape/` for 06 Shape, `Space/` for 07 Space, and so on).
 They are documentation pages, not components. No project imports them. Every page draws its documents with `shared/AtomDoc.tsx`.
 
 ## Rules
@@ -18,3 +18,4 @@ They are documentation pages, not components. No project imports them. Every pag
 - Labels such as `brand-600` are read from the real variables, not from the text typed in the Figma tables. When they differ, the script lists the row in `staleLabels`, which is pending work on that Figma page
 - Effect samples (05 Effect) bind the real shadow, blur and focus ring tokens. The focus ring is drawn around the sample box, not around a button, because `Button` has no warning or success family (decided by the user 2026-11-02). The script compares each effect in the design file with its token and lists differences in `effectMismatch`, which is pending work on that Figma page
 - Radius samples (06 Shape) bind the real component radius tokens on all four corners, read from the variables bound in the design file, not from the labels typed there. The script compares each corner's value with its token and lists differences, and variables that don't exist in the code, in `radiusMismatch`, which is pending work on that Figma page. A sample whose variable doesn't exist in the code is drawn square with a warning under it
+- Space rows (07 Space) take their name from the design file and their width from the real `--ntg-size-space-*` token, so a bar is always as long as its token. The script compares the typed px and the bar width in the design file with the token and lists differences in `spaceMismatch`, which is pending work on that Figma page

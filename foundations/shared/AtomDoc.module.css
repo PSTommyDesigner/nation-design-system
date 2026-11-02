@@ -160,3 +160,10 @@
 /* ภาพหลักการกล่องซ้อน ระยะขอบ 8 ตามสูตรของหน้า ความสูงกล่องในใกล้เคียง 180 ในไฟล์ออกแบบ */
 .nestedOuter { box-sizing: border-box; width: 100%; padding: var(--ntg-size-space-s1-lg); }
 .nestedInner { height: calc(var(--ntg-size-space-s5-xl) + var(--ntg-size-space-s3-sm)); }
+
+.spaceList { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-lg); }
+.spaceRow { display: flex; align-items: center; gap: var(--ntg-size-space-s2-sm); }
+.spaceName { width: calc(var(--ntg-size-space-s5-xs) * 2); color: var(--ntg-color-text-general-label); }
+.spaceValue { min-width: var(--ntg-size-space-s4-xs); color: var(--ntg-color-text-general-text); }
+.spaceTrack { display: block; width: var(--ntg-size-space-s5-xl); height: var(--ntg-size-space-s2-lg); }
+.spaceBar { display: block; height: 100%; }

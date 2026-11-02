@@ -22,6 +22,7 @@ import styles from './AtomDoc.module.css'
  */
 
 type ColorRow = { no: string; name: string; level: string; light: string; dark: string; description: string; cssVar: string; darkVar: string }
+type SpaceItem = { name: string; cssVar: string; value: string; usage: string; fill: string | null }
 type Block =
   | { type: 'h'; text: string; sub?: string }
   | { type: 'h3' | 'p'; text: string }
@@ -36,6 +37,7 @@ type Block =
   | { type: 'fontFamily'; sample: string; family: string; title: string; usage: string; weights: { label: string; weight: string }[] }
   | { type: 'radii'; items: RadiusItem[] }
   | { type: 'nestedPair'; items: NestedItem[] }
+  | { type: 'spaces'; items: SpaceItem[] }
   | { type: 'grid'; name: string; canvas: number; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
 type RadiusItem = { step: string; label: string; meta: string; corners: (string | null)[]; figma: number[]; fill: string | null; stroke: string | null }
 type NestedItem = { kind: 'do' | 'dont'; title: string; caption: string; outer: number; inner: number; outerFill: string | null; innerFill: string | null }
@@ -280,6 +282,21 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       return <EffectRow items={block.items} />
     case 'radii':
       return <div className={styles.radiusRow}>{block.items.map((it, i) => <RadiusSample key={i} item={it} />)}</div>
+    case 'spaces':
+      return (
+        <div className={styles.spaceList}>
+          {block.items.map(it => (
+            <div key={it.name} className={styles.spaceRow}>
+              <span className={`ntg-typography-label-md ${styles.spaceName}`}>{it.name}</span>
+              <span className={`ntg-typography-label-md ${styles.spaceValue}`}>{it.value}</span>
+              <span className={styles.spaceTrack}>
+                {it.fill && <span className={styles.spaceBar} style={{ width: `var(${it.cssVar})`, background: `var(${it.fill})` }} />}
+              </span>
+              {it.usage && <span className={`ntg-typography-label-md ${styles.spaceValue}`}>{clean(it.usage)}</span>}
+            </div>
+          ))}
+        </div>
+      )
     case 'nestedPair':
       return (
         <DoDont>

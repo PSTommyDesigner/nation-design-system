@@ -1,0 +1,1217 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 07 Space ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- space",
+  "page": "07 Space",
+  "documents": [
+    {
+      "id": "10182:88",
+      "name": "07 Space Documentation",
+      "title": "07 Space Documentation",
+      "subtitle": "สเกลระยะห่างกลาง 5 กลุ่ม กลุ่มละ 5 ขนาด รวม 26 ค่า สำหรับจัดเนื้อหาในหน้าและใน section",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "หน้านี้คืออะไร และไม่ครอบคลุมอะไร"
+        },
+        {
+          "type": "p",
+          "text": "หน้า 07 Space เก็บสเกลระยะห่างกลางที่ใช้จัดเนื้อหาในหน้า ทั้ง gap ของกลุ่มการ์ด padding ของ section และ gap ระหว่าง section"
+        },
+        {
+          "type": "p",
+          "text": "สิ่งที่หน้านี้ไม่ครอบคลุมคือระยะห่างภายในชิ้นงานสำเร็จรูป เช่น padding และ gap ของปุ่ม แท็ก การ์ด และช่องกรอก ของพวกนั้นเป็นกายวิภาคของชิ้นงานเอง แต่ละ component มีชุดของตัวเองที่คำนวณจากสูตร และมีเอกสาร Spec อยู่ที่หน้าของ component นั้น"
+        },
+        {
+          "type": "p",
+          "text": "สเกลแบ่งเป็น 5 กลุ่มตามระดับของงาน กลุ่มละ 5 ขนาด รวม 25 ค่า บวกค่า none อีกหนึ่งเป็น 26 ค่า"
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "ระบบระยะห่างประกอบจากสามชั้น"
+        },
+        {
+          "type": "p",
+          "text": "ชั้น 1 สเกลกลาง 26 ค่า นิยามที่ tokens/scale/global-scale.config.mjs ชื่อ SPACE_GROUPS และเป็นตัวแปรใน Figma collection component ชื่อ size/space"
+        },
+        {
+          "type": "p",
+          "text": "ชั้น 2 สูตรของแต่ละ component นิยามที่ tokens/scale ของ component นั้น ชั้นนี้ไม่เป็นตัวแปร เป็นเพียงวิธีคำนวณ"
+        },
+        {
+          "type": "p",
+          "text": "ชั้น 3 ค่าที่ใช้จริงของ component เช่น button/padding/left/md ชั้นนี้เป็นตัวแปรใน Figma และเป็นตัวที่ใช้ตอนตั้งระยะภายในชิ้นงาน"
+        },
+        {
+          "type": "p",
+          "text": "ทั้งชั้น 1 และชั้น 2 ใช้สูตรเดียวกันคือ base บวก ลำดับ คูณ step ต่างกันตรงที่ชั้น 1 คุมจังหวะของหน้า ส่วนชั้น 2 คุมกายวิภาคของชิ้นงาน"
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s1 ระยะชิดภายในกลุ่มเนื้อหา (base 2 step 2)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s1/xs",
+              "cssVar": "--ntg-size-space-s1-xs",
+              "value": "2px",
+              "usage": "สองบรรทัดที่เป็นเรื่องเดียวกัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/sm",
+              "cssVar": "--ntg-size-space-s1-sm",
+              "value": "4px",
+              "usage": "ป้ายกำกับกับค่าที่มันอธิบาย",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/md",
+              "cssVar": "--ntg-size-space-s1-md",
+              "value": "6px",
+              "usage": "กลุ่มเมตา เช่นผู้เขียนกับเวลา",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/lg",
+              "cssVar": "--ntg-size-space-s1-lg",
+              "value": "8px",
+              "usage": "หัวข้อกับคำโปรย ใช้ร่วมกันทั้ง 21 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/xl",
+              "cssVar": "--ntg-size-space-s1-xl",
+              "value": "10px",
+              "usage": "ระยะชิดที่ต้องการช่องไฟมากขึ้น",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "ไม่มี variant เพราะระยะห่างเป็นค่า ไม่ใช่ component"
+        },
+        {
+          "type": "p",
+          "text": "section นี้ไม่มีภาพประกอบ เพราะหน้านี้ไม่มี component ของตัวเองสักตัว ระยะห่างเป็นค่าที่ของอื่นหยิบไปใช้ ไม่ใช่ของที่วางบนหน้าจอได้เอง สิ่งที่ทำหน้าที่แทน variant คือกลุ่ม 5 กลุ่มตั้งแต่ s1 ถึง s5 ซึ่งแบ่งตามระดับของงานที่กำลังจัด ไม่ใช่แบ่งตามหน้าตา รายละเอียดของแต่ละกลุ่มอยู่ใน section Sizes และมีแถบเทียบความยาวจริงที่เอกสาร Space Scale บนหน้านี้"
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s1 ระยะชิดภายในกลุ่มเนื้อหา (base 2 step 2)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s1/xs",
+              "cssVar": "--ntg-size-space-s1-xs",
+              "value": "2px",
+              "usage": "สองบรรทัดที่เป็นเรื่องเดียวกัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/sm",
+              "cssVar": "--ntg-size-space-s1-sm",
+              "value": "4px",
+              "usage": "ป้ายกำกับกับค่าที่มันอธิบาย",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/md",
+              "cssVar": "--ntg-size-space-s1-md",
+              "value": "6px",
+              "usage": "กลุ่มเมตา เช่นผู้เขียนกับเวลา",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/lg",
+              "cssVar": "--ntg-size-space-s1-lg",
+              "value": "8px",
+              "usage": "หัวข้อกับคำโปรย ใช้ร่วมกันทั้ง 21 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/xl",
+              "cssVar": "--ntg-size-space-s1-xl",
+              "value": "10px",
+              "usage": "ระยะชิดที่ต้องการช่องไฟมากขึ้น",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s2 ระยะระหว่างชิ้นในกลุ่ม (base 12 step 4)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s2/xs",
+              "cssVar": "--ntg-size-space-s2-xs",
+              "value": "12px",
+              "usage": "ระยะระหว่างชิ้นย่อยในกล่องเดียวกัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/sm",
+              "cssVar": "--ntg-size-space-s2-sm",
+              "value": "16px",
+              "usage": "padding ของกล่องเนื้อหา ใช้ใน 19 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/md",
+              "cssVar": "--ntg-size-space-s2-md",
+              "value": "20px",
+              "usage": "กล่องที่ต้องการพื้นที่หายใจมากขึ้น",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/lg",
+              "cssVar": "--ntg-size-space-s2-lg",
+              "value": "24px",
+              "usage": "gap ระหว่างกลุ่มการ์ด ใช้ใน 16 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/xl",
+              "cssVar": "--ntg-size-space-s2-xl",
+              "value": "28px",
+              "usage": "ใช้อยู่หน้าเดียวในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s3 ระยะระดับ section (base 32 step 8)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s3/xs",
+              "cssVar": "--ntg-size-space-s3-xs",
+              "value": "32px",
+              "usage": "ช่องไฟระหว่างบล็อกเนื้อหา",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/sm",
+              "cssVar": "--ntg-size-space-s3-sm",
+              "value": "40px",
+              "usage": "กรอบในของ section เอกสาร",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/md",
+              "cssVar": "--ntg-size-space-s3-md",
+              "value": "48px",
+              "usage": "gap ระหว่าง section ย่อย",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/lg",
+              "cssVar": "--ntg-size-space-s3-lg",
+              "value": "56px",
+              "usage": "ใช้อยู่หน้าเดียวในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/xl",
+              "cssVar": "--ntg-size-space-s3-xl",
+              "value": "64px",
+              "usage": "gap ระหว่าง section ใหญ่",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "ระยะห่างที่ใหญ่กว่าต้องคั่นของที่เป็นก้อนใหญ่กว่า"
+        },
+        {
+          "type": "p",
+          "text": "นี่คือกติกาที่สำคัญที่สุดของหน้านี้ ระยะห่างบอกว่าอะไรเป็นพวกเดียวกัน ของที่อยู่ใกล้กันจะถูกอ่านว่าเป็นก้อนเดียวกัน ลำดับที่ระบบใช้คือ s1 คั่นของภายในก้อนเดียวกัน เช่นหัวข้อกับคำโปรย s2 คั่นชิ้นในกลุ่มเดียวกัน เช่นการ์ดในกริด s3 คั่นบล็อกเนื้อหาระดับ section s4 คั่นระดับหน้า และ s5 สำหรับหน้าที่ต้องการพื้นที่ว่างมากเป็นพิเศษ ถ้าใช้ระยะสลับลำดับ เช่นเว้นระหว่างหัวข้อกับคำโปรยมากกว่าระหว่างการ์ด ผู้ใช้จะอ่านการจัดกลุ่มผิดทันที"
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "สเกล 26 ค่า 5 กลุ่ม พร้อม base และ step"
+        },
+        {
+          "type": "p",
+          "text": "กลุ่ม s1 base 2 step 2 ได้ 2 4 6 8 10"
+        },
+        {
+          "type": "p",
+          "text": "กลุ่ม s2 base 12 step 4 ได้ 12 16 20 24 28"
+        },
+        {
+          "type": "p",
+          "text": "กลุ่ม s3 base 32 step 8 ได้ 32 40 48 56 64"
+        },
+        {
+          "type": "p",
+          "text": "กลุ่ม s4 base 72 step 8 ได้ 72 80 88 96 104"
+        },
+        {
+          "type": "p",
+          "text": "กลุ่ม s5 base 112 step 8 ได้ 112 120 128 136 144"
+        },
+        {
+          "type": "p",
+          "text": "ชื่อตัวแปรเป็น size/space/<กลุ่ม>/<ขนาด> เช่น size/space/s2/xs เท่ากับ 12 พิกเซล และมี size/space/none สำหรับค่า 0"
+        },
+        {
+          "type": "p",
+          "text": "ดูแถบเทียบความยาวจริงของทุกค่าได้ที่เอกสาร Space Scale"
+        },
+        {
+          "type": "h3",
+          "text": "ไม่มีระยะห่าง"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/none",
+              "cssVar": "--ntg-size-space-none",
+              "value": "0px",
+              "usage": "ชิดกันสนิท ไม่มีระยะห่าง",
+              "fill": null
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s1 ระยะชิดภายในกลุ่มเนื้อหา (base 2 step 2)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s1/xs",
+              "cssVar": "--ntg-size-space-s1-xs",
+              "value": "2px",
+              "usage": "สองบรรทัดที่เป็นเรื่องเดียวกัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/sm",
+              "cssVar": "--ntg-size-space-s1-sm",
+              "value": "4px",
+              "usage": "ป้ายกำกับกับค่าที่มันอธิบาย",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/md",
+              "cssVar": "--ntg-size-space-s1-md",
+              "value": "6px",
+              "usage": "กลุ่มเมตา เช่นผู้เขียนกับเวลา",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/lg",
+              "cssVar": "--ntg-size-space-s1-lg",
+              "value": "8px",
+              "usage": "หัวข้อกับคำโปรย ใช้ร่วมกันทั้ง 21 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/xl",
+              "cssVar": "--ntg-size-space-s1-xl",
+              "value": "10px",
+              "usage": "ระยะชิดที่ต้องการช่องไฟมากขึ้น",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s2 ระยะระหว่างชิ้นในกลุ่ม (base 12 step 4)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s2/xs",
+              "cssVar": "--ntg-size-space-s2-xs",
+              "value": "12px",
+              "usage": "ระยะระหว่างชิ้นย่อยในกล่องเดียวกัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/sm",
+              "cssVar": "--ntg-size-space-s2-sm",
+              "value": "16px",
+              "usage": "padding ของกล่องเนื้อหา ใช้ใน 19 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/md",
+              "cssVar": "--ntg-size-space-s2-md",
+              "value": "20px",
+              "usage": "กล่องที่ต้องการพื้นที่หายใจมากขึ้น",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/lg",
+              "cssVar": "--ntg-size-space-s2-lg",
+              "value": "24px",
+              "usage": "gap ระหว่างกลุ่มการ์ด ใช้ใน 16 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/xl",
+              "cssVar": "--ntg-size-space-s2-xl",
+              "value": "28px",
+              "usage": "ใช้อยู่หน้าเดียวในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s3 ระยะระดับ section (base 32 step 8)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s3/xs",
+              "cssVar": "--ntg-size-space-s3-xs",
+              "value": "32px",
+              "usage": "ช่องไฟระหว่างบล็อกเนื้อหา",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/sm",
+              "cssVar": "--ntg-size-space-s3-sm",
+              "value": "40px",
+              "usage": "กรอบในของ section เอกสาร",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/md",
+              "cssVar": "--ntg-size-space-s3-md",
+              "value": "48px",
+              "usage": "gap ระหว่าง section ย่อย",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/lg",
+              "cssVar": "--ntg-size-space-s3-lg",
+              "value": "56px",
+              "usage": "ใช้อยู่หน้าเดียวในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/xl",
+              "cssVar": "--ntg-size-space-s3-xl",
+              "value": "64px",
+              "usage": "gap ระหว่าง section ใหญ่",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s4 ระยะระดับหน้า (base 72 step 8)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s4/xs",
+              "cssVar": "--ntg-size-space-s4-xs",
+              "value": "72px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s4/sm",
+              "cssVar": "--ntg-size-space-s4-sm",
+              "value": "80px",
+              "usage": "กรอบนอกของ section เอกสาร ใช้ใน 6 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s4/md",
+              "cssVar": "--ntg-size-space-s4-md",
+              "value": "88px",
+              "usage": "ใช้อยู่ 2 หน้าในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s4/lg",
+              "cssVar": "--ntg-size-space-s4-lg",
+              "value": "96px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s4/xl",
+              "cssVar": "--ntg-size-space-s4-xl",
+              "value": "104px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s5 ระยะเปิดหน้าขนาดใหญ่ (base 112 step 8)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s5/xs",
+              "cssVar": "--ntg-size-space-s5-xs",
+              "value": "112px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s5/sm",
+              "cssVar": "--ntg-size-space-s5-sm",
+              "value": "120px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s5/md",
+              "cssVar": "--ntg-size-space-s5-md",
+              "value": "128px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s5/lg",
+              "cssVar": "--ntg-size-space-s5-lg",
+              "value": "136px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s5/xl",
+              "cssVar": "--ntg-size-space-s5-xl",
+              "value": "144px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "ระยะห่างไม่เปลี่ยนตามสถานะ"
+        },
+        {
+          "type": "p",
+          "text": "section นี้ไม่มีภาพประกอบ เพราะระยะห่างของชิ้นงานหนึ่งชิ้นเป็นค่าคงที่ ไม่เปลี่ยนตอน hover โฟกัส หรือปิดใช้งาน สิ่งที่เปลี่ยนตามสถานะคือสีและเงา ไม่ใช่ระยะ ถ้าระยะขยับตอนโต้ตอบ ของรอบข้างจะเลื่อนตามและผู้ใช้จะกดพลาด"
+        },
+        {
+          "type": "h",
+          "text": "Usage Do and Don’t",
+          "sub": "กฎการเลือก และสิ่งที่ห้ามทำ"
+        },
+        {
+          "type": "p",
+          "text": "เลือกกลุ่มตามระดับของงานก่อน แล้วค่อยเลือกขนาดในกลุ่ม"
+        },
+        {
+          "type": "p",
+          "text": "s1 ระยะชิดภายในกลุ่มเนื้อหา s2 ระยะระหว่างชิ้นในกลุ่ม s3 ระยะระดับ section s4 ระยะระดับหน้า s5 ระยะเปิดหน้าขนาดใหญ่"
+        },
+        {
+          "type": "p",
+          "text": "ห้ามพิมพ์ตัวเลขระยะห่างเอง ห้ามใช้ค่าที่ไม่มีในสเกล ห้ามเอาสเกลกลางไปใช้เป็นระยะภายใน component และการเพิ่มค่าใหม่ต้องขออนุมัติก่อน"
+        },
+        {
+          "type": "p",
+          "text": "รายละเอียดพร้อมเหตุผลอยู่ที่เอกสาร Space Usage"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "Do",
+          "body": "• เลือกกลุ่มก่อน แล้วค่อยเลือกขนาดในกลุ่ม\n• ใช้สเกลนี้กับการจัดเนื้อหาในหน้า\n• ผูกตัวแปรทุกครั้งที่ตั้งระยะห่าง"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "Don’t",
+          "body": "• เอาสเกลนี้ไปใช้เป็นระยะห่างภายในชิ้นงานสำเร็จรูป เพราะแต่ละชิ้นมีชุดของตัวเอง\n• พิมพ์ตัวเลขระยะห่างลงไปตรง ๆ\n• ตั้งค่าใหม่นอกสเกล ต้องขออนุมัติก่อน"
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "ระยะห่างมีผลกับการอ่านและการกด"
+        },
+        {
+          "type": "p",
+          "text": "ระยะห่างที่แน่นเกินทำให้คนสายตาไม่ดีหรือคนที่มีปัญหาการอ่านแยกไม่ออกว่าอะไรเป็นก้อนเดียวกัน และของที่กดได้ซึ่งวางชิดกันเกินไปทำให้กดพลาด เกณฑ์ที่ระบบถือคือของที่กดได้สองชิ้นต้องห่างกันพอที่นิ้วจะไม่โดนทั้งคู่ ในทางปฏิบัติคือใช้ s1 ขั้นบนหรือ s2 ขึ้นไปคั่นของที่กดได้ ห้ามใช้ระยะ 0 คั่นปุ่มสองปุ่มที่ทำคนละหน้าที่ และเมื่อผู้ใช้ขยายขนาดตัวอักษรของระบบ ระยะห่างต้องไม่ทำให้เนื้อหาทับกัน จึงห้ามตรึงความสูงของกล่องที่มีข้อความอยู่ข้างใน"
+        },
+        {
+          "type": "h",
+          "text": "Design Tokens",
+          "sub": "ชื่อใน Figma และชื่อในโค้ด"
+        },
+        {
+          "type": "p",
+          "text": "ตัวแปรใน Figma อยู่ใน collection component ชื่อขึ้นต้นด้วย size/space รวม 26 ตัว"
+        },
+        {
+          "type": "p",
+          "text": "ฝั่งโค้ดเป็น CSS variable ชื่อขึ้นต้นด้วย --ntg-size-space อยู่ในไฟล์ tokens/output/css/variables.css"
+        },
+        {
+          "type": "p",
+          "text": "ต้นทางของค่าคือโค้ด แก้ที่ tokens/scale แล้วรัน npm run tokens:build จากนั้นอัปเดตตัวแปรใน Figma ให้ตรงกัน ตารางจับคู่เต็มอยู่ที่เอกสาร Space Token Document"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "base และ step ของทั้ง 5 กลุ่ม"
+        },
+        {
+          "type": "p",
+          "text": "ทุกกลุ่มใช้สูตรเดียวกันคือ ค่า เท่ากับ base บวก ลำดับ คูณ step โดยลำดับนับ xs เป็น 0 ไปจนถึง xl เป็น 4\ns1 base 2 step 2 ได้ 2, 4, 6, 8, 10\ns2 base 12 step 4 ได้ 12, 16, 20, 24, 28\ns3 base 32 step 8 ได้ 32, 40, 48, 56, 64\ns4 base 72 step 8 ได้ 72, 80, 88, 96, 104\ns5 base 112 step 8 ได้ 112, 120, 128, 136, 144\nบวกค่า none เท่ากับ 0 อีกหนึ่งค่า รวมเป็น 26 ค่า สูตรอยู่ที่ tokens/scale/global-scale.config.mjs ชื่อ SPACE_GROUPS และตารางค่าเต็มอยู่ที่เอกสาร Space Token Document"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้อง"
+        },
+        {
+          "type": "p",
+          "text": "06 Shape เก็บสเกลมุมโค้งกลางของทั้งระบบ หน้านี้ไม่เก็บมุมโค้งซ้ำ ให้ไปดูที่นั่น"
+        },
+        {
+          "type": "p",
+          "text": "04 Grid ร่องกริดและขอบหน้าจอใช้ฐาน 8 เดียวกับสเกลนี้"
+        },
+        {
+          "type": "p",
+          "text": "12 Buttons ตัวอย่างชิ้นงานที่มีชุดระยะห่างของตัวเองครบแล้ว"
+        },
+        {
+          "type": "p",
+          "text": "ระยะห่างของแต่ละ component ดูที่เอกสาร Space ในหน้าของ component นั้น เช่น Buttons Space ในหน้า 12 Buttons ส่วนเอกสารประกอบฝั่งโค้ดอยู่ที่ docs/07-space.md"
+        }
+      ]
+    },
+    {
+      "id": "10182:180",
+      "name": "Space Token Document",
+      "title": "Space Token Document",
+      "subtitle": "พจนานุกรมกลางของระยะห่าง 26 ค่า จับคู่ชื่อใน Figma กับชื่อในโค้ด",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อตัวแปรระยะห่างที่ทีมออกแบบเห็นใน Figma กับชื่อที่ทีมพัฒนาเรียกในโค้ด พร้อมค่าจริงและตัวอย่างการใช้\nครอบคลุมเฉพาะสเกลกลางสำหรับจัดหน้า ไม่รวมระยะห่างภายใน component ซึ่งมีตัวแปรของตัวเองแยกต่างหาก"
+        },
+        {
+          "type": "p",
+          "text": "ระยะห่างของระบบมีสามชั้น ชั้นแรกคือสเกลกลาง 26 ค่า แบ่งเป็น 5 กลุ่ม กลุ่มละ 5 ขนาด นิยามในโค้ดที่ tokens/scale/global-scale.config.mjs และเป็นตัวแปรใน Figma ให้ผูกได้จริง ชั้นที่สองคือสูตรของแต่ละ component ที่คำนวณในโค้ด ไม่เป็นตัวแปร ชั้นที่สามคือค่าที่ใช้จริงของ component ซึ่งเป็นตัวแปรอีกชั้นหนึ่ง"
+        },
+        {
+          "type": "p",
+          "text": "ต้นทางของค่าคือโค้ด ไม่ใช่ Figma แก้ค่าที่ tokens/scale แล้วรัน npm run tokens:build จากนั้นจึงอัปเดตตัวแปรใน Figma ให้ตรงกัน ห้ามแก้ค่าที่ Figma ฝ่ายเดียวเพราะรอบถัดไปที่ build ค่าจะถูกเขียนทับ"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อตัวแปรที่เห็นในแผง Figma อยู่ใน collection component หมวด size/space ผูกกับช่อง padding และ gap ของ auto layout ได้โดยตรง"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อ CSS variable ในไฟล์ tokens/output/css/variables.css เรียกใช้ผ่าน var() ห้ามคัดลอกตัวเลขไปเขียนตรง ๆ"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token ระยะห่าง 26 ค่า"
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "size/space/none",
+              "--ntg-size-space-none",
+              "0px",
+              "ชิดกันสนิท ไม่มีระยะห่าง"
+            ],
+            [
+              "size/space/s1/xs",
+              "--ntg-size-space-s1-xs",
+              "2px",
+              "สองบรรทัดที่เป็นเรื่องเดียวกัน"
+            ],
+            [
+              "size/space/s1/sm",
+              "--ntg-size-space-s1-sm",
+              "4px",
+              "ป้ายกำกับกับค่าที่มันอธิบาย"
+            ],
+            [
+              "size/space/s1/md",
+              "--ntg-size-space-s1-md",
+              "6px",
+              "กลุ่มเมตา เช่นผู้เขียนกับเวลา"
+            ],
+            [
+              "size/space/s1/lg",
+              "--ntg-size-space-s1-lg",
+              "8px",
+              "หัวข้อกับคำโปรย ใช้ร่วมกันทั้ง 21 หน้า"
+            ],
+            [
+              "size/space/s1/xl",
+              "--ntg-size-space-s1-xl",
+              "10px",
+              "ระยะชิดที่ต้องการช่องไฟมากขึ้น"
+            ],
+            [
+              "size/space/s2/xs",
+              "--ntg-size-space-s2-xs",
+              "12px",
+              "ระยะระหว่างชิ้นย่อยในกล่องเดียวกัน"
+            ],
+            [
+              "size/space/s2/sm",
+              "--ntg-size-space-s2-sm",
+              "16px",
+              "padding ของกล่องเนื้อหา ใช้ใน 19 หน้า"
+            ],
+            [
+              "size/space/s2/md",
+              "--ntg-size-space-s2-md",
+              "20px",
+              "กล่องที่ต้องการพื้นที่หายใจมากขึ้น"
+            ],
+            [
+              "size/space/s2/lg",
+              "--ntg-size-space-s2-lg",
+              "24px",
+              "gap ระหว่างกลุ่มการ์ด ใช้ใน 16 หน้า"
+            ],
+            [
+              "size/space/s2/xl",
+              "--ntg-size-space-s2-xl",
+              "28px",
+              "ใช้อยู่หน้าเดียวในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s3/xs",
+              "--ntg-size-space-s3-xs",
+              "32px",
+              "ช่องไฟระหว่างบล็อกเนื้อหา"
+            ],
+            [
+              "size/space/s3/sm",
+              "--ntg-size-space-s3-sm",
+              "40px",
+              "กรอบในของ section เอกสาร"
+            ],
+            [
+              "size/space/s3/md",
+              "--ntg-size-space-s3-md",
+              "48px",
+              "gap ระหว่าง section ย่อย"
+            ],
+            [
+              "size/space/s3/lg",
+              "--ntg-size-space-s3-lg",
+              "56px",
+              "ใช้อยู่หน้าเดียวในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s3/xl",
+              "--ntg-size-space-s3-xl",
+              "64px",
+              "gap ระหว่าง section ใหญ่"
+            ],
+            [
+              "size/space/s4/xs",
+              "--ntg-size-space-s4-xs",
+              "72px",
+              "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s4/sm",
+              "--ntg-size-space-s4-sm",
+              "80px",
+              "กรอบนอกของ section เอกสาร ใช้ใน 6 หน้า"
+            ],
+            [
+              "size/space/s4/md",
+              "--ntg-size-space-s4-md",
+              "88px",
+              "ใช้อยู่ 2 หน้าในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s4/lg",
+              "--ntg-size-space-s4-lg",
+              "96px",
+              "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s4/xl",
+              "--ntg-size-space-s4-xl",
+              "104px",
+              "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s5/xs",
+              "--ntg-size-space-s5-xs",
+              "112px",
+              "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s5/sm",
+              "--ntg-size-space-s5-sm",
+              "120px",
+              "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s5/md",
+              "--ntg-size-space-s5-md",
+              "128px",
+              "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s5/lg",
+              "--ntg-size-space-s5-lg",
+              "136px",
+              "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+            ],
+            [
+              "size/space/s5/xl",
+              "--ntg-size-space-s5-xl",
+              "144px",
+              "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• ต้นทางของค่าอยู่ที่โค้ด แก้ที่ tokens/scale/global-scale.config.mjs แล้วรัน npm run tokens:build\n• หลัง build ต้องอัปเดตค่าตัวแปรใน Figma ให้ตรงกัน แล้วกด Publish library ไม่งั้นไฟล์อื่นยังเห็นค่าเดิม\n• ห้ามพิมพ์ค่าระยะห่างเองทั้งใน Figma และในโค้ด ให้อ้างชื่อตัวแปรเสมอ\n• การเพิ่มขั้นใหม่เข้าสเกลต้องขออนุมัติก่อน เพราะทุกขั้นที่เพิ่มคือทางเลือกที่คนต้องตัดสินใจเพิ่มขึ้นหนึ่งครั้ง"
+        }
+      ]
+    },
+    {
+      "id": "10182:156",
+      "name": "Space Scale",
+      "title": "Space Scale",
+      "subtitle": "สเกลระยะห่างกลาง 5 กลุ่ม กลุ่มละ 5 ขนาด รวม 26 ค่า สำหรับจัดเนื้อหาในหน้าและใน section",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สเกลระยะห่างกลาง 26 ค่า",
+          "sub": "แต่ละกลุ่มมี base และ step ของตัวเอง ค่าถัดไปคือ base บวก ลำดับ คูณ step เหมือนสูตรของ component\nระยะห่างภายในชิ้นงานสำเร็จรูปไม่ใช้สเกลนี้ แต่ละ component มีชุดของตัวเอง ดูที่หน้าของ component นั้น"
+        },
+        {
+          "type": "h3",
+          "text": "ไม่มีระยะห่าง"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/none",
+              "cssVar": "--ntg-size-space-none",
+              "value": "0px",
+              "usage": "ชิดกันสนิท ไม่มีระยะห่าง",
+              "fill": null
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s1 ระยะชิดภายในกลุ่มเนื้อหา (base 2 step 2)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s1/xs",
+              "cssVar": "--ntg-size-space-s1-xs",
+              "value": "2px",
+              "usage": "สองบรรทัดที่เป็นเรื่องเดียวกัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/sm",
+              "cssVar": "--ntg-size-space-s1-sm",
+              "value": "4px",
+              "usage": "ป้ายกำกับกับค่าที่มันอธิบาย",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/md",
+              "cssVar": "--ntg-size-space-s1-md",
+              "value": "6px",
+              "usage": "กลุ่มเมตา เช่นผู้เขียนกับเวลา",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/lg",
+              "cssVar": "--ntg-size-space-s1-lg",
+              "value": "8px",
+              "usage": "หัวข้อกับคำโปรย ใช้ร่วมกันทั้ง 21 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s1/xl",
+              "cssVar": "--ntg-size-space-s1-xl",
+              "value": "10px",
+              "usage": "ระยะชิดที่ต้องการช่องไฟมากขึ้น",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s2 ระยะระหว่างชิ้นในกลุ่ม (base 12 step 4)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s2/xs",
+              "cssVar": "--ntg-size-space-s2-xs",
+              "value": "12px",
+              "usage": "ระยะระหว่างชิ้นย่อยในกล่องเดียวกัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/sm",
+              "cssVar": "--ntg-size-space-s2-sm",
+              "value": "16px",
+              "usage": "padding ของกล่องเนื้อหา ใช้ใน 19 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/md",
+              "cssVar": "--ntg-size-space-s2-md",
+              "value": "20px",
+              "usage": "กล่องที่ต้องการพื้นที่หายใจมากขึ้น",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/lg",
+              "cssVar": "--ntg-size-space-s2-lg",
+              "value": "24px",
+              "usage": "gap ระหว่างกลุ่มการ์ด ใช้ใน 16 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s2/xl",
+              "cssVar": "--ntg-size-space-s2-xl",
+              "value": "28px",
+              "usage": "ใช้อยู่หน้าเดียวในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s3 ระยะระดับ section (base 32 step 8)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s3/xs",
+              "cssVar": "--ntg-size-space-s3-xs",
+              "value": "32px",
+              "usage": "ช่องไฟระหว่างบล็อกเนื้อหา",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/sm",
+              "cssVar": "--ntg-size-space-s3-sm",
+              "value": "40px",
+              "usage": "กรอบในของ section เอกสาร",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/md",
+              "cssVar": "--ntg-size-space-s3-md",
+              "value": "48px",
+              "usage": "gap ระหว่าง section ย่อย",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/lg",
+              "cssVar": "--ntg-size-space-s3-lg",
+              "value": "56px",
+              "usage": "ใช้อยู่หน้าเดียวในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s3/xl",
+              "cssVar": "--ntg-size-space-s3-xl",
+              "value": "64px",
+              "usage": "gap ระหว่าง section ใหญ่",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s4 ระยะระดับหน้า (base 72 step 8)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s4/xs",
+              "cssVar": "--ntg-size-space-s4-xs",
+              "value": "72px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s4/sm",
+              "cssVar": "--ntg-size-space-s4-sm",
+              "value": "80px",
+              "usage": "กรอบนอกของ section เอกสาร ใช้ใน 6 หน้า",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s4/md",
+              "cssVar": "--ntg-size-space-s4-md",
+              "value": "88px",
+              "usage": "ใช้อยู่ 2 หน้าในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s4/lg",
+              "cssVar": "--ntg-size-space-s4-lg",
+              "value": "96px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s4/xl",
+              "cssVar": "--ntg-size-space-s4-xl",
+              "value": "104px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "กลุ่ม s5 ระยะเปิดหน้าขนาดใหญ่ (base 112 step 8)"
+        },
+        {
+          "type": "spaces",
+          "items": [
+            {
+              "type": "space",
+              "name": "size/space/s5/xs",
+              "cssVar": "--ntg-size-space-s5-xs",
+              "value": "112px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s5/sm",
+              "cssVar": "--ntg-size-space-s5-sm",
+              "value": "120px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s5/md",
+              "cssVar": "--ntg-size-space-s5-md",
+              "value": "128px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s5/lg",
+              "cssVar": "--ntg-size-space-s5-lg",
+              "value": "136px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            },
+            {
+              "type": "space",
+              "name": "size/space/s5/xl",
+              "cssVar": "--ntg-size-space-s5-xl",
+              "value": "144px",
+              "usage": "ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน",
+              "fill": "--ntg-color-background-brand-solid"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "ระยะห่างภายใน component ไม่อยู่ในสเกลนี้ ปุ่มและชิ้นงานอื่นคำนวณจากสูตรของตัวเอง จึงมีค่าอย่าง 7 13 และ 14 ที่ไม่ตรงกับค่าใดในสเกลกลาง ดูค่าจริงของแต่ละชิ้นงานได้ที่เอกสาร Space ในหน้าของ component นั้น"
+        }
+      ]
+    },
+    {
+      "id": "10182:164",
+      "name": "Space Usage",
+      "title": "Space Usage",
+      "subtitle": "กฎการเลือกขั้นระยะห่างตอนจัดหน้า และสิ่งที่ห้ามทำ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ขอบเขตของสเกลนี้ และหน้าที่ของแต่ละกลุ่ม",
+          "sub": "สเกลนี้ใช้กับการจัดเนื้อหาในหน้าเท่านั้น ระยะห่างภายในชิ้นงานสำเร็จรูปเป็นของ component นั้นเอง\nแบ่งเป็น 5 กลุ่มตามระดับของงาน เลือกกลุ่มก่อนแล้วค่อยเลือกขนาดในกลุ่ม"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "กลุ่ม s1 ระยะชิด",
+          "body": "2 4 6 8 10 พิกเซล\nใช้กับระยะชิดภายในกลุ่มเนื้อหา เช่นหัวข้อกับคำโปรย ป้ายกำกับกับค่า ผู้เขียนกับเวลา"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "กลุ่ม s2 ระหว่างชิ้น",
+          "body": "12 16 20 24 28 พิกเซล\nใช้กับระยะระหว่างชิ้นในกลุ่ม เช่น gap ของกลุ่มการ์ด ระยะระหว่างการ์ดในกริด padding ของกล่องเนื้อหา"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "กลุ่ม s3 ระดับ section",
+          "body": "32 40 48 56 64 พิกเซล\nใช้กับ padding ของ section และ gap ระหว่างบล็อกเนื้อหา"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "กลุ่ม s4 ระดับหน้า",
+          "body": "72 80 88 96 104 พิกเซล\nใช้กับกรอบนอกของหน้าและช่องไฟระหว่าง section ใหญ่"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "กลุ่ม s5 เปิดหน้าใหญ่",
+          "body": "112 120 128 136 144 พิกเซล\nใช้กับหน้าที่ต้องการพื้นที่ว่างมากเป็นพิเศษ ยังไม่มีที่ไหนใช้ในไฟล์ปัจจุบัน"
+        },
+        {
+          "type": "h",
+          "text": "ทำแบบนี้ และห้ามทำแบบนี้",
+          "sub": "ระยะห่างใช้กติกาเดียวกับสี ถ้าพิมพ์ตัวเลขเองแปลว่าแก้ที่ค่ากลางแล้วไม่ขยับตาม และตรวจย้อนหลังไม่ได้ว่าใครใช้อะไร"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "ทำแบบนี้",
+          "body": "เลือกกลุ่มตามระดับของงานก่อน แล้วค่อยเลือกขนาดในกลุ่ม\nผูกตัวแปร size/space ทุกครั้งที่ตั้ง padding หรือ gap\nถ้ากำลังตั้งระยะภายในชิ้นงานสำเร็จรูป ให้ใช้ตัวแปรของ component นั้นแทน"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "ห้ามทำแบบนี้",
+          "body": "ห้ามพิมพ์ตัวเลขระยะห่างเอง ห้ามใช้ค่าที่ไม่มีในสเกล\nห้ามเอาสเกลกลางไปใช้เป็นระยะภายใน component\nห้ามเอาตัวแปรของ component หนึ่งไปใช้กับอีก component หนึ่ง"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "ยังไม่ทำในรอบนี้",
+          "body": "ยังไม่มีชั้นชื่อตามบทบาท เช่น space/section หรือ space/card-gap เพราะ Spectrum ทำแล้วต้องยกเลิกทั้งตระกูล และเราเคยถอยแบบเดียวกันมาแล้วกับมุมโค้ง\nถ้าภายหลังพบว่ามีของหลายชิ้นต้องเท่ากันจริง ค่อยเพิ่มทีละตัว"
+        }
+      ]
+    }
+  ]
+}
