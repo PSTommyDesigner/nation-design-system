@@ -63,12 +63,15 @@ source: "figma.root.children ผ่าน use_figma (get_metadata คืน page
 | 27 | Card | `7130:26` | 43 |
 | 28 | Dividers | `7130:30` | 3 |
 | 29 | Chart | `11793:2` | 0 |
+| 30 | Modal | `11804:2106` | 6 |
 
 ### Organisms (Component)
 
 **ไม่มีหน้า component แล้ว** (ตัดสิน 2026-10-12) เหลือหน้าหัวข้อที่มีเอกสาร 4 ใบ คือ `Organisms Documentation` `Organisms Inventory` `Organism Examples` (10 ตัวอย่างที่นับ) และ `Organism Exclusions` (10 ตัวอย่างที่ไม่นับ) เหตุผลและขอบเขตอยู่ที่ [docs/rules/layer-scope.md](rules/layer-scope.md)
 
 > **ยุบหน้า Lists (เลขเดิม 27 ยุบไปแล้ว) แล้ว** (2026-10-12) ความสามารถของแถว list item ยกเข้า `_dropdown-option` บนหน้า 25 ส่วนที่เหลือ 65 ชิ้นตัดทิ้ง เพราะไม่มีใครใช้ เหตุผลเต็มอยู่ที่ [docs/rules/layer-scope.md](rules/layer-scope.md) §5.1
+
+> **30 Modal** เพิ่ม 2026-10-28 เป็นที่อยู่ของชุด `modal` (11805:182, กล่องโต้ตอบ 6 แบบ) ต่อท้าย 29 Chart เลขหน้าอื่นไม่เลื่อน เอกสารครบ 5 ชนิดเมื่อ 2026-11-02 งานวิจัยอยู่ที่ [research/modal-component.md](research/modal-component.md)
 
 > **29 Chart** เพิ่ม 2026-10-28 เป็นที่อยู่ของชุด `bar-chart` (component ใหม่ ใช้ครั้งแรกในหน้า Dashboard ของ One CMS) ต่อท้าย 28 Dividers เลขหน้าอื่นไม่เลื่อน งานวิจัยอยู่ที่ [research/chart-component.md](research/chart-component.md)
 
