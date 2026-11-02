@@ -62,7 +62,7 @@ source: "figma.root.children ผ่าน use_figma (get_metadata คืน page
 | 26 | Table | `9377:29760` | 4 |
 | 27 | Card | `7130:26` | 43 |
 | 28 | Dividers | `7130:30` | 3 |
-| 29 | Chart | `11793:2` | 0 |
+| 29 | Chart | `11793:2` | 5 |
 
 ### Organisms (Component)
 
@@ -70,7 +70,7 @@ source: "figma.root.children ผ่าน use_figma (get_metadata คืน page
 
 > **ยุบหน้า Lists (เลขเดิม 27 ยุบไปแล้ว) แล้ว** (2026-10-12) ความสามารถของแถว list item ยกเข้า `_dropdown-option` บนหน้า 25 ส่วนที่เหลือ 65 ชิ้นตัดทิ้ง เพราะไม่มีใครใช้ เหตุผลเต็มอยู่ที่ [docs/rules/layer-scope.md](rules/layer-scope.md) §5.1
 
-> **29 Chart** เพิ่ม 2026-10-28 เป็นที่อยู่ของชุด `bar-chart` (component ใหม่ ใช้ครั้งแรกในหน้า Dashboard ของ One CMS) ต่อท้าย 28 Dividers เลขหน้าอื่นไม่เลื่อน งานวิจัยอยู่ที่ [research/chart-component.md](research/chart-component.md)
+> **29 Chart** เพิ่ม 2026-10-28 เป็นที่อยู่ของชุด `bar-chart` (component ใหม่ ใช้ครั้งแรกในหน้า Dashboard ของ One CMS) ต่อท้าย 28 Dividers เลขหน้าอื่นไม่เลื่อน งานวิจัยอยู่ที่ [research/chart-component.md](research/chart-component.md) และทำเอกสารครบ 5 ชนิดเมื่อ 2026-11-02 คือ 29 Chart Documentation, Chart Token, Chart Usage, Chart Component Previews และ Chart Space โดย component จริงทั้ง 4 ชิ้นอยู่ในใบ Component Previews
 
 > **26 Table** = component ตาราง เป็นที่อยู่ของชุดที่ลงท้ายด้วย `-table-cell` และ `-color-cell` (master ที่หน้า doc อื่นดึง instance ไปใช้) · เปลี่ยนชื่อจากรูปแบบเดิมที่มีขีดทับเมื่อ 2026-09-14
 
