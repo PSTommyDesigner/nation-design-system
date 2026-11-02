@@ -4010,8 +4010,13 @@ export const ChartColorSeries2 = "#bdd8ff"; // สีชุดข้อมูล
 export const ChartColorSeries2Border = "#1e58f2"; // ขอบ 1px ของแท่งและจุด legend ของชุดที่ 2 ให้ผ่าน WCAG 1.4.11 (3:1) ที่มา docs/research/chart-component.md
 export const ChartColorGrid = "#d0d5dd"; // เส้นกริดแนวนอนและเส้นฐานของกราฟ
 export const ChartColorAxisText = "#667085"; // ป้ายแกน x แกน y และชื่อแกนของกราฟ สีเดียวกับ text general caption
+export const ChartColorLine = "#dc6803"; // เส้นและขอบจุดของชุดข้อมูลแบบเส้น สีส้มให้แยกจากแท่งสีน้ำเงิน บนพื้นขาว contrast 3.49:1 โหมดมืด 10.25:1
+export const ChartColorPointFill = "#ffffff"; // พื้นของจุดบนเส้น สีเดียวกับพื้นหน้า จุดจึงเป็นวงกลมกลวงขอบสีเส้น
+export const ChartColorHover = "#f2f4f7"; // แถบพื้นหลังของหมวดที่ชี้หรือโฟกัสอยู่ (เช่นหนึ่งวัน) วางใต้แท่งและเส้น
 export const ChartRadiusTopLeft = "2px";
 export const ChartRadiusTopRight = "2px";
+export const ChartLineWidth = "2px"; // ความหนาเส้นของชุดข้อมูลแบบเส้น 2px คงที่ เพราะกราฟไม่มีหลายขนาด
+export const ChartPointSize = "8px"; // ความกว้างจุดบนเส้น 8px วงกลม พื้น chart/color/point-fill ขอบ chart/color/line ใหญ่กว่าเส้นอย่างน้อยเท่าตัวและไม่เกินความกว้างแท่ง 12
 export const ShadowsCenterXs = {
   color: "rgba(0, 0, 0, 0.05)",
   offsetX: "0px",

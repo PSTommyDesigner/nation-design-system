@@ -232,15 +232,15 @@
   border-radius: var(--ntg-card-radius-full);
 }
 
-/* สีของ 2 ชุดข้อมูล ใช้ token ของ BarChart ให้ตรงกับแท่งในกราฟ ชุดอ่อนมีขอบ 1px เพื่อผ่าน contrast 3:1 */
+/* สีของ 2 ชุดข้อมูล ใช้ token ของ BarChart ให้ตรงกับกราฟ ข่าวเป็นแท่งสีเข้ม การเข้าชมเป็นจุดกลวงขอบสีเส้น */
 .dotCreated {
   background: var(--ntg-chart-color-series-1);
 }
 
 .dotViews {
   box-sizing: border-box;
-  border: 1px solid var(--ntg-chart-color-series-2-border);
-  background: var(--ntg-chart-color-series-2);
+  border: var(--ntg-chart-line-width) solid var(--ntg-chart-color-line);
+  background: var(--ntg-chart-color-point-fill);
 }
 
 .statValue {

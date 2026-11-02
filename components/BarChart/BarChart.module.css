@@ -9,9 +9,17 @@
  * ที่มาของค่า ไฟล์ออกแบบหน้า 29 Chart (bar-chart 11797:2, _bar-chart-bar 11796:5)
  *   ระยะห่าง     --ntg-size-space-*  (16 ระหว่างคำอธิบายสีกับกราฟ, 8 ระหว่างแถวและคอลัมน์,
  *                48 คอลัมน์แกน y, 10 ขอบบนล่างของกริด, 12 ขอบซ้ายขวาของแถวแท่งและความกว้างแท่ง,
- *                4 ระหว่างแท่งในกลุ่ม)
+ *                4 ระหว่างแท่งในกลุ่มและเส้นสั้นของคำอธิบายสีแบบเส้น, 28 ความกว้างช่องของหนึ่งหมวด,
+ *                40 ความกว้างแถบ hover)
  *   สี          --ntg-chart-color-*  เท่านั้น
  *   มุมโค้งแท่ง   --ntg-chart-radius-top-left / top-right (มุมล่างเหลี่ยม)
+ *   เส้นและจุด    --ntg-chart-line-width (2) กับ --ntg-chart-point-size (8)
+ *   วงแหวนโฟกัส   effect style --ntg-focused-ring-brand ที่แถบ hover ของช่องที่โฟกัส
+ *
+ * ชั้นในพื้นที่กราฟ (ล่างขึ้นบน) กริด, ช่องรับตัวชี้และโฟกัสกับแถบ hover, แท่ง, เส้น, จุด
+ *   ทุกชั้นเหนือช่องตั้ง pointer-events: none ตัวชี้จึงทะลุลงไปถึงช่องเต็มความสูง
+ *   คำใบ้อยู่ในชั้นของช่องแต่ z-index ของ Tooltip (--ntg-layer-floating) สูงกว่าชั้นอื่น จึงอยู่บนสุด
+ *   .plot ตั้ง isolation ไว้ z-index 1 ถึง 3 ของชั้นข้างในจึงไม่รั่วออกไปชนของในหน้า
  *   ตัวอักษร     preset meta/caption ครบ 5 ค่า (--ntg-typography-*-caption) ห้ามประกอบเอง
  *                เขียนผ่านตัวแปรของ preset แทนคลาส .ntg-typography-meta-caption เหมือน component อื่นในโฟลเดอร์นี้
  *                เพราะไลบรารีไม่บังคับให้โปรเจกต์โหลด typography.css ค่าทั้งสองทางเท่ากัน
@@ -21,7 +29,8 @@
  *                (เหมือน --dv-stroke ของ Divider กับ --badge-border-w ของ Badge) ระบบยังไม่มี token ความหนาเส้นของกราฟ
  *   50%          ทำจุดคำอธิบายสีให้กลม เป็นสัดส่วน ไม่ใช่ขนาด
  *   --bc-plot-h  ความสูงพื้นที่กราฟ มาจาก prop height (ค่าผังของหน้า)
- *   --bc-group-max, --bc-series-count  มาจากการวัดและจากข้อมูล ตั้งใน BarChart.tsx
+ *   --bc-group-max, --bc-steps, --bc-anchor  มาจากการวัดและจากข้อมูล ตั้งใน BarChart.tsx
+ *   -1           กลับทิศระยะใน calc ไม่ใช่ขนาด
  */
 
 .root {
@@ -32,7 +41,9 @@
   --bc-bar-gap: var(--ntg-size-space-s1-sm);
   --bc-inset-y: var(--ntg-size-space-s1-xl);
   --bc-inset-x: var(--ntg-size-space-s2-xs);
-  --bc-group-w: calc(var(--bc-series-count) * var(--bc-bar-w) + (var(--bc-series-count) - 1) * var(--bc-bar-gap));
+  --bc-group-w: var(--ntg-size-space-s2-xl);
+  /* ความกว้างกลุ่มจริง หดตาม --bc-group-max เมื่อช่องแคบ */
+  --bc-gw: min(var(--bc-group-w), var(--bc-group-max, var(--bc-group-w)));
 
   position: relative;
   margin: 0;
@@ -64,7 +75,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--ntg-size-space-s2-sm);
 }
+/* กลุ่มแรก (แกนซ้าย) ยืดกินที่ว่าง กลุ่มแกนขวาจึงชิดขวาเหนือแกนขวา ปุ่มสลับตารางอยู่ท้ายแถวเสมอ แม้ไม่มีคำอธิบายสี */
+.legendGroup:first-child { flex: 1 1 auto; }
+.toggle { margin-inline-start: auto; }
 .legendGroup {
   display: flex;
   flex-wrap: wrap;
@@ -75,6 +90,26 @@
   display: inline-flex;
   align-items: center;
   gap: var(--ntg-size-space-s1-lg);
+}
+/* คำอธิบายสีของชุดเส้น เส้นสั้น จุด เส้นสั้น (4 + 8 + 4) */
+.lineSwatch {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+}
+.lineSwatchStroke {
+  width: var(--ntg-size-space-s1-sm);
+  height: var(--ntg-chart-line-width);
+  background-color: var(--ntg-chart-color-line);
+}
+.lineSwatchPoint,
+.point {
+  box-sizing: border-box;
+  width: var(--ntg-chart-point-size);
+  height: var(--ntg-chart-point-size);
+  border-radius: 50%;
+  background-color: var(--ntg-chart-color-point-fill);
+  border: var(--ntg-chart-line-width) solid var(--ntg-chart-color-line);
 }
 .dot {
   flex: none;
@@ -116,7 +151,10 @@
 
 .plot {
   position: relative;
+  isolation: isolate;
   height: var(--bc-plot-h);
+  /* ให้ชั้นของช่องคิดระยะห่างระหว่างหมวดจากความกว้างพื้นที่กราฟด้วยหน่วย cqw */
+  container-type: inline-size;
 }
 
 /* เส้นกริด 5 เส้น เว้นขอบบนล่างให้แต่ละเส้นอยู่กึ่งกลางป้ายแกน y */
@@ -136,7 +174,9 @@
 }
 
 /* แถวแท่ง ฐานแท่งชิดเส้นกริดล่างสุด แท่งเต็มสเกลสูงเท่าพื้นที่ลบขอบบนล่าง */
-.bars {
+.bars,
+.points,
+.slots {
   position: absolute;
   inset: 0;
   box-sizing: border-box;
@@ -144,14 +184,101 @@
   display: flex;
   justify-content: space-between;
 }
+.bars { z-index: 1; pointer-events: none; }
+.points { z-index: 3; pointer-events: none; }
+
+/* แท่งอยู่กลางช่อง 28 ชุดเดียวได้แท่ง 12 กลางช่อง สองชุดได้ 12 + 4 + 12 เต็มช่อง */
 .group {
   flex: none;
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   gap: var(--bc-bar-gap);
   height: 100%;
   width: var(--bc-group-w);
   max-width: var(--bc-group-max, none);
+}
+
+/* ── เส้น: SVG ไม่มี viewBox หน่วยเท่าพิกเซลจริง ความหนาไม่ถูกยืด ── */
+.line {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.line polyline {
+  fill: none;
+  stroke: var(--ntg-chart-color-line);
+  stroke-width: var(--ntg-chart-line-width);
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* ── จุด: กลางช่องที่ความสูงของค่า วางด้วย CSS ล้วน จึงออกมาตั้งแต่รอบเซิร์ฟเวอร์ ── */
+.pointGroup {
+  flex: none;
+  position: relative;
+  height: 100%;
+  width: var(--bc-group-w);
+  max-width: var(--bc-group-max, none);
+}
+.point {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+/*
+ * ── ช่องรับตัวชี้และโฟกัส ──
+ * กว้างเท่าระยะห่างระหว่างกลางหมวด (step) แต่ติดลบ margin ให้กล่องนอกกว้างเท่ากลุ่ม
+ * space-between จึงวางกลางช่องตรงกลางกลุ่มแท่งทุกหมวด
+ */
+.slots {
+  --bc-step: calc((100cqw - 2 * var(--bc-inset-x) - var(--bc-gw)) / var(--bc-steps));
+  align-items: stretch;
+}
+.slotCell {
+  flex: none;
+  position: relative;
+  width: var(--bc-step);
+  margin-inline: calc((var(--bc-gw) - var(--bc-step)) / 2);
+}
+/* กล่องครอบของ Tooltip สูงจากฐานถึงยอดที่สูงที่สุดของหมวด คำใบ้จึงโผล่เหนือยอดแท่งหรือจุด */
+.slotCell > .slotWrap {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--bc-anchor);
+}
+/* ตัวรับตัวชี้เต็มความสูงพื้นที่กราฟ ยื่นลงไปถึงขอบล่างและขึ้นไปถึงขอบบน */
+.slot {
+  position: absolute;
+  inset-inline: 0;
+  bottom: calc(-1 * var(--bc-inset-y));
+  height: var(--bc-plot-h);
+  outline: none;
+}
+/* แถบ hover กว้าง 40 กลางหมวด ไม่รับตัวชี้ จึงไม่แย่งช่องข้างเคียงเมื่อช่องแคบกว่า 40 */
+.slot::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: var(--ntg-size-space-s3-sm);
+  transform: translateX(-50%);
+  background-color: var(--ntg-chart-color-hover);
+  visibility: hidden;
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .slotWrap:hover > .slot::before { visibility: visible; }
+}
+.slot:focus-visible::before {
+  visibility: visible;
+  box-shadow: var(--ntg-focused-ring-brand);
 }
 
 /* ฐานเท่ากันทุกแท่ง (ไม่ใช่ 0) แท่งที่มีขอบจึงไม่กว้างกว่าแท่งทึบ และหดเท่ากันเมื่อกลุ่มแคบลง */

@@ -39,6 +39,7 @@
     "@storybook/react-vite": "^10.6.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "design-system-documentation-schema": "github:somerandomdude/design-system-documentation-schema",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "storybook": "^10.6.2",

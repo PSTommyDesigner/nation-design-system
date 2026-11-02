@@ -1,5 +1,5 @@
 /**
- * BarChart กราฟแท่งแนวตั้งแบบจัดกลุ่ม Nation Design System หน้า 29 Chart
+ * BarChart กราฟแท่งแนวตั้งแบบจัดกลุ่ม ผสมเส้นได้ Nation Design System หน้า 29 Chart
  */
 export {
   BarChart,
@@ -13,5 +13,6 @@ export {
   BAR_CHART_GROUP_RATIO,
   BAR_CHART_DEFAULT_HEIGHT,
   BAR_CHART_MAX_SERIES,
+  BAR_CHART_MAX_LINE_SERIES,
 } from './BarChart';
-export type { BarChartProps, BarChartSeries, BarChartAxis } from './BarChart';
+export type { BarChartProps, BarChartSeries, BarChartAxis, BarChartSeriesType } from './BarChart';
