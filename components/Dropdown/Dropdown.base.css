@@ -2,7 +2,7 @@
  * Dropdown ส่วนโครงที่เขียนมือ (Nation Design System)
  *
  * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --dd-* ซึ่ง
- * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/dropdown.json (spec ชั้นจากไฟล์ออกแบบหน้า 25)
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/dropdown.json (spec ชั้นจากไฟล์ออกแบบหน้า 27)
  * แล้วต่อท้ายไฟล์นี้เป็น Dropdown.module.css ห้ามแก้ Dropdown.module.css ตรง ๆ
  *
  * ⚠️ ข้อยกเว้นที่มีชื่อ token ในไฟล์นี้ (ไฟล์ออกแบบไม่มีชั้นให้ผูก)

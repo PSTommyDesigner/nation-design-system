@@ -5,7 +5,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ชื่อ story ใน sidebar ตรงกับชุดในไฟล์ออกแบบหน้า 13 (text-field, text-area) ส่วน tag-field ยังไม่มีโค้ด
 const meta: Meta<typeof TextField> = {
-  title: 'Components/TextField',
+  title: 'Molecules (Element)/13 Input/TextField',
   component: TextField,
   tags: ['autodocs'],
   args: { label: 'อีเมล', hint: 'ใช้สำหรับเข้าสู่ระบบ', placeholder: 'name@example.com', size: 'md' },

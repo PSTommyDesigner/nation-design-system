@@ -181,7 +181,7 @@
     ]
   },
   "divider": {
-    "page": "28 Dividers",
+    "page": "26 Dividers",
     "depth": 4,
     "reference": "Divider Component Previews",
     "families": [
@@ -277,7 +277,7 @@
     ]
   },
   "dropdown": {
-    "page": "25 Dropdowns",
+    "page": "27 Dropdowns",
     "depth": 5,
     "reference": "Dropdown Component Previews",
     "families": [
@@ -311,7 +311,7 @@
     ]
   },
   "card": {
-    "page": "27 Card",
+    "page": "25 Card",
     "depth": 5,
     "reference": "Card Component Previews",
     "families": [

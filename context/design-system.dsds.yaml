@@ -95,7 +95,7 @@ entries:
       status:
         status: deprecated
         deprecationNotice: >-
-          The Lists page was folded into page 25 Dropdowns on 2026-10-12. Leading icon, leading avatar, supporting text,
+          The Lists page was folded into page 27 Dropdowns on 2026-10-12. Leading icon, leading avatar, supporting text,
           multi-select checkbox, group header and panel divider moved into the dropdown option. The other list sets were removed.
         replacedBy:
           - to: dropdown

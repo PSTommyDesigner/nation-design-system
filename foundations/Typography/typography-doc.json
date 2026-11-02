@@ -1,0 +1,1107 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 03 Typography ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- typography",
+  "page": "03 Typography",
+  "documents": [
+    {
+      "id": "9594:10",
+      "name": "03 Typography Documentation",
+      "title": "03 Typography",
+      "subtitle": "ระบบตัวอักษรของ Nation ใช้ 2 ฟอนต์แบ่งตามงาน จัดเป็นชุดสไตล์พร้อมใช้ 48 แบบ เลือกตามบทบาท ไม่ต้องตั้งค่าเอง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "ระบบตัวอักษรของ Nation ใช้ 2 ฟอนต์แบ่งตามงาน แล้วรวมเป็นชุดสไตล์สำเร็จรูปให้หยิบใช้ตามบทบาท (เช่น พาดหัวข่าว / เนื้อข่าว) เลือกจากรายการที่มี ไม่ต้องตั้งค่าเอง เพื่อให้ทุกหน้าหน้าตาเป็นระเบียบเหมือนกัน"
+        },
+        {
+          "type": "p",
+          "text": "• Prompt = ฟอนต์หลัก สำหรับงานหน้าจอ หัวข้อ ป้าย ข้อมูลข่าว เนื้อความทั่วไป\n• Sarabun = ฟอนต์บทความ สำหรับหน้าอ่าน/เนื้อข่าวยาว (อ่านสบายตา)\n• วิธีจัดค่า: ตั้ง “ค่าพื้นฐาน” ไว้ก่อน → นำมาตั้งเป็น “บทบาท” → บันทึกเป็นสไตล์พร้อมใช้"
+        },
+        {
+          "type": "h",
+          "text": "Token structure",
+          "sub": "ค่าตัวอักษรจัดเป็น 2 ชั้น: ชั้นแรกเก็บ “ค่าพื้นฐาน” (ขนาด ความสูงบรรทัด ความหนา ฟอนต์) ชั้นสองจับค่าพื้นฐานมาตั้งเป็น “บทบาท” แล้วบันทึกเป็นสไตล์พร้อมใช้ จะปรับ ก็แก้ที่ชั้นแรกจุดเดียว เปลี่ยนพร้อมกันทั้งระบบ"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "Primitive",
+          "body": "ค่าพื้นฐาน ชุดขนาด ความสูงบรรทัด ความหนา ฟอนต์ ที่ตั้งไว้ใช้ซ้ำ"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "Semantic (role)",
+          "body": "บทบาท หยิบค่าพื้นฐานมาตั้งชื่อตามงาน (เช่น หัวข่าว เนื้อความ)"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "Text Style",
+          "body": "สไตล์พร้อมใช้ รวมค่าครบชุด หยิบไปใช้ได้เลย"
+        },
+        {
+          "type": "h",
+          "text": "Usage Do / Don’t"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "Do",
+          "body": "• เลือกจากสไตล์สำเร็จรูปตามบทบาทเสมอ\n• เลือกตามหน้าที่ ไม่ใช่ตามขนาด\n• Prompt = งานหน้าจอ/หัวข้อ/ป้าย Sarabun = บทความ\n• หน้าอ่าน/บทความ → ใช้กลุ่ม article"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "Don’t",
+          "body": "• อย่าจับขนาดกับฟอนต์มาผสมกันเอง หรือผสมข้ามสไตล์\n• อย่าปรับความสูงบรรทัด ความหนา ระยะห่างตัวอักษร นอกสไตล์ที่มี\n• อย่าใช้ Sarabun กับปุ่ม/เมนู/ป้าย\n• อย่าใช้ฟอนต์หน้าจอ (Prompt) กับเนื้อบทความยาว"
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "• ขนาดเนื้อความหลักไม่ต่ำกว่า 14 (เนื้อความ/บทความ) 12 สำหรับข้อมูลประกอบ 8–10 เฉพาะข้อความไม่สำคัญ (เครดิต/หมายเหตุ)\n• เว้นความสูงบรรทัดให้อ่านสบาย บทความ Sarabun ราว 1.9–2.1 เท่า งานหน้าจอ 1.4–1.5 เท่า\n• สีตัวอักษรตัดกับพื้นให้พอ ปกติไม่ต่ำกว่า 4.5:1 ตัวใหญ่ (≥ 24) ไม่ต่ำกว่า 3:1\n• อย่าย่อบทความต่ำกว่า 14 เลี่ยงตัวพิมพ์ใหญ่ทั้งประโยคยาว ๆ"
+        },
+        {
+          "type": "h",
+          "text": "Design tokens",
+          "sub": "โครงค่า 2 ชั้น + สไตล์พร้อมใช้ รายละเอียดเต็มสำหรับนักพัฒนาดูที่ไฟล์ docs/03-typography.md"
+        },
+        {
+          "type": "table",
+          "head": [
+            "Tier",
+            "Pattern (การตั้งชื่อ)"
+          ],
+          "rows": [
+            [
+              "Primitive",
+              "typography/font-size line-height letter-space / {size-key} /font-weight/{regular|medium|bold} /font-family/{primary|article}"
+            ],
+            [
+              "Semantic (role)",
+              "typography/{property}/{role} → alias primitive 5 property ต่อ 1 role (48 roles = 240 vars)"
+            ],
+            [
+              "Text Style",
+              "{family}/{size} เช่น title/md bind semantic ครบ 5 property usage อยู่ใน Description"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Naming convention",
+          "sub": "• Variable: typography/<property>/<role>\n• property = font-size line-height letter-space font-weight font-family\n• role = <family>-<size> เช่น display-lg title-md body-xl  (meta ใช้ชื่อเฉพาะ: byline credit micro)\n• Text Style path ใช้ / คั่น: display/lg title/md article/pullquote\n• family: display page-heading section-heading title body article meta label"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "01 Color, 07 Space, 12 Buttons (label/* ใช้บนปุ่ม) และ component ทุกตัวที่ผูก role ผ่าน Text Style"
+        },
+        {
+          "type": "p",
+          "text": "📄 ตัวอย่างฟอนต์ 2 ตระกูลและชุดขนาดพื้นฐาน อยู่ที่เอกสาร Type Scale ส่วนตัวอย่างสไตล์ทั้ง 48 แบบ อยู่ที่เอกสาร Text Roles ทั้งสองอยู่ข้าง ๆ ในหน้านี้"
+        }
+      ]
+    },
+    {
+      "id": "9628:18",
+      "name": "Typography Token",
+      "title": "Typography Token",
+      "subtitle": "จับคู่ชื่อสไตล์ตัวอักษรฝั่งออกแบบ (Figma) กับฝั่งโค้ด (CSS) 48 สไตล์ พร้อมค่าจริงและตัวอย่างการใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "ตารางนี้คือรายชื่อสไตล์ตัวอักษรทั้งหมด 48 แบบ ฝั่งซ้ายคือชื่อที่ดีไซเนอร์เห็นใน Figma ฝั่งขวาคือชื่อ CSS class ที่ dev ใช้ได้ตรง ๆ ค่าเดียวกันเป๊ะ ใช้เป็นภาษากลางตอนส่ง/รับงาน"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma ใช้ตอนออกแบบและเลือกใช้งาน"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ ค่าเดียวกับฝั่งออกแบบเป๊ะ"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token"
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "display/xl Text Style",
+              ".ntg-typography-display-xl CSS class",
+              "Prompt SemiBold 56 / 84",
+              "หัวใหญ่พิเศษ hero/ปก"
+            ],
+            [
+              "display/lg Text Style",
+              ".ntg-typography-display-lg CSS class",
+              "Prompt SemiBold 48 / 72",
+              "hero รอง/เปิดหมวด"
+            ],
+            [
+              "display/md Text Style",
+              ".ntg-typography-display-md CSS class",
+              "Prompt SemiBold 40 / 58",
+              "feature banner/โปรโมชัน"
+            ],
+            [
+              "display/sm Text Style",
+              ".ntg-typography-display-sm CSS class",
+              "Prompt SemiBold 32 / 46",
+              "จุดเด่นรองในหน้า"
+            ],
+            [
+              "display/xs Text Style",
+              ".ntg-typography-display-xs CSS class",
+              "Prompt SemiBold 26 / 36",
+              "จุดเน้นขนาดย่อม"
+            ],
+            [
+              "page-heading/xl Text Style",
+              ".ntg-typography-page-heading-xl CSS class",
+              "Prompt SemiBold 40 / 58",
+              "พาดหัวข่าวหลัก (H1) ใหญ่"
+            ],
+            [
+              "page-heading/lg Text Style",
+              ".ntg-typography-page-heading-lg CSS class",
+              "Prompt SemiBold 32 / 46",
+              "พาดหัวข่าว (H1) มาตรฐาน"
+            ],
+            [
+              "page-heading/md Text Style",
+              ".ntg-typography-page-heading-md CSS class",
+              "Prompt SemiBold 26 / 36",
+              "พาดหัว (H1) กะทัดรัด"
+            ],
+            [
+              "page-heading/sm Text Style",
+              ".ntg-typography-page-heading-sm CSS class",
+              "Prompt SemiBold 24 / 34",
+              "ชื่อหน้าบนมือถือ"
+            ],
+            [
+              "page-heading/xs Text Style",
+              ".ntg-typography-page-heading-xs CSS class",
+              "Prompt SemiBold 22 / 34",
+              "หัวในพื้นที่จำกัด"
+            ],
+            [
+              "section-heading/xl Text Style",
+              ".ntg-typography-section-heading-xl CSS class",
+              "Prompt Medium 26 / 36",
+              "หัว section ใหญ่ (H2)"
+            ],
+            [
+              "section-heading/lg Text Style",
+              ".ntg-typography-section-heading-lg CSS class",
+              "Prompt Medium 24 / 34",
+              "หัว section (H2)"
+            ],
+            [
+              "section-heading/md Text Style",
+              ".ntg-typography-section-heading-md CSS class",
+              "Prompt Medium 22 / 34",
+              "หัวข้อย่อย (H3)"
+            ],
+            [
+              "section-heading/sm Text Style",
+              ".ntg-typography-section-heading-sm CSS class",
+              "Prompt Medium 20 / 30",
+              "หัวย่อยรอง"
+            ],
+            [
+              "section-heading/xs Text Style",
+              ".ntg-typography-section-heading-xs CSS class",
+              "Prompt Medium 18 / 28",
+              "หัวย่อยสุด (H4)"
+            ],
+            [
+              "title/xl Text Style",
+              ".ntg-typography-title-xl CSS class",
+              "Prompt Medium 22 / 34",
+              "หัว card/module ใหญ่"
+            ],
+            [
+              "title/lg Text Style",
+              ".ntg-typography-title-lg CSS class",
+              "Prompt Medium 20 / 30",
+              "หัว card ทั่วไป"
+            ],
+            [
+              "title/md Text Style",
+              ".ntg-typography-title-md CSS class",
+              "Prompt Medium 18 / 28",
+              "หัว card/กล่องเนื้อหา"
+            ],
+            [
+              "title/sm Text Style",
+              ".ntg-typography-title-sm CSS class",
+              "Prompt Medium 16 / 26",
+              "หัว card เล็ก/list"
+            ],
+            [
+              "title/xs Text Style",
+              ".ntg-typography-title-xs CSS class",
+              "Prompt Medium 14 / 24",
+              "หัว card เล็กสุด"
+            ],
+            [
+              "body/xl Text Style",
+              ".ntg-typography-body-xl CSS class",
+              "Prompt Regular 20 / 30",
+              "intro/นำ UI ตัวใหญ่"
+            ],
+            [
+              "body/lg Text Style",
+              ".ntg-typography-body-lg CSS class",
+              "Prompt Regular 18 / 28",
+              "description เด่น"
+            ],
+            [
+              "body/md Text Style",
+              ".ntg-typography-body-md CSS class",
+              "Prompt Regular 16 / 26",
+              "เนื้อความทั่วไป (default)"
+            ],
+            [
+              "body/sm Text Style",
+              ".ntg-typography-body-sm CSS class",
+              "Prompt Regular 14 / 24",
+              "เนื้อความรอง/tooltip"
+            ],
+            [
+              "body/xs Text Style",
+              ".ntg-typography-body-xs CSS class",
+              "Prompt Regular 12 / 22",
+              "เนื้อความเล็ก/หมายเหตุ"
+            ],
+            [
+              "article/xl Text Style",
+              ".ntg-typography-article-xl CSS class",
+              "Sarabun Regular 20 / 36",
+              "นำบทความ/lead"
+            ],
+            [
+              "article/lg Text Style",
+              ".ntg-typography-article-lg CSS class",
+              "Sarabun Regular 18 / 34",
+              "เนื้อบทความหลัก"
+            ],
+            [
+              "article/md Text Style",
+              ".ntg-typography-article-md CSS class",
+              "Sarabun Regular 16 / 32",
+              "เนื้อบทความ default"
+            ],
+            [
+              "article/sm Text Style",
+              ".ntg-typography-article-sm CSS class",
+              "Sarabun Regular 14 / 30",
+              "เนื้อบทความรอง"
+            ],
+            [
+              "article/xs Text Style",
+              ".ntg-typography-article-xs CSS class",
+              "Sarabun Regular 12 / 28",
+              "หมายเหตุในบทความ"
+            ],
+            [
+              "article/pullquote/xl Text Style",
+              ".ntg-typography-article-pullquote-xl CSS class",
+              "Sarabun Medium 20 / 36",
+              "ยกคำพูดเด่น ใหญ่สุด"
+            ],
+            [
+              "article/pullquote/lg Text Style",
+              ".ntg-typography-article-pullquote-lg CSS class",
+              "Sarabun Medium 18 / 34",
+              "ประโยคเด่นในบทความ"
+            ],
+            [
+              "article/pullquote/md Text Style",
+              ".ntg-typography-article-pullquote-md CSS class",
+              "Sarabun Medium 16 / 32",
+              "ยกข้อความเน้น"
+            ],
+            [
+              "article/pullquote/sm Text Style",
+              ".ntg-typography-article-pullquote-sm CSS class",
+              "Sarabun Medium 14 / 30",
+              "เน้นข้อความสั้น"
+            ],
+            [
+              "article/pullquote/xs Text Style",
+              ".ntg-typography-article-pullquote-xs CSS class",
+              "Sarabun Medium 12 / 28",
+              "เน้นในพื้นที่แคบ"
+            ],
+            [
+              "meta/byline Text Style",
+              ".ntg-typography-meta-byline CSS class",
+              "Prompt Medium 14 / 24",
+              "ชื่อผู้เขียน"
+            ],
+            [
+              "meta/overline Text Style",
+              ".ntg-typography-meta-overline CSS class",
+              "Prompt SemiBold 12 / 22",
+              "kicker/หมวด"
+            ],
+            [
+              "meta/timestamp Text Style",
+              ".ntg-typography-meta-timestamp CSS class",
+              "Prompt Regular 12 / 22",
+              "วันเวลา"
+            ],
+            [
+              "meta/caption Text Style",
+              ".ntg-typography-meta-caption CSS class",
+              "Prompt Regular 12 / 22",
+              "คำบรรยายภาพ"
+            ],
+            [
+              "meta/read-time Text Style",
+              ".ntg-typography-meta-read-time CSS class",
+              "Prompt Medium 12 / 22",
+              "เวลาอ่าน"
+            ],
+            [
+              "meta/helper Text Style",
+              ".ntg-typography-meta-helper CSS class",
+              "Prompt Regular 12 / 22",
+              "hint ฟอร์ม"
+            ],
+            [
+              "meta/credit Text Style",
+              ".ntg-typography-meta-credit CSS class",
+              "Prompt Regular 10 / 16",
+              "เครดิตภาพ"
+            ],
+            [
+              "meta/micro Text Style",
+              ".ntg-typography-meta-micro CSS class",
+              "Prompt Regular 8 / 12",
+              "เล็กสุด/legal"
+            ],
+            [
+              "label/xl Text Style",
+              ".ntg-typography-label-xl CSS class",
+              "Prompt Medium 18 / 28",
+              "ปุ่มใหญ่/tab"
+            ],
+            [
+              "label/lg Text Style",
+              ".ntg-typography-label-lg CSS class",
+              "Prompt Medium 16 / 26",
+              "ปุ่มหลัก/เมนู"
+            ],
+            [
+              "label/md Text Style",
+              ".ntg-typography-label-md CSS class",
+              "Prompt Medium 14 / 24",
+              "ปุ่ม default/chip"
+            ],
+            [
+              "label/sm Text Style",
+              ".ntg-typography-label-sm CSS class",
+              "Prompt Medium 12 / 22",
+              "badge/tag"
+            ],
+            [
+              "label/xs Text Style",
+              ".ntg-typography-label-xs CSS class",
+              "Prompt Medium 10 / 16",
+              "tag จิ๋ว"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ"
+        }
+      ]
+    },
+    {
+      "id": "10960:688",
+      "name": "Type Scale",
+      "title": "Type Scale",
+      "subtitle": "ฟอนต์ 2 ตระกูลกับชุดขนาดพื้นฐานที่ text style ทุกตัวหยิบไปใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Font families",
+          "sub": "2 ฟอนต์แบ่งตามงาน แต่ละฟอนต์มี 3 ความหนา (บาง 400 กลาง 500 หนา 600)"
+        },
+        {
+          "type": "fontFamily",
+          "sample": "Prompt สวัสดี กขคง",
+          "family": "--ntg-typography-font-family-primary",
+          "title": "ฟอนต์หลัก งานหน้าจอ / UI",
+          "usage": "ใช้กับ: หัวข้อ ป้าย ข้อมูลข่าว เนื้อความทั่วไป",
+          "weights": [
+            {
+              "label": "Regular 400",
+              "weight": "--ntg-typography-font-weight-regular"
+            },
+            {
+              "label": "Medium 500",
+              "weight": "--ntg-typography-font-weight-medium"
+            },
+            {
+              "label": "SemiBold 600",
+              "weight": "--ntg-typography-font-weight-bold"
+            }
+          ]
+        },
+        {
+          "type": "fontFamily",
+          "sample": "Sarabun สวัสดี กขคง",
+          "family": "--ntg-typography-font-family-article",
+          "title": "ฟอนต์บทความ editorial",
+          "usage": "ใช้กับ: เนื้อบทความ (เฉพาะหน้าอ่าน)",
+          "weights": [
+            {
+              "label": "Regular 400",
+              "weight": "--ntg-typography-font-weight-regular"
+            },
+            {
+              "label": "Medium 500",
+              "weight": "--ntg-typography-font-weight-medium"
+            },
+            {
+              "label": "SemiBold 600",
+              "weight": "--ntg-typography-font-weight-bold"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "ความหนาตามหน้าที่ หนา: หัวหลัก (display page-heading overline) กลาง: หัวรอง/ป้าย/ปุ่ม (section-heading title label pullquote byline read-time) บาง: เนื้อความและข้อมูลประกอบ (body article meta ที่เหลือ)"
+        },
+        {
+          "type": "h",
+          "text": "ชุดขนาดพื้นฐาน",
+          "sub": "ชุดขนาดพื้นฐาน ฟอนต์ Prompt (งานหน้าจอ) 15 ขนาด + Sarabun (บทความ) 3 ขนาด แสดงเป็น ขนาด/ความสูงบรรทัด"
+        },
+        {
+          "type": "scale",
+          "name": "h1",
+          "spec": "64/94",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-h1",
+          "lineHeight": "--ntg-typography-line-height-h1"
+        },
+        {
+          "type": "scale",
+          "name": "h2",
+          "spec": "56/84",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-h2",
+          "lineHeight": "--ntg-typography-line-height-h2"
+        },
+        {
+          "type": "scale",
+          "name": "h3",
+          "spec": "48/72",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-h3",
+          "lineHeight": "--ntg-typography-line-height-h3"
+        },
+        {
+          "type": "scale",
+          "name": "h4",
+          "spec": "40/58",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-h4",
+          "lineHeight": "--ntg-typography-line-height-h4"
+        },
+        {
+          "type": "scale",
+          "name": "h5",
+          "spec": "32/46",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-h5",
+          "lineHeight": "--ntg-typography-line-height-h5"
+        },
+        {
+          "type": "scale",
+          "name": "h6",
+          "spec": "26/36",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-h6",
+          "lineHeight": "--ntg-typography-line-height-h6"
+        },
+        {
+          "type": "scale",
+          "name": "text-3xl",
+          "spec": "24/34",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-3xl",
+          "lineHeight": "--ntg-typography-line-height-text-3xl"
+        },
+        {
+          "type": "scale",
+          "name": "text-2xl",
+          "spec": "22/34",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-2xl",
+          "lineHeight": "--ntg-typography-line-height-text-2xl"
+        },
+        {
+          "type": "scale",
+          "name": "text-xl",
+          "spec": "20/30",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-xl",
+          "lineHeight": "--ntg-typography-line-height-text-xl"
+        },
+        {
+          "type": "scale",
+          "name": "text-lg",
+          "spec": "18/28",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-lg",
+          "lineHeight": "--ntg-typography-line-height-text-lg"
+        },
+        {
+          "type": "scale",
+          "name": "text-md",
+          "spec": "16/26",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-md",
+          "lineHeight": "--ntg-typography-line-height-text-md"
+        },
+        {
+          "type": "scale",
+          "name": "text-sm",
+          "spec": "14/24",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-sm",
+          "lineHeight": "--ntg-typography-line-height-text-sm"
+        },
+        {
+          "type": "scale",
+          "name": "text-xs",
+          "spec": "12/22",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-xs",
+          "lineHeight": "--ntg-typography-line-height-text-xs"
+        },
+        {
+          "type": "scale",
+          "name": "text-2xs",
+          "spec": "10/16",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-2xs",
+          "lineHeight": "--ntg-typography-line-height-text-2xs"
+        },
+        {
+          "type": "scale",
+          "name": "text-3xs",
+          "spec": "8/12",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-primary",
+          "size": "--ntg-typography-font-size-text-3xs",
+          "lineHeight": "--ntg-typography-line-height-text-3xs"
+        },
+        {
+          "type": "scale",
+          "name": "read-lg",
+          "spec": "18/34",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-article",
+          "size": "--ntg-typography-font-size-read-lg",
+          "lineHeight": "--ntg-typography-line-height-read-lg"
+        },
+        {
+          "type": "scale",
+          "name": "read-md",
+          "spec": "16/32",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-article",
+          "size": "--ntg-typography-font-size-read-md",
+          "lineHeight": "--ntg-typography-line-height-read-md"
+        },
+        {
+          "type": "scale",
+          "name": "read-sm",
+          "spec": "14/30",
+          "sample": "Nation สวัสดี Ag",
+          "family": "--ntg-typography-font-family-article",
+          "size": "--ntg-typography-font-size-read-sm",
+          "lineHeight": "--ntg-typography-line-height-read-sm"
+        }
+      ]
+    },
+    {
+      "id": "9605:11",
+      "name": "Text Roles",
+      "title": "Text Roles",
+      "subtitle": "ตัวอย่างจริงของ text style ครบ 48 แบบใน 9 ตระกูล พร้อมชื่อ ขนาด ความสูงบรรทัด และวิธีใช้ ซึ่งเก็บไว้ในช่อง Description ของแต่ละสไตล์ด้วย",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Display",
+          "sub": "หัวใหญ่พิเศษ (hero/cover) Prompt Bold ใหญ่สุดในระบบ เน้นจุดเด่นหน้าแรก/หน้าหมวด"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "display/xl",
+          "className": "ntg-typography-display-xl",
+          "meta": "56/84 Bold",
+          "usage": "หัวใหญ่พิเศษสุด hero/ปกเต็มจอหน้าแรก เช่น พาดหัวปกสกู๊ปพิเศษ"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "display/lg",
+          "className": "ntg-typography-display-lg",
+          "meta": "48/72 Bold",
+          "usage": "hero รอง/หน้า landing เปิดหมวด เช่น หัวหน้าหมวดเศรษฐกิจ"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "display/md",
+          "className": "ntg-typography-display-md",
+          "meta": "40/58 Bold",
+          "usage": "feature banner/โปรโมชัน เช่น แบนเนอร์แคมเปญ"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "display/sm",
+          "className": "ntg-typography-display-sm",
+          "meta": "32/46 Bold",
+          "usage": "จุดเด่นรองในหน้า เช่น หัวบล็อกไฮไลต์"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "display/xs",
+          "className": "ntg-typography-display-xs",
+          "meta": "26/36 Bold",
+          "usage": "จุดเน้นขนาดย่อม เช่น ตัวเลขสถิติเด่น"
+        },
+        {
+          "type": "h",
+          "text": "Page-heading",
+          "sub": "พาดหัวข่าว/ชื่อหน้า (H1) Prompt Bold หัวบทความหลักในแต่ละหน้า"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "page-heading/xl",
+          "className": "ntg-typography-page-heading-xl",
+          "meta": "40/58 Bold",
+          "usage": "พาดหัวข่าวหลัก (H1) ใหญ่ เช่น พาดหัวข่าวใหญ่หน้าใน"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "page-heading/lg",
+          "className": "ntg-typography-page-heading-lg",
+          "meta": "32/46 Bold",
+          "usage": "พาดหัวข่าว (H1) มาตรฐาน เช่น พาดหัวข่าวรายวัน"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "page-heading/md",
+          "className": "ntg-typography-page-heading-md",
+          "meta": "26/36 Bold",
+          "usage": "พาดหัว (H1) กะทัดรัด เช่น หัวข่าวในลิสต์เด่น"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "page-heading/sm",
+          "className": "ntg-typography-page-heading-sm",
+          "meta": "24/34 Bold",
+          "usage": "หัวบทความบนมือถือ เช่น พาดหัวข่าวจอเล็ก"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข่าวเด่นวันนี้ Nation",
+          "style": "page-heading/xs",
+          "className": "ntg-typography-page-heading-xs",
+          "meta": "22/34 Bold",
+          "usage": "หัวในพื้นที่จำกัด เช่น หัวข่าวใน widget"
+        },
+        {
+          "type": "h",
+          "text": "Section-heading",
+          "sub": "หัวแบ่ง section (H2–H4) Prompt Medium แบ่งส่วน/หัวข้อย่อยในหน้า-บทความ"
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวข้อในหน้า Section",
+          "style": "section-heading/xl",
+          "className": "ntg-typography-section-heading-xl",
+          "meta": "26/36 Medium",
+          "usage": "แบ่งส่วนหลักในหน้า (H2) เช่น \"ข่าวที่เกี่ยวข้อง\""
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวข้อในหน้า Section",
+          "style": "section-heading/lg",
+          "className": "ntg-typography-section-heading-lg",
+          "meta": "24/34 Medium",
+          "usage": "หัวกลุ่มเนื้อหา (H2) เช่น \"อ่านต่อ\""
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวข้อในหน้า Section",
+          "style": "section-heading/md",
+          "className": "ntg-typography-section-heading-md",
+          "meta": "22/34 Medium",
+          "usage": "หัวหัวข้อในบทความ (H3) เช่น หัวย่อหน้าในสกู๊ป"
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวข้อในหน้า Section",
+          "style": "section-heading/sm",
+          "className": "ntg-typography-section-heading-sm",
+          "meta": "20/30 Medium",
+          "usage": "หัวย่อยรอง เช่น หัวรายการย่อย"
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวข้อในหน้า Section",
+          "style": "section-heading/xs",
+          "className": "ntg-typography-section-heading-xs",
+          "meta": "18/28 Medium",
+          "usage": "หัวเล็กในเนื้อหา (H4) เช่น หัวกล่องข้อมูล"
+        },
+        {
+          "type": "h",
+          "text": "Title",
+          "sub": "หัว card/module/list Prompt Medium หัวกล่องเนื้อหาใน UI"
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวการ์ดตัวอย่าง Card",
+          "style": "title/xl",
+          "className": "ntg-typography-title-xl",
+          "meta": "22/34 Medium",
+          "usage": "หัวกล่องเนื้อหาเด่น เช่น หัวการ์ดข่าวแนะนำ"
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวการ์ดตัวอย่าง Card",
+          "style": "title/lg",
+          "className": "ntg-typography-title-lg",
+          "meta": "20/30 Medium",
+          "usage": "หัวกล่อง/widget เช่น หัวการ์ดในกริดข่าว"
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวการ์ดตัวอย่าง Card",
+          "style": "title/md",
+          "className": "ntg-typography-title-md",
+          "meta": "18/28 Medium",
+          "usage": "หัวโมดูลมาตรฐาน เช่น หัวกล่อง \"ข่าวยอดนิยม\""
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวการ์ดตัวอย่าง Card",
+          "style": "title/sm",
+          "className": "ntg-typography-title-sm",
+          "meta": "16/26 Medium",
+          "usage": "หัวรายการ/list เช่น หัวไอเทมในลิสต์"
+        },
+        {
+          "type": "specimen",
+          "sample": "หัวการ์ดตัวอย่าง Card",
+          "style": "title/xs",
+          "className": "ntg-typography-title-xs",
+          "meta": "14/24 Medium",
+          "usage": "หัวในพื้นที่แคบ เช่น หัวแท็บย่อย"
+        },
+        {
+          "type": "h",
+          "text": "Body",
+          "sub": "เนื้อความ UI Prompt Regular ข้อความทั่วไป/Description ในส่วนติดต่อผู้ใช้"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อความส่วนติดต่อผู้ใช้ด้วยฟอนต์ Prompt",
+          "style": "body/xl",
+          "className": "ntg-typography-body-xl",
+          "meta": "20/30 Regular",
+          "usage": "intro/lead ในหน้า UI เช่น คำโปรยใต้หัวหน้า"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อความส่วนติดต่อผู้ใช้ด้วยฟอนต์ Prompt",
+          "style": "body/lg",
+          "className": "ntg-typography-body-lg",
+          "meta": "18/28 Regular",
+          "usage": "description นำ section เช่น คำอธิบายฟีเจอร์"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อความส่วนติดต่อผู้ใช้ด้วยฟอนต์ Prompt",
+          "style": "body/md",
+          "className": "ntg-typography-body-md",
+          "meta": "16/26 Regular",
+          "usage": "ข้อความใน dialog/panel/Description เช่น รายละเอียดในกล่อง"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อความส่วนติดต่อผู้ใช้ด้วยฟอนต์ Prompt",
+          "style": "body/sm",
+          "className": "ntg-typography-body-sm",
+          "meta": "14/24 Regular",
+          "usage": "tooltip/คำอธิบายย่อย เช่น ข้อความช่วยเหลือสั้น"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อความส่วนติดต่อผู้ใช้ด้วยฟอนต์ Prompt",
+          "style": "body/xs",
+          "className": "ntg-typography-body-xs",
+          "meta": "12/22 Regular",
+          "usage": "หมายเหตุ UI เช่น note ใต้การ์ด"
+        },
+        {
+          "type": "h",
+          "text": "Article",
+          "sub": "เนื้อบทความ Sarabun Regular สำหรับหน้าอ่าน/บทความ อ่านสบายตา"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อหาบทความอ่านสบายตาด้วยฟอนต์ Sarabun",
+          "style": "article/xl",
+          "className": "ntg-typography-article-xl",
+          "meta": "20/36 Regular",
+          "usage": "ย่อหน้านำบทความ/lead เช่น ย่อหน้าเปิดสกู๊ป"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อหาบทความอ่านสบายตาด้วยฟอนต์ Sarabun",
+          "style": "article/lg",
+          "className": "ntg-typography-article-lg",
+          "meta": "18/34 Regular",
+          "usage": "ย่อหน้าเนื้อข่าว อ่านสบายตา เช่น เนื้อหาข่าวใต้พาดหัว"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อหาบทความอ่านสบายตาด้วยฟอนต์ Sarabun",
+          "style": "article/md",
+          "className": "ntg-typography-article-md",
+          "meta": "16/32 Regular",
+          "usage": "เนื้อหาบทความทั่วไป เช่น ย่อหน้าในบทความ"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อหาบทความอ่านสบายตาด้วยฟอนต์ Sarabun",
+          "style": "article/sm",
+          "className": "ntg-typography-article-sm",
+          "meta": "14/30 Regular",
+          "usage": "เนื้อหาเสริม/คำอธิบายยาว เช่น คำบรรยายใต้กราฟิก"
+        },
+        {
+          "type": "specimen",
+          "sample": "เนื้อหาบทความอ่านสบายตาด้วยฟอนต์ Sarabun",
+          "style": "article/xs",
+          "className": "ntg-typography-article-xs",
+          "meta": "12/28 Regular",
+          "usage": "หมายเหตุในบทความ เช่น เชิงอรรถ"
+        },
+        {
+          "type": "h",
+          "text": "Label",
+          "sub": "ป้ายบน component Prompt Medium ปุ่ม/chip/tag/nav"
+        },
+        {
+          "type": "specimen",
+          "sample": "ปุ่มกดตัวอย่าง",
+          "style": "label/xl",
+          "className": "ntg-typography-label-xl",
+          "meta": "18/28 Medium",
+          "usage": "ปุ่มใหญ่/tab เด่น เช่น ปุ่ม CTA หลัก"
+        },
+        {
+          "type": "specimen",
+          "sample": "ปุ่มกดตัวอย่าง",
+          "style": "label/lg",
+          "className": "ntg-typography-label-lg",
+          "meta": "16/26 Medium",
+          "usage": "ปุ่มหลัก/เมนู เช่น \"สมัครสมาชิก\""
+        },
+        {
+          "type": "specimen",
+          "sample": "ปุ่มกดตัวอย่าง",
+          "style": "label/md",
+          "className": "ntg-typography-label-md",
+          "meta": "14/24 Medium",
+          "usage": "ปุ่มทั่วไป/label ช่องกรอก เช่น \"บันทึก\" บนปุ่ม"
+        },
+        {
+          "type": "specimen",
+          "sample": "ปุ่มกดตัวอย่าง",
+          "style": "label/sm",
+          "className": "ntg-typography-label-sm",
+          "meta": "12/22 Medium",
+          "usage": "แท็ก/ป้ายสถานะ เช่น \"ใหม่\" บน badge"
+        },
+        {
+          "type": "specimen",
+          "sample": "ปุ่มกดตัวอย่าง",
+          "style": "label/xs",
+          "className": "ntg-typography-label-xs",
+          "meta": "10/16 Medium",
+          "usage": "แท็กในพื้นที่แคบ เช่น จำนวนแจ้งเตือน"
+        },
+        {
+          "type": "h",
+          "text": "Pullquote",
+          "sub": "ข้อความดึงเด่นกลางบทความ Sarabun Medium ยกคำพูด/ประโยคเด่น"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข้อความดึงเด่นกลางบทความด้วย Sarabun",
+          "style": "article/pullquote/xl",
+          "className": "ntg-typography-article-pullquote-xl",
+          "meta": "20/36 Medium",
+          "usage": "ยกคำพูด/ประโยคเด่นกลางบทความ เช่น วรรคทองขนาดใหญ่"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข้อความดึงเด่นกลางบทความด้วย Sarabun",
+          "style": "article/pullquote/lg",
+          "className": "ntg-typography-article-pullquote-lg",
+          "meta": "18/34 Medium",
+          "usage": "ประโยคเด่นในบทความ เช่น คำพูดสำคัญของแหล่งข่าว"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข้อความดึงเด่นกลางบทความด้วย Sarabun",
+          "style": "article/pullquote/md",
+          "className": "ntg-typography-article-pullquote-md",
+          "meta": "16/32 Medium",
+          "usage": "ยกข้อความเน้น เช่น ประโยคสรุปเด่น"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข้อความดึงเด่นกลางบทความด้วย Sarabun",
+          "style": "article/pullquote/sm",
+          "className": "ntg-typography-article-pullquote-sm",
+          "meta": "14/30 Medium",
+          "usage": "เน้นข้อความสั้น เช่น คำคมสั้นในคอลัมน์"
+        },
+        {
+          "type": "specimen",
+          "sample": "ข้อความดึงเด่นกลางบทความด้วย Sarabun",
+          "style": "article/pullquote/xs",
+          "className": "ntg-typography-article-pullquote-xs",
+          "meta": "12/28 Medium",
+          "usage": "เน้นในพื้นที่แคบ เช่น ยกคำในการ์ด"
+        },
+        {
+          "type": "h",
+          "text": "Meta",
+          "sub": "ข้อมูลประกอบข่าว Prompt byline/หมวด/เวลา/caption/เครดิต ฯลฯ"
+        },
+        {
+          "type": "specimen",
+          "sample": "โดย กองบรรณาธิการเนชั่น",
+          "style": "meta/byline",
+          "className": "ntg-typography-meta-byline",
+          "meta": "14/24 Medium",
+          "usage": "ชื่อผู้เขียน/นักข่าว เช่น \"โดย กองบรรณาธิการ\""
+        },
+        {
+          "type": "specimen",
+          "sample": "การเมือง",
+          "style": "meta/overline",
+          "className": "ntg-typography-meta-overline",
+          "meta": "12/22 Bold",
+          "usage": "kicker/หมวดเหนือพาดหัว เช่น \"การเมือง\" เหนือพาดหัว"
+        },
+        {
+          "type": "specimen",
+          "sample": "24 ก.ค. 2569 09:30 น.",
+          "style": "meta/timestamp",
+          "className": "ntg-typography-meta-timestamp",
+          "meta": "12/22 Regular",
+          "usage": "วันเวลาเผยแพร่/อัปเดต เช่น \"24 ก.ค. 2569\""
+        },
+        {
+          "type": "specimen",
+          "sample": "ภาพ: ทำเนียบรัฐบาล",
+          "style": "meta/caption",
+          "className": "ntg-typography-meta-caption",
+          "meta": "12/22 Regular",
+          "usage": "คำบรรยายใต้ภาพ/สื่อ เช่น \"ภาพ: ทำเนียบรัฐบาล\""
+        },
+        {
+          "type": "specimen",
+          "sample": "อ่าน 5 นาที",
+          "style": "meta/read-time",
+          "className": "ntg-typography-meta-read-time",
+          "meta": "12/22 Medium",
+          "usage": "เน้นระยะเวลาอ่าน เช่น \"อ่าน 5 นาที\""
+        },
+        {
+          "type": "specimen",
+          "sample": "กรอกอีเมลให้ถูกต้อง",
+          "style": "meta/helper",
+          "className": "ntg-typography-meta-helper",
+          "meta": "12/22 Regular",
+          "usage": "hint ใต้ช่องกรอกฟอร์ม เช่น \"กรอกอีเมลให้ถูกต้อง\""
+        },
+        {
+          "type": "specimen",
+          "sample": "เครดิต: Reuters",
+          "style": "meta/credit",
+          "className": "ntg-typography-meta-credit",
+          "meta": "10/16 Regular",
+          "usage": "เครดิตภาพ/แหล่งที่มา เช่น \"เครดิต: Reuters\""
+        },
+        {
+          "type": "specimen",
+          "sample": "*เงื่อนไขเป็นไปตามที่กำหนด",
+          "style": "meta/micro",
+          "className": "ntg-typography-meta-micro",
+          "meta": "8/12 Regular",
+          "usage": "superscript/legal/watermark เช่น \"*เงื่อนไข...\""
+        }
+      ]
+    }
+  ]
+}

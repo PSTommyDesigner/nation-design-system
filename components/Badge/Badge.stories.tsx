@@ -5,7 +5,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section (ส่วนประกอบ · ชุด · ขนาด · สถานะ · ควรไม่ควร)
 // ดูกติกาที่ .storybook/CustomDocsPage.tsx
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Badge',
+  title: 'Molecules (Element)/22 Badge/Badge',
   component: Badge,
   tags: ['autodocs'],
   args: { children: 'ด่วน', family: 'brand', hierarchy: 'primary', size: 'md' },

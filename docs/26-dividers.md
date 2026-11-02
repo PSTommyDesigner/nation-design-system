@@ -1,26 +1,26 @@
 ---
-title: "28 Dividers Nation Design System"
+title: "26 Dividers Nation Design System"
 description: "เส้นคั่น 2 ชุด 4 แบบ หนา 1 สีผูกกับตัวแปรเส้นขอบกลาง ใช้แบ่งกลุ่มเนื้อหาเมื่อระยะห่างอย่างเดียวบอกไม่ชัดพอ"
 target_audience: ["UI/UX Designer", "Frontend Developer", "Design System Maintainer"]
 version: "1.0.0"
 last_updated: "2026-10-14"
 status: "active"
 sources_of_truth:
-  figma_page: "28 Dividers (ไฟล์ QgmoT5) ต้นฉบับอยู่ในเอกสาร Divider Component Previews"
+  figma_page: "26 Dividers (ไฟล์ QgmoT5) ต้นฉบับอยู่ในเอกสาร Divider Component Previews"
   scale_spec: "tokens/scale/divider.mjs"
   code: "components/Divider (ยังไม่ได้ทำ)"
 ---
 
-# 28 Dividers Nation Design System
+# 26 Dividers Nation Design System
 
 ## 1. ข้อมูลควบคุม (Metadata)
 
 | ฟิลด์ | รายละเอียด |
 |---|---|
-| **Title** | 28 Dividers (เส้นคั่น) |
+| **Title** | 26 Dividers (เส้นคั่น) |
 | **Description** | เส้นบาง 1 px ใช้แบ่งกลุ่มเนื้อหาที่เกี่ยวข้องกัน |
 | **Target Audience** | Designer เลือกแนวและชนิด, Developer ทำให้เส้นยืดและซ่อนจากโปรแกรมอ่านหน้าจอ, Maintainer ดูแลตัวแปรความหนา |
-| **Source of Truth** | **Figma หน้า 28 Dividers** |
+| **Source of Truth** | **Figma หน้า 26 Dividers** |
 | **Version / Updated** | 1.0.0 (2026-10-14) |
 
 ## 2. วัตถุประสงค์ (Objective & Business Logic)
@@ -81,7 +81,7 @@ sources_of_truth:
 
 **เส้นของหน้านี้กับ `tab/divider` ของหน้า 18 คนละหน้าที่กัน ถึงจะหนา 1 เท่ากัน** (ผู้ใช้ทัก 2026-10-14)
 
-| | `tab/divider` หน้า 18 | เส้นคั่นหน้า 28 |
+| | `tab/divider` หน้า 18 | เส้นคั่นหน้า 26 |
 |---|---|---|
 | **คืออะไร** | เส้นคั่นระหว่างแท็บของทรงกล่อง เป็นขอบที่อยู่ **ข้างในชิ้นงานแท็บ** | เส้นที่วางเอง **ระหว่าง section หรือกลุ่มเนื้อหา** |
 | **ใครเป็นเจ้าของ** | ชิ้นงานแท็บ ปรับพร้อมแท็บ | เป็นชิ้นงานของตัวเอง หยิบไปวางที่ไหนก็ได้ |

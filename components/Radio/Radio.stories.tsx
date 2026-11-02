@@ -5,7 +5,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ชื่อ story ใน sidebar ตรงกับชุดในไฟล์ออกแบบหน้า 16 (radio, text-radio) ส่วน RadioGroup เป็นการประกอบฝั่งเว็บ
 const meta: Meta<typeof Radio> = {
-  title: 'Components/Radio',
+  title: 'Molecules (Element)/16 Radio/Radio',
   component: Radio,
   tags: ['autodocs'],
   args: { label: 'บัตรเครดิต', size: 'md' },

@@ -29,14 +29,14 @@ preset typography, page by page) are in `AGENTS.md` and still apply.
 Go through every item on the page you worked on, like a scan that must reach 0. A memory of the rules is not enough.
 1. Separators: 0 em dash characters (U+2014) in content and in names. 0 middle dots in any text in the Figma file (in markdown docs the middle dot is allowed in list lines only, decided 2026-08-26). Use a space instead, and commas between numbers. Titles use a space or a single word
 2. Raw colors: 0 fills or strokes that aren't bound to a variable, bound from the `component` collection
-   - Scan the whole page with `page.findAll()`. Never scan only the doc frames you touched, because component set boxes sit outside them. The 27 Card page was once reported as 0 while 11 raw fills were left on its component set boxes
+   - Scan the whole page with `page.findAll()`. Never scan only the doc frames you touched, because component set boxes sit outside them. The 25 Card page was once reported as 0 while 11 raw fills were left on its component set boxes
    - Most raw colors are the background of a component set box (COMPONENT_SET) or of a SECTION. Bind them to `color/background/general/*`, as page 05 Effect did for 77 spots
    - Three pages are exempt for good. Don't bind them and don't ask again, and leave them out of whole-file totals:
      - 08 Logo: brand identity colors must stay fixed. Binding them would let someone change a shared value and shift the logos (decided 2026-08-18)
      - 04 Grid: the red `#FF0000` guide lines are for designers only, not a system color, and end users never see them (decided 2026-08-18)
      - 09 Third-party Logos: 505 logos of other companies. Same reason as 08 Logo: the colors belong to those brands and we have no right to change them (decided 2026-10-14)
-   - Known state as of 2026-10-14: 09 Third-party Logos 5,707 spots (exempt). 27 Card still has 11 spots, all on component set boxes. Also `Work in Progress` 54, the `Cover` frames of 5 divider pages 15, and `Thumnail` 2
-3. Use design system parts, never draw your own: data tables use instances of the sets ending in `-table-cell` from page 26 Table (for example `header-table-cell`, `text-table-cell`). Icons, components and styles are instances from the library
+   - Known state as of 2026-10-14: 09 Third-party Logos 5,707 spots (exempt). 25 Card still has 11 spots, all on component set boxes. Also `Work in Progress` 54, the `Cover` frames of 5 divider pages 15, and `Thumnail` 2
+3. Use design system parts, never draw your own: data tables use instances of the sets ending in `-table-cell` from page 28 Table (for example `header-table-cell`, `text-table-cell`). Icons, components and styles are instances from the library
 4. Document heading: set the real name. Never leave the default "Design system header"
 5. Real values: read the resolved value, don't guess from a token name. Verify with a screenshot and the values
 6. Typography: presets only, no overrides

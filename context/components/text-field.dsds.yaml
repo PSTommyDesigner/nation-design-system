@@ -228,7 +228,7 @@ sections:
       - term: Leading and trailing divider
         definition: >-
           Optional line between an icon and the text, set with leadingDivider and trailingDivider. In Figma it is the
-          vertical-divider from page 28 Dividers, --ntg-divider-thickness wide and 24 high. In code it takes the border color
+          vertical-divider from page 26 Dividers, --ntg-divider-thickness wide and 24 high. In code it takes the border color
           of the state. Rendered with aria-hidden. text-field only.
       - term: Hint
         definition: >-

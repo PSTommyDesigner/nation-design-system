@@ -1,6 +1,6 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/Dropdown/Dropdown.base.css
- *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 25 Dropdowns แล้วรัน  npm run figma:layers -- dropdown  และ  npm run css:generate -- dropdown
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 27 Dropdowns แล้วรัน  npm run figma:layers -- dropdown  และ  npm run css:generate -- dropdown
  *   spec: tokens/figma-layers/dropdown.json (ดึง 2026-10-26)
  */
 
@@ -8,7 +8,7 @@
  * Dropdown ส่วนโครงที่เขียนมือ (Nation Design System)
  *
  * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --dd-* ซึ่ง
- * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/dropdown.json (spec ชั้นจากไฟล์ออกแบบหน้า 25)
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/dropdown.json (spec ชั้นจากไฟล์ออกแบบหน้า 27)
  * แล้วต่อท้ายไฟล์นี้เป็น Dropdown.module.css ห้ามแก้ Dropdown.module.css ตรง ๆ
  *
  * ⚠️ ข้อยกเว้นที่มีชื่อ token ในไฟล์นี้ (ไฟล์ออกแบบไม่มีชั้นให้ผูก)

@@ -1,6 +1,6 @@
 # Dropdown in DSDS 0.23 format https://designsystemdocspec.org
-# Facts come from components/Dropdown/, docs/25-dropdowns.md, docs/rules/layer-scope.md, tokens/scale/dropdown.mjs,
-# tokens/figma-components.json and the Figma page 25 Dropdowns (frames 25 Dropdowns Documentation, Dropdown Usage,
+# Facts come from components/Dropdown/, docs/27-dropdowns.md, docs/rules/layer-scope.md, tokens/scale/dropdown.mjs,
+# tokens/figma-components.json and the Figma page 27 Dropdowns (frames 27 Dropdowns Documentation, Dropdown Usage,
 # Dropdown Accessibility, Dropdown Component Previews and Dropdown Base Components), read 2026-10-27
 # Levels go in this order: must, should, may, should-not, must-not
 # Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
@@ -11,7 +11,7 @@ id: dropdown
 name: Dropdown
 description: >-
   A field that opens a panel of options so the user picks one value. It matches the Figma sets dropdown (the field)
-  and dropdown-menu (the panel) on page 25 Dropdowns, whose rows are the internal sets _dropdown-option and
+  and dropdown-menu (the panel) on page 27 Dropdowns, whose rows are the internal sets _dropdown-option and
   _dropdown-group-header. In code it is one component, and the panel opens when the field is pressed.
   It exists so a Dropdown and a TextField in the same form share height, padding and radius at every size,
   and so option rows can carry an icon, an avatar, supporting text or a group header, which the native select can't.
@@ -34,7 +34,7 @@ sections:
           use the browser's native select element. It brings each device's own behavior, including the bottom sheet on mobile.
         checkedBy: manual
       # Answers the earlier question on exactly 5 options: the Dropdown Usage table in Figma gives 2 to 4 options to Radio
-      # and 5 to about 15 to Dropdown, the same as docs/25-dropdowns.md section 2. The GoodAndBad story still says more than 5
+      # and 5 to about 15 to Dropdown, the same as docs/27-dropdowns.md section 2. The GoodAndBad story still says more than 5
       - level: should
         statement: Use to pick exactly one value from a list of 5 to 15 options.
         checkedBy: manual
@@ -69,7 +69,7 @@ sections:
         statement: Use Dropdown to pick more than one value. Code has no multi-select, even though the Figma row _dropdown-option has a show-checkbox toggle.
         checkedBy: manual
       # NEEDS CLARIFICATION: until the type-to-filter field, multi-select and a date picker exist, what must a screen use for more than 15 options, to pick several values, or to pick a date? The Dropdown Usage table in Figma only says they are not in the system yet and must be raised before use.
-      # NEEDS CLARIFICATION: the 25 Dropdowns Documentation frame says dropdown-menu can be used alone as a menu, but the Dropdown Usage table says a command menu is not in the system yet, and code has no standalone panel. What must code use for a menu that isn't attached to a field?
+      # NEEDS CLARIFICATION: the 27 Dropdowns Documentation frame says dropdown-menu can be used alone as a menu, but the Dropdown Usage table says a command menu is not in the system yet, and code has no standalone panel. What must code use for a menu that isn't attached to a field?
 
   - kind: guidelines
     for: all
@@ -120,7 +120,7 @@ sections:
       - level: must-not
         statement: Add a variant or prop for the number of options. The number of options is data, not shape.
         checkedBy: manual
-      # NEEDS CLARIFICATION: the panel renders inside the field wrapper with no portal, so a parent with overflow hidden clips it. docs/25-dropdowns.md (common problems) and the Dropdown Accessibility frame in Figma say to move the panel out of the clipping container and wire it back to the field, but Dropdown has no way to do that. May a Dropdown sit inside a clipping container such as a Table cell, and if so how must the panel escape it?
+      # NEEDS CLARIFICATION: the panel renders inside the field wrapper with no portal, so a parent with overflow hidden clips it. docs/27-dropdowns.md (common problems) and the Dropdown Accessibility frame in Figma say to move the panel out of the clipping container and wire it back to the field, but Dropdown has no way to do that. May a Dropdown sit inside a clipping container such as a Table cell, and if so how must the panel escape it?
       # NEEDS CLARIFICATION: the Dropdown Accessibility frame in Figma leaves flipping the panel at the edge of the screen to code, but Dropdown always opens the panel downward. Must the panel flip up when there is no room below?
 
   - kind: guidelines
@@ -288,7 +288,7 @@ sections:
           and the group has role group named by the header. The header can't be picked, and the arrow keys skip it.
           Color --ntg-color-text-general-label, with the row's padding. In Figma its height is
           --ntg-dropdown-group-header-height-<size> (30, 38, 46) and its text style is label/sm, label/md or label/lg.
-          In Figma the dropdown-menu toggle show-group-header turns on the header and the Horizontal divider from page 28 together.
+          In Figma the dropdown-menu toggle show-group-header turns on the header and the Horizontal divider from page 26 together.
           Code has no such toggle, the header comes from the options.
         # NEEDS CLARIFICATION: Figma (show-group-header) and the RichOptions story say a group gets a header and a divider, but the code draws no divider between groups, and the generated Dropdown.module.css sets no text style for the header, so it doesn't get label/sm, label/md or label/lg. Must the code draw the divider and the header text style?
       - term: Checkbox
@@ -322,9 +322,9 @@ refs:
   - href: ../../components/Dropdown/Dropdown.stories.tsx
     rel: demo
     role: Storybook stories (npm run storybook)
-  - href: ../../docs/25-dropdowns.md
+  - href: ../../docs/27-dropdowns.md
     rel: relates-to
-    role: Thai page doc for Figma page 25 Dropdowns
+    role: Thai page doc for Figma page 27 Dropdowns
   - href: ../../docs/rules/layer-scope.md
     rel: relates-to
     role: Thai rule doc, section 5.1 says why the Lists page was folded into page 25
@@ -333,7 +333,7 @@ refs:
     role: Size formula for the panel, rows, group header and avatar, with the checks against tokens/scale/input.mjs
   - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7125-911
     rel: design
-    role: Figma page 25 Dropdowns
+    role: Figma page 27 Dropdowns
 
 traits:
   - traitType: variant
@@ -372,5 +372,5 @@ traits:
 
 $extensions:
   com.nationgroup:
-    figmaPage: "25 Dropdowns"
+    figmaPage: "27 Dropdowns"
     figmaSets: [dropdown, dropdown-menu]

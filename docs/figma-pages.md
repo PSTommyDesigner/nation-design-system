@@ -2,16 +2,17 @@
 title: "Figma Pages Inventory Nation Design System"
 description: "รายชื่อหน้าทั้งหมดในไฟล์ Figma DS หลัก (QgmoT5) พร้อม node id ใช้ตรวจลำดับเลข/หา node เร็ว"
 figma_file: "QgmoT5Uuvv3elB96F4nsTq (DS หลัก)"
-last_checked: "2026-09-11"
+last_checked: "2026-10-28"
 source: "figma.root.children ผ่าน use_figma (get_metadata คืน page list ไม่ครบ อย่าใช้)"
 ---
 
 # Figma Pages Inventory
 
-> Snapshot ล่าสุด: **2026-09-11** (อัปเดตหน้า 21 Tags และ 22 Badge หลังยุบโครงให้ใช้แกน hierarchy หน้าอื่นยังเป็นยอดของ 2026-08-27)
+> Snapshot ล่าสุด: **2026-10-28** (ย้าย 4 หน้าขึ้นชั้น Organisms และเลื่อนเลข ดูประวัติด้านล่าง) ก่อนหน้านั้น **2026-09-11** (อัปเดตหน้า 21 Tags และ 22 Badge หลังยุบโครงให้ใช้แกน hierarchy หน้าอื่นยังเป็นยอดของ 2026-08-27)
 > ดึงจาก `figma.root.children` โดยตรง (get_metadata คืนไม่ครบ เห็นแค่ Thumbnail/08 Logo)
 
 ## ประวัติการเลื่อนเลขหน้า
+- **2026-10-28:** ย้าย `25 Dropdowns` `26 Table` `29 Chart` `30 Modal` ขึ้นชั้น **Organisms (Component)** ให้ตรงกับการจัดชั้นในโค้ด (ผู้ใช้ตัดสิน) แล้วเลื่อนเลขให้ต่อเนื่อง `27 Card`→`25 Card` `28 Dividers`→`26 Dividers` `25 Dropdowns`→`27 Dropdowns` `26 Table`→`28 Table` · ชื่อไฟล์ doc เปลี่ยนตาม · ย้ายหน้า `00 Document` ที่หลุดไปอยู่ระหว่าง 21 Tags กับ 22 Badge กลับมาไว้หัวชั้น Atoms
 - **2026-08-27:** เพิ่มหน้า **09 Third-party Logos** (ย้ายโลโก้บริษัทนอก ธงประเทศ และช่องทางชำระเงิน 505 ตัวออกจากหน้า 08 Logo) → เลข `09 Frame`→`10 Frame` เป็นต้นไปเลื่อน +1 ทั้งหมด และเปลี่ยนชื่อไฟล์ `docs/11-buttons.md`→`docs/12-buttons.md`
 - **2026-07-17:** เพิ่มหน้า Table (component ตาราง + table-cell/color-cell) → เลขหลังจากนั้นเลื่อน +1
 
@@ -58,21 +59,25 @@ source: "figma.root.children ผ่าน use_figma (get_metadata คืน page
 | 22 | Badge | `8672:5101` | 14 |
 | 23 | Progress Bars | `7121:7243` | 7 |
 | 24 | Pagination | `7125:910` | 11 |
-| 25 | Dropdowns | `7125:911` | 7 |
-| 26 | Table | `9377:29760` | 4 |
-| 27 | Card | `7130:26` | 43 |
-| 28 | Dividers | `7130:30` | 3 |
-| 29 | Chart | `11793:2` | 0 |
+| 25 | Card | `7130:26` | 43 |
+| 26 | Dividers | `7130:30` | 3 |
 
 ### Organisms (Component)
 
-**ไม่มีหน้า component แล้ว** (ตัดสิน 2026-10-12) เหลือหน้าหัวข้อที่มีเอกสาร 4 ใบ คือ `Organisms Documentation` `Organisms Inventory` `Organism Examples` (10 ตัวอย่างที่นับ) และ `Organism Exclusions` (10 ตัวอย่างที่ไม่นับ) เหตุผลและขอบเขตอยู่ที่ [docs/rules/layer-scope.md](rules/layer-scope.md)
+| # | หน้า | node id | children |
+|---|---|---|---|
+| 27 | Dropdowns | `7125:911` | 7 |
+| 28 | Table | `9377:29760` | 4 |
+| 29 | Chart | `11793:2` | 0 |
+| 30 | Modal | `11804:2106` | 1 |
+
+**มีหน้า component อีกครั้งตั้งแต่ 2026-10-28** ผู้ใช้ตัดสินให้ย้ายชิ้นงานที่ประกอบจากหลาย molecule ขึ้นมาชั้นนี้ ให้ตรงกับการจัดชั้นในโค้ดและ Storybook หน้าหัวข้อยังมีเอกสาร 4 ใบ คือ `Organisms Documentation` `Organisms Inventory` `Organism Examples` และ `Organism Exclusions` ซึ่งเขียนไว้ตอนที่ชั้นนี้ยังไม่มี component (ตัดสิน 2026-10-12) ต้องแก้ตามในไฟล์ออกแบบ
 
 > **ยุบหน้า Lists (เลขเดิม 27 ยุบไปแล้ว) แล้ว** (2026-10-12) ความสามารถของแถว list item ยกเข้า `_dropdown-option` บนหน้า 25 ส่วนที่เหลือ 65 ชิ้นตัดทิ้ง เพราะไม่มีใครใช้ เหตุผลเต็มอยู่ที่ [docs/rules/layer-scope.md](rules/layer-scope.md) §5.1
 
-> **29 Chart** เพิ่ม 2026-10-28 เป็นที่อยู่ของชุด `bar-chart` (component ใหม่ ใช้ครั้งแรกในหน้า Dashboard ของ One CMS) ต่อท้าย 28 Dividers เลขหน้าอื่นไม่เลื่อน งานวิจัยอยู่ที่ [research/chart-component.md](research/chart-component.md)
+> **29 Chart** เพิ่ม 2026-10-28 เป็นที่อยู่ของชุด `bar-chart` (component ใหม่ ใช้ครั้งแรกในหน้า Dashboard ของ One CMS) ส่วน **30 Modal** มีชุด `modal` 1 ชุด ยังไม่มีโค้ด งานวิจัยอยู่ที่ [research/chart-component.md](research/chart-component.md)
 
-> **26 Table** = component ตาราง เป็นที่อยู่ของชุดที่ลงท้ายด้วย `-table-cell` และ `-color-cell` (master ที่หน้า doc อื่นดึง instance ไปใช้) · เปลี่ยนชื่อจากรูปแบบเดิมที่มีขีดทับเมื่อ 2026-09-14
+> **28 Table** (เลขเดิม 26) = component ตาราง เป็นที่อยู่ของชุดที่ลงท้ายด้วย `-table-cell` และ `-color-cell` (master ที่หน้า doc อื่นดึง instance ไปใช้) · เปลี่ยนชื่อจากรูปแบบเดิมที่มีขีดทับเมื่อ 2026-09-14
 
 ### Page (Prototype)
 
@@ -91,6 +96,7 @@ source: "figma.root.children ผ่าน use_figma (get_metadata คืน page
 |---|---|---|
 | Thumnail | `0:1` | หน้าปก |
 | Work in Progress | `8543:7711` | งานระหว่างทำ |
+| Design System Context Layer | `11745:993` | อยู่ต่อจาก Work in Progress ยังไม่ได้สำรวจเนื้อหา |
 | Atoms(Identity) | `1941:12626` | section header |
 | Molecules(Element) | `7121:7230` | section header |
 | Organisms(Component) | `7130:23` | section header |

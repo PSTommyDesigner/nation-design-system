@@ -1,0 +1,289 @@
+#!/usr/bin/env node
+/**
+ * ดึงเอกสารทุกใบของหน้าชั้น Atoms (Identity) ในไฟล์ออกแบบ Figma ผ่าน REST API
+ * แล้วเก็บเป็น foundations/<Folder>/<key>-doc.json ให้หน้า Atoms (Identity)/<NN> <Page> ใน Storybook อ่าน
+ *
+ * ทำไมต้องมี (ผู้ใช้สั่ง 2026-10-28 ให้ Storybook มีหน้า Atoms ตามไฟล์ออกแบบ)
+ *   เอกสารในไฟล์ออกแบบมีตารางหลายร้อยแถวพร้อมคำอธิบายที่มีแค่ใน Figma
+ *   ถ้าพิมพ์ตามด้วยมือจะดริฟต์ทันทีที่ไฟล์ออกแบบเปลี่ยน จึงดึงจากของจริงแล้วรันใหม่เมื่อหน้านั้นเปลี่ยน
+ *
+ * การใช้
+ *   node scripts/extract-figma-atom-doc.mjs color          หน้าที่รองรับอยู่ใน PAGES ข้างล่าง
+ *   npm run figma:atom-doc -- typography
+ *
+ * ต้องมี FIGMA_TOKEN กับ FIGMA_FILE_KEY ใน .env
+ *
+ * ⚠️ REST คืนตัวแปรเป็น id สคริปต์แปลงเป็นชื่อด้วย tokens/figma-variable-ids.json แบบเดียวกับ extract-figma-layers.mjs
+ *    ถ้าเจอ id ที่ไม่รู้จัก จะเขียนรายการไว้ที่ foundations/<Folder>/missing-ids.json แล้วหยุด
+ *    ให้ agent ดึงชื่อผ่าน Figma Plugin API (use_figma) มาเติมในไฟล์ map แล้วรันใหม่
+ * ⚠️ ตัวแปร CSS และคลาส .ntg-typography-* ที่อ้างถึงต้องมีอยู่จริงใน tokens/output/css ถ้าไม่มีจะหยุดและบอกชื่อที่หาไม่เจอ
+ */
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const env = Object.fromEntries(
+  fs.existsSync(path.join(ROOT, '.env'))
+    ? fs.readFileSync(path.join(ROOT, '.env'), 'utf8').split('\n').filter(l => /^[A-Z_]+=/.test(l)).map(l => { const i = l.indexOf('='); return [l.slice(0, i), l.slice(i + 1).trim().replace(/^"|"$/g, '')] })
+    : [],
+)
+const TOKEN = process.env.FIGMA_TOKEN || env.FIGMA_TOKEN
+const FILE = process.env.FIGMA_FILE_KEY || env.FIGMA_FILE_KEY
+if (!TOKEN || !FILE) { console.error('ต้องมี FIGMA_TOKEN และ FIGMA_FILE_KEY ใน .env'); process.exit(2) }
+
+// หน้าที่ดึงได้ skip คือเอกสารที่ไม่ใช่เนื้อหาของระบบ เช่นชิ้นส่วนทำเอกสาร
+const PAGES = {
+  color: { page: '01 Color', folder: 'Color', skip: ['Base Components (internal)'] },
+  typography: { page: '03 Typography', folder: 'Typography', skip: [] },
+  grid: { page: '04 Grid', folder: 'Grid', skip: [] },
+}
+const KEY = process.argv[2]
+if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
+const PAGE = PAGES[KEY].page
+const SKIP = new Set(PAGES[KEY].skip)
+const OUT = path.join(ROOT, `foundations/${PAGES[KEY].folder}/${KEY}-doc.json`)
+const MISSING = path.join(ROOT, `foundations/${PAGES[KEY].folder}/missing-ids.json`)
+const TYPO_CLASSES = new Set([...fs.readFileSync(path.join(ROOT, 'tokens/output/css/typography.css'), 'utf8').matchAll(/^\.(ntg-typography-[\w-]+)\s*\{/gm)].map(m => m[1]))
+// ชื่อตระกูลฟอนต์ในไฟล์ออกแบบ เป็นตัวแปรตระกูลฟอนต์ฝั่งโค้ด และน้ำหนักเป็นตัวแปรความหนา
+const FAMILY_VAR = { Prompt: '--ntg-typography-font-family-primary', Sarabun: '--ntg-typography-font-family-article' }
+const WEIGHT_VAR = { 400: '--ntg-typography-font-weight-regular', 500: '--ntg-typography-font-weight-medium', 600: '--ntg-typography-font-weight-bold' }
+const VAR_NAMES = JSON.parse(fs.readFileSync(path.join(ROOT, 'tokens/figma-variable-ids.json'), 'utf8'))
+const CSS = fs.readFileSync(path.join(ROOT, 'tokens/output/css/variables.css'), 'utf8')
+const CSS_VARS = new Set([...CSS.matchAll(/^\s*(--ntg-[\w-]+):/gm)].map(m => m[1]))
+// ตัวแปรที่บล็อก [data-theme="dark"] ประกาศทับ และค่าที่ :root ชี้ต่อ ใช้หาว่าช่อง "โหมดมืด" ต้องอ่านตัวแปรไหน
+const darkStart = CSS.indexOf('[data-theme="dark"]')
+const DARK_VARS = new Set([...CSS.slice(darkStart).matchAll(/^\s*(--ntg-[\w-]+):/gm)].map(m => m[1]))
+const ROOT_REFS = Object.fromEntries([...CSS.slice(0, darkStart).matchAll(/^\s*(--ntg-[\w-]+):\s*var\((--ntg-[\w-]+)\)/gm)].map(m => [m[1], m[2]]))
+// ตัวแปรของ component (เช่น --ntg-icon-brand-primary) ถูกคำนวณที่ :root ครั้งเดียว ใส่ data-theme="dark" ที่กล่องเล็ก ๆ จึงไม่เปลี่ยนค่า
+// ช่องโหมดมืดจึงต้องไล่ var() ลงไปจนเจอตัวแปร semantic ที่บล็อก dark ประกาศทับ ถ้าไม่เจอแปลว่าสีไม่เปลี่ยนตามโหมด
+const DARK_REFS = Object.fromEntries([...CSS.slice(darkStart).matchAll(/^\s*(--ntg-[\w-]+):\s*var\((--ntg-[\w-]+)\)/gm)].map(m => [m[1], m[2]]))
+// ชื่อสีดิบปลายทาง เช่น --ntg-color-text-brand-primary ไล่ไปจนเจอ --ntg-color-brand-600 ได้ป้าย brand-600
+// ป้ายในตารางของไฟล์ออกแบบเป็นข้อความที่พิมพ์ไว้ บางแถวไม่ตรงกับตัวแปรจริงแล้ว จึงอ่านป้ายจากตัวแปรแทน
+function primitiveOf(cssVar, dark) {
+  let v = cssVar
+  for (let i = 0; i < 12; i++) {
+    const next = (dark && DARK_REFS[v]) || ROOT_REFS[v]
+    if (!next) break
+    v = next
+  }
+  return v.replace(/^--ntg-color-/, '').replace(/^base-(white|black)$/, 'base-$1-100')
+}
+function darkVarOf(cssVar) {
+  for (let v = cssVar, i = 0; v && i < 10; v = ROOT_REFS[v], i++) if (DARK_VARS.has(v)) return v
+  return cssVar
+}
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms))
+async function api(p) {
+  for (let attempt = 0; ; attempt++) {
+    const r = await fetch(`https://api.figma.com/v1/files/${FILE}${p}`, { headers: { 'X-Figma-Token': TOKEN } })
+    if (r.status === 429 && attempt < 6) {
+      const wait = Number(r.headers.get('retry-after')) * 1000 || 20000 * (attempt + 1)
+      process.stderr.write(`  429 รอ ${Math.round(wait / 1000)} วิ แล้วลองใหม่\n`)
+      await sleep(wait)
+      continue
+    }
+    if (!r.ok) throw new Error(`Figma API ${r.status} ${p}: ${(await r.text()).slice(0, 200)}`)
+    return r.json()
+  }
+}
+
+const missing = new Set()
+const stale = []
+const badVars = []
+// ชื่อตัวแปร Figma เป็นตัวแปร CSS เช่น color/text/brand/primary เป็น --ntg-color-text-brand-primary
+function cssVarOf(node, where) {
+  const id = node?.boundVariables?.fills?.[0]?.id
+  if (!id) return null
+  const key = id.replace(/^VariableID:/, '')
+  const full = VAR_NAMES[key]
+  if (!full) { missing.add(key); return null }
+  const name = full.split('::')[1]
+  const cssVar = '--ntg-' + name.replace(/\//g, '-')
+  if (!CSS_VARS.has(cssVar)) badVars.push(`${where}: ${full} เป็น ${cssVar} ไม่มีใน variables.css`)
+  return cssVar
+}
+// ชั้นที่ซ่อนไว้ (visible: false) ไม่ใช่เนื้อหา เช่น supporting text ที่ปิดอยู่ในเซลตาราง
+const findAll = (n, pred, acc = []) => { if (n.visible === false) return acc; if (pred(n)) acc.push(n); for (const k of n.children ?? []) findAll(k, pred, acc); return acc }
+// "Supporting text" คือข้อความตัวอย่างของเซลที่ลืมลบ ยังเห็นอยู่ในไฟล์ออกแบบหน้า 01 (จดเป็นงานค้างแล้ว 2026-10-28) จึงไม่นับเป็นเนื้อหา
+const PLACEHOLDER = new Set(['Supporting text'])
+const texts = (n) => findAll(n, x => x.type === 'TEXT' && !PLACEHOLDER.has(x.characters.trim())).map(x => x.characters)
+const fontSize = (n) => n.style?.fontSize ?? 0
+const isCell = (n) => /-(table|color)-cell$|color-badge$/.test(n.name)
+const rampSteps = (ramp) => [...CSS_VARS].map(v => v.match(new RegExp(`^--ntg-color-${ramp}-(\\d+)$`))?.[1]).filter(Boolean).map(Number).sort((a, b) => a - b)
+
+const ROOT_VALUES = Object.fromEntries([...CSS.slice(0, darkStart).matchAll(/^\s*(--ntg-[\w-]+):\s*([^;]+);/gm)].map(m => [m[1], m[2].trim()]))
+// ชื่อภาพ grid ใน Figma เป็นชื่อชุด token เช่น nation-platform-2023-full-hd เป็น --ntg-grid-nation-digital-fullhd-*
+const GRID_SYSTEM = { 'nation-group-2022': 'v2022', 'nation-platform-2023': 'nation-digital', 'nation-group-2026': 'v2026' }
+const GRID_DEVICE = { 'full-hd': 'fullhd', desktop: 'desktop', 'tablet-horizontal': 'tablet-h', 'tablet-vertical': 'tablet-v', mobile: 'mobile' }
+const gridMismatch = []
+function needVar(v, where) { if (!CSS_VARS.has(v)) badVars.push(`${where}: ${v} ไม่มีใน variables.css`); return v }
+const STYLE_NAME = /^[a-z]+(-[a-z]+)*(\/[a-z0-9-]+)+$/
+
+function extract(doc) {
+  const out = { id: doc.id, name: doc.name, title: '', subtitle: '', blocks: [] }
+  // หัวข้อ Base component (internal) เก็บชิ้นส่วนทำเอกสาร เช่นป้ายตัวเลขของภาพ grid ไม่ใช่เนื้อหา จึงข้ามจนถึงหัวข้อถัดไป
+  let skipping = false
+  const push = (b) => {
+    if (b.type === 'h') skipping = /base component/i.test(b.text)
+    if (skipping) return
+    // แถวสีติดกันรวมเป็นตารางเดียว
+    const last = out.blocks[out.blocks.length - 1]
+    if (b.type === 'colorRow') {
+      if (last?.type === 'colorTable') { last.rows.push(b.row); return }
+      out.blocks.push({ type: 'colorTable', rows: [b.row] }); return
+    }
+    out.blocks.push(b)
+  }
+  ;(function walk(n) {
+    if (n.visible === false) return
+    if (n.type === 'INSTANCE' && /header/i.test(n.name) && !out.title && !isCell(n)) {
+      // หัวเอกสาร _document-header อ่านชื่อเรื่องและคำอธิบายใต้ชื่อ
+      const t = findAll(n, x => x.type === 'TEXT')
+      out.title = t.find(x => fontSize(x) >= 40)?.characters ?? doc.name
+      const sub = t.find(x => fontSize(x) < 40)?.characters ?? ''
+      out.subtitle = sub === 'Supporting text' ? '' : sub
+      return
+    }
+    if (n.type === 'INSTANCE' && /info-card$/.test(n.name)) {
+      const kind = n.name.replace(/-info-card$/, '')
+      const t = findAll(n, x => x.type === 'TEXT')
+      const title = t.find(x => x.name === 'title')?.characters ?? ''
+      const body = t.find(x => x.name === 'body')?.characters ?? ''
+      push({ type: 'card', kind, title, body })
+      return
+    }
+    if (n.type === 'FRAME' && n.name === 'row' && n.children?.some(c => c.name === 'hierarchy-color-cell')) {
+      const get = (nm) => n.children.find(c => c.name === nm)
+      const h = get('hierarchy-color-cell'), l = get('light-color-cell'), d = n.children.find(c => /dark/i.test(c.name)), ds = get('description-color-cell')
+      const [no, name] = texts(h)
+      const level = (h.componentProperties?.type?.value ?? '').toString() || 'primary'
+      const swatch = findAll(l, x => x.name === 'color' && x.boundVariables?.fills)[0]
+      const cssVar = cssVarOf(swatch, name)
+      push({ type: 'colorRow', row: { no, name, level, light: texts(l).join(' '), dark: d ? texts(d).join(' ') : '', description: ds ? texts(ds).join(' ') : '', cssVar, darkVar: darkVarOf(cssVar) } })
+      const row = out.blocks[out.blocks.length - 1].rows.at(-1)
+      row.light = primitiveOf(cssVar, false)
+      row.dark = primitiveOf(row.darkVar, true)
+      const figmaLight = texts(l).join(' '), figmaDark = d ? texts(d).join(' ') : ''
+      if (figmaLight !== row.light || figmaDark !== row.dark) stale.push(`${doc.name}: ${name} ไฟล์ออกแบบเขียน ${figmaLight} / ${figmaDark} ตัวแปรจริงคือ ${row.light} / ${row.dark}`)
+      return
+    }
+    if (n.type === 'FRAME' && n.children?.length && n.children.every(c => c.type === 'FRAME' && c.children?.some(isCell)) && n.children.some(c => c.children.some(x => /table-cell$/.test(x.name)))) {
+      // ตาราง = เฟรมที่ลูกทุกตัวเป็นแถวของเซล แถวแรกเป็นหัวตาราง
+      const rows = n.children.map(r => r.children.filter(isCell).map(c => texts(c).join(' ')))
+      push({ type: 'table', head: rows[0], rows: rows.slice(1) })
+      return
+    }
+    if (n.type === 'FRAME' && n.children?.some(c => c.type === 'INSTANCE' && c.name === 'light-color-cell') && !n.children.some(c => c.name === 'hierarchy-color-cell')) {
+      // แถวตัวอย่างสีแบบไม่มีลำดับ เช่น ตัวอย่างจริงของ Interaction States
+      const items = n.children.filter(c => c.name === 'light-color-cell').map(c => ({ label: texts(c).join(' '), cssVar: cssVarOf(findAll(c, x => x.name === 'color' && x.boundVariables?.fills)[0], c.id) }))
+      push({ type: 'swatches', items })
+      return
+    }
+    if (n.type === 'FRAME' && n.children?.some(c => c.type === 'TEXT' && c.styles?.text) && n.children.some(c => c.type === 'FRAME' && c.name === 'info' && STYLE_NAME.test(texts(c)[0]?.trim() ?? ''))) {
+      // ตัวอย่างของ text style หนึ่งตัว ข้อความตัวอย่าง + ชื่อสไตล์ ค่า และที่ใช้ (หน้า Text Roles)
+      const sample = n.children.find(c => c.type === 'TEXT').characters
+      const [style, meta = '', usage = ''] = texts(n.children.find(c => c.name === 'info'))
+      const cls = 'ntg-typography-' + style.trim().replace(/\//g, '-')
+      if (!TYPO_CLASSES.has(cls)) badVars.push(`${doc.name}: ${style} เป็นคลาส .${cls} ไม่มีใน typography.css`)
+      push({ type: 'specimen', sample, style: style.trim(), className: cls, meta, usage })
+      return
+    }
+    if (n.type === 'FRAME' && n.children?.length === 2 && n.children.every(c => c.type === 'TEXT') && /^[a-z0-9-]+ \d+\/\d+$/.test(n.children[0].characters.trim())) {
+      // ขั้นหนึ่งของชุดขนาดพื้นฐาน เช่น "h1 64/94" ตามด้วยข้อความตัวอย่างขนาดนั้น (หน้า Type Scale)
+      const [name, spec] = n.children[0].characters.trim().split(' ')
+      const sample = n.children[1]
+      push({ type: 'scale', name, spec, sample: sample.characters, family: needVar(FAMILY_VAR[sample.style.fontFamily], name), size: needVar(`--ntg-typography-font-size-${name}`, name), lineHeight: needVar(`--ntg-typography-line-height-${name}`, name) })
+      return
+    }
+    if (n.type === 'FRAME' && findAll(n, x => x.type === 'TEXT' && x.characters === 'Aa').length >= 2 && findAll(n, x => x.type === 'TEXT' && fontSize(x) >= 40 && !x.styles?.text).length === 1) {
+      // ตระกูลฟอนต์ ชื่อ + ข้อความตัวอย่าง + น้ำหนักที่มี (หน้า Type Scale)
+      const all = findAll(n, x => x.type === 'TEXT')
+      const big = all.find(x => fontSize(x) >= 40)
+      const weights = all.filter(x => x.characters === 'Aa').map(x => ({ label: all[all.indexOf(x) + 1]?.characters ?? '', weight: needVar(WEIGHT_VAR[x.style.fontWeight], big.characters) }))
+      const rest = all.filter(x => x !== big && x.characters !== 'Aa' && !weights.some(w => w.label === x.characters)).map(x => x.characters)
+      push({ type: 'fontFamily', sample: big.characters, family: needVar(FAMILY_VAR[big.style.fontFamily], big.characters), title: rest[0] ?? '', usage: rest.slice(1).join(' '), weights })
+      return
+    }
+    if ((n.type === 'INSTANCE' || n.type === 'COMPONENT') && n.layoutGrids?.some(g => g.pattern === 'COLUMNS')) {
+      // ภาพ grid หนึ่งขนาดจอ คอลัมน์ ร่อง และขอบอ่านจาก token ส่วนความกว้างแคนวาสเก็บจากไฟล์ออกแบบ (ผู้ใช้ตัดสิน 2026-11-02
+      // เพราะมือถือรุ่น 2026 ออกแบบบนแคนวาส 360 ซึ่งไม่มี token) ตัวเลขกำกับในภาพไม่ใช่เนื้อหา จึงไม่อ่าน
+      const m = n.name.match(/^(nation-(?:group|platform)-\d{4})-(.+)$/)
+      const prefix = m && GRID_SYSTEM[m[1]] && GRID_DEVICE[m[2]] ? `--ntg-grid-${GRID_SYSTEM[m[1]]}-${GRID_DEVICE[m[2]]}` : null
+      if (!prefix) { badVars.push(`${doc.name}: ภาพ grid ${n.name} จับคู่กับชุด token ไม่ได้`); return }
+      const col = n.layoutGrids.find(g => g.pattern === 'COLUMNS')
+      const canvas = Math.round(n.absoluteBoundingBox.width)
+      const token = (k) => CSS_VARS.has(`${prefix}-${k}`) ? `${prefix}-${k}` : null
+      const b = { type: 'grid', name: n.name, canvas, stretch: col.alignment === 'STRETCH', columns: needVar(`${prefix}-columns`, n.name), gutter: needVar(`${prefix}-gutter`, n.name), margin: needVar(`${prefix}-margin`, n.name), container: token('container'), columnWidth: token('column-width') }
+      // เทียบค่าในไฟล์ออกแบบกับ token ถ้าไม่ตรงจดไว้ ไม่หยุด เพราะเป็นงานของคนดูแล token
+      const px = (v) => parseFloat(ROOT_VALUES[v])
+      const figMargin = col.alignment === 'STRETCH' ? col.offset : (canvas - (col.count * col.sectionSize + (col.count - 1) * col.gutterSize)) / 2
+      const pairs = [['columns', col.count, px(b.columns)], ['gutter', col.gutterSize, px(b.gutter)], ['margin', figMargin, px(b.margin)]]
+      if (b.columnWidth) pairs.push(['column-width', col.sectionSize, px(b.columnWidth)])
+      for (const [k, fig, tok] of pairs) if (fig !== tok) gridMismatch.push(`${doc.name}: ${n.name} ${k} ไฟล์ออกแบบ ${fig} token ${tok}`)
+      push(b)
+      return
+    }
+    if (n.type === 'TEXT') {
+      const s = n.characters.trim()
+      const ramp = s.match(/^(.+?) : color\/([\w-]+)$/)
+      if (ramp) {
+        // แรมป์สีดิบ ใช้ขั้นจากตัวแปร CSS จริง ไม่ใช่ตัวเลขที่พิมพ์ในไฟล์
+        push({ type: 'ramp', label: ramp[1], path: `color/${ramp[2]}`, steps: rampSteps(ramp[2]).map(step => ({ step, cssVar: `--ntg-color-${ramp[2]}-${step}` })) })
+        return
+      }
+      const fs_ = fontSize(n)
+      // ข้อความเล็กกว่า 14 คือป้ายกำกับในภาพตัวอย่าง ไม่ใช่เนื้อหา ยกเว้นย่อหน้าท้ายบล็อกที่เป็นคำอธิบาย 14
+      if (fs_ < 14 || /^#[0-9A-F]{6}$/i.test(s) || /^\d+$/.test(s)) return
+      if (fs_ >= 24) push({ type: 'h', text: s })
+      else if (fs_ === 18) push({ type: 'h3', text: s })
+      else {
+        const last = out.blocks[out.blocks.length - 1]
+        // ข้อความ 20px ที่ตามหลังหัวข้อทันทีคือคำอธิบายใต้หัวข้อ
+        if (last?.type === 'h' && n.parent?.type === 'FRAME' && fs_ === 20 && !last.sub) { last.sub = s; return }
+        push({ type: 'p', text: s })
+      }
+      return
+    }
+    for (const k of n.children ?? []) { k.parent = n; walk(k) }
+  })(doc)
+  if (!out.title) out.title = doc.name
+  return out
+}
+
+const file = await api('?depth=2')
+const page = file.document.children.find(p => p.name === PAGE)
+if (!page) throw new Error(`ไม่พบหน้า "${PAGE}"`)
+const frames = page.children.filter(c => c.type === 'FRAME' && !SKIP.has(c.name)).sort((a, b) => a.absoluteBoundingBox.x - b.absoluteBoundingBox.x)
+const res = await api(`/nodes?ids=${encodeURIComponent(frames.map(f => f.id).join(','))}`)
+const documents = frames.map(f => extract(res.nodes[f.id].document))
+
+fs.mkdirSync(path.dirname(OUT), { recursive: true })
+if (missing.size) {
+  fs.writeFileSync(MISSING, JSON.stringify([...missing], null, 2) + '\n')
+  console.error(`เจอ id ตัวแปรที่ไม่รู้จัก ${missing.size} ตัว เขียนไว้ที่ ${path.relative(ROOT, MISSING)} เติมชื่อใน tokens/figma-variable-ids.json แล้วรันใหม่`)
+  process.exit(1)
+}
+if (fs.existsSync(MISSING)) fs.unlinkSync(MISSING)
+if (badVars.length) {
+  console.error(`ตัวแปร CSS หาไม่เจอ ${badVars.length} ตัว\n  ` + badVars.slice(0, 30).join('\n  '))
+  process.exit(1)
+}
+
+const json = {
+  _comment: `สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า ${PAGE} ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- ${KEY}`,
+  page: PAGE,
+  // ป้ายสีในตารางของไฟล์ออกแบบที่ไม่ตรงกับตัวแปรจริง เป็นงานค้างของหน้านั้นใน Figma
+  ...(stale.length ? { staleLabels: stale } : {}),
+  // ค่า grid ในไฟล์ออกแบบที่ไม่ตรงกับ token
+  ...(gridMismatch.length ? { gridMismatch } : {}),
+  documents,
+}
+fs.mkdirSync(path.dirname(OUT), { recursive: true })
+fs.writeFileSync(OUT, JSON.stringify(json, null, 2) + '\n')
+const count = (t) => documents.reduce((s, d) => s + d.blocks.filter(b => b.type === t).length, 0)
+const rows = documents.reduce((s, d) => s + d.blocks.filter(b => b.type === 'colorTable').reduce((a, b) => a + b.rows.length, 0), 0)
+if (gridMismatch.length) console.log(`ค่า grid ไม่ตรงกับ token ${gridMismatch.length} จุด\n  ` + gridMismatch.join('\n  '))
+if (stale.length) console.log(`ป้ายสีในไฟล์ออกแบบไม่ตรงกับตัวแปรจริง ${stale.length} แถว ดู staleLabels ใน ${path.relative(ROOT, OUT)}`)
+console.log(`เขียน ${path.relative(ROOT, OUT)} เอกสาร ${documents.length} ใบ แถวสี ${rows} ตาราง ${count('table')} แรมป์ ${count('ramp')} การ์ด ${count('card')} ตัวอย่างสไตล์ ${count('specimen')} ขั้นขนาด ${count('scale')} ตระกูลฟอนต์ ${count('fontFamily')} ภาพ grid ${count('grid')}`)

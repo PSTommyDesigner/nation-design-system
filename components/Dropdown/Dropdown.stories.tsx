@@ -15,9 +15,9 @@ const RICH_OPTIONS: DropdownOption[] = [
 ]
 
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
-// ไฟล์ออกแบบหน้า 25 มีชุด dropdown (ช่อง) dropdown-menu (แผง) และชุดฐาน _dropdown-option กับ _dropdown-group-header
+// ไฟล์ออกแบบหน้า 27 มีชุด dropdown (ช่อง) dropdown-menu (แผง) และชุดฐาน _dropdown-option กับ _dropdown-group-header
 const meta: Meta<typeof Dropdown> = {
-  title: 'Components/Dropdown',
+  title: 'Organisms (Component)/27 Dropdowns/Dropdown',
   component: Dropdown,
   tags: ['autodocs'],
   args: { options: OPTIONS, label: 'จังหวัด', placeholder: 'เลือกจังหวัด', size: 'md' },

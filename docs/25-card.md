@@ -1,26 +1,26 @@
 ---
-title: "27 Card Nation Design System"
+title: "25 Card Nation Design System"
 description: "การ์ด 13 ชุดสำหรับเว็บข่าว บวกชิ้นส่วนภายใน 4 ชุด และการ์ดของระบบเอกสาร 3 ใบ ที่เอกสารทุกหน้าในไฟล์นี้ใช้อยู่ 95 จุด"
 target_audience: ["UI/UX Designer", "Frontend Developer", "Design System Maintainer"]
 version: "1.0.0"
 last_updated: "2026-10-14"
 status: "active"
 sources_of_truth:
-  figma_page: "27 Card (ไฟล์ QgmoT5) ต้นฉบับอยู่ในเอกสาร Card Component Previews และ Card Base Components"
+  figma_page: "25 Card (ไฟล์ QgmoT5) ต้นฉบับอยู่ในเอกสาร Card Component Previews และ Card Base Components"
   scale_spec: "tokens/scale/card.mjs"
   code: "components/Card (ยังไม่ได้ทำ)"
 ---
 
-# 27 Card Nation Design System
+# 25 Card Nation Design System
 
 ## 1. ข้อมูลควบคุม (Metadata)
 
 | ฟิลด์ | รายละเอียด |
 |---|---|
-| **Title** | 27 Card (การ์ด) |
+| **Title** | 25 Card (การ์ด) |
 | **Description** | การ์ดเนื้อหาและการ์ดรูปสำหรับเว็บข่าว บวกการ์ดของระบบเอกสาร |
 | **Target Audience** | Designer เลือกตระกูลและขนาด, Developer ทำโครงลิงก์และการยืดหดของข้อความ, Maintainer ดูแลสูตรและด่านตรวจ |
-| **Source of Truth** | **Figma หน้า 27 Card** และสูตรที่ `tokens/scale/card.mjs` |
+| **Source of Truth** | **Figma หน้า 25 Card** และสูตรที่ `tokens/scale/card.mjs` |
 | **Version / Updated** | 1.0.0 (2026-10-14) |
 
 ## 2. วัตถุประสงค์ (Objective & Business Logic)

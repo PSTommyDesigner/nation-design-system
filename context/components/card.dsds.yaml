@@ -1,7 +1,7 @@
 # Card in DSDS 0.23 format https://designsystemdocspec.org
-# Facts come from components/Card/, docs/27-card.md, tokens/scale/card.mjs, tokens/figma-components.json,
+# Facts come from components/Card/, docs/25-card.md, tokens/scale/card.mjs, tokens/figma-components.json,
 # tokens/figma-layers/card.json and the Figma file (read 2026-10-27). Card has no README.md
-# docs/27-card.md still says the code is not written (frontmatter and pending work). That part is out of date
+# docs/25-card.md still says the code is not written (frontmatter and pending work). That part is out of date
 # Levels go in this order: must, should, may, should-not, must-not
 # Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
 # The first value of every enum trait is its default
@@ -11,7 +11,7 @@ id: card
 name: Card
 description: >-
   A news card for the news websites: an image with an optional tag on it, then a category, a title, a lead and a meta
-  row, and the whole card can be one link. One component covers four Figma sets on page 27 Card through props:
+  row, and the whole card can be one link. One component covers four Figma sets on page 25 Card through props:
   vertical-news-card (variant vertical), horizontal-news-card (variant horizontal), news-list-card (variant list) and
   video-list-card (variant list with overlay and meta). It exists so news cards on every site share one set of image
   sizes, the shared spacing scale and the text presets, and grow with their content instead of having fixed heights.
@@ -35,7 +35,7 @@ sections:
         checkedBy: manual
       - level: must-not
         statement: >-
-          Build the other card sets of page 27 from Card: text-on-image-square-card, text-on-image-wide-card,
+          Build the other card sets of page 25 from Card: text-on-image-square-card, text-on-image-wide-card,
           ranking-item-card, ranking-list-card, wide-ranking-image-card, portrait-ranking-image-card, timeline-image-card,
           wide-image-card or portrait-image-card. They have no code yet, because the system has no scrim token for text on
           an image, no code for _ranking-number and the timeline parts, and no image ratio token other than 16:9.
@@ -200,7 +200,7 @@ sections:
       # NEEDS CLARIFICATION: for news-list-card, figma-components.json maps Supporting text to lead and the Card.tsx example puts the date in lead, but the News-list-card story puts the date in meta and leaves lead out. Which prop holds the date?
       - term: Not part of Card
         definition: >-
-          do-info-card, dont-info-card and how-to-read-info-card on page 27 belong to the documentation system. They have
+          do-info-card, dont-info-card and how-to-read-info-card on page 25 belong to the documentation system. They have
           no code on purpose, and products don't use them.
 
 uses:
@@ -214,12 +214,12 @@ refs:
   - href: ../../components/Card/Card.stories.tsx
     rel: demo
     role: Storybook stories (npm run storybook)
-  - href: ../../docs/27-card.md
+  - href: ../../docs/25-card.md
     rel: relates-to
-    role: Thai page doc for Figma page 27 Card
+    role: Thai page doc for Figma page 25 Card
   - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7130-26
     rel: design
-    role: Figma page 27 Card
+    role: Figma page 25 Card
 
 traits:
   - traitType: variant
@@ -277,5 +277,5 @@ combos:
 
 $extensions:
   com.nationgroup:
-    figmaPage: "27 Card"
+    figmaPage: "25 Card"
     figmaSets: [vertical-news-card, horizontal-news-card, news-list-card, video-list-card]

@@ -1,10 +1,10 @@
 /**
  * Divider Nation Design System
  *
- * เส้นคั่นระหว่างกลุ่มเนื้อหา ตรงกับ component set ใน Figma หน้า 28 Dividers
+ * เส้นคั่นระหว่างกลุ่มเนื้อหา ตรงกับ component set ใน Figma หน้า 26 Dividers
  * สองชุดคือ horizontal-divider และ vertical-divider ชุดละ 2 แบบ (type=solid กับ type=dash)
  *
- * ⚠️ ห้ามตรึงความยาวเส้น (ข้อห้ามในเอกสาร docs/28-dividers.md หัวข้อ 5)
+ * ⚠️ ห้ามตรึงความยาวเส้น (ข้อห้ามในเอกสาร docs/26-dividers.md หัวข้อ 5)
  *    เส้นต้องยืดเต็มกรอบแม่เสมอ ความยาวจึงเป็นค่าของ layout ไม่ใช่ token
  *
  * ⚠️ เส้นคั่นเป็นของตกแต่ง ต้องซ่อนจากโปรแกรมอ่านหน้าจอเสมอ

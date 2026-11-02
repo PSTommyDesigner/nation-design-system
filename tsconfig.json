@@ -21,6 +21,8 @@
   },
   "include": [
     "types/**/*.d.ts",
+    "foundations/**/*.ts",
+    "foundations/**/*.tsx",
     "components/**/*.ts",
     "components/**/*.tsx",
     "prototype/**/*.ts",

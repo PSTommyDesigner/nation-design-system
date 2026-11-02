@@ -44,7 +44,7 @@ content-section        padding 80, gap 24, bg color/background/general/primary
 The user flagged 9 pages at once on 2026-10-12 for being text only.
 - At least 5 topics MUST have an example block: parts, sets, sizes, states, do and don't
 - The example block is named `preview`, a horizontal auto layout with a gap of 16 to 24, holding real instances from that page. Never drawn by hand
-- Do and don't uses a `do-dont` block built from `info-card / do` and `info-card / don't` on page 27. Never one paragraph
+- Do and don't uses a `do-dont` block built from `info-card / do` and `info-card / don't` on page 25. Never one paragraph
 - Pages with no components (for example 06 Shape, 07 Space, 04 Grid) MAY have example blocks drawn for them (allowed by the user 2026-10-12), or borrow a block already drawn in that page's Information Document and shrink it
 - A topic with nothing real to show (for example states for radius or spacing, which have no states) MUST NOT get a fake example. Write why there is none, as page 01 Color does
 - Scan before you say done: count the instances in the Page Documentation. 0 means it is still text only

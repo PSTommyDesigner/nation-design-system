@@ -1,27 +1,27 @@
 ---
-title: "25 Dropdowns Nation Design System"
+title: "27 Dropdowns Nation Design System"
 description: "ช่องเลือกจากรายการ 4 ชุด 51 แบบ พร้อมตัวแปร 41 ตัว ค่าหลักยืมจากช่องกรอกหน้า 13 เพราะเป็นของชนิดเดียวกันที่วางคู่กันในฟอร์มเดียวกัน รวมหน้า Lists (เลขเดิม 27 ยุบไปแล้ว) เข้ามาแล้ว"
 target_audience: ["UI/UX Designer", "Frontend Developer", "Design System Maintainer"]
 version: "1.1.0"
 last_updated: "2026-10-12"
 status: "active"
 sources_of_truth:
-  figma_page: "25 Dropdowns (ไฟล์ QgmoT5) ต้นฉบับอยู่ในชุด dropdown, dropdown-menu, _dropdown-option และ _dropdown-group-header"
+  figma_page: "27 Dropdowns (ไฟล์ QgmoT5) ต้นฉบับอยู่ในชุด dropdown, dropdown-menu, _dropdown-option และ _dropdown-group-header"
   scale_spec: "tokens/scale/dropdown.mjs"
   code: "components/Dropdown (ยังไม่ได้ทำ)"
   research: "docs/research/dropdown-component.md"
 ---
 
-# 25 Dropdowns Nation Design System
+# 27 Dropdowns Nation Design System
 
 ## 1. ข้อมูลควบคุม (Metadata)
 
 | ฟิลด์ | รายละเอียด |
 |---|---|
-| **Title** | 25 Dropdowns (ช่องเลือกจากรายการ) |
+| **Title** | 27 Dropdowns (ช่องเลือกจากรายการ) |
 | **Description** | ช่องที่กดแล้วเปิดแผงรายการให้เลือกค่าเดียว ใช้ในฟอร์มและแผงตัวกรอง |
 | **Target Audience** | Designer เลือกชนิดและขนาด, Developer ทำโครงการเข้าถึงและพฤติกรรมแผง, Maintainer ดูแลสูตรและด่านตรวจ |
-| **Source of Truth** | **Figma หน้า 25 Dropdowns** และสูตรที่ `tokens/scale/dropdown.mjs` |
+| **Source of Truth** | **Figma หน้า 27 Dropdowns** และสูตรที่ `tokens/scale/dropdown.mjs` |
 | **Version / Updated** | 1.1.0 (2026-10-12) |
 
 ## 2. วัตถุประสงค์ (Objective & Business Logic)
@@ -77,7 +77,7 @@ sources_of_truth:
 | `show-supporting-text` | preset `body/xs` `body/sm` `body/md` | แถวสูงขึ้นเป็น 54 / 64 / 74 | ชื่ออย่างเดียวแยกไม่ออก |
 | `show-checkbox` | `checkbox` หน้า 15 ขนาดชื่อเดียวกัน | 16 / 20 / 24 | เลือกได้หลายค่า |
 
-ส่วนแผงมี `show-group-header` ซึ่งเปิด `_dropdown-group-header` กับเส้นคั่น `Horizontal` ของหน้า 28 พร้อมกัน
+ส่วนแผงมี `show-group-header` ซึ่งเปิด `_dropdown-group-header` กับเส้นคั่น `Horizontal` ของหน้า 26 พร้อมกัน
 
 **จุดสีนำหน้าของเดิมตัดทิ้ง** (ผู้ใช้ตัดสิน 2026-10-12) เพราะไม่มี component ไหนใน DS ทำหน้าที่นี้ และสีอย่างเดียวสื่อความหมายไม่ได้ตามเกณฑ์การเข้าถึง ให้ใช้ไอคอนหรืออวาตาร์แทน
 

@@ -6,7 +6,7 @@
 - It sets how the websites look (home page, menus, banners) and manages ads
 - It tracks results on a Dashboard: page views, number of news items, and reporter statistics
 - Design file: Figma `kMw46mRQEaL2s1ofpnSDgh` (CMS), starting frame node `13476-40325`. This is a project file, not the design system file `QgmoT5Uuvv3elB96F4nsTq`
-- Prototype pages live in `../../../prototype/one-cms/`, with the Storybook title `Prototype/One CMS/<Page>`
+- Prototype pages live in `../../../prototype/one-cms/`, with the Storybook title `Page (Prototype)/One CMS/<Page>`
 - The Dashboard follows frame `Dashboard / Home D` (`15626:38637`) in the Dashboard v2 section (`15508:32517`). The user moved from frame C to D and approved the page on 2026-10-28
 - The prototype uses Krungthep Turakij (`bkk`) as its example brand: logo, headlines and reporter names. Most sample data in the design file is from Tnews, and the design file stays Tnews (set by the user 2026-10-28). Colors stay on the core `ntg` tokens until the multi-brand theme layer exists
 - NEEDS CLARIFICATION: which roles use One CMS (editor, reporter, admin, ad team) and what each role may see and do

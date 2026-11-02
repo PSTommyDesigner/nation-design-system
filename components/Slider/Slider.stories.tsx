@@ -14,7 +14,7 @@ Demo.displayName = 'Slider'
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ชื่อ story ใน sidebar ตรงกับชุดในไฟล์ออกแบบหน้า 17 (slider, range-slider) ปุ่มจับเป็นชุดฐาน slider-handle
 const meta: Meta<typeof Slider> = {
-  title: 'Components/Slider',
+  title: 'Molecules (Element)/17 Sliders/Slider',
   component: Slider,
   tags: ['autodocs'],
   args: { size: 'md', min: 0, max: 100, step: 1, showValueTooltip: false, showMinMaxLabel: false, disabled: false },

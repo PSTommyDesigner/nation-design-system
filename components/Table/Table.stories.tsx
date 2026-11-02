@@ -11,7 +11,7 @@ import { LinkButton } from '../LinkButton'
 import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks'
 
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
-// ไฟล์ออกแบบหน้า 26 Table ไม่มีชุดตาราง มีแต่เซล 15 ชนิด (ลงท้ายด้วย -table-cell) ที่ประกอบเป็นตาราง
+// ไฟล์ออกแบบหน้า 28 Table ไม่มีชุดตาราง มีแต่เซล 15 ชนิด (ลงท้ายด้วย -table-cell) ที่ประกอบเป็นตาราง
 // ตัวอย่างตารางอ้างอิงในไฟล์คือเฟรม Team members (เลือก ผู้ใช้ ข้อความ ป้าย วันที่)
 // เซลผสม (badge tag user avatar-group progress-bar star action) ใช้ render แล้วประกอบจาก component ของระบบ ห้ามวาดเอง
 
@@ -66,7 +66,7 @@ const TEAM: TableColumn<Row>[] = [
 const RowTable = Table<Row>
 
 const meta: Meta<typeof RowTable> = {
-  title: 'Components/Table',
+  title: 'Organisms (Component)/28 Table/Table',
   component: RowTable,
   tags: ['autodocs'],
   args: {

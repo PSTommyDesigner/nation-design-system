@@ -1,7 +1,7 @@
 /**
  * Table Nation Design System
  *
- * ตารางข้อมูลของโปรดักต์ ตรงกับชุดที่ลงท้ายด้วย table-cell ใน Figma หน้า 26 Table (15 ชนิด)
+ * ตารางข้อมูลของโปรดักต์ ตรงกับชุดที่ลงท้ายด้วย table-cell ใน Figma หน้า 28 Table (15 ชนิด)
  * รับข้อมูลเป็น array แล้วกำหนดคอลัมน์ด้วย config ผู้ใช้ไม่ต้องเขียนแถวเอง
  * แต่เปิดช่อง `render` ไว้ให้วาดเนื้อในเซลเองได้เมื่อเซลนั้นเป็นของผสม
  *
@@ -21,7 +21,7 @@ import { Checkbox } from '../Checkbox';
 import { Icon } from '../Icon';
 import styles from './Table.module.css';
 
-/** ชนิดของเซล ตรงกับชุดที่ลงท้ายด้วย table-cell ในหน้า 26 Table */
+/** ชนิดของเซล ตรงกับชุดที่ลงท้ายด้วย table-cell ในหน้า 28 Table */
 export type TableCellVariant =
   | 'text'
   | 'number'
@@ -155,7 +155,7 @@ function defaultAlign(variant: TableCellVariant): TableAlign {
   return 'start';
 }
 
-/** วนสถานะการเรียง ไม่เรียง ขึ้น ลง แล้วกลับมาไม่เรียง ตามที่เอกสารหน้า 26 หัวข้อ States กำหนด */
+/** วนสถานะการเรียง ไม่เรียง ขึ้น ลง แล้วกลับมาไม่เรียง ตามที่เอกสารหน้า 28 หัวข้อ States กำหนด */
 function nextSort(current: TableSort | null | undefined, columnId: string): TableSort | null {
   if (!current || current.columnId !== columnId) return { columnId, direction: 'asc' };
   if (current.direction === 'asc') return { columnId, direction: 'desc' };

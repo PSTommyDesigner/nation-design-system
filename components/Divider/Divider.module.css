@@ -1,6 +1,6 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/Divider/Divider.base.css
- *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 28 Dividers แล้วรัน  npm run figma:layers -- divider  และ  npm run css:generate -- divider
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 26 Dividers แล้วรัน  npm run figma:layers -- divider  และ  npm run css:generate -- divider
  *   spec: tokens/figma-layers/divider.json (ดึง 2026-10-26)
  */
 
@@ -8,7 +8,7 @@
  * Divider ส่วนโครงที่เขียนมือ (Nation Design System)
  *
  * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --dv-* ซึ่ง
- * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/divider.json (spec ชั้นจากไฟล์ออกแบบหน้า 28)
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/divider.json (spec ชั้นจากไฟล์ออกแบบหน้า 26)
  * แล้วต่อท้ายไฟล์นี้เป็น Divider.module.css ห้ามแก้ Divider.module.css ตรง ๆ
  *
  * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ

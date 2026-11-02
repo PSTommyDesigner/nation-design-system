@@ -1,0 +1,126 @@
+/* หน้าเอกสารชั้น Atoms ใน Storybook ผูก token ทุกค่า ตัวอักษรใช้คลาส .ntg-typography-* ใน AtomDoc.tsx
+   ⚠️ ระบบยังไม่มี token มุมโค้งของกล่องที่ไม่ใช่ component (NEEDS CLARIFICATION ใน context/tokens/tokens.dsds.yaml)
+      จุดสีจึงใช้ 50% ซึ่งเป็นรูปทรงวงกลม ไม่ใช่ค่าบนสเกล และช่องสีของแรมป์ยังเป็นมุมฉาก รอตัดสินว่าจะใช้ token ไหน
+   ⚠️ ขนาดจุดสีกับช่องสีของแรมป์ยืมสเกลระยะ (size-space) เพราะยังไม่มี token ขนาดของเอกสาร ค่าเท่าไฟล์ออกแบบ (20 กับ 96x56) */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s3-xs);
+  padding: var(--ntg-size-space-s3-sm);
+  background: var(--ntg-color-background-general-primary);
+  color: var(--ntg-color-text-general-text);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-lg);
+  padding-bottom: var(--ntg-size-space-s2-lg);
+  box-shadow: inset 0 -2px 0 var(--ntg-color-border-brand-solid);
+}
+
+.heading { color: var(--ntg-color-text-general-heading); margin: 0; }
+.muted { color: var(--ntg-color-text-general-supporting-text); margin: 0; }
+
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-sm);
+  padding-top: var(--ntg-size-space-s2-lg);
+}
+
+.body { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-sm); }
+.body p { margin: 0; }
+
+.nameCell { display: inline-flex; align-items: baseline; gap: var(--ntg-size-space-s1-lg); }
+.nested { padding-left: var(--ntg-size-space-s2-lg); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+  color: var(--ntg-color-text-general-heading);
+}
+/* ป้ายของช่องโหมดมืดวางบนพื้นมืดของโหมดนั้นเอง ให้เห็นสีจริงเทียบกับพื้นจริง */
+.chipDark {
+  padding: var(--ntg-size-space-s1-sm) var(--ntg-size-space-s1-xl);
+  background: var(--ntg-color-background-primary-default);
+  color: var(--ntg-color-text-primary-default);
+}
+
+.swatchWrap { display: inline-flex; }
+.swatch {
+  display: inline-block;
+  flex: none;
+  width: var(--ntg-size-space-s2-md);
+  height: var(--ntg-size-space-s2-md);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
+}
+
+.swatchRow { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s2-lg); }
+
+.ramp { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-xs); }
+.rampSteps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--ntg-size-space-s4-lg), 1fr));
+  gap: var(--ntg-size-space-s1-lg);
+}
+.rampStep { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-sm); color: var(--ntg-color-text-general-heading); }
+.rampColor {
+  display: block;
+  height: var(--ntg-size-space-s3-lg);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-secondary);
+}
+.probe { display: none; }
+
+/* ตัวอย่างสไตล์ตัวอักษร (Text Roles) ข้อความตัวอย่างซ้าย ชื่อและค่าขวา */
+.specimen {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--ntg-size-space-s2-lg);
+  align-items: center;
+  padding: var(--ntg-size-space-s2-sm) 0;
+  box-shadow: inset 0 -1px 0 var(--ntg-color-border-general-secondary);
+}
+.specimen p { margin: 0; }
+.specimenInfo { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-xs); }
+
+/* ชุดขนาดพื้นฐาน (Type Scale) */
+.scale {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-xs);
+  padding-bottom: var(--ntg-size-space-s1-lg);
+  box-shadow: inset 0 -1px 0 var(--ntg-color-border-general-secondary);
+}
+.scale p { margin: 0; }
+
+/* ตระกูลฟอนต์ */
+.family {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-lg);
+  padding: var(--ntg-size-space-s2-lg);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-secondary);
+}
+.family p { margin: 0; }
+.weights { display: flex; gap: var(--ntg-size-space-s3-xs); padding-top: var(--ntg-size-space-s1-lg); }
+.weight { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-xs); }
+
+/* ภาพ grid ความกว้างแคนวาสมาจาก style ใน AtomDoc.tsx คอลัมน์ ร่อง ขอบ มาจาก token --ntg-grid-* ผ่านตัวแปร --grid-*
+   แบบ CENTER (v2022 และ Nation Digital) คอลัมน์กว้างตายตัวจัดกลาง แบบ STRETCH (v2026) ขอบตายตัว คอลัมน์ยืดเต็ม */
+.gridBlock { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-lg); }
+.gridScroll { overflow-x: auto; }
+.gridCanvas {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), var(--grid-col));
+  justify-content: center;
+  column-gap: var(--grid-gutter);
+  height: calc(var(--ntg-size-space-s4-xl) * 2);
+  background: var(--ntg-color-background-general-secondary);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-secondary);
+}
+.gridStretch { box-sizing: border-box; padding-inline: var(--grid-margin); justify-content: stretch; }
+.gridCol { background: var(--ntg-color-background-alpha-black-10); }

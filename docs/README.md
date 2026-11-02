@@ -100,12 +100,17 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [asana-task-naming.md](rules/asana-task-naming.md) | กติกาตั้งชื่อการ์ดงานและแม่แบบรายละเอียด 5 หัวข้อ |
 | [worklog.md](rules/worklog.md) | วิธีบันทึกงาน เก็บที่ไหน ส่งขึ้น Asana อย่างไร |
 
-### เอกสารประจำหน้า (มีแล้ว 28 จาก 29 หน้า)
-| 01 ถึง 28 | 00 Document |
+### เอกสารประจำหน้า (มีแล้ว 28 จาก 31 หน้า)
+| ชั้น | หน้า |
 |---|---|
-| [01 Color](01-color.md) · [02 Icons](02-icons.md) · [03 Typography](03-typography.md) · [04 Grid](04-grid.md) · [05 Effect](05-effect.md) · [06 Shape](06-shape.md) · [07 Space](07-space.md) · [08 Logo](08-logo.md) · [09 Third-party Logos](09-third-party-logos.md) · [10 Frame](10-frame.md) · [11 Avatar](11-avatar.md) · [12 Buttons](12-buttons.md) · [13 Input](13-input.md) · [14 Toggles](14-toggles.md) · [15 Checkbox](15-checkbox.md) · [16 Radio](16-radio.md) · [17 Sliders](17-sliders.md) · [18 Tabs](18-tabs.md) · [19 Toasts & Banners](19-toasts-banners.md) · [20 Tooltips](20-tooltips.md) · [21 Tags](21-tags.md) · [22 Badge](22-badge.md) · [23 Progress Bars](23-progress-bars.md) · [24 Pagination](24-pagination.md) · [25 Dropdowns](25-dropdowns.md) · [26 Table](26-table.md) · [27 Card](27-card.md) · [28 Dividers](28-dividers.md) | ไม่มีไฟล์ `docs/00-*.md` เพราะหน้า 00 ใช้ Page Documentation และ Component Previews ในไฟล์ออกแบบเองแทน (ดูหน้า `00 Document Documentation` ใน Figma) |
+| Atoms (Identity) | [01 Color](01-color.md), [02 Icons](02-icons.md), [03 Typography](03-typography.md), [04 Grid](04-grid.md), [05 Effect](05-effect.md), [06 Shape](06-shape.md), [07 Space](07-space.md), [08 Logo](08-logo.md), [09 Third-party Logos](09-third-party-logos.md) |
+| Molecules (Element) | [10 Frame](10-frame.md), [11 Avatar](11-avatar.md), [12 Buttons](12-buttons.md), [13 Input](13-input.md), [14 Toggles](14-toggles.md), [15 Checkbox](15-checkbox.md), [16 Radio](16-radio.md), [17 Sliders](17-sliders.md), [18 Tabs](18-tabs.md), [19 Toasts & Banners](19-toasts-banners.md), [20 Tooltips](20-tooltips.md), [21 Tags](21-tags.md), [22 Badge](22-badge.md), [23 Progress Bars](23-progress-bars.md), [24 Pagination](24-pagination.md), [25 Card](25-card.md), [26 Dividers](26-dividers.md) |
+| Organisms (Component) | [27 Dropdowns](27-dropdowns.md), [28 Table](28-table.md), 29 Chart และ 30 Modal ยังไม่มีไฟล์ |
+| ไม่มีไฟล์ | 00 Document ใช้ Page Documentation และ Component Previews ในไฟล์ออกแบบเองแทน (ดูหน้า `00 Document Documentation` ใน Figma) |
 
-> **ตัดจากรายการเดิม (ไม่มีอยู่จริงแล้ว 2026-10-19)** `26 Image And Carousel` และ `27 Lists` (เลขเก่าก่อนยุบหน้า) `30 Panels` `32 Modals` `33 Sidebars` `29 Header` `35 Footer` `36 Templates` เป็นหน้าชั้น Organisms ที่ถูกยุบไปแล้วเมื่อ 2026-10-12 (ดูเหตุผลที่ [rules/layer-scope.md](rules/layer-scope.md)) ไฟล์ Figma ปัจจุบันมี 29 หน้าเท่านั้นคือ 00 ถึง 28
+> **เลื่อนเลขหน้าและย้ายชั้น 2026-10-28** ย้าย Dropdowns, Table, Chart และ Modal ขึ้นชั้น Organisms ตามที่ผู้ใช้ตัดสินให้โค้ดกับไฟล์ออกแบบจัดชั้นตรงกัน จึงเลื่อนเลข `25 Dropdowns` เป็น `27 Dropdowns`, `26 Table` เป็น `28 Table`, `27 Card` เป็น `25 Card`, `28 Dividers` เป็น `26 Dividers` ชื่อไฟล์เอกสารเปลี่ยนตาม
+
+> **ตัดจากรายการเดิม (ไม่มีอยู่จริงแล้ว 2026-10-19)** `26 Image And Carousel` และ `27 Lists` (เลขเก่าก่อนยุบหน้า) `30 Panels` `32 Modals` `33 Sidebars` `29 Header` `35 Footer` `36 Templates` เป็นหน้าชั้น Organisms ที่ถูกยุบไปแล้วเมื่อ 2026-10-12 (ดูเหตุผลที่ [rules/layer-scope.md](rules/layer-scope.md)) ไฟล์ Figma ปัจจุบันมี 31 หน้าคือ 00 ถึง 30
 
 รายชื่อหน้าทั้งหมดพร้อมรหัสโหนดอยู่ที่ [figma-pages.md](figma-pages.md) **เลขหน้ายึดตามไฟล์ Figma เป็นหลัก** ชื่อไฟล์เอกสารตั้งตามเลขหน้านั้น
 

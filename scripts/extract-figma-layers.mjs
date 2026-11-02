@@ -234,7 +234,7 @@ function deepDiff(a, b, p = '') {
 }
 
 function parseVariant(name) {
-  // ชื่อแกน/ค่าบางหน้ายังเป็นตัวใหญ่ (เช่น Size=xs, State=Default ของหน้า 27) ทำให้เป็นตัวเล็กเพื่อให้ size/state ถูกจับเป็นแกนปกติ
+  // ชื่อแกน/ค่าบางหน้ายังเป็นตัวใหญ่ (เช่น Size=xs, State=Default ของหน้า 25) ทำให้เป็นตัวเล็กเพื่อให้ size/state ถูกจับเป็นแกนปกติ
   return Object.fromEntries(name.split(',').map(s => s.trim().split('=')).map(([k, v]) => [k.toLowerCase(), (v ?? '').toLowerCase()]))
 }
 

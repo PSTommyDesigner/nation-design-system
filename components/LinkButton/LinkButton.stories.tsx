@@ -7,7 +7,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // ดูกติกาที่ .storybook/CustomDocsPage.tsx · โครงเดียวกับ Button
 // sidebar เหลือเฉพาะชื่อชุดจริงในไฟล์ออกแบบ (link-button กับ link-icon-button)
 const meta: Meta<typeof LinkButton> = {
-  title: 'Components/LinkButton',
+  title: 'Molecules (Element)/12 Buttons/LinkButton',
   component: LinkButton,
   tags: ['autodocs'],
   args: { children: 'อ่านข่าวทั้งหมด', family: 'brand', size: 'md' },

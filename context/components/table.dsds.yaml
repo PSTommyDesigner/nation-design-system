@@ -1,5 +1,5 @@
 # Table in DSDS 0.23 format https://designsystemdocspec.org
-# Facts come from components/Table/, docs/26-table.md, tokens/scale/table.mjs, tokens/figma-components.json
+# Facts come from components/Table/, docs/28-table.md, tokens/scale/table.mjs, tokens/figma-components.json
 # and the Figma file (read 2026-10-27). Table has no README.md
 # Levels go in this order: must, should, may, should-not, must-not
 # Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
@@ -11,7 +11,7 @@ name: Table
 description: >-
   A data table for product screens. It takes the rows as an array and the columns as a config, and renders real table,
   thead, tbody, th and td elements, with optional row selection, sorting, alternating row fills and a sticky header.
-  Figma page 26 Table has no table-level set: it has 18 single cell components whose names end in -table-cell, and the
+  Figma page 28 Table has no table-level set: it has 18 single cell components whose names end in -table-cell, and the
   frame Team members inside Data table shows them put together. It exists so every table in the group uses the same
   cell padding, row lines and cell types, because uneven spacing in the densest screens stops the eye from following
   data across a row.
@@ -21,7 +21,7 @@ metadata:
   updated: {date: 2026-10-28}
   tags: [data]
   status: {status: beta}
-  # The 18 cell components on page 26, read from Figma 2026-10-27, currency and index added 2026-10-28
+  # The 18 cell components on page 28, read from Figma 2026-10-27, currency and index added 2026-10-28
   aliases:
     - caption-table-cell
     - header-table-cell
@@ -248,7 +248,7 @@ sections:
           color --ntg-color-text-general-supporting-text.
       - term: Not part of Table
         definition: >-
-          The -color-cell components on page 26 (light-color-cell, dark-color-cell, header-color-cell, number-color-cell,
+          The -color-cell components on page 28 (light-color-cell, dark-color-cell, header-color-cell, number-color-cell,
           description-color-cell and the set hierarchy-color-cell) and doc-table belong to the documentation system.
           They have no code on purpose, and products don't use them.
 
@@ -263,12 +263,12 @@ refs:
   - href: ../../components/Table/Table.stories.tsx
     rel: demo
     role: Storybook stories (npm run storybook)
-  - href: ../../docs/26-table.md
+  - href: ../../docs/28-table.md
     rel: relates-to
-    role: Thai page doc for Figma page 26 Table
+    role: Thai page doc for Figma page 28 Table
   - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=9377-29760
     rel: design
-    role: Figma page 26 Table
+    role: Figma page 28 Table
 
 traits:
   - traitType: variant
@@ -358,7 +358,7 @@ combos:
 
 $extensions:
   com.nationgroup:
-    figmaPage: "26 Table"
+    figmaPage: "28 Table"
     figmaSets: []
     figmaCells:
       - caption-table-cell

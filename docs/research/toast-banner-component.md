@@ -928,7 +928,7 @@ APG เขียนว่า "Because alerts are intended to provide important a
 - **ปุ่มทุกตัวต้องเป็น instance ของ DS** ปุ่มกระทำใช้ `link-button` หรือ `button` จากหน้า 12 ส่วนปุ่มปิดใช้ `circular-icon-button` **ห้ามวาดใหม่ในหน้า 19**
 - **ไอคอนต้องเป็น instance จาก Nation UI Icons** ต้นฉบับเฟรม 9349:35444
 - **ชื่อ COMPONENT ต้องลงท้ายด้วยชนิด และห้ามมี `/`** ตามกฎ 2026-09-02 และ 2026-09-01 เช่น `toast` `page-banner` `section-banner` ไม่ใช่ `Toast / Error`
-- **ตารางทุกตารางในเอกสารต้องใช้ instance ชุด `-table-cell` จากหน้า 26** ห้ามวาด cell เอง
+- **ตารางทุกตารางในเอกสารต้องใช้ instance ชุด `-table-cell` จากหน้า 28** ห้ามวาด cell เอง
 - **โครงเอกสารต้องครบชนิด** Page Doc 1 อัน · Information Doc อย่างน้อย 1 (ควรมี 2 คือ เกณฑ์เลือกชิ้น และ กายวิภาคกับสถานะ) · Component Previews · Token Doc **และต้องอ่าน `docs/rules/component-doc-standard.md` §0.5 ก่อนเขียนทุกครั้ง**
 - **ล้างสีดิบของหน้า 19 ให้เหลือ 0 ก่อนบอกเสร็จ** ตามกฎล้างทีละหน้า
 

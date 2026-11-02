@@ -752,7 +752,7 @@ radius ของลูก = radius ของแม่ - padding ของแม�
 | **Token Document** (1 อัน) | ตารางจับคู่ ชื่อ Figma ↔ ชื่อโค้ด (`--ntg-radius-*`) ↔ ค่า px ↔ ใช้ตรงไหน |
 | **Component Previews** | ถ้าหน้านี้จะมี component ตัวอย่าง (เช่น shape swatch) ต้องแยกออกมา ไม่ยัดลง Page Doc |
 
-**เตือนตาม DoD:** ห้ามวาด swatch เอง ต้องใช้ instance ของ DS ตารางต้องใช้ `table-cell/*` จากหน้า 26 Table ล้างสีดิบของหน้า 06 ให้เหลือ 0 ก่อนบอกเสร็จ
+**เตือนตาม DoD:** ห้ามวาด swatch เอง ต้องใช้ instance ของ DS ตารางต้องใช้ `table-cell/*` จากหน้า 28 Table ล้างสีดิบของหน้า 06 ให้เหลือ 0 ก่อนบอกเสร็จ
 
 ---
 

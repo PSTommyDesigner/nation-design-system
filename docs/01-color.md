@@ -59,7 +59,7 @@ sources_of_truth:
 | **01 Color Documentation** | เอกสารประจำหน้า (Metadata Objective Workflow Structure Constraints) |
 | **Usage & Documentation** | DS Library, WCAG accessibility, plugin, primitive/semantic/component colors, naming |
 | **Color palette** | primitive palette ทุก hue (Blue/Green/Teal/Cyan/Purple/Pink/Rose/Red/Orange/Yellow/Gold/Gray) step 25–900 |
-| **Base Components (internal)** | base component ภายใน เหลือ `_swatch-base` (cell ตารางสีย้ายไปหน้า 26 ชุดที่ลงท้ายด้วย `-color-cell` แล้ว) |
+| **Base Components (internal)** | base component ภายใน เหลือ `_swatch-base` (cell ตารางสีย้ายไปหน้า 28 ชุดที่ลงท้ายด้วย `-color-cell` แล้ว) |
 | **Text Background Border Foreground Icon** | ตาราง semantic/component variable แต่ละหมวด (คอลัมน์ ลำดับ/ชื่อ โหมดสว่าง โหมดมืด คำอธิบาย) |
 | **AMS project Brand Utility Color Utility Color** | ตาราง utility/brand/ams variable รายหมวด (keyline/graph/สถานะ) |
 
@@ -86,7 +86,7 @@ sources_of_truth:
 | `tokens/tokens.json/*.json` | source ของ token แยกต่อ collection (W3C DTCG Style Dictionary) |
 | CSS variables (`--ntg-color-*`) | output ที่ใช้ในโค้ด |
 | Figma หน้า `01 Color` | source ฝั่งดีไซน์ (Figma Variables) |
-| Figma หน้า `26 Table` | cell ตาราง (ชุดที่ลงท้ายด้วย `-color-cell` และ `-table-cell`) ตารางในหน้า 01 ใช้ instance ดึงจากที่นี่ |
+| Figma หน้า `28 Table` | cell ตาราง (ชุดที่ลงท้ายด้วย `-color-cell` และ `-table-cell`) ตารางในหน้า 01 ใช้ instance ดึงจากที่นี่ |
 
 ## 5. ข้อควรระวังและปัญหาที่พบบ่อย (Constraints)
 
@@ -99,4 +99,4 @@ sources_of_truth:
 | 5 | **ไม่มี token → ถามก่อนสร้าง** | กันสีนอกระบบ เพิ่มที่ Figma Variables แล้ว sync |
 | 6 | **อย่าแก้ CSS variable ที่ gen ด้วยมือ** | เป็น output จาก token แก้ที่ tokens/Figma แล้ว build ใหม่ |
 | 7 | **swatch ในหน้าต้องผูก variable** | ✅ ครบแล้ว (220/222) navy backup palette (จากการเปลี่ยนโลโก้) tokenize เป็น `color/ntgds1/*` และ `color/ntgds2/*` |
-| 8 | **ตาราง + text ต้องใช้ DS component/style** | ✅ 2026-07-10: ตารางทุกอันใช้ instance ชุดที่ลงท้ายด้วย `-color-cell` และ `-table-cell` (หน้า 26) text ทุกตัวผูก DS text style (Prompt) ไม่มี frame/text/สีดิบหลงเหลือ |
+| 8 | **ตาราง + text ต้องใช้ DS component/style** | ✅ 2026-07-10: ตารางทุกอันใช้ instance ชุดที่ลงท้ายด้วย `-color-cell` และ `-table-cell` (หน้า 28) text ทุกตัวผูก DS text style (Prompt) ไม่มี frame/text/สีดิบหลงเหลือ |

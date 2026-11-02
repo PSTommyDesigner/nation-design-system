@@ -43,7 +43,7 @@ sections:
         alternatives:
           - to: dropdown
         checkedBy: manual
-      # NEEDS CLARIFICATION: docs/16-radio.md (Designer step 3) and the Figma Radio Usage frame say more than five options goes to the select field on page 13 Input, while the Storybook do and don't says 2 to 5 is fine and more than 6 goes to Dropdown (page 25 Dropdowns). Is 6 options a RadioGroup or a Dropdown, and is the select field of page 13 the Dropdown?
+      # NEEDS CLARIFICATION: docs/16-radio.md (Designer step 3) and the Figma Radio Usage frame say more than five options goes to the select field on page 13 Input, while the Storybook do and don't says 2 to 5 is fine and more than 6 goes to Dropdown (page 27 Dropdowns). Is 6 options a RadioGroup or a Dropdown, and is the select field of page 13 the Dropdown?
 
   - kind: guidelines
     for: all

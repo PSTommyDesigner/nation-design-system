@@ -52,13 +52,13 @@ status: "active"
 - **ช่องไฟระหว่างเอกสาร 200** คิดจากขอบขวาของอันก่อนหน้า ไม่ใช่ระยะตายตัว เพราะบางเอกสารกว้างไม่เท่า 1440
 - ชนิดไหนไม่มีในหน้านั้นให้ข้ามไป ไม่ต้องเว้นที่ว่างไว้
 - ของที่ไม่ใช่เอกสารทั้ง 5 ชนิด ให้วางต่อท้ายสุด
-- **เส้นสีม่วงรอบชุด variant ไม่ใช่เส้นดิบ** (`#7b61ff` และ `#9747ff`) เป็นเส้นที่ Figma วาดเองรอบ COMPONENT_SET ทุกชุดในไฟล์ ตรวจแล้ว 12 Buttons 22 ชุด, 21 Tags 100 ชุด, 22 Badge 40 ชุด, 26 Table 1 ชุด มีครบทุกชุด **ห้ามผูกตัวแปรและห้ามนับเป็นเส้นดิบตอนสแกน**
+- **เส้นสีม่วงรอบชุด variant ไม่ใช่เส้นดิบ** (`#7b61ff` และ `#9747ff`) เป็นเส้นที่ Figma วาดเองรอบ COMPONENT_SET ทุกชุดในไฟล์ ตรวจแล้ว 12 Buttons 22 ชุด, 21 Tags 100 ชุด, 22 Badge 40 ชุด, 28 Table 1 ชุด มีครบทุกชุด **ห้ามผูกตัวแปรและห้ามนับเป็นเส้นดิบตอนสแกน**
 - **มุมโค้ง 5px ของกรอบชุด variant ไม่ใช่มุมโค้งดิบ** (ตัดสิน 2026-09-29 ผู้ใช้สั่งว่าไม่ควรผูก) เป็นมุมของกรอบที่ Figma วาดเองรอบ COMPONENT_SET เหมือนเส้นสีม่วง ไม่ใช่รูปทรงของชิ้นงาน ผู้ใช้ปลายทางไม่เห็น **ห้ามผูกตัวแปรและห้ามนับเป็นมุมโค้งดิบตอนสแกน** ถ้าผูกจะกลายเป็นว่าค่ามุมโค้งของ component ถูกเอาไปใช้กับของที่ไม่ใช่ component
 - **หน้าที่ยังไม่ได้ทำเอกสารจะมี `_document-header` ลอยอยู่บนแคนวาสเป็นป้ายชื่อหน้า** (สำรวจ 2026-08-27 พบ 42 อันใน 22 หน้า) อันนี้เป็นรูปแบบเดิมก่อนมีมาตรฐาน **ห้ามลบทิ้งเฉย ๆ** เพราะเป็นสิ่งเดียวที่บอกว่าหน้านั้นคืออะไร ให้ลบตอนทำเอกสารของหน้านั้นเสร็จแล้วเท่านั้น เพราะหัวเอกสารจริงจะอยู่ในเฟรมเอกสารแทน
 
 **⚠️ กติกาตอนลงมืออยู่ที่ [context/workflows/figma-ds-file/doc-pages.md](../../context/workflows/figma-ds-file/doc-pages.md) (ย้ายมาจาก CLAUDE.md 2026-10-27):** ก่อนแตะเอกสารหน้าใดต้องทำ pre-flight 4 ขั้น (อ่านไฟล์นี้ สแกน frame ของหน้า เทียบ reference 01 Color / 03 Typography แจกแจง doc ชนิดที่จะทำแล้วรอยืนยัน) **ห้ามใช้ Page Documentation เป็นที่ทิ้งของ** specimen/ภาพชุด/anatomy ยาว/ตารางค่า ต้องแยกเป็น Information Document ตาราง token ต้องเป็น Token Document
 
-**Token Document โครง + กฎ:** header + "เอกสารนี้คืออะไร" + "วิธีอ่าน" (🎨 ฝั่งออกแบบ Figma / 💻 ฝั่งพัฒนา Code) + **ตาราง 4 คอลัมน์** (ชื่อ Figma ชื่อโค้ด ค่า ใช้ตรงไหน) + กติกา sync **ตารางต้องประกอบจาก DS ชุดที่ลงท้ายด้วย `-table-cell` (หน้า 26 Table) ห้ามวาด cell เอง** (ดู [[table-cell-system]]) token เยอะ (สี/ปุ่ม หลายร้อย) → โชว์ชุดที่ใช้จริง/ตัวอย่างตระกูล + ชี้ไฟล์เต็ม ไม่ต้องลิสต์ทุกตัว
+**Token Document โครง + กฎ:** header + "เอกสารนี้คืออะไร" + "วิธีอ่าน" (🎨 ฝั่งออกแบบ Figma / 💻 ฝั่งพัฒนา Code) + **ตาราง 4 คอลัมน์** (ชื่อ Figma ชื่อโค้ด ค่า ใช้ตรงไหน) + กติกา sync **ตารางต้องประกอบจาก DS ชุดที่ลงท้ายด้วย `-table-cell` (หน้า 28 Table) ห้ามวาด cell เอง** (ดู [[table-cell-system]]) token เยอะ (สี/ปุ่ม หลายร้อย) → โชว์ชุดที่ใช้จริง/ตัวอย่างตระกูล + ชี้ไฟล์เต็ม ไม่ต้องลิสต์ทุกตัว
 
 > ทุกหน้า DS = Page Documentation 1 (นำ) + Information Document หลายอัน + Component Previews หลายอัน (ถ้ามี component) + Token Document 1 (ถ้ามี token) + Space Document 1 (ถ้ามี component) **ทุก text/สี ต้อง bind variable สแกน raw=0 + em-dash=0 ก่อนถือว่าเสร็จ** (ดู [[figma-no-raw-fill-on-create]] [[naming-no-emdash]])
 
@@ -95,10 +95,10 @@ status: "active"
 | **ทุกแถว รวมแถวหัวตาราง** | 1px **เฉพาะด้านล่าง** | ไม่มี | `color/border/general/primary` |
 | **cell** | ไม่มีเส้นขอบ | ไม่มี | |
 
-> **ตารางในเอกสารกับตารางของโปรดักต์ใช้คนละ token** เอกสารใช้ `doc-table/radius/*` ตารางข้อมูลจริงบนหน้า 26 Table ใช้ `table/radius/*` ค่าเท่ากันที่ 8 แต่แยกเจ้าของเพื่อให้เปลี่ยนแยกกันได้ในอนาคต
+> **ตารางในเอกสารกับตารางของโปรดักต์ใช้คนละ token** เอกสารใช้ `doc-table/radius/*` ตารางข้อมูลจริงบนหน้า 28 Table ใช้ `table/radius/*` ค่าเท่ากันที่ 8 แต่แยกเจ้าของเพื่อให้เปลี่ยนแยกกันได้ในอนาคต
 
 **กติกาเพิ่มเติม**
-- cell ต้องเป็น instance `header-table-cell` และ `text-table-cell` จากหน้า 26 Table เท่านั้น ห้ามสร้าง cell เอง
+- cell ต้องเป็น instance `header-table-cell` และ `text-table-cell` จากหน้า 28 Table เท่านั้น ห้ามสร้าง cell เอง
 - หัวตารางปิดไอคอน sort (`show-sort = false`) เว้นแต่ตารางนั้นเรียงลำดับได้จริง
 - `text-table-cell` มี 2 ช่องข้อความ บรรทัดหลักคือค่า บรรทัดรองใช้ขยายความ ถ้าไม่ใช้ให้เว้นว่าง ห้ามปล่อยคำ default ค้าง
 - ความกว้างคอลัมน์รวมกันต้องเท่ากับความกว้าง grid (1280)
@@ -147,7 +147,7 @@ status: "active"
 | 05 Effect | ✅ | ✅ **6 เฟรม** Page Doc ครบ 12 section มี instance 40 ตัว และ Do/Don't 2 คู่ + Effect Token + Elevation Principle + Component Previews 3 เฟรม (2026-09-04) |
 | 06 Shape | ✅ | ✅ **5 เฟรม** Page Doc ครบ 12 section + Radius Scale + Radius By Component + Nested Radius + Token Doc · หน้านี้ไม่มี component จึงใช้คำอธิบายแทนภาพใน section ที่ไม่มีของ (2026-09-04) |
 | 03 Typography (foundation) | ⬜ | ◐ |
-| 26 Table | ⬜ | ◐ **Space Document** `Table Space` (2026-08-26) |
+| 28 Table | ⬜ | ◐ **Space Document** `Table Space` (2026-08-26) |
 | 00 Document | ✅ | ✅ **2 เฟรม** Page Doc `00 Document Documentation` 6 section มีตัวอย่างหัวเอกสารจริง 2 แบบ และ Do/Don't + Component Previews `Document Base Components` เก็บชุด `_document-header` 4 แบบ (2026-10-14) |
 | 10 Frame | ✅ | ✅ **3 เฟรม** Page Doc + Component Previews `Frame Ratios` + Information `Ratio Guide` · **Page Doc ครบ 12 section มี instance 23 ตัว และ Do/Don't (2026-09-04)** |
 | 11 Avatar | ✅ | ✅ **4 เฟรม** Page Doc + Information `Avatar Guide` + Component Previews `Avatar Components` + Space `Avatar Space` · **Page Doc ครบ 12 section มี instance 52 ตัว และ Do/Don't 2 คู่ (2026-09-04)** |
@@ -157,9 +157,9 @@ status: "active"
 | 14 Toggles | ✅ | ✅ **5 ชนิดครบ** Page Doc 12 section มี instance 23 ตัว + Token + Information 3 อัน + Component Previews เฟรม `Toggle` แยกเก็บชุดต้นฉบับ 40 แบบ + Space (2026-09-04) |
 | 23 Progress Bars | ✅ | ✅ **7 เฟรม ครบทุกชนิด** Page Doc + Token + Information 2 + Component Previews 2 + Space (2026-10-09) |
 | 24 Pagination | ✅ | ✅ **7 เฟรม ครบทุกชนิด** Page Doc + Token + Information 2 + Component Previews 2 + Space (2026-10-12) |
-| 25 Dropdowns | ✅ | ✅ **7 เฟรม ครบทุกชนิด** Page Doc + Token + Information 2 + Component Previews 2 + Space (2026-10-12) |
-| 27 Card | ✅ | ✅ **7 เฟรม ครบทุกชนิด** Page Doc + Token + Information 2 (`Card Usage` `Card Anatomy`) + Component Previews 2 + Space (2026-10-14) |
-| 28 Dividers | ✅ | ✅ **5 เฟรม ครบทุกชนิด** Page Doc + Token + Information `Divider Usage` + Component Previews + Space (2026-10-14) |
+| 27 Dropdowns | ✅ | ✅ **7 เฟรม ครบทุกชนิด** Page Doc + Token + Information 2 + Component Previews 2 + Space (2026-10-12) |
+| 25 Card | ✅ | ✅ **7 เฟรม ครบทุกชนิด** Page Doc + Token + Information 2 (`Card Usage` `Card Anatomy`) + Component Previews 2 + Space (2026-10-14) |
+| 26 Dividers | ✅ | ✅ **5 เฟรม ครบทุกชนิด** Page Doc + Token + Information `Divider Usage` + Component Previews + Space (2026-10-14) |
 | 15 Checkbox 16 Radio 17 Sliders 18 Tabs 19 Toasts&Banners 20 Tooltips | ⬜ | ⬜ |
 
 > **หมายเหตุ:** foundation pages (color/typo/icon/grid/effect/space/logo) เน้น token/specimen เป็นหลัก section Anatomy/States/Do-Don't อาจปรับให้เหมาะ (ไม่ใช่ทุก section เท่ากับ interactive component)

@@ -34,7 +34,7 @@ function LoginPage() {
 }
 
 const meta: Meta<typeof LoginPage> = {
-  title: 'Prototype/One CMS/Login',
+  title: 'Page (Prototype)/One CMS/Login',
   component: LoginPage,
   parameters: { layout: 'fullscreen' },
 }

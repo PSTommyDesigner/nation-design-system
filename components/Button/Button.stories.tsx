@@ -7,7 +7,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // story ภาพรวมติด tag !dev ให้โชว์เฉพาะในหน้า Docs ส่วน sidebar เหลือเฉพาะชื่อชุดจริงในไฟล์ออกแบบ
 // (semi-rounded-button กับ pill-button ตาม tokens/figma-components.json → Button.figmaSets)
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Molecules (Element)/12 Buttons/Button',
   component: Button,
   tags: ['autodocs'],
   args: { children: 'ยืนยัน', family: 'brand', hierarchy: 'primary', size: 'md' },

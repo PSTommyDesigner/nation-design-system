@@ -279,7 +279,7 @@ function DashboardPage() {
 }
 
 const meta: Meta<typeof DashboardPage> = {
-  title: 'Prototype/One CMS/Dashboard',
+  title: 'Page (Prototype)/One CMS/Dashboard',
   component: DashboardPage,
   parameters: { layout: 'fullscreen' },
 }

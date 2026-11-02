@@ -24,7 +24,7 @@ next project reuse them instead of deciding again.
 ## Steps
 1. Read `context/index.md`, the project's `context/features/<project>/AGENTS.md` if it exists, and every pattern that matches the page
 2. List the plan for the page: components, patterns, tokens, and anything the system doesn't have. Wait for confirmation
-3. Build the story in `prototype/<project>/`, with the title `Prototype/<Project>/<Page>`. Import components from `components/`. Every value comes from `--ntg-` tokens or a typography preset
+3. Build the story in `prototype/<project>/`, with the title `Page (Prototype)/<Project>/<Page>`. Import components from `components/`. Every value comes from `--ntg-` tokens or a typography preset
 4. Run `npm run typecheck`, then check the page in Storybook (`npm run storybook`, then a screenshot). Don't leave the checking to the user
 5. When the user approves the page, list what to record and where, using the table above. Wait for confirmation before writing anything
 6. Write the records. Add each new pattern to `context/index.md` and `context/patterns/AGENTS.md`, and each new project folder to `context/features/AGENTS.md`. Then run `node scripts/check-dsds.mjs`

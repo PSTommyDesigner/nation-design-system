@@ -1,7 +1,7 @@
 # Divider in DSDS 0.23 format https://designsystemdocspec.org
-# Facts come from components/Divider/, docs/28-dividers.md, tokens/scale/divider.mjs, tokens/figma-components.json,
+# Facts come from components/Divider/, docs/26-dividers.md, tokens/scale/divider.mjs, tokens/figma-components.json,
 # tokens/figma-layers/divider.json and the Figma file (read 2026-10-27). Divider has no README.md
-# docs/28-dividers.md still says the code is not written (frontmatter and pending work). That part is out of date
+# docs/26-dividers.md still says the code is not written (frontmatter and pending work). That part is out of date
 # Levels go in this order: must, should, may, should-not, must-not
 # Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
 # The first value of every enum trait is its default
@@ -11,7 +11,7 @@ id: divider
 name: Divider
 description: >-
   A solid or dashed line between groups of content, horizontal or vertical. It matches the Figma sets horizontal-divider
-  and vertical-divider on page 28 Dividers, each with the axis type (solid, dash). It is decorative, so it is always
+  and vertical-divider on page 26 Dividers, each with the axis type (solid, dash). It is decorative, so it is always
   hidden from screen readers, and it always stretches to its parent. It exists so every place that splits content uses
   the same thickness, color and dash, from one thickness token.
 
@@ -124,12 +124,12 @@ refs:
   - href: ../../components/Divider/Divider.stories.tsx
     rel: demo
     role: Storybook stories (npm run storybook)
-  - href: ../../docs/28-dividers.md
+  - href: ../../docs/26-dividers.md
     rel: relates-to
-    role: Thai page doc for Figma page 28 Dividers
+    role: Thai page doc for Figma page 26 Dividers
   - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=7130-30
     rel: design
-    role: Figma page 28 Dividers
+    role: Figma page 26 Dividers
 
 traits:
   - traitType: variant
@@ -155,5 +155,5 @@ traits:
 
 $extensions:
   com.nationgroup:
-    figmaPage: "28 Dividers"
+    figmaPage: "26 Dividers"
     figmaSets: [horizontal-divider, vertical-divider]

@@ -5,7 +5,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ไฟล์ออกแบบหน้า 13 ชุด tag-field (24 แบบ) แท็กข้างในคือ Tag ตระกูล neutral แบบ secondary ปุ่มเพิ่มคือ LinkButton ไอคอนล้วน
 const meta: Meta<typeof TagField> = {
-  title: 'Components/TagField',
+  title: 'Molecules (Element)/13 Input/TagField',
   component: TagField,
   tags: ['autodocs'],
   args: { label: 'หมวดข่าว', hint: 'พิมพ์แล้วกด Enter หรือปุ่มเพิ่ม', defaultTags: ['การเมือง', 'เศรษฐกิจ'], size: 'md' },

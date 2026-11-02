@@ -7,7 +7,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // ดูกติกาที่ .storybook/CustomDocsPage.tsx · โครงเดียวกับ Button
 // sidebar เหลือเฉพาะชื่อชุดจริงในไฟล์ออกแบบ (semi-rounded-icon-button กับ circular-icon-button)
 const meta: Meta<typeof IconButton> = {
-  title: 'Components/IconButton',
+  title: 'Molecules (Element)/12 Buttons/IconButton',
   component: IconButton,
   tags: ['autodocs'],
   args: { icon: 'close', label: 'ปิด', family: 'brand', hierarchy: 'primary', size: 'md' },

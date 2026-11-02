@@ -1,6 +1,6 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/Card/Card.base.css
- *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 27 Card แล้วรัน  npm run figma:layers -- card  และ  npm run css:generate -- card
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 25 Card แล้วรัน  npm run figma:layers -- card  และ  npm run css:generate -- card
  *   spec: tokens/figma-layers/card.json (ดึง 2026-10-26)
  */
 
@@ -8,7 +8,7 @@
  * Card ส่วนโครงที่เขียนมือ (Nation Design System)
  *
  * ไฟล์นี้คือ "วิธีวาด" ค่าที่มาจากไฟล์ออกแบบทั้งหมดอยู่ในช่อง --card-* ซึ่ง
- * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/card.json (spec ชั้นจากไฟล์ออกแบบหน้า 27)
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/card.json (spec ชั้นจากไฟล์ออกแบบหน้า 25)
  * แล้วต่อท้ายไฟล์นี้เป็น Card.module.css ห้ามแก้ Card.module.css ตรง ๆ
  *
  * ⚠️ ข้อยกเว้นที่มีชื่อ token: ระยะป้ายบนรูป (ในไฟล์ออกแบบเป็นตำแหน่ง x,y ของเฟรมที่วางแบบ absolute ผูกตัวแปรไม่ได้

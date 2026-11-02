@@ -2,7 +2,7 @@
  * Table styles Nation Design System
  *
  * ทุกค่าอ้างอิงจาก design tokens (tokens/output/css/variables.css) เท่านั้น
- * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 26 Table ได้
+ * ห้าม hard-code สี ระยะ หรือมุมโค้ง เพื่อให้ sync กับ Figma หน้า 28 Table ได้
  *
  * โครง token ที่ใช้
  *   กรอบตาราง   --ntg-table-radius-{มุม} · --ntg-divider-thickness · --ntg-color-border-general-primary
@@ -56,7 +56,7 @@
   line-height: var(--ntg-typography-line-height-title-xs);
   font-weight: var(--ntg-typography-font-weight-title-xs);
   /* เส้นคั่นระหว่างแถวชื่อตารางกับแถวหัว เส้นเดียวกับเส้นแถว (หัวหน้าตัดสิน 2026-10-27)
-     ไฟล์ออกแบบหน้า 26 เพิ่มแถว caption ให้ตรงกันในรอบเดียวกัน */
+     ไฟล์ออกแบบหน้า 28 เพิ่มแถว caption ให้ตรงกันในรอบเดียวกัน */
   border-bottom: var(--ntg-divider-thickness) solid var(--ntg-color-border-general-primary);
 }
 
@@ -110,7 +110,7 @@
 .alignEnd { text-align: end; }
 
 /* ── ปุ่มเรียงลำดับในหัวตาราง ───────────────────────────── */
-/* ไอคอนเรียงต่อท้ายชื่อคอลัมน์ ห่างกันเท่าช่องไฟของเซล ตาม header-table-cell หน้า 26
+/* ไอคอนเรียงต่อท้ายชื่อคอลัมน์ ห่างกันเท่าช่องไฟของเซล ตาม header-table-cell หน้า 28
    ที่กลุ่ม content เป็น HUG (ของเดิมดันไอคอนไปชิดขวาสุดของคอลัมน์ ไม่ตรงแบบ แก้ 2026-10-28)
    ปุ่มยังกว้างเต็มคอลัมน์ กดตรงไหนของหัวก็เรียงได้ */
 .sortButton {
@@ -152,7 +152,7 @@
   color: var(--ntg-icon-general-quaternary);
 }
 
-/* ── ชนิดของเซล ตรงกับชุดที่ลงท้ายด้วย table-cell ในหน้า 26 ── */
+/* ── ชนิดของเซล ตรงกับชุดที่ลงท้ายด้วย table-cell ในหน้า 28 ── */
 /* ค่าหลักของเซลข้อความใช้ preset title/xs ตรงกับ text-table-cell */
 .text {
   color: var(--ntg-color-text-general-text);
@@ -253,7 +253,7 @@
   font-weight: var(--ntg-typography-font-weight-body-sm);
 }
 
-/* เป้าแตะขั้นต่ำ 44px ตาม WCAG 2.1 ข้อ 2.5.5 ไม่ใช่ค่าออกแบบของหน้า 26 จึงไม่เป็น token
+/* เป้าแตะขั้นต่ำ 44px ตาม WCAG 2.1 ข้อ 2.5.5 ไม่ใช่ค่าออกแบบของหน้า 28 จึงไม่เป็น token
    ยกเฉพาะบนอุปกรณ์ที่ตัวชี้หยาบ เพราะบนเมาส์ปุ่มเรียงลำดับเล็กกว่านี้ก็กดโดนอยู่แล้ว */
 @media (pointer: coarse) {
   .sortButton { min-height: 44px; }

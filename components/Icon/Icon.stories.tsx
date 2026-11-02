@@ -8,7 +8,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // ชุดไอคอนไม่เข้ากรอบ 5 หัวข้อเต็ม หัวข้อชุดจึงเป็นแกลเลอรีค้นหา (ครบทุกตัว จัดตามหมวดของ icons.ts กดเพื่อคัดลอกชื่อ)
 // ต้นฉบับคือ Nation UI Icons ในไฟล์ออกแบบหน้า 02 Icon เฟรม 9349:35444 ที่เดียว
 const meta: Meta<typeof Icon> = {
-  title: 'Components/Icon',
+  title: 'Atoms (Identity)/02 Icon/Icon',
   component: Icon,
   tags: ['autodocs'],
   args: { name: 'search', size: 'md', title: 'ค้นหา' },

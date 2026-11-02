@@ -2,7 +2,7 @@
  * Divider ส่วนโครงที่เขียนมือ (Nation Design System)
  *
  * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token แม้แต่ตัวเดียว ค่าทุกค่ามาจาก --dv-* ซึ่ง
- * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/divider.json (spec ชั้นจากไฟล์ออกแบบหน้า 28)
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/divider.json (spec ชั้นจากไฟล์ออกแบบหน้า 26)
  * แล้วต่อท้ายไฟล์นี้เป็น Divider.module.css ห้ามแก้ Divider.module.css ตรง ๆ
  *
  * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ

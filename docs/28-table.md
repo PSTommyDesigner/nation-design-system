@@ -1,26 +1,26 @@
 ---
-title: "26 Table Nation Design System"
+title: "28 Table Nation Design System"
 description: "ตารางข้อมูลของโปรดักต์ เซล 17 ชนิด ระยะขอบ 12 เท่ากันทุกด้าน ความสูงมาจากเนื้อหาไม่ได้ตั้งตายตัว"
 target_audience: ["UI/UX Designer", "Frontend Developer", "Design System Maintainer"]
 version: "1.0.0"
 last_updated: "2026-10-15"
 status: "active"
 sources_of_truth:
-  figma_page: "26 Table (ไฟล์ QgmoT5) ต้นฉบับเซลอยู่ในเอกสาร Data table"
+  figma_page: "28 Table (ไฟล์ QgmoT5) ต้นฉบับเซลอยู่ในเอกสาร Data table"
   scale_spec: "tokens/scale/table.mjs"
   code: "components/Table"
 ---
 
-# 26 Table Nation Design System
+# 28 Table Nation Design System
 
 ## 1. ข้อมูลควบคุม (Metadata)
 
 | ฟิลด์ | รายละเอียด |
 |---|---|
-| **Title** | 26 Table (ตารางข้อมูล) |
+| **Title** | 28 Table (ตารางข้อมูล) |
 | **Description** | ตารางข้อมูลของโปรดักต์ ประกอบจากเซล 17 ชนิดที่ใช้ระยะห่างชุดเดียวกัน |
 | **Target Audience** | Designer เลือกชนิดเซล, Developer ทำโครงตารางจริงและการเข้าถึง, Maintainer ดูแลระยะห่างกับมุมโค้ง |
-| **Source of Truth** | **Figma หน้า 26 Table** สำหรับหน้าตา และ `tokens/scale/table.mjs` สำหรับค่า |
+| **Source of Truth** | **Figma หน้า 28 Table** สำหรับหน้าตา และ `tokens/scale/table.mjs` สำหรับค่า |
 | **Version / Updated** | 1.0.0 (2026-10-15) |
 
 ## 2. วัตถุประสงค์ (Objective & Business Logic)
@@ -150,6 +150,6 @@ sources_of_truth:
 
 ## งานค้างของหน้านี้
 
-- **หน้านี้มี token แค่ 9 ตัว ซึ่งไม่พอ** ของที่ขาดคือ ความหนาเส้นขอบตารางและเส้นแบ่งแถว (โค้ดยืม `divider/thickness` ซึ่งค่าตรงแต่เจ้าของเป็นหน้า 28) และสีพื้นแถวตอนชี้ ตอนถูกเลือก แถวสลับสี และแถวปิดใช้งาน ซึ่งเอกสารเขียนแค่ชื่อสถานะ ไม่ได้ระบุค่า
+- **หน้านี้มี token แค่ 9 ตัว ซึ่งไม่พอ** ของที่ขาดคือ ความหนาเส้นขอบตารางและเส้นแบ่งแถว (โค้ดยืม `divider/thickness` ซึ่งค่าตรงแต่เจ้าของเป็นหน้า 26) และสีพื้นแถวตอนชี้ ตอนถูกเลือก แถวสลับสี และแถวปิดใช้งาน ซึ่งเอกสารเขียนแค่ชื่อสถานะ ไม่ได้ระบุค่า
 - **ความหนาแน่นแบบแน่นกับโปร่งที่เอกสารพูดถึง ยังไม่มี token รองรับ** ระยะขอบมีค่าเดียวคือ 12 จึงยังไม่ได้ทำฝั่งโค้ด
 - **เซล 20 ชิ้นเป็น COMPONENT เดี่ยว ไม่ได้รวมเป็นชุด** ทำให้แผง Assets เป็นรายการยาว ต้องตัดสินว่าจะยุบเป็นชุดที่มีแกนชนิดหรือคงไว้

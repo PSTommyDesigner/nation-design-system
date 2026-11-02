@@ -75,6 +75,26 @@ const preview: Preview = {
     },
   ],
   parameters: {
+    // เมนูด้านข้างเรียงตามชั้นและเลขหน้าของไฟล์ออกแบบ (ผู้ใช้สั่ง 2026-10-28 ให้โค้ดกับ Figma จัดชั้นตรงกัน)
+    // หมวดในชั้นต้องเรียงตามเลขหน้า ไม่ใช่ตามชื่อโฟลเดอร์ component จึงต้องเขียนลำดับไว้ทุกชั้น
+    // เพิ่มหน้าใหม่ใน Figma เมื่อไร ต้องมาเติมชื่อหน้าตรงนี้ด้วย ไม่งั้นหมวดนั้นจะไปต่อท้ายชั้น
+    options: {
+      storySort: {
+        order: [
+          'Atoms (Identity)',
+          ['01 Color', '02 Icon', '03 Typography', '04 Grid', '05 Effect', '06 Shape', '07 Space', '08 Logo', '09 Third-party Logos'],
+          'Molecules (Element)',
+          [
+            '10 Frame', '11 Avatar', '12 Buttons', '13 Input', '14 Toggles', '15 Checkbox', '16 Radio', '17 Sliders', '18 Tabs',
+            '19 Toasts & Banners', '20 Tooltips', '21 Tags', '22 Badge', '23 Progress Bars', '24 Pagination', '25 Card', '26 Dividers',
+          ],
+          'Organisms (Component)',
+          ['27 Dropdowns', '28 Table', '29 Chart', '30 Modal'],
+          'Template (Composition)',
+          'Page (Prototype)',
+        ],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

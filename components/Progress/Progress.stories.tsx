@@ -9,7 +9,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // ไฟล์ออกแบบหน้า 23 Progress Bars มี 3 ชุด progress-bar, circular-progress-bar, semi-circular-progress-bar
 // ทั้งสามชุดใช้แกน size 5 ขั้นเท่ากัน ชุดแถบมีแกน label-position เพิ่ม สูตรขนาดอยู่ที่ tokens/scale/progress.mjs
 const meta: Meta<typeof ProgressBar> = {
-  title: 'Components/Progress',
+  title: 'Molecules (Element)/23 Progress Bars/Progress',
   component: ProgressBar,
   tags: ['autodocs'],
   args: { label: 'ความคืบหน้าการอัปโหลด', value: 65, max: 100, size: 'md', showLabel: true, labelPosition: 'right' },

@@ -5,7 +5,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ไฟล์ออกแบบหน้า 14 มีชุดเดียวคือ toggle (40 แบบ)
 const meta: Meta<typeof Toggle> = {
-  title: 'Components/Toggle',
+  title: 'Molecules (Element)/14 Toggles/Toggle',
   component: Toggle,
   tags: ['autodocs'],
   args: { label: 'แจ้งเตือนทางอีเมล', size: 'md' },

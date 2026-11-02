@@ -36,7 +36,7 @@
   gap: var(--ntg-size-space-s2-lg);
   width: 100%;
 }
-/* การ์ด ควร/ไม่ควร ยึดตาม do-info-card กับ dont-info-card ของหน้า 27 Card (อ่านค่าจริง 2026-10-20)
+/* การ์ด ควร/ไม่ควร ยึดตาม do-info-card กับ dont-info-card ของหน้า 25 Card (อ่านค่าจริง 2026-10-20)
    พื้น general/secondary ขอบ 1px general/primary inside มุม 12 padding 16 gap 8
    หัว "Do" / "Don't" ใช้ title/sm สีหัวข้อ + ไอคอน 20px สี icon/system/success หรือ error
    เนื้อหา body/sm สีข้อความ ตัวอย่าง component วางระหว่างหัวกับเนื้อหา (ลำดับเดียวกับ Page Doc หน้า 21) */
