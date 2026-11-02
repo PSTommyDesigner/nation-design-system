@@ -93,6 +93,12 @@ sections:
         checkedBy: manual
       - level: may
         statement: >-
+          Put a line break (\n) in description to show short items one per line, such as one data series per line in the
+          BarChart tooltip. The description keeps line breaks (white-space pre-line, added 2026-10-28) and still wraps
+          long lines at the text max width.
+        checkedBy: manual
+      - level: may
+        statement: >-
           Use the 8 aligned placements (top-start to right-end) in code. Figma page 20 draws only the 4 centered ones,
           so the aligned ones have no picture to compare against.
         checkedBy: manual
