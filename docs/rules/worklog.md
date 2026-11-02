@@ -187,7 +187,7 @@ Assign Date เป็น custom field คนละตัว ใส่ตอน�
 | สคริปต์ | `scripts/worklog-obsidian.mjs` สร้างใหม่ทั้งชุดจาก worklog ในเครื่องทุกครั้ง รันซ้ำได้ผลเดิม และเขียนเฉพาะไฟล์ที่เนื้อหาเปลี่ยน |
 | คำสั่งมือ | `npm run worklog:obsidian` หรือ `npm run worklog:obsidian -- --dry` เพื่อดูว่าจะเขียนไฟล์ไหน |
 | อัตโนมัติ | `worklog-month.mjs` เรียกก่อนส่ง Asana ทุก 16:30 ถ้าสำเนาพังจะเตือนใน log แล้วส่ง Asana ต่อตามปกติ |
-| vault ที่ใช้ | `--vault <path>` ก่อน แล้ว `OBSIDIAN_VAULT` ใน `.env` แล้วค่อยค่าตั้งต้น `~/Documents/Obsidian Vault` |
+| vault ที่ใช้ | `--vault <path>` ก่อน แล้ว `OBSIDIAN_VAULT` ใน `.env` แล้วค่อยค่าตั้งต้น `obsidian/UXUI Worklog` ใน repo |
 
 **โครงใน vault** (user กำหนด 2026-10-27) สคริปต์เป็นเจ้าของโฟลเดอร์ `Worklog <ปี ค.ศ.>/` ไม่แตะส่วนอื่นของ vault
 
@@ -228,8 +228,9 @@ Worklog 2026/
 - สคริปต์ลบได้เฉพาะไฟล์ที่ตัวเองเคยสร้าง (มีข้อความ "สร้างอัตโนมัติจาก worklog รายวัน") ซึ่งรอบนี้ไม่ได้สร้างแล้ว และโฟลเดอร์เดือนที่ว่าง ไฟล์ที่เขียนเองใน vault ไม่ถูกแตะ **ห้ามแก้ข้อความนี้ในสคริปต์** เพราะใช้แยกไฟล์ก่อนลบ
 - เปลี่ยนชื่อไฟล์หรือโฟลเดอร์ใน `Worklog <ปี>/` ด้วยมือไม่ได้ผล รอบถัดไปสคริปต์จะสร้างชื่อเดิมกลับมาแล้วลบชื่อที่เปลี่ยน ต้องแก้ที่สคริปต์
 - วันที่ของไฟล์อ่านจากหัว `# Worklog YYYY-MM-DD` ก่อน ไฟล์เก่าก่อนกลางเดือนตุลาคม 2569 บางวันหัวเป็นภาษาไทย สคริปต์จึงอ่านจากชื่อไฟล์แทนแล้วให้ `fileName()` ยืนยัน
-- **⚠️ macOS กันโฟลเดอร์ Documents ไว้** ถ้าใน `docs/daily-log/.schedule.log` ขึ้นว่าสำเนาไป Obsidian ไม่สำเร็จพร้อม `Operation not permitted` ให้อนุญาตโปรแกรม node ที่ใช้รัน ใน System Settings หัวข้อ Privacy & Security แล้ว Files and Folders หรือย้าย vault ไปไว้นอก Documents แล้วตั้ง `OBSIDIAN_VAULT`
-- vault ตอนนี้คือ `~/Documents/UXUI Worklog` ตั้งไว้ที่ `OBSIDIAN_VAULT` ใน `.env` (เปลี่ยนชื่อ 2026-10-27)
+- vault ตอนนี้คือ `obsidian/UXUI Worklog` ใน repo (ย้ายจาก `~/Documents/UXUI Worklog` เมื่อ 2026-11-02 ตามที่ user สั่ง) ไม่ต้องตั้ง `OBSIDIAN_VAULT` แล้ว โฟลเดอร์ `obsidian/` อยู่ใน `.gitignore` ไม่ขึ้น git
+- เปิดใน Obsidian ด้วย Open folder as vault แล้วเลือก `~/nation-design-system/obsidian/UXUI Worklog`
+- vault อยู่นอก Documents แล้ว ปัญหา macOS กันโฟลเดอร์ Documents (`Operation not permitted` ใน `docs/daily-log/.schedule.log`) จึงไม่เกิดกับ vault นี้อีก
 
 ## 8. vault แยกของโปรเจกต์ One CMS (เพิ่ม 2026-10-28)
 
@@ -240,7 +241,7 @@ Worklog 2026/
 | สคริปต์ | `scripts/one-cms-obsidian.mjs` ใช้ตัวอ่าน worklog และกติกาการเขียนชุดเดียวกับ `worklog-obsidian.mjs` |
 | คำสั่งมือ | `npm run one-cms:obsidian` หรือ `npm run one-cms:obsidian -- --dry` |
 | อัตโนมัติ | `worklog-month.mjs` เรียกต่อจาก §7 ทุก 16:30 ถ้าพังจะเตือนใน log แล้วส่ง Asana ต่อตามปกติ |
-| vault ที่ใช้ | `--vault <path>` ก่อน แล้ว `ONE_CMS_VAULT` ใน `.env` แล้วค่อยค่าตั้งต้น `~/Documents/One CMS` |
+| vault ที่ใช้ | `--vault <path>` ก่อน แล้ว `ONE_CMS_VAULT` ใน `.env` แล้วค่อยค่าตั้งต้น `obsidian/One CMS` ใน repo (ย้ายจาก `~/Documents/One CMS` เมื่อ 2026-11-02) |
 
 **โครงใน vault** สคริปต์เป็นเจ้าของ `หน้าหลัก.md` กับโฟลเดอร์ `Rules/` และ `Worklog <ปี ค.ศ.>/` ไม่แตะไฟล์อื่น
 
@@ -265,4 +266,4 @@ Worklog 2026/
 - **เขียน worklog ของงานนี้ให้มีคำว่า One CMS ทุกรายการ** รายการที่ไม่มีคำนี้จะไม่ขึ้นใน vault นี้ (ยังอยู่ครบใน worklog vault)
 - ห้ามแก้โน้ตใน vault แก้ที่ repo แล้วรันสคริปต์ แก้ worklog หรือกฎหลัง 16:30 ให้รัน `npm run one-cms:obsidian` เอง
 - สคริปต์ลบได้เฉพาะไฟล์ที่มีข้อความ "สร้างอัตโนมัติจาก repo nation-design-system สำหรับโปรเจกต์ One CMS" **ห้ามแก้ข้อความนี้ในสคริปต์**
-- ปัญหา macOS กันโฟลเดอร์ Documents แก้แบบเดียวกับ §7
+- vault อยู่ใน `obsidian/` ของ repo ไม่ขึ้น git เหมือน §7 เปิดใน Obsidian จาก `~/nation-design-system/obsidian/One CMS`

@@ -14,6 +14,7 @@ If you don't follow a SHOULD or SHOULD NOT rule, say why in your task summary.
 - Tokens live in `tokens/tokens.json/*.json` (W3C DTCG, one file per Figma collection) and build with Style Dictionary to CSS variables with the prefix `--ntg-`
 - Docs for AI follow DSDS 0.23 (`.dsds.yaml` files) in `context/`. The list of everything is `context/design-system.dsds.yaml`
 - Docs for people are in Thai in `docs/`, starting at `docs/README.md`. Official rule files are in `docs/rules/`
+- `obsidian/` holds Obsidian vaults that scripts copy from `docs/daily-log/` and `context/features/` for reading. It is not in git. MUST NOT read it as a source or edit it: use the files it was copied from
 
 ## At the start of every task
 1. MUST open `context/index.md` first to see which files this task needs

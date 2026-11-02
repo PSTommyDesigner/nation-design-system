@@ -37,3 +37,7 @@ fix-*.md
 
 *storybook.log
 storybook-static
+
+# ── Obsidian vault ที่สคริปต์สร้างให้อ่าน ────────────────────────
+# สำเนาจาก docs/daily-log และ context/features ต้นทางอยู่ใน repo แล้ว (ย้ายจาก ~/Documents เข้ามา 2026-11-02)
+obsidian/

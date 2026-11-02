@@ -17,9 +17,9 @@
 // รายการไหนเป็นของ One CMS: รายการระดับบนสุดที่มีคำว่า One CMS หรือ one-cms รายการย่อยใต้รายการนั้นติดไปด้วย
 // วันที่ไม่มีรายการของ One CMS เลยจะไม่มีโน้ต
 //
-// vault ที่ใช้: --vault <path> ก่อน แล้ว ONE_CMS_VAULT ใน .env แล้วค่อย ~/Documents/One CMS
+// vault ที่ใช้: --vault <path> ก่อน แล้ว ONE_CMS_VAULT ใน .env แล้วค่อย obsidian/One CMS ใน repo (ย้ายเข้า repo 2026-11-02)
 import { readFileSync, existsSync, readdirSync, unlinkSync, rmdirSync } from 'node:fs'
-import { join, resolve, relative } from 'node:path'
+import { join, resolve, relative, dirname } from 'node:path'
 import { homedir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { collectDays, envValue, expandHome, parts, dayLabel, monthName, noteName, isNone, put, walk } from './worklog-obsidian.mjs'
@@ -41,7 +41,7 @@ export function vaultPath(argv = process.argv.slice(2)) {
   if (i >= 0 && argv[i + 1]) return resolve(expandHome(argv[i + 1]))
   const fromEnv = envValue('ONE_CMS_VAULT')
   if (fromEnv) return resolve(expandHome(fromEnv))
-  return join(homedir(), 'Documents', 'One CMS')
+  return join(dirname(fileURLToPath(import.meta.url)), '..', 'obsidian', 'One CMS')
 }
 
 const worklogPath = (iso) => `Worklog ${parts(iso).y}/${monthName(iso)}/${noteName(iso)}`

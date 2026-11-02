@@ -19,7 +19,7 @@
 //   เลขสัปดาห์มาจาก weekOfMonth() ของ worklog-path.mjs ตรงกับ W ในชื่อไฟล์ของ repo
 //   ชื่อไฟล์ใน repo ยังเป็นไปตาม worklog-path.mjs เหมือนเดิม ชื่อในนี้ใช้เฉพาะใน vault
 //
-// vault ที่ใช้: --vault <path> ก่อน แล้ว OBSIDIAN_VAULT ใน .env แล้วค่อย ~/Documents/Obsidian Vault
+// vault ที่ใช้: --vault <path> ก่อน แล้ว OBSIDIAN_VAULT ใน .env แล้วค่อย obsidian/UXUI Worklog ใน repo (ย้ายเข้า repo 2026-11-02)
 //
 // tag สำหรับค้นหา (user สั่ง 2026-10-27) ใส่ใน frontmatter ของบันทึกรายวันเท่านั้น
 // โน้ตสรุปเดือนกับหน้าหลักไม่ใส่ tag เหล่านี้ ผลค้นหาตาม tag จึงได้แต่วันที่ทำงานนั้นจริง
@@ -66,7 +66,7 @@ export function vaultPath(argv = process.argv.slice(2)) {
   if (i >= 0 && argv[i + 1]) return resolve(expandHome(argv[i + 1]))
   const fromEnv = envValue('OBSIDIAN_VAULT')
   if (fromEnv) return resolve(expandHome(fromEnv))
-  return join(homedir(), 'Documents', 'Obsidian Vault')
+  return join(dirname(fileURLToPath(import.meta.url)), '..', 'obsidian', 'UXUI Worklog')
 }
 
 export function parts(iso) {

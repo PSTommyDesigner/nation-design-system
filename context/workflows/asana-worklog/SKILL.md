@@ -58,7 +58,7 @@ Kept in separate places. Never post everything as one block like before.
 | Where | What |
 | --- | --- |
 | This repo: `docs/daily-log/daily/<Thai month> <Buddhist year>/W{week}-{Day}-{DD}-{MM}-{Buddhist year}.md` | The full daily summary across all cards. The only source, no `.txt` copies anymore |
-| Obsidian vault, one folder per year `Worklog <year>/` | A generated read-only copy: daily notes, a summary note per month (pending, done, problems) and an index per year. MUST NOT edit notes there, edit the repo file and rerun the script |
+| Obsidian vault `obsidian/UXUI Worklog` in the repo (not in git), one folder per year `Worklog <year>/` | A generated read-only copy: daily notes, a summary note per month (pending, done, problems) and an index per year. MUST NOT edit notes there, edit the repo file and rerun the script |
 | Each task card | A comment about that card's work only. Never mix in work from other cards |
 | Subtask "สรุปงานที่ทำ เดือน<month>" | One comment per day, a daily timeline across all cards |
 | Subtask "สรุปงานค้าง เดือน<month>" | The pending list, kept current. Remove items once done |
@@ -67,4 +67,4 @@ Kept in separate places. Never post everything as one block like before.
 - Creating a subtask: `POST /tasks/{parent}/subtasks` with `name` first, then `PUT` the `html_notes`. MUST NOT use `<p>`: it returns 400 `XML is invalid`
 - Scripts: `npm run worklog:new`, `npm run worklog:asana`, `npm run worklog:month`, `npm run worklog:obsidian` (see `docs/rules/worklog.md` sections 5 and 7)
 - The 16:30 run copies every worklog to Obsidian before it pushes to Asana. When you write or fix a worklog after 16:30, run `npm run worklog:obsidian` yourself. No approval needed: it only writes inside the vault's `Worklog <year>/` folders
-- One CMS has its own vault (`~/Documents/One CMS`, set by the user 2026-10-28) with the project rules and the One CMS items of each worklog. The 16:30 run updates it too. After 16:30, run `npm run one-cms:obsidian` yourself, no approval needed. Every worklog item about One CMS MUST contain the words `One CMS`, or it won't reach that vault. See `docs/rules/worklog.md` section 8
+- One CMS has its own vault (`obsidian/One CMS` in the repo, moved from `~/Documents` on 2026-11-02) with the project rules and the One CMS items of each worklog. The 16:30 run updates it too. After 16:30, run `npm run one-cms:obsidian` yourself, no approval needed. Every worklog item about One CMS MUST contain the words `One CMS`, or it won't reach that vault. See `docs/rules/worklog.md` section 8
