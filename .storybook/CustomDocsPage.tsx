@@ -8,19 +8,8 @@
  *    ทำให้หัวหน้าลองเปลี่ยนค่าที่ตัวอย่างในหัวข้อ STORIES (ชุดที่สอง เป็นภาพนิ่ง)
  *    แล้วงงว่าทำไมไม่ขยับ ทั้งที่ของจริงที่ขยับได้อยู่คนละจุด
  *
- * ⚠️ แผง Controls แบบติดขอบขวาเต็มจอ (ตั้ง 2026-10-20 หัวหน้าสั่ง)
- *    หัวหน้าอยากให้แผง Controls ในหน้า Docs หน้าตาและตำแหน่งเหมือนแผง Controls
- *    ตอนดู story เดี่ยว คือชิดขอบขวาสุด สูงเต็มจอ กว้าง 400px (อ่านค่าจาก
- *    --right-panel-width ของ Storybook เองใน DevTools) และเหลือแค่คอลัมน์
- *    Name กับ Control
- *    - แผงใช้ position fixed ภายใน iframe ของหน้าพรีวิว จึงชิดขอบขวาของพื้นที่พรีวิว
- *      เหมือนแผง addon ของ Storybook พอดี
- *    - กันพื้นที่ด้านขวาของ .sbdocs-wrapper (คลาสมาตรฐานของ Storybook ไม่ใช่ชื่อสุ่ม)
- *      ไม่ให้เนื้อหาไปอยู่ใต้แผง ส่วนการจัดกึ่งกลางเนื้อหาใช้ของ .sbdocs-content เดิม
- *    - สีพื้นกับเส้นขอบของแผงผูก token จริงได้ เพราะ variables.css โหลดอยู่ใน iframe นี้
- *    - บล็อก <Controls /> ไม่เปิด prop ให้เลือกคอลัมน์ (มีแค่ include/exclude/sort/of)
- *      จึงซ่อนคอลัมน์ Description กับ Default ด้วย CSS ตามตำแหน่ง ไม่ได้ลบข้อมูลจริง
- *    ⚠️ ยังไม่ได้เปิดดูด้วยตาจริงในเบราว์เซอร์ เครื่องมือไม่มี browser automation
+ * ⚠️ ไม่มีแผง Controls ในหน้า Docs (ผู้ใช้สั่ง 2026-11-02 ยกเลิกแผงติดขอบขวาที่ตั้งไว้ 2026-10-20)
+ *    แผงคุมได้แค่ตัวอย่างบนสุด พอเลื่อนลงมาจึงไม่เห็นผล ลองปรับค่าได้ที่หน้า story เดี่ยวของ component
  *
  * ⚠️ เนื้อหาจัดเป็นหัวข้อแบบ Page Doc ของไฟล์ออกแบบ (ตั้ง 2026-10-20 หัวหน้าอนุมัติแผน)
  *    แทนการไล่ story เป็นรายการยาวไม่มีหมวด หัวข้อยึดตามกฎ 8.5 ของ CLAUDE.md คือ
@@ -32,16 +21,14 @@
  *      ให้ meta ใส่เหตุผลไว้ที่ `parameters.docs.sectionNotes[หัวข้อ]` แล้วหน้าจะแสดงเหตุผลแทน
  *    - story ที่ไม่ได้ระบุหัวข้อไปรวมที่ "ตัวอย่างเพิ่มเติม" ท้ายสุด จะได้ไม่หายไปเฉย ๆ
  *    - ท้ายหน้าเป็นตาราง Props เต็ม (ชื่อ คำอธิบาย ค่าตั้งต้น) สำหรับคนอ่านเอกสาร
- *      ส่วนแผงขวาเหลือ Name กับ Control สำหรับคนลองเล่น คอลัมน์ Control จึงมีที่แผงขวาที่เดียว
  *    - หัวข้อใช้ preset section-heading/xl และคำอธิบาย body/xl ตามโครง section ของหน้า 00 Document
  *
  * โครง:
- *   เนื้อหา (กึ่งกลางพื้นที่ที่เหลือ)  Title / Subtitle / Description / Canvas / หัวข้อ 5 หมวด / Props
- *   แผงขวา (fixed เต็มสูง 400px)       Controls ของ story เดียวกับ Canvas (แชร์ args กัน)
+ *   เนื้อหา  Title / Subtitle / Description / Canvas / หัวข้อ 5 หมวด / Props
  */
 import { useContext } from 'react'
 import {
-  Title, Subtitle, Description, Canvas, Controls, ArgTypes, Source, DocsContext, useOf, anchorBlockIdFromId,
+  Title, Subtitle, Description, Canvas, ArgTypes, Source, DocsContext, useOf, anchorBlockIdFromId,
 } from '@storybook/addon-docs/blocks'
 
 // ลำดับหัวข้อตามกฎ 8.5 ของ CLAUDE.md หัวข้อสุดท้ายรับ story ที่ไม่ได้ระบุหมวด
@@ -51,68 +38,7 @@ const EXTRA_SECTION = 'ตัวอย่างเพิ่มเติม'
 type StoryEntry = ReturnType<React.ContextType<typeof DocsContext>['componentStories']>[number]
 type SectionNotes = Partial<Record<string, string>>
 
-// กว้างเท่าแผง addon ของ Storybook (--right-panel-width: 400px) ไม่มี token อ้างอิง
-// เพราะเป็นผังของเครื่องมือ ไม่ใช่ชิ้นงานในไฟล์ออกแบบ
-const PANEL_WIDTH = 400
-const CONTENT_GAP = 32
-
-// กรอบมนรอบตารางคือเงากับมุมโค้งที่ Storybook ใส่ให้ tbody ของ .docblock-argstable
-// (คลาสมาตรฐาน ตรวจจาก bundle แล้ว) หัวหน้าสั่งถอดออกและให้ตารางชิดขอบแผง 2026-10-20
-// ตัวเลือกจึงใช้ชื่อแท็กร่วมกับคลาสให้ความจำเพาะสูงกว่ากฎ && ของ Storybook เสมอ
 const LAYOUT_CSS = `
-  .sbdocs-wrapper {
-    padding-right: ${PANEL_WIDTH + CONTENT_GAP}px;
-  }
-  .docs-side-controls {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: ${PANEL_WIDTH}px;
-    box-sizing: border-box;
-    padding: 0;
-    overflow-y: auto;
-    background: var(--ntg-color-background-general-primary);
-    border-left: 1px solid var(--ntg-color-border-general-primary);
-  }
-  .docs-side-controls table.docblock-argstable {
-    width: 100%;
-    margin: 0;
-  }
-  /* ล้างกรอบมนของตาราง ให้เหมือนโหมด inAddonPanel ของ Storybook ที่บล็อก Controls ไม่เปิดให้ใช้
-     อ่านจาก blocks.js: เงาคือ filter บน tbody (ไม่ใช่ box-shadow) พื้นเทาอยู่ที่ทุกช่อง
-     กรอบกับมุมโค้งเป็นเส้นขอบ/รัศมีบนช่องแถวแรก แถวสุดท้าย ช่องซ้ายสุด ขวาสุด ทีละช่อง
-     ตัวเลือกทุกตัวมีความจำเพาะสูงกว่ากฎ && ของ Storybook ที่คู่กัน จึงชนะโดยไม่พึ่งลำดับไฟล์ */
-  .docs-side-controls table.docblock-argstable tbody {
-    filter: none;
-  }
-  .docs-side-controls table.docblock-argstable tbody > tr > * {
-    background: var(--ntg-color-background-general-primary);
-    border-radius: 0;
-  }
-  .docs-side-controls table.docblock-argstable tbody > tr > *:first-of-type,
-  .docs-side-controls table.docblock-argstable tbody > tr > *:last-of-type {
-    border-inline-start: 0;
-    border-inline-end: 0;
-    border-radius: 0;
-  }
-  .docs-side-controls table.docblock-argstable tbody > tr:first-of-type > *,
-  .docs-side-controls table.docblock-argstable tbody > tr:last-of-type > * {
-    border-block-end: 0;
-    border-radius: 0;
-  }
-  .docs-side-controls table.docblock-argstable tbody > tr:first-of-type > *:first-of-type,
-  .docs-side-controls table.docblock-argstable tbody > tr:first-of-type > *:last-of-type,
-  .docs-side-controls table.docblock-argstable tbody > tr:last-of-type > *:first-of-type,
-  .docs-side-controls table.docblock-argstable tbody > tr:last-of-type > *:last-of-type {
-    border-radius: 0;
-  }
-  .docs-side-controls table thead th:nth-child(2),
-  .docs-side-controls table thead th:nth-child(3),
-  .docs-side-controls table tbody td:nth-child(2),
-  .docs-side-controls table tbody td:nth-child(3) {
-    display: none;
-  }
   /* ถอดกรอบที่ครอบตัวอย่าง component (หัวหน้าสั่ง 2026-10-20) Storybook วาดเป็น border +
      box-shadow + มุมโค้ง + พื้นสีบน .sbdocs-preview (getBlockBackgroundStyle) และใส่ padding
      32px 22px ให้ .docs-story ข้างใน ล้างทั้งสองชั้นให้ตัวอย่างวางบนพื้นเอกสารตรง ๆ
@@ -213,6 +139,11 @@ const LAYOUT_CSS = `
 
 // จัดกลุ่ม story ตาม parameters.docs.section แล้วเรียงตามลำดับหัวข้อ
 // story ตัวแรกที่ติดป้าย autodocs คือตัวที่อยู่ใน Canvas ด้านบนแล้ว (กติกาเดียวกับ usePrimaryStory ของ Storybook) จึงตัดออก
+// หัวข้อย่อยที่ความหมายเดียวกับหัวข้อหลักไม่ต้องขึ้นซ้ำ (ผู้ใช้สั่ง 2026-11-02) เช่น ควรไม่ควร กับ ควรและไม่ควร
+// หรือ ส่วนประกอบ กับ ส่วนประกอบทั้งหมด ถ้าในหัวข้อมีหลาย story ต้องคงชื่อไว้แยกกัน
+const repeatsSection = (section: string, name: string, count: number) =>
+  count === 1 && (section === 'ควรไม่ควร' || name.startsWith(section))
+
 const GroupedStories = () => {
   const { componentStories } = useContext(DocsContext)
   const { preparedMeta } = useOf('meta', ['meta'])
@@ -238,7 +169,7 @@ const GroupedStories = () => {
             {list.map((story) => (
               <div key={story.id} id={anchorBlockIdFromId(story.id)} className="docs-story-block">
                 <div className="docs-story-header">
-                  <h3 className="docs-story-title">{story.name}</h3>
+                  {!repeatsSection(section, story.name, list.length) && <h3 className="docs-story-title">{story.name}</h3>}
                   <Description of={story.moduleExport} />
                 </div>
                 <Canvas of={story.moduleExport} sourceState="none" />
@@ -276,9 +207,6 @@ export const CustomDocsPage = () => (
       <h2 className="docs-section-heading">Props</h2>
       <ArgTypes />
     </section>
-    <aside className="docs-side-controls" aria-label="Controls">
-      <Controls />
-    </aside>
   </>
 )
 
