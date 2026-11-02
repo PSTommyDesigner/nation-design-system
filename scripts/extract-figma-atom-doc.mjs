@@ -37,6 +37,7 @@ const PAGES = {
   color: { page: '01 Color', folder: 'Color', skip: ['Base Components (internal)'] },
   typography: { page: '03 Typography', folder: 'Typography', skip: [] },
   grid: { page: '04 Grid', folder: 'Grid', skip: [] },
+  effect: { page: '05 Effect', folder: 'Effect', skip: ['Base Components (internal)'] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -119,7 +120,44 @@ const GRID_SYSTEM = { 'nation-group-2022': 'v2022', 'nation-platform-2023': 'nat
 const GRID_DEVICE = { 'full-hd': 'fullhd', desktop: 'desktop', 'tablet-horizontal': 'tablet-h', 'tablet-vertical': 'tablet-v', mobile: 'mobile' }
 const gridMismatch = []
 function needVar(v, where) { if (!CSS_VARS.has(v)) badVars.push(`${where}: ${v} ไม่มีใน variables.css`); return v }
+const effectMismatch = []
+// ชื่อ effect style ในไฟล์ออกแบบ จับคู่กับตัวแปร CSS
+function effectOf(styleName) {
+  let m
+  if ((m = styleName.match(/^Shadows\/(Bottom|Top|Center)\/(xs|sm|md|lg|xl)$/))) return { kind: 'shadow', cssVar: `--ntg-shadows-${m[1].toLowerCase()}-${m[2]}` }
+  if ((m = styleName.match(/^Background Blur\/(xs|sm|md|lg|xl)$/))) return { kind: 'blur', cssVar: `--ntg-effect-background-blur-${m[1]}` }
+  if ((m = styleName.match(/^focused-ring\/(\w+)-focused-ring$/))) return { kind: 'ring', cssVar: `--ntg-focused-ring-${m[1]}` }
+  return null
+}
+// เทียบค่าเอฟเฟคในไฟล์ออกแบบกับค่าของตัวแปร CSS ถ้าไม่ตรงจดไว้ ไม่หยุด
+function checkEffect(where, kind, cssVar, fx) {
+  const css = ROOT_VALUES[cssVar] ?? ''
+  if (!fx) { effectMismatch.push(`${where}: ไม่เจอเอฟเฟคในภาพ`); return }
+  if (kind === 'blur') {
+    if (fx.radius !== parseFloat(css)) effectMismatch.push(`${where}: เบลอ ไฟล์ออกแบบ ${fx.radius} token ${css}`)
+    return
+  }
+  const m = css.match(/^(-?[\d.]+)px (-?[\d.]+)px (-?[\d.]+)px (-?[\d.]+)px rgba\((\d+), (\d+), (\d+), ([\d.]+)\)/)
+  if (!m) { effectMismatch.push(`${where}: อ่านค่า ${cssVar} ไม่ได้ (${css})`); return }
+  const c = fx.color ?? {}
+  const fig = [fx.offset?.x ?? 0, fx.offset?.y ?? 0, fx.radius ?? 0, fx.spread ?? 0, Math.round(c.r * 255), Math.round(c.g * 255), Math.round(c.b * 255), Math.round(c.a * 100) / 100]
+  const tok = m.slice(1).map(Number)
+  if (fig.some((v, i) => v !== tok[i])) effectMismatch.push(`${where}: ไฟล์ออกแบบ ${fig.join(' ')} token ${tok.join(' ')}`)
+}
 const STYLE_NAME = /^[a-z]+(-[a-z]+)*(\/[a-z0-9-]+)+$/
+
+// ภาพเอฟเฟค = INSTANCE หรือ COMPONENT ที่มีกล่อง Preview และป้าย Info บอกชื่อ effect style
+const isEffect = (n) => (n.type === 'INSTANCE' || n.type === 'COMPONENT') && n.children?.some(c => c.name === 'Preview') && n.children.some(c => c.name === 'Info' && effectOf(texts(c)[0]?.trim() ?? ''))
+function effectBlock(n, where, label) {
+  const style = texts(n.children.find(c => c.name === 'Info'))[0].trim()
+  const { kind, cssVar } = effectOf(style)
+  needVar(cssVar, `${where} ${style}`)
+  const preview = n.children.find(c => c.name === 'Preview')
+  // วงแหวนโฟกัสในไฟล์ออกแบบอยู่ที่ปุ่มข้างในกล่อง Preview ส่วนเงากับเบลออยู่ที่กล่องเอง
+  const fx = findAll(preview, x => x.effects?.some(e => e.visible !== false))[0]?.effects.find(e => e.visible !== false)
+  checkEffect(`${where} ${style}`, kind, cssVar, fx)
+  return { type: 'effect', kind, style, cssVar, label }
+}
 
 function extract(doc) {
   const out = { id: doc.id, name: doc.name, title: '', subtitle: '', blocks: [] }
@@ -133,6 +171,11 @@ function extract(doc) {
     if (b.type === 'colorRow') {
       if (last?.type === 'colorTable') { last.rows.push(b.row); return }
       out.blocks.push({ type: 'colorTable', rows: [b.row] }); return
+    }
+    // ภาพเอฟเฟคที่อยู่ติดกันรวมเป็นแถวเดียว
+    if (b.type === 'effect') {
+      if (last?.type === 'effects') { last.items.push(b); return }
+      out.blocks.push({ type: 'effects', items: [b] }); return
     }
     out.blocks.push(b)
   }
@@ -206,6 +249,20 @@ function extract(doc) {
       push({ type: 'fontFamily', sample: big.characters, family: needVar(FAMILY_VAR[big.style.fontFamily], big.characters), title: rest[0] ?? '', usage: rest.slice(1).join(' '), weights })
       return
     }
+    if (n.type === 'FRAME' && n.name === 'cell' && /^[\u2705\u274c]/.test(n.children?.find(c => c.type === 'TEXT')?.characters ?? '')) {
+      // คู่ถูกผิดของหน้า Effect ข้อความ + ภาพเอฟเฟคในแถวเดียวกัน
+      const t = n.children.find(c => c.type === 'TEXT').characters
+      const effects = findAll(n, isEffect).map(x => effectBlock(x, doc.name, ''))
+      push({ type: 'card', kind: t.startsWith('\u2705') ? 'do' : 'dont', title: '', body: t.replace(/^[\u2705\u274c]\s*(ถูก|ผิด)?\s*/, ''), effects })
+      return
+    }
+    if (n.type === 'FRAME' && n.name === 'item' && n.children?.some(isEffect)) {
+      // ภาพเอฟเฟคหนึ่งตัวพร้อมคำบรรยายด้านบน
+      const label = n.children.find(c => c.type === 'TEXT')?.characters ?? ''
+      push(effectBlock(n.children.find(isEffect), doc.name, label))
+      return
+    }
+    if (isEffect(n)) { push(effectBlock(n, doc.name, '')); return }
     if ((n.type === 'INSTANCE' || n.type === 'COMPONENT') && n.layoutGrids?.some(g => g.pattern === 'COLUMNS')) {
       // ภาพ grid หนึ่งขนาดจอ คอลัมน์ ร่อง และขอบอ่านจาก token ส่วนความกว้างแคนวาสเก็บจากไฟล์ออกแบบ (ผู้ใช้ตัดสิน 2026-11-02
       // เพราะมือถือรุ่น 2026 ออกแบบบนแคนวาส 360 ซึ่งไม่มี token) ตัวเลขกำกับในภาพไม่ใช่เนื้อหา จึงไม่อ่าน
@@ -278,6 +335,8 @@ const json = {
   ...(stale.length ? { staleLabels: stale } : {}),
   // ค่า grid ในไฟล์ออกแบบที่ไม่ตรงกับ token
   ...(gridMismatch.length ? { gridMismatch } : {}),
+  // ค่าเอฟเฟคในไฟล์ออกแบบที่ไม่ตรงกับ token
+  ...(effectMismatch.length ? { effectMismatch } : {}),
   documents,
 }
 fs.mkdirSync(path.dirname(OUT), { recursive: true })
@@ -285,5 +344,6 @@ fs.writeFileSync(OUT, JSON.stringify(json, null, 2) + '\n')
 const count = (t) => documents.reduce((s, d) => s + d.blocks.filter(b => b.type === t).length, 0)
 const rows = documents.reduce((s, d) => s + d.blocks.filter(b => b.type === 'colorTable').reduce((a, b) => a + b.rows.length, 0), 0)
 if (gridMismatch.length) console.log(`ค่า grid ไม่ตรงกับ token ${gridMismatch.length} จุด\n  ` + gridMismatch.join('\n  '))
+if (effectMismatch.length) console.log(`ค่าเอฟเฟคไม่ตรงกับ token ${effectMismatch.length} จุด\n  ` + effectMismatch.join('\n  '))
 if (stale.length) console.log(`ป้ายสีในไฟล์ออกแบบไม่ตรงกับตัวแปรจริง ${stale.length} แถว ดู staleLabels ใน ${path.relative(ROOT, OUT)}`)
-console.log(`เขียน ${path.relative(ROOT, OUT)} เอกสาร ${documents.length} ใบ แถวสี ${rows} ตาราง ${count('table')} แรมป์ ${count('ramp')} การ์ด ${count('card')} ตัวอย่างสไตล์ ${count('specimen')} ขั้นขนาด ${count('scale')} ตระกูลฟอนต์ ${count('fontFamily')} ภาพ grid ${count('grid')}`)
+console.log(`เขียน ${path.relative(ROOT, OUT)} เอกสาร ${documents.length} ใบ แถวสี ${rows} ตาราง ${count('table')} แรมป์ ${count('ramp')} การ์ด ${count('card')} ตัวอย่างสไตล์ ${count('specimen')} ขั้นขนาด ${count('scale')} ตระกูลฟอนต์ ${count('fontFamily')} ภาพ grid ${count('grid')} แถวเอฟเฟค ${count('effects')} ภาพเอฟเฟค ${documents.reduce((a, d) => a + d.blocks.filter(b => b.type === 'effects').reduce((x, b) => x + b.items.length, 0), 0)}`)

@@ -2,7 +2,7 @@
 
 Open this file before editing anything in `foundations/`.
 
-This folder holds the Storybook pages of the Atoms (Identity) layer: one folder per Figma page (`Color/` for 01 Color, `Typography/` for 03 Typography, `Grid/` for 04 Grid, and so on).
+This folder holds the Storybook pages of the Atoms (Identity) layer: one folder per Figma page (`Color/` for 01 Color, `Typography/` for 03 Typography, `Grid/` for 04 Grid, `Effect/` for 05 Effect, and so on).
 They are documentation pages, not components. No project imports them. Every page draws its documents with `shared/AtomDoc.tsx`.
 
 ## Rules
@@ -15,3 +15,4 @@ They are documentation pages, not components. No project imports them. Every pag
   - Grid specimens (04 Grid) take the canvas width from the design file, because the v2026 mobile canvas is 360 and has no token (decided by the user 2026-11-02). Columns, gutter, margin and container still come from `--ntg-grid-*`
 - A swatch in a dark-mode column sits inside `data-theme="dark"`. Component tokens are computed once at `:root`, so the script resolves each one to the semantic token the dark block overrides (`darkVar`). Use `darkVar`, never `cssVar`, in a dark column
 - Labels such as `brand-600` are read from the real variables, not from the text typed in the Figma tables. When they differ, the script lists the row in `staleLabels`, which is pending work on that Figma page
+- Effect samples (05 Effect) bind the real shadow, blur and focus ring tokens. The focus ring is drawn around the sample box, not around a button, because `Button` has no warning or success family (decided by the user 2026-11-02). The script compares each effect in the design file with its token and lists differences in `effectMismatch`, which is pending work on that Figma page

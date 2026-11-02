@@ -1,0 +1,855 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 05 Effect ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- effect",
+  "page": "05 Effect",
+  "effectMismatch": [
+    "05 Effect Documentation focused-ring/default-focused-ring: ไฟล์ออกแบบ 0 0 0 4 30 88 242 0.2 token 0 0 0 4 71 84 103 0.1",
+    "Blur and Focus Ring Components focused-ring/default-focused-ring: ไฟล์ออกแบบ 0 0 0 4 30 88 242 0.2 token 0 0 0 4 71 84 103 0.1"
+  ],
+  "documents": [
+    {
+      "id": "9910:2",
+      "name": "05 Effect Documentation",
+      "title": "05 Effect Documentation",
+      "subtitle": "เอกสารประจำหน้า Effect ของ Nation Design System รวมเงา พื้นหลังเบลอ และวงแหวนโฟกัสทั้งหมดที่ระบบใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "หน้านี้เก็บเอฟเฟคทั้งหมดของระบบไว้ที่เดียว ปัจจุบันมี 25 สไตล์ แบ่งเป็น 3 กลุ่ม กลุ่มเงาใช้บอกว่าของชิ้นไหนลอยสูงกว่าพื้นแค่ไหน กลุ่มพื้นหลังเบลอใช้ตอนต้องการให้เนื้อหาด้านหลังจางลงแต่ยังเห็นเค้าโครง และกลุ่มวงแหวนโฟกัสใช้บอกตำแหน่งที่ผู้ใช้กำลังโฟกัสอยู่ตอนกดปุ่ม Tab\nใช้หน้านี้เมื่อจะเลือกเงาให้ของชิ้นใหม่ เมื่อจะตรวจว่าค่าที่ใช้อยู่ตรงกับระบบไหม และเมื่อจะส่งค่าให้ทีมพัฒนา"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": "เงา บอกว่าของลอยอยู่เหนือพื้น"
+            },
+            {
+              "type": "effect",
+              "kind": "blur",
+              "style": "Background Blur/md",
+              "cssVar": "--ntg-effect-background-blur-md",
+              "label": "พื้นหลังเบลอ ใช้กับของที่ทับเนื้อหา"
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/brand-focused-ring",
+              "cssVar": "--ntg-focused-ring-brand",
+              "label": "วงแหวนโฟกัส บอกว่าคีย์บอร์ดอยู่ตรงไหน"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "เอฟเฟคหนึ่งตัวประกอบจากอะไร\nเงาหนึ่งตัวมี 4 ส่วน คือทิศทางที่เงาทอดออกไป ระยะเบลอที่ทำให้ขอบเงานุ่ม ระยะเลื่อนที่บอกว่าเงาห่างจากของแค่ไหน และสีกับความทึบ ทั้งสี่ส่วนถูกมัดรวมเป็นสไตล์เดียวแล้ว คนใช้เลือกได้แค่ว่าจะใช้สไตล์ไหน แก้ทีละส่วนไม่ได้ ซึ่งเป็นความตั้งใจ เพราะถ้าเปิดให้แก้ทีละส่วนจะได้เงาที่ไม่เหมือนกันเต็มระบบ"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": "เงาขนาด md ทิ้งลงล่าง เห็นทั้งทิศทาง ระยะเบลอ ระยะเลื่อน และความทึบในตัวเดียว"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "เงาแบ่งตามทิศทางที่เงาทอดออกไป 3 แบบ ทิ้งลงล่างใช้กับของเกือบทั้งหมดในระบบ ทิ้งขึ้นบนใช้เฉพาะแถบที่ตรึงไว้ขอบล่างของจอ และกระจายรอบด้านใช้กับของที่ลอยกลางจอและไม่มีทิศทางแสงชัดเจน\nพื้นหลังเบลอมี 5 ระดับ ตั้งแต่บางจนถึงหนา เลือกตามว่าต้องการให้อ่านเนื้อหาด้านหลังได้มากแค่ไหน\nวงแหวนโฟกัสมี 5 แบบตามความหมาย ได้แก่ แบรนด์ กลาง ผิดพลาด เตือน และสำเร็จ"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": "shadow-bottom ทิ้งลงล่าง ใช้กับของเกือบทั้งหมด"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Top/md",
+              "cssVar": "--ntg-shadows-top-md",
+              "label": "shadow-top ทิ้งขึ้นบน ใช้กับแถบที่ติดขอบล่างจอ"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Center/md",
+              "cssVar": "--ntg-shadows-center-md",
+              "label": "shadow-center ทิ้งรอบทิศ ใช้กับของที่ลอยกลางจอ"
+            },
+            {
+              "type": "effect",
+              "kind": "blur",
+              "style": "Background Blur/md",
+              "cssVar": "--ntg-effect-background-blur-md",
+              "label": "background-blur เบลอพื้นหลังที่อยู่ข้างหลัง"
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/brand-focused-ring",
+              "cssVar": "--ntg-focused-ring-brand",
+              "label": "focus-ring วงแหวนรอบของที่กำลังโฟกัส"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "ระดับความลอย ของชิ้นไหนอยู่เหนือชิ้นไหน\nเงาไม่ได้มีไว้ให้สวย แต่มีไว้บอกว่าของชิ้นนั้นลอยอยู่เหนือพื้นแค่ไหน ของที่ลอยสูงกว่าต้องอยู่เหนือของที่ลอยต่ำกว่าเสมอ ตัวอย่างข้างล่างคือลำดับที่ระบบใช้จริง ไล่จากติดพื้นที่สุดไปลอยสูงที่สุด"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/xs",
+              "cssVar": "--ntg-shadows-bottom-xs",
+              "label": "ติดพื้นที่สุด  การ์ดในรายการ แถวตาราง"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/sm",
+              "cssVar": "--ntg-shadows-bottom-sm",
+              "label": "ลอยเล็กน้อย  ปุ่ม ช่องกรอก"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": "ลอยปานกลาง  เมนูที่กางออกมา"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/lg",
+              "cssVar": "--ntg-shadows-bottom-lg",
+              "label": "ลอยสูง  กล่องข้อความลอย"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/xl",
+              "cssVar": "--ntg-shadows-bottom-xl",
+              "label": "ลอยสูงที่สุด  หน้าต่างที่บังเนื้อหาทั้งหมด"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "ตัวอักษรท้ายชื่อคือขนาดของเงา ไล่จาก xs ที่บางที่สุดไปจนถึง xl ที่หนาที่สุด ขนาดไม่ได้แปลว่าใหญ่สวยกว่า แต่แปลว่าลอยสูงกว่า ของที่ลอยสูงต้องมีน้อยชิ้นในหน้าเดียว ถ้าทุกอย่างลอยสูงเท่ากันหมด ผู้ใช้จะแยกไม่ออกว่าควรมองอะไรก่อน\nการเลือกขนาดให้ดูจากระดับความลอยในเอกสาร Elevation Principle ไม่ใช่เลือกจากความสวยของภาพ"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/xs",
+              "cssVar": "--ntg-shadows-bottom-xs",
+              "label": "ขนาด xs"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/sm",
+              "cssVar": "--ntg-shadows-bottom-sm",
+              "label": "ขนาด sm"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": "ขนาด md"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/lg",
+              "cssVar": "--ntg-shadows-bottom-lg",
+              "label": "ขนาด lg"
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/xl",
+              "cssVar": "--ntg-shadows-bottom-xl",
+              "label": "ขนาด xl"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "วงแหวนโฟกัส 5 ชนิดตามความหมาย\nเงาไม่มีสถานะเพราะมันไม่ใช่ตัวควบคุม แต่วงแหวนโฟกัสมี 5 ชนิดที่เลือกตามความหมายของสิ่งที่กำลังโฟกัส ไม่ใช่ตามความสวย ตัวอย่างข้างล่างคือทั้ง 5 ชนิด"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/default-focused-ring",
+              "cssVar": "--ntg-focused-ring-default",
+              "label": "default  ของทั่วไป"
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/brand-focused-ring",
+              "cssVar": "--ntg-focused-ring-brand",
+              "label": "brand  ปุ่มหลักและของประจำแบรนด์"
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/error-focused-ring",
+              "cssVar": "--ntg-focused-ring-error",
+              "label": "error  ช่องที่กรอกผิด"
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/warning-focused-ring",
+              "cssVar": "--ntg-focused-ring-warning",
+              "label": "warning  ของที่ต้องระวัง"
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/success-focused-ring",
+              "cssVar": "--ntg-focused-ring-success",
+              "label": "success  ของที่ทำสำเร็จแล้ว"
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Usage Do and Don’t",
+          "sub": "ควรทำ ผูกสไตล์จากรายการที่มีอยู่เสมอ\n• เลือกเงาจากระดับความลอยของของชิ้นนั้น\n• ของที่ทำหน้าที่เหมือนกันต้องใช้เงาตัวเดียวกัน\n• เพิ่มชื่อ component ลงคำอธิบายของสไตล์ที่หยิบไปใช้\nไม่ควรทำ พิมพ์ค่าเงาเองแม้จะรู้ตัวเลข\n• ใช้เงาหนาเพื่อให้ดูเด่นทั้งที่ของชิ้นนั้นไม่ได้ลอยสูง\n• ใส่เงาหลายระดับปนกันในกลุ่มของชนิดเดียวกัน\n• สร้าง component ใหม่โดยไม่กำหนดเอฟเฟค"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "ของที่ลอยสูงกว่าใช้เงาหนากว่า เมนูที่กางออกมาอยู่เหนือการ์ด ผู้ใช้อ่านลำดับได้ทันที",
+          "effects": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/xs",
+              "cssVar": "--ntg-shadows-bottom-xs",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": ""
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "ใช้เงาระดับเดียวกันทั้งคู่ แยกไม่ออกว่าอะไรอยู่เหนืออะไร เงาเลยไม่ได้ทำหน้าที่อะไรเลย",
+          "effects": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": ""
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "วงแหวนโฟกัสตรงกับความหมายของสิ่งที่โฟกัส ช่องที่กรอกผิดใช้ชนิด error",
+          "effects": [
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/error-focused-ring",
+              "cssVar": "--ntg-focused-ring-error",
+              "label": ""
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "ใช้ชนิด brand กับช่องที่กรอกผิด สีขัดกับข้อความผิดพลาดที่อยู่ข้างล่าง",
+          "effects": [
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/brand-focused-ring",
+              "cssVar": "--ntg-focused-ring-brand",
+              "label": ""
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "วงแหวนโฟกัสห้ามปิดทิ้งในทุกกรณี เพราะเป็นทางเดียวที่ผู้ใช้คีย์บอร์ดจะรู้ว่าตอนนี้อยู่ตรงไหน ถ้าวงแหวนทับของข้างเคียงให้เว้นระยะรอบของชิ้นนั้นเพิ่ม ไม่ใช่ลบวงแหวนออก\nเงาห้ามใช้เป็นตัวบอกสถานะเพียงอย่างเดียว เพราะผู้ใช้บางกลุ่มมองความต่างของเงาไม่ออก ต้องมีข้อความหรือสีประกอบเสมอ\nพื้นหลังเบลอต้องคู่กับพื้นทึบระดับหนึ่ง ไม่ใช้เบลอล้วนเป็นฉากหลังของข้อความ เพราะความคมชัดจะไม่พอ"
+        },
+        {
+          "type": "h",
+          "text": "Design tokens",
+          "sub": "ตารางจับคู่ชื่อใน Figma กับชื่อในโค้ดพร้อมค่าจริงอยู่ในเอกสาร Effect Token บนหน้านี้ ฝั่งโค้ดอ่านรายละเอียดเพิ่มได้ที่ไฟล์ docs/05-effect.md\nแหล่งความจริงอยู่ที่ Figma แก้ค่าที่สไตล์เสมอ แล้วส่งเข้าโค้ดด้วย Token Press หรือแก้ไฟล์ token แล้วสั่ง build ห้ามแก้ฝั่งโค้ดอย่างเดียวเพราะจะทำให้สองฝั่งไม่ตรงกัน"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "ค่าจริงของแต่ละสไตล์\nค่าเงาทุกตัวเก็บเป็น effect style ใน Figma ไม่ใช่ค่าที่พิมพ์ลงไปทีละที่ ชื่อสไตล์ยึดตามขนาดไม่ใช่ตามหน้าที่ เพราะระบบเราใช้ปนกันทั้งเลือกตามขนาดอย่างปุ่ม และเลือกตามหน้าที่อย่างกล่องข้อความ ทุกสไตล์มีคำอธิบายกำกับว่าใช้กับ component อะไร ตารางค่าเต็มอยู่ในเอกสาร Effect Token บนหน้านี้"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "เอกสารลูกบนหน้านี้ Elevation Principle อธิบายหลักการเลือกเงาและระดับความลอย\n• Effect Token ตารางจับคู่ชื่อและค่า\n• Shadow Components ชุดตัวอย่างเงา 3 ทิศทาง\n• Blur and Focus Ring Components ชุดตัวอย่างพื้นหลังเบลอและวงแหวนโฟกัส\n• Base Components (internal) การ์ดต้นแบบที่ใช้ประกอบตัวอย่าง\nหน้าที่เกี่ยวข้อง 01 Color สำหรับสีของวงแหวนโฟกัส\n• 11 Buttons ที่เลือกเงาตามขนาดปุ่ม\n• 27 Table ที่ใช้เงารอบด้าน"
+        }
+      ]
+    },
+    {
+      "id": "9903:2",
+      "name": "Effect Token",
+      "title": "Effect Token",
+      "subtitle": "พจนานุกรมกลางของเอฟเฟคทั้งหมดในระบบ จับคู่ชื่อที่เห็นใน Figma กับชื่อที่เรียกในโค้ด พร้อมค่าจริงและที่ที่ใช้งาน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อเอฟเฟคที่ทีมออกแบบเห็นใน Figma กับชื่อที่ทีมพัฒนาเรียกในโค้ด พร้อมค่าจริงและตัวอย่างการใช้ เพื่อให้สองฝั่งพูดถึงของชิ้นเดียวกันโดยไม่ต้องเดา"
+        },
+        {
+          "type": "p",
+          "text": "เอฟเฟคในระบบมี 3 กลุ่ม กลุ่มแรกคือเงา ใช้บอกว่าของชิ้นไหนลอยสูงกว่าพื้นแค่ไหน แบ่งตามทิศทางที่เงาทอดออกไป มีทิ้งลงล่าง ทิ้งขึ้นบน และกระจายรอบด้าน กลุ่มที่สองคือพื้นหลังเบลอ ใช้ตอนต้องการให้เนื้อหาด้านหลังจางลงแต่ยังมองเห็นเค้าโครง กลุ่มที่สามคือวงแหวนโฟกัส ใช้บอกตำแหน่งที่ผู้ใช้กำลังโฟกัสอยู่ตอนกดปุ่ม Tab ไล่ไปทีละช่อง"
+        },
+        {
+          "type": "p",
+          "text": "ชื่อของเงายึดตามขนาดไม่ใช่ตามหน้าที่ เพราะระบบเราใช้ปนกันทั้งสองแบบ ปุ่มเลือกเงาตามขนาดปุ่ม ส่วนกล่องซ้อนหน้าจอเลือกตามหน้าที่ ถ้าตั้งชื่อตามหน้าที่อย่างเดียวจะได้ชื่อซ้ำค่าเดียวกันหลายตัว หน้าที่ของแต่ละตัวจึงเขียนไว้ในช่องใช้ตรงไหนของตารางข้างล่างแทน"
+        },
+        {
+          "type": "p",
+          "text": "ค่าทั้งหมดในตารางนี้อ่านจากไฟล์จริงทั้งสองฝั่ง ไม่ได้พิมพ์ตามความจำ ถ้าแก้ค่าที่ Figma แล้วยังไม่ได้ส่งเข้าโค้ด ตัวเลขสองฝั่งจะไม่ตรงกันทันที ให้ยึดขั้นตอนในหัวข้อสุดท้ายของเอกสารนี้"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ Figma",
+          "body": "เลือกจากชื่อในคอลัมน์แรก กดที่ช่อง Effect ในแผงขวาแล้วเลือกสไตล์ตามชื่อนั้น ห้ามพิมพ์ค่าเงาเองแม้จะรู้ตัวเลข เพราะค่าที่พิมพ์เองจะไม่เปลี่ยนตามเวลาระบบปรับค่า"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา Code",
+          "body": "เรียกตัวแปรในคอลัมน์ที่สองได้เลย เช่น box-shadow: var(--ntg-shadows-bottom-xs) ไม่ต้องคัดลอกตัวเลขจากคอลัมน์ค่า เพราะตัวเลขมีไว้ให้ตรวจสอบว่าตรงกันเท่านั้น"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Effect ทั้งหมด"
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่าจริง",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "shadows/bottom/xs เงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-xs CSS variable",
+              "0px 1px 2px 0px rgba(0, 0, 0, 0.05)",
+              "ค่าเริ่มต้นของระบบ ใช้กับการ์ด แถบ และของที่ยกจากพื้นเพียงเล็กน้อย เป็นตัวที่ใช้มากที่สุดในไฟล์"
+            ],
+            [
+              "shadows/bottom/sm เงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-sm CSS variable",
+              "0px 1px 4px 0px rgba(0, 0, 0, 0.1)",
+              "ปุ่มในรายการ ปุ่มสลับเปิดปิด ช่องกรอกข้อมูล และปุ่มขนาด sm"
+            ],
+            [
+              "shadows/bottom/md เงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-md CSS variable",
+              "0px 3px 8px -2px rgba(0, 0, 0, 0.1)",
+              "คำแนะนำลอย เมนูแบบดึงลง แถบข้าง และปุ่มขนาด md"
+            ],
+            [
+              "shadows/bottom/lg เงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-lg CSS variable",
+              "0px 12px 16px -4px rgba(0, 0, 0, 0.1)",
+              "ปุ่มขนาด lg และการ์ดที่ต้องเด่นกว่าปกติ"
+            ],
+            [
+              "shadows/bottom/xl เงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-xl CSS variable",
+              "0px 20px 24px -4px rgba(0, 0, 0, 0.1)",
+              "กล่องซ้อนหน้าจอ กล่องยืนยัน และปุ่มขนาด xl"
+            ],
+            [
+              "shadows/top/md เงาทิ้งขึ้นบน",
+              "--ntg-shadows-top-md CSS variable",
+              "0px -4px 8px -2px rgba(0, 0, 0, 0.1)",
+              "แถบที่ตรึงไว้ขอบล่างของจอ ซึ่งต้องให้เงาทอดขึ้นหาเนื้อหา"
+            ],
+            [
+              "shadows/center/xs เงารอบด้าน",
+              "--ntg-shadows-center-xs CSS variable",
+              "0px 0px 4px 0px rgba(0, 0, 0, 0.05)",
+              "ของชิ้นเล็กที่ต้องมีเงารอบด้าน เช่น หัวลูกศรของคำแนะนำลอย ปุ่มลากของแถบเลื่อน"
+            ],
+            [
+              "shadows/center/sm เงารอบด้าน",
+              "--ntg-shadows-center-sm CSS variable",
+              "0px 0px 4px 2px rgba(0, 0, 0, 0.05)",
+              "ตาราง กริด และการ์ดที่ต้องการเงารอบด้านเท่ากัน"
+            ],
+            [
+              "shadows/center/md เงารอบด้าน",
+              "--ntg-shadows-center-md CSS variable",
+              "0px 0px 8px 2px rgba(0, 0, 0, 0.1)",
+              "ของลอยรอบด้านขนาดกลาง ปัจจุบันใช้น้อย"
+            ],
+            [
+              "shadows/center/lg เงารอบด้าน",
+              "--ntg-shadows-center-lg CSS variable",
+              "0px 0px 16px 4px rgba(0, 0, 0, 0.1)",
+              "ของลอยรอบด้านขนาดใหญ่ ปัจจุบันใช้น้อย"
+            ],
+            [
+              "shadows/center/xl เงารอบด้าน",
+              "--ntg-shadows-center-xl CSS variable",
+              "0px 0px 24px 8px rgba(0, 0, 0, 0.1)",
+              "ของลอยรอบด้านขนาดใหญ่มาก ปัจจุบันใช้น้อย"
+            ],
+            [
+              "background-blur/xs พื้นหลังเบลอ",
+              "--ntg-effect-background-blur-xs CSS variable",
+              "4px",
+              "เบลอบางที่สุด ใช้กับแถบที่ทับเนื้อหาแต่ยังต้องอ่านของข้างหลังได้"
+            ],
+            [
+              "background-blur/sm พื้นหลังเบลอ",
+              "--ntg-effect-background-blur-sm CSS variable",
+              "8px",
+              "แถบนำทางแบบโปร่ง และกล่องเล็กที่ลอยทับเนื้อหา"
+            ],
+            [
+              "background-blur/md พื้นหลังเบลอ",
+              "--ntg-effect-background-blur-md CSS variable",
+              "16px",
+              "ฉากหลังของกล่องซ้อนหน้าจอขนาดกลาง"
+            ],
+            [
+              "background-blur/lg พื้นหลังเบลอ",
+              "--ntg-effect-background-blur-lg CSS variable",
+              "24px",
+              "ฉากหลังของกล่องซ้อนหน้าจอขนาดใหญ่"
+            ],
+            [
+              "background-blur/xl พื้นหลังเบลอ",
+              "--ntg-effect-background-blur-xl CSS variable",
+              "40px",
+              "เบลอหนาที่สุด ใช้เมื่อต้องการตัดเนื้อหาด้านหลังออกจากสายตาเกือบทั้งหมด"
+            ],
+            [
+              "effect/brand-focused-ring วงแหวนโฟกัส",
+              "--ntg-effect-brand-focused-ring CSS variable",
+              "0px 0px 0px 4px rgba(30, 88, 242, 0.2)",
+              "ปุ่มหลักและลิงก์ เป็นวงแหวนโฟกัสที่ใช้เป็นค่าเริ่มต้น"
+            ],
+            [
+              "effect/default-focused-ring วงแหวนโฟกัส",
+              "--ntg-effect-default-focused-ring CSS variable",
+              "0px 0px 0px 4px rgba(71, 84, 103, 0.1)",
+              "ปุ่มและช่องกรอกโทนกลาง ที่ไม่ต้องการเน้นสีแบรนด์"
+            ],
+            [
+              "effect/error-focused-ring วงแหวนโฟกัส",
+              "--ntg-effect-error-focused-ring CSS variable",
+              "0px 0px 0px 4px rgba(217, 45, 32, 0.2)",
+              "ช่องกรอกที่กรอกผิด และปุ่มลบหรือปุ่มที่ทำแล้วย้อนไม่ได้"
+            ],
+            [
+              "effect/warning-focused-ring วงแหวนโฟกัส",
+              "--ntg-effect-warning-focused-ring CSS variable",
+              "0px 0px 0px 4px rgba(202, 133, 4, 0.2)",
+              "ช่องหรือปุ่มที่อยู่ในสถานะเตือนให้ระวัง"
+            ],
+            [
+              "effect/success-focused-ring วงแหวนโฟกัส",
+              "--ntg-effect-success-focused-ring CSS variable",
+              "0px 0px 0px 4px rgba(3, 152, 85, 0.2)",
+              "ช่องหรือปุ่มที่อยู่ในสถานะทำสำเร็จ"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่สไตล์ใน Figma เสมอ แล้วส่งเข้าโค้ดด้วย Token Press หรือแก้ไฟล์ token แล้วสั่ง build\n• ทุกสไตล์ต้องมีคำอธิบายว่าใช้กับ component อะไร เวลาเพิ่มหรือแก้ต้องอัปเดตคำอธิบายด้วย\n• สร้าง component ใหม่ต้องกำหนดเอฟเฟคให้ทุกครั้ง ถ้ามีตัวที่เหมาะอยู่แล้วให้ใช้ตัวนั้นแล้วเติมชื่อ component ลงคำอธิบาย ถ้าไม่มีจริงต้องขออนุมัติก่อนสร้างตัวใหม่\n• ห้ามใส่เงาแบบพิมพ์ค่าเอง ให้ผูกสไตล์เสมอ เหมือนกฎห้ามใช้สีดิบ"
+        }
+      ]
+    },
+    {
+      "id": "9906:2",
+      "name": "Elevation Principle",
+      "title": "Elevation Principle",
+      "subtitle": "หลักการเลือกเงาและเอฟเฟคของระบบ ว่าของชิ้นไหนควรลอยสูงแค่ไหน และทำไมเราตั้งชื่อแบบนี้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ระดับความลอย",
+          "sub": "เงาไม่ได้มีไว้ให้สวย แต่มีไว้บอกว่าของชิ้นนั้นอยู่ใกล้สายตาผู้ใช้แค่ไหน ยิ่งลอยสูงยิ่งสำคัญและยิ่งต้องการความสนใจก่อน ระบบเราแบ่งไว้ 6 ระดับ ตั้งแต่ติดพื้นไปจนถึงซ้อนทับทั้งหน้าจอ ของที่อยู่ระดับเดียวกันต้องใช้เงาตัวเดียวกันเสมอ ถ้าเห็นของสองชิ้นทำหน้าที่เหมือนกันแต่เงาไม่เท่ากัน แปลว่ามีจุดใดจุดหนึ่งผูกผิด"
+        },
+        {
+          "type": "h",
+          "text": "ทำไมชื่อเงายึดตามขนาด ไม่ใช่ตามหน้าที่",
+          "sub": "ระบบใหญ่ส่วนมากตั้งชื่อเงาตามหน้าที่ เช่น เงาของเมนู เงาของกล่องซ้อนหน้าจอ ซึ่งอ่านง่ายกว่า แต่ของเราใช้ปนกันสองแบบ ปุ่มเลือกเงาตามขนาดปุ่ม ส่วนกล่องซ้อนหน้าจอเลือกตามหน้าที่ ถ้าตั้งชื่อตามหน้าที่อย่างเดียวจะได้ชื่อหลายตัวที่ค่าเหมือนกันเป๊ะ และเวลาแก้ค่าจะต้องไล่แก้หลายที่ อีกข้อคือเครื่องมือออกแบบไม่รองรับการตั้งชื่อซ้อนสำหรับเอฟเฟค ต่างจากตัวแปรสีที่ทำได้ เราจึงเลือกคงชื่อตามขนาดไว้ แล้วเขียนหน้าที่ลงในคำอธิบายของแต่ละตัวแทน เปิดดูได้ทันทีตอนเลือกใช้"
+        },
+        {
+          "type": "h",
+          "text": "สร้าง component ใหม่ ต้องกำหนดเอฟเฟคให้ด้วยเสมอ",
+          "sub": "ทุกครั้งที่มี component ใหม่เกิดขึ้น ต้องตัดสินตั้งแต่ตอนออกแบบว่าของชิ้นนั้นลอยระดับไหนและใช้เงาตัวไหน ห้ามปล่อยให้ไม่มีเงาเพราะยังไม่ได้คิด ขั้นตอนคือดูก่อนว่ามีเงาตัวไหนเหมาะอยู่แล้วโดยอ่านจากคำอธิบายของแต่ละตัว ถ้ามีให้ใช้ตัวนั้นแล้วเติมชื่อ component ต่อท้ายคำอธิบาย เพื่อให้คนที่มาทีหลังรู้ว่าใครใช้อยู่บ้าง ถ้าไม่มีตัวไหนเหมาะจริงจึงขออนุมัติสร้างตัวใหม่ แล้วส่งค่าเข้าโค้ดให้ตรงกัน ห้ามใส่เงาแบบพิมพ์ค่าเองในทุกกรณี เพราะค่าที่พิมพ์เองจะไม่เปลี่ยนตามเวลาระบบปรับค่า"
+        },
+        {
+          "type": "h",
+          "text": "ตารางจับคู่ระดับความลอยกับของที่ใช้"
+        },
+        {
+          "type": "table",
+          "head": [
+            "ระดับความลอย",
+            "เงาที่ใช้",
+            "ตัวอย่างของที่ใช้"
+          ],
+          "rows": [
+            [
+              "ระดับ 0 ติดพื้น",
+              "ไม่ใส่เงา",
+              "เนื้อหาทั่วไปในหน้า พื้นหลัง และตารางที่ไม่ได้ยกตัวขึ้นมา"
+            ],
+            [
+              "ระดับ 1 ยกจากพื้นเล็กน้อย",
+              "shadows/bottom/xs",
+              "การ์ด แถบเนื้อหา กล่องข้อมูล และตารางที่ยกตัวจากพื้น เป็นระดับที่ใช้มากที่สุด"
+            ],
+            [
+              "ระดับ 2 ลอยเหนือเนื้อหา",
+              "shadows/bottom/sm",
+              "ปุ่มในรายการ ปุ่มสลับเปิดปิด และช่องกรอกข้อมูล"
+            ],
+            [
+              "ระดับ 3 ลอยทับเนื้อหา",
+              "shadows/bottom/md",
+              "คำแนะนำลอย เมนูแบบดึงลง และแถบข้างที่เลื่อนออกมาทับเนื้อหา"
+            ],
+            [
+              "ระดับ 4 ลอยเด่นกว่าปกติ",
+              "shadows/bottom/lg",
+              "ปุ่มขนาดใหญ่ และการ์ดที่ต้องการให้เด่นกว่าการ์ดอื่นในหน้าเดียวกัน"
+            ],
+            [
+              "ระดับ 5 ซ้อนทับทั้งหน้าจอ",
+              "shadows/bottom/xl",
+              "กล่องซ้อนหน้าจอ และกล่องยืนยัน ใช้คู่กับพื้นหลังเบลอเพื่อตัดเนื้อหาด้านหลังออกจากสายตา"
+            ],
+            [
+              "กรณีพิเศษ ตรึงไว้ขอบล่าง",
+              "shadows/top/md",
+              "แถบที่ตรึงอยู่ขอบล่างของจอ ต้องให้เงาทอดขึ้นหาเนื้อหา ไม่ใช่ทอดลงนอกจอ"
+            ],
+            [
+              "กรณีพิเศษ ไม่มีทิศทางแสงชัดเจน",
+              "shadows/center/xs และ sm",
+              "ปุ่มลากของแถบเลื่อน หัวลูกศรของคำแนะนำลอย และของชิ้นเล็กที่ลอยกลางจอ"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "สิ่งที่ยังไม่ทำ และเหตุผล",
+          "sub": "โหมดมืดยังไม่มีแผนทำเอฟเฟค เพราะบนพื้นมืดเงาแทบมองไม่เห็น ระบบใหญ่หลายเจ้าจึงเปลี่ยนไปใช้ความสว่างของพื้นผิวบอกความลอยแทน ซึ่งต้องรื้อชั้นสีทั้งชุด จึงพักไว้ก่อน\nเงาสองชั้นยังไม่ทำ เคยลองทำตัวอย่างไว้แล้วแต่ตัดสินว่ายังไม่เอา เพราะเพิ่มความซับซ้อนโดยที่ตายังแยกความต่างได้ยากในงานจริง\nเงาแบบกดลงในกรอบยังไม่ทำ รอจนกว่าจะมีของที่ต้องใช้จริง เช่น ช่องกรอกแบบกดลงไป"
+        }
+      ]
+    },
+    {
+      "id": "9899:42",
+      "name": "Shadow Components",
+      "title": "Shadow Components",
+      "subtitle": "ชุด component ตัวอย่างเงาทั้ง 3 ทิศทาง สำหรับดูค่าจริงและหยิบไปใช้ในเอกสาร",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Shadow Bottom",
+          "sub": "เงาทิ้งลงด้านล่าง ใช้มากที่สุดในระบบ ทั้งการ์ด เมนู กล่องซ้อนหน้าจอ และปุ่ม"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/xs",
+              "cssVar": "--ntg-shadows-bottom-xs",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/sm",
+              "cssVar": "--ntg-shadows-bottom-sm",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/md",
+              "cssVar": "--ntg-shadows-bottom-md",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/lg",
+              "cssVar": "--ntg-shadows-bottom-lg",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Bottom/xl",
+              "cssVar": "--ntg-shadows-bottom-xl",
+              "label": ""
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Shadow Top",
+          "sub": "เงาทิ้งขึ้นด้านบน ใช้กับแถบที่ลอยอยู่ขอบล่างของจอ"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Top/xs",
+              "cssVar": "--ntg-shadows-top-xs",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Top/sm",
+              "cssVar": "--ntg-shadows-top-sm",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Top/md",
+              "cssVar": "--ntg-shadows-top-md",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Top/lg",
+              "cssVar": "--ntg-shadows-top-lg",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Top/xl",
+              "cssVar": "--ntg-shadows-top-xl",
+              "label": ""
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Shadow Center",
+          "sub": "เงากระจายรอบด้านเท่ากัน ใช้กับของที่ลอยกลางจอและไม่มีทิศทางแสงชัดเจน"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Center/xs",
+              "cssVar": "--ntg-shadows-center-xs",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Center/sm",
+              "cssVar": "--ntg-shadows-center-sm",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Center/md",
+              "cssVar": "--ntg-shadows-center-md",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Center/lg",
+              "cssVar": "--ntg-shadows-center-lg",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "shadow",
+              "style": "Shadows/Center/xl",
+              "cssVar": "--ntg-shadows-center-xl",
+              "label": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9899:58",
+      "name": "Blur and Focus Ring Components",
+      "title": "Blur and Focus Ring Components",
+      "subtitle": "ชุด component ตัวอย่างพื้นหลังเบลอ และวงแหวนโฟกัสทั้ง 5 แบบ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Background Blur",
+          "sub": "พื้นหลังเบลอ 5 ระดับ ใช้กับฉากหลังของกล่องซ้อนหน้าจอและแถบที่ทับเนื้อหา"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "blur",
+              "style": "Background Blur/xs",
+              "cssVar": "--ntg-effect-background-blur-xs",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "blur",
+              "style": "Background Blur/sm",
+              "cssVar": "--ntg-effect-background-blur-sm",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "blur",
+              "style": "Background Blur/md",
+              "cssVar": "--ntg-effect-background-blur-md",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "blur",
+              "style": "Background Blur/lg",
+              "cssVar": "--ntg-effect-background-blur-lg",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "blur",
+              "style": "Background Blur/xl",
+              "cssVar": "--ntg-effect-background-blur-xl",
+              "label": ""
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Focus Ring",
+          "sub": "วงแหวนโฟกัส 5 แบบตามความหมาย ใช้ตอนผู้ใช้กด Tab ไล่ไปทีละช่อง"
+        },
+        {
+          "type": "effects",
+          "items": [
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/brand-focused-ring",
+              "cssVar": "--ntg-focused-ring-brand",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/default-focused-ring",
+              "cssVar": "--ntg-focused-ring-default",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/error-focused-ring",
+              "cssVar": "--ntg-focused-ring-error",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/warning-focused-ring",
+              "cssVar": "--ntg-focused-ring-warning",
+              "label": ""
+            },
+            {
+              "type": "effect",
+              "kind": "ring",
+              "style": "focused-ring/success-focused-ring",
+              "cssVar": "--ntg-focused-ring-success",
+              "label": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

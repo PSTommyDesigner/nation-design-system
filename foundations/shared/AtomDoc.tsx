@@ -15,13 +15,16 @@ import styles from './AtomDoc.module.css'
  * ⚠️ ภาพ grid ตั้งความกว้างแคนวาสตามไฟล์ออกแบบ (ผู้ใช้ตัดสิน 2026-11-02) เพราะมือถือรุ่น 2026 ใช้แคนวาส 360 ซึ่งไม่มี token
  *    คอลัมน์ ร่อง ขอบ และพื้นที่เนื้อหายังอ่านจาก token --ntg-grid-* ทั้งหมด
  *    สามจุดนี้คือข้อยกเว้นเดียวของกฎ ดู foundations/AGENTS.md
+ * ⚠️ ภาพเอฟเฟคผูกตัวแปรเงา เบลอ และวงแหวนโฟกัสจริง วงแหวนโฟกัสวงรอบกล่องตัวอย่าง ไม่ใช่ปุ่ม (ผู้ใช้ตัดสิน 2026-11-02
+ *    เพราะ Button ในโค้ดไม่มีตระกูล warning กับ success)
  */
 
 type ColorRow = { no: string; name: string; level: string; light: string; dark: string; description: string; cssVar: string; darkVar: string }
 type Block =
   | { type: 'h'; text: string; sub?: string }
   | { type: 'h3' | 'p'; text: string }
-  | { type: 'card'; kind: string; title: string; body: string }
+  | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[] }
+  | { type: 'effects'; items: EffectItem[] }
   | { type: 'table'; head: string[]; rows: string[][] }
   | { type: 'ramp'; label: string; path: string; steps: { step: number; cssVar: string }[] }
   | { type: 'colorTable'; rows: ColorRow[] }
@@ -30,6 +33,7 @@ type Block =
   | { type: 'scale'; name: string; spec: string; sample: string; family: string; size: string; lineHeight: string }
   | { type: 'fontFamily'; sample: string; family: string; title: string; usage: string; weights: { label: string; weight: string }[] }
   | { type: 'grid'; name: string; canvas: number; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
+type EffectItem = { kind: 'shadow' | 'blur' | 'ring'; style: string; cssVar: string; label: string }
 type Doc = { id: string; name: string; title: string; subtitle: string; blocks: Block[] }
 export type AtomDocData = { documents: unknown[] }
 
@@ -94,6 +98,33 @@ const GridSpecimen = ({ block: b }: { block: Extract<Block, { type: 'grid' }> })
   )
 }
 
+// ภาพเอฟเฟคหนึ่งตัว ค่าใต้ภาพอ่านจากที่เบราว์เซอร์คำนวณจริง ใช้ยืนยันว่า token ให้ผลเท่าไฟล์ออกแบบ
+const EffectSample = ({ item: it }: { item: EffectItem }) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const [v, setV] = useState('')
+  useLayoutEffect(() => {
+    if (!ref.current) return
+    const cs = getComputedStyle(ref.current)
+    setV(it.kind === 'blur' ? cs.backdropFilter : cs.boxShadow)
+  }, [it])
+  const box = it.kind === 'blur'
+    ? <div className={styles.effectBackdrop}><div ref={ref} className={`${styles.effectBox} ${styles.effectBlur}`} style={{ backdropFilter: `blur(var(${it.cssVar}))` }} /></div>
+    : <div ref={ref} className={styles.effectBox} style={{ boxShadow: `var(${it.cssVar})` }} />
+  return (
+    <div className={styles.effectItem}>
+      {it.label && <span className={`ntg-typography-body-xs ${styles.muted}`}>{clean(it.label)}</span>}
+      {box}
+      <code className="ntg-typography-title-xs">{it.style}</code>
+      <code className={`ntg-typography-body-xs ${styles.muted}`}>{it.cssVar}</code>
+      <code className={`ntg-typography-body-xs ${styles.muted}`}>{v}</code>
+    </div>
+  )
+}
+
+const EffectRow = ({ items }: { items: EffectItem[] }) => (
+  <div className={styles.effectRow}>{items.map((it, i) => <EffectSample key={i} item={it} />)}</div>
+)
+
 const Ramp = ({ label, path, steps }: { label: string; path: string; steps: { step: number; cssVar: string }[] }) => (
   <div className={styles.ramp}>
     <p className={`ntg-typography-title-md ${styles.heading}`}>
@@ -146,8 +177,8 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
         ? <h3 className={`ntg-typography-title-lg ${styles.heading}`}>{block.text}</h3>
         : <div className={`ntg-typography-body-lg ${styles.body}`}>{clean(block.text).split('\n').map((l, i) => <p key={i}>{l}</p>)}</div>
     case 'card':
-      if (block.kind === 'do') return <Do text={clean(block.body)} />
-      if (block.kind === 'dont') return <Dont text={clean(block.body)} />
+      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}</Do>
+      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}</Dont>
       return (
         <div className="ntg-docs-card">
           <span className="ntg-typography-title-sm">{clean(block.title)}</span>
@@ -204,6 +235,8 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       )
     case 'grid':
       return <GridSpecimen block={block} />
+    case 'effects':
+      return <EffectRow items={block.items} />
     case 'swatches':
       return (
         <div className={styles.swatchRow}>

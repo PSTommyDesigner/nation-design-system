@@ -124,3 +124,23 @@
 }
 .gridStretch { box-sizing: border-box; padding-inline: var(--grid-margin); justify-content: stretch; }
 .gridCol { background: var(--ntg-color-background-alpha-black-10); }
+
+/* ภาพเอฟเฟค (05 Effect) กล่องขนาดเท่าไฟล์ออกแบบ 200x120 ยืมสเกลระยะ เพราะยังไม่มี token ขนาดของเอกสาร
+   มุมกล่องยังเป็นมุมฉาก ในไฟล์ออกแบบเป็น 10 ที่ไม่ได้ผูกตัวแปร รอตัดสิน token มุมโค้งเดียวกับจุดสี
+   ภาพเบลอวางบนลายทางสีแบรนด์ เพื่อให้เห็นว่าพื้นหลังถูกเบลอ บนพื้นเรียบจะมองไม่เห็นผล
+   ลายทางกว้างเท่ากล่องอื่น กล่องเบลอเว้นขอบไว้ ให้เห็นลายคมรอบกล่องเทียบกับลายที่ถูกเบลอ */
+.effectRow { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s3-xs); padding: var(--ntg-size-space-s2-lg) 0; }
+.effectItem { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-lg); width: calc(var(--ntg-size-space-s4-lg) + var(--ntg-size-space-s4-xl)); }
+.effectBox {
+  width: calc(var(--ntg-size-space-s4-lg) + var(--ntg-size-space-s4-xl));
+  height: var(--ntg-size-space-s5-sm);
+  background: var(--ntg-color-background-general-primary);
+}
+.effectBackdrop {
+  box-sizing: border-box;
+  width: calc(var(--ntg-size-space-s4-lg) + var(--ntg-size-space-s4-xl));
+  height: var(--ntg-size-space-s5-sm);
+  padding: var(--ntg-size-space-s2-sm);
+  background: repeating-linear-gradient(45deg, var(--ntg-color-background-brand-solid) 0 var(--ntg-size-space-s1-lg), var(--ntg-color-background-general-primary) 0 var(--ntg-size-space-s2-sm));
+}
+.effectBlur { width: 100%; height: 100%; background: var(--ntg-color-background-alpha-white-30); }
