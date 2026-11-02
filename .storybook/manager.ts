@@ -7,9 +7,9 @@ const FIXED_STORIES = new Set([
   'molecules-element-11-avatar-avatar--avatar-label-story',
   'molecules-element-11-avatar-avatar--avatar-group-story',
   'molecules-element-16-radio-radio--group',
-  'components-modal--without-header',
-  'components-modal--confirm',
-  'components-modal--toast-over-modal',
+  'organisms-component-30-modal-modal--without-header',
+  'organisms-component-30-modal-modal--confirm',
+  'organisms-component-30-modal-modal--toast-over-modal',
 ])
 
 const hasNoComponentExample = (storyId = '') =>
