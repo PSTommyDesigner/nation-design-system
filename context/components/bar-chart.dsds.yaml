@@ -54,6 +54,11 @@ sections:
           Always pass summary, one sentence that states what the chart shows and its main finding.
           It becomes the name of the figure (a visually hidden figcaption) and the caption of both data tables.
         checkedBy: manual
+      - level: must
+        statement: >-
+          IF the two series have different units, such as a count of news and a count of views, THEN put each on its own
+          axis with axis left and axis right ELSE put both on the left axis and leave the right axis off.
+        checkedBy: manual
       - level: should
         statement: >-
           Pass unit on every series, such as ข่าว or ครั้ง, and pass categoryLabel, such as วันที่. The tooltip, the name
@@ -63,11 +68,6 @@ sections:
         statement: >-
           IF one series is a total that changes slowly and the other is a count of events, such as page views and news
           created, THEN draw the total as type line on its own axis and keep the count as bars.
-        checkedBy: manual
-      - level: must
-        statement: >-
-          IF the two series have different units, such as a count of news and a count of views, THEN put each on its own
-          axis with axis left and axis right ELSE put both on the left axis and leave the right axis off.
         checkedBy: manual
       - level: must-not
         statement: >-
@@ -121,16 +121,6 @@ sections:
           - href: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
             role: WCAG 2.2 SC 2.4.7 (AA)
         checkedBy: manual
-      - level: may
-        statement: >-
-          Exception to the Tooltip spec, which says not to put needed information in a tooltip because touch screens
-          never show it. The full numbers in this tooltip are also in the table behind the toggle button and in the
-          hidden table, so the tooltip is a shortcut, not the only way to the data. Keep showTableToggle on where touch
-          users need exact numbers.
-        refs:
-          - to: tooltip
-            rel: relates-to
-        checkedBy: manual
       - level: must
         statement: >-
           Keep the 1px border on the light bars and the light legend dot. The light fill alone has a contrast of 1.46 to 1
@@ -140,6 +130,16 @@ sections:
             role: WCAG 2.2 SC 1.4.11 (AA)
         checkedBy: manual
 
+      - level: may
+        statement: >-
+          Exception to the Tooltip spec, which says not to put needed information in a tooltip because touch screens
+          never show it. The full numbers in this tooltip are also in the table behind the toggle button and in the
+          hidden table, so the tooltip is a shortcut, not the only way to the data. Keep showTableToggle on where touch
+          users need exact numbers.
+        checkedBy: manual
+        refs:
+          - to: tooltip
+            rel: relates-to
   - kind: guidelines
     for: agent
     items:
