@@ -1,54 +1,6 @@
 {
   "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 01 Color ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- color",
   "page": "01 Color",
-  "staleLabels": [
-    "Background: background-brand-primary ไฟล์ออกแบบเขียน brand-50 / brand-500 ตัวแปรจริงคือ brand-100 / brand-500",
-    "Background: background-brand-primary-alt ไฟล์ออกแบบเขียน brand-50 / gray-dark-950 ตัวแปรจริงคือ brand-100 / gray-dark-950",
-    "Background: background-brand-primary-alt-hover ไฟล์ออกแบบเขียน brand-25 / brand-950 ตัวแปรจริงคือ brand-50 / brand-950",
-    "Background: background-brand-primary-hover ไฟล์ออกแบบเขียน brand-25 / brand-400 ตัวแปรจริงคือ brand-50 / brand-400",
-    "Background: background-brand-secondary ไฟล์ออกแบบเขียน brand-100 / brand-600 ตัวแปรจริงคือ brand-200 / brand-600",
-    "Background: background-brand-secondary-hover ไฟล์ออกแบบเขียน brand-50 / brand-500 ตัวแปรจริงคือ brand-100 / brand-500",
-    "Background: background-quaternary ไฟล์ออกแบบเขียน gray-light-200 / gray-dark-700 ตัวแปรจริงคือ gray-light-300 / gray-dark-700",
-    "Background: background-secondary-alt ไฟล์ออกแบบเขียน gray-light-50 / gray-dark-950 ตัวแปรจริงคือ gray-light-100 / gray-dark-950",
-    "Background: background-secondary ไฟล์ออกแบบเขียน gray-light-50 / gray-dark-900 ตัวแปรจริงคือ gray-light-100 / gray-dark-900",
-    "Background: background-secondary-hover ไฟล์ออกแบบเขียน gray-light-100 / gray-dark-800 ตัวแปรจริงคือ gray-light-200 / gray-dark-800",
-    "Background: background-system-error-primary ไฟล์ออกแบบเขียน red-50 / red-500 ตัวแปรจริงคือ red-100 / red-500",
-    "Background: background-system-error-primary-alt ไฟล์ออกแบบเขียน red-50 / gray-dark-950 ตัวแปรจริงคือ red-100 / gray-dark-950",
-    "Background: background-system-error-primary-alt-hover ไฟล์ออกแบบเขียน red-25 / red-950 ตัวแปรจริงคือ red-50 / red-950",
-    "Background: background-system-error-primary-hover ไฟล์ออกแบบเขียน red-25 / red-400 ตัวแปรจริงคือ red-50 / red-400",
-    "Background: background-system-error-secondary ไฟล์ออกแบบเขียน red-100 / red-600 ตัวแปรจริงคือ red-200 / red-600",
-    "Background: background-system-error-secondary-alt ไฟล์ออกแบบเขียน red-100 / gray-dark-950 ตัวแปรจริงคือ red-200 / gray-dark-950",
-    "Background: background-system-error-secondary-alt-hover ไฟล์ออกแบบเขียน red-50 / red-950 ตัวแปรจริงคือ red-100 / red-950",
-    "Background: background-system-error-secondary-hover ไฟล์ออกแบบเขียน red-50 / red-500 ตัวแปรจริงคือ red-100 / red-500",
-    "Background: background-system-error-solid-alt ไฟล์ออกแบบเขียน red-600 / gray-light-950 ตัวแปรจริงคือ red-600 / gray-dark-700",
-    "Background: background-system-success-primary ไฟล์ออกแบบเขียน green-50 / green-500 ตัวแปรจริงคือ green-100 / green-500",
-    "Background: background-system-success-primary-alt ไฟล์ออกแบบเขียน green-50 / gray-dark-950 ตัวแปรจริงคือ green-100 / gray-dark-950",
-    "Background: background-system-success-primary-alt-hover ไฟล์ออกแบบเขียน green-25 / green-950 ตัวแปรจริงคือ green-50 / green-950",
-    "Background: background-system-success-primary-hover ไฟล์ออกแบบเขียน green-25 / green-400 ตัวแปรจริงคือ green-50 / green-400",
-    "Background: background-system-success-secondary ไฟล์ออกแบบเขียน green-100 / green-600 ตัวแปรจริงคือ green-200 / green-600",
-    "Background: background-system-success-secondary-alt ไฟล์ออกแบบเขียน green-100 / gray-dark-950 ตัวแปรจริงคือ green-200 / gray-dark-950",
-    "Background: background-system-success-secondary-hover ไฟล์ออกแบบเขียน green-50 / green-500 ตัวแปรจริงคือ green-100 / green-500",
-    "Background: background-system-success-solid-alt ไฟล์ออกแบบเขียน green-600 / gray-dark-950 ตัวแปรจริงคือ green-600 / gray-dark-700",
-    "Background: background-system-warning-primary ไฟล์ออกแบบเขียน yellow-50 / yellow-500 ตัวแปรจริงคือ yellow-100 / yellow-500",
-    "Background: background-system-warning-primary-alt ไฟล์ออกแบบเขียน yellow-50 / gray-dark-950 ตัวแปรจริงคือ yellow-100 / gray-dark-950",
-    "Background: background-system-warning-primary-alt-hover ไฟล์ออกแบบเขียน yellow-25 / yellow-950 ตัวแปรจริงคือ yellow-50 / yellow-950",
-    "Background: background-system-warning-primary-hover ไฟล์ออกแบบเขียน yellow-25 / yellow-400 ตัวแปรจริงคือ yellow-50 / yellow-400",
-    "Background: background-system-warning-secondary ไฟล์ออกแบบเขียน yellow-100 / yellow-600 ตัวแปรจริงคือ yellow-200 / yellow-600",
-    "Background: background-system-warning-secondary-alt ไฟล์ออกแบบเขียน yellow-100 / gray-dark-950 ตัวแปรจริงคือ yellow-200 / gray-dark-950",
-    "Background: background-system-warning-secondary-alt-hover ไฟล์ออกแบบเขียน yellow-50 / yellow-950 ตัวแปรจริงคือ yellow-100 / yellow-950",
-    "Background: background-system-warning-secondary-hover ไฟล์ออกแบบเขียน yellow-50 / yellow-500 ตัวแปรจริงคือ yellow-100 / yellow-500",
-    "Background: background-system-warning-solid-alt ไฟล์ออกแบบเขียน yellow-600 / gray-dark-950 ตัวแปรจริงคือ yellow-600 / gray-dark-700",
-    "Background: background-tertiary ไฟล์ออกแบบเขียน gray-light-100 / gray-dark-800 ตัวแปรจริงคือ gray-light-200 / gray-dark-800",
-    "Foreground: foreground-brand-secondary-alt ไฟล์ออกแบบเขียน brand-500 / gray-dark-300 ตัวแปรจริงคือ brand-500 / gray-dark-100",
-    "Icon: icon-brand-secondary-alt ไฟล์ออกแบบเขียน brand-500 / gray-dark-300 ตัวแปรจริงคือ brand-500 / gray-dark-100",
-    "Utility Color: utility-green-700 ไฟล์ออกแบบเขียน green-700 / green-300 ตัวแปรจริงคือ green-800 / green-300",
-    "Utility Color: utility-pink-300 ไฟล์ออกแบบเขียน pink-300 / error-700 ตัวแปรจริงคือ pink-300 / pink-700",
-    "Brand Utility Color: utility-brand-50-alt ไฟล์ออกแบบเขียน brand-50 / gray-dark-900 ตัวแปรจริงคือ brand-50 / gray-dark-950",
-    "Brand Utility Color: utility-ams-50-alt ไฟล์ออกแบบเขียน ams-50 / gray-dark-900 ตัวแปรจริงคือ ams-50 / gray-dark-950",
-    "AMS project: icon-ams-secondary-alt ไฟล์ออกแบบเขียน ams-500 / gray-dark-300 ตัวแปรจริงคือ ams-500 / gray-dark-100",
-    "AMS project: text-ams-secondary-alt ไฟล์ออกแบบเขียน ams-800 / gray-dark-100 ตัวแปรจริงคือ ams-500 / gray-dark-100",
-    "AMS project: foreground-ams-secondary-alt ไฟล์ออกแบบเขียน ams-500 / gray-dark-300 ตัวแปรจริงคือ ams-500 / gray-dark-100"
-  ],
   "documents": [
     {
       "id": "9335:7634",
@@ -59,11 +11,11 @@
         {
           "type": "h",
           "text": "Overview",
-          "sub": "ระบบสีของ Nation · โครงและหลักการใช้งาน"
+          "sub": "ระบบสีของ Nation โครงและหลักการใช้งาน"
         },
         {
           "type": "p",
-          "text": "ระบบสีของ Nation จัดเป็น 3 ชั้น: ชั้นแรกเก็บ “สีดิบ” ทุกโทน · ชั้นสองตั้งเป็น “บทบาท” (พื้นหลัง/ตัวอักษร/เส้นขอบ…) · ชั้นสามเจาะจงให้แต่ละชิ้นงาน (เช่น ปุ่ม)\nทุกสีต้องเรียกผ่านชื่อสีที่ตั้งไว้ ห้ามพิมพ์รหัสสีดิบ · รองรับทั้งโหมดสว่างและมืด\nดูตัวเต็มแต่ละกลุ่มได้ที่กรอบอื่นในหน้านี้ (Color palette · Background/Text/… · Utility · AMS)"
+          "text": "ระบบสีของ Nation จัดเป็น 3 ชั้น: ชั้นแรกเก็บ “สีดิบ” ทุกโทน ชั้นสองตั้งเป็น “บทบาท” (พื้นหลัง/ตัวอักษร/เส้นขอบ…) ชั้นสามเจาะจงให้แต่ละชิ้นงาน (เช่น ปุ่ม)\nทุกสีต้องเรียกผ่านชื่อสีที่ตั้งไว้ ห้ามพิมพ์รหัสสีดิบ รองรับทั้งโหมดสว่างและมืด\nดูตัวเต็มแต่ละกลุ่มได้ที่กรอบอื่นในหน้านี้ (Color palette Background/Text/… Utility AMS)"
         },
         {
           "type": "h",
@@ -72,12 +24,12 @@
         },
         {
           "type": "p",
-          "text": "โครง 3 ชั้น (ตั้งค่าจากล่างขึ้นบน):\n• สีดิบ · ทุกโทนพื้นฐาน (สีแบรนด์ · สีเทา · สีเสริม)\n• บทบาท · จับสีดิบมาตั้งตามหน้าที่ (พื้นหลัง · ตัวอักษร · เส้นขอบ · ไอคอน)\n• เจาะจงชิ้นงาน · สีเฉพาะของแต่ละองค์ประกอบ (เช่น ปุ่ม)\n\nกฎ: ใช้สีจากชั้นเจาะจงชิ้นงานเสมอ · ห้ามพิมพ์รหัสสีดิบ"
+          "text": "โครง 3 ชั้น (ตั้งค่าจากล่างขึ้นบน):\n• สีดิบ ทุกโทนพื้นฐาน (สีแบรนด์ สีเทา สีเสริม)\n• บทบาท จับสีดิบมาตั้งตามหน้าที่ (พื้นหลัง ตัวอักษร เส้นขอบ ไอคอน)\n• เจาะจงชิ้นงาน สีเฉพาะของแต่ละองค์ประกอบ (เช่น ปุ่ม)\n\nกฎ: ใช้สีจากชั้นเจาะจงชิ้นงานเสมอ ห้ามพิมพ์รหัสสีดิบ"
         },
         {
           "type": "h",
           "text": "สีดิบทั้งหมด",
-          "sub": "สีดิบทั้งหมด (สีแบรนด์ · สีเทา · สีเสริม)"
+          "sub": "สีดิบทั้งหมด (สีแบรนด์ สีเทา สีเสริม)"
         },
         {
           "type": "h",
@@ -305,25 +257,25 @@
         },
         {
           "type": "p",
-          "text": "ตัวอย่าง: โทนสีแบรนด์ · ดูโทนสีครบทุกกลุ่ม (สีเทา · สีเสริม 15 กลุ่ม) ที่กรอบ “Color palette” ในหน้านี้"
+          "text": "ตัวอย่าง: โทนสีแบรนด์ ดูโทนสีครบทุกกลุ่ม (สีเทา สีเสริม 15 กลุ่ม) ที่กรอบ “Color palette” ในหน้านี้"
         },
         {
           "type": "h",
           "text": "บทบาทของสี",
-          "sub": "บทบาทของสี: พื้นหลัง · ตัวอักษร · เส้นขอบ · ไอคอน"
+          "sub": "บทบาทของสี: พื้นหลัง ตัวอักษร เส้นขอบ ไอคอน"
         },
         {
           "type": "p",
-          "text": "บทบาทของสี 5 กลุ่ม:\n• พื้นหลัง (background)\n• ตัวอักษร (text)\n• เส้นขอบ (border)\n• องค์ประกอบหน้า/ไอคอน (foreground)\n• สีไอคอนเฉพาะ (icon)\nแต่ละบทบาทมีระดับความเข้ม/สถานะย่อย · ดูตัวเต็มที่กรอบ Background · Text · Border · Foreground · Icon"
+          "text": "บทบาทของสี 5 กลุ่ม:\n• พื้นหลัง (background)\n• ตัวอักษร (text)\n• เส้นขอบ (border)\n• องค์ประกอบหน้า/ไอคอน (foreground)\n• สีไอคอนเฉพาะ (icon)\nแต่ละบทบาทมีระดับความเข้ม/สถานะย่อย ดูตัวเต็มที่กรอบ Background Text Border Foreground Icon"
         },
         {
           "type": "h",
-          "text": "สีระดับชิ้นงาน · สีใช้งานทั่วไป · สีเฉพาะโปรเจกต์",
-          "sub": "สีสำหรับแต่ละองค์ประกอบ · สีใช้งานทั่วไป และสีเฉพาะโปรเจกต์ (เช่น AMS)"
+          "text": "สีระดับชิ้นงาน สีใช้งานทั่วไป สีเฉพาะโปรเจกต์",
+          "sub": "สีสำหรับแต่ละองค์ประกอบ สีใช้งานทั่วไป และสีเฉพาะโปรเจกต์ (เช่น AMS)"
         },
         {
           "type": "p",
-          "text": "• สีใช้งานทั่วไป (Utility) · 12 กลุ่ม\n• สีใช้งานเฉพาะแบรนด์\n• สีเฉพาะโปรเจกต์ (เช่น AMS)\nดูตัวเต็มที่กรอบ Utility Color · Brand Utility Color · AMS project"
+          "text": "• สีใช้งานทั่วไป (Utility) 12 กลุ่ม\n• สีใช้งานเฉพาะแบรนด์\n• สีเฉพาะโปรเจกต์ (เช่น AMS)\nดูตัวเต็มที่กรอบ Utility Color Brand Utility Color AMS project"
         },
         {
           "type": "h",
@@ -332,12 +284,12 @@
         },
         {
           "type": "p",
-          "text": "รองรับ 2 โหมด: สว่าง และ มืด\nโหมดมืด = ใช้ค่าสีที่กลับด้านของแต่ละบทบาท\nชื่อสีชุดเดียวใช้ได้ทั้ง 2 โหมด · ระบบสลับให้เอง\nหมายเหตุ: ตัวอย่างโหมดมืดใน Figma ยังไม่มี (ค่ามาจากฝั่งโค้ด)"
+          "text": "รองรับ 2 โหมด: สว่าง และ มืด\nโหมดมืด = ใช้ค่าสีที่กลับด้านของแต่ละบทบาท\nชื่อสีชุดเดียวใช้ได้ทั้ง 2 โหมด ระบบสลับให้เอง\nหมายเหตุ: ตัวอย่างโหมดมืดใน Figma ยังไม่มี (ค่ามาจากฝั่งโค้ด)"
         },
         {
           "type": "h",
-          "text": "Usage · Do / Don’t",
-          "sub": "ใช้สีจากชื่อที่ตั้งไว้เสมอ ห้ามพิมพ์รหัสสีดิบ · ตรวจความคมชัด"
+          "text": "Usage Do / Don’t",
+          "sub": "ใช้สีจากชื่อที่ตั้งไว้เสมอ ห้ามพิมพ์รหัสสีดิบ ตรวจความคมชัด"
         },
         {
           "type": "card",
@@ -354,11 +306,11 @@
         {
           "type": "h",
           "text": "Accessibility",
-          "sub": "ความคมชัดตามมาตรฐาน WCAG 2.1 (ไม่ต่ำกว่า 4.5:1) · ใช้เครื่องมือตรวจ"
+          "sub": "ความคมชัดตามมาตรฐาน WCAG 2.1 (ไม่ต่ำกว่า 4.5:1) ใช้เครื่องมือตรวจ"
         },
         {
           "type": "p",
-          "text": "• สีตัวอักษรกับพื้นต้องตัดกันพอ · ปกติไม่ต่ำกว่า 4.5:1 · ตัวใหญ่ไม่ต่ำกว่า 3:1\n• ใช้ปลั๊กอินตรวจความคมชัดก่อนใช้จริง\n• อย่าสื่อความหมายด้วยสีอย่างเดียว (เพิ่มไอคอน/คำกำกับด้วย)"
+          "text": "• สีตัวอักษรกับพื้นต้องตัดกันพอ ปกติไม่ต่ำกว่า 4.5:1 ตัวใหญ่ไม่ต่ำกว่า 3:1\n• ใช้ปลั๊กอินตรวจความคมชัดก่อนใช้จริง\n• อย่าสื่อความหมายด้วยสีอย่างเดียว (เพิ่มไอคอน/คำกำกับด้วย)"
         },
         {
           "type": "h",
@@ -367,7 +319,7 @@
         },
         {
           "type": "p",
-          "text": "โครงชื่อสี: สีดิบ ไป บทบาท ไป เจาะจงชิ้นงาน · ดูตารางชื่อสีเต็มที่กรอบ Usage & Documentation หรือ docs/01-color.md"
+          "text": "โครงชื่อสี: สีดิบ ไป บทบาท ไป เจาะจงชิ้นงาน ดูตารางชื่อสีเต็มที่กรอบ Usage & Documentation หรือ docs/01-color.md"
         },
         {
           "type": "h",
@@ -376,16 +328,16 @@
         },
         {
           "type": "p",
-          "text": "รูปแบบชื่อ: nation.category.property.role.prominence.state\n(mode light/dark ไม่อยู่ในชื่อ · สลับด้วย mode/selector)\nดู taxonomy เต็มที่ docs/token-naming-taxonomy.md"
+          "text": "รูปแบบชื่อ: nation.category.property.role.prominence.state\n(mode light/dark ไม่อยู่ในชื่อ สลับด้วย mode/selector)\nดู taxonomy เต็มที่ docs/token-naming-taxonomy.md"
         },
         {
           "type": "h",
           "text": "Related",
-          "sub": "Typography · Effect · Shape"
+          "sub": "Typography Effect Shape"
         },
         {
           "type": "p",
-          "text": "Related: 03 Typography · 05 Effect · 06 Shape\nอ้างอิง: docs/01-color.md · docs/token-naming-taxonomy.md"
+          "text": "Related: 03 Typography 05 Effect 06 Shape\nอ้างอิง: docs/01-color.md docs/token-naming-taxonomy.md"
         }
       ]
     },
@@ -393,12 +345,12 @@
       "id": "9651:7724",
       "name": "Color Token",
       "title": "Color Token",
-      "subtitle": "จับคู่ชื่อสีฝั่งออกแบบ (Figma) กับตัวแปร CSS ฝั่งโค้ด · เฉพาะสีใช้ทั่วไป (general) 51 ตัว พร้อมค่าและที่ใช้",
+      "subtitle": "จับคู่ชื่อสีฝั่งออกแบบ (Figma) กับตัวแปร CSS ฝั่งโค้ด เฉพาะสีใช้ทั่วไป (general) 51 ตัว พร้อมค่าและที่ใช้",
       "blocks": [
         {
           "type": "h",
           "text": "เอกสารนี้คืออะไร",
-          "sub": "ตารางนี้คือสีที่ใช้บ่อยในงานออกแบบ (พื้นหลัง · ตัวอักษร · เส้นขอบ · ไอคอน) ฝั่งซ้ายคือชื่อที่ดีไซเนอร์เลือกใน Figma ฝั่งขวาคือตัวแปร CSS ที่ dev ใช้ ค่าตรงกัน"
+          "sub": "ตารางนี้คือสีที่ใช้บ่อยในงานออกแบบ (พื้นหลัง ตัวอักษร เส้นขอบ ไอคอน) ฝั่งซ้ายคือชื่อที่ดีไซเนอร์เลือกใน Figma ฝั่งขวาคือตัวแปร CSS ที่ dev ใช้ ค่าตรงกัน"
         },
         {
           "type": "h",
@@ -408,13 +360,13 @@
           "type": "card",
           "kind": "how-to-read",
           "title": "🎨 ฝั่งออกแบบ (Figma)",
-          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma · ใช้ตอนออกแบบและเลือกใช้งาน"
+          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma ใช้ตอนออกแบบและเลือกใช้งาน"
         },
         {
           "type": "card",
           "kind": "how-to-read",
           "title": "💻 ฝั่งพัฒนา (Code)",
-          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ · ค่าเดียวกับฝั่งออกแบบเป๊ะ"
+          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ ค่าเดียวกับฝั่งออกแบบเป๊ะ"
         },
         {
           "type": "h",
@@ -740,7 +692,7 @@
         {
           "type": "h",
           "text": "การแก้ไข และทำให้ตรงกัน",
-          "sub": "• แหล่งความจริงอยู่ที่ Figma · แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ · ให้อ้างชื่อ token เสมอ"
+          "sub": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ"
         }
       ]
     },
@@ -1941,17 +1893,17 @@
           ],
           "rows": [
             [
-              "AA · ข้อความปกติ",
+              "AA ข้อความปกติ",
               "≥ 4.5 : 1",
               "ข้อความ < 18pt"
             ],
             [
-              "AA · ข้อความใหญ่",
+              "AA ข้อความใหญ่",
               "≥ 3 : 1",
               "≥ 18pt หรือ 14pt bold"
             ],
             [
-              "AAA · ข้อความปกติ",
+              "AAA ข้อความปกติ",
               "≥ 7 : 1",
               "ระดับสูงสุด (แนะนำ)"
             ],
@@ -1999,7 +1951,7 @@
         {
           "type": "h",
           "text": "4. Primitive colors",
-          "sub": "Collection primitive (mode hex-value) · ค่าสีดิบทั้งหมด แต่ละ ramp มี 12 step (25 ถึง 950) ใช้เป็นฐานของ semantic/component ไม่อ้างตรงในงาน"
+          "sub": "Collection primitive (mode hex-value) ค่าสีดิบทั้งหมด แต่ละ ramp มี 12 step (25 ถึง 950) ใช้เป็นฐานของ semantic/component ไม่อ้างตรงในงาน"
         },
         {
           "type": "h3",
@@ -2012,7 +1964,7 @@
         {
           "type": "h",
           "text": "5. Semantic colors",
-          "sub": "Collection semantics (mode light-mode / dark-mode) · สีเชิงความหมายที่ใช้จริงในงาน มีคู่ light/dark ครบ"
+          "sub": "Collection semantics (mode light-mode / dark-mode) สีเชิงความหมายที่ใช้จริงในงาน มีคู่ light/dark ครบ"
         },
         {
           "type": "table",
@@ -2023,15 +1975,15 @@
           "rows": [
             [
               "Text",
-              "color/text/general/heading · /text · /supporting-text"
+              "color/text/general/heading /text /supporting-text"
             ],
             [
               "Background",
-              "color/background/general/primary · /secondary"
+              "color/background/general/primary /secondary"
             ],
             [
               "Border",
-              "color/border/general/primary · /secondary · /tertiary"
+              "color/border/general/primary /secondary /tertiary"
             ],
             [
               "Foreground",
@@ -2039,7 +1991,7 @@
             ],
             [
               "Icon",
-              "color/icon/general/primary · /tertiary"
+              "color/icon/general/primary /tertiary"
             ],
             [
               "Utility",
@@ -2050,7 +2002,7 @@
         {
           "type": "h",
           "text": "6. Component colors",
-          "sub": "Collection component (mode value) · ชุดสีเฉพาะ component / บริบท (brand, ams, ...) อ้างอิงต่อจาก semantic/primitive"
+          "sub": "Collection component (mode value) ชุดสีเฉพาะ component / บริบท (brand, ams, ...) อ้างอิงต่อจาก semantic/primitive"
         },
         {
           "type": "table",
@@ -2061,25 +2013,25 @@
           "rows": [
             [
               "Background",
-              "color/background/brand/primary · /solid · /section"
+              "color/background/brand/primary /solid /section"
             ],
             [
               "Text",
-              "color/text/brand/primary · color/text/ams/primary"
+              "color/text/brand/primary color/text/ams/primary"
             ],
             [
               "Border",
-              "color/border/brand/primary · /solid"
+              "color/border/brand/primary /solid"
             ],
             [
               "Foreground / Icon",
-              "color/foreground/brand/* · color/icon/ams/*"
+              "color/foreground/brand/* color/icon/ams/*"
             ]
           ]
         },
         {
           "type": "p",
-          "text": "State suffix: -hover (สถานะ hover) · -alt (variant สำรอง) เช่น color/background/brand/primary-hover"
+          "text": "State suffix: -hover (สถานะ hover) -alt (variant สำรอง) เช่น color/background/brand/primary-hover"
         },
         {
           "type": "h",
@@ -2167,7 +2119,7 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Background color · color/background/*"
+          "text": "Background color color/background/*"
         },
         {
           "type": "colorTable",
@@ -2178,7 +2130,7 @@
               "level": "primary",
               "light": "brand-100",
               "dark": "brand-500",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · หลัก",
+              "description": "สีพื้นหลัง โทนแบรนด์ หลัก",
               "cssVar": "--ntg-color-background-brand-primary",
               "darkVar": "--ntg-color-background-brand-primary"
             },
@@ -2188,7 +2140,7 @@
               "level": "secondary",
               "light": "brand-100",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · primary alt",
+              "description": "สีพื้นหลัง โทนแบรนด์ primary alt",
               "cssVar": "--ntg-color-background-brand-primary-alt",
               "darkVar": "--ntg-color-background-brand-primary-alt"
             },
@@ -2198,7 +2150,7 @@
               "level": "tertiary",
               "light": "brand-50",
               "dark": "brand-950",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · primary alt hover",
+              "description": "สีพื้นหลัง โทนแบรนด์ primary alt hover",
               "cssVar": "--ntg-color-background-brand-primary-alt-hover",
               "darkVar": "--ntg-color-background-brand-primary-alt-hover"
             },
@@ -2208,7 +2160,7 @@
               "level": "tertiary",
               "light": "brand-50",
               "dark": "brand-400",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · primary hover",
+              "description": "สีพื้นหลัง โทนแบรนด์ primary hover",
               "cssVar": "--ntg-color-background-brand-primary-hover",
               "darkVar": "--ntg-color-background-brand-primary-hover"
             },
@@ -2218,7 +2170,7 @@
               "level": "primary",
               "light": "brand-200",
               "dark": "brand-600",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · รอง",
+              "description": "สีพื้นหลัง โทนแบรนด์ รอง",
               "cssVar": "--ntg-color-background-brand-secondary",
               "darkVar": "--ntg-color-background-brand-secondary"
             },
@@ -2228,7 +2180,7 @@
               "level": "secondary",
               "light": "brand-100",
               "dark": "brand-500",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · secondary hover",
+              "description": "สีพื้นหลัง โทนแบรนด์ secondary hover",
               "cssVar": "--ntg-color-background-brand-secondary-hover",
               "darkVar": "--ntg-color-background-brand-secondary-hover"
             },
@@ -2238,7 +2190,7 @@
               "level": "primary",
               "light": "brand-800",
               "dark": "gray-dark-800",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · section",
+              "description": "สีพื้นหลัง โทนแบรนด์ section",
               "cssVar": "--ntg-color-background-brand-section",
               "darkVar": "--ntg-color-background-brand-section"
             },
@@ -2248,7 +2200,7 @@
               "level": "secondary",
               "light": "brand-700",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · section subtle",
+              "description": "สีพื้นหลัง โทนแบรนด์ section subtle",
               "cssVar": "--ntg-color-background-brand-section-subtle",
               "darkVar": "--ntg-color-background-brand-section-subtle"
             },
@@ -2258,7 +2210,7 @@
               "level": "primary",
               "light": "brand-600",
               "dark": "brand-600",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · ทึบ",
+              "description": "สีพื้นหลัง โทนแบรนด์ ทึบ",
               "cssVar": "--ntg-color-background-brand-solid",
               "darkVar": "--ntg-color-background-brand-solid"
             },
@@ -2268,7 +2220,7 @@
               "level": "secondary",
               "light": "brand-700",
               "dark": "brand-500",
-              "description": "สีพื้นหลัง · โทนแบรนด์ · solid hover",
+              "description": "สีพื้นหลัง โทนแบรนด์ solid hover",
               "cssVar": "--ntg-color-background-brand-solid-hover",
               "darkVar": "--ntg-color-background-brand-solid-hover"
             },
@@ -2278,7 +2230,7 @@
               "level": "primary",
               "light": "base-white-100",
               "dark": "gray-dark-900",
-              "description": "สีพื้นหลัง · หลัก · alt",
+              "description": "สีพื้นหลัง หลัก alt",
               "cssVar": "--ntg-color-background-primary-alt",
               "darkVar": "--ntg-color-background-primary-alt"
             },
@@ -2288,7 +2240,7 @@
               "level": "primary",
               "light": "base-white-100",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · หลัก · ค่าเริ่มต้น",
+              "description": "สีพื้นหลัง หลัก ค่าเริ่มต้น",
               "cssVar": "--ntg-color-background-primary-default",
               "darkVar": "--ntg-color-background-primary-default"
             },
@@ -2298,7 +2250,7 @@
               "level": "secondary",
               "light": "gray-light-50",
               "dark": "gray-dark-800",
-              "description": "สีพื้นหลัง · หลัก · สถานะ hover",
+              "description": "สีพื้นหลัง หลัก สถานะ hover",
               "cssVar": "--ntg-color-background-primary-hover",
               "darkVar": "--ntg-color-background-primary-hover"
             },
@@ -2308,7 +2260,7 @@
               "level": "primary",
               "light": "gray-light-950",
               "dark": "gray-dark-900",
-              "description": "สีพื้นหลัง · หลัก · ทึบ",
+              "description": "สีพื้นหลัง หลัก ทึบ",
               "cssVar": "--ntg-color-background-primary-solid",
               "darkVar": "--ntg-color-background-primary-solid"
             },
@@ -2318,7 +2270,7 @@
               "level": "primary",
               "light": "gray-light-300",
               "dark": "gray-dark-700",
-              "description": "สีพื้นหลัง · ระดับสี่ · ค่าเริ่มต้น",
+              "description": "สีพื้นหลัง ระดับสี่ ค่าเริ่มต้น",
               "cssVar": "--ntg-color-background-quaternary-default",
               "darkVar": "--ntg-color-background-quaternary-default"
             },
@@ -2328,7 +2280,7 @@
               "level": "primary",
               "light": "gray-light-100",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · รอง · alt",
+              "description": "สีพื้นหลัง รอง alt",
               "cssVar": "--ntg-color-background-secondary-alt",
               "darkVar": "--ntg-color-background-secondary-alt"
             },
@@ -2338,7 +2290,7 @@
               "level": "primary",
               "light": "gray-light-100",
               "dark": "gray-dark-900",
-              "description": "สีพื้นหลัง · รอง · ค่าเริ่มต้น",
+              "description": "สีพื้นหลัง รอง ค่าเริ่มต้น",
               "cssVar": "--ntg-color-background-secondary-default",
               "darkVar": "--ntg-color-background-secondary-default"
             },
@@ -2348,7 +2300,7 @@
               "level": "secondary",
               "light": "gray-light-200",
               "dark": "gray-dark-800",
-              "description": "สีพื้นหลัง · รอง · สถานะ hover",
+              "description": "สีพื้นหลัง รอง สถานะ hover",
               "cssVar": "--ntg-color-background-secondary-hover",
               "darkVar": "--ntg-color-background-secondary-hover"
             },
@@ -2358,7 +2310,7 @@
               "level": "primary",
               "light": "gray-light-600",
               "dark": "gray-dark-600",
-              "description": "สีพื้นหลัง · รอง · ทึบ",
+              "description": "สีพื้นหลัง รอง ทึบ",
               "cssVar": "--ntg-color-background-secondary-solid",
               "darkVar": "--ntg-color-background-secondary-solid"
             },
@@ -2368,7 +2320,7 @@
               "level": "primary",
               "light": "gray-light-25",
               "dark": "gray-dark-900",
-              "description": "สีพื้นหลัง · รอง · แบบจาง",
+              "description": "สีพื้นหลัง รอง แบบจาง",
               "cssVar": "--ntg-color-background-secondary-subtle",
               "darkVar": "--ntg-color-background-secondary-subtle"
             },
@@ -2378,7 +2330,7 @@
               "level": "primary",
               "light": "gray-light-50",
               "dark": "gray-dark-800",
-              "description": "สีพื้นหลัง · สถานะระบบ · active",
+              "description": "สีพื้นหลัง สถานะระบบ active",
               "cssVar": "--ntg-color-background-system-active",
               "darkVar": "--ntg-color-background-system-active"
             },
@@ -2388,7 +2340,7 @@
               "level": "primary",
               "light": "gray-light-100",
               "dark": "gray-dark-800",
-              "description": "สีพื้นหลัง · สถานะระบบ · ปิดใช้งาน",
+              "description": "สีพื้นหลัง สถานะระบบ ปิดใช้งาน",
               "cssVar": "--ntg-color-background-system-disabled",
               "darkVar": "--ntg-color-background-system-disabled"
             },
@@ -2398,7 +2350,7 @@
               "level": "secondary",
               "light": "gray-light-50",
               "dark": "gray-dark-900",
-              "description": "สีพื้นหลัง · สถานะระบบ · ปิดใช้งานแบบจาง",
+              "description": "สีพื้นหลัง สถานะระบบ ปิดใช้งานแบบจาง",
               "cssVar": "--ntg-color-background-system-disabled-subtle",
               "darkVar": "--ntg-color-background-system-disabled-subtle"
             },
@@ -2408,7 +2360,7 @@
               "level": "primary",
               "light": "red-100",
               "dark": "red-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · error primary",
+              "description": "สีพื้นหลัง สถานะระบบ error primary",
               "cssVar": "--ntg-color-background-system-error-primary",
               "darkVar": "--ntg-color-background-system-error-primary"
             },
@@ -2418,7 +2370,7 @@
               "level": "secondary",
               "light": "red-100",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · error primary alt",
+              "description": "สีพื้นหลัง สถานะระบบ error primary alt",
               "cssVar": "--ntg-color-background-system-error-primary-alt",
               "darkVar": "--ntg-color-background-system-error-primary-alt"
             },
@@ -2428,7 +2380,7 @@
               "level": "tertiary",
               "light": "red-50",
               "dark": "red-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · error primary alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ error primary alt hover",
               "cssVar": "--ntg-color-background-system-error-primary-alt-hover",
               "darkVar": "--ntg-color-background-system-error-primary-alt-hover"
             },
@@ -2438,7 +2390,7 @@
               "level": "tertiary",
               "light": "red-50",
               "dark": "red-400",
-              "description": "สีพื้นหลัง · สถานะระบบ · error primary hover",
+              "description": "สีพื้นหลัง สถานะระบบ error primary hover",
               "cssVar": "--ntg-color-background-system-error-primary-hover",
               "darkVar": "--ntg-color-background-system-error-primary-hover"
             },
@@ -2448,7 +2400,7 @@
               "level": "primary",
               "light": "red-200",
               "dark": "red-600",
-              "description": "สีพื้นหลัง · สถานะระบบ · error secondary",
+              "description": "สีพื้นหลัง สถานะระบบ error secondary",
               "cssVar": "--ntg-color-background-system-error-secondary",
               "darkVar": "--ntg-color-background-system-error-secondary"
             },
@@ -2458,7 +2410,7 @@
               "level": "secondary",
               "light": "red-200",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · error secondary alt",
+              "description": "สีพื้นหลัง สถานะระบบ error secondary alt",
               "cssVar": "--ntg-color-background-system-error-secondary-alt",
               "darkVar": "--ntg-color-background-system-error-secondary-alt"
             },
@@ -2468,7 +2420,7 @@
               "level": "tertiary",
               "light": "red-100",
               "dark": "red-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · error secondary alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ error secondary alt hover",
               "cssVar": "--ntg-color-background-system-error-secondary-alt-hover",
               "darkVar": "--ntg-color-background-system-error-secondary-alt-hover"
             },
@@ -2478,7 +2430,7 @@
               "level": "tertiary",
               "light": "red-100",
               "dark": "red-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · error secondary hover",
+              "description": "สีพื้นหลัง สถานะระบบ error secondary hover",
               "cssVar": "--ntg-color-background-system-error-secondary-hover",
               "darkVar": "--ntg-color-background-system-error-secondary-hover"
             },
@@ -2488,7 +2440,7 @@
               "level": "primary",
               "light": "red-600",
               "dark": "red-600",
-              "description": "สีพื้นหลัง · สถานะระบบ · error solid",
+              "description": "สีพื้นหลัง สถานะระบบ error solid",
               "cssVar": "--ntg-color-background-system-error-solid",
               "darkVar": "--ntg-color-background-system-error-solid"
             },
@@ -2498,7 +2450,7 @@
               "level": "secondary",
               "light": "red-600",
               "dark": "gray-dark-700",
-              "description": "สีพื้นหลัง · สถานะระบบ · error solid alt",
+              "description": "สีพื้นหลัง สถานะระบบ error solid alt",
               "cssVar": "--ntg-color-background-system-error-solid-alt",
               "darkVar": "--ntg-color-background-system-error-solid-alt"
             },
@@ -2508,7 +2460,7 @@
               "level": "tertiary",
               "light": "red-700",
               "dark": "gray-dark-900",
-              "description": "สีพื้นหลัง · สถานะระบบ · error solid alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ error solid alt hover",
               "cssVar": "--ntg-color-background-system-error-solid-alt-hover",
               "darkVar": "--ntg-color-background-system-error-solid-alt-hover"
             },
@@ -2518,7 +2470,7 @@
               "level": "tertiary",
               "light": "red-700",
               "dark": "red-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · error solid hover",
+              "description": "สีพื้นหลัง สถานะระบบ error solid hover",
               "cssVar": "--ntg-color-background-system-error-solid-hover",
               "darkVar": "--ntg-color-background-system-error-solid-hover"
             },
@@ -2528,7 +2480,7 @@
               "level": "primary",
               "light": "gray-light-950",
               "dark": "gray-dark-800",
-              "description": "สีพื้นหลัง · สถานะระบบ · overlay",
+              "description": "สีพื้นหลัง สถานะระบบ overlay",
               "cssVar": "--ntg-color-background-system-overlay",
               "darkVar": "--ntg-color-background-system-overlay"
             },
@@ -2538,7 +2490,7 @@
               "level": "primary",
               "light": "green-100",
               "dark": "green-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · success primary",
+              "description": "สีพื้นหลัง สถานะระบบ success primary",
               "cssVar": "--ntg-color-background-system-success-primary",
               "darkVar": "--ntg-color-background-system-success-primary"
             },
@@ -2548,7 +2500,7 @@
               "level": "secondary",
               "light": "green-100",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · success primary alt",
+              "description": "สีพื้นหลัง สถานะระบบ success primary alt",
               "cssVar": "--ntg-color-background-system-success-primary-alt",
               "darkVar": "--ntg-color-background-system-success-primary-alt"
             },
@@ -2558,7 +2510,7 @@
               "level": "tertiary",
               "light": "green-50",
               "dark": "green-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · success primary alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ success primary alt hover",
               "cssVar": "--ntg-color-background-system-success-primary-alt-hover",
               "darkVar": "--ntg-color-background-system-success-primary-alt-hover"
             },
@@ -2568,7 +2520,7 @@
               "level": "tertiary",
               "light": "green-50",
               "dark": "green-400",
-              "description": "สีพื้นหลัง · สถานะระบบ · success primary hover",
+              "description": "สีพื้นหลัง สถานะระบบ success primary hover",
               "cssVar": "--ntg-color-background-system-success-primary-hover",
               "darkVar": "--ntg-color-background-system-success-primary-hover"
             },
@@ -2578,7 +2530,7 @@
               "level": "primary",
               "light": "green-200",
               "dark": "green-600",
-              "description": "สีพื้นหลัง · สถานะระบบ · success secondary",
+              "description": "สีพื้นหลัง สถานะระบบ success secondary",
               "cssVar": "--ntg-color-background-system-success-secondary",
               "darkVar": "--ntg-color-background-system-success-secondary"
             },
@@ -2588,7 +2540,7 @@
               "level": "secondary",
               "light": "green-200",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · success secondary alt",
+              "description": "สีพื้นหลัง สถานะระบบ success secondary alt",
               "cssVar": "--ntg-color-background-system-success-secondary-alt",
               "darkVar": "--ntg-color-background-system-success-secondary-alt"
             },
@@ -2598,7 +2550,7 @@
               "level": "tertiary",
               "light": "green-50",
               "dark": "green-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · success secondary alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ success secondary alt hover",
               "cssVar": "--ntg-color-background-system-success-secondary-alt-hover",
               "darkVar": "--ntg-color-background-system-success-secondary-alt-hover"
             },
@@ -2608,7 +2560,7 @@
               "level": "tertiary",
               "light": "green-100",
               "dark": "green-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · success secondary hover",
+              "description": "สีพื้นหลัง สถานะระบบ success secondary hover",
               "cssVar": "--ntg-color-background-system-success-secondary-hover",
               "darkVar": "--ntg-color-background-system-success-secondary-hover"
             },
@@ -2618,7 +2570,7 @@
               "level": "primary",
               "light": "green-600",
               "dark": "green-600",
-              "description": "สีพื้นหลัง · สถานะระบบ · success solid",
+              "description": "สีพื้นหลัง สถานะระบบ success solid",
               "cssVar": "--ntg-color-background-system-success-solid",
               "darkVar": "--ntg-color-background-system-success-solid"
             },
@@ -2628,7 +2580,7 @@
               "level": "secondary",
               "light": "green-600",
               "dark": "gray-dark-700",
-              "description": "สีพื้นหลัง · สถานะระบบ · success solid alt",
+              "description": "สีพื้นหลัง สถานะระบบ success solid alt",
               "cssVar": "--ntg-color-background-system-success-solid-alt",
               "darkVar": "--ntg-color-background-system-success-solid-alt"
             },
@@ -2638,7 +2590,7 @@
               "level": "tertiary",
               "light": "green-700",
               "dark": "gray-dark-900",
-              "description": "สีพื้นหลัง · สถานะระบบ · success solid alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ success solid alt hover",
               "cssVar": "--ntg-color-background-system-success-solid-alt-hover",
               "darkVar": "--ntg-color-background-system-success-solid-alt-hover"
             },
@@ -2648,7 +2600,7 @@
               "level": "tertiary",
               "light": "green-700",
               "dark": "green-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · success solid hover",
+              "description": "สีพื้นหลัง สถานะระบบ success solid hover",
               "cssVar": "--ntg-color-background-system-success-solid-hover",
               "darkVar": "--ntg-color-background-system-success-solid-hover"
             },
@@ -2658,7 +2610,7 @@
               "level": "primary",
               "light": "yellow-100",
               "dark": "yellow-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning primary",
+              "description": "สีพื้นหลัง สถานะระบบ warning primary",
               "cssVar": "--ntg-color-background-system-warning-primary",
               "darkVar": "--ntg-color-background-system-warning-primary"
             },
@@ -2668,7 +2620,7 @@
               "level": "secondary",
               "light": "yellow-100",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning primary alt",
+              "description": "สีพื้นหลัง สถานะระบบ warning primary alt",
               "cssVar": "--ntg-color-background-system-warning-primary-alt",
               "darkVar": "--ntg-color-background-system-warning-primary-alt"
             },
@@ -2678,7 +2630,7 @@
               "level": "tertiary",
               "light": "yellow-50",
               "dark": "yellow-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning primary alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ warning primary alt hover",
               "cssVar": "--ntg-color-background-system-warning-primary-alt-hover",
               "darkVar": "--ntg-color-background-system-warning-primary-alt-hover"
             },
@@ -2688,7 +2640,7 @@
               "level": "tertiary",
               "light": "yellow-50",
               "dark": "yellow-400",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning primary hover",
+              "description": "สีพื้นหลัง สถานะระบบ warning primary hover",
               "cssVar": "--ntg-color-background-system-warning-primary-hover",
               "darkVar": "--ntg-color-background-system-warning-primary-hover"
             },
@@ -2698,7 +2650,7 @@
               "level": "primary",
               "light": "yellow-200",
               "dark": "yellow-600",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning secondary",
+              "description": "สีพื้นหลัง สถานะระบบ warning secondary",
               "cssVar": "--ntg-color-background-system-warning-secondary",
               "darkVar": "--ntg-color-background-system-warning-secondary"
             },
@@ -2708,7 +2660,7 @@
               "level": "secondary",
               "light": "yellow-200",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning secondary alt",
+              "description": "สีพื้นหลัง สถานะระบบ warning secondary alt",
               "cssVar": "--ntg-color-background-system-warning-secondary-alt",
               "darkVar": "--ntg-color-background-system-warning-secondary-alt"
             },
@@ -2718,7 +2670,7 @@
               "level": "tertiary",
               "light": "yellow-100",
               "dark": "yellow-950",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning secondary alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ warning secondary alt hover",
               "cssVar": "--ntg-color-background-system-warning-secondary-alt-hover",
               "darkVar": "--ntg-color-background-system-warning-secondary-alt-hover"
             },
@@ -2728,7 +2680,7 @@
               "level": "tertiary",
               "light": "yellow-100",
               "dark": "yellow-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning secondary hover",
+              "description": "สีพื้นหลัง สถานะระบบ warning secondary hover",
               "cssVar": "--ntg-color-background-system-warning-secondary-hover",
               "darkVar": "--ntg-color-background-system-warning-secondary-hover"
             },
@@ -2738,7 +2690,7 @@
               "level": "primary",
               "light": "yellow-600",
               "dark": "yellow-600",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning solid",
+              "description": "สีพื้นหลัง สถานะระบบ warning solid",
               "cssVar": "--ntg-color-background-system-warning-solid",
               "darkVar": "--ntg-color-background-system-warning-solid"
             },
@@ -2748,7 +2700,7 @@
               "level": "secondary",
               "light": "yellow-600",
               "dark": "gray-dark-700",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning solid alt",
+              "description": "สีพื้นหลัง สถานะระบบ warning solid alt",
               "cssVar": "--ntg-color-background-system-warning-solid-alt",
               "darkVar": "--ntg-color-background-system-warning-solid-alt"
             },
@@ -2758,7 +2710,7 @@
               "level": "tertiary",
               "light": "yellow-700",
               "dark": "gray-dark-900",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning solid alt hover",
+              "description": "สีพื้นหลัง สถานะระบบ warning solid alt hover",
               "cssVar": "--ntg-color-background-system-warning-solid-alt-hover",
               "darkVar": "--ntg-color-background-system-warning-solid-alt-hover"
             },
@@ -2768,7 +2720,7 @@
               "level": "tertiary",
               "light": "yellow-700",
               "dark": "yellow-500",
-              "description": "สีพื้นหลัง · สถานะระบบ · warning solid hover",
+              "description": "สีพื้นหลัง สถานะระบบ warning solid hover",
               "cssVar": "--ntg-color-background-system-warning-solid-hover",
               "darkVar": "--ntg-color-background-system-warning-solid-hover"
             },
@@ -2778,7 +2730,7 @@
               "level": "primary",
               "light": "gray-light-200",
               "dark": "gray-dark-800",
-              "description": "สีพื้นหลัง · ระดับสาม · ค่าเริ่มต้น",
+              "description": "สีพื้นหลัง ระดับสาม ค่าเริ่มต้น",
               "cssVar": "--ntg-color-background-tertiary-default",
               "darkVar": "--ntg-color-background-tertiary-default"
             }
@@ -2794,7 +2746,7 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Text color · color/text/*"
+          "text": "Text color color/text/*"
         },
         {
           "type": "colorTable",
@@ -2805,7 +2757,7 @@
               "level": "primary",
               "light": "brand-600",
               "dark": "brand-500",
-              "description": "สีข้อความ · โทนแบรนด์ · หลัก",
+              "description": "สีข้อความ โทนแบรนด์ หลัก",
               "cssVar": "--ntg-color-text-brand-primary",
               "darkVar": "--ntg-color-text-brand-primary"
             },
@@ -2815,7 +2767,7 @@
               "level": "secondary",
               "light": "brand-600",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · โทนแบรนด์ · primary alt",
+              "description": "สีข้อความ โทนแบรนด์ primary alt",
               "cssVar": "--ntg-color-text-brand-primary-alt",
               "darkVar": "--ntg-color-text-brand-primary-alt"
             },
@@ -2825,7 +2777,7 @@
               "level": "tertiary",
               "light": "brand-700",
               "dark": "gray-dark-25",
-              "description": "สีข้อความ · โทนแบรนด์ · primary alt hover",
+              "description": "สีข้อความ โทนแบรนด์ primary alt hover",
               "cssVar": "--ntg-color-text-brand-primary-alt-hover",
               "darkVar": "--ntg-color-text-brand-primary-alt-hover"
             },
@@ -2835,7 +2787,7 @@
               "level": "tertiary",
               "light": "brand-700",
               "dark": "brand-400",
-              "description": "สีข้อความ · โทนแบรนด์ · primary hover",
+              "description": "สีข้อความ โทนแบรนด์ primary hover",
               "cssVar": "--ntg-color-text-brand-primary-hover",
               "darkVar": "--ntg-color-text-brand-primary-hover"
             },
@@ -2845,7 +2797,7 @@
               "level": "primary",
               "light": "brand-500",
               "dark": "brand-500",
-              "description": "สีข้อความ · โทนแบรนด์ · รอง",
+              "description": "สีข้อความ โทนแบรนด์ รอง",
               "cssVar": "--ntg-color-text-brand-secondary",
               "darkVar": "--ntg-color-text-brand-secondary"
             },
@@ -2855,7 +2807,7 @@
               "level": "secondary",
               "light": "brand-500",
               "dark": "gray-dark-100",
-              "description": "สีข้อความ · โทนแบรนด์ · secondary alt",
+              "description": "สีข้อความ โทนแบรนด์ secondary alt",
               "cssVar": "--ntg-color-text-brand-secondary-alt",
               "darkVar": "--ntg-color-text-brand-secondary-alt"
             },
@@ -2865,7 +2817,7 @@
               "level": "tertiary",
               "light": "brand-600",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · โทนแบรนด์ · secondary alt hover",
+              "description": "สีข้อความ โทนแบรนด์ secondary alt hover",
               "cssVar": "--ntg-color-text-brand-secondary-alt-hover",
               "darkVar": "--ntg-color-text-brand-secondary-alt-hover"
             },
@@ -2875,7 +2827,7 @@
               "level": "tertiary",
               "light": "brand-600",
               "dark": "brand-400",
-              "description": "สีข้อความ · โทนแบรนด์ · secondary hover",
+              "description": "สีข้อความ โทนแบรนด์ secondary hover",
               "cssVar": "--ntg-color-text-brand-secondary-hover",
               "darkVar": "--ntg-color-text-brand-secondary-hover"
             },
@@ -2885,7 +2837,7 @@
               "level": "primary",
               "light": "brand-400",
               "dark": "brand-500",
-              "description": "สีข้อความ · โทนแบรนด์ · ระดับสาม",
+              "description": "สีข้อความ โทนแบรนด์ ระดับสาม",
               "cssVar": "--ntg-color-text-brand-tertiary",
               "darkVar": "--ntg-color-text-brand-tertiary"
             },
@@ -2895,7 +2847,7 @@
               "level": "secondary",
               "light": "brand-400",
               "dark": "gray-dark-200",
-              "description": "สีข้อความ · โทนแบรนด์ · ระดับสาม (alt)",
+              "description": "สีข้อความ โทนแบรนด์ ระดับสาม (alt)",
               "cssVar": "--ntg-color-text-brand-tertiary-alt",
               "darkVar": "--ntg-color-text-brand-tertiary-alt"
             },
@@ -2905,7 +2857,7 @@
               "level": "tertiary",
               "light": "brand-500",
               "dark": "gray-dark-100",
-              "description": "สีข้อความ · โทนแบรนด์ · tertiary alt hover",
+              "description": "สีข้อความ โทนแบรนด์ tertiary alt hover",
               "cssVar": "--ntg-color-text-brand-tertiary-alt-hover",
               "darkVar": "--ntg-color-text-brand-tertiary-alt-hover"
             },
@@ -2915,7 +2867,7 @@
               "level": "tertiary",
               "light": "brand-500",
               "dark": "brand-400",
-              "description": "สีข้อความ · โทนแบรนด์ · tertiary hover",
+              "description": "สีข้อความ โทนแบรนด์ tertiary hover",
               "cssVar": "--ntg-color-text-brand-tertiary-hover",
               "darkVar": "--ntg-color-text-brand-tertiary-hover"
             },
@@ -2925,7 +2877,7 @@
               "level": "primary",
               "light": "gray-light-900",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · หลัก · ค่าเริ่มต้น",
+              "description": "สีข้อความ หลัก ค่าเริ่มต้น",
               "cssVar": "--ntg-color-text-primary-default",
               "darkVar": "--ntg-color-text-primary-default"
             },
@@ -2935,7 +2887,7 @@
               "level": "secondary",
               "light": "base-white-100",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · หลัก · บนพื้นสีแบรนด์",
+              "description": "สีข้อความ หลัก บนพื้นสีแบรนด์",
               "cssVar": "--ntg-color-text-primary-on-brand",
               "darkVar": "--ntg-color-text-primary-on-brand"
             },
@@ -2945,7 +2897,7 @@
               "level": "primary",
               "light": "gray-light-500",
               "dark": "gray-dark-400",
-              "description": "สีข้อความ · ระดับสี่ · ค่าเริ่มต้น",
+              "description": "สีข้อความ ระดับสี่ ค่าเริ่มต้น",
               "cssVar": "--ntg-color-text-quaternary-default",
               "darkVar": "--ntg-color-text-quaternary-default"
             },
@@ -2955,7 +2907,7 @@
               "level": "secondary",
               "light": "gray-light-600",
               "dark": "gray-dark-300",
-              "description": "สีข้อความ · ระดับสี่ · สถานะ hover",
+              "description": "สีข้อความ ระดับสี่ สถานะ hover",
               "cssVar": "--ntg-color-text-quaternary-hover",
               "darkVar": "--ntg-color-text-quaternary-hover"
             },
@@ -2965,7 +2917,7 @@
               "level": "tertiary",
               "light": "brand-300",
               "dark": "gray-dark-400",
-              "description": "สีข้อความ · ระดับสี่ · บนพื้นสีแบรนด์",
+              "description": "สีข้อความ ระดับสี่ บนพื้นสีแบรนด์",
               "cssVar": "--ntg-color-text-quaternary-on-brand",
               "darkVar": "--ntg-color-text-quaternary-on-brand"
             },
@@ -2975,7 +2927,7 @@
               "level": "primary",
               "light": "gray-light-700",
               "dark": "gray-dark-300",
-              "description": "สีข้อความ · รอง · ค่าเริ่มต้น",
+              "description": "สีข้อความ รอง ค่าเริ่มต้น",
               "cssVar": "--ntg-color-text-secondary-default",
               "darkVar": "--ntg-color-text-secondary-default"
             },
@@ -2985,7 +2937,7 @@
               "level": "secondary",
               "light": "gray-light-800",
               "dark": "gray-dark-200",
-              "description": "สีข้อความ · รอง · สถานะ hover",
+              "description": "สีข้อความ รอง สถานะ hover",
               "cssVar": "--ntg-color-text-secondary-hover",
               "darkVar": "--ntg-color-text-secondary-hover"
             },
@@ -2995,7 +2947,7 @@
               "level": "tertiary",
               "light": "brand-200",
               "dark": "gray-dark-300",
-              "description": "สีข้อความ · รอง · บนพื้นสีแบรนด์",
+              "description": "สีข้อความ รอง บนพื้นสีแบรนด์",
               "cssVar": "--ntg-color-text-secondary-on-brand",
               "darkVar": "--ntg-color-text-secondary-on-brand"
             },
@@ -3005,7 +2957,7 @@
               "level": "primary",
               "light": "base-black-100",
               "dark": "base-black-100",
-              "description": "สีข้อความ · สถานะระบบ · black",
+              "description": "สีข้อความ สถานะระบบ black",
               "cssVar": "--ntg-color-text-system-black",
               "darkVar": "--ntg-color-text-system-black"
             },
@@ -3015,7 +2967,7 @@
               "level": "primary",
               "light": "gray-light-400",
               "dark": "gray-dark-500",
-              "description": "สีข้อความ · สถานะระบบ · ปิดใช้งาน",
+              "description": "สีข้อความ สถานะระบบ ปิดใช้งาน",
               "cssVar": "--ntg-color-text-system-disabled",
               "darkVar": "--ntg-color-text-system-disabled"
             },
@@ -3025,7 +2977,7 @@
               "level": "secondary",
               "light": "gray-light-300",
               "dark": "gray-dark-600",
-              "description": "สีข้อความ · สถานะระบบ · ปิดใช้งานแบบจาง",
+              "description": "สีข้อความ สถานะระบบ ปิดใช้งานแบบจาง",
               "cssVar": "--ntg-color-text-system-disabled-subtle",
               "darkVar": "--ntg-color-text-system-disabled-subtle"
             },
@@ -3035,7 +2987,7 @@
               "level": "primary",
               "light": "red-600",
               "dark": "red-400",
-              "description": "สีข้อความ · สถานะระบบ · error",
+              "description": "สีข้อความ สถานะระบบ error",
               "cssVar": "--ntg-color-text-system-error",
               "darkVar": "--ntg-color-text-system-error"
             },
@@ -3045,7 +2997,7 @@
               "level": "secondary",
               "light": "red-600",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · สถานะระบบ · error alt",
+              "description": "สีข้อความ สถานะระบบ error alt",
               "cssVar": "--ntg-color-text-system-error-alt",
               "darkVar": "--ntg-color-text-system-error-alt"
             },
@@ -3055,7 +3007,7 @@
               "level": "tertiary",
               "light": "red-700",
               "dark": "gray-dark-25",
-              "description": "สีข้อความ · สถานะระบบ · error alt hover",
+              "description": "สีข้อความ สถานะระบบ error alt hover",
               "cssVar": "--ntg-color-text-system-error-alt-hover",
               "darkVar": "--ntg-color-text-system-error-alt-hover"
             },
@@ -3065,7 +3017,7 @@
               "level": "tertiary",
               "light": "red-700",
               "dark": "red-300",
-              "description": "สีข้อความ · สถานะระบบ · error hover",
+              "description": "สีข้อความ สถานะระบบ error hover",
               "cssVar": "--ntg-color-text-system-error-hover",
               "darkVar": "--ntg-color-text-system-error-hover"
             },
@@ -3075,7 +3027,7 @@
               "level": "primary",
               "light": "gray-light-500",
               "dark": "gray-dark-400",
-              "description": "สีข้อความ · สถานะระบบ · placeholder",
+              "description": "สีข้อความ สถานะระบบ placeholder",
               "cssVar": "--ntg-color-text-system-placeholder",
               "darkVar": "--ntg-color-text-system-placeholder"
             },
@@ -3085,7 +3037,7 @@
               "level": "secondary",
               "light": "gray-light-300",
               "dark": "gray-dark-700",
-              "description": "สีข้อความ · สถานะระบบ · placeholder แบบจาง",
+              "description": "สีข้อความ สถานะระบบ placeholder แบบจาง",
               "cssVar": "--ntg-color-text-system-placeholder-subtle",
               "darkVar": "--ntg-color-text-system-placeholder-subtle"
             },
@@ -3095,7 +3047,7 @@
               "level": "primary",
               "light": "green-600",
               "dark": "green-400",
-              "description": "สีข้อความ · สถานะระบบ · success",
+              "description": "สีข้อความ สถานะระบบ success",
               "cssVar": "--ntg-color-text-system-success",
               "darkVar": "--ntg-color-text-system-success"
             },
@@ -3105,7 +3057,7 @@
               "level": "secondary",
               "light": "green-600",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · สถานะระบบ · success alt",
+              "description": "สีข้อความ สถานะระบบ success alt",
               "cssVar": "--ntg-color-text-system-success-alt",
               "darkVar": "--ntg-color-text-system-success-alt"
             },
@@ -3115,7 +3067,7 @@
               "level": "tertiary",
               "light": "green-700",
               "dark": "gray-dark-25",
-              "description": "สีข้อความ · สถานะระบบ · success alt hover",
+              "description": "สีข้อความ สถานะระบบ success alt hover",
               "cssVar": "--ntg-color-text-system-success-alt-hover",
               "darkVar": "--ntg-color-text-system-success-alt-hover"
             },
@@ -3125,7 +3077,7 @@
               "level": "tertiary",
               "light": "green-700",
               "dark": "green-300",
-              "description": "สีข้อความ · สถานะระบบ · success hover",
+              "description": "สีข้อความ สถานะระบบ success hover",
               "cssVar": "--ntg-color-text-system-success-hover",
               "darkVar": "--ntg-color-text-system-success-hover"
             },
@@ -3135,7 +3087,7 @@
               "level": "primary",
               "light": "yellow-600",
               "dark": "yellow-400",
-              "description": "สีข้อความ · สถานะระบบ · warning",
+              "description": "สีข้อความ สถานะระบบ warning",
               "cssVar": "--ntg-color-text-system-warning",
               "darkVar": "--ntg-color-text-system-warning"
             },
@@ -3145,7 +3097,7 @@
               "level": "secondary",
               "light": "yellow-600",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · สถานะระบบ · warning alt",
+              "description": "สีข้อความ สถานะระบบ warning alt",
               "cssVar": "--ntg-color-text-system-warning-alt",
               "darkVar": "--ntg-color-text-system-warning-alt"
             },
@@ -3155,7 +3107,7 @@
               "level": "tertiary",
               "light": "yellow-700",
               "dark": "gray-dark-25",
-              "description": "สีข้อความ · สถานะระบบ · warning alt hover",
+              "description": "สีข้อความ สถานะระบบ warning alt hover",
               "cssVar": "--ntg-color-text-system-warning-alt-hover",
               "darkVar": "--ntg-color-text-system-warning-alt-hover"
             },
@@ -3165,7 +3117,7 @@
               "level": "tertiary",
               "light": "yellow-700",
               "dark": "yellow-300",
-              "description": "สีข้อความ · สถานะระบบ · warning hover",
+              "description": "สีข้อความ สถานะระบบ warning hover",
               "cssVar": "--ntg-color-text-system-warning-hover",
               "darkVar": "--ntg-color-text-system-warning-hover"
             },
@@ -3175,7 +3127,7 @@
               "level": "primary",
               "light": "base-white-100",
               "dark": "base-white-100",
-              "description": "สีข้อความ · สถานะระบบ · ขาว",
+              "description": "สีข้อความ สถานะระบบ ขาว",
               "cssVar": "--ntg-color-text-system-white",
               "darkVar": "--ntg-color-text-system-white"
             },
@@ -3185,7 +3137,7 @@
               "level": "primary",
               "light": "gray-light-600",
               "dark": "gray-dark-400",
-              "description": "สีข้อความ · ระดับสาม · ค่าเริ่มต้น",
+              "description": "สีข้อความ ระดับสาม ค่าเริ่มต้น",
               "cssVar": "--ntg-color-text-tertiary-default",
               "darkVar": "--ntg-color-text-tertiary-default"
             },
@@ -3195,7 +3147,7 @@
               "level": "secondary",
               "light": "gray-light-700",
               "dark": "gray-dark-300",
-              "description": "สีข้อความ · ระดับสาม · สถานะ hover",
+              "description": "สีข้อความ ระดับสาม สถานะ hover",
               "cssVar": "--ntg-color-text-tertiary-hover",
               "darkVar": "--ntg-color-text-tertiary-hover"
             },
@@ -3205,7 +3157,7 @@
               "level": "tertiary",
               "light": "brand-200",
               "dark": "gray-dark-400",
-              "description": "สีข้อความ · ระดับสาม · บนพื้นสีแบรนด์",
+              "description": "สีข้อความ ระดับสาม บนพื้นสีแบรนด์",
               "cssVar": "--ntg-color-text-tertiary-on-brand",
               "darkVar": "--ntg-color-text-tertiary-on-brand"
             }
@@ -3221,7 +3173,7 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Border color · color/border/*"
+          "text": "Border color color/border/*"
         },
         {
           "type": "colorTable",
@@ -3232,7 +3184,7 @@
               "level": "primary",
               "light": "brand-300",
               "dark": "brand-400",
-              "description": "สีเส้นขอบ · โทนแบรนด์ · ค่าเริ่มต้น",
+              "description": "สีเส้นขอบ โทนแบรนด์ ค่าเริ่มต้น",
               "cssVar": "--ntg-color-border-brand-default",
               "darkVar": "--ntg-color-border-brand-default"
             },
@@ -3242,7 +3194,7 @@
               "level": "primary",
               "light": "brand-400",
               "dark": "brand-300",
-              "description": "สีเส้นขอบ · โทนแบรนด์ · default hover",
+              "description": "สีเส้นขอบ โทนแบรนด์ default hover",
               "cssVar": "--ntg-color-border-brand-default-hover",
               "darkVar": "--ntg-color-border-brand-default-hover"
             },
@@ -3252,7 +3204,7 @@
               "level": "primary",
               "light": "brand-600",
               "dark": "brand-500",
-              "description": "สีเส้นขอบ · โทนแบรนด์ · ทึบ",
+              "description": "สีเส้นขอบ โทนแบรนด์ ทึบ",
               "cssVar": "--ntg-color-border-brand-solid",
               "darkVar": "--ntg-color-border-brand-solid"
             },
@@ -3262,7 +3214,7 @@
               "level": "secondary",
               "light": "brand-600",
               "dark": "gray-dark-700",
-              "description": "สีเส้นขอบ · โทนแบรนด์ · solid alt",
+              "description": "สีเส้นขอบ โทนแบรนด์ solid alt",
               "cssVar": "--ntg-color-border-brand-solid-alt",
               "darkVar": "--ntg-color-border-brand-solid-alt"
             },
@@ -3272,7 +3224,7 @@
               "level": "tertiary",
               "light": "brand-700",
               "dark": "brand-400",
-              "description": "สีเส้นขอบ · โทนแบรนด์ · solid hover",
+              "description": "สีเส้นขอบ โทนแบรนด์ solid hover",
               "cssVar": "--ntg-color-border-brand-solid-hover",
               "darkVar": "--ntg-color-border-brand-solid-hover"
             },
@@ -3282,7 +3234,7 @@
               "level": "primary",
               "light": "gray-light-300",
               "dark": "gray-dark-400",
-              "description": "สีเส้นขอบ · ทั่วไป · หลัก",
+              "description": "สีเส้นขอบ ทั่วไป หลัก",
               "cssVar": "--ntg-color-border-general-primary",
               "darkVar": "--ntg-color-border-general-primary"
             },
@@ -3292,7 +3244,7 @@
               "level": "primary",
               "light": "gray-light-200",
               "dark": "gray-dark-600",
-              "description": "สีเส้นขอบ · ทั่วไป · รอง",
+              "description": "สีเส้นขอบ ทั่วไป รอง",
               "cssVar": "--ntg-color-border-general-secondary",
               "darkVar": "--ntg-color-border-general-secondary"
             },
@@ -3302,7 +3254,7 @@
               "level": "primary",
               "light": "gray-light-100",
               "dark": "gray-dark-800",
-              "description": "สีเส้นขอบ · ทั่วไป · ระดับสาม",
+              "description": "สีเส้นขอบ ทั่วไป ระดับสาม",
               "cssVar": "--ntg-color-border-general-tertiary",
               "darkVar": "--ntg-color-border-general-tertiary"
             },
@@ -3312,7 +3264,7 @@
               "level": "primary",
               "light": "gray-light-300",
               "dark": "gray-dark-700",
-              "description": "สีเส้นขอบ · สถานะระบบ · ปิดใช้งาน",
+              "description": "สีเส้นขอบ สถานะระบบ ปิดใช้งาน",
               "cssVar": "--ntg-color-border-system-disabled",
               "darkVar": "--ntg-color-border-system-disabled"
             },
@@ -3322,7 +3274,7 @@
               "level": "secondary",
               "light": "gray-light-200",
               "dark": "gray-dark-800",
-              "description": "สีเส้นขอบ · สถานะระบบ · ปิดใช้งานแบบจาง",
+              "description": "สีเส้นขอบ สถานะระบบ ปิดใช้งานแบบจาง",
               "cssVar": "--ntg-color-border-system-disabled-subtle",
               "darkVar": "--ntg-color-border-system-disabled-subtle"
             },
@@ -3332,7 +3284,7 @@
               "level": "primary",
               "light": "red-300",
               "dark": "red-400",
-              "description": "สีเส้นขอบ · สถานะระบบ · error",
+              "description": "สีเส้นขอบ สถานะระบบ error",
               "cssVar": "--ntg-color-border-system-error",
               "darkVar": "--ntg-color-border-system-error"
             },
@@ -3342,7 +3294,7 @@
               "level": "primary",
               "light": "red-600",
               "dark": "red-500",
-              "description": "สีเส้นขอบ · สถานะระบบ · error solid",
+              "description": "สีเส้นขอบ สถานะระบบ error solid",
               "cssVar": "--ntg-color-border-system-error-solid",
               "darkVar": "--ntg-color-border-system-error-solid"
             },
@@ -3352,7 +3304,7 @@
               "level": "secondary",
               "light": "red-700",
               "dark": "red-400",
-              "description": "สีเส้นขอบ · สถานะระบบ · error solid hover",
+              "description": "สีเส้นขอบ สถานะระบบ error solid hover",
               "cssVar": "--ntg-color-border-system-error-solid-hover",
               "darkVar": "--ntg-color-border-system-error-solid-hover"
             },
@@ -3362,7 +3314,7 @@
               "level": "primary",
               "light": "green-300",
               "dark": "green-400",
-              "description": "สีเส้นขอบ · สถานะระบบ · success",
+              "description": "สีเส้นขอบ สถานะระบบ success",
               "cssVar": "--ntg-color-border-system-success",
               "darkVar": "--ntg-color-border-system-success"
             },
@@ -3372,7 +3324,7 @@
               "level": "primary",
               "light": "green-600",
               "dark": "green-500",
-              "description": "สีเส้นขอบ · สถานะระบบ · success solid",
+              "description": "สีเส้นขอบ สถานะระบบ success solid",
               "cssVar": "--ntg-color-border-system-success-solid",
               "darkVar": "--ntg-color-border-system-success-solid"
             },
@@ -3382,7 +3334,7 @@
               "level": "secondary",
               "light": "green-700",
               "dark": "green-400",
-              "description": "สีเส้นขอบ · สถานะระบบ · success solid hover",
+              "description": "สีเส้นขอบ สถานะระบบ success solid hover",
               "cssVar": "--ntg-color-border-system-success-solid-hover",
               "darkVar": "--ntg-color-border-system-success-solid-hover"
             },
@@ -3392,7 +3344,7 @@
               "level": "primary",
               "light": "yellow-300",
               "dark": "yellow-400",
-              "description": "สีเส้นขอบ · สถานะระบบ · warning",
+              "description": "สีเส้นขอบ สถานะระบบ warning",
               "cssVar": "--ntg-color-border-system-warning",
               "darkVar": "--ntg-color-border-system-warning"
             },
@@ -3402,7 +3354,7 @@
               "level": "primary",
               "light": "yellow-600",
               "dark": "yellow-500",
-              "description": "สีเส้นขอบ · สถานะระบบ · warning solid",
+              "description": "สีเส้นขอบ สถานะระบบ warning solid",
               "cssVar": "--ntg-color-border-system-warning-solid",
               "darkVar": "--ntg-color-border-system-warning-solid"
             },
@@ -3412,7 +3364,7 @@
               "level": "secondary",
               "light": "yellow-700",
               "dark": "yellow-400",
-              "description": "สีเส้นขอบ · สถานะระบบ · warning solid hover",
+              "description": "สีเส้นขอบ สถานะระบบ warning solid hover",
               "cssVar": "--ntg-color-border-system-warning-solid-hover",
               "darkVar": "--ntg-color-border-system-warning-solid-hover"
             }
@@ -3428,7 +3380,7 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Foreground color · color/foreground/*"
+          "text": "Foreground color color/foreground/*"
         },
         {
           "type": "colorTable",
@@ -3439,7 +3391,7 @@
               "level": "primary",
               "light": "brand-600",
               "dark": "brand-500",
-              "description": "สี foreground · โทนแบรนด์ · หลัก",
+              "description": "สี foreground โทนแบรนด์ หลัก",
               "cssVar": "--ntg-color-foreground-brand-primary",
               "darkVar": "--ntg-color-foreground-brand-primary"
             },
@@ -3449,7 +3401,7 @@
               "level": "secondary",
               "light": "brand-600",
               "dark": "gray-dark-50",
-              "description": "สี foreground · โทนแบรนด์ · primary alt",
+              "description": "สี foreground โทนแบรนด์ primary alt",
               "cssVar": "--ntg-color-foreground-brand-primary-alt",
               "darkVar": "--ntg-color-foreground-brand-primary-alt"
             },
@@ -3459,7 +3411,7 @@
               "level": "tertiary",
               "light": "brand-700",
               "dark": "gray-dark-25",
-              "description": "สี foreground · โทนแบรนด์ · primary alt hover",
+              "description": "สี foreground โทนแบรนด์ primary alt hover",
               "cssVar": "--ntg-color-foreground-brand-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-brand-primary-alt-hover"
             },
@@ -3469,7 +3421,7 @@
               "level": "tertiary",
               "light": "brand-700",
               "dark": "brand-400",
-              "description": "สี foreground · โทนแบรนด์ · primary hover",
+              "description": "สี foreground โทนแบรนด์ primary hover",
               "cssVar": "--ntg-color-foreground-brand-primary-hover",
               "darkVar": "--ntg-color-foreground-brand-primary-hover"
             },
@@ -3479,7 +3431,7 @@
               "level": "primary",
               "light": "brand-500",
               "dark": "brand-500",
-              "description": "สี foreground · โทนแบรนด์ · รอง",
+              "description": "สี foreground โทนแบรนด์ รอง",
               "cssVar": "--ntg-color-foreground-brand-secondary",
               "darkVar": "--ntg-color-foreground-brand-secondary"
             },
@@ -3489,7 +3441,7 @@
               "level": "secondary",
               "light": "brand-500",
               "dark": "gray-dark-100",
-              "description": "สี foreground · โทนแบรนด์ · secondary alt",
+              "description": "สี foreground โทนแบรนด์ secondary alt",
               "cssVar": "--ntg-color-foreground-brand-secondary-alt",
               "darkVar": "--ntg-color-foreground-brand-secondary-alt"
             },
@@ -3499,7 +3451,7 @@
               "level": "tertiary",
               "light": "brand-600",
               "dark": "gray-dark-200",
-              "description": "สี foreground · โทนแบรนด์ · secondary alt hover",
+              "description": "สี foreground โทนแบรนด์ secondary alt hover",
               "cssVar": "--ntg-color-foreground-brand-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-brand-secondary-alt-hover"
             },
@@ -3509,7 +3461,7 @@
               "level": "tertiary",
               "light": "brand-600",
               "dark": "brand-400",
-              "description": "สี foreground · โทนแบรนด์ · secondary hover",
+              "description": "สี foreground โทนแบรนด์ secondary hover",
               "cssVar": "--ntg-color-foreground-brand-secondary-hover",
               "darkVar": "--ntg-color-foreground-brand-secondary-hover"
             },
@@ -3519,7 +3471,7 @@
               "level": "primary",
               "light": "gray-light-900",
               "dark": "base-white-100",
-              "description": "สี foreground · หลัก · ค่าเริ่มต้น",
+              "description": "สี foreground หลัก ค่าเริ่มต้น",
               "cssVar": "--ntg-color-foreground-primary-default",
               "darkVar": "--ntg-color-foreground-primary-default"
             },
@@ -3529,7 +3481,7 @@
               "level": "secondary",
               "light": "base-white-100",
               "dark": "gray-dark-50",
-              "description": "สี foreground · หลัก · บนพื้นสีแบรนด์",
+              "description": "สี foreground หลัก บนพื้นสีแบรนด์",
               "cssVar": "--ntg-color-foreground-primary-on-brand",
               "darkVar": "--ntg-color-foreground-primary-on-brand"
             },
@@ -3539,7 +3491,7 @@
               "level": "primary",
               "light": "gray-light-500",
               "dark": "gray-dark-500",
-              "description": "สี foreground · quaternary · ค่าเริ่มต้น",
+              "description": "สี foreground quaternary ค่าเริ่มต้น",
               "cssVar": "--ntg-color-foreground-quaternary-default",
               "darkVar": "--ntg-color-foreground-quaternary-default"
             },
@@ -3549,7 +3501,7 @@
               "level": "secondary",
               "light": "gray-light-600",
               "dark": "gray-dark-400",
-              "description": "สี foreground · quaternary · สถานะ hover",
+              "description": "สี foreground quaternary สถานะ hover",
               "cssVar": "--ntg-color-foreground-quaternary-hover",
               "darkVar": "--ntg-color-foreground-quaternary-hover"
             },
@@ -3559,7 +3511,7 @@
               "level": "tertiary",
               "light": "brand-300",
               "dark": "gray-dark-500",
-              "description": "สี foreground · quaternary · บนพื้นสีแบรนด์",
+              "description": "สี foreground quaternary บนพื้นสีแบรนด์",
               "cssVar": "--ntg-color-foreground-quaternary-on-brand",
               "darkVar": "--ntg-color-foreground-quaternary-on-brand"
             },
@@ -3569,7 +3521,7 @@
               "level": "primary",
               "light": "gray-light-400",
               "dark": "gray-dark-600",
-              "description": "สี foreground · quinary · ค่าเริ่มต้น",
+              "description": "สี foreground quinary ค่าเริ่มต้น",
               "cssVar": "--ntg-color-foreground-quinary-default",
               "darkVar": "--ntg-color-foreground-quinary-default"
             },
@@ -3579,7 +3531,7 @@
               "level": "secondary",
               "light": "gray-light-500",
               "dark": "gray-dark-500",
-              "description": "สี foreground · quinary · สถานะ hover",
+              "description": "สี foreground quinary สถานะ hover",
               "cssVar": "--ntg-color-foreground-quinary-hover",
               "darkVar": "--ntg-color-foreground-quinary-hover"
             },
@@ -3589,7 +3541,7 @@
               "level": "primary",
               "light": "gray-light-700",
               "dark": "gray-dark-300",
-              "description": "สี foreground · รอง · ค่าเริ่มต้น",
+              "description": "สี foreground รอง ค่าเริ่มต้น",
               "cssVar": "--ntg-color-foreground-secondary-default",
               "darkVar": "--ntg-color-foreground-secondary-default"
             },
@@ -3599,7 +3551,7 @@
               "level": "secondary",
               "light": "gray-light-800",
               "dark": "gray-dark-200",
-              "description": "สี foreground · รอง · สถานะ hover",
+              "description": "สี foreground รอง สถานะ hover",
               "cssVar": "--ntg-color-foreground-secondary-hover",
               "darkVar": "--ntg-color-foreground-secondary-hover"
             },
@@ -3609,7 +3561,7 @@
               "level": "tertiary",
               "light": "brand-200",
               "dark": "gray-dark-300",
-              "description": "สี foreground · รอง · บนพื้นสีแบรนด์",
+              "description": "สี foreground รอง บนพื้นสีแบรนด์",
               "cssVar": "--ntg-color-foreground-secondary-on-brand",
               "darkVar": "--ntg-color-foreground-secondary-on-brand"
             },
@@ -3619,7 +3571,7 @@
               "level": "primary",
               "light": "gray-light-300",
               "dark": "gray-dark-600",
-              "description": "สี foreground · senary · ค่าเริ่มต้น",
+              "description": "สี foreground senary ค่าเริ่มต้น",
               "cssVar": "--ntg-color-foreground-senary-default",
               "darkVar": "--ntg-color-foreground-senary-default"
             },
@@ -3629,7 +3581,7 @@
               "level": "primary",
               "light": "base-black-100",
               "dark": "base-black-100",
-              "description": "สี foreground · สถานะระบบ · black",
+              "description": "สี foreground สถานะระบบ black",
               "cssVar": "--ntg-color-foreground-system-black",
               "darkVar": "--ntg-color-foreground-system-black"
             },
@@ -3639,7 +3591,7 @@
               "level": "primary",
               "light": "gray-light-400",
               "dark": "gray-dark-500",
-              "description": "สี foreground · สถานะระบบ · ปิดใช้งาน",
+              "description": "สี foreground สถานะระบบ ปิดใช้งาน",
               "cssVar": "--ntg-color-foreground-system-disabled",
               "darkVar": "--ntg-color-foreground-system-disabled"
             },
@@ -3649,7 +3601,7 @@
               "level": "secondary",
               "light": "gray-light-300",
               "dark": "gray-dark-600",
-              "description": "สี foreground · สถานะระบบ · disabled subtle",
+              "description": "สี foreground สถานะระบบ disabled subtle",
               "cssVar": "--ntg-color-foreground-system-disabled-subtle",
               "darkVar": "--ntg-color-foreground-system-disabled-subtle"
             },
@@ -3659,7 +3611,7 @@
               "level": "primary",
               "light": "red-600",
               "dark": "red-500",
-              "description": "สี foreground · สถานะระบบ · ผิดพลาด (หลัก)",
+              "description": "สี foreground สถานะระบบ ผิดพลาด (หลัก)",
               "cssVar": "--ntg-color-foreground-system-error-primary",
               "darkVar": "--ntg-color-foreground-system-error-primary"
             },
@@ -3669,7 +3621,7 @@
               "level": "secondary",
               "light": "red-600",
               "dark": "gray-dark-50",
-              "description": "สี foreground · สถานะระบบ · error primary alt",
+              "description": "สี foreground สถานะระบบ error primary alt",
               "cssVar": "--ntg-color-foreground-system-error-primary-alt",
               "darkVar": "--ntg-color-foreground-system-error-primary-alt"
             },
@@ -3679,7 +3631,7 @@
               "level": "tertiary",
               "light": "red-700",
               "dark": "gray-dark-25",
-              "description": "สี foreground · สถานะระบบ · error primary alt hover",
+              "description": "สี foreground สถานะระบบ error primary alt hover",
               "cssVar": "--ntg-color-foreground-system-error-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-error-primary-alt-hover"
             },
@@ -3689,7 +3641,7 @@
               "level": "tertiary",
               "light": "red-700",
               "dark": "red-400",
-              "description": "สี foreground · สถานะระบบ · ผิดพลาด (หลัก) hover",
+              "description": "สี foreground สถานะระบบ ผิดพลาด (หลัก) hover",
               "cssVar": "--ntg-color-foreground-system-error-primary-hover",
               "darkVar": "--ntg-color-foreground-system-error-primary-hover"
             },
@@ -3699,7 +3651,7 @@
               "level": "primary",
               "light": "red-500",
               "dark": "red-400",
-              "description": "สี foreground · สถานะระบบ · error secondary",
+              "description": "สี foreground สถานะระบบ error secondary",
               "cssVar": "--ntg-color-foreground-system-error-secondary",
               "darkVar": "--ntg-color-foreground-system-error-secondary"
             },
@@ -3709,7 +3661,7 @@
               "level": "secondary",
               "light": "red-500",
               "dark": "gray-dark-100",
-              "description": "สี foreground · สถานะระบบ · error secondary alt",
+              "description": "สี foreground สถานะระบบ error secondary alt",
               "cssVar": "--ntg-color-foreground-system-error-secondary-alt",
               "darkVar": "--ntg-color-foreground-system-error-secondary-alt"
             },
@@ -3719,7 +3671,7 @@
               "level": "tertiary",
               "light": "red-600",
               "dark": "gray-dark-50",
-              "description": "สี foreground · สถานะระบบ · error secondary alt hover",
+              "description": "สี foreground สถานะระบบ error secondary alt hover",
               "cssVar": "--ntg-color-foreground-system-error-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-error-secondary-alt-hover"
             },
@@ -3729,7 +3681,7 @@
               "level": "tertiary",
               "light": "red-600",
               "dark": "red-300",
-              "description": "สี foreground · สถานะระบบ · error secondary hover",
+              "description": "สี foreground สถานะระบบ error secondary hover",
               "cssVar": "--ntg-color-foreground-system-error-secondary-hover",
               "darkVar": "--ntg-color-foreground-system-error-secondary-hover"
             },
@@ -3739,7 +3691,7 @@
               "level": "primary",
               "light": "green-600",
               "dark": "green-500",
-              "description": "สี foreground · สถานะระบบ · สำเร็จ (หลัก)",
+              "description": "สี foreground สถานะระบบ สำเร็จ (หลัก)",
               "cssVar": "--ntg-color-foreground-system-success-primary",
               "darkVar": "--ntg-color-foreground-system-success-primary"
             },
@@ -3749,7 +3701,7 @@
               "level": "secondary",
               "light": "green-600",
               "dark": "gray-dark-50",
-              "description": "สี foreground · สถานะระบบ · success primary alt",
+              "description": "สี foreground สถานะระบบ success primary alt",
               "cssVar": "--ntg-color-foreground-system-success-primary-alt",
               "darkVar": "--ntg-color-foreground-system-success-primary-alt"
             },
@@ -3759,7 +3711,7 @@
               "level": "tertiary",
               "light": "green-700",
               "dark": "gray-dark-25",
-              "description": "สี foreground · สถานะระบบ · success primary alt hover",
+              "description": "สี foreground สถานะระบบ success primary alt hover",
               "cssVar": "--ntg-color-foreground-system-success-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-success-primary-alt-hover"
             },
@@ -3769,7 +3721,7 @@
               "level": "tertiary",
               "light": "green-700",
               "dark": "green-400",
-              "description": "สี foreground · สถานะระบบ · สำเร็จ (หลัก) hover",
+              "description": "สี foreground สถานะระบบ สำเร็จ (หลัก) hover",
               "cssVar": "--ntg-color-foreground-system-success-primary-hover",
               "darkVar": "--ntg-color-foreground-system-success-primary-hover"
             },
@@ -3779,7 +3731,7 @@
               "level": "primary",
               "light": "green-500",
               "dark": "green-400",
-              "description": "สี foreground · สถานะระบบ · success secondary",
+              "description": "สี foreground สถานะระบบ success secondary",
               "cssVar": "--ntg-color-foreground-system-success-secondary",
               "darkVar": "--ntg-color-foreground-system-success-secondary"
             },
@@ -3789,7 +3741,7 @@
               "level": "secondary",
               "light": "green-500",
               "dark": "gray-dark-100",
-              "description": "สี foreground · สถานะระบบ · success secondary alt",
+              "description": "สี foreground สถานะระบบ success secondary alt",
               "cssVar": "--ntg-color-foreground-system-success-secondary-alt",
               "darkVar": "--ntg-color-foreground-system-success-secondary-alt"
             },
@@ -3799,7 +3751,7 @@
               "level": "tertiary",
               "light": "green-600",
               "dark": "green-300",
-              "description": "สี foreground · สถานะระบบ · success secondary hover",
+              "description": "สี foreground สถานะระบบ success secondary hover",
               "cssVar": "--ntg-color-foreground-system-success-secondary-hover",
               "darkVar": "--ntg-color-foreground-system-success-secondary-hover"
             },
@@ -3809,7 +3761,7 @@
               "level": "primary",
               "light": "green-600",
               "dark": "gray-dark-50",
-              "description": "สี foreground · สถานะระบบ · success secondary hover alt",
+              "description": "สี foreground สถานะระบบ success secondary hover alt",
               "cssVar": "--ntg-color-foreground-system-success-secondary-hover-alt",
               "darkVar": "--ntg-color-foreground-system-success-secondary-hover-alt"
             },
@@ -3819,7 +3771,7 @@
               "level": "primary",
               "light": "yellow-600",
               "dark": "yellow-500",
-              "description": "สี foreground · สถานะระบบ · เตือน (หลัก)",
+              "description": "สี foreground สถานะระบบ เตือน (หลัก)",
               "cssVar": "--ntg-color-foreground-system-warning-primary",
               "darkVar": "--ntg-color-foreground-system-warning-primary"
             },
@@ -3829,7 +3781,7 @@
               "level": "secondary",
               "light": "yellow-600",
               "dark": "gray-dark-50",
-              "description": "สี foreground · สถานะระบบ · warning primary alt",
+              "description": "สี foreground สถานะระบบ warning primary alt",
               "cssVar": "--ntg-color-foreground-system-warning-primary-alt",
               "darkVar": "--ntg-color-foreground-system-warning-primary-alt"
             },
@@ -3839,7 +3791,7 @@
               "level": "tertiary",
               "light": "yellow-700",
               "dark": "gray-dark-25",
-              "description": "สี foreground · สถานะระบบ · warning primary alt hover",
+              "description": "สี foreground สถานะระบบ warning primary alt hover",
               "cssVar": "--ntg-color-foreground-system-warning-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-warning-primary-alt-hover"
             },
@@ -3849,7 +3801,7 @@
               "level": "tertiary",
               "light": "yellow-700",
               "dark": "yellow-400",
-              "description": "สี foreground · สถานะระบบ · เตือน (หลัก) hover",
+              "description": "สี foreground สถานะระบบ เตือน (หลัก) hover",
               "cssVar": "--ntg-color-foreground-system-warning-primary-hover",
               "darkVar": "--ntg-color-foreground-system-warning-primary-hover"
             },
@@ -3859,7 +3811,7 @@
               "level": "primary",
               "light": "yellow-500",
               "dark": "yellow-400",
-              "description": "สี foreground · สถานะระบบ · warning secondary",
+              "description": "สี foreground สถานะระบบ warning secondary",
               "cssVar": "--ntg-color-foreground-system-warning-secondary",
               "darkVar": "--ntg-color-foreground-system-warning-secondary"
             },
@@ -3869,7 +3821,7 @@
               "level": "secondary",
               "light": "yellow-500",
               "dark": "gray-dark-100",
-              "description": "สี foreground · สถานะระบบ · warning secondary alt",
+              "description": "สี foreground สถานะระบบ warning secondary alt",
               "cssVar": "--ntg-color-foreground-system-warning-secondary-alt",
               "darkVar": "--ntg-color-foreground-system-warning-secondary-alt"
             },
@@ -3879,7 +3831,7 @@
               "level": "tertiary",
               "light": "yellow-600",
               "dark": "gray-dark-50",
-              "description": "สี foreground · สถานะระบบ · warning secondary alt hover",
+              "description": "สี foreground สถานะระบบ warning secondary alt hover",
               "cssVar": "--ntg-color-foreground-system-warning-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-warning-secondary-alt-hover"
             },
@@ -3889,7 +3841,7 @@
               "level": "tertiary",
               "light": "yellow-600",
               "dark": "yellow-300",
-              "description": "สี foreground · สถานะระบบ · warning secondary hover",
+              "description": "สี foreground สถานะระบบ warning secondary hover",
               "cssVar": "--ntg-color-foreground-system-warning-secondary-hover",
               "darkVar": "--ntg-color-foreground-system-warning-secondary-hover"
             },
@@ -3899,7 +3851,7 @@
               "level": "primary",
               "light": "base-white-100",
               "dark": "base-white-100",
-              "description": "สี foreground · สถานะระบบ · ขาว",
+              "description": "สี foreground สถานะระบบ ขาว",
               "cssVar": "--ntg-color-foreground-system-white",
               "darkVar": "--ntg-color-foreground-system-white"
             },
@@ -3909,7 +3861,7 @@
               "level": "primary",
               "light": "gray-light-600",
               "dark": "gray-dark-400",
-              "description": "สี foreground · ระดับสาม · ค่าเริ่มต้น",
+              "description": "สี foreground ระดับสาม ค่าเริ่มต้น",
               "cssVar": "--ntg-color-foreground-tertiary-default",
               "darkVar": "--ntg-color-foreground-tertiary-default"
             },
@@ -3919,7 +3871,7 @@
               "level": "secondary",
               "light": "gray-light-700",
               "dark": "gray-dark-300",
-              "description": "สี foreground · ระดับสาม · สถานะ hover",
+              "description": "สี foreground ระดับสาม สถานะ hover",
               "cssVar": "--ntg-color-foreground-tertiary-hover",
               "darkVar": "--ntg-color-foreground-tertiary-hover"
             },
@@ -3929,7 +3881,7 @@
               "level": "tertiary",
               "light": "brand-200",
               "dark": "gray-dark-400",
-              "description": "สี foreground · ระดับสาม · บนพื้นสีแบรนด์",
+              "description": "สี foreground ระดับสาม บนพื้นสีแบรนด์",
               "cssVar": "--ntg-color-foreground-tertiary-on-brand",
               "darkVar": "--ntg-color-foreground-tertiary-on-brand"
             }
@@ -3945,7 +3897,7 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Icon color · color/icon/*"
+          "text": "Icon color color/icon/*"
         },
         {
           "type": "colorTable",
@@ -3956,7 +3908,7 @@
               "level": "primary",
               "light": "base-white-100",
               "dark": "gray-dark-50",
-              "description": "ไอคอนหลักบนพื้นสีแบรนด์ · โทนแบรนด์",
+              "description": "ไอคอนหลักบนพื้นสีแบรนด์ โทนแบรนด์",
               "cssVar": "--ntg-icon-brand-on-brand-primary",
               "darkVar": "--ntg-color-foreground-primary-on-brand"
             },
@@ -3966,7 +3918,7 @@
               "level": "primary",
               "light": "brand-200",
               "dark": "gray-dark-300",
-              "description": "ไอคอนรองบนพื้นสีแบรนด์ · โทนแบรนด์",
+              "description": "ไอคอนรองบนพื้นสีแบรนด์ โทนแบรนด์",
               "cssVar": "--ntg-icon-brand-on-brand-secondary",
               "darkVar": "--ntg-color-foreground-secondary-on-brand"
             },
@@ -3976,7 +3928,7 @@
               "level": "primary",
               "light": "brand-300",
               "dark": "gray-dark-500",
-              "description": "ไอคอนระดับสามบนพื้นสีแบรนด์ · โทนแบรนด์",
+              "description": "ไอคอนระดับสามบนพื้นสีแบรนด์ โทนแบรนด์",
               "cssVar": "--ntg-icon-brand-on-brand-tertiary",
               "darkVar": "--ntg-color-foreground-quaternary-on-brand"
             },
@@ -3986,7 +3938,7 @@
               "level": "primary",
               "light": "brand-600",
               "dark": "brand-500",
-              "description": "ไอคอนหลัก เน้นชัดที่สุด · โทนแบรนด์",
+              "description": "ไอคอนหลัก เน้นชัดที่สุด โทนแบรนด์",
               "cssVar": "--ntg-icon-brand-primary",
               "darkVar": "--ntg-color-foreground-brand-primary"
             },
@@ -3996,7 +3948,7 @@
               "level": "secondary",
               "light": "brand-600",
               "dark": "gray-dark-50",
-              "description": "ไอคอนหลัก เน้นชัดที่สุด · โทนแบรนด์ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
+              "description": "ไอคอนหลัก เน้นชัดที่สุด โทนแบรนด์ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
               "cssVar": "--ntg-icon-brand-primary-alt",
               "darkVar": "--ntg-color-foreground-brand-primary-alt"
             },
@@ -4006,7 +3958,7 @@
               "level": "tertiary",
               "light": "brand-700",
               "dark": "gray-dark-25",
-              "description": "ไอคอนหลัก เน้นชัดที่สุด · โทนแบรนด์ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) · สถานะ hover",
+              "description": "ไอคอนหลัก เน้นชัดที่สุด โทนแบรนด์ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) สถานะ hover",
               "cssVar": "--ntg-icon-brand-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-brand-primary-alt-hover"
             },
@@ -4016,7 +3968,7 @@
               "level": "tertiary",
               "light": "brand-700",
               "dark": "brand-300",
-              "description": "ไอคอนหลัก เน้นชัดที่สุด · โทนแบรนด์ · สถานะ hover",
+              "description": "ไอคอนหลัก เน้นชัดที่สุด โทนแบรนด์ สถานะ hover",
               "cssVar": "--ntg-icon-brand-primary-hover",
               "darkVar": "--ntg-color-utility-u-brand-700"
             },
@@ -4026,7 +3978,7 @@
               "level": "primary",
               "light": "brand-500",
               "dark": "brand-500",
-              "description": "ไอคอนรอง ความสำคัญรองลงมา · โทนแบรนด์",
+              "description": "ไอคอนรอง ความสำคัญรองลงมา โทนแบรนด์",
               "cssVar": "--ntg-icon-brand-secondary",
               "darkVar": "--ntg-color-foreground-brand-secondary"
             },
@@ -4036,7 +3988,7 @@
               "level": "secondary",
               "light": "brand-500",
               "dark": "gray-dark-100",
-              "description": "ไอคอนรอง ความสำคัญรองลงมา · โทนแบรนด์ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
+              "description": "ไอคอนรอง ความสำคัญรองลงมา โทนแบรนด์ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
               "cssVar": "--ntg-icon-brand-secondary-alt",
               "darkVar": "--ntg-color-foreground-brand-secondary-alt"
             },
@@ -4046,7 +3998,7 @@
               "level": "tertiary",
               "light": "brand-600",
               "dark": "gray-dark-200",
-              "description": "ไอคอนรอง ความสำคัญรองลงมา · โทนแบรนด์ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) · สถานะ hover",
+              "description": "ไอคอนรอง ความสำคัญรองลงมา โทนแบรนด์ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) สถานะ hover",
               "cssVar": "--ntg-icon-brand-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-brand-secondary-alt-hover"
             },
@@ -4056,7 +4008,7 @@
               "level": "tertiary",
               "light": "brand-600",
               "dark": "brand-400",
-              "description": "ไอคอนรอง ความสำคัญรองลงมา · โทนแบรนด์ · สถานะ hover",
+              "description": "ไอคอนรอง ความสำคัญรองลงมา โทนแบรนด์ สถานะ hover",
               "cssVar": "--ntg-icon-brand-secondary-hover",
               "darkVar": "--ntg-color-utility-u-brand-600"
             },
@@ -4066,7 +4018,7 @@
               "level": "primary",
               "light": "base-black-100",
               "dark": "base-black-100",
-              "description": "ไอคอนสีดำคงที่ ไม่เปลี่ยนตามโหมด · ทั่วไป",
+              "description": "ไอคอนสีดำคงที่ ไม่เปลี่ยนตามโหมด ทั่วไป",
               "cssVar": "--ntg-icon-general-const-black",
               "darkVar": "--ntg-color-foreground-system-black"
             },
@@ -4076,7 +4028,7 @@
               "level": "primary",
               "light": "base-white-100",
               "dark": "base-white-100",
-              "description": "ไอคอนสีขาวคงที่ ไม่เปลี่ยนตามโหมด · ทั่วไป",
+              "description": "ไอคอนสีขาวคงที่ ไม่เปลี่ยนตามโหมด ทั่วไป",
               "cssVar": "--ntg-icon-general-const-white",
               "darkVar": "--ntg-color-foreground-system-white"
             },
@@ -4086,7 +4038,7 @@
               "level": "primary",
               "light": "gray-light-400",
               "dark": "gray-dark-500",
-              "description": "ไอคอนสถานะปิดใช้งาน · ทั่วไป",
+              "description": "ไอคอนสถานะปิดใช้งาน ทั่วไป",
               "cssVar": "--ntg-icon-general-disable",
               "darkVar": "--ntg-color-foreground-system-disabled"
             },
@@ -4096,7 +4048,7 @@
               "level": "secondary",
               "light": "gray-light-300",
               "dark": "gray-dark-600",
-              "description": "ไอคอนปิดใช้งานแบบจาง · ทั่วไป",
+              "description": "ไอคอนปิดใช้งานแบบจาง ทั่วไป",
               "cssVar": "--ntg-icon-general-disable-subtle",
               "darkVar": "--ntg-color-foreground-system-disabled-subtle"
             },
@@ -4106,7 +4058,7 @@
               "level": "primary",
               "light": "gray-light-900",
               "dark": "base-white-100",
-              "description": "ไอคอนหลัก เน้นชัดที่สุด · ทั่วไป",
+              "description": "ไอคอนหลัก เน้นชัดที่สุด ทั่วไป",
               "cssVar": "--ntg-icon-general-primary",
               "darkVar": "--ntg-color-foreground-primary-default"
             },
@@ -4116,7 +4068,7 @@
               "level": "primary",
               "light": "gray-light-500",
               "dark": "gray-dark-500",
-              "description": "ไอคอนระดับสี่ โทนเบา · ทั่วไป",
+              "description": "ไอคอนระดับสี่ โทนเบา ทั่วไป",
               "cssVar": "--ntg-icon-general-quaternary",
               "darkVar": "--ntg-color-foreground-quaternary-default"
             },
@@ -4126,7 +4078,7 @@
               "level": "secondary",
               "light": "gray-light-600",
               "dark": "gray-dark-400",
-              "description": "ไอคอนระดับสี่ โทนเบา · ทั่วไป · สถานะ hover",
+              "description": "ไอคอนระดับสี่ โทนเบา ทั่วไป สถานะ hover",
               "cssVar": "--ntg-icon-general-quaternary-hover",
               "darkVar": "--ntg-color-foreground-quaternary-hover"
             },
@@ -4136,7 +4088,7 @@
               "level": "primary",
               "light": "gray-light-400",
               "dark": "gray-dark-600",
-              "description": "ไอคอนระดับห้า โทนเบาสุด · ทั่วไป",
+              "description": "ไอคอนระดับห้า โทนเบาสุด ทั่วไป",
               "cssVar": "--ntg-icon-general-quinary",
               "darkVar": "--ntg-color-foreground-quinary-default"
             },
@@ -4146,7 +4098,7 @@
               "level": "secondary",
               "light": "gray-light-500",
               "dark": "gray-dark-500",
-              "description": "ไอคอนระดับห้า โทนเบาสุด · ทั่วไป · สถานะ hover",
+              "description": "ไอคอนระดับห้า โทนเบาสุด ทั่วไป สถานะ hover",
               "cssVar": "--ntg-icon-general-quinary-hover",
               "darkVar": "--ntg-color-foreground-quinary-hover"
             },
@@ -4156,7 +4108,7 @@
               "level": "primary",
               "light": "gray-light-700",
               "dark": "gray-dark-300",
-              "description": "ไอคอนรอง ความสำคัญรองลงมา · ทั่วไป",
+              "description": "ไอคอนรอง ความสำคัญรองลงมา ทั่วไป",
               "cssVar": "--ntg-icon-general-secondary",
               "darkVar": "--ntg-color-foreground-secondary-default"
             },
@@ -4166,7 +4118,7 @@
               "level": "secondary",
               "light": "gray-light-800",
               "dark": "gray-dark-200",
-              "description": "ไอคอนรอง ความสำคัญรองลงมา · ทั่วไป · สถานะ hover",
+              "description": "ไอคอนรอง ความสำคัญรองลงมา ทั่วไป สถานะ hover",
               "cssVar": "--ntg-icon-general-secondary-hover",
               "darkVar": "--ntg-color-foreground-secondary-hover"
             },
@@ -4176,7 +4128,7 @@
               "level": "primary",
               "light": "gray-light-600",
               "dark": "gray-dark-400",
-              "description": "ไอคอนระดับสาม โทนเบาลง · ทั่วไป",
+              "description": "ไอคอนระดับสาม โทนเบาลง ทั่วไป",
               "cssVar": "--ntg-icon-general-tertiary",
               "darkVar": "--ntg-color-foreground-tertiary-default"
             },
@@ -4186,7 +4138,7 @@
               "level": "secondary",
               "light": "gray-light-700",
               "dark": "gray-dark-300",
-              "description": "ไอคอนระดับสาม โทนเบาลง · ทั่วไป · สถานะ hover",
+              "description": "ไอคอนระดับสาม โทนเบาลง ทั่วไป สถานะ hover",
               "cssVar": "--ntg-icon-general-tertiary-hover",
               "darkVar": "--ntg-color-foreground-tertiary-hover"
             },
@@ -4196,7 +4148,7 @@
               "level": "primary",
               "light": "red-600",
               "dark": "red-500",
-              "description": "ไอคอนสถานะผิดพลาด (หลัก) · สถานะระบบ",
+              "description": "ไอคอนสถานะผิดพลาด (หลัก) สถานะระบบ",
               "cssVar": "--ntg-icon-system-error-primary",
               "darkVar": "--ntg-color-foreground-system-error-primary"
             },
@@ -4206,7 +4158,7 @@
               "level": "secondary",
               "light": "red-600",
               "dark": "gray-dark-50",
-              "description": "ไอคอนสถานะผิดพลาด (หลัก) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
+              "description": "ไอคอนสถานะผิดพลาด (หลัก) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
               "cssVar": "--ntg-icon-system-error-primary-alt",
               "darkVar": "--ntg-color-foreground-system-error-primary-alt"
             },
@@ -4216,7 +4168,7 @@
               "level": "tertiary",
               "light": "red-700",
               "dark": "gray-dark-25",
-              "description": "ไอคอนสถานะผิดพลาด (หลัก) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) · สถานะ hover",
+              "description": "ไอคอนสถานะผิดพลาด (หลัก) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) สถานะ hover",
               "cssVar": "--ntg-icon-system-error-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-error-primary-alt-hover"
             },
@@ -4226,7 +4178,7 @@
               "level": "tertiary",
               "light": "red-700",
               "dark": "red-400",
-              "description": "ไอคอนสถานะผิดพลาด (หลัก) · สถานะระบบ · สถานะ hover",
+              "description": "ไอคอนสถานะผิดพลาด (หลัก) สถานะระบบ สถานะ hover",
               "cssVar": "--ntg-icon-system-error-primary-hover",
               "darkVar": "--ntg-color-foreground-system-error-primary-hover"
             },
@@ -4236,7 +4188,7 @@
               "level": "primary",
               "light": "red-500",
               "dark": "red-400",
-              "description": "ไอคอนสถานะผิดพลาด (รอง) · สถานะระบบ",
+              "description": "ไอคอนสถานะผิดพลาด (รอง) สถานะระบบ",
               "cssVar": "--ntg-icon-system-error-secondary",
               "darkVar": "--ntg-color-foreground-system-error-secondary"
             },
@@ -4246,7 +4198,7 @@
               "level": "secondary",
               "light": "red-500",
               "dark": "gray-dark-100",
-              "description": "ไอคอนสถานะผิดพลาด (รอง) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
+              "description": "ไอคอนสถานะผิดพลาด (รอง) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
               "cssVar": "--ntg-icon-system-error-secondary-alt",
               "darkVar": "--ntg-color-foreground-system-error-secondary-alt"
             },
@@ -4256,7 +4208,7 @@
               "level": "tertiary",
               "light": "red-600",
               "dark": "gray-dark-50",
-              "description": "ไอคอนสถานะผิดพลาด (รอง) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) · สถานะ hover",
+              "description": "ไอคอนสถานะผิดพลาด (รอง) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) สถานะ hover",
               "cssVar": "--ntg-icon-system-error-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-error-secondary-alt-hover"
             },
@@ -4266,17 +4218,17 @@
               "level": "tertiary",
               "light": "red-600",
               "dark": "red-300",
-              "description": "ไอคอนสถานะผิดพลาด (รอง) · สถานะระบบ · สถานะ hover",
+              "description": "ไอคอนสถานะผิดพลาด (รอง) สถานะระบบ สถานะ hover",
               "cssVar": "--ntg-icon-system-error-secondary-hover",
               "darkVar": "--ntg-color-foreground-system-error-secondary-hover"
             },
             {
               "no": "16",
-              "name": "icon-system-success-primar-alt-hover",
+              "name": "icon-system-success-primary-alt-hover",
               "level": "primary",
               "light": "green-700",
               "dark": "gray-dark-25",
-              "description": "ไอคอนสถานะสำเร็จ (หลัก) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) · สถานะ hover",
+              "description": "ไอคอนสถานะสำเร็จ (หลัก) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) สถานะ hover",
               "cssVar": "--ntg-icon-system-success-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-success-primary-alt-hover"
             },
@@ -4286,7 +4238,7 @@
               "level": "primary",
               "light": "green-600",
               "dark": "green-500",
-              "description": "ไอคอนสถานะสำเร็จ (หลัก) · สถานะระบบ",
+              "description": "ไอคอนสถานะสำเร็จ (หลัก) สถานะระบบ",
               "cssVar": "--ntg-icon-system-success-primary",
               "darkVar": "--ntg-color-foreground-system-success-primary"
             },
@@ -4296,7 +4248,7 @@
               "level": "secondary",
               "light": "green-600",
               "dark": "gray-dark-50",
-              "description": "ไอคอนสถานะสำเร็จ (หลัก) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
+              "description": "ไอคอนสถานะสำเร็จ (หลัก) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
               "cssVar": "--ntg-icon-system-success-primary-alt",
               "darkVar": "--ntg-color-foreground-system-success-primary-alt"
             },
@@ -4306,7 +4258,7 @@
               "level": "tertiary",
               "light": "green-700",
               "dark": "green-400",
-              "description": "ไอคอนสถานะสำเร็จ (หลัก) · สถานะระบบ · สถานะ hover",
+              "description": "ไอคอนสถานะสำเร็จ (หลัก) สถานะระบบ สถานะ hover",
               "cssVar": "--ntg-icon-system-success-primary-hover",
               "darkVar": "--ntg-color-foreground-system-success-primary-hover"
             },
@@ -4316,7 +4268,7 @@
               "level": "primary",
               "light": "green-500",
               "dark": "green-400",
-              "description": "ไอคอนสถานะสำเร็จ (รอง) · สถานะระบบ",
+              "description": "ไอคอนสถานะสำเร็จ (รอง) สถานะระบบ",
               "cssVar": "--ntg-icon-system-success-secondary",
               "darkVar": "--ntg-color-foreground-system-success-secondary"
             },
@@ -4326,7 +4278,7 @@
               "level": "secondary",
               "light": "green-500",
               "dark": "gray-dark-100",
-              "description": "ไอคอนสถานะสำเร็จ (รอง) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
+              "description": "ไอคอนสถานะสำเร็จ (รอง) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
               "cssVar": "--ntg-icon-system-success-secondary-alt",
               "darkVar": "--ntg-color-foreground-system-success-secondary-alt"
             },
@@ -4336,7 +4288,7 @@
               "level": "tertiary",
               "light": "green-600",
               "dark": "gray-dark-50",
-              "description": "ไอคอนสถานะสำเร็จ (รอง) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) · สถานะ hover",
+              "description": "ไอคอนสถานะสำเร็จ (รอง) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) สถานะ hover",
               "cssVar": "--ntg-icon-system-success-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-success-secondary-hover-alt"
             },
@@ -4346,7 +4298,7 @@
               "level": "tertiary",
               "light": "green-600",
               "dark": "green-300",
-              "description": "ไอคอนสถานะสำเร็จ (รอง) · สถานะระบบ · สถานะ hover",
+              "description": "ไอคอนสถานะสำเร็จ (รอง) สถานะระบบ สถานะ hover",
               "cssVar": "--ntg-icon-system-success-secondary-hover",
               "darkVar": "--ntg-color-foreground-system-success-secondary-hover"
             },
@@ -4356,7 +4308,7 @@
               "level": "primary",
               "light": "yellow-600",
               "dark": "yellow-500",
-              "description": "ไอคอนสถานะเตือน (หลัก) · สถานะระบบ",
+              "description": "ไอคอนสถานะเตือน (หลัก) สถานะระบบ",
               "cssVar": "--ntg-icon-system-warning-primary",
               "darkVar": "--ntg-color-foreground-system-warning-primary"
             },
@@ -4366,7 +4318,7 @@
               "level": "secondary",
               "light": "yellow-600",
               "dark": "gray-dark-50",
-              "description": "ไอคอนสถานะเตือน (หลัก) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
+              "description": "ไอคอนสถานะเตือน (หลัก) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
               "cssVar": "--ntg-icon-system-warning-primary-alt",
               "darkVar": "--ntg-color-foreground-system-warning-primary-alt"
             },
@@ -4376,7 +4328,7 @@
               "level": "tertiary",
               "light": "yellow-700",
               "dark": "gray-dark-25",
-              "description": "ไอคอนสถานะเตือน (หลัก) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) · สถานะ hover",
+              "description": "ไอคอนสถานะเตือน (หลัก) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) สถานะ hover",
               "cssVar": "--ntg-icon-system-warning-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-warning-primary-alt-hover"
             },
@@ -4386,7 +4338,7 @@
               "level": "tertiary",
               "light": "yellow-700",
               "dark": "yellow-400",
-              "description": "ไอคอนสถานะเตือน (หลัก) · สถานะระบบ · สถานะ hover",
+              "description": "ไอคอนสถานะเตือน (หลัก) สถานะระบบ สถานะ hover",
               "cssVar": "--ntg-icon-system-warning-primary-hover",
               "darkVar": "--ntg-color-foreground-system-warning-primary-hover"
             },
@@ -4396,7 +4348,7 @@
               "level": "primary",
               "light": "yellow-500",
               "dark": "yellow-400",
-              "description": "ไอคอนสถานะเตือน (รอง) · สถานะระบบ",
+              "description": "ไอคอนสถานะเตือน (รอง) สถานะระบบ",
               "cssVar": "--ntg-icon-system-warning-secondary",
               "darkVar": "--ntg-color-foreground-system-warning-secondary"
             },
@@ -4406,7 +4358,7 @@
               "level": "secondary",
               "light": "yellow-500",
               "dark": "gray-dark-100",
-              "description": "ไอคอนสถานะเตือน (รอง) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
+              "description": "ไอคอนสถานะเตือน (รอง) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด)",
               "cssVar": "--ntg-icon-system-warning-secondary-alt",
               "darkVar": "--ntg-color-foreground-system-warning-secondary-alt"
             },
@@ -4416,7 +4368,7 @@
               "level": "tertiary",
               "light": "yellow-600",
               "dark": "gray-dark-50",
-              "description": "ไอคอนสถานะเตือน (รอง) · สถานะระบบ · แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) · สถานะ hover",
+              "description": "ไอคอนสถานะเตือน (รอง) สถานะระบบ แบบ alt (มักกลับเป็นขาว/เทาในโหมดมืด) สถานะ hover",
               "cssVar": "--ntg-icon-system-warning-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-system-warning-secondary-alt-hover"
             },
@@ -4426,7 +4378,7 @@
               "level": "tertiary",
               "light": "yellow-600",
               "dark": "yellow-300",
-              "description": "ไอคอนสถานะเตือน (รอง) · สถานะระบบ · สถานะ hover",
+              "description": "ไอคอนสถานะเตือน (รอง) สถานะระบบ สถานะ hover",
               "cssVar": "--ntg-icon-system-warning-secondary-hover",
               "darkVar": "--ntg-color-foreground-system-warning-secondary-hover"
             }
@@ -4442,7 +4394,7 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Utility color · color/utility/* · 15 เฉดสี",
+          "text": "Utility color color/utility/* 15 เฉดสี",
           "sub": "Gray"
         },
         {
@@ -5628,7 +5580,7 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Utility color · color/utility/* · 15 เฉดสี",
+          "text": "Utility color color/utility/* 15 เฉดสี",
           "sub": "Brand"
         },
         {
@@ -5786,7 +5738,7 @@
             },
             {
               "no": "16",
-              "name": "utility-brand700alt",
+              "name": "utility-brand-700-alt",
               "level": "primary",
               "light": "brand-700",
               "dark": "gray-dark-300",
@@ -5995,7 +5947,7 @@
             },
             {
               "no": "16",
-              "name": "utility-ams-700alt",
+              "name": "utility-ams-700-alt",
               "level": "primary",
               "light": "ams-700",
               "dark": "gray-dark-300",
@@ -6055,7 +6007,7 @@
       "blocks": [
         {
           "type": "h",
-          "text": "AMS · Icon color · color/icon/ams/*"
+          "text": "AMS Icon color color/icon/ams/*"
         },
         {
           "type": "colorTable",
@@ -6066,7 +6018,7 @@
               "level": "primary",
               "light": "base-white-100",
               "dark": "gray-dark-50",
-              "description": "สีไอคอน · โทน AMS · บนพื้นแบรนด์",
+              "description": "สีไอคอน โทน AMS บนพื้นแบรนด์",
               "cssVar": "--ntg-icon-ams-on-brand",
               "darkVar": "--ntg-color-foreground-primary-on-brand"
             },
@@ -6076,7 +6028,7 @@
               "level": "primary",
               "light": "ams-600",
               "dark": "ams-500",
-              "description": "สีไอคอน · โทน AMS · หลัก",
+              "description": "สีไอคอน โทน AMS หลัก",
               "cssVar": "--ntg-icon-ams-primary",
               "darkVar": "--ntg-color-foreground-ams-primary"
             },
@@ -6086,7 +6038,7 @@
               "level": "secondary",
               "light": "ams-600",
               "dark": "gray-dark-50",
-              "description": "สีไอคอน · โทน AMS · หลัก alt",
+              "description": "สีไอคอน โทน AMS หลัก alt",
               "cssVar": "--ntg-icon-ams-primary-alt",
               "darkVar": "--ntg-color-foreground-ams-primary-alt"
             },
@@ -6096,7 +6048,7 @@
               "level": "tertiary",
               "light": "ams-700",
               "dark": "gray-dark-25",
-              "description": "สีไอคอน · โทน AMS · หลัก alt hover",
+              "description": "สีไอคอน โทน AMS หลัก alt hover",
               "cssVar": "--ntg-icon-ams-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-ams-primary-alt-hover"
             },
@@ -6106,7 +6058,7 @@
               "level": "tertiary",
               "light": "ams-700",
               "dark": "ams-300",
-              "description": "สีไอคอน · โทน AMS · หลัก hover",
+              "description": "สีไอคอน โทน AMS หลัก hover",
               "cssVar": "--ntg-icon-ams-primary-hover",
               "darkVar": "--ntg-color-utility-u-ams-700"
             },
@@ -6116,7 +6068,7 @@
               "level": "primary",
               "light": "ams-500",
               "dark": "ams-500",
-              "description": "สีไอคอน · โทน AMS · รอง",
+              "description": "สีไอคอน โทน AMS รอง",
               "cssVar": "--ntg-icon-ams-secondary",
               "darkVar": "--ntg-color-foreground-ams-secondary"
             },
@@ -6126,7 +6078,7 @@
               "level": "secondary",
               "light": "ams-500",
               "dark": "gray-dark-100",
-              "description": "สีไอคอน · โทน AMS · รอง alt",
+              "description": "สีไอคอน โทน AMS รอง alt",
               "cssVar": "--ntg-icon-ams-secondary-alt",
               "darkVar": "--ntg-color-foreground-ams-secondary-alt"
             },
@@ -6136,7 +6088,7 @@
               "level": "tertiary",
               "light": "ams-600",
               "dark": "gray-dark-200",
-              "description": "สีไอคอน · โทน AMS · รอง alt hover",
+              "description": "สีไอคอน โทน AMS รอง alt hover",
               "cssVar": "--ntg-icon-ams-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-ams-secondary-alt-hover"
             },
@@ -6146,7 +6098,7 @@
               "level": "tertiary",
               "light": "ams-600",
               "dark": "ams-400",
-              "description": "สีไอคอน · โทน AMS · รอง hover",
+              "description": "สีไอคอน โทน AMS รอง hover",
               "cssVar": "--ntg-icon-ams-secondary-hover",
               "darkVar": "--ntg-color-utility-u-ams-600"
             }
@@ -6154,7 +6106,7 @@
         },
         {
           "type": "h",
-          "text": "AMS · Text color · color/text/ams/*"
+          "text": "AMS Text color color/text/ams/*"
         },
         {
           "type": "colorTable",
@@ -6165,7 +6117,7 @@
               "level": "primary",
               "light": "ams-600",
               "dark": "ams-500",
-              "description": "สีข้อความ · โทน AMS · หลัก",
+              "description": "สีข้อความ โทน AMS หลัก",
               "cssVar": "--ntg-color-text-ams-primary",
               "darkVar": "--ntg-color-text-ams-primary"
             },
@@ -6175,7 +6127,7 @@
               "level": "secondary",
               "light": "ams-600",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · โทน AMS · หลัก alt",
+              "description": "สีข้อความ โทน AMS หลัก alt",
               "cssVar": "--ntg-color-text-ams-primary-alt",
               "darkVar": "--ntg-color-text-ams-primary-alt"
             },
@@ -6185,7 +6137,7 @@
               "level": "tertiary",
               "light": "ams-700",
               "dark": "gray-dark-25",
-              "description": "สีข้อความ · โทน AMS · หลัก alt hover",
+              "description": "สีข้อความ โทน AMS หลัก alt hover",
               "cssVar": "--ntg-color-text-ams-primary-alt-hover",
               "darkVar": "--ntg-color-text-ams-primary-alt-hover"
             },
@@ -6195,7 +6147,7 @@
               "level": "tertiary",
               "light": "ams-700",
               "dark": "ams-400",
-              "description": "สีข้อความ · โทน AMS · หลัก hover",
+              "description": "สีข้อความ โทน AMS หลัก hover",
               "cssVar": "--ntg-color-text-ams-primary-hover",
               "darkVar": "--ntg-color-text-ams-primary-hover"
             },
@@ -6205,7 +6157,7 @@
               "level": "primary",
               "light": "ams-500",
               "dark": "ams-500",
-              "description": "สีข้อความ · โทน AMS · รอง",
+              "description": "สีข้อความ โทน AMS รอง",
               "cssVar": "--ntg-color-text-ams-secondary",
               "darkVar": "--ntg-color-text-ams-secondary"
             },
@@ -6215,7 +6167,7 @@
               "level": "secondary",
               "light": "ams-500",
               "dark": "gray-dark-100",
-              "description": "สีข้อความ · โทน AMS · รอง alt",
+              "description": "สีข้อความ โทน AMS รอง alt",
               "cssVar": "--ntg-color-text-ams-secondary-alt",
               "darkVar": "--ntg-color-text-ams-secondary-alt"
             },
@@ -6225,7 +6177,7 @@
               "level": "tertiary",
               "light": "ams-600",
               "dark": "gray-dark-50",
-              "description": "สีข้อความ · โทน AMS · รอง alt hover",
+              "description": "สีข้อความ โทน AMS รอง alt hover",
               "cssVar": "--ntg-color-text-ams-secondary-alt-hover",
               "darkVar": "--ntg-color-text-ams-secondary-alt-hover"
             },
@@ -6235,7 +6187,7 @@
               "level": "tertiary",
               "light": "ams-600",
               "dark": "ams-400",
-              "description": "สีข้อความ · โทน AMS · รอง hover",
+              "description": "สีข้อความ โทน AMS รอง hover",
               "cssVar": "--ntg-color-text-ams-secondary-hover",
               "darkVar": "--ntg-color-text-ams-secondary-hover"
             },
@@ -6245,7 +6197,7 @@
               "level": "primary",
               "light": "ams-400",
               "dark": "ams-500",
-              "description": "สีข้อความ · โทน AMS · tertiary",
+              "description": "สีข้อความ โทน AMS tertiary",
               "cssVar": "--ntg-color-text-ams-tertiary",
               "darkVar": "--ntg-color-text-ams-tertiary"
             },
@@ -6255,7 +6207,7 @@
               "level": "secondary",
               "light": "ams-400",
               "dark": "gray-dark-200",
-              "description": "สีข้อความ · โทน AMS · tertiary alt",
+              "description": "สีข้อความ โทน AMS tertiary alt",
               "cssVar": "--ntg-color-text-ams-tertiary-alt",
               "darkVar": "--ntg-color-text-ams-tertiary-alt"
             },
@@ -6265,7 +6217,7 @@
               "level": "tertiary",
               "light": "ams-500",
               "dark": "gray-dark-100",
-              "description": "สีข้อความ · โทน AMS · tertiary alt hover",
+              "description": "สีข้อความ โทน AMS tertiary alt hover",
               "cssVar": "--ntg-color-text-ams-tertiary-alt-hover",
               "darkVar": "--ntg-color-text-ams-tertiary-alt-hover"
             },
@@ -6275,7 +6227,7 @@
               "level": "tertiary",
               "light": "ams-500",
               "dark": "ams-400",
-              "description": "สีข้อความ · โทน AMS · tertiary hover",
+              "description": "สีข้อความ โทน AMS tertiary hover",
               "cssVar": "--ntg-color-text-ams-tertiary-hover",
               "darkVar": "--ntg-color-text-ams-tertiary-hover"
             }
@@ -6283,7 +6235,7 @@
         },
         {
           "type": "h",
-          "text": "AMS · Background color · color/background/ams/*"
+          "text": "AMS Background color color/background/ams/*"
         },
         {
           "type": "colorTable",
@@ -6294,7 +6246,7 @@
               "level": "primary",
               "light": "ams-50",
               "dark": "ams-500",
-              "description": "สีพื้นหลัง · โทน AMS · หลัก",
+              "description": "สีพื้นหลัง โทน AMS หลัก",
               "cssVar": "--ntg-color-background-ams-primary",
               "darkVar": "--ntg-color-background-ams-primary"
             },
@@ -6304,7 +6256,7 @@
               "level": "secondary",
               "light": "ams-50",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · โทน AMS · หลัก alt",
+              "description": "สีพื้นหลัง โทน AMS หลัก alt",
               "cssVar": "--ntg-color-background-ams-primary-alt",
               "darkVar": "--ntg-color-background-ams-primary-alt"
             },
@@ -6314,7 +6266,7 @@
               "level": "tertiary",
               "light": "ams-25",
               "dark": "ams-950",
-              "description": "สีพื้นหลัง · โทน AMS · หลัก alt hover",
+              "description": "สีพื้นหลัง โทน AMS หลัก alt hover",
               "cssVar": "--ntg-color-background-ams-primary-alt-hover",
               "darkVar": "--ntg-color-background-ams-primary-alt-hover"
             },
@@ -6324,7 +6276,7 @@
               "level": "tertiary",
               "light": "ams-25",
               "dark": "ams-400",
-              "description": "สีพื้นหลัง · โทน AMS · หลัก hover",
+              "description": "สีพื้นหลัง โทน AMS หลัก hover",
               "cssVar": "--ntg-color-background-ams-primary-hover",
               "darkVar": "--ntg-color-background-ams-primary-hover"
             },
@@ -6334,7 +6286,7 @@
               "level": "primary",
               "light": "ams-100",
               "dark": "ams-600",
-              "description": "สีพื้นหลัง · โทน AMS · รอง",
+              "description": "สีพื้นหลัง โทน AMS รอง",
               "cssVar": "--ntg-color-background-ams-secondary",
               "darkVar": "--ntg-color-background-ams-secondary"
             },
@@ -6344,7 +6296,7 @@
               "level": "secondary",
               "light": "ams-50",
               "dark": "ams-500",
-              "description": "สีพื้นหลัง · โทน AMS · รอง hover",
+              "description": "สีพื้นหลัง โทน AMS รอง hover",
               "cssVar": "--ntg-color-background-ams-secondary-hover",
               "darkVar": "--ntg-color-background-ams-secondary-hover"
             },
@@ -6354,7 +6306,7 @@
               "level": "primary",
               "light": "ams-800",
               "dark": "gray-dark-800",
-              "description": "สีพื้นหลัง · โทน AMS · section",
+              "description": "สีพื้นหลัง โทน AMS section",
               "cssVar": "--ntg-color-background-ams-section",
               "darkVar": "--ntg-color-background-ams-section"
             },
@@ -6364,7 +6316,7 @@
               "level": "secondary",
               "light": "ams-700",
               "dark": "gray-dark-950",
-              "description": "สีพื้นหลัง · โทน AMS · section subtle",
+              "description": "สีพื้นหลัง โทน AMS section subtle",
               "cssVar": "--ntg-color-background-ams-section-subtle",
               "darkVar": "--ntg-color-background-ams-section-subtle"
             },
@@ -6374,7 +6326,7 @@
               "level": "primary",
               "light": "ams-600",
               "dark": "ams-600",
-              "description": "สีพื้นหลัง · โทน AMS · ทึบ",
+              "description": "สีพื้นหลัง โทน AMS ทึบ",
               "cssVar": "--ntg-color-background-ams-solid",
               "darkVar": "--ntg-color-background-ams-solid"
             },
@@ -6384,7 +6336,7 @@
               "level": "secondary",
               "light": "ams-700",
               "dark": "ams-500",
-              "description": "สีพื้นหลัง · โทน AMS · ทึบ hover",
+              "description": "สีพื้นหลัง โทน AMS ทึบ hover",
               "cssVar": "--ntg-color-background-ams-solid-hover",
               "darkVar": "--ntg-color-background-ams-solid-hover"
             }
@@ -6392,7 +6344,7 @@
         },
         {
           "type": "h",
-          "text": "AMS · Border color · color/border/ams/*"
+          "text": "AMS Border color color/border/ams/*"
         },
         {
           "type": "colorTable",
@@ -6403,7 +6355,7 @@
               "level": "primary",
               "light": "ams-300",
               "dark": "ams-400",
-              "description": "สีเส้นขอบ · โทน AMS · ค่าเริ่มต้น",
+              "description": "สีเส้นขอบ โทน AMS ค่าเริ่มต้น",
               "cssVar": "--ntg-color-border-ams-default",
               "darkVar": "--ntg-color-border-ams-default"
             },
@@ -6413,7 +6365,7 @@
               "level": "primary",
               "light": "ams-400",
               "dark": "ams-300",
-              "description": "สีเส้นขอบ · โทน AMS · default hover",
+              "description": "สีเส้นขอบ โทน AMS default hover",
               "cssVar": "--ntg-color-border-ams-default-hover",
               "darkVar": "--ntg-color-border-ams-default-hover"
             },
@@ -6423,7 +6375,7 @@
               "level": "primary",
               "light": "ams-600",
               "dark": "ams-500",
-              "description": "สีเส้นขอบ · โทน AMS · ทึบ",
+              "description": "สีเส้นขอบ โทน AMS ทึบ",
               "cssVar": "--ntg-color-border-ams-solid",
               "darkVar": "--ntg-color-border-ams-solid"
             },
@@ -6433,7 +6385,7 @@
               "level": "secondary",
               "light": "ams-600",
               "dark": "gray-dark-700",
-              "description": "สีเส้นขอบ · โทน AMS · ทึบ alt",
+              "description": "สีเส้นขอบ โทน AMS ทึบ alt",
               "cssVar": "--ntg-color-border-ams-solid-alt",
               "darkVar": "--ntg-color-border-ams-solid-alt"
             },
@@ -6443,7 +6395,7 @@
               "level": "tertiary",
               "light": "ams-700",
               "dark": "ams-400",
-              "description": "สีเส้นขอบ · โทน AMS · ทึบ hover",
+              "description": "สีเส้นขอบ โทน AMS ทึบ hover",
               "cssVar": "--ntg-color-border-ams-solid-hover",
               "darkVar": "--ntg-color-border-ams-solid-hover"
             }
@@ -6451,7 +6403,7 @@
         },
         {
           "type": "h",
-          "text": "AMS · Foreground color · color/foreground/ams/*"
+          "text": "AMS Foreground color color/foreground/ams/*"
         },
         {
           "type": "colorTable",
@@ -6462,7 +6414,7 @@
               "level": "primary",
               "light": "ams-600",
               "dark": "ams-500",
-              "description": "สี foreground · โทน AMS · หลัก",
+              "description": "สี foreground โทน AMS หลัก",
               "cssVar": "--ntg-color-foreground-ams-primary",
               "darkVar": "--ntg-color-foreground-ams-primary"
             },
@@ -6472,7 +6424,7 @@
               "level": "secondary",
               "light": "ams-600",
               "dark": "gray-dark-50",
-              "description": "สี foreground · โทน AMS · หลัก alt",
+              "description": "สี foreground โทน AMS หลัก alt",
               "cssVar": "--ntg-color-foreground-ams-primary-alt",
               "darkVar": "--ntg-color-foreground-ams-primary-alt"
             },
@@ -6482,7 +6434,7 @@
               "level": "tertiary",
               "light": "ams-700",
               "dark": "gray-dark-25",
-              "description": "สี foreground · โทน AMS · หลัก alt hover",
+              "description": "สี foreground โทน AMS หลัก alt hover",
               "cssVar": "--ntg-color-foreground-ams-primary-alt-hover",
               "darkVar": "--ntg-color-foreground-ams-primary-alt-hover"
             },
@@ -6492,7 +6444,7 @@
               "level": "tertiary",
               "light": "ams-700",
               "dark": "ams-400",
-              "description": "สี foreground · โทน AMS · หลัก hover",
+              "description": "สี foreground โทน AMS หลัก hover",
               "cssVar": "--ntg-color-foreground-ams-primary-hover",
               "darkVar": "--ntg-color-foreground-ams-primary-hover"
             },
@@ -6502,7 +6454,7 @@
               "level": "primary",
               "light": "ams-500",
               "dark": "ams-500",
-              "description": "สี foreground · โทน AMS · รอง",
+              "description": "สี foreground โทน AMS รอง",
               "cssVar": "--ntg-color-foreground-ams-secondary",
               "darkVar": "--ntg-color-foreground-ams-secondary"
             },
@@ -6512,7 +6464,7 @@
               "level": "secondary",
               "light": "ams-500",
               "dark": "gray-dark-100",
-              "description": "สี foreground · โทน AMS · รอง alt",
+              "description": "สี foreground โทน AMS รอง alt",
               "cssVar": "--ntg-color-foreground-ams-secondary-alt",
               "darkVar": "--ntg-color-foreground-ams-secondary-alt"
             },
@@ -6522,7 +6474,7 @@
               "level": "tertiary",
               "light": "ams-600",
               "dark": "gray-dark-200",
-              "description": "สี foreground · โทน AMS · รอง alt hover",
+              "description": "สี foreground โทน AMS รอง alt hover",
               "cssVar": "--ntg-color-foreground-ams-secondary-alt-hover",
               "darkVar": "--ntg-color-foreground-ams-secondary-alt-hover"
             },
@@ -6532,7 +6484,7 @@
               "level": "tertiary",
               "light": "ams-600",
               "dark": "ams-400",
-              "description": "สี foreground · โทน AMS · รอง hover",
+              "description": "สี foreground โทน AMS รอง hover",
               "cssVar": "--ntg-color-foreground-ams-secondary-hover",
               "darkVar": "--ntg-color-foreground-ams-secondary-hover"
             }

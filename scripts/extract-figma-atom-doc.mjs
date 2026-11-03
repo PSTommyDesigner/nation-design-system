@@ -112,7 +112,7 @@ function cssVarOf(node, where) {
 }
 // ชั้นที่ซ่อนไว้ (visible: false) ไม่ใช่เนื้อหา เช่น supporting text ที่ปิดอยู่ในเซลตาราง
 const findAll = (n, pred, acc = []) => { if (n.visible === false) return acc; if (pred(n)) acc.push(n); for (const k of n.children ?? []) findAll(k, pred, acc); return acc }
-// "Supporting text" คือข้อความตัวอย่างของเซลที่ลืมลบ ยังเห็นอยู่ในไฟล์ออกแบบหน้า 01 (จดเป็นงานค้างแล้ว 2026-10-28) จึงไม่นับเป็นเนื้อหา
+// "Supporting text" คือข้อความตัวอย่างของเซลตาราง หน้า 01 ซ่อนแล้ว (2026-11-03) แต่หน้าอื่นอาจยังค้าง จึงไม่นับเป็นเนื้อหา
 const PLACEHOLDER = new Set(['Supporting text'])
 const texts = (n) => findAll(n, x => x.type === 'TEXT' && !PLACEHOLDER.has(x.characters.trim())).map(x => x.characters)
 const fontSize = (n) => n.style?.fontSize ?? 0
