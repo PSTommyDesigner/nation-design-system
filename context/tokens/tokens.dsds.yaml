@@ -239,7 +239,9 @@ entries:
           - level: must-not
             statement: Use radius as the only sign of a difference in meaning.
             checkedBy: manual
-      # NEEDS CLARIFICATION: which radius token should a screen-level box that is not a component (a panel, a section box) use?
+          - level: must
+            statement: A box that is not a component reuses an existing radius token. A panel or section box uses info-card radius, a color step box in the docs uses doc-table radius, and a round dot uses pill-tag radius full. No raw radius and no percent values (decided by the user 2026-11-03).
+            checkedBy: manual
     tokenType: dimension
     source: ../../tokens/tokens.json/component.json
 
