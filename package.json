@@ -19,7 +19,7 @@
     "worklog:schedule-on": "launchctl load -w ~/Library/LaunchAgents/com.nation.worklog-remind.plist && echo '✓ เตือน worklog เปิด (จ-ศ 16:00)'",
     "worklog:schedule-off": "launchctl unload ~/Library/LaunchAgents/com.nation.worklog-remind.plist && echo '✓ เตือน worklog ปิดแล้ว'",
     "worklog:month": "node scripts/worklog-month.mjs",
-    "worklog:month-on": "launchctl load -w ~/Library/LaunchAgents/com.nation.worklog-month.plist && echo '✓ push worklog อัตโนมัติ เปิด (จ-ศ 16:30)'",
+    "worklog:month-on": "launchctl load -w ~/Library/LaunchAgents/com.nation.worklog-month.plist && echo '✓ push worklog อัตโนมัติ เปิด (จ-ศ 16:00)'",
     "worklog:month-off": "launchctl unload ~/Library/LaunchAgents/com.nation.worklog-month.plist && echo '✓ push worklog อัตโนมัติ ปิดแล้ว'",
     "worklog:obsidian": "node scripts/worklog-obsidian.mjs",
     "one-cms:obsidian": "node scripts/one-cms-obsidian.mjs",

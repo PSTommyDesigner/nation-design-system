@@ -33,7 +33,7 @@ const RULES = 'Rules'
 const OWNED_ROOT = /^(Rules|Worklog \d{4})$/
 // ⚠️ ห้ามเปลี่ยนข้อความ BANNER สคริปต์ใช้ข้อความนี้แยกไฟล์ที่ตัวเองสร้างออกจากไฟล์ที่ user เขียนเอง ก่อนลบ
 const BANNER = 'สร้างอัตโนมัติจาก repo nation-design-system สำหรับโปรเจกต์ One CMS'
-const HOWTO = 'แก้ที่ไฟล์ต้นทางใน repo แล้วรัน `npm run one-cms:obsidian` (รันเองตอน 16:30) ถ้าแก้ในนี้จะถูกเขียนทับรอบถัดไป'
+const HOWTO = 'แก้ที่ไฟล์ต้นทางใน repo แล้วรัน `npm run one-cms:obsidian` (รันเองตอน 16:00) ถ้าแก้ในนี้จะถูกเขียนทับรอบถัดไป'
 const q = (s) => JSON.stringify(s)
 
 export function vaultPath(argv = process.argv.slice(2)) {

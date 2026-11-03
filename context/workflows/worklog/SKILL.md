@@ -27,7 +27,7 @@ Official rule files (Thai), read the one the task needs:
 
 ## Ask first
 - Writing a task record (the `worklog` entry before closing a task, or any other entry): wait for the user's confirmation first, every time
-- The daily worklog and the 16:30 Obsidian copy need no approval. Just report what was written
+- The daily worklog and the 16:00 Obsidian copy need no approval. Just report what was written
 
 ## Creating a task
 - `npm run worklog:task -- "<task name>"` creates the file from the template and sets it as the current task
@@ -47,5 +47,5 @@ Official rule files (Thai), read the one the task needs:
 ## Daily worklog
 - 4 sections in this order: `งานค้าง`, `งานที่ทำวันนี้`, `ผลลัพธ์`, `ติดปัญหา`. The scripts read these headings exactly
 - Remove finished items from `งานค้าง`. Unfinished items stay and carry over to the next month by themselves
-- The file must exist before 16:30. The 16:30 run (`com.nation.worklog-month`, `npm run worklog:month`) copies everything to both vaults. After 16:30, run `npm run worklog:obsidian` yourself, no approval needed
-- One CMS has its own vault (`obsidian/One CMS`). Every worklog item about One CMS MUST contain the words `One CMS`. After 16:30, run `npm run one-cms:obsidian` yourself. See `docs/rules/worklog.md` section 8
+- The file must exist before 16:00. The 16:00 run (`com.nation.worklog-month`, `npm run worklog:month`) copies everything to both vaults. After 16:00, run `npm run worklog:obsidian` yourself, no approval needed
+- One CMS has its own vault (`obsidian/One CMS`). Every worklog item about One CMS MUST contain the words `One CMS`. After 16:00, run `npm run one-cms:obsidian` yourself. See `docs/rules/worklog.md` section 8
