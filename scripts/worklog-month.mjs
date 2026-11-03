@@ -9,6 +9,9 @@
 //   subtask '01 งานที่ทำ'  = 1 วัน 1 comment หาใบของวันนั้นแล้วเขียนทับ ไม่เจอค่อยโพสต์ใบใหม่
 //   subtask '02 งานค้าง'   = comment ใบเดียวตลอด เขียนทับใบเดิมเสมอ ห้ามโพสต์ใบใหม่
 //
+// เปลี่ยนเดือนแล้วยังไม่มีการ์ด สคริปต์สร้างการ์ดกับ subtask 2 ใบเอง ไม่ต้องถาม (user สั่ง 2026-11-02)
+//   ถ้า worklog วันแรกของเดือนไม่มีงานค้าง จะยกรายการจาก '02 งานค้าง' ของเดือนก่อนมาแทน
+//
 // ก่อนส่ง Asana จะสำเนา worklog ทั้งหมดไป Obsidian vault ด้วย worklog-obsidian.mjs (user สั่ง 2026-10-27)
 // และสำเนากฎกับงานของ One CMS ไป vault ของโปรเจกต์ด้วย one-cms-obsidian.mjs (user สั่ง 2026-10-28)
 import { readFileSync, existsSync } from 'node:fs'
@@ -16,6 +19,7 @@ import { worklogPath, todayISO } from './worklog-path.mjs'
 
 const API = 'https://app.asana.com/api/1.0'
 const PROJECT = '1212508564439334'
+const ASSIGNEE = '1202145155564203'
 const TH_MONTH = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
                   'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
 
@@ -91,15 +95,63 @@ const [y, m, d] = day.split('-').map(Number)
 const dayLabel = `${TH_DAY[new Date(y, m - 1, d).getDay()]} ${d} ${TH_MONTH[m - 1]} ${y + 543}`
 const thaiToday = `${d} ${TH_MONTH[m - 1].slice(0, 3)}. ${y + 543}`
 
-// ── หา subtask ปลายทาง ──
-const tasks = await api('GET', `/projects/${PROJECT}/tasks?opt_fields=name&limit=100`)
-const monthCard = tasks.find((t) => t.name.includes('[สรุปงาน]') && t.name.includes(TH_MONTH[m - 1]))
-if (!monthCard) { console.error(`✗ ไม่พบการ์ดสรุปเดือน ${TH_MONTH[m - 1]} ในโปรเจกต์`); process.exit(1) }
-const subs = await api('GET', `/tasks/${monthCard.gid}/subtasks?opt_fields=name`)
-const findSub = (kw) => subs.find((s) => s.name.includes(kw))
-const subDone = findSub('งานที่ทำ')
-const subPending = findSub('งานค้าง')
-if (!subDone || !subPending) { console.error('✗ ไม่พบ subtask 01 งานที่ทำ หรือ 02 งานค้าง'); process.exit(1) }
+// ── หาการ์ดเดือน ──
+// ดึงครบทุกหน้า เพราะอ่านแค่ 100 ใบแรกแล้วไม่เจอ จะกลายเป็นสร้างการ์ดซ้ำ
+async function allProjectTasks() {
+  const out = []
+  let offset = ''
+  do {
+    const r = await fetch(`${API}/projects/${PROJECT}/tasks?opt_fields=name,created_at&limit=100${offset ? `&offset=${offset}` : ''}`, { headers: { Authorization: `Bearer ${TOKEN}` } })
+    if (!r.ok) throw new Error(`GET tasks → ${r.status} ${await r.text()}`)
+    const j = await r.json()
+    out.push(...j.data)
+    offset = j.next_page?.offset ?? ''
+  } while (offset)
+  return out
+}
+// ชื่อการ์ดไม่มีปี จึงเทียบปีจากวันที่สร้าง ไม่อย่างนั้นปีหน้าจะไปเจอการ์ดเดือนเดียวกันของปีนี้
+const findMonthCard = (tasks, year, month) =>
+  tasks.find((t) => t.name.includes('[สรุปงาน]') && t.name.includes(`[${TH_MONTH[month - 1]}]`) && new Date(t.created_at).getFullYear() === year)
+
+/** รายการงานค้างล่าสุดจาก subtask '02 งานค้าง' ของการ์ดเดือนก่อน */
+async function previousPending(tasks) {
+  const card = findMonthCard(tasks, m === 1 ? y - 1 : y, m === 1 ? 12 : m - 1)
+  if (!card) return []
+  const subs = await api('GET', `/tasks/${card.gid}/subtasks?opt_fields=name`)
+  const sub = subs.find((s) => s.name.includes('งานค้าง'))
+  if (!sub) return []
+  const stories = await api('GET', `/tasks/${sub.gid}/stories?opt_fields=resource_subtype,html_text&limit=100`)
+  const html = stories.find((s) => s.resource_subtype === 'comment_added')?.html_text ?? ''
+  const decode = (x) => x.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&')
+  return [...html.matchAll(/<li>(.*?)<\/li>/gs)].map((x) => decode(x[1].replace(/<strong>(.*?)<\/strong>/g, '**$1**').replace(/<[^>]+>/g, '').trim())).filter(Boolean)
+}
+
+/** สร้างการ์ดเดือนตามแบบการ์ดเดือนก่อน ค่า field ตรงกับ context/workflows/asana-worklog/reference.md */
+async function createMonthCard() {
+  const card = await api('POST', '/tasks', { data: {
+    name: `[สรุปงาน]-[${TH_MONTH[m - 1]}] งานที่ทำและงานค้าง`,
+    projects: [PROJECT],
+    assignee: ASSIGNEE,
+    resource_subtype: 'custom',
+    custom_type: '1212577985434838',
+    custom_type_status_option: '1212577985434856',
+    custom_fields: {
+      1212876421536464: '1212876426148709',
+      1212897382706626: '1212897382706628',
+      1213022521699804: '1216647463739381',
+      1212991461878499: '1212991461878507',
+      1212991461878509: { date: `${y}-${String(m).padStart(2, '0')}-01` },
+    },
+  } })
+  for (const name of ['01 งานที่ทำ', '02 งานค้าง']) await api('POST', `/tasks/${card.gid}/subtasks`, { data: { name, assignee: ASSIGNEE } })
+  return card
+}
+
+const tasks = await allProjectTasks()
+const monthCard = findMonthCard(tasks, y, m)
+const isNewMonth = !monthCard
+// วันแรกของเดือนที่ไม่ได้เขียนงานค้าง ใช้รายการของเดือนก่อน งานค้างจะได้ไม่หายตอนขึ้นเดือนใหม่
+const pendingItems = section('งานค้าง').length ? section('งานค้าง') : (isNewMonth ? await previousPending(tasks) : [])
 
 async function comments(gid) {
   const st = await api('GET', `/tasks/${gid}/stories?opt_fields=gid,resource_subtype,text&limit=100`)
@@ -118,16 +170,24 @@ const pendingHtml =
   `<body><h2><strong>📌 งานค้างที่ต้องทำต่อ</strong></h2>` +
   `อัปเดตล่าสุด ${thaiToday} ตอนปิดงาน ของที่เสร็จแล้วหรือตัดสินแล้วตัดออกจากลิสต์ ` +
   `แก้คอมเมนต์ใบนี้ใบเดียว ห้ามโพสต์ใบใหม่` +
-  li(section('งานค้าง')) + '</body>'
+  li(pendingItems) + '</body>'
 
 if (dry) {
   console.log('DRY RUN')
-  console.log('การ์ดเดือน:', monthCard.name)
-  console.log('01 งานที่ทำ:', subDone.gid, '| หัวข้อวัน:', dayLabel, '| ยาว', dayHtml.length)
+  console.log('การ์ดเดือน:', monthCard ? monthCard.name : `ยังไม่มี จะสร้าง [สรุปงาน]-[${TH_MONTH[m - 1]}] พร้อม subtask 2 ใบ`)
+  console.log('หัวข้อวัน:', dayLabel, '| ยาว', dayHtml.length)
   console.log(dayHtml.slice(0, 400))
-  console.log('\n02 งานค้าง:', subPending.gid, '| ยาว', pendingHtml.length)
+  console.log('\n02 งานค้าง:', pendingItems.length, 'รายการ', section('งานค้าง').length ? '(จาก worklog วันนี้)' : '(ยกจากเดือนก่อน)', '| ยาว', pendingHtml.length)
   process.exit(0)
 }
+
+const card = monthCard ?? await createMonthCard()
+if (isNewMonth) console.log(`🆕 สร้างการ์ดเดือนใหม่ ${card.name}`)
+const subs = await api('GET', `/tasks/${card.gid}/subtasks?opt_fields=name`)
+const findSub = (kw) => subs.find((s) => s.name.includes(kw))
+const subDone = findSub('งานที่ทำ')
+const subPending = findSub('งานค้าง')
+if (!subDone || !subPending) { console.error('✗ ไม่พบ subtask 01 งานที่ทำ หรือ 02 งานค้าง'); process.exit(1) }
 
 /** หาคอมเมนต์ของวันนั้น ถ้ามีให้เขียนทับ ไม่มีให้โพสต์ใบใหม่ */
 async function upsertDay(gid, label, html) {
@@ -147,6 +207,6 @@ async function upsertSingle(gid, html) {
 
 const r1 = await upsertDay(subDone.gid, dayLabel, dayHtml)
 const r2 = await upsertSingle(subPending.gid, pendingHtml)
-console.log(`✅ push worklog ${day} ขึ้นการ์ด ${monthCard.name}`)
+console.log(`✅ push worklog ${day} ขึ้นการ์ด ${card.name}`)
 console.log(`   01 งานที่ทำ  ${r1}  (${section('งานที่ทำวันนี้').length} รายการ)`)
-console.log(`   02 งานค้าง   ${r2}  (${section('งานค้าง').length} รายการ)`)
+console.log(`   02 งานค้าง   ${r2}  (${pendingItems.length} รายการ)`)

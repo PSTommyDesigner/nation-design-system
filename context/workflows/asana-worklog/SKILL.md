@@ -14,7 +14,7 @@ Official rule files (Thai), read the one the task needs:
 IDs, statuses and fields are in [reference.md](reference.md). The token is `ASANA_TOKEN` in `.env`. MUST NOT print or paste it.
 
 ## Ask first
-- Creating, editing or deleting a task in Asana: ask first, every time
+- Creating, editing or deleting a task in Asana: ask first, every time. The one exception is the month summary card, which `npm run worklog:month` creates by itself (set by the user 2026-11-02)
 - Push timing has 2 kinds, set by the user 2026-08-27. Don't mix them up
 - Daily worklog (the whole day): push to the subtasks `01 งานที่ทำ` and `02 งานค้าง` of the month's summary card at 16:30, automatically. No approval needed and don't ask again. Just report that it was pushed
 - Task worklog (one card only): update it before closing the card, but always wait for the user's confirmation first
@@ -63,7 +63,7 @@ Kept in separate places. Never post everything as one block like before.
 | Subtask "สรุปงานที่ทำ เดือน<month>" | One comment per day, a daily timeline across all cards |
 | Subtask "สรุปงานค้าง เดือน<month>" | The pending list, kept current. Remove items once done |
 
-- Each new month: create the month's summary card and its 2 subtasks the same way (August 2026 IDs are in [reference.md](reference.md))
+- Each new month: `npm run worklog:month` creates the month's summary card and its 2 subtasks on the first day with a worklog, no approval needed (set by the user 2026-11-02). If that day's worklog has no pending items, it carries over the list from last month's `02 งานค้าง`
 - Creating a subtask: `POST /tasks/{parent}/subtasks` with `name` first, then `PUT` the `html_notes`. MUST NOT use `<p>`: it returns 400 `XML is invalid`
 - Scripts: `npm run worklog:new`, `npm run worklog:asana`, `npm run worklog:month`, `npm run worklog:obsidian` (see `docs/rules/worklog.md` sections 5 and 7)
 - The 16:30 run copies every worklog to Obsidian before it pushes to Asana. When you write or fix a worklog after 16:30, run `npm run worklog:obsidian` yourself. No approval needed: it only writes inside the vault's `Worklog <year>/` folders
