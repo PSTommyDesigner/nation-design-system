@@ -12,7 +12,8 @@
 //
 // โครงใน vault (user กำหนด 2026-10-27)
 //   Worklog 2026/หน้าหลัก.md
-//   Worklog 2026/10 October/Summarize 10 October.md
+//   Worklog 2026/10 October/01 งานที่ทำ 10 October.md   งานที่ทำ 1 วัน 1 หัวข้อ
+//   Worklog 2026/10 October/02 งานค้าง 10 October.md    งานค้างรายการเดียว ยกข้ามเดือน
 //   Worklog 2026/10 October/Oct Week4 Tue27.md
 //   ชื่อเดือนและชื่อไฟล์ไม่มีปี (user สั่ง) ปีอยู่ที่โฟลเดอร์บนสุด 1 ปี 1 โฟลเดอร์ ขึ้นปีใหม่สคริปต์สร้างโฟลเดอร์ใหม่เอง
 //   ชื่อโน้ตซ้ำกันได้ข้ามเดือนข้ามปี ลิงก์ทุกตัวจึงใส่ path เต็มจากราก vault ไม่ใช้ชื่ออย่างเดียว
@@ -45,7 +46,7 @@ const EN_MONTH = ['January','February','March','April','May','June','July','Augu
 const EN_DAY = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 // ⚠️ ห้ามเปลี่ยนข้อความ BANNER สคริปต์ใช้ข้อความนี้แยกไฟล์ที่ตัวเองสร้างออกจากไฟล์ที่ user เขียนเอง ก่อนลบ
 const BANNER = 'สร้างอัตโนมัติจาก worklog รายวันใน repo nation-design-system'
-const HOWTO = 'แก้ที่ไฟล์ต้นทางใน repo แล้วรัน `npm run worklog:obsidian` (รันเองตอน 16:30 พร้อมการส่ง Asana) ถ้าแก้ในนี้จะถูกเขียนทับรอบถัดไป'
+const HOWTO = 'แก้ที่ไฟล์ต้นทางใน repo แล้วรัน `npm run worklog:obsidian` (รันเองตอน 16:30) ถ้าแก้ในนี้จะถูกเขียนทับรอบถัดไป'
 
 export const expandHome = (p) => p.replace(/^~(?=\/|$)/, homedir())
 const q = (s) => JSON.stringify(s)   // ค่า string ใน frontmatter (JSON string เป็น YAML ที่ถูกต้อง)
@@ -81,13 +82,17 @@ export const monthName = (iso) => { const { m } = parts(iso); return `${p2(m)} $
 const yearRoot = (iso) => `Worklog ${parts(iso).y}`
 /** โฟลเดอร์เดือนจากราก vault 'Worklog 2026/10 October' */
 const monthDir = (iso) => `${yearRoot(iso)}/${monthName(iso)}`
-/** 'Summarize 10 October' */
-const summaryName = (iso) => `Summarize ${monthName(iso)}`
+// สรุปเดือนแยก 2 โน้ตตามแบบ subtask ใน Asana (user สั่ง 2026-11-03) งานที่ทำ 1 วัน 1 หัวข้อ งานค้างรายการเดียวยกข้ามเดือน
+/** '01 งานที่ทำ 10 October' */
+const summaryName = (iso) => `01 งานที่ทำ ${monthName(iso)}`
+/** '02 งานค้าง 10 October' */
+const pendingName = (iso) => `02 งานค้าง ${monthName(iso)}`
 /** บันทึกรายวัน 'Oct Week4 Tue27' ชื่อย่อเดือนนำหน้า (user สั่ง 2026-10-28) */
 export const noteName = (iso) => { const { m, d, dow } = parts(iso); return `${EN_MONTH[m - 1].slice(0, 3)} Week${weekOfMonth(iso)} ${EN_DAY[dow]}${d}` }
 /** path ของโน้ตจากราก vault ไม่มี .md ใช้ในลิงก์ */
 const notePath = (iso) => `${monthDir(iso)}/${noteName(iso)}`
 const summaryPath = (iso) => `${monthDir(iso)}/${summaryName(iso)}`
+const pendingPath = (iso) => `${monthDir(iso)}/${pendingName(iso)}`
 const indexPath = (iso) => `${yearRoot(iso)}/${INDEX}`
 const link = (iso, label) => `[[${notePath(iso)}|${label}]]`
 export const isNone = (line) => /^\s*-\s+(ไม่มี|-)\s*$/.test(line)
@@ -189,6 +194,27 @@ export function collectDays(root = ROOT) {
   return { days, warnings }
 }
 
+// ── บันทึกของการ์ดงาน (user สั่ง 2026-11-03 ย้ายจากคอมเมนต์บนการ์ด Asana) ──
+// ต้นทาง docs/daily-log/tasks/<ชื่องาน>.md 1 ไฟล์ต่อ 1 งาน ใน vault อยู่ที่ Worklog <ปี>/Tasks/ ปีมาจากวันเริ่มงาน หรือวันสร้างถ้าไม่มี
+export function collectTasks(root = ROOT) {
+  const base = join(root, 'tasks')
+  if (!existsSync(base)) return []
+  return readdirSync(base).filter((f) => f.endsWith('.md')).sort().map((f) => {
+    const path = join(base, f)
+    const md = codeHex(readFileSync(path, 'utf8'))
+    const fm = Object.fromEntries([...(md.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? '').matchAll(/^(\w+):\s*(.*)$/gm)].map(([, k, v]) => [k, v.replace(/^"|"$/g, '')]))
+    const date = fm.start || fm.created || fm.assign_date || '2026-01-01'
+    return { path, file: f.replace(/\.md$/, ''), md, fm, date }
+  })
+}
+const taskPath = (t) => `${yearRoot(t.date)}/Tasks/${t.file}`
+
+function taskNote(t) {
+  const body = t.md.replace(/^---\n[\s\S]*?\n---\n/, '').trimStart()
+  const front = t.md.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? ''
+  return ['---', front, 'tags:', '  - worklog', '  - worklog/task', `path: ${q(t.path)}`, '---', `> [!note] ${BANNER}`, `> ${HOWTO}`, '', body].join('\n').replace(/\n+$/, '') + '\n'
+}
+
 // ── สร้างโน้ต ──
 function dailyNote(w) {
   // ชื่อโน้ตบอกวันที่อยู่แล้ว ตัดหัวข้อใหญ่บรรทัดแรกของต้นฉบับออก ไม่ให้ชื่อขึ้นซ้ำสองครั้ง
@@ -199,6 +225,7 @@ function dailyNote(w) {
     `day: ${q(dayLabel(w.date))}`,
     ...(w.task ? [`task: ${q(w.task)}`] : []),
     `month: ${q(`[[${summaryPath(w.date)}|${summaryName(w.date)}]]`)}`,
+    `pending: ${q(`[[${pendingPath(w.date)}|${pendingName(w.date)}]]`)}`,
     'tags:',
     '  - worklog',
     ...tagLines(w.tags),
@@ -211,36 +238,53 @@ function dailyNote(w) {
   ].join('\n')
 }
 
-function monthNote(list) {
-  const first = list[0].date
+const monthHead = (list, kind) => [
+  '---',
+  `month: ${list[0].date.slice(0, 7)}`,
+  'tags:',
+  '  - worklog',
+  `  - worklog/${kind}`,
+  ...[...new Set(list.flatMap((w) => w.tags.project))].map((v) => `  - project/${v}`),
+  `days: ${list.length}`,
+  `updated: ${list[list.length - 1].date}`,
+  '---',
+  `> [!info] ${BANNER}`,
+  `> ${HOWTO}`,
+  '',
+]
+
+/** งานค้างของเดือน ใช้รายการของวันล่าสุดที่เขียนงานค้างไว้ ถ้าทั้งเดือนไม่มีเลยยกจากเดือนก่อน
+ *  ข้อที่เสร็จหายไปเองเพราะไฟล์รายวันลบข้อที่เสร็จออกทุกวัน */
+function pendingOf(list, previous) {
+  const latest = [...list].reverse().find((w) => (w.sec['งานค้าง'] || []).some((l) => !isNone(l)))
+  if (latest) return { items: latest.sec['งานค้าง'].filter((l) => !isNone(l)), from: latest.date, carried: false }
+  return previous ? { ...previous, carried: true } : { items: [], from: null, carried: false }
+}
+
+function pendingNote(list, pending) {
   const last = list[list.length - 1]
-  const pending = last.sec['งานค้าง'] || []
+  const where = pending.from
+    ? `${pending.carried ? 'ยกมาจากเดือนก่อน ' : ''}ณ ${link(pending.from, dayLabel(pending.from))}`
+    : `ณ ${link(last.date, dayLabel(last.date))}`
+  return [
+    ...monthHead(list, 'pending'),
+    `${where} ข้อที่เสร็จแล้วลบออกจากไฟล์รายวัน ข้อที่ยังไม่เสร็จยกไปเดือนถัดไป งานที่ทำของเดือนนี้อยู่ที่ [[${summaryPath(last.date)}|${summaryName(last.date)}]]`,
+    '',
+    ...(pending.items.length ? pending.items : ['- ไม่มีงานค้าง']),
+  ].join('\n').replace(/\n+$/, '') + '\n'
+}
+
+function monthNote(list) {
+  const last = list[list.length - 1]
   const out = [
-    '---',
-    `month: ${first.slice(0, 7)}`,
-    'tags:',
-    '  - worklog',
-    '  - worklog/month',
-    ...[...new Set(list.flatMap((w) => w.tags.project))].map((v) => `  - project/${v}`),
-    `days: ${list.length}`,
-    `updated: ${last.date}`,
-    '---',
-    `> [!info] ${BANNER}`,
-    `> ${HOWTO}`,
-    '',
-    '## งานค้าง',
-    '',
-    `ณ ${link(last.date, dayLabel(last.date))} ซึ่งเป็นวันล่าสุดของเดือนที่มีบันทึก`,
-    '',
-    ...(pending.length ? pending : ['- ไม่มีงานค้าง']),
-    '',
-    '## งานที่ทำ',
+    ...monthHead(list, 'month'),
+    `งานค้างของเดือนนี้อยู่ที่ [[${pendingPath(last.date)}|${pendingName(last.date)}]]`,
     '',
   ]
   for (const w of list) {
     const done = w.sec['งานที่ทำวันนี้'] || []
     const result = w.sec['ผลลัพธ์'] || []
-    out.push(`### ${dayLabel(w.date)}`, '')
+    out.push(`## ${dayLabel(w.date)}`, '')
     out.push(`${link(w.date, 'เปิดบันทึกเต็มของวันนี้')}${w.task ? ` การ์ด ${w.task}` : ''}`, '')
     const meta = [
       w.tags.feature.length ? `ฟีเจอร์: ${w.tags.feature.join(', ')}` : '',
@@ -261,7 +305,7 @@ function monthNote(list) {
 }
 
 /** หน้าหลักของปีหนึ่ง days และ byMonth เป็นของปีนั้น years คือทุกปีที่มีบันทึก */
-function indexNote(days, byMonth, years) {
+function indexNote(days, byMonth, years, tasks = []) {
   const last = days[days.length - 1]
   const months = [...byMonth.values()].reverse()
   const others = years.filter((y) => y !== parts(last.date).y).sort((a, b) => b - a)
@@ -274,13 +318,20 @@ function indexNote(days, byMonth, years) {
     `> [!info] ${BANNER}`,
     `> ${HOWTO}`,
     '',
-    `บันทึกล่าสุดของปี ${link(last.date, dayLabel(last.date))} งานค้างล่าสุดอยู่ที่ [[${summaryPath(last.date)}#งานค้าง|งานค้าง ${monthName(last.date)}]]`,
+    `บันทึกล่าสุดของปี ${link(last.date, dayLabel(last.date))} งานค้างล่าสุดอยู่ที่ [[${pendingPath(last.date)}|${pendingName(last.date)}]]`,
     '',
     '## รายเดือน',
     '',
-    ...months.map((l) => `- [[${summaryPath(l[0].date)}|${summaryName(l[0].date)}]] บันทึก ${l.length} วัน`),
+    ...months.map((l) => `- ${monthName(l[0].date)} บันทึก ${l.length} วัน [[${summaryPath(l[0].date)}|งานที่ทำ]] [[${pendingPath(l[0].date)}|งานค้าง]]`),
     '',
     ...(others.length ? ['## ปีอื่น', '', ...others.map((y) => `- [[Worklog ${y}/${INDEX}|Worklog ${y}]]`), ''] : []),
+    '## การ์ดงาน',
+    '',
+    `บันทึกของแต่ละงาน เรียงจากงานล่าสุด ${tasks.length} งาน`,
+    '',
+    // ชื่อที่แสดงใช้ชื่อไฟล์ เพราะวงเล็บเหลี่ยมในชื่อการ์ดทำให้ลิงก์ของ Obsidian ขาด
+    ...[...tasks].sort((a, b) => b.date.localeCompare(a.date)).map((t) => `- ${t.date} [[${taskPath(t)}|${t.file}]]${t.fm.status ? ` ${t.fm.status.split(' ').slice(0, 3).join(' ')}` : ''}`),
+    '',
     '## ค้นหาตาม tag',
     '',
     'จำนวนวันข้างล่างนับเฉพาะปีนี้ คัดลอก tag ไปวางในช่องค้นหาแบบ `tag:#component/TagField` หรือกด Cmd+P พิมพ์ Show tags เพื่อเปิดแผงรายชื่อ tag แล้วคลิก ผลจะได้เฉพาะบันทึกรายวันที่ทำงานนั้น',
@@ -360,11 +411,18 @@ export function syncObsidian({ vault = vaultPath(), dry = false } = {}) {
   }
   const years = [...new Set(days.map((w) => parts(w.date).y))]
   for (const w of days) put(join(vault, `${notePath(w.date)}.md`), dailyNote(w), dry, stat)
-  for (const list of byMonth.values()) put(join(vault, `${summaryPath(list[0].date)}.md`), monthNote(list), dry, stat)
+  let previous = null
+  for (const list of byMonth.values()) {
+    put(join(vault, `${summaryPath(list[0].date)}.md`), monthNote(list), dry, stat)
+    previous = pendingOf(list, previous)
+    put(join(vault, `${pendingPath(list[0].date)}.md`), pendingNote(list, previous), dry, stat)
+  }
+  const tasks = collectTasks()
+  for (const t of tasks) put(join(vault, `${taskPath(t)}.md`), taskNote(t), dry, stat)
   for (const y of years) {
     const ofYear = days.filter((w) => parts(w.date).y === y)
     const monthsOfYear = new Map([...byMonth].filter(([k]) => Number(k.slice(0, 4)) === y))
-    put(join(vault, `${indexPath(ofYear[0].date)}.md`), indexNote(ofYear, monthsOfYear, years), dry, stat)
+    put(join(vault, `${indexPath(ofYear[0].date)}.md`), indexNote(ofYear, monthsOfYear, years, tasks.filter((t) => parts(t.date).y === y)), dry, stat)
   }
   prune(vault, dry, stat)
   return {

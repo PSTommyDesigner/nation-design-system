@@ -21,7 +21,7 @@
 | Change tokens, scale formulas or the token build | [../tokens/AGENTS.md](../tokens/AGENTS.md) |
 | Change component code | [../components/AGENTS.md](../components/AGENTS.md) |
 | Work inside the Figma file | [workflows/figma-ds-file/SKILL.md](workflows/figma-ds-file/SKILL.md) |
-| Asana cards and the worklog | [workflows/asana-worklog/SKILL.md](workflows/asana-worklog/SKILL.md) |
+| The worklog and task records | [workflows/worklog/SKILL.md](workflows/worklog/SKILL.md) |
 
 ## Registry
 - [design-system.dsds.yaml](design-system.dsds.yaml): shared rules, a link to the spec of every component, and deprecated items with their replacements

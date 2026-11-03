@@ -7,7 +7,7 @@ Each folder is written in the Claude skill format (`SKILL.md` with a description
 | --- | --- |
 | Build or edit UI with the design system, choose a component, token or icon, review UI | [design-system/SKILL.md](design-system/SKILL.md) |
 | Any work inside the Figma file: doc pages, components, renaming, cleanup scans, bulk edits | [figma-ds-file/SKILL.md](figma-ds-file/SKILL.md) |
-| Asana cards and the worklog | [asana-worklog/SKILL.md](asana-worklog/SKILL.md) |
+| The worklog and task records | [worklog/SKILL.md](worklog/SKILL.md) |
 | Build or change a prototype page for a project, or record a pattern or project rule from one | [prototype/SKILL.md](prototype/SKILL.md) |
 
 ## Rules

@@ -1,212 +1,27 @@
-// worklog-month.mjs · push worklog รายวันขึ้น subtask สรุปเดือนใน Asana
-// ใช้: npm run worklog:month [YYYY-MM-DD] [--dry]
+// worklog-month.mjs · รอบ 16:30 จ-ศ (com.nation.worklog-month) สำเนา worklog ไป Obsidian ทั้ง 2 vault
+// ใช้: npm run worklog:month
 //
-// กติกา (user สั่ง 2026-08-27):
-//   worklog รายวัน = ภาพรวมทั้งวันข้ามทุกการ์ด → push 16:30 อัตโนมัติ ไม่ต้องขออนุมัติ
-//   worklog ของ task = comment บนการ์ดใบนั้น ต้องรอ user คอนเฟิร์ม (สคริปต์นี้ไม่ยุ่ง)
-//
-// ปลายทาง 2 ที่ คนละกติกากัน (user สั่ง 2026-09-10)
-//   subtask '01 งานที่ทำ'  = 1 วัน 1 comment หาใบของวันนั้นแล้วเขียนทับ ไม่เจอค่อยโพสต์ใบใหม่
-//   subtask '02 งานค้าง'   = comment ใบเดียวตลอด เขียนทับใบเดิมเสมอ ห้ามโพสต์ใบใหม่
-//
-// เปลี่ยนเดือนแล้วยังไม่มีการ์ด สคริปต์สร้างการ์ดกับ subtask 2 ใบเอง ไม่ต้องถาม (user สั่ง 2026-11-02)
-//   ถ้า worklog วันแรกของเดือนไม่มีงานค้าง จะยกรายการจาก '02 งานค้าง' ของเดือนก่อนมาแทน
-//
-// ก่อนส่ง Asana จะสำเนา worklog ทั้งหมดไป Obsidian vault ด้วย worklog-obsidian.mjs (user สั่ง 2026-10-27)
-// และสำเนากฎกับงานของ One CMS ไป vault ของโปรเจกต์ด้วย one-cms-obsidian.mjs (user สั่ง 2026-10-28)
-import { readFileSync, existsSync } from 'node:fs'
-import { worklogPath, todayISO } from './worklog-path.mjs'
-
-const API = 'https://app.asana.com/api/1.0'
-const PROJECT = '1212508564439334'
-const ASSIGNEE = '1202145155564203'
-const TH_MONTH = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
-                  'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
-
-function loadEnv() {
-  const o = { ...process.env }
-  if (existsSync('.env'))
-    for (const l of readFileSync('.env', 'utf8').split('\n')) {
-      const m = l.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*?)\s*$/)
-      if (m) o[m[1]] = m[2].replace(/^["']|["']$/g, '')
-    }
-  return o
+// เลิกส่ง Asana แล้ว (user สั่ง 2026-11-03) งานที่ทำ งานค้าง และบันทึกของการ์ดงานอยู่ใน Obsidian แทน
+//   worklog รายวัน + สรุปเดือน 01 งานที่ทำ กับ 02 งานค้าง + บันทึกการ์ดงาน  → worklog-obsidian.mjs
+//   กฎกับงานของ One CMS                                                → one-cms-obsidian.mjs
+// ชื่อไฟล์คงเดิมเพราะตัวตั้งเวลา launchd เรียกไฟล์นี้อยู่ กฎเต็มอยู่ที่ docs/rules/worklog.md
+// สอง vault แยกกัน ตัวหนึ่งพังไม่ขวางอีกตัว
+let failed = false
+try {
+  const { syncObsidian } = await import('./worklog-obsidian.mjs')
+  const r = syncObsidian()
+  console.log(`📓 Obsidian ${r.days} วัน ${r.months} เดือน เขียน ${r.written.length} ไฟล์ ลบไฟล์เก่า ${r.removed.length} ไฟล์`)
+  for (const w of r.warnings) console.warn(`⚠️ ${w}`)
+} catch (e) {
+  failed = true
+  console.error(`✗ สำเนาไป Obsidian ไม่สำเร็จ: ${e.message}`)
 }
-// ── สำเนาไป Obsidian ก่อน (เพิ่ม 2026-10-27) ──
-// ทำก่อนส่ง Asana เพื่อให้ Asana พังหรือไม่มี token แล้วฝั่ง Obsidian ยังได้ของ พังเองก็ไม่ขวางการส่ง Asana
-if (!process.argv.includes('--dry')) {
-  try {
-    const { syncObsidian } = await import('./worklog-obsidian.mjs')
-    const r = syncObsidian()
-    console.log(`📓 Obsidian ${r.days} วัน ${r.months} เดือน เขียน ${r.written.length} ไฟล์ ลบไฟล์เก่า ${r.removed.length} ไฟล์`)
-  } catch (e) {
-    console.warn(`⚠️ สำเนาไป Obsidian ไม่สำเร็จ ส่ง Asana ต่อตามปกติ: ${e.message}`)
-  }
-  // vault ของ One CMS (เพิ่ม 2026-10-28) แยกจาก worklog vault พังเองก็ไม่ขวางอย่างอื่น
-  try {
-    const { syncOneCms } = await import('./one-cms-obsidian.mjs')
-    const r = syncOneCms()
-    console.log(`📓 One CMS กฎ ${r.rules} ไฟล์ งานรายวัน ${r.days} วัน เขียน ${r.written.length} ไฟล์ ลบไฟล์เก่า ${r.removed.length} ไฟล์`)
-  } catch (e) {
-    console.warn(`⚠️ สำเนาไป vault One CMS ไม่สำเร็จ ส่ง Asana ต่อตามปกติ: ${e.message}`)
-  }
+try {
+  const { syncOneCms } = await import('./one-cms-obsidian.mjs')
+  const r = syncOneCms()
+  console.log(`📓 One CMS กฎ ${r.rules} ไฟล์ งานรายวัน ${r.days} วัน เขียน ${r.written.length} ไฟล์ ลบไฟล์เก่า ${r.removed.length} ไฟล์`)
+} catch (e) {
+  failed = true
+  console.error(`✗ สำเนาไป vault One CMS ไม่สำเร็จ: ${e.message}`)
 }
-
-const env = loadEnv()
-const TOKEN = env.ASANA_TOKEN
-if (!TOKEN) { console.error('✗ ไม่พบ ASANA_TOKEN ใน .env'); process.exit(1) }
-
-const args = process.argv.slice(2)
-const dry = args.includes('--dry')
-const day = args.find((a) => /^\d{4}-\d{2}-\d{2}$/.test(a)) || todayISO()
-
-async function api(method, path, body) {
-  const r = await fetch(API + path, {
-    method,
-    headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
-    body: body ? JSON.stringify(body) : undefined,
-  })
-  if (!r.ok) throw new Error(`${method} ${path} → ${r.status} ${await r.text()}`)
-  return (await r.json()).data
-}
-
-// ── อ่าน worklog ของวันนั้น ──
-const file = worklogPath(day)
-if (!existsSync(file)) { console.error(`✗ ไม่พบ worklog: ${file}`); process.exit(1) }
-const md = readFileSync(file, 'utf8')
-
-/** ดึง bullet ใต้หัวข้อที่ระบุ */
-function section(name) {
-  const lines = md.split('\n')
-  const out = []
-  let on = false
-  for (const l of lines) {
-    if (l.startsWith('## ')) { on = l.trim() === `## ${name}`; continue }
-    if (on && /^\s*[-*]\s+/.test(l)) out.push(l.replace(/^\s*[-*]\s+/, '').trim())
-  }
-  return out
-}
-const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
-const fmt = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-const li = (arr) => arr.length ? '<ul>' + arr.map((x) => `<li>${fmt(x)}</li>`).join('') + '</ul>' : ''
-
-const TH_DAY = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์']
-const [y, m, d] = day.split('-').map(Number)
-const dayLabel = `${TH_DAY[new Date(y, m - 1, d).getDay()]} ${d} ${TH_MONTH[m - 1]} ${y + 543}`
-const thaiToday = `${d} ${TH_MONTH[m - 1].slice(0, 3)}. ${y + 543}`
-
-// ── หาการ์ดเดือน ──
-// ดึงครบทุกหน้า เพราะอ่านแค่ 100 ใบแรกแล้วไม่เจอ จะกลายเป็นสร้างการ์ดซ้ำ
-async function allProjectTasks() {
-  const out = []
-  let offset = ''
-  do {
-    const r = await fetch(`${API}/projects/${PROJECT}/tasks?opt_fields=name,created_at&limit=100${offset ? `&offset=${offset}` : ''}`, { headers: { Authorization: `Bearer ${TOKEN}` } })
-    if (!r.ok) throw new Error(`GET tasks → ${r.status} ${await r.text()}`)
-    const j = await r.json()
-    out.push(...j.data)
-    offset = j.next_page?.offset ?? ''
-  } while (offset)
-  return out
-}
-// ชื่อการ์ดไม่มีปี จึงเทียบปีจากวันที่สร้าง ไม่อย่างนั้นปีหน้าจะไปเจอการ์ดเดือนเดียวกันของปีนี้
-const findMonthCard = (tasks, year, month) =>
-  tasks.find((t) => t.name.includes('[สรุปงาน]') && t.name.includes(`[${TH_MONTH[month - 1]}]`) && new Date(t.created_at).getFullYear() === year)
-
-/** รายการงานค้างล่าสุดจาก subtask '02 งานค้าง' ของการ์ดเดือนก่อน */
-async function previousPending(tasks) {
-  const card = findMonthCard(tasks, m === 1 ? y - 1 : y, m === 1 ? 12 : m - 1)
-  if (!card) return []
-  const subs = await api('GET', `/tasks/${card.gid}/subtasks?opt_fields=name`)
-  const sub = subs.find((s) => s.name.includes('งานค้าง'))
-  if (!sub) return []
-  const stories = await api('GET', `/tasks/${sub.gid}/stories?opt_fields=resource_subtype,html_text&limit=100`)
-  const html = stories.find((s) => s.resource_subtype === 'comment_added')?.html_text ?? ''
-  const decode = (x) => x.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&')
-  return [...html.matchAll(/<li>(.*?)<\/li>/gs)].map((x) => decode(x[1].replace(/<strong>(.*?)<\/strong>/g, '**$1**').replace(/<[^>]+>/g, '').trim())).filter(Boolean)
-}
-
-/** สร้างการ์ดเดือนตามแบบการ์ดเดือนก่อน ค่า field ตรงกับ context/workflows/asana-worklog/reference.md */
-async function createMonthCard() {
-  const card = await api('POST', '/tasks', { data: {
-    name: `[สรุปงาน]-[${TH_MONTH[m - 1]}] งานที่ทำและงานค้าง`,
-    projects: [PROJECT],
-    assignee: ASSIGNEE,
-    resource_subtype: 'custom',
-    custom_type: '1212577985434838',
-    custom_type_status_option: '1212577985434856',
-    custom_fields: {
-      1212876421536464: '1212876426148709',
-      1212897382706626: '1212897382706628',
-      1213022521699804: '1216647463739381',
-      1212991461878499: '1212991461878507',
-      1212991461878509: { date: `${y}-${String(m).padStart(2, '0')}-01` },
-    },
-  } })
-  for (const name of ['01 งานที่ทำ', '02 งานค้าง']) await api('POST', `/tasks/${card.gid}/subtasks`, { data: { name, assignee: ASSIGNEE } })
-  return card
-}
-
-const tasks = await allProjectTasks()
-const monthCard = findMonthCard(tasks, y, m)
-const isNewMonth = !monthCard
-// วันแรกของเดือนที่ไม่ได้เขียนงานค้าง ใช้รายการของเดือนก่อน งานค้างจะได้ไม่หายตอนขึ้นเดือนใหม่
-const pendingItems = section('งานค้าง').length ? section('งานค้าง') : (isNewMonth ? await previousPending(tasks) : [])
-
-async function comments(gid) {
-  const st = await api('GET', `/tasks/${gid}/stories?opt_fields=gid,resource_subtype,text&limit=100`)
-  return st.filter((s) => s.resource_subtype === 'comment_added')
-}
-
-// ── 1) 01 งานที่ทำ : 1 วัน 1 comment ──
-const dayHtml =
-  `<body><h2><strong>${dayLabel}</strong></h2>` +
-  li(section('งานที่ทำวันนี้')) +
-  (section('ผลลัพธ์').length ? `<strong>ผลลัพธ์</strong>${li(section('ผลลัพธ์'))}` : '') +
-  '</body>'
-
-// ── 2) 02 งานค้าง : comment ใบเดียว เขียนทับใบเดิม ──
-const pendingHtml =
-  `<body><h2><strong>📌 งานค้างที่ต้องทำต่อ</strong></h2>` +
-  `อัปเดตล่าสุด ${thaiToday} ตอนปิดงาน ของที่เสร็จแล้วหรือตัดสินแล้วตัดออกจากลิสต์ ` +
-  `แก้คอมเมนต์ใบนี้ใบเดียว ห้ามโพสต์ใบใหม่` +
-  li(pendingItems) + '</body>'
-
-if (dry) {
-  console.log('DRY RUN')
-  console.log('การ์ดเดือน:', monthCard ? monthCard.name : `ยังไม่มี จะสร้าง [สรุปงาน]-[${TH_MONTH[m - 1]}] พร้อม subtask 2 ใบ`)
-  console.log('หัวข้อวัน:', dayLabel, '| ยาว', dayHtml.length)
-  console.log(dayHtml.slice(0, 400))
-  console.log('\n02 งานค้าง:', pendingItems.length, 'รายการ', section('งานค้าง').length ? '(จาก worklog วันนี้)' : '(ยกจากเดือนก่อน)', '| ยาว', pendingHtml.length)
-  process.exit(0)
-}
-
-const card = monthCard ?? await createMonthCard()
-if (isNewMonth) console.log(`🆕 สร้างการ์ดเดือนใหม่ ${card.name}`)
-const subs = await api('GET', `/tasks/${card.gid}/subtasks?opt_fields=name`)
-const findSub = (kw) => subs.find((s) => s.name.includes(kw))
-const subDone = findSub('งานที่ทำ')
-const subPending = findSub('งานค้าง')
-if (!subDone || !subPending) { console.error('✗ ไม่พบ subtask 01 งานที่ทำ หรือ 02 งานค้าง'); process.exit(1) }
-
-/** หาคอมเมนต์ของวันนั้น ถ้ามีให้เขียนทับ ไม่มีให้โพสต์ใบใหม่ */
-async function upsertDay(gid, label, html) {
-  const cm = await comments(gid)
-  const hit = cm.find((s) => (s.text || '').trim().startsWith(label))
-  if (hit) { await api('PUT', `/stories/${hit.gid}`, { data: { html_text: html } }); return 'แก้คอมเมนต์ของวันนี้' }
-  await api('POST', `/tasks/${gid}/stories`, { data: { html_text: html } }); return 'สร้างคอมเมนต์ของวันนี้'
-}
-
-/** subtask ที่ต้องมีคอมเมนต์ใบเดียว เขียนทับใบแรกเสมอ */
-async function upsertSingle(gid, html) {
-  const cm = await comments(gid)
-  if (cm.length > 1) console.warn(`⚠️ subtask ${gid} มี ${cm.length} คอมเมนต์ ทั้งที่กติกาให้มีใบเดียว เขียนทับใบแรก`)
-  if (cm.length) { await api('PUT', `/stories/${cm[0].gid}`, { data: { html_text: html } }); return 'แก้คอมเมนต์เดิม' }
-  await api('POST', `/tasks/${gid}/stories`, { data: { html_text: html } }); return 'สร้างคอมเมนต์ใหม่'
-}
-
-const r1 = await upsertDay(subDone.gid, dayLabel, dayHtml)
-const r2 = await upsertSingle(subPending.gid, pendingHtml)
-console.log(`✅ push worklog ${day} ขึ้นการ์ด ${card.name}`)
-console.log(`   01 งานที่ทำ  ${r1}  (${section('งานที่ทำวันนี้').length} รายการ)`)
-console.log(`   02 งานค้าง   ${r2}  (${pendingItems.length} รายการ)`)
+if (failed) process.exit(1)

@@ -1,9 +1,9 @@
 // worklog-remind.mjs เตือน (macOS notification) ตอน 16:00 จ-ศ
-// ไม่โพสต์เอง แค่เตือนให้สรุป worklog + ยืนยันใน Claude แล้วค่อยรัน worklog:asana
+// ไม่เขียนเอง แค่เตือนให้สรุป worklog ก่อนรอบ 16:30 ที่สำเนาไป Obsidian
 import { execFileSync } from 'node:child_process'
 
 const title = 'ถึงเวลาบันทึก Worklog (16:00)'
-const msg = 'สรุปงานวันนี้แล้วยืนยันใน Claude เพื่อบันทึกลง Asana'
+const msg = 'สรุปงานวันนี้ใน Claude ก่อน 16:30 รอบ 16:30 จะสำเนาไป Obsidian'
 
 try {
   execFileSync('osascript', [

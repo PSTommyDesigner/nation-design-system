@@ -72,7 +72,7 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | `npm run verify:api` | เทียบแกน variant กับ component property ในไฟล์ออกแบบ กับ props จริงในไฟล์ `.tsx` |
 | `npm run verify:families` | เทียบสีที่แต่ละตระกูลใช้กับตระกูลของตัวเอง สำหรับหน้าที่จัดชิ้นงานเป็นตระกูลสี |
 | `npm run worklog:new` | สร้างไฟล์บันทึกงานประจำวัน |
-| `npm run worklog:asana` | ส่งบันทึกงานขึ้น Asana |
+| `npm run worklog:task -- "<ชื่องาน>"` | สร้างไฟล์บันทึกของงานใหม่ |
 | `npm run worklog:month` | สรุปรายเดือนขึ้นการ์ดสรุป |
 | `npm run storybook` | เปิดเว็บพรีวิว component library แบบ dev ที่ `localhost:6006` |
 | `npm run build-storybook` | build เว็บพรีวิวเป็น static ลง `storybook-static/` deploy อัตโนมัติขึ้น GitHub Pages ทุกครั้งที่ push เข้า `main` |
@@ -97,8 +97,8 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [component-doc-standard.md](rules/component-doc-standard.md) | เอกสาร 5 ชนิดต่อหน้าในไฟล์ออกแบบ และเนื้อหาแบบไหนอยู่ชนิดไหน |
 | [page-doc-template.md](rules/page-doc-template.md) | แม่แบบเอกสารประจำหน้าฝั่งโค้ด 5 หัวข้อ |
 | [token-naming-taxonomy.md](rules/token-naming-taxonomy.md) | กติกาตั้งชื่อ token ตามลำดับชั้น base semantic component |
-| [asana-task-naming.md](rules/asana-task-naming.md) | กติกาตั้งชื่อการ์ดงานและแม่แบบรายละเอียด 5 หัวข้อ |
-| [worklog.md](rules/worklog.md) | วิธีบันทึกงาน เก็บที่ไหน ส่งขึ้น Asana อย่างไร |
+| [task-naming.md](rules/task-naming.md) | กติกาตั้งชื่อการ์ดงานและแม่แบบรายละเอียด 5 หัวข้อ |
+| [worklog.md](rules/worklog.md) | วิธีบันทึกงาน เก็บที่ไหน และสำเนาไป Obsidian อย่างไร |
 
 ### เอกสารประจำหน้า (มีแล้ว 28 จาก 31 หน้า)
 | ชั้น | หน้า |
@@ -127,4 +127,4 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [component-inventory-research.md](component-inventory-research.md) | รายการชิ้นงานที่ต้องมีและ token ที่ต้องใช้ |
 
 ### บันทึกงาน
-บันทึกรายวันอยู่ที่ `docs/daily-log/daily/<เดือนไทย ปีพุทธศักราช>/` หนึ่งไฟล์ต่อวัน วิธีเขียนและจังหวะส่งขึ้น Asana อยู่ใน [worklog.md](rules/worklog.md)
+บันทึกรายวันอยู่ที่ `docs/daily-log/daily/<เดือนไทย ปีพุทธศักราช>/` หนึ่งไฟล์ต่อวัน วิธีเขียน บันทึกของงาน และการสำเนาไป Obsidian อยู่ใน [worklog.md](rules/worklog.md)

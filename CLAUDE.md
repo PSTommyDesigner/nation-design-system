@@ -23,7 +23,7 @@ Before a task of these kinds, MUST open the matching file. Each one says which o
 | --- | --- |
 | Build or edit UI with the design system, choose a component, token or icon, review UI | `context/workflows/design-system/SKILL.md` |
 | Any work inside the Figma file: doc pages, components, renaming, cleanup scans, bulk edits | `context/workflows/figma-ds-file/SKILL.md` |
-| Asana cards and the worklog | `context/workflows/asana-worklog/SKILL.md` |
+| The worklog and task records | `context/workflows/worklog/SKILL.md` |
 | Build or change a prototype page for a project, or record a pattern or project rule from one | `context/workflows/prototype/SKILL.md` |
 
 The files are written in the Claude skill format. Copying a folder into `.claude/skills/` lets Claude pick it by its description as well.

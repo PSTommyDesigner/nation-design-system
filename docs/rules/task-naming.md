@@ -1,7 +1,7 @@
-# Asana Task Naming Convention
+# Task Naming Convention
 
 > ต้นฉบับทางการ: แท็บ **Naming Convention** และ **Hierarchy of tasks** ในโปรเจกต์ Asana `Design Process 2026`
-> ไฟล์นี้คือฉบับคัดลอกไว้ใช้งานฝั่ง agent/โค้ด แก้ที่ Asana เมื่อไหร่ ให้อัปเดตไฟล์นี้ตาม
+> เลิกใช้ Asana แล้วตั้งแต่ 2026-11-03 ไฟล์นี้จึงเป็นต้นฉบับแทน ใช้ตั้งชื่อไฟล์งานใน `docs/daily-log/tasks/` (ดู `docs/rules/worklog.md` §3)
 > ครอบคลุม **ชื่อ Task** (Golden Formula) **Description** (เทมเพลต 5 หัวข้อ) **Hierarchy** 6 ชั้น
 
 ## The Golden Formula
