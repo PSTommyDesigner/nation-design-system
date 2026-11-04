@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--ntg-size-space-s3-xs);
-  padding: var(--ntg-size-space-s3-sm);
+  padding: var(--ntg-size-space-s4-sm);
   background: var(--ntg-color-background-general-primary);
   color: var(--ntg-color-text-general-text);
 }
@@ -16,11 +16,13 @@
   flex-direction: column;
   gap: var(--ntg-size-space-s1-lg);
 }
-/* แถบใต้หัวเอกสารเต็มความกว้างหน้า สูง 16 ตาม _document-header จึงดึงออกเท่าระยะขอบของ .page */
+/* แถบใต้หัวเอกสารเต็มความกว้างหน้า สูง 16 ตาม _document-header จึงดึงออกเท่าระยะขอบของ .page
+   ระยะขอบหน้า 80 และระยะจากหัวเรื่องถึงแถบ 80 ตาม _document-header (ผู้ใช้สั่ง 2026-11-04) */
 .header::after {
   content: '';
   height: var(--ntg-size-space-s2-sm);
-  margin: var(--ntg-size-space-s2-lg) calc(var(--ntg-size-space-s3-sm) * -1) 0;
+  /* gap ของ .header (8) นับก่อนแถบด้วย จึงหักออกให้ระยะจากข้อความถึงแถบเท่า 80 พอดี */
+  margin: calc(var(--ntg-size-space-s4-sm) - var(--ntg-size-space-s1-lg)) calc(var(--ntg-size-space-s4-sm) * -1) 0;
   background: var(--ntg-color-background-brand-solid);
 }
 
