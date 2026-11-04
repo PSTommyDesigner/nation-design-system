@@ -2,6 +2,7 @@
 /**
  * ดึงเอกสารทุกใบของหน้าชั้น Atoms (Identity) ในไฟล์ออกแบบ Figma ผ่าน REST API
  * แล้วเก็บเป็น foundations/<Folder>/<key>-doc.json ให้หน้า Atoms (Identity)/<NN> <Page> ใน Storybook อ่าน
+ * หน้าชั้น Molecules เก็บที่ molecules/<Folder>/ ให้หน้า Molecules (Element)/<NN> <Page> อ่าน
  *
  * ทำไมต้องมี (ผู้ใช้สั่ง 2026-10-28 ให้ Storybook มีหน้า Atoms ตามไฟล์ออกแบบ)
  *   เอกสารในไฟล์ออกแบบมีตารางหลายร้อยแถวพร้อมคำอธิบายที่มีแค่ใน Figma
@@ -43,13 +44,17 @@ const PAGES = {
   logo: { page: '08 Logo', folder: 'Logo', skip: [], logos: true },
   // ไม่เอาธงประเทศ (ผู้ใช้สั่ง 2026-10-28) ธงคือต้นฉบับขนาด 32x24 ซึ่งไม่มีกลุ่มอื่นใช้ขนาดนี้
   'third-party': { page: '09 Third-party Logos', folder: 'ThirdPartyLogos', skip: [], logos: true, noLogo: (w, h) => w === 32 && h === 24 },
+  // ชั้น Molecules เก็บที่ molecules/ (ผู้ใช้อนุมัติ 2026-11-04) กรอบ 8 ตัวเป็นภาพลายหมากรุก (image fill) ยังไม่มี component ในโค้ด
+  // จึง export เป็นไฟล์ภาพทางเดียวกับโลโก้ ใช้ในหน้าเอกสารนี้เท่านั้น เป็น PNG เพราะ SVG ไม่เก็บภาพของกรอบวิดีโอ (ออกมาว่าง)
+  frame: { page: '10 Frame', folder: 'Frame', root: 'molecules', skip: [], logos: true, format: 'png' },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
 const PAGE = PAGES[KEY].page
 const SKIP = new Set(PAGES[KEY].skip)
-const OUT = path.join(ROOT, `foundations/${PAGES[KEY].folder}/${KEY}-doc.json`)
-const MISSING = path.join(ROOT, `foundations/${PAGES[KEY].folder}/missing-ids.json`)
+const BASE = PAGES[KEY].root ?? 'foundations'
+const OUT = path.join(ROOT, `${BASE}/${PAGES[KEY].folder}/${KEY}-doc.json`)
+const MISSING = path.join(ROOT, `${BASE}/${PAGES[KEY].folder}/missing-ids.json`)
 const TYPO_CLASSES = new Set([...fs.readFileSync(path.join(ROOT, 'tokens/output/css/typography.css'), 'utf8').matchAll(/^\.(ntg-typography-[\w-]+)\s*\{/gm)].map(m => m[1]))
 // ชื่อตระกูลฟอนต์ในไฟล์ออกแบบ เป็นตัวแปรตระกูลฟอนต์ฝั่งโค้ด และน้ำหนักเป็นตัวแปรความหนา
 const FAMILY_VAR = { Prompt: '--ntg-typography-font-family-primary', Sarabun: '--ntg-typography-font-family-article' }
@@ -432,11 +437,12 @@ if (logoFiles.size) {
   const dir = path.join(path.dirname(OUT), 'assets')
   fs.mkdirSync(dir, { recursive: true })
   const entries = [...logoFiles]
+  const FORMAT = PAGES[KEY].format ?? 'svg'
   for (let i = 0; i < entries.length; i += 20) {
     const part = entries.slice(i, i + 20)
     let r
     for (let attempt = 0; ; attempt++) {
-      r = await fetch(`https://api.figma.com/v1/images/${FILE}?format=svg&ids=${encodeURIComponent(part.map(e => e[1]).join(','))}`, { headers: { 'X-Figma-Token': TOKEN } })
+      r = await fetch(`https://api.figma.com/v1/images/${FILE}?format=${FORMAT}${FORMAT === 'png' ? '&scale=2' : ''}&ids=${encodeURIComponent(part.map(e => e[1]).join(','))}`, { headers: { 'X-Figma-Token': TOKEN } })
       if (r.status !== 429 || attempt >= 6) break
       await sleep(Number(r.headers.get('retry-after')) * 1000 || 20000 * (attempt + 1))
     }
@@ -444,12 +450,14 @@ if (logoFiles.size) {
     const { images } = await r.json()
     for (const [file, id] of part) {
       if (!images[id]) throw new Error(`export ${file} ไม่ได้`)
-      fs.writeFileSync(path.join(dir, `${file}.svg`), await (await fetch(images[id])).text())
+      const body = await fetch(images[id])
+      fs.writeFileSync(path.join(dir, `${file}.${FORMAT}`), FORMAT === 'svg' ? await body.text() : Buffer.from(await body.arrayBuffer()))
     }
   }
   // ตัวอย่างที่ตั้งใจยืดผิดสัดส่วน SVG ในเบราว์เซอร์จะรักษาสัดส่วนเอง จึงเก็บความกว้างจริงของไฟล์ไว้ให้หน้าเอกสารยืดด้วย transform
+  // PNG ใน <img> ยืดตามความกว้างความสูงที่ตั้งอยู่แล้ว จึงต้องหาความกว้างจริงเฉพาะ SVG
   const natural = (file) => Number(fs.readFileSync(path.join(dir, `${file}.svg`), 'utf8').match(/width="([\d.]+)"/)[1])
-  for (const d of documents) for (const b of d.blocks) for (const it of [...(b.logos ?? []), ...(b.type === 'logos' ? b.items : [])]) if (it.file && Math.abs(natural(it.file) - it.width) > 1) it.natural = natural(it.file)
+  if (FORMAT === 'svg') for (const d of documents) for (const b of d.blocks) for (const it of [...(b.logos ?? []), ...(b.type === 'logos' ? b.items : [])]) if (it.file && Math.abs(natural(it.file) - it.width) > 1) it.natural = natural(it.file)
 }
 if (missing.size) {
   fs.writeFileSync(MISSING, JSON.stringify([...missing], null, 2) + '\n')

@@ -23,6 +23,8 @@
     "types/**/*.d.ts",
     "foundations/**/*.ts",
     "foundations/**/*.tsx",
+    "molecules/**/*.ts",
+    "molecules/**/*.tsx",
     "components/**/*.ts",
     "components/**/*.tsx",
     "prototype/**/*.ts",

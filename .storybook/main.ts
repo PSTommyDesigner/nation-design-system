@@ -7,6 +7,7 @@ import type { StorybookConfig } from '@storybook/react-vite'
 const config: StorybookConfig = {
   stories: [
     '../foundations/**/*.stories.@(ts|tsx)',
+    '../molecules/**/*.stories.@(ts|tsx)',
     '../components/**/*.stories.@(ts|tsx)',
     '../prototype/**/*.stories.@(ts|tsx)',
   ],

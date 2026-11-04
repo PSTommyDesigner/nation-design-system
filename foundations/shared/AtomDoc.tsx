@@ -89,7 +89,7 @@ const LogoUrls = createContext<Record<string, string>>({})
 // ตัวอย่างที่ตั้งใจยืดผิดสัดส่วน (natural) ต้องยืดด้วย transform เพราะ SVG ใน <img> รักษาสัดส่วนเองเสมอ
 const LogoImage = ({ item }: { item: LogoItem }) => {
   const urls = useContext(LogoUrls)
-  const src = Object.entries(urls).find(([p]) => p.endsWith(`/${item.file}.svg`))?.[1]
+  const src = Object.entries(urls).find(([p]) => /\/[^/]+\.(svg|png)$/.test(p) && p.slice(p.lastIndexOf('/') + 1).replace(/\.(svg|png)$/, '') === item.file)?.[1]
   const img = <img src={src} loading="lazy" alt={item.label || item.file || ''} style={{ width: item.natural ?? item.width, height: item.height, ...(item.natural ? { transform: `scaleX(${item.width / item.natural})` } : {}) }} className={item.natural ? styles.logoStretched : undefined} />
   return item.natural ? <span className={styles.logoStretchBox} style={{ width: item.width }}>{img}</span> : img
 }
