@@ -11,7 +11,20 @@ import { todayISO } from './worklog-path.mjs'
 const name = process.argv.slice(2).join(' ').trim()
 if (!name) { console.error('ใช้: npm run worklog:task -- "<ชื่องาน>"'); process.exit(2) }
 // วงเล็บเหลี่ยมทำให้ลิงก์ใน Obsidian ขาด และอักขระพวกนี้ใช้ในชื่อไฟล์ไม่ได้
-const file = name.replace(/\[([^\]]+)\]/g, '$1').replace(/[\\/:*?"<>|#^\[\]]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120)
+const clean = name.replace(/\[([^\]]+)\]/g, '$1').replace(/[\\/:*?"<>|#^\[\]]/g, ' ').replace(/\s+/g, ' ').trim()
+// ชื่อไฟล์บน Linux ยาวได้ไม่เกิน 255 ไบต์ ตัวอักษรไทยใช้ 3 ไบต์ต่อตัว ชื่อที่ยาวเกินทำให้ GitHub เช็กเอาท์ไม่ได้
+// และ Deploy Storybook ล้มทั้งรอบ (เกิดจริง 2026-11-03 ถึง 04) ตัดที่ MAX_BYTES โดยไม่ตัดกลางตัวอักษร
+// แล้วถอยไปที่ช่องว่างสุดท้ายถ้ามี ชื่อเต็มยังอยู่ในช่อง name ของ frontmatter
+const MAX_BYTES = 180
+function fitBytes(s, max = MAX_BYTES) {
+  const enc = new TextEncoder()
+  if (enc.encode(s).length <= max) return s
+  let out = ''
+  for (const ch of s) { if (enc.encode(out + ch).length > max) break; out += ch }
+  const cut = out.lastIndexOf(' ')
+  return (cut > out.length / 2 ? out.slice(0, cut) : out).trim()
+}
+const file = fitBytes(clean)
 const dir = 'docs/daily-log/tasks'
 const path = join(dir, `${file}.md`)
 if (existsSync(path)) { console.error(`✗ มีไฟล์งานนี้แล้ว: ${path}`); process.exit(1) }

@@ -204,6 +204,8 @@ export function collectTasks(root = ROOT) {
   if (!existsSync(base)) return []
   return readdirSync(base).filter((f) => f.endsWith('.md')).sort().map((f) => {
     const path = join(base, f)
+    // เกิน 255 ไบต์แล้ว GitHub เช็กเอาท์ไม่ได้ Deploy Storybook ล้ม ดู fitBytes ใน worklog-task.mjs
+    if (Buffer.byteLength(f) > 255) throw new Error(`ชื่อไฟล์ ${f} ยาว ${Buffer.byteLength(f)} ไบต์ เกิน 255 ต้องย่อชื่อก่อน`)
     const md = codeHex(readFileSync(path, 'utf8'))
     const fm = Object.fromEntries([...(md.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? '').matchAll(/^(\w+):\s*(.*)$/gm)].map(([, k, v]) => [k, v.replace(/^"|"$/g, '')]))
     const date = fm.start || fm.created || fm.assign_date || '2026-01-01'
