@@ -11,7 +11,8 @@
         {
           "type": "h",
           "text": "Overview",
-          "sub": "ระบบสีของ Nation โครงและหลักการใช้งาน"
+          "sub": "ระบบสีของ Nation โครงและหลักการใช้งาน",
+          "section": true
         },
         {
           "type": "p",
@@ -20,7 +21,8 @@
         {
           "type": "h",
           "text": "Token structure",
-          "sub": "โครงสีและการตั้งชื่อ"
+          "sub": "โครงสีและการตั้งชื่อ",
+          "section": true
         },
         {
           "type": "p",
@@ -29,7 +31,8 @@
         {
           "type": "h",
           "text": "สีดิบทั้งหมด",
-          "sub": "สีดิบทั้งหมด (สีแบรนด์ สีเทา สีเสริม)"
+          "sub": "สีดิบทั้งหมด (สีแบรนด์ สีเทา สีเสริม)",
+          "section": true
         },
         {
           "type": "h",
@@ -262,7 +265,8 @@
         {
           "type": "h",
           "text": "บทบาทของสี",
-          "sub": "บทบาทของสี: พื้นหลัง ตัวอักษร เส้นขอบ ไอคอน"
+          "sub": "บทบาทของสี: พื้นหลัง ตัวอักษร เส้นขอบ ไอคอน",
+          "section": true
         },
         {
           "type": "p",
@@ -271,7 +275,8 @@
         {
           "type": "h",
           "text": "สีระดับชิ้นงาน สีใช้งานทั่วไป สีเฉพาะโปรเจกต์",
-          "sub": "สีสำหรับแต่ละองค์ประกอบ สีใช้งานทั่วไป และสีเฉพาะโปรเจกต์ (เช่น AMS)"
+          "sub": "สีสำหรับแต่ละองค์ประกอบ สีใช้งานทั่วไป และสีเฉพาะโปรเจกต์ (เช่น AMS)",
+          "section": true
         },
         {
           "type": "p",
@@ -280,7 +285,8 @@
         {
           "type": "h",
           "text": "Light / Dark mode",
-          "sub": "ค่าสีของแต่ละบทบาทใน 2 โหมด"
+          "sub": "ค่าสีของแต่ละบทบาทใน 2 โหมด",
+          "section": true
         },
         {
           "type": "p",
@@ -289,7 +295,8 @@
         {
           "type": "h",
           "text": "Usage Do / Don’t",
-          "sub": "ใช้สีจากชื่อที่ตั้งไว้เสมอ ห้ามพิมพ์รหัสสีดิบ ตรวจความคมชัด"
+          "sub": "ใช้สีจากชื่อที่ตั้งไว้เสมอ ห้ามพิมพ์รหัสสีดิบ ตรวจความคมชัด",
+          "section": true
         },
         {
           "type": "card",
@@ -306,7 +313,8 @@
         {
           "type": "h",
           "text": "Accessibility",
-          "sub": "ความคมชัดตามมาตรฐาน WCAG 2.1 (ไม่ต่ำกว่า 4.5:1) ใช้เครื่องมือตรวจ"
+          "sub": "ความคมชัดตามมาตรฐาน WCAG 2.1 (ไม่ต่ำกว่า 4.5:1) ใช้เครื่องมือตรวจ",
+          "section": true
         },
         {
           "type": "p",
@@ -315,7 +323,8 @@
         {
           "type": "h",
           "text": "Design tokens",
-          "sub": "ตารางรายชื่อสีที่ใช้ (รายละเอียดที่ docs/01-color.md)"
+          "sub": "ตารางรายชื่อสีที่ใช้ (รายละเอียดที่ docs/01-color.md)",
+          "section": true
         },
         {
           "type": "p",
@@ -324,7 +333,8 @@
         {
           "type": "h",
           "text": "Naming convention",
-          "sub": "nation.category.property.role.prominence.state (mode ไม่อยู่ในชื่อ)"
+          "sub": "nation.category.property.role.prominence.state (mode ไม่อยู่ในชื่อ)",
+          "section": true
         },
         {
           "type": "p",
@@ -333,7 +343,8 @@
         {
           "type": "h",
           "text": "Related",
-          "sub": "Typography Effect Shape"
+          "sub": "Typography Effect Shape",
+          "section": true
         },
         {
           "type": "p",
@@ -350,11 +361,13 @@
         {
           "type": "h",
           "text": "เอกสารนี้คืออะไร",
-          "sub": "ตารางนี้คือสีที่ใช้บ่อยในงานออกแบบ (พื้นหลัง ตัวอักษร เส้นขอบ ไอคอน) ฝั่งซ้ายคือชื่อที่ดีไซเนอร์เลือกใน Figma ฝั่งขวาคือตัวแปร CSS ที่ dev ใช้ ค่าตรงกัน"
+          "sub": "ตารางนี้คือสีที่ใช้บ่อยในงานออกแบบ (พื้นหลัง ตัวอักษร เส้นขอบ ไอคอน) ฝั่งซ้ายคือชื่อที่ดีไซเนอร์เลือกใน Figma ฝั่งขวาคือตัวแปร CSS ที่ dev ใช้ ค่าตรงกัน",
+          "section": true
         },
         {
           "type": "h",
-          "text": "วิธีอ่านตาราง"
+          "text": "วิธีอ่านตาราง",
+          "section": true
         },
         {
           "type": "card",
@@ -370,7 +383,8 @@
         },
         {
           "type": "h",
-          "text": "ตาราง Token"
+          "text": "ตาราง Token",
+          "section": true
         },
         {
           "type": "table",
@@ -382,308 +396,308 @@
           ],
           "rows": [
             [
-              "background/general/primary Variable",
-              "--ntg-color-background-general-primary CSS var",
+              "background/general/primary\nVariable",
+              "--ntg-color-background-general-primary\nCSS var",
               "#ffffff",
               "พื้นหลัง หลัก"
             ],
             [
-              "background/general/primary-hover Variable",
-              "--ntg-color-background-general-primary-hover CSS var",
+              "background/general/primary-hover\nVariable",
+              "--ntg-color-background-general-primary-hover\nCSS var",
               "#f9fafb",
               "พื้นหลัง หลัก (ชี้)"
             ],
             [
-              "background/general/secondary Variable",
-              "--ntg-color-background-general-secondary CSS var",
+              "background/general/secondary\nVariable",
+              "--ntg-color-background-general-secondary\nCSS var",
               "#f9fafb",
               "พื้นหลัง รอง"
             ],
             [
-              "background/general/secondary-hover Variable",
-              "--ntg-color-background-general-secondary-hover CSS var",
+              "background/general/secondary-hover\nVariable",
+              "--ntg-color-background-general-secondary-hover\nCSS var",
               "#f2f4f7",
               "พื้นหลัง รอง (ชี้)"
             ],
             [
-              "background/general/tertiary Variable",
-              "--ntg-color-background-general-tertiary CSS var",
+              "background/general/tertiary\nVariable",
+              "--ntg-color-background-general-tertiary\nCSS var",
               "#f2f4f7",
               "พื้นหลัง ระดับ 3"
             ],
             [
-              "background/general/quaternary Variable",
-              "--ntg-color-background-general-quaternary CSS var",
+              "background/general/quaternary\nVariable",
+              "--ntg-color-background-general-quaternary\nCSS var",
               "#eaecf0",
               "พื้นหลัง ระดับ 4"
             ],
             [
-              "background/general/active Variable",
-              "--ntg-color-background-general-active CSS var",
+              "background/general/active\nVariable",
+              "--ntg-color-background-general-active\nCSS var",
               "#f9fafb",
               "พื้นหลัง active"
             ],
             [
-              "background/general/disabled Variable",
-              "--ntg-color-background-general-disabled CSS var",
+              "background/general/disabled\nVariable",
+              "--ntg-color-background-general-disabled\nCSS var",
               "#f2f4f7",
               "พื้นหลัง ปิดใช้งาน"
             ],
             [
-              "background/general/disabled-subtle Variable",
-              "--ntg-color-background-general-disabled-subtle CSS var",
+              "background/general/disabled-subtle\nVariable",
+              "--ntg-color-background-general-disabled-subtle\nCSS var",
               "#f9fafb",
               "พื้นหลัง ปิดใช้งาน จาง"
             ],
             [
-              "background/general/solid Variable",
-              "--ntg-color-background-general-solid CSS var",
+              "background/general/solid\nVariable",
+              "--ntg-color-background-general-solid\nCSS var",
               "#0c111d",
               "พื้นหลัง ทึบเข้ม"
             ],
             [
-              "background/general/solid-secondary Variable",
-              "--ntg-color-background-general-solid-secondary CSS var",
+              "background/general/solid-secondary\nVariable",
+              "--ntg-color-background-general-solid-secondary\nCSS var",
               "#475467",
               "พื้นหลัง ทึบรอง"
             ],
             [
-              "background/general/const-white Variable",
-              "--ntg-color-background-general-const-white CSS var",
+              "background/general/const-white\nVariable",
+              "--ntg-color-background-general-const-white\nCSS var",
               "#ffffff",
               "พื้นหลัง ขาวคงที่"
             ],
             [
-              "background/general/const-black Variable",
-              "--ntg-color-background-general-const-black CSS var",
+              "background/general/const-black\nVariable",
+              "--ntg-color-background-general-const-black\nCSS var",
               "#000000",
               "พื้นหลัง ดำคงที่"
             ],
             [
-              "border/general/primary Variable",
-              "--ntg-color-border-general-primary CSS var",
+              "border/general/primary\nVariable",
+              "--ntg-color-border-general-primary\nCSS var",
               "#d0d5dd",
               "เส้นขอบ หลัก"
             ],
             [
-              "border/general/primary-hover Variable",
-              "--ntg-color-border-general-primary-hover CSS var",
+              "border/general/primary-hover\nVariable",
+              "--ntg-color-border-general-primary-hover\nCSS var",
               "#98a2b3",
               "เส้นขอบ หลัก (ชี้)"
             ],
             [
-              "border/general/secondary Variable",
-              "--ntg-color-border-general-secondary CSS var",
+              "border/general/secondary\nVariable",
+              "--ntg-color-border-general-secondary\nCSS var",
               "#eaecf0",
               "เส้นขอบ รอง"
             ],
             [
-              "border/general/secondary-hover Variable",
-              "--ntg-color-border-general-secondary-hover CSS var",
+              "border/general/secondary-hover\nVariable",
+              "--ntg-color-border-general-secondary-hover\nCSS var",
               "#d0d5dd",
               "เส้นขอบ รอง (ชี้)"
             ],
             [
-              "border/general/tertiary Variable",
-              "--ntg-color-border-general-tertiary CSS var",
+              "border/general/tertiary\nVariable",
+              "--ntg-color-border-general-tertiary\nCSS var",
               "#f2f4f7",
               "เส้นขอบ ระดับ 3"
             ],
             [
-              "border/general/tertiary-hover Variable",
-              "--ntg-color-border-general-tertiary-hover CSS var",
+              "border/general/tertiary-hover\nVariable",
+              "--ntg-color-border-general-tertiary-hover\nCSS var",
               "#eaecf0",
               "เส้นขอบ ระดับ 3 (ชี้)"
             ],
             [
-              "border/general/disabled Variable",
-              "--ntg-color-border-general-disabled CSS var",
+              "border/general/disabled\nVariable",
+              "--ntg-color-border-general-disabled\nCSS var",
               "#d0d5dd",
               "เส้นขอบ ปิดใช้งาน"
             ],
             [
-              "border/general/disabled-subtle Variable",
-              "--ntg-color-border-general-disabled-subtle CSS var",
+              "border/general/disabled-subtle\nVariable",
+              "--ntg-color-border-general-disabled-subtle\nCSS var",
               "#eaecf0",
               "เส้นขอบ ปิดใช้งาน จาง"
             ],
             [
-              "border/general/solid Variable",
-              "--ntg-color-border-general-solid CSS var",
+              "border/general/solid\nVariable",
+              "--ntg-color-border-general-solid\nCSS var",
               "#182230",
               "เส้นขอบ ทึบเข้ม"
             ],
             [
-              "border/general/solid-secondary Variable",
-              "--ntg-color-border-general-solid-secondary CSS var",
+              "border/general/solid-secondary\nVariable",
+              "--ntg-color-border-general-solid-secondary\nCSS var",
               "#475467",
               "เส้นขอบ ทึบรอง"
             ],
             [
-              "foreground/general/primary Variable",
-              "--ntg-color-foreground-general-primary CSS var",
+              "foreground/general/primary\nVariable",
+              "--ntg-color-foreground-general-primary\nCSS var",
               "#101828",
               "องค์ประกอบ/ไอคอน หลัก"
             ],
             [
-              "foreground/general/secondary Variable",
-              "--ntg-color-foreground-general-secondary CSS var",
+              "foreground/general/secondary\nVariable",
+              "--ntg-color-foreground-general-secondary\nCSS var",
               "#344054",
               "องค์ประกอบ/ไอคอน รอง"
             ],
             [
-              "foreground/general/secondary-hover Variable",
-              "--ntg-color-foreground-general-secondary-hover CSS var",
+              "foreground/general/secondary-hover\nVariable",
+              "--ntg-color-foreground-general-secondary-hover\nCSS var",
               "#182230",
               "องค์ประกอบ/ไอคอน รอง (ชี้)"
             ],
             [
-              "foreground/general/tertiary Variable",
-              "--ntg-color-foreground-general-tertiary CSS var",
+              "foreground/general/tertiary\nVariable",
+              "--ntg-color-foreground-general-tertiary\nCSS var",
               "#475467",
               "องค์ประกอบ/ไอคอน ระดับ 3"
             ],
             [
-              "foreground/general/tertiary-hover Variable",
-              "--ntg-color-foreground-general-tertiary-hover CSS var",
+              "foreground/general/tertiary-hover\nVariable",
+              "--ntg-color-foreground-general-tertiary-hover\nCSS var",
               "#344054",
               "องค์ประกอบ/ไอคอน ระดับ 3 (ชี้)"
             ],
             [
-              "foreground/general/quaternary Variable",
-              "--ntg-color-foreground-general-quaternary CSS var",
+              "foreground/general/quaternary\nVariable",
+              "--ntg-color-foreground-general-quaternary\nCSS var",
               "#667085",
               "องค์ประกอบ/ไอคอน ระดับ 4"
             ],
             [
-              "foreground/general/quaternary-hover Variable",
-              "--ntg-color-foreground-general-quaternary-hover CSS var",
+              "foreground/general/quaternary-hover\nVariable",
+              "--ntg-color-foreground-general-quaternary-hover\nCSS var",
               "#475467",
               "องค์ประกอบ/ไอคอน ระดับ 4 (ชี้)"
             ],
             [
-              "foreground/general/quinary Variable",
-              "--ntg-color-foreground-general-quinary CSS var",
+              "foreground/general/quinary\nVariable",
+              "--ntg-color-foreground-general-quinary\nCSS var",
               "#98a2b3",
               "องค์ประกอบ/ไอคอน ระดับ 5"
             ],
             [
-              "foreground/general/quinary-hover Variable",
-              "--ntg-color-foreground-general-quinary-hover CSS var",
+              "foreground/general/quinary-hover\nVariable",
+              "--ntg-color-foreground-general-quinary-hover\nCSS var",
               "#667085",
               "องค์ประกอบ/ไอคอน ระดับ 5 (ชี้)"
             ],
             [
-              "foreground/general/senary Variable",
-              "--ntg-color-foreground-general-senary CSS var",
+              "foreground/general/senary\nVariable",
+              "--ntg-color-foreground-general-senary\nCSS var",
               "#d0d5dd",
               "องค์ประกอบ/ไอคอน ระดับ 6"
             ],
             [
-              "foreground/general/senary-hover Variable",
-              "--ntg-color-foreground-general-senary-hover CSS var",
+              "foreground/general/senary-hover\nVariable",
+              "--ntg-color-foreground-general-senary-hover\nCSS var",
               "#98a2b3",
               "องค์ประกอบ/ไอคอน ระดับ 6 (ชี้)"
             ],
             [
-              "foreground/general/disable Variable",
-              "--ntg-color-foreground-general-disable CSS var",
+              "foreground/general/disable\nVariable",
+              "--ntg-color-foreground-general-disable\nCSS var",
               "#98a2b3",
               "องค์ประกอบ/ไอคอน ปิดใช้งาน"
             ],
             [
-              "foreground/general/disable-subtle Variable",
-              "--ntg-color-foreground-general-disable-subtle CSS var",
+              "foreground/general/disable-subtle\nVariable",
+              "--ntg-color-foreground-general-disable-subtle\nCSS var",
               "#d0d5dd",
               "องค์ประกอบ/ไอคอน ปิดใช้งาน จาง"
             ],
             [
-              "foreground/general/const-white Variable",
-              "--ntg-color-foreground-general-const-white CSS var",
+              "foreground/general/const-white\nVariable",
+              "--ntg-color-foreground-general-const-white\nCSS var",
               "#ffffff",
               "องค์ประกอบ/ไอคอน ขาวคงที่"
             ],
             [
-              "foreground/general/const-black Variable",
-              "--ntg-color-foreground-general-const-black CSS var",
+              "foreground/general/const-black\nVariable",
+              "--ntg-color-foreground-general-const-black\nCSS var",
               "#000000",
               "องค์ประกอบ/ไอคอน ดำคงที่"
             ],
             [
-              "text/general/heading Variable",
-              "--ntg-color-text-general-heading CSS var",
+              "text/general/heading\nVariable",
+              "--ntg-color-text-general-heading\nCSS var",
               "#101828",
               "ตัวอักษร หัวข้อ"
             ],
             [
-              "text/general/section-heading Variable",
-              "--ntg-color-text-general-section-heading CSS var",
+              "text/general/section-heading\nVariable",
+              "--ntg-color-text-general-section-heading\nCSS var",
               "#344054",
               "ตัวอักษร หัวข้อรอง"
             ],
             [
-              "text/general/text Variable",
-              "--ntg-color-text-general-text CSS var",
+              "text/general/text\nVariable",
+              "--ntg-color-text-general-text\nCSS var",
               "#475467",
               "ตัวอักษร เนื้อความ"
             ],
             [
-              "text/general/label Variable",
-              "--ntg-color-text-general-label CSS var",
+              "text/general/label\nVariable",
+              "--ntg-color-text-general-label\nCSS var",
               "#344054",
               "ตัวอักษร ป้าย"
             ],
             [
-              "text/general/caption Variable",
-              "--ntg-color-text-general-caption CSS var",
+              "text/general/caption\nVariable",
+              "--ntg-color-text-general-caption\nCSS var",
               "#667085",
               "ตัวอักษร คำบรรยาย"
             ],
             [
-              "text/general/supporting-text Variable",
-              "--ntg-color-text-general-supporting-text CSS var",
+              "text/general/supporting-text\nVariable",
+              "--ntg-color-text-general-supporting-text\nCSS var",
               "#667085",
               "ตัวอักษร ข้อความรอง"
             ],
             [
-              "text/general/footer-text Variable",
-              "--ntg-color-text-general-footer-text CSS var",
+              "text/general/footer-text\nVariable",
+              "--ntg-color-text-general-footer-text\nCSS var",
               "#667085",
               "ตัวอักษร ข้อความ footer"
             ],
             [
-              "text/general/placeholder Variable",
-              "--ntg-color-text-general-placeholder CSS var",
+              "text/general/placeholder\nVariable",
+              "--ntg-color-text-general-placeholder\nCSS var",
               "#667085",
               "ตัวอักษร placeholder"
             ],
             [
-              "text/general/placeholder-subtle Variable",
-              "--ntg-color-text-general-placeholder-subtle CSS var",
+              "text/general/placeholder-subtle\nVariable",
+              "--ntg-color-text-general-placeholder-subtle\nCSS var",
               "#d0d5dd",
               "ตัวอักษร placeholder จาง"
             ],
             [
-              "text/general/disabled Variable",
-              "--ntg-color-text-general-disabled CSS var",
+              "text/general/disabled\nVariable",
+              "--ntg-color-text-general-disabled\nCSS var",
               "#98a2b3",
               "ตัวอักษร ปิดใช้งาน"
             ],
             [
-              "text/general/disabled-subtle Variable",
-              "--ntg-color-text-general-disabled-subtle CSS var",
+              "text/general/disabled-subtle\nVariable",
+              "--ntg-color-text-general-disabled-subtle\nCSS var",
               "#d0d5dd",
               "ตัวอักษร ปิดใช้งาน จาง"
             ],
             [
-              "text/general/const-white Variable",
-              "--ntg-color-text-general-const-white CSS var",
+              "text/general/const-white\nVariable",
+              "--ntg-color-text-general-const-white\nCSS var",
               "#ffffff",
               "ตัวอักษร ขาวคงที่"
             ],
             [
-              "text/general/const-black Variable",
-              "--ntg-color-text-general-const-black CSS var",
+              "text/general/const-black\nVariable",
+              "--ntg-color-text-general-const-black\nCSS var",
               "#000000",
               "ตัวอักษร ดำคงที่"
             ]
@@ -692,7 +706,8 @@
         {
           "type": "h",
           "text": "การแก้ไข และทำให้ตรงกัน",
-          "sub": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ"
+          "sub": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ",
+          "section": true
         }
       ]
     },
@@ -704,7 +719,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Brand & Nation"
+          "text": "Brand & Nation",
+          "section": true
         },
         {
           "type": "ramp",
@@ -928,7 +944,8 @@
         },
         {
           "type": "h",
-          "text": "Neutral"
+          "text": "Neutral",
+          "section": true
         },
         {
           "type": "ramp",
@@ -1042,7 +1059,8 @@
         },
         {
           "type": "h",
-          "text": "Extended palette"
+          "text": "Extended palette",
+          "section": true
         },
         {
           "type": "ramp",
@@ -1824,7 +1842,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "1. วิธีใช้สีจาก Library"
+          "text": "1. วิธีใช้สีจาก Library",
+          "section": true
         },
         {
           "type": "p",
@@ -1882,7 +1901,8 @@
         {
           "type": "h",
           "text": "2. Color accessibility WCAG 2.1 Guidelines",
-          "sub": "คู่สี text / background ต้องผ่าน contrast ratio ตาม WCAG 2.1 ก่อนใช้งานจริง"
+          "sub": "คู่สี text / background ต้องผ่าน contrast ratio ตาม WCAG 2.1 ก่อนใช้งานจริง",
+          "section": true
         },
         {
           "type": "table",
@@ -1921,7 +1941,8 @@
         {
           "type": "h",
           "text": "3. A11y - Color Contrast Checker Plugins",
-          "sub": "ใช้ปลั๊กอิน Figma ตรวจ contrast ก่อน publish ทุกครั้ง"
+          "sub": "ใช้ปลั๊กอิน Figma ตรวจ contrast ก่อน publish ทุกครั้ง",
+          "section": true
         },
         {
           "type": "table",
@@ -1951,7 +1972,8 @@
         {
           "type": "h",
           "text": "4. Primitive colors",
-          "sub": "Collection primitive (mode hex-value) ค่าสีดิบทั้งหมด แต่ละ ramp มี 12 step (25 ถึง 950) ใช้เป็นฐานของ semantic/component ไม่อ้างตรงในงาน"
+          "sub": "Collection primitive (mode hex-value) ค่าสีดิบทั้งหมด แต่ละ ramp มี 12 step (25 ถึง 950) ใช้เป็นฐานของ semantic/component ไม่อ้างตรงในงาน",
+          "section": true
         },
         {
           "type": "h3",
@@ -1964,7 +1986,8 @@
         {
           "type": "h",
           "text": "5. Semantic colors",
-          "sub": "Collection semantics (mode light-mode / dark-mode) สีเชิงความหมายที่ใช้จริงในงาน มีคู่ light/dark ครบ"
+          "sub": "Collection semantics (mode light-mode / dark-mode) สีเชิงความหมายที่ใช้จริงในงาน มีคู่ light/dark ครบ",
+          "section": true
         },
         {
           "type": "table",
@@ -2002,7 +2025,8 @@
         {
           "type": "h",
           "text": "6. Component colors",
-          "sub": "Collection component (mode value) ชุดสีเฉพาะ component / บริบท (brand, ams, ...) อ้างอิงต่อจาก semantic/primitive"
+          "sub": "Collection component (mode value) ชุดสีเฉพาะ component / บริบท (brand, ams, ...) อ้างอิงต่อจาก semantic/primitive",
+          "section": true
         },
         {
           "type": "table",
@@ -2035,7 +2059,8 @@
         },
         {
           "type": "h",
-          "text": "7. Naming and Initial name"
+          "text": "7. Naming and Initial name",
+          "section": true
         },
         {
           "type": "h3",
@@ -2119,7 +2144,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Background color color/background/*"
+          "text": "Background color color/background/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -2746,7 +2772,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Text color color/text/*"
+          "text": "Text color color/text/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -3173,7 +3200,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Border color color/border/*"
+          "text": "Border color color/border/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -3380,7 +3408,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Foreground color color/foreground/*"
+          "text": "Foreground color color/foreground/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -3897,7 +3926,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Icon color color/icon/*"
+          "text": "Icon color color/icon/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -4395,7 +4425,8 @@
         {
           "type": "h",
           "text": "Utility color color/utility/* 15 เฉดสี",
-          "sub": "Gray"
+          "sub": "Gray",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -5581,7 +5612,8 @@
         {
           "type": "h",
           "text": "Utility color color/utility/* 15 เฉดสี",
-          "sub": "Brand"
+          "sub": "Brand",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -6007,7 +6039,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "AMS Icon color color/icon/ams/*"
+          "text": "AMS Icon color color/icon/ams/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -6106,7 +6139,8 @@
         },
         {
           "type": "h",
-          "text": "AMS Text color color/text/ams/*"
+          "text": "AMS Text color color/text/ams/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -6235,7 +6269,8 @@
         },
         {
           "type": "h",
-          "text": "AMS Background color color/background/ams/*"
+          "text": "AMS Background color color/background/ams/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -6344,7 +6379,8 @@
         },
         {
           "type": "h",
-          "text": "AMS Border color color/border/ams/*"
+          "text": "AMS Border color color/border/ams/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -6403,7 +6439,8 @@
         },
         {
           "type": "h",
-          "text": "AMS Foreground color color/foreground/ams/*"
+          "text": "AMS Foreground color color/foreground/ams/*",
+          "section": true
         },
         {
           "type": "colorTable",
@@ -6501,7 +6538,8 @@
         {
           "type": "h",
           "text": "สถานะทั้งห้า",
-          "sub": "แต่ละสถานะบอกอะไรกับผู้ใช้"
+          "sub": "แต่ละสถานะบอกอะไรกับผู้ใช้",
+          "section": true
         },
         {
           "type": "p",
@@ -6510,7 +6548,8 @@
         {
           "type": "h",
           "text": "สูตรของสีแต่ละสถานะ",
-          "sub": "ไม่ได้เลือกสีทีละตัว แต่เลื่อนขั้นในแรมป์"
+          "sub": "ไม่ได้เลือกสีทีละตัว แต่เลื่อนขั้นในแรมป์",
+          "section": true
         },
         {
           "type": "p",
@@ -6519,7 +6558,8 @@
         {
           "type": "h",
           "text": "ตัวอย่างจริง",
-          "sub": "เทียบสามสถานะในตระกูลที่ใช้บ่อย"
+          "sub": "เทียบสามสถานะในตระกูลที่ใช้บ่อย",
+          "section": true
         },
         {
           "type": "p",
@@ -6633,7 +6673,8 @@
         {
           "type": "h",
           "text": "กติกาการใช้",
-          "sub": "ใช้ตัวไหนเมื่อไหร่ และฝั่งโค้ดผูกกับอะไร"
+          "sub": "ใช้ตัวไหนเมื่อไหร่ และฝั่งโค้ดผูกกับอะไร",
+          "section": true
         },
         {
           "type": "p",

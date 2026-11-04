@@ -10,7 +10,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "Overview"
+          "text": "Overview",
+          "section": true
         },
         {
           "type": "p",
@@ -30,7 +31,8 @@
         },
         {
           "type": "h",
-          "text": "Anatomy"
+          "text": "Anatomy",
+          "section": true
         },
         {
           "type": "p",
@@ -67,7 +69,8 @@
         },
         {
           "type": "h",
-          "text": "Variants"
+          "text": "Variants",
+          "section": true
         },
         {
           "type": "p",
@@ -144,7 +147,8 @@
         },
         {
           "type": "h",
-          "text": "Hierarchy"
+          "text": "Hierarchy",
+          "section": true
         },
         {
           "type": "p",
@@ -156,7 +160,8 @@
         },
         {
           "type": "h",
-          "text": "Sizes"
+          "text": "Sizes",
+          "section": true
         },
         {
           "type": "p",
@@ -277,7 +282,8 @@
         },
         {
           "type": "h",
-          "text": "States"
+          "text": "States",
+          "section": true
         },
         {
           "type": "p",
@@ -289,7 +295,8 @@
         },
         {
           "type": "h",
-          "text": "Usage Do and Don’t"
+          "text": "Usage Do and Don’t",
+          "section": true
         },
         {
           "type": "p",
@@ -317,7 +324,8 @@
         },
         {
           "type": "h",
-          "text": "Accessibility"
+          "text": "Accessibility",
+          "section": true
         },
         {
           "type": "p",
@@ -333,7 +341,8 @@
         },
         {
           "type": "h",
-          "text": "Design Tokens"
+          "text": "Design Tokens",
+          "section": true
         },
         {
           "type": "p",
@@ -349,7 +358,8 @@
         },
         {
           "type": "h",
-          "text": "Specs"
+          "text": "Specs",
+          "section": true
         },
         {
           "type": "p",
@@ -361,7 +371,8 @@
         },
         {
           "type": "h",
-          "text": "Related"
+          "text": "Related",
+          "section": true
         },
         {
           "type": "p",
@@ -386,7 +397,8 @@
         {
           "type": "h",
           "text": "เอกสารนี้คืออะไร",
-          "sub": "เอกสารนี้จับคู่ชื่อมุมโค้งที่เห็นใน Figma กับชื่อที่ใช้ในโค้ด พร้อมค่าจริงและที่ใช้งาน"
+          "sub": "เอกสารนี้จับคู่ชื่อมุมโค้งที่เห็นใน Figma กับชื่อที่ใช้ในโค้ด พร้อมค่าจริงและที่ใช้งาน",
+          "section": true
         },
         {
           "type": "p",
@@ -398,7 +410,8 @@
         },
         {
           "type": "h",
-          "text": "วิธีอ่านตาราง"
+          "text": "วิธีอ่านตาราง",
+          "section": true
         },
         {
           "type": "card",
@@ -414,7 +427,8 @@
         },
         {
           "type": "h",
-          "text": "ตาราง Token"
+          "text": "ตาราง Token",
+          "section": true
         },
         {
           "type": "table",
@@ -490,7 +504,8 @@
         {
           "type": "h",
           "text": "การแก้ไข และทำให้ตรงกัน",
-          "sub": "• มุมโค้งเป็นค่าตัวเลข แหล่งความจริงจึงอยู่ที่โค้ด แก้ที่ tokens/scale แล้วรัน npm run tokens:build\n• ห้ามแก้ค่ามุมโค้งที่ Figma เพราะรอบหน้าที่ generate จะถูกทับ\n• ค่าที่ไม่ใช่ตัวเลข เช่น สีและตัวอักษร ยังใช้ Figma เป็นแหล่งความจริงตามเดิม\n• ห้ามพิมพ์ค่าดิบลงงานตรง ๆ ให้อ้างชื่อ token เสมอ"
+          "sub": "• มุมโค้งเป็นค่าตัวเลข แหล่งความจริงจึงอยู่ที่โค้ด แก้ที่ tokens/scale แล้วรัน npm run tokens:build\n• ห้ามแก้ค่ามุมโค้งที่ Figma เพราะรอบหน้าที่ generate จะถูกทับ\n• ค่าที่ไม่ใช่ตัวเลข เช่น สีและตัวอักษร ยังใช้ Figma เป็นแหล่งความจริงตามเดิม\n• ห้ามพิมพ์ค่าดิบลงงานตรง ๆ ให้อ้างชื่อ token เสมอ",
+          "section": true
         }
       ]
     },
@@ -502,7 +517,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "สเกลกลางในโค้ด 7 ขั้น"
+          "text": "สเกลกลางในโค้ด 7 ขั้น",
+          "section": true
         },
         {
           "type": "p",
@@ -627,7 +643,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "มุมโค้งต่อ component"
+          "text": "มุมโค้งต่อ component",
+          "section": true
         },
         {
           "type": "p",
@@ -703,7 +720,8 @@
       "blocks": [
         {
           "type": "h",
-          "text": "มุมโค้งของกล่องซ้อนกล่อง"
+          "text": "มุมโค้งของกล่องซ้อนกล่อง",
+          "section": true
         },
         {
           "type": "p",

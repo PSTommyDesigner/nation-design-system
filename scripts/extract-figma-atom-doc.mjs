@@ -47,6 +47,9 @@ const PAGES = {
   // ชั้น Molecules เก็บที่ molecules/ (ผู้ใช้อนุมัติ 2026-11-04) กรอบ 8 ตัวเป็นภาพลายหมากรุก (image fill) ยังไม่มี component ในโค้ด
   // จึง export เป็นไฟล์ภาพทางเดียวกับโลโก้ ใช้ในหน้าเอกสารนี้เท่านั้น เป็น PNG เพราะ SVG ไม่เก็บภาพของกรอบวิดีโอ (ออกมาว่าง)
   frame: { page: '10 Frame', folder: 'Frame', root: 'molecules', skip: [], logos: true, format: 'png' },
+  // ตัวอย่างในหน้านี้เป็นชิ้นงานของชุดที่มี component จริงในโค้ด สคริปต์เก็บชื่อชุดกับค่าของแต่ละชิ้น ให้หน้าเอกสารวาดด้วย component จริง
+  // แทนการ export ภาพ (ผู้ใช้อนุมัติ 2026-11-04) components คือชื่อชุดใน Figma ที่อ่านเป็นตัวอย่าง
+  avatar: { page: '11 Avatar', folder: 'Avatar', root: 'molecules', skip: [], components: ['avatar-image', 'avatar-icon', 'avatar-monogram', 'avatar-number', 'avatar-label', 'avatar-group', '_avatar-online-indicator'] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -240,10 +243,40 @@ function effectBlock(n, where, label) {
   return { type: 'effect', kind, style, cssVar, label }
 }
 
+// ตัวอย่าง component: ชิ้นงาน (INSTANCE) หรือ variant (COMPONENT ในชุด) ของชุดที่อยู่ใน PAGES[KEY].components
+// ค่าของชิ้นอ่านจาก componentProperties ส่วน variant อ่านจากชื่อ variant แล้วเติมค่าตั้งต้นของข้อความและ boolean จากชุด
+const COMPONENT_SETS = new Set(PAGES[KEY].components ?? [])
+const propName = (k) => k.split('#')[0]
+const setOf = (n) => n.type === 'INSTANCE' ? n.name : n.type === 'COMPONENT' && n.parent?.type === 'COMPONENT_SET' ? n.parent.name : null
+const isComponentSample = (n) => (n.type === 'INSTANCE' || n.type === 'COMPONENT') && COMPONENT_SETS.has(setOf(n))
+function componentProps(n) {
+  if (n.type === 'INSTANCE') return Object.fromEntries(Object.entries(n.componentProperties ?? {}).map(([k, v]) => [propName(k), v.value]))
+  const defs = Object.fromEntries(Object.entries(n.parent.componentPropertyDefinitions ?? {}).filter(([, d]) => d.type !== 'VARIANT').map(([k, d]) => [propName(k), d.defaultValue]))
+  const variant = Object.fromEntries(n.name.split(',').map(x => x.trim().split('=')).filter(x => x.length === 2))
+  return { ...defs, ...variant }
+}
+// ภาพแทนรูปข้างในชิ้นงาน (เช่น avatar-image) เป็น image fill ของไฟล์ออกแบบ เก็บ id สั้นไว้ แล้ว export เป็นไฟล์ใน assets/ ตอนท้าย
+const sampleImages = new Set()
+const imageOf = (n) => { const r = findAll(n, x => x.fills?.some(f => f.type === 'IMAGE' && f.imageRef))[0]?.fills.find(f => f.imageRef).imageRef; if (r) sampleImages.add(r); return r ? r.slice(0, 10) : undefined }
+// frame คือกรอบของชิ้นพร้อมป้าย ความกว้างกรอบ (cell) ทำให้ช่องกว้างเท่ากันแบบไฟล์ออกแบบ และกรอบแม่ที่เรียงแนวตั้ง (vertical) ทำให้ตัวอย่างวางเป็นคอลัมน์
+function componentBlock(n, label, frame) {
+  const b = n.absoluteBoundingBox
+  return { type: 'component', set: setOf(n), props: componentProps(n), image: imageOf(n), label, width: Math.round(b.width), height: Math.round(b.height), ...(frame ? { cell: Math.round(frame.absoluteBoundingBox.width), vertical: frame.parent?.layoutMode === 'VERTICAL' } : {}) }
+}
+// ตัวอย่างชั้นบนสุดในกรอบ ไม่ไล่ลงไปในตัวอย่างอีกชั้น เช่นอวาตาร์ข้างในกลุ่ม
+const topSamples = (n, acc = []) => { if (n.visible === false) return acc; if (isComponentSample(n)) { acc.push(n); return acc } for (const k of n.children ?? []) { k.parent = n; topSamples(k, acc) } return acc }
+// ชุด variant ทั้งชุด เก็บตำแหน่งของแต่ละ variant ในชุด ให้หน้าเอกสารวางเรียงเหมือนไฟล์ออกแบบ
+function variantSetBlock(set, caption) {
+  const o = set.absoluteBoundingBox
+  const items = set.children.filter(c => c.type === 'COMPONENT' && c.visible !== false).map(c => { c.parent = set; const b = c.absoluteBoundingBox; return { props: componentProps(c), image: imageOf(c), x: Math.round(b.x - o.x), y: Math.round(b.y - o.y), width: Math.round(b.width), height: Math.round(b.height) } })
+  return { type: 'variantSet', set: set.name, caption, width: Math.round(o.width), height: Math.round(o.height), items }
+}
+
 function extract(doc) {
   const out = { id: doc.id, name: doc.name, title: '', subtitle: '', blocks: [] }
   // หัวข้อ Base component (internal) เก็บชิ้นส่วนทำเอกสาร เช่นป้ายตัวเลขของภาพ grid ไม่ใช่เนื้อหา จึงข้ามจนถึงหัวข้อถัดไป
   let skipping = false
+  const sectionStarts = new Set()
   const push = (b) => {
     if (b.type === 'h') skipping = /base component/i.test(b.text)
     if (skipping) return
@@ -266,6 +299,10 @@ function extract(doc) {
     if (b.type === 'space') {
       if (last?.type === 'spaces') { last.items.push(b); return }
       out.blocks.push({ type: 'spaces', items: [b] }); return
+    }
+    if (b.type === 'component') {
+      if (last?.type === 'components') { last.items.push(b); return }
+      out.blocks.push({ type: 'components', vertical: Boolean(b.vertical), items: [b] }); return
     }
     if (b.type === 'logo') {
       if (last?.type === 'logos') { last.items.push(b); return }
@@ -312,7 +349,8 @@ function extract(doc) {
     }
     if (n.type === 'FRAME' && n.children?.length && n.children.every(c => c.type === 'FRAME' && c.children?.some(isCell)) && n.children.some(c => c.children.some(x => /table-cell$/.test(x.name)))) {
       // ตาราง = เฟรมที่ลูกทุกตัวเป็นแถวของเซล แถวแรกเป็นหัวตาราง
-      const rows = n.children.map(r => r.children.filter(isCell).map(c => texts(c).join(' ')))
+      // เซลที่มีข้อความหลายชิ้นเรียงลงล่าง เช่น ชื่อตัวแปรกับคำว่า Variable ตัวเล็กใต้ชื่อ (ตาราง Color Token) เก็บแยกบรรทัด
+      const rows = n.children.map(r => r.children.filter(isCell).map(c => texts(c).join('\n')))
       push({ type: 'table', head: rows[0], rows: rows.slice(1) })
       return
     }
@@ -352,7 +390,8 @@ function extract(doc) {
       const t = n.children.find(c => c.type === 'TEXT').characters
       const effects = findAll(n, isEffect).map(x => effectBlock(x, doc.name, ''))
       const logos = n.children.filter(isLogo).map(x => logoBlock(x, ''))
-      push({ type: 'card', kind: t.startsWith('\u2705') ? 'do' : 'dont', title: '', body: t.replace(/^[\u2705\u274c]\s*(ถูก|ผิด)?\s*/, ''), effects, logos })
+      const components = COMPONENT_SETS.size ? topSamples(n).map(x => componentBlock(x, '')) : []
+      push({ type: 'card', kind: t.startsWith('\u2705') ? 'do' : 'dont', title: '', body: t.replace(/^[\u2705\u274c]\s*(ถูก|ผิด)?\s*/, ''), effects, logos, ...(components.length ? { components } : {}) })
       return
     }
     if (n.type === 'FRAME' && n.name === 'item' && n.children?.some(isEffect)) {
@@ -361,12 +400,29 @@ function extract(doc) {
       push(effectBlock(n.children.find(isEffect), doc.name, label))
       return
     }
+    if (COMPONENT_SETS.size) {
+      // กรอบที่มีชุด variant พร้อมคำบรรยาย เช่น avatar/image ในเอกสาร Avatar Components
+      const set = n.type === 'FRAME' && n.children?.find(c => c.type === 'COMPONENT_SET' && COMPONENT_SETS.has(c.name))
+      if (set) { push(variantSetBlock(set, n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim()).join(' '))); return }
+      if (n.type === 'COMPONENT_SET' && COMPONENT_SETS.has(n.name)) { push(variantSetBlock(n, '')); return }
+      // ชิ้นตัวอย่างพร้อมป้ายในกรอบเดียวกัน หรือชิ้นเดี่ยว
+      const sample = n.type === 'FRAME' && n.children?.filter(c => c.visible !== false && isComponentSample(c))
+      if (sample?.length === 1 && n.children.some(c => c.type === 'TEXT')) { push(componentBlock(sample[0], n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim()).join(' '), n)); return }
+      if (isComponentSample(n)) { push(componentBlock(n, '')); return }
+    }
     if (isEffect(n)) { push(effectBlock(n, doc.name, '')); return }
     if (isRadiusSample(n)) { push(radiusBlock(n, doc.name)); return }
     // หัวข้อและกริดของกลุ่มที่ไม่เอาข้ามทั้งชุด ส่วนภาพตัวอย่างในเอกสารเหลือแค่คำบรรยาย
     if (n.type === 'FRAME' && n.children?.some(c => c.name === 'grid' && logoOf(c.children?.[0] ?? {}) && isExcludedLogo(logoOf(c.children[0])))) return
     if (n.type === 'FRAME' && logoOf(n) && isExcludedLogo(logoOf(n))) { push({ type: 'logo', file: null, label: n.children.find(c => c.type === 'TEXT').characters.trim(), width: 0, height: 0 }); return }
-    if (n.type === 'FRAME' && logoOf(n) && n.children.some(c => c.type === 'TEXT')) { push(logoBlock(logoOf(n), n.children.find(c => c.type === 'TEXT').characters.trim(), n)); return }
+    if (n.type === 'FRAME' && logoOf(n) && n.children.some(c => c.type === 'TEXT')) {
+      // ป้ายชื่ออยู่ใต้ภาพเมื่อในไฟล์ออกแบบชั้นข้อความเรียงหลังชั้นภาพ เช่น Frame Ratios หน้า 10 Frame
+      const textAt = n.children.findIndex(c => c.type === 'TEXT')
+      const imageAt = n.children.findIndex(c => c === logoOf(n) || c.name === 'box')
+      const block = logoBlock(logoOf(n), n.children[textAt].characters.trim(), n)
+      push(textAt > imageAt ? { ...block, labelBelow: true } : block)
+      return
+    }
     if (PAGES[KEY].logos && n.type === 'FRAME' && n.name === 'item' && n.children?.length === 1 && n.children[0].type === 'TEXT') { push({ type: 'logo', file: null, label: n.children[0].characters.trim(), width: 0, height: 0 }); return }
     if (isSpaceRow(n)) { push(spaceBlock(n, doc.name)); return }
     if (n.type === 'FRAME' && n.children?.some(c => c.name === 'outer-box' && c.children?.some(x => x.name === 'inner-box'))) {
@@ -418,8 +474,14 @@ function extract(doc) {
       }
       return
     }
-    for (const k of n.children ?? []) { k.parent = n; walk(k) }
+    for (const k of n.children ?? []) {
+      k.parent = n
+      // ลูกชั้นแรกของเอกสารคือหัวข้อใหญ่ (section ระยะบนล่าง 80) จำตำแหน่งบล็อกแรกของแต่ละหัวข้อ ให้หน้าเอกสารเว้นระยะตามไฟล์ออกแบบ
+      if (n === doc) sectionStarts.add(out.blocks.length)
+      walk(k)
+    }
   })(doc)
+  for (const i of sectionStarts) if (out.blocks[i]) out.blocks[i].section = true
   if (!out.title) out.title = doc.name
   return out
 }
@@ -458,6 +520,16 @@ if (logoFiles.size) {
   // PNG ใน <img> ยืดตามความกว้างความสูงที่ตั้งอยู่แล้ว จึงต้องหาความกว้างจริงเฉพาะ SVG
   const natural = (file) => Number(fs.readFileSync(path.join(dir, `${file}.svg`), 'utf8').match(/width="([\d.]+)"/)[1])
   if (FORMAT === 'svg') for (const d of documents) for (const b of d.blocks) for (const it of [...(b.logos ?? []), ...(b.type === 'logos' ? b.items : [])]) if (it.file && Math.abs(natural(it.file) - it.width) > 1) it.natural = natural(it.file)
+}
+if (sampleImages.size) {
+  // ภาพแทนรูปของตัวอย่าง component ดึงจาก image fill ของไฟล์ออกแบบ ชื่อไฟล์คือ id สั้นของภาพ ใช้ในหน้าเอกสารนี้เท่านั้น
+  const dir = path.join(path.dirname(OUT), 'assets')
+  fs.mkdirSync(dir, { recursive: true })
+  const { meta } = await api('/images')
+  for (const ref of sampleImages) {
+    if (!meta.images[ref]) throw new Error(`ไม่พบภาพ ${ref} ในไฟล์ออกแบบ`)
+    fs.writeFileSync(path.join(dir, `${ref.slice(0, 10)}.png`), Buffer.from(await (await fetch(meta.images[ref])).arrayBuffer()))
+  }
 }
 if (missing.size) {
   fs.writeFileSync(MISSING, JSON.stringify([...missing], null, 2) + '\n')

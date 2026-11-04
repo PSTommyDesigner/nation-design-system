@@ -11,7 +11,8 @@
         {
           "type": "h",
           "text": "Overview",
-          "sub": "ระบบตัวอักษรของ Nation ใช้ 2 ฟอนต์แบ่งตามงาน แล้วรวมเป็นชุดสไตล์สำเร็จรูปให้หยิบใช้ตามบทบาท (เช่น พาดหัวข่าว / เนื้อข่าว) เลือกจากรายการที่มี ไม่ต้องตั้งค่าเอง เพื่อให้ทุกหน้าหน้าตาเป็นระเบียบเหมือนกัน"
+          "sub": "ระบบตัวอักษรของ Nation ใช้ 2 ฟอนต์แบ่งตามงาน แล้วรวมเป็นชุดสไตล์สำเร็จรูปให้หยิบใช้ตามบทบาท (เช่น พาดหัวข่าว / เนื้อข่าว) เลือกจากรายการที่มี ไม่ต้องตั้งค่าเอง เพื่อให้ทุกหน้าหน้าตาเป็นระเบียบเหมือนกัน",
+          "section": true
         },
         {
           "type": "p",
@@ -20,7 +21,8 @@
         {
           "type": "h",
           "text": "Token structure",
-          "sub": "ค่าตัวอักษรจัดเป็น 2 ชั้น: ชั้นแรกเก็บ “ค่าพื้นฐาน” (ขนาด ความสูงบรรทัด ความหนา ฟอนต์) ชั้นสองจับค่าพื้นฐานมาตั้งเป็น “บทบาท” แล้วบันทึกเป็นสไตล์พร้อมใช้ จะปรับ ก็แก้ที่ชั้นแรกจุดเดียว เปลี่ยนพร้อมกันทั้งระบบ"
+          "sub": "ค่าตัวอักษรจัดเป็น 2 ชั้น: ชั้นแรกเก็บ “ค่าพื้นฐาน” (ขนาด ความสูงบรรทัด ความหนา ฟอนต์) ชั้นสองจับค่าพื้นฐานมาตั้งเป็น “บทบาท” แล้วบันทึกเป็นสไตล์พร้อมใช้ จะปรับ ก็แก้ที่ชั้นแรกจุดเดียว เปลี่ยนพร้อมกันทั้งระบบ",
+          "section": true
         },
         {
           "type": "card",
@@ -42,7 +44,8 @@
         },
         {
           "type": "h",
-          "text": "Usage Do / Don’t"
+          "text": "Usage Do / Don’t",
+          "section": true
         },
         {
           "type": "card",
@@ -59,12 +62,14 @@
         {
           "type": "h",
           "text": "Accessibility",
-          "sub": "• ขนาดเนื้อความหลักไม่ต่ำกว่า 14 (เนื้อความ/บทความ) 12 สำหรับข้อมูลประกอบ 8–10 เฉพาะข้อความไม่สำคัญ (เครดิต/หมายเหตุ)\n• เว้นความสูงบรรทัดให้อ่านสบาย บทความ Sarabun ราว 1.9–2.1 เท่า งานหน้าจอ 1.4–1.5 เท่า\n• สีตัวอักษรตัดกับพื้นให้พอ ปกติไม่ต่ำกว่า 4.5:1 ตัวใหญ่ (≥ 24) ไม่ต่ำกว่า 3:1\n• อย่าย่อบทความต่ำกว่า 14 เลี่ยงตัวพิมพ์ใหญ่ทั้งประโยคยาว ๆ"
+          "sub": "• ขนาดเนื้อความหลักไม่ต่ำกว่า 14 (เนื้อความ/บทความ) 12 สำหรับข้อมูลประกอบ 8–10 เฉพาะข้อความไม่สำคัญ (เครดิต/หมายเหตุ)\n• เว้นความสูงบรรทัดให้อ่านสบาย บทความ Sarabun ราว 1.9–2.1 เท่า งานหน้าจอ 1.4–1.5 เท่า\n• สีตัวอักษรตัดกับพื้นให้พอ ปกติไม่ต่ำกว่า 4.5:1 ตัวใหญ่ (≥ 24) ไม่ต่ำกว่า 3:1\n• อย่าย่อบทความต่ำกว่า 14 เลี่ยงตัวพิมพ์ใหญ่ทั้งประโยคยาว ๆ",
+          "section": true
         },
         {
           "type": "h",
           "text": "Design tokens",
-          "sub": "โครงค่า 2 ชั้น + สไตล์พร้อมใช้ รายละเอียดเต็มสำหรับนักพัฒนาดูที่ไฟล์ docs/03-typography.md"
+          "sub": "โครงค่า 2 ชั้น + สไตล์พร้อมใช้ รายละเอียดเต็มสำหรับนักพัฒนาดูที่ไฟล์ docs/03-typography.md",
+          "section": true
         },
         {
           "type": "table",
@@ -90,12 +95,14 @@
         {
           "type": "h",
           "text": "Naming convention",
-          "sub": "• Variable: typography/<property>/<role>\n• property = font-size line-height letter-space font-weight font-family\n• role = <family>-<size> เช่น display-lg title-md body-xl  (meta ใช้ชื่อเฉพาะ: byline credit micro)\n• Text Style path ใช้ / คั่น: display/lg title/md article/pullquote\n• family: display page-heading section-heading title body article meta label"
+          "sub": "• Variable: typography/<property>/<role>\n• property = font-size line-height letter-space font-weight font-family\n• role = <family>-<size> เช่น display-lg title-md body-xl  (meta ใช้ชื่อเฉพาะ: byline credit micro)\n• Text Style path ใช้ / คั่น: display/lg title/md article/pullquote\n• family: display page-heading section-heading title body article meta label",
+          "section": true
         },
         {
           "type": "h",
           "text": "Related",
-          "sub": "01 Color, 07 Space, 12 Buttons (label/* ใช้บนปุ่ม) และ component ทุกตัวที่ผูก role ผ่าน Text Style"
+          "sub": "01 Color, 07 Space, 12 Buttons (label/* ใช้บนปุ่ม) และ component ทุกตัวที่ผูก role ผ่าน Text Style",
+          "section": true
         },
         {
           "type": "p",
@@ -112,11 +119,13 @@
         {
           "type": "h",
           "text": "เอกสารนี้คืออะไร",
-          "sub": "ตารางนี้คือรายชื่อสไตล์ตัวอักษรทั้งหมด 48 แบบ ฝั่งซ้ายคือชื่อที่ดีไซเนอร์เห็นใน Figma ฝั่งขวาคือชื่อ CSS class ที่ dev ใช้ได้ตรง ๆ ค่าเดียวกันเป๊ะ ใช้เป็นภาษากลางตอนส่ง/รับงาน"
+          "sub": "ตารางนี้คือรายชื่อสไตล์ตัวอักษรทั้งหมด 48 แบบ ฝั่งซ้ายคือชื่อที่ดีไซเนอร์เห็นใน Figma ฝั่งขวาคือชื่อ CSS class ที่ dev ใช้ได้ตรง ๆ ค่าเดียวกันเป๊ะ ใช้เป็นภาษากลางตอนส่ง/รับงาน",
+          "section": true
         },
         {
           "type": "h",
-          "text": "วิธีอ่านตาราง"
+          "text": "วิธีอ่านตาราง",
+          "section": true
         },
         {
           "type": "card",
@@ -132,7 +141,8 @@
         },
         {
           "type": "h",
-          "text": "ตาราง Token"
+          "text": "ตาราง Token",
+          "section": true
         },
         {
           "type": "table",
@@ -436,7 +446,8 @@
         {
           "type": "h",
           "text": "การแก้ไข และทำให้ตรงกัน",
-          "sub": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ"
+          "sub": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ",
+          "section": true
         }
       ]
     },
@@ -449,7 +460,8 @@
         {
           "type": "h",
           "text": "Font families",
-          "sub": "2 ฟอนต์แบ่งตามงาน แต่ละฟอนต์มี 3 ความหนา (บาง 400 กลาง 500 หนา 600)"
+          "sub": "2 ฟอนต์แบ่งตามงาน แต่ละฟอนต์มี 3 ความหนา (บาง 400 กลาง 500 หนา 600)",
+          "section": true
         },
         {
           "type": "fontFamily",
@@ -500,7 +512,8 @@
         {
           "type": "h",
           "text": "ชุดขนาดพื้นฐาน",
-          "sub": "ชุดขนาดพื้นฐาน ฟอนต์ Prompt (งานหน้าจอ) 15 ขนาด + Sarabun (บทความ) 3 ขนาด แสดงเป็น ขนาด/ความสูงบรรทัด"
+          "sub": "ชุดขนาดพื้นฐาน ฟอนต์ Prompt (งานหน้าจอ) 15 ขนาด + Sarabun (บทความ) 3 ขนาด แสดงเป็น ขนาด/ความสูงบรรทัด",
+          "section": true
         },
         {
           "type": "scale",
@@ -675,7 +688,8 @@
         {
           "type": "h",
           "text": "Display",
-          "sub": "หัวใหญ่พิเศษ (hero/cover) Prompt Bold ใหญ่สุดในระบบ เน้นจุดเด่นหน้าแรก/หน้าหมวด"
+          "sub": "หัวใหญ่พิเศษ (hero/cover) Prompt Bold ใหญ่สุดในระบบ เน้นจุดเด่นหน้าแรก/หน้าหมวด",
+          "section": true
         },
         {
           "type": "specimen",
@@ -720,7 +734,8 @@
         {
           "type": "h",
           "text": "Page-heading",
-          "sub": "พาดหัวข่าว/ชื่อหน้า (H1) Prompt Bold หัวบทความหลักในแต่ละหน้า"
+          "sub": "พาดหัวข่าว/ชื่อหน้า (H1) Prompt Bold หัวบทความหลักในแต่ละหน้า",
+          "section": true
         },
         {
           "type": "specimen",
@@ -765,7 +780,8 @@
         {
           "type": "h",
           "text": "Section-heading",
-          "sub": "หัวแบ่ง section (H2–H4) Prompt Medium แบ่งส่วน/หัวข้อย่อยในหน้า-บทความ"
+          "sub": "หัวแบ่ง section (H2–H4) Prompt Medium แบ่งส่วน/หัวข้อย่อยในหน้า-บทความ",
+          "section": true
         },
         {
           "type": "specimen",
@@ -810,7 +826,8 @@
         {
           "type": "h",
           "text": "Title",
-          "sub": "หัว card/module/list Prompt Medium หัวกล่องเนื้อหาใน UI"
+          "sub": "หัว card/module/list Prompt Medium หัวกล่องเนื้อหาใน UI",
+          "section": true
         },
         {
           "type": "specimen",
@@ -855,7 +872,8 @@
         {
           "type": "h",
           "text": "Body",
-          "sub": "เนื้อความ UI Prompt Regular ข้อความทั่วไป/Description ในส่วนติดต่อผู้ใช้"
+          "sub": "เนื้อความ UI Prompt Regular ข้อความทั่วไป/Description ในส่วนติดต่อผู้ใช้",
+          "section": true
         },
         {
           "type": "specimen",
@@ -900,7 +918,8 @@
         {
           "type": "h",
           "text": "Article",
-          "sub": "เนื้อบทความ Sarabun Regular สำหรับหน้าอ่าน/บทความ อ่านสบายตา"
+          "sub": "เนื้อบทความ Sarabun Regular สำหรับหน้าอ่าน/บทความ อ่านสบายตา",
+          "section": true
         },
         {
           "type": "specimen",
@@ -945,7 +964,8 @@
         {
           "type": "h",
           "text": "Label",
-          "sub": "ป้ายบน component Prompt Medium ปุ่ม/chip/tag/nav"
+          "sub": "ป้ายบน component Prompt Medium ปุ่ม/chip/tag/nav",
+          "section": true
         },
         {
           "type": "specimen",
@@ -990,7 +1010,8 @@
         {
           "type": "h",
           "text": "Pullquote",
-          "sub": "ข้อความดึงเด่นกลางบทความ Sarabun Medium ยกคำพูด/ประโยคเด่น"
+          "sub": "ข้อความดึงเด่นกลางบทความ Sarabun Medium ยกคำพูด/ประโยคเด่น",
+          "section": true
         },
         {
           "type": "specimen",
@@ -1035,7 +1056,8 @@
         {
           "type": "h",
           "text": "Meta",
-          "sub": "ข้อมูลประกอบข่าว Prompt byline/หมวด/เวลา/caption/เครดิต ฯลฯ"
+          "sub": "ข้อมูลประกอบข่าว Prompt byline/หมวด/เวลา/caption/เครดิต ฯลฯ",
+          "section": true
         },
         {
           "type": "specimen",

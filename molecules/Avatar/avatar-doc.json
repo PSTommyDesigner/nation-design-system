@@ -1,0 +1,2526 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 11 Avatar ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- avatar",
+  "page": "11 Avatar",
+  "documents": [
+    {
+      "id": "10281:890",
+      "name": "11 Avatar Documentation",
+      "title": "11 Avatar Documentation",
+      "subtitle": "อวาตาร์ 7 ชุด 118 แบบ 4 ชนิด 5 ขนาด",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "หน้านี้คืออะไร"
+        },
+        {
+          "type": "p",
+          "text": "หน้า 11 Avatar เก็บอวาตาร์ทั้งหมดของระบบ 7 ชุด รวม 118 แบบ แบ่งเป็นอวาตาร์เดี่ยว 4 ชนิด อวาตาร์พร้อมชื่อ กลุ่มอวาตาร์ และชิ้นส่วนฐานอีก 1 ชุด"
+        },
+        {
+          "type": "p",
+          "text": "อวาตาร์เดี่ยวทั้ง 4 ชนิดมีโครงเหมือนกันหมด ต่างกันแค่สิ่งที่อยู่ข้างใน และมีคุณสมบัติชุดเดียวกันคือขนาด สถานะ และจุดบอกสถานะออนไลน์"
+        },
+        {
+          "type": "p",
+          "text": "ชุดที่ชื่อขึ้นต้นด้วยขีดล่างเป็นชิ้นส่วนภายใน ไม่ได้เอาไปวางใช้ตรง ๆ"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "avatar-image รูปจริง",
+              "width": 40,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-icon",
+              "props": {
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "avatar-icon ไม่มีทั้งรูปและชื่อ",
+              "width": 40,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-monogram",
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "avatar-monogram ตัวย่อจากชื่อ",
+              "width": 40,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-number",
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "avatar-number จำนวน ไม่ใช่ตัวคน",
+              "width": 40,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "อวาตาร์ประกอบจากอะไร"
+        },
+        {
+          "type": "p",
+          "text": "ตัวอวาตาร์เป็นวงกลมที่ข้างในเป็นรูป ไอคอน ตัวย่อ หรือตัวเลข"
+        },
+        {
+          "type": "p",
+          "text": "จุดบอกสถานะออนไลน์เป็นชิ้นส่วนแยก วางทับมุมล่างขวา เปิดปิดได้ทุกชนิดทุกขนาด"
+        },
+        {
+          "type": "p",
+          "text": "ปุ่มเพิ่มคนในกลุ่มใช้ circular-icon-button ตระกูล Neutral ระดับ Tertiary จากหน้า 12 Buttons ไม่มีปุ่มเฉพาะกิจของอวาตาร์แล้ว"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "ตัวอวาตาร์ ขนาด xl พร้อมจุดบอกสถานะออนไลน์",
+              "width": 56,
+              "height": 56,
+              "cell": 240,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-label",
+              "props": {
+                "email": "garry@nationgroup.com",
+                "name": "Garry Gergich",
+                "show-email": true,
+                "avatar": true,
+                "size": "lg",
+                "status-icon": "false",
+                "state": "default"
+              },
+              "label": "อวาตาร์พร้อมชื่อ ประกอบจากตัวอวาตาร์ ชื่อ และอีเมล",
+              "width": 251,
+              "height": 54,
+              "cell": 420,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "คุณสมบัติของแต่ละชุด"
+        },
+        {
+          "type": "p",
+          "text": "อวาตาร์เดี่ยว 4 ชนิด มีขนาด 5 ระดับ สถานะ 2 แบบ และเปิดปิดจุดบอกสถานะได้ รวมชนิดละ 20 แบบ"
+        },
+        {
+          "type": "p",
+          "text": "อวาตาร์พร้อมชื่อ มี 4 ขนาด สลับแสดงอีเมลได้ และเลือกได้ว่าจะมีจุดบอกสถานะไหม รวม 16 แบบ"
+        },
+        {
+          "type": "p",
+          "text": "กลุ่มอวาตาร์ มี 3 ขนาด แสดงหน้าคนได้สูงสุด 5 คน เลือกได้ว่าจะมีปุ่มเพิ่มคนและตัวบอกจำนวนที่เหลือไหม รวม 12 แบบ"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "avatar-image  20 แบบ",
+              "width": 40,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-icon",
+              "props": {
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "avatar-icon  20 แบบ",
+              "width": 40,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-monogram",
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "avatar-monogram  20 แบบ",
+              "width": 40,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-number",
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "avatar-number  20 แบบ",
+              "width": 40,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-label",
+              "props": {
+                "email": "garry@nationgroup.com",
+                "name": "Garry Gergich",
+                "show-email": true,
+                "avatar": true,
+                "size": "md",
+                "status-icon": "false",
+                "state": "default"
+              },
+              "label": "avatar-label  16 แบบ",
+              "width": 239,
+              "height": 50,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-group",
+              "props": {
+                "avatar-9": true,
+                "avatar-8": true,
+                "avatar-6": true,
+                "avatar-10": true,
+                "avatar-3": true,
+                "avatar-7": true,
+                "avatar-2": true,
+                "avatar-5": true,
+                "avatar-4": true,
+                "avatar-1": true,
+                "size": "md",
+                "add-user-button": "false",
+                "more-users": "false"
+              },
+              "label": "avatar-group  12 แบบ",
+              "width": 152,
+              "height": 40,
+              "cell": 280,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "ความเด่นมาจากขนาดที่เลือกให้เหมาะกับที่วาง"
+        },
+        {
+          "type": "p",
+          "text": "อวาตาร์ไม่มีแกน primary secondary tertiary แบบปุ่ม เพราะเป็นตัวแทนของคนหนึ่งคน ไม่ได้แข่งกับอวาตาร์ตัวอื่นในหน้า วิธีบอกความสำคัญคือเลือกขนาดให้เหมาะกับบริบทที่วาง ตัวอย่างข้างล่างคือคนคนเดียวกันที่ปรากฏใน 4 ที่ในระบบ"
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "หน้าโปรไฟล์  ใช้ xl  เป็นสิ่งที่ทั้งหน้ามีอยู่เพื่อมัน",
+              "width": 56,
+              "height": 56,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "avatar-label",
+              "props": {
+                "email": "garry@nationgroup.com",
+                "name": "Garry Gergich",
+                "show-email": true,
+                "avatar": true,
+                "size": "md",
+                "status-icon": "false",
+                "state": "default"
+              },
+              "label": "แถวรายชื่อ  ใช้ md คู่กับชื่อและอีเมล  ต้องอ่านชื่อได้พร้อมเห็นหน้า",
+              "width": 239,
+              "height": 50,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "avatar-group",
+              "props": {
+                "avatar-9": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-8": true,
+                "avatar-6": true,
+                "avatar-3": true,
+                "avatar-10": true,
+                "avatar-2": true,
+                "avatar-7": true,
+                "avatar-1": true,
+                "size": "sm",
+                "add-user-button": "false",
+                "more-users": "false"
+              },
+              "label": "กลุ่มคนที่เกี่ยวข้อง  ใช้ sm ซ้อนกัน  บอกว่ามีใครบ้างโดยไม่กินที่",
+              "width": 128,
+              "height": 32,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "ในแถวของตาราง  ใช้ xs  แค่ช่วยให้กวาดตาหาแถวได้เร็วขึ้น",
+              "width": 24,
+              "height": 24,
+              "cell": 1280,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "5 ขนาด และสูตรที่อยู่เบื้องหลัง"
+        },
+        {
+          "type": "p",
+          "text": "อวาตาร์มี 5 ขนาด คือ 24 32 40 48 และ 56 ซึ่งเป็นสูตรเริ่ม 24 เพิ่มทีละ 8"
+        },
+        {
+          "type": "p",
+          "text": "สูตรนี้ตรงกับความสูงปุ่มเป๊ะทุกขนาด แต่ตัดสินแล้วว่าไม่รวมสูตรกัน อวาตาร์มีตัวแปรของตัวเอง 23 ตัวตั้งแต่ 2026-09-01"
+        },
+        {
+          "type": "p",
+          "text": "จุดบอกสถานะออนไลน์มี 5 ขนาด เริ่ม 6 เพิ่มทีละ 2 คู่กับอวาตาร์ครบทั้ง 5 ขนาด"
+        },
+        {
+          "type": "p",
+          "text": "รายละเอียดทั้งหมดอยู่ที่เอกสาร Avatar Space"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "avatar-icon",
+              "props": {
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "label": "xs  กล่อง 24  ไอคอน 16  จุด 6",
+              "width": 24,
+              "height": 24,
+              "cell": 220,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-icon",
+              "props": {
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "label": "sm  กล่อง 32  ไอคอน 20  จุด 8",
+              "width": 32,
+              "height": 32,
+              "cell": 220,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-icon",
+              "props": {
+                "online-indicator": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "md  กล่อง 40  ไอคอน 24  จุด 10",
+              "width": 40,
+              "height": 40,
+              "cell": 220,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-icon",
+              "props": {
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "label": "lg  กล่อง 48  ไอคอน 28  จุด 12",
+              "width": 48,
+              "height": 48,
+              "cell": 220,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-icon",
+              "props": {
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "label": "xl  กล่อง 56  ไอคอน 32  จุด 14",
+              "width": 56,
+              "height": 56,
+              "cell": 220,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "สองสถานะเท่านั้น และเหตุผลที่ไม่มีมากกว่านี้"
+        },
+        {
+          "type": "p",
+          "text": "มีแค่ default กับ hover เพราะอวาตาร์เป็นของที่แสดงตัวตน ไม่ใช่ตัวควบคุมที่กดได้ด้วยตัวเอง\nไม่มี focused เพราะสิ่งที่รับโฟกัสคือของที่ครอบมันอยู่ เช่นแถวรายชื่อหรือปุ่ม ไม่ใช่ตัวอวาตาร์\nไม่มี disabled เพราะการปิดใช้งานเกิดที่ของที่ครอบเช่นกัน ตัวอวาตาร์เองไม่มีสถานะกดไม่ได้\nถ้าอวาตาร์อยู่ในของที่กดได้ ให้ของที่ครอบเป็นตัวแสดงสถานะ แล้วอวาตาร์ใช้ hover ตามไปด้วย"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "default  สถานะปกติ",
+              "width": 48,
+              "height": 48,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "label": "hover  เมาส์ลอยอยู่เหนืออวาตาร์",
+              "width": 48,
+              "height": 48,
+              "cell": 280,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Usage Do and Don’t",
+          "sub": "เลือกอย่างไร"
+        },
+        {
+          "type": "p",
+          "text": "ถ้ามีรูปจริงใช้รูป ถ้าไม่มีรูปแต่รู้ชื่อใช้ตัวย่อ ถ้าไม่มีทั้งคู่ใช้ไอคอน"
+        },
+        {
+          "type": "p",
+          "text": "ตัวเลขใช้แทนจำนวนเท่านั้น ห้ามใช้แทนตัวคน"
+        },
+        {
+          "type": "p",
+          "text": "เปิดจุดบอกสถานะออนไลน์เมื่อระบบรู้สถานะจริงเท่านั้น ถ้าไม่รู้ให้ปิด อย่าแสดงเป็นออฟไลน์"
+        },
+        {
+          "type": "p",
+          "text": "รายละเอียดพร้อมข้อควรระวังรายชนิดอยู่ที่เอกสาร Avatar Guide"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "มีรูปจริงให้ใช้รูป ผู้ใช้จำหน้าคนได้เร็วกว่าจำตัวอักษร",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "",
+              "width": 48,
+              "height": 48
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "ใช้อวาตาร์ตัวเลขแทนตัวคน ตัวเลขมีไว้บอกจำนวนเท่านั้น",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "avatar-number",
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "label": "",
+              "width": 48,
+              "height": 48
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "ปิดจุดบอกสถานะเมื่อระบบไม่รู้ว่าคนนั้นออนไลน์อยู่จริงหรือไม่",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "",
+              "width": 48,
+              "height": 48
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "เปิดจุดบอกสถานะค้างไว้ทั้งที่ไม่มีข้อมูลจริง ผู้ใช้จะเข้าใจว่าคนนั้นออนไลน์",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "avatar-image",
+              "props": {
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "label": "",
+              "width": 48,
+              "height": 48
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "ข้อกำหนดการเข้าถึง"
+        },
+        {
+          "type": "p",
+          "text": "อวาตาร์ที่เป็นรูปต้องมีข้อความแทนรูปที่เป็นชื่อคน ไม่ใช่คำว่ารูปโปรไฟล์\nถ้าอวาตาร์อยู่คู่กับชื่อที่อ่านได้อยู่แล้ว ให้ตั้งรูปเป็นของประดับ ไม่ต้องให้โปรแกรมอ่านซ้ำ\nจุดบอกสถานะออนไลน์สื่อด้วยสีอย่างเดียว ต้องมีข้อความกำกับให้โปรแกรมอ่านหน้าจอเสมอ\nตัวย่อภาษาไทยยังไม่มีกติกา ต้องตัดสินก่อนใช้จริง ระหว่างนี้ให้ใช้ไอคอนแทน\nอวาตาร์ที่กดได้ต้องมีพื้นที่กดอย่างน้อย 44 ให้ของที่ครอบขยายพื้นที่ ไม่ใช่ขยายตัวอวาตาร์"
+        },
+        {
+          "type": "h",
+          "text": "Design Tokens",
+          "sub": "ตัวแปรและ token ของอวาตาร์"
+        },
+        {
+          "type": "p",
+          "text": "• รูปแบบชื่อใน Figma  avatar/<ส่วน>/<ขนาด> เช่น avatar/size/md และ avatar/indicator/md\n• รูปแบบชื่อในโค้ด  --ntg-space-avatar-<ส่วน>-<ขนาด> และ --ntg-avatar-radius-full\n• วงแหวนใช้ตัวแปรเดียว avatar/ring เท่ากันทุกขนาด วาดล้นออกนอกกล่องไม่กินที่ข้างใน\n• สูตรต้นทางที่ tokens/scale/avatar.mjs และเอกสารในเครื่องที่ docs/11-avatar.md\n• รายละเอียดระยะห่างทั้งหมดอยู่ในเอกสาร Avatar Space"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "ค่าจริงต่อขนาด"
+        },
+        {
+          "type": "p",
+          "text": "• ขนาดกล่อง  24, 32, 40, 48, 56 เริ่มที่ 24 เพิ่มทีละ 8\n• ไอคอนข้างใน  16, 20, 24, 28, 32 ได้ระยะเว้นขอบ 4, 6, 8, 10, 12 จากการจัดกึ่งกลาง\n• จุดบอกสถานะ  6, 8, 10, 12, 14 เริ่มที่ 6 เพิ่มทีละ 2\n• วงแหวน  2 เท่ากันทุกขนาด วาด stroke แบบ OUTSIDE จึงไม่ลดขนาดรูป\n• ระยะซ้อนของกลุ่ม  ติดลบ 4, 8, 12 คิดเป็น 17, 25, 30 เปอร์เซ็นต์ของขนาดอวาตาร์\n• มุมโค้ง  ใช้ค่าเต็มวง ไม่แตกรายมุมเพราะเป็นวงกลมล้วน"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้อง"
+        },
+        {
+          "type": "p",
+          "text": "12 Buttons ความสูงปุ่มบังเอิญตรงกับขนาดอวาตาร์ แต่ไม่ได้ใช้สูตรร่วมกัน และเป็นที่มาของปุ่มเพิ่มคนในกลุ่ม"
+        },
+        {
+          "type": "p",
+          "text": "10 Frame กรอบสัดส่วนสำหรับภาพขนาดใหญ่ ต่างจากอวาตาร์ที่เป็นวงกลมขนาดเล็ก"
+        },
+        {
+          "type": "p",
+          "text": "เอกสารประกอบฝั่งโค้ดอยู่ที่ docs/11-avatar.md"
+        }
+      ]
+    },
+    {
+      "id": "10280:802",
+      "name": "Avatar Guide",
+      "title": "Avatar Guide",
+      "subtitle": "เลือกชนิดและขนาดอวาตาร์อย่างไร และจุดที่ต้องระวัง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เลือกชนิดไหน",
+          "sub": "อวาตาร์มี 4 ชนิด ต่างกันที่สิ่งที่อยู่ข้างในเท่านั้น ขนาดและสถานะเหมือนกันหมด\nลำดับการเลือกคือ ถ้ามีรูปจริงใช้รูป ถ้าไม่มีรูปแต่มีชื่อใช้ตัวย่อ ถ้าไม่มีทั้งคู่ใช้ไอคอน ส่วนตัวเลขใช้เฉพาะตอนแทนจำนวน ไม่ใช่แทนคน"
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชนิด",
+            "จำนวนแบบ",
+            "ใช้ตอนไหน",
+            "ข้อควรระวัง"
+          ],
+          "rows": [
+            [
+              "avatar-image",
+              "20",
+              "มีรูปจริงของคนนั้น เป็นตัวเลือกแรกเสมอ",
+              "รูปที่ไม่ใช่จัตุรัสจะถูกครอบ ตรวจว่าหน้าคนไม่โดนตัด"
+            ],
+            [
+              "avatar-monogram",
+              "20",
+              "ไม่มีรูปแต่รู้ชื่อ ใช้ตัวย่อจากชื่อ",
+              "ชื่อไทยที่ยาวมากจะเหลือแค่ตัวแรก อาจซ้ำกับคนอื่นได้"
+            ],
+            [
+              "avatar-icon",
+              "20",
+              "ไม่มีทั้งรูปและชื่อ หรือเป็นผู้ใช้ทั่วไปที่ไม่ระบุตัวตน",
+              "ถ้าใช้ทั้งหน้าจะดูเหมือนระบบไม่มีข้อมูลใครเลย"
+            ],
+            [
+              "avatar-number",
+              "20",
+              "แทนจำนวน เช่นตัวบอกว่ายังมีอีกกี่คนในกลุ่ม",
+              "ห้ามใช้แทนตัวคน เพราะคนอ่านจะเข้าใจว่าเป็นลำดับ"
+            ],
+            [
+              "avatar-label",
+              "16",
+              "ต้องแสดงชื่อและอีเมลคู่กับรูป เช่นรายชื่อผู้ใช้",
+              "ความสูงมาจากชุดตัวอักษร ถ้าเปลี่ยนชุดตัวอักษรความสูงจะขยับตาม"
+            ],
+            [
+              "avatar-group",
+              "12",
+              "แสดงหลายคนพร้อมกัน เช่นผู้ร่วมงานในเอกสาร",
+              "แสดงหน้าคนได้สูงสุด 5 คน ถ้าเกินให้เปิดตัวบอกจำนวนที่เหลือแทนการใส่เพิ่ม"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "เลือกขนาดจากบริบท xs 24 ใช้ในแถวรายการที่แน่น sm 32 ใช้ในรายการทั่วไป md 40 ใช้ในการ์ดและแถบนำทาง lg 48 ใช้ในหน้าโปรไฟล์ย่อ xl 56 ใช้เป็นรูปหลักของหน้าโปรไฟล์"
+        },
+        {
+          "type": "p",
+          "text": "จุดบอกสถานะออนไลน์เป็นตัวเลือก เปิดเมื่อระบบรู้สถานะจริงเท่านั้น ถ้าไม่รู้ให้ปิด อย่าแสดงเป็นออฟไลน์ เพราะคนอ่านจะเข้าใจว่าคนนั้นไม่อยู่"
+        }
+      ]
+    },
+    {
+      "id": "10277:556",
+      "name": "Avatar Components",
+      "title": "Avatar Components",
+      "subtitle": "ชุดอวาตาร์ทั้ง 7 ชุด รวม 118 แบบ แยกตามที่เอาไปใช้จริงกับชิ้นส่วนฐาน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "อวาตาร์ 4 ชนิด",
+          "sub": "ต่างกันที่สิ่งที่อยู่ข้างใน ขนาดและสถานะเหมือนกันหมด xs ถึง xl"
+        },
+        {
+          "type": "variantSet",
+          "set": "avatar-image",
+          "caption": "avatar-image  20 แบบ",
+          "width": 344,
+          "height": 344,
+          "items": [
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 24,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "sm",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 72,
+              "y": 36,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 128,
+              "y": 32,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 192,
+              "y": 28,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "xl",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 264,
+              "y": 24,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 24,
+              "y": 120,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "sm",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 72,
+              "y": 116,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 128,
+              "y": 112,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 192,
+              "y": 108,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "xl",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 264,
+              "y": 104,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 24,
+              "y": 200,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 72,
+              "y": 196,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 128,
+              "y": 192,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 192,
+              "y": 188,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "image": "ece298d0ec",
+              "x": 264,
+              "y": 184,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 24,
+              "y": 280,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 72,
+              "y": 276,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 128,
+              "y": 272,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 192,
+              "y": 268,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "hover"
+              },
+              "image": "ece298d0ec",
+              "x": 264,
+              "y": 264,
+              "width": 56,
+              "height": 56
+            }
+          ]
+        },
+        {
+          "type": "variantSet",
+          "set": "avatar-icon",
+          "caption": "avatar-icon  20 แบบ",
+          "width": 344,
+          "height": 344,
+          "items": [
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 72,
+              "y": 36,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 128,
+              "y": 32,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 192,
+              "y": 28,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 264,
+              "y": 24,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 120,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 72,
+              "y": 116,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 128,
+              "y": 112,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 192,
+              "y": 108,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "online-indicator": "false",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 264,
+              "y": 104,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 200,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 72,
+              "y": 196,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 128,
+              "y": 192,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 192,
+              "y": 188,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 264,
+              "y": 184,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 280,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 72,
+              "y": 276,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 128,
+              "y": 272,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 192,
+              "y": 268,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 264,
+              "y": 264,
+              "width": 56,
+              "height": 56
+            }
+          ]
+        },
+        {
+          "type": "variantSet",
+          "set": "avatar-monogram",
+          "caption": "avatar-monogram  20 แบบ",
+          "width": 344,
+          "height": 344,
+          "items": [
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 72,
+              "y": 36,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 128,
+              "y": 32,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 192,
+              "y": 28,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 264,
+              "y": 24,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 120,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 72,
+              "y": 116,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 128,
+              "y": 112,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 192,
+              "y": 108,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "false",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 264,
+              "y": 104,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 200,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 72,
+              "y": 196,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 128,
+              "y": 192,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 192,
+              "y": 188,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 264,
+              "y": 184,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 280,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 72,
+              "y": 276,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 128,
+              "y": 272,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 192,
+              "y": 268,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "text-value": "T",
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 264,
+              "y": 264,
+              "width": 56,
+              "height": 56
+            }
+          ]
+        },
+        {
+          "type": "variantSet",
+          "set": "avatar-number",
+          "caption": "avatar-number  20 แบบ",
+          "width": 344,
+          "height": 344,
+          "items": [
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 72,
+              "y": 36,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 128,
+              "y": 32,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 192,
+              "y": 28,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 264,
+              "y": 24,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 120,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 72,
+              "y": 116,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 128,
+              "y": 112,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 192,
+              "y": 108,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "false",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 264,
+              "y": 104,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 200,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 72,
+              "y": 196,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 128,
+              "y": 192,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 192,
+              "y": 188,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 264,
+              "y": 184,
+              "width": 56,
+              "height": 56
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 280,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 72,
+              "y": 276,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 128,
+              "y": 272,
+              "width": 40,
+              "height": 40
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 192,
+              "y": 268,
+              "width": 48,
+              "height": 48
+            },
+            {
+              "props": {
+                "text-value": "99+",
+                "online-indicator": "true",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 264,
+              "y": 264,
+              "width": 56,
+              "height": 56
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "อวาตาร์พร้อมชื่อ",
+          "sub": "ใช้ตอนต้องแสดงชื่อและอีเมลคู่กับรูป"
+        },
+        {
+          "type": "variantSet",
+          "set": "avatar-label",
+          "caption": "avatar-label  16 แบบ",
+          "width": 1035,
+          "height": 500,
+          "items": [
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "sm",
+                "status-icon": "false",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 24,
+              "width": 227,
+              "height": 50
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "md",
+                "status-icon": "false",
+                "state": "default"
+              },
+              "x": 275,
+              "y": 24,
+              "width": 239,
+              "height": 50
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "lg",
+                "status-icon": "false",
+                "state": "default"
+              },
+              "x": 538,
+              "y": 24,
+              "width": 251,
+              "height": 54
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "xl",
+                "status-icon": "false",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 102,
+              "width": 263,
+              "height": 56
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "sm",
+                "status-icon": "false",
+                "state": "hover"
+              },
+              "x": 311,
+              "y": 102,
+              "width": 227,
+              "height": 50
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "md",
+                "status-icon": "false",
+                "state": "hover"
+              },
+              "x": 562,
+              "y": 102,
+              "width": 239,
+              "height": 50
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "lg",
+                "status-icon": "false",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 182,
+              "width": 251,
+              "height": 54
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "xl",
+                "status-icon": "false",
+                "state": "hover"
+              },
+              "x": 299,
+              "y": 182,
+              "width": 263,
+              "height": 56
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "sm",
+                "status-icon": "online-indicator",
+                "state": "default"
+              },
+              "x": 586,
+              "y": 182,
+              "width": 227,
+              "height": 50
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "md",
+                "status-icon": "online-indicator",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 262,
+              "width": 239,
+              "height": 50
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "lg",
+                "status-icon": "online-indicator",
+                "state": "default"
+              },
+              "x": 287,
+              "y": 262,
+              "width": 251,
+              "height": 54
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "xl",
+                "status-icon": "online-indicator",
+                "state": "default"
+              },
+              "x": 562,
+              "y": 262,
+              "width": 263,
+              "height": 56
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "sm",
+                "status-icon": "online-indicator",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 342,
+              "width": 227,
+              "height": 50
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "md",
+                "status-icon": "online-indicator",
+                "state": "hover"
+              },
+              "x": 275,
+              "y": 342,
+              "width": 239,
+              "height": 50
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "lg",
+                "status-icon": "online-indicator",
+                "state": "hover"
+              },
+              "x": 538,
+              "y": 342,
+              "width": 251,
+              "height": 54
+            },
+            {
+              "props": {
+                "avatar": true,
+                "show-email": true,
+                "name": "Garry Gergich",
+                "email": "garry@nationgroup.com",
+                "size": "xl",
+                "status-icon": "online-indicator",
+                "state": "hover"
+              },
+              "x": 24,
+              "y": 420,
+              "width": 263,
+              "height": 56
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กลุ่มอวาตาร์",
+          "sub": "ใช้ตอนแสดงหลายคนพร้อมกัน แสดงหน้าคนได้สูงสุด 5 คน ที่เหลือตัดเป็นตัวเลข"
+        },
+        {
+          "type": "variantSet",
+          "set": "avatar-group",
+          "caption": "avatar-group  12 แบบ",
+          "width": 276,
+          "height": 696,
+          "items": [
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "xs",
+                "add-user-button": "false",
+                "more-users": "false"
+              },
+              "x": 24,
+              "y": 24,
+              "width": 104,
+              "height": 24
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "sm",
+                "add-user-button": "false",
+                "more-users": "false"
+              },
+              "x": 24,
+              "y": 72,
+              "width": 128,
+              "height": 32
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "md",
+                "add-user-button": "false",
+                "more-users": "false"
+              },
+              "x": 24,
+              "y": 128,
+              "width": 152,
+              "height": 40
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "xs",
+                "add-user-button": "true",
+                "more-users": "false"
+              },
+              "x": 24,
+              "y": 192,
+              "width": 136,
+              "height": 24
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "sm",
+                "add-user-button": "true",
+                "more-users": "false"
+              },
+              "x": 24,
+              "y": 240,
+              "width": 168,
+              "height": 32
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "md",
+                "add-user-button": "true",
+                "more-users": "false"
+              },
+              "x": 24,
+              "y": 296,
+              "width": 200,
+              "height": 40
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "xs",
+                "add-user-button": "false",
+                "more-users": "true"
+              },
+              "x": 24,
+              "y": 360,
+              "width": 124,
+              "height": 24
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "sm",
+                "add-user-button": "false",
+                "more-users": "true"
+              },
+              "x": 24,
+              "y": 408,
+              "width": 152,
+              "height": 32
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "md",
+                "add-user-button": "false",
+                "more-users": "true"
+              },
+              "x": 24,
+              "y": 464,
+              "width": 180,
+              "height": 40
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "xs",
+                "add-user-button": "true",
+                "more-users": "true"
+              },
+              "x": 24,
+              "y": 528,
+              "width": 156,
+              "height": 24
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "sm",
+                "add-user-button": "true",
+                "more-users": "true"
+              },
+              "x": 24,
+              "y": 576,
+              "width": 192,
+              "height": 32
+            },
+            {
+              "props": {
+                "avatar-1": true,
+                "avatar-2": true,
+                "avatar-3": true,
+                "avatar-4": true,
+                "avatar-5": true,
+                "avatar-6": true,
+                "avatar-7": true,
+                "avatar-8": true,
+                "avatar-9": true,
+                "avatar-10": true,
+                "size": "md",
+                "add-user-button": "true",
+                "more-users": "true"
+              },
+              "x": 24,
+              "y": 632,
+              "width": 228,
+              "height": 40
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ชิ้นส่วนฐาน",
+          "sub": "ไม่ได้เอาไปใช้ตรง ๆ เป็นส่วนประกอบภายในของชุดด้านบน ชื่อขึ้นต้นด้วยขีดล่าง"
+        },
+        {
+          "type": "variantSet",
+          "set": "_avatar-online-indicator",
+          "caption": "_avatar-online-indicator  10 แบบ",
+          "width": 178,
+          "height": 94,
+          "items": [
+            {
+              "props": {
+                "size": "xs",
+                "online": "false"
+              },
+              "x": 16,
+              "y": 18,
+              "width": 6,
+              "height": 6
+            },
+            {
+              "props": {
+                "size": "xs",
+                "online": "true"
+              },
+              "x": 16,
+              "y": 64,
+              "width": 6,
+              "height": 6
+            },
+            {
+              "props": {
+                "size": "sm",
+                "online": "false"
+              },
+              "x": 38,
+              "y": 18,
+              "width": 8,
+              "height": 8
+            },
+            {
+              "props": {
+                "size": "sm",
+                "online": "true"
+              },
+              "x": 38,
+              "y": 64,
+              "width": 8,
+              "height": 8
+            },
+            {
+              "props": {
+                "size": "md",
+                "online": "false"
+              },
+              "x": 62,
+              "y": 18,
+              "width": 10,
+              "height": 10
+            },
+            {
+              "props": {
+                "size": "md",
+                "online": "true"
+              },
+              "x": 62,
+              "y": 64,
+              "width": 10,
+              "height": 10
+            },
+            {
+              "props": {
+                "size": "lg",
+                "online": "false"
+              },
+              "x": 88,
+              "y": 18,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "size": "lg",
+                "online": "true"
+              },
+              "x": 88,
+              "y": 64,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "size": "xl",
+                "online": "false"
+              },
+              "x": 116,
+              "y": 18,
+              "width": 14,
+              "height": 14
+            },
+            {
+              "props": {
+                "size": "xl",
+                "online": "true"
+              },
+              "x": 116,
+              "y": 64,
+              "width": 14,
+              "height": 14
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10278:661",
+      "name": "Avatar Space",
+      "title": "Avatar Space",
+      "subtitle": "ขนาดและระยะห่างของอวาตาร์ สูตร ค่า และตัวแปรที่ผูกไว้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "อวาตาร์มีชุดขนาดของตัวเอง ไม่ได้ใช้สเกลกลางของหน้า 07 Space เพราะเป็นขนาดของชิ้นงาน ไม่ใช่จังหวะการจัดหน้า"
+        },
+        {
+          "type": "p",
+          "text": "ขนาดที่ประกาศคือรูปที่มองเห็นจริง วงแหวนวาดด้วยเส้นขอบแบบ outside ล้นออกนอกกล่อง ไม่กินที่ข้างใน ปรับเป็นแบบนี้เมื่อ 2026-09-01 ตามที่ทุกเจ้าในตลาดทำ ของเดิมเว้นที่ไว้ให้วงแหวน 2px ทำให้ขนาด 56 ได้รูปจริงแค่ 52"
+        },
+        {
+          "type": "p",
+          "text": "อวาตาร์ไม่มี padding เป็นค่าตั้งเอง ระยะเว้นขอบรอบไอคอนเป็นผลลัพธ์จากการจัดกลาง คำนวณจาก ขนาดกล่อง ลบ ขนาดไอคอน หารสอง"
+        },
+        {
+          "type": "h",
+          "text": "สูตร base และ step"
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "xs",
+            "sm",
+            "md",
+            "lg / xl"
+          ],
+          "rows": [
+            [
+              "ขนาดกล่อง",
+              "24",
+              "8",
+              "24",
+              "32",
+              "40",
+              "48 / 56"
+            ],
+            [
+              "ไอคอนใน avatar-icon",
+              "16",
+              "4",
+              "16",
+              "20",
+              "24",
+              "28 / 32"
+            ],
+            [
+              "ระยะเว้นขอบไอคอน (ผลลัพธ์)",
+              "ไม่มีสูตร",
+              "ไม่มีสูตร",
+              "4",
+              "6",
+              "8",
+              "10 / 12"
+            ],
+            [
+              "วงแหวนรอบอวาตาร์",
+              "2",
+              "0",
+              "2",
+              "2",
+              "2",
+              "2"
+            ],
+            [
+              "จุดบอกสถานะ",
+              "6",
+              "2",
+              "6",
+              "8",
+              "10",
+              "12 / 14"
+            ],
+            [
+              "ระยะซ้อนของกลุ่ม",
+              "-4",
+              "-4",
+              "-4",
+              "-8",
+              "-12",
+              "ไม่มี"
+            ],
+            [
+              "ระยะรูปกับข้อความในป้ายชื่อ",
+              "8",
+              "4",
+              "ไม่มี",
+              "8",
+              "12",
+              "16 / 20"
+            ],
+            [
+              "มุมโค้ง",
+              "9999",
+              "0",
+              "9999",
+              "9999",
+              "9999",
+              "9999"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปรที่ผูกได้ตอนนี้"
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อตัวแปรใน Figma",
+            "💻 ชื่อในโค้ด",
+            "ค่า",
+            "ใช้กับส่วนไหนของ component"
+          ],
+          "rows": [
+            [
+              "avatar/size/xs .. xl",
+              "--ntg-space-avatar-size-*",
+              "24, 32, 40, 48, 56",
+              "กล่องอวาตาร์ทั้ง 4 ชนิด"
+            ],
+            [
+              "avatar/icon/xs .. xl",
+              "--ntg-space-avatar-icon-*",
+              "16, 20, 24, 28, 32",
+              "ไอคอนคนใน avatar-icon"
+            ],
+            [
+              "avatar/ring",
+              "--ntg-space-avatar-ring",
+              "2",
+              "วงแหวนรอบอวาตาร์ และวงแหวนคั่นในกลุ่ม"
+            ],
+            [
+              "avatar/indicator/xs .. xl",
+              "--ntg-space-avatar-indicator-*",
+              "6, 8, 10, 12, 14",
+              "จุดบอกสถานะออนไลน์"
+            ],
+            [
+              "avatar/group/overlap/xs .. md",
+              "--ntg-space-avatar-group-overlap-*",
+              "-4, -8, -12",
+              "ระยะซ้อนใน avatar-group"
+            ],
+            [
+              "avatar/label/gap/sm .. xl",
+              "--ntg-space-avatar-label-gap-*",
+              "8, 12, 16, 20",
+              "ระยะรูปกับข้อความใน avatar-label"
+            ],
+            [
+              "avatar/radius/full",
+              "--ntg-avatar-radius-full",
+              "9999",
+              "มุมโค้งวงกลมทุกชนิดทุกขนาด"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา",
+          "sub": "• ขนาดที่ประกาศเท่ากับรูปที่มองเห็น วงแหวนล้นออกนอกกล่อง เวลาเว้นที่รอบอวาตาร์ต้องเผื่อวงแหวน 2px ด้วย\n• ไม่มี padding ของอวาตาร์ ถ้าต้องขยับระยะเว้นขอบให้แก้ที่ขนาดไอคอน อย่าไปใส่ padding\n• ระยะซ้อนของกลุ่มเป็นค่าติดลบ สเกลกลางไม่มีค่าติดลบ จึงต้องเป็นค่าของอวาตาร์เองเสมอ\n• วงแหวนคั่นระหว่างตัวที่ซ้อนกันในกลุ่มใช้วงแหวนของอวาตาร์เอง ไม่มีตัวแปรแยก เพื่อไม่ให้ค่าหลุดกัน\n• กลุ่มแสดงหน้าคนได้สูงสุด 5 คน ช่องตัวเลขที่เหลือกับปุ่มเพิ่มคนไม่นับรวมในเพดาน\n• ปุ่มเพิ่มคนใช้ circular-icon-button ตระกูล Neutral ระดับ Tertiary จากหน้า 12 Buttons ไม่ใช่ปุ่มเฉพาะกิจของอวาตาร์\n• ห้ามทำสูตรความสูงให้ป้ายชื่อ เพราะความสูงมาจากชุดตัวอักษร\n• ตัดสินแล้วว่าไม่รวมสูตรขนาดกับปุ่ม แม้ค่าจะตรงกันทุกขนาด ถ้าจะทำสูตรให้ทำแยกในไฟล์ของอวาตาร์"
+        }
+      ]
+    }
+  ]
+}

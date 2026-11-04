@@ -11,7 +11,8 @@
         {
           "type": "h",
           "text": "Overview",
-          "sub": "หน้านี้คืออะไร"
+          "sub": "หน้านี้คืออะไร",
+          "section": true
         },
         {
           "type": "p",
@@ -56,7 +57,8 @@
         {
           "type": "h",
           "text": "Anatomy",
-          "sub": "โลโก้เป็นภาพชั้นเดียว สิ่งที่ต้องคุมคือกล่องครอบ"
+          "sub": "โลโก้เป็นภาพชั้นเดียว สิ่งที่ต้องคุมคือกล่องครอบ",
+          "section": true
         },
         {
           "type": "p",
@@ -78,7 +80,8 @@
         {
           "type": "h",
           "text": "Variants",
-          "sub": "3 กลุ่มในหน้านี้ แต่ละกลุ่มคืออะไร"
+          "sub": "3 กลุ่มในหน้านี้ แต่ละกลุ่มคืออะไร",
+          "section": true
         },
         {
           "type": "p",
@@ -123,7 +126,8 @@
         {
           "type": "h",
           "text": "Hierarchy",
-          "sub": "โลโก้ของคนอื่นต้องไม่เด่นกว่าของเรา"
+          "sub": "โลโก้ของคนอื่นต้องไม่เด่นกว่าของเรา",
+          "section": true
         },
         {
           "type": "p",
@@ -132,7 +136,8 @@
         {
           "type": "h",
           "text": "Sizes",
-          "sub": "สามขนาดเฉพาะกลุ่มช่องทางชำระเงิน"
+          "sub": "สามขนาดเฉพาะกลุ่มช่องทางชำระเงิน",
+          "section": true
         },
         {
           "type": "p",
@@ -170,7 +175,8 @@
         {
           "type": "h",
           "text": "States",
-          "sub": "สถานะการใช้งานจริงของแต่ละตัว สำรวจ 27 สิงหาคม 2569"
+          "sub": "สถานะการใช้งานจริงของแต่ละตัว สำรวจ 27 สิงหาคม 2569",
+          "section": true
         },
         {
           "type": "p",
@@ -191,7 +197,8 @@
         {
           "type": "h",
           "text": "Usage Do and Don’t",
-          "sub": "ใช้ได้แค่ไหน และห้ามทำอะไร"
+          "sub": "ใช้ได้แค่ไหน และห้ามทำอะไร",
+          "section": true
         },
         {
           "type": "p",
@@ -212,7 +219,8 @@
         {
           "type": "h",
           "text": "Accessibility",
-          "sub": "โลโก้ภายนอกต้องมีชื่อกำกับเสมอ"
+          "sub": "โลโก้ภายนอกต้องมีชื่อกำกับเสมอ",
+          "section": true
         },
         {
           "type": "p",
@@ -221,7 +229,8 @@
         {
           "type": "h",
           "text": "Design Tokens",
-          "sub": "หน้านี้ไม่มี token และไม่ควรมี"
+          "sub": "หน้านี้ไม่มี token และไม่ควรมี",
+          "section": true
         },
         {
           "type": "p",
@@ -230,7 +239,8 @@
         {
           "type": "h",
           "text": "Specs",
-          "sub": "จำนวนและการตั้งชื่อของแต่ละกลุ่ม"
+          "sub": "จำนวนและการตั้งชื่อของแต่ละกลุ่ม",
+          "section": true
         },
         {
           "type": "p",
@@ -239,7 +249,8 @@
         {
           "type": "h",
           "text": "Related",
-          "sub": "หน้าที่เกี่ยวข้อง"
+          "sub": "หน้าที่เกี่ยวข้อง",
+          "section": true
         },
         {
           "type": "p",
@@ -264,7 +275,8 @@
         {
           "type": "h",
           "text": "Payment",
-          "sub": "โลโก้ช่องทางชำระเงิน แต่ละแบรนด์มี 3 ขนาด sm md lg"
+          "sub": "โลโก้ช่องทางชำระเงิน แต่ละแบรนด์มี 3 ขนาด sm md lg",
+          "section": true
         },
         {
           "type": "logos",
@@ -277,6 +289,7 @@
               "height": 24,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 42
             },
             {
@@ -287,6 +300,7 @@
               "height": 32,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 54
             },
             {
@@ -297,6 +311,7 @@
               "height": 40,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 66
             },
             {
@@ -307,6 +322,7 @@
               "height": 24,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 42
             },
             {
@@ -317,6 +333,7 @@
               "height": 32,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 54
             },
             {
@@ -327,6 +344,7 @@
               "height": 40,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 66
             },
             {
@@ -337,6 +355,7 @@
               "height": 24,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 42
             },
             {
@@ -347,6 +366,7 @@
               "height": 32,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 54
             },
             {
@@ -357,6 +377,7 @@
               "height": 40,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 66
             },
             {
@@ -367,6 +388,7 @@
               "height": 24,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 42
             },
             {
@@ -377,6 +399,7 @@
               "height": 32,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 54
             },
             {
@@ -387,6 +410,7 @@
               "height": 40,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 66
             },
             {
@@ -397,6 +421,7 @@
               "height": 24,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 42
             },
             {
@@ -407,6 +432,7 @@
               "height": 32,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 54
             },
             {
@@ -417,6 +443,7 @@
               "height": 40,
               "box": 120,
               "cell": 120,
+              "labelBelow": true,
               "natural": 66
             }
           ]
@@ -424,7 +451,8 @@
         {
           "type": "h",
           "text": "Integration Coding",
-          "sub": "เครื่องมือสำหรับงานพัฒนา"
+          "sub": "เครื่องมือสำหรับงานพัฒนา",
+          "section": true
         },
         {
           "type": "logos",
@@ -436,7 +464,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -445,7 +474,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -454,7 +484,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -463,7 +494,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -472,7 +504,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -481,7 +514,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -490,7 +524,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -499,7 +534,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -508,7 +544,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -517,7 +554,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -526,7 +564,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -535,7 +574,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -544,7 +584,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -553,7 +594,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -562,7 +604,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -571,7 +614,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -580,7 +624,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -589,7 +634,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -598,7 +644,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -607,7 +654,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -616,7 +664,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -625,7 +674,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -634,7 +684,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -643,7 +694,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -652,7 +704,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -661,7 +714,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -670,7 +724,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -679,7 +734,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -688,7 +744,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -697,7 +754,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -706,7 +764,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -715,7 +774,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -724,7 +784,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -733,7 +794,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -742,7 +804,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -751,7 +814,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -760,7 +824,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -769,7 +834,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -778,7 +844,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -787,7 +854,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -796,7 +864,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -805,7 +874,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -814,7 +884,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -823,7 +894,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -832,7 +904,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -841,7 +914,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -850,7 +924,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -859,7 +934,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -868,7 +944,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -877,7 +954,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -886,7 +964,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -895,7 +974,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -904,7 +984,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -913,7 +994,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -922,14 +1004,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Productivity",
-          "sub": "เครื่องมือทำงานและจัดการงาน"
+          "sub": "เครื่องมือทำงานและจัดการงาน",
+          "section": true
         },
         {
           "type": "logos",
@@ -941,7 +1025,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -950,7 +1035,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -959,7 +1045,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -968,7 +1055,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -977,7 +1065,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -986,7 +1075,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -995,7 +1085,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1004,7 +1095,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1013,7 +1105,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1022,7 +1115,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1031,7 +1125,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1040,7 +1135,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1049,7 +1145,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1058,7 +1155,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1067,7 +1165,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1076,7 +1175,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1085,7 +1185,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1094,7 +1195,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1103,7 +1205,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1112,7 +1215,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1121,7 +1225,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1130,7 +1235,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1139,7 +1245,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1148,7 +1255,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1157,7 +1265,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1166,7 +1275,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1175,7 +1285,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1184,7 +1295,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1193,7 +1305,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1202,7 +1315,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1211,7 +1325,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1220,7 +1335,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1229,7 +1345,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1238,7 +1355,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1247,7 +1365,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1256,7 +1375,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1265,7 +1385,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1274,7 +1395,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1283,7 +1405,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1292,7 +1415,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1301,7 +1425,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1310,7 +1435,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1319,7 +1445,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1328,7 +1455,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1337,7 +1465,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1346,14 +1475,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Social Networks",
-          "sub": "เครือข่ายสังคมออนไลน์"
+          "sub": "เครือข่ายสังคมออนไลน์",
+          "section": true
         },
         {
           "type": "logos",
@@ -1365,7 +1496,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1374,7 +1506,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1383,7 +1516,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1392,7 +1526,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1401,7 +1536,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1410,7 +1546,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1419,7 +1556,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1428,7 +1566,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1437,7 +1576,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1446,7 +1586,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1455,7 +1596,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1464,7 +1606,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1473,7 +1616,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1482,7 +1626,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1491,7 +1636,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1500,7 +1646,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1509,7 +1656,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1518,7 +1666,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1527,7 +1676,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1536,7 +1686,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1545,14 +1696,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Other",
-          "sub": "บริการอื่นที่ไม่เข้าหมวดใด"
+          "sub": "บริการอื่นที่ไม่เข้าหมวดใด",
+          "section": true
         },
         {
           "type": "logos",
@@ -1564,7 +1717,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1573,7 +1727,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1582,7 +1737,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1591,7 +1747,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1600,7 +1757,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1609,7 +1767,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1618,7 +1777,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1627,7 +1787,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1636,7 +1797,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1645,7 +1807,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1654,7 +1817,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1663,7 +1827,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1672,7 +1837,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1681,7 +1847,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1690,7 +1857,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1699,7 +1867,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1708,7 +1877,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1717,7 +1887,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1726,7 +1897,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1735,7 +1907,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1744,7 +1917,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1753,14 +1927,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Messengers",
-          "sub": "แอปรับส่งข้อความ"
+          "sub": "แอปรับส่งข้อความ",
+          "section": true
         },
         {
           "type": "logos",
@@ -1772,7 +1948,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1781,7 +1958,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1790,7 +1968,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1799,7 +1978,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1808,7 +1988,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1817,7 +1998,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1826,7 +2008,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1835,7 +2018,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1844,7 +2028,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1853,7 +2038,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1862,7 +2048,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1871,7 +2058,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1880,7 +2068,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1889,7 +2078,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1898,14 +2088,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Finance",
-          "sub": "บริการการเงิน"
+          "sub": "บริการการเงิน",
+          "section": true
         },
         {
           "type": "logos",
@@ -1917,7 +2109,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1926,7 +2119,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1935,7 +2129,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1944,7 +2139,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1953,7 +2149,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1962,7 +2159,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1971,7 +2169,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1980,7 +2179,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1989,7 +2189,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -1998,7 +2199,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2007,7 +2209,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2016,7 +2219,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2025,7 +2229,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2034,7 +2239,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2043,7 +2249,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2052,7 +2259,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2061,14 +2269,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Design",
-          "sub": "เครื่องมือออกแบบ"
+          "sub": "เครื่องมือออกแบบ",
+          "section": true
         },
         {
           "type": "logos",
@@ -2080,7 +2290,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2089,7 +2300,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2098,7 +2310,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2107,7 +2320,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2116,7 +2330,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2125,7 +2340,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2134,7 +2350,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2143,7 +2360,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2152,7 +2370,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2161,7 +2380,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2170,7 +2390,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2179,7 +2400,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2188,7 +2410,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2197,7 +2420,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2206,7 +2430,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2215,7 +2440,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2224,14 +2450,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration OS",
-          "sub": "ระบบปฏิบัติการ"
+          "sub": "ระบบปฏิบัติการ",
+          "section": true
         },
         {
           "type": "logos",
@@ -2243,7 +2471,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2252,7 +2481,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2261,7 +2491,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2270,7 +2501,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2279,7 +2511,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2288,7 +2521,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2297,7 +2531,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2306,7 +2541,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2315,7 +2551,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2324,7 +2561,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2333,7 +2571,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2342,7 +2581,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2351,7 +2591,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2360,14 +2601,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Browsers",
-          "sub": "เบราว์เซอร์"
+          "sub": "เบราว์เซอร์",
+          "section": true
         },
         {
           "type": "logos",
@@ -2379,7 +2622,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2388,7 +2632,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2397,7 +2642,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2406,7 +2652,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2415,7 +2662,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2424,7 +2672,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2433,7 +2682,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2442,7 +2692,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2451,14 +2702,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Video",
-          "sub": "บริการวิดีโอ"
+          "sub": "บริการวิดีโอ",
+          "section": true
         },
         {
           "type": "logos",
@@ -2470,7 +2723,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2479,7 +2733,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2488,7 +2743,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2497,7 +2753,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2506,7 +2763,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2515,7 +2773,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2524,7 +2783,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2533,14 +2793,16 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         },
         {
           "type": "h",
           "text": "Integration Music",
-          "sub": "บริการเพลง"
+          "sub": "บริการเพลง",
+          "section": true
         },
         {
           "type": "logos",
@@ -2552,7 +2814,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2561,7 +2824,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2570,7 +2834,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2579,7 +2844,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2588,7 +2854,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2597,7 +2864,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2606,7 +2874,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             },
             {
               "type": "logo",
@@ -2615,7 +2884,8 @@
               "width": 32,
               "height": 32,
               "box": 120,
-              "cell": 120
+              "cell": 120,
+              "labelBelow": true
             }
           ]
         }

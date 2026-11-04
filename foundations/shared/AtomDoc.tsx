@@ -1,4 +1,4 @@
-import { type CSSProperties, createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { type CSSProperties, type ReactNode, Fragment, createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Table, type TableColumn } from '../../components/Table'
 import { Do, Dont, DoDont } from '../../.storybook/docs-blocks'
 import styles from './AtomDoc.module.css'
@@ -21,15 +21,20 @@ import styles from './AtomDoc.module.css'
  *    สีในไฟล์เป็นค่าดิบโดยตั้งใจ เป็นข้อยกเว้นถาวรของหน้านี้ (ตัดสิน 2026-08-18)
  * ⚠️ ภาพเอฟเฟคผูกตัวแปรเงา เบลอ และวงแหวนโฟกัสจริง วงแหวนโฟกัสวงรอบกล่องตัวอย่าง ไม่ใช่ปุ่ม (ผู้ใช้ตัดสิน 2026-11-02
  *    เพราะ Button ในโค้ดไม่มีตระกูล warning กับ success)
+ * ⚠️ ตัวอย่าง component (ชั้น Molecules เช่น 11 Avatar) วาดด้วย component จริงจากโค้ด ผ่านตารางแปลงชื่อชุดที่ story ของหน้านั้นส่งมา
+ *    (ผู้ใช้อนุมัติ 2026-11-04) ตำแหน่งของ variant ในชุดมาจากไฟล์ออกแบบ เพื่อวางเรียงเหมือนแบบ ชุดที่ไม่มี component ในโค้ดแสดงข้อความแทน
  */
 
 type ColorRow = { no: string; name: string; level: string; light: string; dark: string; description: string; cssVar: string; darkVar: string }
-type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number }
+type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number; labelBelow?: boolean }
+type SampleProps = Record<string, string | boolean>
+type ComponentItem = { set: string; props: SampleProps; image?: string; label: string; width: number; height: number; cell?: number }
+type VariantItem = { props: SampleProps; image?: string; x: number; y: number; width: number; height: number }
 type SpaceItem = { name: string; cssVar: string; value: string; usage: string; fill: string | null }
 type Block =
   | { type: 'h'; text: string; sub?: string }
   | { type: 'h3' | 'p'; text: string }
-  | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[]; logos?: LogoItem[] }
+  | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[]; logos?: LogoItem[]; components?: ComponentItem[] }
   | { type: 'effects'; items: EffectItem[] }
   | { type: 'table'; head: string[]; rows: string[][] }
   | { type: 'ramp'; label: string; path: string; steps: { step: number; cssVar: string }[] }
@@ -42,11 +47,13 @@ type Block =
   | { type: 'nestedPair'; items: NestedItem[] }
   | { type: 'spaces'; items: SpaceItem[] }
   | { type: 'logos'; items: LogoItem[] }
+  | { type: 'components'; vertical?: boolean; items: ComponentItem[] }
+  | { type: 'variantSet'; set: string; caption: string; width: number; height: number; items: VariantItem[] }
   | { type: 'grid'; name: string; canvas: number; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
 type RadiusItem = { step: string; label: string; meta: string; corners: (string | null)[]; figma: number[]; fill: string | null; stroke: string | null }
 type NestedItem = { kind: 'do' | 'dont'; title: string; caption: string; outer: number; inner: number; outerFill: string | null; innerFill: string | null }
 type EffectItem = { kind: 'shadow' | 'blur' | 'ring'; style: string; cssVar: string; label: string }
-type Doc = { id: string; name: string; title: string; subtitle: string; blocks: Block[] }
+type Doc = { id: string; name: string; title: string; subtitle: string; blocks: (Block & { section?: boolean })[] }
 export type AtomDocData = { documents: unknown[] }
 
 // ไฟล์ออกแบบใช้จุดกลาง (U+00B7) คั่นคำ ซึ่งกฎของโปรเจกต์ห้ามใช้นอกรายการ markdown จึงแทนด้วยเว้นวรรคตอนแสดง
@@ -60,9 +67,9 @@ const Swatch = ({ cssVar, dark }: { cssVar: string | null; dark?: boolean }) => 
 )
 
 const ColorChip = ({ cssVar, label, dark }: { cssVar: string; label: string; dark?: boolean }) => (
-  <span className={`${styles.chip} ${dark ? styles.chipDark : ''}`} data-theme={dark ? 'dark' : undefined}>
+  <span className={`${styles.colorBadge} ${dark ? styles.colorBadgeDark : ''}`} data-theme={dark ? 'dark' : undefined}>
     <span className={styles.swatch} style={{ background: `var(${cssVar})` }} />
-    <span className="ntg-typography-label-sm">{label}</span>
+    <span className={dark ? 'ntg-typography-body-md' : 'ntg-typography-label-lg'}>{label}</span>
   </span>
 )
 
@@ -86,12 +93,45 @@ const HexOf = ({ cssVar }: { cssVar: string }) => {
 // ภาพ grid ตัวเลขใต้ภาพวัดจากของที่เบราว์เซอร์วาดจริง ใช้ยืนยันว่า token ให้ผลเท่าไฟล์ออกแบบ
 // ไฟล์โลโก้ส่งมาจาก story ของหน้านั้น หน้าอื่นจะได้ไม่ต้องโหลดโลโก้ 545 ตัวไปด้วย
 const LogoUrls = createContext<Record<string, string>>({})
+const assetUrl = (urls: Record<string, string>, file: string) => Object.entries(urls).find(([p]) => /\/[^/]+\.(svg|png)$/.test(p) && p.slice(p.lastIndexOf('/') + 1).replace(/\.(svg|png)$/, '') === file)?.[1]
+
+/** ตัววาดตัวอย่างของชุดหนึ่ง รับค่าของชิ้นจากไฟล์ออกแบบ และที่อยู่ภาพแทนรูปถ้ามี */
+export type SampleRenderer = (props: SampleProps, image?: string) => ReactNode
+// ตารางแปลงชื่อชุดเป็น component ส่งมาจาก story ของหน้านั้น หน้าอื่นจะได้ไม่ต้องโหลด component ที่ไม่ใช้
+const Samples = createContext<Record<string, SampleRenderer>>({})
+const Sample = ({ set, props, image }: { set: string; props: SampleProps; image?: string }) => {
+  const render = useContext(Samples)[set]
+  const urls = useContext(LogoUrls)
+  if (!render) return <span className={`ntg-typography-meta-caption ${styles.warn}`}>ยังไม่มี component ในโค้ดของชุด {set}</span>
+  return <>{render(props, image ? assetUrl(urls, image) : undefined)}</>
+}
 // ตัวอย่างที่ตั้งใจยืดผิดสัดส่วน (natural) ต้องยืดด้วย transform เพราะ SVG ใน <img> รักษาสัดส่วนเองเสมอ
 const LogoImage = ({ item }: { item: LogoItem }) => {
   const urls = useContext(LogoUrls)
-  const src = Object.entries(urls).find(([p]) => /\/[^/]+\.(svg|png)$/.test(p) && p.slice(p.lastIndexOf('/') + 1).replace(/\.(svg|png)$/, '') === item.file)?.[1]
+  const src = item.file ? assetUrl(urls, item.file) : undefined
   const img = <img src={src} loading="lazy" alt={item.label || item.file || ''} style={{ width: item.natural ?? item.width, height: item.height, ...(item.natural ? { transform: `scaleX(${item.width / item.natural})` } : {}) }} className={item.natural ? styles.logoStretched : undefined} />
   return item.natural ? <span className={styles.logoStretchBox} style={{ width: item.width }}>{img}</span> : img
+}
+
+// ชุด variant ทั้งชุด ถ้าชุดนั้นไม่มี component ในโค้ด แสดงข้อความครั้งเดียวแทนการขึ้นข้อความทุก variant
+const VariantSetView = ({ block: b }: { block: Extract<Block, { type: 'variantSet' }> }) => {
+  const known = Boolean(useContext(Samples)[b.set])
+  return (
+    <div className={styles.sampleItem}>
+      {known
+        ? (
+          <div className={styles.variantSet} style={{ width: b.width, height: b.height }}>
+            {b.items.map((it, i) => (
+              <span key={i} className={styles.variantItem} style={{ left: it.x, top: it.y }}>
+                <Sample set={b.set} props={it.props} image={it.image} />
+              </span>
+            ))}
+          </div>
+        )
+        : <Sample set={b.set} props={{}} />}
+      {b.caption && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(b.caption)}</span>}
+    </div>
+  )
 }
 
 const GridSpecimen = ({ block: b }: { block: Extract<Block, { type: 'grid' }> }) => {
@@ -232,10 +272,10 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       // ข้อความสั้นคำเดียวก่อนตาราง คือชื่อตระกูลสี เช่น Gray Bamboo ในหน้า Utility Color
       return /^[A-Za-z]{2,12}$/.test(block.text.trim())
         ? <h3 className={`ntg-typography-title-lg ${styles.heading}`}>{block.text}</h3>
-        : <div className={`ntg-typography-body-lg ${styles.body}`}>{clean(block.text).split('\n').map((l, i) => <p key={i}>{l}</p>)}</div>
+        : <p className={`ntg-typography-body-xl ${styles.paragraph}`}>{clean(block.text)}</p>
     case 'card':
-      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}</Do>
-      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}</Dont>
+      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Do>
+      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Dont>
       return (
         <div className="ntg-docs-card">
           <span className="ntg-typography-title-sm">{clean(block.title)}</span>
@@ -309,13 +349,27 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
               )
               : (
                 <div key={i} className={styles.logoItem}>
-                  <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>
+                  {!it.labelBelow && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
                   {it.file && <LogoImage item={it} />}
+                  {it.labelBelow && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
                 </div>
               )
           ))}
         </div>
       )
+    case 'components':
+      return (
+        <div className={block.vertical ? styles.sampleColumn : styles.sampleRow}>
+          {block.items.map((it, i) => (
+            <div key={i} className={styles.sampleItem} style={it.cell ? { width: it.cell } : undefined}>
+              {it.label && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
+              <Sample set={it.set} props={it.props} image={it.image} />
+            </div>
+          ))}
+        </div>
+      )
+    case 'variantSet':
+      return <VariantSetView block={block} />
     case 'spaces':
       return (
         <div className={styles.spaceList}>
@@ -354,29 +408,41 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
   }
 }
 
-export const AtomDoc = ({ data, name, logos = {} }: { data: AtomDocData; name: string; logos?: Record<string, string> }) => {
+export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDocData; name: string; logos?: Record<string, string>; samples?: Record<string, SampleRenderer> }) => {
   const d = (data.documents as Doc[]).find(x => x.name === name)
   if (!d) return <p className="ntg-typography-body-md">ไม่พบเอกสาร {name}</p>
   // การ์ด do กับ don't ที่อยู่ติดกันวางคู่กันเหมือนในไฟล์ออกแบบ
+  // ชุด variant ที่อยู่ติดกันวางเรียงแถวเดียวกันแล้วตัดบรรทัดเอง เหมือนกริดในไฟล์ออกแบบ
   const items: (Block | Block[])[] = []
+  // บล็อกแรกของแต่ละหัวข้อใหญ่ในไฟล์ออกแบบ (section ระยะบนล่าง 80) ห่อด้วย .sectionStart ให้ระยะระหว่างหัวข้อเท่า Figma
+  const starts = new Set<number>()
   for (const b of d.blocks) {
     const last = items[items.length - 1]
-    if (b.type === 'card' && Array.isArray(last)) last.push(b)
-    else items.push(b.type === 'card' ? [b] : b)
+    const group = b.type === 'card' || b.type === 'variantSet'
+    if (group && Array.isArray(last) && last[0].type === b.type && !b.section) last.push(b)
+    else {
+      if (b.section) starts.add(items.length)
+      items.push(group ? [b] : b)
+    }
   }
   return (
     <LogoUrls.Provider value={logos}>
+    <Samples.Provider value={samples}>
     <article className={styles.page}>
       <header className={styles.header}>
         <h1 className={`ntg-typography-display-xl ${styles.heading}`}>{clean(d.title)}</h1>
         {d.subtitle && <p className={`ntg-typography-body-xl ${styles.muted}`}>{clean(d.subtitle)}</p>}
       </header>
-      {items.map((it, i) =>
-        Array.isArray(it)
-          ? <DoDont key={i}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</DoDont>
-          : <BlockView key={i} block={it} index={i} />,
-      )}
+      {items.map((it, i) => {
+        const view = Array.isArray(it)
+          ? it[0].type === 'variantSet'
+            ? <div className={styles.sampleRow}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
+            : <DoDont>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</DoDont>
+          : <BlockView block={it} index={i} />
+        return starts.has(i) ? <div key={i} className={styles.sectionStart}>{view}</div> : <Fragment key={i}>{view}</Fragment>
+      })}
     </article>
+    </Samples.Provider>
     </LogoUrls.Provider>
   )
 }

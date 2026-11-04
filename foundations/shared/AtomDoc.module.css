@@ -5,7 +5,8 @@
 .page {
   display: flex;
   flex-direction: column;
-  gap: var(--ntg-size-space-s3-xs);
+  /* ระยะระหว่างบล็อกในหัวข้อ 24 ตาม itemSpacing ของ section ในไฟล์ออกแบบ (size/space/s2/lg) */
+  gap: var(--ntg-size-space-s2-lg);
   padding: var(--ntg-size-space-s4-sm);
   background: var(--ntg-color-background-general-primary);
   color: var(--ntg-color-text-general-text);
@@ -32,12 +33,21 @@
 .sectionHead {
   display: flex;
   flex-direction: column;
-  gap: var(--ntg-size-space-s1-sm);
+  gap: var(--ntg-size-space-s1-lg);
   padding-top: var(--ntg-size-space-s2-lg);
 }
 
-.body { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-sm); }
-.body p { margin: 0; }
+/* หัวข้อใหญ่ในไฟล์ออกแบบเป็น section ระยะบนล่าง 80 (size/space/s4/sm) ระหว่างหัวข้อจึงห่าง 160 และจากแถบใต้หัวเอกสารห่าง 80
+   หัก gap ของ .page (24) ที่นับไว้ก่อนแล้ว */
+.sectionStart { padding-top: calc(var(--ntg-size-space-s4-sm) * 2 - var(--ntg-size-space-s2-lg)); }
+.header + .sectionStart { padding-top: calc(var(--ntg-size-space-s4-sm) - var(--ntg-size-space-s2-lg)); }
+.sectionStart > .sectionHead { padding-top: 0; }
+
+/* ข้อความจากไฟล์ออกแบบมีขึ้นบรรทัดใหม่และเว้นสองช่อง เช่นรายการในการ์ด Do / Don't และป้ายกรอบ "image-16:9  288 x 162" ให้แสดงตามต้นฉบับ */
+.page :global(.ntg-docs-card-text) { white-space: pre-line; }
+
+/* ย่อหน้าจากไฟล์ออกแบบเป็นข้อความชิ้นเดียว ขึ้นบรรทัดใหม่และบรรทัดว่างตามต้นฉบับ ไม่มีระยะเพิ่มระหว่างบรรทัด */
+.paragraph { margin: 0; white-space: pre-line; }
 
 .nameCell { display: inline-flex; align-items: baseline; gap: var(--ntg-size-space-s1-lg); }
 .nested { padding-left: var(--ntg-size-space-s2-lg); }
@@ -48,9 +58,20 @@
   gap: var(--ntg-size-space-s1-lg);
   color: var(--ntg-color-text-general-heading);
 }
-/* ป้ายของช่องโหมดมืดวางบนพื้นมืดของโหมดนั้นเอง ให้เห็นสีจริงเทียบกับพื้นจริง */
-.chipDark {
-  padding: var(--ntg-size-space-s1-sm) var(--ntg-size-space-s1-xl);
+/* ป้ายสีในตาราง Color ตาม light-color-cell และ _dark-mode-color-badge ในไฟล์ออกแบบ เป็นแคปซูลมีกรอบ ข้อความบรรทัดเดียว */
+.colorBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+  padding: var(--ntg-size-space-s1-sm) var(--ntg-size-space-s1-lg) var(--ntg-size-space-s1-sm) var(--ntg-size-space-s1-md);
+  border-radius: var(--ntg-pill-tag-radius-full);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-background-alpha-black-10);
+  color: var(--ntg-color-text-general-heading);
+  white-space: nowrap;
+}
+/* ป้ายของช่องโหมดมืดวางบนพื้นมืดของโหมดนั้นเอง ให้เห็นสีจริงเทียบกับพื้นจริง
+   ใช้ token ระดับ semantic เพราะ component token คำนวณที่ :root ครั้งเดียว ไม่เปลี่ยนตาม data-theme */
+.colorBadgeDark {
   background: var(--ntg-color-background-primary-default);
   color: var(--ntg-color-text-primary-default);
 }
@@ -179,6 +200,14 @@
 .logoItem { display: flex; flex-direction: column; align-items: flex-start; gap: var(--ntg-size-space-s1-lg); }
 .logoCell { display: flex; flex-direction: column; align-items: center; gap: var(--ntg-size-space-s1-lg); text-align: center; }
 .logoBox { display: flex; align-items: center; justify-content: center; height: var(--ntg-size-space-s3-xl); border-radius: var(--ntg-info-card-radius-top-left); background: var(--ntg-color-background-general-secondary); }
-.logoLabel { color: var(--ntg-color-text-general-supporting-text); overflow-wrap: anywhere; }
+.logoLabel { color: var(--ntg-color-text-general-supporting-text); overflow-wrap: anywhere; white-space: pre-wrap; }
 .logoStretchBox { display: block; }
 .logoStretched { display: block; transform-origin: left center; }
+
+/* ตัวอย่าง component (ชั้น Molecules) วาดด้วย component จริง ชุด variant วางแต่ละตัวตามตำแหน่งในไฟล์ออกแบบ
+   ความกว้างสูงของกรอบชุดและตำแหน่งมาจากไฟล์ออกแบบ (ผู้ใช้อนุมัติ 2026-11-04) เพราะเป็นการจัดวางของแบบ ไม่ใช่ค่าระยะของระบบ */
+.sampleRow { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--ntg-size-space-s2-lg); }
+.sampleItem { display: flex; flex-direction: column; align-items: flex-start; gap: var(--ntg-size-space-s1-lg); }
+.variantSet { position: relative; flex: none; }
+.variantItem { position: absolute; display: flex; }
+.sampleColumn { display: flex; flex-direction: column; align-items: flex-start; gap: var(--ntg-size-space-s2-lg); }
