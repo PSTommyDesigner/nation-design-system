@@ -97,6 +97,7 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [component-doc-standard.md](rules/component-doc-standard.md) | เอกสาร 5 ชนิดต่อหน้าในไฟล์ออกแบบ และเนื้อหาแบบไหนอยู่ชนิดไหน |
 | [page-doc-template.md](rules/page-doc-template.md) | แม่แบบเอกสารประจำหน้าฝั่งโค้ด 5 หัวข้อ |
 | [token-naming-taxonomy.md](rules/token-naming-taxonomy.md) | กติกาตั้งชื่อ token ตามลำดับชั้น base semantic component |
+| [task-done-checklist.md](rules/task-done-checklist.md) | เช็คลิสต์หลังจบงาน รวมทุกฝั่ง Figma Code Storybook GitHub และบันทึกงาน |
 | [task-naming.md](rules/task-naming.md) | กติกาตั้งชื่อการ์ดงานและแม่แบบรายละเอียด 5 หัวข้อ |
 | [worklog.md](rules/worklog.md) | วิธีบันทึกงาน เก็บที่ไหน และสำเนาไป Obsidian อย่างไร |
 

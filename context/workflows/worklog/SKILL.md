@@ -35,6 +35,7 @@ Official rule files (Thai), read the one the task needs:
 - Fill the 5-part description: `Problem`, `Goal`, `Requirements`, `Figma File`, `Reference`
 
 ## Task dates and status (frontmatter)
+- Before closing a task, go through `docs/rules/task-done-checklist.md`
 - `assign_date` when the file is created, `start` when work starts with `status: "In Progress"`, `due` when the work is done
 - Closing a task: write the `worklog` entry, wait for confirmation, set `due` and `status: "Internal Review"`. `Done` only after a stakeholder really passed it
 - Then run `npm run worklog:obsidian` and check the task note in the vault
