@@ -22,6 +22,9 @@
 //
 // vault ที่ใช้: --vault <path> ก่อน แล้ว OBSIDIAN_VAULT ใน .env แล้วค่อย obsidian/UXUI Worklog ใน repo (ย้ายเข้า repo 2026-11-02)
 //
+// ฟอนต์ (user สั่ง 2026-11-04) ฟอนต์ตั้งต้นของ Obsidian ไม่มีตัวอักษรไทย ชื่อโน้ตกับปุ่มบางตัวจึงเป็นกล่อง ?
+//   ทุกรอบสคริปต์ใส่ THAI_FONT ลง .obsidian/appearance.json เฉพาะช่องที่ยังว่าง ค่าอื่นและฟอนต์ที่ user เลือกเองไม่แตะ
+//
 // tag สำหรับค้นหา (user สั่ง 2026-10-27) ใส่ใน frontmatter ของบันทึกรายวันเท่านั้น
 // โน้ตสรุปเดือนกับหน้าหลักไม่ใส่ tag เหล่านี้ ผลค้นหาตาม tag จึงได้แต่วันที่ทำงานนั้นจริง
 //   project/    ชื่อโปรเจกต์ Nation-Design-System (ตั้งใหม่ได้ด้วย WORKLOG_PROJECT ใน .env)
@@ -345,6 +348,27 @@ function indexNote(days, byMonth, years, tasks = []) {
   ].join('\n').replace(/\n+$/, '') + '\n'
 }
 
+// ── ฟอนต์ไทยของ vault ──
+// Thonburi มากับ macOS ทุกเครื่อง ไม่ต้องติดตั้งเพิ่ม
+export const THAI_FONT = 'Thonburi'
+const FONT_KEYS = ['interfaceFontFamily', 'textFontFamily']
+
+/** ใส่ฟอนต์ไทยในช่องฟอนต์ที่ยังว่างของ .obsidian/appearance.json ต้องปิดเปิด Obsidian ใหม่จึงเห็นผล */
+export function ensureThaiFont(vault, dry, stat) {
+  const path = join(vault, '.obsidian', 'appearance.json')
+  let cur = {}
+  if (existsSync(path)) {
+    try { cur = JSON.parse(readFileSync(path, 'utf8')) }
+    catch { stat.warnings.push(`อ่าน ${relative(vault, path)} ไม่ได้ ข้ามการตั้งฟอนต์`); return }
+  }
+  const missing = FONT_KEYS.filter((k) => !cur[k])
+  if (!missing.length) return
+  const next = { ...cur }
+  for (const k of missing) next[k] = THAI_FONT
+  if (!dry) writeFileSync(path, JSON.stringify(next, null, 2) + '\n')
+  stat.written.push(path)
+}
+
 // ── เขียนและเก็บกวาด ──
 export function put(path, content, dry, stat) {
   stat.keep.add(path)
@@ -425,6 +449,7 @@ export function syncObsidian({ vault = vaultPath(), dry = false } = {}) {
     put(join(vault, `${indexPath(ofYear[0].date)}.md`), indexNote(ofYear, monthsOfYear, years, tasks.filter((t) => parts(t.date).y === y)), dry, stat)
   }
   prune(vault, dry, stat)
+  ensureThaiFont(vault, dry, stat)
   return {
     vault, days: days.length, months: byMonth.size, years,
     written: stat.written.map((p) => relative(vault, p)), removed: stat.removed.map((p) => relative(vault, p)),

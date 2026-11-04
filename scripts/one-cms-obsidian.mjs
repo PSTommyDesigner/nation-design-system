@@ -22,7 +22,7 @@ import { readFileSync, existsSync, readdirSync, unlinkSync, rmdirSync } from 'no
 import { join, resolve, relative, dirname } from 'node:path'
 import { homedir } from 'node:os'
 import { fileURLToPath } from 'node:url'
-import { collectDays, envValue, expandHome, parts, dayLabel, monthName, noteName, isNone, put, walk } from './worklog-obsidian.mjs'
+import { collectDays, envValue, expandHome, parts, dayLabel, monthName, noteName, isNone, put, walk, ensureThaiFont } from './worklog-obsidian.mjs'
 
 const SOURCE = 'context/features/one-cms'
 const MATCH = /One CMS|one-cms/i
@@ -162,6 +162,7 @@ export function syncOneCms({ vault = vaultPath(), dry = false } = {}) {
   }
   put(join(vault, `${INDEX}.md`), indexNote(rules.map(ruleName), days), dry, stat)
   prune(vault, dry, stat)
+  ensureThaiFont(vault, dry, stat)   // ฟอนต์ตั้งต้นของ Obsidian ไม่มีตัวอักษรไทย ดูหัวไฟล์ worklog-obsidian.mjs
   return {
     vault, rules: rules.length, days: days.length,
     written: stat.written.map((p) => relative(vault, p)), removed: stat.removed.map((p) => relative(vault, p)),
