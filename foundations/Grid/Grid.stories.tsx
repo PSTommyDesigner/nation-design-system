@@ -17,10 +17,10 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// เอกสาร Grid Components ไม่มีเมนูที่นี่ เพราะเป็นชุด component ต้นฉบับของภาพ grid ในไฟล์ออกแบบ ไม่ต้องแสดงใน Storybook (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน grid-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '04 Grid Documentation' } }
 export const GridToken: Story = { name: 'Grid Token', args: { data, name: 'Grid Token' } }
 export const SpecimenV2022: Story = { name: 'Grid Specimen Version 2022', args: { data, name: 'Grid Specimen Version 2022' } }
 export const SpecimenNationDigital: Story = { name: 'Grid Specimen Nation Digital', args: { data, name: 'Grid Specimen Nation Digital' } }
 export const SpecimenV2026: Story = { name: 'Grid Specimen Version 2026', args: { data, name: 'Grid Specimen Version 2026' } }
-export const GridComponents: Story = { name: 'Grid Components', args: { data, name: 'Grid Components' } }
