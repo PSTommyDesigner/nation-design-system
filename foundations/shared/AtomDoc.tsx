@@ -478,13 +478,18 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
         </div>
       )
     case 'nestedPair':
+      // วางสองคอลัมน์บนพื้นของหน้าแบบไฟล์ออกแบบ ชื่อ ภาพ และคำอธิบาย ไม่ใช้การ์ด Do/Don't
+      // เพราะพื้นการ์ด (secondary) ใกล้กับสีกรอบนอก (tertiary) จนมองไม่เห็นกรอบนอก (ผู้ใช้ทัก 2026-11-05)
       return (
-        <DoDont>
-          {block.items.map((it, i) => {
-            const Card = it.kind === 'do' ? Do : Dont
-            return <Card key={i} text={`${clean(it.title)} ${clean(it.caption)}`}><NestedSample item={it} /></Card>
-          })}
-        </DoDont>
+        <div className={styles.nestedPair}>
+          {block.items.map((it, i) => (
+            <div key={i} className={styles.nestedColumn}>
+              <span className={`ntg-typography-label-lg ${styles.nestedTitle}`}>{clean(it.title)}</span>
+              <NestedSample item={it} />
+              <p className={`ntg-typography-body-sm ${styles.nestedCaption}`}>{clean(it.caption)}</p>
+            </div>
+          ))}
+        </div>
       )
     case 'chips':
       // กล่องสีพร้อมชื่อใต้กล่อง ตาม chips ในเอกสาร Usage Detail
