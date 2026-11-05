@@ -49,15 +49,52 @@
 /* ย่อหน้าจากไฟล์ออกแบบเป็นข้อความชิ้นเดียว ขึ้นบรรทัดใหม่และบรรทัดว่างตามต้นฉบับ ไม่มีระยะเพิ่มระหว่างบรรทัด */
 .paragraph { margin: 0; white-space: pre-line; }
 
-.nameCell { display: inline-flex; align-items: baseline; gap: var(--ntg-size-space-s1-lg); }
-.nested { padding-left: var(--ntg-size-space-s2-lg); }
-
-.chip {
+/* เซลลำดับตาม hierarchy-color-cell ในไฟล์ออกแบบ ช่องสูง 68 ระยะซ้าย 16 (เซลตารางมีระยะ 12 อยู่แล้วจึงเติมส่วนต่าง)
+   วงกลมเลข 26 กับกล่องชื่อสูง 36 ยืมสเกลระยะเพราะยังไม่มี token ขนาดของเอกสาร */
+.nameCell {
   display: inline-flex;
   align-items: center;
-  gap: var(--ntg-size-space-s1-lg);
-  color: var(--ntg-color-text-general-heading);
+  gap: var(--ntg-size-space-s2-sm);
+  padding:
+    calc(var(--ntg-size-space-s2-sm) - var(--ntg-table-padding-top)) 0
+    calc(var(--ntg-size-space-s2-sm) - var(--ntg-table-padding-bottom))
+    calc(var(--ntg-size-space-s2-sm) - var(--ntg-table-padding-left));
 }
+.hierNo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: calc(var(--ntg-size-space-s2-lg) + var(--ntg-size-space-s1-xs));
+  height: calc(var(--ntg-size-space-s2-lg) + var(--ntg-size-space-s1-xs));
+  border-radius: var(--ntg-pill-tag-radius-full);
+  background: var(--ntg-color-background-general-primary);
+  box-shadow: inset 0 0 0 var(--ntg-divider-thickness) var(--ntg-color-border-general-primary);
+  color: var(--ntg-color-text-general-supporting-text);
+}
+.hierName {
+  padding: calc(var(--ntg-size-space-s1-xl) / 2) var(--ntg-size-space-s2-sm);
+  border-radius: var(--ntg-doc-table-radius-top-left) var(--ntg-doc-table-radius-top-right) var(--ntg-doc-table-radius-bottom-right) var(--ntg-doc-table-radius-bottom-left);
+  background: var(--ntg-color-background-general-primary);
+  box-shadow: inset 0 0 0 var(--ntg-divider-thickness) var(--ntg-color-border-general-primary);
+  color: var(--ntg-color-text-general-section-heading);
+  white-space: nowrap;
+}
+.hierNameNested { background: var(--ntg-color-background-general-secondary); }
+/* เส้นเชื่อมยาวจากขอบแถวถึงกล่องชื่อ วางอิงเซลตาราง (th ของคอลัมน์ชื่อ) จึงต่อกันได้แม้แถวสูงกว่า 68 เพราะคอลัมน์อื่นขึ้นสองบรรทัด
+   ระยะจากขอบซ้ายของเซลคือ 16 บวกค่าที่อ่านจากไฟล์ออกแบบ (margin-left จาก token ระยะ) ความยาวคือครึ่งแถวลบครึ่งกล่องชื่อ (36 / 2 = 18) */
+.page :global(:is(td, th)):has(.hierLine) { position: relative; }
+.hierLine {
+  position: absolute;
+  left: var(--ntg-size-space-s2-sm);
+  width: var(--ntg-divider-thickness);
+  height: calc(50% - var(--ntg-size-space-s2-md) + var(--ntg-size-space-s1-xs));
+  background: var(--ntg-color-border-general-primary);
+}
+.hierLineTop { top: 0; }
+.hierLineBottom { bottom: 0; }
+
 /* ป้ายสีในตาราง Color ตาม light-color-cell และ _dark-mode-color-badge ในไฟล์ออกแบบ เป็นแคปซูลมีกรอบ ข้อความบรรทัดเดียว */
 .colorBadge {
   display: inline-flex;
@@ -76,7 +113,6 @@
   color: var(--ntg-color-text-primary-default);
 }
 
-.swatchWrap { display: inline-flex; }
 .swatch {
   display: inline-block;
   flex: none;
@@ -86,7 +122,25 @@
   box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
 }
 
+.tableHug { width: fit-content; max-width: 100%; }
+
+/* กล่องตัวอย่างสี (chips ในเอกสาร Usage Detail) กว้าง 120 สูง 48 ยืมสเกลระยะ (96 + 24 และ 48) เพราะยังไม่มี token ขนาดของเอกสาร */
+.chips { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s2-sm); }
+.chipItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-md);
+  width: calc(var(--ntg-size-space-s4-lg) + var(--ntg-size-space-s2-lg));
+}
+.chipBox {
+  display: block;
+  height: var(--ntg-size-space-s3-md);
+  border-radius: var(--ntg-doc-table-radius-top-left) var(--ntg-doc-table-radius-top-right) var(--ntg-doc-table-radius-bottom-right) var(--ntg-doc-table-radius-bottom-left);
+  box-shadow: inset 0 0 0 var(--ntg-divider-thickness) var(--ntg-color-border-general-secondary);
+}
+
 .swatchRow { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s2-lg); }
+.swatchCell { padding: var(--ntg-size-space-s2-sm); }
 
 .ramp { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-xs); }
 .rampSteps {

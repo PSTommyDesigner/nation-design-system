@@ -131,6 +131,12 @@ const ROOT_VALUES = Object.fromEntries([...CSS.slice(0, darkStart).matchAll(/^\s
 // ชื่อภาพ grid ใน Figma เป็นชื่อชุด token เช่น nation-platform-2023-full-hd เป็น --ntg-grid-nation-digital-fullhd-*
 const GRID_SYSTEM = { 'nation-group-2022': 'v2022', 'nation-platform-2023': 'nation-digital', 'nation-group-2026': 'v2026' }
 const GRID_DEVICE = { 'full-hd': 'fullhd', desktop: 'desktop', 'tablet-horizontal': 'tablet-h', 'tablet-vertical': 'tablet-v', mobile: 'mobile' }
+// px ในไฟล์ออกแบบ -> ตัวแปรระยะ --ntg-size-space-* ที่ค่าเท่ากัน ไม่เจอให้ลงรายการ badVars
+function spaceVar(px, where) {
+  const v = Object.keys(ROOT_VALUES).find(k => k.startsWith('--ntg-size-space-') && ROOT_VALUES[k] === `${px}px`)
+  if (!v) badVars.push(`${where}: ไม่มี token ระยะ ${px}px`)
+  return v ?? null
+}
 const gridMismatch = []
 function needVar(v, where) { if (!CSS_VARS.has(v)) badVars.push(`${where}: ${v} ไม่มีใน variables.css`); return v }
 const effectMismatch = []
@@ -277,6 +283,7 @@ function extract(doc) {
   // หัวข้อ Base component (internal) เก็บชิ้นส่วนทำเอกสาร เช่นป้ายตัวเลขของภาพ grid ไม่ใช่เนื้อหา จึงข้ามจนถึงหัวข้อถัดไป
   let skipping = false
   const sectionStarts = new Set()
+  let headParent = null
   const push = (b) => {
     if (b.type === 'h') skipping = /base component/i.test(b.text)
     if (skipping) return
@@ -339,7 +346,11 @@ function extract(doc) {
       const level = (h.componentProperties?.type?.value ?? '').toString() || 'primary'
       const swatch = findAll(l, x => x.name === 'color' && x.boundVariables?.fills)[0]
       const cssVar = cssVarOf(swatch, name)
-      push({ type: 'colorRow', row: { no, name, level, light: texts(l).join(' '), dark: d ? texts(d).join(' ') : '', description: ds ? texts(ds).join(' ') : '', cssVar, darkVar: darkVarOf(cssVar) } })
+      // เส้นเชื่อมแนวตั้งเหนือและใต้กล่องชื่อ กับระยะจากวงกลมเลขถึงกล่องชื่อ อ่านจากเซลจริงแล้วแปลงเป็น token ระยะ
+      const lineAt = (f) => f && f.visible !== false && f.children?.some(c => c.visible !== false) ? spaceVar(f.paddingLeft ?? 0, `${doc.name} ${name} เส้นเชื่อม`) : null
+      const [lineTop, lineBottom] = (h.children ?? []).filter(c => c.name === 'line')
+      const hier = { gap: spaceVar(h.children?.find(c => c.name === 'text')?.itemSpacing ?? 0, `${doc.name} ${name} ระยะ`), lineTop: lineAt(lineTop), lineBottom: lineAt(lineBottom) }
+      push({ type: 'colorRow', row: { no, name, level, ...hier, light: texts(l).join(' '), dark: d ? texts(d).join(' ') : '', description: ds ? texts(ds).join(' ') : '', cssVar, darkVar: darkVarOf(cssVar) } })
       const row = out.blocks[out.blocks.length - 1].rows.at(-1)
       row.light = primitiveOf(cssVar, false)
       row.dark = primitiveOf(row.darkVar, true)
@@ -351,7 +362,14 @@ function extract(doc) {
       // ตาราง = เฟรมที่ลูกทุกตัวเป็นแถวของเซล แถวแรกเป็นหัวตาราง
       // เซลที่มีข้อความหลายชิ้นเรียงลงล่าง เช่น ชื่อตัวแปรกับคำว่า Variable ตัวเล็กใต้ชื่อ (ตาราง Color Token) เก็บแยกบรรทัด
       const rows = n.children.map(r => r.children.filter(isCell).map(c => texts(c).join('\n')))
-      push({ type: 'table', head: rows[0], rows: rows.slice(1) })
+      // ตารางที่ในไฟล์ออกแบบกว้างตามเนื้อหา (HUG) เช่นในเอกสาร Usage Detail ไม่ยืดเต็มหน้า
+      push({ type: 'table', head: rows[0], rows: rows.slice(1), ...(n.layoutSizingHorizontal === 'HUG' ? { hug: true } : {}) })
+      return
+    }
+    if (n.type === 'FRAME' && n.name === 'chips' && n.children?.length && n.children.every(c => c.type === 'FRAME' && c.children?.some(x => x.type === 'RECTANGLE' && x.boundVariables?.fills) && c.children.some(x => x.type === 'TEXT'))) {
+      // กล่องตัวอย่างสีพร้อมชื่อใต้กล่อง เช่น chips ในเอกสาร Usage Detail สีอ่านจากตัวแปรที่ผูกกับกล่องจริง
+      const items = n.children.filter(c => c.visible !== false).map(c => ({ label: c.children.find(x => x.type === 'TEXT').characters.trim(), cssVar: cssVarOf(c.children.find(x => x.type === 'RECTANGLE' && x.boundVariables?.fills), `${doc.name} ${c.name}`) }))
+      push({ type: 'chips', items })
       return
     }
     if (n.type === 'FRAME' && n.children?.some(c => c.type === 'INSTANCE' && c.name === 'light-color-cell') && !n.children.some(c => c.name === 'hierarchy-color-cell')) {
@@ -464,12 +482,13 @@ function extract(doc) {
       if (n.parent?.children?.some(isSpaceRow)) { push({ type: 'h3', text: s }); return }
       // ข้อความเล็กกว่า 14 คือป้ายกำกับในภาพตัวอย่าง ไม่ใช่เนื้อหา ยกเว้นย่อหน้าท้ายบล็อกที่เป็นคำอธิบาย 14
       if (fs_ < 14 || /^#[0-9A-F]{6}$/i.test(s) || /^\d+$/.test(s)) return
-      if (fs_ >= 24) push({ type: 'h', text: s })
+      if (fs_ >= 24) { push({ type: 'h', text: s }); headParent = n.parent }
       else if (fs_ === 18) push({ type: 'h3', text: s })
       else {
         const last = out.blocks[out.blocks.length - 1]
         // ข้อความ 20px ที่ตามหลังหัวข้อทันทีคือคำอธิบายใต้หัวข้อ
-        if (last?.type === 'h' && n.parent?.type === 'FRAME' && fs_ === 20 && !last.sub) { last.sub = s; return }
+        // ต้องอยู่ในเฟรมเดียวกับหัวข้อ ชื่อกลุ่มขนาด 20 ที่อยู่เฟรมถัดไป เช่น Gray ในหน้า Utility Color ไม่ใช่คำอธิบาย
+        if (last?.type === 'h' && n.parent?.type === 'FRAME' && n.parent === headParent && fs_ === 20 && !last.sub) { last.sub = s; return }
         push({ type: 'p', text: s })
       }
       return

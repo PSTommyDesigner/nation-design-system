@@ -408,128 +408,128 @@
           ],
           "rows": [
             [
-              "shadows/bottom/xs เงาทิ้งลงล่าง",
-              "--ntg-shadows-bottom-xs CSS variable",
+              "shadows/bottom/xs\nเงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-xs\nCSS variable",
               "0px 1px 2px 0px rgba(0, 0, 0, 0.05)",
               "ค่าเริ่มต้นของระบบ ใช้กับการ์ด แถบ และของที่ยกจากพื้นเพียงเล็กน้อย เป็นตัวที่ใช้มากที่สุดในไฟล์"
             ],
             [
-              "shadows/bottom/sm เงาทิ้งลงล่าง",
-              "--ntg-shadows-bottom-sm CSS variable",
+              "shadows/bottom/sm\nเงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-sm\nCSS variable",
               "0px 1px 4px 0px rgba(0, 0, 0, 0.1)",
               "ปุ่มในรายการ ปุ่มสลับเปิดปิด ช่องกรอกข้อมูล และปุ่มขนาด sm"
             ],
             [
-              "shadows/bottom/md เงาทิ้งลงล่าง",
-              "--ntg-shadows-bottom-md CSS variable",
+              "shadows/bottom/md\nเงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-md\nCSS variable",
               "0px 3px 8px -2px rgba(0, 0, 0, 0.1)",
               "คำแนะนำลอย เมนูแบบดึงลง แถบข้าง และปุ่มขนาด md"
             ],
             [
-              "shadows/bottom/lg เงาทิ้งลงล่าง",
-              "--ntg-shadows-bottom-lg CSS variable",
+              "shadows/bottom/lg\nเงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-lg\nCSS variable",
               "0px 12px 16px -4px rgba(0, 0, 0, 0.1)",
               "ปุ่มขนาด lg และการ์ดที่ต้องเด่นกว่าปกติ"
             ],
             [
-              "shadows/bottom/xl เงาทิ้งลงล่าง",
-              "--ntg-shadows-bottom-xl CSS variable",
+              "shadows/bottom/xl\nเงาทิ้งลงล่าง",
+              "--ntg-shadows-bottom-xl\nCSS variable",
               "0px 20px 24px -4px rgba(0, 0, 0, 0.1)",
               "กล่องซ้อนหน้าจอ กล่องยืนยัน และปุ่มขนาด xl"
             ],
             [
-              "shadows/top/md เงาทิ้งขึ้นบน",
-              "--ntg-shadows-top-md CSS variable",
+              "shadows/top/md\nเงาทิ้งขึ้นบน",
+              "--ntg-shadows-top-md\nCSS variable",
               "0px -4px 8px -2px rgba(0, 0, 0, 0.1)",
               "แถบที่ตรึงไว้ขอบล่างของจอ ซึ่งต้องให้เงาทอดขึ้นหาเนื้อหา"
             ],
             [
-              "shadows/center/xs เงารอบด้าน",
-              "--ntg-shadows-center-xs CSS variable",
+              "shadows/center/xs\nเงารอบด้าน",
+              "--ntg-shadows-center-xs\nCSS variable",
               "0px 0px 4px 0px rgba(0, 0, 0, 0.05)",
               "ของชิ้นเล็กที่ต้องมีเงารอบด้าน เช่น หัวลูกศรของคำแนะนำลอย ปุ่มลากของแถบเลื่อน"
             ],
             [
-              "shadows/center/sm เงารอบด้าน",
-              "--ntg-shadows-center-sm CSS variable",
+              "shadows/center/sm\nเงารอบด้าน",
+              "--ntg-shadows-center-sm\nCSS variable",
               "0px 0px 4px 2px rgba(0, 0, 0, 0.05)",
               "ตาราง กริด และการ์ดที่ต้องการเงารอบด้านเท่ากัน"
             ],
             [
-              "shadows/center/md เงารอบด้าน",
-              "--ntg-shadows-center-md CSS variable",
+              "shadows/center/md\nเงารอบด้าน",
+              "--ntg-shadows-center-md\nCSS variable",
               "0px 0px 8px 2px rgba(0, 0, 0, 0.1)",
               "ของลอยรอบด้านขนาดกลาง ปัจจุบันใช้น้อย"
             ],
             [
-              "shadows/center/lg เงารอบด้าน",
-              "--ntg-shadows-center-lg CSS variable",
+              "shadows/center/lg\nเงารอบด้าน",
+              "--ntg-shadows-center-lg\nCSS variable",
               "0px 0px 16px 4px rgba(0, 0, 0, 0.1)",
               "ของลอยรอบด้านขนาดใหญ่ ปัจจุบันใช้น้อย"
             ],
             [
-              "shadows/center/xl เงารอบด้าน",
-              "--ntg-shadows-center-xl CSS variable",
+              "shadows/center/xl\nเงารอบด้าน",
+              "--ntg-shadows-center-xl\nCSS variable",
               "0px 0px 24px 8px rgba(0, 0, 0, 0.1)",
               "ของลอยรอบด้านขนาดใหญ่มาก ปัจจุบันใช้น้อย"
             ],
             [
-              "background-blur/xs พื้นหลังเบลอ",
-              "--ntg-effect-background-blur-xs CSS variable",
+              "background-blur/xs\nพื้นหลังเบลอ",
+              "--ntg-effect-background-blur-xs\nCSS variable",
               "4px",
               "เบลอบางที่สุด ใช้กับแถบที่ทับเนื้อหาแต่ยังต้องอ่านของข้างหลังได้"
             ],
             [
-              "background-blur/sm พื้นหลังเบลอ",
-              "--ntg-effect-background-blur-sm CSS variable",
+              "background-blur/sm\nพื้นหลังเบลอ",
+              "--ntg-effect-background-blur-sm\nCSS variable",
               "8px",
               "แถบนำทางแบบโปร่ง และกล่องเล็กที่ลอยทับเนื้อหา"
             ],
             [
-              "background-blur/md พื้นหลังเบลอ",
-              "--ntg-effect-background-blur-md CSS variable",
+              "background-blur/md\nพื้นหลังเบลอ",
+              "--ntg-effect-background-blur-md\nCSS variable",
               "16px",
               "ฉากหลังของกล่องซ้อนหน้าจอขนาดกลาง"
             ],
             [
-              "background-blur/lg พื้นหลังเบลอ",
-              "--ntg-effect-background-blur-lg CSS variable",
+              "background-blur/lg\nพื้นหลังเบลอ",
+              "--ntg-effect-background-blur-lg\nCSS variable",
               "24px",
               "ฉากหลังของกล่องซ้อนหน้าจอขนาดใหญ่"
             ],
             [
-              "background-blur/xl พื้นหลังเบลอ",
-              "--ntg-effect-background-blur-xl CSS variable",
+              "background-blur/xl\nพื้นหลังเบลอ",
+              "--ntg-effect-background-blur-xl\nCSS variable",
               "40px",
               "เบลอหนาที่สุด ใช้เมื่อต้องการตัดเนื้อหาด้านหลังออกจากสายตาเกือบทั้งหมด"
             ],
             [
-              "effect/brand-focused-ring วงแหวนโฟกัส",
-              "--ntg-effect-brand-focused-ring CSS variable",
+              "effect/brand-focused-ring\nวงแหวนโฟกัส",
+              "--ntg-effect-brand-focused-ring\nCSS variable",
               "0px 0px 0px 4px rgba(30, 88, 242, 0.2)",
               "ปุ่มหลักและลิงก์ เป็นวงแหวนโฟกัสที่ใช้เป็นค่าเริ่มต้น"
             ],
             [
-              "effect/default-focused-ring วงแหวนโฟกัส",
-              "--ntg-effect-default-focused-ring CSS variable",
+              "effect/default-focused-ring\nวงแหวนโฟกัส",
+              "--ntg-effect-default-focused-ring\nCSS variable",
               "0px 0px 0px 4px rgba(71, 84, 103, 0.1)",
               "ปุ่มและช่องกรอกโทนกลาง ที่ไม่ต้องการเน้นสีแบรนด์"
             ],
             [
-              "effect/error-focused-ring วงแหวนโฟกัส",
-              "--ntg-effect-error-focused-ring CSS variable",
+              "effect/error-focused-ring\nวงแหวนโฟกัส",
+              "--ntg-effect-error-focused-ring\nCSS variable",
               "0px 0px 0px 4px rgba(217, 45, 32, 0.2)",
               "ช่องกรอกที่กรอกผิด และปุ่มลบหรือปุ่มที่ทำแล้วย้อนไม่ได้"
             ],
             [
-              "effect/warning-focused-ring วงแหวนโฟกัส",
-              "--ntg-effect-warning-focused-ring CSS variable",
+              "effect/warning-focused-ring\nวงแหวนโฟกัส",
+              "--ntg-effect-warning-focused-ring\nCSS variable",
               "0px 0px 0px 4px rgba(202, 133, 4, 0.2)",
               "ช่องหรือปุ่มที่อยู่ในสถานะเตือนให้ระวัง"
             ],
             [
-              "effect/success-focused-ring วงแหวนโฟกัส",
-              "--ntg-effect-success-focused-ring CSS variable",
+              "effect/success-focused-ring\nวงแหวนโฟกัส",
+              "--ntg-effect-success-focused-ring\nCSS variable",
               "0px 0px 0px 4px rgba(3, 152, 85, 0.2)",
               "ช่องหรือปุ่มที่อยู่ในสถานะทำสำเร็จ"
             ]
@@ -581,42 +581,42 @@
           ],
           "rows": [
             [
-              "ระดับ 0 ติดพื้น",
+              "ระดับ 0\nติดพื้น",
               "ไม่ใส่เงา",
               "เนื้อหาทั่วไปในหน้า พื้นหลัง และตารางที่ไม่ได้ยกตัวขึ้นมา"
             ],
             [
-              "ระดับ 1 ยกจากพื้นเล็กน้อย",
+              "ระดับ 1\nยกจากพื้นเล็กน้อย",
               "shadows/bottom/xs",
               "การ์ด แถบเนื้อหา กล่องข้อมูล และตารางที่ยกตัวจากพื้น เป็นระดับที่ใช้มากที่สุด"
             ],
             [
-              "ระดับ 2 ลอยเหนือเนื้อหา",
+              "ระดับ 2\nลอยเหนือเนื้อหา",
               "shadows/bottom/sm",
               "ปุ่มในรายการ ปุ่มสลับเปิดปิด และช่องกรอกข้อมูล"
             ],
             [
-              "ระดับ 3 ลอยทับเนื้อหา",
+              "ระดับ 3\nลอยทับเนื้อหา",
               "shadows/bottom/md",
               "คำแนะนำลอย เมนูแบบดึงลง และแถบข้างที่เลื่อนออกมาทับเนื้อหา"
             ],
             [
-              "ระดับ 4 ลอยเด่นกว่าปกติ",
+              "ระดับ 4\nลอยเด่นกว่าปกติ",
               "shadows/bottom/lg",
               "ปุ่มขนาดใหญ่ และการ์ดที่ต้องการให้เด่นกว่าการ์ดอื่นในหน้าเดียวกัน"
             ],
             [
-              "ระดับ 5 ซ้อนทับทั้งหน้าจอ",
+              "ระดับ 5\nซ้อนทับทั้งหน้าจอ",
               "shadows/bottom/xl",
               "กล่องซ้อนหน้าจอ และกล่องยืนยัน ใช้คู่กับพื้นหลังเบลอเพื่อตัดเนื้อหาด้านหลังออกจากสายตา"
             ],
             [
-              "กรณีพิเศษ ตรึงไว้ขอบล่าง",
+              "กรณีพิเศษ\nตรึงไว้ขอบล่าง",
               "shadows/top/md",
               "แถบที่ตรึงอยู่ขอบล่างของจอ ต้องให้เงาทอดขึ้นหาเนื้อหา ไม่ใช่ทอดลงนอกจอ"
             ],
             [
-              "กรณีพิเศษ ไม่มีทิศทางแสงชัดเจน",
+              "กรณีพิเศษ\nไม่มีทิศทางแสงชัดเจน",
               "shadows/center/xs และ sm",
               "ปุ่มลากของแถบเลื่อน หัวลูกศรของคำแนะนำลอย และของชิ้นเล็กที่ลอยกลางจอ"
             ]

@@ -440,62 +440,62 @@
           ],
           "rows": [
             [
-              "button/radius/<มุม>/<ขนาด> 21 ตัว",
-              "--ntg-button-radius-top-left-md ",
+              "button/radius/<มุม>/<ขนาด>\n21 ตัว",
+              "--ntg-button-radius-top-left-md\n",
               "6 ถึง 10",
               "ปุ่มทั่วไปทุกตระกูล"
             ],
             [
-              "icon-button/radius/<มุม>/<ขนาด> 21 ตัว",
-              "--ntg-icon-button-radius-top-left-md ",
+              "icon-button/radius/<มุม>/<ขนาด>\n21 ตัว",
+              "--ntg-icon-button-radius-top-left-md\n",
               "6 ถึง 10",
               "ปุ่มไอคอนล้วน"
             ],
             [
-              "link-button/radius/<มุม>/<ขนาด> 20 ตัว",
-              "--ntg-link-button-radius-top-left-md ",
+              "link-button/radius/<มุม>/<ขนาด>\n20 ตัว",
+              "--ntg-link-button-radius-top-left-md\n",
               "0",
               "ปุ่มลิงก์"
             ],
             [
-              "card/radius/<มุม> 5 ตัว",
-              "--ntg-card-radius-top-left ",
+              "card/radius/<มุม>\n5 ตัว",
+              "--ntg-card-radius-top-left\n",
               "4",
               "การ์ดข่าว การ์ดวิดีโอ"
             ],
             [
-              "tag/radius/<มุม> 5 ตัว",
-              "--ntg-tag-radius-top-left ",
+              "tag/radius/<มุม>\n5 ตัว",
+              "--ntg-tag-radius-top-left\n",
               "4",
               "แท็กหมวดข่าว 2 ทรง"
             ],
             [
-              "badge/radius/<มุม> 5 ตัว",
-              "--ntg-badge-radius-top-left ",
+              "badge/radius/<มุม>\n5 ตัว",
+              "--ntg-badge-radius-top-left\n",
               "4",
               "ป้ายสถานะ 2 ทรง"
             ],
             [
-              "input/radius/<มุม> 4 ตัว",
-              "--ntg-input-radius-top-left ",
+              "input/radius/<มุม>\n4 ตัว",
+              "--ntg-input-radius-top-left\n",
               "8",
               "text field และ text area"
             ],
             [
-              "info-card/radius/<มุม> 4 ตัว",
-              "--ntg-info-card-radius-top-left ",
+              "info-card/radius/<มุม>\n4 ตัว",
+              "--ntg-info-card-radius-top-left\n",
               "12",
               "การ์ดข้อมูลในระบบเอกสาร"
             ],
             [
-              "doc-table/radius/<มุม> 4 ตัว",
-              "--ntg-doc-table-radius-top-left ",
+              "doc-table/radius/<มุม>\n4 ตัว",
+              "--ntg-doc-table-radius-top-left\n",
               "8",
               "กรอบตารางในเอกสาร 11 จุด 7 หน้า"
             ],
             [
-              "table/radius/<มุม> 4 ตัว",
-              "--ntg-table-radius-top-left ",
+              "table/radius/<มุม>\n4 ตัว",
+              "--ntg-table-radius-top-left\n",
               "8",
               "ตารางข้อมูลของโปรดักต์ หน้า 28"
             ]
@@ -659,54 +659,54 @@
           ],
           "rows": [
             [
-              "button ปุ่มทั่วไป",
-              "6, 7, 8, 9, 10 ตาม xs ถึง xl",
-              "สูตร base 6 step 1 RADIUS_FORMULA.button"
+              "button\nปุ่มทั่วไป",
+              "6, 7, 8, 9, 10\nตาม xs ถึง xl",
+              "สูตร base 6 step 1\nRADIUS_FORMULA.button"
             ],
             [
-              "icon-button ปุ่มไอคอน",
-              "6, 7, 8, 9, 10 ตาม xs ถึง xl",
-              "สูตรเดียวกับปุ่ม RADIUS_FORMULA.button"
+              "icon-button\nปุ่มไอคอน",
+              "6, 7, 8, 9, 10\nตาม xs ถึง xl",
+              "สูตรเดียวกับปุ่ม\nRADIUS_FORMULA.button"
             ],
             [
-              "link-button ปุ่มลิงก์",
-              "0 ทุกขนาด",
-              "ไม่มีพื้นหลังจึงไม่มีมุมโค้ง RADIUS_SCALE.none"
+              "link-button\nปุ่มลิงก์",
+              "0\nทุกขนาด",
+              "ไม่มีพื้นหลังจึงไม่มีมุมโค้ง\nRADIUS_SCALE.none"
             ],
             [
-              "card การ์ดข่าว",
-              "4 และ full 9999",
-              "ขั้น sm full ใช้กับป้ายในการ์ด"
+              "card\nการ์ดข่าว",
+              "4\nและ full 9999",
+              "ขั้น sm\nfull ใช้กับป้ายในการ์ด"
             ],
             [
-              "tag แท็ก 2 ทรง",
-              "4 และ full 9999",
-              "ขั้น sm และ full ทรงปกติกับทรงแคปซูล"
+              "tag\nแท็ก 2 ทรง",
+              "4\nและ full 9999",
+              "ขั้น sm และ full\nทรงปกติกับทรงแคปซูล"
             ],
             [
-              "badge ป้าย 2 ทรง",
-              "4 และ full 9999",
-              "ขั้น sm และ full ทรงปกติกับทรงกลม"
+              "badge\nป้าย 2 ทรง",
+              "4\nและ full 9999",
+              "ขั้น sm และ full\nทรงปกติกับทรงกลม"
             ],
             [
-              "input ช่องกรอก",
-              "8 ทุกมุม",
-              "ขั้น md text field และ text area"
+              "input\nช่องกรอก",
+              "8\nทุกมุม",
+              "ขั้น md\ntext field และ text area"
             ],
             [
-              "info-card การ์ดข้อมูลในเอกสาร",
-              "12 ทุกมุม",
-              "ขั้น lg RADIUS_SCALE.lg"
+              "info-card\nการ์ดข้อมูลในเอกสาร",
+              "12\nทุกมุม",
+              "ขั้น lg\nRADIUS_SCALE.lg"
             ],
             [
-              "doc-table กรอบตารางในเอกสาร",
-              "8 ทุกมุม",
-              "ขั้น md ใช้ 11 จุด 7 หน้า"
+              "doc-table\nกรอบตารางในเอกสาร",
+              "8\nทุกมุม",
+              "ขั้น md\nใช้ 11 จุด 7 หน้า"
             ],
             [
-              "table ตารางข้อมูลของโปรดักต์",
-              "8 ทุกมุม",
-              "ขั้น md ตารางจริงบนหน้า 28"
+              "table\nตารางข้อมูลของโปรดักต์",
+              "8\nทุกมุม",
+              "ขั้น md\nตารางจริงบนหน้า 28"
             ]
           ]
         }
@@ -779,25 +779,25 @@
           ],
           "rows": [
             [
-              "การ์ดข่าว ภาพชิดขอบบน พบมากที่สุด",
-              "4 ",
-              "0 ไม่มีระยะขอบ",
-              "4 เท่ากรอบนอก",
-              "card/radius ภาพใช้ตัวเดียวกับการ์ด"
+              "การ์ดข่าว ภาพชิดขอบบน\nพบมากที่สุด",
+              "4\n",
+              "0\nไม่มีระยะขอบ",
+              "4\nเท่ากรอบนอก",
+              "card/radius\nภาพใช้ตัวเดียวกับการ์ด"
             ],
             [
-              "กล่องข้างใน info-card ในระบบเอกสาร",
-              "12 ",
-              "8 ระยะขอบมาตรฐาน",
-              "4 12 ลบ 8",
-              "info-card/radius และ card/radius กล่องในใช้ค่า 4"
+              "กล่องข้างใน info-card\nในระบบเอกสาร",
+              "12\n",
+              "8\nระยะขอบมาตรฐาน",
+              "4\n12 ลบ 8",
+              "info-card/radius และ card/radius\nกล่องในใช้ค่า 4"
             ],
             [
-              "การ์ดข่าว ภาพมีระยะขอบ การ์ดแบบมีกรอบ",
-              "4 ",
-              "8 ระยะขอบมาตรฐาน",
-              "0 ติดลบจึงใช้ 0",
-              "ไม่ต้องใส่มุมโค้ง ปล่อยเป็นมุมฉาก"
+              "การ์ดข่าว ภาพมีระยะขอบ\nการ์ดแบบมีกรอบ",
+              "4\n",
+              "8\nระยะขอบมาตรฐาน",
+              "0\nติดลบจึงใช้ 0",
+              "ไม่ต้องใส่มุมโค้ง\nปล่อยเป็นมุมฉาก"
             ]
           ]
         }

@@ -27,8 +27,11 @@
         {
           "type": "h",
           "text": "ระบบ Grid ใช้เมื่อไหร่",
-          "sub": "• เว็บทั่วไป (Version 2022): ใช้กับเว็บในเครือทั่วไป (bangkokbiznews · nationtv · komchadluek …) · เดสก์ท็อป 12 คอลัมน์",
           "section": true
+        },
+        {
+          "type": "p",
+          "text": "• เว็บทั่วไป (Version 2022): ใช้กับเว็บในเครือทั่วไป (bangkokbiznews · nationtv · komchadluek …) · เดสก์ท็อป 12 คอลัมน์"
         },
         {
           "type": "p",
@@ -248,320 +251,320 @@
           ],
           "rows": [
             [
-              "grid/breakpoint/fullhd Variable",
-              "--ntg-grid-breakpoint-fullhd CSS var",
+              "grid/breakpoint/fullhd\nVariable",
+              "--ntg-grid-breakpoint-fullhd\nCSS var",
               "1920px",
               "ความกว้างจอ Full HD 1920"
             ],
             [
-              "grid/breakpoint/desktop Variable",
-              "--ntg-grid-breakpoint-desktop CSS var",
+              "grid/breakpoint/desktop\nVariable",
+              "--ntg-grid-breakpoint-desktop\nCSS var",
               "1440px",
               "ความกว้างจอ Desktop 1440"
             ],
             [
-              "grid/breakpoint/tablet-h Variable",
-              "--ntg-grid-breakpoint-tablet-h CSS var",
+              "grid/breakpoint/tablet-h\nVariable",
+              "--ntg-grid-breakpoint-tablet-h\nCSS var",
               "1024px",
               "ความกว้างจอ Tablet แนวนอน 1024"
             ],
             [
-              "grid/breakpoint/tablet-v Variable",
-              "--ntg-grid-breakpoint-tablet-v CSS var",
+              "grid/breakpoint/tablet-v\nVariable",
+              "--ntg-grid-breakpoint-tablet-v\nCSS var",
               "768px",
               "ความกว้างจอ Tablet แนวตั้ง 768"
             ],
             [
-              "grid/breakpoint/mobile Variable",
-              "--ntg-grid-breakpoint-mobile CSS var",
+              "grid/breakpoint/mobile\nVariable",
+              "--ntg-grid-breakpoint-mobile\nCSS var",
               "375px",
               "ความกว้างจอ Mobile 375"
             ],
             [
-              "grid/v2022/desktop/columns Variable",
-              "--ntg-grid-v2022-desktop-columns CSS var",
+              "grid/v2022/desktop/columns\nVariable",
+              "--ntg-grid-v2022-desktop-columns\nCSS var",
               "12",
               "จำนวนคอลัมน์ · Desktop 1440 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/desktop/gutter Variable",
-              "--ntg-grid-v2022-desktop-gutter CSS var",
+              "grid/v2022/desktop/gutter\nVariable",
+              "--ntg-grid-v2022-desktop-gutter\nCSS var",
               "24px",
               "ช่องว่างระหว่างคอลัมน์ · Desktop 1440 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/desktop/margin Variable",
-              "--ntg-grid-v2022-desktop-margin CSS var",
+              "grid/v2022/desktop/margin\nVariable",
+              "--ntg-grid-v2022-desktop-margin\nCSS var",
               "108px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Desktop 1440 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/desktop/container Variable",
-              "--ntg-grid-v2022-desktop-container CSS var",
+              "grid/v2022/desktop/container\nVariable",
+              "--ntg-grid-v2022-desktop-container\nCSS var",
               "1224px",
               "ความกว้างพื้นที่เนื้อหา · Desktop 1440 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/desktop/column-width Variable",
-              "--ntg-grid-v2022-desktop-column-width CSS var",
+              "grid/v2022/desktop/column-width\nVariable",
+              "--ntg-grid-v2022-desktop-column-width\nCSS var",
               "80px",
               "ความกว้างคอลัมน์เดี่ยว · Desktop 1440 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-h/columns Variable",
-              "--ntg-grid-v2022-tablet-h-columns CSS var",
+              "grid/v2022/tablet-h/columns\nVariable",
+              "--ntg-grid-v2022-tablet-h-columns\nCSS var",
               "10",
               "จำนวนคอลัมน์ · Tablet แนวนอน 1024 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-h/gutter Variable",
-              "--ntg-grid-v2022-tablet-h-gutter CSS var",
+              "grid/v2022/tablet-h/gutter\nVariable",
+              "--ntg-grid-v2022-tablet-h-gutter\nCSS var",
               "16px",
               "ช่องว่างระหว่างคอลัมน์ · Tablet แนวนอน 1024 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-h/margin Variable",
-              "--ntg-grid-v2022-tablet-h-margin CSS var",
+              "grid/v2022/tablet-h/margin\nVariable",
+              "--ntg-grid-v2022-tablet-h-margin\nCSS var",
               "80px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Tablet แนวนอน 1024 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-h/container Variable",
-              "--ntg-grid-v2022-tablet-h-container CSS var",
+              "grid/v2022/tablet-h/container\nVariable",
+              "--ntg-grid-v2022-tablet-h-container\nCSS var",
               "864px",
               "ความกว้างพื้นที่เนื้อหา · Tablet แนวนอน 1024 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-h/column-width Variable",
-              "--ntg-grid-v2022-tablet-h-column-width CSS var",
+              "grid/v2022/tablet-h/column-width\nVariable",
+              "--ntg-grid-v2022-tablet-h-column-width\nCSS var",
               "72px",
               "ความกว้างคอลัมน์เดี่ยว · Tablet แนวนอน 1024 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-v/columns Variable",
-              "--ntg-grid-v2022-tablet-v-columns CSS var",
+              "grid/v2022/tablet-v/columns\nVariable",
+              "--ntg-grid-v2022-tablet-v-columns\nCSS var",
               "8",
               "จำนวนคอลัมน์ · Tablet แนวตั้ง 768 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-v/gutter Variable",
-              "--ntg-grid-v2022-tablet-v-gutter CSS var",
+              "grid/v2022/tablet-v/gutter\nVariable",
+              "--ntg-grid-v2022-tablet-v-gutter\nCSS var",
               "16px",
               "ช่องว่างระหว่างคอลัมน์ · Tablet แนวตั้ง 768 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-v/margin Variable",
-              "--ntg-grid-v2022-tablet-v-margin CSS var",
+              "grid/v2022/tablet-v/margin\nVariable",
+              "--ntg-grid-v2022-tablet-v-margin\nCSS var",
               "40px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Tablet แนวตั้ง 768 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-v/container Variable",
-              "--ntg-grid-v2022-tablet-v-container CSS var",
+              "grid/v2022/tablet-v/container\nVariable",
+              "--ntg-grid-v2022-tablet-v-container\nCSS var",
               "688px",
               "ความกว้างพื้นที่เนื้อหา · Tablet แนวตั้ง 768 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/tablet-v/column-width Variable",
-              "--ntg-grid-v2022-tablet-v-column-width CSS var",
+              "grid/v2022/tablet-v/column-width\nVariable",
+              "--ntg-grid-v2022-tablet-v-column-width\nCSS var",
               "72px",
               "ความกว้างคอลัมน์เดี่ยว · Tablet แนวตั้ง 768 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/mobile/columns Variable",
-              "--ntg-grid-v2022-mobile-columns CSS var",
+              "grid/v2022/mobile/columns\nVariable",
+              "--ntg-grid-v2022-mobile-columns\nCSS var",
               "4",
               "จำนวนคอลัมน์ · Mobile 375 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/mobile/gutter Variable",
-              "--ntg-grid-v2022-mobile-gutter CSS var",
+              "grid/v2022/mobile/gutter\nVariable",
+              "--ntg-grid-v2022-mobile-gutter\nCSS var",
               "5px",
               "ช่องว่างระหว่างคอลัมน์ · Mobile 375 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/mobile/margin Variable",
-              "--ntg-grid-v2022-mobile-margin CSS var",
+              "grid/v2022/mobile/margin\nVariable",
+              "--ntg-grid-v2022-mobile-margin\nCSS var",
               "20px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Mobile 375 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/mobile/container Variable",
-              "--ntg-grid-v2022-mobile-container CSS var",
+              "grid/v2022/mobile/container\nVariable",
+              "--ntg-grid-v2022-mobile-container\nCSS var",
               "335px",
               "ความกว้างพื้นที่เนื้อหา · Mobile 375 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2022/mobile/column-width Variable",
-              "--ntg-grid-v2022-mobile-column-width CSS var",
+              "grid/v2022/mobile/column-width\nVariable",
+              "--ntg-grid-v2022-mobile-column-width\nCSS var",
               "80px",
               "ความกว้างคอลัมน์เดี่ยว · Mobile 375 (เว็บทั่วไป)"
             ],
             [
-              "grid/v2026/mobile/columns Variable",
-              "--ntg-grid-v2026-mobile-columns CSS var",
+              "grid/v2026/mobile/columns\nVariable",
+              "--ntg-grid-v2026-mobile-columns\nCSS var",
               "4",
               "จำนวนคอลัมน์ · Mobile 360 (เว็บทั่วไป รุ่น 2026)"
             ],
             [
-              "grid/v2026/mobile/gutter Variable",
-              "--ntg-grid-v2026-mobile-gutter CSS var",
+              "grid/v2026/mobile/gutter\nVariable",
+              "--ntg-grid-v2026-mobile-gutter\nCSS var",
               "8px",
               "ช่องว่างระหว่างคอลัมน์ · Mobile 360 (เว็บทั่วไป รุ่น 2026)"
             ],
             [
-              "grid/v2026/mobile/margin Variable",
-              "--ntg-grid-v2026-mobile-margin CSS var",
+              "grid/v2026/mobile/margin\nVariable",
+              "--ntg-grid-v2026-mobile-margin\nCSS var",
               "24px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Mobile 360 (เว็บทั่วไป รุ่น 2026)"
             ],
             [
-              "grid/nation-digital/fullhd/columns Variable",
-              "--ntg-grid-nation-digital-fullhd-columns CSS var",
+              "grid/nation-digital/fullhd/columns\nVariable",
+              "--ntg-grid-nation-digital-fullhd-columns\nCSS var",
               "10",
               "จำนวนคอลัมน์ · Full HD 1920 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/fullhd/gutter Variable",
-              "--ntg-grid-nation-digital-fullhd-gutter CSS var",
+              "grid/nation-digital/fullhd/gutter\nVariable",
+              "--ntg-grid-nation-digital-fullhd-gutter\nCSS var",
               "12px",
               "ช่องว่างระหว่างคอลัมน์ · Full HD 1920 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/fullhd/margin Variable",
-              "--ntg-grid-nation-digital-fullhd-margin CSS var",
+              "grid/nation-digital/fullhd/margin\nVariable",
+              "--ntg-grid-nation-digital-fullhd-margin\nCSS var",
               "186px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Full HD 1920 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/fullhd/container Variable",
-              "--ntg-grid-nation-digital-fullhd-container CSS var",
+              "grid/nation-digital/fullhd/container\nVariable",
+              "--ntg-grid-nation-digital-fullhd-container\nCSS var",
               "1548px",
               "ความกว้างพื้นที่เนื้อหา · Full HD 1920 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/fullhd/column-width Variable",
-              "--ntg-grid-nation-digital-fullhd-column-width CSS var",
+              "grid/nation-digital/fullhd/column-width\nVariable",
+              "--ntg-grid-nation-digital-fullhd-column-width\nCSS var",
               "144px",
               "ความกว้างคอลัมน์เดี่ยว · Full HD 1920 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/desktop/columns Variable",
-              "--ntg-grid-nation-digital-desktop-columns CSS var",
+              "grid/nation-digital/desktop/columns\nVariable",
+              "--ntg-grid-nation-digital-desktop-columns\nCSS var",
               "8",
               "จำนวนคอลัมน์ · Desktop 1440 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/desktop/gutter Variable",
-              "--ntg-grid-nation-digital-desktop-gutter CSS var",
+              "grid/nation-digital/desktop/gutter\nVariable",
+              "--ntg-grid-nation-digital-desktop-gutter\nCSS var",
               "12px",
               "ช่องว่างระหว่างคอลัมน์ · Desktop 1440 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/desktop/margin Variable",
-              "--ntg-grid-nation-digital-desktop-margin CSS var",
+              "grid/nation-digital/desktop/margin\nVariable",
+              "--ntg-grid-nation-digital-desktop-margin\nCSS var",
               "102px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Desktop 1440 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/desktop/container Variable",
-              "--ntg-grid-nation-digital-desktop-container CSS var",
+              "grid/nation-digital/desktop/container\nVariable",
+              "--ntg-grid-nation-digital-desktop-container\nCSS var",
               "1236px",
               "ความกว้างพื้นที่เนื้อหา · Desktop 1440 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/desktop/column-width Variable",
-              "--ntg-grid-nation-digital-desktop-column-width CSS var",
+              "grid/nation-digital/desktop/column-width\nVariable",
+              "--ntg-grid-nation-digital-desktop-column-width\nCSS var",
               "144px",
               "ความกว้างคอลัมน์เดี่ยว · Desktop 1440 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-h/columns Variable",
-              "--ntg-grid-nation-digital-tablet-h-columns CSS var",
+              "grid/nation-digital/tablet-h/columns\nVariable",
+              "--ntg-grid-nation-digital-tablet-h-columns\nCSS var",
               "6",
               "จำนวนคอลัมน์ · Tablet แนวนอน 1024 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-h/gutter Variable",
-              "--ntg-grid-nation-digital-tablet-h-gutter CSS var",
+              "grid/nation-digital/tablet-h/gutter\nVariable",
+              "--ntg-grid-nation-digital-tablet-h-gutter\nCSS var",
               "12px",
               "ช่องว่างระหว่างคอลัมน์ · Tablet แนวนอน 1024 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-h/margin Variable",
-              "--ntg-grid-nation-digital-tablet-h-margin CSS var",
+              "grid/nation-digital/tablet-h/margin\nVariable",
+              "--ntg-grid-nation-digital-tablet-h-margin\nCSS var",
               "50px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Tablet แนวนอน 1024 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-h/container Variable",
-              "--ntg-grid-nation-digital-tablet-h-container CSS var",
+              "grid/nation-digital/tablet-h/container\nVariable",
+              "--ntg-grid-nation-digital-tablet-h-container\nCSS var",
               "924px",
               "ความกว้างพื้นที่เนื้อหา · Tablet แนวนอน 1024 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-h/column-width Variable",
-              "--ntg-grid-nation-digital-tablet-h-column-width CSS var",
+              "grid/nation-digital/tablet-h/column-width\nVariable",
+              "--ntg-grid-nation-digital-tablet-h-column-width\nCSS var",
               "144px",
               "ความกว้างคอลัมน์เดี่ยว · Tablet แนวนอน 1024 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-v/columns Variable",
-              "--ntg-grid-nation-digital-tablet-v-columns CSS var",
+              "grid/nation-digital/tablet-v/columns\nVariable",
+              "--ntg-grid-nation-digital-tablet-v-columns\nCSS var",
               "4",
               "จำนวนคอลัมน์ · Tablet แนวตั้ง 768 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-v/gutter Variable",
-              "--ntg-grid-nation-digital-tablet-v-gutter CSS var",
+              "grid/nation-digital/tablet-v/gutter\nVariable",
+              "--ntg-grid-nation-digital-tablet-v-gutter\nCSS var",
               "12px",
               "ช่องว่างระหว่างคอลัมน์ · Tablet แนวตั้ง 768 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-v/margin Variable",
-              "--ntg-grid-nation-digital-tablet-v-margin CSS var",
+              "grid/nation-digital/tablet-v/margin\nVariable",
+              "--ntg-grid-nation-digital-tablet-v-margin\nCSS var",
               "78px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Tablet แนวตั้ง 768 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-v/container Variable",
-              "--ntg-grid-nation-digital-tablet-v-container CSS var",
+              "grid/nation-digital/tablet-v/container\nVariable",
+              "--ntg-grid-nation-digital-tablet-v-container\nCSS var",
               "612px",
               "ความกว้างพื้นที่เนื้อหา · Tablet แนวตั้ง 768 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/tablet-v/column-width Variable",
-              "--ntg-grid-nation-digital-tablet-v-column-width CSS var",
+              "grid/nation-digital/tablet-v/column-width\nVariable",
+              "--ntg-grid-nation-digital-tablet-v-column-width\nCSS var",
               "144px",
               "ความกว้างคอลัมน์เดี่ยว · Tablet แนวตั้ง 768 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/mobile/columns Variable",
-              "--ntg-grid-nation-digital-mobile-columns CSS var",
+              "grid/nation-digital/mobile/columns\nVariable",
+              "--ntg-grid-nation-digital-mobile-columns\nCSS var",
               "2",
               "จำนวนคอลัมน์ · Mobile 375 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/mobile/gutter Variable",
-              "--ntg-grid-nation-digital-mobile-gutter CSS var",
+              "grid/nation-digital/mobile/gutter\nVariable",
+              "--ntg-grid-nation-digital-mobile-gutter\nCSS var",
               "15px",
               "ช่องว่างระหว่างคอลัมน์ · Mobile 375 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/mobile/margin Variable",
-              "--ntg-grid-nation-digital-mobile-margin CSS var",
+              "grid/nation-digital/mobile/margin\nVariable",
+              "--ntg-grid-nation-digital-mobile-margin\nCSS var",
               "15px",
               "ขอบซ้ายขวานอกพื้นที่เนื้อหา · Mobile 375 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/mobile/container Variable",
-              "--ntg-grid-nation-digital-mobile-container CSS var",
+              "grid/nation-digital/mobile/container\nVariable",
+              "--ntg-grid-nation-digital-mobile-container\nCSS var",
               "345px",
               "ความกว้างพื้นที่เนื้อหา · Mobile 375 (Nation Digital)"
             ],
             [
-              "grid/nation-digital/mobile/column-width Variable",
-              "--ntg-grid-nation-digital-mobile-column-width CSS var",
+              "grid/nation-digital/mobile/column-width\nVariable",
+              "--ntg-grid-nation-digital-mobile-column-width\nCSS var",
               "165px",
               "ความกว้างคอลัมน์เดี่ยว · Mobile 375 (Nation Digital)"
             ]

@@ -25,7 +25,7 @@ import styles from './AtomDoc.module.css'
  *    (ผู้ใช้อนุมัติ 2026-11-04) ตำแหน่งของ variant ในชุดมาจากไฟล์ออกแบบ เพื่อวางเรียงเหมือนแบบ ชุดที่ไม่มี component ในโค้ดแสดงข้อความแทน
  */
 
-type ColorRow = { no: string; name: string; level: string; light: string; dark: string; description: string; cssVar: string; darkVar: string }
+type ColorRow = { no: string; name: string; level: string; gap?: string | null; lineTop?: string | null; lineBottom?: string | null; light: string; dark: string; description: string; cssVar: string; darkVar: string }
 type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number; labelBelow?: boolean }
 type SampleProps = Record<string, string | boolean>
 type ComponentItem = { set: string; props: SampleProps; image?: string; label: string; width: number; height: number; cell?: number }
@@ -36,10 +36,11 @@ type Block =
   | { type: 'h3' | 'p'; text: string }
   | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[]; logos?: LogoItem[]; components?: ComponentItem[] }
   | { type: 'effects'; items: EffectItem[] }
-  | { type: 'table'; head: string[]; rows: string[][] }
+  | { type: 'table'; head: string[]; rows: string[][]; hug?: boolean }
   | { type: 'ramp'; label: string; path: string; steps: { step: number; cssVar: string }[] }
   | { type: 'colorTable'; rows: ColorRow[] }
   | { type: 'swatches'; items: { label: string; cssVar: string | null }[] }
+  | { type: 'chips'; items: { label: string; cssVar: string | null }[] }
   | { type: 'specimen'; sample: string; style: string; className: string; meta: string; usage: string }
   | { type: 'scale'; name: string; spec: string; sample: string; family: string; size: string; lineHeight: string }
   | { type: 'fontFamily'; sample: string; family: string; title: string; usage: string; weights: { label: string; weight: string }[] }
@@ -60,18 +61,15 @@ export type AtomDocData = { documents: unknown[] }
 // งานแก้ข้อความต้นทางในไฟล์ออกแบบยังค้างอยู่ที่หน้านั้น
 const clean = (s: string) => s.replace(/\s*\u00b7\s*/g, ' ').replace(/\u2014/g, ' ')
 
-const Swatch = ({ cssVar, dark }: { cssVar: string | null; dark?: boolean }) => (
-  <span className={styles.swatchWrap} data-theme={dark ? 'dark' : undefined}>
-    <span className={styles.swatch} style={cssVar ? { background: `var(${cssVar})` } : undefined} />
-  </span>
-)
-
 const ColorChip = ({ cssVar, label, dark }: { cssVar: string; label: string; dark?: boolean }) => (
   <span className={`${styles.colorBadge} ${dark ? styles.colorBadgeDark : ''}`} data-theme={dark ? 'dark' : undefined}>
     <span className={styles.swatch} style={{ background: `var(${cssVar})` }} />
     <span className={dark ? 'ntg-typography-body-md' : 'ntg-typography-label-lg'}>{label}</span>
   </span>
 )
+
+// เซลที่มีข้อความหลายชิ้นในไฟล์ออกแบบ บรรทัดแรกคือค่าหลัก บรรทัดถัดไปคือบรรทัดรองของ text-table-cell เช่น ตาราง Color Token
+const cellLines = (text: string) => clean(text).split('\n').filter(l => l.trim())
 
 // รหัสสีที่แสดงใต้แต่ละขั้น อ่านจากค่าที่เบราว์เซอร์คำนวณจริง ไม่ได้เก็บไว้ในไฟล์
 const HexOf = ({ cssVar }: { cssVar: string }) => {
@@ -244,15 +242,20 @@ const colorColumns: TableColumn<ColorRow>[] = [
     id: 'name',
     header: 'ลำดับ / ชื่อโทเค็น',
     rowHeader: true,
+    // ความกว้างคอลัมน์ตามเซลในไฟล์ออกแบบ 400 240 240 จากตาราง 1280 ทุกตารางจึงตรงแนวกัน คอลัมน์ที่เหลือแบ่งพื้นที่ที่เหลือ
+    width: '31.25%',
+    // ตาม hierarchy-color-cell ในไฟล์ออกแบบ วงกลมเลข กล่องชื่อ และเส้นเชื่อมแนวตั้งเหนือใต้กล่อง ระยะและตำแหน่งเส้นเป็น token ที่สคริปต์อ่านจากเซลจริง
     render: r => (
-      <span className={`${styles.nameCell} ${r.level !== 'primary' ? styles.nested : ''}`}>
-        <span className={`ntg-typography-label-sm ${styles.muted}`}>{r.no}</span>
-        <code className="ntg-typography-body-sm">{r.name}</code>
+      <span className={styles.nameCell} style={r.gap ? { gap: `var(${r.gap})` } : undefined}>
+        {r.lineTop && <span className={`${styles.hierLine} ${styles.hierLineTop}`} style={{ marginLeft: `var(${r.lineTop})` }} />}
+        <span className={`ntg-typography-meta-caption ${styles.hierNo}`}>{r.no}</span>
+        <span className={`ntg-typography-body-md ${styles.hierName} ${r.level !== 'primary' ? styles.hierNameNested : ''}`}>{r.name}</span>
+        {r.lineBottom && <span className={`${styles.hierLine} ${styles.hierLineBottom}`} style={{ marginLeft: `var(${r.lineBottom})` }} />}
       </span>
     ),
   },
-  { id: 'light', header: 'โหมดสว่าง', render: r => <ColorChip cssVar={r.cssVar} label={r.light} /> },
-  { id: 'dark', header: 'โหมดมืด', render: r => <ColorChip cssVar={r.darkVar} label={r.dark} dark /> },
+  { id: 'light', header: 'โหมดสว่าง', width: '18.75%', render: r => <ColorChip cssVar={r.cssVar} label={r.light} /> },
+  { id: 'dark', header: 'โหมดมืด', width: '18.75%', render: r => <ColorChip cssVar={r.darkVar} label={r.dark} dark /> },
   { id: 'description', header: 'รายละเอียด', render: r => <span className="ntg-typography-body-sm">{clean(r.description)}</span> },
   { id: 'css', header: 'ตัวแปร CSS', render: r => <code className="ntg-typography-body-xs">{r.cssVar}</code> },
 ]
@@ -271,7 +274,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
     case 'p':
       // ข้อความสั้นคำเดียวก่อนตาราง คือชื่อตระกูลสี เช่น Gray Bamboo ในหน้า Utility Color
       return /^[A-Za-z]{2,12}$/.test(block.text.trim())
-        ? <h3 className={`ntg-typography-title-lg ${styles.heading}`}>{block.text}</h3>
+        ? <h3 className={`ntg-typography-section-heading-sm ${styles.heading}`}>{block.text}</h3>
         : <p className={`ntg-typography-body-xl ${styles.paragraph}`}>{clean(block.text)}</p>
     case 'card':
       if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Do>
@@ -282,18 +285,21 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
           <p className="ntg-typography-body-sm">{clean(block.body)}</p>
         </div>
       )
-    case 'table':
-      return (
+    case 'table': {
+      const table = (
         <Table
-          columns={block.head.map((h, i) => ({ id: String(i), header: clean(h), accessor: (r: string[]) => clean(r[i] ?? '') }))}
+          columns={block.head.map((h, i) => ({ id: String(i), header: clean(h), accessor: (r: string[]) => cellLines(r[i] ?? '')[0] ?? '', supporting: (r: string[]) => cellLines(r[i] ?? '').slice(1).join(' ') }))}
           data={block.rows}
           getRowId={(_, i) => `${index}-${i}`}
         />
       )
+      return block.hug ? <div className={styles.tableHug}>{table}</div> : table
+    }
     case 'ramp':
       return <Ramp {...block} />
     case 'colorTable':
-      return <Table columns={colorColumns} data={block.rows} getRowId={r => r.cssVar ?? r.name} />
+      // ตารางที่ไม่มีคำอธิบายเลย (เช่น Utility Color) ในไฟล์ออกแบบไม่มีคอลัมน์นี้
+      return <Table columns={block.rows.some(r => r.description.trim()) ? colorColumns : colorColumns.filter(c => c.id !== 'description')} data={block.rows} getRowId={r => r.cssVar ?? r.name} />
     case 'specimen':
       return (
         <div className={styles.specimen}>
@@ -394,13 +400,25 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
           })}
         </DoDont>
       )
+    case 'chips':
+      // กล่องสีพร้อมชื่อใต้กล่อง ตาม chips ในเอกสาร Usage Detail
+      return (
+        <div className={styles.chips}>
+          {block.items.map((it, i) => (
+            <span key={i} className={styles.chipItem}>
+              <span className={styles.chipBox} style={it.cssVar ? { background: `var(${it.cssVar})` } : undefined} />
+              <span className={`ntg-typography-meta-caption ${styles.muted}`}>{it.label}</span>
+            </span>
+          ))}
+        </div>
+      )
     case 'swatches':
       return (
+        // แถวป้ายสีแบบไม่มีลำดับ (light-color-cell ในไฟล์ออกแบบ) ป้ายแคปซูลเดียวกับคอลัมน์โหมดสว่าง เซลมีระยะใน 16
         <div className={styles.swatchRow}>
           {block.items.map((it, i) => (
-            <span key={i} className={styles.chip}>
-              <Swatch cssVar={it.cssVar} />
-              <span className="ntg-typography-label-sm">{it.label}</span>
+            <span key={i} className={styles.swatchCell}>
+              {it.cssVar ? <ColorChip cssVar={it.cssVar} label={it.label} /> : <span className="ntg-typography-label-lg">{it.label}</span>}
             </span>
           ))}
         </div>

@@ -154,291 +154,291 @@
           ],
           "rows": [
             [
-              "display/xl Text Style",
-              ".ntg-typography-display-xl CSS class",
-              "Prompt SemiBold 56 / 84",
+              "display/xl\nText Style",
+              ".ntg-typography-display-xl\nCSS class",
+              "Prompt SemiBold\n56 / 84",
               "หัวใหญ่พิเศษ hero/ปก"
             ],
             [
-              "display/lg Text Style",
-              ".ntg-typography-display-lg CSS class",
-              "Prompt SemiBold 48 / 72",
+              "display/lg\nText Style",
+              ".ntg-typography-display-lg\nCSS class",
+              "Prompt SemiBold\n48 / 72",
               "hero รอง/เปิดหมวด"
             ],
             [
-              "display/md Text Style",
-              ".ntg-typography-display-md CSS class",
-              "Prompt SemiBold 40 / 58",
+              "display/md\nText Style",
+              ".ntg-typography-display-md\nCSS class",
+              "Prompt SemiBold\n40 / 58",
               "feature banner/โปรโมชัน"
             ],
             [
-              "display/sm Text Style",
-              ".ntg-typography-display-sm CSS class",
-              "Prompt SemiBold 32 / 46",
+              "display/sm\nText Style",
+              ".ntg-typography-display-sm\nCSS class",
+              "Prompt SemiBold\n32 / 46",
               "จุดเด่นรองในหน้า"
             ],
             [
-              "display/xs Text Style",
-              ".ntg-typography-display-xs CSS class",
-              "Prompt SemiBold 26 / 36",
+              "display/xs\nText Style",
+              ".ntg-typography-display-xs\nCSS class",
+              "Prompt SemiBold\n26 / 36",
               "จุดเน้นขนาดย่อม"
             ],
             [
-              "page-heading/xl Text Style",
-              ".ntg-typography-page-heading-xl CSS class",
-              "Prompt SemiBold 40 / 58",
+              "page-heading/xl\nText Style",
+              ".ntg-typography-page-heading-xl\nCSS class",
+              "Prompt SemiBold\n40 / 58",
               "พาดหัวข่าวหลัก (H1) ใหญ่"
             ],
             [
-              "page-heading/lg Text Style",
-              ".ntg-typography-page-heading-lg CSS class",
-              "Prompt SemiBold 32 / 46",
+              "page-heading/lg\nText Style",
+              ".ntg-typography-page-heading-lg\nCSS class",
+              "Prompt SemiBold\n32 / 46",
               "พาดหัวข่าว (H1) มาตรฐาน"
             ],
             [
-              "page-heading/md Text Style",
-              ".ntg-typography-page-heading-md CSS class",
-              "Prompt SemiBold 26 / 36",
+              "page-heading/md\nText Style",
+              ".ntg-typography-page-heading-md\nCSS class",
+              "Prompt SemiBold\n26 / 36",
               "พาดหัว (H1) กะทัดรัด"
             ],
             [
-              "page-heading/sm Text Style",
-              ".ntg-typography-page-heading-sm CSS class",
-              "Prompt SemiBold 24 / 34",
+              "page-heading/sm\nText Style",
+              ".ntg-typography-page-heading-sm\nCSS class",
+              "Prompt SemiBold\n24 / 34",
               "ชื่อหน้าบนมือถือ"
             ],
             [
-              "page-heading/xs Text Style",
-              ".ntg-typography-page-heading-xs CSS class",
-              "Prompt SemiBold 22 / 34",
+              "page-heading/xs\nText Style",
+              ".ntg-typography-page-heading-xs\nCSS class",
+              "Prompt SemiBold\n22 / 34",
               "หัวในพื้นที่จำกัด"
             ],
             [
-              "section-heading/xl Text Style",
-              ".ntg-typography-section-heading-xl CSS class",
-              "Prompt Medium 26 / 36",
+              "section-heading/xl\nText Style",
+              ".ntg-typography-section-heading-xl\nCSS class",
+              "Prompt Medium\n26 / 36",
               "หัว section ใหญ่ (H2)"
             ],
             [
-              "section-heading/lg Text Style",
-              ".ntg-typography-section-heading-lg CSS class",
-              "Prompt Medium 24 / 34",
+              "section-heading/lg\nText Style",
+              ".ntg-typography-section-heading-lg\nCSS class",
+              "Prompt Medium\n24 / 34",
               "หัว section (H2)"
             ],
             [
-              "section-heading/md Text Style",
-              ".ntg-typography-section-heading-md CSS class",
-              "Prompt Medium 22 / 34",
+              "section-heading/md\nText Style",
+              ".ntg-typography-section-heading-md\nCSS class",
+              "Prompt Medium\n22 / 34",
               "หัวข้อย่อย (H3)"
             ],
             [
-              "section-heading/sm Text Style",
-              ".ntg-typography-section-heading-sm CSS class",
-              "Prompt Medium 20 / 30",
+              "section-heading/sm\nText Style",
+              ".ntg-typography-section-heading-sm\nCSS class",
+              "Prompt Medium\n20 / 30",
               "หัวย่อยรอง"
             ],
             [
-              "section-heading/xs Text Style",
-              ".ntg-typography-section-heading-xs CSS class",
-              "Prompt Medium 18 / 28",
+              "section-heading/xs\nText Style",
+              ".ntg-typography-section-heading-xs\nCSS class",
+              "Prompt Medium\n18 / 28",
               "หัวย่อยสุด (H4)"
             ],
             [
-              "title/xl Text Style",
-              ".ntg-typography-title-xl CSS class",
-              "Prompt Medium 22 / 34",
+              "title/xl\nText Style",
+              ".ntg-typography-title-xl\nCSS class",
+              "Prompt Medium\n22 / 34",
               "หัว card/module ใหญ่"
             ],
             [
-              "title/lg Text Style",
-              ".ntg-typography-title-lg CSS class",
-              "Prompt Medium 20 / 30",
+              "title/lg\nText Style",
+              ".ntg-typography-title-lg\nCSS class",
+              "Prompt Medium\n20 / 30",
               "หัว card ทั่วไป"
             ],
             [
-              "title/md Text Style",
-              ".ntg-typography-title-md CSS class",
-              "Prompt Medium 18 / 28",
+              "title/md\nText Style",
+              ".ntg-typography-title-md\nCSS class",
+              "Prompt Medium\n18 / 28",
               "หัว card/กล่องเนื้อหา"
             ],
             [
-              "title/sm Text Style",
-              ".ntg-typography-title-sm CSS class",
-              "Prompt Medium 16 / 26",
+              "title/sm\nText Style",
+              ".ntg-typography-title-sm\nCSS class",
+              "Prompt Medium\n16 / 26",
               "หัว card เล็ก/list"
             ],
             [
-              "title/xs Text Style",
-              ".ntg-typography-title-xs CSS class",
-              "Prompt Medium 14 / 24",
+              "title/xs\nText Style",
+              ".ntg-typography-title-xs\nCSS class",
+              "Prompt Medium\n14 / 24",
               "หัว card เล็กสุด"
             ],
             [
-              "body/xl Text Style",
-              ".ntg-typography-body-xl CSS class",
-              "Prompt Regular 20 / 30",
+              "body/xl\nText Style",
+              ".ntg-typography-body-xl\nCSS class",
+              "Prompt Regular\n20 / 30",
               "intro/นำ UI ตัวใหญ่"
             ],
             [
-              "body/lg Text Style",
-              ".ntg-typography-body-lg CSS class",
-              "Prompt Regular 18 / 28",
+              "body/lg\nText Style",
+              ".ntg-typography-body-lg\nCSS class",
+              "Prompt Regular\n18 / 28",
               "description เด่น"
             ],
             [
-              "body/md Text Style",
-              ".ntg-typography-body-md CSS class",
-              "Prompt Regular 16 / 26",
+              "body/md\nText Style",
+              ".ntg-typography-body-md\nCSS class",
+              "Prompt Regular\n16 / 26",
               "เนื้อความทั่วไป (default)"
             ],
             [
-              "body/sm Text Style",
-              ".ntg-typography-body-sm CSS class",
-              "Prompt Regular 14 / 24",
+              "body/sm\nText Style",
+              ".ntg-typography-body-sm\nCSS class",
+              "Prompt Regular\n14 / 24",
               "เนื้อความรอง/tooltip"
             ],
             [
-              "body/xs Text Style",
-              ".ntg-typography-body-xs CSS class",
-              "Prompt Regular 12 / 22",
+              "body/xs\nText Style",
+              ".ntg-typography-body-xs\nCSS class",
+              "Prompt Regular\n12 / 22",
               "เนื้อความเล็ก/หมายเหตุ"
             ],
             [
-              "article/xl Text Style",
-              ".ntg-typography-article-xl CSS class",
-              "Sarabun Regular 20 / 36",
+              "article/xl\nText Style",
+              ".ntg-typography-article-xl\nCSS class",
+              "Sarabun Regular\n20 / 36",
               "นำบทความ/lead"
             ],
             [
-              "article/lg Text Style",
-              ".ntg-typography-article-lg CSS class",
-              "Sarabun Regular 18 / 34",
+              "article/lg\nText Style",
+              ".ntg-typography-article-lg\nCSS class",
+              "Sarabun Regular\n18 / 34",
               "เนื้อบทความหลัก"
             ],
             [
-              "article/md Text Style",
-              ".ntg-typography-article-md CSS class",
-              "Sarabun Regular 16 / 32",
+              "article/md\nText Style",
+              ".ntg-typography-article-md\nCSS class",
+              "Sarabun Regular\n16 / 32",
               "เนื้อบทความ default"
             ],
             [
-              "article/sm Text Style",
-              ".ntg-typography-article-sm CSS class",
-              "Sarabun Regular 14 / 30",
+              "article/sm\nText Style",
+              ".ntg-typography-article-sm\nCSS class",
+              "Sarabun Regular\n14 / 30",
               "เนื้อบทความรอง"
             ],
             [
-              "article/xs Text Style",
-              ".ntg-typography-article-xs CSS class",
-              "Sarabun Regular 12 / 28",
+              "article/xs\nText Style",
+              ".ntg-typography-article-xs\nCSS class",
+              "Sarabun Regular\n12 / 28",
               "หมายเหตุในบทความ"
             ],
             [
-              "article/pullquote/xl Text Style",
-              ".ntg-typography-article-pullquote-xl CSS class",
-              "Sarabun Medium 20 / 36",
+              "article/pullquote/xl\nText Style",
+              ".ntg-typography-article-pullquote-xl\nCSS class",
+              "Sarabun Medium\n20 / 36",
               "ยกคำพูดเด่น ใหญ่สุด"
             ],
             [
-              "article/pullquote/lg Text Style",
-              ".ntg-typography-article-pullquote-lg CSS class",
-              "Sarabun Medium 18 / 34",
+              "article/pullquote/lg\nText Style",
+              ".ntg-typography-article-pullquote-lg\nCSS class",
+              "Sarabun Medium\n18 / 34",
               "ประโยคเด่นในบทความ"
             ],
             [
-              "article/pullquote/md Text Style",
-              ".ntg-typography-article-pullquote-md CSS class",
-              "Sarabun Medium 16 / 32",
+              "article/pullquote/md\nText Style",
+              ".ntg-typography-article-pullquote-md\nCSS class",
+              "Sarabun Medium\n16 / 32",
               "ยกข้อความเน้น"
             ],
             [
-              "article/pullquote/sm Text Style",
-              ".ntg-typography-article-pullquote-sm CSS class",
-              "Sarabun Medium 14 / 30",
+              "article/pullquote/sm\nText Style",
+              ".ntg-typography-article-pullquote-sm\nCSS class",
+              "Sarabun Medium\n14 / 30",
               "เน้นข้อความสั้น"
             ],
             [
-              "article/pullquote/xs Text Style",
-              ".ntg-typography-article-pullquote-xs CSS class",
-              "Sarabun Medium 12 / 28",
+              "article/pullquote/xs\nText Style",
+              ".ntg-typography-article-pullquote-xs\nCSS class",
+              "Sarabun Medium\n12 / 28",
               "เน้นในพื้นที่แคบ"
             ],
             [
-              "meta/byline Text Style",
-              ".ntg-typography-meta-byline CSS class",
-              "Prompt Medium 14 / 24",
+              "meta/byline\nText Style",
+              ".ntg-typography-meta-byline\nCSS class",
+              "Prompt Medium\n14 / 24",
               "ชื่อผู้เขียน"
             ],
             [
-              "meta/overline Text Style",
-              ".ntg-typography-meta-overline CSS class",
-              "Prompt SemiBold 12 / 22",
+              "meta/overline\nText Style",
+              ".ntg-typography-meta-overline\nCSS class",
+              "Prompt SemiBold\n12 / 22",
               "kicker/หมวด"
             ],
             [
-              "meta/timestamp Text Style",
-              ".ntg-typography-meta-timestamp CSS class",
-              "Prompt Regular 12 / 22",
+              "meta/timestamp\nText Style",
+              ".ntg-typography-meta-timestamp\nCSS class",
+              "Prompt Regular\n12 / 22",
               "วันเวลา"
             ],
             [
-              "meta/caption Text Style",
-              ".ntg-typography-meta-caption CSS class",
-              "Prompt Regular 12 / 22",
+              "meta/caption\nText Style",
+              ".ntg-typography-meta-caption\nCSS class",
+              "Prompt Regular\n12 / 22",
               "คำบรรยายภาพ"
             ],
             [
-              "meta/read-time Text Style",
-              ".ntg-typography-meta-read-time CSS class",
-              "Prompt Medium 12 / 22",
+              "meta/read-time\nText Style",
+              ".ntg-typography-meta-read-time\nCSS class",
+              "Prompt Medium\n12 / 22",
               "เวลาอ่าน"
             ],
             [
-              "meta/helper Text Style",
-              ".ntg-typography-meta-helper CSS class",
-              "Prompt Regular 12 / 22",
+              "meta/helper\nText Style",
+              ".ntg-typography-meta-helper\nCSS class",
+              "Prompt Regular\n12 / 22",
               "hint ฟอร์ม"
             ],
             [
-              "meta/credit Text Style",
-              ".ntg-typography-meta-credit CSS class",
-              "Prompt Regular 10 / 16",
+              "meta/credit\nText Style",
+              ".ntg-typography-meta-credit\nCSS class",
+              "Prompt Regular\n10 / 16",
               "เครดิตภาพ"
             ],
             [
-              "meta/micro Text Style",
-              ".ntg-typography-meta-micro CSS class",
-              "Prompt Regular 8 / 12",
+              "meta/micro\nText Style",
+              ".ntg-typography-meta-micro\nCSS class",
+              "Prompt Regular\n8 / 12",
               "เล็กสุด/legal"
             ],
             [
-              "label/xl Text Style",
-              ".ntg-typography-label-xl CSS class",
-              "Prompt Medium 18 / 28",
+              "label/xl\nText Style",
+              ".ntg-typography-label-xl\nCSS class",
+              "Prompt Medium\n18 / 28",
               "ปุ่มใหญ่/tab"
             ],
             [
-              "label/lg Text Style",
-              ".ntg-typography-label-lg CSS class",
-              "Prompt Medium 16 / 26",
+              "label/lg\nText Style",
+              ".ntg-typography-label-lg\nCSS class",
+              "Prompt Medium\n16 / 26",
               "ปุ่มหลัก/เมนู"
             ],
             [
-              "label/md Text Style",
-              ".ntg-typography-label-md CSS class",
-              "Prompt Medium 14 / 24",
+              "label/md\nText Style",
+              ".ntg-typography-label-md\nCSS class",
+              "Prompt Medium\n14 / 24",
               "ปุ่ม default/chip"
             ],
             [
-              "label/sm Text Style",
-              ".ntg-typography-label-sm CSS class",
-              "Prompt Medium 12 / 22",
+              "label/sm\nText Style",
+              ".ntg-typography-label-sm\nCSS class",
+              "Prompt Medium\n12 / 22",
               "badge/tag"
             ],
             [
-              "label/xs Text Style",
-              ".ntg-typography-label-xs CSS class",
-              "Prompt Medium 10 / 16",
+              "label/xs\nText Style",
+              ".ntg-typography-label-xs\nCSS class",
+              "Prompt Medium\n10 / 16",
               "tag จิ๋ว"
             ]
           ]
@@ -446,8 +446,11 @@
         {
           "type": "h",
           "text": "การแก้ไข และทำให้ตรงกัน",
-          "sub": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ",
           "section": true
+        },
+        {
+          "type": "p",
+          "text": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ"
         }
       ]
     },
