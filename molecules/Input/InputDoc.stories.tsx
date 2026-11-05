@@ -21,9 +21,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// เอกสาร Input Components ไม่มีเมนูที่นี่ เพราะซ้ำกับ story ใต้ 13 Input/TextField และ TagField ที่กดแก้ค่าในแผงได้ (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน input-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '13 Input Documentation', samples } }
 export const InputToken: Story = { name: 'Input Token', args: { data, name: 'Input Token', samples } }
 export const InputGuide: Story = { name: 'Input Guide', args: { data, name: 'Input Guide', samples } }
-export const InputComponents: Story = { name: 'Input Components', args: { data, name: 'Input Components', samples } }
 export const InputSpace: Story = { name: 'Input Space', args: { data, name: 'Input Space', samples } }

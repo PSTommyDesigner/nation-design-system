@@ -23,8 +23,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// เอกสาร Avatar Components ไม่มีเมนูที่นี่ เพราะซ้ำกับ story Avatar-image ถึง Avatar-group ใต้ 11 Avatar/Avatar ที่กดแก้ค่าในแผงได้ (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน avatar-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '11 Avatar Documentation', logos, samples } }
 export const AvatarGuide: Story = { name: 'Avatar Guide', args: { data, name: 'Avatar Guide', logos, samples } }
-export const AvatarComponents: Story = { name: 'Avatar Components', args: { data, name: 'Avatar Components', logos, samples } }
 export const AvatarSpace: Story = { name: 'Avatar Space', args: { data, name: 'Avatar Space', logos, samples } }

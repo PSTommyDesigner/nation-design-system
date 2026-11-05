@@ -21,11 +21,11 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// เอกสาร Radio ไม่มีเมนูที่นี่ เพราะซ้ำกับ story Text-radio, Radio และ Group ใต้ 16 Radio/Radio ที่กดแก้ค่าในแผงได้ (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน radio-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '16 Radio Documentation', samples } }
 export const RadioToken: Story = { name: 'Radio Token', args: { data, name: 'Radio Token', samples } }
 export const RadioAnatomy: Story = { name: 'Radio Anatomy', args: { data, name: 'Radio Anatomy', samples } }
 export const RadioTwoLayerModel: Story = { name: 'Radio Two Layer Model', args: { data, name: 'Radio Two Layer Model', samples } }
 export const RadioUsage: Story = { name: 'Radio Usage', args: { data, name: 'Radio Usage', samples } }
-export const RadioSet: Story = { name: 'Radio', args: { data, name: 'Radio', samples } }
 export const RadioSpace: Story = { name: 'Radio Space', args: { data, name: 'Radio Space', samples } }

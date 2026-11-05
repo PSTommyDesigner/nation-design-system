@@ -202,3 +202,11 @@ export const FullWidth: Story = {
 // ── 2 ชนิดจริงจากไฟล์ออกแบบ (เมนู sidebar สำหรับลองเล่นแต่ละชนิด) ──────────
 // semi-rounded-button ไม่ต้องมีตรงนี้ เพราะ Default ด้านบนทำหน้าที่แทนอยู่แล้ว
 export const PillButton: Story = { tags: ['!autodocs'], name: 'Pill-button', args: { shape: 'pill' }, parameters: controls(TEXT_BUTTON) }
+
+// ── ปุ่มตาม family (แทนหน้าเอกสาร Brand / Error / Neutral / Alpha Button ใน 12 Buttons ผู้ใช้สั่ง 2026-11-05) ──
+// ตั้ง family ไว้ล่วงหน้า แผงจึงไม่มีช่อง family ช่องอื่นเหมือน Semi-rounded-button
+const FAMILY_BUTTON = TEXT_BUTTON.filter((name) => name !== 'family')
+export const BrandButton: Story = { tags: ['!autodocs'], name: 'Brand-button', args: { family: 'brand' }, parameters: controls(FAMILY_BUTTON) }
+export const ErrorButton: Story = { tags: ['!autodocs'], name: 'Error-button', args: { family: 'error' }, parameters: controls(FAMILY_BUTTON) }
+export const NeutralButton: Story = { tags: ['!autodocs'], name: 'Neutral-button', args: { family: 'neutral' }, parameters: controls(FAMILY_BUTTON) }
+export const AlphaButton: Story = { tags: ['!autodocs'], name: 'Alpha-button', args: { family: 'alpha' }, parameters: controls(FAMILY_BUTTON) }

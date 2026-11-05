@@ -21,11 +21,11 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// เอกสาร Checkbox ไม่มีเมนูที่นี่ เพราะซ้ำกับ story Text-checkbox และ Checkbox ใต้ 15 Checkbox/Checkbox ที่กดแก้ค่าในแผงได้ (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน checkbox-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '15 Checkbox Documentation', samples } }
 export const CheckboxToken: Story = { name: 'Checkbox Token', args: { data, name: 'Checkbox Token', samples } }
 export const CheckboxAnatomy: Story = { name: 'Checkbox Anatomy', args: { data, name: 'Checkbox Anatomy', samples } }
 export const CheckboxTwoLayerModel: Story = { name: 'Checkbox Two Layer Model', args: { data, name: 'Checkbox Two Layer Model', samples } }
 export const CheckboxUsage: Story = { name: 'Checkbox Usage', args: { data, name: 'Checkbox Usage', samples } }
-export const CheckboxSet: Story = { name: 'Checkbox', args: { data, name: 'Checkbox', samples } }
 export const CheckboxSpace: Story = { name: 'Checkbox Space', args: { data, name: 'Checkbox Space', samples } }

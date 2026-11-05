@@ -21,6 +21,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// เอกสาร Slider ไม่มีเมนูที่นี่ เพราะซ้ำกับ story Slider และ Range-slider ใต้ 17 Sliders/Slider ที่กดแก้ค่าในแผงได้ (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน sliders-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '17 Sliders Documentation', samples } }
 export const SliderToken: Story = { name: 'Slider Token', args: { data, name: 'Slider Token', samples } }
@@ -28,5 +29,4 @@ export const SliderAnatomy: Story = { name: 'Slider Anatomy', args: { data, name
 export const SliderTwoLayerModel: Story = { name: 'Slider Two Layer Model', args: { data, name: 'Slider Two Layer Model', samples } }
 export const SliderPositionMethod: Story = { name: 'Slider Position Method', args: { data, name: 'Slider Position Method', samples } }
 export const SliderUsage: Story = { name: 'Slider Usage', args: { data, name: 'Slider Usage', samples } }
-export const SliderSet: Story = { name: 'Slider', args: { data, name: 'Slider', samples } }
 export const SliderSpace: Story = { name: 'Slider Space', args: { data, name: 'Slider Space', samples } }

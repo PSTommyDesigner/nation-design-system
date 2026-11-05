@@ -8,6 +8,7 @@ import '../../tokens/output/css/typography.css'
 // เนื้อหาทั้งหมดมาจาก buttons-doc.json ถ้าไฟล์ออกแบบเปลี่ยน ให้รัน npm run figma:atom-doc -- buttons แล้ว story จะตามเอง
 // ตัวอย่างปุ่มวาดด้วย component จริงผ่าน buttonSamples (ผู้ใช้อนุมัติ 2026-11-05)
 // story ของ component เอง (props และตัวอย่างการใช้) อยู่ที่ components/Button, IconButton และ LinkButton เมนู 12 Buttons/<ชื่อ>
+// เอกสาร Brand / Error / Neutral / Alpha Button ไม่มีเมนูที่นี่ ใช้ story Brand-button ถึง Alpha-button ใต้ 12 Buttons/Button แทน (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน buttons-doc.json
 const samples = buttonSamples
 
 const meta = {
@@ -26,8 +27,4 @@ export const Overview: Story = { name: 'ภาพรวม', args: { data, name:
 export const ButtonsToken: Story = { name: 'Buttons Token', args: { data, name: 'Buttons Token', samples } }
 export const ButtonsFamilies: Story = { name: 'Buttons Families', args: { data, name: 'Buttons Families', samples } }
 export const ButtonsHierarchy: Story = { name: 'Buttons Hierarchy', args: { data, name: 'Buttons Hierarchy', samples } }
-export const BrandButton: Story = { name: 'Brand Button', args: { data, name: 'Brand Button', samples } }
-export const ErrorButton: Story = { name: 'Error Button', args: { data, name: 'Error Button', samples } }
-export const NeutralButton: Story = { name: 'Neutral Button', args: { data, name: 'Neutral Button', samples } }
-export const AlphaButton: Story = { name: 'Alpha Button', args: { data, name: 'Alpha Button', samples } }
 export const ButtonsSpace: Story = { name: 'Buttons Space', args: { data, name: 'Buttons Space', samples } }

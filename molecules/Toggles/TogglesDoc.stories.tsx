@@ -21,11 +21,11 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// เอกสาร Toggle ไม่มีเมนูที่นี่ เพราะซ้ำกับ story Toggle ใต้ 14 Toggles/Toggle ที่กดแก้ค่าในแผงได้ (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน toggles-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '14 Toggles Documentation', samples } }
 export const TogglesToken: Story = { name: 'Toggles Token', args: { data, name: 'Toggles Token', samples } }
 export const ToggleAnatomy: Story = { name: 'Toggle Anatomy', args: { data, name: 'Toggle Anatomy', samples } }
 export const ToggleTwoLayerModel: Story = { name: 'Toggle Two Layer Model', args: { data, name: 'Toggle Two Layer Model', samples } }
 export const ToggleUsage: Story = { name: 'Toggle Usage', args: { data, name: 'Toggle Usage', samples } }
-export const ToggleSet: Story = { name: 'Toggle', args: { data, name: 'Toggle', samples } }
 export const TogglesSpace: Story = { name: 'Toggles Space', args: { data, name: 'Toggles Space', samples } }

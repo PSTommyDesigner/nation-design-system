@@ -21,10 +21,10 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// เอกสาร Tab ไม่มีเมนูที่นี่ เพราะซ้ำกับ story Segmented-tab-group และ Underline-tab-group ใต้ 18 Tabs/Tabs ที่กดแก้ค่าในแผงได้ (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน tabs-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '18 Tabs Documentation', samples } }
 export const TabToken: Story = { name: 'Tab Token', args: { data, name: 'Tab Token', samples } }
 export const TabAnatomy: Story = { name: 'Tab Anatomy', args: { data, name: 'Tab Anatomy', samples } }
 export const TabUsage: Story = { name: 'Tab Usage', args: { data, name: 'Tab Usage', samples } }
-export const TabSet: Story = { name: 'Tab', args: { data, name: 'Tab', samples } }
 export const TabSpace: Story = { name: 'Tab Space', args: { data, name: 'Tab Space', samples } }
