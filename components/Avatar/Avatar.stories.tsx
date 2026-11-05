@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Avatar, AvatarGroup, AvatarLabel, type AvatarSize } from './Avatar'
+import { Avatar, AvatarGroup, AvatarLabel, type AvatarSize, type AvatarLabelSize, type AvatarGroupSize } from './Avatar'
 import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks'
 
 const IMG = (n: number) => `https://i.pravatar.cc/150?img=${n}`
@@ -124,16 +124,34 @@ export const GoodAndBad: Story = {
 export const AvatarIcon: Story = { tags: ['!autodocs'], name: 'Avatar-icon', args: { src: undefined, alt: 'ผู้ใช้' }, parameters: controls(ICON) }
 export const AvatarMonogram: Story = { tags: ['!autodocs'], name: 'Avatar-monogram', args: { src: undefined, name: 'ทอมมี่ ดีไซเนอร์' }, parameters: controls(MONOGRAM) }
 export const AvatarNumber: Story = { tags: ['!autodocs'], name: 'Avatar-number', args: { src: undefined, count: 9, countLabel: 'อีก 9 คน' }, parameters: controls(NUMBER) }
-export const AvatarLabelStory: Story = {
+// รูปคู่ชื่อกับกลุ่มอวาตาร์เป็นคนละ component กับ Avatar จึงตั้งช่องในแผงเอง และ render จากค่าในแผง (ผู้ใช้สั่ง 2026-11-05)
+type LabelArgs = { size: AvatarLabelSize; title: string; supportingText: string }
+export const AvatarLabelStory: StoryObj<LabelArgs> = {
   tags: ['!autodocs'],
   name: 'Avatar-label',
-  render: () => <AvatarLabel size="md" avatar={<Avatar src={IMG(8)} alt="ผู้เขียนข่าว" />} title="สมชาย ใจดี" supportingText="somchai@nationgroup.com" />,
+  args: { size: 'md', title: 'สมชาย ใจดี', supportingText: 'somchai@nationgroup.com' },
+  argTypes: {
+    size: { control: 'select', options: ['sm', 'md', 'lg', 'xl'], description: 'ขนาดรูปคู่ชื่อ' },
+    title: { control: 'text', description: 'ชื่อคน' },
+    supportingText: { control: 'text', description: 'บรรทัดรอง เช่นอีเมล' },
+  },
+  parameters: controls(['size', 'title', 'supportingText']),
+  render: ({ size, title, supportingText }) => (
+    <AvatarLabel size={size} avatar={<Avatar src={IMG(8)} alt="ผู้เขียนข่าว" />} title={title} supportingText={supportingText} />
+  ),
 }
-export const AvatarGroupStory: Story = {
+type GroupArgs = { size: AvatarGroupSize; max: number }
+export const AvatarGroupStory: StoryObj<GroupArgs> = {
   tags: ['!autodocs'],
   name: 'Avatar-group',
-  render: () => (
-    <AvatarGroup size="md" max={4}>
+  args: { size: 'md', max: 4 },
+  argTypes: {
+    size: { control: 'select', options: ['xs', 'sm', 'md'], description: 'ขนาดกลุ่มอวาตาร์' },
+    max: { control: { type: 'number', min: 1, max: 5, step: 1 }, description: 'จำนวนหน้าคนสูงสุดก่อนตัดเป็นตัวเลข ตัวอย่างนี้มี 5 คน' },
+  },
+  parameters: controls(['size', 'max']),
+  render: ({ size, max }) => (
+    <AvatarGroup size={size} max={max}>
       <Avatar src={IMG(1)} alt="ผู้ใช้ 1" /><Avatar src={IMG(2)} alt="ผู้ใช้ 2" /><Avatar src={IMG(3)} alt="ผู้ใช้ 3" /><Avatar name="กข" /><Avatar name="คง" />
     </AvatarGroup>
   ),
