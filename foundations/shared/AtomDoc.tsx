@@ -269,6 +269,9 @@ const colorColumns: TableColumn<ColorRow>[] = [
   },
 ]
 
+// กลุ่มบล็อกที่ติดกัน ชุด variant เรียงแถวตัดบรรทัด แถวขนาดตัวอักษรห่าง 8 แถวสไตล์อยู่ในกรอบ การ์ดฟอนต์วางคู่ซ้ายขวา
+const GROUP_CLASS: Record<string, string> = { variantSet: styles.sampleRow, scale: styles.ladder, specimen: styles.roleTable, fontFamily: styles.families }
+
 const BlockView = ({ block, index }: { block: Block; index: number }) => {
   switch (block.type) {
     case 'h':
@@ -317,18 +320,18 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       return (
         <div className={styles.specimen}>
           <p className={`${block.className} ${styles.heading}`}>{block.sample}</p>
+          {/* 3 บรรทัดตามไฟล์ออกแบบ ชื่อคลาสต่อท้ายบรรทัดขนาด (ผู้ใช้ตัดสิน 2026-11-05) */}
           <div className={styles.specimenInfo}>
-            <code className="ntg-typography-title-xs">{block.style}</code>
-            <span className={`ntg-typography-body-xs ${styles.muted}`}>{block.meta}</span>
-            <span className="ntg-typography-body-xs">{clean(block.usage)}</span>
-            <code className={`ntg-typography-body-xs ${styles.muted}`}>.{block.className}</code>
+            <span className={`ntg-typography-label-md ${styles.heading}`}>{block.style}</span>
+            <span className={`ntg-typography-meta-caption ${styles.labelText}`}>{block.meta} .{block.className}</span>
+            <span className={`ntg-typography-meta-caption ${styles.captionText}`}>{clean(block.usage)}</span>
           </div>
         </div>
       )
     case 'scale':
       return (
         <div className={styles.scale}>
-          <span className={`ntg-typography-meta-caption ${styles.muted}`}>{block.name} {block.spec}</span>
+          <span className={`ntg-typography-meta-caption ${styles.labelText}`}>{block.name} {block.spec}</span>
           {/* ข้อยกเว้นของหน้า Type Scale ดูหมายเหตุบนสุดของไฟล์ */}
           <p className={styles.heading} style={{ fontFamily: `var(${block.family})`, fontSize: `var(${block.size})`, lineHeight: `var(${block.lineHeight})`, fontWeight: 'var(--ntg-typography-font-weight-regular)' }}>{block.sample}</p>
         </div>
@@ -338,7 +341,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
         <div className={styles.family}>
           <p className={`ntg-typography-display-md ${styles.heading}`} style={{ fontFamily: `var(${block.family})` }}>{block.sample}</p>
           <span className="ntg-typography-title-sm">{clean(block.title)}</span>
-          <span className={`ntg-typography-body-sm ${styles.muted}`}>{clean(block.usage)}</span>
+          <span className={`ntg-typography-body-sm ${styles.labelText}`}>{clean(block.usage)}</span>
           <div className={styles.weights}>
             {block.weights.map(w => (
               <div key={w.label} className={styles.weight}>
@@ -449,7 +452,8 @@ export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDo
   const starts = new Set<number>()
   for (const b of d.blocks) {
     const last = items[items.length - 1]
-    const group = b.type === 'card' || b.type === 'variantSet'
+    // แถวขนาดตัวอักษร แถวสไตล์ (Text Roles) และการ์ดฟอนต์ที่อยู่ติดกันรวมเป็นกลุ่มเดียว ระยะและกรอบเป็นของกลุ่มตามไฟล์ออกแบบ
+    const group = b.type === 'card' || b.type === 'variantSet' || b.type === 'scale' || b.type === 'specimen' || b.type === 'fontFamily'
     if (group && Array.isArray(last) && last[0].type === b.type && !b.section) last.push(b)
     else {
       if (b.section) starts.add(items.length)
@@ -466,9 +470,9 @@ export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDo
       </header>
       {items.map((it, i) => {
         const view = Array.isArray(it)
-          ? it[0].type === 'variantSet'
-            ? <div className={styles.sampleRow}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
-            : <DoDont>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</DoDont>
+          ? it[0].type === 'card'
+            ? <DoDont>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</DoDont>
+            : <div className={GROUP_CLASS[it[0].type]}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
           : <BlockView block={it} index={i} />
         return starts.has(i) ? <div key={i} className={styles.sectionStart}>{view}</div> : <Fragment key={i}>{view}</Fragment>
       })}
