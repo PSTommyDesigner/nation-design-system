@@ -1,0 +1,1875 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 16 Radio ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- radio",
+  "page": "16 Radio",
+  "documents": [
+    {
+      "id": "10846:24",
+      "name": "16 Radio Documentation",
+      "title": "16 Radio",
+      "subtitle": "ปุ่มตัวเลือกสำหรับเลือกทีละหนึ่งจากตัวเลือกที่เห็นพร้อมกัน ผลเกิดเมื่อกดบันทึก ไม่ใช่ทันทีแบบสวิตช์",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "ปุ่มตัวเลือกคืออะไร ใช้ทำอะไร และต่างจากช่องติ๊กกับสวิตช์อย่างไร",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ปุ่มตัวเลือกใช้เลือกได้ทีละหนึ่งจากกลุ่มตัวเลือกที่เห็นพร้อมกัน เลือกตัวใหม่แล้วตัวเดิมจะถูกยกเลิกเอง สิ่งที่เลือกจะยังไม่มีผลจนกว่าผู้ใช้จะกดบันทึก ต่างจากสวิตช์ในหน้า 14 Toggles ที่มีผลทันที และต่างจากช่องติ๊กในหน้า 15 Checkbox ที่เลือกได้หลายอย่างพร้อมกัน\nหน้านี้มีสองชุด คือ radio ที่เป็นวงกลมล้วน และ text-radio ที่มีหัวข้อกับข้อความช่วยกำกับ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "ส่วนประกอบของปุ่มตัวเลือก และหน้าที่ของแต่ละชั้น",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ประกอบจากสองแถวซ้อนกัน แถวบนคือวงกลมวางคู่กับหัวข้อ แถวล่างคือข้อความช่วยที่เยื้องเข้ามาให้ตรงแนวกับหัวข้อ\nรายละเอียดเต็มพร้อมค่าทุกชั้นอยู่ที่เอกสาร Radio Anatomy",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "text-radio",
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "supporting-text": true,
+                "title": true,
+                "title-value": "Radio Title",
+                "size": "md",
+                "state": "default",
+                "checked": "true"
+              },
+              "label": "",
+              "width": 260,
+              "height": 52
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "แกนของชุด และคุณสมบัติที่ไม่คูณจำนวนแบบ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ทั้งสองชุดใช้แกนเดียวกัน คือ size ห้าขนาด state สี่สถานะ และ checked สองค่าคือ ยังไม่เลือก และเลือกแล้ว ชุดละ 40 แบบ\nปุ่มตัวเลือกไม่มีสถานะกึ่งเลือกแบบช่องติ๊ก เพราะตัวเลือกหนึ่งตัวเป็นได้แค่เลือกหรือไม่เลือกเท่านั้น\nข้อความช่วยของ text-radio ไม่ได้เป็นแกน แต่เป็นคุณสมบัติเปิดปิด จึงไม่ทำให้จำนวนแบบเพิ่ม ส่วนหัวข้อเปิดปิดได้ด้วยคุณสมบัติ title แบบเดียวกัน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "text-radio",
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "supporting-text": true,
+                "title": true,
+                "title-value": "Radio Title",
+                "size": "md",
+                "state": "default",
+                "checked": "true"
+              },
+              "label": "",
+              "width": 260,
+              "height": 52
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "เลือกใช้ตัวไหนระหว่างปุ่มตัวเลือก ช่องติ๊ก และสวิตช์",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ถามสองข้อตามลำดับ ข้อแรก การเปลี่ยนค่ามีผลทันทีหรือไม่ ถ้ามีผลทันทีให้ใช้สวิตช์ ข้อสอง เลือกได้กี่อย่าง ถ้าเลือกได้ทีละหนึ่งให้ใช้ปุ่มตัวเลือก ถ้าเลือกได้หลายอย่างหรือเป็นการยอมรับเงื่อนไขข้อเดียวให้ใช้ช่องติ๊ก\nถ้าตัวเลือกมีมากกว่าห้าอย่าง ให้ใช้ช่องเลือกจากหน้า 13 Input แทน เพราะปุ่มตัวเลือกกินพื้นที่ตามจำนวนตัวเลือก",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "ห้าขนาด ขนาดวงกลมกับตัวอักษรขยับไปด้วยกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ขนาดวงกลม xs 12 sm 16 md 20 lg 24 xl 28 พิกเซล ใช้ md เป็นค่าเริ่มต้น\nใช้ xs หรือ sm เมื่ออยู่ในรายการที่หนาแน่นหรือในแถวของตาราง ใช้ lg หรือ xl เมื่อเป็นตัวเลือกหลักของหน้าที่ต้องเห็นชัด\nตัวอักษรของ xl ใช้ขนาดเดียวกับ lg เพราะบันไดของ text style หมดที่ xl ความสูงรวมจึงเท่ากันที่ 56\nขนาดทุกขั้นตรงกับช่องติ๊กพอดี จึงสลับสองตัวนี้ในฟอร์มเดียวกันได้โดยแถวไม่ขยับ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "label": "",
+              "width": 12,
+              "height": 12
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "label": "",
+              "width": 16,
+              "height": 16
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "label": "",
+              "width": 24,
+              "height": 24
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "label": "",
+              "width": 28,
+              "height": 28
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "สี่สถานะการโต้ตอบ คูณกับสองสถานะการเลือก",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สถานะการโต้ตอบมี ปกติ ชี้ โฟกัส และปิดใช้งาน ยังไม่มีสถานะกด รอทำพร้อมกันทั้งระบบ\nวงแหวนโฟกัสใช้สไตล์กลางชื่อ focused-ring/default ไม่ใช่เงาดิบ\nจุดตรงกลางจะปรากฏเฉพาะตอนเลือกแล้ว ส่วนวงกลมนอกมีเสมอทุกสถานะ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "focused"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "disabled"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            }
+          ]
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "focused"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "radio",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "disabled"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Usage",
+          "sub": "ควรทำและไม่ควรทำ",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "Do",
+          "body": "• ใช้เมื่อเลือกได้อย่างเดียวจากตัวเลือกที่เห็นครบ\n• ให้มีตัวเลือกที่ถูกเลือกไว้ล่วงหน้าเสมอ\n• เรียงตัวเลือกในลำดับที่คาดเดาได้"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "Don’t",
+          "body": "• ใช้เมื่อเลือกได้หลายอย่าง ให้ใช้ช่องติ๊กแทน\n• ใช้กับตัวเลือกเกินเจ็ดอย่าง ให้ใช้รายการแบบเลื่อนแทน\n• วางตัวเลือกเรียงแนวนอนจนอ่านไม่ออกว่าคำไหนคู่กับวงไหน"
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "พื้นที่แตะ โปรแกรมอ่านหน้าจอ และการใช้คีย์บอร์ด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "พื้นที่แตะมาจากแถวที่ครอบอยู่ ไม่ใช่ขนาดวงกลมที่ตาเห็น บนอุปกรณ์สัมผัสให้ยกความสูงแถวเป็น 48 ผ่านการตรวจ pointer coarse\nตัวเลือกทั้งกลุ่มต้องอยู่ในกล่องที่ประกาศบทบาทเป็น radiogroup และมีชื่อกำกับกลุ่ม ไม่ใช่ประกาศทีละตัว\nกลุ่มหนึ่งกลุ่มรับโฟกัสจุดเดียว แล้วใช้ปุ่มลูกศรเลื่อนระหว่างตัวเลือก ต่างจากช่องติ๊กที่กดแท็บทีละตัว\nป้ายกำกับต้องผูกกับวงกลม เพื่อให้กดที่ข้อความแล้วเลือกได้",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Design tokens",
+          "sub": "ตัวแปรของปุ่มตัวเลือกและที่มาของค่า",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "มีตัวแปรในไฟล์ออกแบบ 24 ตัว ขึ้นต้นด้วย radio และ token ฝั่งโค้ด 24 ตัว ขึ้นต้นด้วย ntg-space-radio กับ ntg-radio-radius\nแหล่งความจริงของค่าอยู่ที่ไฟล์สูตรในโค้ด ไม่ใช่ที่ไฟล์ออกแบบ ตารางจับคู่ชื่อทั้งสองฝั่งอยู่ที่เอกสาร Radio Token",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "สูตรขนาดและค่าคงที่",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ขนาดวงกลมมาจากสูตร base 12 step 4 จุดตรงกลางมาจาก base 4 step 2 ระยะเยื้องของข้อความช่วยเท่ากับ ขนาดวงกลม บวก ระยะห่าง\nค่าคงที่ทุกขนาดคือ เส้นขอบ 1 วาดแบบ INSIDE ระยะห่างระหว่างวงกลมกับข้อความ 8 และมุมโค้งค่าเต็มวง\nความสูงแถวที่กดได้อ้างสเกลความสูงตัวควบคุมกลางร่วมกับปุ่มและช่องกรอก",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้อง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "15 Checkbox คือตัวเลือกที่เลือกได้หลายอย่าง เป็นแบบที่หน้านี้ทำตามทั้งชุด\n14 Toggles คือตัวควบคุมที่มีผลทันที\n13 Input มีช่องเลือกที่ใช้แทนเมื่อตัวเลือกเยอะเกินไป\n27 Lists 36 Templates หยิบปุ่มตัวเลือกไปใช้จริงรวม 8 จุด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10846:81",
+      "name": "Radio Token",
+      "title": "Radio Token",
+      "subtitle": "ตารางจับคู่ชื่อตัวแปรในไฟล์ออกแบบกับชื่อ token ในโค้ด พร้อมค่าจริงและที่ใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อที่ทีมออกแบบเห็นในไฟล์ออกแบบ กับชื่อที่ทีมพัฒนาใช้ในโค้ด พร้อมค่าจริงและที่ใช้ เพื่อให้สองฝั่งอ้างของชิ้นเดียวกันโดยไม่หลง",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma ใช้ตอนออกแบบและเลือกใช้งาน"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ ค่าเดียวกับฝั่งออกแบบเป๊ะ"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "radio/size/{ขนาด}\nตัวแปร 5 ตัว",
+              "--ntg-space-radio-size-{ขนาด}\ntoken 5 ตัว",
+              "12 16 20 24 28",
+              "ขนาดวงกลม ค่าตั้งต้นของทั้งชุด"
+            ],
+            [
+              "radio/dot/{ขนาด}\nตัวแปร 5 ตัว",
+              "--ntg-space-radio-dot-{ขนาด}\ntoken 5 ตัว",
+              "4 6 8 10 12",
+              "จุดตรงกลางที่บอกว่าเลือกแล้ว มีเฉพาะแบบที่เลือกแล้ว"
+            ],
+            [
+              "radio/radius/full\nตัวแปร 1 ตัว",
+              "--ntg-radio-radius-full\ntoken 1 ตัว",
+              "9999",
+              "มุมโค้งของวงกลม ค่าเดียวใช้ทั้งสี่มุมทุกขนาด ทำให้กลมสนิทเสมอ"
+            ],
+            [
+              "radio/border\nตัวแปร 1 ตัว",
+              "--ntg-space-radio-border\ntoken 1 ตัว",
+              "1",
+              "ความหนาเส้นขอบ วาดแบบ INSIDE คงที่ทุกขนาด"
+            ],
+            [
+              "radio/gap\nตัวแปร 1 ตัว",
+              "--ntg-space-radio-gap\ntoken 1 ตัว",
+              "8",
+              "ระยะระหว่างวงกลมกับข้อความ คงที่ทุกขนาด"
+            ],
+            [
+              "radio/indent/{ขนาด}\nตัวแปร 5 ตัว",
+              "--ntg-space-radio-indent-{ขนาด}\ntoken 5 ตัว",
+              "20 24 28 32 36",
+              "ระยะเยื้องข้อความช่วย เท่ากับ ขนาดวงกลม บวก ระยะห่าง"
+            ],
+            [
+              "radio/row/height/{ขนาด}\nตัวแปร 5 ตัว",
+              "--ntg-space-radio-row-height-{ขนาด}\ntoken 5 ตัว",
+              "24 32 40 48 56",
+              "ความสูงแถวที่กดได้ อ้างสเกลความสูงตัวควบคุมกลาง"
+            ],
+            [
+              "radio/row/height-touch\nตัวแปร 1 ตัว",
+              "--ntg-space-radio-row-height-touch\ntoken 1 ตัว",
+              "48",
+              "ความสูงแถวบนอุปกรณ์สัมผัส ยังไม่มีแบบในไฟล์ออกแบบที่ใช้ค่านี้"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• แหล่งความจริงของค่าอยู่ที่ไฟล์สูตรในโค้ด แก้ที่ tokens/scale/radio.mjs แล้วรัน npm run tokens:build จากนั้นจึงมาอัปเดตตัวแปรในไฟล์ออกแบบให้ตรง\n• ใครเปลี่ยนค่าต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบลงงานตรง ๆ ให้ผูกตัวแปรเสมอ\n• ตัวแปรของปุ่มตัวเลือกมี 24 ตัว เท่ากันทั้งสองฝั่ง",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "10846:146",
+      "name": "Radio Anatomy",
+      "title": "Radio Anatomy",
+      "subtitle": "ส่วนประกอบของปุ่มตัวเลือกทีละชั้น พร้อมค่าที่คุมแต่ละชั้น",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "โครงสองแถว",
+          "sub": "ปุ่มตัวเลือกประกอบจากสองแถวซ้อนกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "แถวบนชื่อ row วางวงกลมคู่กับหัวข้อ ระยะระหว่างสองชิ้นคุมด้วยตัวแปร radio/gap เท่ากับ 8 ทุกขนาด\nแถวล่างชื่อ supporting วางข้อความช่วย ไม่มีวงกลม จึงต้องเยื้องเข้ามาเองด้วยตัวแปร radio/indent ที่เท่ากับ ขนาดวงกลม บวก 8 ทำให้ตัวอักษรสองแถวเริ่มที่ตำแหน่งเดียวกันพอดี\nทั้งสองแถวหดตามเนื้อหา ส่วนกรอบนอกกว้างตายตัว 260 เหมือนช่องติ๊ก กรอบนอกต้องตายตัวเพื่อให้วางเรียงกันในฟอร์มแล้วขอบซ้ายตรงกัน ส่วนแถวข้างในต้องหดตามเนื้อหา ไม่งั้นข้อความจะตัดบรรทัดเมื่อตัวอักษรใหญ่ขึ้น",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "วงกลม",
+          "sub": "ชั้นในสุดที่เป็นภาพจำของ component",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "วงกลมกว้างเท่าสูง คุมด้วย radio/size\nเส้นขอบหนา 1 วาดแบบ INSIDE จึงไม่กินพื้นที่นอกวงกลม ทำให้วงขนาด 16 กินที่ 16 จริง ไม่ใช่ 18\nมุมโค้งใช้ค่าเต็มวงตัวเดียวทุกขนาด ต่างจากช่องติ๊กที่ไล่ค่าตามขนาด เพราะวงกลมต้องกลมสนิทเสมอ เปลี่ยนขนาดกี่ครั้งก็ไม่ต้องตามแก้\nจุดตรงกลางที่บอกว่าเลือกแล้วคุมด้วย radio/dot คิดเป็นสัดส่วนต่อวงกลม 33 ถึง 43 เปอร์เซ็นต์ ไล่ขึ้นเล็กน้อยตามขนาดโดยตั้งใจ เพราะวงเล็กต้องเหลือช่องว่างรอบจุดให้เห็นว่าเป็นวงแหวน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "สองชุดต่างกันอย่างไร",
+          "sub": "ทำไมวงกลมถึงแยกเป็นอีกชุด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "radio คือตัวควบคุมจริง มีแต่วงกลมกับจุด ไม่มีข้อความ ใช้เมื่อป้ายกำกับอยู่ข้างนอกแล้ว ตอนนี้มีที่ใช้แบบนั้น 4 จุด ที่ชัดที่สุดคือช่องเลือกท้ายรายการในหน้า 27 Lists ซึ่งข้อความของรายการทำหน้าที่ป้ายให้\ntext-radio ดึง radio ไปใช้ข้างใน แล้วเติมหัวข้อกับข้อความช่วย ทำให้วงกลมถูกนิยามที่เดียว แก้ที่ radio แล้วอีกชุดเปลี่ยนตามเอง ไม่มีทางหลุดจากกัน\nทั้งสองชุดไม่มีขีดล่างหน้าชื่อ เพราะต้อง publish ให้ไฟล์อื่นหยิบไปใช้ได้ Figma ถือว่าชื่อที่ขึ้นต้นด้วยขีดล่างเป็นของส่วนตัวและจะไม่ส่งออกไปไลบรารี",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10846:163",
+      "name": "Radio Two Layer Model",
+      "title": "Radio Two Layer Model",
+      "subtitle": "แยกภาพที่ตาเห็นออกจากพื้นที่ที่นิ้วแตะ ทำตามแบบของช่องติ๊กและสวิตช์",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สองชั้นคืออะไร",
+          "sub": "ชั้นภาพกับชั้นแถวที่กดได้",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ชั้นที่หนึ่งคือภาพวงกลม มีสเกลของตัวเองคือ base 12 step 4 ไม่ผูกกับความสูงปุ่ม\nชั้นที่สองคือแถวที่กดได้ อ้างสเกลความสูงตัวควบคุมกลางร่วมกับปุ่มและช่องกรอก คือ 24 32 40 48 56\nชั้นที่สองแก้สองปัญหาพร้อมกัน คือพื้นที่แตะผ่านเกณฑ์โดยไม่ต้องทำให้วงกลมที่ตาเห็นอ้วนขึ้น และวางเรียงแถวเดียวกับปุ่มได้พอดี",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ทำไมชั้นภาพไม่ผูกกับความสูงปุ่ม",
+          "sub": "บทเรียนเดียวกับช่องติ๊ก สวิตช์ และอวาตาร์",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ที่ sm กับ md ช่องว่างระหว่างวงกลมกับแถวบังเอิญเท่ากันที่ 16 ทั้งคู่ คือ 16 ต่อ 32 และ 20 ต่อ 40 ซึ่งชวนให้คิดว่าผูกกันได้\nแต่พอเปิดครบห้าขนาดแล้วช่องว่างไม่คงที่เลย คือ 12 16 20 24 28 เพราะสองสเกลใช้ step ต่างกัน คือ 4 กับ 8\nนี่คือหลักฐานตรง ๆ ว่าสองชั้นนี้ไม่มีความสัมพันธ์กันจริง ห้ามเขียนขนาดวงกลมเป็นสูตรอนุพันธ์ของความสูงปุ่มเด็ดขาด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "แต่แถวต้องอ้างสเกลกลางจริง",
+          "sub": "ห้ามพิมพ์ค่าซ้ำ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ความสูงแถวต้องอ้างสเกลความสูงตัวควบคุมกลาง ไม่ใช่พิมพ์ 24 32 40 48 56 ซ้ำลงไป\nนั่นคือจุดประสงค์ทั้งหมดของชั้นที่สอง ถ้าวันหนึ่งความสูงปุ่มขยับ แถวปุ่มตัวเลือกต้องขยับตามเอง\nถ้าพิมพ์ค่าตายไว้ สองฝั่งจะหลุดจากกันเงียบ ๆ โดยไม่มีใครรู้\nบนอุปกรณ์สัมผัสให้ยกความสูงแถวเป็น 48 ทุกขนาด ผ่านทั้งเกณฑ์ของ Android และ Apple พร้อมกัน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10846:180",
+      "name": "Radio Usage",
+      "title": "Radio Usage",
+      "subtitle": "เลือกใช้ตอนไหน ควรทำอะไร และห้ามทำอะไร",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เลือกใช้ตัวไหน",
+          "sub": "ถามสองข้อตามลำดับ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ข้อแรก การเปลี่ยนค่ามีผลทันทีหรือไม่ ถ้ามีผลทันทีให้ใช้สวิตช์จากหน้า 14 Toggles\nข้อสอง เลือกได้กี่อย่าง ถ้าเลือกได้ทีละหนึ่งจากตัวเลือกที่เห็นพร้อมกัน ให้ใช้ปุ่มตัวเลือก ถ้าเลือกได้หลายอย่าง หรือเป็นการยอมรับเงื่อนไขข้อเดียว ให้ใช้ช่องติ๊กจากหน้า 15 Checkbox\nถ้าตัวเลือกมีมากกว่าห้าอย่าง ให้ใช้ช่องเลือกจากหน้า 13 Input แทน เพราะปุ่มตัวเลือกกินพื้นที่ตามจำนวนตัวเลือก",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ควรทำ",
+          "sub": "สิ่งที่ทำให้ปุ่มตัวเลือกใช้งานได้จริง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ต้องมีอย่างน้อยสองตัวเลือกเสมอ ถ้ามีตัวเลือกเดียวให้ใช้ช่องติ๊กแทน เพราะปุ่มตัวเลือกที่กดแล้วยกเลิกไม่ได้จะกลายเป็นกับดัก\nเลือกไว้ล่วงหน้าหนึ่งตัวเสมอ ถ้าไม่มีค่าที่ปลอดภัยพอจะเลือกให้ ให้เพิ่มตัวเลือกที่แปลว่าไม่เลือกเข้าไปในกลุ่ม\nใช้ขนาด md เป็นค่าเริ่มต้น ใช้ xs หรือ sm ในรายการที่หนาแน่น ใช้ lg หรือ xl เมื่อเป็นตัวเลือกหลักของหน้า\nครอบด้วยแถวที่กดได้เสมอแม้จะมองไม่เห็น เพราะแถวคือพื้นที่แตะ\nผูกป้ายกำกับกับวงกลมเสมอ เพื่อให้กดที่ข้อความแล้วเลือกได้",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ห้ามทำ",
+          "sub": "ข้อผิดที่เจอบ่อย",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ห้ามใช้ปุ่มตัวเลือกกับสิ่งที่เลือกได้หลายอย่าง นั่นคืองานของช่องติ๊ก\nห้ามพิมพ์ระยะเยื้องของข้อความช่วยเอง ค่านั้นมาจากตัวแปร ถ้าพิมพ์เองจะหลุดแนวทันทีที่เปลี่ยนขนาด\nห้ามใช้ค่ามุมโค้งรายขนาดกับวงกลม ต้องใช้ค่าเต็มวงเท่านั้น ไม่งั้นจะกลมไม่สนิทเมื่อเปลี่ยนขนาด\nห้ามใช้ปุ่มตัวเลือกเป็นปุ่มสั่งงาน ถ้าต้องการให้เกิดผลทันทีที่กด ให้ใช้ปุ่มหรือสวิตช์\nห้ามแก้ค่าขนาดที่ไฟล์ออกแบบ ให้แก้ที่ไฟล์สูตรในโค้ดแล้วสร้างใหม่",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10846:197",
+      "name": "Radio",
+      "title": "Radio",
+      "subtitle": "ต้นฉบับของปุ่มตัวเลือกทั้งสองชุด ตัวควบคุมล้วน และตัวที่มีข้อความกำกับ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "radio",
+          "sub": "ตัวควบคุมจริง มีแต่วงกลมกับจุด 40 แบบ 5 ขนาด 4 สถานะ 2 สถานะการเลือก ใช้เมื่อป้ายกำกับอยู่ข้างนอกแล้ว",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "radio",
+          "caption": "",
+          "width": 1280,
+          "height": 176,
+          "items": [
+            {
+              "props": {
+                "checked": "false",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 48,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 92,
+              "y": 48,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 144,
+              "y": 48,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 196,
+              "y": 48,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 248,
+              "y": 46,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 304,
+              "y": 46,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 360,
+              "y": 46,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 416,
+              "y": 46,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 472,
+              "y": 44,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 532,
+              "y": 44,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 592,
+              "y": 44,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 652,
+              "y": 44,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 712,
+              "y": 42,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 776,
+              "y": 42,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 840,
+              "y": 42,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 904,
+              "y": 42,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 968,
+              "y": 40,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 1036,
+              "y": 40,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 1104,
+              "y": 40,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 1172,
+              "y": 40,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 116,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 92,
+              "y": 116,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 144,
+              "y": 116,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 196,
+              "y": 116,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 248,
+              "y": 114,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 304,
+              "y": 114,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 360,
+              "y": 114,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 416,
+              "y": 114,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 472,
+              "y": 112,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 532,
+              "y": 112,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 592,
+              "y": 112,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 652,
+              "y": 112,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 712,
+              "y": 110,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 776,
+              "y": 110,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 840,
+              "y": 110,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 904,
+              "y": 110,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 968,
+              "y": 108,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 1036,
+              "y": 108,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 1104,
+              "y": 108,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 1172,
+              "y": 108,
+              "width": 28,
+              "height": 28
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "text-radio",
+          "sub": "radio บวกหัวข้อและข้อความช่วย 40 แบบ เปิดปิดหัวข้อและข้อความช่วยได้ด้วยคุณสมบัติ title กับ supporting-text และแก้ข้อความได้ด้วย title-value กับ supporting-text-value",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "text-radio",
+          "caption": "",
+          "width": 1280,
+          "height": 952,
+          "items": [
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "default",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 40,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "hover",
+                "checked": "false"
+              },
+              "x": 340,
+              "y": 40,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "default",
+                "checked": "true"
+              },
+              "x": 640,
+              "y": 40,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "hover",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 40,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "focused",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 124,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "focused",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 124,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "disabled",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 124,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "disabled",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 124,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "default",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 208,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "default",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 208,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "hover",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 208,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "hover",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 208,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "focused",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 296,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "focused",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 296,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "disabled",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 296,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "disabled",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 296,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "default",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 384,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "default",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 384,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "hover",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 384,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "hover",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 384,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "focused",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 476,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "focused",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 476,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "disabled",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 476,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "disabled",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 476,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "default",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 568,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "default",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 568,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "hover",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 568,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "hover",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 568,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "focused",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 664,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "focused",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 664,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "disabled",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 664,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "disabled",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 664,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "default",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 760,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "default",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 760,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "hover",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 760,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "hover",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 760,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "focused",
+                "checked": "false"
+              },
+              "x": 40,
+              "y": 856,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "focused",
+                "checked": "true"
+              },
+              "x": 340,
+              "y": 856,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "disabled",
+                "checked": "false"
+              },
+              "x": 640,
+              "y": 856,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "title-value": "Radio Title",
+                "title": true,
+                "supporting-text": true,
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "disabled",
+                "checked": "true"
+              },
+              "x": 940,
+              "y": 856,
+              "width": 260,
+              "height": 56
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10846:669",
+      "name": "Radio Space",
+      "title": "Radio Space",
+      "subtitle": "ระยะห่างและขนาดของปุ่มตัวเลือกมาจากไหน สูตรอยู่ที่ไหน และผูกตัวแปรครบหรือยัง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "ปุ่มตัวเลือกใช้สูตรของตัวเอง ไม่ได้หยิบขั้นจากสเกลกลางของหน้า 07 Space เพราะเป็นระยะห่างภายในชิ้นงาน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สูตรอยู่ที่ tokens/scale/radio.mjs มีด่านตรวจในตัวสี่ข้อ ถ้าค่าไม่สอดคล้องกันเองจะสร้างไฟล์ไม่ผ่าน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10846:672",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ความสูงรวมของ component ไม่มีสูตร เพราะถูกคุมด้วยความสูงบรรทัดของ text style ที่เลือกตามขนาด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10846:672",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "สูตร base และ step",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "rows": [
+            [
+              "ขนาดวงกลม",
+              "12",
+              "4",
+              "12",
+              "16",
+              "20",
+              "24",
+              "28"
+            ],
+            [
+              "ความสูงแถวที่กดได้",
+              "24",
+              "8",
+              "24",
+              "32",
+              "40",
+              "48",
+              "56"
+            ],
+            [
+              "มุมโค้ง",
+              "ค่าเต็มวง",
+              "คงที่",
+              "9999",
+              "9999",
+              "9999",
+              "9999",
+              "9999"
+            ],
+            [
+              "จุดตรงกลาง",
+              "4",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12"
+            ],
+            [
+              "ระยะเยื้องข้อความช่วย",
+              "ผลลัพธ์",
+              "วงกลมบวก 8",
+              "20",
+              "24",
+              "28",
+              "32",
+              "36"
+            ],
+            [
+              "เส้นขอบ",
+              "1",
+              "คงที่",
+              "1",
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            [
+              "ระยะห่างวงกลมกับข้อความ",
+              "8",
+              "คงที่",
+              "8",
+              "8",
+              "8",
+              "8",
+              "8"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปรที่ผูกได้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชื่อตัวแปร",
+            "ผูกกับอะไรในไฟล์ออกแบบ",
+            "ค่า",
+            "สถานะ"
+          ],
+          "rows": [
+            [
+              "radio/size",
+              "ความกว้างและความสูงของวงกลม",
+              "12 ถึง 28",
+              "ผูกครบ 40 แบบ"
+            ],
+            [
+              "radio/dot",
+              "ความกว้างและความสูงของจุดตรงกลาง",
+              "4 ถึง 12",
+              "ผูกครบ 20 จุด เฉพาะแบบที่เลือกแล้ว"
+            ],
+            [
+              "radio/radius/full",
+              "มุมโค้งของวงกลม ค่าเดียวใช้ทุกขนาด",
+              "9999",
+              "ผูกครบทั้งสี่มุม"
+            ],
+            [
+              "radio/border",
+              "ความหนาเส้นขอบของวงกลม",
+              "1",
+              "ผูกครบ 40 แบบ"
+            ],
+            [
+              "radio/gap",
+              "ระยะระหว่างวงกลมกับข้อความในแถวบน",
+              "8",
+              "ผูกครบ 40 แบบ"
+            ],
+            [
+              "radio/indent",
+              "ระยะเยื้องของแถวข้อความช่วย",
+              "20 ถึง 36",
+              "ผูกครบ 40 แบบ"
+            ],
+            [
+              "radio/row/height",
+              "ยังไม่มีแถวครอบในไฟล์ออกแบบ",
+              "24 ถึง 56",
+              "มีไว้ให้ฝั่งโค้ด เหมือนช่องติ๊ก"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา",
+          "sub": "• ต้นทางของค่าอยู่ที่โค้ด แก้ที่ tokens/scale/radio.mjs แล้วรัน npm run tokens:build\n• ห้ามพิมพ์ค่าระยะห่างเองในไฟล์ออกแบบ ให้ผูกตัวแปรเสมอ\n• ห้ามเอาสเกลกลางของหน้า 07 Space มาใช้เป็นระยะห่างภายในปุ่มตัวเลือก\n• มุมโค้งต้องใช้ค่าเต็มวงเท่านั้น ห้ามทำเป็นค่ารายขนาด เพราะวงกลมต้องกลมสนิททุกขนาด\n• ขนาดวงกลมกับความสูงแถวเป็นคนละสเกล ห้ามเขียนอันหนึ่งเป็นสูตรของอีกอันหนึ่ง",
+          "section": true
+        }
+      ]
+    }
+  ]
+}

@@ -55,6 +55,7 @@ const PAGES = {
   input: { page: '13 Input', folder: 'Input', root: 'molecules', skip: [], components: ['text-field', 'text-area', 'tag-field'] },
   toggles: { page: '14 Toggles', folder: 'Toggles', root: 'molecules', skip: [], components: ['toggle'] },
   checkbox: { page: '15 Checkbox', folder: 'Checkbox', root: 'molecules', skip: [], components: ['checkbox', 'text-checkbox'] },
+  radio: { page: '16 Radio', folder: 'Radio', root: 'molecules', skip: [], components: ['radio', 'text-radio'] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
