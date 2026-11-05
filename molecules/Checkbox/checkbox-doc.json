@@ -1,0 +1,2387 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 15 Checkbox ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- checkbox",
+  "page": "15 Checkbox",
+  "documents": [
+    {
+      "id": "10724:185",
+      "name": "15 Checkbox Documentation",
+      "title": "15 Checkbox",
+      "subtitle": "ช่องติ๊กสำหรับเลือกหลายรายการหรือยอมรับเงื่อนไข ผลเกิดเมื่อกดบันทึก ไม่ใช่ทันทีแบบสวิตช์",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "ช่องติ๊กคืออะไร ใช้ทำอะไร และต่างจากสวิตช์กับปุ่มตัวเลือกอย่างไร",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ช่องติ๊กใช้เลือกได้หลายรายการพร้อมกัน หรือใช้ยอมรับเงื่อนไขทีละข้อ สิ่งที่เลือกจะยังไม่มีผลจนกว่าผู้ใช้จะกดบันทึก ต่างจากสวิตช์ในหน้า 14 Toggles ที่มีผลทันที และต่างจากปุ่มตัวเลือกในหน้า 16 Radio ที่เลือกได้ทีละหนึ่ง\nหน้านี้มีสองชุด ชุดแรกชื่อ checkbox คือตัวควบคุมจริง มีแต่กล่องกับเครื่องหมาย ใช้เมื่อป้ายกำกับอยู่ข้างนอกแล้ว เช่นช่องเลือกแถวในตารางที่หัวคอลัมน์ทำหน้าที่ป้าย\nชุดที่สองชื่อ text-checkbox คือ checkbox บวกหัวข้อและข้อความช่วย ใช้เมื่อต้องมีป้ายกำกับติดอยู่กับตัวเลือก",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "ส่วนประกอบของช่องติ๊ก และหน้าที่ของแต่ละชั้น",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ประกอบจากสองแถวซ้อนกัน แถวบนคือกล่องติ๊กวางคู่กับหัวข้อ แถวล่างคือข้อความช่วยที่เยื้องเข้ามาให้ตรงแนวกับหัวข้อ\nรายละเอียดเต็มพร้อมค่าทุกชั้นอยู่ที่เอกสาร Checkbox Anatomy",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "text-checkbox",
+              "props": {
+                "supporting-text": true,
+                "title-value": "Checkbox Title",
+                "supporting-text-value": "Supporting text",
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 260,
+              "height": 52
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "แกนของชุด และคุณสมบัติที่ไม่คูณจำนวนแบบ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ทั้งสองชุดใช้แกนเดียวกัน คือ size ห้าขนาด state สี่สถานะ และ checked สามค่าคือ ไม่ติ๊ก ติ๊กแล้ว และกึ่งเลือก ชุดละ 60 แบบ\nข้อความช่วยของ text-checkbox ไม่ได้เป็นแกน แต่เป็นคุณสมบัติเปิดปิด จึงไม่ทำให้จำนวนแบบเพิ่ม ส่วนหัวข้อมีเสมอ ถ้าไม่ต้องการข้อความให้ใช้ checkbox แทน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "text-checkbox",
+              "props": {
+                "supporting-text": true,
+                "title-value": "Checkbox Title",
+                "supporting-text-value": "Supporting text",
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 260,
+              "height": 52
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "เลือกใช้ตัวไหนระหว่างช่องติ๊ก สวิตช์ และปุ่มตัวเลือก",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ถามสองข้อตามลำดับ ข้อแรก การเปลี่ยนค่ามีผลทันทีหรือไม่ ถ้ามีผลทันทีให้ใช้สวิตช์ ข้อสอง เลือกได้กี่อย่าง ถ้าเลือกได้ทีละหนึ่งให้ใช้ปุ่มตัวเลือก ถ้าเลือกได้หลายอย่างหรือเป็นการยอมรับเงื่อนไขข้อเดียวให้ใช้ช่องติ๊ก\nห้ามผสมตัวควบคุมที่บันทึกเองกับที่ต้องกดบันทึกไว้ในฟอร์มเดียวกัน ผู้ใช้จะเดาไม่ออกว่าอะไรบันทึกไปแล้ว",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "ห้าขนาด ขนาดกล่องกับตัวอักษรขยับไปด้วยกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ขนาดกล่อง xs 12 sm 16 md 20 lg 24 xl 28 พิกเซล ใช้ md เป็นค่าเริ่มต้น\nใช้ xs หรือ sm เมื่ออยู่ในรายการที่หนาแน่นหรือในแถวของตาราง ใช้ lg หรือ xl เมื่อเป็นตัวเลือกหลักของหน้าที่ต้องเห็นชัด\nตัวอักษรของ xl ใช้ขนาดเดียวกับ lg เพราะบันไดตัวอักษรน้ำหนัก Medium สูงสุดที่ 18",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "label": "",
+              "width": 12,
+              "height": 12
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "label": "",
+              "width": 16,
+              "height": 16
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "label": "",
+              "width": 24,
+              "height": 24
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "label": "",
+              "width": 28,
+              "height": 28
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "สี่สถานะการโต้ตอบ คูณกับสามสถานะการติ๊ก",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สถานะการโต้ตอบมี ปกติ ชี้ โฟกัส และปิดใช้งาน ยังไม่มีสถานะกด รอทำพร้อมกันทั้งระบบ\nวงแหวนโฟกัสใช้สไตล์กลางชื่อ focused-ring/default ไม่ใช่เงาดิบ\nสถานะกึ่งเลือกใช้กับช่องติ๊กหัวกลุ่มที่ลูกถูกเลือกบางส่วนเท่านั้น ห้ามให้ผู้ใช้กดเข้าสถานะนี้เอง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "focused"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "disabled"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            }
+          ]
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "focused"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "disabled"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            }
+          ]
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "hover"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "focused"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            },
+            {
+              "type": "component",
+              "set": "checkbox",
+              "props": {
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "disabled"
+              },
+              "label": "",
+              "width": 20,
+              "height": 20
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Usage",
+          "sub": "ควรทำและไม่ควรทำ",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "Do",
+          "body": "• ใช้เมื่อเลือกได้หลายอย่างพร้อมกัน หรือเปิดปิดอย่างเดียว\n• ใช้สถานะกึ่งเลือกกับหัวกลุ่มที่ลูกถูกเลือกบางส่วน\n• วางคำอธิบายไว้ขวาของช่องติ๊กเสมอ"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "Don’t",
+          "body": "• ใช้เมื่อเลือกได้อย่างเดียว ให้ใช้ปุ่มตัวเลือกแทน\n• ใช้ช่องติ๊กเดี่ยวแทนสวิตช์เปิดปิดที่มีผลทันที\n• ปล่อยให้สถานะกึ่งเลือกค้างอยู่หลังผู้ใช้กดเลือกเอง"
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "พื้นที่แตะ โปรแกรมอ่านหน้าจอ และการใช้คีย์บอร์ด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "พื้นที่แตะมาจากแถวที่ครอบอยู่ ไม่ใช่ขนาดกล่องที่ตาเห็น บนอุปกรณ์สัมผัสให้ยกความสูงแถวเป็น 48 ผ่านการตรวจ pointer coarse\nสถานะกึ่งเลือกต้องตั้งด้วย element.indeterminate ในจาวาสคริปต์ และประกาศเป็น aria-checked mixed\nป้ายกำกับต้องผูกกับช่องติ๊กเสมอ เพื่อให้กดที่ข้อความแล้วติ๊กได้ และให้โปรแกรมอ่านหน้าจออ่านชื่อได้",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Design tokens",
+          "sub": "ตัวแปรของช่องติ๊กและที่มาของค่า",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "มีตัวแปรในไฟล์ออกแบบ 42 ตัว ขึ้นต้นด้วย checkbox และ token ฝั่งโค้ด 43 ตัว ขึ้นต้นด้วย ntg-space-checkbox กับ ntg-checkbox-radius\nแหล่งความจริงของค่าอยู่ที่ไฟล์สูตรในโค้ด ไม่ใช่ที่ไฟล์ออกแบบ ตารางจับคู่ชื่อทั้งสองฝั่งอยู่ที่เอกสาร Checkbox Token",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "สูตรขนาดและค่าคงที่",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ขนาดกล่องมาจากสูตร base 12 step 4 มุมโค้งมาจาก base 2 step 1 ระยะเยื้องของข้อความช่วยเท่ากับ ขนาดกล่อง บวก ระยะห่าง\nค่าคงที่ทุกขนาดคือ เส้นขอบ 1 วาดแบบ INSIDE และระยะห่างระหว่างกล่องกับข้อความ 8\nความสูงแถวที่กดได้อ้างสเกลความสูงตัวควบคุมกลางร่วมกับปุ่มและช่องกรอก ตารางเต็มอยู่ที่เอกสาร Checkbox Space",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้อง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "14 Toggles คือตัวควบคุมที่มีผลทันที เป็นแบบที่หน้านี้ทำตามทั้งชุด\n16 Radio คือตัวเลือกที่เลือกได้ทีละหนึ่ง\nLists (เลขเดิม 27 ยุบไปแล้ว) 26 Table 33 Sidebars และ 36 Templates หยิบช่องติ๊กไปใช้จริงรวม 368 จุด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10724:253",
+      "name": "Checkbox Token",
+      "title": "Checkbox Token",
+      "subtitle": "ตารางจับคู่ชื่อตัวแปรในไฟล์ออกแบบกับชื่อ token ในโค้ด พร้อมค่าจริงและที่ใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อที่ทีมออกแบบเห็นในไฟล์ออกแบบ กับชื่อที่ทีมพัฒนาใช้ในโค้ด พร้อมค่าจริงและที่ใช้ เพื่อให้สองฝั่งอ้างของชิ้นเดียวกันโดยไม่หลง",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma · ใช้ตอนออกแบบและเลือกใช้งาน"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ · ค่าเดียวกับฝั่งออกแบบเป๊ะ"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "checkbox/size/{ขนาด}\nตัวแปร 5 ตัว",
+              "--ntg-space-checkbox-size-{ขนาด}\ntoken 5 ตัว",
+              "12 16 20 24 28",
+              "ขนาดกล่องติ๊ก ค่าตั้งต้นของทั้งชุด"
+            ],
+            [
+              "checkbox/icon/{ขนาด}\nตัวแปร 5 ตัว",
+              "--ntg-space-checkbox-icon-{ขนาด}\ntoken 5 ตัว",
+              "12 16 20 24 28",
+              "เครื่องหมายถูกและขีดกึ่งเลือก เต็มกล่องพอดี"
+            ],
+            [
+              "checkbox/radius/{มุม}/{ขนาด}\nตัวแปร 20 ตัว",
+              "--ntg-checkbox-radius-{มุม}-{ขนาด}\ntoken 20 ตัว",
+              "2 3 4 5 6",
+              "มุมโค้งกล่อง 4 มุม คูณ 5 ขนาด สัดส่วนต่อขนาดกล่องนิ่งทุกขั้น"
+            ],
+            [
+              "checkbox/border\nตัวแปร 1 ตัว",
+              "--ntg-space-checkbox-border\ntoken 1 ตัว",
+              "1",
+              "ความหนาเส้นขอบ วาดแบบ INSIDE คงที่ทุกขนาด"
+            ],
+            [
+              "checkbox/gap\nตัวแปร 1 ตัว",
+              "--ntg-space-checkbox-gap\ntoken 1 ตัว",
+              "8",
+              "ระยะระหว่างกล่องติ๊กกับข้อความ คงที่ทุกขนาด"
+            ],
+            [
+              "checkbox/indent/{ขนาด}\nตัวแปร 5 ตัว",
+              "--ntg-space-checkbox-indent-{ขนาด}\ntoken 5 ตัว",
+              "20 24 28 32 36",
+              "ระยะเยื้องข้อความช่วย เท่ากับ ขนาดกล่อง บวก ระยะห่าง"
+            ],
+            [
+              "checkbox/row/height/{ขนาด}\nตัวแปร 5 ตัว",
+              "--ntg-space-checkbox-row-height-{ขนาด}\ntoken 5 ตัว",
+              "24 32 40 48 56",
+              "ความสูงแถวที่กดได้ อ้างสเกลความสูงตัวควบคุมกลาง"
+            ],
+            [
+              "ไม่มีในไฟล์ออกแบบ\nมีเฉพาะฝั่งโค้ด",
+              "--ntg-space-checkbox-row-height-touch\ntoken 1 ตัว",
+              "48",
+              "ความสูงแถวบนอุปกรณ์สัมผัส ยังไม่มีแบบในไฟล์ออกแบบ"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• แหล่งความจริงอยู่ที่ Figma · แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ · ให้อ้างชื่อ token เสมอ",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "10724:291",
+      "name": "Checkbox Anatomy",
+      "title": "Checkbox Anatomy",
+      "subtitle": "ส่วนประกอบของช่องติ๊กทีละชั้น พร้อมค่าที่คุมแต่ละชั้น",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "โครงสองแถว",
+          "sub": "ช่องติ๊กประกอบจากสองแถวซ้อนกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "แถวบนชื่อ row วางกล่องติ๊กคู่กับหัวข้อ ระยะระหว่างสองชิ้นคุมด้วยตัวแปร checkbox/gap เท่ากับ 8 ทุกขนาด\nแถวล่างชื่อ supporting วางข้อความช่วย ไม่มีกล่องติ๊ก จึงต้องเยื้องเข้ามาเองด้วยตัวแปร checkbox/indent ที่เท่ากับ ขนาดกล่อง บวก 8 ทำให้ตัวอักษรสองแถวเริ่มที่ตำแหน่งเดียวกันพอดี\nทั้งสองแถวหดตามเนื้อหา ส่วนกรอบนอกกว้างตายตัว 260 เหมือนสวิตช์",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "กล่องติ๊ก",
+          "sub": "ชั้นในสุดที่เป็นภาพจำของ component",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "กล่องเป็นสี่เหลี่ยมจัตุรัส ขนาดเท่ากันทั้งกว้างและสูง คุมด้วย checkbox/size\nเส้นขอบหนา 1 วาดแบบ INSIDE จึงไม่กินพื้นที่นอกกล่อง ทำให้กล่องขนาด 16 กินที่ 16 จริง ไม่ใช่ 18\nมุมโค้งคุมรายมุมทั้งสี่มุมด้วยค่าเดียวกัน เพื่อให้เปลี่ยนทรงทีหลังได้โดยไม่ต้องรื้อโครง ค่าคือ 2 3 4 5 6 ซึ่งคิดเป็นสัดส่วนต่อขนาดกล่องราว 17 ถึง 21 เปอร์เซ็นต์เท่ากันทุกขนาด ทำให้ทุกขนาดดูเป็นตระกูลเดียวกัน\nเครื่องหมายถูกและขีดกึ่งเลือกเต็มกล่องพอดี ไม่มีระยะขอบใน ถ้าอยากให้เล็กกว่ากล่องต้องเพิ่มตัวแปรใหม่ก่อน ห้ามบีบเอง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "สองชุดต่างกันอย่างไร",
+          "sub": "ทำไมกล่องติ๊กถึงแยกเป็นอีกชุด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "checkbox คือตัวควบคุมจริง มีแต่กล่องกับเครื่องหมาย ไม่มีข้อความ ใช้เมื่อป้ายกำกับอยู่ข้างนอกแล้ว ตอนนี้มีที่ใช้แบบนั้น 282 จุด ที่ชัดที่สุดคือช่องเลือกแถวในตารางซึ่งหัวคอลัมน์ทำหน้าที่ป้ายให้\ntext-checkbox ดึง checkbox ไปใช้ข้างใน แล้วเติมหัวข้อกับข้อความช่วย ทำให้กล่องถูกนิยามที่เดียว แก้ที่ checkbox แล้วอีกชุดเปลี่ยนตามเอง ไม่มีทางหลุดจากกัน\nทั้งสองชุดไม่มีขีดล่างหน้าชื่อ เพราะต้อง publish ให้ไฟล์อื่นหยิบไปใช้ได้ Figma ถือว่าชื่อที่ขึ้นต้นด้วยขีดล่างเป็นของส่วนตัวและจะไม่ส่งออกไปไลบรารี",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10724:299",
+      "name": "Checkbox Two Layer Model",
+      "title": "Checkbox Two Layer Model",
+      "subtitle": "แยกภาพที่ตาเห็นออกจากพื้นที่ที่นิ้วแตะ ทำตามแบบของสวิตช์",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สองชั้นคืออะไร",
+          "sub": "ชั้นภาพกับชั้นแถวที่กดได้",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ชั้นที่หนึ่งคือภาพช่องติ๊ก มีสเกลของตัวเองคือ base 12 step 4 ไม่ผูกกับความสูงปุ่ม\nชั้นที่สองคือแถวที่กดได้ อ้างสเกลความสูงตัวควบคุมกลางร่วมกับปุ่มและช่องกรอก คือ 24 32 40 48 56\nชั้นที่สองแก้สองปัญหาพร้อมกัน คือพื้นที่แตะผ่านเกณฑ์โดยไม่ต้องทำให้กล่องที่ตาเห็นอ้วนขึ้น และวางเรียงแถวเดียวกับปุ่มได้พอดี",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ทำไมชั้นภาพไม่ผูกกับความสูงปุ่ม",
+          "sub": "บทเรียนเดียวกับสวิตช์และอวาตาร์",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ที่ sm กับ md ช่องว่างระหว่างกล่องกับแถวบังเอิญเท่ากันที่ 16 ทั้งคู่ คือ 16 ต่อ 32 และ 20 ต่อ 40 ซึ่งชวนให้คิดว่าผูกกันได้\nแต่พอเปิดครบห้าขนาดแล้วช่องว่างไม่คงที่เลย คือ 12 16 20 24 28 เพราะสองสเกลใช้ step ต่างกัน คือ 4 กับ 8\nนี่คือหลักฐานตรง ๆ ว่าสองชั้นนี้ไม่มีความสัมพันธ์กันจริง ห้ามเขียนขนาดกล่องเป็นสูตรอนุพันธ์ของความสูงปุ่มเด็ดขาด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "แต่แถวต้องอ้างสเกลกลางจริง",
+          "sub": "ห้ามพิมพ์ค่าซ้ำ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ความสูงแถวต้องอ้างสเกลความสูงตัวควบคุมกลาง ไม่ใช่พิมพ์ 24 32 40 48 56 ซ้ำลงไป\nนั่นคือจุดประสงค์ทั้งหมดของชั้นที่สอง ถ้าวันหนึ่งความสูงปุ่มขยับ แถวช่องติ๊กต้องขยับตามเอง\nถ้าพิมพ์ค่าตายไว้ สองฝั่งจะหลุดจากกันเงียบ ๆ โดยไม่มีใครรู้\nบนอุปกรณ์สัมผัสให้ยกความสูงแถวเป็น 48 ทุกขนาด ผ่านทั้งเกณฑ์ของ Android และ Apple พร้อมกัน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10724:307",
+      "name": "Checkbox Usage",
+      "title": "Checkbox Usage",
+      "subtitle": "เลือกใช้ตอนไหน ควรทำอะไร และห้ามทำอะไร",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เลือกใช้ตัวไหน",
+          "sub": "ถามสองข้อตามลำดับ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ข้อแรก การเปลี่ยนค่ามีผลทันทีหรือไม่ ถ้ามีผลทันทีให้ใช้สวิตช์จากหน้า 14 Toggles\nข้อสอง เลือกได้กี่อย่าง ถ้าเลือกได้ทีละหนึ่งให้ใช้ปุ่มตัวเลือกจากหน้า 16 Radio ถ้าเลือกได้หลายอย่าง หรือเป็นการยอมรับเงื่อนไขข้อเดียว ให้ใช้ช่องติ๊ก\nห้ามผสมตัวควบคุมที่บันทึกเองกับที่ต้องกดบันทึกไว้ในฟอร์มเดียวกัน ผู้ใช้จะเดาไม่ออกว่าอะไรบันทึกไปแล้ว",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ควรทำ",
+          "sub": "สิ่งที่ทำให้ช่องติ๊กใช้งานได้จริง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ใช้ป้ายกำกับที่เป็นชื่อของสิ่งที่เลือก ไม่ใช่คำว่าเปิดหรือปิด\nใช้ขนาด md เป็นค่าเริ่มต้น ใช้ xs หรือ sm ในรายการที่หนาแน่น ใช้ lg หรือ xl เมื่อเป็นตัวเลือกหลักของหน้า\nครอบด้วยแถวที่กดได้เสมอแม้จะมองไม่เห็น เพราะแถวคือพื้นที่แตะ\nเปิดข้อความช่วยเมื่อผู้ใช้ต้องรู้ผลของการเลือก ปิดเมื่อหัวข้ออธิบายครบแล้ว\nผูกป้ายกำกับกับช่องติ๊กเสมอ เพื่อให้กดที่ข้อความแล้วติ๊กได้",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ห้ามทำ",
+          "sub": "ข้อผิดที่เจอบ่อย",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ห้ามให้ผู้ใช้กดเข้าสถานะกึ่งเลือกเอง สถานะนั้นเป็นผลลัพธ์ของลูกในกลุ่มที่ถูกเลือกบางส่วนเท่านั้น\nห้ามพิมพ์ระยะเยื้องของข้อความช่วยเอง ค่านั้นมาจากตัวแปร ถ้าพิมพ์เองจะหลุดแนวทันทีที่เปลี่ยนขนาด\nห้ามบีบขนาดเครื่องหมายให้เล็กกว่ากล่อง\nห้ามใช้ช่องติ๊กเป็นปุ่มสั่งงาน ถ้าต้องการให้เกิดผลทันทีที่กด ให้ใช้ปุ่มหรือสวิตช์\nห้ามแก้ค่าขนาดที่ไฟล์ออกแบบ ให้แก้ที่ไฟล์สูตรในโค้ดแล้วสร้างใหม่",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10724:315",
+      "name": "Checkbox",
+      "title": "Checkbox",
+      "subtitle": "ต้นฉบับของช่องติ๊กทั้งสองชุด ตัวควบคุมล้วน และตัวที่มีข้อความกำกับ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "checkbox",
+          "sub": "ตัวควบคุมจริง มีแต่กล่องกับเครื่องหมาย 60 แบบ 5 ขนาด 4 สถานะ 3 สถานะการติ๊ก ใช้เมื่อป้ายกำกับอยู่ข้างนอกแล้ว",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "checkbox",
+          "caption": "",
+          "width": 1280,
+          "height": 244,
+          "items": [
+            {
+              "props": {
+                "checked": "false",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 48,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 92,
+              "y": 48,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 144,
+              "y": 48,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 196,
+              "y": 48,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 248,
+              "y": 46,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 304,
+              "y": 46,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 360,
+              "y": 46,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 416,
+              "y": 46,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 472,
+              "y": 44,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 532,
+              "y": 44,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 592,
+              "y": 44,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 652,
+              "y": 44,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 712,
+              "y": 42,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 776,
+              "y": 42,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 840,
+              "y": 42,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 904,
+              "y": 42,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 968,
+              "y": 40,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 1036,
+              "y": 40,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 1104,
+              "y": 40,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "false",
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 1172,
+              "y": 40,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 116,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 92,
+              "y": 116,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 144,
+              "y": 116,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 196,
+              "y": 116,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 248,
+              "y": 114,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 304,
+              "y": 114,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 360,
+              "y": 114,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 416,
+              "y": 114,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 472,
+              "y": 112,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 532,
+              "y": 112,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 592,
+              "y": 112,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 652,
+              "y": 112,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 712,
+              "y": 110,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 776,
+              "y": 110,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 840,
+              "y": 110,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 904,
+              "y": 110,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 968,
+              "y": 108,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 1036,
+              "y": 108,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 1104,
+              "y": 108,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "true",
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 1172,
+              "y": 108,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 184,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 92,
+              "y": 184,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 144,
+              "y": 184,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 196,
+              "y": 184,
+              "width": 12,
+              "height": 12
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 248,
+              "y": 182,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 304,
+              "y": 182,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 360,
+              "y": 182,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 416,
+              "y": 182,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 472,
+              "y": 180,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 532,
+              "y": 180,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 592,
+              "y": 180,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 652,
+              "y": 180,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 712,
+              "y": 178,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 776,
+              "y": 178,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 840,
+              "y": 178,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 904,
+              "y": 178,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 968,
+              "y": 176,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 1036,
+              "y": 176,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 1104,
+              "y": 176,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "checked": "indeterminate",
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 1172,
+              "y": 176,
+              "width": 28,
+              "height": 28
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "text-checkbox",
+          "sub": "checkbox บวกหัวข้อและข้อความช่วย 60 แบบ เปิดปิดข้อความช่วยได้ด้วยคุณสมบัติ supporting-text ส่วนหัวข้อมีเสมอ",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "text-checkbox",
+          "caption": "",
+          "width": 1280,
+          "height": 1408,
+          "items": [
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 40,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 40,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 40,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 40,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 124,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 124,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 124,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 124,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 212,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 212,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 212,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 212,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 304,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 304,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 304,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 304,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 400,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 400,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 400,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "false",
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 400,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 496,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 496,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 496,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 496,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 580,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 580,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 580,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 580,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 668,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 668,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 668,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 668,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 760,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 760,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 760,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 760,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 856,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 856,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 856,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "true",
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 856,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 952,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 952,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 952,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 952,
+              "width": 260,
+              "height": 44
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 1036,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 1036,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 1036,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 1036,
+              "width": 260,
+              "height": 48
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 1124,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 1124,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 1124,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 1124,
+              "width": 260,
+              "height": 52
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 1216,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 1216,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 1216,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 1216,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 1312,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 340,
+              "y": 1312,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 640,
+              "y": 1312,
+              "width": 260,
+              "height": 56
+            },
+            {
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Checkbox Title",
+                "supporting-text": true,
+                "checked": "indeterminate",
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 940,
+              "y": 1312,
+              "width": 260,
+              "height": 56
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10724:332",
+      "name": "Checkbox Space",
+      "title": "Checkbox Space",
+      "subtitle": "ระยะห่างและขนาดของช่องติ๊กมาจากไหน สูตรอยู่ที่ไหน และผูกตัวแปรครบหรือยัง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "ช่องติ๊กใช้สูตรของตัวเอง ไม่ได้หยิบขั้นจากสเกลกลางของหน้า 07 Space เพราะเป็นระยะห่างภายในชิ้นงาน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สูตรอยู่ที่ tokens/scale/checkbox.mjs มีด่านตรวจในตัวสี่ข้อ ถ้าค่าไม่สอดคล้องกันเองจะสร้างไฟล์ไม่ผ่าน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10724:335",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ความสูงรวมของ component ไม่มีสูตร เพราะถูกคุมด้วยความสูงบรรทัดของ text style ที่เลือกตามขนาด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10724:335",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "สูตร base และ step",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "rows": [
+            [
+              "ขนาดกล่องติ๊ก",
+              "12",
+              "4",
+              "12",
+              "16",
+              "20",
+              "24",
+              "28"
+            ],
+            [
+              "ความสูงแถวที่กดได้",
+              "24",
+              "8",
+              "24",
+              "32",
+              "40",
+              "48",
+              "56"
+            ],
+            [
+              "มุมโค้ง",
+              "2",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            [
+              "เครื่องหมาย",
+              "ผลลัพธ์",
+              "เท่ากล่อง",
+              "12",
+              "16",
+              "20",
+              "24",
+              "28"
+            ],
+            [
+              "ระยะเยื้องข้อความช่วย",
+              "ผลลัพธ์",
+              "กล่องบวก 8",
+              "20",
+              "24",
+              "28",
+              "32",
+              "36"
+            ],
+            [
+              "เส้นขอบ",
+              "1",
+              "คงที่",
+              "1",
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            [
+              "ระยะห่างกล่องกับข้อความ",
+              "8",
+              "คงที่",
+              "8",
+              "8",
+              "8",
+              "8",
+              "8"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปรที่ผูกได้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชื่อตัวแปร",
+            "ผูกกับอะไรในไฟล์ออกแบบ",
+            "ค่า",
+            "สถานะ"
+          ],
+          "rows": [
+            [
+              "checkbox/size",
+              "ความกว้างและความสูงของกล่อง",
+              "12 ถึง 28",
+              "ผูกครบ 60 แบบ"
+            ],
+            [
+              "checkbox/icon",
+              "ความกว้างและความสูงของเครื่องหมาย",
+              "12 ถึง 28",
+              "ผูกครบ 60 แบบ"
+            ],
+            [
+              "checkbox/radius",
+              "มุมโค้งของกล่อง แยกรายมุม",
+              "2 ถึง 6",
+              "ผูกครบทั้งสี่มุม"
+            ],
+            [
+              "checkbox/border",
+              "ความหนาเส้นขอบของกล่อง",
+              "1",
+              "ผูกครบ 60 แบบ"
+            ],
+            [
+              "checkbox/gap",
+              "ระยะระหว่างกล่องกับข้อความในแถวบน",
+              "8",
+              "ผูกครบ 60 แบบ"
+            ],
+            [
+              "checkbox/indent",
+              "ระยะเยื้องของแถวข้อความช่วย",
+              "20 ถึง 36",
+              "ผูกครบ 60 แบบ"
+            ],
+            [
+              "checkbox/row/height",
+              "ยังไม่มีแถวครอบในไฟล์ออกแบบ",
+              "24 ถึง 56",
+              "มีไว้ให้ฝั่งโค้ด เหมือนสวิตช์"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา",
+          "sub": "• ต้นทางของค่าอยู่ที่โค้ด แก้ที่ tokens/scale/checkbox.mjs แล้วรัน npm run tokens:build • ห้ามพิมพ์ค่าระยะห่างเองในไฟล์ออกแบบ ให้ผูกตัวแปรเสมอ • ห้ามเอาสเกลกลางของหน้า 07 Space มาใช้เป็นระยะห่างภายในช่องติ๊ก • เกณฑ์ของมุมโค้งคือสัดส่วนต่อขนาดกล่องต้องนิ่ง ไม่ใช่การคงค่าเดิมไว้ สูตร base 2 step 1 ให้สัดส่วน 16.7 ถึง 21.4 เปอร์เซ็นต์ ห่างกันแค่ 4.8 จุด • ถ้าแก้ขนาดกล่องที่ชิ้นส่วนฐาน ต้องแก้ระยะเยื้องของชุดหลักให้ตรงกันเสมอ ไม่งั้นข้อความช่วยจะหลุดแนว",
+          "section": true
+        }
+      ]
+    }
+  ]
+}

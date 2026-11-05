@@ -54,6 +54,7 @@ const PAGES = {
   buttons: { page: '12 Buttons', folder: 'Buttons', root: 'molecules', skip: [], components: ['semi-rounded-button', 'pill-button', 'semi-rounded-icon-button', 'circular-icon-button', 'link-button', 'link-icon-button'], families: { 'Brand Button': 'brand', 'Error Button': 'error', 'Neutral Button': 'neutral', 'Alpha Button': 'alpha' } },
   input: { page: '13 Input', folder: 'Input', root: 'molecules', skip: [], components: ['text-field', 'text-area', 'tag-field'] },
   toggles: { page: '14 Toggles', folder: 'Toggles', root: 'molecules', skip: [], components: ['toggle'] },
+  checkbox: { page: '15 Checkbox', folder: 'Checkbox', root: 'molecules', skip: [], components: ['checkbox', 'text-checkbox'] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -446,6 +447,12 @@ function extract(doc) {
       const set = n.type === 'FRAME' && n.children?.every(c => c.type === 'TEXT' || c.type === 'COMPONENT_SET') && n.children.find(c => c.type === 'COMPONENT_SET' && COMPONENT_SETS.has(c.name))
       if (set) { push(variantSetBlock(set, n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim()).join(' '))); return }
       if (n.type === 'COMPONENT_SET' && COMPONENT_SETS.has(n.name)) { push(variantSetBlock(n, '')); return }
+      // กรอบที่มีแต่ตัวอย่างล้วน (ไม่มีข้อความ) เป็นหนึ่งแถว ไม่รวมกับแถวก่อนหน้า เช่น ตารางสถานะของหน้า 15 ที่แยกแถวตามค่าติ๊ก
+      const vis = n.type === 'FRAME' ? (n.children ?? []).filter(c => c.visible !== false) : []
+      if (vis.length >= 2 && vis.every(isComponentSample) && n.parent?.children?.filter(c => c.type === 'FRAME' && c.visible !== false && (c.children ?? []).length && c.children.every(isComponentSample)).length >= 2) {
+        out.blocks.push({ type: 'components', vertical: false, items: vis.map(c => componentBlock(c, '')) })
+        return
+      }
       // กลุ่มตัวอย่างหลายชิ้นใต้ป้ายเดียว เช่น ปุ่มตอนพักคู่กับตอนชี้ในเอกสาร Buttons Families เก็บเป็นชิ้นเดียวที่มี group
       if (n.type === 'FRAME' && n.children?.some(c => c.type === 'TEXT')) {
         const others = n.children.filter(c => c.type !== 'TEXT' && c.visible !== false)
