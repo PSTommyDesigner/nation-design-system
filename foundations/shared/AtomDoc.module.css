@@ -219,20 +219,55 @@
 .weight { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-xs); }
 
 /* ภาพ grid ความกว้างแคนวาสมาจาก style ใน AtomDoc.tsx คอลัมน์ ร่อง ขอบ มาจาก token --ntg-grid-* ผ่านตัวแปร --grid-*
-   แบบ CENTER (v2022 และ Nation Digital) คอลัมน์กว้างตายตัวจัดกลาง แบบ STRETCH (v2026) ขอบตายตัว คอลัมน์ยืดเต็ม */
-.gridBlock { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-lg); }
-.gridScroll { overflow-x: auto; }
+   แบบ CENTER (v2022 และ Nation Digital) คอลัมน์กว้างตายตัวจัดกลาง แบบ STRETCH (v2026) ขอบตายตัว คอลัมน์ยืดเต็ม
+   กรอบตามชิ้นงานในไฟล์ออกแบบ พื้น background/general/primary เส้น border/general/primary เงา center-md
+   มุมโค้งในไฟล์ออกแบบ 16 ไม่ได้ผูกตัวแปร ใช้ info-card ตามข้อตกลงกล่องที่ไม่ใช่ component (2026-11-03) */
+.gridWrap { position: relative; width: 100%; flex: none; }
+/* กลุ่มภาพ grid ที่เรียงแถว กรอบในกว้างเท่าไฟล์ออกแบบ ย่อด้วย transform ความสูงกรอบนอกคำนวณจากสัดส่วนที่ย่อ */
+.gridRows { position: relative; overflow: hidden; }
+.gridRowsInner { display: flex; flex-wrap: wrap; align-items: flex-start; transform-origin: top left; }
 .gridCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(var(--grid-cols), var(--grid-col));
   justify-content: center;
   column-gap: var(--grid-gutter);
-  height: calc(var(--ntg-size-space-s4-xl) * 2);
-  background: var(--ntg-color-background-general-secondary);
-  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-secondary);
+  transform-origin: top left;
+  border-radius: var(--ntg-info-card-radius-top-left) var(--ntg-info-card-radius-top-right) var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
+  background: var(--ntg-color-background-general-primary);
+  box-shadow: inset 0 0 0 var(--ntg-divider-thickness) var(--ntg-color-border-general-primary), var(--ntg-shadows-center-md);
+  overflow: hidden;
 }
-.gridStretch { box-sizing: border-box; padding-inline: var(--grid-margin); justify-content: stretch; }
+.gridStretch { padding-inline: var(--grid-margin); justify-content: stretch; }
 .gridCol { background: var(--ntg-color-background-alpha-black-10); }
+
+/* เส้นวัด (Sizing ในไฟล์ออกแบบ) วางกลางแนวตั้ง แถวห่าง 56 จอเล็กห่าง 32 สีเส้นและตัวเลขเป็นสี error
+   ในไฟล์ออกแบบเป็นสีแดงดิบกับฟอนต์ Roboto Mono ไม่ได้ผูกตัวแปร (ผู้ใช้ให้ใช้สี error แทน 2026-11-05 งานผูกตัวแปรค้างที่หน้า 04) */
+.measures {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--ntg-size-space-s3-lg);
+}
+.gridNarrow .measures { gap: var(--ntg-size-space-s3-xs); }
+.measureRow { position: relative; height: var(--ntg-size-space-s3-sm); }
+.measure { position: absolute; top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: var(--ntg-size-space-s1-lg); }
+.measureValue { color: var(--ntg-color-text-system-error); white-space: nowrap; }
+.measureLine {
+  position: relative;
+  align-self: stretch;
+  height: var(--ntg-size-space-s2-sm);
+  /* เส้นนอนกลางกับขีดตั้งสองปลาย */
+  background:
+    linear-gradient(var(--ntg-color-border-system-error-solid), var(--ntg-color-border-system-error-solid)) center / 100% var(--ntg-divider-thickness) no-repeat,
+    linear-gradient(var(--ntg-color-border-system-error-solid), var(--ntg-color-border-system-error-solid)) left / var(--ntg-divider-thickness) 100% no-repeat,
+    linear-gradient(var(--ntg-color-border-system-error-solid), var(--ntg-color-border-system-error-solid)) right / var(--ntg-divider-thickness) 100% no-repeat;
+}
 
 /* ภาพเอฟเฟค (05 Effect) กล่องขนาดเท่าไฟล์ออกแบบ 200x120 ยืมสเกลระยะ เพราะยังไม่มี token ขนาดของเอกสาร
    มุมกล่องยังเป็นมุมฉาก ในไฟล์ออกแบบเป็น 10 ที่ไม่ได้ผูกตัวแปร รอตัดสิน token มุมโค้งเดียวกับจุดสี

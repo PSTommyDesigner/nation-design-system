@@ -459,7 +459,12 @@ function extract(doc) {
       const col = n.layoutGrids.find(g => g.pattern === 'COLUMNS')
       const canvas = Math.round(n.absoluteBoundingBox.width)
       const token = (k) => CSS_VARS.has(`${prefix}-${k}`) ? `${prefix}-${k}` : null
-      const b = { type: 'grid', name: n.name, canvas, stretch: col.alignment === 'STRETCH', columns: needVar(`${prefix}-columns`, n.name), gutter: needVar(`${prefix}-gutter`, n.name), margin: needVar(`${prefix}-margin`, n.name), container: token('container'), columnWidth: token('column-width') }
+      // ความสูงแคนวาสเก็บเป็นสัดส่วนกับความกว้าง (หน้าเอกสารใช้ aspect-ratio) ลำดับแถวเส้นวัด column กับ gutter อ่านจากเฟรม Sizing
+      const sizing = n.children?.find(c => c.name === 'Sizing')?.children?.map(c => c.name) ?? []
+      const columnFirst = sizing.indexOf('Column') > -1 && sizing.indexOf('Column') < sizing.indexOf('Gutter')
+      // ชิ้นงานที่วางในกรอบเรียงแถวตัดบรรทัด (Grid Components) เก็บความกว้างกรอบกับระยะห่าง ให้หน้าเอกสารเรียงแถวเหมือนไฟล์ออกแบบแล้วย่อทั้งกลุ่ม
+      const wrap = n.parent?.layoutWrap === 'WRAP' ? { width: Math.round(n.parent.absoluteBoundingBox.width), gap: spaceVar(n.parent.itemSpacing ?? 0, `${doc.name} ${n.name}`) } : null
+      const b = { type: 'grid', name: n.name, canvas, height: Math.round(n.absoluteBoundingBox.height), ...(wrap ? { wrap } : {}), ...(columnFirst ? { columnFirst } : {}), stretch: col.alignment === 'STRETCH', columns: needVar(`${prefix}-columns`, n.name), gutter: needVar(`${prefix}-gutter`, n.name), margin: needVar(`${prefix}-margin`, n.name), container: token('container'), columnWidth: token('column-width') }
       // เทียบค่าในไฟล์ออกแบบกับ token ถ้าไม่ตรงจดไว้ ไม่หยุด เพราะเป็นงานของคนดูแล token
       const px = (v) => parseFloat(ROOT_VALUES[v])
       const figMargin = col.alignment === 'STRETCH' ? col.offset : (canvas - (col.count * col.sectionSize + (col.count - 1) * col.gutterSize)) / 2

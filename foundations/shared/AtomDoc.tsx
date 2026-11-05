@@ -51,7 +51,7 @@ type Block =
   | { type: 'logos'; items: LogoItem[] }
   | { type: 'components'; vertical?: boolean; items: ComponentItem[] }
   | { type: 'variantSet'; set: string; caption: string; width: number; height: number; items: VariantItem[] }
-  | { type: 'grid'; name: string; canvas: number; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
+  | { type: 'grid'; name: string; canvas: number; height?: number; columnFirst?: boolean; wrap?: { width: number; gap: string | null }; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
 type RadiusItem = { step: string; label: string; meta: string; corners: (string | null)[]; figma: number[]; fill: string | null; stroke: string | null }
 type NestedItem = { kind: 'do' | 'dont'; title: string; caption: string; outer: number; inner: number; outerFill: string | null; innerFill: string | null }
 type EffectItem = { kind: 'shadow' | 'blur' | 'ring'; style: string; cssVar: string; label: string }
@@ -133,28 +133,87 @@ const VariantSetView = ({ block: b }: { block: Extract<Block, { type: 'variantSe
   )
 }
 
-const GridSpecimen = ({ block: b }: { block: Extract<Block, { type: 'grid' }> }) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const [m, setM] = useState('')
+// เส้นวัดหนึ่งช่วง ตัวเลขอยู่เหนือเส้น ปลายสองข้างมีขีดตั้ง ตาม Redlines ในภาพ grid ของไฟล์ออกแบบ
+const Measure = ({ x, w }: { x: number; w: number }) => (
+  <span className={styles.measure} style={{ left: `${x}px`, width: `${w}px` }}>
+    <span className={`ntg-typography-meta-caption ${styles.measureValue}`}>{Math.round(w)}px</span>
+    <span className={styles.measureLine} />
+  </span>
+)
+
+// ภาพ grid หนึ่งขนาดจอ ตามชิ้นงาน nation-*-* ในไฟล์ออกแบบ กรอบขาวขนาดเท่าจอ (สัดส่วนจากไฟล์ออกแบบ) พร้อมเส้นวัดสี error
+// ความกว้างทั้งจอ container ขอบ ร่อง และคอลัมน์ ค่าตัวเลขวัดจากคอลัมน์ที่เบราว์เซอร์วาดจริงจาก token --ntg-grid-*
+// จอที่กว้างกว่าพื้นที่เนื้อหาย่อทั้งภาพให้พอดี (ผู้ใช้ตัดสิน 2026-11-05) จอเล็กแสดงขนาดจริง
+const GridSpecimen = ({ block: b, fit = true }: { block: Extract<Block, { type: 'grid' }>; fit?: boolean }) => {
+  const wrap = useRef<HTMLDivElement>(null)
+  const canvas = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(1)
+  const [cols, setCols] = useState<{ x: number; w: number }[]>([])
   useLayoutEffect(() => {
-    const cols = ref.current?.querySelectorAll<HTMLElement>('[data-col]')
-    if (!ref.current || !cols?.length) return
-    const box = ref.current.getBoundingClientRect(), a = cols[0].getBoundingClientRect()
-    const gap = cols.length > 1 ? cols[1].getBoundingClientRect().left - a.right : 0
-    const r = (n: number) => Math.round(n * 100) / 100
-    setM(`วัดจริง ${r(box.width)} px, ${cols.length} คอลัมน์, ร่อง ${r(gap)}, ขอบ ${r(a.left - box.left)}, คอลัมน์ ${r(a.width)}`)
+    if (!wrap.current || !fit) return
+    const update = () => setScale(Math.min(1, (wrap.current?.clientWidth ?? b.canvas) / b.canvas))
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(wrap.current)
+    return () => ro.disconnect()
+  }, [b.canvas, fit])
+  useLayoutEffect(() => {
+    const els = canvas.current?.querySelectorAll<HTMLElement>('[data-col]')
+    setCols(els ? Array.from(els, e => ({ x: e.offsetLeft, w: e.offsetWidth })) : [])
   }, [b])
   const vars = { '--grid-cols': `var(${b.columns})`, '--grid-gutter': `var(${b.gutter})`, '--grid-margin': `var(${b.margin})`, '--grid-col': b.columnWidth ? `var(${b.columnWidth})` : '1fr' } as CSSProperties
+  const ratio = b.height ? b.canvas / b.height : 16 / 9
+  const first = cols[0], last = cols[cols.length - 1]
+  const gutters = cols.slice(1).map((c, i) => ({ x: cols[i].x + cols[i].w, w: c.x - (cols[i].x + cols[i].w) }))
+  const rowGutter = <div className={styles.measureRow}>{gutters.map((g, i) => <Measure key={i} {...g} />)}</div>
+  const rowColumn = <div className={styles.measureRow}>{cols.map((c, i) => <Measure key={i} {...c} />)}</div>
   return (
-    <div className={styles.gridBlock}>
-      <span className="ntg-typography-title-xs">{b.name}</span>
-      <div className={styles.gridScroll}>
-        {/* ความกว้างแคนวาสจากไฟล์ออกแบบ ข้อยกเว้นของภาพ grid ดูหมายเหตุบนสุดของไฟล์ */}
-        <div ref={ref} className={`${styles.gridCanvas} ${b.stretch ? styles.gridStretch : ''}`} style={{ ...vars, width: `${b.canvas}px` }}>
-          {Array.from({ length: Number.parseInt(getComputedStyle(document.documentElement).getPropertyValue(b.columns)) || 0 }, (_, i) => <span key={i} data-col className={styles.gridCol} />)}
-        </div>
+    <div ref={wrap} className={styles.gridWrap} style={{ height: `${(b.canvas / ratio) * scale}px`, ...(fit ? {} : { width: `${b.canvas}px` }) }}>
+      {/* ความกว้างแคนวาสจากไฟล์ออกแบบ ข้อยกเว้นของภาพ grid ดูหมายเหตุบนสุดของไฟล์ */}
+      <div
+        ref={canvas}
+        title={b.name}
+        className={`${styles.gridCanvas} ${b.stretch ? styles.gridStretch : ''} ${b.canvas < 768 ? styles.gridNarrow : ''}`}
+        style={{ ...vars, width: `${b.canvas}px`, aspectRatio: String(ratio), transform: scale < 1 ? `scale(${scale})` : undefined }}
+      >
+        {Array.from({ length: Number.parseInt(getComputedStyle(document.documentElement).getPropertyValue(b.columns)) || 0 }, (_, i) => <span key={i} data-col className={styles.gridCol} />)}
+        {first && last && (
+          <div className={styles.measures}>
+            <div className={styles.measureRow}><Measure x={0} w={b.canvas} /></div>
+            <div className={styles.measureRow}><Measure x={first.x} w={last.x + last.w - first.x} /></div>
+            <div className={styles.measureRow}><Measure x={0} w={first.x} /><Measure x={last.x + last.w} w={b.canvas - last.x - last.w} /></div>
+            {b.columnFirst ? <>{rowColumn}{rowGutter}</> : <>{rowGutter}{rowColumn}</>}
+          </div>
+        )}
       </div>
-      <code className={`ntg-typography-body-xs ${styles.muted}`}>{m}</code>
+    </div>
+  )
+}
+
+// ภาพ grid หลายขนาดที่ไฟล์ออกแบบเรียงแถวตัดบรรทัด (Grid Components) วางขนาดจริงในกรอบกว้างเท่าไฟล์ออกแบบ แล้วย่อทั้งกลุ่มให้พอดีหน้า
+const GridRows = ({ items }: { items: Extract<Block, { type: 'grid' }>[] }) => {
+  const outer = useRef<HTMLDivElement>(null)
+  const inner = useRef<HTMLDivElement>(null)
+  const [fit, setFit] = useState({ scale: 1, height: 0 })
+  const w = items[0].wrap?.width ?? 0
+  useLayoutEffect(() => {
+    if (!outer.current || !inner.current) return
+    const update = () => {
+      const scale = Math.min(1, (outer.current?.clientWidth ?? w) / w)
+      setFit({ scale, height: (inner.current?.offsetHeight ?? 0) * scale })
+    }
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(outer.current)
+    ro.observe(inner.current)
+    return () => ro.disconnect()
+  }, [w])
+  const gap = items[0].wrap?.gap
+  return (
+    <div ref={outer} className={styles.gridRows} style={{ height: `${fit.height}px` }}>
+      <div ref={inner} className={styles.gridRowsInner} style={{ width: `${w}px`, gap: gap ? `var(${gap})` : undefined, transform: `scale(${fit.scale})` }}>
+        {items.map((b, i) => <GridSpecimen key={i} block={b} fit={false} />)}
+      </div>
     </div>
   )
 }
@@ -461,7 +520,7 @@ export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDo
       continue
     }
     // แถวขนาดตัวอักษร แถวสไตล์ (Text Roles) และการ์ดฟอนต์ที่อยู่ติดกันรวมเป็นกลุ่มเดียว ระยะและกรอบเป็นของกลุ่มตามไฟล์ออกแบบ
-    const group = b.type === 'card' || b.type === 'variantSet' || b.type === 'scale' || b.type === 'specimen' || b.type === 'fontFamily'
+    const group = b.type === 'card' || b.type === 'variantSet' || b.type === 'scale' || b.type === 'specimen' || b.type === 'fontFamily' || (b.type === 'grid' && !!b.wrap)
     if (group && Array.isArray(last) && last[0].type === b.type && !b.section) last.push(b)
     else {
       if (b.section) starts.add(items.length)
@@ -480,7 +539,9 @@ export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDo
         const view = swatchGroups.has(i) && Array.isArray(it)
           ? <div className={styles.swatchGroup}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
           : Array.isArray(it)
-          ? it[0].type === 'card'
+          ? it[0].type === 'grid'
+            ? <GridRows items={it as Extract<Block, { type: 'grid' }>[]} />
+            : it[0].type === 'card'
             ? <DoDont>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</DoDont>
             : <div className={GROUP_CLASS[it[0].type]}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
           : <BlockView block={it} index={i} />
