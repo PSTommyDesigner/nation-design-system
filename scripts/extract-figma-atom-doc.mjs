@@ -161,7 +161,11 @@ function logoBlock(n, label, frame) {
   const { width, height } = n.absoluteBoundingBox
   // ในตารางต้นฉบับโลโก้วางบนกล่องพื้นสี ความกว้างกล่องกับช่องอ่านจากไฟล์ออกแบบ ส่วนภาพตัวอย่างในเอกสารวางลอย
   const box = frame?.children?.find(c => c.name === 'box')?.absoluteBoundingBox.width
-  return { type: 'logo', file, label, width: Math.round(width), height: Math.round(height), ...(box ? { box: Math.round(box), cell: Math.round(frame.absoluteBoundingBox.width) } : {}) }
+  // ระยะห่างของกริดที่วางชิ้นนี้อ่านจากเฟรมแม่ (กริดโลโก้ 16 ตัวอย่างในภาพรวม 40 กับ 32 กรอบหน้า 10 คือ 24) และความกว้างช่องจากเฟรมของชิ้น
+  const grid = frame?.parent
+  const gap = grid?.layoutMode && grid.layoutMode !== 'NONE' ? { gap: spaceVar(grid.itemSpacing ?? 0, `${label} gap`), ...(grid.layoutWrap === 'WRAP' ? { rowGap: spaceVar(grid.counterAxisSpacing ?? 0, `${label} rowGap`) } : {}) } : {}
+  const cell = frame ? Math.round(frame.absoluteBoundingBox.width) : 0
+  return { type: 'logo', file, label, width: Math.round(width), height: Math.round(height), ...(box ? { box: Math.round(box), cell } : cell > Math.round(width) ? { cell } : {}), ...gap }
 }
 // แถวสเกลระยะห่าง ชื่อตัวแปร + ค่า + แถบความยาว ชื่อและค่าที่แสดงมาจาก token ส่วนตัวเลขในไฟล์ออกแบบใช้เทียบเท่านั้น
 const isSpaceRow = (n) => n.type === 'FRAME' && n.children?.some(c => c.name === 'track') && /^size\/space\//.test(n.children?.find(c => c.type === 'TEXT')?.characters.trim() ?? '')

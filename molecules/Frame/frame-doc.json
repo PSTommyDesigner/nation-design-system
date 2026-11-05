@@ -46,21 +46,27 @@
               "file": "image-16-9",
               "label": "ภาพนิ่ง 16:9",
               "width": 260,
-              "height": 146
+              "height": 146,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "video-16-9",
               "label": "วิดีโอ 16:9",
               "width": 260,
-              "height": 146
+              "height": 146,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-1-1",
               "label": "ภาพนิ่ง 1:1",
               "width": 260,
-              "height": 260
+              "height": 260,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             }
           ]
         },
@@ -102,7 +108,9 @@
               "file": "image-16-9",
               "label": "กรอบมีชั้นเดียวคือพื้นที่วางสื่อ ไม่มีขอบ ไม่มีมุมโค้ง ไม่มีระยะห่างภายใน",
               "width": 320,
-              "height": 180
+              "height": 180,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             }
           ]
         },
@@ -126,56 +134,72 @@
               "file": "image-16-9",
               "label": "image 16:9",
               "width": 200,
-              "height": 113
+              "height": 113,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-4-3",
               "label": "image 4:3",
               "width": 200,
-              "height": 150
+              "height": 150,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-1-1",
               "label": "image 1:1",
               "width": 200,
-              "height": 200
+              "height": 200,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-9-16",
               "label": "image 9:16",
               "width": 200,
-              "height": 300
+              "height": 300,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "video-16-9",
               "label": "video 16:9",
               "width": 200,
-              "height": 113
+              "height": 113,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "video-4-3",
               "label": "video 4:3",
               "width": 200,
-              "height": 150
+              "height": 150,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "video-1-1",
               "label": "video 1:1",
               "width": 200,
-              "height": 200
+              "height": 200,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "video-9-16",
               "label": "video 9:16",
               "width": 200,
-              "height": 300
+              "height": 300,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             }
           ]
         },
@@ -199,28 +223,36 @@
               "file": "image-16-9",
               "label": "ภาพหลัก  16:9 กินความกว้างเต็ม",
               "width": 220,
-              "height": 124
+              "height": 124,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-4-3",
               "label": "ภาพประกอบในเนื้อหา  4:3",
               "width": 220,
-              "height": 165
+              "height": 165,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-1-1",
               "label": "ภาพเล็กในกริด  1:1",
               "width": 220,
-              "height": 220
+              "height": 220,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-9-16",
               "label": "คลิปแนวตั้งสำหรับมือถือ  9:16",
               "width": 220,
-              "height": 330
+              "height": 330,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             }
           ]
         },
@@ -244,28 +276,36 @@
               "file": "image-16-9",
               "label": "288 x 162",
               "width": 220,
-              "height": 124
+              "height": 124,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-4-3",
               "label": "288 x 216",
               "width": 220,
-              "height": 165
+              "height": 165,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-1-1",
               "label": "288 x 288",
               "width": 220,
-              "height": 220
+              "height": 220,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             },
             {
               "type": "logo",
               "file": "image-9-16",
               "label": "288 x 432",
               "width": 220,
-              "height": 330
+              "height": 330,
+              "gap": "--ntg-size-space-s3-xs",
+              "rowGap": "--ntg-size-space-s3-xs"
             }
           ]
         },
@@ -327,14 +367,16 @@
               "file": "image-16-9",
               "label": "✅ ถูก ยืดให้คงสัดส่วน ภาพยังอ่านออกและวางเรียงในกริดได้",
               "width": 400,
-              "height": 225
+              "height": 225,
+              "gap": "--ntg-size-space-s3-sm"
             },
             {
               "type": "logo",
               "file": "image-16-9",
               "label": "❌ ผิด ยืดด้านเดียว ภาพเพี้ยนและสูงไม่ตรงกับช่องอื่นในกริด",
               "width": 400,
-              "height": 97
+              "height": 97,
+              "gap": "--ntg-size-space-s3-sm"
             }
           ]
         },
@@ -482,6 +524,8 @@
               "label": "image-16:9  288 x 162",
               "width": 288,
               "height": 162,
+              "gap": "--ntg-size-space-s2-lg",
+              "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
             },
             {
@@ -490,6 +534,8 @@
               "label": "image-4:3  288 x 216",
               "width": 288,
               "height": 216,
+              "gap": "--ntg-size-space-s2-lg",
+              "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
             },
             {
@@ -498,6 +544,8 @@
               "label": "image-1:1  288 x 288",
               "width": 288,
               "height": 288,
+              "gap": "--ntg-size-space-s2-lg",
+              "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
             },
             {
@@ -506,6 +554,8 @@
               "label": "image-9:16  288 x 432",
               "width": 288,
               "height": 432,
+              "gap": "--ntg-size-space-s2-lg",
+              "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
             }
           ]
@@ -525,6 +575,8 @@
               "label": "video-16:9  288 x 162",
               "width": 288,
               "height": 162,
+              "gap": "--ntg-size-space-s2-lg",
+              "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
             },
             {
@@ -533,6 +585,8 @@
               "label": "video-4:3  288 x 216",
               "width": 288,
               "height": 216,
+              "gap": "--ntg-size-space-s2-lg",
+              "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
             },
             {
@@ -541,6 +595,8 @@
               "label": "video-1:1  288 x 288",
               "width": 288,
               "height": 288,
+              "gap": "--ntg-size-space-s2-lg",
+              "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
             },
             {
@@ -549,6 +605,8 @@
               "label": "video-9:16  288 x 432",
               "width": 288,
               "height": 432,
+              "gap": "--ntg-size-space-s2-lg",
+              "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
             }
           ]

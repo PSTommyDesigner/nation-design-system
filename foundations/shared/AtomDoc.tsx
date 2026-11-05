@@ -26,7 +26,7 @@ import styles from './AtomDoc.module.css'
  */
 
 type ColorRow = { no: string; name: string; level: string; gap?: string | null; lineTop?: string | null; lineBottom?: string | null; light: string; dark: string; description: string; cssVar: string; darkVar: string }
-type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number; labelBelow?: boolean }
+type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number; labelBelow?: boolean; gap?: string | null; rowGap?: string | null }
 type SampleProps = Record<string, string | boolean>
 type ComponentItem = { set: string; props: SampleProps; image?: string; label: string; width: number; height: number; cell?: number; group?: { set: string; props: SampleProps; image?: string }[] }
 // เซลล์ของตารางที่มีตัวอย่าง (เช่น ตารางสถานะหน้า 14 Toggles) เป็นข้อความหรือตัวอย่าง component อย่างใดอย่างหนึ่ง
@@ -421,9 +421,12 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       return <EffectRow items={block.items} />
     case 'radii':
       return <div className={styles.radiusRow}>{block.items.map((it, i) => <RadiusSample key={i} item={it} />)}</div>
-    case 'logos':
+    case 'logos': {
+      // ระยะห่างของกริดตามเฟรมในไฟล์ออกแบบ (สคริปต์แปลงเป็น token ระยะ) ไม่มีข้อมูลใช้ 24 เหมือนเดิม
+      const g = block.items[0]
+      const gridGap = g?.gap ? { gap: `var(${g.rowGap ?? g.gap}) var(${g.gap})` } : undefined
       return (
-        <div className={styles.logoGrid}>
+        <div className={styles.logoGrid} style={gridGap}>
           {block.items.map((it, i) => (
             it.box
               ? (
@@ -433,7 +436,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
                 </div>
               )
               : (
-                <div key={i} className={styles.logoItem}>
+                <div key={i} className={styles.logoItem} style={it.cell ? { width: it.cell } : undefined}>
                   {!it.labelBelow && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
                   {it.file && <LogoImage item={it} />}
                   {it.labelBelow && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
@@ -442,6 +445,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
           ))}
         </div>
       )
+    }
     case 'components':
       return (
         <div className={block.vertical ? styles.sampleColumn : styles.sampleRow}>
