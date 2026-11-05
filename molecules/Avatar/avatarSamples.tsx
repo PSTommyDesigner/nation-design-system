@@ -7,8 +7,8 @@ import type { SampleRenderer } from '../../foundations/shared/AtomDoc'
 // ⚠️ ชื่อและรูปที่แสดงเป็นค่าตัวอย่างจากไฟล์ออกแบบ ภาพแทนรูปคือ image fill ของ avatar-image ที่สคริปต์ export ไว้ใน assets/
 // ⚠️ _avatar-online-indicator ไม่มี component เดี่ยวในโค้ด จุดสถานะอยู่ใน Avatar (status) จึงไม่ใส่ในตาราง หน้าเอกสารจะแสดงข้อความแทน
 
-const on = (v: string | boolean | undefined) => v === true || v === 'true'
-const num = (v: string | boolean | undefined) => Number.parseInt(String(v ?? ''), 10)
+const on = (v: unknown) => v === true || v === 'true'
+const num = (v: unknown) => Number.parseInt(String(v ?? ''), 10)
 
 const single = (kind: 'image' | 'icon' | 'monogram' | 'number'): SampleRenderer => (p, image) => (
   <Avatar

@@ -27,7 +27,8 @@ import styles from './AtomDoc.module.css'
 
 type ColorRow = { no: string; name: string; level: string; gap?: string | null; lineTop?: string | null; lineBottom?: string | null; light: string; dark: string; description: string; cssVar: string; darkVar: string }
 type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number; labelBelow?: boolean; gap?: string | null; rowGap?: string | null }
-type SampleProps = Record<string, string | boolean>
+// ค่าของชิ้นงานจาก Figma ชิ้นงานกลุ่ม (เช่น กลุ่มแท็บ) มี children เป็นค่าของชิ้นย่อยแต่ละชิ้น
+type SampleProps = { [key: string]: string | boolean | SampleProps[] }
 type ComponentItem = { set: string; props: SampleProps; image?: string; label: string; width: number; height: number; cell?: number; group?: { set: string; props: SampleProps; image?: string }[] }
 // เซลล์ของตารางที่มีตัวอย่าง (เช่น ตารางสถานะหน้า 14 Toggles) เป็นข้อความหรือตัวอย่าง component อย่างใดอย่างหนึ่ง
 type SampleCell = { text: string } | { set: string; props: SampleProps; image?: string; width: number }

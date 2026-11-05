@@ -57,6 +57,8 @@ const PAGES = {
   checkbox: { page: '15 Checkbox', folder: 'Checkbox', root: 'molecules', skip: [], components: ['checkbox', 'text-checkbox'] },
   radio: { page: '16 Radio', folder: 'Radio', root: 'molecules', skip: [], components: ['radio', 'text-radio'] },
   // ใน Figma ไม่มีค่า value เป็นตัวเลข หัวจับวางตามความยาวส่วนที่เติมสี สคริปต์จึงคำนวณค่าจากรูปทรง (sliderValue) ผู้ใช้อนุมัติ 2026-11-05
+  // แท็บเดี่ยวในโค้ดวาดเป็น Tabs หนึ่งแท็บ (ผู้ใช้อนุมัติ 2026-11-05) กลุ่มแท็บเก็บแท็บข้างในไว้ใน children และไอคอนในแท็บอ่านจากชิ้นงานไอคอนข้างใน (innerIcon)
+  tabs: { page: '18 Tabs', folder: 'Tabs', root: 'molecules', skip: [], components: ['segmented-tab', 'underline-tab', 'segmented-tab-group', 'underline-tab-group'], groups: { 'segmented-tab-group': 'segmented-tab', 'underline-tab-group': 'underline-tab' }, innerIcon: true },
   sliders: { page: '17 Sliders', folder: 'Sliders', root: 'molecules', skip: [], components: ['slider', 'range-slider', 'slider-handle'], sliderValue: true },
 }
 const KEY = process.argv[2]
@@ -298,16 +300,33 @@ function sliderValueOf(n) {
   const at = (w) => Math.round(min + (w / T) * (max - min))
   return { min: String(min), max: String(max), value: before ? `${at(S)},${at(S + F)}` : String(at(F)) }
 }
+// ไอคอนข้างในชิ้นงานที่ไม่ได้เป็นค่าของชุด (เช่น ไอคอนในแท็บ) อ่านชื่อจากชิ้นงานไอคอนในกรอบชื่อ icon
+function innerIconOf(n) {
+  if (!PAGES[KEY].innerIcon) return {}
+  const st = [n]
+  while (st.length) { const x = st.pop(); if (x.name === 'icon' && x.type === 'FRAME') { const i = (x.children ?? []).find(c => c.type === 'INSTANCE'); if (i) return { iconName: iconName(i.componentId) } } if (x !== n && x.type === 'INSTANCE') continue; st.push(...(x.children ?? [])) }
+  return {}
+}
+// ชิ้นงานกลุ่ม (เช่น กลุ่มแท็บ) เก็บชิ้นย่อยที่มองเห็นตามลำดับไว้ใน children พร้อมค่าของแต่ละชิ้น
+function groupChildrenOf(n) {
+  const child = PAGES[KEY].groups?.[setOf(n)]
+  if (!child) return {}
+  const out = []
+  const walk = (x) => { if (x.visible === false) return; if (x !== n && x.type === 'INSTANCE' && setOf(x) === child) { out.push({ ...componentProps(x), ...innerIconOf(x) }); return } for (const c of x.children ?? []) walk(c) }
+  walk(n)
+  return { children: out }
+}
+const sampleProps = (n) => ({ ...componentProps(n), ...sliderValueOf(n), ...innerIconOf(n), ...groupChildrenOf(n) })
 function componentBlock(n, label, frame) {
   const b = n.absoluteBoundingBox
-  return { type: 'component', set: setOf(n), props: { ...componentProps(n), ...sliderValueOf(n) }, image: imageOf(n), label, width: Math.round(b.width), height: Math.round(b.height), ...(frame ? { cell: Math.round(frame.absoluteBoundingBox.width), vertical: frame.parent?.layoutMode === 'VERTICAL' } : {}) }
+  return { type: 'component', set: setOf(n), props: sampleProps(n), image: imageOf(n), label, width: Math.round(b.width), height: Math.round(b.height), ...(frame ? { cell: Math.round(frame.absoluteBoundingBox.width), vertical: frame.parent?.layoutMode === 'VERTICAL' } : {}) }
 }
 // ตัวอย่างชั้นบนสุดในกรอบ ไม่ไล่ลงไปในตัวอย่างอีกชั้น เช่นอวาตาร์ข้างในกลุ่ม
 const topSamples = (n, acc = []) => { if (n.visible === false) return acc; if (isComponentSample(n)) { acc.push(n); return acc } for (const k of n.children ?? []) { k.parent = n; topSamples(k, acc) } return acc }
 // ชุด variant ทั้งชุด เก็บตำแหน่งของแต่ละ variant ในชุด ให้หน้าเอกสารวางเรียงเหมือนไฟล์ออกแบบ
 function variantSetBlock(set, caption) {
   const o = set.absoluteBoundingBox
-  const items = set.children.filter(c => c.type === 'COMPONENT' && c.visible !== false).map(c => { c.parent = set; const b = c.absoluteBoundingBox; return { props: { ...componentProps(c), ...sliderValueOf(c) }, image: imageOf(c), x: Math.round(b.x - o.x), y: Math.round(b.y - o.y), width: Math.round(b.width), height: Math.round(b.height) } })
+  const items = set.children.filter(c => c.type === 'COMPONENT' && c.visible !== false).map(c => { c.parent = set; const b = c.absoluteBoundingBox; return { props: sampleProps(c), image: imageOf(c), x: Math.round(b.x - o.x), y: Math.round(b.y - o.y), width: Math.round(b.width), height: Math.round(b.height) } })
   return { type: 'variantSet', set: set.name, caption, width: Math.round(o.width), height: Math.round(o.height), items }
 }
 
