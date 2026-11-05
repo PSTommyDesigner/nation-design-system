@@ -18,19 +18,25 @@
           "type": "p",
           "text": "หน้า 08 Logo เก็บโลโก้ของทุกแบรนด์ในเครือ 13 แบรนด์ รวม 40 ต้นฉบับ แยกเป็น 3 ชนิดตามการใช้งาน อยู่ในเฟรม Nation Brand Logos",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:248",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "สิ่งที่หน้านี้ไม่ครอบคลุมคือโลโก้บริษัทนอก ธงประเทศ และช่องทางชำระเงิน 505 ตัว ซึ่งย้ายไปอยู่หน้า 09 Third-party Logos แล้วเมื่อ 2026-08-27 และกลุ่ม Draft ที่เป็นงานร่างอีก 19 ชิ้นที่ยังอยู่ในหน้านี้",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:248",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "หน้านี้ได้รับการยกเว้นถาวรเรื่องสีดิบ 5,958 จุด เพราะสีโลโก้เป็นอัตลักษณ์แบรนด์ที่ต้องตายตัว ห้ามผูกตัวแปรสีให้โลโก้",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:248",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "logos",
@@ -92,25 +98,33 @@
           "type": "p",
           "text": "ชนิดที่ 1 โลโก้ทรงจัตุรัส ชื่อลงท้าย 1:1 ขนาด 40 คูณ 40 ใช้ตอนพื้นที่จำกัด หรือตอนต้องการให้ทุกแบรนด์มีทรงเท่ากัน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:252",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ชนิดที่ 2 โลโก้เต็ม ชื่อลงท้าย fixed-height สูง 40 เท่ากันทุกแบรนด์ ความกว้างต่างกันตามรูปโลโก้",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:252",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ชนิดที่ 3 favicon ขนาด 48 คูณ 48 ใช้เป็นไอคอนประจำเว็บ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:252",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ครบ 13 แบรนด์ทั้งสามชนิด ยกเว้น favicon ที่มีตัวพิเศษเพิ่มคือ ams ขนาด 40 คูณ 40 ซึ่งเป็นระบบภายใน ไม่ใช่แบรนด์ในเครือ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:252",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "logos",
@@ -179,19 +193,25 @@
           "type": "p",
           "text": "โลโก้เต็มสูง 40 ทุกแบรนด์ ความกว้างแคบสุดคือ khobsanam ที่ 44 และกว้างสุดคือ the-nation ที่ 208",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:257",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ย่อขยายให้คงสัดส่วนเสมอ ถ้าต้องการขนาดอื่นให้ปรับจากความสูงแล้วปล่อยความกว้างตามไป",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:257",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ทรงจัตุรัสกับ favicon เป็นขนาดตายตัว ไม่ควรย่อให้เล็กกว่าที่กำหนด เพราะรายละเอียดในโลโก้จะอ่านไม่ออก",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:257",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "logos",
@@ -241,19 +261,25 @@
           "type": "p",
           "text": "หยิบไปใช้ด้วยการวางสำเนาของต้นฉบับเสมอ ห้ามคัดลอกภาพออกไปวางเอง เพราะจะไม่ได้อัปเดตตอนโลโก้เปลี่ยน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:261",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ห้ามเปลี่ยนสี ห้ามยืดผิดสัดส่วน ห้ามหมุน ห้ามใส่เงา และห้ามวางทับพื้นหลังที่ทำให้อ่านไม่ออก",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:261",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ห้ามผูกตัวแปรสีให้โลโก้ เพราะถ้าใครแก้ค่ากลางวันหนึ่ง สีโลโก้จะเพี้ยนทั้งเครือ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:261",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "card",
@@ -334,25 +360,33 @@
           "type": "p",
           "text": "02 Icon เก็บชุดไอคอนของระบบ คนละชุดกับโลโก้",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:265",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "รหัสแบรนด์ 3 ตัวอักษรอยู่ที่ docs/brand-codes.md ใช้ตอนตั้งชื่อ token และ theme ของแต่ละแบรนด์",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:265",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ข้อสังเกต tnews มีโลโก้ครบทั้ง 3 ชนิดในหน้านี้ แต่ยังไม่มีรหัสแบรนด์ในเอกสารรหัส ควรตัดสินว่าจะเพิ่มรหัสให้หรือไม่",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:265",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "เอกสารประจำหน้าฝั่งโค้ดอยู่ที่ docs/08-logo.md",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10235:265",
+          "stackGap": "--ntg-size-space-s1-lg"
         }
       ]
     },

@@ -17,22 +17,30 @@
           "type": "p",
           "text": "หน้านี้เก็บระบบมุมโค้งทั้งหมดของ Nation Design System",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:5",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "มุมโค้งบอกบุคลิกของแบรนด์แบบเงียบ ๆ ยิ่งโค้งมากยิ่งอ่านว่าเป็นมิตร ยิ่งคมยิ่งอ่านว่าจริงจัง",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35241",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "กติกาสั้นที่สุดของหน้านี้คือ ค่าตัวเลขโค้ดเป็นคนตัดสินโดยคำนวณจากสเกลกลาง แล้ว Figma รับค่ามาเป็นตัวแปร",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35241",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "ตัวแปรที่ผูกกับชิ้นงานได้มีชั้นเดียวคือระดับ component ตอนนี้มี 93 ตัว ครอบคลุม 10 component แบ่งเป็นของโปรดักต์ 7 ตัว และของระบบเอกสาร 3 ตัว",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35241",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "h",
@@ -43,7 +51,9 @@
           "type": "p",
           "text": "มุมโค้งไม่มีชิ้นส่วนให้ผ่า แต่มี 4 มุมที่คุมแยกกันได้",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10580:337",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
@@ -84,7 +94,9 @@
           "type": "p",
           "text": "ไม่มี variant เพราะมุมโค้งเป็นค่า ไม่ใช่ component",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10580:344",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
@@ -165,7 +177,9 @@
           "type": "p",
           "text": "มุมโค้งซ้อน กล่องนอกต้องโค้งมากกว่ากล่องใน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10580:351",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
@@ -181,17 +195,23 @@
           "type": "p",
           "text": "ชุดค่าที่ระบบอนุญาต อ่านรายละเอียดที่เอกสาร Radius Scale",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:29",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "• none 0\n• xs 2\n• sm 4\n• md 8\n• lg 12\n• xl 16\n• full 9999",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35245",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "• ค่าทั้งหมดมาจากการสำรวจของจริงในไฟล์ ไม่ใช่ตัวเลขที่ตั้งขึ้นเอง\n• 4 คือค่าที่ใช้มากที่สุดทั้งไฟล์ และ 9999 คือทรงแคปซูล",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35245",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "radii",
@@ -307,7 +327,9 @@
           "type": "p",
           "text": "มุมโค้งไม่เปลี่ยนตามสถานะ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10580:358",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
@@ -323,17 +345,23 @@
           "type": "p",
           "text": "กติกาที่ต้องถือทุกครั้งที่ใส่มุมโค้ง",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:41",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ควร ผูกตัวแปรของ component ที่ทำอยู่ เช่นการ์ดใช้ card/radius แท็กใช้ tag/radius\nควร ใช้ตัว full ของ component นั้นเมื่อต้องการทรงแคปซูล\nควร ลดมุมโค้งของกล่องที่ซ้อนข้างในตามสูตร ลูกเท่ากับแม่ลบ padding",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35248",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "ไม่ควร พิมพ์ตัวเลขมุมโค้งลงชิ้นงาน\nไม่ควร แก้ค่าที่ Figma เพราะรอบหน้าที่ build จะถูกทับ\nไม่ควร สร้างตัวแปรมุมโค้งชั้นกลางใน Figma เพราะเคยมีมาแล้ว 2 รุ่นและถูกลบทิ้งทั้งคู่\nไม่ควร เปิด corner smoothing ต้องเป็น 0 เสมอ",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35248",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "card",
@@ -356,17 +384,23 @@
           "type": "p",
           "text": "มุมโค้งไม่ใช่เรื่องความงามอย่างเดียว",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:47",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "มุมโค้งห้ามใช้เป็นสัญญาณเดียวที่บอกสถานะหรือความหมาย ต้องมีสีหรือข้อความประกอบเสมอ เพราะคนที่มองเห็นไม่ชัดแยกความต่างของมุมไม่ออก",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35251",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "ปุ่มและช่องกรอกที่โค้งมาก พื้นที่กดจริงจะเล็กลงที่มุม ให้คุมความสูงขั้นต่ำตามที่หน้า Buttons กำหนดไว้",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35251",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "h",
@@ -377,17 +411,23 @@
           "type": "p",
           "text": "รายการทั้งหมดอยู่ที่เอกสาร Shape Token",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:53",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ชื่อในโค้ดขึ้นต้นด้วย --ntg- ตามด้วยชื่อ component เช่น --ntg-card-radius-top-left",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35254",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "อยากเปลี่ยนค่า ให้แก้ที่ tokens/scale แล้วรัน npm run tokens:build ไม่ใช่แก้ที่ Figma",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35254",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "h",
@@ -398,7 +438,9 @@
           "type": "p",
           "text": "ค่าจริงและที่มาของแต่ละขั้น",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10580:365",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
@@ -414,17 +456,23 @@
           "type": "p",
           "text": "เอกสารลูกของหน้านี้ และหน้าที่ใช้ระบบนี้ต่อ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:65",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "Radius Scale สเกลกลาง 7 ขั้นในโค้ด\nRadius By Component ตารางว่า component ไหนใช้เท่าไหร่\nNested Radius สูตรของกล่องที่ซ้อนกัน\nShape Token ตารางชื่อ Figma คู่กับชื่อในโค้ด",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35257",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "• หน้าที่ผูกตัวแปรของระบบนี้อยู่จริง 12 Buttons\n• 13 Input\n• 21 Tags\n• 22 Badge\n• 25 Card\n• ส่วนกรอบตารางในเอกสาร ผูกอยู่ที่หน้า 00\n• 01\n• 02\n• 03\n• 04\n• 05\n• 06",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10059:35257",
+          "stackGap": "--ntg-size-space-s2-xs"
         }
       ]
     },
@@ -443,12 +491,16 @@
         {
           "type": "p",
           "text": "ค่าตัวเลขทั้งหมดโค้ดเป็นคนตัดสิน โดยคำนวณจากสเกลกลางที่ tokens/scale/global-scale.config.mjs แล้ว Figma รับค่าที่คำนวณเสร็จแล้วมาเป็นตัวแปร แปลว่าถ้าจะเปลี่ยนค่า ต้องแก้ที่โค้ดแล้ว build ใหม่ ไม่ใช่แก้ที่ Figma",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "9991:97",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ตัวแปรที่ผูกกับชิ้นงานได้มีชั้นเดียวคือระดับ component ไม่มีชั้นกลางใน Figma โดยตั้งใจ เพราะไฟล์นี้เคยมีมาแล้ว 2 รุ่นและถูกลบทิ้งทั้งคู่ ทิ้งของค้างไว้ 3,467 จุด (อ่านเหตุผลเต็มที่ docs/06-shape.md ข้อ 6)",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "9991:97",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h",
@@ -566,7 +618,9 @@
           "type": "p",
           "text": "ชุดค่าที่ระบบอนุญาตให้เลือกใช้ อยู่ที่ tokens/scale/global-scale.config.mjs ตัวสเกลเองไม่ได้เป็นตัวแปรใน Figma กล่องตัวอย่างด้านล่างจึงผูกกับตัวแปรของ component ที่ใช้ขั้นนั้นจริง เพื่อให้เห็นว่าขั้นไหนถูกใช้ที่ไหน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:73",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "radii",
@@ -696,7 +750,9 @@
           "type": "p",
           "text": "ทุกค่ามาจากสเกลกลางในโค้ด ไม่มีค่าไหนพิมพ์ลง Figma เอง ปุ่มเป็นตัวเดียวที่มุมโค้งขยับตามขนาด",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:81",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "table",
@@ -775,25 +831,33 @@
           "type": "p",
           "text": "กล่องที่ซ้อนอยู่ในกล่องอื่นต้องโค้งน้อยกว่ากรอบนอกเท่ากับระยะขอบ ส่วนโค้งสองชั้นจึงจะขนานกัน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:89",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กรอบนอก = กล่องใน + 8",
           "color": "--ntg-color-text-general-heading",
-          "textStyle": "label-lg"
+          "textStyle": "label-lg",
+          "stack": "9996:158",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ระยะขอบมาตรฐานระหว่างกล่องซ้อนคือ 8 กล่องในจึงเท่ากับกรอบนอกลบ 8 ถ้าติดลบให้ใช้ 0 ยกเว้นกรณีชิดขอบที่ไม่มีระยะขอบ กล่องในต้องเท่ากรอบนอก",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-sm"
+          "textStyle": "body-sm",
+          "stack": "9996:158",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ภาพประกอบหลักการ ใช้ตัวเลขใหญ่เพื่อให้เห็นความต่าง ไม่ใช่ค่าจริงของระบบ ค่าจริงดูที่ตารางด้านล่าง",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "9991:88",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "nestedPair",
@@ -824,7 +888,9 @@
           "type": "p",
           "text": "ค่าจริงในระบบ",
           "color": "--ntg-color-text-general-heading",
-          "textStyle": "label-md"
+          "textStyle": "label-md",
+          "stack": "9991:88",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "table",

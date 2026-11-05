@@ -1851,17 +1851,23 @@
         {
           "type": "p",
           "text": "•  ใช้สีผ่าน Variable / Token เสมอ ห้าม hardcode ค่า hex",
-          "textStyle": "body-sm"
+          "textStyle": "body-sm",
+          "stack": "8987:6378",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "•  เลือก tier ให้ถูก: ใช้ Semantic / Component เป็นหลัก ไม่อ้าง Primitive ตรงๆ ในงาน",
-          "textStyle": "body-sm"
+          "textStyle": "body-sm",
+          "stack": "8987:6378",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "•  Semantic มีคู่ light / dark อยู่แล้ว สลับ mode ได้อัตโนมัติ",
-          "textStyle": "body-sm"
+          "textStyle": "body-sm",
+          "stack": "8987:6378",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "table",
@@ -2068,7 +2074,9 @@
         {
           "type": "p",
           "text": "อ้างอิง: color/<ramp>/<step> เช่น color/blue/500, color/ntgds1/600",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "8988:6371",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "h",

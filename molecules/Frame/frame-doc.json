@@ -18,19 +18,25 @@
           "type": "p",
           "text": "หน้า 10 Frame เก็บกรอบสัดส่วนสำหรับวางภาพนิ่งและวิดีโอ รวม 8 ตัว แบ่งเป็นภาพนิ่ง 4 ตัวและวิดีโอ 4 ตัว ครอบคลุมสัดส่วน 16:9 4:3 1:1 และ 9:16",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:173",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ทุกตัวกว้าง 288 เท่ากัน ต่างกันที่ความสูงตามสัดส่วน ตัวเลขนี้เป็นขนาดในไฟล์ออกแบบ ตอนใช้จริงให้ยืดตามคอลัมน์กริดแล้วคงสัดส่วน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:173",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กลุ่มภาพนิ่งกับกลุ่มวิดีโอต่างกันที่ชนิดของสิ่งที่ใส่ไว้ข้างใน ไม่ได้ต่างกันที่ขนาดหรือรูปทรง",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:173",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "logos",
@@ -68,19 +74,25 @@
           "type": "p",
           "text": "แต่ละกรอบมีชั้นเดียวคือพื้นที่วางสื่อ ไม่มีขอบ ไม่มีมุมโค้ง และไม่มีระยะห่างภายใน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:177",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กลุ่มภาพนิ่งใส่ภาพตัวอย่างไว้ให้ ส่วนกลุ่มวิดีโอใส่เป็นชนิดวิดีโอ ตอนใช้งานให้แทนที่ด้วยสื่อจริง",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:177",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กรอบวิดีโอสัดส่วน 16:9 มีชั้นพื้นรองเพิ่มอีกหนึ่งชั้น ซึ่งเดิมเป็นสีที่พิมพ์ค่าเอง ผูกกับตัวแปรพื้นหลังของระบบแล้วเมื่อ 2026-08-27",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:177",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "logos",
@@ -279,25 +291,33 @@
           "type": "p",
           "text": "เลือกสัดส่วนตามชนิดของงาน ดูตารางเทียบในเอกสาร Ratio Guide",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:181",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ยืดขยายให้คงสัดส่วนเสมอ ห้ามยืดด้านเดียวจนภาพเพี้ยน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:181",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ห้ามใช้หลายสัดส่วนปนกันในกริดเดียวกัน เพราะความสูงไม่เท่ากันจะทำให้แถวเบี้ยว",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:181",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ภาพที่ใส่จะถูกครอบให้เต็มกรอบและตัดส่วนเกินทิ้ง ไม่ใช่ย่อให้เห็นทั้งภาพ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:181",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "logos",
@@ -364,19 +384,25 @@
           "type": "p",
           "text": "26 Image And Carousel ใช้กรอบเหล่านี้ประกอบเป็นชุดภาพและสไลด์",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:186",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "27 Card การ์ดข่าวใช้กรอบสัดส่วนเป็นส่วนหัวของการ์ด",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:186",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "เอกสารประกอบฝั่งโค้ดอยู่ที่ docs/10-frame.md",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10264:186",
+          "stackGap": "--ntg-size-space-s1-lg"
         }
       ]
     },

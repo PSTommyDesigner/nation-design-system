@@ -18,19 +18,25 @@
           "type": "p",
           "text": "หน้า 07 Space เก็บสเกลระยะห่างกลางที่ใช้จัดเนื้อหาในหน้า ทั้ง gap ของกลุ่มการ์ด padding ของ section และ gap ระหว่าง section",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:356",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "สิ่งที่หน้านี้ไม่ครอบคลุมคือระยะห่างภายในชิ้นงานสำเร็จรูป เช่น padding และ gap ของปุ่ม แท็ก การ์ด และช่องกรอก ของพวกนั้นเป็นกายวิภาคของชิ้นงานเอง แต่ละ component มีชุดของตัวเองที่คำนวณจากสูตร และมีเอกสาร Spec อยู่ที่หน้าของ component นั้น",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:356",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "สเกลแบ่งเป็น 5 กลุ่มตามระดับของงาน กลุ่มละ 5 ขนาด รวม 25 ค่า บวกค่า none อีกหนึ่งเป็น 26 ค่า",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:356",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h",
@@ -42,25 +48,33 @@
           "type": "p",
           "text": "ชั้น 1 สเกลกลาง 26 ค่า นิยามที่ tokens/scale/global-scale.config.mjs ชื่อ SPACE_GROUPS และเป็นตัวแปรใน Figma collection component ชื่อ size/space",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:360",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ชั้น 2 สูตรของแต่ละ component นิยามที่ tokens/scale ของ component นั้น ชั้นนี้ไม่เป็นตัวแปร เป็นเพียงวิธีคำนวณ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:360",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ชั้น 3 ค่าที่ใช้จริงของ component เช่น button/padding/left/md ชั้นนี้เป็นตัวแปรใน Figma และเป็นตัวที่ใช้ตอนตั้งระยะภายในชิ้นงาน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:360",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ทั้งชั้น 1 และชั้น 2 ใช้สูตรเดียวกันคือ base บวก ลำดับ คูณ step ต่างกันตรงที่ชั้น 1 คุมจังหวะของหน้า ส่วนชั้น 2 คุมกายวิภาคของชิ้นงาน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:360",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h3",
@@ -292,43 +306,57 @@
           "type": "p",
           "text": "กลุ่ม s1 base 2 step 2 ได้ 2 4 6 8 10",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:365",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กลุ่ม s2 base 12 step 4 ได้ 12 16 20 24 28",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:365",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กลุ่ม s3 base 32 step 8 ได้ 32 40 48 56 64",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:365",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กลุ่ม s4 base 72 step 8 ได้ 72 80 88 96 104",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:365",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กลุ่ม s5 base 112 step 8 ได้ 112 120 128 136 144",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:365",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ชื่อตัวแปรเป็น size/space/<กลุ่ม>/<ขนาด> เช่น size/space/s2/xs เท่ากับ 12 พิกเซล และมี size/space/none สำหรับค่า 0",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:365",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ดูแถบเทียบความยาวจริงของทุกค่าได้ที่เอกสาร Space Scale",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:365",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h3",
@@ -614,25 +642,33 @@
           "type": "p",
           "text": "เลือกกลุ่มตามระดับของงานก่อน แล้วค่อยเลือกขนาดในกลุ่ม",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:369",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "s1 ระยะชิดภายในกลุ่มเนื้อหา s2 ระยะระหว่างชิ้นในกลุ่ม s3 ระยะระดับ section s4 ระยะระดับหน้า s5 ระยะเปิดหน้าขนาดใหญ่",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:369",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ห้ามพิมพ์ตัวเลขระยะห่างเอง ห้ามใช้ค่าที่ไม่มีในสเกล ห้ามเอาสเกลกลางไปใช้เป็นระยะภายใน component และการเพิ่มค่าใหม่ต้องขออนุมัติก่อน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:369",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "รายละเอียดพร้อมเหตุผลอยู่ที่เอกสาร Space Usage",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:369",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "card",
@@ -668,19 +704,25 @@
           "type": "p",
           "text": "ตัวแปรใน Figma อยู่ใน collection component ชื่อขึ้นต้นด้วย size/space รวม 26 ตัว",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:375",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ฝั่งโค้ดเป็น CSS variable ชื่อขึ้นต้นด้วย --ntg-size-space อยู่ในไฟล์ tokens/output/css/variables.css",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:375",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ต้นทางของค่าคือโค้ด แก้ที่ tokens/scale แล้วรัน npm run tokens:build จากนั้นอัปเดตตัวแปรใน Figma ให้ตรงกัน ตารางจับคู่เต็มอยู่ที่เอกสาร Space Token Document",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:375",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h",
@@ -704,25 +746,33 @@
           "type": "p",
           "text": "06 Shape เก็บสเกลมุมโค้งกลางของทั้งระบบ หน้านี้ไม่เก็บมุมโค้งซ้ำ ให้ไปดูที่นั่น",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:379",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "04 Grid ร่องกริดและขอบหน้าจอใช้ฐาน 8 เดียวกับสเกลนี้",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:379",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "12 Buttons ตัวอย่างชิ้นงานที่มีชุดระยะห่างของตัวเองครบแล้ว",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:379",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ระยะห่างของแต่ละ component ดูที่เอกสาร Space ในหน้าของ component นั้น เช่น Buttons Space ในหน้า 12 Buttons ส่วนเอกสารประกอบฝั่งโค้ดอยู่ที่ docs/07-space.md",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10199:379",
+          "stackGap": "--ntg-size-space-s1-lg"
         }
       ]
     },
@@ -741,12 +791,16 @@
         {
           "type": "p",
           "text": "ระยะห่างของระบบมีสามชั้น ชั้นแรกคือสเกลกลาง 26 ค่า แบ่งเป็น 5 กลุ่ม กลุ่มละ 5 ขนาด นิยามในโค้ดที่ tokens/scale/global-scale.config.mjs และเป็นตัวแปรใน Figma ให้ผูกได้จริง ชั้นที่สองคือสูตรของแต่ละ component ที่คำนวณในโค้ด ไม่เป็นตัวแปร ชั้นที่สามคือค่าที่ใช้จริงของ component ซึ่งเป็นตัวแปรอีกชั้นหนึ่ง",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10182:183",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ต้นทางของค่าคือโค้ด ไม่ใช่ Figma แก้ค่าที่ tokens/scale แล้วรัน npm run tokens:build จากนั้นจึงอัปเดตตัวแปรใน Figma ให้ตรงกัน ห้ามแก้ค่าที่ Figma ฝ่ายเดียวเพราะรอบถัดไปที่ build ค่าจะถูกเขียนทับ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10182:183",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h",

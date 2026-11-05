@@ -520,7 +520,10 @@ function extract(doc) {
         const color = cssVarOf(n, `${doc.name} ${s.slice(0, 20)}`)
         // สไตล์ตัวอักษรของย่อหน้าอ่านจาก text style ที่ผูกจริง (เช่น body/sm ในหน้า 06) เก็บเฉพาะที่ไม่ใช่ body/xl ซึ่งเป็นค่าตั้งต้นของหน้าเอกสาร
         const textStyle = STYLE_META[n.styles?.text]?.name?.replace(/\//g, '-')
-        push({ type: 'p', text: s, ...(color && color !== '--ntg-color-text-general-text' ? { color } : {}), ...(textStyle && textStyle !== 'body-xl' ? { textStyle } : {}) })
+        // ย่อหน้าหลายชิ้นในเฟรมเดียวกัน (เช่น body ในหน้า 07) ห่างกันตาม itemSpacing ของเฟรม ไม่ใช่ระยะระหว่างบล็อกของหัวข้อ
+        const siblings = n.parent?.layoutMode === 'VERTICAL' ? n.parent.children.filter(c => c.type === 'TEXT' && c.visible !== false).length : 0
+        const stack = siblings > 1 ? { stack: n.parent.id, stackGap: spaceVar(n.parent.itemSpacing ?? 0, `${doc.name} ${s.slice(0, 20)}`) } : {}
+        push({ type: 'p', text: s, ...(color && color !== '--ntg-color-text-general-text' ? { color } : {}), ...(textStyle && textStyle !== 'body-xl' ? { textStyle } : {}), ...stack })
       }
       return
     }

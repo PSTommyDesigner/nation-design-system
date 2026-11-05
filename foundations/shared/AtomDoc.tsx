@@ -34,7 +34,7 @@ type SpaceItem = { name: string; cssVar: string; value: string; usage: string; f
 type Block =
   | { type: 'h'; text: string; sub?: string }
   | { type: 'h3'; text: string }
-  | { type: 'p'; text: string; color?: string; textStyle?: string }
+  | { type: 'p'; text: string; color?: string; textStyle?: string; stack?: string; stackGap?: string | null }
   | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[]; logos?: LogoItem[]; components?: ComponentItem[] }
   | { type: 'effects'; items: EffectItem[] }
   | { type: 'table'; head: string[]; rows: string[][]; hug?: boolean }
@@ -329,7 +329,8 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       return (
         <div className={styles.sectionHead}>
           <h2 className={`ntg-typography-section-heading-xl ${styles.heading}`}>{clean(block.text)}</h2>
-          {block.sub && clean(block.sub).split('\n').map((l, i) => <p key={i} className={`ntg-typography-body-xl ${styles.muted}`}>{l}</p>)}
+          {/* คำอธิบายใต้หัวข้อเป็นข้อความชิ้นเดียวในไฟล์ออกแบบ บรรทัดชิดกัน ไม่เว้นเพิ่ม */}
+          {block.sub && <p className={`ntg-typography-body-xl ${styles.muted} ${styles.paragraph}`}>{clean(block.sub)}</p>}
         </div>
       )
     case 'h3':
@@ -345,7 +346,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       return (
         <div className="ntg-docs-card">
           <span className="ntg-typography-title-sm">{clean(block.title)}</span>
-          <p className="ntg-typography-body-sm">{clean(block.body)}</p>
+          <p className={`ntg-typography-body-sm ${styles.paragraph}`}>{clean(block.body)}</p>
         </div>
       )
     case 'table': {
@@ -503,18 +504,32 @@ export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDo
   const items: (Block | Block[])[] = []
   // บล็อกแรกของแต่ละหัวข้อใหญ่ในไฟล์ออกแบบ (section ระยะบนล่าง 80) ห่อด้วย .sectionStart ให้ระยะระหว่างหัวข้อเท่า Figma
   const starts = new Set<number>()
-  // ชื่อแถวที่ตามด้วยแถวป้ายสีคือกลุ่มเดียวกันในไฟล์ออกแบบ (ห่าง 12 แต่ละกลุ่มห่าง 32) เช่น ตัวอย่างจริงในหน้า Interaction States
-  const swatchGroups = new Set<number>()
+  // ชื่อที่ตามด้วยเนื้อหาของมันคือกลุ่มเดียวกันในไฟล์ออกแบบ ชื่อแถวกับแถวป้ายสี (ห่าง 12 แต่ละกลุ่มห่าง 32 เช่น Interaction States)
+  // และชื่อกลุ่มกับแถวสเกลระยะ (ห่าง 8 แต่ละกลุ่มห่าง 24 เช่น Space Scale)
+  const pairGroups = new Map<number, string>()
+  const PAIRS: [Block['type'], Block['type'], string][] = [['p', 'swatches', styles.swatchGroup], ['h3', 'spaces', styles.spaceGroup]]
   for (const [bi, b] of d.blocks.entries()) {
     const last = items[items.length - 1]
-    if (b.type === 'swatches' && d.blocks[bi - 1]?.type === 'p' && !b.section && !Array.isArray(last) && last) {
+    const pair = PAIRS.find(([a, z]) => b.type === z && d.blocks[bi - 1]?.type === a)
+    if (pair && !b.section && last && !Array.isArray(last)) {
       items[items.length - 1] = [last, b]
-      swatchGroups.add(items.length - 1)
+      pairGroups.set(items.length - 1, pair[2])
+      continue
+    }
+    // ย่อหน้าที่อยู่เฟรมเดียวกันในไฟล์ออกแบบรวมเป็นกลุ่ม ห่างกันตามระยะของเฟรม
+    if (b.type === 'p' && b.stack) {
+      const prev = d.blocks[bi - 1]
+      if (prev?.type === 'p' && prev.stack === b.stack && Array.isArray(last) && pairGroups.has(items.length - 1)) { last.push(b); continue }
+      if (b.section) starts.add(items.length)
+      items.push([b])
+      pairGroups.set(items.length - 1, styles.textStack)
       continue
     }
     // แถวขนาดตัวอักษร แถวสไตล์ (Text Roles) และการ์ดฟอนต์ที่อยู่ติดกันรวมเป็นกลุ่มเดียว ระยะและกรอบเป็นของกลุ่มตามไฟล์ออกแบบ
     const group = b.type === 'card' || b.type === 'variantSet' || b.type === 'scale' || b.type === 'specimen' || b.type === 'fontFamily' || (b.type === 'grid' && !!b.wrap)
-    if (group && Array.isArray(last) && last[0].type === b.type && !b.section) last.push(b)
+    // การ์ดข้อมูล (how-to-read) กับการ์ด do / don't เป็นคนละกลุ่ม แม้อยู่ติดกัน
+    const sameKind = (x: Block) => x.type !== 'card' || b.type !== 'card' || (x.kind === 'do' || x.kind === 'dont') === (b.kind === 'do' || b.kind === 'dont')
+    if (group && Array.isArray(last) && !pairGroups.has(items.length - 1) && last[0].type === b.type && sameKind(last[0]) && !b.section) last.push(b)
     else {
       if (b.section) starts.add(items.length)
       items.push(group ? [b] : b)
@@ -529,11 +544,14 @@ export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDo
         {d.subtitle && <p className={`ntg-typography-body-xl ${styles.muted}`}>{clean(d.subtitle)}</p>}
       </header>
       {items.map((it, i) => {
-        const view = swatchGroups.has(i) && Array.isArray(it)
-          ? <div className={styles.swatchGroup}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
+        const view = pairGroups.has(i) && Array.isArray(it)
+          ? <div className={pairGroups.get(i)} style={it[0].type === 'p' && it[0].stackGap ? { gap: `var(${it[0].stackGap})` } : undefined}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
           : Array.isArray(it)
           ? it[0].type === 'grid'
             ? <GridRows items={it as Extract<Block, { type: 'grid' }>[]} />
+            : it[0].type === 'card' && it[0].kind !== 'do' && it[0].kind !== 'dont'
+            // การ์ดข้อมูลในไฟล์ออกแบบกว้างเท่ากันแถวละไม่เกิน 3 ใบ ห่าง 16 (3 ใบ FILL ในหน้า 03 และ 416 ตัดบรรทัดในหน้า Space Usage)
+            ? <div className={styles.infoCards} style={{ '--cards': Math.min(it.length, 3) } as CSSProperties}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
             : it[0].type === 'card'
             ? <DoDont>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</DoDont>
             : <div className={GROUP_CLASS[it[0].type]}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>

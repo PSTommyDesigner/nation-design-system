@@ -31,19 +31,27 @@
         },
         {
           "type": "p",
-          "text": "• เว็บทั่วไป (Version 2022): ใช้กับเว็บในเครือทั่วไป (bangkokbiznews · nationtv · komchadluek …) · เดสก์ท็อป 12 คอลัมน์"
+          "text": "• เว็บทั่วไป (Version 2022): ใช้กับเว็บในเครือทั่วไป (bangkokbiznews · nationtv · komchadluek …) · เดสก์ท็อป 12 คอลัมน์",
+          "stack": "9728:57",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "p",
-          "text": "• Nation Digital: ใช้เฉพาะโปรเจกต์ Nation Digital · เดสก์ท็อป 8 คอลัมน์ · มีขนาด Full HD (1920) เพิ่ม"
+          "text": "• Nation Digital: ใช้เฉพาะโปรเจกต์ Nation Digital · เดสก์ท็อป 8 คอลัมน์ · มีขนาด Full HD (1920) เพิ่ม",
+          "stack": "9728:57",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "p",
-          "text": "• มือถือรุ่น 2026 (v2026): งานมือถือใหม่ทุกชิ้นใช้ชุดนี้ ฐาน 8 · 4 คอลัมน์ · gutter 8 · margin 16 · จอ desktop และ tablet ยังใช้ Version 2022"
+          "text": "• มือถือรุ่น 2026 (v2026): งานมือถือใหม่ทุกชิ้นใช้ชุดนี้ ฐาน 8 · 4 คอลัมน์ · gutter 8 · margin 16 · จอ desktop และ tablet ยังใช้ Version 2022",
+          "stack": "9728:57",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "p",
-          "text": "เลือกระบบให้ตรงกับโปรเจกต์ที่ทำ แล้วใช้ค่าคอลัมน์ gutter margin ตามตารางด้านล่าง · งานเดิมที่ทำไปแล้วไม่ต้องตามแก้"
+          "text": "เลือกระบบให้ตรงกับโปรเจกต์ที่ทำ แล้วใช้ค่าคอลัมน์ gutter margin ตามตารางด้านล่าง · งานเดิมที่ทำไปแล้วไม่ต้องตามแก้",
+          "stack": "9728:57",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "h",
@@ -811,25 +819,33 @@
           "type": "p",
           "text": "ระบบเดิมใช้ฐาน 5 เฉพาะมือถือ (gutter 5 · margin 20) ทำให้คอลัมน์ลงตัวเป็น 80 พอดี แต่แลกมาด้วยการที่ทุกคนต้องจำตลอดว่าจอไหนใช้ฐานอะไร และเวลาเพิ่มชิ้นงานใหม่ต้องตัดสินค่าสองชุด",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10100:670",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "ตัวเลขที่ลงตัวเป๊ะเป็นเรื่องของแคนวาสตอนออกแบบ ไม่ใช่ของจริงบนเครื่อง เพราะเครื่องจริงกว้าง 360 · 390 · 393 · 412 ปะปนกัน และ layout มือถือจริงยืดตามสัดส่วน ที่เลือก 360 เพราะเป็นความกว้างมาตรฐานฝั่ง Android และเป็น breakpoint มือถือที่ Material ใช้ ไม่ใช่เพราะเป็นความกว้างเดียวของตลาด",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10100:670",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "ที่แคนวาส 360 ขอบ 24 ร่อง 8 ได้คอลัมน์ 72 เท่ากันครบทั้ง 4 และขอบคอลัมน์ทุกเส้น (24 · 104 · 184 · 264 · 336) เป็นพหุคูณของ 8 ทั้งหมด ความกว้างคอลัมน์ไม่ได้เก็บเป็นตัวแปร Figma คำนวณเองแบบ Stretch",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10100:670",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "ทางที่พิจารณาแล้วไม่เอา คือคงแคนวาสไว้ที่ 375 ซึ่งพิสูจน์แล้วว่าร่องฐาน 8 กับคอลัมน์เท่ากันเกิดพร้อมกันไม่ได้ ไม่ว่าตั้งขอบเท่าไหร่ · ทำขอบซ้ายขวาไม่เท่ากันเพื่อไล่ให้ลงตัว · และกลับไปใช้ร่อง 5 ซึ่งเท่ากับยกเลิกเหตุผลของรุ่นนี้ทั้งหมด",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10100:670",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "h",
@@ -840,25 +856,33 @@
           "type": "p",
           "text": "งานใหม่ทุกชิ้น มือถือใช้ v2026 ส่วน desktop กับ tablet ใช้ v2022 ตามเดิม เพราะสามจอนั้นไม่มีค่าไหนเปลี่ยน จึงไม่ทำค่าซ้ำไว้สองที่",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10100:760",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "งานที่ประกาศไปแล้ว คงใช้ v2022 ทั้งชุดต่อไป ไม่ต้องตามแก้ย้อนหลัง",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10100:760",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "โปรเจกต์ Nation Digital ใช้ชุด nation-digital ทั้งชุดตามเดิม ไม่เกี่ยวกับ v2026",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10100:760",
+          "stackGap": "--ntg-size-space-s2-xs"
         },
         {
           "type": "p",
           "text": "ในไฟล์ออกแบบให้ตั้ง layout grid ด้วย style nation-group-2026/mobile(360px) ฝั่งโค้ดใช้ตัวแปร ntg-grid-v2026-mobile",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10100:760",
+          "stackGap": "--ntg-size-space-s2-xs"
         }
       ]
     },

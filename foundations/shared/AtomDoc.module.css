@@ -149,6 +149,10 @@
 }
 
 /* ชื่อแถวกับแถวป้ายสีเป็นกลุ่มเดียว ห่าง 12 (size/space/s2/xs) กลุ่มที่ติดกันห่าง 32 (s3/xs) ตามไฟล์ออกแบบ */
+.textStack { display: flex; flex-direction: column; }
+.spaceGroup { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-lg); }
+/* การ์ดข้อมูลแถวละไม่เกิน 3 ใบ กว้างเท่ากัน ห่าง 16 ตามไฟล์ออกแบบ */
+.infoCards { display: grid; grid-template-columns: repeat(var(--cards), minmax(0, 1fr)); gap: var(--ntg-size-space-s2-sm); }
 .swatchGroup { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-xs); }
 .swatchGroup + .swatchGroup { margin-top: calc(var(--ntg-size-space-s3-xs) - var(--ntg-size-space-s2-lg)); }
 .swatchRow { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s2-lg); }
