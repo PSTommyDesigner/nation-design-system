@@ -1,0 +1,2650 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 13 Input ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- input",
+  "page": "13 Input",
+  "documents": [
+    {
+      "id": "10340:37384",
+      "name": "13 Input Documentation",
+      "title": "13 Input Documentation",
+      "subtitle": "ช่องกรอก 3 ชุด 72 แบบ 3 ขนาด 8 สถานะ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "หน้านี้คืออะไร",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "หน้า 13 Input เก็บช่องกรอกทั้งหมดของระบบ 3 ชุด รวม 72 แบบ ทุกชุดมีโครงเดียวกันคือ 3 ขนาดคูณ 8 สถานะ\nช่องกรอกเป็นของที่วางในแถวเดียวกับปุ่มบ่อยที่สุด ความสูงจึงใช้สูตรร่วมกับปุ่ม แก้ที่เดียวขยับทั้งคู่\nช่องกรอกเลขบัตรไม่มีชุดของตัวเอง ให้ใช้ช่องกรอกทั่วไปแล้วเปิดช่องเสียบหน้าสลับเป็นโลโก้บัตร",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "Placeholder",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "ชื่อผู้ติดต่อ",
+                "show-hint": false,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "text-field ช่องบรรทัดเดียว",
+              "width": 380,
+              "height": 96,
+              "cell": 405,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-area",
+              "props": {
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "label": "Label",
+                "show-hint": true,
+                "show-label": true,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "text-area ช่องหลายบรรทัด",
+              "width": 380,
+              "height": 146,
+              "cell": 405,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "tag-field",
+              "props": {
+                "placeholder": "เพิ่ม",
+                "label": "หัวข้อข่าว",
+                "tag-2": true,
+                "show-input-text": true,
+                "tag-1": true,
+                "tag-3": false,
+                "tag-4": false,
+                "show-hint": false,
+                "hint": "This is a hint text to help user.",
+                "tag-5": false,
+                "show-label": true,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "tag-field ช่องแท็ก",
+              "width": 380,
+              "height": 96,
+              "cell": 405,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "ช่องกรอกประกอบจากอะไร",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "เป็นกองแนวตั้ง 3 ชั้น คือแถวป้ายกำกับ กล่องกรอก และข้อความช่วย ห่างกันชั้นละ 4\nแถวป้ายกำกับมีป้ายกับดอกจันบังคับกรอก เปิดปิดแยกกันได้\nกล่องกรอกมีช่องเสียบหน้าและหลังอย่างละ 2 ช่อง คือไอคอนกับเส้นคั่น ซ่อนไว้เป็นค่าเริ่มต้น\nระยะขอบซ้ายขวาประกาศครั้งเดียวบนกล่อง ไม่มีกรอบซ้อนมาเติมระยะอีกชั้นเหมือนรุ่นก่อน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "ใช้สำหรับส่งการแจ้งเตือนเท่านั้น",
+                "placeholder": "name@nationgroup.co.th",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "อีเมลที่ใช้ติดต่อ",
+                "show-hint": true,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "text-field ขนาด md เปิดป้ายกำกับและข้อความช่วยครบทั้ง 3 ชั้น",
+              "width": 420,
+              "height": 96,
+              "cell": 1280,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "คุณสมบัติของแต่ละชุด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ทั้ง 3 ชุดมีแกนเดียวกัน คือขนาด 3 ระดับคูณสถานะ 8 แบบ ได้ชุดละ 24 แบบ\nของที่เปิดปิดได้แต่ไม่คูณจำนวนแบบ คือป้ายกำกับ ข้อความช่วย ดอกจันบังคับกรอก และช่องเสียบทั้ง 4 ช่อง\nข้อความในช่องเป็นคุณสมบัติข้อความ ไม่ใช่ตัวเลือกแบบ เพราะการมีค่าหรือไม่มีค่าไม่ใช่สไตล์",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "Placeholder",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "Label",
+                "show-hint": false,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "text-field  24 แบบ",
+              "width": 380,
+              "height": 96,
+              "cell": 405,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-area",
+              "props": {
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "label": "Label",
+                "show-hint": true,
+                "show-label": true,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "text-area  24 แบบ",
+              "width": 380,
+              "height": 146,
+              "cell": 405,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "tag-field",
+              "props": {
+                "placeholder": "เพิ่ม",
+                "label": "Label",
+                "tag-2": true,
+                "show-input-text": true,
+                "tag-1": true,
+                "tag-3": false,
+                "tag-4": false,
+                "show-hint": false,
+                "hint": "This is a hint text to help user.",
+                "tag-5": false,
+                "show-label": true,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "tag-field  24 แบบ",
+              "width": 380,
+              "height": 96,
+              "cell": 405,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "ความสำคัญบอกด้วยดอกจันและลำดับการวาง ไม่ใช่ด้วยระดับของช่อง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ช่องกรอกไม่มีแกน primary secondary tertiary แบบปุ่ม เพราะทุกช่องในฟอร์มผู้ใช้ต้องอ่านและกรอกอยู่ดี ไม่ได้แข่งกันเรียกความสนใจ วิธีบอกว่าช่องไหนสำคัญกว่าจึงใช้ดอกจันของช่องที่บังคับกรอก ลำดับการวางจากบนลงล่าง และขนาดที่ใหญ่ขึ้นสำหรับช่องหลักของหน้า ตัวอย่างข้างล่างคือฟอร์มเดียวกันสามระดับ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "leading-icon": false,
+                "required": true,
+                "placeholder": "พิมพ์พาดหัวไม่เกิน 120 ตัวอักษร",
+                "trailing-divider": false,
+                "hint": "This is a hint text to help user.",
+                "leading-divider": false,
+                "trailing-icon": false,
+                "label": "พาดหัวข่าว",
+                "show-hint": false,
+                "show-label": true,
+                "size": "lg",
+                "state": "default"
+              },
+              "label": "ช่องหลักของหน้า  ใช้ lg และเปิดดอกจัน  เป็นข้อมูลที่ทั้งฟอร์มนี้มีอยู่เพื่อเก็บ",
+              "width": 560,
+              "height": 104,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": true,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "name@nationgroup.co.th",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "อีเมลที่ใช้ติดต่อ",
+                "show-hint": false,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "ช่องบังคับกรอกทั่วไป  ใช้ md และเปิดดอกจัน",
+              "width": 560,
+              "height": 96,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "ไม่บังคับ",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "เบอร์ติดต่อสำรอง",
+                "show-hint": false,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "ช่องไม่บังคับ  ใช้ md ไม่มีดอกจัน  ผู้ใช้ข้ามได้",
+              "width": 560,
+              "height": 96,
+              "cell": 1280,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "3 ขนาด และเหตุผลที่ไม่มี xs กับ xl",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "sm 32, md 40, lg 48 ใช้สูตรเดียวกับความสูงปุ่ม คือเริ่มที่ 24 เพิ่มทีละ 8\nไม่เปิด xs 24 เพราะเป็นเส้นขั้นต่ำพอดีของเกณฑ์การเข้าถึง ไม่มีที่เหลือให้พลาด\nไม่เปิด xl 56 เพราะไม่มีระบบไหนในตลาดใช้ช่องกรอกสูงเกิน 48 บนเดสก์ท็อป\nฟอร์มที่ออกแบบเพื่อมือถือให้ใช้ lg เป็นค่าเริ่มต้น เพราะผ่านเกณฑ์พื้นที่แตะของทั้งสองแพลตฟอร์ม",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "trailing-icon": false,
+                "placeholder": "Placeholder",
+                "label": "ขนาด sm",
+                "show-hint": false,
+                "leading-icon": false,
+                "show-label": true,
+                "size": "sm",
+                "state": "default"
+              },
+              "label": "sm  สูง 32",
+              "width": 380,
+              "height": 88,
+              "cell": 405,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "Placeholder",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "ขนาด md",
+                "show-hint": false,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "md  สูง 40",
+              "width": 380,
+              "height": 96,
+              "cell": 405,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "leading-icon": false,
+                "required": false,
+                "placeholder": "Placeholder",
+                "trailing-divider": false,
+                "hint": "This is a hint text to help user.",
+                "leading-divider": false,
+                "trailing-icon": false,
+                "label": "ขนาด lg",
+                "show-hint": false,
+                "show-label": true,
+                "size": "lg",
+                "state": "default"
+              },
+              "label": "lg  สูง 48",
+              "width": 380,
+              "height": 104,
+              "cell": 405,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "8 สถานะ และ read-only ต่างจาก disabled อย่างไร",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "default, hover, focused, disabled, read-only, error, error-hover, error-focused\nread-only ต่างจาก disabled ตรงที่ค่ายังถูกส่งไปกับฟอร์ม คัดลอกได้ โฟกัสได้ และโปรแกรมอ่านหน้าจออ่านให้ฟัง\nสถานะความผิดพลาดซ้อนกับสถานะการโต้ตอบได้จริง จึงมี error-hover และ error-focused แยกออกมา",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "Placeholder",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "อีเมล",
+                "show-hint": true,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "default  ยังไม่มีการโต้ตอบ",
+              "width": 300,
+              "height": 96,
+              "cell": 300,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "required": false,
+                "show-hint": true,
+                "hint": "This is a hint text to help user.",
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "leading-icon": false,
+                "show-label": true,
+                "placeholder": "Placeholder",
+                "label": "อีเมล",
+                "size": "md",
+                "state": "hover"
+              },
+              "label": "hover  เมาส์ลอยอยู่เหนือช่อง",
+              "width": 300,
+              "height": 96,
+              "cell": 300,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "placeholder": "Placeholder",
+                "label": "อีเมล",
+                "leading-icon": false,
+                "show-hint": true,
+                "show-label": true,
+                "size": "md",
+                "state": "focused"
+              },
+              "label": "focused  กำลังพิมพ์อยู่ในช่องนี้",
+              "width": 300,
+              "height": 96,
+              "cell": 300,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "show-label": true,
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "placeholder": "Placeholder",
+                "label": "อีเมล",
+                "trailing-icon": false,
+                "leading-icon": false,
+                "show-hint": true,
+                "size": "md",
+                "state": "disabled"
+              },
+              "label": "disabled  กรอกไม่ได้ และข้ามการโฟกัส",
+              "width": 300,
+              "height": 96,
+              "cell": 300,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "leading-icon": false,
+                "required": false,
+                "placeholder": "Placeholder",
+                "label": "อีเมล",
+                "show-hint": true,
+                "hint": "This is a hint text to help user.",
+                "show-label": true,
+                "size": "md",
+                "state": "read-only"
+              },
+              "label": "read-only  อ่านได้ คัดลอกได้ แต่แก้ไม่ได้",
+              "width": 300,
+              "height": 96,
+              "cell": 300,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-icon": false,
+                "placeholder": "Placeholder",
+                "trailing-icon": false,
+                "label": "อีเมล",
+                "hint": "This is a hint text to help user.",
+                "leading-divider": false,
+                "show-hint": true,
+                "required": false,
+                "show-label": true,
+                "size": "md",
+                "state": "error"
+              },
+              "label": "error  ค่าที่กรอกไม่ผ่านการตรวจ",
+              "width": 300,
+              "height": 96,
+              "cell": 300,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "hint": "This is a hint text to help user.",
+                "show-label": true,
+                "placeholder": "Placeholder",
+                "show-hint": true,
+                "required": false,
+                "label": "อีเมล",
+                "size": "md",
+                "state": "error-hover"
+              },
+              "label": "error-hover  ช่องที่ผิดและเมาส์ลอยอยู่",
+              "width": 300,
+              "height": 96,
+              "cell": 300,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "Placeholder",
+                "label": "อีเมล",
+                "trailing-divider": false,
+                "show-hint": true,
+                "leading-icon": false,
+                "show-label": true,
+                "size": "md",
+                "state": "error-focused"
+              },
+              "label": "error-focused  ช่องที่ผิดและกำลังแก้อยู่",
+              "width": 300,
+              "height": 96,
+              "cell": 300,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Usage ควรและไม่ควร",
+          "sub": "ควรและไม่ควร",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ควรใส่ป้ายกำกับเสมอ อย่าใช้ข้อความตัวอย่างในช่องแทนป้ายกำกับ เพราะมันหายไปทันทีที่ผู้ใช้เริ่มพิมพ์\nควรทำเครื่องหมายฝั่งบังคับกรอกด้วยดอกจัน และบอกไว้ต้นฟอร์มว่าดอกจันหมายถึงอะไร\nไม่ควรบอกความผิดพลาดด้วยสีแดงอย่างเดียว ต้องมีข้อความบอกว่าผิดตรงไหนและแก้อย่างไร\nไม่ควรเอาข้อมูลที่ผู้ใช้ต้องอ่านไปใส่ช่อง disabled ให้ใช้ read-only แทน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "มีป้ายกำกับอยู่เหนือช่อง ผู้ใช้ยังเห็นว่ากรอกอะไรอยู่แม้พิมพ์ไปแล้ว",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "name@nationgroup.co.th",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "อีเมลที่ใช้ติดต่อ",
+                "show-hint": false,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 560,
+              "height": 96
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "ใช้ข้อความตัวอย่างแทนป้ายกำกับ พอผู้ใช้เริ่มพิมพ์ ข้อความนี้จะหายไปทันที",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "This is a hint text to help user.",
+                "placeholder": "อีเมลที่ใช้ติดต่อ",
+                "leading-icon": false,
+                "show-label": false,
+                "label": "Label",
+                "show-hint": false,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 560,
+              "height": 96
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "ข้อความผิดพลาดบอกวิธีแก้ ผู้ใช้รู้ว่าต้องทำอะไรต่อ",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-divider": false,
+                "trailing-icon": false,
+                "required": false,
+                "hint": "ต้องมีเครื่องหมาย at และชื่อโดเมน เช่น name@nationgroup.co.th",
+                "placeholder": "Placeholder",
+                "leading-icon": false,
+                "show-label": true,
+                "label": "อีเมลที่ใช้ติดต่อ",
+                "show-hint": true,
+                "size": "md",
+                "state": "default"
+              },
+              "label": "",
+              "width": 560,
+              "height": 96
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "บอกแค่ว่าผิด ไม่ได้บอกว่าผิดตรงไหนหรือแก้อย่างไร",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "text-field",
+              "props": {
+                "trailing-divider": false,
+                "leading-icon": false,
+                "placeholder": "Placeholder",
+                "trailing-icon": false,
+                "label": "อีเมลที่ใช้ติดต่อ",
+                "hint": "ข้อมูลไม่ถูกต้อง",
+                "leading-divider": false,
+                "show-hint": true,
+                "required": false,
+                "show-label": true,
+                "size": "md",
+                "state": "error"
+              },
+              "label": "",
+              "width": 560,
+              "height": 96
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "ข้อกำหนดการเข้าถึง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ป้ายกำกับต้องผูกกับช่องกรอกจริงในโค้ด ไม่ใช่แค่วางไว้ใกล้กัน\nข้อความช่วยและข้อความผิดพลาดต้องผูกกับช่องด้วย aria-describedby\nการบอกความผิดพลาดด้วยสีอย่างเดียวเป็นข้อที่เกณฑ์การเข้าถึงระบุว่าไม่ผ่าน ต้องมีข้อความกำกับเสมอ\nช่องที่เก็บข้อมูลของผู้ใช้ควรใส่ autocomplete ให้ตรงชนิด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Design Tokens",
+          "sub": "ตัวแปรและ token ของช่องกรอก",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• รูปแบบชื่อใน Figma  input/<ส่วน>/<ขนาด> เช่น input/height/md และ input/padding/left/md\n• รูปแบบชื่อในโค้ด  --ntg-space-input-<ส่วน>-<ขนาด> และ --ntg-input-radius-<มุม>-<ขนาด>\n• ความสูงใช้สเกลกลางร่วมกับปุ่ม แก้ที่ CONTROL_HEIGHT แล้วขยับทั้งคู่\n• ตารางจับคู่ชื่อเต็มอยู่ในเอกสาร Input Token\n• สูตรต้นทางที่ tokens/scale/input.mjs และเอกสารในเครื่องที่ docs/13-input.md",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "ค่าจริงต่อขนาด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• ความสูง  sm 32, md 40, lg 48 มาจากสเกลความสูงตัวควบคุมกลาง\n• ระยะขอบซ้ายขวา  10, 12, 14 ประกาศค่าเดียวบนกล่องเดียว ห้ามมีกรอบซ้อนใส่ระยะเพิ่ม\n• ระยะขอบบนล่างของช่องบรรทัดเดียว  เป็น 0 ความสูงตรึงด้วย height แล้วจัดกึ่งกลางแนวตั้ง\n• ช่องแท็ก  ระยะขอบ 5, 7, 9 เท่ากันทั้ง 4 ด้าน คำนวณจาก (ความสูงช่อง ลบความสูงแท็กขนาดเดียวกัน) หารสอง ช่องไฟระหว่างแท็ก 4, 8, 8\n• มุมโค้ง  7, 8, 9 ผันตามขนาดเหมือนปุ่ม\n• ระยะแนวตั้งระหว่างป้ายกำกับ ช่องกรอก และข้อความช่วย  4 เท่ากันทุกขนาด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้อง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "12 Buttons ใช้สูตรความสูงตัวเดียวกับช่องกรอก แก้ที่เดียวขยับทั้งคู่\n09 Third-party Logos เป็นที่มาของโลโก้บัตร เวลาทำช่องกรอกเลขบัตรให้หยิบจากหน้านั้น\nเอกสารฝั่งโค้ดอยู่ที่ docs/13-input.md\nงานวิจัยที่ใช้ตัดสินอยู่ที่ docs/research/input-component.md",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10340:37452",
+      "name": "Input Token",
+      "title": "Input Token",
+      "subtitle": "จับคู่ชื่อที่เห็นใน Figma กับชื่อที่ใช้ในโค้ด สำหรับช่องกรอกทั้ง 3 ชุด",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อที่ทีมออกแบบเห็นในแผงของ Figma กับชื่อที่นักพัฒนาเรียกใช้ในโค้ด เพื่อให้สองฝั่งพูดถึงของชิ้นเดียวกันด้วยชื่อที่ตรงกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ครอบคลุมสี ตัวอักษร และเอฟเฟกต์ที่ช่องกรอกใช้ ส่วนขนาดและระยะห่างมีตารางของตัวเองอยู่ที่เอกสาร Input Space เพราะมีสูตรกำกับที่ต้องอธิบายแยก",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "p",
+          "text": "สีทุกตัวในตารางนี้ผูกเป็นตัวแปรแล้วในไฟล์ออกแบบ และต้นฉบับไม่เหลือสีที่ผูกตัวแปรไม่ได้เลยสักจุด ยกเว้นตอนหยิบโลโก้บัตรจากหน้า 09 มาใส่ในช่องกรอก ซึ่งเป็นสีอัตลักษณ์ของแบรนด์ภายนอกที่ต้องคงค่าไว้",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "p",
+          "text": "ถ้าต้องเพิ่มสีหรือสถานะใหม่ ให้เพิ่มที่ชั้นตัวแปรก่อนเสมอ แล้วค่อยผูกเข้ากับชิ้นงาน ห้ามใส่ค่าลงไปตรง ๆ ที่ชิ้นงาน",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": ""
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": ""
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "color/border/general/primary\nตัวแปรสี",
+              "--ntg-color-border-general-primary\nตัวแปร CSS",
+              "เทาอ่อน",
+              "เส้นขอบสถานะปกติ"
+            ],
+            [
+              "color/border/general/primary-hover\nตัวแปรสี",
+              "--ntg-color-border-general-primary-hover\nตัวแปร CSS",
+              "เทาเข้มขึ้น",
+              "เส้นขอบตอนเอาเมาส์ชี้"
+            ],
+            [
+              "color/border/brand/solid\nตัวแปรสี",
+              "--ntg-color-border-brand-solid\nตัวแปร CSS",
+              "น้ำเงินแบรนด์",
+              "เส้นขอบตอนโฟกัส"
+            ],
+            [
+              "color/border/general/secondary\nตัวแปรสี",
+              "--ntg-color-border-general-secondary\nตัวแปร CSS",
+              "เทาอ่อนกว่าปกติ",
+              "เส้นขอบและพื้นของสถานะ read-only"
+            ],
+            [
+              "color/border/general/disabled-subtle\nตัวแปรสี",
+              "--ntg-color-border-general-disabled-subtle\nตัวแปร CSS",
+              "เทาจาง",
+              "เส้นขอบสถานะ disabled"
+            ],
+            [
+              "color/system/error\nตัวแปรสี",
+              "--ntg-color-system-error\nตัวแปร CSS",
+              "แดง",
+              "เส้นขอบสถานะผิดพลาด และสีของดอกจันบังคับกรอก"
+            ],
+            [
+              "color/border/system/error-solid\nตัวแปรสี",
+              "--ntg-color-border-system-error-solid\nตัวแปร CSS",
+              "แดงเข้ม",
+              "เส้นขอบตอนผิดพลาดพร้อมโฟกัส"
+            ],
+            [
+              "body/sm\ntext style",
+              ".ntg-typography-body-sm\nคลาส CSS",
+              "14px",
+              "ป้ายกำกับ ข้อความช่วย และดอกจัน"
+            ],
+            [
+              "body/md\ntext style",
+              ".ntg-typography-body-md\nคลาส CSS",
+              "16px",
+              "ข้อความในช่องกรอก"
+            ],
+            [
+              "shadows/bottom/xs และ focused-ring/brand และ focused-ring/error\neffect style",
+              "ยังไม่มีชื่อในโค้ด\nยังไม่มีในโค้ด",
+              "เอฟเฟกต์",
+              "เงาตอนเอาเมาส์ชี้ และวงแหวนโฟกัสทั้งแบบปกติและแบบผิดพลาด"
+            ],
+            [
+              "input/ ทุกตัว รวม 65 ตัว\nตัวแปรตัวเลข",
+              "--ntg-space-input-* และ --ntg-input-radius-*\nตัวแปร CSS",
+              "ดูที่ Input Space",
+              "ขนาดและระยะห่างทั้งหมด มีสูตรกำกับ จึงแยกไปอธิบายที่เอกสาร Input Space"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• แหล่งความจริงของสีอยู่ที่ Figma แก้ที่ตัวแปรแล้วส่งออกด้วย Token Press ทับไฟล์ tokens/tokens.json\n• แหล่งความจริงของขนาดและระยะห่างอยู่ที่โค้ด แก้ที่ tokens/scale/input.mjs แล้วรัน npm run tokens:build\n• ห้ามใส่สีหรือขนาดลงไปตรง ๆ ที่ชิ้นงาน ต้องผูกตัวแปรเสมอ\n• ยกเว้นโลโก้ผู้ให้บริการบัตร ซึ่งเป็นสีอัตลักษณ์ของแบรนด์ภายนอก ห้ามผูกตัวแปร",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "10340:37490",
+      "name": "Input Guide",
+      "title": "Input Guide",
+      "subtitle": "เลือกชุดและขนาดของช่องกรอกอย่างไร และเรื่องที่ตัดสินไปแล้ว",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เลือกชุดไหน",
+          "sub": "ทั้ง 3 ชุดมีขนาดและสถานะเหมือนกันหมด ต่างกันที่สิ่งที่อยู่ในกล่องและตรรกะเบื้องหลัง",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชุด",
+            "ใช้ตอนไหน",
+            "ข้อควรระวัง",
+            "แบบ"
+          ],
+          "rows": [
+            [
+              "text-field",
+              "ช่องกรอกทั่วไป เป็นตัวเลือกแรกเสมอ",
+              "ถ้าต้องการไอคอนหรือปุ่มในช่อง ให้เปิดช่องเสียบ ไม่ใช่สร้างชุดใหม่",
+              "24"
+            ],
+            [
+              "text-area",
+              "ข้อความยาวหลายบรรทัด เช่นคำอธิบายหรือความเห็น",
+              "ความสูงต่ำสุด 3 บรรทัด ห้ามตั้งความสูงเป็นตัวเลขตายตัว",
+              "24"
+            ],
+            [
+              "tag-field",
+              "เลือกได้หลายค่าและแสดงเป็นแท็กในช่อง",
+              "แท็กต้องลบทีละอันได้ ถ้าไม่ต้องการลบ ให้ใช้ข้อความธรรมดาแทน",
+              "24"
+            ],
+            [
+              "ช่องกรอกเลขบัตร",
+              "ไม่มีชุดของตัวเอง ใช้ text-field แล้วเปิด leading-icon สลับเป็นโลโก้บัตรจากหน้า 09",
+              "โลโก้บัตรเป็นสีแบรนด์ภายนอก ห้ามผูกตัวแปรสี",
+              "ไม่มี"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "เลือกขนาดจากบริบท",
+          "sub": "ทั้ง 3 ขนาดใช้สูตรความสูงเดียวกับปุ่ม วางในแถวเดียวกันแล้วสูงเท่ากันพอดี",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ขนาด",
+            "ความสูง",
+            "ใช้ตอนไหน",
+            "หมายเหตุ"
+          ],
+          "rows": [
+            [
+              "sm",
+              "32",
+              "แถวกรองในตาราง หรือแถบเครื่องมือที่แน่น",
+              "เล็กสุดที่ยังแตะได้สบายบนเดสก์ท็อป"
+            ],
+            [
+              "md",
+              "40",
+              "ฟอร์มทั่วไป เป็นค่าเริ่มต้น",
+              "ผ่านเกณฑ์การเข้าถึงระดับ AA"
+            ],
+            [
+              "lg",
+              "48",
+              "ฟอร์มที่ออกแบบเพื่อมือถือ",
+              "ผ่านเกณฑ์พื้นที่แตะของทั้งสองแพลตฟอร์ม"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "เรื่องที่ตัดสินไปแล้ว",
+          "sub": "บันทึกไว้เพื่อไม่ให้ถูกยกกลับมาถกซ้ำ เหตุผลเต็มอยู่ที่ docs/research/input-component.md",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• เลิกทรงขีดล่าง ตัดสิน 2026-09-01 ชุดเดิม 63 แบบถูกลบทิ้งเพราะไม่มีที่ไหนใช้เลยสักจุด\n• งานวิจัยของ Material เองพบว่าคนไม่รู้ว่าเส้นใต้กดได้ และเข้าใจผิดว่าเป็นเส้นคั่น จึงเปลี่ยนไปใช้กล่องที่มีขอบ\n• ความสูงใช้สูตรร่วมกับปุ่ม ต่างจากอวาตาร์ที่ตัดสินว่าไม่รวมสูตร เพราะอวาตาร์ไม่ได้วางในแถวเดียวกับปุ่ม\n• สถานะยุบเป็นคุณสมบัติเดียว 8 ค่า จากเดิมเป็นตัวเปิดปิดแยก 3 ตัวที่เปิดพร้อมกันได้ทั้งที่เป็นไปไม่ได้จริง\n• แท็กกับช่องบัตรแยกออกเป็นชุดของตัวเอง เพราะตลาดไม่ได้ใส่ไว้ในช่องกรอกหลัก\n• ดอกจันทำเครื่องหมายฝั่งบังคับกรอก ไม่ใช่ฝั่งไม่บังคับ\n• ลบชุดช่องกรอกเลขบัตรทิ้ง ตัดสิน 2026-09-01 เพราะโครงเหมือนช่องกรอกทั่วไปที่เปิดช่องเสียบหน้าทุกประการ ความต่างอยู่ในโค้ดไม่ได้อยู่ในไฟล์ออกแบบ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "10340:282",
+      "name": "Input Components",
+      "title": "Input Components",
+      "subtitle": "ช่องกรอกทั้ง 3 ชุด รวม 72 แบบ ทุกชุดมี 3 ขนาดและ 8 สถานะเท่ากัน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "text-field",
+          "sub": "ช่องกรอกบรรทัดเดียว ใช้เป็นค่าเริ่มต้นของทุกฟอร์ม เปิดปิดป้ายกำกับ ข้อความช่วย ดอกจันบังคับกรอก และช่องเสียบหน้าหลังได้โดยไม่เพิ่มจำนวนแบบ",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "text-field",
+          "caption": "text-field  24 แบบ",
+          "width": 1120,
+          "height": 1192,
+          "items": [
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 40,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 400,
+              "y": 40,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 760,
+              "y": 40,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 40,
+              "y": 168,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "sm",
+                "state": "error"
+              },
+              "x": 400,
+              "y": 168,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "sm",
+                "state": "error-hover"
+              },
+              "x": 760,
+              "y": 168,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "sm",
+                "state": "error-focused"
+              },
+              "x": 40,
+              "y": 296,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "sm",
+                "state": "read-only"
+              },
+              "x": 400,
+              "y": 296,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "md",
+                "state": "default"
+              },
+              "x": 760,
+              "y": 296,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 40,
+              "y": 432,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 400,
+              "y": 432,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 760,
+              "y": 432,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "md",
+                "state": "error"
+              },
+              "x": 40,
+              "y": 568,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "md",
+                "state": "error-hover"
+              },
+              "x": 400,
+              "y": 568,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "md",
+                "state": "error-focused"
+              },
+              "x": 760,
+              "y": 568,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "md",
+                "state": "read-only"
+              },
+              "x": 40,
+              "y": 704,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 400,
+              "y": 704,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 760,
+              "y": 704,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 40,
+              "y": 848,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 400,
+              "y": 848,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "lg",
+                "state": "error"
+              },
+              "x": 760,
+              "y": 848,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "lg",
+                "state": "error-hover"
+              },
+              "x": 40,
+              "y": 992,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "lg",
+                "state": "error-focused"
+              },
+              "x": 400,
+              "y": 992,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "required": false,
+                "leading-icon": false,
+                "trailing-icon": false,
+                "leading-divider": false,
+                "trailing-divider": false,
+                "size": "lg",
+                "state": "read-only"
+              },
+              "x": 760,
+              "y": 992,
+              "width": 320,
+              "height": 104
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "text-area",
+          "sub": "ช่องกรอกหลายบรรทัด ความสูงต่ำสุด 3 บรรทัด ระยะขอบซ้ายขวาเท่ากับช่องบรรทัดเดียว",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "text-area",
+          "caption": "",
+          "width": 1120,
+          "height": 1592,
+          "items": [
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 40,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "error"
+              },
+              "x": 400,
+              "y": 40,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 760,
+              "y": 40,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "error-hover"
+              },
+              "x": 40,
+              "y": 226,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 400,
+              "y": 226,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "error-focused"
+              },
+              "x": 760,
+              "y": 226,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 40,
+              "y": 412,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "read-only"
+              },
+              "x": 400,
+              "y": 412,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 760,
+              "y": 412,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "error"
+              },
+              "x": 40,
+              "y": 598,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 400,
+              "y": 598,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "error-hover"
+              },
+              "x": 760,
+              "y": 598,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 40,
+              "y": 784,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "error-focused"
+              },
+              "x": 400,
+              "y": 784,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 760,
+              "y": 784,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "read-only"
+              },
+              "x": 40,
+              "y": 970,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 400,
+              "y": 970,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "error"
+              },
+              "x": 760,
+              "y": 970,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 40,
+              "y": 1156,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "error-hover"
+              },
+              "x": 400,
+              "y": 1156,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 760,
+              "y": 1156,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "error-focused"
+              },
+              "x": 40,
+              "y": 1342,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 400,
+              "y": 1342,
+              "width": 320,
+              "height": 146
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "label": "Label",
+                "placeholder": "Placeholder",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "read-only"
+              },
+              "x": 760,
+              "y": 1342,
+              "width": 320,
+              "height": 146
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "text-area  24 แบบ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "tag-field",
+          "sub": "ช่องกรอกที่มีแท็กอยู่ข้างใน แยกออกมาเป็นชุดของตัวเองเพราะมีตรรกะการลบแท็กทีละอัน",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "tag-field",
+          "caption": "tag-field  24 แบบ",
+          "width": 1120,
+          "height": 1192,
+          "items": [
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 40,
+              "y": 40,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 400,
+              "y": 40,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 760,
+              "y": 40,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 40,
+              "y": 168,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "error"
+              },
+              "x": 400,
+              "y": 168,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "error-hover"
+              },
+              "x": 760,
+              "y": 168,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "error-focused"
+              },
+              "x": 40,
+              "y": 296,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "sm",
+                "state": "read-only"
+              },
+              "x": 400,
+              "y": 296,
+              "width": 320,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "default"
+              },
+              "x": 760,
+              "y": 296,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 40,
+              "y": 432,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 400,
+              "y": 432,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 760,
+              "y": 432,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "error"
+              },
+              "x": 40,
+              "y": 568,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "error-hover"
+              },
+              "x": 400,
+              "y": 568,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "error-focused"
+              },
+              "x": 760,
+              "y": 568,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "md",
+                "state": "read-only"
+              },
+              "x": 40,
+              "y": 704,
+              "width": 320,
+              "height": 96
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 400,
+              "y": 704,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 760,
+              "y": 704,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 40,
+              "y": 848,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 400,
+              "y": 848,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "error"
+              },
+              "x": 760,
+              "y": 848,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "error-hover"
+              },
+              "x": 40,
+              "y": 992,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "error-focused"
+              },
+              "x": 400,
+              "y": 992,
+              "width": 320,
+              "height": 104
+            },
+            {
+              "props": {
+                "show-label": true,
+                "show-hint": true,
+                "tag-1": true,
+                "tag-2": true,
+                "tag-3": false,
+                "tag-4": false,
+                "tag-5": false,
+                "show-input-text": true,
+                "label": "Label",
+                "placeholder": "เพิ่ม",
+                "hint": "This is a hint text to help user.",
+                "size": "lg",
+                "state": "read-only"
+              },
+              "x": 760,
+              "y": 992,
+              "width": 320,
+              "height": 104
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10340:37498",
+      "name": "Input Space",
+      "title": "Input Space",
+      "subtitle": "ขนาดและระยะห่างของช่องกรอก สูตร ค่า และตัวแปรที่ผูกไว้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "ช่องกรอกใช้สูตรความสูงร่วมกับปุ่ม เพราะสองอย่างนี้วางในแถวเดียวกันจริง ทั้งคู่อ้าง CONTROL_HEIGHT ตัวเดียวกันที่ tokens/scale/global-scale.config.mjs",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สูตรของช่องกรอกอยู่ที่ tokens/scale/input.mjs มีสูตรครบทุกมิติ ทั้งความสูง ระยะขอบ ระยะห่างภายใน ขนาดไอคอน มุมโค้ง และระยะขอบของช่องหลายบรรทัด",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "p",
+          "text": "ช่องกรอกเปิดใช้แค่ 3 ขนาดจาก 5 ขนาดของสเกลกลาง ไม่เปิด xs เพราะ 24 คือเส้นขั้นต่ำพอดีของเกณฑ์การเข้าถึง และไม่เปิด xl เพราะไม่มีระบบไหนใช้ช่องกรอกสูงเกิน 48\nระยะขอบบนล่างของช่องแท็กไม่มีสูตร เพราะเป็นผลลัพธ์จากความสูงของแท็กตัวจริงในหน้า 21 Tags ซึ่งไม่ได้เรียงเป็นขั้นเท่ากัน",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "h",
+          "text": "สูตร base และ step",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "sm",
+            "md",
+            "lg"
+          ],
+          "rows": [
+            [
+              "ความสูง",
+              "24",
+              "8",
+              "32",
+              "40",
+              "48"
+            ],
+            [
+              "ระยะขอบซ้ายขวา",
+              "8",
+              "2",
+              "10",
+              "12",
+              "14"
+            ],
+            [
+              "ระยะห่างภายใน",
+              "2",
+              "2",
+              "4",
+              "6",
+              "8"
+            ],
+            [
+              "ไอคอนในช่อง",
+              "16",
+              "2",
+              "18",
+              "20",
+              "22"
+            ],
+            [
+              "มุมโค้ง",
+              "6",
+              "1",
+              "7",
+              "8",
+              "9"
+            ],
+            [
+              "เส้นขอบ",
+              "1",
+              "คงที่",
+              "1",
+              "1",
+              "1"
+            ],
+            [
+              "ระยะขอบบนล่างของช่องหลายบรรทัด",
+              "4",
+              "2",
+              "6",
+              "8",
+              "10"
+            ],
+            [
+              "ระยะขอบช่องแท็ก ทั้ง 4 ด้าน",
+              "ไม่มี",
+              "ไม่มี",
+              "5",
+              "7",
+              "9"
+            ],
+            [
+              "ช่องไฟในกล่องช่องแท็ก",
+              "ไม่มี",
+              "ไม่มี",
+              "5",
+              "7",
+              "9"
+            ],
+            [
+              "ช่องไฟระหว่างแท็ก",
+              "ไม่มี",
+              "ไม่มี",
+              "4",
+              "8",
+              "8"
+            ],
+            [
+              "ระยะแนวตั้งของกอง",
+              "4",
+              "คงที่",
+              "4",
+              "4",
+              "4"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปรที่ผูกได้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อตัวแปรใน Figma",
+            "💻 ชื่อในโค้ด",
+            "ค่า",
+            "ใช้กับส่วนไหนของ component"
+          ],
+          "rows": [
+            [
+              "input/height/sm .. lg",
+              "--ntg-space-input-height-*",
+              "32, 40, 48",
+              "ความสูงกล่องช่องกรอก"
+            ],
+            [
+              "input/padding/left และ right/sm .. lg",
+              "--ntg-space-input-padding-*",
+              "10, 12, 14",
+              "ระยะขอบซ้ายขวาของ text-field และ text-area ส่วน tag-field ใช้ตัวแปรของตัวเอง"
+            ],
+            [
+              "input/gap/sm .. lg",
+              "--ntg-space-input-gap-*",
+              "4, 6, 8",
+              "ระยะระหว่างไอคอนกับข้อความ"
+            ],
+            [
+              "input/icon/sm .. lg",
+              "--ntg-space-input-icon-*",
+              "18, 20, 22",
+              "ไอคอนในช่องกรอก"
+            ],
+            [
+              "input/border",
+              "--ntg-space-input-border",
+              "1",
+              "เส้นขอบของกล่อง"
+            ],
+            [
+              "input/stack-gap",
+              "--ntg-space-input-stack-gap",
+              "4",
+              "ระยะระหว่างป้ายกำกับ ช่องกรอก และข้อความช่วย"
+            ],
+            [
+              "input/label-gap",
+              "--ntg-input-label-gap",
+              "2",
+              "ช่องไฟระหว่างป้ายชื่อกับดอกจันบังคับกรอก"
+            ],
+            [
+              "input/textarea/padding/top และ bottom/sm .. lg",
+              "--ntg-space-input-textarea-padding-*",
+              "6, 8, 10",
+              "ระยะขอบบนล่างของช่องหลายบรรทัด"
+            ],
+            [
+              "input/tag/padding/top และ bottom/sm .. lg",
+              "--ntg-space-input-tag-padding-top-* และ -bottom-*",
+              "5, 7, 9",
+              "ระยะขอบบนล่างของกล่องช่องแท็ก คำนวณจาก (ความสูงช่อง ลบความสูงแท็กขนาดเดียวกัน) หารสอง"
+            ],
+            [
+              "input/tag/padding/left และ right/sm .. lg",
+              "--ntg-space-input-tag-padding-left-* และ -right-*",
+              "5, 7, 9",
+              "ระยะขอบซ้ายขวาของกล่องช่องแท็ก ค่าเดียวกับบนล่าง ใช้ตัวแปรคนละชุดกับ text-field"
+            ],
+            [
+              "input/tag/gap/sm .. lg",
+              "--ntg-space-input-tag-gap-*",
+              "5, 7, 9",
+              "ช่องไฟในกล่องช่องแท็ก ระหว่างกลุ่มแท็ก เส้นคั่น และปุ่มเพิ่ม เท่าระยะขอบของกล่อง"
+            ],
+            [
+              "input/tag/tag-gap/sm .. lg",
+              "--ntg-space-input-tag-tag-gap-*",
+              "4, 8, 8",
+              "ช่องไฟระหว่างแท็ก ทั้งแนวนอนและตอนขึ้นบรรทัดใหม่"
+            ],
+            [
+              "input/padding/top และ bottom/sm .. lg",
+              "--ntg-space-input-padding-*",
+              "0 ทุกขนาด",
+              "ระยะขอบบนล่างของช่องบรรทัดเดียว เป็น 0 เพราะความสูงถูกตรึงไว้แล้วจัดกึ่งกลางแนวตั้ง"
+            ],
+            [
+              "input/radius/มุม/sm .. lg",
+              "--ntg-input-radius-*",
+              "7, 8, 9",
+              "มุมโค้งรายมุม ผันตามขนาดเหมือนปุ่ม"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา",
+          "sub": "• ต้นทางของค่าอยู่ที่โค้ด แก้ที่ tokens/scale/input.mjs แล้วรัน npm run tokens:build\n• ความสูงมาจาก CONTROL_HEIGHT ร่วมกับปุ่ม ห้ามพิมพ์ base หรือ step ของความสูงเองในไฟล์ช่องกรอก\n• ห้ามใส่กรอบซ้อนแล้วเติมระยะขอบอีกชั้น ระยะขอบซ้ายขวาต้องประกาศครั้งเดียวบนกล่องเดียว\n• text-field กับ text-area ใช้ระยะขอบซ้ายขวาชุดเดียวกัน ส่วน tag-field ใช้ตัวแปรชุดของตัวเองทั้งระยะขอบและช่องไฟ\n• ความสูงต่ำสุดของช่องหลายบรรทัดคิดเป็น 3 บรรทัด ไม่ใช่ตัวเลขตายตัว\n• ช่องแท็กสูงตามจำนวนแท็ก ความสูงที่ประกาศคือความสูงต่ำสุด\n• ช่องแท็กใส่แท็กขนาดชื่อเดียวกับช่อง ความสูงของแท็กเป็นของหน้า 21 Tags ไม่ทำเป็นตัวแปรที่นี่ ฝั่งโค้ดดึงความสูงแท็กจากไฟล์สูตรของแท็กตรง ๆ ถ้าแท็กขยับ ระยะขอบคำนวณตามเอง แต่ต้องตามแก้ตัวแปรใน Figma\n• ช่องกรอกไม่มีขนาด xs และ xl โดยตั้งใจ ถ้าจำเป็นต้องเปิดเพิ่ม สูตรรองรับอยู่แล้ว\n• ฟอร์มที่ออกแบบเพื่อมือถือให้ใช้ lg 48 เป็นค่าเริ่มต้น เพราะผ่านเกณฑ์พื้นที่แตะของทั้งสองแพลตฟอร์ม",
+          "section": true
+        }
+      ]
+    }
+  ]
+}

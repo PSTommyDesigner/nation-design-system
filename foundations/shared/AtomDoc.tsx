@@ -340,8 +340,8 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
         ? <h3 className={`ntg-typography-section-heading-sm ${styles.heading}`}>{block.text}</h3>
         : <p className={`ntg-typography-${block.textStyle ?? 'body-xl'} ${styles.paragraph}`} style={block.color ? { color: `var(${block.color})` } : undefined}>{clean(block.text)}</p>
     case 'card':
-      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Do>
-      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Dont>
+      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <span key={i} className={styles.sampleBox} style={{ width: it.width }}><Sample set={it.set} props={it.props} image={it.image} /></span>)}</Do>
+      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <span key={i} className={styles.sampleBox} style={{ width: it.width }}><Sample set={it.set} props={it.props} image={it.image} /></span>)}</Dont>
       return (
         <div className="ntg-docs-card">
           <span className="ntg-typography-title-sm">{clean(block.title)}</span>

@@ -52,6 +52,7 @@ const PAGES = {
   avatar: { page: '11 Avatar', folder: 'Avatar', root: 'molecules', skip: [], components: ['avatar-image', 'avatar-icon', 'avatar-monogram', 'avatar-number', 'avatar-label', 'avatar-group', '_avatar-online-indicator'] },
   // ชุดปุ่มใช้ชื่อเดียวกันทุกตระกูล ตระกูลจึงมาจากเอกสารที่ชุดนั้นอยู่ (families: ชื่อเอกสาร -> ตระกูลในโค้ด)
   buttons: { page: '12 Buttons', folder: 'Buttons', root: 'molecules', skip: [], components: ['semi-rounded-button', 'pill-button', 'semi-rounded-icon-button', 'circular-icon-button', 'link-button', 'link-icon-button'], families: { 'Brand Button': 'brand', 'Error Button': 'error', 'Neutral Button': 'neutral', 'Alpha Button': 'alpha' } },
+  input: { page: '13 Input', folder: 'Input', root: 'molecules', skip: [], components: ['text-field', 'text-area', 'tag-field'] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }

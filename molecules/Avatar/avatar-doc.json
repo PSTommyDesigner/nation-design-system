@@ -17,17 +17,20 @@
         {
           "type": "p",
           "text": "หน้า 11 Avatar เก็บอวาตาร์ทั้งหมดของระบบ 7 ชุด รวม 118 แบบ แบ่งเป็นอวาตาร์เดี่ยว 4 ชนิด อวาตาร์พร้อมชื่อ กลุ่มอวาตาร์ และชิ้นส่วนฐานอีก 1 ชุด",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "อวาตาร์เดี่ยวทั้ง 4 ชนิดมีโครงเหมือนกันหมด ต่างกันแค่สิ่งที่อยู่ข้างใน และมีคุณสมบัติชุดเดียวกันคือขนาด สถานะ และจุดบอกสถานะออนไลน์",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ชุดที่ชื่อขึ้นต้นด้วยขีดล่างเป็นชิ้นส่วนภายใน ไม่ได้เอาไปวางใช้ตรง ๆ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "components",
@@ -103,17 +106,20 @@
         {
           "type": "p",
           "text": "ตัวอวาตาร์เป็นวงกลมที่ข้างในเป็นรูป ไอคอน ตัวย่อ หรือตัวเลข",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "จุดบอกสถานะออนไลน์เป็นชิ้นส่วนแยก วางทับมุมล่างขวา เปิดปิดได้ทุกชนิดทุกขนาด",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ปุ่มเพิ่มคนในกลุ่มใช้ circular-icon-button ตระกูล Neutral ระดับ Tertiary จากหน้า 12 Buttons ไม่มีปุ่มเฉพาะกิจของอวาตาร์แล้ว",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "components",
@@ -163,17 +169,20 @@
         {
           "type": "p",
           "text": "อวาตาร์เดี่ยว 4 ชนิด มีขนาด 5 ระดับ สถานะ 2 แบบ และเปิดปิดจุดบอกสถานะได้ รวมชนิดละ 20 แบบ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "อวาตาร์พร้อมชื่อ มี 4 ขนาด สลับแสดงอีเมลได้ และเลือกได้ว่าจะมีจุดบอกสถานะไหม รวม 16 แบบ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "กลุ่มอวาตาร์ มี 3 ขนาด แสดงหน้าคนได้สูงสุด 5 คน เลือกได้ว่าจะมีปุ่มเพิ่มคนและตัวบอกจำนวนที่เหลือไหม รวม 12 แบบ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "components",
@@ -291,7 +300,8 @@
         {
           "type": "p",
           "text": "อวาตาร์ไม่มีแกน primary secondary tertiary แบบปุ่ม เพราะเป็นตัวแทนของคนหนึ่งคน ไม่ได้แข่งกับอวาตาร์ตัวอื่นในหน้า วิธีบอกความสำคัญคือเลือกขนาดให้เหมาะกับบริบทที่วาง ตัวอย่างข้างล่างคือคนคนเดียวกันที่ปรากฏใน 4 ที่ในระบบ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "components",
@@ -380,22 +390,26 @@
         {
           "type": "p",
           "text": "อวาตาร์มี 5 ขนาด คือ 24 32 40 48 และ 56 ซึ่งเป็นสูตรเริ่ม 24 เพิ่มทีละ 8",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "สูตรนี้ตรงกับความสูงปุ่มเป๊ะทุกขนาด แต่ตัดสินแล้วว่าไม่รวมสูตรกัน อวาตาร์มีตัวแปรของตัวเอง 23 ตัวตั้งแต่ 2026-09-01",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "จุดบอกสถานะออนไลน์มี 5 ขนาด เริ่ม 6 เพิ่มทีละ 2 คู่กับอวาตาร์ครบทั้ง 5 ขนาด",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "รายละเอียดทั้งหมดอยู่ที่เอกสาร Avatar Space",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "components",
@@ -482,7 +496,8 @@
         {
           "type": "p",
           "text": "มีแค่ default กับ hover เพราะอวาตาร์เป็นของที่แสดงตัวตน ไม่ใช่ตัวควบคุมที่กดได้ด้วยตัวเอง\nไม่มี focused เพราะสิ่งที่รับโฟกัสคือของที่ครอบมันอยู่ เช่นแถวรายชื่อหรือปุ่ม ไม่ใช่ตัวอวาตาร์\nไม่มี disabled เพราะการปิดใช้งานเกิดที่ของที่ครอบเช่นกัน ตัวอวาตาร์เองไม่มีสถานะกดไม่ได้\nถ้าอวาตาร์อยู่ในของที่กดได้ ให้ของที่ครอบเป็นตัวแสดงสถานะ แล้วอวาตาร์ใช้ hover ตามไปด้วย",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "components",
@@ -529,22 +544,26 @@
         {
           "type": "p",
           "text": "ถ้ามีรูปจริงใช้รูป ถ้าไม่มีรูปแต่รู้ชื่อใช้ตัวย่อ ถ้าไม่มีทั้งคู่ใช้ไอคอน",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ตัวเลขใช้แทนจำนวนเท่านั้น ห้ามใช้แทนตัวคน",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "เปิดจุดบอกสถานะออนไลน์เมื่อระบบรู้สถานะจริงเท่านั้น ถ้าไม่รู้ให้ปิด อย่าแสดงเป็นออฟไลน์",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "รายละเอียดพร้อมข้อควรระวังรายชนิดอยู่ที่เอกสาร Avatar Guide",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "card",
@@ -647,7 +666,8 @@
         {
           "type": "p",
           "text": "อวาตาร์ที่เป็นรูปต้องมีข้อความแทนรูปที่เป็นชื่อคน ไม่ใช่คำว่ารูปโปรไฟล์\nถ้าอวาตาร์อยู่คู่กับชื่อที่อ่านได้อยู่แล้ว ให้ตั้งรูปเป็นของประดับ ไม่ต้องให้โปรแกรมอ่านซ้ำ\nจุดบอกสถานะออนไลน์สื่อด้วยสีอย่างเดียว ต้องมีข้อความกำกับให้โปรแกรมอ่านหน้าจอเสมอ\nตัวย่อภาษาไทยยังไม่มีกติกา ต้องตัดสินก่อนใช้จริง ระหว่างนี้ให้ใช้ไอคอนแทน\nอวาตาร์ที่กดได้ต้องมีพื้นที่กดอย่างน้อย 44 ให้ของที่ครอบขยายพื้นที่ ไม่ใช่ขยายตัวอวาตาร์",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -658,7 +678,8 @@
         {
           "type": "p",
           "text": "• รูปแบบชื่อใน Figma  avatar/<ส่วน>/<ขนาด> เช่น avatar/size/md และ avatar/indicator/md\n• รูปแบบชื่อในโค้ด  --ntg-space-avatar-<ส่วน>-<ขนาด> และ --ntg-avatar-radius-full\n• วงแหวนใช้ตัวแปรเดียว avatar/ring เท่ากันทุกขนาด วาดล้นออกนอกกล่องไม่กินที่ข้างใน\n• สูตรต้นทางที่ tokens/scale/avatar.mjs และเอกสารในเครื่องที่ docs/11-avatar.md\n• รายละเอียดระยะห่างทั้งหมดอยู่ในเอกสาร Avatar Space",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -669,7 +690,8 @@
         {
           "type": "p",
           "text": "• ขนาดกล่อง  24, 32, 40, 48, 56 เริ่มที่ 24 เพิ่มทีละ 8\n• ไอคอนข้างใน  16, 20, 24, 28, 32 ได้ระยะเว้นขอบ 4, 6, 8, 10, 12 จากการจัดกึ่งกลาง\n• จุดบอกสถานะ  6, 8, 10, 12, 14 เริ่มที่ 6 เพิ่มทีละ 2\n• วงแหวน  2 เท่ากันทุกขนาด วาด stroke แบบ OUTSIDE จึงไม่ลดขนาดรูป\n• ระยะซ้อนของกลุ่ม  ติดลบ 4, 8, 12 คิดเป็น 17, 25, 30 เปอร์เซ็นต์ของขนาดอวาตาร์\n• มุมโค้ง  ใช้ค่าเต็มวง ไม่แตกรายมุมเพราะเป็นวงกลมล้วน",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -680,17 +702,20 @@
         {
           "type": "p",
           "text": "12 Buttons ความสูงปุ่มบังเอิญตรงกับขนาดอวาตาร์ แต่ไม่ได้ใช้สูตรร่วมกัน และเป็นที่มาของปุ่มเพิ่มคนในกลุ่ม",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "10 Frame กรอบสัดส่วนสำหรับภาพขนาดใหญ่ ต่างจากอวาตาร์ที่เป็นวงกลมขนาดเล็ก",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "เอกสารประกอบฝั่งโค้ดอยู่ที่ docs/11-avatar.md",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         }
       ]
     },
@@ -756,12 +781,14 @@
         {
           "type": "p",
           "text": "เลือกขนาดจากบริบท xs 24 ใช้ในแถวรายการที่แน่น sm 32 ใช้ในรายการทั่วไป md 40 ใช้ในการ์ดและแถบนำทาง lg 48 ใช้ในหน้าโปรไฟล์ย่อ xl 56 ใช้เป็นรูปหลักของหน้าโปรไฟล์",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "จุดบอกสถานะออนไลน์เป็นตัวเลือก เปิดเมื่อระบบรู้สถานะจริงเท่านั้น ถ้าไม่รู้ให้ปิด อย่าแสดงเป็นออฟไลน์ เพราะคนอ่านจะเข้าใจว่าคนนั้นไม่อยู่",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         }
       ]
     },
