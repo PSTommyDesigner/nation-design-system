@@ -511,7 +511,8 @@
         {
           "type": "p",
           "text": "ความหนาตามหน้าที่ หนา: หัวหลัก (display page-heading overline) กลาง: หัวรอง/ป้าย/ปุ่ม (section-heading title label pullquote byline read-time) บาง: เนื้อความและข้อมูลประกอบ (body article meta ที่เหลือ)",
-          "color": "--ntg-color-text-general-label"
+          "color": "--ntg-color-text-general-label",
+          "textStyle": "body-sm"
         },
         {
           "type": "h",

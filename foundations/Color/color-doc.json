@@ -1850,15 +1850,18 @@
         },
         {
           "type": "p",
-          "text": "•  ใช้สีผ่าน Variable / Token เสมอ ห้าม hardcode ค่า hex"
+          "text": "•  ใช้สีผ่าน Variable / Token เสมอ ห้าม hardcode ค่า hex",
+          "textStyle": "body-sm"
         },
         {
           "type": "p",
-          "text": "•  เลือก tier ให้ถูก: ใช้ Semantic / Component เป็นหลัก ไม่อ้าง Primitive ตรงๆ ในงาน"
+          "text": "•  เลือก tier ให้ถูก: ใช้ Semantic / Component เป็นหลัก ไม่อ้าง Primitive ตรงๆ ในงาน",
+          "textStyle": "body-sm"
         },
         {
           "type": "p",
-          "text": "•  Semantic มีคู่ light / dark อยู่แล้ว สลับ mode ได้อัตโนมัติ"
+          "text": "•  Semantic มีคู่ light / dark อยู่แล้ว สลับ mode ได้อัตโนมัติ",
+          "textStyle": "body-sm"
         },
         {
           "type": "table",
@@ -5225,7 +5228,8 @@
         {
           "type": "p",
           "text": "Gray",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -5365,7 +5369,8 @@
         {
           "type": "p",
           "text": "Bamboo",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -5479,7 +5484,8 @@
         {
           "type": "p",
           "text": "Green",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -5593,7 +5599,8 @@
         {
           "type": "p",
           "text": "Cyan",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -5707,7 +5714,8 @@
         {
           "type": "p",
           "text": "Blue",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -5821,7 +5829,8 @@
         {
           "type": "p",
           "text": "Purple",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -5935,7 +5944,8 @@
         {
           "type": "p",
           "text": "Fuchsia",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -6049,7 +6059,8 @@
         {
           "type": "p",
           "text": "Pink",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -6163,7 +6174,8 @@
         {
           "type": "p",
           "text": "Rose",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -6277,7 +6289,8 @@
         {
           "type": "p",
           "text": "Red",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -6391,7 +6404,8 @@
         {
           "type": "p",
           "text": "Orange",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -6505,7 +6519,8 @@
         {
           "type": "p",
           "text": "Yellow",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -6619,7 +6634,8 @@
         {
           "type": "p",
           "text": "Gold",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -6746,7 +6762,8 @@
         {
           "type": "p",
           "text": "Brand",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",
@@ -7016,7 +7033,8 @@
         {
           "type": "p",
           "text": "AMS",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "section-heading-sm"
         },
         {
           "type": "colorTable",

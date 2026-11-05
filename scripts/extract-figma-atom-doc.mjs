@@ -517,7 +517,9 @@ function extract(doc) {
         if (last?.type === 'h' && n.parent?.type === 'FRAME' && n.parent === headParent && fs_ === 20 && !last.sub) { last.sub = s; return }
         // สีข้อความอ่านจากตัวแปรที่ผูกจริง เก็บเฉพาะที่ไม่ใช่สีเนื้อหาปกติ เช่น supporting-text ในหน้า Interaction States
         const color = cssVarOf(n, `${doc.name} ${s.slice(0, 20)}`)
-        push({ type: 'p', text: s, ...(color && color !== '--ntg-color-text-general-text' ? { color } : {}) })
+        // สไตล์ตัวอักษรของย่อหน้าอ่านจาก text style ที่ผูกจริง (เช่น body/sm ในหน้า 06) เก็บเฉพาะที่ไม่ใช่ body/xl ซึ่งเป็นค่าตั้งต้นของหน้าเอกสาร
+        const textStyle = STYLE_META[n.styles?.text]?.name?.replace(/\//g, '-')
+        push({ type: 'p', text: s, ...(color && color !== '--ntg-color-text-general-text' ? { color } : {}), ...(textStyle && textStyle !== 'body-xl' ? { textStyle } : {}) })
       }
       return
     }
@@ -544,6 +546,9 @@ for (const f of frames) {
   const family = PAGES[KEY].families?.[f.name]
   if (family) findAll(res.nodes[f.id].document, x => x.type === 'COMPONENT_SET').forEach(x => { SET_FAMILY[x.id] = family })
 }
+// ชื่อ text style ที่ REST ส่งมาพร้อม nodes ใช้แปลงสไตล์ของย่อหน้าเป็นคลาส .ntg-typography-*
+const STYLE_META = {}
+for (const f of frames) Object.assign(STYLE_META, res.nodes[f.id].styles ?? {})
 const documents = frames.map(f => extract(res.nodes[f.id].document))
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true })

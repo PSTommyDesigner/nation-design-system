@@ -305,15 +305,17 @@
 }
 .effectBlur { width: 100%; height: 100%; background: var(--ntg-color-background-alpha-white-30); }
 
-/* กล่องมุมโค้ง (06 Shape) ขนาดเท่าไฟล์ออกแบบ 240x120 ยืมสเกลระยะ เพราะยังไม่มี token ขนาดของเอกสาร */
-.radiusRow { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s2-md); padding: var(--ntg-size-space-s2-lg) 0; }
-.radiusItem { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-lg); width: calc(var(--ntg-size-space-s5-sm) * 2); }
+/* กล่องมุมโค้ง (06 Shape) ขนาดเท่าไฟล์ออกแบบ 240x120 ยืมสเกลระยะ เพราะยังไม่มี token ขนาดของเอกสาร
+   ชิ้นห่างกัน 20 แถวเดียวไม่ตัดบรรทัด (ทุกชุดมีไม่เกิน 5 ชิ้น) กว้างสูงสุด 240 และย่อได้ เพื่อให้อยู่แถวเดียวแม้แถบเลื่อนกินที่ เงา shadows/center/sm ตามไฟล์ออกแบบ */
+.radiusRow { display: flex; gap: var(--ntg-size-space-s2-md); }
+.radiusItem { display: flex; flex: 0 1 calc(var(--ntg-size-space-s5-sm) * 2); flex-direction: column; gap: var(--ntg-size-space-s1-lg); min-width: 0; }
 .radiusBox {
   box-sizing: border-box;
-  width: calc(var(--ntg-size-space-s5-sm) * 2);
+  width: 100%;
   height: var(--ntg-size-space-s5-sm);
   border: var(--ntg-divider-thickness) solid var(--ntg-color-border-general-primary);
   background: var(--ntg-color-background-general-primary);
+  box-shadow: var(--ntg-shadows-center-sm);
 }
 .warn { color: var(--ntg-color-text-system-error); }
 
@@ -344,3 +346,5 @@
 .variantItem { position: absolute; display: flex; }
 .sampleColumn { display: flex; flex-direction: column; align-items: flex-start; gap: var(--ntg-size-space-s2-lg); }
 .sampleGroup { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ntg-size-space-s1-lg); }
+/* กรอบของตัวอย่างหนึ่งชิ้นกว้างเท่าชิ้นงานในไฟล์ออกแบบ ช่องกรอกที่ยืดเต็มกรอบจึงกว้างเท่าแบบ ส่วนปุ่มและอวาตาร์ยังกว้างตามตัวเอง */
+.sampleBox { display: flex; max-width: 100%; }

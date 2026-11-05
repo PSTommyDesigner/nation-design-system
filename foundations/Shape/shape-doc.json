@@ -16,19 +16,23 @@
         {
           "type": "p",
           "text": "หน้านี้เก็บระบบมุมโค้งทั้งหมดของ Nation Design System",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "มุมโค้งบอกบุคลิกของแบรนด์แบบเงียบ ๆ ยิ่งโค้งมากยิ่งอ่านว่าเป็นมิตร ยิ่งคมยิ่งอ่านว่าจริงจัง"
+          "text": "มุมโค้งบอกบุคลิกของแบรนด์แบบเงียบ ๆ ยิ่งโค้งมากยิ่งอ่านว่าเป็นมิตร ยิ่งคมยิ่งอ่านว่าจริงจัง",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "กติกาสั้นที่สุดของหน้านี้คือ ค่าตัวเลขโค้ดเป็นคนตัดสินโดยคำนวณจากสเกลกลาง แล้ว Figma รับค่ามาเป็นตัวแปร"
+          "text": "กติกาสั้นที่สุดของหน้านี้คือ ค่าตัวเลขโค้ดเป็นคนตัดสินโดยคำนวณจากสเกลกลาง แล้ว Figma รับค่ามาเป็นตัวแปร",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "ตัวแปรที่ผูกกับชิ้นงานได้มีชั้นเดียวคือระดับ component ตอนนี้มี 93 ตัว ครอบคลุม 10 component แบ่งเป็นของโปรดักต์ 7 ตัว และของระบบเอกสาร 3 ตัว"
+          "text": "ตัวแปรที่ผูกกับชิ้นงานได้มีชั้นเดียวคือระดับ component ตอนนี้มี 93 ตัว ครอบคลุม 10 component แบ่งเป็นของโปรดักต์ 7 ตัว และของระบบเอกสาร 3 ตัว",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -38,11 +42,13 @@
         {
           "type": "p",
           "text": "มุมโค้งไม่มีชิ้นส่วนให้ผ่า แต่มี 4 มุมที่คุมแยกกันได้",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "section นี้ไม่มีภาพประกอบ เพราะมุมโค้งไม่ใช่ของที่มีชิ้นส่วนอยู่ข้างใน มันคือค่าตัวเลขค่าเดียวที่ใส่ให้กล่อง สิ่งที่ใกล้เคียงกับกายวิภาคที่สุดคือ ทุกกล่องมี 4 มุมที่ตั้งค่าแยกกันได้ ตัวแปรของเราจึงแตกเป็น top-left top-right bottom-right bottom-left ทุกตัว แม้ปกติจะใส่ค่าเท่ากันทั้งสี่มุม การแยกไว้ทำให้ทำของอย่างแท็บที่โค้งเฉพาะมุมบนได้โดยไม่ต้องพิมพ์ค่าดิบ ดูของจริงที่เอกสาร Nested Radius บนหน้านี้"
+          "text": "section นี้ไม่มีภาพประกอบ เพราะมุมโค้งไม่ใช่ของที่มีชิ้นส่วนอยู่ข้างใน มันคือค่าตัวเลขค่าเดียวที่ใส่ให้กล่อง สิ่งที่ใกล้เคียงกับกายวิภาคที่สุดคือ ทุกกล่องมี 4 มุมที่ตั้งค่าแยกกันได้ ตัวแปรของเราจึงแตกเป็น top-left top-right bottom-right bottom-left ทุกตัว แม้ปกติจะใส่ค่าเท่ากันทั้งสี่มุม การแยกไว้ทำให้ทำของอย่างแท็บที่โค้งเฉพาะมุมบนได้โดยไม่ต้องพิมพ์ค่าดิบ ดูของจริงที่เอกสาร Nested Radius บนหน้านี้",
+          "textStyle": "body-md"
         },
         {
           "type": "radii",
@@ -77,11 +83,13 @@
         {
           "type": "p",
           "text": "ไม่มี variant เพราะมุมโค้งเป็นค่า ไม่ใช่ component",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "section นี้ไม่มีภาพประกอบ เพราะหน้านี้ไม่มี component ของตัวเองสักตัว มุมโค้งเป็นค่าที่ component อื่นหยิบไปใช้ ไม่ใช่ของที่วางบนหน้าจอได้เอง สิ่งที่ทำหน้าที่แทน variant คือขั้นในสเกลกลาง 7 ขั้น ซึ่งอยู่ใน section Sizes ส่วนภาพของจริงว่าแต่ละ component ใช้ขั้นไหน อยู่ที่เอกสาร Radius By Component บนหน้านี้"
+          "text": "section นี้ไม่มีภาพประกอบ เพราะหน้านี้ไม่มี component ของตัวเองสักตัว มุมโค้งเป็นค่าที่ component อื่นหยิบไปใช้ ไม่ใช่ของที่วางบนหน้าจอได้เอง สิ่งที่ทำหน้าที่แทน variant คือขั้นในสเกลกลาง 7 ขั้น ซึ่งอยู่ใน section Sizes ส่วนภาพของจริงว่าแต่ละ component ใช้ขั้นไหน อยู่ที่เอกสาร Radius By Component บนหน้านี้",
+          "textStyle": "body-md"
         },
         {
           "type": "radii",
@@ -156,11 +164,13 @@
         {
           "type": "p",
           "text": "มุมโค้งซ้อน กล่องนอกต้องโค้งมากกว่ากล่องใน",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "section นี้ไม่มีภาพประกอบ แต่มีกติกาที่ต้องรู้ เมื่อกล่องหนึ่งอยู่ในอีกกล่องหนึ่ง มุมโค้งของกล่องนอกต้องมากกว่ากล่องใน เท่ากับระยะขอบในที่คั่นอยู่ ถ้าใช้ค่าเท่ากันทั้งสองชั้น กล่องในจะดูเหมือนล้นออกมาที่มุม สูตรและตัวอย่างของจริงอยู่ที่เอกสาร Nested Radius บนหน้านี้"
+          "text": "section นี้ไม่มีภาพประกอบ แต่มีกติกาที่ต้องรู้ เมื่อกล่องหนึ่งอยู่ในอีกกล่องหนึ่ง มุมโค้งของกล่องนอกต้องมากกว่ากล่องใน เท่ากับระยะขอบในที่คั่นอยู่ ถ้าใช้ค่าเท่ากันทั้งสองชั้น กล่องในจะดูเหมือนล้นออกมาที่มุม สูตรและตัวอย่างของจริงอยู่ที่เอกสาร Nested Radius บนหน้านี้",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -170,15 +180,18 @@
         {
           "type": "p",
           "text": "ชุดค่าที่ระบบอนุญาต อ่านรายละเอียดที่เอกสาร Radius Scale",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "• none 0\n• xs 2\n• sm 4\n• md 8\n• lg 12\n• xl 16\n• full 9999"
+          "text": "• none 0\n• xs 2\n• sm 4\n• md 8\n• lg 12\n• xl 16\n• full 9999",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "• ค่าทั้งหมดมาจากการสำรวจของจริงในไฟล์ ไม่ใช่ตัวเลขที่ตั้งขึ้นเอง\n• 4 คือค่าที่ใช้มากที่สุดทั้งไฟล์ และ 9999 คือทรงแคปซูล"
+          "text": "• ค่าทั้งหมดมาจากการสำรวจของจริงในไฟล์ ไม่ใช่ตัวเลขที่ตั้งขึ้นเอง\n• 4 คือค่าที่ใช้มากที่สุดทั้งไฟล์ และ 9999 คือทรงแคปซูล",
+          "textStyle": "body-md"
         },
         {
           "type": "radii",
@@ -293,11 +306,13 @@
         {
           "type": "p",
           "text": "มุมโค้งไม่เปลี่ยนตามสถานะ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "section นี้ไม่มีภาพประกอบ เพราะมุมโค้งของชิ้นงานหนึ่งชิ้นเป็นค่าคงที่ ไม่เปลี่ยนตอน hover โฟกัส หรือปิดใช้งาน สิ่งที่เปลี่ยนตามสถานะคือสีและเงา ไม่ใช่รูปทรง กติกานี้ตั้งใจให้เป็นแบบนี้ เพราะรูปทรงที่ขยับตอนโต้ตอบทำให้สายตาไล่ตามยากและอ่านว่าของกำลังเปลี่ยนขนาด"
+          "text": "section นี้ไม่มีภาพประกอบ เพราะมุมโค้งของชิ้นงานหนึ่งชิ้นเป็นค่าคงที่ ไม่เปลี่ยนตอน hover โฟกัส หรือปิดใช้งาน สิ่งที่เปลี่ยนตามสถานะคือสีและเงา ไม่ใช่รูปทรง กติกานี้ตั้งใจให้เป็นแบบนี้ เพราะรูปทรงที่ขยับตอนโต้ตอบทำให้สายตาไล่ตามยากและอ่านว่าของกำลังเปลี่ยนขนาด",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -307,15 +322,18 @@
         {
           "type": "p",
           "text": "กติกาที่ต้องถือทุกครั้งที่ใส่มุมโค้ง",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "ควร ผูกตัวแปรของ component ที่ทำอยู่ เช่นการ์ดใช้ card/radius แท็กใช้ tag/radius\nควร ใช้ตัว full ของ component นั้นเมื่อต้องการทรงแคปซูล\nควร ลดมุมโค้งของกล่องที่ซ้อนข้างในตามสูตร ลูกเท่ากับแม่ลบ padding"
+          "text": "ควร ผูกตัวแปรของ component ที่ทำอยู่ เช่นการ์ดใช้ card/radius แท็กใช้ tag/radius\nควร ใช้ตัว full ของ component นั้นเมื่อต้องการทรงแคปซูล\nควร ลดมุมโค้งของกล่องที่ซ้อนข้างในตามสูตร ลูกเท่ากับแม่ลบ padding",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "ไม่ควร พิมพ์ตัวเลขมุมโค้งลงชิ้นงาน\nไม่ควร แก้ค่าที่ Figma เพราะรอบหน้าที่ build จะถูกทับ\nไม่ควร สร้างตัวแปรมุมโค้งชั้นกลางใน Figma เพราะเคยมีมาแล้ว 2 รุ่นและถูกลบทิ้งทั้งคู่\nไม่ควร เปิด corner smoothing ต้องเป็น 0 เสมอ"
+          "text": "ไม่ควร พิมพ์ตัวเลขมุมโค้งลงชิ้นงาน\nไม่ควร แก้ค่าที่ Figma เพราะรอบหน้าที่ build จะถูกทับ\nไม่ควร สร้างตัวแปรมุมโค้งชั้นกลางใน Figma เพราะเคยมีมาแล้ว 2 รุ่นและถูกลบทิ้งทั้งคู่\nไม่ควร เปิด corner smoothing ต้องเป็น 0 เสมอ",
+          "textStyle": "body-md"
         },
         {
           "type": "card",
@@ -337,15 +355,18 @@
         {
           "type": "p",
           "text": "มุมโค้งไม่ใช่เรื่องความงามอย่างเดียว",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "มุมโค้งห้ามใช้เป็นสัญญาณเดียวที่บอกสถานะหรือความหมาย ต้องมีสีหรือข้อความประกอบเสมอ เพราะคนที่มองเห็นไม่ชัดแยกความต่างของมุมไม่ออก"
+          "text": "มุมโค้งห้ามใช้เป็นสัญญาณเดียวที่บอกสถานะหรือความหมาย ต้องมีสีหรือข้อความประกอบเสมอ เพราะคนที่มองเห็นไม่ชัดแยกความต่างของมุมไม่ออก",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "ปุ่มและช่องกรอกที่โค้งมาก พื้นที่กดจริงจะเล็กลงที่มุม ให้คุมความสูงขั้นต่ำตามที่หน้า Buttons กำหนดไว้"
+          "text": "ปุ่มและช่องกรอกที่โค้งมาก พื้นที่กดจริงจะเล็กลงที่มุม ให้คุมความสูงขั้นต่ำตามที่หน้า Buttons กำหนดไว้",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -355,15 +376,18 @@
         {
           "type": "p",
           "text": "รายการทั้งหมดอยู่ที่เอกสาร Shape Token",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "ชื่อในโค้ดขึ้นต้นด้วย --ntg- ตามด้วยชื่อ component เช่น --ntg-card-radius-top-left"
+          "text": "ชื่อในโค้ดขึ้นต้นด้วย --ntg- ตามด้วยชื่อ component เช่น --ntg-card-radius-top-left",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "อยากเปลี่ยนค่า ให้แก้ที่ tokens/scale แล้วรัน npm run tokens:build ไม่ใช่แก้ที่ Figma"
+          "text": "อยากเปลี่ยนค่า ให้แก้ที่ tokens/scale แล้วรัน npm run tokens:build ไม่ใช่แก้ที่ Figma",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -373,11 +397,13 @@
         {
           "type": "p",
           "text": "ค่าจริงและที่มาของแต่ละขั้น",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "สเกลกลาง 7 ขั้น none 0, xs 2, sm 4, md 8, lg 12, xl 16, full 9999 ทุกค่ามาจากการสำรวจของที่ใช้จริงในไฟล์ ไม่ใช่ตัวเลขที่ตั้งขึ้นเอง ขั้น sm ที่ 4 คือค่าที่พบมากที่สุดทั้งไฟล์ และ full ที่ 9999 ใช้แทนการคำนวณครึ่งหนึ่งของความสูงทีละตัว แก้ขนาดแล้วมุมโค้งไม่ต้องตามแก้ component ที่มุมโค้งผันตามขนาดมีสูตรของตัวเองคือปุ่มและช่องกรอก เริ่มที่ 6 เพิ่มทีละ 1 ตารางค่าเต็มอยู่ที่เอกสาร Shape Token Document"
+          "text": "สเกลกลาง 7 ขั้น none 0, xs 2, sm 4, md 8, lg 12, xl 16, full 9999 ทุกค่ามาจากการสำรวจของที่ใช้จริงในไฟล์ ไม่ใช่ตัวเลขที่ตั้งขึ้นเอง ขั้น sm ที่ 4 คือค่าที่พบมากที่สุดทั้งไฟล์ และ full ที่ 9999 ใช้แทนการคำนวณครึ่งหนึ่งของความสูงทีละตัว แก้ขนาดแล้วมุมโค้งไม่ต้องตามแก้ component ที่มุมโค้งผันตามขนาดมีสูตรของตัวเองคือปุ่มและช่องกรอก เริ่มที่ 6 เพิ่มทีละ 1 ตารางค่าเต็มอยู่ที่เอกสาร Shape Token Document",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -387,15 +413,18 @@
         {
           "type": "p",
           "text": "เอกสารลูกของหน้านี้ และหน้าที่ใช้ระบบนี้ต่อ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "Radius Scale สเกลกลาง 7 ขั้นในโค้ด\nRadius By Component ตารางว่า component ไหนใช้เท่าไหร่\nNested Radius สูตรของกล่องที่ซ้อนกัน\nShape Token ตารางชื่อ Figma คู่กับชื่อในโค้ด"
+          "text": "Radius Scale สเกลกลาง 7 ขั้นในโค้ด\nRadius By Component ตารางว่า component ไหนใช้เท่าไหร่\nNested Radius สูตรของกล่องที่ซ้อนกัน\nShape Token ตารางชื่อ Figma คู่กับชื่อในโค้ด",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
-          "text": "• หน้าที่ผูกตัวแปรของระบบนี้อยู่จริง 12 Buttons\n• 13 Input\n• 21 Tags\n• 22 Badge\n• 25 Card\n• ส่วนกรอบตารางในเอกสาร ผูกอยู่ที่หน้า 00\n• 01\n• 02\n• 03\n• 04\n• 05\n• 06"
+          "text": "• หน้าที่ผูกตัวแปรของระบบนี้อยู่จริง 12 Buttons\n• 13 Input\n• 21 Tags\n• 22 Badge\n• 25 Card\n• ส่วนกรอบตารางในเอกสาร ผูกอยู่ที่หน้า 00\n• 01\n• 02\n• 03\n• 04\n• 05\n• 06",
+          "textStyle": "body-md"
         }
       ]
     },
@@ -536,7 +565,8 @@
         {
           "type": "p",
           "text": "ชุดค่าที่ระบบอนุญาตให้เลือกใช้ อยู่ที่ tokens/scale/global-scale.config.mjs ตัวสเกลเองไม่ได้เป็นตัวแปรใน Figma กล่องตัวอย่างด้านล่างจึงผูกกับตัวแปรของ component ที่ใช้ขั้นนั้นจริง เพื่อให้เห็นว่าขั้นไหนถูกใช้ที่ไหน",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "radii",
@@ -646,7 +676,8 @@
         {
           "type": "p",
           "text": "ขั้นที่ยังไม่มี component ไหนใช้ xs 2px และ xl 16px สองขั้นนี้มีอยู่ในสเกลของโค้ดแต่ยังไม่มีตัวแปรใน Figma เพราะตัวแปรจะถูกสร้างก็ต่อเมื่อมี component มาใช้จริง",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         }
       ]
     },
@@ -664,7 +695,8 @@
         {
           "type": "p",
           "text": "ทุกค่ามาจากสเกลกลางในโค้ด ไม่มีค่าไหนพิมพ์ลง Figma เอง ปุ่มเป็นตัวเดียวที่มุมโค้งขยับตามขนาด",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "table",
@@ -742,22 +774,26 @@
         {
           "type": "p",
           "text": "กล่องที่ซ้อนอยู่ในกล่องอื่นต้องโค้งน้อยกว่ากรอบนอกเท่ากับระยะขอบ ส่วนโค้งสองชั้นจึงจะขนานกัน",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "กรอบนอก = กล่องใน + 8",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "label-lg"
         },
         {
           "type": "p",
           "text": "ระยะขอบมาตรฐานระหว่างกล่องซ้อนคือ 8 กล่องในจึงเท่ากับกรอบนอกลบ 8 ถ้าติดลบให้ใช้ 0 ยกเว้นกรณีชิดขอบที่ไม่มีระยะขอบ กล่องในต้องเท่ากรอบนอก",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
         },
         {
           "type": "p",
           "text": "ภาพประกอบหลักการ ใช้ตัวเลขใหญ่เพื่อให้เห็นความต่าง ไม่ใช่ค่าจริงของระบบ ค่าจริงดูที่ตารางด้านล่าง",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "nestedPair",
@@ -787,7 +823,8 @@
         {
           "type": "p",
           "text": "ค่าจริงในระบบ",
-          "color": "--ntg-color-text-general-heading"
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "label-md"
         },
         {
           "type": "table",

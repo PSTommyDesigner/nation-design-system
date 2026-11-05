@@ -34,7 +34,7 @@ type SpaceItem = { name: string; cssVar: string; value: string; usage: string; f
 type Block =
   | { type: 'h'; text: string; sub?: string }
   | { type: 'h3'; text: string }
-  | { type: 'p'; text: string; color?: string }
+  | { type: 'p'; text: string; color?: string; textStyle?: string }
   | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[]; logos?: LogoItem[]; components?: ComponentItem[] }
   | { type: 'effects'; items: EffectItem[] }
   | { type: 'table'; head: string[]; rows: string[][]; hug?: boolean }
@@ -121,7 +121,7 @@ const VariantSetView = ({ block: b }: { block: Extract<Block, { type: 'variantSe
         ? (
           <div className={styles.variantSet} style={{ width: b.width, height: b.height }}>
             {b.items.map((it, i) => (
-              <span key={i} className={styles.variantItem} style={{ left: it.x, top: it.y }}>
+              <span key={i} className={styles.variantItem} style={{ left: it.x, top: it.y, width: it.width }}>
                 <Sample set={b.set} props={it.props} image={it.image} />
               </span>
             ))}
@@ -239,15 +239,11 @@ const EffectSample = ({ item: it }: { item: EffectItem }) => {
 // กล่องมุมโค้งหนึ่งขั้น มุมทั้งสี่ผูกตัวแปรของ component ที่ใช้ขั้นนั้นจริง ค่าใต้กล่องอ่านจากที่เบราว์เซอร์คำนวณ
 // ขั้นที่ไม่มี token (none) หรือผูกตัวแปรที่ไม่มีในโค้ดเป็นมุมฉาก และขึ้นเตือนใต้กล่อง
 const RadiusSample = ({ item: it }: { item: RadiusItem }) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const [v, setV] = useState('')
-  useLayoutEffect(() => { if (ref.current) setV(getComputedStyle(ref.current).borderRadius) }, [it])
   const r = it.corners.map(c => (c ? `var(${c})` : '0'))
   const unbound = it.figma.some((f, i) => f !== 0 && !it.corners[i])
   return (
     <div className={styles.radiusItem}>
       <div
-        ref={ref}
         className={styles.radiusBox}
         style={{
           borderRadius: r.join(' '),
@@ -255,10 +251,10 @@ const RadiusSample = ({ item: it }: { item: RadiusItem }) => {
           borderColor: it.stroke ? `var(${it.stroke})` : undefined,
         }}
       />
-      <code className="ntg-typography-title-xs">{it.label}</code>
-      <span className={`ntg-typography-body-xs ${styles.muted}`}>{clean(it.meta)}</span>
-      {it.corners[0] && <code className={`ntg-typography-body-xs ${styles.muted}`}>{it.corners[0].replace(/-top-left/, '-*')}</code>}
-      <code className={`ntg-typography-body-xs ${styles.muted}`}>border-radius: {v}</code>
+      {/* ชื่อ label/md สี label คำอธิบาย body/sm สีรอง ตามไฟล์ออกแบบ ต่อด้วยชื่อตัวแปร CSS ค่าที่วัดได้เอาออก (ผู้ใช้ตัดสิน 2026-11-05 หลักเดียวกับการ์ดเอฟเฟค) */}
+      <span className={`ntg-typography-label-md ${styles.labelText}`}>{it.label}</span>
+      <span className={`ntg-typography-body-sm ${styles.muted}`}>{clean(it.meta)}</span>
+      {it.corners[0] && <span className={`ntg-typography-meta-caption ${styles.muted}`}>{it.corners[0].replace(/-top-left/, '-*')}</span>}
       {unbound && <span className={`ntg-typography-body-xs ${styles.warn}`}>ตัวแปรใน Figma ไม่มีในโค้ด ดู radiusMismatch</span>}
     </div>
   )
@@ -342,7 +338,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       // ข้อความสั้นคำเดียวก่อนตาราง คือชื่อตระกูลสี เช่น Gray Bamboo ในหน้า Utility Color
       return /^[A-Za-z]{2,12}$/.test(block.text.trim())
         ? <h3 className={`ntg-typography-section-heading-sm ${styles.heading}`}>{block.text}</h3>
-        : <p className={`ntg-typography-body-xl ${styles.paragraph}`} style={block.color ? { color: `var(${block.color})` } : undefined}>{clean(block.text)}</p>
+        : <p className={`ntg-typography-${block.textStyle ?? 'body-xl'} ${styles.paragraph}`} style={block.color ? { color: `var(${block.color})` } : undefined}>{clean(block.text)}</p>
     case 'card':
       if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Do>
       if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Dont>
@@ -442,7 +438,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
               {it.label && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
               {it.group
                 ? <span className={styles.sampleGroup}>{it.group.map((g, j) => <Sample key={j} set={g.set} props={g.props} image={g.image} />)}</span>
-                : <Sample set={it.set} props={it.props} image={it.image} />}
+                : <span className={styles.sampleBox} style={{ width: it.width }}><Sample set={it.set} props={it.props} image={it.image} /></span>}
             </div>
           ))}
         </div>

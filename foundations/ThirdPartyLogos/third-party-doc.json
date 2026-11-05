@@ -17,17 +17,20 @@
         {
           "type": "p",
           "text": "หน้า 09 เก็บโลโก้ที่ไม่ใช่ของแบรนด์ในเครือ 505 ตัว แบ่ง 3 กลุ่ม คือช่องทางชำระเงิน 15 ตัว บริการภายนอก 232 ตัว และธงประเทศ 258 ตัว",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ของชุดนี้ติดมากับไฟล์ตั้งแต่ต้น ไม่ได้วาดขึ้นเอง และไม่ใช่อัตลักษณ์ของเครือ แยกออกมาจากหน้า 08 Logo เมื่อ 2026-08-27 เพื่อให้หน้า 08 เหลือเฉพาะโลโก้ในเครือ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "การแยกหน้าครั้งนั้นทำให้เลขหน้าตั้งแต่ 09 เดิมเลื่อนขึ้นหนึ่งทั้งหมด",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "logos",
@@ -66,7 +69,8 @@
         {
           "type": "p",
           "text": "โลโก้แต่ละตัวเป็นภาพเวกเตอร์ชั้นเดียว ไม่มีชิ้นส่วนข้างในให้แยก ทุกตัววางอยู่ในกล่องครอบชื่อ box ซึ่งเป็นตัวกำหนดขนาดและระยะว่างรอบภาพ ตอนหยิบไปใช้ให้ปรับที่กล่องครอบ ห้ามยืดตัวภาพเอง",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "logos",
@@ -90,17 +94,20 @@
         {
           "type": "p",
           "text": "ช่องทางชำระเงิน 15 ตัว เช่น visa applepay googlepay mastercard แต่ละแบรนด์มี 3 ขนาดคือ sm md lg ตั้งชื่อเป็น ชื่อแบรนด์ ขีดกลาง ขนาด เช่น visa-sm",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "โลโก้บริการภายนอก 232 ตัว เช่น github adobe dribbble แบ่งกลุ่มย่อยตามประเภทการใช้งาน ตั้งชื่อเป็น กลุ่มย่อย ขีดกลาง ชื่อบริการ เช่น design-adobe_photoshop",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ธงประเทศ 258 ตัว ตั้งชื่อด้วยรหัสประเทศ 2 ตัวอักษรตามด้วยชื่อประเทศ เช่น th-thailand",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "logos",
@@ -139,7 +146,8 @@
         {
           "type": "p",
           "text": "ในหน้าที่มีทั้งโลโก้ในเครือและโลโก้ภายนอก โลโก้ในเครือต้องเด่นกว่าเสมอ ทั้งขนาดและตำแหน่ง โลโก้ภายนอกวางเป็นตัวรอง เช่นแถวช่องทางชำระเงินที่ท้ายหน้า หรือไอคอนบริการที่เชื่อมต่อในหน้าตั้งค่า ถ้าวางขนาดเท่ากันติดกัน ผู้ใช้จะเข้าใจว่าเป็นบริษัทในเครือเดียวกัน ซึ่งเป็นเรื่องที่ผิดทั้งทางกฎหมายและทางแบรนด์",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -150,7 +158,8 @@
         {
           "type": "p",
           "text": "กลุ่มช่องทางชำระเงินมี 3 ขนาดคือ sm md lg ตั้งชื่อลงท้ายด้วยขนาด เช่น visa-sm visa-md visa-lg\nกลุ่มบริการภายนอกและกลุ่มธงประเทศมีขนาดเดียว ไม่ได้แยกขนาด\nย่อขยายให้คงสัดส่วนเสมอ ห้ามยืดด้านเดียว",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "logos",
@@ -190,22 +199,26 @@
         {
           "type": "p",
           "text": "สำรวจแล้วพบว่า 502 จาก 505 ตัวไม่มีใครใช้เลยแม้แต่ที่เดียวในไฟล์นี้",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ที่ใช้จริงมี 3 ตัว รวม 30 จุด เกือบทั้งหมดเป็นโลโก้ visa ที่หน้า 13 Input",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ธงประเทศทั้ง 258 ตัวไม่มีใครใช้เลยสักตัว ถ้าจะลดของตายกลุ่มนี้ตัดได้ก่อนโดยไม่กระทบไฟล์นี้",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ข้อควรระวัง คำสั่งที่ใช้ตรวจเห็นเฉพาะในไฟล์นี้ ถ้าไฟล์งานอื่นดึงไลบรารีไปใช้จะมองไม่เห็น การลบจึงยังมีความเสี่ยง",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -216,22 +229,26 @@
         {
           "type": "p",
           "text": "ตรวจสิทธิ์การใช้งานก่อนเอาไปใช้ทุกครั้ง โลโก้ของบริษัทอื่นมีเงื่อนไขของเจ้าของ ไม่ใช่ของที่เราแจกได้เอง",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ห้ามเอาโลโก้ในหน้านี้ไปวางคู่กับโลโก้ในเครือในลักษณะที่ทำให้เข้าใจว่าเป็นบริษัทในเครือ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "ห้ามแก้สีหรือดัดแปลงรูป เพราะเป็นอัตลักษณ์ของเจ้าของแบรนด์นั้น",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "หน้านี้เหมือนหน้า 08 คือสีเป็นสีอัตลักษณ์ ห้ามผูกตัวแปรสี",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -242,7 +259,8 @@
         {
           "type": "p",
           "text": "โลโก้ที่บอกว่ารับชำระด้วยช่องทางไหน ต้องมีข้อความแทนภาพที่เป็นชื่อช่องทางนั้น เพราะเป็นข้อมูลที่ผู้ใช้ต้องรู้ก่อนตัดสินใจ\nธงประเทศห้ามใช้แทนภาษา เพราะประเทศกับภาษาไม่ใช่สิ่งเดียวกัน ให้เขียนชื่อภาษาเป็นตัวอักษรแทน\nโลโก้ที่เป็นของประดับซ้ำกับข้อความข้าง ๆ ให้ตั้งเป็นของประดับ\nต้องมีความต่างจากพื้นหลังพอที่จะอ่านออก",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -253,7 +271,8 @@
         {
           "type": "p",
           "text": "หน้านี้ไม่มีตัวแปรสีเลย เหมือนหน้า 08 Logo เพราะสีเป็นอัตลักษณ์ของเจ้าของแบรนด์นั้น ไม่ใช่สีของระบบเรา ถ้าผูกตัวแปรแล้ววันหนึ่งมีคนแก้ค่ากลาง สีโลโก้ของบริษัทอื่นจะเพี้ยน ซึ่งนอกจากผิดแล้วยังอาจผิดเงื่อนไขการใช้งานของเจ้าของด้วย",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -264,7 +283,8 @@
         {
           "type": "p",
           "text": "ช่องทางชำระเงิน 15 ตัว ตั้งชื่อเป็น ชื่อแบรนด์ ขีด ขนาด เช่น visa-sm\nบริการภายนอก 232 ตัว ตั้งชื่อเป็น กลุ่มย่อย ขีด ชื่อบริการ\nธงประเทศ 258 ตัว ตั้งชื่อเป็น รหัสประเทศสองตัวอักษร ขีด ชื่อประเทศ เช่น th-thailand\nรวม 505 ตัว ทั้งหมดเป็น COMPONENT เดี่ยว ไม่มีชุด variant และไม่มีคุณสมบัติให้ปรับ",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "h",
@@ -275,17 +295,20 @@
         {
           "type": "p",
           "text": "08 Logo เก็บโลโก้ของแบรนด์ในเครือ 40 ตัว ซึ่งเป็นอัตลักษณ์จริงของเรา",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "02 Icon เก็บชุดไอคอนของระบบ คนละชุดกับโลโก้",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         },
         {
           "type": "p",
           "text": "รายชื่อหน้าทั้งหมดพร้อมเลขล่าสุดอยู่ที่ docs/figma-pages.md",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
         }
       ]
     },
