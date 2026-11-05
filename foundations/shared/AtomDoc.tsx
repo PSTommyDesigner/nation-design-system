@@ -249,15 +249,24 @@ const colorColumns: TableColumn<ColorRow>[] = [
       <span className={styles.nameCell} style={r.gap ? { gap: `var(${r.gap})` } : undefined}>
         {r.lineTop && <span className={`${styles.hierLine} ${styles.hierLineTop}`} style={{ marginLeft: `var(${r.lineTop})` }} />}
         <span className={`ntg-typography-meta-caption ${styles.hierNo}`}>{r.no}</span>
-        <span className={`ntg-typography-body-md ${styles.hierName} ${r.level !== 'primary' ? styles.hierNameNested : ''}`}>{r.name}</span>
+        <span className={`ntg-typography-body-md ${styles.hierName} ${r.level !== 'primary' ? styles.hierNameNested : ''}`} title={r.name}>{r.name}</span>
         {r.lineBottom && <span className={`${styles.hierLine} ${styles.hierLineBottom}`} style={{ marginLeft: `var(${r.lineBottom})` }} />}
       </span>
     ),
   },
   { id: 'light', header: 'โหมดสว่าง', width: '18.75%', render: r => <ColorChip cssVar={r.cssVar} label={r.light} /> },
   { id: 'dark', header: 'โหมดมืด', width: '18.75%', render: r => <ColorChip cssVar={r.darkVar} label={r.dark} dark /> },
-  { id: 'description', header: 'รายละเอียด', render: r => <span className="ntg-typography-body-sm">{clean(r.description)}</span> },
-  { id: 'css', header: 'ตัวแปร CSS', render: r => <code className="ntg-typography-body-xs">{r.cssVar}</code> },
+  // ไฟล์ออกแบบมี 4 คอลัมน์ ชื่อตัวแปร CSS จึงเป็นบรรทัดรองตัวเล็กสีรองใต้คำอธิบาย ตารางยังกว้างเท่า Figma (ผู้ใช้ตัดสิน 2026-11-05)
+  {
+    id: 'description',
+    header: 'รายละเอียด',
+    render: r => (
+      <span className={styles.descCell}>
+        {r.description.trim() && <span className="ntg-typography-body-sm">{clean(r.description)}</span>}
+        <code className={`ntg-typography-meta-caption ${styles.muted}`}>{r.cssVar}</code>
+      </span>
+    ),
+  },
 ]
 
 const BlockView = ({ block, index }: { block: Block; index: number }) => {
@@ -298,8 +307,12 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
     case 'ramp':
       return <Ramp {...block} />
     case 'colorTable':
-      // ตารางที่ไม่มีคำอธิบายเลย (เช่น Utility Color) ในไฟล์ออกแบบไม่มีคอลัมน์นี้
-      return <Table columns={block.rows.some(r => r.description.trim()) ? colorColumns : colorColumns.filter(c => c.id !== 'description')} data={block.rows} getRowId={r => r.cssVar ?? r.name} />
+      // ตารางที่ไม่มีคำอธิบายเลย (เช่น Utility Color) คอลัมน์สุดท้ายเหลือแค่ชื่อตัวแปร CSS
+      return (
+        <div className={styles.colorTable}>
+          <Table columns={block.rows.some(r => r.description.trim()) ? colorColumns : colorColumns.map(c => c.id === 'description' ? { ...c, header: 'ตัวแปร CSS' } : c)} data={block.rows} getRowId={r => r.cssVar ?? r.name} />
+        </div>
+      )
     case 'specimen':
       return (
         <div className={styles.specimen}>

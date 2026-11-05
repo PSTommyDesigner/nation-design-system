@@ -53,6 +53,8 @@
    วงกลมเลข 26 กับกล่องชื่อสูง 36 ยืมสเกลระยะเพราะยังไม่มี token ขนาดของเอกสาร */
 .nameCell {
   display: inline-flex;
+  box-sizing: border-box;
+  max-width: 100%;
   align-items: center;
   gap: var(--ntg-size-space-s2-sm);
   padding:
@@ -60,6 +62,9 @@
     calc(var(--ntg-size-space-s2-sm) - var(--ntg-table-padding-bottom))
     calc(var(--ntg-size-space-s2-sm) - var(--ntg-table-padding-left));
 }
+/* ตารางสีใช้ความกว้างคอลัมน์ตายตัวตามไฟล์ออกแบบ ชื่อยาวไม่ดันคอลัมน์ให้กว้างขึ้น */
+.colorTable :global(table) { table-layout: fixed; }
+.descCell { display: flex; flex-direction: column; }
 .hierNo {
   display: inline-flex;
   flex: none;
@@ -80,6 +85,10 @@
   box-shadow: inset 0 0 0 var(--ntg-divider-thickness) var(--ntg-color-border-general-primary);
   color: var(--ntg-color-text-general-section-heading);
   white-space: nowrap;
+  /* ชื่อยาวในไฟล์ออกแบบถูกตัดในกล่อง คอลัมน์จึงกว้าง 400 เท่าเดิม ที่นี่ตัดด้วย ... แทน ชื่อเต็มอยู่ใน title */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .hierNameNested { background: var(--ntg-color-background-general-secondary); }
 /* เส้นเชื่อมยาวจากขอบแถวถึงกล่องชื่อ วางอิงเซลตาราง (th ของคอลัมน์ชื่อ) จึงต่อกันได้แม้แถวสูงกว่า 68 เพราะคอลัมน์อื่นขึ้นสองบรรทัด
