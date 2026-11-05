@@ -244,6 +244,9 @@ const BUTTON = {
     'Title frame': (n, W) => ({ '--btn-title-pt': W(n.p[0]), '--btn-title-pr': W(n.p[1]), '--btn-title-pb': W(n.p[2]), '--btn-title-pl': W(n.p[3]), '--btn-title-gap': W(n.g) }),
     'Title frame/Title': () => ({}),
   },
+  // ชั้นไอคอนซ้ายขวาปิดไว้เป็นค่าตั้งต้นใน Figma (L-icon/R-icon = false) และชื่อไม่ลงท้าย -icon จึงต้องประกาศว่าต้องอ่านค่า
+  // ไม่งั้นตัวสร้างข้ามไป --btn-icon ไม่ถูกตั้ง ไอคอนในปุ่มขยายเต็มพื้นที่ (เจอ 2026-11-05 จากหน้าเอกสาร 12 Buttons ใน Storybook)
+  hiddenLayers: ['Left Icon', 'Right Icon'],
   textLayers: ['Title frame/Title'],
   typography: { '--btn-font-family': 'font-family', '--btn-font-size': 'font-size', '--btn-line-height': 'line-height', '--btn-font-weight': 'font-weight', '--btn-letter-space': 'letter-space' },
   colors: {

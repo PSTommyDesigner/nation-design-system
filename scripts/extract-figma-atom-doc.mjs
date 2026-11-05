@@ -50,6 +50,8 @@ const PAGES = {
   // ตัวอย่างในหน้านี้เป็นชิ้นงานของชุดที่มี component จริงในโค้ด สคริปต์เก็บชื่อชุดกับค่าของแต่ละชิ้น ให้หน้าเอกสารวาดด้วย component จริง
   // แทนการ export ภาพ (ผู้ใช้อนุมัติ 2026-11-04) components คือชื่อชุดใน Figma ที่อ่านเป็นตัวอย่าง
   avatar: { page: '11 Avatar', folder: 'Avatar', root: 'molecules', skip: [], components: ['avatar-image', 'avatar-icon', 'avatar-monogram', 'avatar-number', 'avatar-label', 'avatar-group', '_avatar-online-indicator'] },
+  // ชุดปุ่มใช้ชื่อเดียวกันทุกตระกูล ตระกูลจึงมาจากเอกสารที่ชุดนั้นอยู่ (families: ชื่อเอกสาร -> ตระกูลในโค้ด)
+  buttons: { page: '12 Buttons', folder: 'Buttons', root: 'molecules', skip: [], components: ['semi-rounded-button', 'pill-button', 'semi-rounded-icon-button', 'circular-icon-button', 'link-button', 'link-icon-button'], families: { 'Brand Button': 'brand', 'Error Button': 'error', 'Neutral Button': 'neutral', 'Alpha Button': 'alpha' } },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -254,13 +256,20 @@ function effectBlock(n, where, label) {
 // ค่าของชิ้นอ่านจาก componentProperties ส่วน variant อ่านจากชื่อ variant แล้วเติมค่าตั้งต้นของข้อความและ boolean จากชุด
 const COMPONENT_SETS = new Set(PAGES[KEY].components ?? [])
 const propName = (k) => k.split('#')[0]
-const setOf = (n) => n.type === 'INSTANCE' ? n.name : n.type === 'COMPONENT' && n.parent?.type === 'COMPONENT_SET' ? n.parent.name : null
+// ข้อมูล component ที่ REST ส่งมาพร้อม nodes ชื่อชั้นของชิ้นงานตั้งใหม่ได้ (เช่น "Button / Brand" ทั้งที่เป็น semi-rounded-button)
+// ชื่อชุดจึงอ่านจากชุดจริงของชิ้นงาน ส่วนตระกูลอ่านจากเอกสารที่ชุดนั้นอยู่ (SET_FAMILY เติมก่อนเริ่มอ่านเอกสาร)
+const COMP_META = {}, SET_META = {}, SET_FAMILY = {}
+const setIdOf = (n) => n.type === 'INSTANCE' ? COMP_META[n.componentId]?.componentSetId : n.type === 'COMPONENT' && n.parent?.type === 'COMPONENT_SET' ? n.parent.id : null
+const setOf = (n) => n.type === 'INSTANCE' ? (SET_META[setIdOf(n)]?.name ?? n.name) : n.type === 'COMPONENT' && n.parent?.type === 'COMPONENT_SET' ? n.parent.name : null
+// ไอคอนที่สลับใส่ (INSTANCE_SWAP) เก็บเป็นรหัสชิ้นงาน แปลงเป็นชื่อไอคอนในโค้ดจากชื่อ component เช่น status-&-feedback/add เป็น add
+const iconName = (id) => COMP_META[id]?.name?.split('/').pop() ?? id
 const isComponentSample = (n) => (n.type === 'INSTANCE' || n.type === 'COMPONENT') && COMPONENT_SETS.has(setOf(n))
 function componentProps(n) {
-  if (n.type === 'INSTANCE') return Object.fromEntries(Object.entries(n.componentProperties ?? {}).map(([k, v]) => [propName(k), v.value]))
-  const defs = Object.fromEntries(Object.entries(n.parent.componentPropertyDefinitions ?? {}).filter(([, d]) => d.type !== 'VARIANT').map(([k, d]) => [propName(k), d.defaultValue]))
+  const family = SET_FAMILY[setIdOf(n)]
+  if (n.type === 'INSTANCE') return { ...Object.fromEntries(Object.entries(n.componentProperties ?? {}).map(([k, v]) => [propName(k), v.type === 'INSTANCE_SWAP' ? iconName(v.value) : v.value])), ...(family ? { family } : {}) }
+  const defs = Object.fromEntries(Object.entries(n.parent.componentPropertyDefinitions ?? {}).filter(([, d]) => d.type !== 'VARIANT').map(([k, d]) => [propName(k), d.type === 'INSTANCE_SWAP' ? iconName(d.defaultValue) : d.defaultValue]))
   const variant = Object.fromEntries(n.name.split(',').map(x => x.trim().split('=')).filter(x => x.length === 2))
-  return { ...defs, ...variant }
+  return { ...defs, ...variant, ...(family ? { family } : {}) }
 }
 // ภาพแทนรูปข้างในชิ้นงาน (เช่น avatar-image) เป็น image fill ของไฟล์ออกแบบ เก็บ id สั้นไว้ แล้ว export เป็นไฟล์ใน assets/ ตอนท้าย
 const sampleImages = new Set()
@@ -404,8 +413,8 @@ function extract(doc) {
       push({ type: 'fontFamily', sample: big.characters, family: needVar(FAMILY_VAR[big.style.fontFamily], big.characters), title: rest[0] ?? '', usage: rest.slice(1).join(' '), weights })
       return
     }
-    if (n.type === 'FRAME' && n.name === 'cell' && /^[\u2705\u274c]/.test(n.children?.find(c => c.type === 'TEXT')?.characters ?? '')) {
-      // คู่ถูกผิดของหน้า Effect ข้อความ + ภาพเอฟเฟคในแถวเดียวกัน
+    if (n.type === 'FRAME' && (n.name === 'cell' || (COMPONENT_SETS.size && n.name === 'item')) && /^[\u2705\u274c]/.test(n.children?.find(c => c.type === 'TEXT')?.characters ?? '')) {
+      // คู่ถูกผิดของหน้า Effect ข้อความ + ภาพเอฟเฟคในแถวเดียวกัน หน้าที่มีตัวอย่าง component (เช่น 12 Buttons) ตั้งชื่อกรอบว่า item
       const t = n.children.find(c => c.type === 'TEXT').characters
       const effects = findAll(n, isEffect).map(x => effectBlock(x, doc.name, ''))
       const logos = n.children.filter(isLogo).map(x => logoBlock(x, ''))
@@ -421,9 +430,20 @@ function extract(doc) {
     }
     if (COMPONENT_SETS.size) {
       // กรอบที่มีชุด variant พร้อมคำบรรยาย เช่น avatar/image ในเอกสาร Avatar Components
-      const set = n.type === 'FRAME' && n.children?.find(c => c.type === 'COMPONENT_SET' && COMPONENT_SETS.has(c.name))
+      // กรอบที่มีแค่ชุดกับข้อความคำบรรยาย ถ้ามีกรอบหัวข้อด้วย (เอกสารตระกูลปุ่ม) ปล่อยให้อ่านหัวข้อกับชุดแยกกันตามปกติ
+      const set = n.type === 'FRAME' && n.children?.every(c => c.type === 'TEXT' || c.type === 'COMPONENT_SET') && n.children.find(c => c.type === 'COMPONENT_SET' && COMPONENT_SETS.has(c.name))
       if (set) { push(variantSetBlock(set, n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim()).join(' '))); return }
       if (n.type === 'COMPONENT_SET' && COMPONENT_SETS.has(n.name)) { push(variantSetBlock(n, '')); return }
+      // กลุ่มตัวอย่างหลายชิ้นใต้ป้ายเดียว เช่น ปุ่มตอนพักคู่กับตอนชี้ในเอกสาร Buttons Families เก็บเป็นชิ้นเดียวที่มี group
+      if (n.type === 'FRAME' && n.children?.some(c => c.type === 'TEXT')) {
+        const others = n.children.filter(c => c.type !== 'TEXT' && c.visible !== false)
+        const group = others.length && others.every(c => !findAll(c, x => x.type === 'TEXT' && !findAll(c, isComponentSample).some(sm => findAll(sm, y => y === x).length)).length) ? topSamples(n) : []
+        if (group.length >= 2) {
+          const b = componentBlock(group[0], n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim()).join(' '), n)
+          push({ ...b, group: group.map(x => { const g = componentBlock(x, ''); return { set: g.set, props: g.props, image: g.image } }) })
+          return
+        }
+      }
       // ชิ้นตัวอย่างพร้อมป้ายในกรอบเดียวกัน หรือชิ้นเดี่ยว
       const sample = n.type === 'FRAME' && n.children?.filter(c => c.visible !== false && isComponentSample(c))
       if (sample?.length === 1 && n.children.some(c => c.type === 'TEXT')) { push(componentBlock(sample[0], n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim()).join(' '), n)); return }
@@ -518,6 +538,12 @@ const page = file.document.children.find(p => p.name === PAGE)
 if (!page) throw new Error(`ไม่พบหน้า "${PAGE}"`)
 const frames = page.children.filter(c => c.type === 'FRAME' && !SKIP.has(c.name)).sort((a, b) => a.absoluteBoundingBox.x - b.absoluteBoundingBox.x)
 const res = await api(`/nodes?ids=${encodeURIComponent(frames.map(f => f.id).join(','))}`)
+for (const f of frames) {
+  Object.assign(COMP_META, res.nodes[f.id].components ?? {})
+  Object.assign(SET_META, res.nodes[f.id].componentSets ?? {})
+  const family = PAGES[KEY].families?.[f.name]
+  if (family) findAll(res.nodes[f.id].document, x => x.type === 'COMPONENT_SET').forEach(x => { SET_FAMILY[x.id] = family })
+}
 const documents = frames.map(f => extract(res.nodes[f.id].document))
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true })
