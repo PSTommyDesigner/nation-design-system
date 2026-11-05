@@ -792,17 +792,23 @@
         {
           "type": "p",
           "text": "ครอบคลุมสี ตัวอักษร และเอฟเฟกต์ที่ช่องกรอกใช้ ส่วนขนาดและระยะห่างมีตารางของตัวเองอยู่ที่เอกสาร Input Space เพราะมีสูตรกำกับที่ต้องอธิบายแยก",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10340:37455",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "สีทุกตัวในตารางนี้ผูกเป็นตัวแปรแล้วในไฟล์ออกแบบ และต้นฉบับไม่เหลือสีที่ผูกตัวแปรไม่ได้เลยสักจุด ยกเว้นตอนหยิบโลโก้บัตรจากหน้า 09 มาใส่ในช่องกรอก ซึ่งเป็นสีอัตลักษณ์ของแบรนด์ภายนอกที่ต้องคงค่าไว้",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10340:37455",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ถ้าต้องเพิ่มสีหรือสถานะใหม่ ให้เพิ่มที่ชั้นตัวแปรก่อนเสมอ แล้วค่อยผูกเข้ากับชิ้นงาน ห้ามใส่ค่าลงไปตรง ๆ ที่ชิ้นงาน",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10340:37455",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h",
@@ -2425,12 +2431,16 @@
         {
           "type": "p",
           "text": "สูตรของช่องกรอกอยู่ที่ tokens/scale/input.mjs มีสูตรครบทุกมิติ ทั้งความสูง ระยะขอบ ระยะห่างภายใน ขนาดไอคอน มุมโค้ง และระยะขอบของช่องหลายบรรทัด",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10340:37501",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ช่องกรอกเปิดใช้แค่ 3 ขนาดจาก 5 ขนาดของสเกลกลาง ไม่เปิด xs เพราะ 24 คือเส้นขั้นต่ำพอดีของเกณฑ์การเข้าถึง และไม่เปิด xl เพราะไม่มีระบบไหนใช้ช่องกรอกสูงเกิน 48\nระยะขอบบนล่างของช่องแท็กไม่มีสูตร เพราะเป็นผลลัพธ์จากความสูงของแท็กตัวจริงในหน้า 21 Tags ซึ่งไม่ได้เรียงเป็นขั้นเท่ากัน",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10340:37501",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h",

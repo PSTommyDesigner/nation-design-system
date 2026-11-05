@@ -1,0 +1,2050 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 14 Toggles ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- toggles",
+  "page": "14 Toggles",
+  "documents": [
+    {
+      "id": "10517:9",
+      "name": "14 Toggles Documentation",
+      "title": "14 Toggles",
+      "subtitle": "สวิตช์เปิดปิดที่มีผลทันที พร้อมระบบสเกลสองชั้นและกติกาการใช้งาน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "ตัวอย่างจริงในหน้าตั้งค่า",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สวิตช์คือตัวควบคุมสองสถานะที่มีผลทันทีเมื่อผู้ใช้แตะ ใช้กับการตั้งค่าที่เปิดหรือปิดได้ ไม่ใช้ในฟอร์มที่ต้องกดปุ่มบันทึก หน้านี้มีชุดเดียวชื่อ toggle ครอบคลุมทั้งสวิตช์ล้วนและสวิตช์พร้อมหัวข้อกับคำอธิบาย",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "ระบบจะส่งสรุปข่าวให้ทุกเช้า เปลี่ยนแล้วมีผลทันที",
+                "title-value": "รับการแจ้งเตือนทางอีเมล",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "",
+              "width": 720,
+              "height": 54
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "ปิดไว้จะประหยัดอินเทอร์เน็ตเมื่อใช้งานนอกสำนักงาน",
+                "title-value": "เล่นวิดีโออัตโนมัติ",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "default",
+                "active": "false"
+              },
+              "label": "",
+              "width": 720,
+              "height": 54
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "บัญชีนี้ไม่มีสิทธิ์เปิดใช้",
+                "title-value": "โหมดผู้ดูแลระบบ",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "disabled",
+                "active": "false"
+              },
+              "label": "",
+              "width": 720,
+              "height": 54
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "สามชั้นซ้อนกัน แต่ละชั้นมีหน้าที่ของตัวเอง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ภาพด้านล่างคือขนาด xl ที่ใหญ่ที่สุด เพื่อให้เห็นสัดส่วนชัด ทุกขนาดใช้โครงเดียวกัน",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Toggle Title",
+                "supporting-text": false,
+                "title": false,
+                "size": "xl",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "• แถวที่กดได้ row  ไม่มีสีพื้น เป็นพื้นที่รับการแตะ สูงเท่าปุ่มขนาดเดียวกัน\n• ราง track  พื้นหลังที่บอกสถานะด้วยสี ทรงแคปซูล กว้างเป็นสองเท่าของสูง\n• ปุ่มกลม knob  บอกสถานะด้วยตำแหน่ง ซ้ายคือปิด ขวาคือเปิด ขนาดเป็นผลจากความสูงรางลบระยะขอบใน\n• หัวข้อ title  เปิดปิดได้ ต้องเป็นชื่อของสิ่งที่ควบคุม\n• คำอธิบาย supporting  เปิดปิดได้ ระยะเยื้องมาจากความกว้างรางบวกระยะห่าง",
+              "width": 64,
+              "height": 32,
+              "cell": 1280,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "ชุดเดียว สองรูปแบบการใช้",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ทั้งสองรูปแบบมาจากชุดเดียวกัน ต่างกันแค่เปิดคุณสมบัติหัวข้อและคำอธิบาย ไม่ใช่ component คนละตัว จึงแก้สวิตช์ครั้งเดียวแล้วได้ทั้งสองแบบ",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Toggle Title",
+                "supporting-text": false,
+                "title": false,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "สวิตช์ล้วน ปิดข้อความทั้งสอง ใช้เมื่อมีป้ายกำกับอยู่ข้างนอกแล้ว เช่นในแถวของตาราง",
+              "width": 48,
+              "height": 24,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "ดึงข้อมูลใหม่ทุก 15 นาที",
+                "title-value": "ซิงก์ข้อมูลอัตโนมัติ",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "สวิตช์พร้อมข้อความ เปิดหัวข้อและคำอธิบาย ใช้ในหน้าตั้งค่าที่ต้องอธิบายผลของการเปิดปิด",
+              "width": 720,
+              "height": 54,
+              "cell": 1280,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "ความเด่นมาจากขนาดและตำแหน่ง ไม่ใช่จากระดับของตัวสวิตช์",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สวิตช์ไม่มีแกน primary secondary tertiary แบบปุ่ม เพราะสวิตช์ผูกกับข้อความของตัวเองหนึ่งต่อหนึ่ง ไม่ได้แข่งกับสวิตช์ตัวอื่นในหน้า วิธีบอกว่าอันไหนสำคัญกว่าจึงใช้ขนาดกับตำแหน่งแทน ตัวอย่างข้างล่างคือการตั้งค่าสามระดับในหน้าเดียวกัน",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text": true,
+                "supporting-text-value": "หน้าแรกจะสลับไปแสดงข่าวด่วนก่อนทุกครั้งที่มีข่าวเข้า",
+                "title-value": "เปิดใช้งานโหมดข่าวด่วน",
+                "title": true,
+                "size": "lg",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "ระดับหลักของหน้า  ใช้ lg  เป็นสวิตช์ที่ทั้งหน้านี้มีอยู่เพื่อมัน",
+              "width": 720,
+              "height": 58,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "ส่งสรุปข่าวให้ทุกเช้าเวลา 7 นาฬิกา",
+                "title-value": "รับการแจ้งเตือนทางอีเมล",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "ระดับทั่วไป  ใช้ md  เป็นค่าเริ่มต้นของการตั้งค่าส่วนใหญ่",
+              "width": 720,
+              "height": 54,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "ปิดไว้จะประหยัดอินเทอร์เน็ตเมื่อใช้งานนอกสำนักงาน",
+                "supporting-text": true,
+                "title-value": "เล่นวิดีโออัตโนมัติ",
+                "title": true,
+                "size": "sm",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "ระดับย่อย  ใช้ sm  สำหรับตัวเลือกที่อยู่ในรายการหนาแน่นหรือในแถวของตาราง",
+              "width": 720,
+              "height": 50,
+              "cell": 1280,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "เปิดใช้ครบ 5 ขนาดเท่าปุ่ม",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ทุกขนาดสัดส่วนกว้างเป็นสองเท่าของสูงเท่ากันหมด ความสูงแถวอ้างสเกลเดียวกับปุ่มและช่องกรอก ทำให้วางเรียงแถวเดียวกันได้พอดี ค่าตั้งต้นคือ md ดูตารางเต็มในเอกสาร Toggles Space",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "supporting-text": false,
+                "title": false,
+                "size": "xs",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "xs   ราง 32 x 16   แถว 24",
+              "width": 32,
+              "height": 16,
+              "cell": 145,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "title": false,
+                "size": "sm",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "sm   ราง 40 x 20   แถว 32",
+              "width": 40,
+              "height": 20,
+              "cell": 153,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Toggle Title",
+                "supporting-text": false,
+                "title": false,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "md   ราง 48 x 24   แถว 40",
+              "width": 48,
+              "height": 24,
+              "cell": 154,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text": false,
+                "supporting-text-value": "Supporting text",
+                "title-value": "Toggle Title",
+                "title": false,
+                "size": "lg",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "lg   ราง 56 x 28   แถว 48",
+              "width": 56,
+              "height": 28,
+              "cell": 146,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "Supporting text",
+                "title-value": "Toggle Title",
+                "supporting-text": false,
+                "title": false,
+                "size": "xl",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "xl   ราง 64 x 32   แถว 56",
+              "width": 64,
+              "height": 32,
+              "cell": 145,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "ตารางสี่สถานะ คูณสองค่าของแกนเปิดปิด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "แกนเปิดปิดแยกจากแกนการโต้ตอบ ทุกสถานะจึงมีทั้งตอนเปิดและตอนปิด ชุด variant ในไฟล์มี 4 สถานะ ส่วนสถานะกดไม่ได้แตกเป็น variant เพราะเป็นสถานะชั่วขณะที่คนออกแบบไม่ได้วางลงงานจริง ฝั่งโค้ดใช้ตัวแปรสีชุด pressed ที่สร้างไว้ทั้งระบบเมื่อ 4 กันยายน 2569 ผูกกับ active ใน CSS และห้ามให้ปุ่มกลมขยายหรือยืดตอนกดเด็ดขาด สถานะกดของสวิตช์บอกด้วยสีอย่างเดียว",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "sampleTable",
+          "head": [
+            "สถานะ",
+            "ปิด  active=false",
+            "เปิด  active=true",
+            "ใช้เมื่อไหร่"
+          ],
+          "rows": [
+            [
+              {
+                "text": "default"
+              },
+              {
+                "set": "toggle",
+                "props": {
+                  "supporting-text-value": "Supporting text",
+                  "title-value": "Toggle Title",
+                  "supporting-text": false,
+                  "title": false,
+                  "size": "md",
+                  "state": "default",
+                  "active": "false"
+                },
+                "width": 48
+              },
+              {
+                "set": "toggle",
+                "props": {
+                  "supporting-text-value": "Supporting text",
+                  "title-value": "Toggle Title",
+                  "supporting-text": false,
+                  "title": false,
+                  "size": "md",
+                  "state": "default",
+                  "active": "true"
+                },
+                "width": 48
+              },
+              {
+                "text": "สถานะปกติ ไม่มีการโต้ตอบ"
+              }
+            ],
+            [
+              {
+                "text": "hover"
+              },
+              {
+                "set": "toggle",
+                "props": {
+                  "title-value": "Toggle Title",
+                  "supporting-text": false,
+                  "supporting-text-value": "Supporting text",
+                  "title": false,
+                  "size": "md",
+                  "state": "hover",
+                  "active": "false"
+                },
+                "width": 48
+              },
+              {
+                "set": "toggle",
+                "props": {
+                  "supporting-text-value": "Supporting text",
+                  "supporting-text": false,
+                  "title-value": "Toggle Title",
+                  "title": false,
+                  "size": "md",
+                  "state": "hover",
+                  "active": "true"
+                },
+                "width": 48
+              },
+              {
+                "text": "เมาส์ลอยอยู่เหนือสวิตช์ ไม่เกิดบนมือถือ"
+              }
+            ],
+            [
+              {
+                "text": "focused"
+              },
+              {
+                "set": "toggle",
+                "props": {
+                  "title-value": "Toggle Title",
+                  "supporting-text-value": "Supporting text",
+                  "supporting-text": false,
+                  "title": false,
+                  "size": "md",
+                  "state": "focused",
+                  "active": "false"
+                },
+                "width": 48
+              },
+              {
+                "set": "toggle",
+                "props": {
+                  "title-value": "Toggle Title",
+                  "supporting-text": false,
+                  "supporting-text-value": "Supporting text",
+                  "title": false,
+                  "size": "md",
+                  "state": "focused",
+                  "active": "true"
+                },
+                "width": 48
+              },
+              {
+                "text": "เลือกด้วยคีย์บอร์ด มีวงแหวนโฟกัส"
+              }
+            ],
+            [
+              {
+                "text": "disabled"
+              },
+              {
+                "set": "toggle",
+                "props": {
+                  "supporting-text-value": "Supporting text",
+                  "title-value": "Toggle Title",
+                  "supporting-text": false,
+                  "title": false,
+                  "size": "md",
+                  "state": "disabled",
+                  "active": "false"
+                },
+                "width": 48
+              },
+              {
+                "set": "toggle",
+                "props": {
+                  "supporting-text-value": "Supporting text",
+                  "title-value": "Toggle Title",
+                  "supporting-text": false,
+                  "title": false,
+                  "size": "md",
+                  "state": "disabled",
+                  "active": "true"
+                },
+                "width": 48
+              },
+              {
+                "text": "กดไม่ได้ ตอนนี้หน้าตายังซ้ำกับสถานะปิด"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Usage Do and Don’t",
+          "sub": "ตัวอย่างที่ถูก และที่ต้องเลี่ยง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ใช้สวิตช์เมื่อการเปลี่ยนมีผลทันที ใช้ช่องติ๊กเมื่อต้องกดบันทึกก่อน ห้ามผสมสองอย่างในฟอร์มเดียวกัน กติกาเต็มสี่ข้ออยู่ในเอกสาร Toggle Usage",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "ป้ายกำกับเป็นชื่อของสิ่งที่ควบคุม อ่านแล้วรู้ว่ากำลังเปิดปิดอะไร",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "โปรแกรมอ่านหน้าจอจะประกาศสถานะให้เอง",
+                "title-value": "รับการแจ้งเตือนทางอีเมล",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "",
+              "width": 560,
+              "height": 54
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "ป้ายกำกับเปลี่ยนไปตามสถานะ ผู้ใช้จะได้ยินคำว่าเปิดซ้ำสองรอบ",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "ห้ามใช้คำว่าเปิดหรือปิดเป็นป้ายกำกับ",
+                "title-value": "เปิด",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "",
+              "width": 560,
+              "height": 54
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "ใช้กับการตั้งค่าที่บันทึกเองทันทีเมื่อแตะ",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "มีผลทันที ไม่ต้องกดปุ่มบันทึก",
+                "title-value": "บันทึกฉบับร่างอัตโนมัติ",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "",
+              "width": 560,
+              "height": 54
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "ใช้ในฟอร์มที่ต้องกดปุ่มบันทึกก่อน กรณีนี้ต้องใช้ช่องติ๊กแทน",
+          "effects": [],
+          "logos": [],
+          "components": [
+            {
+              "type": "component",
+              "set": "toggle",
+              "props": {
+                "supporting-text-value": "ค่าจะถูกส่งตอนกดปุ่มบันทึกท้ายฟอร์ม",
+                "title-value": "ยินยอมให้ใช้ข้อมูล",
+                "supporting-text": true,
+                "title": true,
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "label": "",
+              "width": 560,
+              "height": 54
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "พื้นที่แตะ การบอกสถานะ และชื่อที่อ่านออก",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• พื้นที่แตะ  แถวสูง 24 ถึง 56 ตามขนาด บนอุปกรณ์สัมผัสยกเป็น 48 ทุกขนาด ผ่านทั้งเกณฑ์ 48dp ของ Android และ 44pt ของ Apple\n• ไม่พึ่งสีอย่างเดียว  สถานะบอกด้วยตำแหน่งปุ่มกลม จึงผ่าน WCAG SC 1.4.1 โดยไม่ต้องเพิ่มไอคอนหรือข้อความ\n• ชื่อที่โปรแกรมอ่านหน้าจออ่านได้  ต้องมีเสมอ ถ้าไม่มีข้อความข้างนอกให้เปิดคุณสมบัติหัวข้อ\n• ป้ายกำกับห้ามเปลี่ยนตามสถานะ  กฎของ WAI-ARIA เป็นข้อที่ทีมส่วนใหญ่พลาด\n• ภาพเคลื่อนไหว  ฝั่งโค้ดต้องใส่ transition none ใน prefers-reduced-motion\n• ข้อจำกัดที่รู้ตัว  สถานะปิดกับปิดใช้งานใช้สีเดียวกัน แยกด้วยตาไม่ออก ถ้าจำเป็นต้องแยกให้ใส่ข้อความกำกับเพิ่ม",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "h",
+          "text": "Design tokens",
+          "sub": "ตัวแปร 28 ตัวใน Figma และ token 34 ตัวในโค้ด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• รูปแบบชื่อใน Figma  toggle/<ส่วน>/<ขนาด> เช่น toggle/track/width/md\n• รูปแบบชื่อในโค้ด  --ntg-space-toggle-<ส่วน>-<ขนาด> และ --ntg-toggle-radius-full\n• สามตัวมีเฉพาะฝั่งโค้ด  ระยะเลื่อนสองขนาดกับความสูงแถวบนอุปกรณ์สัมผัส เพราะไม่มีอะไรใน Figma ผูกได้จริง\n• ตารางจับคู่ชื่อเต็ม  อยู่ในเอกสาร Toggles Token\n• สูตรต้นทาง  tokens/scale/toggle.mjs และเอกสารในเครื่องที่ docs/14-toggles.md",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "ค่าตั้งต้นตัวเดียว ที่เหลือเป็นผลลัพธ์",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• ค่าตั้งต้น  ความสูงราง base 16 step 4 ให้ 16, 20, 24, 28, 32\n• ความกว้างราง  ความสูงคูณสอง ให้ 32, 40, 48, 56, 64\n• ปุ่มกลม  ความสูงลบระยะขอบในสองข้าง ให้ 12, 16, 20, 24, 28\n• ความสูงแถว  อ้างสเกลความสูงตัวควบคุมกลาง ให้ 24, 32, 40, 48, 56\n• ค่าคงที่ทุกขนาด  ระยะขอบใน 2, ระยะห่างสวิตช์กับข้อความ 8, มุมโค้งใช้ค่าเต็มวง\n• ด่านตรวจสองข้อ  ระยะขอบในคูณสองบวกปุ่มกลมเท่าความสูงราง และความกว้างรางเท่าความสูงรางคูณสอง ถ้าไม่ผ่านจะสร้างไฟล์ไม่ได้",
+          "color": "--ntg-color-text-general-supporting-text"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้องและเลือกใช้แทนกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• 15 Checkbox  ใช้แทนเมื่อต้องกดปุ่มบันทึกก่อนค่าจึงมีผล\n• 16 Radio  ใช้เมื่อเลือกได้อย่างเดียวจากหลายตัวเลือก\n• 27 Lists  ที่ที่หยิบสวิตช์ไปใช้จริงในรายการตั้งค่า\n• 13 Input  สำหรับฟอร์มที่ต้องกดบันทึก ใช้สเกลความสูงร่วมกับสวิตช์\n• 12 Buttons  ใช้สเกลความสูงตัวควบคุมกลางร่วมกัน วางเรียงแถวเดียวกันได้พอดี",
+          "color": "--ntg-color-text-general-supporting-text"
+        }
+      ]
+    },
+    {
+      "id": "10517:77",
+      "name": "Toggles Token",
+      "title": "Toggles Token",
+      "subtitle": "พจนานุกรมกลางจับคู่ชื่อตัวแปรใน Figma กับชื่อในโค้ด พร้อมค่าจริงและจุดที่ใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อตัวแปรขนาดของสวิตช์ที่ทีมออกแบบเห็นใน Figma กับชื่อที่ทีมพัฒนาใช้ในโค้ด พร้อมค่าจริงและจุดที่เอาไปผูก เพื่อให้สองฝั่งเรียกของชิ้นเดียวกันโดยไม่หลง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สวิตช์มีตัวแปรขนาด 28 ตัวในคอลเลกชัน component และมี token ฝั่งโค้ด 34 ตัว ส่วนต่าง 6 ตัวคือค่าที่ไม่มีอะไรใน Figma ผูกได้จริง ได้แก่ระยะเลื่อนของปุ่มกลมทั้ง 5 ขนาด ซึ่งเป็นผลจากการจัดตำแหน่งด้วย auto-layout ไม่ใช่ค่าที่ตั้งเอง และความสูงแถวบนอุปกรณ์สัมผัส ซึ่งยังไม่มีแบบสำหรับอุปกรณ์สัมผัสในไฟล์ออกแบบ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10517:80",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ทุกค่าในตารางนี้เป็นผลลัพธ์จากสูตรในไฟล์ tokens/scale/toggle.mjs ค่าตั้งต้นมีตัวเดียวคือความสูงราง ที่เหลือคำนวณต่อทั้งหมด ถ้าจะแก้ค่าใดค่าหนึ่ง ต้องแก้ที่สูตรแล้วสร้างใหม่ ห้ามพิมพ์ทับลงไฟล์ผลลัพธ์",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10517:80",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อตัวแปรที่เห็นในแผง Figma ใช้ตอนออกแบบและตอนผูกค่าเข้ากับชิ้นงาน อยู่ในคอลเลกชัน component"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ สร้างจากไฟล์ token ด้วยคำสั่ง npm run tokens:build"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "toggle/track/height/xs\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-height-xs\n",
+              "16px",
+              "ความสูงราง ค่าตั้งต้นของชุด"
+            ],
+            [
+              "toggle/track/height/sm\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-height-sm\n",
+              "20px",
+              "ความสูงราง ค่าตั้งต้นของชุด"
+            ],
+            [
+              "toggle/track/height/md\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-height-md\n",
+              "24px",
+              "ความสูงราง ค่าตั้งต้นของชุด"
+            ],
+            [
+              "toggle/track/height/lg\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-height-lg\n",
+              "28px",
+              "ความสูงราง ค่าตั้งต้นของชุด"
+            ],
+            [
+              "toggle/track/height/xl\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-height-xl\n",
+              "32px",
+              "ความสูงราง ค่าตั้งต้นของชุด"
+            ],
+            [
+              "toggle/track/width/xs\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-width-xs\n",
+              "32px",
+              "ความกว้างราง มาจากความสูงคูณสอง"
+            ],
+            [
+              "toggle/track/width/sm\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-width-sm\n",
+              "40px",
+              "ความกว้างราง มาจากความสูงคูณสอง"
+            ],
+            [
+              "toggle/track/width/md\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-width-md\n",
+              "48px",
+              "ความกว้างราง มาจากความสูงคูณสอง"
+            ],
+            [
+              "toggle/track/width/lg\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-width-lg\n",
+              "56px",
+              "ความกว้างราง มาจากความสูงคูณสอง"
+            ],
+            [
+              "toggle/track/width/xl\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-track-width-xl\n",
+              "64px",
+              "ความกว้างราง มาจากความสูงคูณสอง"
+            ],
+            [
+              "toggle/knob/size/xs\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-knob-size-xs\n",
+              "12px",
+              "ปุ่มกลม มาจากความสูงรางลบระยะขอบใน"
+            ],
+            [
+              "toggle/knob/size/sm\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-knob-size-sm\n",
+              "16px",
+              "ปุ่มกลม มาจากความสูงรางลบระยะขอบใน"
+            ],
+            [
+              "toggle/knob/size/md\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-knob-size-md\n",
+              "20px",
+              "ปุ่มกลม มาจากความสูงรางลบระยะขอบใน"
+            ],
+            [
+              "toggle/knob/size/lg\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-knob-size-lg\n",
+              "24px",
+              "ปุ่มกลม มาจากความสูงรางลบระยะขอบใน"
+            ],
+            [
+              "toggle/knob/size/xl\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-knob-size-xl\n",
+              "28px",
+              "ปุ่มกลม มาจากความสูงรางลบระยะขอบใน"
+            ],
+            [
+              "toggle/row/height/xs\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-row-height-xs\n",
+              "24px",
+              "ความสูงแถวที่กดได้ อ้างสเกลกลาง"
+            ],
+            [
+              "toggle/row/height/sm\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-row-height-sm\n",
+              "32px",
+              "ความสูงแถวที่กดได้ อ้างสเกลกลาง"
+            ],
+            [
+              "toggle/row/height/md\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-row-height-md\n",
+              "40px",
+              "ความสูงแถวที่กดได้ อ้างสเกลกลาง"
+            ],
+            [
+              "toggle/row/height/lg\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-row-height-lg\n",
+              "48px",
+              "ความสูงแถวที่กดได้ อ้างสเกลกลาง"
+            ],
+            [
+              "toggle/row/height/xl\nWIDTH_HEIGHT",
+              "--ntg-space-toggle-row-height-xl\n",
+              "56px",
+              "ความสูงแถวที่กดได้ อ้างสเกลกลาง"
+            ],
+            [
+              "toggle/indent/xs\nGAP",
+              "--ntg-space-toggle-indent-xs\n",
+              "40px",
+              "ระยะเยื้องคำอธิบาย กว้างรางบวกระยะห่าง"
+            ],
+            [
+              "toggle/indent/sm\nGAP",
+              "--ntg-space-toggle-indent-sm\n",
+              "48px",
+              "ระยะเยื้องคำอธิบาย กว้างรางบวกระยะห่าง"
+            ],
+            [
+              "toggle/indent/md\nGAP",
+              "--ntg-space-toggle-indent-md\n",
+              "56px",
+              "ระยะเยื้องคำอธิบาย กว้างรางบวกระยะห่าง"
+            ],
+            [
+              "toggle/indent/lg\nGAP",
+              "--ntg-space-toggle-indent-lg\n",
+              "64px",
+              "ระยะเยื้องคำอธิบาย กว้างรางบวกระยะห่าง"
+            ],
+            [
+              "toggle/indent/xl\nGAP",
+              "--ntg-space-toggle-indent-xl\n",
+              "72px",
+              "ระยะเยื้องคำอธิบาย กว้างรางบวกระยะห่าง"
+            ],
+            [
+              "toggle/inset\nGAP",
+              "--ntg-space-toggle-inset\n",
+              "2px",
+              "ระยะขอบในราง เท่ากันทุกขนาดทั้งสี่ด้าน"
+            ],
+            [
+              "toggle/gap\nGAP",
+              "--ntg-space-toggle-gap\n",
+              "8px",
+              "ระยะระหว่างสวิตช์กับข้อความ"
+            ],
+            [
+              "toggle/radius/full\nCORNER_RADIUS",
+              "--ntg-toggle-radius-full\n",
+              "9999px",
+              "มุมโค้งราง ใช้ค่าเต็มวงให้เป็นแคปซูล"
+            ],
+            [
+              "ไม่มีใน Figma\nมีเฉพาะฝั่งโค้ด",
+              "--ntg-space-toggle-travel-xs\n",
+              "16px",
+              "ระยะเลื่อนปุ่มกลม Figma ได้จาก auto-layout"
+            ],
+            [
+              "ไม่มีใน Figma\nมีเฉพาะฝั่งโค้ด",
+              "--ntg-space-toggle-travel-sm\n",
+              "20px",
+              "ระยะเลื่อนปุ่มกลม Figma ได้จาก auto-layout"
+            ],
+            [
+              "ไม่มีใน Figma\nมีเฉพาะฝั่งโค้ด",
+              "--ntg-space-toggle-travel-md\n",
+              "24px",
+              "ระยะเลื่อนปุ่มกลม Figma ได้จาก auto-layout"
+            ],
+            [
+              "ไม่มีใน Figma\nมีเฉพาะฝั่งโค้ด",
+              "--ntg-space-toggle-travel-lg\n",
+              "28px",
+              "ระยะเลื่อนปุ่มกลม Figma ได้จาก auto-layout"
+            ],
+            [
+              "ไม่มีใน Figma\nมีเฉพาะฝั่งโค้ด",
+              "--ntg-space-toggle-travel-xl\n",
+              "32px",
+              "ระยะเลื่อนปุ่มกลม Figma ได้จาก auto-layout"
+            ],
+            [
+              "ไม่มีใน Figma\nมีเฉพาะฝั่งโค้ด",
+              "--ntg-space-toggle-row-height-touch\n",
+              "48px",
+              "ความสูงแถวบนอุปกรณ์สัมผัส ยังไม่มีแบบในไฟล์"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• แหล่งความจริงของขนาดสวิตช์อยู่ที่ tokens/scale/toggle.mjs ไม่ใช่ที่ Figma ต่างจาก token สี ที่ Figma เป็นแหล่งความจริง\n• แก้สูตรแล้วรัน npm run tokens:build จะได้ทั้งไฟล์ CSS และค่าที่เอาไปอัปเดตตัวแปรใน Figma\n• ด่านตรวจในไฟล์สูตรจะไม่ยอมให้สร้างไฟล์ ถ้าค่าบวกกลับแล้วไม่ตรงกัน\n• ห้ามพิมพ์ค่าดิบลงชิ้นงานตรง ๆ ให้ผูกตัวแปรเสมอ",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "10517:115",
+      "name": "Toggle Anatomy",
+      "title": "Toggle Anatomy",
+      "subtitle": "ส่วนประกอบของสวิตช์ ราง ปุ่มกลม และแถวที่กดได้ พร้อมค่าจริงทุกขนาด",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ส่วนประกอบสามชั้น",
+          "sub": "สวิตช์ประกอบด้วยกล่องสามชั้นซ้อนกัน บวกช่องข้อความอีกสองช่องที่เปิดปิดได้ ชั้นนอกสุดไม่มีสีพื้นและมีไว้ให้แตะ ชั้นกลางคือรางที่บอกสถานะด้วยสี ชั้นในสุดคือปุ่มกลมที่บอกสถานะด้วยตำแหน่ง",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชั้น",
+            "หน้าที่",
+            "ค่า xs ถึง xl",
+            "ตัวแปรที่ผูก"
+          ],
+          "rows": [
+            [
+              "แถวที่กดได้ row\nไม่มีสีพื้น",
+              "พื้นที่รับการแตะ ครอบสวิตช์กับข้อความทั้งแถว\n",
+              "สูง 24 ถึง 56",
+              "toggle/row/height"
+            ],
+            [
+              "ราง track\nทรงแคปซูล",
+              "พื้นหลังบอกสถานะด้วยสี และเป็นกรอบให้ปุ่มกลมเลื่อน\n",
+              "32x16 ถึง 64x32",
+              "toggle/track"
+            ],
+            [
+              "ปุ่มกลม knob\nวงกลม",
+              "บอกสถานะด้วยตำแหน่ง ซ้ายคือปิด ขวาคือเปิด\n",
+              "12 ถึง 28",
+              "toggle/knob/size"
+            ],
+            [
+              "หัวข้อ title\nเปิดปิดได้",
+              "ชื่อของสิ่งที่ควบคุม ห้ามใช้คำว่าเปิดหรือปิด\n",
+              "label/xs ถึง label/xl",
+              "text style ตามขนาด"
+            ],
+            [
+              "คำอธิบาย supporting\nเปิดปิดได้",
+              "อธิบายผลของการเปิดปิด ระยะเยื้องมาจากสูตร\n",
+              "body/xs ถึง body/xl",
+              "toggle/indent"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10517:123",
+      "name": "Toggle Two Layer Model",
+      "title": "Toggle Two Layer Model",
+      "subtitle": "ทำไมภาพสวิตช์ไม่ผูกกับสเกลความสูงกลาง แต่แถวที่กดได้ผูก",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ทำไมต้องแยกสองชั้น",
+          "sub": "ภาพสวิตช์กับพื้นที่ที่นิ้วแตะเป็นคนละเรื่องกัน จึงคุมด้วยสเกลคนละชุด แบบอย่างมาจาก Adobe Spectrum",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ชั้นภาพสวิตช์ไม่ผูกกับสเกลความสูงกลาง เพราะไม่มีระบบไหนใน 12 เจ้าที่วิจัยเอาตัวสวิตช์ไปผูกกับความสูงปุ่ม หลักฐานที่ชี้ขาดคือ IBM Carbon ซึ่งผูกความสูงปุ่มกับช่องกรอกด้วยสูตรเดียวกัน แต่จงใจไม่ลากสวิตช์เข้ามาในสูตรนั้น",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10527:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "p",
+          "text": "เหตุผลเชิงการวางเลย์เอาต์คือสวิตช์ไม่ได้วางเรียงกับปุ่มแบบที่ช่องค้นหาวางคู่ปุ่มค้นหา แต่วางอยู่ในบรรทัดเดียวกับข้อความในรายการตั้งค่า กรณีของสวิตช์จึงเหมือนอวาตาร์ที่เราตัดสินว่าไม่รวมสูตรกับปุ่ม มากกว่าจะเหมือนช่องกรอกที่เราตัดสินว่ารวม",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10527:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "p",
+          "text": "ชั้นแถวที่กดได้ผูกกับสเกลความสูงกลางตรง ๆ ผลคือได้สองอย่างพร้อมกันด้วยกลไกเดียว สวิตช์วางเรียงแถวเดียวกับปุ่มและช่องกรอกได้พอดีเพราะแถวสูงเท่ากัน และได้พื้นที่แตะที่ผ่านเกณฑ์โดยไม่ต้องทำให้สวิตช์ที่ตาเห็นอ้วนขึ้น",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10527:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "p",
+          "text": "ข้อควรระวังที่สำคัญที่สุด ตอนที่เปิดใช้แค่ sm กับ md ความสูงรางห่างจากความสูงแถวเท่ากันพอดีที่ 12 ทั้งคู่ ซึ่งชวนให้คิดว่าสองชั้นนี้ผูกกันได้ แต่พอเปิดครบ 5 ขนาดแล้วระยะห่างกลายเป็น 8, 12, 16, 20, 24 ไม่คงที่เลย เพราะความสูงรางใช้ step 4 ส่วนความสูงแถวใช้ step 8 นี่คือหลักฐานตรง ๆ ว่าสองชั้นนี้ไม่ได้มีความสัมพันธ์กันจริง ถ้าเผลอผูกไว้ตั้งแต่ตอนมีสองขนาด พอเปิดขนาดที่สามค่าจะเพี้ยนทันที",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10527:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "p",
+          "text": "แต่ความสูงแถวต้องอ้างสเกลกลางจริง ห้ามพิมพ์ค่า 32 กับ 40 ซ้ำลงไป เพราะนั่นคือจุดประสงค์ทั้งหมดของชั้นที่สอง ถ้าพิมพ์ค่าตายจะเกิดอาการเดียวกับ GitHub Primer ที่ฝั่งหนึ่งอ้างตัวแปร อีกฝั่งพิมพ์ค่าตาย แล้วหลุดจากกันโดยไม่มีใครรู้",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10527:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        }
+      ]
+    },
+    {
+      "id": "10517:131",
+      "name": "Toggle Usage",
+      "title": "Toggle Usage",
+      "subtitle": "เมื่อไหร่ควรใช้สวิตช์ เมื่อไหร่ควรใช้ช่องติ๊ก พร้อมตัวอย่างถูกและผิด",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "กติกาการใช้งาน",
+          "sub": "สี่ข้อนี้เป็นข้อบังคับ ไม่ใช่คำแนะนำ ทุกข้อมาจากระบบใหญ่ที่เขียนเป็นกฎไว้ตรงกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "1. สวิตช์ต้องมีผลทันที ผู้ใช้แตะแล้วระบบต้องบันทึกและเปลี่ยนพฤติกรรมเดี๋ยวนั้น ห้ามใช้ในฟอร์มที่ต้องกดปุ่มบันทึกก่อน ถ้าต้องกดบันทึกให้ใช้ช่องติ๊กแทน ข้อนี้ Material 3 Atlassian และ Fluent เขียนตรงกันถึงขั้นเอ่ยชื่อปุ่มบันทึก",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10528:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "p",
+          "text": "2. ห้ามผสมตัวควบคุมที่บันทึกเองกับตัวควบคุมที่ต้องกดบันทึกไว้ในฟอร์มเดียวกัน ผู้ใช้จะเดาไม่ออกว่าอะไรบันทึกไปแล้วและอะไรยังไม่ได้บันทึก ข้อนี้มาจาก GitHub Primer",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10528:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "p",
+          "text": "3. ป้ายกำกับห้ามเปลี่ยนตามสถานะ ข้อความต้องเป็นชื่อของสิ่งที่เปิดปิด ไม่ใช่คำว่าเปิดหรือปิด เพราะโปรแกรมอ่านหน้าจอประกาศสถานะให้เองอยู่แล้ว ถ้าป้ายเปลี่ยนตามด้วยผู้ใช้จะได้ยินซ้ำซ้อนและสับสน ข้อนี้มาจาก WAI-ARIA และเป็นข้อที่ทีมส่วนใหญ่พลาด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10528:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "p",
+          "text": "4. สวิตช์ต้องมีชื่อที่โปรแกรมอ่านหน้าจออ่านได้เสมอ ถ้าหน้าจอนั้นไม่มีข้อความกำกับอยู่ข้างนอก ให้เปิดคุณสมบัติหัวข้อของ component แล้วใส่ชื่อลงไป",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10528:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "p",
+          "text": "ข้อจำกัดที่รู้ตัวอยู่ สถานะปิดกับสถานะปิดใช้งานใช้สีเดียวกัน จึงแยกด้วยตาไม่ออก ถ้าหน้าจอไหนจำเป็นต้องแยกให้ชัด ให้ใส่ข้อความกำกับเพิ่ม จนกว่าจะแก้เรื่องสีทั้งระบบ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10528:512",
+          "stackGap": "--ntg-size-space-s2-md"
+        },
+        {
+          "type": "h",
+          "text": "สวิตช์ หรือ ช่องติ๊ก",
+          "sub": "เลือกผิดชนิดแล้วผู้ใช้จะเข้าใจผิดว่าบันทึกแล้วหรือยัง ตัดสินจากสี่ข้อนี้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "หัวข้อ",
+            "สวิตช์",
+            "ช่องติ๊ก"
+          ],
+          "rows": [
+            [
+              "ผลของการเปลี่ยน\n",
+              "มีผลทันที ไม่ต้องกดบันทึก\n",
+              "รอจนกดปุ่มบันทึกของฟอร์ม"
+            ],
+            [
+              "ใช้กับอะไร\n",
+              "การตั้งค่าที่เปิดหรือปิดได้\n",
+              "การเลือกข้อมูลในฟอร์ม"
+            ],
+            [
+              "เลือกได้กี่อย่าง\n",
+              "เปิดหรือปิดเท่านั้น\n",
+              "เลือกหลายข้อพร้อมกันได้"
+            ],
+            [
+              "สถานะกึ่งกลาง\n",
+              "ไม่มี\n",
+              "มี ใช้ตอนเลือกบางส่วน"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10554:1288",
+      "name": "Toggle",
+      "title": "Toggle",
+      "subtitle": "component ต้นฉบับของสวิตช์ 40 แบบ แก้ที่นี่แล้วทุก instance ในไฟล์เปลี่ยนตาม",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "toggle",
+          "sub": "5 ขนาด คูณ 4 สถานะ คูณเปิดปิด รวม 40 แบบ พร้อมคุณสมบัติเปิดปิดหัวข้อและคำอธิบายอีก 2 ตัวที่ไม่คูณจำนวนแบบ",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "toggle",
+          "caption": "",
+          "width": 1240,
+          "height": 724,
+          "items": [
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "default",
+                "active": "true"
+              },
+              "x": 40,
+              "y": 40,
+              "width": 260,
+              "height": 24
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "hover",
+                "active": "true"
+              },
+              "x": 340,
+              "y": 40,
+              "width": 260,
+              "height": 24
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "focused",
+                "active": "true"
+              },
+              "x": 640,
+              "y": 40,
+              "width": 260,
+              "height": 24
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "disabled",
+                "active": "true"
+              },
+              "x": 940,
+              "y": 40,
+              "width": 260,
+              "height": 24
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "default",
+                "active": "true"
+              },
+              "x": 40,
+              "y": 104,
+              "width": 260,
+              "height": 26
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "hover",
+                "active": "true"
+              },
+              "x": 340,
+              "y": 104,
+              "width": 260,
+              "height": 26
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "focused",
+                "active": "true"
+              },
+              "x": 640,
+              "y": 104,
+              "width": 260,
+              "height": 26
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "disabled",
+                "active": "true"
+              },
+              "x": 940,
+              "y": 104,
+              "width": 260,
+              "height": 26
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "default",
+                "active": "true"
+              },
+              "x": 40,
+              "y": 170,
+              "width": 260,
+              "height": 28
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "hover",
+                "active": "true"
+              },
+              "x": 340,
+              "y": 170,
+              "width": 260,
+              "height": 28
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "focused",
+                "active": "true"
+              },
+              "x": 640,
+              "y": 170,
+              "width": 260,
+              "height": 28
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "disabled",
+                "active": "true"
+              },
+              "x": 940,
+              "y": 170,
+              "width": 260,
+              "height": 28
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "default",
+                "active": "true"
+              },
+              "x": 40,
+              "y": 238,
+              "width": 260,
+              "height": 30
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "hover",
+                "active": "true"
+              },
+              "x": 340,
+              "y": 238,
+              "width": 260,
+              "height": 30
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "focused",
+                "active": "true"
+              },
+              "x": 640,
+              "y": 238,
+              "width": 260,
+              "height": 30
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "disabled",
+                "active": "true"
+              },
+              "x": 940,
+              "y": 238,
+              "width": 260,
+              "height": 30
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "default",
+                "active": "true"
+              },
+              "x": 40,
+              "y": 308,
+              "width": 260,
+              "height": 34
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "hover",
+                "active": "true"
+              },
+              "x": 340,
+              "y": 308,
+              "width": 260,
+              "height": 34
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "focused",
+                "active": "true"
+              },
+              "x": 640,
+              "y": 308,
+              "width": 260,
+              "height": 34
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "disabled",
+                "active": "true"
+              },
+              "x": 940,
+              "y": 308,
+              "width": 260,
+              "height": 34
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "default",
+                "active": "false"
+              },
+              "x": 40,
+              "y": 382,
+              "width": 260,
+              "height": 24
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "hover",
+                "active": "false"
+              },
+              "x": 340,
+              "y": 382,
+              "width": 260,
+              "height": 24
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "focused",
+                "active": "false"
+              },
+              "x": 640,
+              "y": 382,
+              "width": 260,
+              "height": 24
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xs",
+                "state": "disabled",
+                "active": "false"
+              },
+              "x": 940,
+              "y": 382,
+              "width": 260,
+              "height": 24
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "default",
+                "active": "false"
+              },
+              "x": 40,
+              "y": 446,
+              "width": 260,
+              "height": 26
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "hover",
+                "active": "false"
+              },
+              "x": 340,
+              "y": 446,
+              "width": 260,
+              "height": 26
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "focused",
+                "active": "false"
+              },
+              "x": 640,
+              "y": 446,
+              "width": 260,
+              "height": 26
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "sm",
+                "state": "disabled",
+                "active": "false"
+              },
+              "x": 940,
+              "y": 446,
+              "width": 260,
+              "height": 26
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "default",
+                "active": "false"
+              },
+              "x": 40,
+              "y": 512,
+              "width": 260,
+              "height": 28
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "hover",
+                "active": "false"
+              },
+              "x": 340,
+              "y": 512,
+              "width": 260,
+              "height": 28
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "focused",
+                "active": "false"
+              },
+              "x": 640,
+              "y": 512,
+              "width": 260,
+              "height": 28
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "md",
+                "state": "disabled",
+                "active": "false"
+              },
+              "x": 940,
+              "y": 512,
+              "width": 260,
+              "height": 28
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "default",
+                "active": "false"
+              },
+              "x": 40,
+              "y": 580,
+              "width": 260,
+              "height": 30
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "hover",
+                "active": "false"
+              },
+              "x": 340,
+              "y": 580,
+              "width": 260,
+              "height": 30
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "focused",
+                "active": "false"
+              },
+              "x": 640,
+              "y": 580,
+              "width": 260,
+              "height": 30
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "lg",
+                "state": "disabled",
+                "active": "false"
+              },
+              "x": 940,
+              "y": 580,
+              "width": 260,
+              "height": 30
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "default",
+                "active": "false"
+              },
+              "x": 40,
+              "y": 650,
+              "width": 260,
+              "height": 34
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "hover",
+                "active": "false"
+              },
+              "x": 340,
+              "y": 650,
+              "width": 260,
+              "height": 34
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "focused",
+                "active": "false"
+              },
+              "x": 640,
+              "y": 650,
+              "width": 260,
+              "height": 34
+            },
+            {
+              "props": {
+                "title": true,
+                "supporting-text": false,
+                "title-value": "Toggle Title",
+                "supporting-text-value": "Supporting text",
+                "size": "xl",
+                "state": "disabled",
+                "active": "false"
+              },
+              "x": 940,
+              "y": 650,
+              "width": 260,
+              "height": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10517:156",
+      "name": "Toggles Space",
+      "title": "Toggles Space",
+      "subtitle": "สูตรขนาดและระยะห่างของสวิตช์ ค่าทุกขนาด และด่านตรวจความสอดคล้อง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "สวิตช์ใช้สูตรของตัวเองสำหรับภาพสวิตช์ และอ้างสเกลความสูงกลางสำหรับแถวที่กดได้ ค่าตั้งต้นมีตัวเดียวคือความสูงราง ที่เหลือคำนวณต่อจากตัวนั้นทั้งหมด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สูตรอยู่ที่ tokens/scale/toggle.mjs มิติที่มีสูตร base และ step จริงมีสองตัว คือความสูงราง กับความสูงแถวที่กดได้ ส่วนความกว้างราง ปุ่มกลม ระยะเลื่อน และระยะเยื้องคำอธิบาย เป็นผลลัพธ์ที่คำนวณจากสองตัวนั้น ห้ามตั้งเป็นตัวเลขอิสระ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10517:159",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "มิติที่ไม่มีสูตรเพราะเป็นค่าคงที่ทุกขนาด คือระยะขอบในราง 2 ระยะห่างระหว่างสวิตช์กับข้อความ 8 และมุมโค้งที่ใช้ค่าเต็มวงเพื่อให้เป็นแคปซูลไม่ว่าความสูงจะเปลี่ยนไปเท่าไร",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10517:159",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "สวิตช์เปิดใช้ครบ 5 ขนาดเท่าปุ่ม ตัดสิน 4 กันยายน 2569 เหตุผลคือความสม่ำเสมอ ถ้าปุ่มมี 5 ขนาดแต่สวิตช์มี 2 คนออกแบบต้องจำว่าชิ้นไหนมีขนาดไหน ซึ่งเป็นภาระที่ไม่จำเป็น สูตรรองรับอยู่แล้วจึงไม่ต้องแก้สูตร",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10517:159",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "สูตร base และ step",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "rows": [
+            [
+              "ความสูงราง",
+              "16",
+              "4",
+              "16",
+              "20",
+              "24",
+              "28",
+              "32"
+            ],
+            [
+              "ความสูงแถวที่กดได้",
+              "24",
+              "8",
+              "24",
+              "32",
+              "40",
+              "48",
+              "56"
+            ],
+            [
+              "ความกว้างราง",
+              "ผลลัพธ์",
+              "สูงคูณ 2",
+              "32",
+              "40",
+              "48",
+              "56",
+              "64"
+            ],
+            [
+              "ปุ่มกลม",
+              "ผลลัพธ์",
+              "สูงลบ 4",
+              "12",
+              "16",
+              "20",
+              "24",
+              "28"
+            ],
+            [
+              "ระยะเลื่อน",
+              "ผลลัพธ์",
+              "เท่าความสูงราง",
+              "16",
+              "20",
+              "24",
+              "28",
+              "32"
+            ],
+            [
+              "ระยะเยื้องคำอธิบาย",
+              "ผลลัพธ์",
+              "กว้างบวก 8",
+              "40",
+              "48",
+              "56",
+              "64",
+              "72"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปรที่ผูกได้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อตัวแปรใน Figma",
+            "💻 ชื่อในโค้ด",
+            "ค่า",
+            "ใช้กับส่วนไหนของ component"
+          ],
+          "rows": [
+            [
+              "toggle/track/height/xs",
+              "--ntg-space-toggle-track-height-xs",
+              "16",
+              "ความสูงของราง"
+            ],
+            [
+              "toggle/track/height/sm",
+              "--ntg-space-toggle-track-height-sm",
+              "20",
+              "ความสูงของราง"
+            ],
+            [
+              "toggle/track/height/md",
+              "--ntg-space-toggle-track-height-md",
+              "24",
+              "ความสูงของราง"
+            ],
+            [
+              "toggle/track/height/lg",
+              "--ntg-space-toggle-track-height-lg",
+              "28",
+              "ความสูงของราง"
+            ],
+            [
+              "toggle/track/height/xl",
+              "--ntg-space-toggle-track-height-xl",
+              "32",
+              "ความสูงของราง"
+            ],
+            [
+              "toggle/track/width/xs",
+              "--ntg-space-toggle-track-width-xs",
+              "32",
+              "ความกว้างของราง"
+            ],
+            [
+              "toggle/track/width/sm",
+              "--ntg-space-toggle-track-width-sm",
+              "40",
+              "ความกว้างของราง"
+            ],
+            [
+              "toggle/track/width/md",
+              "--ntg-space-toggle-track-width-md",
+              "48",
+              "ความกว้างของราง"
+            ],
+            [
+              "toggle/track/width/lg",
+              "--ntg-space-toggle-track-width-lg",
+              "56",
+              "ความกว้างของราง"
+            ],
+            [
+              "toggle/track/width/xl",
+              "--ntg-space-toggle-track-width-xl",
+              "64",
+              "ความกว้างของราง"
+            ],
+            [
+              "toggle/knob/size/xs",
+              "--ntg-space-toggle-knob-size-xs",
+              "12",
+              "ปุ่มกลม ทั้งกว้างและสูง"
+            ],
+            [
+              "toggle/knob/size/sm",
+              "--ntg-space-toggle-knob-size-sm",
+              "16",
+              "ปุ่มกลม ทั้งกว้างและสูง"
+            ],
+            [
+              "toggle/knob/size/md",
+              "--ntg-space-toggle-knob-size-md",
+              "20",
+              "ปุ่มกลม ทั้งกว้างและสูง"
+            ],
+            [
+              "toggle/knob/size/lg",
+              "--ntg-space-toggle-knob-size-lg",
+              "24",
+              "ปุ่มกลม ทั้งกว้างและสูง"
+            ],
+            [
+              "toggle/knob/size/xl",
+              "--ntg-space-toggle-knob-size-xl",
+              "28",
+              "ปุ่มกลม ทั้งกว้างและสูง"
+            ],
+            [
+              "toggle/row/height/xs",
+              "--ntg-space-toggle-row-height-xs",
+              "24",
+              "ความสูงแถวที่กดได้"
+            ],
+            [
+              "toggle/row/height/sm",
+              "--ntg-space-toggle-row-height-sm",
+              "32",
+              "ความสูงแถวที่กดได้"
+            ],
+            [
+              "toggle/row/height/md",
+              "--ntg-space-toggle-row-height-md",
+              "40",
+              "ความสูงแถวที่กดได้"
+            ],
+            [
+              "toggle/row/height/lg",
+              "--ntg-space-toggle-row-height-lg",
+              "48",
+              "ความสูงแถวที่กดได้"
+            ],
+            [
+              "toggle/row/height/xl",
+              "--ntg-space-toggle-row-height-xl",
+              "56",
+              "ความสูงแถวที่กดได้"
+            ],
+            [
+              "toggle/indent/xs",
+              "--ntg-space-toggle-indent-xs",
+              "40",
+              "ระยะขอบซ้ายของแถวคำอธิบาย"
+            ],
+            [
+              "toggle/indent/sm",
+              "--ntg-space-toggle-indent-sm",
+              "48",
+              "ระยะขอบซ้ายของแถวคำอธิบาย"
+            ],
+            [
+              "toggle/indent/md",
+              "--ntg-space-toggle-indent-md",
+              "56",
+              "ระยะขอบซ้ายของแถวคำอธิบาย"
+            ],
+            [
+              "toggle/indent/lg",
+              "--ntg-space-toggle-indent-lg",
+              "64",
+              "ระยะขอบซ้ายของแถวคำอธิบาย"
+            ],
+            [
+              "toggle/indent/xl",
+              "--ntg-space-toggle-indent-xl",
+              "72",
+              "ระยะขอบซ้ายของแถวคำอธิบาย"
+            ],
+            [
+              "toggle/inset",
+              "--ntg-space-toggle-inset",
+              "2",
+              "ระยะขอบในของราง ทั้งสี่ด้าน"
+            ],
+            [
+              "toggle/gap",
+              "--ntg-space-toggle-gap",
+              "8",
+              "ระยะระหว่างรางกับข้อความในแถว"
+            ],
+            [
+              "toggle/radius/full",
+              "--ntg-toggle-radius-full",
+              "9999",
+              "มุมโค้งทั้งสี่มุมของราง"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา",
+          "sub": "• ต้นทางของค่าอยู่ที่โค้ด แก้ที่ tokens/scale/toggle.mjs แล้วรัน npm run tokens:build ไม่ใช่แก้ที่ Figma\n• ด่านตรวจสองข้อจะไม่ยอมให้สร้างไฟล์ถ้าค่าไม่สอดคล้องกัน ข้อแรก ระยะขอบในคูณสองบวกปุ่มกลมต้องเท่าความสูงราง ข้อสอง ความกว้างรางต้องเท่าความสูงรางคูณสอง\n• ห้ามผูกความสูงรางเข้ากับความสูงปุ่ม แม้ตัวเลขจะห่างกันเท่ากันพอดีทั้งสองขนาด เพราะเป็นความบังเอิญ ไม่ใช่ความสัมพันธ์\n• ความสูงแถวต้องอ้างสเกลความสูงกลางจริง ห้ามพิมพ์ค่า 32 กับ 40 ซ้ำลงไป\n• ห้ามใส่ค่าดิบลงชิ้นงาน ให้ผูกตัวแปรเสมอ",
+          "section": true
+        }
+      ]
+    }
+  ]
+}

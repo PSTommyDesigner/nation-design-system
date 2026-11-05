@@ -53,6 +53,7 @@ const PAGES = {
   // ชุดปุ่มใช้ชื่อเดียวกันทุกตระกูล ตระกูลจึงมาจากเอกสารที่ชุดนั้นอยู่ (families: ชื่อเอกสาร -> ตระกูลในโค้ด)
   buttons: { page: '12 Buttons', folder: 'Buttons', root: 'molecules', skip: [], components: ['semi-rounded-button', 'pill-button', 'semi-rounded-icon-button', 'circular-icon-button', 'link-button', 'link-icon-button'], families: { 'Brand Button': 'brand', 'Error Button': 'error', 'Neutral Button': 'neutral', 'Alpha Button': 'alpha' } },
   input: { page: '13 Input', folder: 'Input', root: 'molecules', skip: [], components: ['text-field', 'text-area', 'tag-field'] },
+  toggles: { page: '14 Toggles', folder: 'Toggles', root: 'molecules', skip: [], components: ['toggle'] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -414,7 +415,7 @@ function extract(doc) {
       push({ type: 'fontFamily', sample: big.characters, family: needVar(FAMILY_VAR[big.style.fontFamily], big.characters), title: rest[0] ?? '', usage: rest.slice(1).join(' '), weights })
       return
     }
-    if (n.type === 'FRAME' && (n.name === 'cell' || (COMPONENT_SETS.size && n.name === 'item')) && /^[\u2705\u274c]/.test(n.children?.find(c => c.type === 'TEXT')?.characters ?? '')) {
+    if (n.type === 'FRAME' && (n.name === 'cell' || (COMPONENT_SETS.size && ['item', 'do', 'dont'].includes(n.name))) && /^[\u2705\u274c]/.test(n.children?.find(c => c.type === 'TEXT')?.characters ?? '')) {
       // คู่ถูกผิดของหน้า Effect ข้อความ + ภาพเอฟเฟคในแถวเดียวกัน หน้าที่มีตัวอย่าง component (เช่น 12 Buttons) ตั้งชื่อกรอบว่า item
       const t = n.children.find(c => c.type === 'TEXT').characters
       const effects = findAll(n, isEffect).map(x => effectBlock(x, doc.name, ''))
@@ -427,6 +428,12 @@ function extract(doc) {
       // ภาพเอฟเฟคหนึ่งตัวพร้อมคำบรรยายด้านบน
       const label = n.children.find(c => c.type === 'TEXT')?.characters ?? ''
       push(effectBlock(n.children.find(isEffect), doc.name, label))
+      return
+    }
+    if (COMPONENT_SETS.size && n.type === 'FRAME' && n.children?.length > 1 && n.children.every(r => r.type === 'FRAME' && r.name === 'row' && r.children?.every(c => c.type === 'FRAME' && c.name === 'cell')) && findAll(n, isComponentSample).length) {
+      // ตารางที่ทำจากกรอบ row กับ cell มีทั้งข้อความและตัวอย่างในเซลล์ เช่น ตารางสถานะของหน้า 14 Toggles แถวแรกเป็นหัวตาราง
+      const rows = n.children.map(r => r.children.map(c => { const sm = topSamples(c)[0]; if (sm) { const b = componentBlock(sm, ''); return { set: b.set, props: b.props, image: b.image, width: b.width } } return { text: texts(c).join(' ').trim() } }))
+      push({ type: 'sampleTable', head: rows[0].map(c => c.text ?? ''), rows: rows.slice(1) })
       return
     }
     if (COMPONENT_SETS.size) {

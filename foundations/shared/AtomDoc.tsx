@@ -29,6 +29,8 @@ type ColorRow = { no: string; name: string; level: string; gap?: string | null; 
 type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number; labelBelow?: boolean }
 type SampleProps = Record<string, string | boolean>
 type ComponentItem = { set: string; props: SampleProps; image?: string; label: string; width: number; height: number; cell?: number; group?: { set: string; props: SampleProps; image?: string }[] }
+// เซลล์ของตารางที่มีตัวอย่าง (เช่น ตารางสถานะหน้า 14 Toggles) เป็นข้อความหรือตัวอย่าง component อย่างใดอย่างหนึ่ง
+type SampleCell = { text: string } | { set: string; props: SampleProps; image?: string; width: number }
 type VariantItem = { props: SampleProps; image?: string; x: number; y: number; width: number; height: number }
 type SpaceItem = { name: string; cssVar: string; value: string; usage: string; fill: string | null }
 type Block =
@@ -51,6 +53,7 @@ type Block =
   | { type: 'logos'; items: LogoItem[] }
   | { type: 'components'; vertical?: boolean; items: ComponentItem[] }
   | { type: 'variantSet'; set: string; caption: string; width: number; height: number; items: VariantItem[] }
+  | { type: 'sampleTable'; head: string[]; rows: SampleCell[][] }
   | { type: 'grid'; name: string; canvas: number; height?: number; columnFirst?: boolean; wrap?: { width: number; gap: string | null }; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
 type RadiusItem = { step: string; label: string; meta: string; corners: (string | null)[]; figma: number[]; fill: string | null; stroke: string | null }
 type NestedItem = { kind: 'do' | 'dont'; title: string; caption: string; outer: number; inner: number; outerFill: string | null; innerFill: string | null }
@@ -348,6 +351,14 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
           <span className="ntg-typography-title-sm">{clean(block.title)}</span>
           <p className={`ntg-typography-body-sm ${styles.paragraph}`}>{clean(block.body)}</p>
         </div>
+      )
+    case 'sampleTable':
+      return (
+        <Table
+          columns={block.head.map((h, i) => ({ id: String(i), header: clean(h), render: (r: SampleCell[]) => { const c = r[i]; if (!c) return null; return 'text' in c ? clean(c.text) : <Sample set={c.set} props={c.props} image={c.image} /> } }))}
+          data={block.rows}
+          getRowId={(_, i) => `${index}-${i}`}
+        />
       )
     case 'table': {
       const table = (

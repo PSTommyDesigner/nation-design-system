@@ -1573,7 +1573,9 @@
           "type": "p",
           "text": "ทั้งสองตระกูลเริ่มที่เทาเหมือนกัน จุดต่างอยู่ที่ตอนผู้ใช้เอาเมาส์ไปชี้\nตระกูลเทาจะเผยสีของแบรนด์หรือสีเตือนออกมา แปลว่าปุ่มนั้นยังเป็นงานของตระกูลนั้นอยู่ แค่พักไว้ให้เงียบตอนยังไม่ถูกสนใจ\nตระกูลกลางเป็นเทาตลอดทุกสถานะ ใช้กับงานที่ไม่ควรมีอารมณ์ของแบรนด์ติดมาเลย เช่น ปิดหน้าต่าง หรือย้อนกลับ\nเลือกผิดแล้วผู้ใช้อ่านความหมายผิด ปุ่มปิดที่เป็นเทาแล้วกลายเป็นสีแบรนด์ตอนชี้ จะดูเหมือนเป็นปุ่มยืนยัน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-sm"
+          "textStyle": "body-sm",
+          "stack": "10972:1975",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "components",
@@ -1741,7 +1743,9 @@
           "type": "p",
           "text": "ในแต่ละชุด ปุ่มซ้ายคือตอนพัก ปุ่มขวาคือตอนเอาเมาส์ไปชี้",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-sm"
+          "textStyle": "body-sm",
+          "stack": "10972:1975",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "h",
@@ -25943,12 +25947,16 @@
         {
           "type": "p",
           "text": "สูตรอยู่ที่ tokens/scale/button.mjs ทุกมิติใช้รูปแบบเดียวกันคือ base บวก ลำดับ คูณ step โดยลำดับคือ xs เท่ากับ 0 ไล่ถึง xl เท่ากับ 4",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10216:1654",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "padding บนล่างเป็น 0 คงที่ทุกขนาด เพราะความสูงของปุ่มเป็นตัวคุมแทน ไม่ได้ปล่อยให้เนื้อหาดันความสูง ส่วนมุมโค้งไม่ได้อยู่ในไฟล์ของปุ่ม แต่หยิบจากสเกลกลางของหน้า 06 Shape เพราะเป็นบุคลิกของแบรนด์",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10216:1654",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h",

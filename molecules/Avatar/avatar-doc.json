@@ -18,19 +18,25 @@
           "type": "p",
           "text": "หน้า 11 Avatar เก็บอวาตาร์ทั้งหมดของระบบ 7 ชุด รวม 118 แบบ แบ่งเป็นอวาตาร์เดี่ยว 4 ชนิด อวาตาร์พร้อมชื่อ กลุ่มอวาตาร์ และชิ้นส่วนฐานอีก 1 ชุด",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:966",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "อวาตาร์เดี่ยวทั้ง 4 ชนิดมีโครงเหมือนกันหมด ต่างกันแค่สิ่งที่อยู่ข้างใน และมีคุณสมบัติชุดเดียวกันคือขนาด สถานะ และจุดบอกสถานะออนไลน์",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:966",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ชุดที่ชื่อขึ้นต้นด้วยขีดล่างเป็นชิ้นส่วนภายใน ไม่ได้เอาไปวางใช้ตรง ๆ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:966",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "components",
@@ -107,19 +113,25 @@
           "type": "p",
           "text": "ตัวอวาตาร์เป็นวงกลมที่ข้างในเป็นรูป ไอคอน ตัวย่อ หรือตัวเลข",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:970",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "จุดบอกสถานะออนไลน์เป็นชิ้นส่วนแยก วางทับมุมล่างขวา เปิดปิดได้ทุกชนิดทุกขนาด",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:970",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ปุ่มเพิ่มคนในกลุ่มใช้ circular-icon-button ตระกูล Neutral ระดับ Tertiary จากหน้า 12 Buttons ไม่มีปุ่มเฉพาะกิจของอวาตาร์แล้ว",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:970",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "components",
@@ -170,19 +182,25 @@
           "type": "p",
           "text": "อวาตาร์เดี่ยว 4 ชนิด มีขนาด 5 ระดับ สถานะ 2 แบบ และเปิดปิดจุดบอกสถานะได้ รวมชนิดละ 20 แบบ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:974",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "อวาตาร์พร้อมชื่อ มี 4 ขนาด สลับแสดงอีเมลได้ และเลือกได้ว่าจะมีจุดบอกสถานะไหม รวม 16 แบบ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:974",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "กลุ่มอวาตาร์ มี 3 ขนาด แสดงหน้าคนได้สูงสุด 5 คน เลือกได้ว่าจะมีปุ่มเพิ่มคนและตัวบอกจำนวนที่เหลือไหม รวม 12 แบบ",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:974",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "components",
@@ -391,25 +409,33 @@
           "type": "p",
           "text": "อวาตาร์มี 5 ขนาด คือ 24 32 40 48 และ 56 ซึ่งเป็นสูตรเริ่ม 24 เพิ่มทีละ 8",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:978",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "สูตรนี้ตรงกับความสูงปุ่มเป๊ะทุกขนาด แต่ตัดสินแล้วว่าไม่รวมสูตรกัน อวาตาร์มีตัวแปรของตัวเอง 23 ตัวตั้งแต่ 2026-09-01",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:978",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "จุดบอกสถานะออนไลน์มี 5 ขนาด เริ่ม 6 เพิ่มทีละ 2 คู่กับอวาตาร์ครบทั้ง 5 ขนาด",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:978",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "รายละเอียดทั้งหมดอยู่ที่เอกสาร Avatar Space",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:978",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "components",
@@ -545,25 +571,33 @@
           "type": "p",
           "text": "ถ้ามีรูปจริงใช้รูป ถ้าไม่มีรูปแต่รู้ชื่อใช้ตัวย่อ ถ้าไม่มีทั้งคู่ใช้ไอคอน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:983",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "ตัวเลขใช้แทนจำนวนเท่านั้น ห้ามใช้แทนตัวคน",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:983",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "เปิดจุดบอกสถานะออนไลน์เมื่อระบบรู้สถานะจริงเท่านั้น ถ้าไม่รู้ให้ปิด อย่าแสดงเป็นออฟไลน์",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:983",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "รายละเอียดพร้อมข้อควรระวังรายชนิดอยู่ที่เอกสาร Avatar Guide",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:983",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "card",
@@ -703,19 +737,25 @@
           "type": "p",
           "text": "12 Buttons ความสูงปุ่มบังเอิญตรงกับขนาดอวาตาร์ แต่ไม่ได้ใช้สูตรร่วมกัน และเป็นที่มาของปุ่มเพิ่มคนในกลุ่ม",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:988",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "10 Frame กรอบสัดส่วนสำหรับภาพขนาดใหญ่ ต่างจากอวาตาร์ที่เป็นวงกลมขนาดเล็ก",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:988",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "เอกสารประกอบฝั่งโค้ดอยู่ที่ docs/11-avatar.md",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10281:988",
+          "stackGap": "--ntg-size-space-s1-lg"
         }
       ]
     },
@@ -782,13 +822,17 @@
           "type": "p",
           "text": "เลือกขนาดจากบริบท xs 24 ใช้ในแถวรายการที่แน่น sm 32 ใช้ในรายการทั่วไป md 40 ใช้ในการ์ดและแถบนำทาง lg 48 ใช้ในหน้าโปรไฟล์ย่อ xl 56 ใช้เป็นรูปหลักของหน้าโปรไฟล์",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10280:804",
+          "stackGap": "--ntg-size-space-s2-lg"
         },
         {
           "type": "p",
           "text": "จุดบอกสถานะออนไลน์เป็นตัวเลือก เปิดเมื่อระบบรู้สถานะจริงเท่านั้น ถ้าไม่รู้ให้ปิด อย่าแสดงเป็นออฟไลน์ เพราะคนอ่านจะเข้าใจว่าคนนั้นไม่อยู่",
           "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
+          "textStyle": "body-md",
+          "stack": "10280:804",
+          "stackGap": "--ntg-size-space-s2-lg"
         }
       ]
     },
@@ -2434,12 +2478,16 @@
         {
           "type": "p",
           "text": "ขนาดที่ประกาศคือรูปที่มองเห็นจริง วงแหวนวาดด้วยเส้นขอบแบบ outside ล้นออกนอกกล่อง ไม่กินที่ข้างใน ปรับเป็นแบบนี้เมื่อ 2026-09-01 ตามที่ทุกเจ้าในตลาดทำ ของเดิมเว้นที่ไว้ให้วงแหวน 2px ทำให้ขนาด 56 ได้รูปจริงแค่ 52",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10278:664",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "p",
           "text": "อวาตาร์ไม่มี padding เป็นค่าตั้งเอง ระยะเว้นขอบรอบไอคอนเป็นผลลัพธ์จากการจัดกลาง คำนวณจาก ขนาดกล่อง ลบ ขนาดไอคอน หารสอง",
-          "color": "--ntg-color-text-general-supporting-text"
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10278:664",
+          "stackGap": "--ntg-size-space-s1-lg"
         },
         {
           "type": "h",
