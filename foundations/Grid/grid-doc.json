@@ -603,7 +603,8 @@
         },
         {
           "type": "p",
-          "text": "Desktop 1440 · 12 คอลัมน์ · gutter 24 px · margin 108 px · container 1224 px"
+          "text": "Desktop 1440 · 12 คอลัมน์ · gutter 24 px · margin 108 px · container 1224 px",
+          "color": "--ntg-color-text-general-label"
         },
         {
           "type": "grid",
@@ -618,7 +619,8 @@
         },
         {
           "type": "p",
-          "text": "Tablet แนวนอน 1024 · 10 คอลัมน์ · gutter 16 px · margin 80 px · container 864 px"
+          "text": "Tablet แนวนอน 1024 · 10 คอลัมน์ · gutter 16 px · margin 80 px · container 864 px",
+          "color": "--ntg-color-text-general-label"
         },
         {
           "type": "grid",
@@ -633,7 +635,8 @@
         },
         {
           "type": "p",
-          "text": "Tablet แนวตั้ง 768 · 8 คอลัมน์ · gutter 16 px · margin 40 px · container 688 px"
+          "text": "Tablet แนวตั้ง 768 · 8 คอลัมน์ · gutter 16 px · margin 40 px · container 688 px",
+          "color": "--ntg-color-text-general-label"
         },
         {
           "type": "grid",
@@ -648,7 +651,8 @@
         },
         {
           "type": "p",
-          "text": "Mobile 375 · 4 คอลัมน์ · gutter 5 px · margin 20 px · container 335 px"
+          "text": "Mobile 375 · 4 คอลัมน์ · gutter 5 px · margin 20 px · container 335 px",
+          "color": "--ntg-color-text-general-label"
         }
       ]
     },
@@ -677,7 +681,8 @@
         },
         {
           "type": "p",
-          "text": "Full HD 1920 · 10 คอลัมน์ · gutter 12 px · margin 186 px · container 1548 px"
+          "text": "Full HD 1920 · 10 คอลัมน์ · gutter 12 px · margin 186 px · container 1548 px",
+          "color": "--ntg-color-text-general-label"
         },
         {
           "type": "grid",
@@ -692,7 +697,8 @@
         },
         {
           "type": "p",
-          "text": "Desktop 1440 · 8 คอลัมน์ · gutter 12 px · margin 102 px · container 1236 px"
+          "text": "Desktop 1440 · 8 คอลัมน์ · gutter 12 px · margin 102 px · container 1236 px",
+          "color": "--ntg-color-text-general-label"
         },
         {
           "type": "grid",
@@ -707,7 +713,8 @@
         },
         {
           "type": "p",
-          "text": "Tablet แนวนอน 1024 · 6 คอลัมน์ · gutter 12 px · margin 50 px · container 924 px"
+          "text": "Tablet แนวนอน 1024 · 6 คอลัมน์ · gutter 12 px · margin 50 px · container 924 px",
+          "color": "--ntg-color-text-general-label"
         },
         {
           "type": "grid",
@@ -722,7 +729,8 @@
         },
         {
           "type": "p",
-          "text": "Tablet แนวตั้ง 768 · 4 คอลัมน์ · gutter 12 px · margin 78 px · container 612 px"
+          "text": "Tablet แนวตั้ง 768 · 4 คอลัมน์ · gutter 12 px · margin 78 px · container 612 px",
+          "color": "--ntg-color-text-general-label"
         },
         {
           "type": "grid",
@@ -737,7 +745,8 @@
         },
         {
           "type": "p",
-          "text": "Mobile 375 · 2 คอลัมน์ · gutter 15 px · margin 15 px · container 345 px"
+          "text": "Mobile 375 · 2 คอลัมน์ · gutter 15 px · margin 15 px · container 345 px",
+          "color": "--ntg-color-text-general-label"
         }
       ]
     },
@@ -766,7 +775,8 @@
         },
         {
           "type": "p",
-          "text": "Mobile 360 · 4 คอลัมน์ · gutter 8 px · margin 24 px · container 312 px · column 72 px"
+          "text": "Mobile 360 · 4 คอลัมน์ · gutter 8 px · margin 24 px · container 312 px · column 72 px",
+          "color": "--ntg-color-text-general-label"
         },
         {
           "type": "h",
@@ -775,19 +785,23 @@
         },
         {
           "type": "p",
-          "text": "ระบบเดิมใช้ฐาน 5 เฉพาะมือถือ (gutter 5 · margin 20) ทำให้คอลัมน์ลงตัวเป็น 80 พอดี แต่แลกมาด้วยการที่ทุกคนต้องจำตลอดว่าจอไหนใช้ฐานอะไร และเวลาเพิ่มชิ้นงานใหม่ต้องตัดสินค่าสองชุด"
+          "text": "ระบบเดิมใช้ฐาน 5 เฉพาะมือถือ (gutter 5 · margin 20) ทำให้คอลัมน์ลงตัวเป็น 80 พอดี แต่แลกมาด้วยการที่ทุกคนต้องจำตลอดว่าจอไหนใช้ฐานอะไร และเวลาเพิ่มชิ้นงานใหม่ต้องตัดสินค่าสองชุด",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "p",
-          "text": "ตัวเลขที่ลงตัวเป๊ะเป็นเรื่องของแคนวาสตอนออกแบบ ไม่ใช่ของจริงบนเครื่อง เพราะเครื่องจริงกว้าง 360 · 390 · 393 · 412 ปะปนกัน และ layout มือถือจริงยืดตามสัดส่วน ที่เลือก 360 เพราะเป็นความกว้างมาตรฐานฝั่ง Android และเป็น breakpoint มือถือที่ Material ใช้ ไม่ใช่เพราะเป็นความกว้างเดียวของตลาด"
+          "text": "ตัวเลขที่ลงตัวเป๊ะเป็นเรื่องของแคนวาสตอนออกแบบ ไม่ใช่ของจริงบนเครื่อง เพราะเครื่องจริงกว้าง 360 · 390 · 393 · 412 ปะปนกัน และ layout มือถือจริงยืดตามสัดส่วน ที่เลือก 360 เพราะเป็นความกว้างมาตรฐานฝั่ง Android และเป็น breakpoint มือถือที่ Material ใช้ ไม่ใช่เพราะเป็นความกว้างเดียวของตลาด",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "p",
-          "text": "ที่แคนวาส 360 ขอบ 24 ร่อง 8 ได้คอลัมน์ 72 เท่ากันครบทั้ง 4 และขอบคอลัมน์ทุกเส้น (24 · 104 · 184 · 264 · 336) เป็นพหุคูณของ 8 ทั้งหมด ความกว้างคอลัมน์ไม่ได้เก็บเป็นตัวแปร Figma คำนวณเองแบบ Stretch"
+          "text": "ที่แคนวาส 360 ขอบ 24 ร่อง 8 ได้คอลัมน์ 72 เท่ากันครบทั้ง 4 และขอบคอลัมน์ทุกเส้น (24 · 104 · 184 · 264 · 336) เป็นพหุคูณของ 8 ทั้งหมด ความกว้างคอลัมน์ไม่ได้เก็บเป็นตัวแปร Figma คำนวณเองแบบ Stretch",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "p",
-          "text": "ทางที่พิจารณาแล้วไม่เอา คือคงแคนวาสไว้ที่ 375 ซึ่งพิสูจน์แล้วว่าร่องฐาน 8 กับคอลัมน์เท่ากันเกิดพร้อมกันไม่ได้ ไม่ว่าตั้งขอบเท่าไหร่ · ทำขอบซ้ายขวาไม่เท่ากันเพื่อไล่ให้ลงตัว · และกลับไปใช้ร่อง 5 ซึ่งเท่ากับยกเลิกเหตุผลของรุ่นนี้ทั้งหมด"
+          "text": "ทางที่พิจารณาแล้วไม่เอา คือคงแคนวาสไว้ที่ 375 ซึ่งพิสูจน์แล้วว่าร่องฐาน 8 กับคอลัมน์เท่ากันเกิดพร้อมกันไม่ได้ ไม่ว่าตั้งขอบเท่าไหร่ · ทำขอบซ้ายขวาไม่เท่ากันเพื่อไล่ให้ลงตัว · และกลับไปใช้ร่อง 5 ซึ่งเท่ากับยกเลิกเหตุผลของรุ่นนี้ทั้งหมด",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "h",
@@ -796,19 +810,23 @@
         },
         {
           "type": "p",
-          "text": "งานใหม่ทุกชิ้น มือถือใช้ v2026 ส่วน desktop กับ tablet ใช้ v2022 ตามเดิม เพราะสามจอนั้นไม่มีค่าไหนเปลี่ยน จึงไม่ทำค่าซ้ำไว้สองที่"
+          "text": "งานใหม่ทุกชิ้น มือถือใช้ v2026 ส่วน desktop กับ tablet ใช้ v2022 ตามเดิม เพราะสามจอนั้นไม่มีค่าไหนเปลี่ยน จึงไม่ทำค่าซ้ำไว้สองที่",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "p",
-          "text": "งานที่ประกาศไปแล้ว คงใช้ v2022 ทั้งชุดต่อไป ไม่ต้องตามแก้ย้อนหลัง"
+          "text": "งานที่ประกาศไปแล้ว คงใช้ v2022 ทั้งชุดต่อไป ไม่ต้องตามแก้ย้อนหลัง",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "p",
-          "text": "โปรเจกต์ Nation Digital ใช้ชุด nation-digital ทั้งชุดตามเดิม ไม่เกี่ยวกับ v2026"
+          "text": "โปรเจกต์ Nation Digital ใช้ชุด nation-digital ทั้งชุดตามเดิม ไม่เกี่ยวกับ v2026",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "p",
-          "text": "ในไฟล์ออกแบบให้ตั้ง layout grid ด้วย style nation-group-2026/mobile(360px) ฝั่งโค้ดใช้ตัวแปร ntg-grid-v2026-mobile"
+          "text": "ในไฟล์ออกแบบให้ตั้ง layout grid ด้วย style nation-group-2026/mobile(360px) ฝั่งโค้ดใช้ตัวแปร ntg-grid-v2026-mobile",
+          "color": "--ntg-color-text-general-supporting-text"
         }
       ]
     },

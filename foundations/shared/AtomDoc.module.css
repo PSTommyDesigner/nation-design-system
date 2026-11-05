@@ -46,8 +46,8 @@
 /* ข้อความจากไฟล์ออกแบบมีขึ้นบรรทัดใหม่และเว้นสองช่อง เช่นรายการในการ์ด Do / Don't และป้ายกรอบ "image-16:9  288 x 162" ให้แสดงตามต้นฉบับ */
 .page :global(.ntg-docs-card-text) { white-space: pre-line; }
 
-/* ย่อหน้าจากไฟล์ออกแบบเป็นข้อความชิ้นเดียว ขึ้นบรรทัดใหม่และบรรทัดว่างตามต้นฉบับ ไม่มีระยะเพิ่มระหว่างบรรทัด */
-.paragraph { margin: 0; white-space: pre-line; }
+/* ย่อหน้าจากไฟล์ออกแบบเป็นข้อความชิ้นเดียว ขึ้นบรรทัดใหม่ บรรทัดว่าง และช่องว่างหลายช่องตามต้นฉบับ ไม่มีระยะเพิ่มระหว่างบรรทัด */
+.paragraph { margin: 0; white-space: pre-wrap; }
 
 /* เซลลำดับตาม hierarchy-color-cell ในไฟล์ออกแบบ ช่องสูง 68 ระยะซ้าย 16 (เซลตารางมีระยะ 12 อยู่แล้วจึงเติมส่วนต่าง)
    วงกลมเลข 26 กับกล่องชื่อสูง 36 ยืมสเกลระยะเพราะยังไม่มี token ขนาดของเอกสาร */
@@ -148,6 +148,9 @@
   box-shadow: inset 0 0 0 var(--ntg-divider-thickness) var(--ntg-color-border-general-secondary);
 }
 
+/* ชื่อแถวกับแถวป้ายสีเป็นกลุ่มเดียว ห่าง 12 (size/space/s2/xs) กลุ่มที่ติดกันห่าง 32 (s3/xs) ตามไฟล์ออกแบบ */
+.swatchGroup { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-xs); }
+.swatchGroup + .swatchGroup { margin-top: calc(var(--ntg-size-space-s3-xs) - var(--ntg-size-space-s2-lg)); }
 .swatchRow { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s2-lg); }
 .swatchCell { padding: var(--ntg-size-space-s2-sm); }
 

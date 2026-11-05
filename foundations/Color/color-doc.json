@@ -2064,7 +2064,8 @@
         },
         {
           "type": "p",
-          "text": "อ้างอิง: color/<ramp>/<step> เช่น color/blue/500, color/ntgds1/600"
+          "text": "อ้างอิง: color/<ramp>/<step> เช่น color/blue/500, color/ntgds1/600",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "h",
@@ -2169,7 +2170,8 @@
         },
         {
           "type": "p",
-          "text": "State suffix: -hover (สถานะ hover) -alt (variant สำรอง) เช่น color/background/brand/primary-hover"
+          "text": "State suffix: -hover (สถานะ hover) -alt (variant สำรอง) เช่น color/background/brand/primary-hover",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "chips",
@@ -5222,7 +5224,8 @@
         },
         {
           "type": "p",
-          "text": "Gray"
+          "text": "Gray",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -5361,7 +5364,8 @@
         },
         {
           "type": "p",
-          "text": "Bamboo"
+          "text": "Bamboo",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -5474,7 +5478,8 @@
         },
         {
           "type": "p",
-          "text": "Green"
+          "text": "Green",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -5587,7 +5592,8 @@
         },
         {
           "type": "p",
-          "text": "Cyan"
+          "text": "Cyan",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -5700,7 +5706,8 @@
         },
         {
           "type": "p",
-          "text": "Blue"
+          "text": "Blue",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -5813,7 +5820,8 @@
         },
         {
           "type": "p",
-          "text": "Purple"
+          "text": "Purple",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -5926,7 +5934,8 @@
         },
         {
           "type": "p",
-          "text": "Fuchsia"
+          "text": "Fuchsia",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -6039,7 +6048,8 @@
         },
         {
           "type": "p",
-          "text": "Pink"
+          "text": "Pink",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -6152,7 +6162,8 @@
         },
         {
           "type": "p",
-          "text": "Rose"
+          "text": "Rose",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -6265,7 +6276,8 @@
         },
         {
           "type": "p",
-          "text": "Red"
+          "text": "Red",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -6378,7 +6390,8 @@
         },
         {
           "type": "p",
-          "text": "Orange"
+          "text": "Orange",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -6491,7 +6504,8 @@
         },
         {
           "type": "p",
-          "text": "Yellow"
+          "text": "Yellow",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -6604,7 +6618,8 @@
         },
         {
           "type": "p",
-          "text": "Gold"
+          "text": "Gold",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -6730,7 +6745,8 @@
         },
         {
           "type": "p",
-          "text": "Brand"
+          "text": "Brand",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -6999,7 +7015,8 @@
         },
         {
           "type": "p",
-          "text": "AMS"
+          "text": "AMS",
+          "color": "--ntg-color-text-general-heading"
         },
         {
           "type": "colorTable",
@@ -7912,7 +7929,8 @@
         },
         {
           "type": "p",
-          "text": "• default  ยังไม่มีการโต้ตอบ เป็นหน้าตาปกติของชิ้นงาน\n• hover  ตัวชี้ลอยอยู่เหนือของชิ้นนั้น บอกว่ากดได้ เกิดเฉพาะบนอุปกรณ์ที่มีเมาส์ ไม่เกิดบนมือถือ\n• focused  ของชิ้นนั้นกำลังรับคีย์บอร์ดอยู่ ต้องมีวงแหวนโฟกัสเสมอ ห้ามปิดทิ้ง\n• pressed  ผู้ใช้กำลังกดค้างอยู่ตอนนี้ บอกว่าระบบรับคำสั่งแล้ว เป็นสถานะชั่วขณะที่หายไปทันทีที่ปล่อย\n• disabled  กดไม่ได้ในตอนนี้ ต้องข้ามการโฟกัสด้วย ไม่ใช่แค่ทำให้จาง"
+          "text": "• default  ยังไม่มีการโต้ตอบ เป็นหน้าตาปกติของชิ้นงาน\n• hover  ตัวชี้ลอยอยู่เหนือของชิ้นนั้น บอกว่ากดได้ เกิดเฉพาะบนอุปกรณ์ที่มีเมาส์ ไม่เกิดบนมือถือ\n• focused  ของชิ้นนั้นกำลังรับคีย์บอร์ดอยู่ ต้องมีวงแหวนโฟกัสเสมอ ห้ามปิดทิ้ง\n• pressed  ผู้ใช้กำลังกดค้างอยู่ตอนนี้ บอกว่าระบบรับคำสั่งแล้ว เป็นสถานะชั่วขณะที่หายไปทันทีที่ปล่อย\n• disabled  กดไม่ได้ในตอนนี้ ต้องข้ามการโฟกัสด้วย ไม่ใช่แค่ทำให้จาง",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "h",
@@ -7922,7 +7940,8 @@
         },
         {
           "type": "p",
-          "text": "แรมป์สีทุกตระกูลมี 12 ขั้น ตั้งแต่ 25 ถึง 950 สถานะที่ต่างกันคือการเลื่อนขั้นในแรมป์เดียวกัน ไม่ใช่การเปลี่ยนสี\n\n• hover  เลื่อนหนึ่งขั้นจาก default\n• pressed  เลื่อนอีกหนึ่งขั้นจาก hover ในทิศทางเดียวกัน\n• ถ้าเลื่อนต่อแล้วชนขั้นสุดขอบ ให้กลับทิศ ใช้ขั้นที่เข้มกว่า default หนึ่งขั้นแทน\n\nทิศทางขึ้นกับโหมด โหมดสว่างเลื่อนไปทางเข้ม โหมดมืดเลื่อนไปทางสว่าง ตัวอย่างพื้นแบรนด์ทึบในโหมดสว่าง default คือ brand 600 hover คือ 700 และ pressed คือ 800 ส่วนโหมดมืด default คือ 600 hover คือ 500 และ pressed คือ 400"
+          "text": "แรมป์สีทุกตระกูลมี 12 ขั้น ตั้งแต่ 25 ถึง 950 สถานะที่ต่างกันคือการเลื่อนขั้นในแรมป์เดียวกัน ไม่ใช่การเปลี่ยนสี\n\n• hover  เลื่อนหนึ่งขั้นจาก default\n• pressed  เลื่อนอีกหนึ่งขั้นจาก hover ในทิศทางเดียวกัน\n• ถ้าเลื่อนต่อแล้วชนขั้นสุดขอบ ให้กลับทิศ ใช้ขั้นที่เข้มกว่า default หนึ่งขั้นแทน\n\nทิศทางขึ้นกับโหมด โหมดสว่างเลื่อนไปทางเข้ม โหมดมืดเลื่อนไปทางสว่าง ตัวอย่างพื้นแบรนด์ทึบในโหมดสว่าง default คือ brand 600 hover คือ 700 และ pressed คือ 800 ส่วนโหมดมืด default คือ 600 hover คือ 500 และ pressed คือ 400",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "h",
@@ -7932,11 +7951,13 @@
         },
         {
           "type": "p",
-          "text": "ตัวอย่างข้างล่างดึงจากตัวแปรจริง ไม่ใช่สีที่พิมพ์ลงไป"
+          "text": "ตัวอย่างข้างล่างดึงจากตัวแปรจริง ไม่ใช่สีที่พิมพ์ลงไป",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "p",
-          "text": "พื้นแบรนด์ทึบ  ใช้กับปุ่มหลัก    color/background/brand/solid"
+          "text": "พื้นแบรนด์ทึบ  ใช้กับปุ่มหลัก    color/background/brand/solid",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "swatches",
@@ -7957,7 +7978,8 @@
         },
         {
           "type": "p",
-          "text": "พื้นแบรนด์อ่อน  ใช้กับปุ่มรอง    color/background/brand/secondary"
+          "text": "พื้นแบรนด์อ่อน  ใช้กับปุ่มรอง    color/background/brand/secondary",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "swatches",
@@ -7978,7 +8000,8 @@
         },
         {
           "type": "p",
-          "text": "พื้นระบบสีแดง  ใช้กับปุ่มลบ    color/background/system/error-solid"
+          "text": "พื้นระบบสีแดง  ใช้กับปุ่มลบ    color/background/system/error-solid",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "swatches",
@@ -7999,7 +8022,8 @@
         },
         {
           "type": "p",
-          "text": "ข้อความแบรนด์  ใช้กับปุ่มลิงก์    color/text/brand/secondary"
+          "text": "ข้อความแบรนด์  ใช้กับปุ่มลิงก์    color/text/brand/secondary",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "swatches",
@@ -8020,7 +8044,8 @@
         },
         {
           "type": "p",
-          "text": "เส้นขอบแบรนด์  ใช้กับปุ่มมีขอบ    color/border/brand/default"
+          "text": "เส้นขอบแบรนด์  ใช้กับปุ่มมีขอบ    color/border/brand/default",
+          "color": "--ntg-color-text-general-supporting-text"
         },
         {
           "type": "swatches",
@@ -8047,7 +8072,8 @@
         },
         {
           "type": "p",
-          "text": "• ทุกชิ้นที่กดได้ต้องมีครบทั้งห้าสถานะในชั้นสี แม้ในไฟล์ออกแบบจะไม่ได้แตกเป็น variant ทุกสถานะก็ตาม\n• สถานะกดไม่ได้แตกเป็น variant ในไฟล์ออกแบบโดยตั้งใจ เพราะเป็นสถานะชั่วขณะที่คนออกแบบไม่ได้วางลงงานจริง แต่คนเขียนโค้ดต้องใช้ จึงมีครบในชั้นตัวแปร\n• ฝั่งโค้ดผูก hover กับ hover, focused กับ focus-visible, pressed กับ active และ disabled กับ disabled\n• ใช้ focus-visible ไม่ใช่ focus เพื่อไม่ให้วงแหวนโฟกัสขึ้นตอนคลิกด้วยเมาส์\n• บนมือถือ hover แทบไม่เกิด แต่ pressed เกิดทุกครั้งที่แตะ อย่าออกแบบโดยพึ่ง hover อย่างเดียว\n• ห้ามเปลี่ยนรูปทรงหรือขนาดตอนกด ให้เปลี่ยนสีอย่างเดียว เพราะของรอบข้างจะขยับตามและผู้ใช้จะกดพลาด\n• ห้ามพิมพ์สีสถานะเอง ให้ผูกตัวแปรที่ลงท้ายด้วยชื่อสถานะเสมอ"
+          "text": "• ทุกชิ้นที่กดได้ต้องมีครบทั้งห้าสถานะในชั้นสี แม้ในไฟล์ออกแบบจะไม่ได้แตกเป็น variant ทุกสถานะก็ตาม\n• สถานะกดไม่ได้แตกเป็น variant ในไฟล์ออกแบบโดยตั้งใจ เพราะเป็นสถานะชั่วขณะที่คนออกแบบไม่ได้วางลงงานจริง แต่คนเขียนโค้ดต้องใช้ จึงมีครบในชั้นตัวแปร\n• ฝั่งโค้ดผูก hover กับ hover, focused กับ focus-visible, pressed กับ active และ disabled กับ disabled\n• ใช้ focus-visible ไม่ใช่ focus เพื่อไม่ให้วงแหวนโฟกัสขึ้นตอนคลิกด้วยเมาส์\n• บนมือถือ hover แทบไม่เกิด แต่ pressed เกิดทุกครั้งที่แตะ อย่าออกแบบโดยพึ่ง hover อย่างเดียว\n• ห้ามเปลี่ยนรูปทรงหรือขนาดตอนกด ให้เปลี่ยนสีอย่างเดียว เพราะของรอบข้างจะขยับตามและผู้ใช้จะกดพลาด\n• ห้ามพิมพ์สีสถานะเอง ให้ผูกตัวแปรที่ลงท้ายด้วยชื่อสถานะเสมอ",
+          "color": "--ntg-color-text-general-supporting-text"
         }
       ]
     }

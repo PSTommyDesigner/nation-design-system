@@ -33,7 +33,8 @@ type VariantItem = { props: SampleProps; image?: string; x: number; y: number; w
 type SpaceItem = { name: string; cssVar: string; value: string; usage: string; fill: string | null }
 type Block =
   | { type: 'h'; text: string; sub?: string }
-  | { type: 'h3' | 'p'; text: string }
+  | { type: 'h3'; text: string }
+  | { type: 'p'; text: string; color?: string }
   | { type: 'card'; kind: string; title: string; body: string; effects?: EffectItem[]; logos?: LogoItem[]; components?: ComponentItem[] }
   | { type: 'effects'; items: EffectItem[] }
   | { type: 'table'; head: string[]; rows: string[][]; hug?: boolean }
@@ -287,7 +288,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       // ข้อความสั้นคำเดียวก่อนตาราง คือชื่อตระกูลสี เช่น Gray Bamboo ในหน้า Utility Color
       return /^[A-Za-z]{2,12}$/.test(block.text.trim())
         ? <h3 className={`ntg-typography-section-heading-sm ${styles.heading}`}>{block.text}</h3>
-        : <p className={`ntg-typography-body-xl ${styles.paragraph}`}>{clean(block.text)}</p>
+        : <p className={`ntg-typography-body-xl ${styles.paragraph}`} style={block.color ? { color: `var(${block.color})` } : undefined}>{clean(block.text)}</p>
     case 'card':
       if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Do>
       if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <Sample key={i} set={it.set} props={it.props} image={it.image} />)}</Dont>
@@ -450,8 +451,15 @@ export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDo
   const items: (Block | Block[])[] = []
   // บล็อกแรกของแต่ละหัวข้อใหญ่ในไฟล์ออกแบบ (section ระยะบนล่าง 80) ห่อด้วย .sectionStart ให้ระยะระหว่างหัวข้อเท่า Figma
   const starts = new Set<number>()
-  for (const b of d.blocks) {
+  // ชื่อแถวที่ตามด้วยแถวป้ายสีคือกลุ่มเดียวกันในไฟล์ออกแบบ (ห่าง 12 แต่ละกลุ่มห่าง 32) เช่น ตัวอย่างจริงในหน้า Interaction States
+  const swatchGroups = new Set<number>()
+  for (const [bi, b] of d.blocks.entries()) {
     const last = items[items.length - 1]
+    if (b.type === 'swatches' && d.blocks[bi - 1]?.type === 'p' && !b.section && !Array.isArray(last) && last) {
+      items[items.length - 1] = [last, b]
+      swatchGroups.add(items.length - 1)
+      continue
+    }
     // แถวขนาดตัวอักษร แถวสไตล์ (Text Roles) และการ์ดฟอนต์ที่อยู่ติดกันรวมเป็นกลุ่มเดียว ระยะและกรอบเป็นของกลุ่มตามไฟล์ออกแบบ
     const group = b.type === 'card' || b.type === 'variantSet' || b.type === 'scale' || b.type === 'specimen' || b.type === 'fontFamily'
     if (group && Array.isArray(last) && last[0].type === b.type && !b.section) last.push(b)
@@ -469,7 +477,9 @@ export const AtomDoc = ({ data, name, logos = {}, samples = {} }: { data: AtomDo
         {d.subtitle && <p className={`ntg-typography-body-xl ${styles.muted}`}>{clean(d.subtitle)}</p>}
       </header>
       {items.map((it, i) => {
-        const view = Array.isArray(it)
+        const view = swatchGroups.has(i) && Array.isArray(it)
+          ? <div className={styles.swatchGroup}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>
+          : Array.isArray(it)
           ? it[0].type === 'card'
             ? <DoDont>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</DoDont>
             : <div className={GROUP_CLASS[it[0].type]}>{it.map((b, j) => <BlockView key={j} block={b} index={i * 100 + j} />)}</div>

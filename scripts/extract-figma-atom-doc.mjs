@@ -489,7 +489,9 @@ function extract(doc) {
         // ข้อความ 20px ที่ตามหลังหัวข้อทันทีคือคำอธิบายใต้หัวข้อ
         // ต้องอยู่ในเฟรมเดียวกับหัวข้อ ชื่อกลุ่มขนาด 20 ที่อยู่เฟรมถัดไป เช่น Gray ในหน้า Utility Color ไม่ใช่คำอธิบาย
         if (last?.type === 'h' && n.parent?.type === 'FRAME' && n.parent === headParent && fs_ === 20 && !last.sub) { last.sub = s; return }
-        push({ type: 'p', text: s })
+        // สีข้อความอ่านจากตัวแปรที่ผูกจริง เก็บเฉพาะที่ไม่ใช่สีเนื้อหาปกติ เช่น supporting-text ในหน้า Interaction States
+        const color = cssVarOf(n, `${doc.name} ${s.slice(0, 20)}`)
+        push({ type: 'p', text: s, ...(color && color !== '--ntg-color-text-general-text' ? { color } : {}) })
       }
       return
     }
