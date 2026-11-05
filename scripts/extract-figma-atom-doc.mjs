@@ -56,6 +56,8 @@ const PAGES = {
   toggles: { page: '14 Toggles', folder: 'Toggles', root: 'molecules', skip: [], components: ['toggle'] },
   checkbox: { page: '15 Checkbox', folder: 'Checkbox', root: 'molecules', skip: [], components: ['checkbox', 'text-checkbox'] },
   radio: { page: '16 Radio', folder: 'Radio', root: 'molecules', skip: [], components: ['radio', 'text-radio'] },
+  // ใน Figma ไม่มีค่า value เป็นตัวเลข หัวจับวางตามความยาวส่วนที่เติมสี สคริปต์จึงคำนวณค่าจากรูปทรง (sliderValue) ผู้ใช้อนุมัติ 2026-11-05
+  sliders: { page: '17 Sliders', folder: 'Sliders', root: 'molecules', skip: [], components: ['slider', 'range-slider', 'slider-handle'], sliderValue: true },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -283,16 +285,29 @@ function componentProps(n) {
 const sampleImages = new Set()
 const imageOf = (n) => { const r = findAll(n, x => x.fills?.some(f => f.type === 'IMAGE' && f.imageRef))[0]?.fills.find(f => f.imageRef).imageRef; if (r) sampleImages.add(r); return r ? r.slice(0, 10) : undefined }
 // frame คือกรอบของชิ้นพร้อมป้าย ความกว้างกรอบ (cell) ทำให้ช่องกว้างเท่ากันแบบไฟล์ออกแบบ และกรอบแม่ที่เรียงแนวตั้ง (vertical) ทำให้ตัวอย่างวางเป็นคอลัมน์
+// ค่าของแถบเลื่อนจากรูปทรงในไฟล์ออกแบบ ความยาวส่วนที่เติมสี (fill) และช่องก่อนหน้า (space-before) เทียบกับราง (track)
+// ค่าต่ำสุดสูงสุดอ่านจากป้าย min max ที่ซ่อนอยู่ในชิ้นงาน แบบเดี่ยวได้ value ตัวเดียว แบบช่วงได้ "ต้น,ปลาย"
+function sliderValueOf(n) {
+  if (!PAGES[KEY].sliderValue) return {}
+  const find = (nm) => { const st = [n]; while (st.length) { const x = st.pop(); if (x.name === nm) return x; st.push(...(x.children ?? [])) } return null }
+  const track = find('track'), fill = find('fill')
+  if (!track || !fill) return {}
+  const before = find('space-before')
+  const min = parseFloat(find('min')?.characters ?? '0'), max = parseFloat(find('max')?.characters ?? '100')
+  const T = track.absoluteBoundingBox.width, F = fill.absoluteBoundingBox.width, S = before ? before.absoluteBoundingBox.width : 0
+  const at = (w) => Math.round(min + (w / T) * (max - min))
+  return { min: String(min), max: String(max), value: before ? `${at(S)},${at(S + F)}` : String(at(F)) }
+}
 function componentBlock(n, label, frame) {
   const b = n.absoluteBoundingBox
-  return { type: 'component', set: setOf(n), props: componentProps(n), image: imageOf(n), label, width: Math.round(b.width), height: Math.round(b.height), ...(frame ? { cell: Math.round(frame.absoluteBoundingBox.width), vertical: frame.parent?.layoutMode === 'VERTICAL' } : {}) }
+  return { type: 'component', set: setOf(n), props: { ...componentProps(n), ...sliderValueOf(n) }, image: imageOf(n), label, width: Math.round(b.width), height: Math.round(b.height), ...(frame ? { cell: Math.round(frame.absoluteBoundingBox.width), vertical: frame.parent?.layoutMode === 'VERTICAL' } : {}) }
 }
 // ตัวอย่างชั้นบนสุดในกรอบ ไม่ไล่ลงไปในตัวอย่างอีกชั้น เช่นอวาตาร์ข้างในกลุ่ม
 const topSamples = (n, acc = []) => { if (n.visible === false) return acc; if (isComponentSample(n)) { acc.push(n); return acc } for (const k of n.children ?? []) { k.parent = n; topSamples(k, acc) } return acc }
 // ชุด variant ทั้งชุด เก็บตำแหน่งของแต่ละ variant ในชุด ให้หน้าเอกสารวางเรียงเหมือนไฟล์ออกแบบ
 function variantSetBlock(set, caption) {
   const o = set.absoluteBoundingBox
-  const items = set.children.filter(c => c.type === 'COMPONENT' && c.visible !== false).map(c => { c.parent = set; const b = c.absoluteBoundingBox; return { props: componentProps(c), image: imageOf(c), x: Math.round(b.x - o.x), y: Math.round(b.y - o.y), width: Math.round(b.width), height: Math.round(b.height) } })
+  const items = set.children.filter(c => c.type === 'COMPONENT' && c.visible !== false).map(c => { c.parent = set; const b = c.absoluteBoundingBox; return { props: { ...componentProps(c), ...sliderValueOf(c) }, image: imageOf(c), x: Math.round(b.x - o.x), y: Math.round(b.y - o.y), width: Math.round(b.width), height: Math.round(b.height) } })
   return { type: 'variantSet', set: set.name, caption, width: Math.round(o.width), height: Math.round(o.height), items }
 }
 

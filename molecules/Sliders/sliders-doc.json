@@ -1,0 +1,1603 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 17 Sliders ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- sliders",
+  "page": "17 Sliders",
+  "documents": [
+    {
+      "id": "11043:185",
+      "name": "17 Sliders Documentation",
+      "title": "17 Sliders",
+      "subtitle": "แถบเลื่อนสำหรับเลือกค่าตัวเลขในช่วงที่กำหนด มีทั้งแบบค่าเดียวและแบบช่วง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "แถบเลื่อนคืออะไร และหน้านี้มีอะไรบ้าง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "แถบเลื่อนใช้เลือกค่าตัวเลขในช่วงที่กำหนด โดยลากปุ่มจับไปตามราง เหมาะเมื่อผู้ใช้สนใจความสัมพันธ์ของค่ามากกว่าตัวเลขที่เป๊ะ\nหน้านี้มีสามชุด คือ slider แบบค่าเดียว range-slider แบบช่วง และ slider-handle ที่เป็นปุ่มจับใช้ร่วมกันทั้งสองชุด\nรายละเอียดเชิงลึกแยกเป็นเอกสารลูกสี่ฉบับ คือ Slider Anatomy, Slider Two Layer Model, Slider Position Method และ Slider Usage",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": true,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "",
+              "width": 1280,
+              "height": 40
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "ส่วนประกอบสี่ชิ้น",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ราง คือแถบยาวบอกช่วงทั้งหมด แถบเติม คือส่วนที่บอกค่าปัจจุบัน ปุ่มจับ คือวงกลมที่ลากได้ และแถวที่กดได้ คือกล่องใสที่ครอบทั้งหมดไว้\nแถวที่กดได้มองไม่เห็นแต่เป็นตัวกำหนดความสูงจริงและพื้นที่รับการแตะ\nอ่านฉบับเต็มที่เอกสาร Slider Anatomy",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "สามชุด และคุณสมบัติที่ไม่คูณจำนวนแบบ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "slider มี 10 แบบ จากขนาด 5 คูณสถานะปิดใช้งาน 2\nrange-slider มี 10 แบบ ด้วยสูตรเดียวกัน\nslider-handle มี 25 แบบ จากขนาด 5 คูณสถานะ 5\nป้ายค่าและป้ายต่ำสุดสูงสุดเป็นคุณสมบัติแบบเปิดปิด จึงไม่คูณจำนวนแบบ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "slider แบบค่าเดียว",
+              "width": 1280,
+              "height": 40,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "range-slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "label": "range-slider แบบช่วง",
+              "width": 1280,
+              "height": 40,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": true,
+                "value-tooltip": true,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "เปิดป้ายค่าและป้ายต่ำสุดสูงสุด",
+              "width": 1280,
+              "height": 60,
+              "cell": 1280,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Hierarchy",
+          "sub": "เลือกใช้ตัวไหนระหว่างแถบเลื่อนกับช่องกรอกตัวเลข",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ค่าเดียวและความแม่นยำไม่สำคัญ ใช้ slider\nช่วงค่าต่ำสุดถึงสูงสุด ใช้ range-slider และต้องมีช่องกรอกตัวเลขคู่เสมอ\nต้องการค่าที่แม่นยำหรือช่วงกว้างมาก ใช้ช่องกรอกตัวเลขอย่างเดียว",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "ห้าขนาด ปุ่มจับกับรางโตไปด้วยกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ปุ่มจับ 16, 20, 24, 28, 32 และราง 4, 6, 8, 10, 12\nขนาด md คงค่าเดิมของไฟล์ทั้งคู่ จึงไม่กระทบงานที่ทำไว้ก่อนหน้า\nความสูงแถวอ้างสเกลเดียวกับปุ่มและช่องกรอก จึงวางเรียงแถวเดียวกันได้พอดี",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "xs",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "xs",
+              "width": 1280,
+              "height": 24,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "sm",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "sm",
+              "width": 1280,
+              "height": 32,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "md",
+              "width": 1280,
+              "height": 40,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "lg",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "lg",
+              "width": 1280,
+              "height": 48,
+              "cell": 1280,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "xl",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "xl",
+              "width": 1280,
+              "height": 56,
+              "cell": 1280,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "ห้าสถานะที่ปุ่มจับ และสถานะปิดใช้งานที่ตัวแถบเลื่อน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ปุ่มจับมี ปกติ ชี้ กด โฟกัส และปิดใช้งาน เลือกได้จากแผงขวาผ่าน nested instance\nปิดใช้งานเป็นแกนของตัวแถบเลื่อนเอง เพราะต้องเปลี่ยนสีรางและแถบเติมพร้อมกัน ไม่ใช่แค่ปุ่มจับ\nสถานะกดบอกด้วยสีอย่างเดียว ไม่เปลี่ยนขนาดหรือทรงปุ่มจับ ให้ตรงกับที่ตัดสินไว้กับสวิตช์",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "slider-handle",
+              "props": {
+                "size": "xl",
+                "state": "default"
+              },
+              "label": "default",
+              "width": 32,
+              "height": 32,
+              "cell": 47,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "slider-handle",
+              "props": {
+                "size": "xl",
+                "state": "hover"
+              },
+              "label": "hover",
+              "width": 32,
+              "height": 32,
+              "cell": 38,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "slider-handle",
+              "props": {
+                "size": "xl",
+                "state": "pressed"
+              },
+              "label": "pressed",
+              "width": 32,
+              "height": 32,
+              "cell": 55,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "slider-handle",
+              "props": {
+                "size": "xl",
+                "state": "focused"
+              },
+              "label": "focused",
+              "width": 32,
+              "height": 32,
+              "cell": 54,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "slider-handle",
+              "props": {
+                "size": "xl",
+                "state": "disabled"
+              },
+              "label": "disabled",
+              "width": 32,
+              "height": 32,
+              "cell": 58,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Usage",
+          "sub": "ควรทำและไม่ควรทำ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ควร ใช้กับตัวกรองช่วงราคาหรือช่วงตัวเลข และวางช่องกรอกตัวเลขคู่เสมอเมื่อเป็นแบบช่วง\nไม่ควร ใช้กับช่วงวันที่ ขนาดตัวอักษรที่มีไม่กี่ระดับ และความคืบหน้าที่ผู้ใช้ปรับไม่ได้\nอ่านเหตุผลและหลักฐานที่เอกสาร Slider Usage",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "พื้นที่แตะ วงแหวนโฟกัส และการใช้คีย์บอร์ด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "เกณฑ์ WCAG ข้อ 2.5.8 นับแถบเลื่อนทั้งตัวเป็นเป้าเดียว และข้อ 2.5.7 ต้องแตะที่รางได้ แถวจึงสูง 24 ถึง 56 และยกเป็น 48 บนอุปกรณ์สัมผัส\nวงแหวนโฟกัสอยู่ที่ปุ่มจับ ไม่ใช่ทั้งราง เพราะแบบช่วงมีสองจุดโฟกัส ใช้ effect style focused-ring/brand และแสดงเฉพาะตอนเลือกด้วยคีย์บอร์ด\nคีย์บอร์ดตามมาตรฐาน APG ลูกศรเลื่อนทีละขั้น Home End ไปต้นและปลาย ปุ่มจับแต่ละอันเป็นจุดโฟกัสของตัวเอง\nต้องมี role slider พร้อม aria-valuenow aria-valuemin aria-valuemax และชื่อที่อ่านได้ ถ้าตัวเลขเปล่าไม่สื่อความหมายให้ใส่ aria-valuetext",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Design tokens",
+          "sub": "ตัวแปรของแถบเลื่อนและที่มาของค่า",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ตัวแปรขนาด 36 ตัวในกลุ่ม slider ครอบคลุมปุ่มจับ ราง แถว ส่วนยื่น ช่องบนล่าง และมุมโค้ง\nตัวแปรสีหยิบจากระบบกลาง ไม่มีสีเฉพาะของแถบเลื่อน\nตารางจับคู่ชื่อฝั่งออกแบบกับฝั่งโค้ดอยู่ที่เอกสาร Slider Token",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "สูตรขนาดและค่าที่เป็นผลลัพธ์",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "มีสูตรสามมิติ คือ ปุ่มจับ base 16 step 4 ราง base 4 step 2 และแถวที่อ้างสเกลความสูงตัวควบคุมกลาง\nส่วนยื่นพ้นราง 6, 7, 8, 9, 10 และช่องบนล่าง 4, 6, 8, 10, 12 เป็นผลลัพธ์ล้วน ห้ามตั้งแยก\nความยาวไม่มีสูตรและไม่มีตัวแปร เพราะยืดตามกรอบแม่ รายละเอียดเต็มที่เอกสาร Slider Space",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "หน้าที่เกี่ยวข้อง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "13 Input สำหรับช่องกรอกตัวเลขที่ต้องวางคู่กับแบบช่วง\n14 Toggles และ 15 Checkbox ที่ใช้โครงสองชั้นแบบเดียวกัน\n05 Effect สำหรับวงแหวนโฟกัส และ 07 Space สำหรับสเกลระยะห่างกลาง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "11041:185",
+      "name": "Slider Token",
+      "title": "Slider Token",
+      "subtitle": "ตารางจับคู่ชื่อตัวแปรในไฟล์ออกแบบกับชื่อ token ในโค้ด พร้อมค่าจริงและที่ใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อที่ทีมออกแบบเห็นในไฟล์ออกแบบ กับชื่อที่ทีมพัฒนาใช้ในโค้ด พร้อมค่าจริง เพื่อให้สองทีมเรียกของชิ้นเดียวกันด้วยชื่อที่ตรงกัน ครอบคลุมทั้งตัวแปรขนาดของแถบเลื่อนเองและตัวแปรสีที่หยิบมาจากระบบกลาง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ย่อหน้า 1 ดีพาร์ตเมนท์สะบึมส์ควีน เทรดคำสาปแยมโรลคอร์ปบริกร เพนกวินเอาท์โอเปอเรเตอร์เฉิ่ม ปิกอัพรูบิคฟลุคโปรโมทเทค เซ็นเซอร์คูลเลอร์น็อก ฉลุย เรตฮ็อต ผิดพลาดฟอยล์พะเรอ คาแรคเตอร์จิ๊กซอว์ เดี้ยงซิมโฟนี คูลเลอร์ซิมโหงวเฮ้งแฟ็กซ์ งี้แดนซ์แรลลี่ยูโร กาญจนาภิเษกตื้บกุมภาพันธ์ฟาสต์ฟู้ด สต๊อก ปาสกาลโฟมเอ๋ รูบิคสมาพันธ์เพลซดีพาร์ทเมนต์ดิกชันนารี ฮันนีมูน ดัมพ์พฤหัสคอร์ส เอ็นจีโอซาร์ดีน เนิร์สเซอรี่ธุรกรรมเมาท์คอนแท็คแฟรี่ เทวาธิราชวืดโลโก้ออสซี่คอมเพล็กซ์ คอลัมนิสต์ เทรดคันธาระมหาอุปราชาตู้เซฟ ครัวซองต์ไดเอ็ตไตรมาสอันตรกิริยา ตอกย้ำไดเอ็ตเยอร์บีร่าแอ็กชั่น ไทม์บ็อกซ์โดนัทห่วย แชเชือนเมคอัพ กลาสแอพพริคอท อัลไซเมอร์ โบกี้ตัวตนเก๊ะพุทโธ ฮอตดอกม็อบฮาลาล แมกกาซีน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11041:188",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ย่อหน้า 2 แบดเฮียออเดอร์ตรวจทานน้องใหม่ บูติคเฉิ่มสมาพันธ์ อพาร์ทเมนต์ เฉิ่มเดโมพิซซ่าออโต้ศึกษาศาสตร์ มาม่าแฟ็กซ์โต๊ะจีนเบนโล ตื้บตู้เซฟโดนัทดาวน์แคมปัส โก๊ะป๋อหลอคันยิ คาร์โก้ยอมรับ โพลารอยด์ ไบเบิลซิมโฟนีมาเฟียแชมเปญ โง่เขลาป๋อหลอ บัสเยอร์บีราโปร เวเฟอร์รันเวย์ เซ็นเตอร์ไรเฟิลสัมนา ซาตานเมจิก วอล์คคอรัปชั่นบร็อคโคลีท็อปบู๊ทรุสโซ",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11041:188",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ย่อหน้า 3 โต๊ะจีนซาบะเนิร์สเซอรี่แคร์ เอาท์ชาร์ป เจ๊าะแจ๊ะสต็อกบลอนด์เต๊ะแพทยสภา ตอกย้ำอยุติธรรม ว้อยอ่วม นพมาศโลชั่นบัส ซิมรีดไถ แซวม้านั่งคอรัปชันทัวร์โบกี้ ถูกต้องอาว์ ห่วยจอหงวนอยุติธรรม คาร์โก้บุ๋นจึ๊ก นอร์ทแบนเนอร์ มลภาวะ ซี้คอมเพล็กซ์ไนน์แพตเทิร์นสไตรค์ ไอซียูวาไรตี้มลภาวะรีโมทจังโก้ พาสปอร์ตชาร์ต",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11041:188",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma · ใช้ตอนออกแบบและเลือกใช้งาน"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ · ค่าเดียวกับฝั่งออกแบบเป๊ะ"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "slider/handle/{ขนาด}\nขนาด",
+              "--ntg-slider-handle-{ขนาด}\n",
+              "16, 20, 24, 28, 32",
+              "เส้นผ่านศูนย์กลางปุ่มจับ"
+            ],
+            [
+              "slider/track/{ขนาด}\nขนาด",
+              "--ntg-slider-track-{ขนาด}\n",
+              "4, 6, 8, 10, 12",
+              "ความหนาราง และแถบเติม"
+            ],
+            [
+              "slider/row/height/{ขนาด}\nขนาด",
+              "--ntg-slider-row-height-{ขนาด}\n",
+              "24, 32, 40, 48, 56",
+              "ความสูงแถวที่กดได้"
+            ],
+            [
+              "slider/row/height-touch/{ขนาด}\nขนาด",
+              "--ntg-slider-row-height-touch-{ขนาด}\n",
+              "48, 48, 48, 48, 56",
+              "ความสูงแถวบนอุปกรณ์สัมผัส"
+            ],
+            [
+              "slider/row/handle-target/{ขนาด}\nขนาด",
+              "--ntg-slider-row-handle-target-{ขนาด}\n",
+              "24, 32, 40, 48, 56",
+              "พื้นที่แตะของปุ่มจับแต่ละอัน"
+            ],
+            [
+              "slider/overhang/{ขนาด}\nขนาด ผลลัพธ์",
+              "--ntg-slider-overhang-{ขนาด}\n",
+              "6, 7, 8, 9, 10",
+              "ส่วนที่ปุ่มจับยื่นพ้นรางข้างละ"
+            ],
+            [
+              "slider/inset/{ขนาด}\nขนาด ผลลัพธ์",
+              "--ntg-slider-inset-{ขนาด}\n",
+              "4, 6, 8, 10, 12",
+              "ช่องบนล่างระหว่างแถวกับปุ่มจับ"
+            ],
+            [
+              "slider/radius/full\nขนาด",
+              "--ntg-slider-radius-full\n",
+              "9999",
+              "มุมโค้งเต็มของรางและปุ่มจับ"
+            ],
+            [
+              "color/background/general/quaternary\nสี",
+              "--ntg-color-background-general-quaternary\n",
+              "เทาอ่อน",
+              "พื้นราง สถานะปกติ"
+            ],
+            [
+              "color/background/general/disabled-subtle\nสี",
+              "--ntg-color-background-general-disabled-subtle\n",
+              "เทาจาง",
+              "พื้นราง ตอนปิดใช้งาน"
+            ],
+            [
+              "color/foreground/brand/primary\nสี",
+              "--ntg-color-foreground-brand-primary\n",
+              "น้ำเงินแบรนด์",
+              "แถบเติม สถานะปกติ"
+            ],
+            [
+              "color/background/general/disabled\nสี",
+              "--ntg-color-background-general-disabled\n",
+              "เทา",
+              "แถบเติม ตอนปิดใช้งาน"
+            ],
+            [
+              "color/background/general/primary\nสี",
+              "--ntg-color-background-general-primary\n",
+              "ขาว",
+              "พื้นปุ่มจับ ทุกสถานะ"
+            ],
+            [
+              "color/background/brand/solid\nสี",
+              "--ntg-color-background-brand-solid\n",
+              "น้ำเงินแบรนด์",
+              "เส้นขอบปุ่มจับ ปกติและโฟกัส"
+            ],
+            [
+              "color/background/brand/solid-hover\nสี",
+              "--ntg-color-background-brand-solid-hover\n",
+              "น้ำเงินเข้มขึ้น",
+              "เส้นขอบปุ่มจับ ตอนชี้"
+            ],
+            [
+              "color/background/brand/solid-pressed\nสี",
+              "--ntg-color-background-brand-solid-pressed\n",
+              "น้ำเงินเข้มสุด",
+              "เส้นขอบปุ่มจับ ตอนกด"
+            ],
+            [
+              "color/text/general/supporting-text\nสี",
+              "--ntg-color-text-general-supporting-text\n",
+              "เทาเข้ม",
+              "ป้ายค่าต่ำสุดและสูงสุด"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• ตัวแปรขนาดมีต้นทางที่โค้ด แก้ที่ tokens/scale/slider.mjs แล้วรัน npm run tokens:build\n• ตัวแปรสีหยิบมาจากระบบกลาง ไม่ได้เป็นของหน้านี้ ห้ามสร้างสีเฉพาะแถบเลื่อน\n• ตรวจว่าสองฝั่งตรงกันด้วย npm run tokens:verify ต้องขึ้นว่าต้องดู 0 กลุ่ม\n• ห้ามพิมพ์ค่าหรือสีเองในไฟล์ออกแบบ ให้ผูกตัวแปรเสมอ",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "11036:185",
+      "name": "Slider Anatomy",
+      "title": "Slider Anatomy",
+      "subtitle": "ส่วนประกอบสี่ชิ้นของแถบเลื่อน และหน้าที่ของแต่ละชิ้น",
+      "blocks": [
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "ราง คือแถบยาวเต็มความกว้าง บอกช่วงค่าทั้งหมดที่เลือกได้\nแถบเติม คือส่วนที่ทับรางอยู่ บอกว่าค่าปัจจุบันไปถึงไหนแล้ว ใช้รางตัวเดียวกันแล้วเปลี่ยนสี ความหนาจึงเท่ากันเสมอ\nปุ่มจับ คือวงกลมที่ผู้ใช้ลาก วางกึ่งกลางปลายแถบเติมพอดีทุกตำแหน่ง\nแถวที่กดได้ คือกล่องใสที่ครอบทั้งหมดไว้ มองไม่เห็นแต่เป็นพื้นที่รับการแตะจริง และเป็นตัวกำหนดความสูงของทั้งชิ้น",
+              "width": 1280,
+              "height": 40,
+              "cell": 1440,
+              "vertical": true
+            }
+          ],
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ทำไมต้องมีแถวที่มองไม่เห็น",
+          "sub": "เกณฑ์การเข้าถึงนับทั้งตัวเป็นเป้าเดียว ไม่ได้นับแค่ปุ่มจับ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "เกณฑ์ WCAG ข้อ 2.5.8 นับแถบเลื่อนทั้งตัวเป็นเป้าหมายเดียว และข้อ 2.5.7 กำหนดว่าต้องแตะที่รางได้ ไม่ใช่ต้องจิ้มโดนปุ่มจับเท่านั้น\nถ้าวัดจากปุ่มจับอย่างเดียว ขนาดเล็กสุดจะได้แค่ 16px ซึ่งไม่ผ่านเกณฑ์ใด ๆ\nแถวจึงถูกตั้งให้สูงเท่าปุ่มและช่องกรอก คือ 24 32 40 48 56 และยกเป็น 48 บนอุปกรณ์สัมผัส",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ปุ่มจับยื่นพ้นรางเสมอ",
+          "sub": "เป็นผลลัพธ์จากสูตร ไม่ได้ตั้งแยก",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ปุ่มจับใหญ่กว่ารางทุกขนาด ส่วนที่ยื่นพ้นข้างละเท่ากับ (ปุ่มจับ ลบ ราง) หารสอง ได้ 6 7 8 9 10\nด้วยเหตุนี้กรอบที่ครอบแถบเลื่อนจึงต้องไม่ตัดขอบ ไม่งั้นปุ่มจับจะโดนเฉือนบนล่าง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "11036:193",
+      "name": "Slider Two Layer Model",
+      "title": "Slider Two Layer Model",
+      "subtitle": "ชั้นภาพกับชั้นแถวที่กดได้ ใช้สเกลคนละชุดโดยตั้งใจ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สองชั้นคืออะไร",
+          "sub": "ชั้นที่ตาเห็น กับชั้นที่นิ้วแตะ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ชั้นที่หนึ่งคือภาพ ได้แก่รางกับปุ่มจับ มีสเกลของตัวเอง ปุ่มจับ base 16 step 4 และราง base 4 step 2\nชั้นที่สองคือแถวที่กดได้ อ้างสเกลความสูงตัวควบคุมกลางร่วมกับปุ่มและช่องกรอก คือ 24 32 40 48 56\nชั้นที่สองแก้สองปัญหาพร้อมกัน คือพื้นที่แตะผ่านเกณฑ์โดยไม่ต้องทำให้ปุ่มจับที่ตาเห็นอ้วนขึ้น และวางแถบเลื่อนคู่ช่องกรอกตัวเลขในแถวเดียวกันได้พอดี",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ทำไมชั้นภาพไม่ผูกกับความสูงแถว",
+          "sub": "บทเรียนเดียวกับสวิตช์ ช่องติ๊ก และอวาตาร์",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ช่องว่างระหว่างแถวกับปุ่มจับไม่คงที่เลย คือ 4 6 8 10 12 เพราะสองสเกลใช้ step ต่างกัน คือ 4 กับ 8\nถ้าเขียนขนาดปุ่มจับเป็นสูตรอนุพันธ์ของความสูงแถว จะได้ตัวเลขที่ถูกแค่บางขนาดแล้วเพี้ยนที่เหลือ\nสัดส่วนรางต่อปุ่มจับอยู่ที่ 0.25 ถึง 0.38 ห่างกัน 12.5 จุด ถือว่านิ่งพอที่ทุกขนาดยังดูเป็นตระกูลเดียวกัน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "แต่แถวต้องอ้างสเกลกลางจริง",
+          "sub": "ห้ามพิมพ์ค่าซ้ำ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ความสูงแถวต้องอ้างสเกลความสูงตัวควบคุมกลาง ไม่ใช่พิมพ์ 24 32 40 48 56 ซ้ำลงไป\nถ้าวันหนึ่งความสูงปุ่มขยับ แถวของแถบเลื่อนต้องขยับตามเอง ถ้าพิมพ์ค่าตายไว้ สองฝั่งจะหลุดจากกันเงียบ ๆ\nบนอุปกรณ์สัมผัสใช้ค่าที่มากกว่าระหว่าง 48 กับแถวปกติ จึงได้ 48 48 48 48 56 ผ่านทั้งเกณฑ์ของ Android และ Apple",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "11037:185",
+      "name": "Slider Position Method",
+      "title": "Slider Position Method",
+      "subtitle": "วิธีเลื่อนปุ่มจับของหน้านี้ไม่เหมือนหน้าอื่น อ่านก่อนใช้งาน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ตำแหน่งไม่ใช่ตัวเลือกในเมนู",
+          "sub": "ปรับด้วยการลากความกว้างของชั้นข้างใน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ชุดนี้มีตัวเลือกแค่ขนาดกับสถานะปิดใช้งาน ไม่มีตัวเลือกตำแหน่ง\nวิธีเลื่อนคือคลิกเข้าไปเลือกชั้นชื่อ fill แล้วลากขอบขวาของมัน ปุ่มจับจะตามไปเอง\nแบบช่วงมีสองจุดให้ปรับ คือ space-before สำหรับปุ่มจับซ้าย และ fill สำหรับระยะระหว่างปุ่มจับสองอัน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "label": "",
+              "width": 1280,
+              "height": 40
+            },
+            {
+              "type": "component",
+              "set": "range-slider",
+              "props": {
+                "min-max-label": false,
+                "value-tooltip": false,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "label": "",
+              "width": 1280,
+              "height": 40
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "รางประกอบจากกล่องเรียงกัน",
+          "sub": "แบบค่าเดียวเกาะจุดยึดกว้างศูนย์ แบบช่วงเกาะขอบของชั้น fill",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "แบบค่าเดียวเรียงสามกล่อง คือ fill ที่ปรับได้ จุดยึดกว้างศูนย์ที่ปุ่มจับเกาะอยู่ และ rest ที่ยืดกินที่เหลือ\nแบบช่วงเรียงสามกล่องเหมือนกัน คือ space-before fill และ rest โดยปุ่มจับสองอันอยู่ในชั้น fill เกาะขอบซ้ายและขอบขวาของมันไว้\nที่แบบช่วงไม่ใช้จุดยึด เพราะ Figma วาดชั้นที่อยู่ถัดไปทับชั้นก่อนหน้า จุดยึดของปุ่มจับซ้ายอยู่ก่อน fill จึงโดน fill ทับจนปุ่มจับหาย",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ทำไมไม่ทำตำแหน่งเป็นตัวเลือก",
+          "sub": "เพราะจะได้ตัวเลือกมหาศาลแต่ยังเลือกได้ไม่ละเอียด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ของเดิมทำตำแหน่งเป็นตัวเลือกทีละ 25 เปอร์เซ็นต์ ได้ 40 แบบที่มีขนาดเดียว\nถ้าคูณ 5 ขนาดจะกลายเป็น 200 แบบ และถ้าเอาสถานะเข้ามาด้วยจะเกิน 1,000 แบบ\nวิธีปัจจุบันใช้ 45 แบบ และเลือกตำแหน่งได้ทุกค่า ไม่ใช่แค่ทีละ 25 เปอร์เซ็นต์",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ความยาวยืดตามกรอบแม่",
+          "sub": "เลิกตรึงที่ 320 แล้ว",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "วางแถบเลื่อนในกรอบไหนก็ยืดเต็มกรอบนั้น ไม่ต้องตั้งความกว้างเอง\nของเดิมตรึงไว้ที่ 320 ทุกที่ ซึ่งขัดกับการใช้งานจริงที่แถบเลื่อนมักยืดเต็มความกว้างของฟอร์ม\nกรอบที่ครอบต้องไม่ตัดขอบ เพราะปุ่มจับล้นพ้นรางขึ้นลงข้างละ 4 ถึง 12 แล้วแต่ขนาด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "11037:193",
+      "name": "Slider Usage",
+      "title": "Slider Usage",
+      "subtitle": "ใช้เมื่อไหร่ ไม่ควรใช้เมื่อไหร่ สรุปจากงานวิจัย 15 เจ้าและเกณฑ์การเข้าถึง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ใช้เมื่อค่าเป็นตัวเลขต่อเนื่องและความแม่นยำไม่สำคัญ",
+          "sub": "จุดแข็งคือเห็นช่วงทั้งหมดในครั้งเดียว",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "เหมาะกับตัวกรองช่วงราคาหรือช่วงตัวเลขในเครื่องมือค้นหา และเครื่องคำนวณในเว็บธุรกิจ\nเหมาะเมื่อผู้ใช้สนใจความสัมพันธ์มากกว่าตัวเลขเป๊ะ เช่น ถูกหน่อยหรือแพงหน่อย\nถ้าต้องการค่าที่แม่นยำ ให้ใช้ช่องกรอกตัวเลขแทน หรือใช้คู่กัน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "แบบช่วงต้องมีช่องกรอกคู่เสมอ",
+          "sub": "งานวิจัยพบว่าคนอ่านแบบช่วงผิดเกินครึ่ง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ผลทดสอบผู้ใช้พบว่าแถบเลื่อนแบบช่วงถูกตีความผิดเกิน 50 เปอร์เซ็นต์ และผู้ทดสอบหลายคนยอมแพ้แล้วหันไปพิมพ์ในช่องกรอกแทน\nจึงต้องวางช่องกรอกตัวเลขคู่กันเสมอ ให้ผู้ใช้เลือกได้ว่าจะลากหรือจะพิมพ์\nแถวของแถบเลื่อนสูงเท่าช่องกรอกอยู่แล้ว จึงวางเรียงแถวเดียวกันได้พอดีทุกขนาด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "ไม่ควรใช้กับสามอย่างนี้",
+          "sub": "มีเครื่องมือที่เหมาะกว่า",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ช่วงวันที่ ให้ใช้ตัวเลือกวันที่แทน เพราะวันที่เป็นทั้งช่วงกว้างมากและไม่ใช่ตัวเลขธรรมดา\nขนาดตัวอักษรที่มีสามถึงห้าระดับ ให้ใช้ปุ่มย่อขยายหรือตัวเลือกแบบกลุ่ม เพราะช่วงแคบเกินกว่าจะลากได้แม่น\nความคืบหน้าการอ่านหรือการโหลด ไม่ใช่แถบเลื่อน เพราะผู้ใช้ปรับค่าไม่ได้ ให้ใช้แถบความคืบหน้า",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "แถบเลื่อนของเครื่องเล่นสื่อเป็นคนละตัว",
+          "sub": "พฤติกรรมต่างกันพอที่จะแยก",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "แถบเลื่อนตำแหน่งของเครื่องเล่นเสียงและวิดีโอมีค่าที่เปลี่ยนเองตลอดเวลา และมีชั้นข้อมูลเพิ่มคือส่วนที่โหลดไว้แล้ว\nจึงควรเป็น component แยกในตระกูลเครื่องเล่นสื่อ แต่หยิบ token ของรางและปุ่มจับชุดนี้ไปใช้ร่วมกันได้\nถ้ายัดรวมเป็นชุดเดียวกันจะได้ตัวเลือกที่ใช้ได้แค่ครึ่งเดียวในแต่ละบริบท",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "11043:940",
+      "name": "Slider",
+      "title": "Slider",
+      "subtitle": "ต้นฉบับของแถบเลื่อนทั้งสามชุด และตัวอย่างการใช้งานจริง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "slider",
+          "sub": "แถบเลื่อนแบบค่าเดียว 10 แบบ จากขนาด 5 คูณสถานะปิดใช้งาน 2 ตำแหน่งปุ่มจับปรับด้วยความกว้างของชั้น fill",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "slider",
+          "caption": "",
+          "width": 368,
+          "height": 664,
+          "items": [
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "xs",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 24,
+              "width": 320,
+              "height": 24
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "xs",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 72,
+              "width": 320,
+              "height": 24
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "sm",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 120,
+              "width": 320,
+              "height": 32
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "sm",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 176,
+              "width": 320,
+              "height": 32
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 232,
+              "width": 320,
+              "height": 40
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "md",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 296,
+              "width": 320,
+              "height": 40
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "lg",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 360,
+              "width": 320,
+              "height": 48
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "lg",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 432,
+              "width": 320,
+              "height": 48
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "xl",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 504,
+              "width": 320,
+              "height": 56
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "xl",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "50"
+              },
+              "x": 24,
+              "y": 584,
+              "width": 320,
+              "height": 56
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "range-slider",
+          "sub": "แถบเลื่อนแบบช่วง สองปุ่มจับ 10 แบบ ปรับตำแหน่งด้วย space-before กับ fill ต้องมีช่องกรอกตัวเลขคู่เสมอ",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "range-slider",
+          "caption": "",
+          "width": 368,
+          "height": 664,
+          "items": [
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "xs",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 24,
+              "width": 320,
+              "height": 24
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "xs",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 72,
+              "width": 320,
+              "height": 24
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "sm",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 120,
+              "width": 320,
+              "height": 32
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "sm",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 176,
+              "width": 320,
+              "height": 32
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "md",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 232,
+              "width": 320,
+              "height": 40
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "md",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 296,
+              "width": 320,
+              "height": 40
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "lg",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 360,
+              "width": 320,
+              "height": 48
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "lg",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 432,
+              "width": 320,
+              "height": 48
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "xl",
+                "disabled": "false",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 504,
+              "width": 320,
+              "height": 56
+            },
+            {
+              "props": {
+                "value-tooltip": false,
+                "min-max-label": false,
+                "size": "xl",
+                "disabled": "true",
+                "min": "0",
+                "max": "100",
+                "value": "33,67"
+              },
+              "x": 24,
+              "y": 584,
+              "width": 320,
+              "height": 56
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "slider-handle",
+          "sub": "ปุ่มจับ 25 แบบ จากขนาด 5 คูณสถานะ 5 ใช้ร่วมกันทั้งสองชุด จึงเป็น component เต็มตัว ไม่ใช่ชิ้นส่วนฐาน",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "slider-handle",
+          "caption": "",
+          "width": 304,
+          "height": 304,
+          "items": [
+            {
+              "props": {
+                "size": "xs",
+                "state": "default"
+              },
+              "x": 32,
+              "y": 32,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "size": "xs",
+                "state": "hover"
+              },
+              "x": 88,
+              "y": 32,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "size": "xs",
+                "state": "pressed"
+              },
+              "x": 144,
+              "y": 32,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "size": "xs",
+                "state": "focused"
+              },
+              "x": 200,
+              "y": 32,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "size": "xs",
+                "state": "disabled"
+              },
+              "x": 256,
+              "y": 32,
+              "width": 16,
+              "height": 16
+            },
+            {
+              "props": {
+                "size": "sm",
+                "state": "default"
+              },
+              "x": 30,
+              "y": 86,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "size": "sm",
+                "state": "hover"
+              },
+              "x": 86,
+              "y": 86,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "size": "sm",
+                "state": "pressed"
+              },
+              "x": 142,
+              "y": 86,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "size": "sm",
+                "state": "focused"
+              },
+              "x": 198,
+              "y": 86,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "size": "sm",
+                "state": "disabled"
+              },
+              "x": 254,
+              "y": 86,
+              "width": 20,
+              "height": 20
+            },
+            {
+              "props": {
+                "size": "md",
+                "state": "default"
+              },
+              "x": 28,
+              "y": 140,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "size": "md",
+                "state": "hover"
+              },
+              "x": 84,
+              "y": 140,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "size": "md",
+                "state": "pressed"
+              },
+              "x": 140,
+              "y": 140,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "size": "md",
+                "state": "focused"
+              },
+              "x": 196,
+              "y": 140,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "size": "md",
+                "state": "disabled"
+              },
+              "x": 252,
+              "y": 140,
+              "width": 24,
+              "height": 24
+            },
+            {
+              "props": {
+                "size": "lg",
+                "state": "default"
+              },
+              "x": 26,
+              "y": 194,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "size": "lg",
+                "state": "hover"
+              },
+              "x": 82,
+              "y": 194,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "size": "lg",
+                "state": "pressed"
+              },
+              "x": 138,
+              "y": 194,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "size": "lg",
+                "state": "focused"
+              },
+              "x": 194,
+              "y": 194,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "size": "lg",
+                "state": "disabled"
+              },
+              "x": 250,
+              "y": 194,
+              "width": 28,
+              "height": 28
+            },
+            {
+              "props": {
+                "size": "xl",
+                "state": "default"
+              },
+              "x": 24,
+              "y": 248,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "size": "xl",
+                "state": "hover"
+              },
+              "x": 80,
+              "y": 248,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "size": "xl",
+                "state": "pressed"
+              },
+              "x": 136,
+              "y": 248,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "size": "xl",
+                "state": "focused"
+              },
+              "x": 192,
+              "y": 248,
+              "width": 32,
+              "height": 32
+            },
+            {
+              "props": {
+                "size": "xl",
+                "state": "disabled"
+              },
+              "x": 248,
+              "y": 248,
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11039:185",
+      "name": "Slider Space",
+      "title": "Slider Space",
+      "subtitle": "ขนาดและระยะของแถบเลื่อนทุกขนาด มาจากสูตรที่ไหน และผูกตัวแปรตัวไหนได้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "ค่าทุกตัวมาจากสูตรในไฟล์ tokens/scale/slider.mjs ฝั่งโค้ด แล้วส่งออกเป็นตัวแปรเข้าไฟล์ออกแบบ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "มีสูตรสามมิติ คือ ขนาดปุ่มจับ ความหนาราง และความสูงแถวที่กดได้ ส่วนความสูงแถวอ้างสเกลความสูงตัวควบคุมกลางร่วมกับปุ่มและช่องกรอก ไม่ได้ตั้งค่าเอง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11039:188",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ความยาวไม่มีสูตรและไม่มีตัวแปร เพราะยืดตามกรอบแม่เสมอ ถ้าตั้งเป็นตัวแปรจะมีคนเอาไปตรึงความกว้าง ซึ่งเป็นปัญหาเดิมของหน้านี้ที่เคยตรึงไว้ที่ 320 ทุกที่",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11039:188",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "สูตร base และ step",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "rows": [
+            [
+              "ปุ่มจับ",
+              "16",
+              "4",
+              "16",
+              "20",
+              "24",
+              "28",
+              "32"
+            ],
+            [
+              "ราง",
+              "4",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12"
+            ],
+            [
+              "แถวที่กดได้",
+              "24",
+              "8",
+              "24",
+              "32",
+              "40",
+              "48",
+              "56"
+            ],
+            [
+              "แถวบนจอสัมผัส",
+              "-",
+              "-",
+              "48",
+              "48",
+              "48",
+              "48",
+              "56"
+            ],
+            [
+              "ส่วนยื่นพ้นราง",
+              "-",
+              "-",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10"
+            ],
+            [
+              "ช่องบนล่าง",
+              "-",
+              "-",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปรที่ผูกได้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อตัวแปรใน Figma",
+            "💻 ชื่อในโค้ด",
+            "ค่า",
+            "ใช้กับส่วนไหนของ component"
+          ],
+          "rows": [
+            [
+              "slider/handle/{ขนาด}",
+              "--ntg-slider-handle-{ขนาด}",
+              "16, 20, 24, 28, 32",
+              "เส้นผ่านศูนย์กลางปุ่มจับ"
+            ],
+            [
+              "slider/track/{ขนาด}",
+              "--ntg-slider-track-{ขนาด}",
+              "4, 6, 8, 10, 12",
+              "ความหนาราง แถบเติมใช้ค่าเดียวกัน"
+            ],
+            [
+              "slider/row/height/{ขนาด}",
+              "--ntg-slider-row-height-{ขนาด}",
+              "24, 32, 40, 48, 56",
+              "ความสูงแถวที่กดได้"
+            ],
+            [
+              "slider/row/height-touch/{ขนาด}",
+              "--ntg-slider-row-height-touch-{ขนาด}",
+              "48, 48, 48, 48, 56",
+              "ความสูงแถวบนอุปกรณ์สัมผัส"
+            ],
+            [
+              "slider/row/handle-target/{ขนาด}",
+              "--ntg-slider-row-handle-target-{ขนาด}",
+              "24, 32, 40, 48, 56",
+              "พื้นที่แตะของปุ่มจับแต่ละอัน"
+            ],
+            [
+              "slider/overhang/{ขนาด}",
+              "--ntg-slider-overhang-{ขนาด}",
+              "6, 7, 8, 9, 10",
+              "ส่วนที่ปุ่มจับยื่นพ้นรางข้างละ"
+            ],
+            [
+              "slider/inset/{ขนาด}",
+              "--ntg-slider-inset-{ขนาด}",
+              "4, 6, 8, 10, 12",
+              "ช่องบนล่างระหว่างแถวกับปุ่มจับ"
+            ],
+            [
+              "slider/radius/full",
+              "--ntg-slider-radius-full",
+              "9999",
+              "มุมโค้งเต็มของรางและปุ่มจับ"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา",
+          "sub": "• ต้นทางของค่าอยู่ที่โค้ด แก้ที่ tokens/scale/slider.mjs แล้วรัน npm run tokens:build\n• ห้ามพิมพ์ค่าระยะห่างเองในไฟล์ออกแบบ ให้ผูกตัวแปรเสมอ\n• ส่วนยื่นพ้นราง กับ ช่องบนล่าง เป็นผลลัพธ์จากสองมิติแรก ห้ามตั้งแยก ถ้าตั้งเองแล้วไม่ตรง ปุ่มจับจะไม่อยู่กึ่งกลาง\n• ความยาวไม่มีตัวแปรโดยตั้งใจ ให้ยืดตามกรอบแม่ และกรอบที่ครอบต้องไม่ตัดขอบ เพราะปุ่มจับล้นพ้นรางขึ้นลง",
+          "section": true
+        }
+      ]
+    }
+  ]
+}
