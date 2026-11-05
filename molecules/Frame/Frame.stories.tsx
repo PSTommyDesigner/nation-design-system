@@ -13,8 +13,7 @@ const meta = {
   title: 'Molecules (Element)/10 Frame',
   component: AtomDoc,
   args: { data, name: '', logos },
-  // no-panel ไม่มี component Frame ในโค้ดให้ลองกด จึงไม่ต้องมีแผงด้านล่าง ดู .storybook/manager.ts
-  tags: ['!autodocs', 'no-panel'],
+  tags: ['!autodocs'],
   parameters: { layout: 'fullscreen', controls: { disable: true } },
 } satisfies Meta<typeof AtomDoc>
 

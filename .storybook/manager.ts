@@ -13,20 +13,14 @@ const FIXED_STORIES = new Set([
   'organisms-component-30-modal-modal--toast-over-modal',
 ])
 
-// story ที่ใส่ tag no-panel ไม่มี component ให้ลองกด จึงไม่มีแผง เช่นหน้าเอกสาร 10 Frame ที่ยังไม่มี component Frame ในโค้ด (ผู้ใช้สั่ง 2026-11-05)
-// หน้าเอกสาร Molecules อื่นวาด component จริง (เช่น 12 Buttons) จึงยังมีแผงไว้ดู Actions และ Interactions
-const hasNoComponentExample = (storyId = '', tags: string[] = []) =>
+const hasNoComponentExample = (storyId = '') =>
   FIXED_STORIES.has(storyId) ||
   storyId.startsWith('page-prototype-') ||
-  tags.includes('no-panel') ||
   (storyId.startsWith('atoms-identity-') && !storyId.startsWith('atoms-identity-02-icon-'))
 
 addons.setConfig({
   layoutCustomisations: {
-    showPanel: (state, defaultValue) => {
-      const entry = state.index?.[state.storyId]
-      return hasNoComponentExample(state.storyId, entry?.tags ?? []) ? false : defaultValue
-    },
+    showPanel: (state, defaultValue) => (hasNoComponentExample(state.storyId) ? false : defaultValue),
   },
 })
 
