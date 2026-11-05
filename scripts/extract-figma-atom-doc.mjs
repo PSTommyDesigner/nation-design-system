@@ -246,7 +246,8 @@ function effectBlock(n, where, label) {
   // วงแหวนโฟกัสในไฟล์ออกแบบอยู่ที่ปุ่มข้างในกล่อง Preview ส่วนเงากับเบลออยู่ที่กล่องเอง
   const fx = findAll(preview, x => x.effects?.some(e => e.visible !== false))[0]?.effects.find(e => e.visible !== false)
   checkEffect(`${where} ${style}`, kind, cssVar, fx)
-  return { type: 'effect', kind, style, cssVar, label }
+  // variant ที่อยู่ในชุด (COMPONENT_SET) วางในแผงพื้นรองของชุด เช่น Shadow Components หน้าเอกสารวาดแผงตาม
+  return { type: 'effect', kind, style, cssVar, label, ...(n.type === 'COMPONENT' && n.parent?.type === 'COMPONENT_SET' ? { panel: true } : {}) }
 }
 
 // ตัวอย่าง component: ชิ้นงาน (INSTANCE) หรือ variant (COMPONENT ในชุด) ของชุดที่อยู่ใน PAGES[KEY].components
@@ -295,7 +296,7 @@ function extract(doc) {
     }
     // ภาพเอฟเฟคที่อยู่ติดกันรวมเป็นแถวเดียว
     if (b.type === 'effect') {
-      if (last?.type === 'effects') { last.items.push(b); return }
+      if (last?.type === 'effects' && !!last.items[0].panel === !!b.panel) { last.items.push(b); return }
       out.blocks.push({ type: 'effects', items: [b] }); return
     }
     // กล่องมุมโค้งที่อยู่ติดกันรวมเป็นแถวเดียว ภาพกล่องซ้อนถูกผิดก็เช่นกัน

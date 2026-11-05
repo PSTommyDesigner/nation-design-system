@@ -28,7 +28,7 @@ import styles from './AtomDoc.module.css'
 type ColorRow = { no: string; name: string; level: string; gap?: string | null; lineTop?: string | null; lineBottom?: string | null; light: string; dark: string; description: string; cssVar: string; darkVar: string }
 type LogoItem = { file: string | null; label: string; width: number; height: number; box?: number; cell?: number; natural?: number; labelBelow?: boolean }
 type SampleProps = Record<string, string | boolean>
-type ComponentItem = { set: string; props: SampleProps; image?: string; label: string; width: number; height: number; cell?: number }
+type ComponentItem = { set: string; props: SampleProps; image?: string; label: string; width: number; height: number; cell?: number; group?: { set: string; props: SampleProps; image?: string }[] }
 type VariantItem = { props: SampleProps; image?: string; x: number; y: number; width: number; height: number }
 type SpaceItem = { name: string; cssVar: string; value: string; usage: string; fill: string | null }
 type Block =
@@ -54,7 +54,7 @@ type Block =
   | { type: 'grid'; name: string; canvas: number; height?: number; columnFirst?: boolean; wrap?: { width: number; gap: string | null }; stretch: boolean; columns: string; gutter: string; margin: string; container: string | null; columnWidth: string | null }
 type RadiusItem = { step: string; label: string; meta: string; corners: (string | null)[]; figma: number[]; fill: string | null; stroke: string | null }
 type NestedItem = { kind: 'do' | 'dont'; title: string; caption: string; outer: number; inner: number; outerFill: string | null; innerFill: string | null }
-type EffectItem = { kind: 'shadow' | 'blur' | 'ring'; style: string; cssVar: string; label: string }
+type EffectItem = { kind: 'shadow' | 'blur' | 'ring'; style: string; cssVar: string; label: string; panel?: boolean }
 type Doc = { id: string; name: string; title: string; subtitle: string; blocks: (Block & { section?: boolean })[] }
 export type AtomDocData = { documents: unknown[] }
 
@@ -218,25 +218,20 @@ const GridRows = ({ items }: { items: Extract<Block, { type: 'grid' }>[] }) => {
   )
 }
 
-// ภาพเอฟเฟคหนึ่งตัว ค่าใต้ภาพอ่านจากที่เบราว์เซอร์คำนวณจริง ใช้ยืนยันว่า token ให้ผลเท่าไฟล์ออกแบบ
+// ภาพเอฟเฟคหนึ่งตัว ตามชิ้นงาน shadow / background-blur / focus-ring ในไฟล์ออกแบบ คำอธิบายเหนือกล่อง ชื่อสไตล์ใต้กล่อง
+// ใต้ชื่อมีชื่อตัวแปร CSS ตัวเล็กสีรอง ค่าที่วัดได้เอาออก (ผู้ใช้ตัดสิน 2026-11-05 ค่าดิบดูได้ในเอกสาร Effect Token)
 const EffectSample = ({ item: it }: { item: EffectItem }) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const [v, setV] = useState('')
-  useLayoutEffect(() => {
-    if (!ref.current) return
-    const cs = getComputedStyle(ref.current)
-    setV(it.kind === 'blur' ? cs.backdropFilter : cs.boxShadow)
-  }, [it])
   const box = it.kind === 'blur'
-    ? <div className={styles.effectBackdrop}><div ref={ref} className={`${styles.effectBox} ${styles.effectBlur}`} style={{ backdropFilter: `blur(var(${it.cssVar}))` }} /></div>
-    : <div ref={ref} className={styles.effectBox} style={{ boxShadow: `var(${it.cssVar})` }} />
+    ? <div className={styles.effectBackdrop}><div className={`${styles.effectBox} ${styles.effectBlur}`} style={{ backdropFilter: `blur(var(${it.cssVar}))` }} /></div>
+    : <div className={styles.effectBox} style={{ boxShadow: `var(${it.cssVar})` }} />
   return (
-    <div className={styles.effectItem}>
-      {it.label && <span className={`ntg-typography-body-xs ${styles.muted}`}>{clean(it.label)}</span>}
+    <div className={`${styles.effectItem} ${it.label ? styles.effectItemLabeled : ''}`}>
+      {it.label && <span className={`ntg-typography-meta-caption ${styles.muted}`}>{clean(it.label)}</span>}
       {box}
-      <code className="ntg-typography-title-xs">{it.style}</code>
-      <code className={`ntg-typography-body-xs ${styles.muted}`}>{it.cssVar}</code>
-      <code className={`ntg-typography-body-xs ${styles.muted}`}>{v}</code>
+      <span className={styles.effectInfo}>
+        <span className={`ntg-typography-meta-credit ${styles.heading}`}>{it.style}</span>
+        <span className={`ntg-typography-meta-credit ${styles.muted}`}>{it.cssVar}</span>
+      </span>
     </div>
   )
 }
@@ -277,7 +272,7 @@ const NestedSample = ({ item: it }: { item: NestedItem }) => (
 )
 
 const EffectRow = ({ items }: { items: EffectItem[] }) => (
-  <div className={styles.effectRow}>{items.map((it, i) => <EffectSample key={i} item={it} />)}</div>
+  <div className={`${styles.effectRow} ${items[0]?.panel ? styles.effectPanel : ''}`}>{items.map((it, i) => <EffectSample key={i} item={it} />)}</div>
 )
 
 const Ramp = ({ label, path, steps }: { label: string; path: string; steps: { step: number; cssVar: string }[] }) => (
@@ -445,7 +440,9 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
           {block.items.map((it, i) => (
             <div key={i} className={styles.sampleItem} style={it.cell ? { width: it.cell } : undefined}>
               {it.label && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
-              <Sample set={it.set} props={it.props} image={it.image} />
+              {it.group
+                ? <span className={styles.sampleGroup}>{it.group.map((g, j) => <Sample key={j} set={g.set} props={g.props} image={g.image} />)}</span>
+                : <Sample set={it.set} props={it.props} image={it.image} />}
             </div>
           ))}
         </div>

@@ -273,11 +273,25 @@
    มุมกล่องยังเป็นมุมฉาก ในไฟล์ออกแบบเป็น 10 ที่ไม่ได้ผูกตัวแปร รอตัดสิน token มุมโค้งเดียวกับจุดสี
    ภาพเบลอวางบนลายทางสีแบรนด์ เพื่อให้เห็นว่าพื้นหลังถูกเบลอ บนพื้นเรียบจะมองไม่เห็นผล
    ลายทางกว้างเท่ากล่องอื่น กล่องเบลอเว้นขอบไว้ ให้เห็นลายคมรอบกล่องเทียบกับลายที่ถูกเบลอ */
-.effectRow { display: flex; flex-wrap: wrap; gap: var(--ntg-size-space-s3-xs); padding: var(--ntg-size-space-s2-lg) 0; }
-.effectItem { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-lg); width: calc(var(--ntg-size-space-s4-lg) + var(--ntg-size-space-s4-xl)); }
+/* ชิ้นตัวอย่างห่างกัน 48 แถวที่ตัดบรรทัดห่าง 40 ตามไฟล์ออกแบบ */
+.effectRow { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--ntg-size-space-s3-sm) var(--ntg-size-space-s3-md); }
+/* ชุด variant ในไฟล์ออกแบบอยู่ในแผงพื้นรอง ระยะใน 24 กล่องห่าง 24 มุมโค้งในไฟล์ออกแบบ 16 ไม่ได้ผูกตัวแปร ใช้ info-card ตามข้อตกลงกล่องที่ไม่ใช่ component */
+.effectPanel {
+  align-self: flex-start;
+  gap: var(--ntg-size-space-s2-lg);
+  padding: var(--ntg-size-space-s2-lg);
+  border-radius: var(--ntg-info-card-radius-top-left) var(--ntg-info-card-radius-top-right) var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
+  background: var(--ntg-color-background-general-secondary);
+}
+/* ชิ้นตัวอย่างกว้าง 200 กล่อง 200x120 ชิ้นที่มีคำอธิบายกว้าง 300 (96 x 3 + 12) ระหว่างส่วนห่าง 16 ยืมสเกลระยะ */
+.effectItem { display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-sm); width: calc(var(--ntg-size-space-s4-lg) + var(--ntg-size-space-s4-xl)); }
+.effectItemLabeled { width: calc(var(--ntg-size-space-s4-lg) * 3 + var(--ntg-size-space-s2-xs)); }
+.effectInfo { display: flex; flex-direction: column; gap: var(--ntg-size-space-s1-sm); padding-inline: var(--ntg-size-space-s1-lg); overflow-wrap: anywhere; }
 .effectBox {
+  box-sizing: border-box;
   width: calc(var(--ntg-size-space-s4-lg) + var(--ntg-size-space-s4-xl));
   height: var(--ntg-size-space-s5-sm);
+  border-radius: var(--ntg-info-card-radius-top-left) var(--ntg-info-card-radius-top-right) var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
   background: var(--ntg-color-background-general-primary);
 }
 .effectBackdrop {
@@ -285,6 +299,8 @@
   width: calc(var(--ntg-size-space-s4-lg) + var(--ntg-size-space-s4-xl));
   height: var(--ntg-size-space-s5-sm);
   padding: var(--ntg-size-space-s2-sm);
+  border-radius: var(--ntg-info-card-radius-top-left) var(--ntg-info-card-radius-top-right) var(--ntg-info-card-radius-bottom-right) var(--ntg-info-card-radius-bottom-left);
+  overflow: hidden;
   background: repeating-linear-gradient(45deg, var(--ntg-color-background-brand-solid) 0 var(--ntg-size-space-s1-lg), var(--ntg-color-background-general-primary) 0 var(--ntg-size-space-s2-sm));
 }
 .effectBlur { width: 100%; height: 100%; background: var(--ntg-color-background-alpha-white-30); }
@@ -327,3 +343,4 @@
 .variantSet { position: relative; flex: none; }
 .variantItem { position: absolute; display: flex; }
 .sampleColumn { display: flex; flex-direction: column; align-items: flex-start; gap: var(--ntg-size-space-s2-lg); }
+.sampleGroup { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ntg-size-space-s1-lg); }

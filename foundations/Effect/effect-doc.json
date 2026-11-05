@@ -653,35 +653,40 @@
               "kind": "shadow",
               "style": "Shadows/Bottom/xs",
               "cssVar": "--ntg-shadows-bottom-xs",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Bottom/sm",
               "cssVar": "--ntg-shadows-bottom-sm",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Bottom/md",
               "cssVar": "--ntg-shadows-bottom-md",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Bottom/lg",
               "cssVar": "--ntg-shadows-bottom-lg",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Bottom/xl",
               "cssVar": "--ntg-shadows-bottom-xl",
-              "label": ""
+              "label": "",
+              "panel": true
             }
           ]
         },
@@ -699,35 +704,40 @@
               "kind": "shadow",
               "style": "Shadows/Top/xs",
               "cssVar": "--ntg-shadows-top-xs",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Top/sm",
               "cssVar": "--ntg-shadows-top-sm",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Top/md",
               "cssVar": "--ntg-shadows-top-md",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Top/lg",
               "cssVar": "--ntg-shadows-top-lg",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Top/xl",
               "cssVar": "--ntg-shadows-top-xl",
-              "label": ""
+              "label": "",
+              "panel": true
             }
           ]
         },
@@ -745,35 +755,40 @@
               "kind": "shadow",
               "style": "Shadows/Center/xs",
               "cssVar": "--ntg-shadows-center-xs",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Center/sm",
               "cssVar": "--ntg-shadows-center-sm",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Center/md",
               "cssVar": "--ntg-shadows-center-md",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Center/lg",
               "cssVar": "--ntg-shadows-center-lg",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "shadow",
               "style": "Shadows/Center/xl",
               "cssVar": "--ntg-shadows-center-xl",
-              "label": ""
+              "label": "",
+              "panel": true
             }
           ]
         }
@@ -799,35 +814,40 @@
               "kind": "blur",
               "style": "Background Blur/xs",
               "cssVar": "--ntg-effect-background-blur-xs",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "blur",
               "style": "Background Blur/sm",
               "cssVar": "--ntg-effect-background-blur-sm",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "blur",
               "style": "Background Blur/md",
               "cssVar": "--ntg-effect-background-blur-md",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "blur",
               "style": "Background Blur/lg",
               "cssVar": "--ntg-effect-background-blur-lg",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "blur",
               "style": "Background Blur/xl",
               "cssVar": "--ntg-effect-background-blur-xl",
-              "label": ""
+              "label": "",
+              "panel": true
             }
           ]
         },
@@ -845,35 +865,40 @@
               "kind": "ring",
               "style": "focused-ring/brand-focused-ring",
               "cssVar": "--ntg-focused-ring-brand",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "ring",
               "style": "focused-ring/default-focused-ring",
               "cssVar": "--ntg-focused-ring-default",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "ring",
               "style": "focused-ring/error-focused-ring",
               "cssVar": "--ntg-focused-ring-error",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "ring",
               "style": "focused-ring/warning-focused-ring",
               "cssVar": "--ntg-focused-ring-warning",
-              "label": ""
+              "label": "",
+              "panel": true
             },
             {
               "type": "effect",
               "kind": "ring",
               "style": "focused-ring/success-focused-ring",
               "cssVar": "--ntg-focused-ring-success",
-              "label": ""
+              "label": "",
+              "panel": true
             }
           ]
         }
