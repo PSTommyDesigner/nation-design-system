@@ -8,7 +8,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // ชุดไอคอนไม่เข้ากรอบ 5 หัวข้อเต็ม หัวข้อชุดจึงเป็นแกลเลอรีค้นหา ชุดนี้ไม่มีหมวดในต้นทาง จึงเป็นหมวดเดียว
 // ต้นฉบับคือ Nation House Icons ในไฟล์ออกแบบหน้า 02 Icon กริด 40dp
 const meta: Meta<typeof NationHouseIcon> = {
-  title: 'Atoms (Identity)/02 Icon/NationHouseIcon',
+  title: 'Atoms (Identity)/02 Icon/Nation House Icon',
   component: NationHouseIcon,
   tags: ['autodocs'],
   args: { name: 'home', size: 40, filled: false, title: 'หน้าแรก' },
