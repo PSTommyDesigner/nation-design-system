@@ -1,0 +1,2490 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 19 Toasts & Banners ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- toasts",
+  "page": "19 Toasts & Banners",
+  "documents": [
+    {
+      "id": "11192:185",
+      "name": "19 Toasts and Banners Documentation",
+      "title": "19 Toasts and Banners",
+      "subtitle": "ข้อความแจ้งผู้ใช้ 2 ชิ้นงาน คือ toast ที่ลอยทับเนื้อหาแล้วหายเอง และ banner ที่อยู่ในสายเนื้อหาและคาอยู่จนกว่าจะกดปิด",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ภาพรวม",
+          "sub": "หน้านี้มี 2 ชิ้นงานที่แยกหน้าที่กันชัดเจน toast 25 แบบ ใช้บอกผลของสิ่งที่เพิ่งเกิดขึ้นแล้วเรื่องนั้นจบไปแล้ว ส่วน banner 50 แบบ ใช้บอกสถานะที่ยังค้างอยู่และผู้ใช้ต้องเห็นทุกครั้งที่กลับมาดูหน้านี้ เส้นแบ่งอยู่ที่ว่าเรื่องนั้นจบแล้วหรือยัง ไม่ใช่ว่าเรื่องนั้นสำคัญแค่ไหน",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ส่วนประกอบ",
+          "sub": "ทั้งสองชิ้นงานประกอบด้วย 5 ส่วนเหมือนกัน คือ ไอคอนบอกชนิด หัวข้อ ข้อความรอง ปุ่มกระทำ และปุ่มปิด ทุกส่วนยกเว้นหัวข้อปิดได้ด้วยคุณสมบัติเปิดปิด ไม่ต้องลบชั้นออกจาก instance รายละเอียดเต็มอยู่ในเอกสารของแต่ละชิ้นงาน",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-action": true,
+                "show-close": true,
+                "show-support": true,
+                "show-icon": true,
+                "type": "default",
+                "size": "md"
+              },
+              "label": "",
+              "width": 360,
+              "height": 118
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ชนิด",
+          "sub": "มี 5 ชนิด คือ default brand error warning success เลือกจากความหมาย ไม่ใช่จากสีที่อยากได้ ชนิด error ใช้เฉพาะตอนที่สิ่งที่ผู้ใช้สั่งไม่สำเร็จ ระบบนี้ไม่มีชนิด info เพราะสีที่เหมาะจะไปซ้ำกับชนิด brand จนแยกกันไม่ออก",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-action": true,
+                "show-close": true,
+                "show-support": true,
+                "show-icon": true,
+                "type": "default",
+                "size": "md"
+              },
+              "label": "",
+              "width": 360,
+              "height": 118,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "banner",
+              "props": {
+                "show-close": true,
+                "show-action": true,
+                "show-support": true,
+                "show-icon": true,
+                "level": "section",
+                "type": "default",
+                "size": "md"
+              },
+              "label": "",
+              "width": 1232,
+              "height": 118,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ระดับของ banner",
+          "sub": "banner มี 2 ระดับ ระดับ page ยืนเต็มความกว้างบนสุดของหน้าและมุมโค้งเป็น 0 เพราะชนขอบจอทั้งสองข้าง ส่วนระดับ section อยู่ในกล่องเนื้อหาและมีมุมโค้งตามขนาด ใช้ระดับ page เมื่อเรื่องนั้นกระทบทั้งหน้า และระดับ section เมื่อกระทบเฉพาะกล่องนั้น",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "banner",
+              "props": {
+                "show-action": true,
+                "show-support": true,
+                "show-close": true,
+                "show-icon": true,
+                "level": "page",
+                "type": "default",
+                "size": "md"
+              },
+              "label": "",
+              "width": 1232,
+              "height": 118,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "banner",
+              "props": {
+                "show-close": true,
+                "show-action": true,
+                "show-support": true,
+                "show-icon": true,
+                "level": "section",
+                "type": "default",
+                "size": "md"
+              },
+              "label": "",
+              "width": 1232,
+              "height": 118,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ขนาด",
+          "sub": "ทั้งสองชิ้นงานมี 5 ขนาด xs ถึง xl ค่าเริ่มต้นของระบบคือ md ซึ่งตรงกับของเดิมทุกค่า ระยะขอบ 16 ช่องไฟ 16 ไอคอน 24 และมุมโค้ง 16 ขนาดอื่นขยายจากขนาดนี้ด้วยสูตร base บวก step ดูสูตรเต็มในเอกสาร Space",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-action": true,
+                "show-support": true,
+                "show-close": true,
+                "show-icon": true,
+                "type": "default",
+                "size": "xs"
+              },
+              "label": "",
+              "width": 280,
+              "height": 88
+            },
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-close": true,
+                "show-action": true,
+                "show-support": true,
+                "show-icon": true,
+                "type": "default",
+                "size": "sm"
+              },
+              "label": "",
+              "width": 320,
+              "height": 101
+            },
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-action": true,
+                "show-close": true,
+                "show-support": true,
+                "show-icon": true,
+                "type": "default",
+                "size": "md"
+              },
+              "label": "",
+              "width": 360,
+              "height": 118
+            },
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-close": true,
+                "show-action": true,
+                "show-support": true,
+                "show-icon": true,
+                "type": "default",
+                "size": "lg"
+              },
+              "label": "",
+              "width": 400,
+              "height": 133
+            },
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-close": true,
+                "show-support": true,
+                "show-action": true,
+                "show-icon": true,
+                "type": "default",
+                "size": "xl"
+              },
+              "label": "",
+              "width": 440,
+              "height": 150
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "สถานะ",
+          "sub": "ตัวกล่องไม่มีสถานะ hover focused หรือ disabled เลย ตรงกับที่ตลาดทำทั้ง 15 เจ้า สถานะอยู่ที่ปุ่มกระทำและปุ่มปิดข้างในเท่านั้น ซึ่งเป็น instance ของชุดปุ่มที่มีสถานะครบอยู่แล้ว",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-action": true,
+                "show-close": true,
+                "show-support": true,
+                "show-icon": true,
+                "type": "default",
+                "size": "md"
+              },
+              "label": "",
+              "width": 360,
+              "height": 118,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-action": true,
+                "show-support": true,
+                "show-close": true,
+                "show-icon": true,
+                "type": "brand",
+                "size": "md"
+              },
+              "label": "",
+              "width": 360,
+              "height": 118,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-close": true,
+                "show-action": true,
+                "show-support": true,
+                "show-icon": true,
+                "type": "error",
+                "size": "md"
+              },
+              "label": "",
+              "width": 360,
+              "height": 118,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-action": true,
+                "show-close": true,
+                "show-support": true,
+                "show-icon": true,
+                "type": "warning",
+                "size": "md"
+              },
+              "label": "",
+              "width": 360,
+              "height": 118,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "toast",
+              "props": {
+                "show-action": true,
+                "show-support": true,
+                "show-close": true,
+                "show-icon": true,
+                "type": "success",
+                "size": "md"
+              },
+              "label": "",
+              "width": 360,
+              "height": 118,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ควรและไม่ควร",
+          "sub": "ควรใช้ banner กับเรื่องที่ยังค้างอยู่ เพราะผู้ใช้ต้องเห็นทุกครั้งที่กลับมา ไม่ควรใช้ toast บอกเรื่องที่ยังค้าง เพราะพอมันหายไปแล้วผู้ใช้จะไม่มีทางรู้อีกเลย และถ้าข้อความนั้นเป็นที่เดียวที่ข้อมูลอยู่ จะตกเกณฑ์การเข้าถึงข้อ 2.2.1 ระดับ A ด้วย",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "Do",
+          "body": "• ใช้ข้อความแจ้งลอยกับผลของสิ่งที่ผู้ใช้เพิ่งทำ\n• ใช้แถบแจ้งกับเรื่องที่ค้างอยู่กับหน้าทั้งหน้า\n• ให้ชนิดผิดพลาดค้างไว้จนผู้ใช้ปิดเอง"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "Don’t",
+          "body": "• ซ้อนข้อความแจ้งลอยหลายอันจนบังเนื้อหา\n• เอาเรื่องที่ต้องตัดสินใจไปใส่ในข้อความที่หายเอง\n• ใช้แถบแจ้งบอกผลของปุ่มที่เพิ่งกด ให้ใช้ข้อความแจ้งลอยแทน"
+        },
+        {
+          "type": "h",
+          "text": "การเข้าถึง",
+          "sub": "ประกาศข้อความผ่าน live region ที่แยกจากกล่องที่มองเห็น ห้ามใส่ลงบนกล่องเอง เพราะโปรแกรมอ่านหน้าจอจะอ่านซ้ำสองรอบ ชนิด default กับ brand ใช้ระดับ polite ที่เหลือใช้ assertive ห้ามย้ายโฟกัสไปที่ toast ตอนมันโผล่ และ toast ชนิด error ไม่หายเอง ต้องกดปิด",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปร",
+          "sub": "หน้านี้มีตัวแปร 75 ตัว แยกเป็น toast 40 ตัว banner 31 ตัว และสีไอคอนบนพื้นอ่อนอีก 4 ตัว ทุกตัวอยู่ใน collection component และมาจากสูตรในไฟล์ tokens scale ไม่มีค่าไหนพิมพ์มือ ดูตารางจับคู่ชื่อเต็มในเอกสาร Token",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ระยะและขนาด",
+          "sub": "ความสูงของทั้งสองชิ้นงานมาจากเนื้อหา ไม่มีสูตรความสูงโดยตั้งใจ เพราะข้อความตัดบรรทัดได้ ส่วน banner ไม่มีตัวแปรความกว้างเพราะความกว้างมาจากกรอบแม่เสมอ ค่าทุกมิติดูได้ในเอกสาร Space",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ของที่เกี่ยวข้อง",
+          "sub": "ปุ่มกระทำใช้ชุด link-button ตระกูล Neutral จากหน้า 12 Buttons ไอคอนบอกชนิดและปุ่มปิดใช้ชุด Nation UI จากหน้า 02 Icon และเงาของ toast ใช้ shadows bottom md จากหน้า 05 Effect",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "11197:185",
+      "name": "Toast and Banner Token",
+      "title": "Toast and Banner Token",
+      "subtitle": "ตารางจับคู่ชื่อตัวแปรในไฟล์ออกแบบกับชื่อในโค้ด พร้อมค่าจริงและที่ใช้งาน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อตัวแปรที่ทีมออกแบบเห็นในแผง Figma กับชื่อที่ทีมพัฒนาเขียนในโค้ด พร้อมค่าจริง เพื่อให้สองฝั่งเรียกของชิ้นเดียวกันโดยไม่ต้องเดา",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "หน้า 19 มีตัวแปร 75 ตัว แยกเป็นของ toast 40 ตัว ของ banner 31 ตัว และสีไอคอนบนพื้นอ่อนอีก 4 ตัว ทุกตัวอยู่ใน collection ชื่อ component ซึ่งเป็นชั้นเดียวที่อนุญาตให้ผูกใช้งานจริง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11197:188",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ตารางด้านล่างแสดงเฉพาะขนาด md ของแต่ละกลุ่ม เพราะขนาดอื่นมาจากสูตร base บวก step ที่ประกาศไว้ในไฟล์ tokens scale toast และ banner ดูค่าทุกขนาดได้ในเอกสาร Space ของหน้านี้",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11197:188",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "ฝั่งออกแบบ",
+          "body": "ชื่อตัวแปรที่เห็นในแผง Figma ใช้ตอนผูกค่าให้ชิ้นงาน เลือกจาก collection component เท่านั้น"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "ฝั่งพัฒนา",
+          "body": "ชื่อตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ ค่าเดียวกับฝั่งออกแบบเป๊ะ สร้างจากไฟล์เดียวกัน"
+        },
+        {
+          "type": "h",
+          "text": "ตารางจับคู่ชื่อ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชื่อใน Figma",
+            "ชื่อในโค้ด",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "toast/width/md",
+              "--ntg-toast-width-md",
+              "360px",
+              "ความกว้างกล่องบนเดสก์ท็อป บนมือถือยืดเต็มจอ"
+            ],
+            [
+              "toast/padding/md",
+              "--ntg-toast-padding-md",
+              "16px",
+              "ระยะขอบทั้งสี่ด้านของกล่อง"
+            ],
+            [
+              "toast/gap/md",
+              "--ntg-toast-gap-md",
+              "16px",
+              "ช่องไฟระหว่างไอคอน ข้อความ และปุ่มปิด"
+            ],
+            [
+              "toast/stack/md",
+              "--ntg-toast-stack-md",
+              "2px",
+              "ระยะระหว่างหัวข้อกับข้อความรอง"
+            ],
+            [
+              "toast/action-gap/md",
+              "--ntg-toast-action-gap-md",
+              "8px",
+              "ระยะจากข้อความลงมาถึงปุ่มกระทำ"
+            ],
+            [
+              "toast/icon/md",
+              "--ntg-toast-icon-md",
+              "24px",
+              "ขนาดไอคอนบอกชนิดและปุ่มปิด"
+            ],
+            [
+              "toast/text-width/md",
+              "--ntg-toast-text-width-md",
+              "248px",
+              "ที่ว่างที่เหลือให้กลุ่มข้อความ เป็นค่าอนุพันธ์"
+            ],
+            [
+              "toast/radius/md",
+              "--ntg-toast-radius-md",
+              "16px",
+              "มุมโค้งของกล่อง"
+            ],
+            [
+              "banner/padding/md",
+              "--ntg-banner-padding-md",
+              "16px",
+              "ระยะขอบทั้งสี่ด้านของแถบ"
+            ],
+            [
+              "banner/gap/md",
+              "--ntg-banner-gap-md",
+              "16px",
+              "ช่องไฟระหว่างไอคอน ข้อความ และปุ่มปิด"
+            ],
+            [
+              "banner/stack/md",
+              "--ntg-banner-stack-md",
+              "2px",
+              "ระยะระหว่างหัวข้อกับข้อความรอง"
+            ],
+            [
+              "banner/action-gap/md",
+              "--ntg-banner-action-gap-md",
+              "8px",
+              "ระยะจากข้อความลงมาถึงปุ่มกระทำ"
+            ],
+            [
+              "banner/icon/md",
+              "--ntg-banner-icon-md",
+              "24px",
+              "ขนาดไอคอนบอกชนิดและปุ่มปิด"
+            ],
+            [
+              "banner/radius/page",
+              "--ntg-banner-radius-page",
+              "0px",
+              "มุมโค้งของแถบระดับหน้า เท่ากันทุกขนาด"
+            ],
+            [
+              "banner/radius/section/md",
+              "--ntg-banner-radius-section-md",
+              "16px",
+              "มุมโค้งของแถบระดับกล่องเนื้อหา"
+            ],
+            [
+              "icon/brand/on-subtle",
+              "--ntg-icon-brand-on-subtle",
+              "#1640d6",
+              "ไอคอนชนิด brand บนพื้นสีอ่อน"
+            ],
+            [
+              "icon/system/error-on-subtle",
+              "--ntg-icon-system-error-on-subtle",
+              "#b42318",
+              "ไอคอนชนิด error บนพื้นสีอ่อน"
+            ],
+            [
+              "icon/system/warning-on-subtle",
+              "--ntg-icon-system-warning-on-subtle",
+              "#a15c07",
+              "ไอคอนชนิด warning บนพื้นสีอ่อน"
+            ],
+            [
+              "icon/system/success-on-subtle",
+              "--ntg-icon-system-success-on-subtle",
+              "#027a48",
+              "ไอคอนชนิด success บนพื้นสีอ่อน"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• แหล่งความจริงของค่าตัวเลขอยู่ที่ไฟล์สูตร tokens scale toast และ banner แก้ที่นั่นแล้วรัน npm run tokens:build\n• แก้ตัวแปรในไฟล์ออกแบบให้ตรงกัน แล้วรีเฟรชลายนิ้วมือที่ tokens figma-fingerprint.json\n• รัน npm run tokens:verify ต้องขึ้นว่าต้องดู 0 กลุ่ม เสมอ ถ้ามีกลุ่มโผล่แปลว่าสองฝั่งเพิ่งหลุดจากกัน\n• ห้ามพิมพ์ค่าดิบลงงานตรง ๆ ทั้งสีและขนาด ให้อ้างชื่อตัวแปรเสมอ",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "11201:185",
+      "name": "Toast Information",
+      "title": "ข้อความแจ้งลอย (toast)",
+      "subtitle": "กล่องข้อความสั้นที่ลอยทับเนื้อหา แจ้งผลของสิ่งที่เพิ่งเกิดขึ้น แล้วหายไปเอง",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ใช้ toast เมื่อไหร่",
+          "sub": "ใช้เมื่อเรื่องนั้นจบไปแล้วและผู้ใช้ไม่ต้องทำอะไรต่อ ถ้าเรื่องยังค้างอยู่ให้ใช้ banner แทน เพราะ toast หายไปแล้วผู้ใช้จะไม่มีทางรู้อีกเลย",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "คำถาม",
+            "ใช้ toast",
+            "ใช้ banner แทน"
+          ],
+          "rows": [
+            [
+              "เรื่องนั้นจบแล้วหรือยัง",
+              "จบแล้ว",
+              "ยังค้างอยู่"
+            ],
+            [
+              "ผู้ใช้ต้องทำอะไรต่อไหม",
+              "ไม่ต้อง",
+              "อาจต้อง"
+            ],
+            [
+              "กลับมาดูหน้าใหม่แล้วยังต้องเห็นไหม",
+              "ไม่ต้อง",
+              "ต้องเห็น"
+            ],
+            [
+              "ตัวอย่าง",
+              "บันทึกร่างเรียบร้อย",
+              "บทความนี้ถูกระงับการเผยแพร่"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ชนิดทั้ง 5",
+          "sub": "เลือกจากความหมาย ไม่ใช่จากสีที่อยากได้ ระบบนี้ไม่มีชนิด info เพราะสีที่เหมาะจะไปซ้ำกับชนิด brand",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชนิด",
+            "ใช้เมื่อไหร่"
+          ],
+          "rows": [
+            [
+              "default\nสีกลาง",
+              "เรื่องทั่วไปที่ไม่มีอารมณ์ ไม่ดีไม่ร้าย"
+            ],
+            [
+              "brand\nสีแบรนด์",
+              "เรื่องที่อยากชวนให้สนใจ เช่นของใหม่"
+            ],
+            [
+              "error\nสีแดง",
+              "สิ่งที่ผู้ใช้สั่งไม่สำเร็จ ใช้เฉพาะกรณีนี้"
+            ],
+            [
+              "warning\nสีเหลือง",
+              "ยังไม่พัง แต่ถ้าไปต่อแบบนี้จะมีปัญหา"
+            ],
+            [
+              "success\nสีเขียว",
+              "สิ่งที่ผู้ใช้สั่งสำเร็จแล้ว"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ขนาดทั้ง 5",
+          "sub": "ความกว้างใช้เฉพาะบนเดสก์ท็อป บนมือถือให้ยืดเต็มจอแล้วเว้นขอบเท่ากับระยะขอบของขนาดเดียวกัน ถ้าไม่มีเหตุผลเฉพาะให้ใช้ md",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ขนาด",
+            "ความกว้าง",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "xs",
+              "280",
+              "แผงตั้งค่าที่หนาแน่นบนเดสก์ท็อป ข้อความสั้นบรรทัดเดียว"
+            ],
+            [
+              "sm",
+              "320",
+              "เครื่องมือภายในและหน้าจัดการเนื้อหาที่มีของเยอะบนจอ"
+            ],
+            [
+              "md\nค่าเริ่มต้น",
+              "360",
+              "ใช้กับเว็บข่าวทุกแบรนด์ ถ้าไม่รู้จะเลือกอะไรให้ใช้ตัวนี้"
+            ],
+            [
+              "lg",
+              "400",
+              "หน้าที่ตัวอักษรใหญ่กว่าปกติ หรือข้อความที่ต้องอ่านง่ายเป็นพิเศษ"
+            ],
+            [
+              "xl",
+              "440",
+              "จอใหญ่ระยะไกล เช่นจอในห้องข่าวที่คนดูจากที่นั่งของตัวเอง"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ส่วนประกอบ",
+          "sub": "ทุกส่วนยกเว้นหัวข้อปิดได้ด้วยคุณสมบัติเปิดปิด ไม่ต้องลบชั้นออกจาก instance",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ส่วน",
+            "หน้าที่",
+            "ปิดได้ไหม"
+          ],
+          "rows": [
+            [
+              "icon\nไอคอนบอกชนิด",
+              "บอกชนิดตั้งแต่แวบแรก และเป็นสิ่งที่ทำให้คนตาบอดสีแยกชนิดออก",
+              "แทบไม่ควรปิด"
+            ],
+            [
+              "title\nหัวข้อ",
+              "บอกว่าเกิดอะไรขึ้น เขียนให้จบในบรรทัดเดียวถ้าทำได้",
+              "ปิดไม่ได้"
+            ],
+            [
+              "support\nข้อความรอง",
+              "ขยายความว่าทำไมถึงเกิด หรือต้องทำอะไรต่อ",
+              "ปิดได้"
+            ],
+            [
+              "action\nปุ่มกระทำ",
+              "ทางลัดไปทำสิ่งที่เกี่ยวข้อง มีได้ปุ่มเดียว อยู่ใต้ข้อความเสมอ",
+              "ปิดได้"
+            ],
+            [
+              "close\nปุ่มปิด",
+              "ปิดด้วยมือก่อนเวลาหมด พื้นที่แตะไม่ต่ำกว่า 44",
+              "ปิดได้"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตำแหน่ง การซ้อน และเวลา",
+          "sub": "ห้ามย้ายโฟกัสไปที่ toast ตอนมันโผล่ เป็นมาตรฐาน W3C ไม่ใช่แค่เสียงข้างมากของตลาด",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "เรื่อง",
+            "ค่าที่ตัดสินแล้ว"
+          ],
+          "rows": [
+            [
+              "ตำแหน่งบนจอ",
+              "ล่างขวาบนเดสก์ท็อป และล่างกลางบนมือถือ"
+            ],
+            [
+              "ซ้อนกันได้กี่ใบ",
+              "3 ใบ เรียงแบบรายการ ไม่ใช่ซ้อนไพ่ ใบใหม่เข้าด้านล่าง"
+            ],
+            [
+              "เวลาหายเอง",
+              "5 วินาที และ 10 วินาทีเมื่อมีปุ่มกระทำ"
+            ],
+            [
+              "ชนิด error\nต่างจากตลาดโดยตั้งใจ",
+              "ไม่หายเอง ต้องกดปิด เพราะถ้าข้อความนั้นเป็นที่เดียวที่ข้อมูลอยู่ จะตกเกณฑ์ข้อ 2.2.1 ระดับ A"
+            ],
+            [
+              "หยุดนับเวลาเมื่อไหร่",
+              "เมื่อเมาส์ชี้ เมื่อโฟกัสอยู่ข้างใน และเมื่อผู้ใช้เปิดโหมดลดการเคลื่อนไหว"
+            ],
+            [
+              "เงา",
+              "shadows bottom md เพราะลอยอยู่เหนือเนื้อหา"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การประกาศให้โปรแกรมอ่านหน้าจอรู้",
+          "sub": "ประกาศผ่าน live region ที่แยกจากกล่องที่มองเห็น ห้ามใส่ลงบนกล่องเอง เพราะถ้าใส่ทั้ง aria-live และ role ไว้ด้วยกัน โปรแกรมอ่านหน้าจอจะอ่านซ้ำสองรอบ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชนิด",
+            "ระดับเสียง",
+            "เหตุผล"
+          ],
+          "rows": [
+            [
+              "default และ brand",
+              "polite",
+              "ไม่เร่งด่วน รอให้โปรแกรมอ่านสิ่งที่ค้างอยู่จบก่อน ไม่ขัดจังหวะผู้ใช้"
+            ],
+            [
+              "error warning success",
+              "assertive",
+              "เป็นผลของสิ่งที่ผู้ใช้เพิ่งสั่ง ต้องรู้ทันทีว่าสำเร็จหรือไม่"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "คอนทราสต์ที่วัดได้จริง",
+          "sub": "เกณฑ์คือ 4.5 สำหรับตัวอักษร และ 3.0 สำหรับไอคอนกับปุ่มปิด ทุกช่องผ่าน ตัวเลขนี้คือเหตุผลที่ระบบนี้ทำทรงพื้นอ่อนอย่างเดียว",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชนิด",
+            "หัวข้อ",
+            "ข้อความรอง",
+            "ไอคอน",
+            "ปุ่มปิด"
+          ],
+          "rows": [
+            [
+              "default\n#f2f4f7",
+              "16.11",
+              "6.98",
+              "16.11",
+              "9.49"
+            ],
+            [
+              "brand\n#dae8ff",
+              "14.34",
+              "6.21",
+              "6.20",
+              "8.45"
+            ],
+            [
+              "error\n#fee4e2",
+              "14.71",
+              "6.37",
+              "5.45",
+              "8.67"
+            ],
+            [
+              "warning\n#fef7c3",
+              "16.32",
+              "7.07",
+              "4.77",
+              "9.62"
+            ],
+            [
+              "success\n#d1fadf",
+              "15.59",
+              "6.75",
+              "4.76",
+              "9.19"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11201:999",
+      "name": "Banner Information",
+      "title": "แถบแจ้งในหน้า (banner)",
+      "subtitle": "แถบข้อความที่อยู่ในสายเนื้อหา แจ้งสถานะที่ยังค้างอยู่ และคาอยู่จนกว่าจะกดปิดหรือจนกว่าเรื่องนั้นจะจบ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ใช้ banner เมื่อไหร่",
+          "sub": "ใช้เมื่อเรื่องนั้นยังค้างอยู่และผู้ใช้ต้องเห็นทุกครั้งที่กลับมาดูหน้านี้ ถ้าเรื่องจบไปแล้วและไม่ต้องทำอะไรต่อ ให้ใช้ toast แทน",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "คำถาม",
+            "ใช้ banner",
+            "ใช้ toast แทน"
+          ],
+          "rows": [
+            [
+              "เรื่องนั้นจบแล้วหรือยัง",
+              "ยังค้างอยู่",
+              "จบแล้ว"
+            ],
+            [
+              "ผู้ใช้ต้องทำอะไรต่อไหม",
+              "อาจต้อง",
+              "ไม่ต้อง"
+            ],
+            [
+              "กลับมาดูหน้าใหม่แล้วยังต้องเห็นไหม",
+              "ต้องเห็น",
+              "ไม่ต้อง"
+            ],
+            [
+              "ตัวอย่าง",
+              "บทความนี้ถูกระงับการเผยแพร่",
+              "บันทึกร่างเรียบร้อย"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "สองระดับ",
+          "sub": "แยกด้วยมุมโค้งอย่างเดียว ไม่ต้องเพิ่มแกนสี เป็นวิธีของ Fluent 2 และ 10 ใน 13 เจ้าแยกอย่างน้อย 2 ระดับ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ระดับ",
+            "มุมโค้ง",
+            "ใช้เมื่อไหร่"
+          ],
+          "rows": [
+            [
+              "page",
+              "0 ทุกขนาด",
+              "เรื่องนั้นกระทบทั้งหน้า วางบนสุดและยืนเต็มความกว้าง มุมโค้งเป็น 0 เพราะชนขอบจอทั้งสองข้าง ถ้าใส่มุมโค้งจะเห็นสีพื้นหลังโผล่ที่มุม"
+            ],
+            [
+              "section",
+              "ตามขนาด 8 ถึง 24",
+              "เรื่องนั้นกระทบเฉพาะกล่องเนื้อหานั้น กว้างเท่าคอลัมน์ที่มันอยู่"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ชนิดทั้ง 5",
+          "sub": "ชุดเดียวกับ toast เลือกจากความหมาย ไม่ใช่จากสีที่อยากได้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชนิด",
+            "ใช้เมื่อไหร่"
+          ],
+          "rows": [
+            [
+              "default\nสีกลาง",
+              "เรื่องทั่วไปที่ไม่มีอารมณ์ ไม่ดีไม่ร้าย"
+            ],
+            [
+              "brand\nสีแบรนด์",
+              "เรื่องที่อยากชวนให้สนใจ เช่นของใหม่"
+            ],
+            [
+              "error\nสีแดง",
+              "สิ่งที่ผู้ใช้สั่งไม่สำเร็จ ใช้เฉพาะกรณีนี้"
+            ],
+            [
+              "warning\nสีเหลือง",
+              "ยังไม่พัง แต่ถ้าไปต่อแบบนี้จะมีปัญหา"
+            ],
+            [
+              "success\nสีเขียว",
+              "สิ่งที่ผู้ใช้สั่งสำเร็จแล้ว"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ขนาดทั้ง 5",
+          "sub": "ความกว้างมาจากกรอบแม่เสมอ ไม่มีตัวแปรความกว้าง ขนาดคุมแค่ระยะขอบ ช่องไฟ ไอคอน และตัวอักษร ถ้าไม่มีเหตุผลเฉพาะให้ใช้ md",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ขนาด",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "xs",
+              "แถบในแผงตั้งค่าหรือในการ์ดเล็กที่พื้นที่แนวตั้งจำกัด"
+            ],
+            [
+              "sm",
+              "แถบในฟอร์มและในกล่องเนื้อหาที่มีของเยอะบนจอ"
+            ],
+            [
+              "md\nค่าเริ่มต้น",
+              "ใช้กับเว็บข่าวทุกแบรนด์ ถ้าไม่รู้จะเลือกอะไรให้ใช้ตัวนี้"
+            ],
+            [
+              "lg",
+              "แถบระดับหน้าที่ต้องเห็นชัดตั้งแต่เปิดเข้ามา"
+            ],
+            [
+              "xl",
+              "จอใหญ่ระยะไกล หรือหน้าที่ตัวอักษรใหญ่ทั้งหน้า"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ส่วนประกอบ",
+          "sub": "ชุดเดียวกับ toast ปุ่มกระทำอยู่ใต้ข้อความเสมอ ไม่ใช่ท้ายแถว เพราะพอข้อความยาวหลายบรรทัดปุ่มจะลอยอยู่กลางอากาศ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ส่วน",
+            "หน้าที่",
+            "ปิดได้ไหม"
+          ],
+          "rows": [
+            [
+              "icon\nไอคอนบอกชนิด",
+              "บอกชนิดตั้งแต่แวบแรก และเป็นสิ่งที่ทำให้คนตาบอดสีแยกชนิดออก",
+              "แทบไม่ควรปิด"
+            ],
+            [
+              "title\nหัวข้อ",
+              "บอกว่าเกิดอะไรขึ้น เขียนให้จบในบรรทัดเดียวถ้าทำได้",
+              "ปิดไม่ได้"
+            ],
+            [
+              "support\nข้อความรอง",
+              "ขยายความว่าทำไมถึงเกิด หรือต้องทำอะไรต่อ",
+              "ปิดได้"
+            ],
+            [
+              "action\nปุ่มกระทำ",
+              "ทางลัดไปทำสิ่งที่เกี่ยวข้อง มีได้ปุ่มเดียว อยู่ใต้ข้อความเสมอ",
+              "ปิดได้"
+            ],
+            [
+              "close\nปุ่มปิด",
+              "ปิดด้วยมือ ถ้าเรื่องยังไม่จบจริงให้ปิดคุณสมบัตินี้",
+              "ปิดได้"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การประกาศให้โปรแกรมอ่านหน้าจอรู้",
+          "sub": "กติกาเดียวกับ toast แต่ค่าเริ่มต้นคือไม่ประกาศ เพราะแถบในสายเนื้อหามักอยู่ที่หน้าตั้งแต่โหลดเสร็จ ถ้าประกาศทุกใบตอนโหลดผู้ใช้จะได้ฟังของที่ไม่ได้เพิ่งเปลี่ยน",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชนิด",
+            "ระดับเสียง",
+            "เหตุผล"
+          ],
+          "rows": [
+            [
+              "default และ brand",
+              "polite",
+              "ไม่เร่งด่วน รอให้โปรแกรมอ่านสิ่งที่ค้างอยู่จบก่อน ไม่ขัดจังหวะผู้ใช้"
+            ],
+            [
+              "error warning success",
+              "assertive",
+              "เป็นผลของสิ่งที่ผู้ใช้เพิ่งสั่ง ต้องรู้ทันทีว่าสำเร็จหรือไม่"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "คอนทราสต์ที่วัดได้จริง",
+          "sub": "ค่าเดียวกับ toast เพราะใช้ชุดสีเดียวกันทุกชนิด ทุกช่องผ่านเกณฑ์",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชนิด",
+            "หัวข้อ",
+            "ข้อความรอง",
+            "ไอคอน",
+            "ปุ่มปิด"
+          ],
+          "rows": [
+            [
+              "default\n#f2f4f7",
+              "16.11",
+              "6.98",
+              "16.11",
+              "9.49"
+            ],
+            [
+              "brand\n#dae8ff",
+              "14.34",
+              "6.21",
+              "6.20",
+              "8.45"
+            ],
+            [
+              "error\n#fee4e2",
+              "14.71",
+              "6.37",
+              "5.45",
+              "8.67"
+            ],
+            [
+              "warning\n#fef7c3",
+              "16.32",
+              "7.07",
+              "4.77",
+              "9.62"
+            ],
+            [
+              "success\n#d1fadf",
+              "15.59",
+              "6.75",
+              "4.76",
+              "9.19"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11199:185",
+      "name": "Toast Component Previews",
+      "title": "Toast Component Previews",
+      "subtitle": "ชุดชิ้นงานต้นฉบับของข้อความแจ้งลอย 25 แบบ ทุก instance ในไฟล์อื่นอ้างมาที่นี่",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "toast",
+          "sub": "ข้อความแจ้งลอย 25 แบบ จาก 5 ชนิด คูณ 5 ขนาด มีคุณสมบัติเปิดปิด 4 ตัวที่ไม่คูณจำนวนแบบ",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "toast",
+          "caption": "",
+          "width": 488,
+          "height": 3924,
+          "items": [
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "default",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 24,
+              "width": 280,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "default",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 136,
+              "width": 320,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "default",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 261,
+              "width": 360,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "default",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 403,
+              "width": 400,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "default",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 560,
+              "width": 440,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "brand",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 734,
+              "width": 280,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "brand",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 846,
+              "width": 320,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "brand",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 971,
+              "width": 360,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "brand",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 1113,
+              "width": 400,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "brand",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 1270,
+              "width": 440,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "error",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 1444,
+              "width": 280,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "error",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 1556,
+              "width": 320,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "error",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 1681,
+              "width": 360,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "error",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 1823,
+              "width": 400,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "error",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 1980,
+              "width": 440,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "warning",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 2154,
+              "width": 280,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "warning",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 2266,
+              "width": 320,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "warning",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 2391,
+              "width": 360,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "warning",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 2533,
+              "width": 400,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "warning",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 2690,
+              "width": 440,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "success",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 2864,
+              "width": 280,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "success",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 2976,
+              "width": 320,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "success",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 3101,
+              "width": 360,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "success",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 3243,
+              "width": 400,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "type": "success",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 3400,
+              "width": 440,
+              "height": 150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11202:193",
+      "name": "Banner Component Previews",
+      "title": "Banner Component Previews",
+      "subtitle": "ชุดชิ้นงานต้นฉบับของแถบแจ้งในหน้า 50 แบบ ทุก instance ในไฟล์อื่นอ้างมาที่นี่",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "banner",
+          "sub": "แถบแจ้งในหน้า 50 แบบ จาก 2 ระดับ คูณ 5 ชนิด คูณ 5 ขนาด มีคุณสมบัติเปิดปิดชุดเดียวกับ toast",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "banner",
+          "caption": "",
+          "width": 1280,
+          "height": 7144,
+          "items": [
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "default",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 24,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "default",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 136,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "default",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 261,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "default",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 403,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "default",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 560,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "brand",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 734,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "brand",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 846,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "brand",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 971,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "brand",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 1113,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "brand",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 1270,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "error",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 1444,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "error",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 1556,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "error",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 1681,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "error",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 1823,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "error",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 1980,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "warning",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 2154,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "warning",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 2266,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "warning",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 2391,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "warning",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 2533,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "warning",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 2690,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "success",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 2864,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "success",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 2976,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "success",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 3101,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "success",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 3243,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "page",
+                "type": "success",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 3400,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "default",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 3574,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "default",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 3686,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "default",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 3811,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "default",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 3953,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "default",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 4110,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "brand",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 4284,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "brand",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 4396,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "brand",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 4521,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "brand",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 4663,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "brand",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 4820,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "error",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 4994,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "error",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 5106,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "error",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 5231,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "error",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 5373,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "error",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 5530,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "warning",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 5704,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "warning",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 5816,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "warning",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 5941,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "warning",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 6083,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "warning",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 6240,
+              "width": 1232,
+              "height": 150
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "success",
+                "size": "xs"
+              },
+              "x": 24,
+              "y": 6414,
+              "width": 1232,
+              "height": 88
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "success",
+                "size": "sm"
+              },
+              "x": 24,
+              "y": 6526,
+              "width": 1232,
+              "height": 101
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "success",
+                "size": "md"
+              },
+              "x": 24,
+              "y": 6651,
+              "width": 1232,
+              "height": 118
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "success",
+                "size": "lg"
+              },
+              "x": 24,
+              "y": 6793,
+              "width": 1232,
+              "height": 133
+            },
+            {
+              "props": {
+                "show-icon": true,
+                "show-support": true,
+                "show-action": true,
+                "show-close": true,
+                "level": "section",
+                "type": "success",
+                "size": "xl"
+              },
+              "x": 24,
+              "y": 6950,
+              "width": 1232,
+              "height": 150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11198:185",
+      "name": "Toast and Banner Space",
+      "title": "Toast and Banner Space",
+      "subtitle": "สูตร base และ step ของทุกมิติ ค่าทุกขนาด และกติกาที่ห้ามแตะ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ระบบสเกลของหน้านี้",
+          "sub": "ทุกค่าในหน้านี้มาจากสูตร size เท่ากับ base บวก ลำดับขั้น คูณ step โดย xs คือขั้น 0 และ xl คือขั้น 4 ห้ามพิมพ์ค่าตายทีละขนาด สูตรอยู่ที่ไฟล์ tokens scale toast และ banner",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "toast และ banner ใช้ตัวเลขชุดเดียวกันทุกมิติโดยตั้งใจ เพราะทั้งสองเป็นแผ่นเนื้อหาที่มีไอคอน หัวข้อ ข้อความรอง และปุ่มปิดเหมือนกัน ถ้าใช้คนละชุด เวลาวางคู่กันในหน้าเดียวจะเห็นทันทีว่าขอบไม่ตรงกัน แต่แยกเจ้าของตัวแปรไว้ เผื่อวันหนึ่งอยากให้แถบในหน้าแน่นกว่าได้โดยไม่กระทบอีกตัว",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11198:188",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "สูตร base และ step",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "rows": [
+            [
+              "ระยะขอบ",
+              "8",
+              "4",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "ช่องไฟ",
+              "8",
+              "4",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "ไอคอน",
+              "20",
+              "2",
+              "20",
+              "22",
+              "24",
+              "26",
+              "28"
+            ],
+            [
+              "ระยะหัวข้อถึงข้อความรอง",
+              "0",
+              "1",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            [
+              "ระยะถึงปุ่มกระทำ",
+              "4",
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12"
+            ],
+            [
+              "มุมโค้ง",
+              "8",
+              "4",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "ความกว้าง toast",
+              "280",
+              "40",
+              "280",
+              "320",
+              "360",
+              "400",
+              "440"
+            ],
+            [
+              "ที่ว่างให้ข้อความ toast",
+              "อนุพันธ์",
+              "อนุพันธ์",
+              "208",
+              "228",
+              "248",
+              "268",
+              "288"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ค่าทุกขนาดของแต่ละตัวแปร",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชื่อตัวแปร",
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "rows": [
+            [
+              "toast/width",
+              "280",
+              "320",
+              "360",
+              "400",
+              "440"
+            ],
+            [
+              "toast/padding",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "toast/gap",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "toast/stack",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            [
+              "toast/action-gap",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12"
+            ],
+            [
+              "toast/icon",
+              "20",
+              "22",
+              "24",
+              "26",
+              "28"
+            ],
+            [
+              "toast/text-width",
+              "208",
+              "228",
+              "248",
+              "268",
+              "288"
+            ],
+            [
+              "toast/radius",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "banner/padding",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "banner/gap",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "banner/stack",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            [
+              "banner/action-gap",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12"
+            ],
+            [
+              "banner/icon",
+              "20",
+              "22",
+              "24",
+              "26",
+              "28"
+            ],
+            [
+              "banner/radius/section",
+              "8",
+              "12",
+              "16",
+              "20",
+              "24"
+            ],
+            [
+              "banner/radius/page",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกาที่ห้ามแตะ",
+          "sub": "• ไม่มีสูตรความสูง เพราะความสูงมาจากเนื้อหาและข้อความตัดบรรทัดได้ ถ้าตรึงไว้ข้อความจะล้นออกนอกกล่อง\n• banner ไม่มีตัวแปรความกว้าง ความกว้างมาจากกรอบแม่เสมอ ถ้าตั้งไว้จะมีคนเอาไปตรึงแล้วข้อความล้น\n• ที่ว่างให้ข้อความของ toast เป็นค่าอนุพันธ์ คิดจากความกว้างลบระยะขอบ ไอคอน ปุ่มปิด และช่องไฟ ห้ามพิมพ์มือ\n• ระยะถึงปุ่มกระทำต้องมากกว่าระยะหัวข้อถึงข้อความรองเสมอ ไม่อย่างนั้นปุ่มจะดูเป็นบรรทัดที่สามของข้อความ",
+          "section": true
+        }
+      ]
+    }
+  ]
+}

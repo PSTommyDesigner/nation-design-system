@@ -167,7 +167,7 @@
         },
         {
           "type": "components",
-          "vertical": false,
+          "vertical": true,
           "items": [
             {
               "type": "component",
@@ -223,7 +223,8 @@
               },
               "label": "",
               "width": 190,
-              "height": 24
+              "height": 24,
+              "vertical": true
             },
             {
               "type": "component",
@@ -279,7 +280,8 @@
               },
               "label": "",
               "width": 245,
-              "height": 32
+              "height": 32,
+              "vertical": true
             },
             {
               "type": "component",
@@ -335,7 +337,8 @@
               },
               "label": "",
               "width": 305,
-              "height": 40
+              "height": 40,
+              "vertical": true
             },
             {
               "type": "component",
@@ -391,7 +394,8 @@
               },
               "label": "",
               "width": 365,
-              "height": 48
+              "height": 48,
+              "vertical": true
             },
             {
               "type": "component",
@@ -447,7 +451,8 @@
               },
               "label": "",
               "width": 430,
-              "height": 56
+              "height": 56,
+              "vertical": true
             }
           ]
         },
@@ -1008,7 +1013,7 @@
         },
         {
           "type": "components",
-          "vertical": false,
+          "vertical": true,
           "items": [
             {
               "type": "component",
@@ -1064,7 +1069,8 @@
               },
               "label": "",
               "width": 305,
-              "height": 40
+              "height": 40,
+              "vertical": true
             },
             {
               "type": "component",
@@ -1127,7 +1133,8 @@
               },
               "label": "",
               "width": 366,
-              "height": 40
+              "height": 40,
+              "vertical": true
             }
           ]
         },

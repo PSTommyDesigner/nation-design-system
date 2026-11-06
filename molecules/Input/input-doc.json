@@ -630,7 +630,8 @@
               },
               "label": "",
               "width": 560,
-              "height": 96
+              "height": 96,
+              "vertical": true
             }
           ]
         },
@@ -661,7 +662,8 @@
               },
               "label": "",
               "width": 560,
-              "height": 96
+              "height": 96,
+              "vertical": true
             }
           ]
         },
@@ -692,7 +694,8 @@
               },
               "label": "",
               "width": 560,
-              "height": 96
+              "height": 96,
+              "vertical": true
             }
           ]
         },
@@ -723,7 +726,8 @@
               },
               "label": "",
               "width": 560,
-              "height": 96
+              "height": 96,
+              "vertical": true
             }
           ]
         },

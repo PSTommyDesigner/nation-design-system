@@ -60,6 +60,7 @@ const PAGES = {
   // แท็บเดี่ยวในโค้ดวาดเป็น Tabs หนึ่งแท็บ (ผู้ใช้อนุมัติ 2026-11-05) กลุ่มแท็บเก็บแท็บข้างในไว้ใน children และไอคอนในแท็บอ่านจากชิ้นงานไอคอนข้างใน (innerIcon)
   tabs: { page: '18 Tabs', folder: 'Tabs', root: 'molecules', skip: [], components: ['segmented-tab', 'underline-tab', 'segmented-tab-group', 'underline-tab-group'], groups: { 'segmented-tab-group': 'segmented-tab', 'underline-tab-group': 'underline-tab' }, innerIcon: true },
   sliders: { page: '17 Sliders', folder: 'Sliders', root: 'molecules', skip: [], components: ['slider', 'range-slider', 'slider-handle'], sliderValue: true },
+  toasts: { page: '19 Toasts & Banners', folder: 'ToastsBanners', root: 'molecules', skip: [], components: ['toast', 'banner'] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -319,7 +320,10 @@ function groupChildrenOf(n) {
 const sampleProps = (n) => ({ ...componentProps(n), ...sliderValueOf(n), ...innerIconOf(n), ...groupChildrenOf(n) })
 function componentBlock(n, label, frame) {
   const b = n.absoluteBoundingBox
-  return { type: 'component', set: setOf(n), props: sampleProps(n), image: imageOf(n), label, width: Math.round(b.width), height: Math.round(b.height), ...(frame ? { cell: Math.round(frame.absoluteBoundingBox.width), vertical: frame.parent?.layoutMode === 'VERTICAL' } : {}) }
+  // ชิ้นที่ไม่มีกรอบป้าย ดูแนวการเรียงจากกรอบแม่ของชิ้นเอง เช่น toast 5 ชนิดในหัวข้อสถานะของหน้า 19 ที่เรียงเป็นคอลัมน์
+  // เขียน vertical เฉพาะตอนที่เป็นแนวตั้ง หน้าที่ไม่มีกรณีนี้จึงได้ไฟล์เหมือนเดิม
+  const own = !frame && n.parent?.layoutMode === 'VERTICAL' ? { vertical: true } : {}
+  return { type: 'component', set: setOf(n), props: sampleProps(n), image: imageOf(n), label, width: Math.round(b.width), height: Math.round(b.height), ...(frame ? { cell: Math.round(frame.absoluteBoundingBox.width), vertical: frame.parent?.layoutMode === 'VERTICAL' } : own) }
 }
 // ตัวอย่างชั้นบนสุดในกรอบ ไม่ไล่ลงไปในตัวอย่างอีกชั้น เช่นอวาตาร์ข้างในกลุ่ม
 const topSamples = (n, acc = []) => { if (n.visible === false) return acc; if (isComponentSample(n)) { acc.push(n); return acc } for (const k of n.children ?? []) { k.parent = n; topSamples(k, acc) } return acc }

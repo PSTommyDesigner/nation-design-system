@@ -618,7 +618,8 @@
               "image": "ece298d0ec",
               "label": "",
               "width": 48,
-              "height": 48
+              "height": 48,
+              "vertical": true
             }
           ]
         },
@@ -641,7 +642,8 @@
               },
               "label": "",
               "width": 48,
-              "height": 48
+              "height": 48,
+              "vertical": true
             }
           ]
         },
@@ -664,7 +666,8 @@
               "image": "ece298d0ec",
               "label": "",
               "width": 48,
-              "height": 48
+              "height": 48,
+              "vertical": true
             }
           ]
         },
@@ -687,7 +690,8 @@
               "image": "ece298d0ec",
               "label": "",
               "width": 48,
-              "height": 48
+              "height": 48,
+              "vertical": true
             }
           ]
         },
