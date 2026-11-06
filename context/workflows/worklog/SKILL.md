@@ -48,5 +48,7 @@ Official rule files (Thai), read the one the task needs:
 ## Daily worklog
 - 4 sections in this order: `งานค้าง`, `งานที่ทำวันนี้`, `ผลลัพธ์`, `ติดปัญหา`. The scripts read these headings exactly
 - Remove finished items from `งานค้าง`. Unfinished items stay and carry over to the next month by themselves
-- The file must exist before 16:00. The 16:00 run (`com.nation.worklog-month`, `npm run worklog:month`) copies everything to both vaults. After 16:00, run `npm run worklog:obsidian` yourself, no approval needed
+- The 16:00 run (`com.nation.worklog-month`, `npm run worklog:month`) writes the day's file automatically through `scripts/worklog-auto.mjs`, then copies everything to both vaults (set by the user 2026-11-04, `docs/rules/worklog.md` section 3.3)
+- MUST NOT create or write the day's file before 16:00. `worklog-auto.mjs` skips a day whose file already exists, so a file written early hides every task done later that day (happened 2026-11-05: written at 11:19, the afternoon was lost)
+- Work done after 16:00: add it to the file the 16:00 run wrote, then run `npm run worklog:obsidian` yourself, no approval needed
 - One CMS has its own vault (`obsidian/One CMS`). Every worklog item about One CMS MUST contain the words `One CMS`. After 16:00, run `npm run one-cms:obsidian` yourself. See `docs/rules/worklog.md` section 8
