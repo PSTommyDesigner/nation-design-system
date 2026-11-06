@@ -131,7 +131,7 @@ export const GoodAndBad: Story = {
 export const RadioOnly: Story = { tags: ['!autodocs'], name: 'Radio', args: { label: undefined, 'aria-label': 'เลือก' }, parameters: controls(CIRCLE_ONLY) }
 export const Group: Story = {
   tags: ['!autodocs'],
-  name: 'RadioGroup',
+  name: 'Radio-group',
   render: () => (
     <RadioGroup label="วิธีชำระเงิน" name="payment" defaultValue="credit" size="md">
       <Radio value="credit" label="บัตรเครดิต" />
