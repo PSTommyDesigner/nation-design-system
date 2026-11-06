@@ -63,6 +63,8 @@ const PAGES = {
   toasts: { page: '19 Toasts & Banners', folder: 'ToastsBanners', root: 'molecules', skip: [], components: ['toast', 'banner'] },
   // value-label ในหน้า 20 เป็นชุดเก่าที่ยังใช้แกน Dark Mode กับ Arrow แบบเดิม (tokens/figma-components.json) จึงไม่อ่าน
   tooltips: { page: '20 Tooltips', folder: 'Tooltips', root: 'molecules', skip: [], components: ['tooltip', 'tooltip-arrow'] },
+  // ชุดแท็ก 14 ชุดใช้ชื่อเดียวกันทุกตระกูลสี ตระกูลจึงมาจากเอกสารที่ชุดนั้นอยู่ เหมือนหน้า 12 Buttons
+  tags: { page: '21 Tags', folder: 'Tags', root: 'molecules', skip: [], components: ['semi-rounded-tag', 'pill-tag', 'number-tag', 'pill-number-tag', 'image-tag', 'pill-image-tag', 'checkbox-tag', 'pill-checkbox-tag', 'indicator-tag', 'pill-indicator-tag', 'icon-tag', 'circular-icon-tag', 'link-tag', 'link-icon-tag'], families: { 'Neutral Tags': 'neutral', 'Brand Tags': 'brand', 'Red Tags': 'red', 'Green Tags': 'green', 'Yellow Tags': 'yellow', 'Cyan Tags': 'cyan', 'Blue Tags': 'blue', 'Bamboo Tags': 'bamboo', 'Purple Tags': 'purple', 'Pink Tags': 'pink', 'Brown Tags': 'brown' } },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }
@@ -323,8 +325,10 @@ const sampleProps = (n) => ({ ...componentProps(n), ...sliderValueOf(n), ...inne
 function componentBlock(n, label, frame) {
   const b = n.absoluteBoundingBox
   // ชิ้นที่ไม่มีกรอบป้าย ดูแนวการเรียงจากกรอบแม่ของชิ้นเอง เช่น toast 5 ชนิดในหัวข้อสถานะของหน้า 19 ที่เรียงเป็นคอลัมน์
+  // นับเฉพาะกรอบแม่ที่มีตัวอย่างล้วนตั้งแต่ 2 ชิ้น กรอบ preview ที่ห่อชิ้นเดียว (ช่องในภาพรวมหน้า 21) ไม่ได้บอกแนวการเรียงของแถว
   // เขียน vertical เฉพาะตอนที่เป็นแนวตั้ง หน้าที่ไม่มีกรณีนี้จึงได้ไฟล์เหมือนเดิม
-  const own = !frame && n.parent?.layoutMode === 'VERTICAL' ? { vertical: true } : {}
+  const sibs = (n.parent?.children ?? []).filter(c => c.visible !== false)
+  const own = !frame && n.parent?.layoutMode === 'VERTICAL' && sibs.length >= 2 && sibs.every(isComponentSample) ? { vertical: true } : {}
   return { type: 'component', set: setOf(n), props: sampleProps(n), image: imageOf(n), label, width: Math.round(b.width), height: Math.round(b.height), ...(frame ? { cell: Math.round(frame.absoluteBoundingBox.width), vertical: frame.parent?.layoutMode === 'VERTICAL' } : own) }
 }
 // ตัวอย่างชั้นบนสุดในกรอบ ไม่ไล่ลงไปในตัวอย่างอีกชั้น เช่นอวาตาร์ข้างในกลุ่ม
@@ -507,6 +511,10 @@ function extract(doc) {
       // ชิ้นตัวอย่างพร้อมป้ายในกรอบเดียวกัน หรือชิ้นเดี่ยว
       const sample = n.type === 'FRAME' && n.children?.filter(c => c.visible !== false && isComponentSample(c))
       if (sample?.length === 1 && n.children.some(c => c.type === 'TEXT')) { push(componentBlock(sample[0], n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim()).join(' '), n)); return }
+      // ช่องที่ห่อตัวอย่างไว้ในกรอบ preview อีกชั้นแล้วมีป้ายอยู่ใต้กรอบ เช่น ช่องในหัวข้อ Variants ของภาพรวมหน้า 21 Tags
+      const wrapped = n.type === 'FRAME' && n.children?.some(c => c.type === 'TEXT') ? n.children.filter(c => c.visible !== false && c.type !== 'TEXT') : []
+      const inner = wrapped.length === 1 && wrapped[0].type === 'FRAME' ? (wrapped[0].children ?? []).filter(c => c.visible !== false) : []
+      if (inner.length === 1 && isComponentSample(inner[0])) { push(componentBlock(inner[0], n.children.filter(c => c.type === 'TEXT').map(c => c.characters.trim()).join(' '), n)); return }
       if (isComponentSample(n)) { push(componentBlock(n, '')); return }
     }
     if (isEffect(n)) { push(effectBlock(n, doc.name, '')); return }

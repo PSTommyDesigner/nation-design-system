@@ -22,7 +22,7 @@
         },
         {
           "type": "components",
-          "vertical": true,
+          "vertical": false,
           "items": [
             {
               "type": "component",
@@ -38,8 +38,7 @@
               },
               "label": "",
               "width": 1280,
-              "height": 40,
-              "vertical": true
+              "height": 40
             }
           ]
         },
@@ -689,7 +688,7 @@
         },
         {
           "type": "components",
-          "vertical": true,
+          "vertical": false,
           "items": [
             {
               "type": "component",
@@ -705,8 +704,7 @@
               },
               "label": "",
               "width": 1280,
-              "height": 40,
-              "vertical": true
+              "height": 40
             },
             {
               "type": "component",
@@ -722,8 +720,7 @@
               },
               "label": "",
               "width": 1280,
-              "height": 40,
-              "vertical": true
+              "height": 40
             }
           ]
         },
