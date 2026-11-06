@@ -108,6 +108,29 @@ const Sample = ({ set, props, image }: { set: string; props: SampleProps; image?
   if (!render) return <span className={`ntg-typography-meta-caption ${styles.warn}`}>ยังไม่มี component ในโค้ดของชุด {set}</span>
   return <>{render(props, image ? assetUrl(urls, image) : undefined)}</>
 }
+// แถวตัวอย่าง ชิ้นที่ไม่มีตัววาดรวมเป็นข้อความเดียวท้ายแถว ไม่ขึ้นทีละชิ้น
+// เพราะช่องของชิ้นย่อยแคบมาก (ลูกศร 6 หัวจับ 16 ปุ่มเลขหน้า 24) ข้อความทีละช่องจึงซ้อนกันอ่านไม่ออก (หน้า 17 20 24 เจอ 2026-11-06)
+const ComponentsRow = ({ block }: { block: Extract<Block, { type: 'components' }> }) => {
+  const samples = useContext(Samples)
+  const has = (it: ComponentItem) => (it.group ? it.group.every(g => samples[g.set]) : Boolean(samples[it.set]))
+  const known = block.items.filter(has)
+  const missing = [...new Set(block.items.filter(it => !has(it)).flatMap(it => (it.group ? it.group.map(g => g.set) : [it.set])).filter(set => !samples[set]))]
+  return (
+    <div className={block.vertical ? styles.sampleColumn : styles.sampleRow}>
+      {known.map((it, i) => (
+        <div key={i} className={styles.sampleItem} style={it.cell ? { width: it.cell } : undefined}>
+          {it.label && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
+          {it.group
+            ? <span className={styles.sampleGroup}>{it.group.map((g, j) => <Sample key={j} set={g.set} props={g.props} image={g.image} />)}</span>
+            : <span className={styles.sampleBox} style={{ width: it.width }}><Sample set={it.set} props={it.props} image={it.image} /></span>}
+        </div>
+      ))}
+      {missing.length > 0 && (
+        <span className={`ntg-typography-meta-caption ${styles.warn}`}>ยังไม่มี component ในโค้ดของชุด {missing.join(', ')}</span>
+      )}
+    </div>
+  )
+}
 // ตัวอย่างที่ตั้งใจยืดผิดสัดส่วน (natural) ต้องยืดด้วย transform เพราะ SVG ใน <img> รักษาสัดส่วนเองเสมอ
 const LogoImage = ({ item }: { item: LogoItem }) => {
   const urls = useContext(LogoUrls)
@@ -448,18 +471,7 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
       )
     }
     case 'components':
-      return (
-        <div className={block.vertical ? styles.sampleColumn : styles.sampleRow}>
-          {block.items.map((it, i) => (
-            <div key={i} className={styles.sampleItem} style={it.cell ? { width: it.cell } : undefined}>
-              {it.label && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
-              {it.group
-                ? <span className={styles.sampleGroup}>{it.group.map((g, j) => <Sample key={j} set={g.set} props={g.props} image={g.image} />)}</span>
-                : <span className={styles.sampleBox} style={{ width: it.width }}><Sample set={it.set} props={it.props} image={it.image} /></span>}
-            </div>
-          ))}
-        </div>
-      )
+      return <ComponentsRow block={block} />
     case 'variantSet':
       return <VariantSetView block={block} />
     case 'spaces':
