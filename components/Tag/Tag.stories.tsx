@@ -12,7 +12,7 @@ const PLACEHOLDER_IMAGE_SRC =
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section (ส่วนประกอบ · ชุด · ขนาด · สถานะ · ควรไม่ควร)
 // ดูกติกาที่ .storybook/CustomDocsPage.tsx
 const meta: Meta<typeof Tag> = {
-  title: 'Molecules (Element)/21 Tags/Tag',
+  title: 'Molecules (Element)/21 Tags/Tag Component',
   component: Tag,
   tags: ['autodocs'],
   args: { children: 'การเมือง', family: 'brand', hierarchy: 'primary', size: 'md' },

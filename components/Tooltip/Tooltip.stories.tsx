@@ -7,7 +7,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ไฟล์ออกแบบหน้า 20 มีชุด tooltip (40 แบบ) กับลูกศรต้นแบบ tooltip-arrow คำใบ้เปิดเมื่อชี้หรือโฟกัสตัวกระตุ้น
 const meta: Meta<typeof Tooltip> = {
-  title: 'Molecules (Element)/20 Tooltips/Tooltip',
+  title: 'Molecules (Element)/20 Tooltips/Tooltip Component',
   component: Tooltip,
   tags: ['autodocs'],
   args: { title: 'ตัวหนา', relationship: 'label', size: 'md', placement: 'top', arrow: true },

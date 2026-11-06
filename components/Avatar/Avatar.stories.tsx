@@ -7,7 +7,7 @@ const IMG = (n: number) => `https://i.pravatar.cc/150?img=${n}`
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ชื่อ story ใน sidebar ตรงกับชุดในไฟล์ออกแบบหน้า 11 (avatar-image, avatar-icon, avatar-monogram, avatar-number, avatar-label, avatar-group)
 const meta: Meta<typeof Avatar> = {
-  title: 'Molecules (Element)/11 Avatar/Avatar',
+  title: 'Molecules (Element)/11 Avatar/Avatar Component',
   component: Avatar,
   tags: ['autodocs'],
   args: { src: IMG(12), alt: 'รูปโปรไฟล์ของผู้ใช้', size: 'md' },

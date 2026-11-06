@@ -44,7 +44,7 @@ const Paragraphs = ({ count }: { count: number }): ReactNode =>
   ))
 
 const meta: Meta<typeof Demo> = {
-  title: 'Organisms (Component)/30 Modal/Modal',
+  title: 'Organisms (Component)/30 Modal/Modal Component',
   component: Demo,
   tags: ['autodocs'],
   args: {

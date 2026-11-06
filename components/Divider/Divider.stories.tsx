@@ -5,7 +5,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ไฟล์ออกแบบหน้า 26 มีชุด horizontal-divider กับ vertical-divider ชุดละ 2 แบบ (solid, dash)
 const meta: Meta<typeof Divider> = {
-  title: 'Molecules (Element)/26 Dividers/Divider',
+  title: 'Molecules (Element)/26 Dividers/Divider Component',
   component: Divider,
   tags: ['autodocs'],
   args: { orientation: 'horizontal', type: 'solid' },

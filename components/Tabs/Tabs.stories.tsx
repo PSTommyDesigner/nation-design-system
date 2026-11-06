@@ -30,7 +30,7 @@ Demo.displayName = 'Tabs'
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ชื่อ story ใน sidebar ตรงกับชุดในไฟล์ออกแบบหน้า 18 (segmented-tab-group, underline-tab-group)
 const meta: Meta<typeof Tabs> = {
-  title: 'Molecules (Element)/18 Tabs/Tabs',
+  title: 'Molecules (Element)/18 Tabs/Tabs Component',
   component: Tabs,
   tags: ['autodocs'],
   args: { items: ITEMS, shape: 'segmented', size: 'md', label: 'หมวดข่าว' },

@@ -26,7 +26,7 @@ const TWO_BARS: BarChartSeries[] = [
 const SUMMARY = 'ข่าวที่สร้างและการเข้าชมรายวัน 31 วัน ข่าวสูงสุด 80 ข่าวในวันที่ 1, 8 และ 21 การเข้าชมสูงสุด 228,000 ครั้งในวันที่ 21'
 
 const meta: Meta<typeof BarChart> = {
-  title: 'Organisms (Component)/29 Chart/BarChart',
+  title: 'Organisms (Component)/29 Chart/BarChart Component',
   component: BarChart,
   tags: ['autodocs'],
   args: {

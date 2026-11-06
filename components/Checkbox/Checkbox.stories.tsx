@@ -5,7 +5,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section (ส่วนประกอบ · ชุด · ขนาด · สถานะ · ควรไม่ควร)
 // ดูกติกาที่ .storybook/CustomDocsPage.tsx · ชื่อ story ใน sidebar ตรงกับชุดในไฟล์ออกแบบหน้า 15 (checkbox, text-checkbox)
 const meta: Meta<typeof Checkbox> = {
-  title: 'Molecules (Element)/15 Checkbox/Checkbox',
+  title: 'Molecules (Element)/15 Checkbox/Checkbox Component',
   component: Checkbox,
   tags: ['autodocs'],
   args: { label: 'ยอมรับข้อตกลงการใช้งาน', size: 'md' },

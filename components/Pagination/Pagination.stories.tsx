@@ -15,7 +15,7 @@ Demo.displayName = 'Pagination'
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ไฟล์ออกแบบหน้า 24 มีชุด pagination (5 ขนาด) ประกอบจากชุดฐาน _pagination-number-button กับ _pagination-ellipsis
 const meta: Meta<typeof Pagination> = {
-  title: 'Molecules (Element)/24 Pagination/Pagination',
+  title: 'Molecules (Element)/24 Pagination/Pagination Component',
   component: Pagination,
   tags: ['autodocs'],
   args: { size: 'md', siblingCount: 1, boundaryCount: 1 },

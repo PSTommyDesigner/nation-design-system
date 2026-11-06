@@ -5,7 +5,7 @@ import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ไฟล์ออกแบบหน้า 19 มีชุดเดียวคือ banner (2 ระดับ x 5 ชนิด x 5 ขนาด)
 const meta: Meta<typeof Banner> = {
-  title: 'Molecules (Element)/19 Toasts & Banners/Banner',
+  title: 'Molecules (Element)/19 Toasts & Banners/Banner Component',
   component: Banner,
   tags: ['autodocs'],
   args: {

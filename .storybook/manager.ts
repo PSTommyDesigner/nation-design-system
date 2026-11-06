@@ -5,10 +5,10 @@ import { addons, type API } from 'storybook/manager-api'
 // หน้า Atoms เป็นเอกสาร ยกเว้นหน้า 02 Icon ที่เป็น component จริง ส่วนหน้า prototype เป็นหน้าจอเต็ม
 // story ในรายการนี้เขียนค่าตายตัว ไม่รับค่าจากแผง ถ้าแก้ให้รับค่าได้แล้วให้เอาออกจากรายการ
 const FIXED_STORIES = new Set([
-  'molecules-element-16-radio-radio--group',
-  'organisms-component-30-modal-modal--without-header',
-  'organisms-component-30-modal-modal--confirm',
-  'organisms-component-30-modal-modal--toast-over-modal',
+  'molecules-element-16-radio-radio-component--group',
+  'organisms-component-30-modal-modal-component--without-header',
+  'organisms-component-30-modal-modal-component--confirm',
+  'organisms-component-30-modal-modal-component--toast-over-modal',
 ])
 
 // หน้าเอกสารชั้น Molecules (โฟลเดอร์ molecules/ เช่น 10 Frame) เป็นเอกสารเหมือนหน้า Atoms จึงไม่มีแผง (ผู้ใช้สั่ง 2026-11-05)

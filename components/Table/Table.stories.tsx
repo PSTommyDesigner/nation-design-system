@@ -66,7 +66,7 @@ const TEAM: TableColumn<Row>[] = [
 const RowTable = Table<Row>
 
 const meta: Meta<typeof RowTable> = {
-  title: 'Organisms (Component)/28 Table/Table',
+  title: 'Organisms (Component)/28 Table/Table Component',
   component: RowTable,
   tags: ['autodocs'],
   args: {

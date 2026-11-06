@@ -7,7 +7,7 @@ const IMG = 'https://picsum.photos/seed/nation/640/360'
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
 // ชื่อ story ใน sidebar ตรงกับชุดในไฟล์ออกแบบหน้า 25 ที่มีโค้ด (vertical-news-card, horizontal-news-card, news-list-card)
 const meta: Meta<typeof Card> = {
-  title: 'Molecules (Element)/25 Card/Card',
+  title: 'Molecules (Element)/25 Card/Card Component',
   component: Card,
   tags: ['autodocs'],
   args: {
