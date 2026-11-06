@@ -32,7 +32,7 @@ export default meta
 type Story = StoryObj<typeof Tooltip>
 
 const controls = (include: string[]) => ({ controls: { include } })
-const TOOLTIP = ['title', 'description', 'relationship', 'size', 'placement', 'arrow']
+const TOOLTIP = ['title', 'description', 'relationship', 'size', 'placement', 'arrow', 'open']
 
 export const Default: Story = { name: 'Tooltip', parameters: controls(TOOLTIP) }
 

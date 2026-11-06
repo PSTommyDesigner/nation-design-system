@@ -61,6 +61,8 @@ const PAGES = {
   tabs: { page: '18 Tabs', folder: 'Tabs', root: 'molecules', skip: [], components: ['segmented-tab', 'underline-tab', 'segmented-tab-group', 'underline-tab-group'], groups: { 'segmented-tab-group': 'segmented-tab', 'underline-tab-group': 'underline-tab' }, innerIcon: true },
   sliders: { page: '17 Sliders', folder: 'Sliders', root: 'molecules', skip: [], components: ['slider', 'range-slider', 'slider-handle'], sliderValue: true },
   toasts: { page: '19 Toasts & Banners', folder: 'ToastsBanners', root: 'molecules', skip: [], components: ['toast', 'banner'] },
+  // value-label ในหน้า 20 เป็นชุดเก่าที่ยังใช้แกน Dark Mode กับ Arrow แบบเดิม (tokens/figma-components.json) จึงไม่อ่าน
+  tooltips: { page: '20 Tooltips', folder: 'Tooltips', root: 'molecules', skip: [], components: ['tooltip', 'tooltip-arrow'] },
 }
 const KEY = process.argv[2]
 if (!PAGES[KEY]) { console.error(`ใช้: node scripts/extract-figma-atom-doc.mjs <${Object.keys(PAGES).join('|')}>`); process.exit(2) }

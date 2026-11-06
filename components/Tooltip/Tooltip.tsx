@@ -215,6 +215,12 @@ export interface TooltipProps {
 
   /** คลาสเพิ่มของกล่องครอบตัวกระตุ้น ใช้เมื่อต้องจัดผังของตัวกระตุ้น */
   wrapperClassName?: string;
+  /**
+   * คุมการเปิดปิดจากข้างนอก ส่งมาเมื่อไรคำใบ้จะเปิดหรือปิดตามค่านี้ ไม่สนเมาส์ โฟกัส และ Escape
+   * ปกติไม่ต้องส่ง ใช้กับหน้าเอกสารหรือภาพตัวอย่างที่ต้องเห็นคำใบ้ค้างอยู่
+   * ⚠️ ผู้ใช้ปิดด้วย Escape ไม่ได้ จึงตก WCAG 1.4.13 ข้อ Dismissible ถ้าใช้ในหน้าจริง
+   */
+  open?: boolean;
 }
 
 /** รวม id ที่มีอยู่แล้วกับ id ของคำใบ้ ไม่ทับของเดิม */
@@ -280,7 +286,10 @@ export function Tooltip({
   id,
   className,
   wrapperClassName,
+  open,
 }: TooltipProps) {
+  /** ส่ง open มาเมื่อไร ข้างนอกเป็นคนคุม เมาส์และโฟกัสไม่มีผล */
+  const controlled = open !== undefined;
   const autoId = useId();
   const tooltipId = id ?? `${autoId}-tooltip`;
   const reducedMotion = usePrefersReducedMotion();
@@ -422,17 +431,20 @@ export function Tooltip({
   /* ── เหตุการณ์ของตัวชี้และโฟกัส อยู่ที่กล่องครอบ ครอบทั้งตัวกระตุ้นและกล่องคำใบ้ ── */
 
   const handlePointerEnter = (event: React.PointerEvent<HTMLSpanElement>) => {
+    if (controlled) return;
     /* จอสัมผัสไม่แสดงคำใบ้ ดูคำอธิบายที่หัวไฟล์ */
     if (event.pointerType === 'touch') return;
     show(false);
   };
 
   const handlePointerLeave = (event: React.PointerEvent<HTMLSpanElement>) => {
+    if (controlled) return;
     if (event.pointerType === 'touch') return;
     hide();
   };
 
   const handleFocus = (event: React.FocusEvent<HTMLSpanElement>) => {
+    if (controlled) return;
     const target = event.target;
     /* เปิดเฉพาะโฟกัสที่เบราว์เซอร์ถือว่าควรเห็นวงแหวน ดูคำอธิบายที่หัวไฟล์ */
     if (!(target instanceof Element)) return;
@@ -441,6 +453,7 @@ export function Tooltip({
   };
 
   const handleBlur = () => {
+    if (controlled) return;
     /* เลิกโฟกัสแล้วปิดทันที ไม่หน่วง แบบที่ Fluent 2 ทำ */
     hideNow();
   };
@@ -482,8 +495,8 @@ export function Tooltip({
         role="tooltip"
         aria-hidden="true"
         className={boxClasses}
-        data-state={state}
-        data-instant={instant ? 'true' : 'false'}
+        data-state={controlled ? (open ? 'open' : 'closed') : state}
+        data-instant={controlled || instant ? 'true' : 'false'}
         data-size={size}
         data-placement={placement}
       >

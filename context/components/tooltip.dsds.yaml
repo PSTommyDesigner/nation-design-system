@@ -165,6 +165,14 @@ sections:
           - href: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus
             role: WCAG 2.2 SC 1.4.13 (AA), persistent
         checkedBy: manual
+      - level: must-not
+        statement: >-
+          Pass open in a real screen. open shows or hides the box from outside and ignores the pointer, focus and Escape,
+          so the user can't dismiss it. It is for doc pages and still samples, such as the Storybook doc page of page 20.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus
+            role: WCAG 2.2 SC 1.4.13 (AA), dismissible
+        checkedBy: manual
       - level: must
         statement: >-
           Keyboard focus opens the tooltip at once, and only on :focus-visible, so a mouse click on the trigger does not
