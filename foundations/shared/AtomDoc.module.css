@@ -324,10 +324,6 @@
 .warn { color: var(--ntg-color-text-system-error); }
 
 /* ภาพหลักการกล่องซ้อน ระยะขอบ 8 ตามสูตรของหน้า ความสูงกล่องในใกล้เคียง 180 ในไฟล์ออกแบบ */
-.nestedPair { display: flex; align-items: flex-start; gap: var(--ntg-size-space-s2-lg); }
-.nestedColumn { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--ntg-size-space-s2-xs); }
-.nestedTitle { color: var(--ntg-color-text-general-heading); white-space: pre-wrap; }
-.nestedCaption { margin: 0; color: var(--ntg-color-text-general-supporting-text); }
 .nestedOuter { box-sizing: border-box; width: 100%; padding: var(--ntg-size-space-s1-lg); }
 .nestedInner { height: calc(var(--ntg-size-space-s5-xl) + var(--ntg-size-space-s3-sm)); }
 

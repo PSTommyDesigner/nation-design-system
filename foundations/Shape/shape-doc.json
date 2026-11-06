@@ -869,8 +869,8 @@
               "caption": "ขนาดกรอบใน (40px) กรอบนอก (48px) หลักการคือ (ขนาด Radius กรอบใน + 8px = ขนาด Radius กรอบนอก) ช่องว่างที่มุมจะขนานใกล้เคียงกันกับด้านตรง",
               "outer": 48,
               "inner": 40,
-              "outerFill": "--ntg-color-background-general-tertiary",
-              "innerFill": "--ntg-color-background-general-solid"
+              "outerFill": "--ntg-color-background-general-solid",
+              "innerFill": "--ntg-color-background-general-tertiary"
             },
             {
               "type": "nested",
@@ -879,8 +879,8 @@
               "caption": "ใช้ค่าเดียวกับกรอบนอก ส่วนโค้งด้านในกว้างเกิน ช่องว่างที่มุมบีบแคบกว่าด้านตรง",
               "outer": 48,
               "inner": 48,
-              "outerFill": "--ntg-color-background-general-tertiary",
-              "innerFill": "--ntg-color-background-general-solid"
+              "outerFill": "--ntg-color-background-general-solid",
+              "innerFill": "--ntg-color-background-general-tertiary"
             }
           ]
         },
