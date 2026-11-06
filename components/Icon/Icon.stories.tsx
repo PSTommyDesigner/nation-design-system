@@ -30,7 +30,7 @@ const controls = (include: string[]) => ({ controls: { include } })
 const ICON = ['name', 'size', 'title']
 const SIZES: IconSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl']
 
-export const Default: Story = { name: 'Icon', parameters: controls(ICON) }
+export const Default: Story = { name: 'Nation Group Icon', parameters: controls(ICON) }
 
 // ── ชุด (แกลเลอรีค้นหา) ─────────────────────────────────────
 export const Gallery: Story = {
