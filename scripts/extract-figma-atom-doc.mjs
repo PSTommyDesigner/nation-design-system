@@ -70,6 +70,9 @@ const PAGES = {
   card: { page: '25 Card', folder: 'Card', root: 'molecules', skip: [], components: ['vertical-news-card', 'horizontal-news-card', 'news-list-card', 'video-list-card', 'text-on-image-square-card', 'text-on-image-wide-card', 'ranking-item-card', 'ranking-list-card', 'timeline-image-card', 'wide-image-card', 'portrait-image-card', 'wide-ranking-image-card', 'portrait-ranking-image-card', '_ranking-number', '_timeline-year-label', '_timeline-divider', '_timeline-event-item'] },
   // ชั้น Organisms เก็บที่ organisms/ (ผู้ใช้อนุมัติ 2026-11-10) ให้หน้า Organisms (Component)/<NN> <Page> อ่าน
   dropdowns: { page: '27 Dropdowns', folder: 'Dropdowns', root: 'organisms', skip: [], components: ['dropdown', 'dropdown-menu', '_dropdown-option', '_dropdown-group-header'] },
+  // เซลตาราง 24 ตัวในหน้านี้เป็น component เดี่ยว ไม่ใช่ชุด จึงเปิด standalone ให้อ่านเป็นตัวอย่างได้
+  // โค้ดไม่มี component ของเซลแยก (มีแค่ Table ทั้งตาราง) หน้าเอกสารจึงขึ้นข้อความแทน (ผู้ใช้ตัดสิน 2026-11-10)
+  table: { page: '28 Table', folder: 'Table', root: 'organisms', skip: [], standalone: true, components: ['caption-table-cell', 'header-table-cell', 'header-select-table-cell', 'select-table-cell', 'text-table-cell', 'number-table-cell', 'currency-table-cell', 'index-table-cell', 'date-table-cell', 'badge-table-cell', 'tag-table-cell', 'user-table-cell', 'avatar-group-table-cell', 'link-table-cell', 'action-table-cell', 'star-table-cell', 'icon-table-cell', 'progress-bar-table-cell', 'hierarchy-color-cell', 'light-color-cell', 'dark-color-cell', 'header-color-cell', 'number-color-cell', 'description-color-cell'] },
   dividers: { page: '26 Dividers', folder: 'Dividers', root: 'molecules', skip: [], components: ['horizontal-divider', 'vertical-divider'] },
   pagination: { page: '24 Pagination', folder: 'Pagination', root: 'molecules', skip: [], components: ['pagination', '_pagination-number-button', '_pagination-ellipsis'] },
   progress: { page: '23 Progress Bars', folder: 'ProgressBars', root: 'molecules', skip: [], components: ['progress-bar', 'circular-progress-bar', 'semi-circular-progress-bar'] },
@@ -287,7 +290,9 @@ const propName = (k) => k.split('#')[0]
 // ชื่อชุดจึงอ่านจากชุดจริงของชิ้นงาน ส่วนตระกูลอ่านจากเอกสารที่ชุดนั้นอยู่ (SET_FAMILY เติมก่อนเริ่มอ่านเอกสาร)
 const COMP_META = {}, SET_META = {}, SET_FAMILY = {}
 const setIdOf = (n) => n.type === 'INSTANCE' ? COMP_META[n.componentId]?.componentSetId : n.type === 'COMPONENT' && n.parent?.type === 'COMPONENT_SET' ? n.parent.id : null
-const setOf = (n) => n.type === 'INSTANCE' ? (SET_META[setIdOf(n)]?.name ?? n.name) : n.type === 'COMPONENT' && n.parent?.type === 'COMPONENT_SET' ? n.parent.name : null
+// standalone: หน้าที่ชิ้นงานเป็น component เดี่ยว ไม่อยู่ในชุด (เช่น เซลตารางหน้า 28) ใช้ชื่อ component จริงแทนชื่อชุด
+//   เปิดเฉพาะหน้าที่ตั้งไว้ หน้าอื่นอ่านแบบเดิมทุกอย่าง
+const setOf = (n) => n.type === 'INSTANCE' ? (SET_META[setIdOf(n)]?.name ?? (PAGES[KEY].standalone ? COMP_META[n.componentId]?.name : undefined) ?? n.name) : n.type === 'COMPONENT' && n.parent?.type === 'COMPONENT_SET' ? n.parent.name : n.type === 'COMPONENT' && PAGES[KEY].standalone ? n.name : null
 // ไอคอนที่สลับใส่ (INSTANCE_SWAP) เก็บเป็นรหัสชิ้นงาน แปลงเป็นชื่อไอคอนในโค้ดจากชื่อ component เช่น status-&-feedback/add เป็น add
 const iconName = (id) => COMP_META[id]?.name?.split('/').pop() ?? id
 const isComponentSample = (n) => (n.type === 'INSTANCE' || n.type === 'COMPONENT') && COMPONENT_SETS.has(setOf(n))

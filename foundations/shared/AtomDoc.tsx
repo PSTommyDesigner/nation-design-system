@@ -388,10 +388,17 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
         />
       )
     case 'table': {
+      // แถวแรกที่มีช่องเดียวแต่แถวอื่นมีหลายช่อง คือชื่อตาราง (caption-table-cell ในไฟล์ออกแบบ เช่น Team members ของหน้า 28)
+      // จึงออกเป็น caption ของตาราง แล้วใช้แถวที่สองเป็นหัวคอลัมน์ ไม่อย่างนั้นตารางจะมีคอลัมน์เดียวตามแถวแรก
+      const wide = Math.max(0, ...block.rows.map(r => r.length))
+      const captioned = block.head.length === 1 && wide > 1
+      const head = captioned ? block.rows[0] ?? [] : block.head
+      const rows = captioned ? block.rows.slice(1) : block.rows
       const table = (
         <Table
-          columns={block.head.map((h, i) => ({ id: String(i), header: clean(h), accessor: (r: string[]) => cellLines(r[i] ?? '')[0] ?? '', supporting: (r: string[]) => cellLines(r[i] ?? '').slice(1).join(' ') }))}
-          data={block.rows}
+          caption={captioned ? clean(block.head[0] ?? '') : undefined}
+          columns={head.map((h, i) => ({ id: String(i), header: clean(h), accessor: (r: string[]) => cellLines(r[i] ?? '')[0] ?? '', supporting: (r: string[]) => cellLines(r[i] ?? '').slice(1).join(' ') }))}
+          data={rows}
           getRowId={(_, i) => `${index}-${i}`}
         />
       )

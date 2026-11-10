@@ -1,0 +1,881 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 28 Table ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- table",
+  "page": "28 Table",
+  "documents": [
+    {
+      "id": "9415:5878",
+      "name": "28 Table Documentation",
+      "title": "28 Table",
+      "subtitle": "",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Overview",
+          "sub": "ตารางข้อมูล: แสดงและจัดการข้อมูลเป็นแถวและคอลัมน์ ประกอบจากช่อง(cell) + แถว(row) + แม่แบบ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "Team members"
+          ],
+          "rows": [
+            [
+              "",
+              "Name",
+              "Role",
+              "Status",
+              "Joined"
+            ],
+            [
+              "",
+              "Name surename\nJob position",
+              "Cell text",
+              "Label",
+              "00/00/00"
+            ],
+            [
+              "",
+              "Name surename\nJob position",
+              "Cell text",
+              "Label",
+              "00/00/00"
+            ],
+            [
+              "",
+              "Name surename\nJob position",
+              "Cell text",
+              "Label",
+              "00/00/00"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "ส่วนประกอบ: แถวหัว(เรียงได้) แถวข้อมูล ช่อง คอลัมน์ ช่องเลือก แบ่งหน้า",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ส่วนประกอบตาราง:\n• แถวหัว: ชื่อคอลัมน์ + ปุ่มเรียงลำดับ\n• แถวข้อมูล: ข้อมูลแต่ละรายการ\n• ช่อง (cell): ช่องใส่ข้อมูล มีหลายชนิด\n• คอลัมน์ ช่องเลือก (ติ๊กเลือกแถว) แบ่งหน้า"
+        },
+        {
+          "type": "h",
+          "text": "Cell types",
+          "sub": "ชนิดของช่อง 18 ชนิด: ชื่อตาราง หัวคอลัมน์ หัวคอลัมน์พร้อมช่องเลือก ช่องเลือก ข้อความ ตัวเลข เงิน ลำดับแถว วันที่ ป้าย แท็ก ผู้ใช้ กลุ่มผู้ใช้ ลิงก์ การกระทำ ดาว ไอคอน แถบความคืบหน้า",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "caption-table-cell",
+              "props": {
+                "show-sort": true,
+                "text-value": "Table caption"
+              },
+              "label": "",
+              "width": 117,
+              "height": 48
+            },
+            {
+              "type": "component",
+              "set": "header-table-cell",
+              "props": {
+                "show-sort": true,
+                "text-value": "Column"
+              },
+              "label": "",
+              "width": 96,
+              "height": 48
+            },
+            {
+              "type": "component",
+              "set": "header-select-table-cell",
+              "props": {
+                "show-sort": true,
+                "show-checkbox": true,
+                "text-value": "Column"
+              },
+              "label": "",
+              "width": 120,
+              "height": 48
+            },
+            {
+              "type": "component",
+              "set": "select-table-cell",
+              "props": {},
+              "label": "",
+              "width": 40,
+              "height": 40
+            },
+            {
+              "type": "component",
+              "set": "text-table-cell",
+              "props": {
+                "supporting-text": "Supporting text",
+                "text-value": "Cell text"
+              },
+              "label": "",
+              "width": 116,
+              "height": 70
+            },
+            {
+              "type": "component",
+              "set": "number-table-cell",
+              "props": {
+                "text-value": "1,234"
+              },
+              "label": "",
+              "width": 53,
+              "height": 46
+            },
+            {
+              "type": "component",
+              "set": "badge-table-cell",
+              "props": {
+                "text-value": "Label"
+              },
+              "label": "",
+              "width": 76,
+              "height": 50
+            },
+            {
+              "type": "component",
+              "set": "tag-table-cell",
+              "props": {
+                "text-value": "Tag"
+              },
+              "label": "",
+              "width": 61,
+              "height": 50
+            },
+            {
+              "type": "component",
+              "set": "user-table-cell",
+              "props": {
+                "show-subtitle": true,
+                "subtitle": "Job position",
+                "show-avatar": true,
+                "text-value": "Name surename"
+              },
+              "label": "",
+              "width": 183,
+              "height": 70
+            },
+            {
+              "type": "component",
+              "set": "link-table-cell",
+              "props": {
+                "text-value": "Click"
+              },
+              "label": "",
+              "width": 57,
+              "height": 48
+            },
+            {
+              "type": "component",
+              "set": "action-table-cell",
+              "props": {},
+              "label": "",
+              "width": 42,
+              "height": 42
+            },
+            {
+              "type": "component",
+              "set": "avatar-group-table-cell",
+              "props": {
+                "Text": "5 users",
+                "Text ?": true,
+                "show-count": true,
+                "text-value": "5 users"
+              },
+              "label": "",
+              "width": 234,
+              "height": 64
+            },
+            {
+              "type": "component",
+              "set": "progress-bar-table-cell",
+              "props": {
+                "text-value": "64%"
+              },
+              "label": "",
+              "width": 256,
+              "height": 46
+            },
+            {
+              "type": "component",
+              "set": "star-table-cell",
+              "props": {},
+              "label": "",
+              "width": 156,
+              "height": 44
+            },
+            {
+              "type": "component",
+              "set": "icon-table-cell",
+              "props": {
+                "Red ?": true,
+                "Yellow ?": true,
+                "Green ?": true,
+                "Gray ?": true,
+                "Blue ?": true
+              },
+              "label": "",
+              "width": 176,
+              "height": 48
+            },
+            {
+              "type": "component",
+              "set": "date-table-cell",
+              "props": {
+                "text-value": "00/00/00"
+              },
+              "label": "",
+              "width": 94,
+              "height": 48
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Sizes",
+          "sub": "ความสูงแถว: หัวตาราง 48 เนื้อหา 40 ถึง 70 (px) ความสูงมาจากเนื้อหา ไม่ได้ตั้งตายตัว",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ความสูงแถว: หัวตาราง 48px เนื้อหา 40 ถึง 70px แล้วแต่ชนิดของเซล\nความสูงมาจากระยะขอบบนล่าง 12px บวกเนื้อหา ไม่ได้ตั้งตายตัว จึงไม่มีสูตรความสูง\nยังไม่มีชุดแน่นกับโปร่ง เพราะระยะขอบมีค่าเดียวคือ 12"
+        },
+        {
+          "type": "h",
+          "text": "States",
+          "sub": "แถว: ปกติ ชี้ ถูกเลือก ปิดใช้งาน หัวตาราง: เรียงขึ้น/ลง",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "แถว: ปกติ ชี้ (ไฮไลต์) ถูกเลือก (ติ๊ก + พื้นสี) ปิดใช้งาน\nหัวตาราง: ไม่เรียง / เรียงขึ้น / เรียงลง"
+        },
+        {
+          "type": "h",
+          "text": "Usage Do / Don’t",
+          "sub": "ใช้ช่องสำเร็จรูปจากคลังกลาง จัดคอลัมน์ให้สม่ำเสมอ ไม่ยัดข้อมูลเกิน",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "Do",
+          "body": "• ใช้ช่องสำเร็จรูปจากคลังกลาง\n• จัดแนวคอลัมน์ให้สม่ำเสมอ (เงินชิดขวา ลำดับแถวจัดกลาง ที่เหลือชิดซ้าย)\n• หัวตารางชัด + ใส่ปุ่มเรียงเฉพาะที่จำเป็น"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "Don’t",
+          "body": "• สร้างช่องเอง / วาดใหม่\n• ยัดข้อมูลจนล้นช่อง\n• ผสมหน่วย/รูปแบบมั่วในคอลัมน์เดียว"
+        },
+        {
+          "type": "h",
+          "text": "Accessibility",
+          "sub": "หัวตารางระบุขอบเขต ใช้คีย์บอร์ดนำทาง สีตัดกันพอ แถวสลับสีช่วยอ่าน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• หัวตารางระบุว่าคุมคอลัมน์หรือแถว (ช่วยโปรแกรมอ่านหน้าจอ)\n• คีย์บอร์ด: กด Tab/ลูกศร เลื่อนช่องได้\n• สีตัวอักษรตัดกับพื้น ≥ 4.5:1\n• แถวสลับสี (zebra) ช่วยไล่สายตา (ถ้าต้องการ)"
+        },
+        {
+          "type": "h",
+          "text": "Design tokens",
+          "sub": "ชุดเซลที่ลงท้ายด้วย table-cell color/border/general space/*",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "เซล: ชุดที่ลงท้ายด้วย table-cell เส้น: color/border/general/* ระยะ: space/*\nสี text และ bg ผ่าน color/text และ color/background"
+        },
+        {
+          "type": "h",
+          "text": "Specs",
+          "sub": "ความกว้างคอลัมน์ ระยะขอบในช่อง เส้นขอบ 1px มุม",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ความกว้างคอลัมน์: ยืดหยุ่นหรือคงที่ ระยะขอบในช่องแนวนอน เส้นขอบ 1px มุมตามตาราง"
+        },
+        {
+          "type": "h",
+          "text": "Related",
+          "sub": "Lists (เลขเดิม 27 ยุบไปแล้ว) 25 Card Table cell components (ในหน้านี้)",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "Lists (เลขเดิม 27 ยุบไปแล้ว) 25 Card Table cell components (ในหน้า 28 Table)"
+        }
+      ]
+    },
+    {
+      "id": "9667:273",
+      "name": "Table Token",
+      "title": "Table Token",
+      "subtitle": "ตารางไม่มี token เฉพาะ ใช้ token กลาง (สี general + text style) ร่วมกับ component อื่น ตารางนี้รวมตัวที่ระบบตารางใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เซลในตารางประกอบจากชุดที่ลงท้ายด้วย table-cell ซึ่งผูกสีและ text style กลางไว้แล้ว ด้านล่างคือตัวแปรที่ตารางเรียกใช้ ทั้งฝ่ายออกแบบและฝ่ายพัฒนาอ้างชื่อเดียวกัน",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma ใช้ตอนออกแบบและเลือกใช้งาน"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ ค่าเดียวกับฝั่งออกแบบเป๊ะ"
+        },
+        {
+          "type": "h",
+          "text": "ตาราง Token",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "background/general/primary\nVariable",
+              "--ntg-color-background-general-primary\nCSS var",
+              "#ffffff",
+              "พื้นตาราง / แถว"
+            ],
+            [
+              "border/general/primary\nVariable",
+              "--ntg-color-border-general-primary\nCSS var",
+              "#d0d5dd",
+              "เส้นขอบตาราง / เส้นคั่นแถว"
+            ],
+            [
+              "text/general/heading\nVariable",
+              "--ntg-color-text-general-heading\nCSS var",
+              "#101828",
+              "สีหัวคอลัมน์"
+            ],
+            [
+              "text/general/text\nVariable",
+              "--ntg-color-text-general-text\nCSS var",
+              "#475467",
+              "สีข้อความใน cell"
+            ],
+            [
+              "text/general/supporting-text\nVariable",
+              "--ntg-color-text-general-supporting-text\nCSS var",
+              "#667085",
+              "สีคำอธิบายรองใน cell"
+            ],
+            [
+              "title/xs\nText Style",
+              ".ntg-typography-title-xs\nCSS class",
+              "Prompt Medium 14/24",
+              "ข้อความหลักใน cell + หัวคอลัมน์"
+            ],
+            [
+              "meta/caption\nText Style",
+              ".ntg-typography-meta-caption\nCSS class",
+              "Prompt Regular 12/22",
+              "คำอธิบายรอง (supporting) ใน cell"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "• แหล่งความจริงอยู่ที่ Figma แก้ค่าที่ Figma เสมอ แล้วทีมพัฒนาดึงเข้าโค้ด (สร้างไฟล์ใหม่อัตโนมัติ)\n• ใครเปลี่ยน token ต้องบอกอีกฝั่ง เพื่อให้ดีไซน์กับโค้ดตรงกันตลอด\n• ห้ามพิมพ์ค่าดิบ (สี/ขนาด) ลงงานตรง ๆ ให้อ้างชื่อ token เสมอ"
+        }
+      ]
+    },
+    {
+      "id": "9419:9494",
+      "name": "Data table",
+      "title": "Data table",
+      "subtitle": "",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "Data table",
+          "sub": "ตารางข้อมูลสำเร็จรูป instance ประกอบจาก cell/row component (ดูสเปกที่ 28 Table Documentation)",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "Head cells",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "header-table-cell",
+              "props": {},
+              "label": "Header หัวคอลัมน์ + จัดเรียง",
+              "width": 96,
+              "height": 48,
+              "cell": 128,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "header-select-table-cell",
+              "props": {},
+              "label": "Header + Select หัว + เลือกทั้งหมด",
+              "width": 120,
+              "height": 48,
+              "cell": 152,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "caption-table-cell",
+              "props": {},
+              "label": "Caption ชื่อตาราง เหนือแถวหัว",
+              "width": 117,
+              "height": 48,
+              "cell": 149,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Content cells",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "select-table-cell",
+              "props": {},
+              "label": "Select เลือกแถว (checkbox)",
+              "width": 40,
+              "height": 40,
+              "cell": 116,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "text-table-cell",
+              "props": {},
+              "label": "Text ข้อความทั่วไป",
+              "width": 116,
+              "height": 70,
+              "cell": 148,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "number-table-cell",
+              "props": {},
+              "label": "Number ตัวเลขทั่วไป (ชิดซ้าย)",
+              "width": 53,
+              "height": 46,
+              "cell": 107,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "currency-table-cell",
+              "props": {},
+              "label": "Currency เงิน (ชิดขวา)",
+              "width": 79,
+              "height": 46,
+              "cell": 111,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "index-table-cell",
+              "props": {},
+              "label": "Index ลำดับแถว (จัดกลาง)",
+              "width": 29,
+              "height": 46,
+              "cell": 105,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "badge-table-cell",
+              "props": {},
+              "label": "Badge ป้ายสถานะ",
+              "width": 76,
+              "height": 50,
+              "cell": 108,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "tag-table-cell",
+              "props": {},
+              "label": "Tag แท็ก",
+              "width": 61,
+              "height": 50,
+              "cell": 93,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "user-table-cell",
+              "props": {},
+              "label": "User ผู้ใช้ (avatar + ชื่อ)",
+              "width": 183,
+              "height": 70,
+              "cell": 215,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "link-table-cell",
+              "props": {},
+              "label": "Link ลิงก์ / action",
+              "width": 57,
+              "height": 48,
+              "cell": 89,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "action-table-cell",
+              "props": {},
+              "label": "Action เมนูเพิ่มเติม",
+              "width": 42,
+              "height": 42,
+              "cell": 74,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "avatar-group-table-cell",
+              "props": {},
+              "label": "Avatar group กลุ่มผู้ใช้ (ซ้อน)",
+              "width": 234,
+              "height": 64,
+              "cell": 266,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "progress-bar-table-cell",
+              "props": {},
+              "label": "Progress bar แถบความคืบหน้า",
+              "width": 256,
+              "height": 46,
+              "cell": 280,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "star-table-cell",
+              "props": {},
+              "label": "Star คะแนนดาว",
+              "width": 156,
+              "height": 44,
+              "cell": 188,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "icon-table-cell",
+              "props": {},
+              "label": "Icon ไอคอน action",
+              "width": 176,
+              "height": 48,
+              "cell": 208,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "date-table-cell",
+              "props": {},
+              "label": "Date วันที่",
+              "width": 94,
+              "height": 48,
+              "cell": 126,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Color variable table base cells",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "hierarchy-color-cell",
+          "caption": "hierarchy-color-cell",
+          "width": 432,
+          "height": 304,
+          "items": [
+            {
+              "props": {
+                "Show Line": true,
+                "type": "primary"
+              },
+              "x": 16,
+              "y": 16,
+              "width": 400,
+              "height": 68
+            },
+            {
+              "props": {
+                "Show Line": true,
+                "type": "secondary"
+              },
+              "x": 16,
+              "y": 84,
+              "width": 400,
+              "height": 68
+            },
+            {
+              "props": {
+                "Show Line": true,
+                "type": "tertiary"
+              },
+              "x": 16,
+              "y": 152,
+              "width": 400,
+              "height": 68
+            },
+            {
+              "props": {
+                "Show Line": true,
+                "type": "quaternary"
+              },
+              "x": 16,
+              "y": 220,
+              "width": 400,
+              "height": 68
+            }
+          ]
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "light-color-cell",
+              "props": {},
+              "label": "light-color-cell",
+              "width": 119,
+              "height": 66,
+              "cell": 119,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "dark-color-cell",
+              "props": {},
+              "label": "dark-color-cell",
+              "width": 119,
+              "height": 66,
+              "cell": 119,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "header-color-cell",
+              "props": {},
+              "label": "header-color-cell",
+              "width": 65,
+              "height": 38,
+              "cell": 100,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "number-color-cell",
+              "props": {},
+              "label": "number-color-cell",
+              "width": 26,
+              "height": 26,
+              "cell": 104,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "description-color-cell",
+              "props": {},
+              "label": "description-color-cell",
+              "width": 200,
+              "height": 66,
+              "cell": 200,
+              "vertical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10224:511",
+      "name": "Table Space",
+      "title": "Table Space",
+      "subtitle": "ระยะห่างของเซลตารางทุกชนิด ค่าจริงและสถานะการผูกตัวแปร",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "ตารางข้อมูลประกอบจากเซล 15 ชนิด ทุกชนิดใช้ระยะขอบชุดเดียวกันหมด คือ 12 เท่ากันทั้งสี่ด้าน และระยะภายในเซล 8 ตรวจจากต้นฉบับทั้ง 15 ตัวแล้วไม่มีตัวไหนหลุด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ความสูงของเซลไม่ได้ตั้งตายตัว เนื้อหาข้างในเป็นตัวกำหนด จึงต่างกันตั้งแต่ 40 ถึง 70 พิกเซล ไม่ต้องมีสูตรความสูงเหมือนปุ่ม",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10224:514",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "สถานะ 2026-09-11 ค่าระยะห่างของเซลผูกตัวแปรครบแล้วทั้ง 15 ชนิด ทั้งระยะขอบสี่ด้านและระยะภายใน แก้ที่ไฟล์สูตรแล้วทุกเซลขยับตามเอง ไม่ต้องไล่แก้ทีละตัวอีก",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "10224:514",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "ค่าที่ใช้จริง และตรงกับสเกลกลางไหม",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "ค่า",
+            "ตรงกับสเกลกลางไหม",
+            "หมายเหตุ"
+          ],
+          "rows": [
+            [
+              "padding ทั้งสี่ด้านของเซล",
+              "12px",
+              "ตรง size/space/s2/xs",
+              "เท่ากันทั้ง 15 ชนิด ปรับจาก 14 เป็น 12 เมื่อ 2026-08-26"
+            ],
+            [
+              "gap ภายในเซล",
+              "8px",
+              "ตรง size/space/s1/lg",
+              "ระยะไอคอนหรือรูปผู้ใช้กับข้อความ"
+            ],
+            [
+              "ความสูงเซล",
+              "40 ถึง 70px",
+              "ไม่ได้ตั้งค่า",
+              "เนื้อหาข้างในเป็นตัวกำหนด ไม่มีสูตร"
+            ],
+            [
+              "มุมโค้งกรอบตาราง",
+              "8px",
+              "ผูกตัวแปรแล้ว",
+              "table/radius ทั้งสี่มุม"
+            ],
+            [
+              "color-cell padding",
+              "16px",
+              "ตรง size/space/s2/sm",
+              "เซลเฉพาะกิจของหน้าเอกสารสี"
+            ],
+            [
+              "color-cell header padding",
+              "บนล่าง 8 ซ้ายขวา 16",
+              "ตรงทั้งคู่",
+              "s1/lg และ s2/sm"
+            ],
+            [
+              "color-cell description padding",
+              "บนล่าง 20 ซ้ายขวา 16",
+              "ตรงทั้งคู่",
+              "s2/md และ s2/sm"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปรที่ผูกได้ตอนนี้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อตัวแปรใน Figma",
+            "💻 ชื่อในโค้ด",
+            "ค่า",
+            "ใช้กับส่วนไหนของ component"
+          ],
+          "rows": [
+            [
+              "table/radius/top-left",
+              "--ntg-table-radius-top-left",
+              "8px",
+              "มุมโค้งกรอบนอกของตารางข้อมูล ผูกครบทั้งสี่มุม"
+            ],
+            [
+              "doc-table/radius/top-left",
+              "--ntg-doc-table-radius-top-left",
+              "8px",
+              "มุมโค้งของตารางในเอกสาร แยกเจ้าของกับตารางข้อมูล"
+            ],
+            [
+              "ยังไม่มี",
+              "ยังไม่มี",
+              "12px",
+              "padding ทั้งสี่ด้านของเซล ค่าตรงสเกลกลางแล้ว รอสร้างตัวแปรของตาราง"
+            ],
+            [
+              "ยังไม่มี",
+              "ยังไม่มี",
+              "8px",
+              "gap ภายในเซล ค่าตรงสเกลกลางแล้ว"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา และงานที่ยังค้าง",
+          "sub": "• ค่าระยะห่างของเซลผูกตัวแปรครบแล้ว ห้ามพิมพ์ค่าเองในไฟล์ออกแบบ ให้แก้ที่ไฟล์สูตรแล้วสร้างใหม่\n• ระยะขอบซ้ายขวาเคยเป็น 14 ปรับเป็น 12 เมื่อ 2026-08-26 ทำให้เท่ากันทั้งสี่ด้านและตรงกับสเกลกลาง การปรับครั้งนั้นแก้ที่ต้นฉบับ 15 ตัว แล้วชิ้นงานที่ใช้อยู่ตามครบ 1,271 จุดใน 8 หน้า ความสูงเซลไม่เปลี่ยน\n• ความสูงเซลไม่มีสูตร เพราะเนื้อหาข้างในเป็นตัวกำหนด ถ้าวันหลังมีคนตั้งความสูงตายตัว ต้องกลับมาทำสูตรให้\n• เซล color-cell เป็นของเฉพาะหน้าเอกสารสี ไม่ใช่เซลของตารางข้อมูล อย่าเอาไปใช้ปนกัน",
+          "section": true
+        }
+      ]
+    }
+  ]
+}
