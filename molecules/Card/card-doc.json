@@ -1,0 +1,1898 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 25 Card ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- card",
+  "page": "25 Card",
+  "documents": [
+    {
+      "id": "11392:1826",
+      "name": "27 Card Documentation",
+      "title": "27 Card",
+      "subtitle": "การ์ด 13 ชุดสำหรับเว็บข่าว บวกชิ้นส่วนภายในและการ์ดของระบบเอกสาร",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ภาพรวม",
+          "sub": "หน้านี้เก็บของสามพวกที่คนละงานกัน พวกแรกคือการ์ดเนื้อหาและการ์ดรูปสำหรับเว็บข่าว 13 ชุด พวกที่สองคือชิ้นส่วนภายในที่การ์ดเรียกใช้ เช่น ตัวเลขอันดับและชิ้นส่วนเส้นเวลา พวกที่สามคือการ์ดของระบบเอกสารสามใบ ซึ่งเอกสารทุกหน้าในไฟล์นี้ใช้อยู่ 95 จุดใน 23 หน้า ยกเครื่องทั้งหน้าเมื่อ 2026-10-14",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ตระกูลการ์ด",
+          "sub": "การ์ดเนื้อหาประกอบจากสองก้อนเสมอ คือกรอบรูปกับกล่องข้อความ ต่างกันแค่วางซ้ายขวาหรือบนล่าง การ์ดรูปมีแต่กรอบรูปกับป้ายทับบนรูป ส่วนการ์ดของระบบเอกสารมีไอคอนหัวเรื่องกับเนื้อหาเป็นรายการ ภาพด้านล่างคือการ์ดแนวนอนขนาดกลาง ซึ่งเป็นแบบที่ใช้บ่อยที่สุด",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "horizontal-news-card",
+              "props": {
+                "Tag on image": true,
+                "Heading": true,
+                "Supporting text": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Subheading": true,
+                "Size": "md"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 808,
+              "height": 220
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ชุดทั้งหมด",
+          "sub": "การ์ดข่าวมีสองทิศทางคือแนวนอนกับแนวตั้ง อย่างละ 5 ขนาด การ์ดรายการมีสองแบบคือรายการข่าวกับรายการวิดีโอ การ์ดตัวหนังสือบนรูปมีสองสัดส่วนคือจัตุรัสกับกว้าง การ์ดอันดับมีแบบรายการกับแบบรายตัว และการ์ดรูปมีเส้นเวลา กว้าง ตั้ง และแบบติดอันดับอีกสองตัว",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "news-list-card",
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "Image Trailing": "False",
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 345,
+              "height": 112
+            },
+            {
+              "type": "component",
+              "set": "text-on-image-wide-card",
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 300,
+              "height": 146
+            },
+            {
+              "type": "component",
+              "set": "ranking-item-card",
+              "props": {
+                "SupText": true,
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Default"
+              },
+              "label": "",
+              "width": 308,
+              "height": 126
+            },
+            {
+              "type": "component",
+              "set": "wide-image-card",
+              "props": {
+                "Ranking tag": true,
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 300,
+              "height": 168
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ชิ้นส่วนภายใน",
+          "sub": "ชิ้นส่วนที่ขึ้นต้นด้วยขีดล่างไม่ส่งออกไลบรารี ไฟล์อื่นหยิบไปใช้ไม่ได้โดยตั้งใจ มีสี่ชุด คือตัวเลขอันดับที่เป็นเวกเตอร์ 2 ขนาด 10 ตัวเลข และชิ้นส่วนเส้นเวลาอีกสามตัว คือป้ายปี เส้นคั่น และรายการเหตุการณ์ เดิมตัวเลขอันดับแยกเป็น component 20 ตัว ยุบเป็นชุดเดียวเมื่อ 2026-10-14",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "_ranking-number",
+              "props": {
+                "size": "md",
+                "number": "1"
+              },
+              "label": "",
+              "width": 81,
+              "height": 152
+            },
+            {
+              "type": "component",
+              "set": "_timeline-year-label",
+              "props": {},
+              "label": "",
+              "width": 151,
+              "height": 38
+            },
+            {
+              "type": "component",
+              "set": "_timeline-divider",
+              "props": {},
+              "label": "",
+              "width": 24,
+              "height": 50
+            },
+            {
+              "type": "component",
+              "set": "_timeline-event-item",
+              "props": {
+                "State": "Default"
+              },
+              "label": "",
+              "width": 276,
+              "height": 30
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "คุณสมบัติของชุด",
+          "sub": "แกนของชุดมีเฉพาะสิ่งที่เป็นรูปทรง การ์ดข่าวมีแกนขนาด 5 ขั้น การ์ดที่เหลือมีแกนสถานะสองค่าคือปกติกับชี้ ตัวเลขอันดับมีแกนขนาดสองค่าและแกนตัวเลขสิบค่า เนื้อหาในการ์ดไม่ได้ทำเป็นแกน เพราะหัวข้อข่าว รูป และเวลาเป็นข้อมูลที่เปลี่ยนทุกใบ",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ขนาด",
+          "sub": "การ์ดข่าวมีห้าขั้นคือ xs ถึง xl ความกว้างรูปมาจากสูตร 184 บวกลำดับขั้นคูณ 104 และความสูงรูปมาจาก 104 บวกลำดับขั้นคูณ 58 ซึ่งให้สัดส่วนราว 16 ต่อ 9 ทุกขั้น เดิมมีเจ็ดขั้นถึง 3xl แต่สองขั้นบนสุดปัดเศษผิดทางและกว้างเท่ากันทั้งคู่ จึงตัดออกเมื่อ 2026-10-14 ให้เหลือห้าขั้นเท่าสเกลของทั้งระบบ",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "vertical-news-card",
+              "props": {
+                "Supheading": true,
+                "Supporting text": true,
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Heading value": "This is heading. heading heading heading.",
+                "Heading": true,
+                "Subheading": "Subheading",
+                "Size": "xs"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 184,
+              "height": 186
+            },
+            {
+              "type": "component",
+              "set": "vertical-news-card",
+              "props": {
+                "Heading": true,
+                "Supheading": true,
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Heading value": "This is heading. heading heading heading.",
+                "Supporting text": true,
+                "Subheading": "Subheading",
+                "Size": "sm"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 288,
+              "height": 296
+            },
+            {
+              "type": "component",
+              "set": "vertical-news-card",
+              "props": {
+                "Heading": true,
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Supporting text": true,
+                "Supheading": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Subheading": "Subheading",
+                "Size": "md"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 392,
+              "height": 340
+            },
+            {
+              "type": "component",
+              "set": "vertical-news-card",
+              "props": {
+                "Supheading": true,
+                "Supporting text": true,
+                "Subheading": "Subheading",
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Heading": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Size": "lg"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 496,
+              "height": 408
+            },
+            {
+              "type": "component",
+              "set": "vertical-news-card",
+              "props": {
+                "Heading": true,
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Supporting text": true,
+                "Subheading": "Subheading",
+                "Heading value": "This is heading. heading heading heading.",
+                "Supheading": true,
+                "Size": "xl"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 600,
+              "height": 490
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "สถานะ",
+          "sub": "การ์ดส่วนใหญ่มีสองสถานะคือปกติกับชี้ ซึ่งต่างกันที่เงาและสีพื้น การ์ดข่าวที่มีแกนขนาดไม่มีแกนสถานะ เพราะตอนออกแบบเลือกให้แกนขนาดกับแกนสถานะไม่ปนกันในชุดเดียว ถ้าต้องการสถานะชี้ของการ์ดข่าวให้ใช้เอฟเฟกต์ที่ระดับ layout แทน",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "wide-image-card",
+              "props": {
+                "Ranking tag": true,
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 300,
+              "height": 168
+            },
+            {
+              "type": "component",
+              "set": "wide-image-card",
+              "props": {
+                "Ranking tag": true,
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 300,
+              "height": 168
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ควรและไม่ควร",
+          "sub": "การ์ดเป็นของที่เนื้อหาเปลี่ยนทุกใบ จึงต้องปล่อยให้ข้อความยืดหดเองได้ และต้องไม่ตรึงความสูงของกล่องข้อความ ส่วนรูปให้ตรึงสัดส่วนไว้เสมอเพื่อไม่ให้ภาพข่าวบิด",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "Do",
+          "body": "• ปล่อยให้กล่องข้อความหุ้มเนื้อหา เพราะหัวข้อข่าวยาวไม่เท่ากันทุกใบ\n• ตรึงสัดส่วนรูปไว้เสมอ ใช้กรอบสัดส่วนจากหน้า 10 Frame\n• ใช้ขนาดเดียวกันทั้งแถว เพื่อให้รูปเรียงตรงแนว"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "Don’t",
+          "body": "• ตรึงความสูงกล่องข้อความ เพราะหัวข้อยาวจะถูกตัดหาย\n• ยืดรูปให้เต็มช่องจนสัดส่วนบิด ภาพข่าวจะผิดรูป\n• ซ้อนลิงก์ในลิงก์ เพราะโปรแกรมอ่านหน้าจอจะอ่านซ้ำ"
+        },
+        {
+          "type": "h",
+          "text": "การเข้าถึง",
+          "sub": "ทั้งใบต้องเป็นลิงก์เดียวที่กดได้ ไม่ใช่ลิงก์ซ้อนลิงก์ เพราะโปรแกรมอ่านหน้าจอจะอ่านซ้ำ รูปในการ์ดข่าวเป็นภาพประกอบของหัวข้อที่อยู่ข้าง ๆ จึงให้ซ่อนจากโปรแกรมอ่านหน้าจอ ป้ายอันดับบนรูปต้องมีข้อความจริง ไม่ใช่ตัวเลขที่วาดเป็นภาพ และสีพื้นของการ์ดตอนชี้ต้องต่างจากตอนปกติพอให้เห็นด้วยตา",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปร",
+          "sub": "หน้านี้มีตัวแปร 15 ตัว คือมุมโค้งสี่มุมบวกมุมโค้งเต็ม 5 ตัว และขนาดรูปอีก 10 ตัว แยกเป็นความกว้างกับความสูงอย่างละห้าขั้น ทุกค่ามาจากสูตรในไฟล์ tokens/scale/card.mjs ไฟล์เดียว",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ระยะและขนาด",
+          "sub": "ช่องไฟในการ์ดไม่ได้ทำเป็นตัวแปรของการ์ด เพราะค่าต่างกันตามทิศทางการวาง แนวตั้งใช้ 8 8 10 12 14 แนวนอนใช้ 16 16 24 24 24 ซึ่งเป็นค่าของ layout ไม่ใช่ของชิ้นงาน และทุกค่ามีอยู่ในสเกลระยะห่างกลางอยู่แล้ว จึงให้ผูกกับสเกลกลางตรง ๆ แทนการสร้างตัวแปรซ้ำ",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ของที่เกี่ยวข้อง",
+          "sub": "เอกสารลูกของหน้านี้มี Card Token, Card Usage, Card Anatomy, Card Component Previews, Card Base Components และ Card Space รูปในการ์ดใช้กรอบสัดส่วนจากหน้า 10 Frame แท็กหมวดข่าวมาจากหน้า 21 Tags ส่วนการ์ดของระบบเอกสารสามใบถูกเอกสารทุกหน้าในไฟล์นี้หยิบไปใช้ และเอกสารประจำหน้าฝั่งเครื่องอยู่ที่ docs/27-card.md",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "11392:2080",
+      "name": "Card Token",
+      "title": "Card Token",
+      "subtitle": "ตารางจับคู่ชื่อใน Figma กับชื่อในโค้ด ของตัวแปรทั้ง 15 ตัว",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "พจนานุกรมกลางระหว่างคนออกแบบกับคนเขียนโค้ด สำหรับตัวแปรทั้ง 15 ตัวของหน้า 27 ทุกแถวบอกชื่อที่ใช้เรียกใน Figma ชื่อที่ใช้เรียกในโค้ด ค่าจริงที่ได้ และจุดที่ค่านั้นไปปรากฏบนหน้าจอ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "ค่าทุกตัวสร้างจากสูตรในไฟล์ tokens/scale/card.mjs ไฟล์เดียว ไม่มีค่าไหนพิมพ์มือ มุมโค้งเลือกหนึ่งขั้นจากสเกลกลาง ส่วนขนาดรูปเป็นลำดับเลขคณิตที่วัดจากไฟล์ออกแบบจริง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11392:2083",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ช่องไฟในการ์ดไม่อยู่ในตารางนี้ เพราะไม่ได้ทำเป็นตัวแปรของการ์ด ให้ผูกกับสเกลระยะห่างกลาง size/space/* แทน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11392:2083",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "ฝั่งออกแบบ",
+          "body": "ชื่อตัวแปรที่เห็นในแผง Figma ใช้ตอนผูกค่าให้ชิ้นงาน ห้ามพิมพ์ตัวเลขลงไปตรง ๆ และห้ามผูกจาก collection อื่นนอกจาก component"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "ฝั่งพัฒนา",
+          "body": "ชื่อตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ สร้างจาก tokens/scale/card.mjs ด้วยคำสั่ง npm run tokens:build ห้ามแก้ไฟล์ผลลัพธ์เอง"
+        },
+        {
+          "type": "h",
+          "text": "ตารางจับคู่ชื่อ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชื่อใน Figma",
+            "ชื่อในโค้ด",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "card/radius/top-left",
+              "--ntg-card-radius-top-left",
+              "4px",
+              "มุมโค้งบนซ้ายของการ์ดทุกใบ เลือกหนึ่งขั้นจากสเกลกลาง"
+            ],
+            [
+              "card/radius/top-right",
+              "--ntg-card-radius-top-right",
+              "4px",
+              "มุมโค้งบนขวา แยกสี่มุมเพราะ Figma ผูกตัวแปรทีละมุม"
+            ],
+            [
+              "card/radius/bottom-right",
+              "--ntg-card-radius-bottom-right",
+              "4px",
+              "มุมโค้งล่างขวา"
+            ],
+            [
+              "card/radius/bottom-left",
+              "--ntg-card-radius-bottom-left",
+              "4px",
+              "มุมโค้งล่างซ้าย"
+            ],
+            [
+              "card/radius/full",
+              "--ntg-card-radius-full",
+              "9999px",
+              "มุมโค้งเต็มสำหรับป้ายและตัวนับเวลาที่อยู่ในการ์ด"
+            ],
+            [
+              "card/image-width/xs",
+              "--ntg-card-image-width-xs",
+              "184px",
+              "ความกว้างรูปขนาด xs ค่าตั้งต้นของสูตร"
+            ],
+            [
+              "card/image-width/sm",
+              "--ntg-card-image-width-sm",
+              "288px",
+              "ความกว้างรูปขนาด sm"
+            ],
+            [
+              "card/image-width/md",
+              "--ntg-card-image-width-md",
+              "392px",
+              "ความกว้างรูปขนาด md ขนาดที่ใช้บ่อยที่สุด"
+            ],
+            [
+              "card/image-width/lg",
+              "--ntg-card-image-width-lg",
+              "496px",
+              "ความกว้างรูปขนาด lg"
+            ],
+            [
+              "card/image-width/xl",
+              "--ntg-card-image-width-xl",
+              "600px",
+              "ความกว้างรูปขนาด xl ขั้นใหญ่สุดหลังตัด 2xl และ 3xl ออก"
+            ],
+            [
+              "card/image-height/xs",
+              "--ntg-card-image-height-xs",
+              "104px",
+              "ความสูงรูปขนาด xs ค่าตั้งต้นของสูตร"
+            ],
+            [
+              "card/image-height/sm",
+              "--ntg-card-image-height-sm",
+              "162px",
+              "ความสูงรูปขนาด sm"
+            ],
+            [
+              "card/image-height/md",
+              "--ntg-card-image-height-md",
+              "220px",
+              "ความสูงรูปขนาด md"
+            ],
+            [
+              "card/image-height/lg",
+              "--ntg-card-image-height-lg",
+              "278px",
+              "ความสูงรูปขนาด lg"
+            ],
+            [
+              "card/image-height/xl",
+              "--ntg-card-image-height-xl",
+              "336px",
+              "ความสูงรูปขนาด xl"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไขและทำให้ตรงกัน",
+          "sub": "ห้ามแก้ค่าที่ปลายทางทั้งสองฝั่ง ให้แก้ที่สูตรใน tokens/scale/card.mjs แล้วสั่ง npm run tokens:build ฝั่ง Figma แก้ที่ตัวแปรในคอลเลกชัน component แล้วสั่ง npm run tokens:verify เพื่อตรวจว่าชื่อสองฝั่งยังตรงกัน ถ้าแก้ขนาดรูปจนสัดส่วนหลุดจาก 16 ต่อ 9 เกิน 3 เปอร์เซ็นต์ ด่านตรวจในไฟล์สูตรจะหยุดการประมวลผลทันที",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "11392:2834",
+      "name": "Card Usage",
+      "title": "Card Usage",
+      "subtitle": "เลือกตระกูลไหน ขนาดไหน และข้อควรระวังของเนื้อหา",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เลือกตระกูลไหน",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "สถานการณ์",
+            "ใช้การ์ดตัวไหน",
+            "เหตุผล"
+          ],
+          "rows": [
+            [
+              "รายการข่าวหน้าแรก ที่มีรูปใหญ่",
+              "การ์ดข่าวแนวตั้ง",
+              "รูปอยู่บนข้อความ ทำให้เรียงเป็นตารางหลายคอลัมน์ได้สวย"
+            ],
+            [
+              "รายการข่าวในคอลัมน์แคบ",
+              "การ์ดข่าวแนวนอน",
+              "รูปอยู่ซ้าย ข้อความอยู่ขวา กินความสูงน้อยกว่าเมื่อพื้นที่แนวตั้งจำกัด"
+            ],
+            [
+              "รายการข่าวท้ายบทความ",
+              "การ์ดรายการข่าว",
+              "รูปเล็กคงที่ 112 เน้นให้กวาดตาอ่านหัวข้อได้เร็ว"
+            ],
+            [
+              "รายการวิดีโอ",
+              "การ์ดรายการวิดีโอ",
+              "เหมือนการ์ดรายการข่าว แต่มีปุ่มเล่นทับบนรูป"
+            ],
+            [
+              "ข่าวเด่นที่ต้องการให้ภาพนำ",
+              "การ์ดตัวหนังสือบนรูป",
+              "ข้อความทับบนรูป ใช้เมื่อรูปสื่อความหมายได้ด้วยตัวเอง"
+            ],
+            [
+              "อันดับข่าวยอดนิยม",
+              "การ์ดอันดับ",
+              "มีตัวเลขอันดับเป็นเวกเตอร์ขนาดใหญ่ อ่านลำดับได้ทันที"
+            ],
+            [
+              "แกลเลอรีหรือเส้นเวลา",
+              "การ์ดรูป",
+              "มีแต่รูปกับป้าย ไม่มีกล่องข้อความ"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "เลือกขนาดไหน",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ขนาด",
+            "รูป",
+            "ใช้เมื่อไหร่"
+          ],
+          "rows": [
+            [
+              "xs",
+              "184 คูณ 104",
+              "รายการในแถบข้าง หรือที่ที่เหลือพื้นที่น้อย"
+            ],
+            [
+              "sm",
+              "288 คูณ 162",
+              "ตารางข่าวสามถึงสี่คอลัมน์"
+            ],
+            [
+              "md",
+              "392 คูณ 220",
+              "ขนาดที่ใช้บ่อยที่สุด ตารางข่าวสองถึงสามคอลัมน์"
+            ],
+            [
+              "lg",
+              "496 คูณ 278",
+              "ข่าวเด่นในคอลัมน์กว้าง"
+            ],
+            [
+              "xl",
+              "600 คูณ 336",
+              "ข่าวนำของหน้า ขั้นใหญ่สุดหลังตัด 2xl กับ 3xl ออกเมื่อ 2026-10-14"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ข้อควรระวังเรื่องเนื้อหา",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "เรื่อง",
+            "ข้อกำหนด"
+          ],
+          "rows": [
+            [
+              "ความยาวหัวข้อ",
+              "หัวข้อข่าวยาวไม่เท่ากันทุกใบ ต้องปล่อยให้กล่องข้อความหุ้มเนื้อหา ห้ามตรึงความสูง ถ้าต้องการให้ทุกใบสูงเท่ากันในแถวเดียว ให้จำกัดจำนวนบรรทัดที่ระดับโค้ดแทน"
+            ],
+            [
+              "สัดส่วนรูป",
+              "ตรึงสัดส่วนไว้เสมอ ใช้กรอบสัดส่วนจากหน้า 10 Frame ห้ามยืดรูปให้เต็มช่อง เพราะภาพข่าวจะบิด"
+            ],
+            [
+              "รูปที่ไม่มี",
+              "ถ้าข่าวไม่มีรูป ให้ใช้พื้นที่วางรูปที่ผูกกับ color/background/general/quaternary ไม่ใช่ปล่อยว่าง"
+            ],
+            [
+              "แท็กหมวดข่าว",
+              "ใช้ชุดจากหน้า 21 Tags ห้ามวาดเอง"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11392:3191",
+      "name": "Card Anatomy",
+      "title": "Card Anatomy",
+      "subtitle": "โครงของการ์ด สูตรขนาดรูป และชิ้นส่วนภายใน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "โครงของการ์ด",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ส่วน",
+            "หน้าที่",
+            "หมายเหตุ"
+          ],
+          "rows": [
+            [
+              "กรอบรูป",
+              "ตรึงสัดส่วนของภาพข่าว",
+              "ใช้กรอบสัดส่วนจากหน้า 10 Frame พื้นที่ว่างผูกกับตัวแปรพื้นหลัง ไม่ใช่สีดิบ"
+            ],
+            [
+              "กล่องข้อความ",
+              "เก็บหมวด หัวข้อ คำโปรย และเวลา",
+              "หุ้มเนื้อหาเสมอ ช่องไฟในกล่องคือ 4 4 6 6 8 ไล่ตามขนาด"
+            ],
+            [
+              "ป้ายทับบนรูป",
+              "บอกอันดับหรือสถานะของภาพ",
+              "ป้ายอันดับขนาด 36 คูณ 58 ขยายจาก 24 คูณ 32 เมื่อ 2026-10-14 เพื่อให้ใส่ preset ตัวอักษรของระบบได้"
+            ],
+            [
+              "ตัวเลขอันดับ",
+              "บอกลำดับความนิยม",
+              "เป็นเวกเตอร์ ไม่ใช่ข้อความ ความกว้างจึงต่างกันตามหน้าตาของตัวเลข"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "สูตรขนาดรูป",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ขั้น",
+            "กว้าง",
+            "สูง",
+            "สัดส่วน"
+          ],
+          "rows": [
+            [
+              "xs",
+              "184",
+              "104",
+              "1.769 ต่อ 1"
+            ],
+            [
+              "sm",
+              "288",
+              "162",
+              "1.778 ต่อ 1 ซึ่งคือ 16 ต่อ 9 พอดี"
+            ],
+            [
+              "md",
+              "392",
+              "220",
+              "1.782 ต่อ 1"
+            ],
+            [
+              "lg",
+              "496",
+              "278",
+              "1.784 ต่อ 1"
+            ],
+            [
+              "xl",
+              "600",
+              "336",
+              "1.786 ต่อ 1"
+            ],
+            [
+              "สูตร",
+              "ตั้งต้น 184 เพิ่มขั้นละ 104",
+              "ตั้งต้น 104 เพิ่มขั้นละ 58",
+              "ด่านตรวจคุมให้คลาดจาก 16 ต่อ 9 ไม่เกิน 3 เปอร์เซ็นต์"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ชิ้นส่วนภายใน",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ชิ้นส่วน",
+            "แบบ",
+            "ใช้ที่ไหน"
+          ],
+          "rows": [
+            [
+              "_ranking-number",
+              "20",
+              "ตัวเลขอันดับ 2 ขนาด 10 ตัวเลข ใช้ในการ์ดอันดับ ยุบจาก component แยก 20 ตัวเมื่อ 2026-10-14"
+            ],
+            [
+              "_timeline-year-label",
+              "1",
+              "ป้ายปีในการ์ดเส้นเวลา"
+            ],
+            [
+              "_timeline-divider",
+              "1",
+              "เส้นคั่นระหว่างเหตุการณ์ในเส้นเวลา"
+            ],
+            [
+              "_timeline-event-item",
+              "2",
+              "รายการเหตุการณ์ในเส้นเวลา มีสถานะปกติกับชี้"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11392:3512",
+      "name": "Card Component Previews",
+      "title": "Card Component Previews",
+      "subtitle": "การ์ดจริงของหน้า 13 ชุด",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "horizontal-news-card",
+          "sub": "การ์ดข่าวแนวนอน 5 ขนาด รูปซ้าย ข้อความขวา ใช้เมื่อพื้นที่แนวตั้งจำกัด",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "horizontal-news-card",
+          "caption": "",
+          "width": 1064,
+          "height": 1468,
+          "items": [
+            {
+              "props": {
+                "Subheading": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Heading": true,
+                "Supporting text": true,
+                "Tag on image": true,
+                "Size": "xs"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 24,
+              "width": 496,
+              "height": 104
+            },
+            {
+              "props": {
+                "Subheading": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Heading": true,
+                "Supporting text": true,
+                "Tag on image": true,
+                "Size": "sm"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 208,
+              "width": 704,
+              "height": 162
+            },
+            {
+              "props": {
+                "Subheading": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Heading": true,
+                "Supporting text": true,
+                "Tag on image": true,
+                "Size": "md"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 450,
+              "width": 808,
+              "height": 220
+            },
+            {
+              "props": {
+                "Subheading": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Heading": true,
+                "Supporting text": true,
+                "Tag on image": true,
+                "Size": "lg"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 750,
+              "width": 912,
+              "height": 278
+            },
+            {
+              "props": {
+                "Subheading": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Heading": true,
+                "Supporting text": true,
+                "Tag on image": true,
+                "Size": "xl"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 1108,
+              "width": 1016,
+              "height": 336
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "vertical-news-card",
+          "sub": "การ์ดข่าวแนวตั้ง 5 ขนาด รูปบน ข้อความล่าง ใช้เรียงเป็นตารางหลายคอลัมน์",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "vertical-news-card",
+          "caption": "",
+          "width": 648,
+          "height": 2088,
+          "items": [
+            {
+              "props": {
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Supporting text": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Subheading": "Subheading",
+                "Supheading": true,
+                "Heading": true,
+                "Size": "xs"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 24,
+              "width": 184,
+              "height": 186
+            },
+            {
+              "props": {
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Supporting text": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Subheading": "Subheading",
+                "Supheading": true,
+                "Heading": true,
+                "Size": "sm"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 290,
+              "width": 288,
+              "height": 296
+            },
+            {
+              "props": {
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Supporting text": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Subheading": "Subheading",
+                "Supheading": true,
+                "Heading": true,
+                "Size": "md"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 666,
+              "width": 392,
+              "height": 340
+            },
+            {
+              "props": {
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Supporting text": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Subheading": "Subheading",
+                "Supheading": true,
+                "Heading": true,
+                "Size": "lg"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 1086,
+              "width": 496,
+              "height": 408
+            },
+            {
+              "props": {
+                "Supporting text value": "This is supporting text This is supporting text This is supporting text.",
+                "Supporting text": true,
+                "Heading value": "This is heading. heading heading heading.",
+                "Subheading": "Subheading",
+                "Supheading": true,
+                "Heading": true,
+                "Size": "xl"
+              },
+              "image": "7f12ea1300",
+              "x": 24,
+              "y": 1574,
+              "width": 600,
+              "height": 490
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "news-list-card",
+          "sub": "การ์ดรายการข่าว รูปเล็กคงที่ 112 มีสถานะปกติกับชี้ และเลือกวางรูปท้ายแถวได้",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "news-list-card",
+          "caption": "",
+          "width": 377,
+          "height": 528,
+          "items": [
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "Image Trailing": "False",
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 16,
+              "width": 345,
+              "height": 112
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "Image Trailing": "False",
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 144,
+              "width": 345,
+              "height": 112
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "Image Trailing": "True",
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 272,
+              "width": 345,
+              "height": 112
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "Image Trailing": "True",
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 400,
+              "width": 345,
+              "height": 112
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "video-list-card",
+          "sub": "การ์ดรายการวิดีโอ เหมือนรายการข่าวแต่มีปุ่มเล่นทับบนรูป",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "video-list-card",
+          "caption": "",
+          "width": 377,
+          "height": 528,
+          "items": [
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "More Button": false,
+                "Play": "False",
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 16,
+              "width": 345,
+              "height": 112
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "More Button": false,
+                "Play": "False",
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 144,
+              "width": 345,
+              "height": 112
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "More Button": false,
+                "Play": "True",
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 272,
+              "width": 345,
+              "height": 112
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup",
+                "More Button": false,
+                "Play": "True",
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 400,
+              "width": 345,
+              "height": 112
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "text-on-image-square-card",
+          "sub": "การ์ดตัวหนังสือบนรูป สัดส่วนจัตุรัส",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "text-on-image-square-card",
+          "caption": "",
+          "width": 176,
+          "height": 340,
+          "items": [
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้แทนข้อความ Mock up",
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 16,
+              "width": 144,
+              "height": 146
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้แทนข้อความ Mock up",
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 178,
+              "width": 144,
+              "height": 146
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "text-on-image-wide-card",
+          "sub": "การ์ดตัวหนังสือบนรูป สัดส่วนกว้าง",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "text-on-image-wide-card",
+          "caption": "",
+          "width": 332,
+          "height": 340,
+          "items": [
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 16,
+              "width": 300,
+              "height": 146
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 178,
+              "width": 300,
+              "height": 146
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ranking-item-card",
+          "sub": "การ์ดอันดับรายตัว มีตัวเลขอันดับนำหน้าหัวข้อ",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "ranking-item-card",
+          "caption": "",
+          "width": 340,
+          "height": 300,
+          "items": [
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "SupText": true,
+                "State": "Default"
+              },
+              "x": 16,
+              "y": 16,
+              "width": 308,
+              "height": 126
+            },
+            {
+              "props": {
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "SupText": true,
+                "State": "Hover"
+              },
+              "x": 16,
+              "y": 158,
+              "width": 308,
+              "height": 126
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ranking-list-card",
+          "sub": "การ์ดอันดับแบบรายการ รวมหลายอันดับไว้ในใบเดียว",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": true,
+          "items": [
+            {
+              "type": "component",
+              "set": "ranking-item-card",
+              "props": {
+                "SupText": true,
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Default"
+              },
+              "label": "",
+              "width": 300,
+              "height": 126,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "ranking-item-card",
+              "props": {
+                "SupText": true,
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Default"
+              },
+              "label": "",
+              "width": 300,
+              "height": 126,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "ranking-item-card",
+              "props": {
+                "SupText": true,
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Default"
+              },
+              "label": "",
+              "width": 300,
+              "height": 126,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "ranking-item-card",
+              "props": {
+                "SupText": true,
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Default"
+              },
+              "label": "",
+              "width": 300,
+              "height": 126,
+              "vertical": true
+            },
+            {
+              "type": "component",
+              "set": "ranking-item-card",
+              "props": {
+                "SupText": true,
+                "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
+                "State": "Default"
+              },
+              "label": "",
+              "width": 300,
+              "height": 126,
+              "vertical": true
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "timeline-image-card",
+          "sub": "การ์ดรูปแบบเส้นเวลา มีป้ายปีและเส้นคั่น",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "timeline-image-card",
+          "caption": "",
+          "width": 332,
+          "height": 468,
+          "items": [
+            {
+              "props": {
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 16,
+              "width": 300,
+              "height": 210
+            },
+            {
+              "props": {
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 242,
+              "width": 300,
+              "height": 210
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "wide-image-card",
+          "sub": "การ์ดรูปสัดส่วนกว้าง มีป้ายอันดับทับบนรูป",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "wide-image-card",
+          "caption": "",
+          "width": 332,
+          "height": 384,
+          "items": [
+            {
+              "props": {
+                "Ranking tag": true,
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 16,
+              "width": 300,
+              "height": 168
+            },
+            {
+              "props": {
+                "Ranking tag": true,
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 200,
+              "width": 300,
+              "height": 168
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "portrait-image-card",
+          "sub": "การ์ดรูปสัดส่วนตั้ง มีป้ายอันดับทับบนรูป",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "portrait-image-card",
+          "caption": "",
+          "width": 448,
+          "height": 332,
+          "items": [
+            {
+              "props": {
+                "Ranking Tag": true,
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "x": 16,
+              "y": 16,
+              "width": 200,
+              "height": 300
+            },
+            {
+              "props": {
+                "Ranking Tag": true,
+                "State": "Hover"
+              },
+              "image": "7f12ea1300",
+              "x": 232,
+              "y": 16,
+              "width": 200,
+              "height": 300
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "wide-ranking-image-card",
+          "sub": "การ์ดรูปกว้างแบบติดอันดับ",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "_ranking-number",
+              "props": {
+                "size": "md",
+                "number": "1"
+              },
+              "label": "",
+              "width": 81,
+              "height": 152
+            },
+            {
+              "type": "component",
+              "set": "wide-image-card",
+              "props": {
+                "Ranking tag": true,
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 300,
+              "height": 168
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "portrait-ranking-image-card",
+          "sub": "การ์ดรูปตั้งแบบติดอันดับ",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "_ranking-number",
+              "props": {
+                "size": "md",
+                "number": "1"
+              },
+              "label": "",
+              "width": 81,
+              "height": 152
+            },
+            {
+              "type": "component",
+              "set": "portrait-image-card",
+              "props": {
+                "Ranking Tag": true,
+                "State": "Default"
+              },
+              "image": "7f12ea1300",
+              "label": "",
+              "width": 200,
+              "height": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11392:3795",
+      "name": "Card Base Components",
+      "title": "Card Base Components",
+      "subtitle": "ชิ้นส่วนภายใน 4 ชุด บวกการ์ดของระบบเอกสาร 3 ใบ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "_ranking-number",
+          "sub": "ตัวเลขอันดับแบบเวกเตอร์ 2 ขนาด 10 ตัวเลข ชิ้นส่วนภายใน ไม่ส่งออกไลบรารี",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "_ranking-number",
+          "caption": "",
+          "width": 403,
+          "height": 1800,
+          "items": [
+            {
+              "props": {
+                "size": "md",
+                "number": "1"
+              },
+              "x": 32,
+              "y": 32,
+              "width": 81,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "2"
+              },
+              "x": 32,
+              "y": 208,
+              "width": 111,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "3"
+              },
+              "x": 32,
+              "y": 384,
+              "width": 107,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "4"
+              },
+              "x": 32,
+              "y": 560,
+              "width": 128,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "5"
+              },
+              "x": 32,
+              "y": 736,
+              "width": 109,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "6"
+              },
+              "x": 32,
+              "y": 912,
+              "width": 117,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "7"
+              },
+              "x": 32,
+              "y": 1088,
+              "width": 108,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "8"
+              },
+              "x": 32,
+              "y": 1264,
+              "width": 116,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "9"
+              },
+              "x": 32,
+              "y": 1440,
+              "width": 117,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "md",
+                "number": "10"
+              },
+              "x": 32,
+              "y": 1616,
+              "width": 197,
+              "height": 152
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "1"
+              },
+              "x": 277,
+              "y": 32,
+              "width": 39,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "2"
+              },
+              "x": 277,
+              "y": 128,
+              "width": 53,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "3"
+              },
+              "x": 277,
+              "y": 224,
+              "width": 51,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "4"
+              },
+              "x": 277,
+              "y": 320,
+              "width": 61,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "5"
+              },
+              "x": 277,
+              "y": 416,
+              "width": 52,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "6"
+              },
+              "x": 277,
+              "y": 512,
+              "width": 56,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "7"
+              },
+              "x": 277,
+              "y": 608,
+              "width": 51,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "8"
+              },
+              "x": 277,
+              "y": 704,
+              "width": 55,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "9"
+              },
+              "x": 277,
+              "y": 800,
+              "width": 56,
+              "height": 72
+            },
+            {
+              "props": {
+                "size": "sm",
+                "number": "10"
+              },
+              "x": 277,
+              "y": 896,
+              "width": 94,
+              "height": 72
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "_timeline-year-label",
+          "sub": "ป้ายปีในการ์ดเส้นเวลา ชิ้นส่วนภายใน",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "_timeline-divider",
+          "sub": "เส้นคั่นระหว่างเหตุการณ์ในเส้นเวลา ชิ้นส่วนภายใน",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "_timeline-event-item",
+          "sub": "รายการเหตุการณ์ในเส้นเวลา มีสถานะปกติกับชี้ ชิ้นส่วนภายใน",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "_timeline-event-item",
+          "caption": "",
+          "width": 308,
+          "height": 90,
+          "items": [
+            {
+              "props": {
+                "State": "Default"
+              },
+              "x": 16,
+              "y": 10,
+              "width": 276,
+              "height": 30
+            },
+            {
+              "props": {
+                "State": "Hover"
+              },
+              "x": 16,
+              "y": 50,
+              "width": 276,
+              "height": 30
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "do-info-card",
+          "sub": "การ์ดสิ่งที่ควรทำ ใช้ในเอกสารทุกหน้าของไฟล์นี้ เปลี่ยนชื่อจาก info-card / do เมื่อ 2026-10-14",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "Do",
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "title-sm"
+        },
+        {
+          "type": "p",
+          "text": "สิ่งที่ควรทำ",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "dont-info-card",
+          "sub": "การ์ดสิ่งที่ไม่ควรทำ ใช้ในเอกสารทุกหน้าของไฟล์นี้",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "Don’t",
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "title-sm"
+        },
+        {
+          "type": "p",
+          "text": "สิ่งที่ควรเลี่ยง",
+          "textStyle": "body-sm"
+        },
+        {
+          "type": "h",
+          "text": "how-to-read-info-card",
+          "sub": "การ์ดวิธีอ่าน ใช้ในเอกสารทุกหน้าของไฟล์นี้ เป็นตัวที่ถูกใช้มากที่สุดคือ 57 จุด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "หัวการ์ด",
+          "color": "--ntg-color-text-general-heading",
+          "textStyle": "title-sm"
+        },
+        {
+          "type": "p",
+          "text": "เนื้อหาการ์ด อธิบายสั้น ๆ",
+          "textStyle": "body-sm"
+        }
+      ]
+    },
+    {
+      "id": "11392:3953",
+      "name": "Card Space",
+      "title": "Card Space",
+      "subtitle": "สูตรขนาดรูป ช่องไฟ และด่านตรวจของหน้า 27",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สูตรขนาดรูป",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "ค่าตั้งต้น",
+            "เพิ่มขึ้นต่อขั้น",
+            "ได้ค่าอะไรบ้าง"
+          ],
+          "rows": [
+            [
+              "ความกว้างรูป",
+              "184",
+              "104",
+              "xs 184, sm 288, md 392, lg 496, xl 600"
+            ],
+            [
+              "ความสูงรูป",
+              "104",
+              "58",
+              "xs 104, sm 162, md 220, lg 278, xl 336"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ช่องไฟที่ผูกกับสเกลกลาง",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ช่องไฟ",
+            "ค่าทั้ง 5 ขั้น",
+            "หมายเหตุ"
+          ],
+          "rows": [
+            [
+              "ระหว่างรูปกับข้อความ แนวตั้ง",
+              "8, 8, 10, 12, 14",
+              "ขั้น xs กับ sm ใช้ค่าเดียวกัน เพราะการ์ดเล็กสองขั้นแรกต้องการช่องไฟแน่นเท่ากัน"
+            ],
+            [
+              "ระหว่างรูปกับข้อความ แนวนอน",
+              "16, 16, 24, 24, 24",
+              "แนวนอนต้องการช่องไฟกว้างกว่า เพราะรูปกับข้อความอยู่คนละฝั่ง"
+            ],
+            [
+              "ภายในกล่องข้อความ",
+              "4, 4, 6, 6, 8",
+              "ใช้ค่าเดียวกันทั้งแนวตั้งและแนวนอน"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "มุมโค้ง",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ค่า",
+            "ขนาด",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "มุมโค้งการ์ด",
+              "4px",
+              "ทั้งสี่มุมของการ์ดทุกใบ เลือกหนึ่งขั้นจากสเกลกลาง ของเดิมมี 12 จุดใช้ 5px ซึ่งหลุดสเกล ปรับเข้า 4 ทั้งหมดเมื่อ 2026-08-20"
+            ],
+            [
+              "มุมโค้งเต็ม",
+              "9999px",
+              "ป้ายและตัวนับเวลาที่อยู่ในการ์ด"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ด่านตรวจ และของที่ไม่มีตัวแปรโดยตั้งใจ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ข้อ",
+            "รายละเอียด"
+          ],
+          "rows": [
+            [
+              "ด่านที่ 1 สัดส่วนรูป",
+              "ทุกขั้นต้องได้สัดส่วนที่คลาดจาก 16 ต่อ 9 ไม่เกิน 3 เปอร์เซ็นต์ ถ้าใครแก้ค่าตั้งต้นหรือค่าที่เพิ่มต่อขั้นจนหลุด การประมวลผลจะหยุดทันที"
+            ],
+            [
+              "ด่านที่ 2 จำนวนเต็ม",
+              "ความกว้างและความสูงรูปต้องเป็นจำนวนเต็มทุกขั้น"
+            ],
+            [
+              "ด่านที่ 3 บวกกลับได้",
+              "ความกว้างและความสูงของทุกขั้นต้องเท่ากับ ค่าตั้งต้น บวก ลำดับขั้น คูณ ค่าที่เพิ่มต่อขั้น เป๊ะ"
+            ],
+            [
+              "ไม่มีตัวแปร ช่องไฟในการ์ด",
+              "ช่องไฟต่างกันตามทิศทางการวาง ซึ่งเป็นค่าของ layout ไม่ใช่ของชิ้นงาน และทุกค่ามีอยู่ในสเกลระยะห่างกลางแล้ว จึงให้ผูกกับ size/space/* ตรง ๆ แทนการสร้างตัวแปรซ้ำของการ์ดเอง"
+            ],
+            [
+              "ไม่มีตัวแปร ความกว้างการ์ด",
+              "ความกว้างทั้งใบมาจากรูปบวกช่องไฟบวกกล่องข้อความ ซึ่งกล่องข้อความยืดตามพื้นที่ที่เหลือ จึงเป็นค่าของ layout"
+            ],
+            [
+              "ไม่มีตัวแปร ความสูงกล่องข้อความ",
+              "หุ้มเนื้อหาเสมอ เพราะหัวข้อข่าวยาวไม่เท่ากันทุกใบ การตรึงความสูงจะทำให้หัวข้อถูกตัดหาย"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
