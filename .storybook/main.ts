@@ -8,6 +8,7 @@ const config: StorybookConfig = {
   stories: [
     '../foundations/**/*.stories.@(ts|tsx)',
     '../molecules/**/*.stories.@(ts|tsx)',
+    '../organisms/**/*.stories.@(ts|tsx)',
     '../components/**/*.stories.@(ts|tsx)',
     '../prototype/**/*.stories.@(ts|tsx)',
   ],

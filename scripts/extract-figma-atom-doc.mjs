@@ -3,6 +3,7 @@
  * ดึงเอกสารทุกใบของหน้าชั้น Atoms (Identity) ในไฟล์ออกแบบ Figma ผ่าน REST API
  * แล้วเก็บเป็น foundations/<Folder>/<key>-doc.json ให้หน้า Atoms (Identity)/<NN> <Page> ใน Storybook อ่าน
  * หน้าชั้น Molecules เก็บที่ molecules/<Folder>/ ให้หน้า Molecules (Element)/<NN> <Page> อ่าน
+ * หน้าชั้น Organisms เก็บที่ organisms/<Folder>/ ให้หน้า Organisms (Component)/<NN> <Page> อ่าน
  *
  * ทำไมต้องมี (ผู้ใช้สั่ง 2026-10-28 ให้ Storybook มีหน้า Atoms ตามไฟล์ออกแบบ)
  *   เอกสารในไฟล์ออกแบบมีตารางหลายร้อยแถวพร้อมคำอธิบายที่มีแค่ใน Figma
@@ -67,6 +68,8 @@ const PAGES = {
   tags: { page: '21 Tags', folder: 'Tags', root: 'molecules', skip: [], components: ['semi-rounded-tag', 'pill-tag', 'number-tag', 'pill-number-tag', 'image-tag', 'pill-image-tag', 'checkbox-tag', 'pill-checkbox-tag', 'indicator-tag', 'pill-indicator-tag', 'icon-tag', 'circular-icon-tag', 'link-tag', 'link-icon-tag'], families: { 'Neutral Tags': 'neutral', 'Brand Tags': 'brand', 'Red Tags': 'red', 'Green Tags': 'green', 'Yellow Tags': 'yellow', 'Cyan Tags': 'cyan', 'Blue Tags': 'blue', 'Bamboo Tags': 'bamboo', 'Purple Tags': 'purple', 'Pink Tags': 'pink', 'Brown Tags': 'brown' } },
   // ชุด do-info-card dont-info-card how-to-read-info-card ในเอกสาร Base Components เป็นการ์ดของเอกสาร ไม่ใช่การ์ดข่าว จึงไม่อ่านเป็นตัวอย่าง
   card: { page: '25 Card', folder: 'Card', root: 'molecules', skip: [], components: ['vertical-news-card', 'horizontal-news-card', 'news-list-card', 'video-list-card', 'text-on-image-square-card', 'text-on-image-wide-card', 'ranking-item-card', 'ranking-list-card', 'timeline-image-card', 'wide-image-card', 'portrait-image-card', 'wide-ranking-image-card', 'portrait-ranking-image-card', '_ranking-number', '_timeline-year-label', '_timeline-divider', '_timeline-event-item'] },
+  // ชั้น Organisms เก็บที่ organisms/ (ผู้ใช้อนุมัติ 2026-11-10) ให้หน้า Organisms (Component)/<NN> <Page> อ่าน
+  dropdowns: { page: '27 Dropdowns', folder: 'Dropdowns', root: 'organisms', skip: [], components: ['dropdown', 'dropdown-menu', '_dropdown-option', '_dropdown-group-header'] },
   dividers: { page: '26 Dividers', folder: 'Dividers', root: 'molecules', skip: [], components: ['horizontal-divider', 'vertical-divider'] },
   pagination: { page: '24 Pagination', folder: 'Pagination', root: 'molecules', skip: [], components: ['pagination', '_pagination-number-button', '_pagination-ellipsis'] },
   progress: { page: '23 Progress Bars', folder: 'ProgressBars', root: 'molecules', skip: [], components: ['progress-bar', 'circular-progress-bar', 'semi-circular-progress-bar'] },
