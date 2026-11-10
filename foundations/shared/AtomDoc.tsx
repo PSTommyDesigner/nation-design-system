@@ -108,6 +108,9 @@ const Sample = ({ set, props, image }: { set: string; props: SampleProps; image?
   if (!render) return <span className={`ntg-typography-meta-caption ${styles.warn}`}>ยังไม่มี component ในโค้ดของชุด {set}</span>
   return <>{render(props, image ? assetUrl(urls, image) : undefined)}</>
 }
+// กรอบของตัวอย่างกว้างเท่าชิ้นงานในไฟล์ออกแบบ ส่วนความสูงส่งเป็นตัวแปร --sample-h ไว้ให้ตัวอย่างที่ยืดตามกรอบแม่ใช้
+// เช่นเส้นแบ่งแนวตั้งหน้า 26 ที่สูง 100% ของกรอบ ตัวแปรนี้ไม่บังคับความสูงของกรอบ หน้าอื่นจึงไม่เปลี่ยน
+const sampleSize = (it: { width: number; height?: number }) => ({ width: it.width, ...(it.height ? { '--sample-h': `${it.height}px` } : {}) }) as CSSProperties
 // แถวตัวอย่าง ชิ้นที่ไม่มีตัววาดรวมเป็นข้อความเดียวท้ายแถว ไม่ขึ้นทีละชิ้น
 // เพราะช่องของชิ้นย่อยแคบมาก (ลูกศร 6 หัวจับ 16 ปุ่มเลขหน้า 24) ข้อความทีละช่องจึงซ้อนกันอ่านไม่ออก (หน้า 17 20 24 เจอ 2026-11-06)
 const ComponentsRow = ({ block }: { block: Extract<Block, { type: 'components' }> }) => {
@@ -122,7 +125,7 @@ const ComponentsRow = ({ block }: { block: Extract<Block, { type: 'components' }
           {it.label && <span className={`ntg-typography-meta-caption ${styles.logoLabel}`}>{clean(it.label)}</span>}
           {it.group
             ? <span className={styles.sampleGroup}>{it.group.map((g, j) => <Sample key={j} set={g.set} props={g.props} image={g.image} />)}</span>
-            : <span className={styles.sampleBox} style={{ width: it.width }}><Sample set={it.set} props={it.props} image={it.image} /></span>}
+            : <span className={styles.sampleBox} style={sampleSize(it)}><Sample set={it.set} props={it.props} image={it.image} /></span>}
         </div>
       ))}
       {missing.length > 0 && (
@@ -148,7 +151,7 @@ const VariantSetView = ({ block: b }: { block: Extract<Block, { type: 'variantSe
         ? (
           <div className={styles.variantSet} style={{ width: b.width, height: b.height }}>
             {b.items.map((it, i) => (
-              <span key={i} className={styles.variantItem} style={{ left: it.x, top: it.y, width: it.width }}>
+              <span key={i} className={styles.variantItem} style={{ left: it.x, top: it.y, ...sampleSize(it) }}>
                 <Sample set={b.set} props={it.props} image={it.image} />
               </span>
             ))}
@@ -368,8 +371,8 @@ const BlockView = ({ block, index }: { block: Block; index: number }) => {
         ? <h3 className={`ntg-typography-section-heading-sm ${styles.heading}`}>{block.text}</h3>
         : <p className={`ntg-typography-${block.textStyle ?? 'body-xl'} ${styles.paragraph}`} style={block.color ? { color: `var(${block.color})` } : undefined}>{clean(block.text)}</p>
     case 'card':
-      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <span key={i} className={styles.sampleBox} style={{ width: it.width }}><Sample set={it.set} props={it.props} image={it.image} /></span>)}</Do>
-      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <span key={i} className={styles.sampleBox} style={{ width: it.width }}><Sample set={it.set} props={it.props} image={it.image} /></span>)}</Dont>
+      if (block.kind === 'do') return <Do text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <span key={i} className={styles.sampleBox} style={sampleSize(it)}><Sample set={it.set} props={it.props} image={it.image} /></span>)}</Do>
+      if (block.kind === 'dont') return <Dont text={clean(block.body)}>{block.effects?.length ? <EffectRow items={block.effects} /> : null}{block.logos?.map((it, i) => <LogoImage key={i} item={it} />)}{block.components?.map((it, i) => <span key={i} className={styles.sampleBox} style={sampleSize(it)}><Sample set={it.set} props={it.props} image={it.image} /></span>)}</Dont>
       return (
         <div className="ntg-docs-card">
           <span className="ntg-typography-title-sm">{clean(block.title)}</span>
