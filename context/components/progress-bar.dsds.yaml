@@ -159,7 +159,7 @@ sections:
         definition: >-
           A div that is always 100% of the parent width. With labelPosition right it is a row, the track takes the rest of
           the width, and the gap to the number is --ntg-progress-bar-hz-gap-<size> (8 to 12). With labelPosition bottom it
-          is a column, the number sits under the track at the right end, and the gap is --ntg-progress-bar-vc-gap-<size>
+          is a column, the number sits under the track at the left end, and the gap is --ntg-progress-bar-vc-gap-<size>
           (2 to 6). The vertical gap is smaller because the line height of the number already holds space.
       - term: Track
         definition: >-
@@ -240,7 +240,7 @@ traits:
       - id: right
         description: Right of the bar. The bar takes the rest of the width. The default.
       - id: bottom
-        description: Under the bar at the right end. For a space so narrow the bar would be too short.
+        description: Under the bar at the left end. For a space so narrow the bar would be too short.
   - traitType: variant
     kind: boolean
     id: showLabel

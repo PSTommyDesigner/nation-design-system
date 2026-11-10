@@ -63,7 +63,7 @@ export interface ProgressBarProps extends ProgressCommonProps {
   /**
    * ตำแหน่งป้ายตัวเลข ค่าเริ่มต้น `right`
    * `right` ป้ายอยู่ขวาของแถบ แถบกินพื้นที่ที่เหลือ
-   * `bottom` ป้ายอยู่ใต้แถบชิดขวา ใช้เมื่อพื้นที่แนวนอนแคบจนแถบสั้นเกินไป
+   * `bottom` ป้ายอยู่ใต้แถบชิดซ้าย ใช้เมื่อพื้นที่แนวนอนแคบจนแถบสั้นเกินไป
    */
   labelPosition?: ProgressLabelPosition;
 }
