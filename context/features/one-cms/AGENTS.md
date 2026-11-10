@@ -40,7 +40,7 @@
 - NEEDS CLARIFICATION: which of the three sources sets the rank order, or can the user choose the source
 - NEEDS CLARIFICATION: the earlier rule asked for today and the day before. The approved design shows one date chosen in the date range field. Is that enough, or is a quick switch to the day before still needed
 - Number of news items created MUST have a month filter and a chart type filter by day, week, month and year (bordered `Dropdown` md, not the underline field in the design), and two number cards: news created and views
-- Number of news items created MUST have a bar chart at full width: news created and views per day of the month, with two y axes. The chart is a new ntgds component, built in its own session since 2026-10-28. Until it exists, the page shows a dashed placeholder box of the same width
+- Number of news items created MUST have the ntgds `BarChart` at full width: news created and views per day of the month, with two y axes. News created is the bars on the right axis and views is the line on the left axis
 - Reporter statistics MUST be a `Table` with these columns: number, reporter (name and desk), total, published, not published yet, last update. Every column except number sorts. Columns follow the Table alignment rule: the number column ("ที่") uses variant index (centered), and total, published and not published yet are counts, not money, so they use variant number (aligned to the start)
 - Column headers MUST be in Thai (see Content). The design has them in English
 - Reporter statistics MUST show, per reporter, how many news items they created, how many are published and how many are not published yet
@@ -60,7 +60,7 @@
 - Dashboard: Button pill sm (header menu, brand primary for the current page, neutral tertiary for the rest), Avatar md, TextField md, Tag pill lg neutral, LinkButton brand gray xs, Dropdown md, Table, Tabs segmented sm, Pagination md, BarChart, Modal md and lg (beta), IconButton neutral tertiary xs, AvatarLabel lg, Tabs underline md, Card list
 - Built inside the story from tokens because the system doesn't have them: the rank number in a circle (32, the size of Avatar sm) and the number card (border, dot and number)
 - NEEDS CLARIFICATION: should the rank number and the number card become ntgds components
-- Chart: decided 2026-10-28 that it is a new ntgds component, not a one-off. It is being built in its own session. The dot colors on the number cards (`color-foreground-brand-primary` and `color-utility-u-blue-200`, as bound in the design) move to the chart's tokens once it exists
+- Chart: the ntgds `BarChart` from page 29 Chart (decided 2026-10-28 to be a system component, not a one-off). The dots on the number cards use the chart's tokens (`chart-color-series-1` for news created, `chart-color-line` with `chart-color-point-fill` for views) so they match the chart. The design file still binds `color-foreground-brand-primary` and `color-utility-u-blue-200`
 
 ## Content
 - Thai copy, with Buddhist Era years in dates
