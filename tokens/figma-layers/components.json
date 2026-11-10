@@ -342,9 +342,9 @@
   "modal": {
     "page": "30 Modal",
     "depth": 3,
-    "reference": "modal",
+    "reference": "Modal Component Previews",
     "families": [
-      "modal"
+      "Modal Component Previews"
     ],
     "sets": [
       "modal"

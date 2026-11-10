@@ -1,7 +1,7 @@
 {
- "capturedAt": "2026-10-28",
+ "capturedAt": "2026-11-10",
  "page": "30 Modal",
- "reference": "modal",
+ "reference": "Modal Component Previews",
  "sets": {
   "modal": {
    "defs": {
@@ -1166,7 +1166,7 @@
     }
    },
    "colors": {
-    "modal": {
+    "Modal Component Previews": {
      "header=true": 0,
      "header=false": 1
     }

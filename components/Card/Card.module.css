@@ -1,7 +1,7 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/Card/Card.base.css
  *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 25 Card แล้วรัน  npm run figma:layers -- card  และ  npm run css:generate -- card
- *   spec: tokens/figma-layers/card.json (ดึง 2026-10-26)
+ *   spec: tokens/figma-layers/card.json (ดึง 2026-11-10)
  */
 
 /*

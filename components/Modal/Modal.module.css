@@ -1,7 +1,7 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/Modal/Modal.base.css
  *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 30 Modal แล้วรัน  npm run figma:layers -- modal  และ  npm run css:generate -- modal
- *   spec: tokens/figma-layers/modal.json (ดึง 2026-10-28)
+ *   spec: tokens/figma-layers/modal.json (ดึง 2026-11-10)
  */
 
 /*
