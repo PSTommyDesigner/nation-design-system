@@ -121,6 +121,8 @@ a.root { cursor: pointer; }
   align-self: stretch;
 }
 .list .body {
+  /* กรอบ Content ในไฟล์ออกแบบเรียงแนวตั้งแบบ space-between พาดหัวอยู่บน วันที่ชิดล่างของการ์ด */
+  justify-content: space-between;
   gap: var(--card-list-gap, 0);
   padding: var(--card-list-pt, 0) var(--card-list-pr, 0) var(--card-list-pb, 0) var(--card-list-pl, 0);
 }
