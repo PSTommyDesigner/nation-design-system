@@ -76,6 +76,7 @@ const cancelRef = useRef<HTMLButtonElement>(null);
 | `children` | `ReactNode` | | slot `body` | เนื้อหา ส่วนเดียวที่เลื่อนได้ |
 | `closeOnBackdrop` | `boolean` | `true` | | คลิกฉากหลังแล้วเรียก `onClose` |
 | `initialFocusRef` | `RefObject<HTMLElement>` | | | ของที่ได้โฟกัสตอนเปิด ไม่ส่งก็ไปที่ของชิ้นแรกที่โฟกัสได้ |
+| `still` | `boolean` | `false` | | วาดกล่องค้างในหน้าตรงที่วาง ไม่มีฉากหลัง ไม่ล็อกการเลื่อน ไม่ย้ายโฟกัส ใช้กับหน้าเอกสารหรือภาพตัวอย่างเท่านั้น ห้ามใช้ในหน้าจริง |
 | `aria-label` | `string` | | | ชื่อของกล่อง บังคับเมื่อ `header={false}` |
 | `className` | `string` | | | ส่งต่อให้ `<dialog>` ห้ามใช้เปลี่ยนสี ระยะ หรือมุมโค้ง |
 

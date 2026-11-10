@@ -41,6 +41,11 @@ sections:
         statement: >-
           Use Modal for content wider than 8 columns or a flow with many steps. That content belongs on its own page.
         checkedBy: manual
+      - level: must-not
+        statement: >-
+          Pass still on a real page. It draws the box in place with no backdrop and no focus trap, so the page behind
+          stays usable and keyboard users can leave the box. It is only for doc pages and preview images.
+        checkedBy: manual
       # NEEDS CLARIFICATION: a side panel (Drawer) was ruled out of this component in the research. What should be used for a panel that slides in from the screen edge until one exists?
 
   - kind: guidelines
@@ -213,6 +218,12 @@ traits:
     kind: boolean
     id: closeOnBackdrop
     description: A click on the backdrop calls onClose. Code only. Default true.
+  - traitType: variant
+    kind: boolean
+    id: still
+    description: >-
+      Draws the box in place on the page, with no backdrop, no scroll lock, no focus move and no motion. Code only,
+      for doc pages and preview images. Default false.
   - traitType: state
     kind: boolean
     id: open

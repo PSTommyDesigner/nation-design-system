@@ -22,6 +22,7 @@
  *      ไม่ใช้ @starting-style กับ transition-behavior: allow-discrete เพราะ Firefox ยังเปลี่ยน overlay ไม่ได้
  *      ถ้าใช้วิธีนั้น ขาออกจะหายวับบน Firefox ส่วนวิธีนี้ทำงานเหมือนกันทุกเบราว์เซอร์
  *   7. ขยายตอนเปิดเริ่มที่ 0.95 ตามที่ตัดสินไว้ ไม่มี token ของสเกลการเคลื่อนไหว
+ *   8. โหมดวางค้าง (.still) สำหรับหน้าเอกสาร กล่องอยู่ในหน้าตรงที่วาง ไม่ลอยกลางจอ ไม่มีภาพเคลื่อนไหว (เพิ่ม 2026-11-10)
  */
 
 .dialog {
@@ -160,6 +161,17 @@
     inset-block-start: calc(var(--md-pad-mobile) + var(--md-close-inset));
     inset-inline-end: calc(var(--md-pad-mobile) + var(--md-close-inset));
   }
+}
+
+/* ═══ โหมดวางค้างสำหรับหน้าเอกสาร (ข้อ 8) ════════════════════ */
+.dialog.still {
+  position: relative;
+  inset: auto;
+  margin: 0;
+  z-index: auto;
+  max-inline-size: 100%;
+  max-block-size: none;
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,1114 @@
+{
+  "_comment": "สร้างโดย scripts/extract-figma-atom-doc.mjs จากหน้า 30 Modal ในไฟล์ออกแบบ ห้ามแก้มือ แก้ที่ Figma แล้วรัน npm run figma:atom-doc -- modal",
+  "page": "30 Modal",
+  "documents": [
+    {
+      "id": "11826:253",
+      "name": "30 Modal Documentation",
+      "title": "30 Modal",
+      "subtitle": "กล่องโต้ตอบกลางจอ ให้ผู้ใช้ดูหรือตัดสินใจเรื่องเดียวให้จบก่อนกลับไปทำงานต่อ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "ภาพรวม",
+          "sub": "หน้านี้มีชิ้นงานหลักตัวเดียวคือ modal 6 แบบ มาจากแกน size 3 ขนาดคูณแกน header มีกับไม่มี ใช้เมื่อต้องให้ผู้ใช้ดูหรือตัดสินใจเรื่องเดียวให้จบ เช่นยืนยันการลบ ฟอร์มสั้น หรือรายละเอียดของรายการเดียว ระหว่างที่เปิด หน้าข้างหลังถูกฉากหลังมืดกั้นและกดไม่ได้ ใช้ครั้งแรกในหน้า Dashboard ของ One CMS",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": true,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-close": true,
+                "show-description": true,
+                "size": "md",
+                "header": "true"
+              },
+              "label": "",
+              "width": 600,
+              "height": 214
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ส่วนประกอบ",
+          "sub": "กล่องมี 3 ส่วน คือ หัว เนื้อหา และท้าย หัวมีหัวข้อ คำอธิบาย และปุ่มปิด ส่วนเนื้อหาเป็น slot ที่วางอะไรก็ได้และเป็นส่วนเดียวที่เลื่อนเมื่อเนื้อหายาวกว่าจอ ส่วนท้ายเป็น slot ของปุ่ม ชิดขวา ปุ่มหลักอยู่ขวาสุด นอกกล่องมีฉากหลังมืด modal/color/backdrop คู่กับ background-blur/md ซึ่งในโค้ดคือ ::backdrop ของ dialog ไม่ได้เป็นชั้นในชุด",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": true,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-close": true,
+                "show-description": true,
+                "size": "lg",
+                "header": "true"
+              },
+              "label": "",
+              "width": 808,
+              "height": 222
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ขนาด",
+          "sub": "มี 3 ขนาด กว้างตามคอลัมน์ของกริด v2022 เดสก์ท็อป sm 392 คือ 4 คอลัมน์ สำหรับยืนยันหรือแจ้งเรื่องเดียว md 600 คือ 6 คอลัมน์ เป็นค่าเริ่มต้น สำหรับฟอร์มสั้นหรือรายละเอียดรายการเดียว lg 808 คือ 8 คอลัมน์ สำหรับเนื้อหาที่มีแท็บหรือรายการหลายชิ้น ความสูงหดตามเนื้อหา บนจอแคบกว่า 768 กล่องกว้างเต็มจอลบขอบข้างละ 16",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": true,
+                "show-close": true,
+                "show-description": true,
+                "size": "sm",
+                "header": "true"
+              },
+              "label": "",
+              "width": 392,
+              "height": 206
+            },
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": true,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-close": true,
+                "show-description": true,
+                "size": "md",
+                "header": "true"
+              },
+              "label": "",
+              "width": 600,
+              "height": 214
+            },
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": true,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-close": true,
+                "show-description": true,
+                "size": "lg",
+                "header": "true"
+              },
+              "label": "",
+              "width": 808,
+              "height": 222
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "มีหัวและไม่มีหัว",
+          "sub": "header=false ซ่อนหัวทั้งแถบ ให้เนื้อหาเริ่มที่ขอบบนได้ เช่นรูปข่าว 16 ต่อ 9 ปุ่มปิดเปลี่ยนเป็นปุ่มวงกลมตระกูล Alpha ลอยที่มุมขวาบน ห่างจากขอบในเท่ากับระยะขอบกล่องบวก 8 เมื่อไม่มีหัวข้อให้เห็น ในโค้ดต้องส่ง aria-label เป็นชื่อกล่องเสมอ",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": true,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-close": true,
+                "show-description": true,
+                "size": "md",
+                "header": "true"
+              },
+              "label": "",
+              "width": 600,
+              "height": 214
+            },
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "show-description": true,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "body": {
+                  "guid": {
+                    "sessionID": 11826,
+                    "localID": 566
+                  }
+                },
+                "show-footer": true,
+                "show-close": true,
+                "size": "md",
+                "header": "false"
+              },
+              "label": "",
+              "width": 600,
+              "height": 423
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ส่วนท้ายและปุ่มปิด",
+          "sub": "ปิด show-footer เมื่อกล่องใช้ดูอย่างเดียว ผู้ใช้ปิดได้ด้วยปุ่มปิด Esc หรือคลิกฉากหลัง ปิด show-description เมื่อหัวข้อบอกครบแล้ว ส่วน show-close ปิดได้เฉพาะกล่องที่บังคับให้เลือกจากปุ่มท้ายกล่องเท่านั้น และต้องยังกด Esc ได้",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": false,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-close": true,
+                "show-description": true,
+                "size": "md",
+                "header": "true"
+              },
+              "label": "",
+              "width": 600,
+              "height": 150
+            },
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": true,
+                "show-close": true,
+                "show-description": false,
+                "size": "sm",
+                "header": "true"
+              },
+              "label": "",
+              "width": 392,
+              "height": 186
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "พฤติกรรม",
+          "sub": "• เปิดด้วย dialog ของเบราว์เซอร์และ showModal() หน้าข้างหลังกลายเป็น inert กดและโฟกัสไม่ได้ • ปิดได้ 3 ทาง คือ ปุ่มปิด Esc และคลิกฉากหลัง ปิดการคลิกฉากหลังได้เมื่อกล่องมีฟอร์มที่กรอกค้างอยู่ • ล็อกการเลื่อนของหน้าระหว่างเปิด และคืนตำแหน่งเดิมเมื่อปิด • ซ้อนกล่องได้ชั้นเดียว คือกล่องยืนยันบนกล่องอื่น • ข้อความแจ้ง (Toast) ยกตัวขึ้นเหนือกล่องเองทุกครั้งที่กล่องเปิด แต่ระหว่างกล่องเปิดปุ่มปิดของข้อความแจ้งกดไม่ได้ ต้องรอให้หายเองตามเวลา • หัวข้อนี้ไม่มีภาพตัวอย่าง เพราะเป็นการโต้ตอบที่ภาพนิ่งแสดงไม่ได้ ดูของจริงใน Storybook หน้า Components Modal",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "จังหวะ",
+          "sub": "• ขาเข้า 250 มิลลิวินาที (motion/duration/default) ค่อย ๆ ชัดขึ้นพร้อมขยายจาก 0.95 เส้นโค้ง motion/easing/enter • ขาออก 150 มิลลิวินาที (motion/duration/fast) จางหาย เส้นโค้ง motion/easing/exit ขาออกต้องเร็วกว่าขาเข้าเสมอ • ผู้ใช้ที่ตั้งลดการเคลื่อนไหวในเครื่อง กล่องเปิดและปิดทันทีโดยไม่มีภาพเคลื่อนไหว",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ควรและไม่ควร",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "ใช้กับเรื่องเดียวที่ต้องจบก่อน",
+          "body": "ยืนยันการลบ ฟอร์มสั้นไม่กี่ช่อง หรือรายละเอียดของรายการที่กดเลือก"
+        },
+        {
+          "type": "card",
+          "kind": "do",
+          "title": "ปุ่มท้ายกล่องบอกผลของการกด",
+          "body": "เขียนกริยาที่บอกผล เช่น ลบข่าว บันทึก แทนคำกว้าง ๆ อย่าง ตกลง"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "อย่าใช้แจ้งผลที่ไม่ต้องตอบ",
+          "body": "ผลของการกระทำที่ไม่ต้องให้ผู้ใช้ตัดสินใจ ใช้ Toast แทน ไม่ต้องขวางการทำงาน"
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "อย่าใส่งานยาวหรือหลายขั้นตอน",
+          "body": "ฟอร์มยาวหรือขั้นตอนหลายหน้าควรเป็นหน้าของตัวเอง และอย่าซ้อนกล่องเกินหนึ่งชั้น"
+        },
+        {
+          "type": "h",
+          "text": "การเข้าถึง",
+          "sub": "• ชื่อกล่องมาจากหัวข้อ (aria-labelledby) คำอธิบายเป็น aria-describedby แบบไม่มีหัวต้องส่ง aria-label • เปิดแล้วโฟกัสไปที่ของแรกที่กดได้ หรือที่ initialFocusRef เช่นปุ่มยกเลิกของกล่องยืนยันการลบ เพื่อกัน Enter ลบโดยไม่ตั้งใจ • ปิดแล้วโฟกัสกลับไปที่ปุ่มที่เปิดกล่อง • ปุ่มปิดต้องมีชื่อที่อ่านออกเสียง ค่าเริ่มต้นคือ ปิด • Tab วนอยู่ในกล่อง เพราะหน้าข้างหลังเป็น inert",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปร",
+          "sub": "ตัวแปรของหน้านี้มี 11 ตัวใน collection component ชื่อขึ้นต้นด้วย modal ได้แก่ ความกว้าง 3 ขนาด ระยะขอบ 3 ขนาด มุมโค้ง 4 มุม และสีฉากหลัง ที่เหลือใช้ของกลาง เช่นพื้นหลัง color/background/general/primary เงา shadows/bottom/xl และระยะห่างจากสเกลกลาง ตารางจับคู่ชื่อ Figma กับชื่อโค้ดอยู่ในเอกสาร Modal Token",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ระยะและขนาด",
+          "sub": "ความกว้างมาจากสูตร base 184 step 208 คือเพิ่มทีละ 2 คอลัมน์ ระยะขอบมาจากสูตร base 16 step 4 ได้ 20 24 28 มุมโค้ง 12 คงที่ทุกขนาด ระยะระหว่างส่วนใช้สเกลกลาง หัวกับเนื้อหา 16 เนื้อหากับท้าย 24 หัวข้อกับคำอธิบาย 4 ปุ่มท้ายกล่อง 12 ค่าทุกขนาดอยู่ในเอกสาร Modal Space",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ของที่เกี่ยวข้อง",
+          "sub": "• ปุ่มปิดใช้ semi-rounded-icon-button ตระกูล Neutral ระดับ tertiary ขนาด md และแบบไม่มีหัวใช้ circular-icon-button ตระกูล Alpha ขนาด sm จากหน้า 12 Buttons • ปุ่มท้ายกล่องใช้ semi-rounded-button จากหน้า 12 Buttons • ข้อความแจ้งผลใช้ toast หน้า 19 Toasts & Banners • คำอธิบายสั้นที่ไม่ต้องขวางงานใช้ tooltip หน้า 20 Tooltips • แผงเลื่อนจากขอบจอ (Drawer) ยังไม่มีในระบบ",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "semi-rounded-icon-button",
+              "props": {
+                "swap-icon": "close",
+                "default-gray": "true",
+                "neutral-color": "true",
+                "size": "md",
+                "state": "default",
+                "hierarchy": "tertiary"
+              },
+              "label": "",
+              "width": 40,
+              "height": 40
+            },
+            {
+              "type": "component",
+              "set": "circular-icon-button",
+              "props": {
+                "swap-icon": "close",
+                "size": "sm",
+                "icon-only": "true",
+                "state": "default"
+              },
+              "label": "",
+              "width": 32,
+              "height": 32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11827:253",
+      "name": "Modal Token",
+      "title": "Modal Token",
+      "subtitle": "พจนานุกรมกลางให้ทีมออกแบบและทีมพัฒนาเรียกตัวแปรของกล่องโต้ตอบด้วยชื่อเดียวกัน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "เอกสารนี้จับคู่ชื่อตัวแปรที่ทีมออกแบบเห็นในแผง Figma กับชื่อที่ทีมพัฒนาเขียนในโค้ด พร้อมค่าจริง เพื่อให้สองฝั่งเรียกของชิ้นเดียวกันโดยไม่ต้องเดา",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "หน้า 30 มีตัวแปรของตัวเอง 11 ตัว ทุกตัวอยู่ใน collection ชื่อ component ซึ่งเป็นชั้นเดียวที่อนุญาตให้ผูกใช้งานจริง ความกว้าง ระยะขอบ และมุมโค้งมาจากสูตรในไฟล์ tokens scale modal สีฉากหลังชี้ไปที่ color/alpha/constant/black-50 ซึ่งเท่ากันทั้งโหมดสว่างและโหมดมืด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11827:256",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ตารางด้านล่างแสดงขนาด md ของความกว้างและระยะขอบ เพราะขนาดอื่นมาจากสูตร base บวก step ดูค่าทุกขนาดได้ในเอกสาร Modal Space ของหน้านี้ แถวล่างเป็นของกลางที่กล่องหยิบมาใช้",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11827:256",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma ใช้ตอนออกแบบและเลือกใช้งาน"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ ค่าเดียวกับฝั่งออกแบบเป๊ะ"
+        },
+        {
+          "type": "h",
+          "text": "ตารางจับคู่ชื่อ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "modal/color/backdrop\nVariable",
+              "--ntg-modal-color-backdrop\nตัวแปร CSS",
+              "ดำโปร่ง 50%",
+              "ฉากหลังมืดนอกกล่อง ในโค้ดคือ ::backdrop"
+            ],
+            [
+              "modal/width/md\nVariable",
+              "--ntg-modal-width-md\nตัวแปร CSS",
+              "600",
+              "ความกว้างกล่อง"
+            ],
+            [
+              "modal/padding/md\nVariable",
+              "--ntg-modal-padding-md\nตัวแปร CSS",
+              "24",
+              "ระยะขอบกล่อง"
+            ],
+            [
+              "modal/radius/top-left\nVariable",
+              "--ntg-modal-radius-top-left\nตัวแปร CSS",
+              "12",
+              "มุมโค้งกล่อง"
+            ],
+            [
+              "color/background/general/primary\nVariable",
+              "--ntg-color-background-general-primary\nตัวแปร CSS",
+              "ขาว",
+              "พื้นกล่อง"
+            ],
+            [
+              "color/text/general/heading\nVariable",
+              "--ntg-color-text-general-heading\nตัวแปร CSS",
+              "เทาเข้ม",
+              "สีหัวข้อ"
+            ],
+            [
+              "color/text/general/supporting-text\nVariable",
+              "--ntg-color-text-general-supporting-text\nตัวแปร CSS",
+              "เทากลาง",
+              "สีคำอธิบาย"
+            ],
+            [
+              "shadows/bottom/xl\nEffect style",
+              "--ntg-shadows-bottom-xl\nตัวแปร CSS",
+              "0 20 24 -4",
+              "เงากล่อง"
+            ],
+            [
+              "background-blur/md\nEffect style",
+              "--ntg-effect-background-blur-md\nตัวแปร CSS",
+              "16",
+              "ฉากหลังนอกกล่อง"
+            ],
+            [
+              "title/lg\nText style",
+              ".ntg-typography-title-lg\nclass",
+              "Prompt 20/30",
+              "หัวข้อกล่อง"
+            ],
+            [
+              "body/md\nText style",
+              ".ntg-typography-body-md\nclass",
+              "Prompt 16/26",
+              "คำอธิบายและเนื้อหา"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไข และทำให้ตรงกัน",
+          "sub": "• แหล่งความจริงของค่าตัวเลขอยู่ที่ tokens scale modal แก้ที่นั่นแล้วรัน npm run tokens:build • แก้ตัวแปรในไฟล์ออกแบบให้ตรงกัน แล้วรีเฟรชลายนิ้วมือที่ tokens figma-fingerprint.json • รัน npm run tokens:verify ต้องขึ้นว่าต้องดู 0 กลุ่ม เสมอ • สีฉากหลังเป็นตัวแปรสีตัวเดียวของหน้านี้ แก้ที่ component.json แล้วแก้ตัวแปรใน Figma ให้ตรงกัน",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "11828:640",
+      "name": "Modal Usage",
+      "title": "Modal Usage",
+      "subtitle": "เลือกใช้กล่องโต้ตอบเมื่อไหร่ ขนาดไหน และเขียนเนื้อหาอย่างไร",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เลือกใช้ตัวไหน",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "สถานการณ์",
+            "ใช้",
+            "เหตุผล"
+          ],
+          "rows": [
+            [
+              "ยืนยันก่อนลบหรือก่อนทำสิ่งที่ย้อนไม่ได้\n",
+              "modal sm\nมีหัว มีท้าย",
+              "ต้องหยุดผู้ใช้ให้ตัดสินใจก่อน ปุ่มท้ายบอกผลของการกด"
+            ],
+            [
+              "ฟอร์มสั้นไม่กี่ช่อง หรือรายละเอียดรายการเดียว\n",
+              "modal md\nค่าเริ่มต้น",
+              "ทำจบในกล่องแล้วกลับไปที่เดิม ไม่เสียตำแหน่งในหน้า"
+            ],
+            [
+              "รายการหลายชิ้น หรือเนื้อหาที่มีแท็บ\n",
+              "modal lg\n",
+              "กว้างพอให้การ์ดรายการกับแท็บอ่านได้สบาย"
+            ],
+            [
+              "แจ้งผลหลังทำเสร็จ ไม่ต้องตอบ\n",
+              "toast\nหน้า 19",
+              "ไม่ขวางงาน หายเองตามเวลา"
+            ],
+            [
+              "อธิบายสั้นว่าปุ่มนี้ทำอะไร\n",
+              "tooltip\nหน้า 20",
+              "โผล่ตอนชี้หรือโฟกัส ไม่มีการกระทำข้างใน"
+            ],
+            [
+              "ฟอร์มยาวหรือหลายขั้นตอน\n",
+              "หน้าของตัวเอง\n",
+              "กล่องที่ต้องเลื่อนยาวหรือมีหลายหน้าทำให้หลงว่าอยู่ตรงไหน"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ขนาดแต่ละขั้นมีไว้ทำอะไร",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ขนาด",
+            "กว้าง",
+            "ใช้กับ",
+            "ตัวอย่างในโปรเจกต์"
+          ],
+          "rows": [
+            [
+              "sm\n4 คอลัมน์",
+              "392\n",
+              "ยืนยันหรือแจ้งเรื่องเดียว ข้อความสั้นกับปุ่มไม่เกินสองปุ่ม",
+              "ยืนยันการลบข่าว"
+            ],
+            [
+              "md\nค่าเริ่มต้น",
+              "600\n6 คอลัมน์",
+              "ฟอร์มสั้นหรือรายละเอียดของรายการเดียว",
+              "รายละเอียดข่าวในหน้า Dashboard ของ One CMS"
+            ],
+            [
+              "lg\n8 คอลัมน์",
+              "808\n",
+              "เนื้อหาที่มีแท็บหรือรายการหลายชิ้น",
+              "ข่าวของนักข่าวในหน้า Dashboard ของ One CMS"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวอย่างจากหน้า Dashboard ของ One CMS",
+          "sub": "ซ้ายคือรายละเอียดข่าว เปิดเมื่อกดพาดหัวในอันดับข่าว ใช้ md ไม่มีหัว รูปข่าวอยู่บนสุด ปุ่มปิดวงกลมลอยทับมุมรูป ขวาคือข่าวของนักข่าว เปิดเมื่อกดชื่อในตาราง ใช้ lg หัวเป็นรูปกับชื่อนักข่าว เนื้อหาเป็นแท็บเผยแพร่แล้วกับยังไม่เผยแพร่ ภาพนี้แสดงโครงเท่านั้น เนื้อหาจริงประกอบในหน้า prototype",
+          "section": true
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "show-description": true,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "body": {
+                  "guid": {
+                    "sessionID": 11828,
+                    "localID": 601
+                  }
+                },
+                "show-footer": true,
+                "show-close": true,
+                "size": "md",
+                "header": "false"
+              },
+              "label": "",
+              "width": 600,
+              "height": 423
+            },
+            {
+              "type": "component",
+              "set": "modal",
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-footer": true,
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-close": true,
+                "show-description": true,
+                "size": "lg",
+                "header": "true"
+              },
+              "label": "",
+              "width": 808,
+              "height": 222
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "เนื้อหาและถ้อยคำ",
+          "sub": "• หัวข้อบอกว่ากล่องนี้ให้ทำอะไร เช่น ลบข่าวนี้ ไม่ใช่คำกว้าง ๆ อย่าง ยืนยัน • คำอธิบายสั้น บรรทัดเดียวถึงสองบรรทัด บอกผลที่ตามมา เช่น ลบแล้วกู้คืนไม่ได้ • ปุ่มหลักเป็นกริยาที่บอกผล ปุ่มรองคือ ยกเลิก อยู่ซ้ายของปุ่มหลัก • การกระทำที่ทำลายข้อมูลใช้ปุ่มตระกูล Error • อย่าใส่ลิงก์ที่พาออกจากกล่องไปหน้าอื่นโดยไม่บอก",
+          "section": true
+        }
+      ]
+    },
+    {
+      "id": "11828:934",
+      "name": "Modal Behavior and Accessibility",
+      "title": "Modal Behavior and Accessibility",
+      "subtitle": "กล่องเปิด ปิด จับโฟกัส และอยู่ชั้นไหน พร้อมเกณฑ์การเข้าถึงที่ต้องผ่าน",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "วิธีปิดกล่อง",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "วิธี",
+            "ค่าเริ่มต้น",
+            "หมายเหตุ"
+          ],
+          "rows": [
+            [
+              "ปุ่มปิด\n",
+              "เปิด\nshow-close",
+              "ปิดได้เฉพาะกล่องที่บังคับให้เลือกจากปุ่มท้ายกล่อง"
+            ],
+            [
+              "กด Esc\n",
+              "เปิดเสมอ\n",
+              "เบราว์เซอร์ส่งเหตุการณ์ cancel กล่องเรียก onClose ให้หน้าเป็นคนปิด"
+            ],
+            [
+              "คลิกฉากหลัง\n",
+              "เปิด\ncloseOnBackdrop",
+              "ปิดเมื่อกล่องมีฟอร์มที่กรอกค้าง กันข้อมูลหายเพราะคลิกพลาด"
+            ],
+            [
+              "ปุ่มท้ายกล่อง\n",
+              "ตามที่หน้ากำหนด\n",
+              "ปุ่มยกเลิกต้องปิดกล่องเสมอ"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "โฟกัส",
+          "sub": "• เปิดแล้วโฟกัสไปที่ของแรกที่กดได้ในกล่อง หรือที่ initialFocusRef • กล่องยืนยันการลบให้โฟกัสแรกอยู่ที่ยกเลิก เพื่อกัน Enter ลบโดยไม่ตั้งใจ • ปิดแล้วโฟกัสกลับไปที่ปุ่มที่เปิดกล่อง • Tab วนอยู่ในกล่อง เพราะหน้าข้างหลังเป็น inert",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "ชั้นและข้อความแจ้ง",
+          "sub": "กล่องเปิดด้วย showModal() จึงอยู่ใน top layer ของเบราว์เซอร์ ซึ่ง z-index ของหน้าแซงไม่ได้ ค่า layer/overlay จึงเป็นแค่ทางสำรอง ToastStack เปิดเป็น popover อยู่ใน top layer ด้วย และยกตัวขึ้นเหนือกล่องทุกครั้งที่กล่องเปิด ข้อความแจ้งจึงอ่านออกเสมอ ข้อจำกัดที่รู้แล้วคือระหว่างกล่องเปิด หน้าข้างหลังเป็น inert ปุ่มปิดของข้อความแจ้งจึงกดไม่ได้ ข้อความยังหายเองตามเวลา",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "มือถือ",
+          "sub": "• จอแคบกว่า 768 กล่องกว้างเต็มจอลบขอบข้างละ 16 ทุกขนาด และระยะขอบลดเหลือ 16 • ความสูงไม่เกินจอลบขอบบนล่าง ส่วนหัวกับส่วนท้ายอยู่กับที่ เนื้อหาเลื่อนข้างใน • ล็อกการเลื่อนแบบตรึง body ไว้ เพราะ iOS Safari ไม่หยุดเลื่อนด้วย overflow hidden • แผ่นชิดขอบล่างแบบ bottom sheet ยังไม่มีในระบบ",
+          "section": true
+        },
+        {
+          "type": "h",
+          "text": "เกณฑ์การเข้าถึง",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "เกณฑ์",
+            "ทำอย่างไร",
+            "ตรวจอย่างไร"
+          ],
+          "rows": [
+            [
+              "ชื่อกล่อง\nWCAG 4.1.2",
+              "aria-labelledby ชี้ไปที่หัวข้อ แบบไม่มีหัวส่ง aria-label\n",
+              "โปรแกรมอ่านหน้าจออ่านชื่อกล่องเมื่อเปิด"
+            ],
+            [
+              "ลำดับโฟกัส\nWCAG 2.4.3",
+              "โฟกัสแรกอยู่ในกล่อง ปิดแล้วกลับไปที่ปุ่มที่เปิด\n",
+              "กด Tab แล้วโฟกัสไม่หลุดออกนอกกล่อง"
+            ],
+            [
+              "ใช้แป้นพิมพ์ได้\nWCAG 2.1.1",
+              "ทุกอย่างในกล่องกดได้ด้วยแป้นพิมพ์ Esc ปิดได้\n",
+              "ลองใช้งานทั้งกล่องโดยไม่ใช้เมาส์"
+            ],
+            [
+              "ภาพเคลื่อนไหว\nWCAG 2.3.3",
+              "ปิดภาพเคลื่อนไหวเมื่อเครื่องตั้งลดการเคลื่อนไหว\n",
+              "เปิด prefers-reduced-motion แล้วกล่องเปิดปิดทันที"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11828:1394",
+      "name": "Modal Component Previews",
+      "title": "Modal Component Previews",
+      "subtitle": "ชุด modal ตัวจริงของหน้านี้ 6 แบบ ต้นฉบับที่หน้าอื่นและโปรเจกต์ดึง instance ไปใช้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "modal",
+          "sub": "แกน size มี sm md lg และแกน header มี true false รวม 6 แบบ คุณสมบัติ show-description show-close show-footer เปิดปิดส่วนต่าง ๆ ส่วน body กับ footer เป็น slot วางเนื้อหาได้อิสระ พื้นของกรอบชุดผูกกับ modal/color/backdrop เพื่อให้เห็นกล่องบนฉากหลังจริง",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "modal",
+          "caption": "",
+          "width": 1960,
+          "height": 488,
+          "items": [
+            {
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-description": true,
+                "show-close": true,
+                "show-footer": true,
+                "size": "sm",
+                "header": "true"
+              },
+              "x": 40,
+              "y": 40,
+              "width": 392,
+              "height": 206
+            },
+            {
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-description": true,
+                "show-close": true,
+                "show-footer": true,
+                "size": "md",
+                "header": "true"
+              },
+              "x": 472,
+              "y": 40,
+              "width": 600,
+              "height": 214
+            },
+            {
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-description": true,
+                "show-close": true,
+                "show-footer": true,
+                "size": "lg",
+                "header": "true"
+              },
+              "x": 1112,
+              "y": 40,
+              "width": 808,
+              "height": 222
+            },
+            {
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-description": true,
+                "show-close": true,
+                "show-footer": true,
+                "size": "sm",
+                "header": "false"
+              },
+              "x": 40,
+              "y": 302,
+              "width": 392,
+              "height": 130
+            },
+            {
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-description": true,
+                "show-close": true,
+                "show-footer": true,
+                "size": "md",
+                "header": "false"
+              },
+              "x": 472,
+              "y": 302,
+              "width": 600,
+              "height": 138
+            },
+            {
+              "props": {
+                "body": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "footer": {
+                  "guid": {
+                    "sessionID": -1,
+                    "localID": -1
+                  }
+                },
+                "show-description": true,
+                "show-close": true,
+                "show-footer": true,
+                "size": "lg",
+                "header": "false"
+              },
+              "x": 1112,
+              "y": 302,
+              "width": 808,
+              "height": 146
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11829:253",
+      "name": "Modal Space",
+      "title": "Modal Space",
+      "subtitle": "ระยะห่างและขนาดของกล่องโต้ตอบ สูตร base กับ step ค่าทุกขนาด และตัวแปรที่ผูกได้",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "กล่องโต้ตอบใช้สูตรของตัวเอง 2 มิติ คือความกว้างกับระยะขอบ และหยิบระยะห่างระหว่างส่วนมาจากสเกลกลาง size/space ของหน้า 07 Space",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "สูตรอยู่ที่ไฟล์ tokens scale modal ความกว้างคิดจากกริด v2022 เดสก์ท็อป คอลัมน์ 80 ร่อง 24 เพิ่มทีละ 2 คอลัมน์ ด่านตรวจตอน build เช็กว่าทุกขนาดยังตกคอลัมน์พอดี",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11829:256",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ความสูงไม่มีสูตร เพราะหดตามเนื้อหาแล้วชนเพดานที่ความสูงจอลบขอบ มุมโค้งไม่มีสูตร เพราะคงที่ 12 ทุกขนาด และมีแค่ sm md lg ขั้น xs กับ xl ของสูตรไม่ได้ใช้",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11829:256",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "สูตร base และ step",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "rows": [
+            [
+              "ความกว้าง",
+              "184",
+              "208",
+              "ไม่ใช้",
+              "392",
+              "600",
+              "808",
+              "ไม่ใช้"
+            ],
+            [
+              "ระยะขอบ",
+              "16",
+              "4",
+              "ไม่ใช้",
+              "20",
+              "24",
+              "28",
+              "ไม่ใช้"
+            ],
+            [
+              "มุมโค้ง",
+              "12",
+              "0",
+              "ไม่ใช้",
+              "12",
+              "12",
+              "12",
+              "ไม่ใช้"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ตัวแปรที่ผูกได้",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "ตัวแปร",
+            "ค่า",
+            "ผูกที่",
+            "หมายเหตุ"
+          ],
+          "rows": [
+            [
+              "modal/width/sm md lg",
+              "392 600 808",
+              "ความกว้างกล่อง",
+              "ความกว้างตายตัวตามขนาด ความสูงหดตามเนื้อหา"
+            ],
+            [
+              "modal/padding/sm md lg",
+              "20 24 28",
+              "ระยะขอบสี่ด้านของกล่อง",
+              "บนมือถือ 16 ทุกขนาด"
+            ],
+            [
+              "modal/radius/top-left และอีก 3 มุม",
+              "12",
+              "มุมโค้งกล่อง",
+              "จาก RADIUS_SCALE lg"
+            ],
+            [
+              "size/space/s2/sm",
+              "16",
+              "ช่องไฟในหัว และระยะใต้หัว",
+              "หัวข้อกับปุ่มปิด หัวกับเนื้อหา"
+            ],
+            [
+              "size/space/s1/sm",
+              "4",
+              "หัวข้อกับคำอธิบาย",
+              ""
+            ],
+            [
+              "size/space/s2/lg",
+              "24",
+              "ระยะเหนือส่วนท้าย",
+              "เนื้อหากับปุ่ม"
+            ],
+            [
+              "size/space/s2/xs",
+              "12",
+              "ช่องไฟระหว่างปุ่มท้ายกล่อง",
+              ""
+            ],
+            [
+              "size/space/s1/lg",
+              "8",
+              "ปุ่มปิดลอยแบบไม่มีหัว",
+              "ห่างจากขอบในเท่ากับระยะขอบบวก 8"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา",
+          "sub": "• ต้นทางของค่าอยู่ที่โค้ด แก้ที่ tokens scale modal แล้วรัน npm run tokens:build • ห้ามพิมพ์ค่าระยะห่างเองในไฟล์ออกแบบ ให้ผูกตัวแปรเสมอ • ความกว้างต้องตกคอลัมน์ของกริด v2022 ถ้าเปลี่ยน base หรือ step แล้วไม่ตก build จะหยุด • ระยะขอบ lg เป็น 28 ไม่ใช่ 24 ตามงานวิจัย เพราะสูตรต้องเป็นเส้นตรง ผู้ใช้ตัดสินเมื่อ 28 ตุลาคม 2569 • ระยะห่างระหว่างส่วนใช้สเกลกลางโดยตั้งใจ เพราะเท่ากันทุกขนาด ไม่ต้องมีสูตรของตัวเอง",
+          "section": true
+        }
+      ]
+    }
+  ]
+}

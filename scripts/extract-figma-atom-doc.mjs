@@ -75,6 +75,8 @@ const PAGES = {
   table: { page: '28 Table', folder: 'Table', root: 'organisms', skip: [], standalone: true, components: ['caption-table-cell', 'header-table-cell', 'header-select-table-cell', 'select-table-cell', 'text-table-cell', 'number-table-cell', 'currency-table-cell', 'index-table-cell', 'date-table-cell', 'badge-table-cell', 'tag-table-cell', 'user-table-cell', 'avatar-group-table-cell', 'link-table-cell', 'action-table-cell', 'star-table-cell', 'icon-table-cell', 'progress-bar-table-cell', 'hierarchy-color-cell', 'light-color-cell', 'dark-color-cell', 'header-color-cell', 'number-color-cell', 'description-color-cell'] },
   // bar-chart กับ _bar-chart-point เป็น component เดี่ยว จึงเปิด standalone เหมือนหน้า 28
   chart: { page: '29 Chart', folder: 'Chart', root: 'organisms', skip: [], standalone: true, components: ['bar-chart', '_bar-chart-bar', '_bar-chart-legend-item', '_bar-chart-point'] },
+  // ปุ่มไอคอน 2 ชุดคือตัวอย่างปุ่มปิดในหัวข้อของที่เกี่ยวข้อง
+  modal: { page: '30 Modal', folder: 'Modal', root: 'organisms', skip: [], components: ['modal', 'semi-rounded-icon-button', 'circular-icon-button'] },
   dividers: { page: '26 Dividers', folder: 'Dividers', root: 'molecules', skip: [], components: ['horizontal-divider', 'vertical-divider'] },
   pagination: { page: '24 Pagination', folder: 'Pagination', root: 'molecules', skip: [], components: ['pagination', '_pagination-number-button', '_pagination-ellipsis'] },
   progress: { page: '23 Progress Bars', folder: 'ProgressBars', root: 'molecules', skip: [], components: ['progress-bar', 'circular-progress-bar', 'semi-circular-progress-bar'] },

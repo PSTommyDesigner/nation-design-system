@@ -67,6 +67,11 @@ interface ModalBaseProps
   closeOnBackdrop?: boolean;
   /** ของที่ได้โฟกัสตอนเปิด ไม่ส่งก็ไปที่ของชิ้นแรกที่โฟกัสได้ */
   initialFocusRef?: React.RefObject<HTMLElement | null>;
+  /**
+   * วาดกล่องค้างไว้ในหน้าตรงที่วาง ไม่มีฉากหลัง ไม่ล็อกการเลื่อน ไม่ย้ายโฟกัส และไม่มีภาพเคลื่อนไหว
+   * ใช้กับหน้าเอกสารหรือภาพตัวอย่างเท่านั้น ห้ามใช้ในหน้าจริง เพราะไม่กั้นหน้าข้างหลังและไม่กักโฟกัส ค่าเริ่มต้น false
+   */
+  still?: boolean;
 }
 
 interface ModalWithHeader {
@@ -152,6 +157,7 @@ export function Modal(props: ModalProps) {
     children,
     closeOnBackdrop = true,
     initialFocusRef,
+    still = false,
     className,
     'aria-label': ariaLabel,
     ...rest
@@ -201,7 +207,8 @@ export function Modal(props: ModalProps) {
 
   useEffect(() => {
     const dialog = ref.current;
-    if (!dialog) return;
+    // โหมดวางค้างใช้ attribute open ของ <dialog> ตรง ๆ ไม่เปิดด้วย showModal() จึงไม่ต้องจัดการเปิดปิด
+    if (!dialog || still) return;
 
     if (open) {
       // เปิดซ้ำระหว่างกำลังเล่นขาออก ยกเลิกขาออกแล้วอยู่ต่อ
@@ -248,7 +255,7 @@ export function Modal(props: ModalProps) {
     }
     dialog.addEventListener('animationend', onEnd);
     closingRef.current = { cancel };
-  }, [open, finishClose, initialFocusRef]);
+  }, [open, finishClose, initialFocusRef, still]);
 
   // Esc กับการปิดที่ไม่ได้มาจากเรา
   useEffect(() => {
@@ -300,7 +307,8 @@ export function Modal(props: ModalProps) {
     <dialog
       {...rest}
       ref={ref}
-      className={cx(styles.dialog, styles[size], !header && styles.bare, className)}
+      open={still || undefined}
+      className={cx(styles.dialog, styles[size], !header && styles.bare, still && styles.still, className)}
       aria-label={ariaLabel}
       aria-labelledby={hasTitle && !ariaLabel ? titleId : undefined}
       aria-describedby={hasDesc ? descId : undefined}
