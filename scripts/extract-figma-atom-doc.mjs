@@ -73,6 +73,8 @@ const PAGES = {
   // เซลตาราง 24 ตัวในหน้านี้เป็น component เดี่ยว ไม่ใช่ชุด จึงเปิด standalone ให้อ่านเป็นตัวอย่างได้
   // โค้ดไม่มี component ของเซลแยก (มีแค่ Table ทั้งตาราง) หน้าเอกสารจึงขึ้นข้อความแทน (ผู้ใช้ตัดสิน 2026-11-10)
   table: { page: '28 Table', folder: 'Table', root: 'organisms', skip: [], standalone: true, components: ['caption-table-cell', 'header-table-cell', 'header-select-table-cell', 'select-table-cell', 'text-table-cell', 'number-table-cell', 'currency-table-cell', 'index-table-cell', 'date-table-cell', 'badge-table-cell', 'tag-table-cell', 'user-table-cell', 'avatar-group-table-cell', 'link-table-cell', 'action-table-cell', 'star-table-cell', 'icon-table-cell', 'progress-bar-table-cell', 'hierarchy-color-cell', 'light-color-cell', 'dark-color-cell', 'header-color-cell', 'number-color-cell', 'description-color-cell'] },
+  // bar-chart กับ _bar-chart-point เป็น component เดี่ยว จึงเปิด standalone เหมือนหน้า 28
+  chart: { page: '29 Chart', folder: 'Chart', root: 'organisms', skip: [], standalone: true, components: ['bar-chart', '_bar-chart-bar', '_bar-chart-legend-item', '_bar-chart-point'] },
   dividers: { page: '26 Dividers', folder: 'Dividers', root: 'molecules', skip: [], components: ['horizontal-divider', 'vertical-divider'] },
   pagination: { page: '24 Pagination', folder: 'Pagination', root: 'molecules', skip: [], components: ['pagination', '_pagination-number-button', '_pagination-ellipsis'] },
   progress: { page: '23 Progress Bars', folder: 'ProgressBars', root: 'molecules', skip: [], components: ['progress-bar', 'circular-progress-bar', 'semi-circular-progress-bar'] },

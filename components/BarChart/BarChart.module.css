@@ -146,7 +146,8 @@
 .scrollInner {
   display: flex;
   flex-direction: column;
-  gap: var(--bc-gap);
+  /* พื้นที่กราฟกับป้ายแกน x ห่าง 16 ตามไฟล์ออกแบบ (ช่องของกรอบ bar-chart) ไม่ใช่ --bc-gap 8 ที่คั่นแกน y กับพื้นที่กราฟ (แก้ 2026-11-10) */
+  gap: var(--ntg-size-space-s2-sm);
 }
 
 .plot {
