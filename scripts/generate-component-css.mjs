@@ -1230,7 +1230,11 @@ function walk(node, p, fn) {
   for (const c of node.ch || []) walk(c, p ? `${p}/${c.n}` : c.n, fn)
 }
 if (textGroups.length) out.push('/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */')
-for (const size of textGroups.length ? SIZES : []) {
+// ชุดที่มีขนาดของตัวเองนอก SIZES (เช่น การ์ดรายการมีขนาดเดียวชื่อ one) วนแยกท้ายสุด แล้วใช้คลาสของชุดแทนคลาสขนาด
+// เดิมวนแค่ SIZES ชุดพวกนี้จึงถูกข้ามเงียบ ๆ การ์ดรายการไม่มีค่าฟอนต์ เบราว์เซอร์ใช้ Times (เจอ 2026-11-10)
+const setOnlySizes = [...new Set(Object.values(M.sets ?? {}).flatMap((m) => m.sizes ?? []).filter((sz) => !SIZES.includes(sz)))]
+for (const size of textGroups.length ? [...SIZES, ...setOnlySizes] : []) {
+  const extra = !SIZES.includes(size)
   const vars = {}
   for (const g of textGroups) {
     let ts = null
@@ -1238,6 +1242,7 @@ for (const size of textGroups.length ? SIZES : []) {
       if (M.sets[setName]?.ignoreLayout) continue
       if (g.sets && !g.sets.includes(setName)) continue                       // กลุ่มข้อความที่ผูกกับบางชุด (เช่น อักษรย่อ กับ ตัวเลข ของอวาตาร์ใช้ preset ต่างกัน)
       if (M.sets[setName]?.sizes && !M.sets[setName].sizes.includes(size)) continue   // ชุดที่มีไม่ครบทุกขนาด
+      if (extra && !M.sets[setName]?.sizes?.includes(size)) continue                    // ขนาดเฉพาะของชุด ดูแค่ชุดที่ประกาศขนาดนั้น
       const k0 = (M.layoutVariants || [{ key: M.layoutKey }])[0].key
       walk(L(set, size, k0 && ((sz) => k0(sz, setName))), '', (key, n) => {
         if (n.ts && g.layers.some((l) => (l.includes('*') ? lookup({ [l]: true }, key) : l === key))) {
@@ -1246,10 +1251,14 @@ for (const size of textGroups.length ? SIZES : []) {
         }
       })
     }
+    if (!ts && extra) continue                                                     // กลุ่มข้อความของชุดอื่น ไม่เกี่ยวกับขนาดเฉพาะนี้
     if (!ts) { if (!g.optional && (!g.sets || g.sets.some((n) => !M.sets[n]?.sizes || M.sets[n].sizes.includes(size)))) errors.push(`${size}: ไม่พบชั้นข้อความ ${g.layers.join('/')} ในชุดไหนเลย`); continue }
     Object.assign(vars, styleVars(ts, g.vars, `typography ${size} ${g.layers[0]}`))
   }
-  out.push(`.${size} { ${decl(vars)} }`)
+  if (!extra) { out.push(`.${size} { ${decl(vars)} }`); continue }
+  if (!Object.keys(vars).length) continue
+  const sel = [...new Set(Object.entries(M.sets).filter(([, m]) => m.sizes?.includes(size)).map(([, m]) => m.classes))].join(', ')
+  out.push(`${sel} { ${decl(vars)} }`)
 }
 
 // ── 2. โครงต่อ ชุด × ขนาด ───────────────────────────────────────────────────
