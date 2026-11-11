@@ -54,7 +54,7 @@ sources_of_truth:
 
 | Document | จำนวน | สไตล์ | การตั้งชื่อ Component | หมายเหตุ |
 |---|---|---|---|---|
-| **Nation UI Icons** | 151 (13 หมวด) | Outlined, filled vector | `<หมวด> / <ชื่อ>` | ชุดหลัก 24dp grid live area 16 สี `icon/general/tertiary` |
+| **Nation UI Icons** | 152 (13 หมวด) | Outlined, filled vector | `<หมวด> / <ชื่อ>` | ชุดหลัก 24dp grid live area 16 สี `icon/general/tertiary` |
 | **Material Icons** | 1,355 (17 หมวด) | Outlined | `<หมวด> / <ชื่อ>` | อ้างอิงจาก Material (ลบ Filled ออกแล้ว) |
 | **Nation House Icons** | 150 | Brand (สีน้ำเงิน) | `nation-house / <ชื่อ>` | ไอคอนแบรนด์ 40dp สองชั้น เส้น (`icon/general/primary`) กับรูปทึบสีแบรนด์ (`icon/brand/primary`) ที่ปิดไว้ |
 | **Document Icons** | 7 | File type (สี) | `Document / <ชื่อ>` | TXT/DOC/XLS/PPT/PDF/MEM/IMG |
@@ -88,7 +88,7 @@ sources_of_truth:
 |---|---|
 | `components/Icon/Icon.tsx` | React component (name/size/title, สี currentColor) |
 | `components/Icon/icons.ts` | registry: `icons`, `iconCategories`, `iconNames`, type `IconName` |
-| `components/Icon/svg/*.svg` | ไฟล์ SVG รายตัว (151 ไฟล์, `fill="currentColor"`) |
+| `components/Icon/svg/*.svg` | ไฟล์ SVG รายตัว (152 ไฟล์, `fill="currentColor"`) |
 | `components/NationHouseIcon/NationHouseIcon.tsx` | React component ชุดแบรนด์ (name/size/filled/title) |
 | `components/NationHouseIcon/icons.ts` | registry ชุดแบรนด์: `nationHouseIcons`, `nationHouseIconNames`, type `NationHouseIconName` |
 | `components/NationHouseIcon/svg/*.svg` | ไฟล์ SVG ชุดแบรนด์ (150 ไฟล์ ชั้นเส้น `stroke="currentColor"`) |

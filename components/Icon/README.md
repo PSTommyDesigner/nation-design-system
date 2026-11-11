@@ -1,6 +1,6 @@
 # Nation UI Icons
 
-151 filled-vector icons across 13 categories, built on a 24dp Material keyline grid (2dp stroke outlined → single fill path). Source of truth: Figma **02 Icon** page, frame `Nation UI Icons` (node `9349:35444`).
+152 filled-vector icons across 13 categories, built on a 24dp Material keyline grid (2dp stroke outlined → single fill path). Source of truth: Figma **02 Icon** page, frame `Nation UI Icons` (node `9349:35444`).
 
 ## Usage
 
