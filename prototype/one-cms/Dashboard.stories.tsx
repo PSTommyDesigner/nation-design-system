@@ -4,6 +4,7 @@ import { Button } from '../../components/Button'
 import { LinkButton } from '../../components/LinkButton'
 import { Avatar, AvatarLabel } from '../../components/Avatar'
 import { IconButton } from '../../components/IconButton'
+import { Icon } from '../../components/Icon'
 import { Card } from '../../components/Card'
 import { Modal } from '../../components/Modal'
 import { TextField } from '../../components/TextField'
@@ -292,14 +293,15 @@ function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) =
           {item.title}
         </button>
         <div className={styles.rankViews}>
-          <LinkButton href="#" family="brand" defaultGray size="xs">PV:{fmt(item.pv)}</LinkButton>
-          <LinkButton href="#" family="brand" defaultGray size="xs">GA:{fmt(item.ga)}</LinkButton>
-          <LinkButton href="#" family="brand" defaultGray size="xs">TH:{fmt(item.th)}</LinkButton>
+          <LinkButton family="brand" defaultGray size="xs" onClick={() => onOpen(item)}>PV:{fmt(item.pv)}</LinkButton>
+          <LinkButton family="brand" defaultGray size="xs" onClick={() => onOpen(item)}>GA:{fmt(item.ga)}</LinkButton>
+          <LinkButton family="brand" defaultGray size="xs" onClick={() => onOpen(item)}>TH:{fmt(item.th)}</LinkButton>
         </div>
-        {/* หมวดข่าวกับปุ่มตะกร้า (ผู้ใช้สั่ง 2026-11-11) ตะกร้าเก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้ */}
+        {/* หมวดข่าวกับปุ่มตะกร้าชิดซ้าย ตะกร้าเป็น circular-icon-tag สีเดียวกับแท็กหมวด เพราะ Tag pill ไอคอนล้วนไม่มีในระบบ (ผู้ใช้สั่ง 2026-11-11)
+            ตะกร้าเก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้ */}
         <div className={styles.rankMeta}>
           <Tag family="neutral" shape="pill" size="sm">{item.category}</Tag>
-          <IconButton icon="shopping-cart" label="เก็บข่าวลงตะกร้า" shape="circular" family="brand" defaultGray hierarchy="tertiary" size="xs" />
+          <Tag family="neutral" shape="circular" size="sm" icon={<Icon name="shopping-cart" size="100%" />} label="เก็บข่าวลงตะกร้า" onSelect={() => {}}>{null}</Tag>
         </div>
       </div>
     </li>

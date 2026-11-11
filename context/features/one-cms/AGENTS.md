@@ -37,7 +37,9 @@
 - The Dashboard MUST NOT have a page header (`_Header / Page`) under the CMS header bar (set by the user 2026-11-11). The user removed it from the design file the same day, so Figma and the prototype agree
 - News ranking MUST list 40 news items ranked by views, in 4 columns, ordered left to right and then top to bottom: the first row is ranks 1 to 4 (set by the user 2026-11-11, replacing the column by column order). The numbers in the design that restart at 1 in every column are wrong (set by the user 2026-10-28)
 - Each item MUST show the rank in a circle, the headline on one line cut off with an ellipsis, and the views from three sources as gray `link-button` xs: PV (Pageviews), GA and TH (Truehits)
-- Under the views, each item MUST have a row with the news category as `pill-tag` sm neutral secondary at the start and a basket button at the end: `circular-icon-button` xs, family brand, default gray, tertiary, icon `shopping-cart`, label "เก็บข่าวลงตะกร้า" (set by the user 2026-11-11)
+- Clicking PV, GA or TH MUST open the news detail `Modal`, the same as clicking the headline (set by the user 2026-11-11)
+- PV, GA and TH MUST NOT change color when the item is hovered. They change color only when the button itself is hovered (set by the user 2026-11-11)
+- Under the views, each item MUST have a row aligned to the start with the news category as `pill-tag` sm neutral secondary, then a basket button as `circular-icon-tag` sm neutral secondary, icon `shopping-cart`, label "เก็บข่าวลงตะกร้า" (set by the user 2026-11-11). The user asked for the same style as the category tag: the system has no pill icon-only tag, so the basket is the circular one with the same colors
 - NEEDS CLARIFICATION: the basket collects news so AI can draft a story from them on the Article page. What a click does (state, count, where the basket lives) is decided with the Article pages, so the button does nothing yet
 - The subtitle MUST read "ข้อมูลปัจจุบัน และข้อมูลย้อนหลัง 24 ชั่วโมง" and still say that PV is counted by the site itself, so it won't match GA and Truehits (set by the user 2026-11-11)
 - News ranking MUST have a search field (headline, category), a date range field, and a row of category tags (`pill-tag` lg, neutral). The chosen tag is primary, the others secondary. "ทั้งหมด" comes first and is chosen by default
@@ -62,7 +64,7 @@
 ## Components
 - Chosen with the user page by page, from `../../design-system.dsds.yaml`
 - Login: TextField md, Checkbox sm, Button brand primary lg, LinkButton brand lg
-- Dashboard: Button pill sm (header menu, brand primary for the current page, neutral tertiary for the rest), Avatar md, TextField md, Tag pill lg and sm neutral, LinkButton brand gray xs, Dropdown md, Table, Tabs segmented sm, Pagination md, BarChart, Modal md and lg (beta), IconButton neutral tertiary xs and circular brand gray tertiary xs, AvatarLabel lg, Tabs underline md, Card list
+- Dashboard: Button pill sm (header menu, brand primary for the current page, neutral tertiary for the rest), Avatar md, TextField md, Tag pill lg and sm neutral and circular icon-only sm neutral, LinkButton brand gray xs, Dropdown md, Table, Tabs segmented sm, Pagination md, BarChart, Modal md and lg (beta), IconButton neutral tertiary xs, AvatarLabel lg, Tabs underline md, Card list
 - Built inside the story from tokens because the system doesn't have them: the rank number in a circle (32, the size of Avatar sm) and the number card (border, dot and number)
 - NEEDS CLARIFICATION: should the rank number and the number card become ntgds components
 - Chart: the ntgds `BarChart` from page 29 Chart (decided 2026-10-28 to be a system component, not a one-off). The dots on the number cards use the chart's tokens (`chart-color-series-1` for news created, `chart-color-line` with `chart-color-point-fill` for views) so they match the chart. The design file still binds `color-foreground-brand-primary` and `color-utility-u-blue-200`

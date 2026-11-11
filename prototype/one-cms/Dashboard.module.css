@@ -174,11 +174,10 @@
   color: var(--ntg-color-text-general-supporting-text);
 }
 
-/* แถวล่างของการ์ด: Tag หมวดชิดซ้าย ปุ่มตะกร้าชิดขวา */
+/* แถวล่างของการ์ด: Tag หมวดกับปุ่มตะกร้าเรียงชิดซ้าย */
 .rankMeta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--ntg-size-space-s1-lg);
 }
 
