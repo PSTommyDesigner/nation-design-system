@@ -98,6 +98,9 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-block: var(--dd-panel-py, 0);
+  /* แถวเว้นขอบซ้ายขวาเท่าความหนาเส้นขอบ เพราะเส้นขอบเป็น box-shadow inset ที่ถูกพื้นของแถววาดทับ
+     ไฟล์ออกแบบเส้นขอบอยู่ด้านใน แถวกว้าง 278 จากแผง 280 เริ่มที่ x 1 (แก้ 2026-11-11) */
+  padding-inline: var(--dd-panel-border-w, 0px);
   border-radius: var(--dd-panel-r-tl, 0) var(--dd-panel-r-tr, 0) var(--dd-panel-r-br, 0) var(--dd-panel-r-bl, 0);
   background: var(--dd-panel-bg, transparent);
   box-shadow: inset 0 0 0 var(--dd-panel-border-w, 0px) var(--dd-panel-border, transparent), var(--dd-panel-shadow, 0 0 0 0 transparent);
