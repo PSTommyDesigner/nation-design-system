@@ -2186,5 +2186,11 @@
   "11961:15443": "component::dropdown/panel-padding-x/lg",
   "11961:15444": "component::dropdown/row-padding-x/sm",
   "11961:15445": "component::dropdown/row-padding-x/md",
-  "11961:15446": "component::dropdown/row-padding-x/lg"
+  "11961:15446": "component::dropdown/row-padding-x/lg",
+  "11980:2": "component::mockup-media/icon-size/xs",
+  "11980:3": "component::mockup-media/icon-size/sm",
+  "11980:4": "component::mockup-media/icon-size/md",
+  "11980:5": "component::mockup-media/icon-size/lg",
+  "11980:6": "component::mockup-media/icon-size/xl",
+  "10205:382": "component::size/space/none"
 }

@@ -1237,6 +1237,39 @@
         }
       },
       "notes": "modal เป็นชุดเดียว (11805:182) body กับ footer เป็นคุณสมบัติชนิด SLOT ฝั่งโค้ดคือ children กับ footer ที่รับ React node ส่วน show-footer คือมีหรือไม่มี footer show-description คือมีหรือไม่มี description"
+    },
+    "MockupMedia": {
+      "figmaPage": "10 Frame",
+      "figmaSets": [
+        "mockup-media"
+      ],
+      "axes": {
+        "kind": [
+          "image",
+          "video"
+        ],
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ]
+      },
+      "properties": [],
+      "map": {
+        "axes": {
+          "kind": {
+            "prop": "kind",
+            "type": "MockupMediaKind"
+          },
+          "size": {
+            "prop": "size",
+            "type": "MockupMediaSize"
+          }
+        }
+      },
+      "notes": "mockup-media เป็นชุดเดียว (11982:151) สร้าง 2026-11-11 ข้อความแสดงเฉพาะ lg กับ xl ตามขนาด ไม่มีคุณสมบัติให้เปิดปิด"
     }
   }
 }

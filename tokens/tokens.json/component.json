@@ -11535,5 +11535,34 @@
         "$value": "12px"
       }
     }
+  },
+  "mockup-media": {
+    "icon-size": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$description": "ขนาดไอคอนในภาพแทนรูปขนาด xs เท่ากับ 16px ยืมจาก size/icon/sm ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$description": "ขนาดไอคอนในภาพแทนรูปขนาด sm เท่ากับ 20px ยืมจาก size/icon/md ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$description": "ขนาดไอคอนในภาพแทนรูปขนาด md เท่ากับ 24px ยืมจาก size/icon/lg ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$description": "ขนาดไอคอนในภาพแทนรูปขนาด lg เท่ากับ 32px ยืมจาก size/icon/xl ของสเกลไอคอน ขนาดนี้แสดงข้อความ body-sm ใต้ไอคอนด้วย"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "40px",
+        "$description": "ขนาดไอคอนในภาพแทนรูปขนาด xl เท่ากับ 40px ยืมจาก size/icon/2xl ของสเกลไอคอน ขนาดนี้แสดงข้อความ body-sm ใต้ไอคอนด้วย"
+      }
+    }
   }
 }

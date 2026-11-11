@@ -1,0 +1,137 @@
+# MockupMedia in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/MockupMedia/, tokens/scale/mockup-media.mjs, tokens/figma-layers/mockup-media.json
+# and the Figma file (built 2026-11-11). The source design is the CMS file kMw46mRQEaL2s1ofpnSDgh, nodes 15661:14597 and 15661:14600
+# Levels go in this order: must, should, may, should-not, must-not
+# Sections go from broad to narrow: when-to-use before how-to-use, for: all before for: agent
+# The first value of every enum trait is its default
+
+kind: component
+id: mockup-media
+name: MockupMedia
+description: >-
+  A stand-in for an image or a video while the real one doesn't exist yet: a filled box with an image or videocam icon
+  and, at the larger sizes, the word รูปภาพ or วีดีโอ. It matches the Figma set mockup-media on page 10 Frame, with the
+  axes kind (image, video) and size (xs to xl). It exists so prototypes and doc pages show what kind of media goes in a
+  spot, instead of a plain gray box. It is not the checkerboard image-16:9 and video-16:9 frames on the same page,
+  which are image and video fills with no code.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-11-11}
+  tags: [media, prototype]
+  status: {status: beta}
+  aliases: [mockup-media, mockup-image, mockup-video]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use in prototypes, doc pages and mockups wherever a news image or a video will go, such as the image of a card
+          or the 16:9 image in a Modal.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use MockupMedia as the fallback when a real image fails to load on a live page. Use the brand's fallback image
+          for that, because MockupMedia says the content is missing on purpose.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Pick size from the box it sits in. Boxes lower than about 120, such as the image slot of a list card, take md or
+          smaller. Only lg and xl show the label.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Give it a parent with a height, or pass an aspect ratio such as style aspectRatio 16 / 9. MockupMedia stretches
+          to its parent and has no height of its own.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change its fill, icon color, label color or corner radius with className or style. Round the corners on the
+          parent box, which owns the radius.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - level: must-not
+        statement: >-
+          Rely on MockupMedia to describe the image. It is decorative and hidden from screen readers with aria-hidden.
+          Put alt text on the real image once it exists.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the spot will hold a video THEN use kind video ELSE use kind image. IF the box is lower than about 120 THEN
+          use size md or smaller ELSE use lg or xl.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Box
+        definition: >-
+          A flex column that centers its children and stretches to its parent. Fill --ntg-color-background-general-secondary.
+          No padding, no radius. Figma variants have default sizes 96x54, 160x90, 224x126, 320x180 and 448x252 only so they can be seen in the file.
+      - term: Icon
+        definition: >-
+          Nation UI image or videocam, --ntg-mockup-media-icon-size-<size> (16, 20, 24, 32, 40, borrowed from the icon
+          scale size/icon sm to 2xl), color --ntg-icon-general-disable-subtle.
+      - term: Label
+        definition: >-
+          รูปภาพ or วีดีโอ in .ntg-typography-body-sm, color --ntg-color-text-general-disabled, right under the icon with
+          no gap. Shown at lg and xl only.
+
+refs:
+  - href: ../../components/MockupMedia/MockupMedia.tsx
+    rel: source
+    role: Import MockupMedia from components/MockupMedia
+  - href: ../../components/MockupMedia/MockupMedia.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=562-4386
+    rel: design
+    role: Figma page 10 Frame
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: kind
+    description: Which media the box stands for. Figma axis kind. The first value is the default.
+    values:
+      - id: image
+        description: Icon image and the word รูปภาพ. The default.
+      - id: video
+        description: Icon videocam and the word วีดีโอ.
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Icon size and whether the label shows. Figma axis size. The first value is the default.
+    values:
+      - id: md
+        description: Icon 24, no label. The default.
+      - id: xs
+        description: Icon 16, no label.
+      - id: sm
+        description: Icon 20, no label. For the image slot of a list card.
+      - id: lg
+        description: Icon 32 and the label.
+      - id: xl
+        description: Icon 40 and the label. For large 16:9 images.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "10 Frame"
+    figmaSets: [mockup-media]

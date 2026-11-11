@@ -4038,6 +4038,11 @@ export const ModalRadiusTopLeft = "12px";
 export const ModalRadiusTopRight = "12px";
 export const ModalRadiusBottomRight = "12px";
 export const ModalRadiusBottomLeft = "12px";
+export const MockupMediaIconSizeXs = "16px"; // ขนาดไอคอนในภาพแทนรูปขนาด xs เท่ากับ 16px ยืมจาก size/icon/sm ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ
+export const MockupMediaIconSizeSm = "20px"; // ขนาดไอคอนในภาพแทนรูปขนาด sm เท่ากับ 20px ยืมจาก size/icon/md ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ
+export const MockupMediaIconSizeMd = "24px"; // ขนาดไอคอนในภาพแทนรูปขนาด md เท่ากับ 24px ยืมจาก size/icon/lg ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ
+export const MockupMediaIconSizeLg = "32px"; // ขนาดไอคอนในภาพแทนรูปขนาด lg เท่ากับ 32px ยืมจาก size/icon/xl ของสเกลไอคอน ขนาดนี้แสดงข้อความ body-sm ใต้ไอคอนด้วย
+export const MockupMediaIconSizeXl = "40px"; // ขนาดไอคอนในภาพแทนรูปขนาด xl เท่ากับ 40px ยืมจาก size/icon/2xl ของสเกลไอคอน ขนาดนี้แสดงข้อความ body-sm ใต้ไอคอนด้วย
 export const ShadowsCenterXs = {
   color: "rgba(0, 0, 0, 0.05)",
   offsetX: "0px",

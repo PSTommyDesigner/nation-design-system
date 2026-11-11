@@ -274,7 +274,8 @@
     "component::modal/padding": "3:pzh0w3",
     "component::modal/radius": "4:7c0f0v",
     "component::dropdown/panel-padding-x": "3:1ao86m5",
-    "component::dropdown/row-padding-x": "3:uhkkap"
+    "component::dropdown/row-padding-x": "3:uhkkap",
+    "component::mockup-media/icon-size": "5:ki3hb7"
   },
   "groupsValue": {
     "primitive::color/base": "60:9jlreo",
@@ -540,7 +541,8 @@
     "component::modal/padding": "3:yzvblc",
     "component::modal/radius": "4:1xg783z",
     "component::dropdown/panel-padding-x": "3:buni6o",
-    "component::dropdown/row-padding-x": "3:15qdrdn"
+    "component::dropdown/row-padding-x": "3:15qdrdn",
+    "component::mockup-media/icon-size": "5:1lgf120"
   },
   "$noteValue": "ลายนิ้วมือของ \"ค่า\" รายกลุ่ม เฉพาะ collection ที่มี mode เดียว คือ component กับ primitive ใช้ปิดช่องที่ด่านเทียบชื่ออย่างเดียวจับไม่ได้ เช่น ชื่อครบแต่ค่าผิด (เพิ่ม 2026-10-15)"
 }

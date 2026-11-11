@@ -1,0 +1,402 @@
+{
+ "capturedAt": "2026-11-11",
+ "page": "10 Frame",
+ "reference": "mockup-media",
+ "sets": {
+  "mockup-media": {
+   "defs": {
+    "kind": ["image","video"],
+    "size": ["xs","sm","md","lg","xl"]
+   },
+   "layout": {
+    "xs, kind=image": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 96,
+     "h": 54,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/xs",
+       "h": "mockup-media/icon-size/xs",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["FIXED","FIXED"],
+       "w": 43,
+       "h": 24,
+       "vis": false,
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "sm, kind=image": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 160,
+     "h": 90,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/sm",
+       "h": "mockup-media/icon-size/sm",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["FIXED","FIXED"],
+       "w": 43,
+       "h": 24,
+       "vis": false,
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "md, kind=image": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 224,
+     "h": 126,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/md",
+       "h": "mockup-media/icon-size/md",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["FIXED","FIXED"],
+       "w": 43,
+       "h": 24,
+       "vis": false,
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "lg, kind=image": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 320,
+     "h": 180,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/lg",
+       "h": "mockup-media/icon-size/lg",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "xl, kind=image": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 448,
+     "h": 252,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/xl",
+       "h": "mockup-media/icon-size/xl",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "xs, kind=video": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 96,
+     "h": 54,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/xs",
+       "h": "mockup-media/icon-size/xs",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["FIXED","FIXED"],
+       "w": 31,
+       "h": 24,
+       "vis": false,
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "sm, kind=video": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 160,
+     "h": 90,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/sm",
+       "h": "mockup-media/icon-size/sm",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["FIXED","FIXED"],
+       "w": 31,
+       "h": 24,
+       "vis": false,
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "md, kind=video": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 224,
+     "h": 126,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/md",
+       "h": "mockup-media/icon-size/md",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["FIXED","FIXED"],
+       "w": 31,
+       "h": 24,
+       "vis": false,
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "lg, kind=video": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 320,
+     "h": 180,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/lg",
+       "h": "mockup-media/icon-size/lg",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/sm"
+      }
+     ]
+    },
+    "xl, kind=video": {
+     "t": "COMPONENT",
+     "lm": "VERTICAL",
+     "al": "CENTER",
+     "ca": "CENTER",
+     "g": "size/space/none",
+     "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+     "s": ["FIXED","FIXED"],
+     "w": 448,
+     "h": 252,
+     "clip": true,
+     "ch": [
+      {
+       "n": "icon",
+       "t": "INSTANCE",
+       "s": ["FIXED","FIXED"],
+       "w": "mockup-media/icon-size/xl",
+       "h": "mockup-media/icon-size/xl",
+       "clip": true,
+       "inst": true,
+       "ch": [
+        {
+         "n": "vector",
+         "t": "VECTOR"
+        }
+       ]
+      },
+      {
+       "n": "label",
+       "t": "TEXT",
+       "s": ["HUG","HUG"],
+       "ts": "text::body/sm"
+      }
+     ]
+    }
+   },
+   "colors": {
+    "mockup-media": {
+     "kind=image": 0,
+     "kind=video": 0
+    }
+   }
+  }
+ },
+ "palette": [
+  {
+   "(root)": {
+    "fills": ["color/background/general/secondary"]
+   },
+   "icon/vector": {
+    "fills": ["icon/general/disable-subtle"]
+   },
+   "label": {
+    "fills": ["color/text/general/disabled"]
+   }
+  }
+ ]
+}

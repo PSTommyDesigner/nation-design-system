@@ -166,6 +166,9 @@ refs:
   - href: ./components/modal.dsds.yaml
     rel: file
     role: Modal
+  - href: ./components/mockup-media.dsds.yaml
+    rel: file
+    role: MockupMedia
   - href: ./components/nation-house-icon.dsds.yaml
     rel: file
     role: NationHouseIcon

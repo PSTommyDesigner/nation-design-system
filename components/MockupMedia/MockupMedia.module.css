@@ -1,0 +1,69 @@
+/* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
+ *   โครง (วิธีวาด)  แก้ที่ components/MockupMedia/MockupMedia.base.css
+ *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 10 Frame แล้วรัน  npm run figma:layers -- mockup-media  และ  npm run css:generate -- mockup-media
+ *   spec: tokens/figma-layers/mockup-media.json (ดึง 2026-11-11)
+ */
+
+/*
+ * MockupMedia ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token ค่าทุกค่ามาจาก --mm-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/mockup-media.json (spec ชั้นจากไฟล์ออกแบบหน้า 10)
+ * แล้วต่อท้ายไฟล์นี้เป็น MockupMedia.module.css ห้ามแก้ MockupMedia.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. กล่องยืดเต็มกรอบที่วาง (กว้างและสูง 100%) ขนาดกล่องในไฟล์ออกแบบเป็นแค่ขนาดตั้งต้นให้ดูในไฟล์
+ *      ถ้ากรอบแม่ไม่มีความสูง ให้ส่ง aspect-ratio ผ่าน style หรือ className เอง
+ *   2. ไอคอนกับข้อความจัดกลางด้วย flex ไม่มีระยะขอบตายตัว จึงไม่ล้นในกล่องเล็ก
+ *   3. มุมโค้งเป็นของกรอบที่วาง ไม่ใช่ของกล่องนี้ กล่องจึงไม่มีมุมโค้งเอง
+ */
+
+.root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mm-gap, 0);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--mm-bg, transparent);
+}
+.icon {
+  flex: none;
+  display: inline-flex;
+  width: var(--mm-icon);
+  height: var(--mm-icon);
+  color: var(--mm-icon-color, currentColor);
+}
+.icon svg { width: 100%; height: 100%; }
+.label {
+  /* ซ่อนเป็นค่าตั้งต้น ขนาดที่ไฟล์ออกแบบเปิดข้อความ (lg กับ xl) ตัวสร้างจะตั้งเป็น block ให้ */
+  display: var(--mm-label-display, none);
+  color: var(--mm-label-color, inherit);
+  font-family: var(--mm-font-family);
+  font-size: var(--mm-font-size);
+  line-height: var(--mm-line-height);
+  font-weight: var(--mm-font-weight);
+  letter-spacing: var(--mm-letter-space);
+  white-space: nowrap;
+}
+
+/* ═══ ส่วนที่สร้างจากไฟล์ออกแบบ ═══ */
+/* ── ตัวอักษรต่อขนาด จาก text style ของชั้นข้อความในไฟล์ออกแบบ ── */
+.xs { --mm-font-family: var(--ntg-typography-font-family-body-sm); --mm-font-size: var(--ntg-typography-font-size-body-sm); --mm-line-height: var(--ntg-typography-line-height-body-sm); --mm-font-weight: var(--ntg-typography-font-weight-body-sm); --mm-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.sm { --mm-font-family: var(--ntg-typography-font-family-body-sm); --mm-font-size: var(--ntg-typography-font-size-body-sm); --mm-line-height: var(--ntg-typography-line-height-body-sm); --mm-font-weight: var(--ntg-typography-font-weight-body-sm); --mm-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.md { --mm-font-family: var(--ntg-typography-font-family-body-sm); --mm-font-size: var(--ntg-typography-font-size-body-sm); --mm-line-height: var(--ntg-typography-line-height-body-sm); --mm-font-weight: var(--ntg-typography-font-weight-body-sm); --mm-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.lg { --mm-font-family: var(--ntg-typography-font-family-body-sm); --mm-font-size: var(--ntg-typography-font-size-body-sm); --mm-line-height: var(--ntg-typography-line-height-body-sm); --mm-font-weight: var(--ntg-typography-font-weight-body-sm); --mm-letter-space: var(--ntg-typography-letter-space-body-sm); }
+.xl { --mm-font-family: var(--ntg-typography-font-family-body-sm); --mm-font-size: var(--ntg-typography-font-size-body-sm); --mm-line-height: var(--ntg-typography-line-height-body-sm); --mm-font-weight: var(--ntg-typography-font-weight-body-sm); --mm-letter-space: var(--ntg-typography-letter-space-body-sm); }
+
+/* ── โครง (ระยะ ขนาด มุมโค้ง เงา) ต่อ ชุด × ขนาด อ่านจากชั้นของตระกูลอ้างอิง ── */
+.root.xs { --mm-gap: var(--ntg-size-space-none); --mm-icon: var(--ntg-mockup-media-icon-size-xs); }
+.root.sm { --mm-gap: var(--ntg-size-space-none); --mm-icon: var(--ntg-mockup-media-icon-size-sm); }
+.root.md { --mm-gap: var(--ntg-size-space-none); --mm-icon: var(--ntg-mockup-media-icon-size-md); }
+.root.lg { --mm-gap: var(--ntg-size-space-none); --mm-icon: var(--ntg-mockup-media-icon-size-lg); --mm-label-display: block; }
+.root.xl { --mm-gap: var(--ntg-size-space-none); --mm-icon: var(--ntg-mockup-media-icon-size-xl); --mm-label-display: block; }
+
+/* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
+.root { --mm-bg: var(--ntg-color-background-general-secondary); --mm-icon-color: var(--ntg-icon-general-disable-subtle); --mm-label-color: var(--ntg-color-text-general-disabled); }

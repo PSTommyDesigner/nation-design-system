@@ -352,5 +352,19 @@
     "layoutAxes": [
       "header"
     ]
+  },
+  "mockup-media": {
+    "page": "10 Frame",
+    "depth": 4,
+    "reference": "mockup-media",
+    "families": [
+      "mockup-media"
+    ],
+    "sets": [
+      "mockup-media"
+    ],
+    "layoutAxes": [
+      "kind"
+    ]
   }
 }

@@ -1,0 +1,45 @@
+/*
+ * MockupMedia ส่วนโครงที่เขียนมือ (Nation Design System)
+ *
+ * ไฟล์นี้คือ "วิธีวาด" เท่านั้น ไม่มีชื่อตัวแปร token ค่าทุกค่ามาจาก --mm-* ซึ่ง
+ * scripts/generate-component-css.mjs สร้างจาก tokens/figma-layers/mockup-media.json (spec ชั้นจากไฟล์ออกแบบหน้า 10)
+ * แล้วต่อท้ายไฟล์นี้เป็น MockupMedia.module.css ห้ามแก้ MockupMedia.module.css ตรง ๆ
+ *
+ * การตัดสินใจฝั่งเว็บที่ไม่มีในไฟล์ออกแบบ
+ *   1. กล่องยืดเต็มกรอบที่วาง (กว้างและสูง 100%) ขนาดกล่องในไฟล์ออกแบบเป็นแค่ขนาดตั้งต้นให้ดูในไฟล์
+ *      ถ้ากรอบแม่ไม่มีความสูง ให้ส่ง aspect-ratio ผ่าน style หรือ className เอง
+ *   2. ไอคอนกับข้อความจัดกลางด้วย flex ไม่มีระยะขอบตายตัว จึงไม่ล้นในกล่องเล็ก
+ *   3. มุมโค้งเป็นของกรอบที่วาง ไม่ใช่ของกล่องนี้ กล่องจึงไม่มีมุมโค้งเอง
+ */
+
+.root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mm-gap, 0);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--mm-bg, transparent);
+}
+.icon {
+  flex: none;
+  display: inline-flex;
+  width: var(--mm-icon);
+  height: var(--mm-icon);
+  color: var(--mm-icon-color, currentColor);
+}
+.icon svg { width: 100%; height: 100%; }
+.label {
+  /* ซ่อนเป็นค่าตั้งต้น ขนาดที่ไฟล์ออกแบบเปิดข้อความ (lg กับ xl) ตัวสร้างจะตั้งเป็น block ให้ */
+  display: var(--mm-label-display, none);
+  color: var(--mm-label-color, inherit);
+  font-family: var(--mm-font-family);
+  font-size: var(--mm-font-size);
+  line-height: var(--mm-line-height);
+  font-weight: var(--mm-font-weight);
+  letter-spacing: var(--mm-letter-space);
+  white-space: nowrap;
+}

@@ -1194,7 +1194,38 @@ const MODAL = {
   },
 }
 
-const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER, card: CARD, 'tag-field': TAG_FIELD, modal: MODAL }
+// ═══════════════════════════════════════════════════════════════════════════════
+// MockupMedia: หน้า 10 Frame ชุด mockup-media แกน kind (image/video) กับ size (xs ถึง xl) (สร้าง 2026-11-11)
+//   กล่องยืดเต็มกรอบที่วาง ขนาดกล่องในไฟล์ออกแบบเป็นแค่ขนาดตั้งต้นให้ดูในไฟล์ จึงไม่ส่งออก
+//   ไอคอนกับข้อความหน้าตาเหมือนกันทั้งสอง kind ต่างกันแค่ไอคอนกับคำ ซึ่งเลือกใน .tsx
+// ═══════════════════════════════════════════════════════════════════════════════
+const MOCKUP_MEDIA = {
+  specFile: 'tokens/figma-layers/mockup-media.json',
+  baseFile: 'components/MockupMedia/MockupMedia.base.css',
+  outFile: 'components/MockupMedia/MockupMedia.module.css',
+  sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
+  layoutVariants: [{ key: (size) => `${size}, kind=image`, cls: '' }],
+  sets: { 'mockup-media': { classes: '.root' } },
+  familyClass: () => '',
+  axisClass: { kind: () => '' },
+  stateSelector: { default: (sel) => sel },
+  text: [
+    { layers: ['label'], vars: { '--mm-font-family': 'font-family', '--mm-font-size': 'font-size', '--mm-line-height': 'line-height', '--mm-font-weight': 'font-weight', '--mm-letter-space': 'letter-space' } },
+  ],
+  layers: {
+    '(root)': (n, W) => ({ '--mm-gap': W(n.g) }),
+    'icon': (n, W) => ({ '--mm-icon': W(n.w) }),
+    'icon/**': () => ({}),
+    'label': (n) => ({ '--mm-label-display': n.vis === false ? 'none' : 'block' }),
+  },
+  colors: {
+    '(root)': (c, W) => ({ '--mm-bg': W(c.fills[0]) }),
+    'icon/vector': (c, W) => ({ '--mm-icon-color': W(c.fills[0]) }),
+    'label': (c, W) => ({ '--mm-label-color': W(c.fills[0]) }),
+  },
+}
+
+const COMPONENTS = { tag: TAG, badge: BADGE, button: BUTTON, 'icon-button': ICON_BUTTON, 'link-button': LINK_BUTTON, checkbox: CHECKBOX, radio: RADIO, toggle: TOGGLE, 'text-field': TEXT_FIELD, tooltip: TOOLTIP, divider: DIVIDER, toast: TOAST, banner: BANNER, tabs: TABS, pagination: PAGINATION, avatar: AVATAR, dropdown: DROPDOWN, slider: SLIDER, card: CARD, 'tag-field': TAG_FIELD, modal: MODAL, 'mockup-media': MOCKUP_MEDIA }
 const M = COMPONENTS[target]
 if (!M) { console.error(`ใช้: node scripts/generate-component-css.mjs <${Object.keys(COMPONENTS).join('|')}> [--check]`); process.exit(2) }
 

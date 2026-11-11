@@ -2378,6 +2378,11 @@
   --ntg-modal-radius-top-right: 12px;
   --ntg-modal-radius-bottom-right: 12px;
   --ntg-modal-radius-bottom-left: 12px;
+  --ntg-mockup-media-icon-size-xs: 16px; /** ขนาดไอคอนในภาพแทนรูปขนาด xs เท่ากับ 16px ยืมจาก size/icon/sm ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ */
+  --ntg-mockup-media-icon-size-sm: 20px; /** ขนาดไอคอนในภาพแทนรูปขนาด sm เท่ากับ 20px ยืมจาก size/icon/md ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ */
+  --ntg-mockup-media-icon-size-md: 24px; /** ขนาดไอคอนในภาพแทนรูปขนาด md เท่ากับ 24px ยืมจาก size/icon/lg ของสเกลไอคอน ขนาดนี้มีแต่ไอคอน ไม่แสดงข้อความ */
+  --ntg-mockup-media-icon-size-lg: 32px; /** ขนาดไอคอนในภาพแทนรูปขนาด lg เท่ากับ 32px ยืมจาก size/icon/xl ของสเกลไอคอน ขนาดนี้แสดงข้อความ body-sm ใต้ไอคอนด้วย */
+  --ntg-mockup-media-icon-size-xl: 40px; /** ขนาดไอคอนในภาพแทนรูปขนาด xl เท่ากับ 40px ยืมจาก size/icon/2xl ของสเกลไอคอน ขนาดนี้แสดงข้อความ body-sm ใต้ไอคอนด้วย */
   --ntg-shadows-center-xs: 0px 0px 4px 0px rgba(0, 0, 0, 0.05); /** element เล็กที่ต้องมีเงารอบด้าน เช่น หัวลูกศร tooltip · slider · progress */
   --ntg-shadows-center-sm: 0px 0px 4px 2px rgba(0, 0, 0, 0.05); /** ตาราง · กริด · การ์ดที่ต้องการเงารอบด้านเท่ากัน */
   --ntg-shadows-center-md: 0px 0px 8px 2px rgba(0, 0, 0, 0.1); /** element ลอยรอบด้านขนาดกลาง (ใช้น้อย) */
