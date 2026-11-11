@@ -233,13 +233,10 @@ function DashboardPage() {
               ))}
             </div>
           </div>
-          <div className={styles.ranking}>
-            {[0, 10, 20, 30].map((start) => (
-              <ol key={start} className={styles.rankList} start={start + 1}>
-                {RANKING.slice(start, start + 10).map((item) => <RankItem key={item.rank} item={item} onOpen={setNews} />)}
-              </ol>
-            ))}
-          </div>
+          {/* เรียงซ้ายไปขวาแล้วบนลงล่าง 4 คอลัมน์ แถวแรกคืออันดับ 1 ถึง 4 (ผู้ใช้สั่ง 2026-11-11) */}
+          <ol className={styles.ranking}>
+            {RANKING.map((item) => <RankItem key={item.rank} item={item} onOpen={setNews} />)}
+          </ol>
         </section>
 
         <section className={styles.section} aria-labelledby="count-title">

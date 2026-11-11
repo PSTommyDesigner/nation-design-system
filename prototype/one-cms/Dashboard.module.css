@@ -95,17 +95,12 @@
   gap: var(--ntg-size-space-s1-lg);
 }
 
-/* ── จัดอันดับข่าว: 4 คอลัมน์ คอลัมน์ละ 10 ข่าว ห่างกัน 16 ── */
+/* ── จัดอันดับข่าว: 4 คอลัมน์ เรียงซ้ายไปขวาแล้วบนลงล่าง แถวห่างกัน 16 ── */
 .ranking {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: var(--ntg-size-space-s2-lg);
-}
-
-.rankList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ntg-size-space-s2-sm);
+  row-gap: var(--ntg-size-space-s2-sm);
   margin: 0;
   padding: 0;
   list-style: none;

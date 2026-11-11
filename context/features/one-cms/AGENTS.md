@@ -34,7 +34,7 @@
   3. Reporter statistics
 - The page has the CMS header bar, then the three sections stacked at full width (padding 40 top and bottom, 24 at the sides)
 - The Dashboard MUST NOT have a page header (`_Header / Page`) under the CMS header bar (set by the user 2026-11-11). The user removed it from the design file the same day, so Figma and the prototype agree
-- News ranking MUST list 40 news items ranked by views, in 4 columns of 10 (ranks 1 to 10, 11 to 20, 21 to 30, 31 to 40). The numbers in the design that restart at 1 in every column are wrong (set by the user 2026-10-28)
+- News ranking MUST list 40 news items ranked by views, in 4 columns, ordered left to right and then top to bottom: the first row is ranks 1 to 4 (set by the user 2026-11-11, replacing the column by column order). The numbers in the design that restart at 1 in every column are wrong (set by the user 2026-10-28)
 - Each item MUST show the rank in a circle, the headline on one line cut off with an ellipsis, and the views from three sources as gray `link-button` xs: PV (Pageviews), GA and TH (Truehits)
 - The subtitle MUST say that PV is counted by the site itself, so it won't match GA and Truehits
 - News ranking MUST have a search field (headline, category), a date range field, and a row of category tags (`pill-tag` lg, neutral). The chosen tag is primary, the others secondary. "ทั้งหมด" comes first and is chosen by default
