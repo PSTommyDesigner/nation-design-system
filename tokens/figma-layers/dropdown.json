@@ -1,5 +1,5 @@
 {
- "capturedAt": "2026-10-26",
+ "capturedAt": "2026-11-11",
  "page": "27 Dropdowns",
  "reference": "Dropdown Component Previews",
  "sets": {
@@ -984,7 +984,7 @@
      "al": "MIN",
      "ca": "MIN",
      "g": 0,
-     "p": ["dropdown/panel-padding-y/sm",0,"dropdown/panel-padding-y/sm",0],
+     "p": ["dropdown/panel-padding-y/sm","dropdown/panel-padding-x/sm","dropdown/panel-padding-y/sm","dropdown/panel-padding-x/sm"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "clip": true,
@@ -997,7 +997,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": 0,
-       "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+       "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
        "s": ["FIXED","FIXED"],
        "w": 278,
        "h": 30,
@@ -1060,7 +1060,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/sm",
-       "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+       "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1087,7 +1087,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/sm",
-       "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+       "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1114,7 +1114,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/sm",
-       "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+       "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1141,7 +1141,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/sm",
-       "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+       "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1168,7 +1168,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/sm",
-       "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+       "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1195,7 +1195,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/sm",
-       "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+       "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1222,7 +1222,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/sm",
-       "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+       "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1250,7 +1250,7 @@
      "al": "MIN",
      "ca": "MIN",
      "g": 0,
-     "p": ["dropdown/panel-padding-y/md",0,"dropdown/panel-padding-y/md",0],
+     "p": ["dropdown/panel-padding-y/md","dropdown/panel-padding-x/md","dropdown/panel-padding-y/md","dropdown/panel-padding-x/md"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "clip": true,
@@ -1263,7 +1263,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": 0,
-       "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+       "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
        "s": ["FIXED","FIXED"],
        "w": 278,
        "h": 38,
@@ -1326,7 +1326,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/md",
-       "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+       "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1353,7 +1353,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/md",
-       "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+       "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1380,7 +1380,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/md",
-       "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+       "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1407,7 +1407,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/md",
-       "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+       "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1434,7 +1434,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/md",
-       "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+       "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1461,7 +1461,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/md",
-       "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+       "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1488,7 +1488,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/md",
-       "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+       "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1516,7 +1516,7 @@
      "al": "MIN",
      "ca": "MIN",
      "g": 0,
-     "p": ["dropdown/panel-padding-y/lg",0,"dropdown/panel-padding-y/lg",0],
+     "p": ["dropdown/panel-padding-y/lg","dropdown/panel-padding-x/lg","dropdown/panel-padding-y/lg","dropdown/panel-padding-x/lg"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "clip": true,
@@ -1529,7 +1529,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": 0,
-       "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+       "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
        "s": ["FIXED","FIXED"],
        "w": 278,
        "h": 46,
@@ -1592,7 +1592,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/lg",
-       "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+       "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1619,7 +1619,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/lg",
-       "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+       "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1646,7 +1646,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/lg",
-       "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+       "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1673,7 +1673,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/lg",
-       "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+       "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1700,7 +1700,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/lg",
-       "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+       "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1727,7 +1727,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/lg",
-       "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+       "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1754,7 +1754,7 @@
        "al": "MIN",
        "ca": "CENTER",
        "g": "dropdown/gap/lg",
-       "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+       "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
        "s": ["FILL","HUG"],
        "inst": true,
        "ch": [
@@ -1819,7 +1819,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/sm",
-     "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+     "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -1899,7 +1899,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/sm",
-     "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+     "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -1979,7 +1979,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/sm",
-     "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+     "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2059,7 +2059,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/sm",
-     "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+     "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2154,7 +2154,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/sm",
-     "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+     "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2249,7 +2249,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/sm",
-     "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+     "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2329,7 +2329,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/md",
-     "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+     "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2445,7 +2445,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/md",
-     "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+     "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2561,7 +2561,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/md",
-     "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+     "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2677,7 +2677,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/md",
-     "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+     "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2808,7 +2808,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/md",
-     "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+     "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -2939,7 +2939,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/md",
-     "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+     "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3055,7 +3055,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/lg",
-     "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+     "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3171,7 +3171,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/lg",
-     "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+     "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3287,7 +3287,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/lg",
-     "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+     "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3403,7 +3403,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/lg",
-     "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+     "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3534,7 +3534,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/lg",
-     "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+     "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3665,7 +3665,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": "dropdown/gap/lg",
-     "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+     "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3810,7 +3810,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": 0,
-     "p": ["dropdown/row-padding-y/sm","dropdown/padding-x/sm","dropdown/row-padding-y/sm","dropdown/padding-x/sm"],
+     "p": ["dropdown/row-padding-y/sm","dropdown/row-padding-x/sm","dropdown/row-padding-y/sm","dropdown/row-padding-x/sm"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3828,7 +3828,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": 0,
-     "p": ["dropdown/row-padding-y/md","dropdown/padding-x/md","dropdown/row-padding-y/md","dropdown/padding-x/md"],
+     "p": ["dropdown/row-padding-y/md","dropdown/row-padding-x/md","dropdown/row-padding-y/md","dropdown/row-padding-x/md"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [
@@ -3846,7 +3846,7 @@
      "al": "MIN",
      "ca": "CENTER",
      "g": 0,
-     "p": ["dropdown/row-padding-y/lg","dropdown/padding-x/lg","dropdown/row-padding-y/lg","dropdown/padding-x/lg"],
+     "p": ["dropdown/row-padding-y/lg","dropdown/row-padding-x/lg","dropdown/row-padding-y/lg","dropdown/row-padding-x/lg"],
      "s": ["FIXED","HUG"],
      "w": 280,
      "ch": [

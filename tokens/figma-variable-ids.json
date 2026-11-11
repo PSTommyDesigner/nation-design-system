@@ -2180,5 +2180,11 @@
   "4355:7326": "primitive::color/orange/600",
   "4355:7338": "primitive::color/yellow/600",
   "4355:7350": "primitive::color/gold/600",
-  "4652:21423": "component::color/background/brand/section"
+  "4652:21423": "component::color/background/brand/section",
+  "11961:15441": "component::dropdown/panel-padding-x/sm",
+  "11961:15442": "component::dropdown/panel-padding-x/md",
+  "11961:15443": "component::dropdown/panel-padding-x/lg",
+  "11961:15444": "component::dropdown/row-padding-x/sm",
+  "11961:15445": "component::dropdown/row-padding-x/md",
+  "11961:15446": "component::dropdown/row-padding-x/lg"
 }

@@ -936,7 +936,7 @@ const DROPDOWN = {
   layers: {
     '(root)': (n, W, ctx) => {
       if (ctx.set === 'dropdown') return { '--dd-h': W(n.h), '--dd-px': W(n.p[1]), '--dd-gap': W(n.g), ...(n.r ? { '--dd-r-tl': W(n.r[0]), '--dd-r-tr': W(n.r[1]), '--dd-r-br': W(n.r[2]), '--dd-r-bl': W(n.r[3]) } : {}) }
-      if (ctx.set === 'dropdown-menu') return { '--dd-panel-py': W(n.p[0]), ...(n.r ? { '--dd-panel-r-tl': W(n.r[0]), '--dd-panel-r-tr': W(n.r[1]), '--dd-panel-r-br': W(n.r[2]), '--dd-panel-r-bl': W(n.r[3]) } : {}) }
+      if (ctx.set === 'dropdown-menu') return { '--dd-panel-py': W(n.p[0]), '--dd-panel-px': W(n.p[1]), ...(n.r ? { '--dd-panel-r-tl': W(n.r[0]), '--dd-panel-r-tr': W(n.r[1]), '--dd-panel-r-br': W(n.r[2]), '--dd-panel-r-bl': W(n.r[3]) } : {}) }
       return { '--dd-row-py': W(n.p[0]), '--dd-px': W(n.p[1]), '--dd-gap': W(n.g) }
     },
     'เลือกตัวเลือก': () => ({}),

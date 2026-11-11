@@ -1,7 +1,7 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/Dropdown/Dropdown.base.css
  *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 27 Dropdowns แล้วรัน  npm run figma:layers -- dropdown  และ  npm run css:generate -- dropdown
- *   spec: tokens/figma-layers/dropdown.json (ดึง 2026-10-26)
+ *   spec: tokens/figma-layers/dropdown.json (ดึง 2026-11-11)
  */
 
 /*
@@ -103,10 +103,11 @@
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding-block: var(--dd-panel-py, 0);
-  /* แถวเว้นขอบซ้ายขวาเท่าความหนาเส้นขอบ เพราะเส้นขอบเป็น box-shadow inset ที่ถูกพื้นของแถววาดทับ
-     ไฟล์ออกแบบเส้นขอบอยู่ด้านใน แถวกว้าง 278 จากแผง 280 เริ่มที่ x 1 (แก้ 2026-11-11) */
-  padding-inline: var(--dd-panel-border-w, 0px);
+  /* ระยะขอบในแผง (panel-padding-y และ panel-padding-x) บวกความหนาเส้นขอบทั้งสี่ด้าน
+     ใน Figma เส้นขอบวาดทับแถวได้เอง แต่บนเว็บเส้นขอบเป็น box-shadow inset ที่พื้นของแถววาดทับ
+     จึงเว้นเพิ่มเท่าเส้นขอบ แถวแรก แถวสุดท้าย และสองข้างไม่ทับขอบแผง (แก้ 2026-11-11) */
+  padding-block: calc(var(--dd-panel-py, 0px) + var(--dd-panel-border-w, 0px));
+  padding-inline: calc(var(--dd-panel-px, 0px) + var(--dd-panel-border-w, 0px));
   border-radius: var(--dd-panel-r-tl, 0) var(--dd-panel-r-tr, 0) var(--dd-panel-r-br, 0) var(--dd-panel-r-bl, 0);
   background: var(--dd-panel-bg, transparent);
   box-shadow: inset 0 0 0 var(--dd-panel-border-w, 0px) var(--dd-panel-border, transparent), var(--dd-panel-shadow, 0 0 0 0 transparent);
@@ -199,15 +200,15 @@
 .sm .field { --dd-h: var(--ntg-dropdown-height-sm); --dd-px: var(--ntg-dropdown-padding-x-sm); --dd-gap: var(--ntg-dropdown-gap-sm); --dd-r-tl: var(--ntg-dropdown-radius-sm); --dd-r-tr: var(--ntg-dropdown-radius-sm); --dd-r-br: var(--ntg-dropdown-radius-sm); --dd-r-bl: var(--ntg-dropdown-radius-sm); --dd-icon: var(--ntg-dropdown-icon-sm); }
 .md .field { --dd-h: var(--ntg-dropdown-height-md); --dd-px: var(--ntg-dropdown-padding-x-md); --dd-gap: var(--ntg-dropdown-gap-md); --dd-r-tl: var(--ntg-dropdown-radius-md); --dd-r-tr: var(--ntg-dropdown-radius-md); --dd-r-br: var(--ntg-dropdown-radius-md); --dd-r-bl: var(--ntg-dropdown-radius-md); --dd-icon: var(--ntg-dropdown-icon-md); }
 .lg .field { --dd-h: var(--ntg-dropdown-height-lg); --dd-px: var(--ntg-dropdown-padding-x-lg); --dd-gap: var(--ntg-dropdown-gap-lg); --dd-r-tl: var(--ntg-dropdown-radius-lg); --dd-r-tr: var(--ntg-dropdown-radius-lg); --dd-r-br: var(--ntg-dropdown-radius-lg); --dd-r-bl: var(--ntg-dropdown-radius-lg); --dd-icon: var(--ntg-dropdown-icon-lg); }
-.sm .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-sm); --dd-panel-r-tl: var(--ntg-dropdown-radius-sm); --dd-panel-r-tr: var(--ntg-dropdown-radius-sm); --dd-panel-r-br: var(--ntg-dropdown-radius-sm); --dd-panel-r-bl: var(--ntg-dropdown-radius-sm); }
-.md .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-md); --dd-panel-r-tl: var(--ntg-dropdown-radius-md); --dd-panel-r-tr: var(--ntg-dropdown-radius-md); --dd-panel-r-br: var(--ntg-dropdown-radius-md); --dd-panel-r-bl: var(--ntg-dropdown-radius-md); }
-.lg .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-lg); --dd-panel-r-tl: var(--ntg-dropdown-radius-lg); --dd-panel-r-tr: var(--ntg-dropdown-radius-lg); --dd-panel-r-br: var(--ntg-dropdown-radius-lg); --dd-panel-r-bl: var(--ntg-dropdown-radius-lg); }
-.sm .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-sm); --dd-px: var(--ntg-dropdown-padding-x-sm); --dd-gap: var(--ntg-dropdown-gap-sm); --dd-icon: var(--ntg-dropdown-icon-sm); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-sm); }
-.md .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-md); --dd-px: var(--ntg-dropdown-padding-x-md); --dd-gap: var(--ntg-dropdown-gap-md); --dd-icon: var(--ntg-dropdown-icon-md); --dd-avatar: var(--ntg-dropdown-leading-avatar-md); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-md); }
-.lg .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-lg); --dd-px: var(--ntg-dropdown-padding-x-lg); --dd-gap: var(--ntg-dropdown-gap-lg); --dd-icon: var(--ntg-dropdown-icon-lg); --dd-avatar: var(--ntg-dropdown-leading-avatar-lg); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-lg); }
-.sm .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-sm); --dd-px: var(--ntg-dropdown-padding-x-sm); --dd-gap: 0; }
-.md .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-md); --dd-px: var(--ntg-dropdown-padding-x-md); --dd-gap: 0; }
-.lg .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-lg); --dd-px: var(--ntg-dropdown-padding-x-lg); --dd-gap: 0; }
+.sm .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-sm); --dd-panel-px: var(--ntg-dropdown-panel-padding-x-sm); --dd-panel-r-tl: var(--ntg-dropdown-radius-sm); --dd-panel-r-tr: var(--ntg-dropdown-radius-sm); --dd-panel-r-br: var(--ntg-dropdown-radius-sm); --dd-panel-r-bl: var(--ntg-dropdown-radius-sm); }
+.md .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-md); --dd-panel-px: var(--ntg-dropdown-panel-padding-x-md); --dd-panel-r-tl: var(--ntg-dropdown-radius-md); --dd-panel-r-tr: var(--ntg-dropdown-radius-md); --dd-panel-r-br: var(--ntg-dropdown-radius-md); --dd-panel-r-bl: var(--ntg-dropdown-radius-md); }
+.lg .panel { --dd-panel-py: var(--ntg-dropdown-panel-padding-y-lg); --dd-panel-px: var(--ntg-dropdown-panel-padding-x-lg); --dd-panel-r-tl: var(--ntg-dropdown-radius-lg); --dd-panel-r-tr: var(--ntg-dropdown-radius-lg); --dd-panel-r-br: var(--ntg-dropdown-radius-lg); --dd-panel-r-bl: var(--ntg-dropdown-radius-lg); }
+.sm .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-sm); --dd-px: var(--ntg-dropdown-row-padding-x-sm); --dd-gap: var(--ntg-dropdown-gap-sm); --dd-icon: var(--ntg-dropdown-icon-sm); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-sm); }
+.md .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-md); --dd-px: var(--ntg-dropdown-row-padding-x-md); --dd-gap: var(--ntg-dropdown-gap-md); --dd-icon: var(--ntg-dropdown-icon-md); --dd-avatar: var(--ntg-dropdown-leading-avatar-md); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-md); }
+.lg .option { --dd-row-py: var(--ntg-dropdown-row-padding-y-lg); --dd-px: var(--ntg-dropdown-row-padding-x-lg); --dd-gap: var(--ntg-dropdown-gap-lg); --dd-icon: var(--ntg-dropdown-icon-lg); --dd-avatar: var(--ntg-dropdown-leading-avatar-lg); --dd-text-gap: 0; --dd-check: var(--ntg-dropdown-icon-lg); }
+.sm .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-sm); --dd-px: var(--ntg-dropdown-row-padding-x-sm); --dd-gap: 0; }
+.md .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-md); --dd-px: var(--ntg-dropdown-row-padding-x-md); --dd-gap: 0; }
+.lg .groupHeader { --dd-row-py: var(--ntg-dropdown-row-padding-y-lg); --dd-px: var(--ntg-dropdown-row-padding-x-lg); --dd-gap: 0; }
 
 /* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
 .field { --dd-bg: var(--ntg-color-background-general-primary); --dd-border: var(--ntg-color-border-general-primary); --dd-border-w: 1px; --dd-shadow: 0 0 0 0 transparent; --dd-placeholder: var(--ntg-color-text-general-placeholder); --dd-icon-color: var(--ntg-color-text-general-placeholder); }

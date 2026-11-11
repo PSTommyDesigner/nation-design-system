@@ -249,7 +249,9 @@ sections:
         definition: >-
           The listbox under the field, Figma set dropdown-menu. Fill --ntg-color-background-general-primary, a 1 wide border in
           --ntg-color-border-general-primary, shadow --ntg-shadows-bottom-md. Gap from the field is --ntg-dropdown-panel-offset-<size>,
-          top and bottom padding is --ntg-dropdown-panel-padding-y-<size>, corner radius is --ntg-dropdown-radius-<size>.
+          top and bottom padding is --ntg-dropdown-panel-padding-y-<size> and side padding is --ntg-dropdown-panel-padding-x-<size>
+          (both 0 since 2026-11-11), corner radius is --ntg-dropdown-radius-<size>. Code adds the border width to the side padding
+          so rows don't cover the border, which is a box-shadow inset on the web.
           Max height is --ntg-dropdown-panel-max-height-<size>, or
           --ntg-dropdown-panel-max-height-supporting-<size> for the whole panel when any option has supportingText.
           The max height is row height times 5.5 plus padding, so half of the sixth row shows as a sign that the list scrolls.
@@ -259,7 +261,7 @@ sections:
         definition: >-
           One option, Figma set _dropdown-option at the same size as the field. Height equals --ntg-dropdown-row-height-<size>,
           the field height, or --ntg-dropdown-row-height-supporting-<size> with supporting text, made of
-          --ntg-dropdown-row-padding-y-<size> above and below the text. Side padding and gap are the field's. Label text is
+          --ntg-dropdown-row-padding-y-<size> above and below the text. Side padding is --ntg-dropdown-row-padding-x-<size>, equal to the field's padding-x, and the gap is the field's. Label text is
           body/sm, body/md or body/lg for sm, md and lg, in --ntg-color-text-general-text, or --ntg-color-text-general-disabled
           when the option is disabled. Figma states are default, hover, focused, selected, selected-hover and disabled.
           Hover fill is --ntg-color-background-general-primary-hover. The keyboard's active row gets --ntg-focused-ring-default

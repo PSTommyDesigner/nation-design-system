@@ -938,11 +938,11 @@
       "panel-padding-y": {
         "base": {
           "$type": "dimension",
-          "$value": "2px"
+          "$value": "0px"
         },
         "step": {
           "$type": "dimension",
-          "$value": "2px"
+          "$value": "0px"
         }
       }
     },

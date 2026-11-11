@@ -66,8 +66,10 @@ export const RADIUS = RADIUS_FORMULA.dropdown;
 export const PANEL_OFFSET = 4;
 // จำนวนแถวที่แผงสูงได้ก่อนเริ่มเลื่อน ครึ่งแถวที่เกินมาคือสัญญาณว่ายังมีต่อ
 export const PANEL_ROWS = 5.5;
-// ระยะขอบบนล่างในแผง กันไม่ให้แถวแรกกับแถวสุดท้ายชนขอบ
-export const PANEL_PADDING_Y = { base: 2, step: 2 };  // sm 4 · md 6 · lg 8
+// ระยะขอบในแผง บนล่างและซ้ายขวา เป็น 0 ทุกขนาด แถวแรกกับแถวสุดท้ายชิดขอบแผง
+//   เดิมบนล่างเป็น 4 6 8 ผู้ใช้ปรับในไฟล์ออกแบบเป็น 0 และเพิ่มตัวแปรซ้ายขวา 2026-11-11
+export const PANEL_PADDING_Y = { base: 0, step: 0 };  // sm 0 · md 0 · lg 0
+export const PANEL_PADDING_X = { base: 0, step: 0 };  // sm 0 · md 0 · lg 0
 
 // ── ความสามารถที่ยกมาจากหน้า 27 Lists ตอนยุบหน้านั้น (ผู้ใช้สั่ง 2026-10-12) ──
 //   หน้า 27 มีแถวของ dropdown รุ่นเก่าอยู่ 2 ชุด 36 แบบ ซึ่งทำได้มากกว่าชุดใหม่
@@ -95,6 +97,9 @@ const gap = (s) => GAP.base + at(s) * GAP.step;
 const icon = (s) => ICON.base + at(s) * ICON.step;
 const radius = (s) => RADIUS.base + at(s) * RADIUS.step;
 const panelPaddingY = (s) => PANEL_PADDING_Y.base + at(s) * PANEL_PADDING_Y.step;
+const panelPaddingX = (s) => PANEL_PADDING_X.base + at(s) * PANEL_PADDING_X.step;
+// ระยะซ้ายขวาของข้อความในแถว เท่าระยะขอบในช่องเสมอ ข้อความในแถวจึงตรงแนวกับข้อความในช่อง
+const rowPaddingX = (s) => paddingX(s);
 // แถวสูงเท่าช่องเสมอ
 const rowHeight = (s) => height(s);
 // ความสูงสูงสุดของแผง คิดจากแถวคูณ 5.5 บวกระยะขอบบนล่าง
@@ -214,7 +219,11 @@ export function build(dim) {
     'row-height': grow(rowHeight, (v, s) =>
       `ความสูงแถวในแผงของขนาด ${s} เท่ากับ ${v}px เท่ากับความสูงช่องเสมอ เป็นค่าอนุพันธ์ ห้ามพิมพ์มือ Carbon กับ Spectrum ทำแบบนี้เพราะตรวจง่ายที่สุด`),
     'panel-padding-y': grow(panelPaddingY, (v, s) =>
-      `ระยะขอบบนล่างในแผงของขนาด ${s} เท่ากับ ${v}px กันไม่ให้แถวแรกกับแถวสุดท้ายชนขอบแผง`),
+      `ระยะขอบบนล่างในแผงของขนาด ${s} เท่ากับ ${v}px แถวแรกกับแถวสุดท้ายชิดขอบแผง เดิมเป็น 4 6 8 ผู้ใช้ปรับเป็น 0 ในไฟล์ออกแบบ 2026-11-11`),
+    'panel-padding-x': grow(panelPaddingX, (v, s) =>
+      `ระยะขอบซ้ายขวาในแผงของขนาด ${s} เท่ากับ ${v}px แถวกว้างเต็มแผง ฝั่งเว็บยังเว้นเท่าความหนาเส้นขอบ เพราะเส้นขอบเป็น box-shadow inset ที่พื้นของแถววาดทับได้`),
+    'row-padding-x': grow(rowPaddingX, (v, s) =>
+      `ระยะซ้ายขวาของข้อความในแถวและหัวกลุ่มของขนาด ${s} เท่ากับ ${v}px เท่าระยะขอบในช่อง (padding-x) เสมอ ข้อความในแถวจึงตรงแนวกับข้อความในช่อง แยกตัวแปรจากช่องในไฟล์ออกแบบ 2026-11-11`),
     'panel-max-height': grow(panelMaxHeight, (v, s) =>
       `ความสูงสูงสุดของแผงของขนาด ${s} เท่ากับ ${v}px เป็นค่าอนุพันธ์ คิดจาก ความสูงแถว ${rowHeight(s)} คูณ ${PANEL_ROWS} บวกระยะขอบบนล่าง ${panelPaddingY(s)} สองด้าน ห้ามพิมพ์มือ ครึ่งแถวที่เกินมาคือสัญญาณว่ายังเลื่อนดูต่อได้ ของเดิมตรึงไว้ที่ 320 ทุกขนาดซึ่งไม่ผูกกับอะไร`),
     'row-padding-y': grow(rowPaddingY, (v, s) =>

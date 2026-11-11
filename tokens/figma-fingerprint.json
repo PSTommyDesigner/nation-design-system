@@ -272,7 +272,9 @@
     "component::modal/color": "1:14v0p8x",
     "component::modal/width": "3:1on1jx0",
     "component::modal/padding": "3:pzh0w3",
-    "component::modal/radius": "4:7c0f0v"
+    "component::modal/radius": "4:7c0f0v",
+    "component::dropdown/panel-padding-x": "3:1ao86m5",
+    "component::dropdown/row-padding-x": "3:uhkkap"
   },
   "groupsValue": {
     "primitive::color/base": "60:9jlreo",
@@ -488,11 +490,11 @@
     "component::dropdown/icon": "3:nt0nen",
     "component::dropdown/panel-offset": "3:zqx30d",
     "component::dropdown/row-height": "3:10y7yni",
-    "component::dropdown/panel-padding-y": "3:12pix8b",
-    "component::dropdown/panel-max-height": "3:1wyibhy",
+    "component::dropdown/panel-padding-y": "3:1rh9ttd",
+    "component::dropdown/panel-max-height": "3:1murmoi",
     "component::dropdown/radius": "3:1ttzv4h",
     "component::dropdown/row-height-supporting": "3:1vn44x1",
-    "component::dropdown/panel-max-height-supporting": "3:6kxowi",
+    "component::dropdown/panel-max-height-supporting": "3:10r6ml7",
     "component::dropdown/group-header-height": "3:119huzu",
     "component::dropdown/leading-avatar": "2:kqx8kq",
     "component::dropdown/row-padding-y": "3:iq0km7",
@@ -536,7 +538,9 @@
     "component::modal/color": "1:1l5jnej",
     "component::modal/width": "3:1cmp19z",
     "component::modal/padding": "3:yzvblc",
-    "component::modal/radius": "4:1xg783z"
+    "component::modal/radius": "4:1xg783z",
+    "component::dropdown/panel-padding-x": "3:buni6o",
+    "component::dropdown/row-padding-x": "3:15qdrdn"
   },
   "$noteValue": "ลายนิ้วมือของ \"ค่า\" รายกลุ่ม เฉพาะ collection ที่มี mode เดียว คือ component กับ primitive ใช้ปิดช่องที่ด่านเทียบชื่ออย่างเดียวจับไม่ได้ เช่น ชื่อครบแต่ค่าผิด (เพิ่ม 2026-10-15)"
 }

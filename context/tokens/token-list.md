@@ -451,7 +451,7 @@ Use these only inside that component's own code. Never on a screen and never on 
 | `--ntg-circular-progress-bar-*` | 15 |
 | `--ntg-semi-circular-progress-bar-*` | 20 |
 | `--ntg-pagination-*` | 30 |
-| `--ntg-dropdown-*` | 41 |
+| `--ntg-dropdown-*` | 47 |
 | `--ntg-divider-*` | 1 |
 | `--ntg-circular-tag-*` | 30 |
 | `--ntg-chart-*` | 12 |
