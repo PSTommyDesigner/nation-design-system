@@ -283,23 +283,30 @@ const PERIODS = [
 
 const fmt = (n: number) => n.toLocaleString('th-TH')
 
+// การ์ดอันดับข่าวตาม card / pin ในไฟล์ CMS (15658:20767) ผู้ใช้เปลี่ยนเมื่อ 2026-11-11 เพราะแบบเดิมลายตา
+// ระบบไม่มีการ์ดแบบนี้ สร้างในหน้านี้จาก token และ Tag ของระบบ (ผู้ใช้อนุมัติ 2026-11-11) เป็นตัวเลือก component ใหม่ของ ntgds
+// กดตรงไหนก็ได้บนการ์ดเปิด Modal รายละเอียดข่าว: พาดหัวเป็นปุ่มที่ขยายพื้นที่กดเต็มการ์ด ส่วนแท็ก "เก็บไว้เขียนข่าวใหม่" ทำงานแยก
+// แท็กนี้แทนปุ่มตะกร้าเดิม (แบบเคยเขียนว่าปักหมุด) ใช้เก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้
 function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) => void }) {
   return (
-    <li className={styles.rankItem}>
-      <span className={`${styles.rankNumber} ntg-typography-label-md`}>{item.rank}</span>
+    <li className={styles.rankCard}>
+      <div className={styles.rankMedia} aria-hidden="true" />
+      <span className={`${styles.rankNumber} ntg-typography-label-sm`} aria-hidden="true">{item.rank}</span>
       <div className={styles.rankBody}>
-        <button type="button" className={`${styles.rankTitle} ${styles.textButton} ntg-typography-title-xs`} title={item.title} onClick={() => onOpen(item)}>
+        <button type="button" className={`${styles.rankTitle} ntg-typography-title-xs`} title={item.title} onClick={() => onOpen(item)}>
+          <span className={styles.srOnly}>อันดับ {item.rank} </span>
           {item.title}
         </button>
-        {/* แถวเดียวเรียง ยอดวิว หมวด ตะกร้า ชิดซ้าย (ผู้ใช้สั่ง 2026-11-11) ยอดวิวเหลือ PV อย่างเดียว เป็น pill-tag มีไอคอนตา
-            กดยอดวิวเปิด Modal รายละเอียดข่าวที่มีครบทั้ง Pageviews GA Truehits ตะกร้าเป็น circular-icon-tag สีเดียวกับแท็กหมวด
-            เพราะ Tag pill ไอคอนล้วนไม่มีในระบบ ตะกร้าเก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้ */}
         <div className={styles.rankMeta}>
-          <Tag family="neutral" shape="pill" size="sm" leftIcon={<Icon name="visibility" size="100%" />} aria-label={`ยอดวิว Pageviews ${fmt(item.pv)}`} onSelect={() => onOpen(item)}>
-            {fmt(item.pv)}
-          </Tag>
-          <Tag family="neutral" shape="pill" size="sm">{item.category}</Tag>
-          <Tag family="neutral" shape="circular" size="sm" icon={<Icon name="shopping-cart" size="100%" />} label="เก็บข่าวลงตะกร้า" onSelect={() => {}}>{null}</Tag>
+          <div className={styles.rankTags}>
+            <Tag family="neutral" shape="semi-rounded" size="xs" leftIcon={<Icon name="visibility" size="100%" />} aria-label={`ยอดวิว Pageviews ${fmt(item.pv)}`}>
+              {fmt(item.pv)}
+            </Tag>
+            <Tag family="neutral" shape="semi-rounded" size="xs">{item.category}</Tag>
+          </div>
+          <span className={styles.rankPin}>
+            <Tag family="neutral" shape="pill" size="xs" leftIcon={<Icon name="edit" size="100%" />} onSelect={() => {}}>เก็บไว้เขียนข่าวใหม่</Tag>
+          </span>
         </div>
       </div>
     </li>
@@ -372,10 +379,10 @@ function DashboardPage({ brand }: { brand?: string }) {
               ))}
             </div>
           </div>
-          {/* เรียงซ้ายไปขวาแล้วบนลงล่าง 4 คอลัมน์ แถวแรกคืออันดับ 1 ถึง 4 (ผู้ใช้สั่ง 2026-11-11) */}
+          {/* 15 อันดับแรก 3 คอลัมน์ เรียงซ้ายไปขวาแล้วบนลงล่าง ตามเฟรม Dashboard / Home (ผู้ใช้สั่ง 2026-11-11) */}
           {rankList.length > 0 ? (
             <ol className={styles.ranking}>
-              {rankList.map((item) => <RankItem key={item.id} item={item} onOpen={setNews} />)}
+              {rankList.slice(0, 15).map((item) => <RankItem key={item.id} item={item} onOpen={setNews} />)}
             </ol>
           ) : (
             <p className={`${styles.empty} ntg-typography-body-md`}>ยังไม่มีข่าวในหมวด{category}</p>

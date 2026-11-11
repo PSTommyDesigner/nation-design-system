@@ -95,10 +95,10 @@
   gap: var(--ntg-size-space-s1-lg);
 }
 
-/* ── จัดอันดับข่าว: 4 คอลัมน์ เรียงซ้ายไปขวาแล้วบนลงล่าง แถวห่างกัน 16 ── */
+/* ── จัดอันดับข่าว: 15 ข่าว 3 คอลัมน์ (การ์ดกว้าง 448) ห่างกัน 24 แถวห่างกัน 16 ── */
 .ranking {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: var(--ntg-size-space-s2-lg);
   row-gap: var(--ntg-size-space-s2-sm);
   margin: 0;
@@ -106,73 +106,142 @@
   list-style: none;
 }
 
-.rankItem {
+/* การ์ดอันดับข่าว (card / pin) ระบบยังไม่มี สูง 86 มาจากเนื้อหา: padding 8 + พาดหัว 2 บรรทัด 48 + gap 4 + แท็ก xs 18 + padding 8
+ * มุมโค้งในแบบเป็น 8 แต่เป็นค่าดิบ ไม่มี token จึงใช้ radius ของ card (4) แบบเดียวกับการ์ดตัวเลข
+ * กรอบวาดด้วย ::after ทับบนสุด เพราะช่องภาพมีกรอบของตัวเองชิดขอบ ถ้าใช้ border ของการ์ดภาพจะบังมุม */
+.rankCard {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: var(--ntg-size-space-s1-lg);
   min-width: 0;
+  overflow: hidden;
+  border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
+  background: var(--ntg-color-background-general-primary);
+  transition: background-color var(--ntg-motion-duration-fast);
 }
 
-/* ชี้แล้วเปลี่ยนสีตาม card / bullet-b แบบ hover=true ในไฟล์ CMS วงเลขเป็นพื้นแบรนด์เลขขาว หัวข่าวเป็นสีแบรนด์
-   การคลิกเปิด Modal รายละเอียดข่าวจะต่อเมื่อ component Modal ของ ntgds เสร็จ (ผู้ใช้ตัดสิน 2026-10-28) */
-.rankItem:hover {
-  cursor: pointer;
+.rankCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--ntg-color-border-general-primary);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color var(--ntg-motion-duration-fast);
 }
 
-.rankItem:hover .rankNumber {
-  background: var(--ntg-color-background-brand-solid);
-  color: var(--ntg-color-text-general-const-white);
+/* hover=true ในแบบ: พื้นเทาอ่อน กรอบฟ้า พาดหัวสีแบรนด์ */
+.rankCard:hover {
+  background: var(--ntg-color-background-general-primary-hover);
 }
 
-.rankItem:hover .rankTitle {
+.rankCard:hover::after {
+  border-color: var(--ntg-color-border-brand-primary);
+}
+
+.rankCard:hover .rankTitle {
   color: var(--ntg-color-text-brand-primary);
 }
 
-.rankNumber,
-.rankTitle {
-  transition: background-color var(--ntg-motion-duration-fast), color var(--ntg-motion-duration-fast);
+.rankCard:has(.rankTitle:focus-visible) {
+  box-shadow: var(--ntg-focused-ring-brand);
 }
 
-/* เลขอันดับในวงกลม ระบบยังไม่มี (Avatar แบบตัวเลขแสดงเป็น 3+) ใช้ขนาดเดียวกับอวาตาร์ sm คือ 32 */
-.rankNumber {
+/* ช่องภาพเต็มความสูงการ์ด สัดส่วน 92:48 ตามแบบ prototype ยังไม่มีภาพข่าว ใช้พื้นเทาแบบเดียวกับภาพใน Modal */
+.rankMedia {
   flex: none;
   box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  width: var(--ntg-avatar-size-sm);
-  height: var(--ntg-avatar-size-sm);
+  aspect-ratio: 92 / 48;
   border: 1px solid var(--ntg-color-border-general-primary);
-  border-radius: var(--ntg-card-radius-full);
+  border-radius: var(--ntg-card-radius-top-left) 0 0 var(--ntg-card-radius-bottom-left);
+  background: var(--ntg-color-background-general-quaternary);
+}
+
+/* กล่องเลขอันดับชิดมุมซ้ายบนของการ์ด กรอบทับเส้นขอบการ์ดพอดี กว้าง 32 (ขนาดอวาตาร์ sm) สูง 24 จากบรรทัด label-sm 22 กับกรอบ
+ * มุมโค้งในแบบเป็น 6 ใช้ radius ของ card (4) เพราะไม่มี token 6 */
+.rankNumber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  min-width: var(--ntg-avatar-size-sm);
+  text-align: center;
+  border: 1px solid var(--ntg-color-border-general-primary);
+  border-radius: var(--ntg-card-radius-top-left) 0 var(--ntg-card-radius-bottom-right) 0;
   background: var(--ntg-color-background-general-primary);
   color: var(--ntg-color-text-general-section-heading);
 }
 
 .rankBody {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: var(--ntg-size-space-s1-sm);
   min-width: 0;
+  padding: var(--ntg-size-space-s1-lg) var(--ntg-size-space-s2-xs);
 }
 
-/* หัวข่าวบรรทัดเดียว ยาวเกินตัดท้ายด้วย … ตามแบบ */
+/* พาดหัว 2 บรรทัด ยาวเกินตัดท้ายด้วย … สูงเท่า 2 บรรทัดเสมอตามแบบ
+ * ::before ขยายพื้นที่กดของปุ่มให้เต็มการ์ด กดตรงไหนก็เปิด Modal (ผู้ใช้สั่ง 2026-11-11) */
 .rankTitle {
-  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  min-height: 2lh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: start;
+  cursor: pointer;
   color: var(--ntg-color-text-general-section-heading);
+  transition: color var(--ntg-motion-duration-fast);
+}
+
+.rankTitle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.rankTitle:focus-visible {
+  outline: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* แถวล่าง: ยอดวิวกับหมวดชิดซ้าย ห่างกัน 4 แท็กเก็บไว้เขียนข่าวใหม่ชิดขวา */
+.rankMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ntg-size-space-s1-sm);
+}
+
+.rankTags {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-sm);
+}
+
+/* วางหลังปุ่มพาดหัวและเป็น position relative จึงอยู่เหนือพื้นที่กดของการ์ด กดแล้วไม่เปิด Modal */
+.rankPin {
+  position: relative;
+  display: flex;
 }
 
 /* หมวดที่ยังไม่มีข่าว */
 .empty {
   margin: 0;
   color: var(--ntg-color-text-general-supporting-text);
-}
-
-/* แถวล่างของการ์ด: ยอดวิว หมวด ตะกร้า เรียงชิดซ้าย */
-.rankMeta {
-  display: flex;
-  align-items: center;
-  gap: var(--ntg-size-space-s1-lg);
 }
 
 /* ── จำนวนข่าว: ซ้ายหัวกับตัวกรอง ขวาการ์ดตัวเลข 2 ใบ ── */
