@@ -15,8 +15,7 @@ import { Pagination } from '../../components/Pagination'
 import { BarChart, type BarChartSeries } from '../../components/BarChart'
 import '../../tokens/output/css/typography.css'
 import styles from './Dashboard.module.css'
-
-const brandLogo = new URL('./assets/bangkokbiznews-logo-square.svg', import.meta.url).href
+import { getBrand } from './brands'
 
 // หน้า Dashboard ของ One CMS จาก Figma CMS เฟรม Dashboard / Home (13060:8732)
 // ผู้ใช้เปลี่ยนจากเฟรม C เป็น D เมื่อ 2026-10-28: 3 section เต็มความกว้างซ้อนลงมา จัดอันดับ 40 ข่าว 4 คอลัมน์
@@ -24,7 +23,7 @@ const brandLogo = new URL('./assets/bangkokbiznews-logo-square.svg', import.meta
 // ส่วนนักข่าวคงตัวกรองวัน สัปดาห์ เดือน ปี ไว้ตามกฎโปรเจกต์ แม้เฟรมในแบบไม่มี
 // กดพาดหัวข่าวในอันดับเปิด Modal รายละเอียดข่าว (md ไม่มีหัว) ตามเฟรม Modal / Dashboard v2 (15626:38085)
 // กดชื่อนักข่าวในตารางเปิด Modal ข่าวของนักข่าว (lg) ออกแบบกับผู้ใช้จากชิ้นส่วน DS 2026-10-28 ยังไม่มีเฟรม
-// ข้อมูลตัวอย่างเป็นของกรุงเทพธุรกิจ (bkk) เป็นข้อมูลสมมุติทั้งหมด
+// ข้อมูลตัวอย่างเป็นของกรุงเทพธุรกิจ (bkk) เป็นข้อมูลสมมุติทั้งหมด โลโก้กับชื่อแบรนด์บนแถบหัวเปลี่ยนตาม BU ที่เลือกบนแถบ Storybook
 
 const MENU = ['Dashboard', 'Back Office', 'Webpage Control', 'Admin Tool', 'Documents']
 
@@ -73,23 +72,156 @@ const HEADLINES = [
   'ผลสำรวจชี้คนไทยออมเงินมากขึ้นปลายปี',
 ]
 
-// ยอดวิวสมมุติ เรียงจากมากไปน้อยตามอันดับ
-const RANKING = HEADLINES.map((title, i) => ({
+// หมวดของแต่ละข่าวใน HEADLINES ตามลำดับ แสดงเป็น Tag ในการ์ด
+const HEADLINE_CATEGORIES = [
+  'เศรษฐกิจ',
+  'การเงิน',
+  'การเงิน',
+  'ธุรกิจ',
+  'เศรษฐกิจ',
+  'เทคโนโลยี',
+  'การเงิน',
+  'ธุรกิจ',
+  'ธุรกิจ',
+  'ธุรกิจ',
+  'ธุรกิจ',
+  'การเงิน',
+  'เศรษฐกิจ',
+  'การเงิน',
+  'การเมือง',
+  'เทคโนโลยี',
+  'เศรษฐกิจ',
+  'เศรษฐกิจ',
+  'ไลฟ์สไตล์',
+  'เทคโนโลยี',
+  'การเงิน',
+  'ธุรกิจ',
+  'ไลฟ์สไตล์',
+  'ไลฟ์สไตล์',
+  'การเงิน',
+  'เทคโนโลยี',
+  'เศรษฐกิจ',
+  'ไลฟ์สไตล์',
+  'การเงิน',
+  'การเมือง',
+  'เทคโนโลยี',
+  'เทคโนโลยี',
+  'เศรษฐกิจ',
+  'ธุรกิจ',
+  'ธุรกิจ',
+  'ธุรกิจ',
+  'เศรษฐกิจ',
+  'ธุรกิจ',
+  'ไลฟ์สไตล์',
+  'การเงิน',
+]
+
+// ยอดวิวสมมุติ เรียงจากมากไปน้อยตามอันดับ id ใช้แทนเลขข่าว ไม่ซ้ำกันทุกหมวด
+type RankNews = { id: number; rank: number; title: string; category: string; pv: number; ga: number; th: number }
+const ALL_NEWS: RankNews[] = HEADLINES.map((title, i) => ({
+  id: i + 1,
   rank: i + 1,
   title,
+  category: HEADLINE_CATEGORIES[i],
   pv: 48000 - i * 950,
   ga: 41000 - i * 800,
   th: 36000 - i * 700,
 }))
-type RankNews = (typeof RANKING)[number]
+
+// ข่าวสมมุติเพิ่มของหมวดเศรษฐกิจและการเงิน ยอดวิวต่ำกว่าอันดับ 40 ของทั้งหมด (ผู้ใช้สั่ง 2026-11-11 ทำแค่ 3 หมวดแรก)
+const ECONOMY_EXTRA = [
+  'จีดีพีไตรมาสสามขยายตัวดีกว่าคาด',
+  'สภาพัฒน์ปรับประมาณการเศรษฐกิจทั้งปี',
+  'ดัชนีความเชื่อมั่นผู้บริโภคฟื้นสามเดือนติด',
+  'เงินเฟ้อทั่วไปเดือนล่าสุดชะลอลง',
+  'หนี้ครัวเรือนไทยยังทรงตัวระดับสูง',
+  'การลงทุนภาคเอกชนเริ่มกลับมาขยายตัว',
+  'ยอดนำเข้าเครื่องจักรพุ่ง สะท้อนการลงทุนใหม่',
+  'ดัชนีอุตสาหกรรมเดือนล่าสุดปรับตัวดีขึ้น',
+  'ราคาสินค้าเกษตรสูงขึ้น หนุนรายได้เกษตรกร',
+  'นักท่องเที่ยวต่างชาติทะลุเป้าหมายรายเดือน',
+  'ส่งออกไปสหรัฐฯ โตต่อเนื่อง แม้เผชิญภาษีใหม่',
+  'การค้าชายแดนไทยลาวคึกคักช่วงปลายปี',
+  'ภาคบริการฟื้นตัว ดันการจ้างงานเพิ่ม',
+  'อัตราว่างงานล่าสุดลดลงต่ำสุดในรอบปี',
+  'ค่าแรงขั้นต่ำใหม่เริ่มมีผลต้นปีหน้า',
+  'งบลงทุนภาครัฐเบิกจ่ายเร็วขึ้น',
+  'เศรษฐกิจภาคอีสานโตจากการท่องเที่ยว',
+  'ห่วงโซ่อุปทานโลกปรับตัว ไทยได้อานิสงส์',
+  'ราคาปุ๋ยปรับลด ช่วยลดต้นทุนการผลิต',
+  'ยอดขายรถยนต์ในประเทศเริ่มฟื้นตัว',
+  'การบริโภคภาคครัวเรือนขยายตัวเล็กน้อย',
+  'อุตสาหกรรมอิเล็กทรอนิกส์รับคำสั่งซื้อเพิ่ม',
+  'ยางพาราราคาดีขึ้นตามความต้องการโลก',
+  'ภัยแล้งกระทบผลผลิตข้าวนาปรัง',
+  'นิคมอุตสาหกรรมใหม่เปิดรับนักลงทุนต่างชาติ',
+  'เศรษฐกิจดิจิทัลมีสัดส่วนสูงขึ้นในจีดีพี',
+  'ค่าระวางเรือลดลง ผู้ส่งออกได้ประโยชน์',
+  'มาตรการกระตุ้นการใช้จ่ายรอบใหม่เริ่มสัปดาห์หน้า',
+  'ภาคการผลิตเร่งใช้ระบบอัตโนมัติ',
+  'ราคาไข่ไก่และเนื้อหมูทรงตัว',
+  'เขตเศรษฐกิจพิเศษชายแดนดึงลงทุนได้มากขึ้น',
+  'ท่องเที่ยวชุมชนสร้างรายได้หมุนเวียน',
+]
+
+const FINANCE_EXTRA = [
+  'ตลาดหุ้นไทยแกว่งตัวแคบ รอผลประชุมเฟด',
+  'บอนด์ยีลด์ไทยปรับลดตามตลาดโลก',
+  'ธนาคารพาณิชย์ประกาศลดดอกเบี้ยเงินกู้',
+  'หุ้นกลุ่มพลังงานนำตลาดปรับขึ้น',
+  'นักวิเคราะห์ชี้เป้าดัชนีหุ้นไทยสิ้นปี',
+  'กองทุนลดหย่อนภาษีแบบใหม่เปิดขายแล้ว',
+  'หุ้นไอพีโอน้องใหม่เข้าเทรดวันแรกเหนือจอง',
+  'ค่าเงินบาทเปิดตลาดเช้านี้ทรงตัว',
+  'สินเชื่อบ้านแข่งดุ ธนาคารออกโปรดอกเบี้ยคงที่',
+  'บัตรเครดิตยอดใช้จ่ายปลายปีเพิ่มขึ้น',
+  'หนี้เสียสินเชื่อรถยนต์ยังน่าห่วง',
+  'ประกันชีวิตเบี้ยรับรายใหม่เติบโต',
+  'สินทรัพย์ดิจิทัลผันผวน นักลงทุนระวังความเสี่ยง',
+  'กองทุนรวมตราสารหนี้เงินไหลเข้า',
+  'ธนาคารเร่งปล่อยกู้เอสเอ็มอีผ่านแอป',
+  'หุ้นกลุ่มธนาคารรับอานิสงส์ดอกเบี้ยทรงตัว',
+  'ทองคำแท่งรับซื้อคืนปรับขึ้นสองรอบ',
+  'ตลาดหลักทรัพย์เตรียมเกณฑ์ใหม่คุมชอร์ตเซล',
+  'พันธบัตรออมทรัพย์รุ่นใหม่ขายหมดในวันเดียว',
+  'การออมผ่านแอปธนาคารได้รับความนิยม',
+  'หุ้นกลุ่มค้าปลีกฟื้นรับการใช้จ่ายปลายปี',
+  'วางแผนภาษีปลายปี ลดหย่อนอะไรได้บ้าง',
+  'ประกันวินาศภัยปรับเบี้ยประกันรถ',
+  'ธนาคารไร้สาขาเตรียมเปิดให้บริการปีหน้า',
+  'ต่างชาติขายสุทธิหุ้นไทยต่อเนื่องสามวัน',
+  'หุ้นกู้เอกชนออกใหม่ดอกเบี้ยจูงใจ',
+  'ดัชนีหุ้นเอเชียปรับขึ้นตามวอลล์สตรีท',
+  'เงินฝากประจำพิเศษดอกเบี้ยสูงกลับมาแล้ว',
+  'กองทุนสำรองเลี้ยงชีพเพิ่มทางเลือกลงทุน',
+  'เกณฑ์ใหม่คุมโฆษณาคริปโตเริ่มบังคับใช้',
+  'สภาพคล่องในระบบธนาคารยังสูง',
+]
+
+// หมวดหนึ่ง = ข่าวของหมวดนั้นที่ติดอันดับในทั้งหมด (ยอดวิวเท่าเดิม) ต่อด้วยข่าวเพิ่ม แล้วเรียงอันดับใหม่ให้ครบ 40
+const categoryRanking = (category: string, extra: string[], firstId: number): RankNews[] =>
+  [
+    ...ALL_NEWS.filter((n) => n.category === category),
+    ...extra.map((title, j) => {
+      const pv = 10500 - j * 250
+      return { id: firstId + j, rank: 0, title, category, pv, ga: Math.round(pv * 0.086) * 10, th: Math.round(pv * 0.075) * 10 }
+    }),
+  ].slice(0, 40).map((n, i) => ({ ...n, rank: i + 1 }))
+
+// หมวดที่ไม่มีในนี้ยังไม่มีข้อมูลตัวอย่าง จะขึ้นข้อความว่ายังไม่มีข่าว
+const RANKINGS: Record<string, RankNews[]> = {
+  'ทั้งหมด': ALL_NEWS,
+  'เศรษฐกิจ': categoryRanking('เศรษฐกิจ', ECONOMY_EXTRA, 101),
+  'การเงิน': categoryRanking('การเงิน', FINANCE_EXTRA, 201),
+}
 
 // รายละเอียดสมมุติของข่าวแต่ละอันดับ เวลาไล่จากเช้าวันที่ 28
 const pad = (n: number) => String(n).padStart(2, '0')
 const newsDetail = (item: RankNews) => {
-  const reporter = REPORTERS[(item.rank - 1) % REPORTERS.length]
-  const hour = 6 + ((item.rank - 1) % 8)
+  const reporter = REPORTERS[(item.id - 1) % REPORTERS.length]
+  const hour = 6 + ((item.id - 1) % 8)
   return {
-    id: String(1302400 + item.rank),
+    id: String(1302400 + item.id),
     history: [
       { label: 'สร้าง', at: `28/10/2569 ${pad(hour)}:05`, by: reporter.name },
       { label: 'แก้ไข', at: `28/10/2569 ${pad(hour)}:40`, by: 'บรรณาธิการข่าว' },
@@ -164,13 +296,20 @@ function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) =
           <LinkButton href="#" family="brand" defaultGray size="xs">GA:{fmt(item.ga)}</LinkButton>
           <LinkButton href="#" family="brand" defaultGray size="xs">TH:{fmt(item.th)}</LinkButton>
         </div>
+        {/* หมวดข่าวกับปุ่มตะกร้า (ผู้ใช้สั่ง 2026-11-11) ตะกร้าเก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้ */}
+        <div className={styles.rankMeta}>
+          <Tag family="neutral" shape="pill" size="sm">{item.category}</Tag>
+          <IconButton icon="shopping-cart" label="เก็บข่าวลงตะกร้า" shape="circular" family="brand" defaultGray hierarchy="tertiary" size="xs" />
+        </div>
       </div>
     </li>
   )
 }
 
-function DashboardPage() {
+function DashboardPage({ brand }: { brand?: string }) {
+  const bu = getBrand(brand)
   const [category, setCategory] = useState('ทั้งหมด')
+  const rankList = RANKINGS[category] ?? []
   const [month, setMonth] = useState('2569-10')
   const [chartPeriod, setChartPeriod] = useState('month')
   const [reporterPeriod, setReporterPeriod] = useState('month')
@@ -185,8 +324,8 @@ function DashboardPage() {
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.brand}>
-          <img className={styles.brandLogo} src={brandLogo} alt="" />
-          <p className={`${styles.brandName} ntg-typography-page-heading-sm`}>กรุงเทพธุรกิจ</p>
+          <img className={styles.brandLogo} src={bu.logoSquare} alt="" />
+          <p className={`${styles.brandName} ntg-typography-page-heading-sm`}>{bu.name}</p>
         </div>
         <nav className={styles.nav} aria-label="เมนูหลัก">
           {MENU.map((item) => (
@@ -210,7 +349,7 @@ function DashboardPage() {
           <div className={styles.sectionTitle}>
             <h2 id="ranking-title" className={`${styles.heading} ntg-typography-section-heading-lg`}>ข้อมูลเรียลไทม์วันนี้</h2>
             <p className={`${styles.supporting} ntg-typography-body-md`}>
-              ข้อมูล ณ 28 ตุลาคม 2569 เวลา 14:00 น. (ยอด PV นับเองจากหน้าเว็บ จึงไม่ตรงกับ GA และ Truehits)
+              ข้อมูลปัจจุบัน และข้อมูลย้อนหลัง 24 ชั่วโมง (ยอด PV นับเองจากหน้าเว็บ จึงไม่ตรงกับ GA และ Truehits)
             </p>
           </div>
           <div className={styles.filter}>
@@ -234,9 +373,13 @@ function DashboardPage() {
             </div>
           </div>
           {/* เรียงซ้ายไปขวาแล้วบนลงล่าง 4 คอลัมน์ แถวแรกคืออันดับ 1 ถึง 4 (ผู้ใช้สั่ง 2026-11-11) */}
-          <ol className={styles.ranking}>
-            {RANKING.map((item) => <RankItem key={item.rank} item={item} onOpen={setNews} />)}
-          </ol>
+          {rankList.length > 0 ? (
+            <ol className={styles.ranking}>
+              {rankList.map((item) => <RankItem key={item.id} item={item} onOpen={setNews} />)}
+            </ol>
+          ) : (
+            <p className={`${styles.empty} ntg-typography-body-md`}>ยังไม่มีข่าวในหมวด{category}</p>
+          )}
         </section>
 
         <section className={styles.section} aria-labelledby="count-title">
@@ -402,4 +545,4 @@ export default meta
 
 type Story = StoryObj<typeof DashboardPage>
 
-export const Default: Story = { name: 'Dashboard' }
+export const Default: Story = { name: 'Dashboard', render: (_args, { globals }) => <DashboardPage brand={globals.brand} /> }

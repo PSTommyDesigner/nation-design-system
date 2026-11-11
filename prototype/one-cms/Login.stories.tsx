@@ -5,19 +5,18 @@ import { Button } from '../../components/Button'
 import { LinkButton } from '../../components/LinkButton'
 import '../../tokens/output/css/typography.css'
 import styles from './Login.module.css'
-
-// อ่านโลโก้เป็น URL ผ่าน import.meta.url ตัวรวมโค้ดของ Storybook (Vite) จะคัดลอกไฟล์ไปให้เอง
-const brandLogo = new URL('./assets/bangkokbiznews-logo.svg', import.meta.url).href
+import { getBrand } from './brands'
 
 // หน้า Login ของ One CMS จาก Figma CMS เฟรม 12967:4778
 // ตัดสินกับผู้ใช้ 2026-10-28: ช่องกรอกใช้ TextField แบบมีกรอบ (ชุดเส้นใต้ถูกลบจากระบบแล้ว)
 // หัวข้อใช้ page-heading-lg ลืมรหัสผ่านเป็น LinkButton เพราะพาไปอีกหน้า
-// ในแบบเป็นแบรนด์ tnews แต่ prototype ใช้กรุงเทพธุรกิจ (bkk) โลโก้คือ bangkokbiznews-fixed-height จากหน้า 08 Logo
-function LoginPage() {
+// ในแบบเป็นแบรนด์ tnews ส่วน prototype ใช้โลโก้แบบเต็ม (fixed-height) ของ BU ที่เลือกบนแถบ Storybook ค่าตั้งต้นคือกรุงเทพธุรกิจ (bkk)
+function LoginPage({ brand }: { brand?: string }) {
+  const bu = getBrand(brand)
   return (
     <main className={styles.page}>
       <form className={styles.form} onSubmit={e => e.preventDefault()}>
-        <img className={styles.logo} src={brandLogo} alt="กรุงเทพธุรกิจ" />
+        <img className={styles.logo} src={bu.logo} alt={bu.name} />
         <h1 className={`${styles.title} ntg-typography-page-heading-lg`}>เข้าสู่ระบบ</h1>
         <div className={styles.fields}>
           <TextField label="ชื่อผู้ใช้" placeholder="ชื่อผู้ใช้" autoComplete="username" />
@@ -42,4 +41,4 @@ export default meta
 
 type Story = StoryObj<typeof LoginPage>
 
-export const Default: Story = { name: 'Login' }
+export const Default: Story = { name: 'Login', render: (_args, { globals }) => <LoginPage brand={globals.brand} /> }

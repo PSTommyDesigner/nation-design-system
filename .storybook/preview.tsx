@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react-vite'
 import { create } from 'storybook/theming'
 import { CustomDocsPage } from './CustomDocsPage'
+import { BRANDS, DEFAULT_BRAND } from '../prototype/one-cms/brands'
 
 // โหลด design token เป็น CSS variable ส่วนกลาง ทุก component ต้องใช้ตัวแปรชุดนี้
 // ไม่ hard-code สี ระยะ หรือมุมโค้งเอง ตามกฎของโปรเจกต์
@@ -58,6 +59,20 @@ const docsTheme = create({
 })
 
 const preview: Preview = {
+  // เมนู "BU" บนแถบเครื่องมือ เปลี่ยนโลโก้กับชื่อแบรนด์ในหน้า prototype ของ One CMS ก่อนพรีเซนต์ (ผู้ใช้สั่ง 2026-11-11)
+  // ใช้กับ story ที่อ่านค่า globals.brand เท่านั้น หน้า component อื่นไม่เปลี่ยน ลิงก์ที่มี &globals=brand:ksn เปิดมาเป็น BU นั้นเลย
+  globalTypes: {
+    brand: {
+      description: 'BU ที่ใช้ในหน้า prototype',
+      toolbar: {
+        title: 'BU',
+        icon: 'globe',
+        items: BRANDS.map((b) => ({ value: b.code, title: `${b.name} (${b.code})` })),
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: { brand: DEFAULT_BRAND },
   // prop ที่รับ React element (เช่น leftIcon / closeIcon / icon ของ Tag) ห้ามมีตัวควบคุมในแผง Controls
   // เพราะ Storybook เดาว่าเป็น object แล้วส่ง {} (object เปล่า) เข้า prop ตอนผู้ใช้แตะแผง
   // React เรนเดอร์ {} ไม่ได้ ทั้ง story พังเป็น Minified React error #31 (หัวหน้าเจอ 2026-10-22 ที่ Semi-rounded-tag)

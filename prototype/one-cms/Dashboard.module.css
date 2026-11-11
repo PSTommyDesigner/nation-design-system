@@ -168,6 +168,20 @@
   gap: var(--ntg-size-space-s1-lg);
 }
 
+/* หมวดที่ยังไม่มีข่าว */
+.empty {
+  margin: 0;
+  color: var(--ntg-color-text-general-supporting-text);
+}
+
+/* แถวล่างของการ์ด: Tag หมวดชิดซ้าย ปุ่มตะกร้าชิดขวา */
+.rankMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ntg-size-space-s1-lg);
+}
+
 /* ── จำนวนข่าว: ซ้ายหัวกับตัวกรอง ขวาการ์ดตัวเลข 2 ใบ ── */
 .countTop {
   display: grid;
