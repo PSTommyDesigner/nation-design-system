@@ -18,10 +18,10 @@ import styles from './Dashboard.module.css'
 
 const brandLogo = new URL('./assets/bangkokbiznews-logo-square.svg', import.meta.url).href
 
-// หน้า Dashboard ของ One CMS จาก Figma CMS เฟรม Dashboard / Home D (15626:38637)
+// หน้า Dashboard ของ One CMS จาก Figma CMS เฟรม Dashboard / Home (13060:8732)
 // ผู้ใช้เปลี่ยนจากเฟรม C เป็น D เมื่อ 2026-10-28: 3 section เต็มความกว้างซ้อนลงมา จัดอันดับ 40 ข่าว 4 คอลัมน์
 // มีช่องค้นหา ช่วงวันที่ และแท็กหมวด กราฟเต็มความกว้าง ข้อมูลนักข่าวเป็นตาราง
-// ส่วนนักข่าวคงตัวกรองวัน สัปดาห์ เดือน ปี ไว้ตามกฎโปรเจกต์ แม้เฟรม D ไม่มี
+// ส่วนนักข่าวคงตัวกรองวัน สัปดาห์ เดือน ปี ไว้ตามกฎโปรเจกต์ แม้เฟรมในแบบไม่มี
 // กดพาดหัวข่าวในอันดับเปิด Modal รายละเอียดข่าว (md ไม่มีหัว) ตามเฟรม Modal / Dashboard v2 (15626:38085)
 // กดชื่อนักข่าวในตารางเปิด Modal ข่าวของนักข่าว (lg) ออกแบบกับผู้ใช้จากชิ้นส่วน DS 2026-10-28 ยังไม่มีเฟรม
 // ข้อมูลตัวอย่างเป็นของกรุงเทพธุรกิจ (bkk) เป็นข้อมูลสมมุติทั้งหมด
@@ -204,10 +204,6 @@ function DashboardPage() {
           <Avatar size="md" alt="บัญชีผู้ใช้" />
         </nav>
       </header>
-
-      <div className={styles.pageHead}>
-        <h1 className={`${styles.pageTitle} ntg-typography-page-heading-lg`}>แดชบอร์ด</h1>
-      </div>
 
       <main>
         <section className={`${styles.section} ${styles.sectionTight}`} aria-labelledby="ranking-title">

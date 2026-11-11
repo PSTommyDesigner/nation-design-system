@@ -7,7 +7,7 @@
 - It tracks results on a Dashboard: page views, number of news items, and reporter statistics
 - Design file: Figma `kMw46mRQEaL2s1ofpnSDgh` (CMS), starting frame node `13476-40325`. This is a project file, not the design system file `QgmoT5Uuvv3elB96F4nsTq`
 - Prototype pages live in `../../../prototype/one-cms/`, with the Storybook title `Page (Prototype)/One CMS/<Page>`
-- The Dashboard follows frame `Dashboard / Home D` (`15626:38637`) in the Dashboard v2 section (`15508:32517`). The user moved from frame C to D and approved the page on 2026-10-28
+- The Dashboard follows frame `Dashboard / Home` (`13060:8732`) in the Dashboard v1 section (`13060:8503`). The user approved the page on 2026-10-28 from an earlier frame (`Dashboard / Home D`), which the user later moved to this frame (checked 2026-11-11)
 - The prototype uses Krungthep Turakij (`bkk`) as its example brand: logo, headlines and reporter names. Most sample data in the design file is from Tnews, and the design file stays Tnews (set by the user 2026-10-28). Colors stay on the core `ntg` tokens until the multi-brand theme layer exists
 - NEEDS CLARIFICATION: which roles use One CMS (editor, reporter, admin, ad team) and what each role may see and do
 - NEEDS CLARIFICATION: is it one CMS for every brand with a brand switch, or one CMS per brand
@@ -32,7 +32,8 @@
   1. News ranking
   2. Number of news items created
   3. Reporter statistics
-- The page has the CMS header bar, then the page title "แดชบอร์ด" (`page-heading-lg`) with a line under it, then the three sections stacked at full width (padding 40 top and bottom, 24 at the sides)
+- The page has the CMS header bar, then the three sections stacked at full width (padding 40 top and bottom, 24 at the sides)
+- The Dashboard MUST NOT have a page header (`_Header / Page`) under the CMS header bar (set by the user 2026-11-11). The user removed it from the design file the same day, so Figma and the prototype agree
 - News ranking MUST list 40 news items ranked by views, in 4 columns of 10 (ranks 1 to 10, 11 to 20, 21 to 30, 31 to 40). The numbers in the design that restart at 1 in every column are wrong (set by the user 2026-10-28)
 - Each item MUST show the rank in a circle, the headline on one line cut off with an ellipsis, and the views from three sources as gray `link-button` xs: PV (Pageviews), GA and TH (Truehits)
 - The subtitle MUST say that PV is counted by the site itself, so it won't match GA and Truehits
@@ -44,8 +45,8 @@
 - Reporter statistics MUST be a `Table` with these columns: number, reporter (name and desk), total, published, not published yet, last update. Every column except number sorts. Columns follow the Table alignment rule: the number column ("ที่") uses variant index (centered), and total, published and not published yet are counts, not money, so they use variant number (aligned to the start)
 - Column headers MUST be in Thai (see Content). The design has them in English
 - Reporter statistics MUST show, per reporter, how many news items they created, how many are published and how many are not published yet
-- Reporter statistics MUST have a filter by day, week, month and year (`Tabs` segmented sm at the right of the section heading). Frame D has no filter, but this rule keeps it
-- Reporter statistics MUST use the ntgds `pagination` below the table, full width with the numbers centered. The design used `Button Pagination` from an old library, and frame D was changed to the ntgds one on 2026-10-28
+- Reporter statistics MUST have a filter by day, week, month and year (`Tabs` segmented sm at the right of the section heading). The design frame has no filter, but this rule keeps it
+- Reporter statistics MUST use the ntgds `pagination` below the table, full width with the numbers centered. The design used `Button Pagination` from an old library, and the design frame was changed to the ntgds one on 2026-10-28
 - Clicking a ranked headline MUST open the news detail `Modal` (md, no header, set by the user 2026-10-28) following frame `Modal / Dashboard v2` (`15626:38085`): a 16:9 image with the circular close button over its top right, a row with the rank, Pageviews, GA, Truehits and the news ID with a copy button, the headline (`title-lg`), then the created, edited and published lines with date, time and author
 - Clicking a reporter's name in the table MUST open the reporter news `Modal` (lg, decided with the user 2026-10-28, no Figma frame yet): the header is `AvatarLabel` lg with the name and desk, the description is the total count, and the body is `Tabs` with published and not published yet, each listing news as `Card` variant list
 - NEEDS CLARIFICATION: should a click anywhere on a reporter row open the modal. The Table has no row click yet, so only the name opens it
