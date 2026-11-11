@@ -162,19 +162,13 @@
   color: var(--ntg-color-text-general-section-heading);
 }
 
-.rankViews {
-  display: flex;
-  align-items: center;
-  gap: var(--ntg-size-space-s1-lg);
-}
-
 /* หมวดที่ยังไม่มีข่าว */
 .empty {
   margin: 0;
   color: var(--ntg-color-text-general-supporting-text);
 }
 
-/* แถวล่างของการ์ด: Tag หมวดกับปุ่มตะกร้าเรียงชิดซ้าย */
+/* แถวล่างของการ์ด: ยอดวิว หมวด ตะกร้า เรียงชิดซ้าย */
 .rankMeta {
   display: flex;
   align-items: center;

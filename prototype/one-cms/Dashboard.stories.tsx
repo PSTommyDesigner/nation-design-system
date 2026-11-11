@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '../../components/Button'
-import { LinkButton } from '../../components/LinkButton'
 import { Avatar, AvatarLabel } from '../../components/Avatar'
 import { IconButton } from '../../components/IconButton'
 import { Icon } from '../../components/Icon'
@@ -292,14 +291,13 @@ function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) =
         <button type="button" className={`${styles.rankTitle} ${styles.textButton} ntg-typography-title-xs`} title={item.title} onClick={() => onOpen(item)}>
           {item.title}
         </button>
-        <div className={styles.rankViews}>
-          <LinkButton family="brand" defaultGray size="xs" onClick={() => onOpen(item)}>PV:{fmt(item.pv)}</LinkButton>
-          <LinkButton family="brand" defaultGray size="xs" onClick={() => onOpen(item)}>GA:{fmt(item.ga)}</LinkButton>
-          <LinkButton family="brand" defaultGray size="xs" onClick={() => onOpen(item)}>TH:{fmt(item.th)}</LinkButton>
-        </div>
-        {/* หมวดข่าวกับปุ่มตะกร้าชิดซ้าย ตะกร้าเป็น circular-icon-tag สีเดียวกับแท็กหมวด เพราะ Tag pill ไอคอนล้วนไม่มีในระบบ (ผู้ใช้สั่ง 2026-11-11)
-            ตะกร้าเก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้ */}
+        {/* แถวเดียวเรียง ยอดวิว หมวด ตะกร้า ชิดซ้าย (ผู้ใช้สั่ง 2026-11-11) ยอดวิวเหลือ PV อย่างเดียว เป็น pill-tag มีไอคอนตา
+            กดยอดวิวเปิด Modal รายละเอียดข่าวที่มีครบทั้ง Pageviews GA Truehits ตะกร้าเป็น circular-icon-tag สีเดียวกับแท็กหมวด
+            เพราะ Tag pill ไอคอนล้วนไม่มีในระบบ ตะกร้าเก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้ */}
         <div className={styles.rankMeta}>
+          <Tag family="neutral" shape="pill" size="sm" leftIcon={<Icon name="visibility" size="100%" />} aria-label={`ยอดวิว Pageviews ${fmt(item.pv)}`} onSelect={() => onOpen(item)}>
+            {fmt(item.pv)}
+          </Tag>
           <Tag family="neutral" shape="pill" size="sm">{item.category}</Tag>
           <Tag family="neutral" shape="circular" size="sm" icon={<Icon name="shopping-cart" size="100%" />} label="เก็บข่าวลงตะกร้า" onSelect={() => {}}>{null}</Tag>
         </div>
