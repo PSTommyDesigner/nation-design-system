@@ -479,8 +479,8 @@ function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: ()
       {shown && detail ? (
         <div className={styles.detail}>
           <div className={styles.detailMedia}>
-            <div className={styles.detailImage} role="img" aria-label="ภาพประกอบข่าว">
-              <MockupMedia kind="image" size="xl" />
+            <div role="img" aria-label="ภาพประกอบข่าว">
+              <MockupMedia kind="image" size="xl" ratio="16:9" />
             </div>
             <div className={styles.detailStats}>
               <p className={`${styles.detailStatsText} ntg-typography-label-sm`}>

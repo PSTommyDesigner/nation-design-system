@@ -377,11 +377,6 @@
   overflow: hidden;
   margin-block-end: var(--ntg-size-space-s2-sm);
 }
-/* ภาพ 16:9 ใช้ MockupMedia size xl กรอบแม่กำหนดสัดส่วน */
-.detailImage {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
 .detailStats {
   display: flex;
   align-items: center;
