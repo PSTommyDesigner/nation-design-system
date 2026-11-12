@@ -1,5 +1,5 @@
 {
- "capturedAt": "2026-11-10",
+ "capturedAt": "2026-11-12",
  "page": "25 Card",
  "reference": "Card Component Previews",
  "sets": {
@@ -50,14 +50,27 @@
        "h": "card/image-height/xs",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 184,
+         "h": 104,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/sm",
+           "h": "mockup-media/icon-size/sm",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -168,14 +181,27 @@
        "h": "card/image-height/sm",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 288,
+         "h": 162,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/md",
+           "h": "mockup-media/icon-size/md",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -311,14 +337,27 @@
        "h": "card/image-height/md",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 392,
+         "h": 220,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/lg",
+           "h": "mockup-media/icon-size/lg",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -455,14 +494,27 @@
        "h": "card/image-height/lg",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 496,
+         "h": 278,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/xl",
+           "h": "mockup-media/icon-size/xl",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -599,14 +651,27 @@
        "h": "card/image-height/xl",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 600,
+         "h": 336,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/xl",
+           "h": "mockup-media/icon-size/xl",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -782,14 +847,27 @@
        "h": "card/image-height/xs",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 184,
+         "h": 104,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/sm",
+           "h": "mockup-media/icon-size/sm",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -900,14 +978,27 @@
        "h": "card/image-height/sm",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 288,
+         "h": 162,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/md",
+           "h": "mockup-media/icon-size/md",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -1043,14 +1134,27 @@
        "h": "card/image-height/md",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 392,
+         "h": 220,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/lg",
+           "h": "mockup-media/icon-size/lg",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -1186,14 +1290,27 @@
        "h": "card/image-height/lg",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 496,
+         "h": 277.63,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/xl",
+           "h": "mockup-media/icon-size/xl",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -1329,14 +1446,27 @@
        "h": "card/image-height/xl",
        "ch": [
         {
-         "n": "16:9",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
+         "s": ["FIXED","FIXED"],
+         "w": 600,
+         "h": 336,
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Crop",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/xl",
+           "h": "mockup-media/icon-size/xl",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -1488,8 +1618,13 @@
      "r": ["card/radius/top-left","card/radius/top-right","card/radius/bottom-right","card/radius/bottom-left"],
      "ch": [
       {
-       "n": "image-1:1",
+       "n": "mockup-media",
        "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "size/space/none",
+       "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
        "s": ["FIXED","FIXED"],
        "w": "card/list-image",
        "h": "card/list-image",
@@ -1497,8 +1632,19 @@
        "inst": true,
        "ch": [
         {
-         "n": "Img Place",
-         "t": "RECTANGLE"
+         "n": "icon",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "mockup-media/icon-size/sm",
+         "h": "mockup-media/icon-size/sm",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
         }
        ]
       },
@@ -1619,8 +1765,13 @@
        ]
       },
       {
-       "n": "image-1:1",
+       "n": "mockup-media",
        "t": "INSTANCE",
+       "lm": "VERTICAL",
+       "al": "CENTER",
+       "ca": "CENTER",
+       "g": "size/space/none",
+       "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
        "s": ["FIXED","FIXED"],
        "w": "card/list-image",
        "h": "card/list-image",
@@ -1628,8 +1779,19 @@
        "inst": true,
        "ch": [
         {
-         "n": "Img Place",
-         "t": "RECTANGLE"
+         "n": "icon",
+         "t": "INSTANCE",
+         "s": ["FIXED","FIXED"],
+         "w": "mockup-media/icon-size/sm",
+         "h": "mockup-media/icon-size/sm",
+         "clip": true,
+         "inst": true,
+         "ch": [
+          {
+           "n": "vector",
+           "t": "VECTOR"
+          }
+         ]
         }
        ]
       }
@@ -1682,16 +1844,26 @@
        "w": 112,
        "ch": [
         {
-         "n": "image-1:1",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
          "s": ["FILL","FIXED"],
          "h": "card/list-image",
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Img Place",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/sm",
+           "h": "mockup-media/icon-size/sm",
+           "clip": true,
+           "inst": true
           }
          ]
         }
@@ -1789,16 +1961,26 @@
        "w": 112,
        "ch": [
         {
-         "n": "image-1:1",
+         "n": "mockup-media",
          "t": "INSTANCE",
+         "lm": "VERTICAL",
+         "al": "CENTER",
+         "ca": "CENTER",
+         "g": "size/space/none",
+         "p": ["size/space/none","size/space/none","size/space/none","size/space/none"],
          "s": ["FILL","FIXED"],
          "h": "card/list-image",
          "clip": true,
          "inst": true,
          "ch": [
           {
-           "n": "Img Place",
-           "t": "RECTANGLE"
+           "n": "icon",
+           "t": "INSTANCE",
+           "s": ["FIXED","FIXED"],
+           "w": "mockup-media/icon-size/sm",
+           "h": "mockup-media/icon-size/sm",
+           "clip": true,
+           "inst": true
           }
          ]
         },
@@ -1915,8 +2097,8 @@
  },
  "palette": [
   {
-   "Image frame/16:9/Crop": {
-    "fills": ["color/background/general/quaternary"]
+   "Image frame/mockup-media": {
+    "fills": ["color/background/general/secondary"]
    },
    "Image frame/Tag on image/pill-badge": {
     "fills": ["color/background/general/primary"],
@@ -1932,8 +2114,8 @@
    }
   },
   {
-   "Image frame/16:9/Crop": {
-    "fills": ["color/background/general/quaternary"]
+   "Image frame/mockup-media": {
+    "fills": ["color/background/general/secondary"]
    },
    "Image frame/Tag on image/pill-badge": {
     "fills": ["color/background/general/primary"],
@@ -1959,8 +2141,11 @@
     "sa": "INSIDE",
     "fx": "effect::shadows/center/xs"
    },
-   "image-1:1/Img Place": {
-    "fills": ["IMAGE"]
+   "mockup-media": {
+    "fills": ["color/background/general/secondary"]
+   },
+   "mockup-media/icon/vector": {
+    "fills": ["icon/general/disable-subtle"]
    },
    "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
     "fills": ["color/text/general/heading"]
@@ -1977,8 +2162,11 @@
     "sa": "INSIDE",
     "fx": "effect::shadows/center/xs"
    },
-   "image-1:1/Img Place": {
-    "fills": ["IMAGE"]
+   "mockup-media": {
+    "fills": ["color/background/general/secondary"]
+   },
+   "mockup-media/icon/vector": {
+    "fills": ["icon/general/disable-subtle"]
    },
    "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
     "fills": ["color/text/general/heading"]
@@ -2001,8 +2189,11 @@
    "Content/Supporting Text/1 ม.ค. 2568 00:00": {
     "fills": ["color/text/general/text"]
    },
-   "image-1:1/Img Place": {
-    "fills": ["IMAGE"]
+   "mockup-media": {
+    "fills": ["color/background/general/secondary"]
+   },
+   "mockup-media/icon/vector": {
+    "fills": ["icon/general/disable-subtle"]
    }
   },
   {
@@ -2019,8 +2210,11 @@
    "Content/Supporting Text/1 ม.ค. 2568 00:00": {
     "fills": ["color/text/general/text"]
    },
-   "image-1:1/Img Place": {
-    "fills": ["IMAGE"]
+   "mockup-media": {
+    "fills": ["color/background/general/secondary"]
+   },
+   "mockup-media/icon/vector": {
+    "fills": ["icon/general/disable-subtle"]
    }
   },
   {
@@ -2031,8 +2225,8 @@
     "sa": "INSIDE",
     "fx": "effect::shadows/center/xs"
    },
-   "Frmae/image-1:1/Img Place": {
-    "fills": ["IMAGE"]
+   "Frmae/mockup-media": {
+    "fills": ["color/background/general/secondary"]
    },
    "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
     "fills": ["color/text/general/heading"]
@@ -2049,8 +2243,8 @@
     "sa": "INSIDE",
     "fx": "effect::shadows/center/xs"
    },
-   "Frmae/image-1:1/Img Place": {
-    "fills": ["IMAGE"]
+   "Frmae/mockup-media": {
+    "fills": ["color/background/general/secondary"]
    },
    "Content/Heading/นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mockup": {
     "fills": ["color/text/general/heading"]
@@ -2067,8 +2261,8 @@
     "sa": "INSIDE",
     "fx": "effect::shadows/center/xs"
    },
-   "Frmae/image-1:1/Img Place": {
-    "fills": ["IMAGE"]
+   "Frmae/mockup-media": {
+    "fills": ["color/background/general/secondary"]
    },
    "Frmae/Supporting Text": {
     "fills": ["color/background/alpha/black-50"]
@@ -2091,8 +2285,8 @@
     "sa": "INSIDE",
     "fx": "effect::shadows/center/xs"
    },
-   "Frmae/image-1:1/Img Place": {
-    "fills": ["IMAGE"]
+   "Frmae/mockup-media": {
+    "fills": ["color/background/general/secondary"]
    },
    "Frmae/Supporting Text": {
     "fills": ["color/background/alpha/black-50"]

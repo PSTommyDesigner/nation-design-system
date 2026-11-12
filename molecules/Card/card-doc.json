@@ -36,7 +36,6 @@
                 "Subheading": true,
                 "Size": "md"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 808,
               "height": 220
@@ -178,7 +177,6 @@
                 "Subheading": "Subheading",
                 "Size": "xs"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 184,
               "height": 186
@@ -195,7 +193,6 @@
                 "Subheading": "Subheading",
                 "Size": "sm"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 288,
               "height": 296
@@ -212,7 +209,6 @@
                 "Subheading": "Subheading",
                 "Size": "md"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 392,
               "height": 340
@@ -229,7 +225,6 @@
                 "Heading value": "This is heading. heading heading heading.",
                 "Size": "lg"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 496,
               "height": 408
@@ -246,7 +241,6 @@
                 "Supheading": true,
                 "Size": "xl"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 600,
               "height": 490
@@ -775,7 +769,6 @@
                 "Tag on image": true,
                 "Size": "xs"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 24,
               "width": 496,
@@ -791,7 +784,6 @@
                 "Tag on image": true,
                 "Size": "sm"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 208,
               "width": 704,
@@ -807,7 +799,6 @@
                 "Tag on image": true,
                 "Size": "md"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 450,
               "width": 808,
@@ -823,7 +814,6 @@
                 "Tag on image": true,
                 "Size": "lg"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 750,
               "width": 912,
@@ -839,7 +829,6 @@
                 "Tag on image": true,
                 "Size": "xl"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 1108,
               "width": 1016,
@@ -870,7 +859,6 @@
                 "Heading": true,
                 "Size": "xs"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 24,
               "width": 184,
@@ -886,7 +874,6 @@
                 "Heading": true,
                 "Size": "sm"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 290,
               "width": 288,
@@ -902,7 +889,6 @@
                 "Heading": true,
                 "Size": "md"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 666,
               "width": 392,
@@ -918,7 +904,6 @@
                 "Heading": true,
                 "Size": "lg"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 1086,
               "width": 496,
@@ -934,7 +919,6 @@
                 "Heading": true,
                 "Size": "xl"
               },
-              "image": "7f12ea1300",
               "x": 24,
               "y": 1574,
               "width": 600,

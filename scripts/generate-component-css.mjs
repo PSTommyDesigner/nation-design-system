@@ -1052,10 +1052,11 @@ const CARD = {
     'Image frame/**': () => ({}),
     'Heading & Text': (n, W) => ({ '--card-text-gap': W(n.g) }),
     'Heading & Text/**': () => ({}),
-    'image-1:1': (n, W) => ({ '--card-list-image': W(n.w) }),
-    'image-1:1/**': () => ({}),
+    // ช่องรูปของการ์ดรายการเป็น mockup-media ตั้งแต่ 2026-11-12 (เดิมเป็นกรอบ image-1:1 ที่ลบแล้ว) อ่านแค่ขนาดกล่อง ข้างในเป็นของ MockupMedia
+    'mockup-media': (n, W) => ({ '--card-list-image': W(n.w) }),
+    'mockup-media/**': () => ({}),
     'Frmae': () => ({}),
-    'Frmae/image-1:1': (n, W) => ({ '--card-list-image': W(n.h) }),
+    'Frmae/mockup-media': (n, W) => ({ '--card-list-image': W(n.h) }),
     'Frmae/**': () => ({}),
     'Content': (n, W) => ({ '--card-list-pt': W(n.p[0]), '--card-list-pr': W(n.p[1]), '--card-list-pb': W(n.p[2]), '--card-list-pl': W(n.p[3]), '--card-list-gap': W(n.g) }),
     'Content/**': () => ({}),
@@ -1069,8 +1070,12 @@ const CARD = {
   ],
   colors: {
     '(root)': (c, W) => ({ '--card-bg': W(c.fills[0]), '--card-border': c.strokes ? W(c.strokes[0]) : 'transparent', '--card-border-w': c.strokes ? `${c.sw[0]}px` : '0px', '--card-shadow': effectVar(c.fx, 'card effect') }),
-    'Image frame/16:9/Crop': (c, W) => ({ '--card-media-bg': W(c.fills[0]) }),
+    // พื้นและไอคอนในช่องรูปเป็นของ MockupMedia (สลับจากกรอบ 16:9 เดิม 2026-11-12) การ์ดไม่ดึงสีจากชั้นข้างใน
     'Image frame/**': () => ({}),
+    'mockup-media': () => ({}),
+    'mockup-media/**': () => ({}),
+    'Frmae/mockup-media': () => ({}),
+    'Frmae/mockup-media/**': () => ({}),
     'Heading & Text/Subheading/*': (c, W) => ({ '--card-cat-fg': W(c.fills[0]) }),
     'Heading & Text/Heading/*': (c, W) => ({ '--card-fg': W(c.fills[0]) }),
     'Heading & Text/Supporting Text/*': (c, W) => ({ '--card-lead-fg': W(c.fills[0]) }),

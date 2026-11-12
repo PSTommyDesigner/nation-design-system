@@ -1,7 +1,7 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/Card/Card.base.css
  *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 25 Card แล้วรัน  npm run figma:layers -- card  และ  npm run css:generate -- card
- *   spec: tokens/figma-layers/card.json (ดึง 2026-11-10)
+ *   spec: tokens/figma-layers/card.json (ดึง 2026-11-12)
  */
 
 /*
@@ -182,7 +182,7 @@ a.root { cursor: pointer; }
 
 /* ── สี ต่อ ชุด × ตระกูล × แกน × สถานะ อ่านจาก fill/stroke ของทุกชั้น ── */
 .vertical.xs,
-.horizontal.xs { --card-media-bg: var(--ntg-color-background-general-quaternary); --card-cat-fg: var(--ntg-color-text-brand-primary); --card-fg: var(--ntg-color-text-general-heading); }
+.horizontal.xs { --card-cat-fg: var(--ntg-color-text-brand-primary); --card-fg: var(--ntg-color-text-general-heading); }
 .vertical.sm,
 .vertical.md,
 .vertical.lg,
@@ -190,7 +190,7 @@ a.root { cursor: pointer; }
 .horizontal.sm,
 .horizontal.md,
 .horizontal.lg,
-.horizontal.xl { --card-media-bg: var(--ntg-color-background-general-quaternary); --card-cat-fg: var(--ntg-color-text-brand-primary); --card-fg: var(--ntg-color-text-general-heading); --card-lead-fg: var(--ntg-color-text-general-text); }
+.horizontal.xl { --card-cat-fg: var(--ntg-color-text-brand-primary); --card-fg: var(--ntg-color-text-general-heading); --card-lead-fg: var(--ntg-color-text-general-text); }
 .list:not(.imageTrailing),
 .list.imageTrailing { --card-bg: var(--ntg-color-background-general-primary); --card-border: var(--ntg-color-border-general-tertiary); --card-border-w: 1px; --card-shadow: var(--ntg-shadows-center-xs); --card-fg: var(--ntg-color-text-general-heading); --card-meta-fg: var(--ntg-color-text-general-text); }
 .list { --card-bg: var(--ntg-color-background-general-primary); --card-border: var(--ntg-color-border-general-tertiary); --card-border-w: 1px; --card-shadow: var(--ntg-shadows-center-xs); --card-fg: var(--ntg-color-text-general-heading); --card-meta-fg: var(--ntg-color-text-general-text); --card-overlay-bg: var(--ntg-color-background-alpha-black-50); --card-overlay-fg: var(--ntg-color-text-general-const-white); }
