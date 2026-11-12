@@ -6,6 +6,7 @@
 - It sets how the websites look (home page, menus, banners) and manages ads
 - It tracks results on a Dashboard: page views, number of news items, and reporter statistics
 - Design file: Figma `kMw46mRQEaL2s1ofpnSDgh` (CMS), starting frame node `13476-40325`. This is a project file, not the design system file `QgmoT5Uuvv3elB96F4nsTq`
+- Requirements from the first round of meetings with 8 BU, Smart ONE CMS (Meet 1) (problems, features by module, AI along the news path, proposed features, things to improve), are summed up in `smart-one-cms-meet-1.md`, from the Google Sheet the user shared on 2026-11-12. Read it before building or changing a page. It is background, not approved work: the team has not agreed on which features to build (set by the user 2026-11-12), so MUST NOT change prototype UI from it until the user says so
 - Prototype pages live in `../../../prototype/one-cms/`, with the Storybook title `Page (Prototype)/One CMS/<Page>`
 - The Dashboard follows frame `Dashboard / Home` (`13060:8732`) in the Dashboard v1 section (`13060:8503`). The user approved the page on 2026-10-28 from an earlier frame (`Dashboard / Home D`), which the user later moved to this frame (checked 2026-11-11)
 - The prototype uses Krungthep Turakij (`bkk`) as its default brand: headlines and reporter names are sample data for `bkk`. Most sample data in the design file is from Tnews, and the design file stays Tnews (set by the user 2026-10-28). Colors stay on the core `ntg` tokens until the multi-brand theme layer exists
@@ -84,6 +85,7 @@
 - No permission: a user whose role may not see the Dashboard or another reporter's statistics
 
 ## Files
+- `smart-one-cms-meet-1.md` Smart ONE CMS (Meet 1), summary of the 8 BU requirement sheet
 - `flows/` one file per flow
 - `pages/` one spec per page
 - `decisions/` one decision per file, such as `0001-<topic>.md`
