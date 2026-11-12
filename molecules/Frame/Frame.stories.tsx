@@ -26,5 +26,7 @@ type Story = StoryObj<typeof meta>
 // เอกสาร Mockup Media Component Previews ไม่มีเมนูที่นี่ เพราะซ้ำกับ story ของ component ที่กดแก้ค่าในแผงได้ (ผู้ใช้สั่ง 2026-11-05) ข้อมูลยังอยู่ใน frame-doc.json
 // ชื่อในเมนูตั้งตรง ๆ ทีละตัว เพราะ Storybook อ่านชื่อ story จากโค้ดแบบไม่รัน ถ้าสร้างผ่านฟังก์ชันจะได้ชื่อตัวแปรแทน
 export const Overview: Story = { name: 'ภาพรวม', args: { data, name: '10 Frame Documentation', logos, samples } }
+export const FrameToken: Story = { name: 'Frame Token', args: { data, name: 'Frame Token', logos, samples } }
 export const RatioGuide: Story = { name: 'Ratio Guide', args: { data, name: 'Ratio Guide', logos, samples } }
 export const FrameRatios: Story = { name: 'Frame Ratios', args: { data, name: 'Frame Ratios', logos, samples } }
+export const FrameSpace: Story = { name: 'Frame Space', args: { data, name: 'Frame Space', logos, samples } }

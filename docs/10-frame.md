@@ -93,8 +93,10 @@ sources_of_truth:
 |---|---|---|
 | `10 Frame Documentation` | Page Documentation | สารบัญของหน้า 4 section |
 | `Frame Ratios` | Component Previews | ต้นฉบับ 8 ตัว แยกกลุ่มภาพนิ่งกับวิดีโอ |
+| `Frame Token` | Token Document | ตัวแปร mockup-media/icon-size 5 ตัว จับคู่ชื่อ Figma กับโค้ด (เพิ่ม 2026-11-12) |
 | `Ratio Guide` | Information Document | ตารางเลือกสัดส่วนพร้อมข้อควรระวังและกติกาการครอบภาพ |
 | `Mockup Media Component Previews` | Component Previews | ชุด mockup-media ครบ 10 แบบ (เพิ่ม 2026-11-12) |
+| `Frame Space` | Space Document | สูตรขนาดไอคอนต่อขนาดและค่าที่ใช้จริงของ mockup-media (เพิ่ม 2026-11-12) |
 
 ## 5. ข้อจำกัดและข้อห้าม (Constraints)
 
@@ -102,6 +104,5 @@ sources_of_truth:
 - **ห้ามใช้หลายสัดส่วนปนกันในกริดเดียวกัน**
 - **ห้ามคัดลอกภาพออกไปวางเอง** ให้วางสำเนาของต้นฉบับ
 - **ยังไม่ทำในรอบนี้** รวม 8 ตัวเป็นชุด variant ตัดสินเมื่อ 2026-08-27 ว่าคงเป็น component เดี่ยวไว้ก่อน เพราะการรื้อโครงจะทำให้ไฟล์ที่ดึงไปใช้อยู่ต้องชี้ใหม่
-- **ยังไม่ทำในรอบนี้** Space Document เพราะกรอบไม่มี padding และ gap มีแต่ขนาดกับสัดส่วน
-- **ยังไม่ทำในรอบนี้** Token Document กับ Space Document ของชุด mockup-media ซึ่งตอนนี้มีตัวแปร mockup-media/icon-size 5 ตัว ตามกฎเอกสาร หน้าที่มี token และ component ต้องมีสองใบนี้ ต้องถามผู้ใช้ก่อนทำ
+- Space Document ของหน้านี้ (`Frame Space`) ครอบเฉพาะชุด mockup-media กรอบสัดส่วน 8 ตัวไม่มี padding และ gap มีแต่ขนาดกับสัดส่วน
 - **เรื่องที่ต้องตรวจด้วยตา** กรอบกลุ่มวิดีโอทั้ง 4 ตัวอ่านค่าวิดีโอผ่านคำสั่งไม่ได้ ยังไม่ยืนยันว่ามีวิดีโอตัวอย่างอยู่จริงหรือเป็นกรอบเปล่า

@@ -527,6 +527,103 @@
       ]
     },
     {
+      "id": "11988:138",
+      "name": "Frame Token",
+      "title": "Frame Token",
+      "subtitle": "ตัวแปรของหน้า 10 Frame ซึ่งตอนนี้เป็นของชุด mockup-media ทั้งหมด",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "เอกสารนี้คืออะไร",
+          "sub": "พจนานุกรมกลางระหว่างคนออกแบบกับคนเขียนโค้ด สำหรับตัวแปรของหน้า 10 ซึ่งตอนนี้มี 5 ตัว เป็นขนาดไอคอนของชุด mockup-media ทั้งหมด",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "กรอบสัดส่วน 8 ตัวเดิม (image-16:9 ถึง video-9:16) ไม่มีตัวแปรของตัวเอง เพราะเป็นไฟล์ภาพและวีดีโอที่มีแต่ขนาดกับสัดส่วน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11988:141",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ขนาดไอคอนมาจากสูตรในไฟล์ tokens/scale/mockup-media.mjs ซึ่งยืมสเกลไอคอนของระบบ size/icon sm ถึง 2xl ไม่ได้ตั้งเลขเอง สีพื้น สีไอคอน และสีข้อความไม่อยู่ในตารางนี้ เพราะใช้ตัวแปรกลาง color/background/general/secondary icon/general/disable-subtle และ color/text/general/disabled ซึ่งเป็นของหน้า 01 Color",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11988:141",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "วิธีอ่านตาราง",
+          "section": true
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "🎨 ฝั่งออกแบบ (Figma)",
+          "body": "ชื่อ Style / Variable ที่เห็นในแผง Figma ใช้ตอนออกแบบและเลือกใช้งาน"
+        },
+        {
+          "type": "card",
+          "kind": "how-to-read",
+          "title": "💻 ฝั่งพัฒนา (Code)",
+          "body": "ชื่อ class / ตัวแปร CSS ที่เอาไปเขียนโค้ดได้ตรง ๆ ค่าเดียวกับฝั่งออกแบบเป๊ะ"
+        },
+        {
+          "type": "h",
+          "text": "ตารางจับคู่ชื่อ",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อใน Figma (Design)",
+            "💻 ชื่อในโค้ด (Dev)",
+            "ค่า",
+            "ใช้ตรงไหน"
+          ],
+          "rows": [
+            [
+              "mockup-media/icon-size/xs",
+              "--ntg-mockup-media-icon-size-xs",
+              "16px",
+              "ขนาดไอคอนของ mockup-media ขนาด xs มีแต่ไอคอน"
+            ],
+            [
+              "mockup-media/icon-size/sm",
+              "--ntg-mockup-media-icon-size-sm",
+              "20px",
+              "ขนาดไอคอนของ mockup-media ขนาด sm มีแต่ไอคอน ใช้กับช่องภาพของการ์ดรายการ"
+            ],
+            [
+              "mockup-media/icon-size/md",
+              "--ntg-mockup-media-icon-size-md",
+              "24px",
+              "ขนาดไอคอนของ mockup-media ขนาด md มีแต่ไอคอน"
+            ],
+            [
+              "mockup-media/icon-size/lg",
+              "--ntg-mockup-media-icon-size-lg",
+              "32px",
+              "ขนาดไอคอนของ mockup-media ขนาด lg ไอคอนกับข้อความ body-sm"
+            ],
+            [
+              "mockup-media/icon-size/xl",
+              "--ntg-mockup-media-icon-size-xl",
+              "40px",
+              "ขนาดไอคอนของ mockup-media ขนาด xl ไอคอนกับข้อความ body-sm ใช้กับภาพ 16:9 ขนาดใหญ่"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "การแก้ไขและทำให้ตรงกัน",
+          "sub": "แก้ที่สูตรใน tokens/scale/mockup-media.mjs แล้วสั่ง npm run tokens:build ฝั่ง Figma แก้ที่ตัวแปรในคอลเลกชัน component แล้วสั่ง npm run tokens:verify ถ้าจะเปลี่ยนขนาดไอคอน ให้เปลี่ยนขั้นของสเกลไอคอนที่แต่ละขนาดชี้ไป ห้ามพิมพ์เลขเอง เพราะสูตรอ่านค่าจริงจาก size/icon ใน primitive.json และหยุดทันทีถ้าหาขั้นไม่เจอหรือขนาดไม่โตตามลำดับ",
+          "section": true
+        }
+      ]
+    },
+    {
       "id": "10263:32",
       "name": "Ratio Guide",
       "title": "Ratio Guide",
@@ -811,6 +908,142 @@
               "height": 252
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "11989:232",
+      "name": "Frame Space",
+      "title": "Frame Space",
+      "subtitle": "ระยะห่างและขนาดของชุด mockup-media",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "สรุป",
+          "sub": "ชุด mockup-media ไม่มีระยะขอบและไม่มีช่องไฟ ทั้งระยะขอบสี่ด้านและช่องไฟระหว่างไอคอนกับข้อความผูกกับ size/space/none ไอคอนกับข้อความจัดไว้กลางกล่องด้วย auto layout จึงไม่ล้นในกล่องเล็ก",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "มิติเดียวที่มีสูตรคือขนาดไอคอน อยู่ในไฟล์ tokens/scale/mockup-media.mjs แต่ละขนาดชี้ไปที่ขั้นของสเกลไอคอน size/icon ของระบบ ไม่มี base กับ step ของตัวเอง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11989:235",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ความกว้างและความสูงของกล่องไม่มีสูตร เพราะกล่องยืดเต็มกรอบที่วาง ขนาดในไฟล์ (96x54 ถึง 448x252) เป็นขนาดตั้งต้นให้ดูเท่านั้น ความสูงของข้อความคุมด้วย text style body/sm",
+          "color": "--ntg-color-text-general-supporting-text",
+          "stack": "11989:235",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "h",
+          "text": "สูตรต่อขนาด",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "มิติ",
+            "base",
+            "step",
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "rows": [
+            [
+              "ขนาดไอคอน",
+              "ยืม size/icon",
+              "-",
+              "16 (sm)",
+              "20 (md)",
+              "24 (lg)",
+              "32 (xl)",
+              "40 (2xl)"
+            ],
+            [
+              "ข้อความ body-sm",
+              "-",
+              "-",
+              "ไม่แสดง",
+              "ไม่แสดง",
+              "ไม่แสดง",
+              "แสดง",
+              "แสดง"
+            ],
+            [
+              "ระยะขอบและช่องไฟ",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "ค่าที่ใช้จริง",
+          "section": true
+        },
+        {
+          "type": "table",
+          "head": [
+            "🎨 ชื่อตัวแปรใน Figma",
+            "💻 ชื่อในโค้ด",
+            "ค่า",
+            "ใช้กับส่วนไหนของ component"
+          ],
+          "rows": [
+            [
+              "size/space/none",
+              "--ntg-size-space-none",
+              "0px",
+              "ระยะขอบสี่ด้านและช่องไฟระหว่างไอคอนกับข้อความ ทุกขนาด"
+            ],
+            [
+              "mockup-media/icon-size/xs",
+              "--ntg-mockup-media-icon-size-xs",
+              "16px",
+              "ความกว้างและความสูงของไอคอน ขนาด xs"
+            ],
+            [
+              "mockup-media/icon-size/sm",
+              "--ntg-mockup-media-icon-size-sm",
+              "20px",
+              "ความกว้างและความสูงของไอคอน ขนาด sm"
+            ],
+            [
+              "mockup-media/icon-size/md",
+              "--ntg-mockup-media-icon-size-md",
+              "24px",
+              "ความกว้างและความสูงของไอคอน ขนาด md"
+            ],
+            [
+              "mockup-media/icon-size/lg",
+              "--ntg-mockup-media-icon-size-lg",
+              "32px",
+              "ความกว้างและความสูงของไอคอน ขนาด lg"
+            ],
+            [
+              "mockup-media/icon-size/xl",
+              "--ntg-mockup-media-icon-size-xl",
+              "40px",
+              "ความกว้างและความสูงของไอคอน ขนาด xl"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "กติกา",
+          "sub": "ต้นทางของค่าอยู่ที่โค้ด แก้ที่ tokens/scale/mockup-media.mjs แล้วรัน npm run tokens:build แล้วแก้ตัวแปรใน Figma ให้ตรง และตรวจด้วย npm run tokens:verify ห้ามใส่ระยะขอบตายตัวให้กล่อง เพราะแบบต้นทางที่มีระยะขอบ 64 กับ 40 ล้นในกล่องเล็ก ห้ามตั้งความกว้างหรือความสูงของกล่องเป็นค่าตายตัวในการใช้งานจริง ให้ยืดตามกรอบที่วาง",
+          "section": true
         }
       ]
     }
