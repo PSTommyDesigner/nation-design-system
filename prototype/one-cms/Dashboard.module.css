@@ -8,13 +8,25 @@
 }
 
 /* ── แถบหัว (_Header / CMS System) ระบบยังไม่มี header ของแอป ประกอบจาก Button กับ Avatar ── */
+/* แถบหัวติดด้านบน เลื่อนลงแล้วสไลด์ปิด เลื่อนขึ้นแล้วสไลด์เปิด (ผู้ใช้สั่ง 2026-11-12) */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: var(--ntg-layer-sticky);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: var(--ntg-size-space-s2-sm) var(--ntg-size-space-s2-lg);
   background: var(--ntg-color-background-general-primary);
   border-bottom: 1px solid var(--ntg-color-border-general-primary);
+  transition: transform var(--ntg-motion-duration-default) var(--ntg-motion-easing-enter);
+}
+.headerHidden {
+  transform: translateY(-100%);
+  transition-timing-function: var(--ntg-motion-easing-exit);
+}
+@media (prefers-reduced-motion: reduce) {
+  .header { transition: none; }
 }
 
 /* Logo Fixed Height 40 จากหน้า 08 Logo ใช้ขนาดจริงของไฟล์ SVG */

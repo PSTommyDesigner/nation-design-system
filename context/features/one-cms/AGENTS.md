@@ -17,9 +17,14 @@
 ## Rules
 
 ### AI assistant น้องเนเน่
-- Every One CMS page except Login MUST show the AI assistant น้องเนเน่ floating at the bottom right, 24 from the edges (`size-space-s2-lg`), as in the old system, following frame `Ai` (`15669:14538`): the mascot image 80 x 80 with a `pill-tag` xs brand primary "เนเน่" under it (set by the user 2026-11-12). It is one button named "น้องเนเน่ ผู้ช่วย AI" for screen readers, on `layer-sticky` so a Modal covers it. Built in `prototype/one-cms/AiAssistant.tsx`
+- Every One CMS page except Login MUST show the AI assistant น้องเนเน่ floating over the page, as in the old system, following frame `Ai` (`15669:14538`): the mascot image 80 x 80 with a `pill-tag` sm brand primary under it (set by the user 2026-11-12, sm replacing the xs in the design). Built in `prototype/one-cms/AiAssistant.tsx`
+- The tag MUST cycle two greetings, "สวัสดีครับ!!" and "มีอะไรให้น้องเนเน่ช่วยไหมครับ", 3 seconds each, the new text rising and fading in (`motion-duration-slow`, no animation with reduced motion). The name "เนเน่" from the design is no longer shown in the tag
+- น้องเนเน่ MUST start at the top right under the CMS header bar, 24 from the header and from the right edge for the longest greeting (`size-space-s2-lg`), and MUST be draggable anywhere while the mascot and the tag stay inside the screen. The position is not remembered: a reload puts it back. Arrow keys move it 16 at a time (`size-space-s2-sm`) for people who can't drag (WCAG 2.5.7). It is one button named "น้องเนเน่ ผู้ช่วย AI ลากหรือกดลูกศรเพื่อย้ายตำแหน่ง", on `layer-floating` so it sits above the header and under a Modal
 - The mascot is a raster image from the design file (1024 x 1024), saved as a 160 x 160 PNG inside `assets/nation-ai.svg`, whose `width` and `height` set 80 because the system has no image size token
 - NEEDS CLARIFICATION: what a click does. The team has not agreed on the AI features (see `smart-one-cms-meet-1.md`), so the button does nothing yet
+
+### CMS header bar
+- The CMS header bar MUST stick to the top, slide up out of view when the page scrolls down, and slide back when it scrolls up (set by the user 2026-11-12). It always shows while the page is within the header's height from the top. It uses `layer-sticky`, `motion-duration-default` with `motion-easing-enter` to show and `motion-easing-exit` to hide, and no slide with reduced motion. Built in `prototype/one-cms/useHideOnScroll.ts` so every page with the header uses the same behavior
 
 ### Pages in the first round
 - The first round MUST cover two pages: Login and Dashboard
@@ -73,7 +78,7 @@
 ## Components
 - Chosen with the user page by page, from `../../design-system.dsds.yaml`
 - Login: TextField md, Checkbox sm, Button brand primary lg, LinkButton brand lg
-- Every page except Login: Tag pill xs brand primary (AI assistant น้องเนเน่)
+- Every page except Login: Tag pill sm brand primary (AI assistant น้องเนเน่)
 - Dashboard: Banner warning md (beta, empty category), Button pill sm (header menu, brand primary for the current page, neutral tertiary for the rest), Avatar md, TextField md, Tag pill lg neutral (category filter), semi-rounded sm neutral and pill sm neutral (rank card and news detail Modal), Dropdown md, Table, Tabs segmented sm, Pagination md, BarChart, Modal md and lg (beta), MockupMedia image sm and xl (beta), IconButton neutral tertiary xs, AvatarLabel lg, Tabs underline md, Card list
 - Built inside the story from tokens because the system doesn't have them: the rank card `card / pin` (image area, rank box, border and hover, with the system `Tag` inside) and the number card (border, dot and number)
 - NEEDS CLARIFICATION: should the rank card and the number card become ntgds components

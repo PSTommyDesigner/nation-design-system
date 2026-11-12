@@ -1,16 +1,25 @@
-/* ลอยมุมขวาล่าง ห่างขอบ 24 เท่าระยะขอบหน้า อยู่ใต้ Modal (layer sticky ต่ำกว่า overlay) */
+/* ลอยบนหน้าจอ อยู่ใต้ Modal (layer floating ต่ำกว่า overlay) และเหนือแถบหัว (layer sticky) */
 .root {
   position: fixed;
-  right: var(--ntg-size-space-s2-lg);
-  bottom: var(--ntg-size-space-s2-lg);
-  z-index: var(--ntg-layer-sticky);
+  z-index: var(--ntg-layer-floating);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0;
   border: 0;
   background: none;
-  cursor: pointer;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.root:active {
+  cursor: grabbing;
+}
+
+/* ก่อนวัดตำแหน่งได้ ซ่อนไว้ ไม่ให้กะพริบที่มุมซ้ายบน */
+.initial {
+  visibility: hidden;
 }
 
 .root:focus-visible {
@@ -21,4 +30,38 @@
 
 .mascot {
   display: block;
+  pointer-events: none;
+}
+
+/* แท็กกว้างกว่ารูปเมื่อข้อความยาว จัดกลางใต้รูปและไม่ตัดบรรทัด */
+.tag {
+  display: flex;
+  justify-content: center;
+  width: 0;
+  white-space: nowrap;
+}
+.tag > * {
+  flex-shrink: 0;
+}
+
+/* ตัววัดความกว้างของข้อความยาวที่สุด ไม่แสดงและไม่กินที่ */
+.measure {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ข้อความใหม่ค่อย ๆ ขึ้นมา */
+.message {
+  animation: messageIn var(--ntg-motion-duration-slow) var(--ntg-motion-easing-enter);
+}
+
+@keyframes messageIn {
+  from { opacity: 0; transform: translateY(25%); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message { animation: none; }
 }

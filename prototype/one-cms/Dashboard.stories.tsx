@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '../../components/Button'
 import { Avatar, AvatarLabel } from '../../components/Avatar'
@@ -20,6 +20,7 @@ import styles from './Dashboard.module.css'
 import { getBrand } from './brands'
 import { EXCERPTS } from './excerpts'
 import { AiAssistant } from './AiAssistant'
+import { useHideOnScroll } from './useHideOnScroll'
 
 // หน้า Dashboard ของ One CMS จาก Figma CMS เฟรม Dashboard / Home (13060:8732)
 // ผู้ใช้เปลี่ยนจากเฟรม C เป็น D เมื่อ 2026-10-28: 3 section เต็มความกว้างซ้อนลงมา จัดอันดับ 40 ข่าว 4 คอลัมน์
@@ -321,6 +322,9 @@ function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) =
 
 function DashboardPage({ brand }: { brand?: string }) {
   const bu = getBrand(brand)
+  // แถบหัวเลื่อนลงแล้วสไลด์ปิด เลื่อนขึ้นแล้วสไลด์เปิด (ผู้ใช้สั่ง 2026-11-12)
+  const headerRef = useRef<HTMLElement>(null)
+  const headerHidden = useHideOnScroll(headerRef)
   const [category, setCategory] = useState('ทั้งหมด')
   const rankList = RANKINGS[category] ?? []
   const [month, setMonth] = useState('2569-10')
@@ -335,7 +339,7 @@ function DashboardPage({ brand }: { brand?: string }) {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
+      <header ref={headerRef} className={`${styles.header} ${headerHidden ? styles.headerHidden : ''}`}>
         <img className={styles.brandLogo} src={bu.logoHeader} alt={bu.name} />
         <nav className={styles.nav} aria-label="เมนูหลัก">
           {MENU.map((item) => (
@@ -460,8 +464,8 @@ function DashboardPage({ brand }: { brand?: string }) {
         </section>
       </main>
 
-      {/* ผู้ช่วย AI น้องเนเน่ ลอยมุมขวาล่าง ทุกหน้ายกเว้น Login (ผู้ใช้สั่ง 2026-11-12) */}
-      <AiAssistant />
+      {/* ผู้ช่วย AI น้องเนเน่ เริ่มที่มุมขวาบนใต้แถบหัว ลากย้ายได้ ทุกหน้ายกเว้น Login (ผู้ใช้สั่ง 2026-11-12) */}
+      <AiAssistant anchorRef={headerRef} />
       <NewsDetailModal item={news} onClose={() => setNews(null)} />
       <ReporterModal reporter={reporter} tab={reporterTab} onTabChange={setReporterTab} onClose={() => setReporter(null)} />
     </div>
