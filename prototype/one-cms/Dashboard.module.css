@@ -354,11 +354,20 @@
   flex-direction: column;
   gap: var(--ntg-size-space-s1-lg);
 }
+/* กรอบวาดด้วย ::after ทับทุกอย่างเหมือนการ์ดอันดับข่าว กล่องอันดับจึงชิดขอบกรอบพอดี */
 .detailMedia {
-  border: 1px solid var(--ntg-color-border-general-secondary);
+  position: relative;
   border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
   overflow: hidden;
   margin-block-end: var(--ntg-size-space-s2-sm);
+}
+.detailMedia::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--ntg-color-border-general-secondary);
+  border-radius: inherit;
+  pointer-events: none;
 }
 .detailStats {
   display: flex;
