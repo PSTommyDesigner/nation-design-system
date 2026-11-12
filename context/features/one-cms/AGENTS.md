@@ -16,6 +16,11 @@
 
 ## Rules
 
+### AI assistant น้องเนเน่
+- Every One CMS page except Login MUST show the AI assistant น้องเนเน่ floating at the bottom right, 24 from the edges (`size-space-s2-lg`), as in the old system, following frame `Ai` (`15669:14538`): the mascot image 80 x 80 with a `pill-tag` xs brand primary "เนเน่" under it (set by the user 2026-11-12). It is one button named "น้องเนเน่ ผู้ช่วย AI" for screen readers, on `layer-sticky` so a Modal covers it. Built in `prototype/one-cms/AiAssistant.tsx`
+- The mascot is a raster image from the design file (1024 x 1024), saved as a 160 x 160 PNG inside `assets/nation-ai.svg`, whose `width` and `height` set 80 because the system has no image size token
+- NEEDS CLARIFICATION: what a click does. The team has not agreed on the AI features (see `smart-one-cms-meet-1.md`), so the button does nothing yet
+
 ### Pages in the first round
 - The first round MUST cover two pages: Login and Dashboard
 
@@ -68,6 +73,7 @@
 ## Components
 - Chosen with the user page by page, from `../../design-system.dsds.yaml`
 - Login: TextField md, Checkbox sm, Button brand primary lg, LinkButton brand lg
+- Every page except Login: Tag pill xs brand primary (AI assistant น้องเนเน่)
 - Dashboard: Banner warning md (beta, empty category), Button pill sm (header menu, brand primary for the current page, neutral tertiary for the rest), Avatar md, TextField md, Tag pill lg neutral (category filter), semi-rounded sm neutral and pill sm neutral (rank card and news detail Modal), Dropdown md, Table, Tabs segmented sm, Pagination md, BarChart, Modal md and lg (beta), MockupMedia image sm and xl (beta), IconButton neutral tertiary xs, AvatarLabel lg, Tabs underline md, Card list
 - Built inside the story from tokens because the system doesn't have them: the rank card `card / pin` (image area, rank box, border and hover, with the system `Tag` inside) and the number card (border, dot and number)
 - NEEDS CLARIFICATION: should the rank card and the number card become ntgds components

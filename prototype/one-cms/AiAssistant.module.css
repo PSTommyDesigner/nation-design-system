@@ -1,0 +1,24 @@
+/* ลอยมุมขวาล่าง ห่างขอบ 24 เท่าระยะขอบหน้า อยู่ใต้ Modal (layer sticky ต่ำกว่า overlay) */
+.root {
+  position: fixed;
+  right: var(--ntg-size-space-s2-lg);
+  bottom: var(--ntg-size-space-s2-lg);
+  z-index: var(--ntg-layer-sticky);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.root:focus-visible {
+  outline: none;
+  border-radius: var(--ntg-card-radius-top-left);
+  box-shadow: var(--ntg-focused-ring-brand);
+}
+
+.mascot {
+  display: block;
+}

@@ -19,6 +19,7 @@ import '../../tokens/output/css/typography.css'
 import styles from './Dashboard.module.css'
 import { getBrand } from './brands'
 import { EXCERPTS } from './excerpts'
+import { AiAssistant } from './AiAssistant'
 
 // หน้า Dashboard ของ One CMS จาก Figma CMS เฟรม Dashboard / Home (13060:8732)
 // ผู้ใช้เปลี่ยนจากเฟรม C เป็น D เมื่อ 2026-10-28: 3 section เต็มความกว้างซ้อนลงมา จัดอันดับ 40 ข่าว 4 คอลัมน์
@@ -459,6 +460,8 @@ function DashboardPage({ brand }: { brand?: string }) {
         </section>
       </main>
 
+      {/* ผู้ช่วย AI น้องเนเน่ ลอยมุมขวาล่าง ทุกหน้ายกเว้น Login (ผู้ใช้สั่ง 2026-11-12) */}
+      <AiAssistant />
       <NewsDetailModal item={news} onClose={() => setNews(null)} />
       <ReporterModal reporter={reporter} tab={reporterTab} onTabChange={setReporterTab} onClose={() => setReporter(null)} />
     </div>
