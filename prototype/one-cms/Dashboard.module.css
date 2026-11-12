@@ -368,7 +368,11 @@
   padding: var(--ntg-size-space-s1-lg) var(--ntg-size-space-s2-xs);
   color: var(--ntg-color-text-general-section-heading);
 }
-/* อันดับ แล้วตามด้วยยอดวิว 3 แหล่งเป็น pill-tag sm ไอคอนตา */
+/* กล่องอันดับมุมบนซ้ายของภาพ ใช้กล่องเดียวกับการ์ดอันดับข่าว สีตอนปกติ */
+.detailImage {
+  position: relative;
+}
+/* ยอดวิว Pageviews เป็น pill-tag sm ไอคอนตา */
 .detailStatsText {
   display: flex;
   flex-wrap: wrap;
@@ -383,6 +387,11 @@
 .detailTitle {
   margin: 0;
   color: var(--ntg-color-text-general-heading);
+}
+/* คำโปรยข่าวใต้พาดหัว ไม่ตัดบรรทัด */
+.detailExcerpt {
+  margin: 0;
+  color: var(--ntg-color-text-general-supporting-text);
 }
 .detailHistory {
   margin: 0;

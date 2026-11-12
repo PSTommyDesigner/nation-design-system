@@ -18,6 +18,7 @@ import { Banner } from '../../components/Banner'
 import '../../tokens/output/css/typography.css'
 import styles from './Dashboard.module.css'
 import { getBrand } from './brands'
+import { EXCERPTS } from './excerpts'
 
 // หน้า Dashboard ของ One CMS จาก Figma CMS เฟรม Dashboard / Home (13060:8732)
 // ผู้ใช้เปลี่ยนจากเฟรม C เป็น D เมื่อ 2026-10-28: 3 section เต็มความกว้างซ้อนลงมา จัดอันดับ 40 ข่าว 4 คอลัมน์
@@ -477,17 +478,19 @@ function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: ()
       {shown && detail ? (
         <div className={styles.detail}>
           <div className={styles.detailMedia}>
-            <div role="img" aria-label="ภาพประกอบข่าว">
-              <MockupMedia kind="image" size="xl" ratio="16:9" />
+            <div className={styles.detailImage}>
+              <div role="img" aria-label="ภาพประกอบข่าว">
+                <MockupMedia kind="image" size="xl" ratio="16:9" />
+              </div>
+              <span className={`${styles.rankBadge} ${styles.rankNumber} ntg-typography-label-sm`}>
+                <span className={styles.srOnly}>อันดับ </span>{shown.rank}
+              </span>
             </div>
             <div className={styles.detailStats}>
               <div className={styles.detailStatsText}>
-                <span className="ntg-typography-label-sm">อันดับ {shown.rank}</span>
-                {([['Pageviews', shown.pv], ['GA', shown.ga], ['Truehits', shown.th]] as const).map(([source, views]) => (
-                  <Tag key={source} family="neutral" shape="pill" size="sm" leftIcon={<Icon name="visibility" size="100%" />}>
-                    {source} {fmt(views)}
-                  </Tag>
-                ))}
+                <Tag family="neutral" shape="pill" size="sm" leftIcon={<Icon name="visibility" size="100%" />}>
+                  Pageviews {fmt(shown.pv)}
+                </Tag>
               </div>
               <span className={styles.detailId}>
                 <span className="ntg-typography-label-sm">ID {detail.id}</span>
@@ -497,6 +500,7 @@ function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: ()
             </div>
           </div>
           <h2 className={`${styles.detailTitle} ntg-typography-title-lg`}>{shown.title}</h2>
+          {EXCERPTS[shown.title] ? <p className={`${styles.detailExcerpt} ntg-typography-body-md`}>{EXCERPTS[shown.title]}</p> : null}
           <ul className={styles.detailHistory}>
             {detail.history.map((h) => (
               <li key={h.label} className="ntg-typography-body-sm">{h.label} {h.at} โดย {h.by}</li>
