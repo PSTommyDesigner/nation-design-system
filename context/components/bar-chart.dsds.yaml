@@ -214,7 +214,10 @@ sections:
           size sm above the highest of the bar top and the point. Placement is top, or top-start and top-end for the
           categories so close to an edge that a centered tooltip would leave the chart. Title is categoryLabel and the
           category, such as วันที่ 10; description is one entry per series, label, full number and unit, newline
-          separated. Figma property show-tooltip is a design-only preview of this state and has no prop.
+          separated. The chart has one Tooltip that moves to the slot under the pointer or with keyboard focus, and it
+          opens and closes at once with no delay, so a fast sweep across the bars never stacks tooltips (user decision
+          2026-11-12, replacing one Tooltip per slot). Figma property show-tooltip is a design-only preview of this state
+          and has no prop.
       - term: X axis labels
         definition: >-
           One label per group, as wide as the group and centered under it, text preset meta/caption, color

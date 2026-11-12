@@ -275,6 +275,12 @@ export function BarChart({
   const [tableView, setTableView] = useState(false);
   /** ช่องที่ถือจุดหยุด Tab (roving tabindex) */
   const [activeIndex, setActiveIndex] = useState(0);
+  /**
+   * ช่องที่คำใบ้กำลังแสดง ว่างคือไม่แสดง
+   * กราฟมีคำใบ้ใบเดียวที่ย้ายตามช่องที่ชี้หรือโฟกัสอยู่ (ผู้ใช้เลือก 2026-11-12)
+   * เดิมห่อ Tooltip แยกทุกช่อง แต่ละใบหน่วงปิดเองโดยไม่รู้จักใบอื่น ลากผ่านแท่งเร็ว ๆ แล้วค้างซ้อนกันหลายใบ
+   */
+  const [tipIndex, setTipIndex] = useState<number | null>(null);
   const count = categories.length;
   const active = Math.min(activeIndex, Math.max(0, count - 1));
   const slotRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -374,6 +380,12 @@ export function BarChart({
   };
   const onPlotKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (count === 0) return;
+    /* Escape ปิดคำใบ้ (WCAG 1.4.13 Dismissible) หยุดเหตุการณ์ไว้ ไม่ให้ไหลไปปิด modal ที่ครอบกราฟอยู่ */
+    if (e.key === 'Escape' && tipIndex !== null) {
+      e.stopPropagation();
+      setTipIndex(null);
+      return;
+    }
     let target: number | null = null;
     if (e.key === 'ArrowRight') target = active + 1;
     else if (e.key === 'ArrowLeft') target = active - 1;
@@ -515,25 +527,41 @@ export function BarChart({
                           className={styles.slotCell}
                           style={{ '--bc-anchor': anchor } as React.CSSProperties}
                         >
-                          <Tooltip
-                            title={categoryTitle(ci)}
-                            description={lines.join('\n')}
-                            size="sm"
-                            placement={placementOf(ci)}
-                            relationship="inaccessible"
-                            wrapperClassName={styles.slotWrap}
-                          >
-                            <div
-                              ref={(el) => {
-                                slotRefs.current[ci] = el;
-                              }}
-                              role="img"
-                              aria-label={[categoryTitle(ci), ...lines].join(' ')}
-                              tabIndex={ci === active ? 0 : -1}
-                              className={styles.slot}
-                              onFocus={() => setActiveIndex(ci)}
-                            />
-                          </Tooltip>
+                          <div
+                            ref={(el) => {
+                              slotRefs.current[ci] = el;
+                            }}
+                            role="img"
+                            aria-label={[categoryTitle(ci), ...lines].join(' ')}
+                            tabIndex={ci === active ? 0 : -1}
+                            className={styles.slot}
+                            data-tip={ci === tipIndex ? 'true' : undefined}
+                            onPointerEnter={(e) => {
+                              /* จอสัมผัสไม่แสดงคำใบ้ ตามกติกาของ Tooltip */
+                              if (e.pointerType !== 'touch') setTipIndex(ci);
+                            }}
+                            onPointerLeave={() => setTipIndex((t) => (t === ci ? null : t))}
+                            onFocus={(e) => {
+                              setActiveIndex(ci);
+                              /* เปิดเฉพาะโฟกัสจากคีย์บอร์ด เหมือนที่ Tooltip ทำ */
+                              if (e.currentTarget.matches(':focus-visible')) setTipIndex(ci);
+                            }}
+                            onBlur={() => setTipIndex((t) => (t === ci ? null : t))}
+                          />
+                          {/* คำใบ้ใบเดียวของกราฟ วางในช่องที่ชี้อยู่ เปิดปิดทันทีไม่หน่วง (โหมดคุมจากข้างนอกของ Tooltip ไม่มีภาพเคลื่อนไหว) */}
+                          {ci === tipIndex && (
+                            <Tooltip
+                              open
+                              title={categoryTitle(ci)}
+                              description={lines.join('\n')}
+                              size="sm"
+                              placement={placementOf(ci)}
+                              relationship="inaccessible"
+                              wrapperClassName={styles.slotWrap}
+                            >
+                              <span className={styles.tipAnchor} />
+                            </Tooltip>
+                          )}
                         </div>
                       );
                     })}

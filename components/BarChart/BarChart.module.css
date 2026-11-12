@@ -247,12 +247,20 @@
   width: var(--bc-step);
   margin-inline: calc((var(--bc-gw) - var(--bc-step)) / 2);
 }
-/* กล่องครอบของ Tooltip สูงจากฐานถึงยอดที่สูงที่สุดของหมวด คำใบ้จึงโผล่เหนือยอดแท่งหรือจุด */
+/*
+ * กล่องครอบของคำใบ้ใบเดียวของกราฟ สูงจากฐานถึงยอดที่สูงที่สุดของหมวด คำใบ้จึงโผล่เหนือยอดแท่งหรือจุด
+ * วางเป็นพี่น้องของตัวรับตัวชี้ ไม่ได้ห่อ และไม่รับตัวชี้ จึงไม่แย่ง hover ของช่อง
+ */
 .slotCell > .slotWrap {
   position: absolute;
   inset-inline: 0;
   bottom: 0;
   height: var(--bc-anchor);
+  pointer-events: none;
+}
+.tipAnchor {
+  position: absolute;
+  inset: 0;
 }
 /* ตัวรับตัวชี้เต็มความสูงพื้นที่กราฟ ยื่นลงไปถึงขอบล่างและขึ้นไปถึงขอบบน */
 .slot {
@@ -275,7 +283,7 @@
   pointer-events: none;
 }
 @media (hover: hover) {
-  .slotWrap:hover > .slot::before { visibility: visible; }
+  .slot:hover::before { visibility: visible; }
 }
 .slot:focus-visible::before {
   visibility: visible;
