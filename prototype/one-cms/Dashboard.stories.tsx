@@ -14,6 +14,7 @@ import { Table, type TableSort } from '../../components/Table'
 import { Pagination } from '../../components/Pagination'
 import { BarChart, type BarChartSeries } from '../../components/BarChart'
 import { MockupMedia } from '../../components/MockupMedia'
+import { Banner } from '../../components/Banner'
 import '../../tokens/output/css/typography.css'
 import styles from './Dashboard.module.css'
 import { getBrand } from './brands'
@@ -333,10 +334,7 @@ function DashboardPage({ brand }: { brand?: string }) {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <div className={styles.brand}>
-          <img className={styles.brandLogo} src={bu.logoSquare} alt="" />
-          <p className={`${styles.brandName} ntg-typography-page-heading-sm`}>{bu.name}</p>
-        </div>
+        <img className={styles.brandLogo} src={bu.logoHeader} alt={bu.name} />
         <nav className={styles.nav} aria-label="เมนูหลัก">
           {MENU.map((item) => (
             <Button
@@ -388,7 +386,7 @@ function DashboardPage({ brand }: { brand?: string }) {
               {rankList.slice(0, 15).map((item) => <RankItem key={item.id} item={item} onOpen={setNews} />)}
             </ol>
           ) : (
-            <p className={`${styles.empty} ntg-typography-body-md`}>ยังไม่มีข่าวในหมวด{category}</p>
+            <Banner type="warning" level="section" title={`ยังไม่มีข่าวในหมวด${category}`} showClose={false} announce />
           )}
         </section>
 
@@ -483,12 +481,14 @@ function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: ()
               <MockupMedia kind="image" size="xl" ratio="16:9" />
             </div>
             <div className={styles.detailStats}>
-              <p className={`${styles.detailStatsText} ntg-typography-label-sm`}>
-                <span>อันดับ {shown.rank}</span>
-                <span>Pageviews {fmt(shown.pv)}</span>
-                <span>GA {fmt(shown.ga)}</span>
-                <span>Truehits {fmt(shown.th)}</span>
-              </p>
+              <div className={styles.detailStatsText}>
+                <span className="ntg-typography-label-sm">อันดับ {shown.rank}</span>
+                {([['Pageviews', shown.pv], ['GA', shown.ga], ['Truehits', shown.th]] as const).map(([source, views]) => (
+                  <Tag key={source} family="neutral" shape="pill" size="sm" leftIcon={<Icon name="visibility" size="100%" />}>
+                    {source} {fmt(views)}
+                  </Tag>
+                ))}
+              </div>
               <span className={styles.detailId}>
                 <span className="ntg-typography-label-sm">ID {detail.id}</span>
                 <IconButton icon="copy" label={`คัดลอก ID ${detail.id}`} family="neutral" hierarchy="tertiary" size="xs"
@@ -502,6 +502,10 @@ function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: ()
               <li key={h.label} className="ntg-typography-body-sm">{h.label} {h.at} โดย {h.by}</li>
             ))}
           </ul>
+          <div className={styles.rankMeta}>
+            <Tag family="neutral" shape="semi-rounded" size="sm">{shown.category}</Tag>
+            <Tag family="neutral" shape="pill" size="sm" leftIcon={<Icon name="edit" size="100%" />} onSelect={() => {}}>เก็บไว้เขียนข่าวใหม่</Tag>
+          </div>
         </div>
       ) : null}
     </Modal>

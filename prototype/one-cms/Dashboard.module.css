@@ -17,20 +17,9 @@
   border-bottom: 1px solid var(--ntg-color-border-general-primary);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: var(--ntg-size-space-s1-lg);
-}
-
-/* ใช้ขนาดจริงของไฟล์ SVG (40 x 40 ตามต้นฉบับในหน้า 08 Logo) */
+/* Logo Fixed Height 40 จากหน้า 08 Logo ใช้ขนาดจริงของไฟล์ SVG */
 .brandLogo {
   display: block;
-}
-
-.brandName {
-  margin: 0;
-  color: var(--ntg-color-text-general-heading);
 }
 
 .nav {
@@ -265,12 +254,6 @@
   display: flex;
 }
 
-/* หมวดที่ยังไม่มีข่าว */
-.empty {
-  margin: 0;
-  color: var(--ntg-color-text-general-supporting-text);
-}
-
 /* ── จำนวนข่าว: ซ้ายหัวกับตัวกรอง ขวาการ์ดตัวเลข 2 ใบ ── */
 .countTop {
   display: grid;
@@ -385,11 +368,12 @@
   padding: var(--ntg-size-space-s1-lg) var(--ntg-size-space-s2-xs);
   color: var(--ntg-color-text-general-section-heading);
 }
+/* อันดับ แล้วตามด้วยยอดวิว 3 แหล่งเป็น pill-tag sm ไอคอนตา */
 .detailStatsText {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ntg-size-space-s2-sm);
-  margin: 0;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
 }
 .detailId {
   display: inline-flex;

@@ -1,6 +1,6 @@
 // BU ที่เลือกได้จากเมนู "BU" บนแถบเครื่องมือ Storybook (ตั้งใน .storybook/preview.tsx)
 // ผู้ใช้สั่ง 2026-11-11: prototype ชุดเดียวใช้พรีเซนต์หลาย BU ให้เปลี่ยนโลโก้กับชื่อแบรนด์ก่อนพรีเซนต์ได้
-// โลโก้ดึงจากหน้า 08 Logo ในไฟล์ DS ทั้งแบบจัตุรัส 40 x 40 (แถบหัว CMS) และแบบเต็ม (หน้า Login ขยายเป็นสูง 80)
+// โลโก้ดึงจากหน้า 08 Logo ในไฟล์ DS: Logo Fixed Height 40 ขนาดจริง (แถบหัว CMS, ผู้ใช้สั่ง 2026-11-12) แบบเต็มขยายเป็นสูง 80 (หน้า Login) และแบบจัตุรัส 40 x 40 (ยังไม่มีที่ใช้)
 // ข่าวสมมุติกับสียังเป็นชุดเดียวกันทุก BU
 
 export type Brand = { code: string; name: string; slug: string }
@@ -32,5 +32,6 @@ export function getBrand(code: unknown) {
     ...brand,
     logo: LOGOS[`./assets/${brand.slug}-logo.svg`],
     logoSquare: LOGOS[`./assets/${brand.slug}-logo-square.svg`],
+    logoHeader: LOGOS[`./assets/${brand.slug}-logo-40.svg`],
   }
 }
