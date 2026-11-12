@@ -1204,10 +1204,11 @@ const MOCKUP_MEDIA = {
   baseFile: 'components/MockupMedia/MockupMedia.base.css',
   outFile: 'components/MockupMedia/MockupMedia.module.css',
   sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
-  layoutVariants: [{ key: (size) => `${size}, kind=image`, cls: '' }],
+  // ขนาดกล่องต่างกันตามแกน ratio แต่ไอคอนกับข้อความเหมือนกันทุกสัดส่วน จึงอ่านโครงจาก ratio=16:9 ตัวเดียว สัดส่วนทำใน .base.css
+  layoutVariants: [{ key: (size) => `${size}, kind=image, ratio=16:9`, cls: '' }],
   sets: { 'mockup-media': { classes: '.root' } },
   familyClass: () => '',
-  axisClass: { kind: () => '' },
+  axisClass: { kind: () => '', ratio: () => '' },
   stateSelector: { default: (sel) => sel },
   text: [
     { layers: ['label'], vars: { '--mm-font-family': 'font-family', '--mm-font-size': 'font-size', '--mm-line-height': 'line-height', '--mm-font-weight': 'font-weight', '--mm-letter-space': 'letter-space' } },

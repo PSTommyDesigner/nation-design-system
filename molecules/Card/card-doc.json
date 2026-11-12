@@ -61,7 +61,6 @@
                 "Image Trailing": "False",
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 345,
               "height": 112
@@ -73,7 +72,6 @@
                 "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 300,
               "height": 146
@@ -97,7 +95,6 @@
                 "Ranking tag": true,
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 300,
               "height": 168
@@ -273,7 +270,6 @@
                 "Ranking tag": true,
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 300,
               "height": 168
@@ -285,7 +281,6 @@
                 "Ranking tag": true,
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 300,
               "height": 168
@@ -966,7 +961,6 @@
                 "Image Trailing": "False",
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 16,
               "width": 345,
@@ -978,7 +972,6 @@
                 "Image Trailing": "False",
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 144,
               "width": 345,
@@ -990,7 +983,6 @@
                 "Image Trailing": "True",
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 272,
               "width": 345,
@@ -1002,7 +994,6 @@
                 "Image Trailing": "True",
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 400,
               "width": 345,
@@ -1030,7 +1021,6 @@
                 "Play": "False",
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 16,
               "width": 345,
@@ -1043,7 +1033,6 @@
                 "Play": "False",
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 144,
               "width": 345,
@@ -1056,7 +1045,6 @@
                 "Play": "True",
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 272,
               "width": 345,
@@ -1069,7 +1057,6 @@
                 "Play": "True",
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 400,
               "width": 345,
@@ -1095,7 +1082,6 @@
                 "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้แทนข้อความ Mock up",
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 16,
               "width": 144,
@@ -1106,7 +1092,6 @@
                 "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้แทนข้อความ Mock up",
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 178,
               "width": 144,
@@ -1132,7 +1117,6 @@
                 "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 16,
               "width": 300,
@@ -1143,7 +1127,6 @@
                 "Headline Value": "นี่คือ“ตัวหนังสือ”ที่ใช้สำหรับวางเป็นข้อความ Mock up แทนข้อมูลจริง",
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 178,
               "width": 300,
@@ -1282,7 +1265,6 @@
               "props": {
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 16,
               "width": 300,
@@ -1292,7 +1274,6 @@
               "props": {
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 242,
               "width": 300,
@@ -1318,7 +1299,6 @@
                 "Ranking tag": true,
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 16,
               "width": 300,
@@ -1329,7 +1309,6 @@
                 "Ranking tag": true,
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 200,
               "width": 300,
@@ -1355,7 +1334,6 @@
                 "Ranking Tag": true,
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "x": 16,
               "y": 16,
               "width": 200,
@@ -1366,7 +1344,6 @@
                 "Ranking Tag": true,
                 "State": "Hover"
               },
-              "image": "7f12ea1300",
               "x": 232,
               "y": 16,
               "width": 200,
@@ -1402,7 +1379,6 @@
                 "Ranking tag": true,
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 300,
               "height": 168
@@ -1437,7 +1413,6 @@
                 "Ranking Tag": true,
                 "State": "Default"
               },
-              "image": "7f12ea1300",
               "label": "",
               "width": 200,
               "height": 300

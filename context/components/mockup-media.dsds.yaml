@@ -11,13 +11,13 @@ name: MockupMedia
 description: >-
   A stand-in for an image or a video while the real one doesn't exist yet: a filled box with an image or videocam icon
   and, at the larger sizes, the word รูปภาพ or วีดีโอ. It matches the Figma set mockup-media on page 10 Frame, with the
-  axes kind (image, video) and size (xs to xl). It exists so prototypes and doc pages show what kind of media goes in a
-  spot, instead of a plain gray box. It is not the checkerboard image-16:9 and video-16:9 frames on the same page,
-  which are image and video fills with no code.
+  axes kind (image, video), size (xs to xl) and ratio (16:9, 4:3, 1:1, 9:16). It exists so prototypes and doc pages show
+  what kind of media goes in a spot, instead of a plain gray box. Since 2026-11-12 it also replaces the 8 checkerboard ratio
+  frames (image-16:9 to video-9:16) that page 10 used to have; they were swapped out everywhere and deleted.
 
 metadata:
   owner: Nation Design System team
-  updated: {date: 2026-11-11}
+  updated: {date: 2026-11-12}
   tags: [media, prototype]
   status: {status: beta}
   aliases: [mockup-media, mockup-image, mockup-video]
@@ -48,8 +48,8 @@ sections:
         checkedBy: manual
       - level: must
         statement: >-
-          Give it a parent with a height, or pass an aspect ratio such as style aspectRatio 16 / 9. MockupMedia stretches
-          to its parent and has no height of its own.
+          Give it a parent with a height, or pass ratio. MockupMedia stretches to its parent and has no height of its own;
+          with ratio it fills the width and takes its height from the ratio.
         checkedBy: manual
       - level: must-not
         statement: >-
@@ -133,6 +133,21 @@ traits:
         description: Icon 32 and the label.
       - id: xl
         description: Icon 40 and the label. For large 16:9 images.
+  - traitType: variant
+    kind: enum
+    id: ratio
+    description: >-
+      Box ratio. Figma axis ratio, which replaced the old ratio frames of page 10. Optional in code: without it the box
+      stretches to its parent in both directions. DSDS ids can't hold a colon, so the code value is in each description. The first value is the one Figma shows by default.
+    values:
+      - id: 16-9
+        description: Code value '16:9'. Lead images and landscape clips.
+      - id: 4-3
+        description: Code value '4:3'. Images inside the article body.
+      - id: 1-1
+        description: Code value '1:1'. Images in a grid that need equal heights.
+      - id: 9-16
+        description: Code value '9:16'. Portrait clips for mobile.
 
 $extensions:
   com.nationgroup:

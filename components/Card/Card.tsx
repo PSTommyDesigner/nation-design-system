@@ -40,6 +40,7 @@
  * ค่าทั้งหมดมาจาก design tokens ผ่าน CSS variables ไม่มีค่า hard-code
  */
 import React from 'react';
+import { MockupMedia, type MockupMediaSize } from '../MockupMedia';
 import styles from './Card.module.css';
 
 /** ทิศทางการวาง ตรงกับสามชุดที่ใช้บ่อยที่สุดในไฟล์ออกแบบ */
@@ -65,7 +66,10 @@ export interface CardProps extends Omit<React.HTMLAttributes<HTMLElement>, 'titl
    * ความกว้างและความสูงของรูปมาจาก `--ntg-card-image-{width|height}-*` ตามสูตรที่ tokens/scale/card.mjs
    */
   size?: CardSize;
-  /** ที่อยู่รูป ไม่ส่งมาก็ได้ จะเห็นพื้นที่วางรูปที่ผูกกับ color/background/general/quaternary แทน */
+  /**
+   * ที่อยู่รูป ไม่ส่งมาก็ได้ ช่องรูปจะแสดง MockupMedia ภาพแทนรูปแทน ตรงกับไฟล์ออกแบบที่ช่องรูปของการ์ดเป็น mockup-media
+   * (เปลี่ยนจากพื้นสีเปล่าเมื่อ 2026-11-12 ผู้ใช้ตัดสิน)
+   */
   src?: string;
   /** ข้อความแทนรูป ปล่อยว่างเมื่อรูปเป็นของตกแต่งที่พาดหัวบอกความหมายอยู่แล้ว */
   alt?: string;
@@ -120,6 +124,9 @@ export interface CardProps extends Omit<React.HTMLAttributes<HTMLElement>, 'titl
  *   tag={<Tag size="xs" shape="pill">กีฬา</Tag>}
  *   title="หัวข้อข่าว" lead="1 ม.ค. 2568 00:00" />
  */
+/** ขนาดของ MockupMedia ในช่องรูปที่ไม่มีรูป ตามด้านสั้นของช่อง (กติกาเดียวกับ mockup-media: xs 54 sm 90 md 126 lg 180 xl 252) */
+const MOCKUP_SIZE: Record<CardSize, MockupMediaSize> = { xs: 'sm', sm: 'md', md: 'lg', lg: 'xl', xl: 'xl' };
+
 export function Card({
   variant = 'vertical',
   size = 'md',
@@ -163,9 +170,12 @@ export function Card({
   // เปิดแท็บใหม่ต้องกัน tabnabbing เสมอ
   const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
 
+  // ไม่มีรูป แสดง MockupMedia เลือกขนาดตามด้านสั้นของช่องรูป แบบเดียวกับที่สลับในไฟล์ออกแบบ
+  // ช่องรูปสูง 104 162 220 278 336 ตามขนาดการ์ด และการ์ดรายการ 112
+  const mockupSize: MockupMediaSize = variant === 'list' ? 'sm' : MOCKUP_SIZE[size];
   const media = (
     <span className={styles.media}>
-      {src ? <img className={styles.image} src={src} alt={alt} loading="lazy" /> : null}
+      {src ? <img className={styles.image} src={src} alt={alt} loading="lazy" /> : <MockupMedia kind="image" size={mockupSize} />}
       {tag ? <span className={styles.tag}>{tag}</span> : null}
       {overlay ? <span className={styles.overlay} aria-hidden="true">{overlay}</span> : null}
     </span>

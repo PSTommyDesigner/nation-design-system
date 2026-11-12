@@ -364,7 +364,8 @@
       "mockup-media"
     ],
     "layoutAxes": [
-      "kind"
+      "kind",
+      "ratio"
     ]
   }
 }

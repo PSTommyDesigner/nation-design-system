@@ -137,7 +137,7 @@ sections:
         checkedBy: assisted
       - level: should
         statement: >-
-          IF the news item has no photo THEN leave src out, so the image area shows its placeholder fill. Don't remove the
+          IF the news item has no photo THEN leave src out, so the image area shows MockupMedia. Don't remove the
           image area.
         checkedBy: assisted
 
@@ -156,7 +156,8 @@ sections:
         definition: >-
           Figma Image frame. Width --ntg-card-image-width-<size> and height --ntg-card-image-height-<size>
           (184 by 104, 288 by 162, 392 by 220, 496 by 278, 600 by 336, about 16:9). The image covers the frame and loads
-          lazily. Without src the frame shows the fill --ntg-color-background-general-quaternary. In variant list the
+          lazily. Without src the frame shows MockupMedia kind image, sized by the short side of the frame (sm at xs, md at sm,
+          lg at md, xl at lg and xl, sm in variant list), the same as the Figma image slot since 2026-11-12. In variant list the
           image is square, --ntg-card-list-image (112) on both sides. In Figma the 16:9 frame is still an instance from an
           outside library.
       - term: Tag on image
@@ -206,6 +207,7 @@ sections:
 uses:
   - to: badge
   - to: link-button
+  - to: mockup-media
 
 refs:
   - href: ../../components/Card/Card.tsx

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { MockupMedia, type MockupMediaSize } from './MockupMedia'
+import { MockupMedia, type MockupMediaSize, type MockupMediaRatio } from './MockupMedia'
 import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks'
 
 // หน้า Docs จัดกลุ่ม story ตาม parameters.docs.section ดูกติกาที่ .storybook/CustomDocsPage.tsx
-// ไฟล์ออกแบบหน้า 10 Frame มีชุด mockup-media แกน kind (image, video) กับ size (xs ถึง xl) รวม 10 แบบ
+// ไฟล์ออกแบบหน้า 10 Frame มีชุด mockup-media แกน kind (image, video) size (xs ถึง xl) และ ratio (16:9 4:3 1:1 9:16) รวม 40 แบบ
 // กล่องยืดเต็มกรอบที่วาง ตัวอย่างจึงห่อด้วยกรอบขนาดตั้งต้นของแต่ละขนาดในไฟล์ออกแบบ (สัดส่วน 16:9)
 const BOX: Record<MockupMediaSize, [number, number]> = { xs: [96, 54], sm: [160, 90], md: [224, 126], lg: [320, 180], xl: [448, 252] }
 const Box = ({ size, children }: { size: MockupMediaSize; children: React.ReactNode }) => (
@@ -30,7 +30,8 @@ export default meta
 
 type Story = StoryObj<typeof MockupMedia>
 
-const controls = { controls: { include: ['kind', 'size'] } }
+const controls = { controls: { include: ['kind', 'size', 'ratio'] } }
+const RATIOS: MockupMediaRatio[] = ['16:9', '4:3', '1:1', '9:16']
 const SIZES: MockupMediaSize[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 export const Default: Story = { name: 'Mockup-media', parameters: controls }
@@ -47,6 +48,20 @@ export const Sizes: Story = {
           <Labeled key={`${kind}-${size}`} label={`${kind} ${size}`}><Box size={size}><MockupMedia kind={kind} size={size} /></Box></Labeled>
         )),
       )}
+    </Preview>
+  ),
+}
+
+// ── สัดส่วน ────────────────────────────────────────────────
+export const Ratios: Story = {
+  tags: ['!dev'],
+  name: '4 สัดส่วน',
+  parameters: { docs: { section: 'ชุด', description: { story: 'ส่ง ratio แล้วกล่องกว้างเต็มกรอบและสูงตามสัดส่วน ใช้เมื่อกรอบแม่ไม่มีความสูง 16:9 ภาพเปิดข่าว 4:3 ภาพในเนื้อหา 1:1 ภาพในกริด 9:16 คลิปแนวตั้ง ตัวอย่างนี้กว้าง 200 ทุกตัว' } } },
+  render: () => (
+    <Preview>
+      {RATIOS.map((ratio) => (
+        <Labeled key={ratio} label={ratio}><div style={{ width: 200 }}><MockupMedia size="md" ratio={ratio} /></div></Labeled>
+      ))}
     </Preview>
   ),
 }

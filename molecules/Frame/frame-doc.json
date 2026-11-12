@@ -6,7 +6,7 @@
       "id": "10264:97",
       "name": "10 Frame Documentation",
       "title": "10 Frame Documentation",
-      "subtitle": "กรอบสัดส่วนภาพนิ่งและวิดีโอ 8 ตัว 4 สัดส่วน",
+      "subtitle": "ภาพแทนรูปภาพและวีดีโอ mockup-media 40 แบบ 4 สัดส่วน",
       "blocks": [
         {
           "type": "h",
@@ -16,7 +16,7 @@
         },
         {
           "type": "p",
-          "text": "หน้า 10 Frame เก็บกรอบสัดส่วนสำหรับวางภาพนิ่งและวิดีโอ รวม 8 ตัว แบ่งเป็นภาพนิ่ง 4 ตัวและวิดีโอ 4 ตัว ครอบคลุมสัดส่วน 16:9 4:3 1:1 และ 9:16",
+          "text": "หน้า 10 Frame เก็บชุด mockup-media ภาพแทนรูปภาพและวีดีโอ ใช้วางแทนภาพจริงในการ์ด Modal และหน้าจอตัวอย่าง ระหว่างที่ยังไม่มีภาพ บอกผู้ดูได้ว่าตรงนั้นคือรูปหรือวีดีโอ",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md",
           "stack": "10264:173",
@@ -24,7 +24,7 @@
         },
         {
           "type": "p",
-          "text": "ทุกตัวกว้าง 288 เท่ากัน ต่างกันที่ความสูงตามสัดส่วน ตัวเลขนี้เป็นขนาดในไฟล์ออกแบบ ตอนใช้จริงให้ยืดตามคอลัมน์กริดแล้วคงสัดส่วน",
+          "text": "มีแกน kind (image, video) size (xs ถึง xl) และ ratio (16:9 4:3 1:1 9:16) รวม 40 แบบ กล่องยืดเต็มกรอบที่วาง ขนาดในไฟล์เป็นขนาดตั้งต้นให้ดูเท่านั้น มี component ในโค้ดชื่อ MockupMedia",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md",
           "stack": "10264:173",
@@ -32,197 +32,10 @@
         },
         {
           "type": "p",
-          "text": "กลุ่มภาพนิ่งกับกลุ่มวิดีโอต่างกันที่ชนิดของสิ่งที่ใส่ไว้ข้างใน ไม่ได้ต่างกันที่ขนาดหรือรูปทรง",
+          "text": "แทนกรอบสัดส่วน 8 ตัวเดิม (image-16:9 ถึง video-9:16) ที่เป็นไฟล์ภาพลายหมากรุกและไฟล์วิดีโอ ซึ่งลบไปเมื่อ 2026-11-12 หลังสลับทุกจุดที่ใช้เป็นชุดนี้แล้ว",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md",
           "stack": "10264:173",
-          "stackGap": "--ntg-size-space-s1-lg"
-        },
-        {
-          "type": "logos",
-          "items": [
-            {
-              "type": "logo",
-              "file": "image-16-9",
-              "label": "ภาพนิ่ง 16:9",
-              "width": 260,
-              "height": 146,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "video-16-9",
-              "label": "วิดีโอ 16:9",
-              "width": 260,
-              "height": 146,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "image-1-1",
-              "label": "ภาพนิ่ง 1:1",
-              "width": 260,
-              "height": 260,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            }
-          ]
-        },
-        {
-          "type": "h",
-          "text": "Anatomy",
-          "sub": "ข้างในกรอบมีอะไร",
-          "section": true
-        },
-        {
-          "type": "p",
-          "text": "แต่ละกรอบมีชั้นเดียวคือพื้นที่วางสื่อ ไม่มีขอบ ไม่มีมุมโค้ง และไม่มีระยะห่างภายใน",
-          "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md",
-          "stack": "10264:177",
-          "stackGap": "--ntg-size-space-s1-lg"
-        },
-        {
-          "type": "p",
-          "text": "กลุ่มภาพนิ่งใส่ภาพตัวอย่างไว้ให้ ส่วนกลุ่มวิดีโอใส่เป็นชนิดวิดีโอ ตอนใช้งานให้แทนที่ด้วยสื่อจริง",
-          "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md",
-          "stack": "10264:177",
-          "stackGap": "--ntg-size-space-s1-lg"
-        },
-        {
-          "type": "p",
-          "text": "กรอบวิดีโอสัดส่วน 16:9 มีชั้นพื้นรองเพิ่มอีกหนึ่งชั้น ซึ่งเดิมเป็นสีที่พิมพ์ค่าเอง ผูกกับตัวแปรพื้นหลังของระบบแล้วเมื่อ 2026-08-27",
-          "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md",
-          "stack": "10264:177",
-          "stackGap": "--ntg-size-space-s1-lg"
-        },
-        {
-          "type": "logos",
-          "items": [
-            {
-              "type": "logo",
-              "file": "image-16-9",
-              "label": "กรอบมีชั้นเดียวคือพื้นที่วางสื่อ ไม่มีขอบ ไม่มีมุมโค้ง ไม่มีระยะห่างภายใน",
-              "width": 320,
-              "height": 180,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            }
-          ]
-        },
-        {
-          "type": "h",
-          "text": "Variants",
-          "sub": "สองกลุ่ม คูณสี่สัดส่วน รวม 8 ตัว",
-          "section": true
-        },
-        {
-          "type": "p",
-          "text": "กลุ่มภาพนิ่งกับกลุ่มวิดีโอต่างกันที่ชนิดของสิ่งที่ใส่ไว้ข้างใน ไม่ได้ต่างกันที่ขนาดหรือรูปทรง ทั้งสองกลุ่มมีสัดส่วนเหมือนกันครบสี่แบบ ตัวอย่างข้างล่างคือสัดส่วนทั้งสี่",
-          "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md"
-        },
-        {
-          "type": "logos",
-          "items": [
-            {
-              "type": "logo",
-              "file": "image-16-9",
-              "label": "image 16:9",
-              "width": 200,
-              "height": 113,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "image-4-3",
-              "label": "image 4:3",
-              "width": 200,
-              "height": 150,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "image-1-1",
-              "label": "image 1:1",
-              "width": 200,
-              "height": 200,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "image-9-16",
-              "label": "image 9:16",
-              "width": 200,
-              "height": 300,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "video-16-9",
-              "label": "video 16:9",
-              "width": 200,
-              "height": 113,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "video-4-3",
-              "label": "video 4:3",
-              "width": 200,
-              "height": 150,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "video-1-1",
-              "label": "video 1:1",
-              "width": 200,
-              "height": 200,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            },
-            {
-              "type": "logo",
-              "file": "video-9-16",
-              "label": "video 9:16",
-              "width": 200,
-              "height": 300,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
-            }
-          ]
-        },
-        {
-          "type": "h",
-          "text": "Mockup Media",
-          "sub": "ภาพแทนรูปที่บอกได้ว่าเป็นรูปภาพหรือวีดีโอ",
-          "section": true
-        },
-        {
-          "type": "p",
-          "text": "mockup-media คือภาพแทนรูปภาพและวีดีโอที่มีไอคอน image หรือ videocam กับคำว่า รูปภาพ หรือ วีดีโอ ใช้แทนพื้นเทาเปล่าในการ์ด Modal และหน้าจอตัวอย่าง ระหว่างที่ยังไม่มีภาพจริง",
-          "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md",
-          "stack": "11985:166",
-          "stackGap": "--ntg-size-space-s1-lg"
-        },
-        {
-          "type": "p",
-          "text": "ต่างจากกรอบ 8 ตัวด้านบนที่เป็นไฟล์ภาพลายหมากรุกและไฟล์วิดีโอ ชุดนี้ผูกตัวแปรได้ทุกส่วนและมี component ในโค้ดชื่อ MockupMedia กล่องยืดเต็มกรอบที่วาง ไอคอนย่อตามขนาด 16 ถึง 40 และข้อความแสดงเฉพาะ lg กับ xl ดูครบ 10 แบบที่ Mockup Media Component Previews",
-          "color": "--ntg-color-text-general-supporting-text",
-          "textStyle": "body-md",
-          "stack": "11985:166",
           "stackGap": "--ntg-size-space-s1-lg"
         },
         {
@@ -234,12 +47,13 @@
               "set": "mockup-media",
               "props": {
                 "kind": "image",
-                "size": "lg"
+                "size": "md",
+                "ratio": "16:9"
               },
-              "label": "รูปภาพ lg",
-              "width": 320,
-              "height": 180,
-              "cell": 320,
+              "label": "รูปภาพ 16:9",
+              "width": 260,
+              "height": 146,
+              "cell": 260,
               "vertical": false
             },
             {
@@ -247,12 +61,13 @@
               "set": "mockup-media",
               "props": {
                 "kind": "video",
-                "size": "lg"
+                "size": "md",
+                "ratio": "16:9"
               },
-              "label": "วีดีโอ lg",
-              "width": 320,
-              "height": 180,
-              "cell": 320,
+              "label": "วีดีโอ 16:9",
+              "width": 260,
+              "height": 146,
+              "cell": 260,
               "vertical": false
             },
             {
@@ -260,12 +75,193 @@
               "set": "mockup-media",
               "props": {
                 "kind": "image",
-                "size": "sm"
+                "size": "xl",
+                "ratio": "1:1"
               },
-              "label": "รูปภาพ sm",
-              "width": 160,
-              "height": 90,
-              "cell": 160,
+              "label": "รูปภาพ 1:1",
+              "width": 260,
+              "height": 260,
+              "cell": 260,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Anatomy",
+          "sub": "ข้างในกล่องมีอะไร",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "กล่องมีสามชั้น คือพื้นสี color/background/general/secondary ไอคอน image หรือ videocam สี icon/general/disable-subtle และข้อความ รูปภาพ หรือ วีดีโอ ใช้ text style body/sm สี color/text/general/disabled",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md",
+          "stack": "10264:177",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ไอคอนกับข้อความจัดไว้กลางกล่องด้วย auto layout ไม่มีระยะขอบ ไม่มีช่องไฟ และไม่มีมุมโค้ง มุมโค้งเป็นของกรอบที่วาง เช่นการ์ด",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md",
+          "stack": "10264:177",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ข้อความแสดงเฉพาะขนาด lg กับ xl ขนาดเล็กกว่านั้นมีแต่ไอคอน",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md",
+          "stack": "10264:177",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "16:9"
+              },
+              "label": "พื้นสี ไอคอน และข้อความ จัดกลางกล่อง ไม่มีระยะขอบ",
+              "width": 320,
+              "height": 180,
+              "cell": 320,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Variants",
+          "sub": "สองชนิด ห้าขนาด สี่สัดส่วน รวม 40 แบบ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "แกน kind แยกรูปภาพกับวีดีโอ แกน size คุมขนาดไอคอน 16 ถึง 40 และการแสดงข้อความ แกน ratio คือสัดส่วนของกล่อง 16:9 4:3 1:1 9:16 ตัวอย่างข้างล่างคือสัดส่วนทั้งสี่ของทั้งสองชนิด ครบ 40 แบบอยู่ที่ Mockup Media Component Previews",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "sm",
+                "ratio": "16:9"
+              },
+              "label": "image 16:9",
+              "width": 200,
+              "height": 113,
+              "cell": 200,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "md",
+                "ratio": "4:3"
+              },
+              "label": "image 4:3",
+              "width": 200,
+              "height": 150,
+              "cell": 200,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "1:1"
+              },
+              "label": "image 1:1",
+              "width": 200,
+              "height": 200,
+              "cell": 200,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "9:16"
+              },
+              "label": "image 9:16",
+              "width": 200,
+              "height": 300,
+              "cell": 200,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "video",
+                "size": "sm",
+                "ratio": "16:9"
+              },
+              "label": "video 16:9",
+              "width": 200,
+              "height": 113,
+              "cell": 200,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "video",
+                "size": "md",
+                "ratio": "4:3"
+              },
+              "label": "video 4:3",
+              "width": 200,
+              "height": 150,
+              "cell": 200,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "video",
+                "size": "lg",
+                "ratio": "1:1"
+              },
+              "label": "video 1:1",
+              "width": 200,
+              "height": 200,
+              "cell": 200,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "video",
+                "size": "lg",
+                "ratio": "9:16"
+              },
+              "label": "video 9:16",
+              "width": 200,
+              "height": 300,
+              "cell": 200,
               "vertical": false
             }
           ]
@@ -283,108 +279,150 @@
           "textStyle": "body-md"
         },
         {
-          "type": "logos",
+          "type": "components",
+          "vertical": false,
           "items": [
             {
-              "type": "logo",
-              "file": "image-16-9",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "sm",
+                "ratio": "16:9"
+              },
               "label": "ภาพหลัก  16:9 กินความกว้างเต็ม",
               "width": 220,
               "height": 124,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
+              "cell": 220,
+              "vertical": false
             },
             {
-              "type": "logo",
-              "file": "image-4-3",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "md",
+                "ratio": "4:3"
+              },
               "label": "ภาพประกอบในเนื้อหา  4:3",
               "width": 220,
               "height": 165,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
+              "cell": 220,
+              "vertical": false
             },
             {
-              "type": "logo",
-              "file": "image-1-1",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "1:1"
+              },
               "label": "ภาพเล็กในกริด  1:1",
               "width": 220,
               "height": 220,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
+              "cell": 220,
+              "vertical": false
             },
             {
-              "type": "logo",
-              "file": "image-9-16",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "9:16"
+              },
               "label": "คลิปแนวตั้งสำหรับมือถือ  9:16",
               "width": 220,
               "height": 330,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
+              "cell": 220,
+              "vertical": false
             }
           ]
         },
         {
           "type": "h",
           "text": "Sizes",
-          "sub": "กว้างเท่ากันหมด ความสูงต่างตามสัดส่วน",
+          "sub": "ขนาดคุมไอคอน กล่องยืดตามกรอบที่วาง",
           "section": true
         },
         {
           "type": "p",
-          "text": "ทุกกรอบกว้าง 288 เท่ากัน ความสูงต่างกันตามสัดส่วน คือ 162, 216, 288 และ 432 ตัวเลขนี้เป็นขนาดในไฟล์ออกแบบเท่านั้น ตอนใช้จริงให้ยืดเต็มพื้นที่ที่มีแล้วปล่อยความสูงไปตามสัดส่วน",
+          "text": "แกน size คุมขนาดไอคอน xs 16 sm 20 md 24 lg 32 xl 40 และข้อความแสดงเฉพาะ lg กับ xl เลือกขนาดตามด้านสั้นของกล่อง กล่องสูงไม่ถึงราว 120 ใช้ md ลงไป ส่วนความกว้างและความสูงของกล่องยืดตามกรอบที่วาง ไม่มีสูตร",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md"
         },
         {
-          "type": "logos",
+          "type": "components",
+          "vertical": false,
           "items": [
             {
-              "type": "logo",
-              "file": "image-16-9",
-              "label": "288 x 162",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "sm",
+                "ratio": "16:9"
+              },
+              "label": "sm 16:9",
               "width": 220,
               "height": 124,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
+              "cell": 220,
+              "vertical": false
             },
             {
-              "type": "logo",
-              "file": "image-4-3",
-              "label": "288 x 216",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "md",
+                "ratio": "4:3"
+              },
+              "label": "md 4:3",
               "width": 220,
               "height": 165,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
+              "cell": 220,
+              "vertical": false
             },
             {
-              "type": "logo",
-              "file": "image-1-1",
-              "label": "288 x 288",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "1:1"
+              },
+              "label": "lg 1:1",
               "width": 220,
               "height": 220,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
+              "cell": 220,
+              "vertical": false
             },
             {
-              "type": "logo",
-              "file": "image-9-16",
-              "label": "288 x 432",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "9:16"
+              },
+              "label": "lg 9:16",
               "width": 220,
               "height": 330,
-              "gap": "--ntg-size-space-s3-xs",
-              "rowGap": "--ntg-size-space-s3-xs"
+              "cell": 220,
+              "vertical": false
             }
           ]
         },
         {
           "type": "h",
           "text": "States",
-          "sub": "กรอบไม่มีสถานะ",
+          "sub": "ไม่มีสถานะ",
           "section": true
         },
         {
           "type": "p",
-          "text": "section นี้ไม่มีภาพประกอบ เพราะกรอบเป็นที่วางสื่อ ไม่ใช่ตัวควบคุม ไม่มี hover โฟกัส หรือปิดใช้งาน ถ้ากรอบอยู่ในของที่กดได้ เช่นการ์ดข่าว ให้ของที่ครอบเป็นตัวแสดงสถานะ ไม่ใช่ตัวกรอบ",
+          "text": "section นี้ไม่มีภาพประกอบ เพราะ mockup-media เป็นของตกแต่ง ไม่ใช่ตัวควบคุม ไม่มี hover โฟกัส หรือปิดใช้งาน ถ้าวางอยู่ในของที่กดได้ เช่นการ์ดข่าว ให้ของที่ครอบเป็นตัวแสดงสถานะ",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md"
         },
@@ -404,7 +442,7 @@
         },
         {
           "type": "p",
-          "text": "ยืดขยายให้คงสัดส่วนเสมอ ห้ามยืดด้านเดียวจนภาพเพี้ยน",
+          "text": "ยืดกล่องตามกรอบที่วาง ถ้ากรอบไม่มีความสูงให้เลือก ratio หรือใส่สัดส่วนเอง ห้ามยืดด้านเดียวจนผิดสัดส่วน",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md",
           "stack": "10264:181",
@@ -420,7 +458,7 @@
         },
         {
           "type": "p",
-          "text": "ภาพที่ใส่จะถูกครอบให้เต็มกรอบและตัดส่วนเกินทิ้ง ไม่ใช่ย่อให้เห็นทั้งภาพ",
+          "text": "เลือก size ให้พอดีกล่อง ห้ามใช้ขนาดใหญ่ในกล่องเล็ก เพราะไอคอนกับข้อความจะแน่นจนล้น",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md",
           "stack": "10264:181",
@@ -432,10 +470,16 @@
           "title": "",
           "body": "ยืดให้คงสัดส่วน ภาพยังอ่านออกและวางเรียงในกริดได้",
           "effects": [],
-          "logos": [
+          "logos": [],
+          "components": [
             {
-              "type": "logo",
-              "file": "image-16-9",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "16:9"
+              },
               "label": "",
               "width": 400,
               "height": 225
@@ -448,10 +492,16 @@
           "title": "",
           "body": "ยืดด้านเดียว ภาพเพี้ยนและสูงไม่ตรงกับช่องอื่นในกริด",
           "effects": [],
-          "logos": [
+          "logos": [],
+          "components": [
             {
-              "type": "logo",
-              "file": "image-16-9",
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "sm",
+                "ratio": "16:9"
+              },
               "label": "",
               "width": 400,
               "height": 97
@@ -461,36 +511,36 @@
         {
           "type": "h",
           "text": "Accessibility",
-          "sub": "ภาพต้องมีคำอธิบาย และห้ามสื่อความหมายด้วยภาพอย่างเดียว",
+          "sub": "เป็นของตกแต่ง และห้ามใช้แทนข้อความแทนภาพ",
           "section": true
         },
         {
           "type": "p",
-          "text": "ภาพที่ให้ข้อมูลต้องมีข้อความแทนภาพที่บอกว่าภาพนั้นคืออะไร ไม่ใช่ชื่อไฟล์\nภาพที่เป็นของประดับซ้ำกับข้อความข้าง ๆ ให้ตั้งเป็นของประดับ โปรแกรมอ่านหน้าจอจะได้ไม่อ่านซ้ำ\nห้ามใส่ข้อความสำคัญลงไปในตัวภาพอย่างเดียว เพราะโปรแกรมอ่านหน้าจอและระบบค้นหาอ่านไม่ได้\nวิดีโอที่เล่นเองต้องหยุดได้ และไม่ควรเล่นเสียงเอง",
+          "text": "mockup-media เป็นของตกแต่ง ในโค้ดซ่อนจากโปรแกรมอ่านหน้าจอด้วย aria-hidden ห้ามใช้แทนข้อความแทนภาพ\nเมื่อมีภาพจริงแล้ว ภาพที่ให้ข้อมูลต้องมีข้อความแทนภาพที่บอกว่าภาพนั้นคืออะไร ไม่ใช่ชื่อไฟล์\nห้ามใส่ข้อความสำคัญลงไปในตัวภาพ",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md"
         },
         {
           "type": "h",
           "text": "Design Tokens",
-          "sub": "กรอบยังไม่มี token ของตัวเอง",
+          "sub": "ตัวแปรขนาดไอคอน 5 ตัว",
           "section": true
         },
         {
           "type": "p",
-          "text": "หน้านี้ยังไม่มีตัวแปรขนาดของตัวเอง ความกว้าง 288 เป็นขนาดในไฟล์ออกแบบที่ตั้งไว้ให้ดูเทียบกัน ไม่ใช่ค่าที่ผูกไว้ ตอนใช้จริงความกว้างมาจากกริดของหน้านั้น สิ่งที่ควรทำต่อคือตัดสินว่าจะทำตัวแปรสัดส่วนหรือไม่ ถ้าทำจะได้เปลี่ยนสัดส่วนทั้งระบบพร้อมกัน แต่ถ้าสัดส่วนเป็นของตายตัวอยู่แล้วก็ไม่จำเป็น",
+          "text": "หน้านี้มีตัวแปร mockup-media/icon-size xs ถึง xl ค่า 16 ถึง 40 ยืมจากสเกลไอคอนของระบบ สีใช้ตัวแปรกลาง color/background/general/secondary icon/general/disable-subtle และ color/text/general/disabled รายละเอียดอยู่ที่เอกสาร Frame Token และ Frame Space",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md"
         },
         {
           "type": "h",
           "text": "Specs",
-          "sub": "ค่าจริงของทั้ง 8 ตัว",
+          "sub": "ค่าจริงของแต่ละสัดส่วน",
           "section": true
         },
         {
           "type": "p",
-          "text": "16:9 ขนาด 288 คูณ 162 ใช้กับภาพเปิดข่าวและคลิปแนวนอน\n4:3 ขนาด 288 คูณ 216 ใช้กับภาพประกอบในเนื้อหา\n1:1 ขนาด 288 คูณ 288 ใช้กับภาพในกริดที่ต้องการความสูงเท่ากัน\n9:16 ขนาด 288 คูณ 432 ใช้กับคลิปแนวตั้งสำหรับมือถือ\nทุกตัวไม่มีขอบ ไม่มีมุมโค้ง และไม่มีระยะห่างภายใน ภาพที่ใส่จะถูกครอบให้เต็มกรอบและตัดส่วนเกินทิ้ง",
+          "text": "16:9 ใช้กับภาพเปิดข่าวและคลิปแนวนอน ขนาดตั้งต้น 96x54 ถึง 448x252\n4:3 ใช้กับภาพประกอบในเนื้อหา ขนาดตั้งต้น 96x72 ถึง 448x336\n1:1 ใช้กับภาพในกริดที่ต้องการความสูงเท่ากัน ขนาดตั้งต้น 96x96 ถึง 448x448\n9:16 ใช้กับคลิปแนวตั้งสำหรับมือถือ ขนาดตั้งต้น 54x96 ถึง 252x448",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md"
         },
@@ -502,7 +552,7 @@
         },
         {
           "type": "p",
-          "text": "26 Image And Carousel ใช้กรอบเหล่านี้ประกอบเป็นชุดภาพและสไลด์",
+          "text": "25 Card การ์ดข่าวใช้ mockup-media เป็นช่องภาพ",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md",
           "stack": "10264:186",
@@ -510,7 +560,7 @@
         },
         {
           "type": "p",
-          "text": "27 Card การ์ดข่าวใช้กรอบสัดส่วนเป็นส่วนหัวของการ์ด",
+          "text": "Prototype One CMS ใช้ MockupMedia ในการ์ดอันดับข่าวและ Modal ข่าว",
           "color": "--ntg-color-text-general-supporting-text",
           "textStyle": "body-md",
           "stack": "10264:186",
@@ -540,7 +590,7 @@
         },
         {
           "type": "p",
-          "text": "กรอบสัดส่วน 8 ตัวเดิม (image-16:9 ถึง video-9:16) ไม่มีตัวแปรของตัวเอง เพราะเป็นไฟล์ภาพและวีดีโอที่มีแต่ขนาดกับสัดส่วน",
+          "text": "สัดส่วน 16:9 4:3 1:1 9:16 อยู่ในแกน ratio ของ mockup-media จึงไม่มีตัวแปร เพราะเป็นสัดส่วน ไม่ใช่ขนาด กรอบสัดส่วน 8 ตัวเดิมลบไปแล้วเมื่อ 2026-11-12",
           "color": "--ntg-color-text-general-supporting-text",
           "stack": "11988:141",
           "stackGap": "--ntg-size-space-s1-lg"
@@ -632,7 +682,7 @@
         {
           "type": "h",
           "text": "เลือกสัดส่วนอย่างไร",
-          "sub": "ทุกกรอบกว้าง 288 เท่ากัน ต่างกันที่ความสูงตามสัดส่วน\nตัวเลข 288 เป็นขนาดในไฟล์ออกแบบเท่านั้น ตอนใช้จริงให้ยืดตามคอลัมน์กริดแล้วคงสัดส่วนไว้ ห้ามยืดจนสัดส่วนเพี้ยน",
+          "sub": "สัดส่วนอยู่ในแกน ratio ของชุด mockup-media ความกว้างไปตามแกน size (xs 96 ถึง xl 448 ส่วน 9:16 กว้าง 54 ถึง 252) และความสูงตามสัดส่วน\nตัวเลขเหล่านี้เป็นขนาดตั้งต้นในไฟล์ออกแบบเท่านั้น ตอนใช้จริงให้ยืดตามคอลัมน์กริดแล้วคงสัดส่วนไว้",
           "section": true
         },
         {
@@ -646,25 +696,25 @@
           "rows": [
             [
               "16:9",
-              "288 x 162",
+              "448 x 252 (xl)",
               "ภาพข่าวและวิดีโอแนวนอน เป็นสัดส่วนที่ใช้บ่อยที่สุด",
               "ภาพแนวตั้งที่ถูกครอบเข้ากรอบนี้จะเสียส่วนบนล่างไปมาก"
             ],
             [
               "4:3",
-              "288 x 216",
+              "448 x 336 (xl)",
               "ภาพจากคลังเก่าและภาพจากกล้องรุ่นเดิมที่ถ่ายมาเป็นสัดส่วนนี้",
               "อย่าใช้ปนกับ 16:9 ในกริดเดียวกัน เพราะความสูงไม่เท่ากันจะทำให้แถวเบี้ยว"
             ],
             [
               "1:1",
-              "288 x 288",
+              "448 x 448 (xl)",
               "การ์ดบนโซเชียลและรูปประจำตัว",
               "ภาพแนวนอนที่ครอบเป็นจัตุรัสมักตัดคนหรือของสำคัญที่อยู่ริมภาพออก"
             ],
             [
               "9:16",
-              "288 x 432",
+              "252 x 448 (xl)",
               "คอนเทนต์แนวตั้งบนมือถือ เช่นคลิปสั้นและสตอรี่",
               "กินพื้นที่แนวตั้งมาก ไม่เหมาะกับกริดบนจอใหญ่"
             ]
@@ -679,125 +729,15 @@
       ]
     },
     {
-      "id": "10261:24",
-      "name": "Frame Ratios",
-      "title": "Frame Ratios",
-      "subtitle": "กรอบสัดส่วนภาพนิ่งและวิดีโอ 4 สัดส่วน กว้าง 288 เท่ากันทุกตัว",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Image",
-          "sub": "กรอบสำหรับภาพนิ่ง ข้างในเป็นภาพตัวอย่างรอให้แทนที่ด้วยภาพจริง",
-          "section": true
-        },
-        {
-          "type": "logos",
-          "items": [
-            {
-              "type": "logo",
-              "file": "image-16-9",
-              "label": "image-16:9  288 x 162",
-              "width": 288,
-              "height": 162,
-              "gap": "--ntg-size-space-s2-lg",
-              "rowGap": "--ntg-size-space-s2-lg",
-              "labelBelow": true
-            },
-            {
-              "type": "logo",
-              "file": "image-4-3",
-              "label": "image-4:3  288 x 216",
-              "width": 288,
-              "height": 216,
-              "gap": "--ntg-size-space-s2-lg",
-              "rowGap": "--ntg-size-space-s2-lg",
-              "labelBelow": true
-            },
-            {
-              "type": "logo",
-              "file": "image-1-1",
-              "label": "image-1:1  288 x 288",
-              "width": 288,
-              "height": 288,
-              "gap": "--ntg-size-space-s2-lg",
-              "rowGap": "--ntg-size-space-s2-lg",
-              "labelBelow": true
-            },
-            {
-              "type": "logo",
-              "file": "image-9-16",
-              "label": "image-9:16  288 x 432",
-              "width": 288,
-              "height": 432,
-              "gap": "--ntg-size-space-s2-lg",
-              "rowGap": "--ntg-size-space-s2-lg",
-              "labelBelow": true
-            }
-          ]
-        },
-        {
-          "type": "h",
-          "text": "Video",
-          "sub": "กรอบสำหรับวิดีโอ ข้างในเป็นวิดีโอตัวอย่าง ต่างจากกลุ่มภาพนิ่งตรงชนิดของสิ่งที่ใส่ไว้ข้างใน",
-          "section": true
-        },
-        {
-          "type": "logos",
-          "items": [
-            {
-              "type": "logo",
-              "file": "video-16-9",
-              "label": "video-16:9  288 x 162",
-              "width": 288,
-              "height": 162,
-              "gap": "--ntg-size-space-s2-lg",
-              "rowGap": "--ntg-size-space-s2-lg",
-              "labelBelow": true
-            },
-            {
-              "type": "logo",
-              "file": "video-4-3",
-              "label": "video-4:3  288 x 216",
-              "width": 288,
-              "height": 216,
-              "gap": "--ntg-size-space-s2-lg",
-              "rowGap": "--ntg-size-space-s2-lg",
-              "labelBelow": true
-            },
-            {
-              "type": "logo",
-              "file": "video-1-1",
-              "label": "video-1:1  288 x 288",
-              "width": 288,
-              "height": 288,
-              "gap": "--ntg-size-space-s2-lg",
-              "rowGap": "--ntg-size-space-s2-lg",
-              "labelBelow": true
-            },
-            {
-              "type": "logo",
-              "file": "video-9-16",
-              "label": "video-9:16  288 x 432",
-              "width": 288,
-              "height": 432,
-              "gap": "--ntg-size-space-s2-lg",
-              "rowGap": "--ntg-size-space-s2-lg",
-              "labelBelow": true
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "11985:137",
       "name": "Mockup Media Component Previews",
       "title": "Mockup Media Component Previews",
-      "subtitle": "ภาพแทนรูปภาพและวีดีโอ ชุด mockup-media 10 แบบ",
+      "subtitle": "ภาพแทนรูปภาพและวีดีโอ ชุด mockup-media 40 แบบ",
       "blocks": [
         {
           "type": "h",
           "text": "mockup-media",
-          "sub": "แกน kind มี image กับ video และแกน size มี xs sm md lg xl รวม 10 แบบ ไอคอนย่อตามขนาด 16 ถึง 40 ข้อความแสดงเฉพาะ lg กับ xl ในการใช้งานจริงกล่องยืดเต็มกรอบที่วาง ขนาดในไฟล์นี้เป็นขนาดตั้งต้นให้ดูเท่านั้น",
+          "sub": "แกน kind มี image กับ video แกน size มี xs sm md lg xl และแกน ratio มี 16:9 4:3 1:1 9:16 รวม 40 แบบ ไอคอนย่อตามขนาด 16 ถึง 40 ข้อความแสดงเฉพาะ lg กับ xl ในการใช้งานจริงกล่องยืดเต็มกรอบที่วาง ขนาดในไฟล์นี้เป็นขนาดตั้งต้นให้ดูเท่านั้น",
           "section": true
         },
         {
@@ -805,12 +745,13 @@
           "set": "mockup-media",
           "caption": "",
           "width": 1488,
-          "height": 624,
+          "height": 3328,
           "items": [
             {
               "props": {
                 "kind": "image",
-                "size": "xs"
+                "size": "xs",
+                "ratio": "16:9"
               },
               "x": 40,
               "y": 40,
@@ -820,7 +761,8 @@
             {
               "props": {
                 "kind": "image",
-                "size": "sm"
+                "size": "sm",
+                "ratio": "16:9"
               },
               "x": 176,
               "y": 40,
@@ -830,7 +772,8 @@
             {
               "props": {
                 "kind": "image",
-                "size": "md"
+                "size": "md",
+                "ratio": "16:9"
               },
               "x": 376,
               "y": 40,
@@ -840,7 +783,8 @@
             {
               "props": {
                 "kind": "image",
-                "size": "lg"
+                "size": "lg",
+                "ratio": "16:9"
               },
               "x": 640,
               "y": 40,
@@ -850,7 +794,8 @@
             {
               "props": {
                 "kind": "image",
-                "size": "xl"
+                "size": "xl",
+                "ratio": "16:9"
               },
               "x": 1000,
               "y": 40,
@@ -860,52 +805,387 @@
             {
               "props": {
                 "kind": "video",
-                "size": "xs"
+                "size": "xs",
+                "ratio": "16:9"
               },
               "x": 40,
-              "y": 332,
+              "y": 1684,
               "width": 96,
               "height": 54
             },
             {
               "props": {
                 "kind": "video",
-                "size": "sm"
+                "size": "sm",
+                "ratio": "16:9"
               },
               "x": 176,
-              "y": 332,
+              "y": 1684,
               "width": 160,
               "height": 90
             },
             {
               "props": {
                 "kind": "video",
-                "size": "md"
+                "size": "md",
+                "ratio": "16:9"
               },
               "x": 376,
-              "y": 332,
+              "y": 1684,
               "width": 224,
               "height": 126
             },
             {
               "props": {
                 "kind": "video",
-                "size": "lg"
+                "size": "lg",
+                "ratio": "16:9"
               },
               "x": 640,
-              "y": 332,
+              "y": 1684,
               "width": 320,
               "height": 180
             },
             {
               "props": {
                 "kind": "video",
-                "size": "xl"
+                "size": "xl",
+                "ratio": "16:9"
+              },
+              "x": 1000,
+              "y": 1684,
+              "width": 448,
+              "height": 252
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "xs",
+                "ratio": "4:3"
+              },
+              "x": 40,
+              "y": 332,
+              "width": 96,
+              "height": 72
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "sm",
+                "ratio": "4:3"
+              },
+              "x": 176,
+              "y": 332,
+              "width": 160,
+              "height": 120
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "md",
+                "ratio": "4:3"
+              },
+              "x": 376,
+              "y": 332,
+              "width": 224,
+              "height": 168
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "4:3"
+              },
+              "x": 640,
+              "y": 332,
+              "width": 320,
+              "height": 240
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "xl",
+                "ratio": "4:3"
               },
               "x": 1000,
               "y": 332,
               "width": 448,
-              "height": 252
+              "height": 336
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "xs",
+                "ratio": "4:3"
+              },
+              "x": 40,
+              "y": 1976,
+              "width": 96,
+              "height": 72
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "sm",
+                "ratio": "4:3"
+              },
+              "x": 176,
+              "y": 1976,
+              "width": 160,
+              "height": 120
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "md",
+                "ratio": "4:3"
+              },
+              "x": 376,
+              "y": 1976,
+              "width": 224,
+              "height": 168
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "lg",
+                "ratio": "4:3"
+              },
+              "x": 640,
+              "y": 1976,
+              "width": 320,
+              "height": 240
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "xl",
+                "ratio": "4:3"
+              },
+              "x": 1000,
+              "y": 1976,
+              "width": 448,
+              "height": 336
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "xs",
+                "ratio": "1:1"
+              },
+              "x": 40,
+              "y": 708,
+              "width": 96,
+              "height": 96
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "sm",
+                "ratio": "1:1"
+              },
+              "x": 176,
+              "y": 708,
+              "width": 160,
+              "height": 160
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "md",
+                "ratio": "1:1"
+              },
+              "x": 376,
+              "y": 708,
+              "width": 224,
+              "height": 224
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "1:1"
+              },
+              "x": 640,
+              "y": 708,
+              "width": 320,
+              "height": 320
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "xl",
+                "ratio": "1:1"
+              },
+              "x": 1000,
+              "y": 708,
+              "width": 448,
+              "height": 448
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "xs",
+                "ratio": "1:1"
+              },
+              "x": 40,
+              "y": 2352,
+              "width": 96,
+              "height": 96
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "sm",
+                "ratio": "1:1"
+              },
+              "x": 176,
+              "y": 2352,
+              "width": 160,
+              "height": 160
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "md",
+                "ratio": "1:1"
+              },
+              "x": 376,
+              "y": 2352,
+              "width": 224,
+              "height": 224
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "lg",
+                "ratio": "1:1"
+              },
+              "x": 640,
+              "y": 2352,
+              "width": 320,
+              "height": 320
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "xl",
+                "ratio": "1:1"
+              },
+              "x": 1000,
+              "y": 2352,
+              "width": 448,
+              "height": 448
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "xs",
+                "ratio": "9:16"
+              },
+              "x": 40,
+              "y": 1196,
+              "width": 54,
+              "height": 96
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "sm",
+                "ratio": "9:16"
+              },
+              "x": 176,
+              "y": 1196,
+              "width": 90,
+              "height": 160
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "md",
+                "ratio": "9:16"
+              },
+              "x": 376,
+              "y": 1196,
+              "width": 126,
+              "height": 224
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "lg",
+                "ratio": "9:16"
+              },
+              "x": 640,
+              "y": 1196,
+              "width": 180,
+              "height": 320
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "xl",
+                "ratio": "9:16"
+              },
+              "x": 1000,
+              "y": 1196,
+              "width": 252,
+              "height": 448
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "xs",
+                "ratio": "9:16"
+              },
+              "x": 40,
+              "y": 2840,
+              "width": 54,
+              "height": 96
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "sm",
+                "ratio": "9:16"
+              },
+              "x": 176,
+              "y": 2840,
+              "width": 90,
+              "height": 160
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "md",
+                "ratio": "9:16"
+              },
+              "x": 376,
+              "y": 2840,
+              "width": 126,
+              "height": 224
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "lg",
+                "ratio": "9:16"
+              },
+              "x": 640,
+              "y": 2840,
+              "width": 180,
+              "height": 320
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "xl",
+                "ratio": "9:16"
+              },
+              "x": 1000,
+              "y": 2840,
+              "width": 252,
+              "height": 448
             }
           ]
         }

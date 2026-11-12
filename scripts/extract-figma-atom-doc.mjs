@@ -45,10 +45,9 @@ const PAGES = {
   logo: { page: '08 Logo', folder: 'Logo', skip: [], logos: true },
   // ไม่เอาธงประเทศ (ผู้ใช้สั่ง 2026-10-28) ธงคือต้นฉบับขนาด 32x24 ซึ่งไม่มีกลุ่มอื่นใช้ขนาดนี้
   'third-party': { page: '09 Third-party Logos', folder: 'ThirdPartyLogos', skip: [], logos: true, noLogo: (w, h) => w === 32 && h === 24 },
-  // ชั้น Molecules เก็บที่ molecules/ (ผู้ใช้อนุมัติ 2026-11-04) กรอบ 8 ตัวเป็นภาพลายหมากรุก (image fill) ยังไม่มี component ในโค้ด
-  // จึง export เป็นไฟล์ภาพทางเดียวกับโลโก้ ใช้ในหน้าเอกสารนี้เท่านั้น เป็น PNG เพราะ SVG ไม่เก็บภาพของกรอบวิดีโอ (ออกมาว่าง)
-  // ชุด mockup-media (เพิ่ม 2026-11-11) มี component ในโค้ด จึงอ่านเป็นตัวอย่างให้วาดด้วย MockupMedia จริง
-  frame: { page: '10 Frame', folder: 'Frame', root: 'molecules', skip: [], logos: true, format: 'png', components: ['mockup-media'] },
+  // ชั้น Molecules เก็บที่ molecules/ (ผู้ใช้อนุมัติ 2026-11-04)
+  // หน้า 10 เหลือชุด mockup-media ชุดเดียว (กรอบภาพลายหมากรุก 8 ตัวเดิมลบแล้ว 2026-11-12) อ่านเป็นตัวอย่างให้วาดด้วย MockupMedia จริง ไม่ export ภาพแล้ว
+  frame: { page: '10 Frame', folder: 'Frame', root: 'molecules', skip: [], components: ['mockup-media'] },
   // ตัวอย่างในหน้านี้เป็นชิ้นงานของชุดที่มี component จริงในโค้ด สคริปต์เก็บชื่อชุดกับค่าของแต่ละชิ้น ให้หน้าเอกสารวาดด้วย component จริง
   // แทนการ export ภาพ (ผู้ใช้อนุมัติ 2026-11-04) components คือชื่อชุดใน Figma ที่อ่านเป็นตัวอย่าง
   avatar: { page: '11 Avatar', folder: 'Avatar', root: 'molecules', skip: [], components: ['avatar-image', 'avatar-icon', 'avatar-monogram', 'avatar-number', 'avatar-label', 'avatar-group', '_avatar-online-indicator'] },

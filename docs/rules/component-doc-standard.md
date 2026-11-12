@@ -149,7 +149,7 @@ status: "active"
 | 03 Typography (foundation) | ⬜ | ◐ |
 | 28 Table | ⬜ | ◐ **Space Document** `Table Space` (2026-08-26) |
 | 00 Document | ✅ | ✅ **2 เฟรม** Page Doc `00 Document Documentation` 6 section มีตัวอย่างหัวเอกสารจริง 2 แบบ และ Do/Don't + Component Previews `Document Base Components` เก็บชุด `_document-header` 4 แบบ (2026-10-14) |
-| 10 Frame | ✅ | ✅ **3 เฟรม** Page Doc + Component Previews `Frame Ratios` + Information `Ratio Guide` · **Page Doc ครบ 12 section มี instance 23 ตัว และ Do/Don't (2026-09-04)** |
+| 10 Frame | ✅ | ✅ **5 เฟรม** Page Doc + Token `Frame Token` + Information `Ratio Guide` + Component Previews `Mockup Media Component Previews` + Space `Frame Space` (2026-11-12 แทนกรอบสัดส่วน 8 ตัวเดิมด้วย mockup-media และลบ `Frame Ratios`) |
 | 11 Avatar | ✅ | ✅ **4 เฟรม** Page Doc + Information `Avatar Guide` + Component Previews `Avatar Components` + Space `Avatar Space` · **Page Doc ครบ 12 section มี instance 52 ตัว และ Do/Don't 2 คู่ (2026-09-04)** |
 | 13 Input | ✅ | ✅ **5 เฟรม ครบทุกชนิด** Page Doc + Token `Input Token` + Information `Input Guide` + Component Previews `Input Components` + Space `Input Space` · **Page Doc ครบ 12 section มี instance 37 ตัว และ Do/Don't 2 คู่ (2026-09-04)** |
 | 21 Tags | ✅ | ✅ **14 เฟรม ครบทุกชนิด** Page Doc + Token `Tags Token` + Information `Tags Guide` + Component Previews 10 ตระกูล + Space `Tags Space` (2026-09-11 ยุบโครงให้สไตล์อยู่ในแกน hierarchy เหลือ 100 ชุด 2,910 แบบ 10 ชื่อ ชื่อทรงใช้ `semi-rounded-` และ `pill-` ตรงกับปุ่มและป้าย) |

@@ -10,6 +10,9 @@
  *      ถ้ากรอบแม่ไม่มีความสูง ให้ส่ง aspect-ratio ผ่าน style หรือ className เอง
  *   2. ไอคอนกับข้อความจัดกลางด้วย flex ไม่มีระยะขอบตายตัว จึงไม่ล้นในกล่องเล็ก
  *   3. มุมโค้งเป็นของกรอบที่วาง ไม่ใช่ของกล่องนี้ กล่องจึงไม่มีมุมโค้งเอง
+ *   4. แกน ratio (เพิ่ม 2026-11-12 แทนกรอบสัดส่วนเดิมของหน้า 10) ทำด้วย aspect-ratio
+ *      สัดส่วนเป็นค่าผังของหน้า ไม่ใช่ขนาด จึงไม่มี token เหมือนสัดส่วนในหน้า 25 Card
+ *      ส่ง ratio แล้วกล่องกว้างเต็มกรอบและสูงตามสัดส่วน ไม่ส่งก็ยืดตามกรอบทั้งกว้างและสูงเหมือนเดิม
  */
 
 .root {
@@ -24,6 +27,11 @@
   overflow: hidden;
   background: var(--mm-bg, transparent);
 }
+.root[data-ratio] { height: auto; }
+.root[data-ratio='16:9'] { aspect-ratio: 16 / 9; }
+.root[data-ratio='4:3'] { aspect-ratio: 4 / 3; }
+.root[data-ratio='1:1'] { aspect-ratio: 1 / 1; }
+.root[data-ratio='9:16'] { aspect-ratio: 9 / 16; }
 .icon {
   flex: none;
   display: inline-flex;
