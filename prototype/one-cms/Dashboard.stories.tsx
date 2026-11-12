@@ -292,8 +292,9 @@ const fmt = (n: number) => n.toLocaleString('th-TH')
 // ยอดวิวย้ายไปเป็นกล่องมุมขวาบนของช่องภาพ คู่กับกล่องเลขอันดับมุมซ้ายบน ตอน hover ทั้งสองกล่องเป็นพื้นแบรนด์ตัวขาว
 // ระบบไม่มีการ์ดแบบนี้ สร้างในหน้านี้จาก token และ Tag ของระบบ (ผู้ใช้อนุมัติ 2026-11-11) เป็นตัวเลือก component ใหม่ของ ntgds
 // กดตรงไหนก็ได้บนการ์ดเปิด Modal รายละเอียดข่าว: พาดหัวเป็นปุ่มที่ขยายพื้นที่กดเต็มการ์ด ส่วนแท็ก "เก็บไว้เขียนข่าวใหม่" ทำงานแยก
-// แท็กนี้แทนปุ่มตะกร้าเดิม (แบบเคยเขียนว่าปักหมุด) ใช้เก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้
-function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) => void }) {
+// แท็กนี้แทนปุ่มตะกร้าเดิม (แบบเคยเขียนว่าปักหมุด) ใช้เก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article
+// กดแล้วเก็บ แท็กเป็น primary กดซ้ำเอาออก (ผู้ใช้สั่ง 2026-11-12) จำนวนที่เก็บแสดงที่ปุ่มข้างช่องช่วงวันที่
+function RankItem({ item, onOpen, kept, onToggleKeep }: { item: RankNews; onOpen: (item: RankNews) => void; kept: boolean; onToggleKeep: () => void }) {
   return (
     <li className={styles.rankCard}>
       <div className={styles.rankMedia} aria-hidden="true">
@@ -312,7 +313,7 @@ function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) =
         <div className={styles.rankMeta}>
           <Tag family="neutral" shape="semi-rounded" size="sm">{item.category}</Tag>
           <span className={styles.rankPin}>
-            <Tag family="neutral" shape="pill" size="sm" leftIcon={<Icon name="edit" size="100%" />} onSelect={() => {}}>เก็บไว้เขียนข่าวใหม่</Tag>
+            <Tag family="neutral" shape="pill" size="sm" hierarchy={kept ? 'primary' : 'secondary'} aria-pressed={kept} leftIcon={<Icon name="edit" size="100%" />} onSelect={onToggleKeep}>เก็บไว้เขียนข่าวใหม่</Tag>
           </span>
         </div>
       </div>
@@ -333,6 +334,10 @@ function DashboardPage({ brand }: { brand?: string }) {
   const [sort, setSort] = useState<TableSort | null>(null)
   const [page, setPage] = useState(1)
   const [news, setNews] = useState<RankNews | null>(null)
+  // ข่าวที่เก็บไว้เขียนข่าวใหม่ (id) กดแท็กในการ์ดหรือใน Modal เพื่อเก็บหรือเอาออก
+  const [kept, setKept] = useState<number[]>([])
+  const toggleKeep = (id: number) => setKept((k) => (k.includes(id) ? k.filter((x) => x !== id) : [...k, id]))
+  const [confirmClear, setConfirmClear] = useState(false)
   const [reporter, setReporter] = useState<Reporter | null>(null)
   const [reporterTab, setReporterTab] = useState('published')
   const openReporter = (r: Reporter) => { setReporterTab('published'); setReporter(r) }
@@ -368,8 +373,14 @@ function DashboardPage({ brand }: { brand?: string }) {
           </div>
           <div className={styles.filter}>
             <div className={styles.fields}>
-              <TextField label="ค้นหาข้อมูล" placeholder="พาดหัว หมวดหมู่ อื่น ๆ" leadingIcon="search" />
+              {/* ช่องค้นหาข้อมูลเอาออกแล้ว (ผู้ใช้สั่ง 2026-11-12) ปฏิทินเลือกช่วงวันที่รอ component ของ ntgds */}
               <TextField label="ช่วงวันที่" placeholder="วัน/เดือน/ปี" trailingIcon="calendar" />
+              {/* ปุ่มรวมข่าวที่เก็บไว้ กดแล้วยืนยันก่อนยกเลิกทั้งหมด ไม่มีข่าวที่เก็บไว้ก็กดไม่ได้ */}
+              <div className={styles.keptButton}>
+                <Button family="neutral" hierarchy="secondary" shape="semi-rounded" size="md" rightIcon="close" disabled={kept.length === 0} onClick={() => setConfirmClear(true)}>
+                  {kept.length > 0 ? `(${kept.length}) ` : ''}ข่าวที่เก็บไว้เขียนข่าวใหม่
+                </Button>
+              </div>
             </div>
             <div className={styles.tags} role="group" aria-label="หมวดข่าว">
               {CATEGORIES.map((c) => (
@@ -389,7 +400,9 @@ function DashboardPage({ brand }: { brand?: string }) {
           {/* 15 อันดับแรก 3 คอลัมน์ เรียงซ้ายไปขวาแล้วบนลงล่าง ตามเฟรม Dashboard / Home (ผู้ใช้สั่ง 2026-11-11) */}
           {rankList.length > 0 ? (
             <ol className={styles.ranking}>
-              {rankList.slice(0, 15).map((item) => <RankItem key={item.id} item={item} onOpen={setNews} />)}
+              {rankList.slice(0, 15).map((item) => (
+                <RankItem key={item.id} item={item} onOpen={setNews} kept={kept.includes(item.id)} onToggleKeep={() => toggleKeep(item.id)} />
+              ))}
             </ol>
           ) : (
             <Banner type="warning" level="section" title={`ยังไม่มีข่าวในหมวด${category}`} showClose={false} announce />
@@ -466,7 +479,19 @@ function DashboardPage({ brand }: { brand?: string }) {
 
       {/* ผู้ช่วย AI น้องเนเน่ เริ่มที่มุมขวาบนใต้แถบหัว ลากย้ายได้ ทุกหน้ายกเว้น Login (ผู้ใช้สั่ง 2026-11-12) */}
       <AiAssistant anchorRef={headerRef} />
-      <NewsDetailModal item={news} onClose={() => setNews(null)} />
+      <NewsDetailModal item={news} onClose={() => setNews(null)} kept={news ? kept.includes(news.id) : false} onToggleKeep={() => news && toggleKeep(news.id)} />
+      {/* ยืนยันก่อนยกเลิกข่าวที่เก็บไว้ทั้งหมด (ผู้ใช้สั่ง 2026-11-12) */}
+      <Modal
+        open={confirmClear}
+        onClose={() => setConfirmClear(false)}
+        size="sm"
+        title="ยกเลิกข่าวที่เก็บไว้ทั้งหมด"
+        description={`นำข่าว ${kept.length} ข่าวออกจากรายการที่เก็บไว้เขียนข่าวใหม่`}
+        footer={<>
+          <Button family="neutral" hierarchy="secondary" onClick={() => setConfirmClear(false)}>ไม่ยกเลิก</Button>
+          <Button family="error" onClick={() => { setKept([]); setConfirmClear(false) }}>ยกเลิกทั้งหมด</Button>
+        </>}
+      />
       <ReporterModal reporter={reporter} tab={reporterTab} onTabChange={setReporterTab} onClose={() => setReporter(null)} />
     </div>
   )
@@ -474,7 +499,7 @@ function DashboardPage({ brand }: { brand?: string }) {
 
 // ── Modal รายละเอียดข่าว: md ไม่มีหัว ปุ่มปิดวงกลมลอยทับมุมขวาบนของรูป ──
 // รูปกับแถวสถิติอยู่ในกรอบเดียวกันตามเฟรม ใช้ radius ของ card (4)
-function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: () => void }) {
+function NewsDetailModal({ item, onClose, kept, onToggleKeep }: { item: RankNews | null; onClose: () => void; kept: boolean; onToggleKeep: () => void }) {
   // คงข้อมูลชิ้นล่าสุดไว้ระหว่างเล่นขาออก ไม่งั้นเนื้อหาหายก่อนกล่องปิด
   const [last, setLast] = useState<RankNews | null>(item)
   if (item && item !== last) setLast(item)
@@ -515,7 +540,7 @@ function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: ()
           </ul>
           <div className={styles.rankMeta}>
             <Tag family="neutral" shape="semi-rounded" size="sm">{shown.category}</Tag>
-            <Tag family="neutral" shape="pill" size="sm" leftIcon={<Icon name="edit" size="100%" />} onSelect={() => {}}>เก็บไว้เขียนข่าวใหม่</Tag>
+            <Tag family="neutral" shape="pill" size="sm" hierarchy={kept ? 'primary' : 'secondary'} aria-pressed={kept} leftIcon={<Icon name="edit" size="100%" />} onSelect={onToggleKeep}>เก็บไว้เขียนข่าวใหม่</Tag>
           </div>
         </div>
       ) : null}
