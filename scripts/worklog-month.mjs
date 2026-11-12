@@ -1,4 +1,4 @@
-// worklog-month.mjs · รอบ 16:00 จ-ศ (com.nation.worklog-month) เขียน worklog ที่ขาดอัตโนมัติ แล้วสำเนาไป Obsidian ทั้ง 2 vault
+// worklog-month.mjs · รอบ 15:30 จ-ศ (com.nation.worklog-month) เขียน worklog ที่ขาดอัตโนมัติ แล้วสำเนาไป Obsidian ทั้ง 2 vault
 // ใช้: npm run worklog:month
 //
 // เลิกส่ง Asana แล้ว (user สั่ง 2026-11-03) งานที่ทำ งานค้าง และบันทึกของการ์ดงานอยู่ใน Obsidian แทน

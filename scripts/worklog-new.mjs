@@ -1,6 +1,6 @@
 // worklog-new.mjs scaffold ไฟล์ worklog วันนี้ (4 หัวข้อ) ถ้ายังไม่มี
 // ใช้: npm run worklog:new  (ตั้ง schedule 07:30)
-// เนื้อหาจริงเขียนตอนทำงานในเซสชัน รอบ 16:00 สำเนาไป Obsidian
+// เนื้อหาจริงเขียนตอนทำงานในเซสชัน รอบ 15:30 สำเนาไป Obsidian
 import { writeFileSync, existsSync, readFileSync, mkdirSync } from 'node:fs'
 import { dirname } from 'node:path'
 import { worklogPath, todayISO } from './worklog-path.mjs'
