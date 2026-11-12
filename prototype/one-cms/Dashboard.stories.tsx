@@ -13,6 +13,7 @@ import { Tabs } from '../../components/Tabs'
 import { Table, type TableSort } from '../../components/Table'
 import { Pagination } from '../../components/Pagination'
 import { BarChart, type BarChartSeries } from '../../components/BarChart'
+import { MockupMedia } from '../../components/MockupMedia'
 import '../../tokens/output/css/typography.css'
 import styles from './Dashboard.module.css'
 import { getBrand } from './brands'
@@ -290,7 +291,9 @@ const fmt = (n: number) => n.toLocaleString('th-TH')
 function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) => void }) {
   return (
     <li className={styles.rankCard}>
-      <div className={styles.rankMedia} aria-hidden="true" />
+      <div className={styles.rankMedia} aria-hidden="true">
+        <MockupMedia kind="image" size="sm" />
+      </div>
       <span className={`${styles.rankNumber} ntg-typography-label-sm`} aria-hidden="true">{item.rank}</span>
       <div className={styles.rankBody}>
         <button type="button" className={`${styles.rankTitle} ntg-typography-title-xs`} title={item.title} onClick={() => onOpen(item)}>
@@ -476,7 +479,9 @@ function NewsDetailModal({ item, onClose }: { item: RankNews | null; onClose: ()
       {shown && detail ? (
         <div className={styles.detail}>
           <div className={styles.detailMedia}>
-            <div className={styles.detailImage} role="img" aria-label="ภาพประกอบข่าว" />
+            <div className={styles.detailImage} role="img" aria-label="ภาพประกอบข่าว">
+              <MockupMedia kind="image" size="xl" />
+            </div>
             <div className={styles.detailStats}>
               <p className={`${styles.detailStatsText} ntg-typography-label-sm`}>
                 <span>อันดับ {shown.rank}</span>

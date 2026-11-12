@@ -146,14 +146,15 @@
   box-shadow: var(--ntg-focused-ring-brand);
 }
 
-/* ช่องภาพเต็มความสูงการ์ด สัดส่วน 92:48 ตามแบบ prototype ยังไม่มีภาพข่าว ใช้พื้นเทาแบบเดียวกับภาพใน Modal */
+/* ช่องภาพเต็มความสูงการ์ด สัดส่วน 92:48 ตามแบบ prototype ยังไม่มีภาพข่าว ใส่ MockupMedia size sm (ผู้ใช้สั่ง 2026-11-12)
+ * กรอบ มุมโค้ง และสัดส่วนอยู่ที่กรอบแม่ตามสเปก MockupMedia */
 .rankMedia {
   flex: none;
   box-sizing: border-box;
   aspect-ratio: 92 / 48;
+  overflow: hidden;
   border: 1px solid var(--ntg-color-border-general-primary);
   border-radius: var(--ntg-card-radius-top-left) 0 0 var(--ntg-card-radius-bottom-left);
-  background: var(--ntg-color-background-general-quaternary);
 }
 
 /* กล่องเลขอันดับชิดมุมซ้ายบนของการ์ด กรอบทับเส้นขอบการ์ดพอดี กว้าง 32 (ขนาดอวาตาร์ sm) สูง 24 จากบรรทัด label-sm 22 กับกรอบ
@@ -350,9 +351,10 @@
   overflow: hidden;
   margin-block-end: var(--ntg-size-space-s2-sm);
 }
+/* ภาพ 16:9 ใช้ MockupMedia size xl กรอบแม่กำหนดสัดส่วน */
 .detailImage {
   aspect-ratio: 16 / 9;
-  background: var(--ntg-color-background-general-quaternary);
+  overflow: hidden;
 }
 .detailStats {
   display: flex;
