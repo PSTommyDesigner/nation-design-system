@@ -284,7 +284,8 @@ const PERIODS = [
 
 const fmt = (n: number) => n.toLocaleString('th-TH')
 
-// การ์ดอันดับข่าวตาม card / pin ในไฟล์ CMS (15658:20767) ผู้ใช้เปลี่ยนเมื่อ 2026-11-11 เพราะแบบเดิมลายตา
+// การ์ดอันดับข่าวตาม card / pin ในไฟล์ CMS (15658:20767) ผู้ใช้เปลี่ยนเมื่อ 2026-11-11 เพราะแบบเดิมลายตา และปรับสไตล์ตามแบบรุ่นใหม่ 2026-11-12
+// ยอดวิวย้ายไปเป็นกล่องมุมขวาบนของช่องภาพ คู่กับกล่องเลขอันดับมุมซ้ายบน ตอน hover ทั้งสองกล่องเป็นพื้นแบรนด์ตัวขาว
 // ระบบไม่มีการ์ดแบบนี้ สร้างในหน้านี้จาก token และ Tag ของระบบ (ผู้ใช้อนุมัติ 2026-11-11) เป็นตัวเลือก component ใหม่ของ ntgds
 // กดตรงไหนก็ได้บนการ์ดเปิด Modal รายละเอียดข่าว: พาดหัวเป็นปุ่มที่ขยายพื้นที่กดเต็มการ์ด ส่วนแท็ก "เก็บไว้เขียนข่าวใหม่" ทำงานแยก
 // แท็กนี้แทนปุ่มตะกร้าเดิม (แบบเคยเขียนว่าปักหมุด) ใช้เก็บข่าวไว้ให้ AI ร่างข่าวในหน้า Article ยังไม่มีการทำงานในรอบนี้
@@ -293,22 +294,21 @@ function RankItem({ item, onOpen }: { item: RankNews; onOpen: (item: RankNews) =
     <li className={styles.rankCard}>
       <div className={styles.rankMedia} aria-hidden="true">
         <MockupMedia kind="image" size="sm" />
+        <span className={`${styles.rankBadge} ${styles.rankNumber} ntg-typography-label-sm`}>{item.rank}</span>
+        <span className={`${styles.rankBadge} ${styles.rankViews} ntg-typography-label-sm`}>
+          <Icon name="visibility" size="xs" />
+          {fmt(item.pv)}
+        </span>
       </div>
-      <span className={`${styles.rankNumber} ntg-typography-label-sm`} aria-hidden="true">{item.rank}</span>
       <div className={styles.rankBody}>
         <button type="button" className={`${styles.rankTitle} ntg-typography-title-xs`} title={item.title} onClick={() => onOpen(item)}>
-          <span className={styles.srOnly}>อันดับ {item.rank} </span>
+          <span className={styles.srOnly}>อันดับ {item.rank} ยอดวิว Pageviews {fmt(item.pv)} </span>
           {item.title}
         </button>
         <div className={styles.rankMeta}>
-          <div className={styles.rankTags}>
-            <Tag family="neutral" shape="semi-rounded" size="xs" leftIcon={<Icon name="visibility" size="100%" />} aria-label={`ยอดวิว Pageviews ${fmt(item.pv)}`}>
-              {fmt(item.pv)}
-            </Tag>
-            <Tag family="neutral" shape="semi-rounded" size="xs">{item.category}</Tag>
-          </div>
+          <Tag family="neutral" shape="semi-rounded" size="sm">{item.category}</Tag>
           <span className={styles.rankPin}>
-            <Tag family="neutral" shape="pill" size="xs" leftIcon={<Icon name="edit" size="100%" />} onSelect={() => {}}>เก็บไว้เขียนข่าวใหม่</Tag>
+            <Tag family="neutral" shape="pill" size="sm" leftIcon={<Icon name="edit" size="100%" />} onSelect={() => {}}>เก็บไว้เขียนข่าวใหม่</Tag>
           </span>
         </div>
       </div>

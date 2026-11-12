@@ -106,7 +106,7 @@
   list-style: none;
 }
 
-/* การ์ดอันดับข่าว (card / pin) ระบบยังไม่มี สูง 86 มาจากเนื้อหา: padding 8 + พาดหัว 2 บรรทัด 48 + gap 4 + แท็ก xs 18 + padding 8
+/* การ์ดอันดับข่าว (card / pin) ระบบยังไม่มี สูง 92 มาจากเนื้อหา: padding 8 + พาดหัว 2 บรรทัด 48 + gap 6 + แท็ก sm 22 + padding 8
  * มุมโค้งในแบบเป็น 8 แต่เป็นค่าดิบ ไม่มี token จึงใช้ radius ของ card (4) แบบเดียวกับการ์ดตัวเลข
  * กรอบวาดด้วย ::after ทับบนสุด เพราะช่องภาพมีกรอบของตัวเองชิดขอบ ถ้าใช้ border ของการ์ดภาพจะบังมุม */
 .rankCard {
@@ -129,13 +129,20 @@
   transition: border-color var(--ntg-motion-duration-fast);
 }
 
-/* hover=true ในแบบ: พื้นเทาอ่อน กรอบฟ้า พาดหัวสีแบรนด์ */
+/* hover=true ในแบบ: พื้นเทาอ่อน กรอบการ์ดและกรอบช่องภาพสีแบรนด์ พาดหัวสีแบรนด์ กล่องเลขกับยอดวิวพื้นแบรนด์ตัวขาว */
 .rankCard:hover {
   background: var(--ntg-color-background-general-primary-hover);
 }
 
-.rankCard:hover::after {
-  border-color: var(--ntg-color-border-brand-primary);
+.rankCard:hover::after,
+.rankCard:hover .rankMedia::after {
+  border-color: var(--ntg-color-border-brand-solid);
+}
+
+.rankCard:hover .rankBadge {
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-brand-solid);
+  background: var(--ntg-color-background-brand-solid);
+  color: var(--ntg-color-text-general-const-white);
 }
 
 .rankCard:hover .rankTitle {
@@ -147,29 +154,54 @@
 }
 
 /* ช่องภาพเต็มความสูงการ์ด สัดส่วน 92:48 ตามแบบ prototype ยังไม่มีภาพข่าว ใส่ MockupMedia size sm (ผู้ใช้สั่ง 2026-11-12)
- * กรอบ มุมโค้ง และสัดส่วนอยู่ที่กรอบแม่ตามสเปก MockupMedia */
+ * กรอบ มุมโค้ง และสัดส่วนอยู่ที่กรอบแม่ตามสเปก MockupMedia กรอบวาดด้วย ::after ทับบนสุดเหมือนตัวการ์ด
+ * กล่องเลขอันดับกับกล่องยอดวิววางชิดมุมบนของช่องภาพ กรอบของกล่องทับเส้นขอบพอดี */
 .rankMedia {
+  position: relative;
   flex: none;
-  box-sizing: border-box;
   aspect-ratio: 92 / 48;
   overflow: hidden;
-  border: 1px solid var(--ntg-color-border-general-primary);
   border-radius: var(--ntg-card-radius-top-left) 0 0 var(--ntg-card-radius-bottom-left);
 }
 
-/* กล่องเลขอันดับชิดมุมซ้ายบนของการ์ด กรอบทับเส้นขอบการ์ดพอดี กว้าง 32 (ขนาดอวาตาร์ sm) สูง 24 จากบรรทัด label-sm 22 กับกรอบ
- * มุมโค้งในแบบเป็น 6 ใช้ radius ของ card (4) เพราะไม่มี token 6 */
-.rankNumber {
+.rankMedia::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--ntg-color-border-general-primary);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color var(--ntg-motion-duration-fast);
+}
+
+/* กล่องเลขอันดับและกล่องยอดวิว สูง 22 เท่าบรรทัด label-sm กรอบวาดด้วยเงาด้านในจึงไม่กินความสูง
+ * ในแบบพื้นเป็นสีขาวดิบ ใช้ background-general-primary แทน มุมโค้งในแบบเป็น 6 ใช้ radius ของ card (4) เพราะไม่มี token 6 */
+.rankBadge {
   position: absolute;
   top: 0;
-  left: 0;
   box-sizing: border-box;
-  min-width: var(--ntg-avatar-size-sm);
-  text-align: center;
-  border: 1px solid var(--ntg-color-border-general-primary);
-  border-radius: var(--ntg-card-radius-top-left) 0 var(--ntg-card-radius-bottom-right) 0;
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary);
   background: var(--ntg-color-background-general-primary);
   color: var(--ntg-color-text-general-section-heading);
+  transition: background-color var(--ntg-motion-duration-fast), color var(--ntg-motion-duration-fast), box-shadow var(--ntg-motion-duration-fast);
+}
+
+/* เลขอันดับ มุมซ้ายบน กว้าง 32 (ขนาดอวาตาร์ sm) */
+.rankNumber {
+  left: 0;
+  min-width: var(--ntg-avatar-size-sm);
+  text-align: center;
+  border-radius: var(--ntg-card-radius-top-left) 0 var(--ntg-card-radius-bottom-right) 0;
+}
+
+/* ยอดวิว PV มุมขวาบน ไอคอนตา 12 ห่างตัวเลข 4 padding ซ้ายขวา 8 */
+.rankViews {
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-sm);
+  padding: 0 var(--ntg-size-space-s1-lg);
+  border-radius: 0 0 0 var(--ntg-card-radius-bottom-left);
 }
 
 .rankBody {
@@ -177,7 +209,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--ntg-size-space-s1-sm);
+  gap: var(--ntg-size-space-s1-md);
   min-width: 0;
   padding: var(--ntg-size-space-s1-lg) var(--ntg-size-space-s2-xs);
 }
@@ -219,17 +251,11 @@
   white-space: nowrap;
 }
 
-/* แถวล่าง: ยอดวิวกับหมวดชิดซ้าย ห่างกัน 4 แท็กเก็บไว้เขียนข่าวใหม่ชิดขวา */
+/* แถวล่าง: หมวดชิดซ้าย แท็กเก็บไว้เขียนข่าวใหม่ชิดขวา */
 .rankMeta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ntg-size-space-s1-sm);
-}
-
-.rankTags {
-  display: flex;
-  align-items: center;
   gap: var(--ntg-size-space-s1-sm);
 }
 
