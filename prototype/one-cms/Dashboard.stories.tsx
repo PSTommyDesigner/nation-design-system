@@ -306,10 +306,13 @@ function RankItem({ item, onOpen, kept, onToggleKeep }: { item: RankNews; onOpen
         </span>
       </div>
       <div className={styles.rankBody}>
-        <button type="button" className={`${styles.rankTitle} ntg-typography-title-xs`} title={item.title} onClick={() => onOpen(item)}>
-          <span className={styles.srOnly}>อันดับ {item.rank} ยอดวิว Pageviews {fmt(item.pv)} </span>
-          {item.title}
-        </button>
+        {/* กล่องสูง 2 บรรทัดอยู่ที่ตัวห่อ ไม่ใช่ที่ปุ่ม เพราะปุ่มจัดเนื้อหากลางแนวตั้งเสมอ พาดหัวบรรทัดเดียวจึงลอยกลาง */}
+        <div className={`${styles.rankHeading} ntg-typography-title-xs`}>
+          <button type="button" className={`${styles.rankTitle} ntg-typography-title-xs`} title={item.title} onClick={() => onOpen(item)}>
+            <span className={styles.srOnly}>อันดับ {item.rank} ยอดวิว Pageviews {fmt(item.pv)} </span>
+            {item.title}
+          </button>
+        </div>
         <div className={styles.rankMeta}>
           <Tag family="neutral" shape="semi-rounded" size="sm">{item.category}</Tag>
           <span className={styles.rankPin}>

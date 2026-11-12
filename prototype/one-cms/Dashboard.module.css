@@ -226,12 +226,15 @@
 
 /* พาดหัว 2 บรรทัด ยาวเกินตัดท้ายด้วย … สูงเท่า 2 บรรทัดเสมอตามแบบ
  * ::before ขยายพื้นที่กดของปุ่มให้เต็มการ์ด กดตรงไหนก็เปิด Modal (ผู้ใช้สั่ง 2026-11-11) */
+/* พาดหัวชิดบนซ้าย กล่องสูง 2 บรรทัดเสมอแม้พาดหัวมีบรรทัดเดียว (ผู้ใช้สั่ง 2026-11-12) */
+.rankHeading {
+  min-height: 2lh;
+}
 .rankTitle {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  min-height: 2lh;
   margin: 0;
   padding: 0;
   border: 0;
