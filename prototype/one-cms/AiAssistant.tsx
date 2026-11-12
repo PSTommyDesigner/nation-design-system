@@ -2,7 +2,8 @@
 // ผู้ใช้สั่ง 2026-11-12
 // - แสดงทุกหน้าของ One CMS ยกเว้น Login กดแล้วยังไม่เกิดอะไร เพราะทีมยังไม่ได้ข้อสรุปฟีเจอร์ AI
 // - เปิดหน้ามาอยู่มุมขวาบนใต้แถบหัว CMS ลากไปวางตรงไหนก็ได้แต่อยู่ในขอบจอเสมอ ไม่จำตำแหน่ง โหลดหน้าใหม่กลับที่เดิม
-// - pill-tag sm สลับข้อความทักทาย 2 ข้อความ
+// - pill-tag md neutral primary พิมพ์ข้อความทีละตัวแบบเครื่องพิมพ์ดีด เรียง สวัสดีครับ!! (3 วินาที) มีอะไรให้น้องเนเน่ช่วยไหมครับ (3 วินาที)
+//   แล้วค้างที่ น้องเนเน่ 3 นาที ก่อนวนกลับ
 // รูปมาสคอตเป็น PNG 160 x 160 (คมบนจอความละเอียดสูง) ห่อใน SVG ที่ตั้ง width height 80 ไว้ในไฟล์ แสดง 80 x 80 ตามแบบ
 // ระบบไม่มี token ขนาดรูป จึงตั้งขนาดในไฟล์เหมือนโลโก้
 // ตำแหน่งที่ลากเป็นข้อมูลระหว่างใช้งาน (เหมือนความสูงแท่งกราฟ) จึงอยู่ใน inline style ระยะห่างจากขอบอ่านจาก token
@@ -11,10 +12,20 @@ import { Tag } from '../../components/Tag'
 import mascot from './assets/nation-ai.svg'
 import styles from './AiAssistant.module.css'
 
-const MESSAGES = ['สวัสดีครับ!!', 'มีอะไรให้น้องเนเน่ช่วยไหมครับ']
-const LONGEST = MESSAGES.reduce((a, b) => (b.length > a.length ? b : a))
-/** เวลาที่แต่ละข้อความค้างอยู่ เป็นค่าพฤติกรรม ไม่ใช่ค่าที่วาดลงจอ */
-const MESSAGE_MS = 3000
+/** ข้อความกับเวลาที่ค้างไว้หลังพิมพ์ครบ เป็นค่าพฤติกรรม ไม่ใช่ค่าที่วาดลงจอ */
+const MESSAGES = [
+  { text: 'สวัสดีครับ!!', holdMs: 3000 },
+  { text: 'มีอะไรให้น้องเนเน่ช่วยไหมครับ', holdMs: 3000 },
+  { text: 'น้องเนเน่', holdMs: 180000 },
+]
+const LONGEST = MESSAGES.map((m) => m.text).reduce((a, b) => (b.length > a.length ? b : a))
+/** เวลาต่อหนึ่งตัวอักษรตอนพิมพ์ */
+const TYPE_MS = 70
+// ตัดเป็นตัวอักษรที่เห็นบนจอ ให้สระบนล่างและวรรณยุกต์ไทย (ไม้หันอากาศ สระอิ ถึงพินทุ ไม้ไต่คู้ ถึงยามักการ) ติดไปกับตัวหน้า
+// จะได้ขึ้นพร้อมพยัญชนะ ไม่ลอยมาทีหลัง (ใช้ regex เพราะ tsconfig ยังไม่รู้จัก Intl.Segmenter)
+const CLUSTER = /[^\u0E31\u0E34-\u0E3A\u0E47-\u0E4E][\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]*/gu
+const GRAPHEMES = MESSAGES.map((m) => m.text.match(CLUSTER) ?? [])
+const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 /** ลากเกินระยะนี้ถึงนับว่าลาก ไม่ใช่กด */
 const DRAG_THRESHOLD = 4
 
@@ -29,6 +40,8 @@ export function AiAssistant({ anchorRef }: { anchorRef: RefObject<HTMLElement | 
   const measureRef = useRef<HTMLSpanElement>(null)
   const [pos, setPos] = useState<Point | null>(null)
   const [message, setMessage] = useState(0)
+  // จำนวนตัวอักษรที่พิมพ์แล้วของข้อความปัจจุบัน
+  const [typed, setTyped] = useState(0)
   const drag = useRef<{ start: Point; origin: Point; moved: boolean } | null>(null)
 
   // ให้ทั้งรูปและแท็ก (ซึ่งกว้างกว่ารูป) อยู่ในจอเสมอ
@@ -69,11 +82,22 @@ export function AiAssistant({ anchorRef }: { anchorRef: RefObject<HTMLElement | 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // สลับข้อความทักทาย
+  // พิมพ์ทีละตัว พิมพ์ครบแล้วค้างตามเวลาของข้อความนั้น แล้วไปข้อความถัดไป
+  // ผู้ใช้ที่ตั้งลดภาพเคลื่อนไหว ข้อความขึ้นครบทันที
   useEffect(() => {
-    const id = window.setInterval(() => setMessage((m) => (m + 1) % MESSAGES.length), MESSAGE_MS)
-    return () => window.clearInterval(id)
-  }, [])
+    const total = GRAPHEMES[message].length
+    if (typed < total) {
+      if (reducedMotion()) { setTyped(total); return }
+      const id = window.setTimeout(() => setTyped((t) => t + 1), TYPE_MS)
+      return () => window.clearTimeout(id)
+    }
+    const id = window.setTimeout(() => {
+      setMessage((m) => (m + 1) % MESSAGES.length)
+      setTyped(0)
+    }, MESSAGES[message].holdMs)
+    return () => window.clearTimeout(id)
+  }, [message, typed])
+  const typing = typed < GRAPHEMES[message].length
 
   const onPointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
     if (!pos || e.button !== 0) return
@@ -116,12 +140,12 @@ export function AiAssistant({ anchorRef }: { anchorRef: RefObject<HTMLElement | 
     >
       <img ref={imgRef} className={styles.mascot} src={mascot} alt="" draggable={false} onLoad={placeInitial} />
       <span className={styles.tag} aria-hidden="true">
-        <Tag family="brand" shape="pill" size="sm" hierarchy="primary">
-          <span key={message} className={styles.message}>{MESSAGES[message]}</span>
+        <Tag family="neutral" shape="pill" size="md" hierarchy="primary">
+          <span className={`${styles.message} ${typing ? styles.typing : ''}`}>{GRAPHEMES[message].slice(0, typed).join('')}</span>
         </Tag>
       </span>
       <span ref={measureRef} className={styles.measure} aria-hidden="true">
-        <Tag family="brand" shape="pill" size="sm" hierarchy="primary">{LONGEST}</Tag>
+        <Tag family="neutral" shape="pill" size="md" hierarchy="primary">{LONGEST}</Tag>
       </span>
     </button>
   )

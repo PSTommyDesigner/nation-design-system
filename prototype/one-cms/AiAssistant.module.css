@@ -52,16 +52,25 @@
   pointer-events: none;
 }
 
-/* ข้อความใหม่ค่อย ๆ ขึ้นมา */
+/* พิมพ์ทีละตัว มีเคอร์เซอร์กะพริบท้ายข้อความระหว่างพิมพ์ ความสูงคงที่แม้ยังไม่มีตัวอักษร */
 .message {
-  animation: messageIn var(--ntg-motion-duration-slow) var(--ntg-motion-easing-enter);
+  display: inline-block;
+  min-height: 1lh;
+}
+.typing::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 1lh;
+  vertical-align: top;
+  border-right: 1px solid currentColor;
+  animation: caret var(--ntg-motion-duration-slow) steps(1) infinite alternate;
 }
 
-@keyframes messageIn {
-  from { opacity: 0; transform: translateY(25%); }
-  to { opacity: 1; transform: none; }
+@keyframes caret {
+  to { border-color: transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .message { animation: none; }
+  .typing::after { animation: none; }
 }

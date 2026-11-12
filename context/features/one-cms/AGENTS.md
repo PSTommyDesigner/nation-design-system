@@ -17,8 +17,8 @@
 ## Rules
 
 ### AI assistant น้องเนเน่
-- Every One CMS page except Login MUST show the AI assistant น้องเนเน่ floating over the page, as in the old system, following frame `Ai` (`15669:14538`): the mascot image 80 x 80 with a `pill-tag` sm brand primary under it (set by the user 2026-11-12, sm replacing the xs in the design). Built in `prototype/one-cms/AiAssistant.tsx`
-- The tag MUST cycle two greetings, "สวัสดีครับ!!" and "มีอะไรให้น้องเนเน่ช่วยไหมครับ", 3 seconds each, the new text rising and fading in (`motion-duration-slow`, no animation with reduced motion). The name "เนเน่" from the design is no longer shown in the tag
+- Every One CMS page except Login MUST show the AI assistant น้องเนเน่ floating over the page, as in the old system, following frame `Ai` (`15669:14538`): the mascot image 80 x 80 with a `pill-tag` md neutral primary under it (set by the user 2026-11-12, replacing the xs brand in the design). Built in `prototype/one-cms/AiAssistant.tsx`
+- The tag MUST type its text one character at a time like a typewriter, with a blinking caret while typing, in this order: "สวัสดีครับ!!" held 3 seconds after it is fully typed, "มีอะไรให้น้องเนเน่ช่วยไหมครับ" held 3 seconds, then "น้องเนเน่" held 3 minutes before it starts again from "สวัสดีครับ!!" (set by the user 2026-11-12). Thai vowels above and below and tone marks are typed together with their consonant. With reduced motion each text shows whole at once and the caret doesn't blink
 - น้องเนเน่ MUST start at the top right under the CMS header bar, 24 from the header and from the right edge for the longest greeting (`size-space-s2-lg`), and MUST be draggable anywhere while the mascot and the tag stay inside the screen. The position is not remembered: a reload puts it back. Arrow keys move it 16 at a time (`size-space-s2-sm`) for people who can't drag (WCAG 2.5.7). It is one button named "น้องเนเน่ ผู้ช่วย AI ลากหรือกดลูกศรเพื่อย้ายตำแหน่ง", on `layer-floating` so it sits above the header and under a Modal
 - The mascot is a raster image from the design file (1024 x 1024), saved as a 160 x 160 PNG inside `assets/nation-ai.svg`, whose `width` and `height` set 80 because the system has no image size token
 - NEEDS CLARIFICATION: what a click does. The team has not agreed on the AI features (see `smart-one-cms-meet-1.md`), so the button does nothing yet
@@ -78,7 +78,7 @@
 ## Components
 - Chosen with the user page by page, from `../../design-system.dsds.yaml`
 - Login: TextField md, Checkbox sm, Button brand primary lg, LinkButton brand lg
-- Every page except Login: Tag pill sm brand primary (AI assistant น้องเนเน่)
+- Every page except Login: Tag pill md neutral primary (AI assistant น้องเนเน่)
 - Dashboard: Banner warning md (beta, empty category), Button pill sm (header menu, brand primary for the current page, neutral tertiary for the rest), Avatar md, TextField md, Tag pill lg neutral (category filter), semi-rounded sm neutral and pill sm neutral (rank card and news detail Modal), Dropdown md, Table, Tabs segmented sm, Pagination md, BarChart, Modal md and lg (beta), MockupMedia image sm and xl (beta), IconButton neutral tertiary xs, AvatarLabel lg, Tabs underline md, Card list
 - Built inside the story from tokens because the system doesn't have them: the rank card `card / pin` (image area, rank box, border and hover, with the system `Tag` inside) and the number card (border, dot and number)
 - NEEDS CLARIFICATION: should the rank card and the number card become ntgds components
