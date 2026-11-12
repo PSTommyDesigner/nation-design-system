@@ -117,7 +117,7 @@
   overflow: hidden;
   border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
   background: var(--ntg-color-background-general-primary);
-  transition: background-color var(--ntg-motion-duration-fast);
+  transition: background-color var(--ntg-motion-duration-fast), box-shadow var(--ntg-motion-duration-fast);
 }
 
 .rankCard::after {
@@ -130,24 +130,33 @@
   transition: border-color var(--ntg-motion-duration-fast);
 }
 
-/* hover=true ในแบบ: พื้นเทาอ่อน กรอบการ์ดและกรอบช่องภาพสีแบรนด์ พาดหัวสีแบรนด์ กล่องเลขกับยอดวิวพื้นแบรนด์ตัวขาว */
+/* hover=true ในแบบ (อัปเดต 2026-11-12): พื้นเทาอ่อน เงา bottom md กรอบการ์ด ช่องภาพ และกล่องทั้งสองเป็นเทาเข้มขึ้น
+   กล่องเลขอันดับพื้นแบรนด์ตัวขาว กล่องยอดวิวพื้นเทาอ่อน พาดหัวเข้มขึ้นจาก section-heading เป็น heading */
 .rankCard:hover {
   background: var(--ntg-color-background-general-primary-hover);
+  box-shadow: var(--ntg-shadows-bottom-md);
 }
 
 .rankCard:hover::after,
 .rankCard:hover .rankMedia::after {
-  border-color: var(--ntg-color-border-brand-solid);
+  border-color: var(--ntg-color-border-general-primary-hover);
 }
 
 .rankCard:hover .rankBadge {
-  box-shadow: inset 0 0 0 1px var(--ntg-color-border-brand-solid);
+  box-shadow: inset 0 0 0 1px var(--ntg-color-border-general-primary-hover);
+}
+
+.rankCard:hover .rankNumber {
   background: var(--ntg-color-background-brand-solid);
   color: var(--ntg-color-text-general-const-white);
 }
 
+.rankCard:hover .rankViews {
+  background: var(--ntg-color-background-general-primary-hover);
+}
+
 .rankCard:hover .rankTitle {
-  color: var(--ntg-color-text-brand-primary);
+  color: var(--ntg-color-text-general-heading);
 }
 
 .rankCard:has(.rankTitle:focus-visible) {
