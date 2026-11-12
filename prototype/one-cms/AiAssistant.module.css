@@ -52,25 +52,8 @@
   pointer-events: none;
 }
 
-/* พิมพ์ทีละตัว มีเคอร์เซอร์กะพริบท้ายข้อความระหว่างพิมพ์ ความสูงคงที่แม้ยังไม่มีตัวอักษร */
+/* พิมพ์ทีละตัว ไม่มีเคอร์เซอร์ (ผู้ใช้สั่ง 2026-11-12) ความสูงคงที่แม้ยังไม่มีตัวอักษร */
 .message {
   display: inline-block;
   min-height: 1lh;
-}
-.typing::after {
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 1lh;
-  vertical-align: top;
-  border-right: 1px solid currentColor;
-  animation: caret var(--ntg-motion-duration-slow) steps(1) infinite alternate;
-}
-
-@keyframes caret {
-  to { border-color: transparent; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .typing::after { animation: none; }
 }

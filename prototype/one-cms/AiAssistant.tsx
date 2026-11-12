@@ -97,7 +97,6 @@ export function AiAssistant({ anchorRef }: { anchorRef: RefObject<HTMLElement | 
     }, MESSAGES[message].holdMs)
     return () => window.clearTimeout(id)
   }, [message, typed])
-  const typing = typed < GRAPHEMES[message].length
 
   const onPointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
     if (!pos || e.button !== 0) return
@@ -141,7 +140,7 @@ export function AiAssistant({ anchorRef }: { anchorRef: RefObject<HTMLElement | 
       <img ref={imgRef} className={styles.mascot} src={mascot} alt="" draggable={false} onLoad={placeInitial} />
       <span className={styles.tag} aria-hidden="true">
         <Tag family="neutral" shape="pill" size="md" hierarchy="primary">
-          <span className={`${styles.message} ${typing ? styles.typing : ''}`}>{GRAPHEMES[message].slice(0, typed).join('')}</span>
+          <span className={styles.message}>{GRAPHEMES[message].slice(0, typed).join('')}</span>
         </Tag>
       </span>
       <span ref={measureRef} className={styles.measure} aria-hidden="true">
