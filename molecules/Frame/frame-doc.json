@@ -205,6 +205,73 @@
         },
         {
           "type": "h",
+          "text": "Mockup Media",
+          "sub": "ภาพแทนรูปที่บอกได้ว่าเป็นรูปภาพหรือวีดีโอ",
+          "section": true
+        },
+        {
+          "type": "p",
+          "text": "mockup-media คือภาพแทนรูปภาพและวีดีโอที่มีไอคอน image หรือ videocam กับคำว่า รูปภาพ หรือ วีดีโอ ใช้แทนพื้นเทาเปล่าในการ์ด Modal และหน้าจอตัวอย่าง ระหว่างที่ยังไม่มีภาพจริง",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md",
+          "stack": "11985:166",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "p",
+          "text": "ต่างจากกรอบ 8 ตัวด้านบนที่เป็นไฟล์ภาพลายหมากรุกและไฟล์วิดีโอ ชุดนี้ผูกตัวแปรได้ทุกส่วนและมี component ในโค้ดชื่อ MockupMedia กล่องยืดเต็มกรอบที่วาง ไอคอนย่อตามขนาด 16 ถึง 40 และข้อความแสดงเฉพาะ lg กับ xl ดูครบ 10 แบบที่ Mockup Media Component Previews",
+          "color": "--ntg-color-text-general-supporting-text",
+          "textStyle": "body-md",
+          "stack": "11985:166",
+          "stackGap": "--ntg-size-space-s1-lg"
+        },
+        {
+          "type": "components",
+          "vertical": false,
+          "items": [
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "lg"
+              },
+              "label": "รูปภาพ lg",
+              "width": 320,
+              "height": 180,
+              "cell": 320,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "video",
+                "size": "lg"
+              },
+              "label": "วีดีโอ lg",
+              "width": 320,
+              "height": 180,
+              "cell": 320,
+              "vertical": false
+            },
+            {
+              "type": "component",
+              "set": "mockup-media",
+              "props": {
+                "kind": "image",
+                "size": "sm"
+              },
+              "label": "รูปภาพ sm",
+              "width": 160,
+              "height": 90,
+              "cell": 160,
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "h",
           "text": "Hierarchy",
           "sub": "สัดส่วนบอกว่าภาพไหนเป็นภาพหลัก",
           "section": true
@@ -360,23 +427,34 @@
           "stackGap": "--ntg-size-space-s1-lg"
         },
         {
-          "type": "logos",
-          "items": [
+          "type": "card",
+          "kind": "do",
+          "title": "",
+          "body": "ยืดให้คงสัดส่วน ภาพยังอ่านออกและวางเรียงในกริดได้",
+          "effects": [],
+          "logos": [
             {
               "type": "logo",
               "file": "image-16-9",
-              "label": "✅ ถูก ยืดให้คงสัดส่วน ภาพยังอ่านออกและวางเรียงในกริดได้",
+              "label": "",
               "width": 400,
-              "height": 225,
-              "gap": "--ntg-size-space-s3-sm"
-            },
+              "height": 225
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "kind": "dont",
+          "title": "",
+          "body": "ยืดด้านเดียว ภาพเพี้ยนและสูงไม่ตรงกับช่องอื่นในกริด",
+          "effects": [],
+          "logos": [
             {
               "type": "logo",
               "file": "image-16-9",
-              "label": "❌ ผิด ยืดด้านเดียว ภาพเพี้ยนและสูงไม่ตรงกับช่องอื่นในกริด",
+              "label": "",
               "width": 400,
-              "height": 97,
-              "gap": "--ntg-size-space-s3-sm"
+              "height": 97
             }
           ]
         },
@@ -608,6 +686,129 @@
               "gap": "--ntg-size-space-s2-lg",
               "rowGap": "--ntg-size-space-s2-lg",
               "labelBelow": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11985:137",
+      "name": "Mockup Media Component Previews",
+      "title": "Mockup Media Component Previews",
+      "subtitle": "ภาพแทนรูปภาพและวีดีโอ ชุด mockup-media 10 แบบ",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "mockup-media",
+          "sub": "แกน kind มี image กับ video และแกน size มี xs sm md lg xl รวม 10 แบบ ไอคอนย่อตามขนาด 16 ถึง 40 ข้อความแสดงเฉพาะ lg กับ xl ในการใช้งานจริงกล่องยืดเต็มกรอบที่วาง ขนาดในไฟล์นี้เป็นขนาดตั้งต้นให้ดูเท่านั้น",
+          "section": true
+        },
+        {
+          "type": "variantSet",
+          "set": "mockup-media",
+          "caption": "",
+          "width": 1488,
+          "height": 624,
+          "items": [
+            {
+              "props": {
+                "kind": "image",
+                "size": "xs"
+              },
+              "x": 40,
+              "y": 40,
+              "width": 96,
+              "height": 54
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "sm"
+              },
+              "x": 176,
+              "y": 40,
+              "width": 160,
+              "height": 90
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "md"
+              },
+              "x": 376,
+              "y": 40,
+              "width": 224,
+              "height": 126
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "lg"
+              },
+              "x": 640,
+              "y": 40,
+              "width": 320,
+              "height": 180
+            },
+            {
+              "props": {
+                "kind": "image",
+                "size": "xl"
+              },
+              "x": 1000,
+              "y": 40,
+              "width": 448,
+              "height": 252
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "xs"
+              },
+              "x": 40,
+              "y": 332,
+              "width": 96,
+              "height": 54
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "sm"
+              },
+              "x": 176,
+              "y": 332,
+              "width": 160,
+              "height": 90
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "md"
+              },
+              "x": 376,
+              "y": 332,
+              "width": 224,
+              "height": 126
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "lg"
+              },
+              "x": 640,
+              "y": 332,
+              "width": 320,
+              "height": 180
+            },
+            {
+              "props": {
+                "kind": "video",
+                "size": "xl"
+              },
+              "x": 1000,
+              "y": 332,
+              "width": 448,
+              "height": 252
             }
           ]
         }

@@ -47,7 +47,8 @@ const PAGES = {
   'third-party': { page: '09 Third-party Logos', folder: 'ThirdPartyLogos', skip: [], logos: true, noLogo: (w, h) => w === 32 && h === 24 },
   // ชั้น Molecules เก็บที่ molecules/ (ผู้ใช้อนุมัติ 2026-11-04) กรอบ 8 ตัวเป็นภาพลายหมากรุก (image fill) ยังไม่มี component ในโค้ด
   // จึง export เป็นไฟล์ภาพทางเดียวกับโลโก้ ใช้ในหน้าเอกสารนี้เท่านั้น เป็น PNG เพราะ SVG ไม่เก็บภาพของกรอบวิดีโอ (ออกมาว่าง)
-  frame: { page: '10 Frame', folder: 'Frame', root: 'molecules', skip: [], logos: true, format: 'png' },
+  // ชุด mockup-media (เพิ่ม 2026-11-11) มี component ในโค้ด จึงอ่านเป็นตัวอย่างให้วาดด้วย MockupMedia จริง
+  frame: { page: '10 Frame', folder: 'Frame', root: 'molecules', skip: [], logos: true, format: 'png', components: ['mockup-media'] },
   // ตัวอย่างในหน้านี้เป็นชิ้นงานของชุดที่มี component จริงในโค้ด สคริปต์เก็บชื่อชุดกับค่าของแต่ละชิ้น ให้หน้าเอกสารวาดด้วย component จริง
   // แทนการ export ภาพ (ผู้ใช้อนุมัติ 2026-11-04) components คือชื่อชุดใน Figma ที่อ่านเป็นตัวอย่าง
   avatar: { page: '11 Avatar', folder: 'Avatar', root: 'molecules', skip: [], components: ['avatar-image', 'avatar-icon', 'avatar-monogram', 'avatar-number', 'avatar-label', 'avatar-group', '_avatar-online-indicator'] },

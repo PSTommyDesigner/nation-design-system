@@ -356,9 +356,9 @@
   "mockup-media": {
     "page": "10 Frame",
     "depth": 4,
-    "reference": "mockup-media",
+    "reference": "Mockup Media Component Previews",
     "families": [
-      "mockup-media"
+      "Mockup Media Component Previews"
     ],
     "sets": [
       "mockup-media"

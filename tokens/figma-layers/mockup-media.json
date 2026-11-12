@@ -1,7 +1,7 @@
 {
- "capturedAt": "2026-11-11",
+ "capturedAt": "2026-11-12",
  "page": "10 Frame",
- "reference": "mockup-media",
+ "reference": "Mockup Media Component Previews",
  "sets": {
   "mockup-media": {
    "defs": {
@@ -379,7 +379,7 @@
     }
    },
    "colors": {
-    "mockup-media": {
+    "Mockup Media Component Previews": {
      "kind=image": 0,
      "kind=video": 0
     }

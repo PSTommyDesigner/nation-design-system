@@ -101,6 +101,9 @@ refs:
   - href: ../../components/MockupMedia/MockupMedia.stories.tsx
     rel: demo
     role: Storybook stories (npm run storybook)
+  - href: ../../docs/10-frame.md
+    rel: relates-to
+    role: Thai page doc for Figma page 10 Frame, section 4.1.1
   - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=562-4386
     rel: design
     role: Figma page 10 Frame

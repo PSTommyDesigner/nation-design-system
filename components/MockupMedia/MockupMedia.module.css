@@ -1,7 +1,7 @@
 /* ⚠️ ไฟล์นี้สร้างอัตโนมัติ ห้ามแก้ตรง ๆ
  *   โครง (วิธีวาด)  แก้ที่ components/MockupMedia/MockupMedia.base.css
  *   ค่า (ระยะ สี ฯลฯ) แก้ที่ไฟล์ออกแบบ Figma หน้า 10 Frame แล้วรัน  npm run figma:layers -- mockup-media  และ  npm run css:generate -- mockup-media
- *   spec: tokens/figma-layers/mockup-media.json (ดึง 2026-11-11)
+ *   spec: tokens/figma-layers/mockup-media.json (ดึง 2026-11-12)
  */
 
 /*
