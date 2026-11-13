@@ -379,12 +379,13 @@ function DashboardPage({ brand }: { brand?: string }) {
               {item}
             </Button>
           ))}
-          <Avatar size="md" alt="บัญชีผู้ใช้" />
         </nav>
+        {/* อวาตาร์แยกออกจากเมนู จอเล็กเมนูลงไปเป็นแถวเลื่อนแนวนอน ส่วนอวาตาร์อยู่คู่โลโก้ */}
+        <Avatar className={styles.headerAvatar} size="md" alt="บัญชีผู้ใช้" />
       </header>
 
       <main>
-        <section className={`${styles.section} ${styles.sectionTight}`} aria-labelledby="ranking-title">
+        <section className={`${styles.section} ${styles.sectionTight} ${styles.clipX}`} aria-labelledby="ranking-title">
           <div className={styles.sectionTitle}>
             <h2 id="ranking-title" className={`${styles.heading} ntg-typography-section-heading-lg`}>ข้อมูลเรียลไทม์วันนี้</h2>
             <p className={`${styles.supporting} ntg-typography-body-md`}>
@@ -452,7 +453,7 @@ function DashboardPage({ brand }: { brand?: string }) {
           )}
         </section>
 
-        <section className={styles.section} aria-labelledby="count-title">
+        <section className={`${styles.section} ${styles.clipX}`} aria-labelledby="count-title">
           <div className={styles.countTop}>
             <div className={styles.countHead}>
               <h2 id="count-title" className={`${styles.heading} ntg-typography-section-heading-lg`}>ข้อมูลจำนวนข่าว</h2>

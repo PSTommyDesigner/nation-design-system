@@ -38,6 +38,12 @@
   display: flex;
   align-items: center;
   gap: var(--ntg-size-space-s2-sm);
+  margin-inline-start: auto;
+}
+
+.headerAvatar {
+  flex: none;
+  margin-inline-start: var(--ntg-size-space-s2-sm);
 }
 
 /* ── section เต็มความกว้าง ซ้อนลงมา 3 ส่วน ── */
@@ -100,8 +106,7 @@
 .ranking {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: var(--ntg-size-space-s2-lg);
-  row-gap: var(--ntg-size-space-s2-sm);
+  gap: var(--ntg-size-space-s2-lg);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -292,15 +297,18 @@
   gap: var(--ntg-size-space-s2-lg);
 }
 
-/* กราฟโดนัท 2 วงชิดซ้าย */
+/* การ์ดกราฟโดนัท 2 ใบ กว้างใบละครึ่ง ห่าง 24 เท่าระยะการ์ดข่าว (ผู้ใช้สั่ง 2026-11-13) */
 .pies {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--ntg-size-space-s3-sm);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ntg-size-space-s2-lg);
 }
 /* การ์ดของกราฟโดนัท กรอบ มุม และพื้นแบบเดียวกับการ์ดตัวเลข (.stat) พื้นเป็นพื้นหลักตามข้อห้ามของ PieChart */
 .pieCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
   padding: var(--ntg-size-space-s2-sm) var(--ntg-size-space-s2-lg);
   border: 1px solid var(--ntg-color-border-general-primary);
   border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
@@ -460,4 +468,48 @@
   margin: 0;
   padding: var(--ntg-size-space-s2-sm) 0 0;
   list-style: none;
+}
+
+/* ตัดส่วนที่ล้นแนวนอนของส่วนข้อมูลเรียลไทม์และส่วนจำนวนข่าว: ตารางซ่อนสำหรับโปรแกรมอ่านหน้าจอของ BarChart และ PieChart
+   ใส่คลาส srOnly ที่ <table> ตรง ๆ ตารางไม่ยอมแคบกว่าเนื้อหา จึงดันหน้าให้กว้างเกินจอมือถือแม้มองไม่เห็น
+   แจ้ง ntgds แก้ใน component แล้ว 2026-11-13 ใช้ clip จึงไม่เกิดแถบเลื่อน แก้แล้วเอาคลาสนี้ออกได้ */
+.clipX {
+  overflow-x: clip;
+}
+
+/* ── Responsive (ผู้ใช้สั่ง 2026-11-13 ให้ใช้ได้ถึงมือถือ 375) ──
+ * จุดเปลี่ยนตาม token grid: --ntg-grid-breakpoint-desktop 1440, tablet-h 1024, tablet-v 768
+ * media query อ่าน CSS variable ไม่ได้ จึงเขียนตัวเลขเดียวกับ token ไว้ตรงนี้ ถ้า token เปลี่ยนต้องแก้ตามที่นี่ */
+
+/* ต่ำกว่า desktop 1440: การ์ดข่าว 2 คอลัมน์ ตัวกรองช่วงวันที่ 2 คอลัมน์ ส่วนจำนวนข่าวเรียงตัวเลือกไว้บนการ์ดตัวเลข */
+@media (max-width: 1439px) {
+  .ranking { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .countTop { grid-template-columns: minmax(0, 1fr); row-gap: var(--ntg-size-space-s2-lg); }
+}
+
+/* ต่ำกว่า tablet-h 1024: การ์ดกราฟเรียงลง เมนูแถบหัวลงไปเป็นแถวเลื่อนแนวนอนใต้โลโก้ ตารางเลื่อนแนวนอน */
+@media (max-width: 1023px) {
+  .pies { grid-template-columns: minmax(0, 1fr); }
+  .header { flex-wrap: wrap; row-gap: var(--ntg-size-space-s2-sm); }
+  .headerAvatar { margin-inline-start: auto; }
+  .nav {
+    order: 1;
+    flex: 1 0 100%;
+    margin-inline-start: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav > * { flex: none; }
+  .tableBlock { overflow-x: auto; }
+}
+
+/* ต่ำกว่า tablet-v 768: การ์ดข่าว 1 คอลัมน์ ตัวกรองเรียงลง แท็กหมวดเลื่อนแนวนอน ขอบซ้ายขวา 16 */
+@media (max-width: 767px) {
+  .section { padding-inline: var(--ntg-size-space-s2-sm); }
+  .header { padding-inline: var(--ntg-size-space-s2-sm); }
+  .ranking { grid-template-columns: minmax(0, 1fr); }
+  .fields, .pair { grid-template-columns: minmax(0, 1fr); row-gap: var(--ntg-size-space-s2-sm); }
+  .tags { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .tags > * { flex: none; }
 }
