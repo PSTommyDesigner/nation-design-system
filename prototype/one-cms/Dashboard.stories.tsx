@@ -248,6 +248,10 @@ const reporterNews = (r: { id: string; created: number; published: number }) =>
     }
   })
 
+// ยอดวิวรวมของนักข่าว = ยอด PV ของข่าวที่เผยแพร่แล้ว ชุดเดียวกับรายการใน Modal ข่าวของนักข่าว (ผู้ใช้สั่งเพิ่มคอลัมน์ 2026-11-13)
+const reporterViews = (r: { id: string; created: number; published: number }) =>
+  reporterNews(r).filter((n) => n.published).reduce((t, n) => t + n.pv, 0)
+
 const REPORTERS = [
   { id: 'r1', name: 'ชนิดา ศรีสุข', desk: 'โต๊ะข่าวเศรษฐกิจ', created: 42, published: 38, updated: '28/10/2569' },
   { id: 'r2', name: 'ธนกร วงศ์ใหญ่', desk: 'โต๊ะข่าวการเงิน', created: 37, published: 35, updated: '28/10/2569' },
@@ -471,6 +475,7 @@ function DashboardPage({ brand }: { brand?: string }) {
                 { id: 'total', header: 'ทั้งหมด', variant: 'number', sortable: true, accessor: (r) => fmt(r.created) },
                 { id: 'published', header: 'เผยแพร่แล้ว', variant: 'number', sortable: true, accessor: (r) => fmt(r.published) },
                 { id: 'unpublished', header: 'ยังไม่เผยแพร่', variant: 'number', sortable: true, accessor: (r) => fmt(r.created - r.published) },
+                { id: 'views', header: 'ยอดวิวรวม', variant: 'number', sortable: true, accessor: (r) => fmt(reporterViews(r)) },
                 { id: 'updated', header: 'อัปเดตล่าสุด', variant: 'date', sortable: true, accessor: (r) => r.updated },
               ]}
             />
