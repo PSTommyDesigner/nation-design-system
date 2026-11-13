@@ -297,23 +297,6 @@
   gap: var(--ntg-size-space-s2-lg);
 }
 
-/* การ์ดกราฟโดนัท 2 ใบ กว้างใบละครึ่ง ห่าง 24 เท่าระยะการ์ดข่าว (ผู้ใช้สั่ง 2026-11-13) */
-.pies {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ntg-size-space-s2-lg);
-}
-/* การ์ดของกราฟโดนัท กรอบ มุม และพื้นแบบเดียวกับการ์ดตัวเลข (.stat) พื้นเป็นพื้นหลักตามข้อห้ามของ PieChart */
-.pieCard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  padding: var(--ntg-size-space-s2-sm) var(--ntg-size-space-s2-lg);
-  border: 1px solid var(--ntg-color-border-general-primary);
-  border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
-  background: var(--ntg-color-background-general-primary);
-}
 /* ปุ่มข่าวที่เก็บไว้ ชิดล่างให้ตรงกับกล่องช่วงวันที่ (ช่องมีป้ายชื่ออยู่ด้านบน) */
 .keptButton {
   display: flex;
@@ -470,7 +453,7 @@
   list-style: none;
 }
 
-/* ตัดส่วนที่ล้นแนวนอนของส่วนข้อมูลเรียลไทม์และส่วนจำนวนข่าว: ตารางซ่อนสำหรับโปรแกรมอ่านหน้าจอของ BarChart และ PieChart
+/* ตัดส่วนที่ล้นแนวนอนของส่วนจำนวนข่าว: ตารางซ่อนสำหรับโปรแกรมอ่านหน้าจอของ BarChart
    ใส่คลาส srOnly ที่ <table> ตรง ๆ ตารางไม่ยอมแคบกว่าเนื้อหา จึงดันหน้าให้กว้างเกินจอมือถือแม้มองไม่เห็น
    แจ้ง ntgds แก้ใน component แล้ว 2026-11-13 ใช้ clip จึงไม่เกิดแถบเลื่อน แก้แล้วเอาคลาสนี้ออกได้ */
 .clipX {
@@ -488,9 +471,8 @@
   .countTop { grid-template-columns: minmax(0, 1fr); row-gap: var(--ntg-size-space-s2-lg); }
 }
 
-/* ต่ำกว่า tablet-h 1024: การ์ดกราฟเรียงลง เมนูแถบหัวลงไปเป็นแถวเลื่อนแนวนอนใต้โลโก้ ตารางเลื่อนแนวนอน */
+/* ต่ำกว่า tablet-h 1024: เมนูแถบหัวลงไปเป็นแถวเลื่อนแนวนอนใต้โลโก้ ตารางเลื่อนแนวนอน */
 @media (max-width: 1023px) {
-  .pies { grid-template-columns: minmax(0, 1fr); }
   .header { flex-wrap: wrap; row-gap: var(--ntg-size-space-s2-sm); }
   .headerAvatar { margin-inline-start: auto; }
   .nav {
