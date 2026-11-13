@@ -292,6 +292,20 @@
   gap: var(--ntg-size-space-s2-lg);
 }
 
+/* กราฟโดนัท 2 วงชิดซ้าย */
+.pies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--ntg-size-space-s3-sm);
+}
+/* การ์ดของกราฟโดนัท กรอบ มุม และพื้นแบบเดียวกับการ์ดตัวเลข (.stat) พื้นเป็นพื้นหลักตามข้อห้ามของ PieChart */
+.pieCard {
+  padding: var(--ntg-size-space-s2-sm) var(--ntg-size-space-s2-lg);
+  border: 1px solid var(--ntg-color-border-general-primary);
+  border-radius: var(--ntg-card-radius-top-left) var(--ntg-card-radius-top-right) var(--ntg-card-radius-bottom-right) var(--ntg-card-radius-bottom-left);
+  background: var(--ntg-color-background-general-primary);
+}
 /* ปุ่มข่าวที่เก็บไว้ ชิดล่างให้ตรงกับกล่องช่วงวันที่ (ช่องมีป้ายชื่ออยู่ด้านบน) */
 .keptButton {
   display: flex;

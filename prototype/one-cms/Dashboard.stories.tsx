@@ -14,6 +14,7 @@ import { Table, type TableSort } from '../../components/Table'
 import { Pagination } from '../../components/Pagination'
 import { BarChart, type BarChartSeries } from '../../components/BarChart'
 import { MockupMedia } from '../../components/MockupMedia'
+import { PieChart } from '../../components/PieChart'
 import { Banner } from '../../components/Banner'
 import '../../tokens/output/css/typography.css'
 import styles from './Dashboard.module.css'
@@ -132,6 +133,22 @@ const ALL_NEWS: RankNews[] = HEADLINES.map((title, i) => ({
   ga: 41000 - i * 800,
   th: 36000 - i * 700,
 }))
+
+// กราฟโดนัท 2 วงตามหมวด (ผู้ใช้สั่ง 2026-11-13): จำนวนข่าวที่เขียน กับยอดวิวรวม จากข่าวชุดเดียวกับอันดับข่าว (ALL_NEWS)
+// ทั้งสองวงส่งรายการหมวดเดียวกัน คือ 5 หมวดที่เขียนข่าวมากที่สุด สี ลำดับ และ "อื่น ๆ" จึงตรงกัน
+const CATEGORY_STATS = Object.entries(
+  ALL_NEWS.reduce<Record<string, { news: number; pv: number }>>((acc, n) => {
+    const c = (acc[n.category] ??= { news: 0, pv: 0 })
+    c.news += 1
+    c.pv += n.pv
+    return acc
+  }, {}),
+).map(([label, v]) => ({ label, ...v }))
+const PIE_CATEGORIES = [...CATEGORY_STATS].sort((a, b) => b.news - a.news).slice(0, 5).map((c) => c.label)
+const PIE_NEWS = CATEGORY_STATS.map((c) => ({ label: c.label, value: c.news }))
+const PIE_VIEWS = CATEGORY_STATS.map((c) => ({ label: c.label, value: c.pv }))
+const topOf = (key: 'news' | 'pv') => [...CATEGORY_STATS].sort((a, b) => b[key] - a[key])[0]
+const sumOf = (key: 'news' | 'pv') => CATEGORY_STATS.reduce((t, c) => t + c[key], 0)
 
 // ข่าวสมมุติเพิ่มของหมวดเศรษฐกิจและการเงิน ยอดวิวต่ำกว่าอันดับ 40 ของทั้งหมด (ผู้ใช้สั่ง 2026-11-11 ทำแค่ 3 หมวดแรก)
 const ECONOMY_EXTRA = [
@@ -383,6 +400,29 @@ function DashboardPage({ brand }: { brand?: string }) {
                 <Button family="neutral" hierarchy="secondary" shape="semi-rounded" size="md" rightIcon="close" disabled={kept.length === 0} onClick={() => setConfirmClear(true)}>
                   {kept.length > 0 ? `(${kept.length}) ` : ''}ข่าวที่เก็บไว้เขียนข่าวใหม่
                 </Button>
+              </div>
+            </div>
+            {/* กราฟโดนัทตามหมวด อยู่ระหว่างแถวช่วงวันที่กับแท็กหมวด แต่ละวงอยู่ในการ์ดแบบเดียวกับการ์ดตัวเลข (ผู้ใช้สั่ง 2026-11-13) */}
+            <div className={styles.pies}>
+              <div className={styles.pieCard}>
+              <PieChart
+                data={PIE_NEWS}
+                legendPlacement="end"
+                categories={PIE_CATEGORIES}
+                unit="ข่าว"
+                totalLabel="ข่าวทั้งหมด"
+                summary={`จำนวนข่าวที่เขียนตามหมวด ${fmt(sumOf('news'))} ข่าว ${topOf('news').label}มากที่สุด`}
+              />
+              </div>
+              <div className={styles.pieCard}>
+              <PieChart
+                data={PIE_VIEWS}
+                legendPlacement="end"
+                categories={PIE_CATEGORIES}
+                unit="ครั้ง"
+                totalLabel="ยอดวิวทั้งหมด"
+                summary={`ยอดวิวรวมตามหมวด ${fmt(sumOf('pv'))} ครั้ง ${topOf('pv').label}มากที่สุด`}
+              />
               </div>
             </div>
             <div className={styles.tags} role="group" aria-label="หมวดข่าว">
