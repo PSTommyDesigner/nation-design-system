@@ -6,7 +6,6 @@
 - It sets how the websites look (home page, menus, banners) and manages ads
 - It tracks results on a Dashboard: page views, number of news items, and reporter statistics
 - Design file: Figma `kMw46mRQEaL2s1ofpnSDgh` (CMS), starting frame node `13476-40325`. This is a project file, not the design system file `QgmoT5Uuvv3elB96F4nsTq`
-- Requirements from the first round of meetings with 8 BU, Smart ONE CMS (Meet 1) (problems, features by module, AI along the news path, proposed features, things to improve), are summed up in `smart-one-cms-meet-1.md`, from the Google Sheet the user shared on 2026-11-12. Read it before building or changing a page. It is background, not approved work: the team has not agreed on which features to build (set by the user 2026-11-12), so MUST NOT change prototype UI from it until the user says so
 - Prototype pages live in `../../../prototype/one-cms/`, with the Storybook title `Page (Prototype)/One CMS/<Page>`
 - The Dashboard follows frame `Dashboard / Home` (`13060:8732`) in the Dashboard v1 section (`13060:8503`). The user approved the page on 2026-10-28 from an earlier frame (`Dashboard / Home D`), which the user later moved to this frame (checked 2026-11-11)
 - The prototype uses Krungthep Turakij (`bkk`) as its default brand: headlines and reporter names are sample data for `bkk`. Most sample data in the design file is from Tnews, and the design file stays Tnews (set by the user 2026-10-28). Colors stay on the core `ntg` tokens until the multi-brand theme layer exists
@@ -21,7 +20,7 @@
 - The tag MUST type its text one character at a time like a typewriter, 0.09 seconds per character, without a caret (set by the user 2026-11-12), in this order: "สวัสดีครับ!!" held 3 seconds after it is fully typed, "มีอะไรให้น้องเนเน่ช่วยไหมครับ" held 3 seconds, then "น้องเนเน่" held 3 minutes before it starts again from "สวัสดีครับ!!" (set by the user 2026-11-12). Thai vowels above and below and tone marks are typed together with their consonant. With reduced motion each text shows whole at once
 - น้องเนเน่ MUST start at the top right under the CMS header bar, 24 from the header and from the right edge for the longest greeting (`size-space-s2-lg`), and MUST be draggable anywhere while the mascot and the tag stay inside the screen. The position is not remembered: a reload puts it back. Arrow keys move it 16 at a time (`size-space-s2-sm`) for people who can't drag (WCAG 2.5.7). It is one button named "น้องเนเน่ ผู้ช่วย AI ลากหรือกดลูกศรเพื่อย้ายตำแหน่ง", on `layer-floating` so it sits above the header and under a Modal
 - The mascot is a raster image from the design file (1024 x 1024), saved as a 160 x 160 PNG inside `assets/nation-ai.svg`, whose `width` and `height` set 80 because the system has no image size token
-- NEEDS CLARIFICATION: what a click does. The team has not agreed on the AI features (see `smart-one-cms-meet-1.md`), so the button does nothing yet
+- NEEDS CLARIFICATION: what a click does. The team has not agreed on the AI features, so the button does nothing yet
 
 ### CMS header bar
 - The CMS header bar MUST stick to the top, slide up out of view when the page scrolls down, and slide back when it scrolls up (set by the user 2026-11-12). It always shows while the page is within the header's height from the top. It uses `layer-sticky`, `motion-duration-default` with `motion-easing-enter` to show and `motion-easing-exit` to hide, and no slide with reduced motion. Built in `prototype/one-cms/useHideOnScroll.ts` so every page with the header uses the same behavior
@@ -98,7 +97,6 @@
 - No permission: a user whose role may not see the Dashboard or another reporter's statistics
 
 ## Files
-- `smart-one-cms-meet-1.md` Smart ONE CMS (Meet 1), summary of the 8 BU requirement sheet
 - `flows/` one file per flow
 - `pages/` one spec per page
 - `decisions/` one decision per file, such as `0001-<topic>.md`
