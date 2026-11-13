@@ -106,7 +106,7 @@ tokens/output/css + js             ← เอาไปใช้จริง
 |---|---|
 | Atoms (Identity) | [01 Color](01-color.md), [02 Icons](02-icons.md), [03 Typography](03-typography.md), [04 Grid](04-grid.md), [05 Effect](05-effect.md), [06 Shape](06-shape.md), [07 Space](07-space.md), [08 Logo](08-logo.md), [09 Third-party Logos](09-third-party-logos.md) |
 | Molecules (Element) | [10 Frame](10-frame.md), [11 Avatar](11-avatar.md), [12 Buttons](12-buttons.md), [13 Input](13-input.md), [14 Toggles](14-toggles.md), [15 Checkbox](15-checkbox.md), [16 Radio](16-radio.md), [17 Sliders](17-sliders.md), [18 Tabs](18-tabs.md), [19 Toasts & Banners](19-toasts-banners.md), [20 Tooltips](20-tooltips.md), [21 Tags](21-tags.md), [22 Badge](22-badge.md), [23 Progress Bars](23-progress-bars.md), [24 Pagination](24-pagination.md), [25 Card](25-card.md), [26 Dividers](26-dividers.md) |
-| Organisms (Component) | [27 Dropdowns](27-dropdowns.md), [28 Table](28-table.md), 29 Chart และ 30 Modal ยังไม่มีไฟล์ |
+| Organisms (Component) | [27 Dropdowns](27-dropdowns.md), [28 Table](28-table.md), [29 Chart](29-chart.md) และ 30 Modal ยังไม่มีไฟล์ |
 | ไม่มีไฟล์ | 00 Document ใช้ Page Documentation และ Component Previews ในไฟล์ออกแบบเองแทน (ดูหน้า `00 Document Documentation` ใน Figma) |
 
 > **เลื่อนเลขหน้าและย้ายชั้น 2026-10-28** ย้าย Dropdowns, Table, Chart และ Modal ขึ้นชั้น Organisms ตามที่ผู้ใช้ตัดสินให้โค้ดกับไฟล์ออกแบบจัดชั้นตรงกัน จึงเลื่อนเลข `25 Dropdowns` เป็น `27 Dropdowns`, `26 Table` เป็น `28 Table`, `27 Card` เป็น `25 Card`, `28 Dividers` เป็น `26 Dividers` ชื่อไฟล์เอกสารเปลี่ยนตาม

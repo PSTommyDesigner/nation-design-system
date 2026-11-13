@@ -1,7 +1,7 @@
 {
   "$note": "ลายนิ้วมือชื่อตัวแปรจากไฟล์ออกแบบ ใช้โดย scripts/verify-figma-sync.mjs · รีเฟรชด้วย agent ที่ต่อ Figma (ดูหัวไฟล์สคริปต์) · ช่อง all ถูกถอดออก 2026-10-15 เพราะไม่มีใครใช้และค้างบ่อย ตัวตรวจเทียบรายกลุ่มอยู่แล้ว",
   "fileKey": "QgmoT5Uuvv3elB96F4nsTq",
-  "capturedAt": "2026-10-26",
+  "capturedAt": "2026-11-13",
   "groups": {
     "component::avatar/group": "3:1y49d8r",
     "component::avatar/icon": "5:1h9c8bg",
@@ -265,7 +265,7 @@
     "component::circular-tag/padding": "20:1d8x7xs",
     "component::circular-tag/size": "5:k2p06l",
     "component::input/label-gap": "1:dk3tdt",
-    "component::chart/color": "8:oazep0",
+    "component::chart/color": "18:1b0s4np",
     "component::chart/radius": "2:1iby8tw",
     "component::chart/line-width": "1:1pr53gj",
     "component::chart/point-size": "1:nainsy",
@@ -275,7 +275,9 @@
     "component::modal/radius": "4:7c0f0v",
     "component::dropdown/panel-padding-x": "3:1ao86m5",
     "component::dropdown/row-padding-x": "3:uhkkap",
-    "component::mockup-media/icon-size": "5:ki3hb7"
+    "component::mockup-media/icon-size": "5:ki3hb7",
+    "component::chart/slice-gap": "1:d7sifh",
+    "component::chart/pie": "10:1f2vdq6"
   },
   "groupsValue": {
     "primitive::color/base": "60:9jlreo",
@@ -532,7 +534,7 @@
     "semantics@dark-mode::typography/font-weight": "48:1p8kp3",
     "semantics@dark-mode::typography/font-family": "48:yfutyd",
     "component::input/label-gap": "1:1pt4hm6",
-    "component::chart/color": "8:1q66n27",
+    "component::chart/color": "18:c0iqm5",
     "component::chart/radius": "2:6w3hhw",
     "component::chart/line-width": "1:1islq7g",
     "component::chart/point-size": "1:75aixz",
@@ -542,7 +544,9 @@
     "component::modal/radius": "4:1xg783z",
     "component::dropdown/panel-padding-x": "3:buni6o",
     "component::dropdown/row-padding-x": "3:15qdrdn",
-    "component::mockup-media/icon-size": "5:1lgf120"
+    "component::mockup-media/icon-size": "5:1lgf120",
+    "component::chart/slice-gap": "1:18gqeaq",
+    "component::chart/pie": "10:1xl3me1"
   },
   "$noteValue": "ลายนิ้วมือของ \"ค่า\" รายกลุ่ม เฉพาะ collection ที่มี mode เดียว คือ component กับ primitive ใช้ปิดช่องที่ด่านเทียบชื่ออย่างเดียวจับไม่ได้ เช่น ชื่อครบแต่ค่าผิด (เพิ่ม 2026-10-15)"
 }

@@ -55,6 +55,7 @@
 - [components/modal.dsds.yaml](components/modal.dsds.yaml): Modal (Figma modal)
 - [components/nation-house-icon.dsds.yaml](components/nation-house-icon.dsds.yaml): NationHouseIcon (Figma Nation House Icons)
 - [components/pagination.dsds.yaml](components/pagination.dsds.yaml): Pagination (Figma pagination, _pagination-number-button, _pagination-ellipsis)
+- [components/pie-chart.dsds.yaml](components/pie-chart.dsds.yaml): PieChart (Figma pie-chart, _pie-chart-legend-item)
 - [components/progress-bar.dsds.yaml](components/progress-bar.dsds.yaml): ProgressBar (Figma progress-bar)
 - [components/radio.dsds.yaml](components/radio.dsds.yaml): Radio (Figma radio, text-radio)
 - [components/radio-group.dsds.yaml](components/radio-group.dsds.yaml): RadioGroup (no Figma set, built in code)

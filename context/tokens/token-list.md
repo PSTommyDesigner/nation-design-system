@@ -454,7 +454,7 @@ Use these only inside that component's own code. Never on a screen and never on 
 | `--ntg-dropdown-*` | 47 |
 | `--ntg-divider-*` | 1 |
 | `--ntg-circular-tag-*` | 30 |
-| `--ntg-chart-*` | 12 |
+| `--ntg-chart-*` | 33 |
 | `--ntg-modal-*` | 11 |
 | `--ntg-mockup-media-*` | 5 |
 

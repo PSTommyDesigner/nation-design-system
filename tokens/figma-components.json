@@ -1195,6 +1195,44 @@
       },
       "notes": "bar-chart เป็น component เดี่ยว ไม่ใช่ชุด variant (node 11797:2) ชิ้นส่วนแท่ง _bar-chart-bar (11796:5) ขึ้นต้นด้วย _ จึงไม่เก็บ ชุดข้อมูล ป้ายแกน และ summary เป็นข้อมูลฝั่งโค้ด ไม่มีคู่ใน Figma"
     },
+    "PieChart": {
+      "figmaPage": "29 Chart",
+      "figmaSets": [
+        "pie-chart"
+      ],
+      "axes": {
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ]
+      },
+      "properties": [
+        "show-tooltip",
+        "show-legend",
+        "total",
+        "total-label"
+      ],
+      "map": {
+        "axes": {
+          "size": {
+            "prop": "size",
+            "type": "PieChartSize"
+          }
+        },
+        "properties": {
+          "show-legend": "showLegend",
+          "total": "total",
+          "total-label": "totalLabel"
+        }
+      },
+      "accepted": {
+        "show-tooltip": "ภาพตัวอย่างสถานะ hover ในไฟล์ออกแบบเท่านั้น ฝั่งโค้ดคำใบ้โผล่เองเมื่อชี้หรือโฟกัสชิ้น ไม่มี prop"
+      },
+      "notes": "ชุด pie-chart (node 12008:1686) แกน size 5 ขนาด ชิ้นส่วนแถวคำอธิบายสี _pie-chart-legend-item (12007:1482) ขึ้นต้นด้วย _ จึงไม่เก็บ ข้อมูล หมวด และ summary เป็นข้อมูลฝั่งโค้ด ไม่มีคู่ใน Figma เพิ่ม 2026-11-13"
+    },
     "Modal": {
       "figmaPage": "30 Modal",
       "figmaSets": [

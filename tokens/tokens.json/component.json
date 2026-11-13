@@ -11452,6 +11452,56 @@
         "$type": "color",
         "$value": "{color.background.secondary.default}",
         "$description": "แถบพื้นหลังของหมวดที่ชี้หรือโฟกัสอยู่ (เช่นหนึ่งวัน) วางใต้แท่งและเส้น"
+      },
+      "category-1": {
+        "$type": "color",
+        "$value": "{color.foreground.brand.primary}",
+        "$description": "สีหมวดลำดับที่ 1 ของกราฟวงกลม (ชิ้นที่ 1 นับจาก 12 นาฬิกาตามเข็ม) สีเดียวกับ series-1 brand 600 โหมดมืด brand 500 บนขาว contrast 5.63:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md"
+      },
+      "category-2": {
+        "$type": "color",
+        "$value": "{color.utility.u-orange-600}",
+        "$description": "สีหมวดลำดับที่ 2 ของกราฟวงกลม (ชิ้นที่ 2 นับจาก 12 นาฬิกาตามเข็ม) orange 600 โหมดมืด orange 400 บนขาว contrast 3.49:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md"
+      },
+      "category-3": {
+        "$type": "color",
+        "$value": "{color.utility.u-cyan-700}",
+        "$description": "สีหมวดลำดับที่ 3 ของกราฟวงกลม (ชิ้นที่ 3 นับจาก 12 นาฬิกาตามเข็ม) cyan 700 โหมดมืด cyan 300 บนขาว contrast 5.57:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md"
+      },
+      "category-4": {
+        "$type": "color",
+        "$value": "{color.utility.u-pink-600}",
+        "$description": "สีหมวดลำดับที่ 4 ของกราฟวงกลม (ชิ้นที่ 4 นับจาก 12 นาฬิกาตามเข็ม) pink 600 โหมดมืด pink 400 บนขาว contrast 4.43:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md"
+      },
+      "category-5": {
+        "$type": "color",
+        "$value": "{color.utility.u-brown-700}",
+        "$description": "สีหมวดลำดับที่ 5 ของกราฟวงกลม (ชิ้นที่ 5 นับจาก 12 นาฬิกาตามเข็ม) brown 700 โหมดมืด brown 300 บนขาว contrast 11.09:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md"
+      },
+      "category-6": {
+        "$type": "color",
+        "$value": "{color.utility.u-yellow-700}",
+        "$description": "สีหมวดลำดับที่ 6 ของกราฟวงกลม (ชิ้นที่ 6 นับจาก 12 นาฬิกาตามเข็ม) yellow 700 โหมดมืด yellow 300 บนขาว contrast 5.19:1 ใช้เมื่อตั้ง maxSlices เกิน 5 สี 6 ถึง 8 แยกด้วยตาบอดสียากกว่า ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md"
+      },
+      "category-7": {
+        "$type": "color",
+        "$value": "{color.utility.u-fuchsia-700}",
+        "$description": "สีหมวดลำดับที่ 7 ของกราฟวงกลม (ชิ้นที่ 7 นับจาก 12 นาฬิกาตามเข็ม) fuchsia 700 โหมดมืด fuchsia 300 บนขาว contrast 6.45:1 ใช้เมื่อตั้ง maxSlices เกิน 5 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md"
+      },
+      "category-8": {
+        "$type": "color",
+        "$value": "{color.utility.u-green-600}",
+        "$description": "สีหมวดลำดับที่ 8 ของกราฟวงกลม (ชิ้นที่ 8 นับจาก 12 นาฬิกาตามเข็ม) green 600 โหมดมืด green 400 บนขาว contrast 3.73:1 ใช้เมื่อตั้ง maxSlices เกิน 5 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md"
+      },
+      "category-other": {
+        "$type": "color",
+        "$value": "{color.utility.u-gray-500}",
+        "$description": "ชิ้น \"อื่น ๆ\" ของกราฟวงกลม รวมหมวดที่ไม่ได้แสดงชื่อ อยู่ท้ายวงเสมอ gray 500 บนขาว contrast 4.97:1"
+      },
+      "dim": {
+        "$type": "color",
+        "$value": "{color.alpha.default.white-70}",
+        "$description": "สีทับโปร่งบนชิ้นที่ไม่ได้ชี้หรือโฟกัสของกราฟวงกลม ให้ชิ้นนั้นจางลงเหลือสีราว 30% โหมดมืดเป็นเทาโปร่งเอง ใช้แทน token ความโปร่งเพราะระบบไม่มีหมวด opacity (ผู้ใช้เลือก 2026-11-13)"
       }
     },
     "radius": {
@@ -11473,6 +11523,67 @@
       "$type": "dimension",
       "$value": "8px",
       "$description": "ความกว้างจุดบนเส้น 8px วงกลม พื้น chart/color/point-fill ขอบ chart/color/line ใหญ่กว่าเส้นอย่างน้อยเท่าตัวและไม่เกินความกว้างแท่ง 12"
+    },
+    "slice-gap": {
+      "$type": "dimension",
+      "$value": "{size.space.s1.xs}",
+      "$description": "ช่องคั่นระหว่างชิ้นของกราฟวงกลม 2px เป็นสีพื้น ต้องมีเพราะสีหมวดที่วางติดกันต่างกันไม่ถึง 3:1 ที่มา docs/research/pie-chart.md"
+    },
+    "pie": {
+      "diameter": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "96px",
+          "$description": "เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด xs เท่ากับ 96px สูตร base 96 step 32"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "128px",
+          "$description": "เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด sm เท่ากับ 128px สูตร base 96 step 32"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "160px",
+          "$description": "เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด md เท่ากับ 160px สูตร base 96 step 32"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "192px",
+          "$description": "เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด lg เท่ากับ 192px สูตร base 96 step 32"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "224px",
+          "$description": "เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด xl เท่ากับ 224px สูตร base 96 step 32"
+        }
+      },
+      "thickness": {
+        "xs": {
+          "$type": "dimension",
+          "$value": "16px",
+          "$description": "ความหนาวงโดนัทขนาด xs เท่ากับ 16px (33% ของรัศมี) สูตร base 16 step 2"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "18px",
+          "$description": "ความหนาวงโดนัทขนาด sm เท่ากับ 18px (28% ของรัศมี) สูตร base 16 step 2"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "20px",
+          "$description": "ความหนาวงโดนัทขนาด md เท่ากับ 20px (25% ของรัศมี) สูตร base 16 step 2"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "22px",
+          "$description": "ความหนาวงโดนัทขนาด lg เท่ากับ 22px (23% ของรัศมี) สูตร base 16 step 2"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "24px",
+          "$description": "ความหนาวงโดนัทขนาด xl เท่ากับ 24px (21% ของรัศมี) สูตร base 16 step 2"
+        }
+      }
     }
   },
   "modal": {

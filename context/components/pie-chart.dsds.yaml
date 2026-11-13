@@ -1,0 +1,262 @@
+# PieChart in DSDS 0.23 format https://designsystemdocspec.org
+# Facts come from components/PieChart/ (PieChart.tsx, PieChart.module.css, README.md, PieChart.stories.tsx),
+# docs/research/pie-chart.md section 10.1, tokens/scale/chart.mjs
+# and the Figma page 29 Chart (pie-chart 12008:1686, _pie-chart-legend-item 12007:1482, read 2026-11-13)
+# Levels go in this order: must, should, may, should-not, must-not
+# The first value of every enum trait is its default
+
+kind: component
+id: pie-chart
+name: PieChart
+description: >-
+  A donut chart with the total in the middle and a legend below, one slice per category, starting at 12 o'clock and
+  going clockwise. It names up to maxSlices categories and folds the rest into one gray slice at the end. Hovering or
+  focusing a slice keeps its color full, dims the other slices and shows a tooltip with the full number and share, and a
+  button swaps the chart for a data table. It matches the Figma component pie-chart on page 29 Chart, first used on the
+  One CMS dashboard. It exists so every dashboard draws shares of a whole with the same colors, gaps and legend, and
+  gives screen readers the same summary and data table.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-11-13}
+  tags: [data-display, chart]
+  status: {status: beta}
+  aliases: [pie-chart, donut chart, _pie-chart-legend-item]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: >-
+          Use to show how one whole splits into a few categories, such as the share of news per section.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use to compare values across time or across many categories. Use a bar chart instead.
+        alternatives:
+          - to: bar-chart
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Use for a single value against a ceiling, such as sales against target. Use a progress component instead.
+        alternatives:
+          - to: circular-progress-bar
+          - to: semi-circular-progress-bar
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Always pass summary, one sentence that states what the chart shows and its main finding.
+          It becomes the name of the figure (a visually hidden figcaption) and the caption of both data tables.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          IF two donuts sit side by side to be compared THEN pass the same categories list to both, so they name the
+          same categories in the same order with the same colors and fold the same rest into the other slice.
+          Where the list comes from is a project rule.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Pass unit, such as ข่าว or ครั้ง, and totalLabel, such as ข่าวทั้งหมด. The tooltip, the name of each slice and
+          the table header are built from unit.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Keep maxSlices at 5. Colors 6 to 8 are harder to tell apart for people with color vision deficiency.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Set color on a datum unless a project rule ties a category to a color. The default order keeps neighboring
+          colors apart; picked colors can end up next to a similar one. Check the result by eye.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Place the chart on a background other than --ntg-color-background-general-primary. The slice gaps and the
+          hole are drawn in that color.
+        checkedBy: manual
+      - level: must-not
+        statement: >-
+          Change slice colors, sizes, spacing or text with className or style. They come from the chart, space and
+          typography tokens.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    title: Accessibility
+    tags: [accessibility]
+    items:
+      - refs:
+          - to: shared-a11y#text-contrast
+            rel: same-as
+      - refs:
+          - to: shared-a11y#color-not-only
+            rel: same-as
+      - level: must
+        statement: >-
+          Keep the hidden data table while the chart shows. It lists every category, including the ones folded into the
+          other slice, with full numbers and shares. When the table toggle is on, the visible Table replaces it.
+        evidence:
+          - href: https://www.w3.org/WAI/tutorials/images/complex/
+            role: W3C WAI Complex Images tutorial
+        checkedBy: manual
+      - level: must
+        statement: >-
+          The donut is a role group with a single tab stop (roving tabindex) across the slices. Right and Down arrows move
+          to the next slice, Left and Up to the previous, Home and End jump to the first and last, and Escape hides the
+          tooltip. Each slice has role img and a name with the full data, such as เศรษฐกิจ 372 ข่าว 30%, so the Tooltip
+          uses relationship inaccessible and is not read twice.
+        evidence:
+          - href: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
+            role: WAI-ARIA APG roving tabindex
+        checkedBy: manual
+      - level: must
+        statement: >-
+          A slice focused from the keyboard shows the focus ring --ntg-focused-ring-brand around the donut and dims the
+          other slices, so focus is always visible.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
+            role: WCAG 2.2 SC 2.4.7 (AA)
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Keep the slice gap --ntg-chart-slice-gap. Neighboring category colors differ by less than 3 to 1, and the gap
+          in the background color separates them.
+        evidence:
+          - href: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html
+            role: WCAG 2.2 SC 1.4.11 (AA)
+        checkedBy: manual
+      - level: may
+        statement: >-
+          Exception to the Tooltip spec, which says not to put needed information in a tooltip because touch screens
+          never show it. The numbers in this tooltip are also in the legend, in the table behind the toggle button and
+          in the hidden table, so the tooltip is a shortcut, not the only way to the data.
+        checkedBy: manual
+        refs:
+          - to: tooltip
+            rel: relates-to
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: >-
+          IF the data is a share of a whole with a few categories THEN use PieChart ELSE IF it compares values across
+          days or many items THEN use BarChart.
+        checkedBy: assisted
+      - level: must
+        statement: >-
+          IF a datum needs a color THEN pass a number 1 to 8 or other. Never pass a raw color.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Root
+        definition: >-
+          A figure, as wide as its content, named by a visually hidden figcaption with summary. Inside, the donut, the
+          legend and the table toggle in a column with a gap of --ntg-size-space-s2-sm (16), aligned to the start.
+          Beside it is the hidden data table.
+      - term: Donut
+        definition: >-
+          A square --ntg-chart-pie-diameter-<size> wide (96, 128, 160, 192, 224). Slices are SVG paths computed in code
+          in a relative viewBox, starting at 12 o'clock and going clockwise, with square ends. Each slice has a center
+          stroke in --ntg-color-background-general-primary, --ntg-chart-slice-gap (2) wide, as in Figma, so neighbors
+          are 2 apart and the ring looks 1 thinner on each edge. A disc in the background color covers the middle; it is
+          --ntg-chart-pie-diameter-<size> minus twice --ntg-chart-pie-thickness-<size> (16 to 24) plus the gap wide.
+          Figma axis size, prop size, default md.
+      - term: Slice colors
+        definition: >-
+          Slice n uses --ntg-chart-color-category-n from 1 to 8 and wraps after 8. The other slice uses
+          --ntg-chart-color-category-other and is always last. A datum may set color to 1 to 8 or other.
+      - term: Slices and the other slice
+        definition: >-
+          Without categories, slices are sorted from largest to smallest. Up to maxSlices plus 1 categories all show;
+          with more, the first maxSlices show and the rest fold into one slice named otherLabel (default อื่น ๆ).
+          With categories, only the listed categories are named, in list order, and every other category folds into
+          the other slice. Categories with a value of 0 have no slice.
+      - term: Total
+        definition: >-
+          In the hole, the total (the sum of data, or the total prop) in the typography preset title-<size> matching the
+          donut size, color --ntg-color-text-general-heading, and under it totalLabel in meta/caption, color
+          --ntg-chart-color-axis-text. Figma properties total and total-label.
+      - term: Legend
+        definition: >-
+          Below the donut, one row per slice with a gap of --ntg-size-space-s1-lg (8) between rows. A row is a dot
+          --ntg-size-space-s2-xs (12) in the slice color, the category name in --ntg-chart-color-axis-text and the share
+          in --ntg-color-text-general-heading, gap --ntg-size-space-s1-lg (8), text preset meta/caption. Hovering a row
+          highlights its slice. Figma component _pie-chart-legend-item, property show-legend.
+      - term: Highlight and tooltip
+        definition: >-
+          Hovering or focusing a slice keeps its color full and draws --ntg-chart-color-dim over every other slice. The
+          chart has one Tooltip size sm at the outer edge of the slice's middle angle, pointing away from the donut (top,
+          right, bottom or left). Title is the category; description is the full number with unit and the share, and for
+          the other slice the list of categories it holds. It opens and closes at once with no delay. There is no click
+          action in this round. Figma property show-tooltip is a design-only preview of this state and has no prop.
+      - term: Table toggle
+        definition: >-
+          A Button family neutral, hierarchy secondary, size sm, with aria-pressed, labelled ดูเป็นตาราง or ดูเป็นกราฟ,
+          below the legend. On, the donut and legend are replaced by a Table with categoryLabel (default หมวด) as the row
+          header column, a number column valueLabel (default จำนวน) with the unit in brackets, and a share column.
+          Prop showTableToggle, default true.
+      - term: Data table
+        definition: >-
+          A real table, visually hidden, with summary as its caption and every category with its full number and share.
+          Rendered while the chart shows.
+
+alternatives:
+  - to: bar-chart
+  - to: table
+
+refs:
+  - href: ../../components/PieChart/PieChart.tsx
+    rel: source
+    role: Import PieChart from components/PieChart
+  - href: ../../components/PieChart/README.md
+    rel: relates-to
+    role: Thai README with the props table
+  - href: ../../components/PieChart/PieChart.stories.tsx
+    rel: demo
+    role: Storybook stories (npm run storybook)
+  - href: ../../docs/research/pie-chart.md
+    rel: relates-to
+    role: Research on the pie chart with the decisions in section 10.1
+  - href: https://www.figma.com/design/QgmoT5Uuvv3elB96F4nsTq/Nation-Design-System?node-id=12008-1686
+    rel: design
+    role: Figma pie-chart on page 29 Chart
+
+traits:
+  - traitType: variant
+    kind: enum
+    id: size
+    description: Donut size. Figma axis size.
+    values:
+      - id: md
+        description: Default. Diameter 160, ring 20, total in title-md.
+      - id: xs
+        description: Diameter 96, ring 16, total in title-xs. For a small card.
+      - id: sm
+        description: Diameter 128, ring 18, total in title-sm.
+      - id: lg
+        description: Diameter 192, ring 22, total in title-lg.
+      - id: xl
+        description: Diameter 224, ring 24, total in title-xl. For a chart that is the main content of a card.
+  - traitType: variant
+    kind: boolean
+    id: showLegend
+    description: Shows the legend below the donut. Figma property show-legend. Default true.
+  - traitType: variant
+    kind: boolean
+    id: showTableToggle
+    description: >-
+      Shows the ดูเป็นตาราง button that swaps the chart for a visible Table. No Figma property. Default true.
+
+$extensions:
+  com.nationgroup:
+    figmaPage: "29 Chart"
+    figmaSets: [pie-chart]

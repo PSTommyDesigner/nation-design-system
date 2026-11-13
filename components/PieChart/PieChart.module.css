@@ -1,0 +1,225 @@
+/*
+ * PieChart (Nation Design System)
+ *
+ * ไฟล์นี้เขียนมือ ไม่ได้สร้างจาก scripts/generate-component-css.mjs เหมือน BarChart
+ *   ตัวสร้างต้องมี spec ชั้นจากไฟล์ออกแบบที่ tokens/figma-layers/<id>.json ซึ่งกราฟยังไม่มี
+ *
+ * ที่มาของค่า ไฟล์ออกแบบหน้า 29 Chart (pie-chart 12008:1686, _pie-chart-legend-item 12007:1482)
+ *   ขนาดวง       --ntg-chart-pie-diameter-<size> กับ --ntg-chart-pie-thickness-<size>
+ *   ช่องคั่นชิ้น   --ntg-chart-slice-gap (2) สี --ntg-color-background-general-primary
+ *   สีชิ้น        --ntg-chart-color-category-1 ถึง 8 กับ --ntg-chart-color-category-other
+ *   ชั้นทับชิ้นจาง --ntg-chart-color-dim
+ *   ระยะห่าง     --ntg-size-space-* (16 ระหว่างวงกับคำอธิบายสี, 8 ระหว่างแถว และระหว่างจุดกับข้อความ,
+ *                12 ขนาดจุดสี)
+ *   ตัวอักษร     ยอดรวม preset title/<size> สี --ntg-color-text-general-heading
+ *                ป้ายยอดรวมและคำอธิบายสี preset meta/caption ชื่อหมวดสี --ntg-chart-color-axis-text ค่า % สี heading
+ *                เขียนผ่านตัวแปรของ preset แทนคลาส .ntg-typography-* เหมือน BarChart
+ *                เพราะไลบรารีไม่บังคับให้โปรเจกต์โหลด typography.css ค่าทั้งสองทางเท่ากัน
+ *   วงแหวนโฟกัส   effect style --ntg-focused-ring-brand รอบวงโดนัทเมื่อชิ้นได้โฟกัสจากคีย์บอร์ด
+ *
+ * ค่าที่ไม่ใช่ token โดยตั้งใจ
+ *   50%          ทำวงกลม (มุมโค้งของวง รู และจุดสี) และหาจุดกลาง เป็นสัดส่วน ไม่ใช่ขนาด
+ *   2            ความหนาวงสองข้างใน calc ของขนาดรู เป็นตัวคูณ ไม่ใช่ขนาด
+ *   0            ตัดขอบเริ่มต้นของ figure กับ ul
+ *   1px          รูปแบบ visually-hidden มาตรฐานของตารางที่ซ่อน (เหมือน BarChart)
+ *   left, top ของคำใบ้  มาจากมุมของชิ้น (ข้อมูล) ตั้งเป็น inline style ใน PieChart.tsx
+ *
+ * ชั้นในวง (ล่างขึ้นบน) ลิ่มของชิ้นกับชั้นทับจาง, รูกลางวง, จุดวางคำใบ้
+ */
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ntg-size-space-s2-sm);
+  margin: 0;
+  min-width: 0;
+}
+
+/* ── ขนาด: เส้นผ่านศูนย์กลาง ความหนาวง และ preset ตัวเลขกลางวง ── */
+.xs {
+  --pc-d: var(--ntg-chart-pie-diameter-xs);
+  --pc-t: var(--ntg-chart-pie-thickness-xs);
+  --pc-font-family: var(--ntg-typography-font-family-title-xs);
+  --pc-font-size: var(--ntg-typography-font-size-title-xs);
+  --pc-font-weight: var(--ntg-typography-font-weight-title-xs);
+  --pc-line-height: var(--ntg-typography-line-height-title-xs);
+  --pc-letter-space: var(--ntg-typography-letter-space-title-xs);
+}
+.sm {
+  --pc-d: var(--ntg-chart-pie-diameter-sm);
+  --pc-t: var(--ntg-chart-pie-thickness-sm);
+  --pc-font-family: var(--ntg-typography-font-family-title-sm);
+  --pc-font-size: var(--ntg-typography-font-size-title-sm);
+  --pc-font-weight: var(--ntg-typography-font-weight-title-sm);
+  --pc-line-height: var(--ntg-typography-line-height-title-sm);
+  --pc-letter-space: var(--ntg-typography-letter-space-title-sm);
+}
+.md {
+  --pc-d: var(--ntg-chart-pie-diameter-md);
+  --pc-t: var(--ntg-chart-pie-thickness-md);
+  --pc-font-family: var(--ntg-typography-font-family-title-md);
+  --pc-font-size: var(--ntg-typography-font-size-title-md);
+  --pc-font-weight: var(--ntg-typography-font-weight-title-md);
+  --pc-line-height: var(--ntg-typography-line-height-title-md);
+  --pc-letter-space: var(--ntg-typography-letter-space-title-md);
+}
+.lg {
+  --pc-d: var(--ntg-chart-pie-diameter-lg);
+  --pc-t: var(--ntg-chart-pie-thickness-lg);
+  --pc-font-family: var(--ntg-typography-font-family-title-lg);
+  --pc-font-size: var(--ntg-typography-font-size-title-lg);
+  --pc-font-weight: var(--ntg-typography-font-weight-title-lg);
+  --pc-line-height: var(--ntg-typography-line-height-title-lg);
+  --pc-letter-space: var(--ntg-typography-letter-space-title-lg);
+}
+.xl {
+  --pc-d: var(--ntg-chart-pie-diameter-xl);
+  --pc-t: var(--ntg-chart-pie-thickness-xl);
+  --pc-font-family: var(--ntg-typography-font-family-title-xl);
+  --pc-font-size: var(--ntg-typography-font-size-title-xl);
+  --pc-font-weight: var(--ntg-typography-font-weight-title-xl);
+  --pc-line-height: var(--ntg-typography-line-height-title-xl);
+  --pc-letter-space: var(--ntg-typography-letter-space-title-xl);
+}
+
+/* ── สีหมวด ตั้งที่ g ของชิ้นและที่แถวคำอธิบายสี ── */
+.c1 { --pc-color: var(--ntg-chart-color-category-1); }
+.c2 { --pc-color: var(--ntg-chart-color-category-2); }
+.c3 { --pc-color: var(--ntg-chart-color-category-3); }
+.c4 { --pc-color: var(--ntg-chart-color-category-4); }
+.c5 { --pc-color: var(--ntg-chart-color-category-5); }
+.c6 { --pc-color: var(--ntg-chart-color-category-6); }
+.c7 { --pc-color: var(--ntg-chart-color-category-7); }
+.c8 { --pc-color: var(--ntg-chart-color-category-8); }
+.cOther { --pc-color: var(--ntg-chart-color-category-other); }
+
+/* ── วงโดนัท ── */
+.donut {
+  position: relative;
+  flex: none;
+  width: var(--pc-d);
+  height: var(--pc-d);
+  border-radius: 50%;
+}
+/* ชิ้นได้โฟกัสจากคีย์บอร์ด วงแหวนโฟกัสรอบวง ชิ้นที่โฟกัสสีเต็ม ชิ้นอื่นจาง */
+.donut.focused { box-shadow: var(--ntg-focused-ring-brand); }
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ลิ่มของชิ้น ขอบกลางเส้นสีพื้นคือช่องคั่น ความหนาเป็นพิกเซลจริงด้วย non-scaling-stroke */
+.slice,
+.dim {
+  stroke: var(--ntg-color-background-general-primary);
+  stroke-width: var(--ntg-chart-slice-gap);
+  stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
+}
+.slice {
+  fill: var(--pc-color);
+  outline: none;
+}
+/* ชั้นทับของชิ้นที่ไม่ได้เน้น วาดขอบสีพื้นซ้ำ ช่องคั่นจึงไม่ถูกสีจางทับ */
+.dim {
+  fill: var(--ntg-chart-color-dim);
+  pointer-events: none;
+}
+/* ไม่มีข้อมูล (ผลรวม 0) วาดวงว่างสีเส้นกริดของกราฟ */
+.empty { fill: var(--ntg-chart-color-grid); }
+
+/*
+ * รูกลางวง กว้างเท่าเส้นผ่านศูนย์กลางลบความหนาวงสองข้าง บวกช่องคั่นอีกหนึ่ง
+ * เพื่อกินขอบในของวง 1 ให้เท่ากับขอบนอกที่ขอบของชิ้นทับเข้ามา 1 (ไฟล์ออกแบบวาดขอบกลางเส้นรอบชิ้น)
+ */
+.hole {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--pc-d) - 2 * var(--pc-t) + var(--ntg-chart-slice-gap));
+  height: calc(var(--pc-d) - 2 * var(--pc-t) + var(--ntg-chart-slice-gap));
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: var(--ntg-color-background-general-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.total {
+  font-family: var(--pc-font-family);
+  font-size: var(--pc-font-size);
+  font-weight: var(--pc-font-weight);
+  line-height: var(--pc-line-height);
+  letter-spacing: var(--pc-letter-space);
+  color: var(--ntg-color-text-general-heading);
+}
+
+/* ป้ายยอดรวมกับคำอธิบายสีใช้ preset meta/caption */
+.totalLabel,
+.legend {
+  font-family: var(--ntg-typography-font-family-caption);
+  font-size: var(--ntg-typography-font-size-caption);
+  font-weight: var(--ntg-typography-font-weight-caption);
+  line-height: var(--ntg-typography-line-height-caption);
+  letter-spacing: var(--ntg-typography-letter-space-caption);
+  color: var(--ntg-chart-color-axis-text);
+}
+
+/* จุดวางคำใบ้ที่ขอบนอกตรงมุมกลางของชิ้น ไม่รับตัวชี้ จึงไม่แย่ง hover ของชิ้น */
+.tipSpot {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.tipSpot > .tipWrap {
+  position: absolute;
+  inset: 0;
+}
+.tipAnchor {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── คำอธิบายสี แถวละหมวด ── */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ntg-size-space-s1-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--ntg-size-space-s1-lg);
+}
+.dot {
+  flex: none;
+  width: var(--ntg-size-space-s2-xs);
+  height: var(--ntg-size-space-s2-xs);
+  border-radius: 50%;
+  background-color: var(--pc-color);
+}
+.legendValue { color: var(--ntg-color-text-general-heading); }
+
+/* ตารางสำหรับโปรแกรมอ่านหน้าจอ ซ่อนจากสายตาแต่ยังอยู่ใน accessibility tree (รูปแบบ visually-hidden มาตรฐาน) */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

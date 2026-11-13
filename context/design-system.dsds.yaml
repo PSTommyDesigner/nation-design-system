@@ -175,6 +175,9 @@ refs:
   - href: ./components/pagination.dsds.yaml
     rel: file
     role: Pagination
+  - href: ./components/pie-chart.dsds.yaml
+    rel: file
+    role: PieChart
   - href: ./components/progress-bar.dsds.yaml
     rel: file
     role: ProgressBar

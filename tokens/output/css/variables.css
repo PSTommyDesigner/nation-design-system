@@ -2368,6 +2368,16 @@
   --ntg-chart-radius-top-right: 2px;
   --ntg-chart-line-width: 2px; /** ความหนาเส้นของชุดข้อมูลแบบเส้น 2px คงที่ เพราะกราฟไม่มีหลายขนาด */
   --ntg-chart-point-size: 8px; /** ความกว้างจุดบนเส้น 8px วงกลม พื้น chart/color/point-fill ขอบ chart/color/line ใหญ่กว่าเส้นอย่างน้อยเท่าตัวและไม่เกินความกว้างแท่ง 12 */
+  --ntg-chart-pie-diameter-xs: 96px; /** เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด xs เท่ากับ 96px สูตร base 96 step 32 */
+  --ntg-chart-pie-diameter-sm: 128px; /** เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด sm เท่ากับ 128px สูตร base 96 step 32 */
+  --ntg-chart-pie-diameter-md: 160px; /** เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด md เท่ากับ 160px สูตร base 96 step 32 */
+  --ntg-chart-pie-diameter-lg: 192px; /** เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด lg เท่ากับ 192px สูตร base 96 step 32 */
+  --ntg-chart-pie-diameter-xl: 224px; /** เส้นผ่านศูนย์กลางวงโดนัทของกราฟวงกลมขนาด xl เท่ากับ 224px สูตร base 96 step 32 */
+  --ntg-chart-pie-thickness-xs: 16px; /** ความหนาวงโดนัทขนาด xs เท่ากับ 16px (33% ของรัศมี) สูตร base 16 step 2 */
+  --ntg-chart-pie-thickness-sm: 18px; /** ความหนาวงโดนัทขนาด sm เท่ากับ 18px (28% ของรัศมี) สูตร base 16 step 2 */
+  --ntg-chart-pie-thickness-md: 20px; /** ความหนาวงโดนัทขนาด md เท่ากับ 20px (25% ของรัศมี) สูตร base 16 step 2 */
+  --ntg-chart-pie-thickness-lg: 22px; /** ความหนาวงโดนัทขนาด lg เท่ากับ 22px (23% ของรัศมี) สูตร base 16 step 2 */
+  --ntg-chart-pie-thickness-xl: 24px; /** ความหนาวงโดนัทขนาด xl เท่ากับ 24px (21% ของรัศมี) สูตร base 16 step 2 */
   --ntg-modal-width-sm: 392px; /** ความกว้างกล่องโต้ตอบขนาด sm เท่ากับ 392px คือ 4 คอลัมน์ของกริด v2022 เดสก์ท็อป ยืนยันหรือแจ้งเรื่องเดียว มีข้อความสั้นกับปุ่มไม่เกินสองปุ่ม บนจอที่แคบกว่านี้กล่องกว้างเต็มจอลบขอบข้างละ 16 */
   --ntg-modal-width-md: 600px; /** ความกว้างกล่องโต้ตอบขนาด md เท่ากับ 600px คือ 6 คอลัมน์ของกริด v2022 เดสก์ท็อป ค่าเริ่มต้น ฟอร์มสั้นหรือรายละเอียดของรายการเดียว เช่นรายละเอียดข่าว บนจอที่แคบกว่านี้กล่องกว้างเต็มจอลบขอบข้างละ 16 */
   --ntg-modal-width-lg: 808px; /** ความกว้างกล่องโต้ตอบขนาด lg เท่ากับ 808px คือ 8 คอลัมน์ของกริด v2022 เดสก์ท็อป เนื้อหาที่มีแท็บหรือรายการหลายชิ้น เช่นรายการข่าวของนักข่าวหนึ่งคน บนจอที่แคบกว่านี้กล่องกว้างเต็มจอลบขอบข้างละ 16 */
@@ -3266,6 +3276,7 @@
   --ntg-icon-button-icon-md: var(--ntg-button-icon-md);
   --ntg-icon-button-icon-lg: var(--ntg-button-icon-lg);
   --ntg-icon-button-icon-xl: var(--ntg-button-icon-xl);
+  --ntg-chart-slice-gap: var(--ntg-size-space-s1-xs); /** ช่องคั่นระหว่างชิ้นของกราฟวงกลม 2px เป็นสีพื้น ต้องมีเพราะสีหมวดที่วางติดกันต่างกันไม่ถึง 3:1 ที่มา docs/research/pie-chart.md */
   --ntg-device-desktop-root-font-size: var(--ntg-typography-font-size-text-md); /** ขนาดตัวอักษรฐานของจอนี้ ของจอ desktop */
   --ntg-device-tablet-root-font-size: var(--ntg-typography-font-size-text-md); /** ขนาดตัวอักษรฐานของจอนี้ ของจอ tablet */
   --ntg-device-mobile-root-font-size: var(--ntg-typography-font-size-text-md); /** ขนาดตัวอักษรฐานของจอนี้ ของจอ mobile */
@@ -3787,6 +3798,16 @@
   --ntg-chart-color-line: var(--ntg-color-utility-u-orange-600); /** เส้นและขอบจุดของชุดข้อมูลแบบเส้น สีส้มให้แยกจากแท่งสีน้ำเงิน บนพื้นขาว contrast 3.49:1 โหมดมืด 10.25:1 */
   --ntg-chart-color-point-fill: var(--ntg-color-background-primary-default); /** พื้นของจุดบนเส้น สีเดียวกับพื้นหน้า จุดจึงเป็นวงกลมกลวงขอบสีเส้น */
   --ntg-chart-color-hover: var(--ntg-color-background-secondary-default); /** แถบพื้นหลังของหมวดที่ชี้หรือโฟกัสอยู่ (เช่นหนึ่งวัน) วางใต้แท่งและเส้น */
+  --ntg-chart-color-category-1: var(--ntg-color-foreground-brand-primary); /** สีหมวดลำดับที่ 1 ของกราฟวงกลม (ชิ้นที่ 1 นับจาก 12 นาฬิกาตามเข็ม) สีเดียวกับ series-1 brand 600 โหมดมืด brand 500 บนขาว contrast 5.63:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md */
+  --ntg-chart-color-category-2: var(--ntg-color-utility-u-orange-600); /** สีหมวดลำดับที่ 2 ของกราฟวงกลม (ชิ้นที่ 2 นับจาก 12 นาฬิกาตามเข็ม) orange 600 โหมดมืด orange 400 บนขาว contrast 3.49:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md */
+  --ntg-chart-color-category-3: var(--ntg-color-utility-u-cyan-700); /** สีหมวดลำดับที่ 3 ของกราฟวงกลม (ชิ้นที่ 3 นับจาก 12 นาฬิกาตามเข็ม) cyan 700 โหมดมืด cyan 300 บนขาว contrast 5.57:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md */
+  --ntg-chart-color-category-4: var(--ntg-color-utility-u-pink-600); /** สีหมวดลำดับที่ 4 ของกราฟวงกลม (ชิ้นที่ 4 นับจาก 12 นาฬิกาตามเข็ม) pink 600 โหมดมืด pink 400 บนขาว contrast 4.43:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md */
+  --ntg-chart-color-category-5: var(--ntg-color-utility-u-brown-700); /** สีหมวดลำดับที่ 5 ของกราฟวงกลม (ชิ้นที่ 5 นับจาก 12 นาฬิกาตามเข็ม) brown 700 โหมดมืด brown 300 บนขาว contrast 11.09:1 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md */
+  --ntg-chart-color-category-6: var(--ntg-color-utility-u-yellow-700); /** สีหมวดลำดับที่ 6 ของกราฟวงกลม (ชิ้นที่ 6 นับจาก 12 นาฬิกาตามเข็ม) yellow 700 โหมดมืด yellow 300 บนขาว contrast 5.19:1 ใช้เมื่อตั้ง maxSlices เกิน 5 สี 6 ถึง 8 แยกด้วยตาบอดสียากกว่า ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md */
+  --ntg-chart-color-category-7: var(--ntg-color-utility-u-fuchsia-700); /** สีหมวดลำดับที่ 7 ของกราฟวงกลม (ชิ้นที่ 7 นับจาก 12 นาฬิกาตามเข็ม) fuchsia 700 โหมดมืด fuchsia 300 บนขาว contrast 6.45:1 ใช้เมื่อตั้ง maxSlices เกิน 5 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md */
+  --ntg-chart-color-category-8: var(--ntg-color-utility-u-green-600); /** สีหมวดลำดับที่ 8 ของกราฟวงกลม (ชิ้นที่ 8 นับจาก 12 นาฬิกาตามเข็ม) green 600 โหมดมืด green 400 บนขาว contrast 3.73:1 ใช้เมื่อตั้ง maxSlices เกิน 5 ทุกสีผ่าน 3:1 บนพื้นขาวและพื้นมืดจึงไม่ต้องมีขอบ ที่มา docs/research/pie-chart.md */
+  --ntg-chart-color-category-other: var(--ntg-color-utility-u-gray-500); /** ชิ้น "อื่น ๆ" ของกราฟวงกลม รวมหมวดที่ไม่ได้แสดงชื่อ อยู่ท้ายวงเสมอ gray 500 บนขาว contrast 4.97:1 */
+  --ntg-chart-color-dim: var(--ntg-color-alpha-default-white-70); /** สีทับโปร่งบนชิ้นที่ไม่ได้ชี้หรือโฟกัสของกราฟวงกลม ให้ชิ้นนั้นจางลงเหลือสีราว 30% โหมดมืดเป็นเทาโปร่งเอง ใช้แทน token ความโปร่งเพราะระบบไม่มีหมวด opacity (ผู้ใช้เลือก 2026-11-13) */
   --ntg-modal-color-backdrop: var(--ntg-color-alpha-constant-black-50); /** ฉากหลังมืดของกล่องโต้ตอบ ดำโปร่ง 50 เปอร์เซ็นต์ เท่ากันทั้งโหมดสว่างและโหมดมืด ใช้คู่กับ effect background-blur md เพื่อกันสายตาจากหน้าข้างหลัง */
   --ntg-icon-general-const-white: var(--ntg-color-foreground-general-const-white);
   --ntg-icon-general-const-black: var(--ntg-color-foreground-general-const-black);
