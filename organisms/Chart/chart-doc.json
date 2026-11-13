@@ -45,7 +45,8 @@
                 "total": "1,240",
                 "show-legend": true,
                 "show-tooltip": false,
-                "size": "md"
+                "size": "md",
+                "legend-placement": "bottom"
               },
               "label": "",
               "width": 160,
@@ -195,7 +196,8 @@
                 "total": "943,200",
                 "show-legend": false,
                 "show-tooltip": false,
-                "size": "md"
+                "size": "md",
+                "legend-placement": "bottom"
               },
               "label": "",
               "width": 160,
@@ -222,7 +224,8 @@
                 "total": "1,240",
                 "show-legend": false,
                 "show-tooltip": false,
-                "size": "xs"
+                "size": "xs",
+                "legend-placement": "bottom"
               },
               "label": "",
               "width": 96,
@@ -236,7 +239,8 @@
                 "total": "1,240",
                 "show-legend": false,
                 "show-tooltip": false,
-                "size": "sm"
+                "size": "sm",
+                "legend-placement": "bottom"
               },
               "label": "",
               "width": 128,
@@ -250,7 +254,8 @@
                 "total": "1,240",
                 "show-legend": false,
                 "show-tooltip": false,
-                "size": "md"
+                "size": "md",
+                "legend-placement": "bottom"
               },
               "label": "",
               "width": 160,
@@ -264,7 +269,8 @@
                 "total": "1,240",
                 "show-legend": false,
                 "show-tooltip": false,
-                "size": "lg"
+                "size": "lg",
+                "legend-placement": "bottom"
               },
               "label": "",
               "width": 192,
@@ -278,7 +284,8 @@
                 "total": "1,240",
                 "show-legend": false,
                 "show-tooltip": false,
-                "size": "xl"
+                "size": "xl",
+                "legend-placement": "bottom"
               },
               "label": "",
               "width": 224,
@@ -317,7 +324,8 @@
                 "total": "1,240",
                 "show-legend": true,
                 "show-tooltip": true,
-                "size": "md"
+                "size": "md",
+                "legend-placement": "bottom"
               },
               "label": "",
               "width": 160,
@@ -905,15 +913,15 @@
         {
           "type": "h",
           "text": "pie-chart",
-          "sub": "กราฟวงกลมแบบโดนัท 5 ขนาด ยอดรวมกลางวง ชิ้นเรียงจากมากไปน้อยเริ่ม 12 นาฬิกาตามเข็ม หมวดที่ไม่ได้แสดงชื่อรวมเป็น อื่น ๆ สีเทาท้ายวง show-tooltip แสดงตัวอย่างตอนชี้ชิ้นแรก ชิ้นอื่นจางด้วย chart/color/dim",
+          "sub": "กราฟวงกลมแบบโดนัท 5 ขนาด ยอดรวมกลางวง ชิ้นเรียงจากมากไปน้อยเริ่ม 12 นาฬิกาตามเข็ม หมวดที่ไม่ได้แสดงชื่อรวมเป็น อื่น ๆ สีเทาท้ายวง แถวบนคือ legend-placement=bottom แถวล่างคือ end ที่วงอยู่ซ้าย legend อยู่ขวา และวงสูงเท่า legend show-tooltip แสดงตัวอย่างตอนชี้ชิ้นแรก ชิ้นอื่นจางด้วย chart/color/dim",
           "section": true
         },
         {
           "type": "variantSet",
           "set": "pie-chart",
           "caption": "",
-          "width": 950,
-          "height": 460,
+          "width": 1392,
+          "height": 656,
           "items": [
             {
               "props": {
@@ -921,7 +929,8 @@
                 "show-legend": true,
                 "total": "1,240",
                 "total-label": "ข่าวทั้งหมด",
-                "size": "xs"
+                "size": "xs",
+                "legend-placement": "bottom"
               },
               "x": 24,
               "y": 24,
@@ -934,7 +943,8 @@
                 "show-legend": true,
                 "total": "1,240",
                 "total-label": "ข่าวทั้งหมด",
-                "size": "sm"
+                "size": "sm",
+                "legend-placement": "bottom"
               },
               "x": 150,
               "y": 24,
@@ -947,7 +957,8 @@
                 "show-legend": true,
                 "total": "1,240",
                 "total-label": "ข่าวทั้งหมด",
-                "size": "md"
+                "size": "md",
+                "legend-placement": "bottom"
               },
               "x": 302,
               "y": 24,
@@ -960,7 +971,8 @@
                 "show-legend": true,
                 "total": "1,240",
                 "total-label": "ข่าวทั้งหมด",
-                "size": "lg"
+                "size": "lg",
+                "legend-placement": "bottom"
               },
               "x": 486,
               "y": 24,
@@ -973,12 +985,83 @@
                 "show-legend": true,
                 "total": "1,240",
                 "total-label": "ข่าวทั้งหมด",
-                "size": "xl"
+                "size": "xl",
+                "legend-placement": "bottom"
               },
               "x": 702,
               "y": 24,
               "width": 224,
               "height": 412
+            },
+            {
+              "props": {
+                "show-tooltip": false,
+                "show-legend": true,
+                "total": "1,240",
+                "total-label": "ข่าวทั้งหมด",
+                "size": "xs",
+                "legend-placement": "end"
+              },
+              "x": 950,
+              "y": 24,
+              "width": 290,
+              "height": 172
+            },
+            {
+              "props": {
+                "show-tooltip": false,
+                "show-legend": true,
+                "total": "1,240",
+                "total-label": "ข่าวทั้งหมด",
+                "size": "sm",
+                "legend-placement": "end"
+              },
+              "x": 24,
+              "y": 460,
+              "width": 290,
+              "height": 172
+            },
+            {
+              "props": {
+                "show-tooltip": false,
+                "show-legend": true,
+                "total": "1,240",
+                "total-label": "ข่าวทั้งหมด",
+                "size": "md",
+                "legend-placement": "end"
+              },
+              "x": 338,
+              "y": 460,
+              "width": 290,
+              "height": 172
+            },
+            {
+              "props": {
+                "show-tooltip": false,
+                "show-legend": true,
+                "total": "1,240",
+                "total-label": "ข่าวทั้งหมด",
+                "size": "lg",
+                "legend-placement": "end"
+              },
+              "x": 652,
+              "y": 460,
+              "width": 290,
+              "height": 172
+            },
+            {
+              "props": {
+                "show-tooltip": false,
+                "show-legend": true,
+                "total": "1,240",
+                "total-label": "ข่าวทั้งหมด",
+                "size": "xl",
+                "legend-placement": "end"
+              },
+              "x": 966,
+              "y": 460,
+              "width": 290,
+              "height": 172
             }
           ]
         },

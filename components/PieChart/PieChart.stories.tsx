@@ -51,6 +51,7 @@ const meta: Meta<typeof PieChart> = {
     unit: 'ข่าว',
     maxSlices: 5,
     showLegend: true,
+    legendPlacement: 'bottom',
     showTableToggle: true,
   },
 }
@@ -59,7 +60,7 @@ export default meta
 type Story = StoryObj<typeof PieChart>
 
 const controls = {
-  controls: { include: ['summary', 'size', 'maxSlices', 'otherLabel', 'total', 'totalLabel', 'unit', 'showLegend', 'showTableToggle'] },
+  controls: { include: ['summary', 'size', 'maxSlices', 'otherLabel', 'total', 'totalLabel', 'unit', 'showLegend', 'legendPlacement', 'showTableToggle'] },
 }
 
 export const Default: Story = {
@@ -121,6 +122,26 @@ export const Paired: Story = {
   parameters: {
     ...controls,
     docs: { section: 'ข้อมูล', description: { story: 'จำนวนข่าวกับยอดวิว ส่ง categories รายการเดียวกัน สองวงจึงมีชิ้น ลำดับ และสีของแต่ละหมวดตรงกัน แม้ยอดวิวจะเรียงมากไปน้อยต่างจากจำนวนข่าว หมวดนอกรายการ (กีฬา บันเทิง) รวมเป็น อื่น ๆ ทั้งสองวง' } },
+  },
+}
+
+// ── ตำแหน่ง legend (แกน legend-placement ของ pie-chart) ─────────
+export const LegendEnd: Story = {
+  name: 'Legend ข้างวง',
+  args: { legendPlacement: 'end', size: 'md' },
+  parameters: {
+    ...controls,
+    docs: { section: 'ตำแหน่ง legend', description: { story: 'legendPlacement end วงซ้าย legend ขวา ห่าง 16 ขนาด md 6 หมวด (5 หมวดกับ อื่น ๆ) วงยืดให้สูงเท่า legend ความหนาวงเป็นสัดส่วนเดิมของ md (20 ต่อ 160) ตัวเลขกลางวงยังเป็น title-md' } },
+  },
+}
+
+export const PairedLegendEnd: Story = {
+  name: 'สองวงคู่กัน legend ข้างวง',
+  args: { legendPlacement: 'end' },
+  render: Paired.render,
+  parameters: {
+    ...controls,
+    docs: { section: 'ตำแหน่ง legend', description: { story: 'สองวงส่ง categories รายการเดียวกัน legend ข้างวง จำนวนแถวเท่ากัน วงสองวงจึงสูงเท่ากัน ชิ้นและสีของแต่ละหมวดตรงกัน' } },
   },
 }
 

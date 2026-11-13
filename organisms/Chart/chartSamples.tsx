@@ -51,6 +51,7 @@ export const chartSamples: Record<string, SampleRenderer> = {
         total={str(p.total)}
         totalLabel={str(p['total-label']) ?? 'ข่าวทั้งหมด'}
         showLegend={p['show-legend'] === undefined ? true : on(p['show-legend'])}
+        legendPlacement={str(p['legend-placement']) === 'end' ? 'end' : 'bottom'}
         showTableToggle={false}
       />
     )

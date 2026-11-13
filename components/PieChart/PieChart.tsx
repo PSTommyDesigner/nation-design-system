@@ -43,15 +43,27 @@
  * ⚠️ ข้อยกเว้นจากสเปค Tooltip ที่ห้ามใส่ข้อมูลจำเป็นในคำใบ้ เหมือน BarChart
  *    ตัวเลขเต็มในคำใบ้อ่านได้ครบจากตารางที่สลับด้วยปุ่มและจากตารางที่ซ่อนไว้
  *
- * ⚠️ ต้อง render บนเซิร์ฟเวอร์ได้ (Next 12/14 SSR) ไม่มีการวัดขนาด ไม่แตะ window หรือ document ระหว่าง render
+ * ⚠️ legendPlacement 'end' (แกน legend-placement=end ใน Figma) วงซ้าย legend ขวา
+ *    เส้นผ่านศูนย์กลางวงเท่าความสูงจริงของ legend เสมอ (ผู้ใช้เลือก "วงยืดตามรายการ" 2026-11-13)
+ *    แต่ไม่ต่ำกว่า --ntg-chart-pie-diameter-xs ถ้า legend เตี้ยกว่านั้น legend จัดกลางแนวตั้งข้างวง
+ *    ความหนาวงเป็นสัดส่วนเดิมของ size ที่เลือก (thickness / diameter) คิดใน CSS จาก token ช่องคั่นยังหนา 2 คงที่
+ *    รอบเซิร์ฟเวอร์ CSS ประมาณความสูง legend จากจำนวนแถว (--pc-rows) ความสูงบรรทัดของ preset และช่องระหว่างแถว
+ *    หลังติดตั้ง ResizeObserver วัดความสูงจริง (เช่นชื่อหมวดยาวจนขึ้นบรรทัดใหม่) แล้วส่งเข้า CSS เป็น --pc-legend-h
+ *    ปิด legend แล้ววงกลับไปใช้ขนาดตาม size
+ *
+ * ⚠️ ต้อง render บนเซิร์ฟเวอร์ได้ (Next 12/14 SSR) ไม่แตะ window หรือ document ระหว่าง render
+ *    การวัดมีเฉพาะความสูง legend ในโหมด 'end' และทำหลังติดตั้งเท่านั้น
  *
  * ค่าสี ระยะ ขนาด และตัวอักษรทั้งหมดมาจาก design tokens ผ่าน CSS variables ไม่มีค่า hard-code
  */
-import React, { useId, useRef, useState } from 'react';
+import React, { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { Button } from '../Button';
 import { Table, type TableColumn } from '../Table';
 import { Tooltip, type TooltipPlacement } from '../Tooltip';
 import styles from './PieChart.module.css';
+
+/** ตำแหน่งคำอธิบายสี ตรงกับแกน legend-placement ใน Figma */
+export type PieChartLegendPlacement = 'bottom' | 'end';
 
 /** ขนาดวงโดนัท ตรงกับแกน size ใน Figma */
 export type PieChartSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -111,8 +123,14 @@ export interface PieChartProps extends Omit<React.HTMLAttributes<HTMLElement>, '
   categoryLabel?: string;
   /** หัวคอลัมน์ค่าของตาราง ค่าเริ่มต้น "จำนวน" (ต่อท้ายด้วยหน่วยในวงเล็บถ้ามี `unit`) */
   valueLabel?: string;
-  /** แสดงคำอธิบายสีใต้วง ตรงกับ property `show-legend` ใน Figma ค่าเริ่มต้น true */
+  /** แสดงคำอธิบายสี ตรงกับ property `show-legend` ใน Figma ค่าเริ่มต้น true */
   showLegend?: boolean;
+  /**
+   * ตำแหน่งคำอธิบายสี ตรงกับแกน `legend-placement` ใน Figma ค่าเริ่มต้น `bottom` (ใต้วง)
+   * `end` วางวงซ้าย legend ขวา วงยืดให้สูงเท่า legend (ไม่ต่ำกว่าขนาด xs) ความหนาวงเป็นสัดส่วนเดิมของ `size`
+   * ตัวเลขกลางวงยังใช้ preset title ตาม `size` ปิด legend แล้ววงกลับไปใช้ขนาดตาม `size`
+   */
+  legendPlacement?: PieChartLegendPlacement;
   /** แสดงปุ่ม "ดูเป็นตาราง" ใต้กราฟ กดแล้วกราฟถูกแทนด้วยตาราง Table ของระบบ ค่าเริ่มต้น true */
   showTableToggle?: boolean;
 }
@@ -141,6 +159,9 @@ const SIZE_CLASS: Record<PieChartSize, string> = {
   lg: styles.lg,
   xl: styles.xl,
 };
+
+/** useLayoutEffect บนเบราว์เซอร์ useEffect บนเซิร์ฟเวอร์ กันคำเตือนตอน SSR */
+const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 // สร้างครั้งเดียว ใช้ซ้ำทุก render
 const fullFormat = new Intl.NumberFormat('th-TH');
@@ -284,7 +305,9 @@ export function PieChart({
   valueLabel = 'จำนวน',
   showLegend = true,
   showTableToggle = true,
+  legendPlacement = 'bottom',
   className,
+  style,
   ...rest
 }: PieChartProps) {
   const { slices, sum, rows } = pieChartSlices(data, { maxSlices, categories, otherLabel });
@@ -315,6 +338,23 @@ export function PieChart({
   const count = arcs.length;
   const active = Math.min(activeIndex, Math.max(0, count - 1));
   const sliceRefs = useRef<(SVGPathElement | null)[]>([]);
+
+  // ── โหมด legend ข้างวง: วัดความสูงจริงของ legend หลังติดตั้ง (รอบ SSR ใช้ค่าประมาณจาก CSS) ──
+  const fitToLegend = legendPlacement === 'end' && showLegend && !tableView;
+  const legendRef = useRef<HTMLUListElement>(null);
+  const [legendHeight, setLegendHeight] = useState<number | null>(null);
+  useIsoLayoutEffect(() => {
+    const el = legendRef.current;
+    if (!fitToLegend || !el || typeof ResizeObserver === 'undefined') return;
+    const update = () => {
+      const h = el.getBoundingClientRect().height;
+      setLegendHeight((prev) => (prev === h ? prev : h));
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [fitToLegend]);
 
   /** ชิ้นที่เน้นอยู่ (ลำดับใน slices) ชิ้นอื่นจางลง */
   const highlighted = tipIndex !== null ? (arcs[tipIndex]?.index ?? null) : legendIndex;
@@ -373,11 +413,30 @@ export function PieChart({
   const totalText =
     total === undefined ? fullFormat.format(sum) : typeof total === 'number' ? fullFormat.format(total) : total;
 
-  const classes = [styles.root, SIZE_CLASS[size], className].filter(Boolean).join(' ');
+  const classes = [
+    styles.root,
+    SIZE_CLASS[size],
+    legendPlacement === 'end' ? styles.end : '',
+    fitToLegend ? styles.fit : '',
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+  // จำนวนแถวกับความสูงที่วัดได้เป็นข้อมูล ไม่ใช่ค่าออกแบบ ส่งเข้า CSS เป็นตัวแปร
+  const vars: Record<string, string | number> = {};
+  if (fitToLegend) {
+    vars['--pc-rows'] = slices.length;
+    if (legendHeight !== null && legendHeight > 0) vars['--pc-legend-h'] = `${legendHeight}px`;
+  }
   const tipArc = tipIndex !== null ? arcs[tipIndex] : undefined;
 
   return (
-    <figure className={classes} aria-labelledby={captionId} {...rest}>
+    <figure
+      className={classes}
+      style={{ ...vars, ...style } as React.CSSProperties}
+      aria-labelledby={captionId}
+      {...rest}
+    >
       <figcaption id={captionId} className={styles.srOnly}>
         {summary}
       </figcaption>
@@ -391,7 +450,7 @@ export function PieChart({
           captionHidden
         />
       ) : (
-        <>
+        <div className={styles.chart}>
           <div className={`${styles.donut} ${focusRing ? styles.focused : ''}`}>
             <svg
               className={styles.svg}
@@ -472,7 +531,7 @@ export function PieChart({
           </div>
 
           {showLegend && (
-            <ul className={styles.legend} aria-hidden="true">
+            <ul ref={legendRef} className={styles.legend} aria-hidden="true">
               {slices.map((s, i) => (
                 <li
                   key={`${s.label}-${i}`}
@@ -489,7 +548,7 @@ export function PieChart({
               ))}
             </ul>
           )}
-        </>
+        </div>
       )}
 
       {toggle}

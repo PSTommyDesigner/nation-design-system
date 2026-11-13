@@ -1207,6 +1207,10 @@
           "md",
           "lg",
           "xl"
+        ],
+        "legend-placement": [
+          "bottom",
+          "end"
         ]
       },
       "properties": [
@@ -1220,6 +1224,10 @@
           "size": {
             "prop": "size",
             "type": "PieChartSize"
+          },
+          "legend-placement": {
+            "prop": "legendPlacement",
+            "type": "PieChartLegendPlacement"
           }
         },
         "properties": {

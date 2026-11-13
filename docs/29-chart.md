@@ -60,7 +60,7 @@ sources_of_truth:
 | ชุด | ใช้ทำอะไร | แกนและ property |
 |---|---|---|
 | `bar-chart` | กราฟแท่งจัดกลุ่ม หลายชุด วางชุดแบบเส้นทับได้ แกน y สองฝั่ง | `show-legend`, `show-right-axis`, `show-tooltip` |
-| `pie-chart` | กราฟวงกลมแบบโดนัท ยอดรวมกลางวง legend ใต้วง | `size` xs ถึง xl, `show-legend`, `total`, `total-label`, `show-tooltip` |
+| `pie-chart` | กราฟวงกลมแบบโดนัท ยอดรวมกลางวง legend ใต้วงหรือข้างวง | `size` xs ถึง xl, `legend-placement` bottom, end, `show-legend`, `total`, `total-label`, `show-tooltip` |
 | `_bar-chart-bar` | แท่งเดียว series 1 สีเข้ม series 2 สีอ่อนมีขอบ | `series` 1, 2 |
 | `_bar-chart-legend-item` | จุดหรือเส้นคู่กับชื่อชุดข้อมูล | `type` bar-1, bar-2, line |
 | `_bar-chart-point` | จุดกลวงบนเส้น | ไม่มี |
@@ -98,6 +98,7 @@ sources_of_truth:
 | `categoryLabel` | `string` | `'หมวด'` | หัวคอลัมน์แรกของตาราง |
 | `valueLabel` | `string` | `'จำนวน'` | หัวคอลัมน์ค่าของตาราง |
 | `showLegend` | `boolean` | `true` | ตรงกับ `show-legend` |
+| `legendPlacement` | `'bottom'` หรือ `'end'` | `'bottom'` | ตรงกับ `legend-placement` `end` วางวงซ้าย legend ขวา วงสูงเท่า legend ไม่ต่ำกว่า 96 ความหนาวงเป็นสัดส่วนเดิมของ `size` |
 | `showTableToggle` | `boolean` | `true` | ปุ่ม "ดูเป็นตาราง" |
 
 ### 4.4 Tokens

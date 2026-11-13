@@ -23,11 +23,24 @@
  *   0            ตัดขอบเริ่มต้นของ figure กับ ul
  *   1px          รูปแบบ visually-hidden มาตรฐานของตารางที่ซ่อน (เหมือน BarChart)
  *   left, top ของคำใบ้  มาจากมุมของชิ้น (ข้อมูล) ตั้งเป็น inline style ใน PieChart.tsx
+ *   --pc-rows, --pc-legend-h  จำนวนแถวของ legend (ข้อมูล) และความสูงที่วัดได้ ตั้งใน PieChart.tsx
+ *   1 ใน @supports  ตัวเลขทดสอบว่าเบราว์เซอร์รองรับ tan() กับ atan2() ไม่ใช่ขนาด
+ *
+ * โหมด legend ข้างวง (.end กับ .fit)
+ *   เส้นผ่านศูนย์กลาง --pc-dd = max(diameter-xs, ความสูง legend) ความสูง legend รอบ SSR ประมาณจาก
+ *   จำนวนแถว x max(ความสูงบรรทัด caption, จุด 12) + ช่องระหว่างแถว x (แถว - 1) หลังติดตั้งใช้ค่าที่วัดจริง
+ *   ความหนา --pc-tt = --pc-dd x (thickness / diameter ของ size) CSS หารความยาวด้วยความยาวตรง ๆ ยังไม่ได้
+ *   จึงใช้ tan(atan2(thickness, diameter)) ซึ่งได้อัตราส่วนเป็นตัวเลขไม่มีหน่วย เบราว์เซอร์ที่ไม่รองรับ
+ *   (ก่อน Chrome 111, Safari 15.4, Firefox 108) ใช้ความหนาตาม token ของ size แทน
  *
  * ชั้นในวง (ล่างขึ้นบน) ลิ่มของชิ้นกับชั้นทับจาง, รูกลางวง, จุดวางคำใบ้
  */
 
 .root {
+  /* เส้นผ่านศูนย์กลางกับความหนาที่ใช้วาดจริง ปกติเท่ากับ token ของ size โหมด .fit คิดใหม่ข้างล่าง */
+  --pc-dd: var(--pc-d);
+  --pc-tt: var(--pc-t);
+
   position: relative;
   display: flex;
   flex-direction: column;
@@ -84,6 +97,31 @@
   --pc-letter-space: var(--ntg-typography-letter-space-title-xl);
 }
 
+/* ── กล่องวงกับ legend: ปกติ legend ใต้วง โหมด .end วงซ้าย legend ขวา ── */
+.chart {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ntg-size-space-s2-sm);
+}
+/* วงสูงเท่า legend จัดกลางจึงเท่ากับชิดบน legend เตี้ยกว่าวงขนาดต่ำสุด legend จึงอยู่กลางแนวตั้ง */
+.end .chart {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* ── วงยืดตาม legend (เฉพาะโหมด .end ที่เปิด legend) ── */
+.fit {
+  --pc-legend-est: calc(
+    var(--pc-rows) * max(var(--ntg-typography-line-height-caption), var(--ntg-size-space-s2-xs))
+      + (var(--pc-rows) - 1) * var(--ntg-size-space-s1-lg)
+  );
+  --pc-dd: max(var(--ntg-chart-pie-diameter-xs), var(--pc-legend-h, var(--pc-legend-est)));
+}
+@supports (scale: tan(atan2(1, 1))) {
+  .fit { --pc-tt: calc(var(--pc-dd) * tan(atan2(var(--pc-t), var(--pc-d)))); }
+}
+
 /* ── สีหมวด ตั้งที่ g ของชิ้นและที่แถวคำอธิบายสี ── */
 .c1 { --pc-color: var(--ntg-chart-color-category-1); }
 .c2 { --pc-color: var(--ntg-chart-color-category-2); }
@@ -99,8 +137,8 @@
 .donut {
   position: relative;
   flex: none;
-  width: var(--pc-d);
-  height: var(--pc-d);
+  width: var(--pc-dd);
+  height: var(--pc-dd);
   border-radius: 50%;
 }
 /* ชิ้นได้โฟกัสจากคีย์บอร์ด วงแหวนโฟกัสรอบวง ชิ้นที่โฟกัสสีเต็ม ชิ้นอื่นจาง */
@@ -141,8 +179,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: calc(var(--pc-d) - 2 * var(--pc-t) + var(--ntg-chart-slice-gap));
-  height: calc(var(--pc-d) - 2 * var(--pc-t) + var(--ntg-chart-slice-gap));
+  width: calc(var(--pc-dd) - 2 * var(--pc-tt) + var(--ntg-chart-slice-gap));
+  height: calc(var(--pc-dd) - 2 * var(--pc-tt) + var(--ntg-chart-slice-gap));
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background-color: var(--ntg-color-background-general-primary);

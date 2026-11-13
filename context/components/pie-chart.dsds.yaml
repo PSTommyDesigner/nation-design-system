@@ -185,9 +185,20 @@ sections:
           In the hole, the total (the sum of data, or the total prop) in the typography preset title-<size> matching the
           donut size, color --ntg-color-text-general-heading, and under it totalLabel in meta/caption, color
           --ntg-chart-color-axis-text. Figma properties total and total-label.
+      - term: Legend placement end
+        definition: >-
+          With legendPlacement end (Figma axis legend-placement=end), the donut sits left and the legend right with a
+          gap of --ntg-size-space-s2-sm (16), centered on the cross axis. The diameter always equals the real height of
+          the legend (user decision 2026-11-13, the donut grows with the list) and is never under
+          --ntg-chart-pie-diameter-xs (96); a shorter legend is centered beside the donut. On the server the height is
+          estimated in CSS from the row count, the meta/caption line height and the row gap, and after mount a
+          ResizeObserver passes the measured height. The ring thickness keeps the ratio of the chosen size, thickness
+          over diameter, computed in CSS with tan(atan2()) from the size tokens; browsers without CSS trig use the size
+          thickness token. The slice gap stays --ntg-chart-slice-gap and the total keeps the title preset of size. With
+          showLegend false the donut uses its size diameter.
       - term: Legend
         definition: >-
-          Below the donut, one row per slice with a gap of --ntg-size-space-s1-lg (8) between rows. A row is a dot
+          Below the donut (or right of it with legendPlacement end), one row per slice with a gap of --ntg-size-space-s1-lg (8) between rows. A row is a dot
           --ntg-size-space-s2-xs (12) in the slice color, the category name in --ntg-chart-color-axis-text and the share
           in --ntg-color-text-general-heading, gap --ntg-size-space-s1-lg (8), text preset meta/caption. Hovering a row
           highlights its slice. Figma component _pie-chart-legend-item, property show-legend.
@@ -250,6 +261,17 @@ traits:
     kind: boolean
     id: showLegend
     description: Shows the legend below the donut. Figma property show-legend. Default true.
+  - traitType: variant
+    kind: enum
+    id: legendPlacement
+    description: Where the legend sits. Figma axis legend-placement.
+    values:
+      - id: bottom
+        description: Default. The legend is below the donut and the donut uses the diameter of size.
+      - id: end
+        description: >-
+          The legend is right of the donut and the donut grows to the legend height, at least the xs diameter, with
+          the ring thickness ratio of size. For a card that is wider than tall.
   - traitType: variant
     kind: boolean
     id: showTableToggle
