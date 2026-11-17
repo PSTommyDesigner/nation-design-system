@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>สรุปสัมภาษณ์ Smart ONE CMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,600;0,700;1,400&family=Prompt:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --soft: #f5f7fa;
+    --accent: #1d4ed8;
+    --accent-soft: #e8eefc;
+    --warn: #b45309;
+    --warn-soft: #fdf3e2;
+  }
+  @page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  body {
+    font-family: "Sarabun", "Sukhumvit Set", "Thonburi", sans-serif;
+    color: var(--ink);
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+  h1, h2, h3 { font-family: "Prompt", "Sarabun", "Sukhumvit Set", sans-serif; font-weight: 600; line-height: 1.35; margin: 0; }
+  .page { page-break-after: always; break-after: page; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  /* cover */
+  .cover { height: 255mm; display: flex; flex-direction: column; justify-content: center; }
+  .cover .kicker { color: var(--accent); font-weight: 600; font-size: 12pt; margin-bottom: 8mm; letter-spacing: 0.02em; }
+  .cover h1 { font-size: 26pt; line-height: 1.4; max-width: 160mm; }
+  .cover .rule { width: 40mm; height: 3px; background: var(--accent); margin: 10mm 0; }
+  .cover .meta { font-size: 12pt; }
+  .cover .meta div { margin-bottom: 3mm; }
+  .cover .meta span { color: var(--muted); display: inline-block; width: 28mm; }
+  .cover .bus { margin-top: 14mm; color: var(--muted); font-size: 10.5pt; max-width: 160mm; }
+
+  /* section header */
+  .sec-head { border-bottom: 2px solid var(--accent); padding-bottom: 2.5mm; margin-bottom: 4mm; display: flex; justify-content: space-between; align-items: baseline; }
+  .sec-head h2 { font-size: 16pt; }
+  .sec-head .date { color: var(--muted); font-size: 10pt; }
+  h3 { font-size: 11pt; color: var(--accent); margin: 3.5mm 0 1mm; }
+
+  ul { margin: 0; padding-left: 5mm; }
+  li { margin: 0 0 0.6mm; }
+  .q { color: var(--warn); }
+  .note { color: var(--muted); font-size: 9pt; }
+  .box { background: var(--soft); border-radius: 2mm; padding: 2.5mm 3.5mm; margin-bottom: 1mm; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+
+  /* tables */
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border-bottom: 1px solid var(--line); padding: 1.2mm 1.6mm; text-align: left; vertical-align: top; }
+  th { background: var(--soft); font-weight: 600; font-size: 9pt; }
+  .ov { font-size: 8.8pt; line-height: 1.4; }
+  .ov h2 { font-size: 14pt; }
+  .ov h3 { margin-top: 3mm; }
+  .matrix td, .matrix th { text-align: center; padding: 0.9mm 1mm; }
+  .matrix td.l, .matrix th.l { text-align: left; }
+  .matrix td.n { font-weight: 700; }
+  .dot { display: inline-block; width: 2.4mm; height: 2.4mm; border-radius: 50%; background: var(--accent); }
+  .dot.part { background: transparent; border: 1.5px solid var(--accent); }
+  .x { color: var(--warn); font-weight: 700; font-size: 8pt; }
+  .legend { color: var(--muted); font-size: 8.2pt; margin-top: 1.5mm; }
+  .caveat { border-left: 3px solid var(--warn); background: var(--warn-soft); padding: 3mm 4mm; margin-bottom: 4mm; border-radius: 0 2mm 2mm 0; }
+  .caveat h3 { margin-top: 0; color: var(--warn); }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="page cover">
+  <div class="kicker">Smart ONE CMS, ระบบหลังบ้านเว็บไซต์ข่าวเครือเนชั่น</div>
+  <h1>สรุปการสัมภาษณ์ผู้ใช้ Smart ONE CMS ครั้งที่ 1 (8 BU)</h1>
+  <div class="rule"></div>
+  <div class="meta">
+    <div><span>วันที่</span>17 พฤศจิกายน 2569</div>
+    <div><span>แหล่งข้อมูล</span>Description ของ task การประชุมแต่ละ BU ใน Asana</div>
+    <div><span>ช่วงประชุม</span>3 ถึง 12 พฤศจิกายน 2569 (ตามวันที่ของ task)</div>
+  </div>
+  <div class="bus">Bangkokbiznews, Nation Online, The People, Posttoday, Thansettakij, The Nation, Springnews, Thainews<br>
+  เอกสารนี้สรุปจากบันทึกการประชุมเท่านั้น ไม่มีข้อมูลจากแหล่งอื่น คำพูดในเครื่องหมายคำพูดคัดจากบันทึกตามตัวอักษร (รวมคำที่สะกดผิด)</div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="page ov">
+  <div class="sec-head"><h2>ภาพรวม 8 BU</h2><span class="date">ตัวย่อ: BKK, NO, TPP, PTD, TSK, TNT, SPN, TNW</span></div>
+
+  <h3>ผู้เข้าร่วมแต่ละ BU</h3>
+  <table>
+    <tr><th style="width:24%">BU (ตัวย่อ)</th><th style="width:14%">วันที่</th><th>ผู้เข้าร่วม (ตำแหน่ง)</th></tr>
+    <tr><td>Bangkokbiznews (BKK)</td><td>3 พ.ย. 2569</td><td>ผู้ช่วยบรรณาธิการข่าว 2 คน, นักข่าว 2 คน, SEO 1 คน และอีก 2 ชื่อ</td></tr>
+    <tr><td>Nation Online (NO)</td><td>4 พ.ย. 2569</td><td>บรรณาธิการข่าว 1 คน</td></tr>
+    <tr><td>The People (TPP)</td><td>5 พ.ย. 2569</td><td>บรรณาธิการข่าว 1 คน, นักข่าว 2 คน</td></tr>
+    <tr><td>Posttoday (PTD)</td><td>6 พ.ย. 2569</td><td>บรรณาธิการข่าว 1 คน, นักข่าว 2 ถึง 3 คน</td></tr>
+    <tr><td>Thansettakij (TSK)</td><td>6 พ.ย. 2569</td><td>บรรณาธิการข่าว 1 คน และผู้ช่วย</td></tr>
+    <tr><td>The Nation (TNT)</td><td>9 พ.ย. 2569</td><td>บรรณาธิการข่าว 1 คน, นักข่าว 2 คน</td></tr>
+    <tr><td>Springnews (SPN)</td><td>10 พ.ย. 2569</td><td>บก. ดูภาพรวม, KOL, content creator, content website, content, นักข่าว (6 คน)</td></tr>
+    <tr><td>Thainews (TNW)</td><td>12 พ.ย. 2569</td><td>1 คน (ไม่ได้ระบุตำแหน่ง)</td></tr>
+  </table>
+
+  <h3>ปัญหาหลักข้าม BU</h3>
+  <table class="matrix">
+    <tr><th class="l">ประเด็น</th><th>BKK</th><th>NO</th><th>TPP</th><th>PTD</th><th>TSK</th><th>TNT</th><th>SPN</th><th>TNW</th><th>รวม</th></tr>
+    <tr><td class="l">เนื้อหาหายระหว่างเขียน</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td></td><td class="n">4</td></tr>
+    <tr><td class="l">ข่าวเบิ้ลตอนกดเผยแพร่</td><td></td><td></td><td></td><td><span class="dot"></span></td><td></td><td></td><td></td><td></td><td class="n">1</td></tr>
+    <tr><td class="l">วางข้อความจากที่อื่น (Word ฯลฯ) แล้ว style เพี้ยน</td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot part"></span></td><td></td><td><span class="dot"></span></td><td></td><td class="n">3</td></tr>
+    <tr><td class="l">กล่องเนื้อหา 3 ส่วนเป็นปัญหา</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td></td><td class="n">5</td></tr>
+    <tr><td class="l">อยากได้กล่องเดียวให้ระบบแบ่ง 3 ส่วน</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="x">ค้าน</span></td><td class="n">6</td></tr>
+    <tr><td class="l">เขียนใน Word หรือ Notepad ก่อน</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td class="n">5</td></tr>
+    <tr><td class="l">พูดถึง AI ตรวจคำผิด</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="n">8</td></tr>
+    <tr><td class="l">AI ตรวจคำผิด ข่าวยาวแล้ว error</td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td></td><td></td><td class="n">4</td></tr>
+    <tr><td class="l">AI สรุปมีปัญหา (ช้า, กดแล้วไม่ขึ้น)</td><td></td><td></td><td></td><td></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td class="n">2</td></tr>
+    <tr><td class="l">มือถือใช้ยาก</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td></td><td></td><td class="n">4</td></tr>
+    <tr><td class="l">ไม่ใช้มือถือเขียนข่าว</td><td></td><td></td><td></td><td></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td class="n">2</td></tr>
+    <tr><td class="l">ค้นหาข่าวยาก</td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td class="n">4</td></tr>
+    <tr><td class="l">Tag ซ้ำหรือมากเกินไป</td><td></td><td></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td class="n">3</td></tr>
+    <tr><td class="l">หา Tag ไม่เจอ</td><td></td><td></td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot part"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="n">3</td></tr>
+    <tr><td class="l">งานนอกระบบ (LINE, AI ภายนอก, SEO แก้ทีหลัง)</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td></td><td class="n">4</td></tr>
+    <tr><td class="l">ลงข่าวใน social ก่อนหรือแยกกัน</td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td class="n">5</td></tr>
+    <tr><td class="l">ยอดวิวและ Dashboard มีปัญหา</td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td class="n">5</td></tr>
+    <tr><td class="l">อยากเห็นยอดรายนักข่าว</td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td class="n">4</td></tr>
+    <tr><td class="l">ความปลอดภัยและสิทธิ์ใช้งาน</td><td></td><td></td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td></td><td class="n">2</td></tr>
+    <tr><td class="l">เวลาที่แสดงไม่ชัดว่าเป็นเวลาไทย</td><td></td><td></td><td></td><td></td><td><span class="dot"></span></td><td></td><td></td><td></td><td class="n">1</td></tr>
+  </table>
+  <div class="legend">
+    จุดทึบ คือ BU นั้นพูดถึงในบันทึก, จุดโปร่ง คือ เกี่ยวข้องแต่ไม่นับรวม: TSK ล้าง style เองใน Notepad ก่อนลงเว็บ, TNT ค้นหา Tag แล้วเห็นแค่ราว 10 รายการ
+    <br>ในกลุ่ม "วางข้อความแล้ว style เพี้ยน" มีแค่ SPN ที่ระบุ Word ตรง ๆ, BKK พูดถึงการ copy จากที่อื่น, TPP ต้องเคลียร์ข้อความก่อนลง และ PTD ขอ clean text ในข้อแนะนำ
+    <br>งานนอกระบบ: LINE (TSK, TNT), AI ภายนอก (NO หา key point, TSK เอากราฟจาก AI), SEO แก้ทีหลัง (BKK)
+    <br>ยอดวิว: ไม่ตรงหรือ delay (NO, TNT, TNW), ปุ่มส่งออกไม่แสดง pageview (PTD), ข่าวที่ปิดแล้วยังแสดงใน Dashboard (SPN)
+    <br>ความปลอดภัย: คนลาออกยังเข้าได้และขอ 2FA (PTD), ขอ 2FA เวลาทำงานต่างประเทศ (TNT)
+  </div>
+</section>
+
+<!-- ============ BKK ============ -->
+<section class="page">
+  <div class="sec-head"><h2>Bangkokbiznews</h2><span class="date">3 พฤศจิกายน 2569</span></div>
+  <div class="box"><b>ผู้เข้าร่วม:</b> ผู้ช่วยบรรณาธิการข่าว (พี่ปานใจ, พี่เอ), นักข่าว 2 คน, คุณนุช (SEO), พี่ตั๊ก, พี่โม</div>
+
+  <h3>งานที่ทำนอกระบบ</h3>
+  <ul>
+    <li>ไม่ได้เขียนข่าวในหลังบ้าน เขียนใน Word หรือ Notepad แล้ว copy มาลง เพราะหลังบ้านมีปัญหาเรื่องเน็ต</li>
+    <li>นักข่าวส่วนใหญ่ไม่ได้ตรวจ SEO เอง ทีม SEO ตรวจแยกแล้วเข้าไปแก้ทีหลังเป็นรูทีน</li>
+    <li>ข่าว NCSS จากหนังสือพิมพ์มีคนตรวจ อัปลงเว็บวันถัดมา ส่วนข่าวที่ลงจากหลังบ้านไม่มีคนตรวจ</li>
+  </ul>
+
+  <h3>ปัญหา</h3>
+  <ul>
+    <li>ทำอะไรผิดแล้วข้อมูลหายหมด ต้องเริ่มใหม่ และปัดซ้าย (อาจสลับหน้าจอ) แล้วข้อมูลหาย</li>
+    <li>กล่องเนื้อหา 3 ส่วน: ส่วนที่ 1 และ 2 จำกัด 1,500 คำ จึงเขียนยาวแล้วมาแบ่งเอง หรือวางส่วนที่ 3 ก่อนแล้วค่อยเกลี่ย</li>
+    <li>AI ตรวจคำผิดใช้กับข่าวยาวไม่ได้ และอัปผ่านมือถือแล้วตรวจคำผิดยาก</li>
+    <li>เขียนข่าวบนมือถือไม่สะดวก เช่น การเลือก highlight <span class="q">"การเขียนข่าวไม่เฟรนลี่สำหรับ mobile"</span></li>
+    <li>style ใน editor เคลียร์แล้วไม่หาย copy จากที่อื่นแล้วติดอักษรพิเศษมา</li>
+    <li>ค้นหาข่าวได้แค่จากคำโปรย ค้นคำในเนื้อหาไม่ได้</li>
+    <li>วิดีโอในเนื้อหาใส่ได้แค่ YouTube และ Dailymotion ลูกค้าบางรายไม่ต้องการ Ads และวิดีโอจบแล้ว loop ไปข่าวที่ไม่เกี่ยวข้อง</li>
+    <li>Pageviews ลดลง (นักข่าวเริ่มเข้าใจแล้ว)</li>
+  </ul>
+
+  <h3>สิ่งที่อยากได้</h3>
+  <ul>
+    <li>Bot ตรวจคำผิด, กรอกช่องเดียวแล้วระบบแบ่ง 3 ช่องให้</li>
+    <li>อัปข่าวผ่านมือถือได้ และเก็บ stat ว่านักข่าวอัปผ่านมือถือหรือ desktop มากกว่า</li>
+    <li>auto tag และข่าวที่เกี่ยวข้อง, backlink ข่าวต่อเนื่องแบบ auto หรือให้นักข่าวเลือกเอง</li>
+    <li>ค้นหาด้วย keyword ในเนื้อหาข่าว</li>
+    <li>crop รูปตั้งแต่อัปโหลด, auto resize รูปใหญ่, เลือกใส่ลายน้ำปกได้ (ตอนนี้ได้เฉพาะแกลเลอรี)</li>
+    <li>คลิกรูปในเนื้อหาแล้วขึ้น popup zoom</li>
+    <li>นักข่าวจัดหน้า section เองด้วยเทมเพลต, เก็บประวัติว่าใครแก้อะไร</li>
+  </ul>
+
+  <h3>ตัวเลขที่พูดถึง</h3>
+  <ul>
+    <li><span class="q">"80% user ไม่อยากเขียนข่าวในระบบ"</span> เหตุผลคือกลัวข้อมูลหายระหว่างการเขียน (ดูหมายเหตุหน้าสุดท้าย)</li>
+    <li>ส่วนที่ 1 และ 2 จำกัด 1,500 คำ, ส่วนที่ 3 ไม่จำกัด</li>
+    <li>นักข่าวทำปก 3 ไฟล์ (แนวนอนกับ social เป็นหลัก)</li>
+    <li>คลิปยาวไม่ถึงนาที คนดูหลักร้อย</li>
+  </ul>
+</section>
+
+<!-- ============ NO ============ -->
+<section class="page">
+  <div class="sec-head"><h2>Nation Online</h2><span class="date">4 พฤศจิกายน 2569</span></div>
+  <div class="box"><b>ผู้เข้าร่วม:</b> บรรณาธิการข่าว (พี่ตุ้ย)</div>
+
+  <h3>งานที่ทำนอกระบบ</h3>
+  <ul>
+    <li>เขียนข่าวใน Notepad หรือ doc แล้วค่อยเอามาลง <span class="q">"เนื่องจากมันหาย"</span> แล้วกระจายลงแต่ละ block</li>
+    <li>ข่าวด่วนขึ้น Facebook ก่อน แล้วค่อยเขียนลงเว็บ (ตามนโยบาย)</li>
+    <li>ใช้ AI หา key point จากข้างนอก</li>
+    <li>ไม่มีการตรวจข่าวก่อนขึ้น ต่างคนต่างขึ้น</li>
+  </ul>
+
+  <h3>ปัญหา</h3>
+  <ul>
+    <li>ใช้ Text Editor บนมือถือและ iPad ไม่สะดวก: เลือก highlight ลำบาก, bullet ที่ต่อข้าม block กลับไปเริ่มนับ 1 ใหม่</li>
+    <li>ข่าวที่เกี่ยวข้องในเครือไม่ได้ใช้ อยากเอาออก</li>
+    <li>AI ตรวจคำผิดช้าไปหน่อย</li>
+  </ul>
+
+  <h3>สิ่งที่อยากได้</h3>
+  <ul>
+    <li>ใส่แค่ 1 block แล้วระบบตัดเป็น 3 block ตามจำนวนตัวอักษรของ SEO พร้อมแทรกตำแหน่ง ads</li>
+    <li>ลากหลายรูปลงเนื้อหาพร้อมกัน ใส่ข้อความใต้ภาพ เว้นระยะรูปกับเนื้อหาให้อัตโนมัติ</li>
+    <li>import ไฟล์ doc แล้วสร้างข่าวในฟอร์มได้เลย</li>
+    <li>AI generate Title, Tag, Desc แต่ยังค้นหาเองได้, auto check SEO ที่ AI แนะนำแต่เลือกเองว่าจะแก้ไหม</li>
+    <li>ใส่ style ในโปรยได้ (แยก field กับ SEO Description)</li>
+    <li>เลือกคลิปจากระบบ logging ของ Nation TV ตัดหัวท้ายแล้วใส่ในข่าว, video galleries จาก TV</li>
+    <li>หน้า list สรุปจำนวนข่าวรายหมวด รายวันหรือรายเดือน (ใช้วันที่ public)</li>
+    <li>Dashboard ยอดจริงที่ไม่ delay จาก GA, report รายบุคคล (id, title, pageview) รายสัปดาห์ รายเดือน และ Ranking Top 10</li>
+    <li>ข่าวที่เกี่ยวข้องให้ระบบแนะนำและเลือกเองได้ พร้อมภาพปก</li>
+    <li>ลายน้ำเลือกใส่หรือไม่ใส่ และโหลดรูป original ได้, history การแก้ข่าว</li>
+    <li>template ปกข่าวและคลิปแนวตั้ง เลือก logo รายการ แก้ข้อความ อัป template ใหม่ได้ (PNG, PSD, .AI)</li>
+    <li>ค้นภาพจาก DAM หรือ Nation Photo, ใช้งานบนมือถือง่ายขึ้น</li>
+  </ul>
+
+  <h3>ตัวเลขที่พูดถึง</h3>
+  <ul>
+    <li>บันทึกเขียนว่า <span class="q">"ปกติเขียนข่าว 10 วัน 10 คน/วัน"</span> (ข้อความกำกวม ไม่ได้ตีความเพิ่ม)</li>
+    <li>Ranking Top 10 pageviews ในรายงานที่อยากได้</li>
+  </ul>
+</section>
+
+<!-- ============ TPP ============ -->
+<section class="page">
+  <div class="sec-head"><h2>The People</h2><span class="date">5 พฤศจิกายน 2569</span></div>
+  <div class="box"><b>ผู้เข้าร่วม:</b> บรรณาธิการข่าว (พี่ต้อง), นักข่าว 2 คน (คุณเบล และอีก 1 คนไม่ได้ระบุชื่อ)</div>
+
+  <h3>งานที่ทำนอกระบบและการทำงาน</h3>
+  <ul>
+    <li>รับงานนักเขียนนอก ปรับชื่อข่าวตาม SEO และใช้ AI ช่วยเรื่องโปรยข่าว (บันทึกไม่ได้ระบุว่าใช้เครื่องมือใด)</li>
+    <li>ตรวจกันเองและบอกกันให้แก้</li>
+    <li>อัป social ตั้งเวลาไว้พร้อมกับเว็บหลัก บางคนทำในเว็บก่อนแล้วค่อยทำ social</li>
+    <li>ข่าววิดีโอแปะ YouTube ให้เป็น auto playlist แทน</li>
+  </ul>
+
+  <h3>ปัญหา</h3>
+  <ul>
+    <li><span class="q">"ไม่ชอบที่มีกล่องใส่เนื้อหา 3 ส่วน ทำให้ทำงานช้า"</span></li>
+    <li>แก้ข่าวเก่ายาก เพราะข่าวเก่ามี 1 ส่วน แต่ตอนนี้ถูกแบ่งเป็น 3 ส่วน, อยากได้ byline ของข่าวเก่า</li>
+    <li>ต้องเคลียร์ข้อความก่อนถึงจะลงข่าวได้</li>
+    <li>AI ตรวจคำผิดใช้แล้ว error น่าจะเพราะข่าวยาวเกินไป และไม่แสดงผลเวลาบล็อก pop up</li>
+    <li>ค้นหาชื่อเกาหลีไม่เจอ อยากให้ค้นแบบใกล้เคียงเผื่อเขียนผิด</li>
+    <li>ถ้ามีข่าวซ้ำอยากให้ลบให้เลย</li>
+  </ul>
+
+  <h3>สิ่งที่อยากได้</h3>
+  <ul>
+    <li>ใส่เนื้อหาแค่ส่วนเดียว, clean text ก่อนวางลง editor</li>
+    <li>อัปหลายรูปในเนื้อหาทีเดียวพร้อมใส่ alt, ปรับ style คำอธิบายรูป, ลด font alt เหลือ 10px, เว้นระยะรูปอัตโนมัติ</li>
+    <li>อัป 1 รูปแล้ว crop ได้ 3 ปก, ติดลายน้ำให้และโหลด original กลับได้, card แนวตั้งเห็นภาพครบ</li>
+    <li>Tag, Title, Desc อัตโนมัติ, AI คิดโปรยให้สอดคล้องกับ SEO</li>
+    <li>ข่าวที่เกี่ยวข้องเลือกให้อัตโนมัติตาม keyword</li>
+    <li>history การแก้ข่าว, แสดงข้อมูลคนที่ login</li>
+    <li>แสดง GA4 Realtime ในหลังบ้าน เพราะคนเข้า GA4 ได้มีไม่กี่คน</li>
+    <li>ย้ายหมวดเก่าให้ BU เลือกหมวดเอง</li>
+    <li>See Temp และ link preview กำหนดวันหมดอายุเองได้ (default 1 วัน)</li>
+    <li>เลือกส่งข่าวหา user รายบุคคลได้</li>
+  </ul>
+
+  <h3>ตัวเลขที่พูดถึง</h3>
+  <ul>
+    <li>อัป 1 รูปได้ 3 ปก, font alt 10px, See Temp default 1 วัน</li>
+  </ul>
+</section>
+
+<!-- ============ PTD ============ -->
+<section class="page">
+  <div class="sec-head"><h2>Posttoday</h2><span class="date">6 พฤศจิกายน 2569</span></div>
+  <div class="box"><b>ผู้เข้าร่วม:</b> บรรณาธิการข่าว (พี่ชุน), นักข่าว (คุณนนท์, คุณกุ๊ก และอีก 1 คนไม่ได้ระบุชื่อ)</div>
+
+  <h3>งานที่ทำนอกระบบและการทำงาน</h3>
+  <ul>
+    <li>บางเรื่องลง social ก่อน โดยปกติอัปพร้อมกัน และกรองข่าวใน social ก่อน</li>
+    <li>ข่าว 2 แบบ: งานลูกค้าลงตามที่ลูกค้ากำหนดไม่ rewrite และข่าวจาก บก. ที่ต้อง rewrite ตาม SEO</li>
+    <li>ตรวจงานโดยเข้าไปอ่านกันเอง ถ้า บก. สั่งแก้จะ hide ข่าวก่อน แก้เสร็จค่อย public</li>
+    <li>ใช้มือถืออัปข่าว, กราฟิกเป็นแอดมิน บางครั้งอัปปกเองเวลารีบ</li>
+  </ul>
+
+  <h3>ปัญหา</h3>
+  <ul>
+    <li>ข้อมูลหายแม้ปรับเป็น auto save แล้ว และกด public แล้วข่าว <span class="q">"เบิ้ล"</span></li>
+    <li>มือถือปุ่มเล็ก จิ้มไม่โดน ต้องคลิกหลายรอบ (iPad ไม่มีปัญหา), พิมพ์ข่าวที่เกี่ยวข้องในมือถือแล้วค้าง</li>
+    <li>Tag มีมากเกินไปและหาไม่เจอ มีคนสร้างไว้ไม่ถูกต้องจนใช้แท็กจริงไม่ได้</li>
+    <li>AI ตรวจคำผิดขยันเกิน แนะนำเรื่องอื่นเช่นชิดห่าง ข้อความยาวจะ <span class="q">"อ๋อง"</span></li>
+    <li>ตั้ง title ให้ตรง SEO เสียเวลา และกังวลว่าใช้ AI แล้วจะเป็นภาษา AI</li>
+    <li>ใส่ Dailymotion ขั้นตอนเยอะ เลยไม่ใส่, เลิกใส่ปกแนวตั้ง, ต้องอัปปกแนวนอนก่อนเพราะรอปกอื่นนาน</li>
+    <li>กังวลเรื่อง auto crop กับข่าวในพระราชสำนักหรือนายกฯ</li>
+    <li>คนลาออกแล้วยังเข้าหลังบ้านได้, mail office เปิดช่องให้ hack, ไม่ควรให้ user เห็น source html</li>
+    <li>ปุ่มส่งออกข้อมูลไม่แสดง pageview</li>
+  </ul>
+
+  <h3>สิ่งที่อยากได้</h3>
+  <ul>
+    <li>ใส่เนื้อหา 1 ช่องแล้วระบบแยก 3 ส่วน, clean text ใน editor, upload doc แล้วเติมช่องให้</li>
+    <li>AI แนะนำแท็กที่คนสนใจจริง, ข่าวที่เกี่ยวข้องเฉพาะใน category เดียวกันและล่าสุดของ keyword</li>
+    <li>ลายน้ำปรับตำแหน่งตาม template, รูปหลายรูปควรไปอยู่ในแกลเลอรี และย้ายเมนูแกลเลอรีมาไว้ในหน้าเขียนข่าว</li>
+    <li>history จำนวนครั้งการแก้ (เฉพาะ admin), สิทธิ์แยกรายเมนู, auto ปิด user ที่ลาออก, 2FA เมื่อเข้าจากเน็ตภายนอก</li>
+    <li>Dashboard ข้อมูลนักข่าวให้ทุกคนเห็น, จำนวนข่าวรายวัน, เก็บยอดวิวรายวัน</li>
+    <li>byline ตัวใหญ่ขึ้น, DAM ถ้าไม่ทำให้ระบบหน่วง, ปิดเมนูที่ไม่ใช้เช่น Lottery</li>
+    <li>ข้อกังวล: ใช้ AI ช่วยเขียนข่าว กลัวเสียเอกลักษณ์ของ Posttoday</li>
+  </ul>
+
+  <h3>ตัวเลขที่พูดถึง</h3>
+  <ul>
+    <li>ข่าวทั่วไปใส่ภาพไม่เกิน 3 ภาพ, งานด่วนวันละไม่เกิน 3 ชิ้น (ไม่ทำข่าวด่วน ยกเว้นข่าวภัยพิบัติ)</li>
+    <li>ลายน้ำปกติมี 2 แบบ</li>
+  </ul>
+</section>
+
+<!-- ============ TSK ============ -->
+<section class="page">
+  <div class="sec-head"><h2>Thansettakij</h2><span class="date">6 พฤศจิกายน 2569</span></div>
+  <div class="box"><b>ผู้เข้าร่วม:</b> บรรณาธิการข่าว (พี่ปั้ม) และผู้ช่วย</div>
+
+  <h3>งานที่ทำนอกระบบและการทำงาน</h3>
+  <ul>
+    <li>เขียนจากข้างนอกทุกอย่าง แล้ววางใน Notepad เพื่อเคลียร์ style ก่อนลงเว็บ</li>
+    <li>ข่าวด่วน snap ข่าวใน LINE แล้วส่ง บก. ดูผ่าน LINE</li>
+    <li>กราฟทำเป็นภาพ หรือเอากราฟจาก AI มาใส่</li>
+    <li>ปกติให้นักข่าวสร้างข่าวในหลังบ้าน บก. ตรวจแล้ว public, ซีเรียสเรื่อง SEO และ AEO</li>
+  </ul>
+
+  <h3>ปัญหา</h3>
+  <ul>
+    <li><span class="q">"ข่าวยาวตรวจไม่ได้ AI ตรวจคำผิดไม่ได้"</span></li>
+    <li>มือถือ Android copy คำใน editor ไม่ได้</li>
+    <li>จำกัดคำแต่ละช่อง บางช่องเป็น H2 แล้วคำขาด ไม่สมูท</li>
+    <li>เลือก Tag และข่าวที่เกี่ยวข้องลำบาก, Tag ซ้ำเยอะ สร้างแท็กเพื่อให้เขียนข่าวได้เท่านั้น ไม่ตรงกับเนื้อหา</li>
+    <li>อยากเพิ่มตารางใน editor โดย style ไม่เพี้ยน และแทรกกราฟได้</li>
+    <li>admin tools ใช้ยาก ต้องกำหนด key เอง</li>
+    <li>เวลาที่แสดงเป็นมาตรฐานสากล ทำให้ดูเหมือนข่าวช้า อยากให้รู้ว่าเป็นเวลาไทย</li>
+  </ul>
+
+  <h3>สิ่งที่อยากได้</h3>
+  <ul>
+    <li>workflow ของ บก.: แยกข่าวรอตรวจกับตรวจแล้ว, บก. โน้ตให้นักข่าวแก้แล้วแจ้งกลับ</li>
+    <li>ข่าวพยากรณ์อากาศ น้ำมัน ราคาทอง ตลาดหุ้น ดึงข้อมูลให้ AI เขียน โดย บก. ยังอนุมัติ และคง style ของ BU</li>
+    <li>กรอกในกล่องเดียวให้ระบบแยกส่วน, auto check SEO, ใช้งานมือถือง่ายขึ้น</li>
+    <li>เลือกผู้เขียนได้มากกว่า 1 คน</li>
+    <li>ระบบประเมิน KPI นักข่าวเชื่อม HR (จำนวนข่าว, PV, คุณภาพ) โดย KPI ไม่ได้มาจากยอดวิวอย่างเดียว</li>
+    <li>เชื่อม FB และ YouTube, ข้อมูลจาก DAM videocenter, NotebookLM</li>
+    <li>ฝังข่าวเก่าที่ keyword ตรงกัน, ข่าวที่เกี่ยวข้องในเนื้อหา</li>
+    <li>template section, page special และการวาง category ใน index page ที่ปรับง่าย</li>
+    <li>เช็คว่าวันนี้เล่นประเด็นตามที่ประชุมไว้หรือยัง, history ตามสิทธิ์ admin, checklist เมนูของแต่ละ BU</li>
+  </ul>
+
+  <h3>ตัวเลขที่พูดถึง</h3>
+  <ul>
+    <li><span class="q">"ภาคสนาม 90%"</span> (ไม่ได้ระบุว่า 90% ของอะไร ดูหมายเหตุหน้าสุดท้าย)</li>
+  </ul>
+</section>
+
+<!-- ============ TNT ============ -->
+<section class="page">
+  <div class="sec-head"><h2>The Nation</h2><span class="date">9 พฤศจิกายน 2569</span></div>
+  <div class="box"><b>ผู้เข้าร่วม:</b> บรรณาธิการข่าว (พี่ปิ๋ม), นักข่าว 2 คน (คุณแบต, คุณกร)</div>
+
+  <h3>งานที่ทำนอกระบบและการทำงาน</h3>
+  <ul>
+    <li>เขียนข่าวใน Word แล้ว copy วางใน block 3 ก่อน เพราะเขียนในเว็บแล้วไม่เห็นภาพรวม, ตรวจผ่าน Word แล้วจึงไม่มีการตรวจก่อนขึ้น</li>
+    <li>ไม่ได้เขียนข่าวในมือถือ ใช้ Tablet เพราะทำงานลำบาก</li>
+    <li>breaking news ลง social ก่อน</li>
+    <li>สั่งงานกราฟิกผ่าน LINE ข้อมูลไม่ครบ ทำให้รูปล่าช้า, BI เก็บข้อมูล Dashboard ผู้เขียน</li>
+    <li>ต่างคนต่างแปล ทำให้ทำงานซ้ำซ้อน</li>
+  </ul>
+
+  <h3>ปัญหา</h3>
+  <ul>
+    <li><span class="q">"ระบบ 3 block ยากต่อการใช้งาน"</span>, ค้นข่าวในเครื่องตัวเองง่ายกว่า และข้อมูลหาย</li>
+    <li>ใส่รูปทีละรูปหลาย step, crop รูปแนวตั้งแล้วขาด</li>
+    <li>ค้นหาได้แค่จาก headline ไม่รวมเนื้อหาและข่าวเก่า</li>
+    <li>ค้นหา tag แสดงไม่ครบ เหมือนแสดงแค่ 10 รายการ</li>
+    <li>AI สรุปช้า, ยังไม่กล้าใช้ตรวจสะกดเพราะกังวลเรื่อง British English</li>
+    <li>คลิป IG ต้องแปลงหลายขั้นตอน</li>
+    <li>นามปากกาเรียงตามลำดับที่เพิ่ม คนที่ใช้บ่อยตกไปข้างล่าง</li>
+    <li>Dashboard ข้อมูล delay ใช้งานจริงไม่ได้, pageview ใน Dashboard กับหน้า list ไม่ตรงกัน</li>
+  </ul>
+
+  <h3>สิ่งที่อยากได้</h3>
+  <ul>
+    <li>ใส่ 1 block แล้วกระจายลง 3 block, highlight ข้อความที่เกินพร้อมบอกจำนวนตัวอักษร (แบบ X)</li>
+    <li>เพิ่มหลายรูปพร้อมจัด format อัตโนมัติ, ใส่ลิงก์ IG แล้วแสดงได้เลย</li>
+    <li>editor ใหม่ที่เปลี่ยน font ทำตาราง ตัวห้อย ยกกำลังได้, อัปโหลดไฟล์ Word</li>
+    <li>แนะนำ tag, title, desc, ข่าวที่เกี่ยวข้องเรียงตาม timeline, auto check SEO, ตรวจคำแบบ British English</li>
+    <li>เพิ่ม tag และ byline ในหน้าเขียนข่าว, byline favorite เรียงตามที่ใช้บ่อย</li>
+    <li>Dashboard ตัด bot ออก (ข้อมูล GA4 สวิง), ค้นชื่อนักข่าวในหน้า list, จำนวนข่าวรายวันต่อประเด็น</li>
+    <li>หน้าแบบ Google Sheet หรือ task ติดตามข่าวต้นฉบับ คนแปล กราฟิก แนบรูปได้ แทน LINE</li>
+    <li>มือถือควรใช้ได้, dark mode, 2FA เวลาทำงานต่างประเทศ และกั้น mail แปลก ๆ</li>
+  </ul>
+
+  <h3>ตัวเลขที่พูดถึง</h3>
+  <ul>
+    <li>ภาพปกแนวตั้งบางข่าว เช้า 5 เย็น 5</li>
+    <li>ค้นหา tag เหมือนแสดงแค่ 10 รายการ</li>
+  </ul>
+</section>
+
+<!-- ============ SPN ============ -->
+<section class="page">
+  <div class="sec-head"><h2>Springnews</h2><span class="date">10 พฤศจิกายน 2569</span></div>
+  <div class="box"><b>ผู้เข้าร่วม:</b> พี่ชุ (บก. ดูภาพรวม), ลูกปลา (KOL), แอน (content creator), มิตร (content website), ปุ้ย (content), เพียว (นักข่าว)</div>
+
+  <h3>งานที่ทำนอกระบบและการทำงาน</h3>
+  <ul>
+    <li>เขียนเอง เผยแพร่เอง, ไม่มีข่าวด่วนและข่าวภาคสนาม</li>
+    <li>ไม่เขียนข่าวในมือถือเพราะใช้งานยาก</li>
+    <li>แชร์ภาพ engagement สำหรับโพสต์ Facebook</li>
+    <li>copy งานจาก Word หรือ Google Doc แล้วลากทั้งหมดกด Ctrl+T เพื่อล้าง style</li>
+  </ul>
+
+  <h3>ปัญหา</h3>
+  <ul>
+    <li>copy จาก Word แล้ว style เพี้ยน, งานลูกค้าและ influencer ต้องจัดหน้าใหม่</li>
+    <li>tag คำสั้นไม่ขึ้น ต้องใส่ฟันหนู, Tag ซ้ำเยอะ ความหมายเดียวกันแต่เขียนต่างกัน หาไม่เจอ</li>
+    <li>หน้าค้นหาค้นยาก, locknews ค้นด้วยลิงก์ไม่ได้ ต้องก็อปชื่อ</li>
+    <li>backlink 3 ข่าวต้อง copy พาดหัวและลิงก์มาเอง, ลิงก์ Facebook ต้องแปลงเป็น embed</li>
+    <li>ใส่รูปในเนื้อหายาก, ภาพ social อัปผิดแล้วติดแคช 1 ชม.</li>
+    <li>สรุป summary <span class="q">"กด 4-5 ครั้งไม่ขึ้น"</span>, ตรวจคำผิดกด 1 ถึง 2 ครั้งแล้ว error ทั้งที่ข่าวไม่ยาว</li>
+    <li>หัวข้อข่าว 50 ตัวอักษรไม่ได้ lock, ตัดคำ title แล้วคำขาด</li>
+    <li>check rank ไม่ได้ โหลดแล้ว error, iframe ไม่เห็น preview, ส่งงานลูกค้าแล้วโฆษณาไม่แสดง</li>
+    <li>ข่าวที่ปิดแล้วยังแสดงใน Dashboard, เครื่องหมายคำพูดไม่เป็นแบบเดียวกัน, H2 กับ H3</li>
+  </ul>
+
+  <h3>สิ่งที่อยากได้</h3>
+  <ul>
+    <li>วางลิงก์ Facebook แล้วถอด embed ให้, backlink เปิด _blank อัตโนมัติ, สีลิงก์อัตโนมัติ</li>
+    <li>อัปหลายรูป (ราว 3 ถึง 5 รูป) แล้ว auto resize, ขนาดรูปมาตรฐาน, AI generate alt</li>
+    <li>generate หัวข้อข่าว, tag, โปรย และ AI เขียนข่าวเป็นแค่ option</li>
+    <li>แจ้งเตือนเมื่อเกินเงื่อนไข, ย้ายสรุปประเด็นขึ้นด้านบน, ข่าวที่เกี่ยวข้องที่เกี่ยวข้องจริง</li>
+    <li>Dashboard แบบ GA: ใครเขียนข่าวกี่ข่าว ยอดวิวเท่าไร, กดกราฟแท่งดูรายละเอียด</li>
+    <li>แชร์ข่าวไป Facebook พร้อมตั้งเวลาโพสต์, ดึงภาพ engagement จากหลังบ้านไปโพสต์</li>
+    <li>ปิดหมวด Lottery และ PDF</li>
+  </ul>
+
+  <h3>ตัวเลขที่พูดถึง</h3>
+  <ul>
+    <li>ลิงก์ในเนื้อหา 3 ลิงก์, หัวข้อข่าว 50 ตัวอักษร, รูป 3 ถึง 5 รูป, รูปมาตรฐาน 700 x 467px</li>
+    <li>แคชภาพ 1 ชม., สรุปกด 4 ถึง 5 ครั้ง, ตรวจคำผิดกดครั้งที่ 3 ถึงได้, สีลิงก์ #2980B9</li>
+  </ul>
+</section>
+
+<!-- ============ TNW ============ -->
+<section class="page">
+  <div class="sec-head"><h2>Thainews</h2><span class="date">12 พฤศจิกายน 2569</span></div>
+  <div class="box"><b>ผู้เข้าร่วม:</b> พี่ป็อป (บันทึกไม่ได้ระบุตำแหน่ง)</div>
+
+  <h3>งานที่ทำนอกระบบและการทำงาน</h3>
+  <ul>
+    <li>เขียนข่าวใน Notepad บางคนใช้ Word แล้ว copy มาวางในระบบ</li>
+    <li>นักข่าวทำปกเองไม่ต้องรอกราฟิก และแต่งรูปปกข้างนอก, ข่าวด่วนมีปกกลาง 2 template</li>
+    <li>ข่าวมาไวไปไว เขียนโดยดู SEO เบื้องต้น</li>
+  </ul>
+
+  <h3>ปัญหา</h3>
+  <ul>
+    <li>การเว้นบรรทัดหลังบ้านกับหน้าบ้านไม่ตรงกัน ต้องแก้ด้วย bullet</li>
+    <li>ค้นหาแท็กไม่เจอ</li>
+    <li>เพิ่มแกลเลอรีในหน้าอ่านแล้วรูปไม่โชว์บนเว็บ (ถ้าเพิ่มที่เมนูแกลเลอรีแล้วเลือกจะแสดง)</li>
+    <li>อยากให้ยอดใน Dashboard ตรง เพราะบางคนไม่มีสิทธิ์เข้า Looker <span class="q">"ยอด page view ในหน้า list ไม่ตรงไม่เป็นอะไร แต่ข้างนอกขอให้ตรง"</span></li>
+    <li>วิดีโอ Dailymotion ตรงปกบางทีไม่ขึ้น และเมื่อ Dailymotion มีปัญหาจะกระทบข่าวด้วย</li>
+    <li>บางคนกดตรวจคำผิดซ้ำบ่อย กลัวหลังบ้านช้าและกังวลเรื่องค่าใช้จ่าย</li>
+    <li>ถ้า auto resize ปก กลัวผิด scale ของรูปต้นฉบับ</li>
+  </ul>
+
+  <h3>สิ่งที่อยากได้</h3>
+  <ul>
+    <li><b>ค้านกล่องเดียว:</b> <span class="q">"เนื้อหาแบ่ง 3 ช่อง รู้สึกว่าโอเคแล้ว"</span> กลัวระบบแบ่งให้ไม่ตรงใจ</li>
+    <li>ปกข่าวขอแบบเดิม เพราะสุดท้ายต้องแต่งรูปข้างนอกอยู่ดี</li>
+    <li>กด enter แล้วเพิ่มระยะห่างให้อัตโนมัติ, ตารางในเนื้อหา</li>
+    <li>ใส่แกลเลอรีได้ในที่เดียวไม่ต้องแยกเมนู</li>
+    <li>เอาวิดีโอปกออก อัปวิดีโอไว้ในเนื้อหาหรือใน editor แทนโดยไม่บังตำแหน่ง Ads</li>
+    <li>กดลิงก์แล้วอยู่หน้าเดิมไม่ต้อง _blank (เก็บไปคิดก่อน)</li>
+    <li>รวมหน้า Articles กับ Advertorials, พูดให้พิมพ์ (ต้องไม่ช้า)</li>
+  </ul>
+
+  <h3>ตัวเลขที่พูดถึง</h3>
+  <ul>
+    <li>เขียนข่าว 8 ถึง 10 ข่าวต่อวันต่อคน มี KPI ของตัวเอง</li>
+    <li>Auto save 2 นาที แต่ตอนนี้ 3 นาทีก็โอเคแล้ว</li>
+    <li>ปกข่าวด่วน 2 template, รูปในเนื้อหา default 800px, ตารางขนาดราว 3x3 หรือ 2x10</li>
+  </ul>
+</section>
+
+<!-- ============ CAVEATS ============ -->
+<section class="page">
+  <div class="sec-head"><h2>หมายเหตุเรื่องการใช้ถ้อยคำ</h2><span class="date">อ่านก่อนนำตัวเลขไปอ้างอิง</span></div>
+
+  <div class="caveat">
+    <h3>Bangkokbiznews: "80% user ไม่อยากเขียนข่าวในระบบ"</h3>
+    บันทึกให้เหตุผลว่า <span class="q">"กลัวข้อมูลหายระหว่างการเขียน"</span> ตัวเลข 80% มาจากคำพูดในที่ประชุม บันทึกไม่ได้ระบุว่ามาจากการสำรวจหรือการนับ จึงควรอ้างเป็นความเห็นของผู้เข้าร่วม ไม่ใช่สถิติ และไม่ควรขยายไปเป็นตัวเลขของ BU อื่น
+  </div>
+
+  <div class="caveat">
+    <h3>Thansettakij: "ภาคสนาม 90%"</h3>
+    บันทึกเขียนเพียง "ภาคสนาม 90%" ไม่ได้บอกว่าเป็น 90% ของนักข่าว ของข่าว หรือของเวลาทำงาน จึงไม่ควรเขียนว่า "นักข่าว 90% อยู่ภาคสนาม"
+  </div>
+
+  <div class="caveat">
+    <h3>BU ที่อยู่ในชุดนี้</h3>
+    8 task ในชุดนี้คือ Bangkokbiznews, Nation Online, The People, Posttoday, Thansettakij, The Nation, Springnews และ Thainews ไม่มี Komchadluek อยู่ในชุดนี้ แต่มี Thainews
+  </div>
+
+  <div class="caveat">
+    <h3>การนับในตารางภาพรวม</h3>
+    นับจาก BU ที่ระบุเรื่องนั้นในบันทึกเท่านั้น BU ที่ไม่ได้พูดถึงไม่ได้แปลว่าไม่มีปัญหานั้น บางกลุ่มรวมถ้อยคำที่ใกล้กัน เช่น "Tag มากเกินไป" ของ Posttoday นับรวมกับ "Tag ซ้ำ" และ "ยอดวิวและ Dashboard มีปัญหา" รวมทั้งเรื่องยอดไม่ตรง ยอดไม่แสดง และข่าวที่ปิดแล้วยังแสดง
+  </div>
+</section>
+
+</body>
+</html>
