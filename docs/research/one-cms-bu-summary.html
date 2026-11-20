@@ -60,7 +60,7 @@
   .ov { font-size: 8.8pt; line-height: 1.4; }
   .ov h2 { font-size: 14pt; }
   .ov h3 { margin-top: 3mm; }
-  .matrix td, .matrix th { text-align: center; padding: 0.9mm 1mm; }
+  .matrix td, .matrix th { text-align: center; padding: 0.65mm 1mm; }
   .matrix td.l, .matrix th.l { text-align: left; }
   .matrix td.n { font-weight: 700; }
   .dot { display: inline-block; width: 2.4mm; height: 2.4mm; border-radius: 50%; background: var(--accent); }
@@ -89,7 +89,7 @@
 
 <!-- ============ OVERVIEW ============ -->
 <section class="page ov">
-  <div class="sec-head"><h2>ภาพรวม 8 BU</h2><span class="date">ตัวย่อ: BKK, NTO, TPP, PTD, TSK, TNT, SPN, TNW</span></div>
+  <div class="sec-head"><h2>ภาพรวม 8 BU</h2><span class="date">ตัวย่อในตารางประเด็นตรงกับวงเล็บหลังชื่อ BU ในตารางผู้เข้าร่วม</span></div>
 
   <h3>ผู้เข้าร่วมแต่ละ BU</h3>
   <table>
@@ -101,12 +101,12 @@
     <tr><td>Thansettakij (TSK)</td><td>6 พ.ย. 2569</td><td>พี่ปั้ม (บรรณาธิการข่าว) และผู้ช่วย (ไม่ได้ระบุชื่อ)</td></tr>
     <tr><td>The Nation (TNT)</td><td>9 พ.ย. 2569</td><td>พี่ปิ๋ม (บรรณาธิการข่าว), คุณแบต, คุณกร (นักข่าว)</td></tr>
     <tr><td>Springnews (SPN)</td><td>10 พ.ย. 2569</td><td>พี่ชุ (บก. ดูภาพรวม), ลูกปลา (KOL), แอน (content creator), มิตร (content website), ปุ้ย (content), เพียว (นักข่าว)</td></tr>
-    <tr><td>Thainews (TNW)</td><td>12 พ.ย. 2569</td><td>พี่ป็อป (ไม่ได้ระบุตำแหน่ง)</td></tr>
+    <tr><td>Thainews (THN)</td><td>12 พ.ย. 2569</td><td>พี่ป็อป (ไม่ได้ระบุตำแหน่ง)</td></tr>
   </table>
 
   <h3>ปัญหาหลักข้าม BU</h3>
   <table class="matrix">
-    <tr><th class="l">ประเด็น</th><th>BKK</th><th>NTO</th><th>TPP</th><th>PTD</th><th>TSK</th><th>TNT</th><th>SPN</th><th>TNW</th><th>รวม</th></tr>
+    <tr><th class="l">ประเด็น</th><th>BKK</th><th>NTO</th><th>TPP</th><th>PTD</th><th>TSK</th><th>TNT</th><th>SPN</th><th>THN</th><th>รวม</th></tr>
     <tr><td class="l">เนื้อหาหายระหว่างเขียน</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td></td><td class="n">4</td></tr>
     <tr><td class="l">ข่าวเบิ้ลตอนกดเผยแพร่</td><td></td><td></td><td></td><td><span class="dot"></span></td><td></td><td></td><td></td><td></td><td class="n">1</td></tr>
     <tr><td class="l">วางข้อความจากที่อื่น (Word ฯลฯ) แล้ว style เพี้ยน</td><td><span class="dot"></span></td><td></td><td><span class="dot"></span></td><td></td><td><span class="dot part"></span></td><td></td><td><span class="dot"></span></td><td></td><td class="n">3</td></tr>
@@ -129,11 +129,11 @@
     <tr><td class="l">เวลาที่แสดงไม่ชัดว่าเป็นเวลาไทย</td><td></td><td></td><td></td><td></td><td><span class="dot"></span></td><td></td><td></td><td></td><td class="n">1</td></tr>
   </table>
   <div class="legend">
-    จุดทึบหมายถึงบันทึกของ BU นั้นพูดถึงเรื่องนี้ จุดโปร่งหมายถึงเกี่ยวข้องแต่ไม่นับ (TSK ล้าง style เองใน Notepad และ TNT ค้น Tag แล้วเห็นแค่ราว 10 รายการ) คอลัมน์ "รวม" คือจำนวนจุดทึบ
-    <br>แถววางข้อความ: SPN บอกว่าข้อความมาจาก Word, BKK copy มาจากที่อื่น, TPP ต้องเคลียร์ข้อความก่อนลง ส่วน PTD ขอ clean text เป็นข้อแนะนำจึงไม่นับ
-    <br>แถวงานนอกระบบ: TSK และ TNT ใช้ LINE, NTO และ TSK ใช้ AI ภายนอก, BKK ให้ทีม SEO ตามแก้ทีหลัง
-    <br>แถวยอดวิว: NTO, TNT และ TNW บอกว่ายอดไม่ตรงหรือดีเลย์, PTD ส่งออกแล้วไม่มี pageview, SPN เห็นข่าวที่ปิดแล้วใน Dashboard
-    <br>แถวความปลอดภัย: PTD บอกว่าคนลาออกยังเข้าหลังบ้านได้และขอ 2FA, TNT ขอ 2FA ตอนทำงานต่างประเทศ
+    จุดทึบหมายถึงบันทึกของ BU นั้นพูดถึงเรื่องนี้ จุดโปร่งหมายถึงเกี่ยวข้องแต่ไม่นับ (Thansettakij ล้าง style เองใน Notepad, The Nation ค้น Tag แล้วเห็นราว 10 รายการ) คอลัมน์ "รวม" นับเฉพาะจุดทึบ
+    <br>แถววางข้อความ: Springnews ได้ข้อความจาก Word, Bangkokbiznews copy จากที่อื่น, The People ต้องเคลียร์ข้อความก่อนลง ส่วน Posttoday ขอ clean text เป็นข้อแนะนำจึงไม่นับ
+    <br>แถวงานนอกระบบ: Thansettakij และ The Nation ใช้ LINE, Nation Online และ Thansettakij ใช้ AI ภายนอก, Bangkokbiznews ให้ทีม SEO ตามแก้ทีหลัง
+    <br>แถวยอดวิว: ยอดของ Nation Online, The Nation และ Thainews ไม่ตรงหรือดีเลย์, ไฟล์ส่งออกของ Posttoday ไม่มี pageview, Springnews เห็นข่าวที่ปิดแล้วใน Dashboard
+    <br>แถวความปลอดภัย: Posttoday พบว่าคนลาออกยังเข้าหลังบ้านได้และขอ 2FA, The Nation ขอ 2FA ตอนทำงานต่างประเทศ
   </div>
 </section>
 
@@ -443,7 +443,7 @@
   </ul>
 </section>
 
-<!-- ============ TNW ============ -->
+<!-- ============ THN ============ -->
 <section class="page">
   <div class="sec-head"><h2>Thainews</h2><span class="date">12 พฤศจิกายน 2569</span></div>
   <div class="box"><b>ผู้เข้าร่วม:</b> พี่ป็อป (บันทึกไม่ได้ระบุตำแหน่ง)</div>
