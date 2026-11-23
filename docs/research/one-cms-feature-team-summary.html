@@ -1,0 +1,957 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><title>สรุปฟีเจอร์จากทีม Smart ONE CMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+<style>:root{--ink:#111827;--ink2:#374151;--muted:#6b7280;--line:#e5e7eb;--soft:#f6f7f9;--accent:#1d4ed8;--accent-soft:#eef2ff;--navy:#0f1f4b;
+--ai:#6d28d9;--ai-soft:#f1eafe;--help:#0369a1;--help-soft:#e3f3fc;--none:#4b5563;--none-soft:#eef0f3}
+@page{size:A4 landscape;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff}
+body{font-family:"Sarabun","Sukhumvit Set","Thonburi",sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3,.f-prompt{font-family:"Prompt","Sarabun",sans-serif;font-weight:600;line-height:1.3;margin:0}
+p{margin:0 0 2mm}
+.page{position:relative;width:297mm;height:210mm;padding:12mm 14mm 13mm;overflow:hidden;page-break-after:always;break-after:page}
+.page:last-child{page-break-after:auto;break-after:auto}
+.note{color:var(--muted);font-size:8.8pt}
+.foot{position:absolute;left:14mm;right:14mm;bottom:6mm;display:flex;justify-content:space-between;font-size:7.8pt;color:var(--muted);border-top:1px solid var(--line);padding-top:1.6mm}
+
+/* chips */
+.chip{display:inline-block;font-family:"Prompt",sans-serif;font-size:7.8pt;font-weight:500;padding:.25mm 2.3mm;border-radius:10mm;white-space:nowrap;line-height:1.5}
+.t-ai{background:var(--ai-soft);color:var(--ai)}.t-help{background:var(--help-soft);color:var(--help)}.t-none{background:var(--none-soft);color:var(--none)}
+.st{display:inline-block;font-family:"Prompt",sans-serif;font-size:7.4pt;font-weight:500;padding:.1mm 2mm;border-radius:1.4mm;white-space:nowrap;vertical-align:1px}
+.s-old{background:#eef0f3;color:#4b5563}.s-redo{background:#fef3c7;color:#92400e}.s-new{background:#dcfce7;color:#166534}
+.s-web{background:#e0e7ff;color:#3730a3}.s-sep{background:#fce7f3;color:#9d174d}.s-all{background:#e2e8f0;color:#334155}
+
+/* stage progress bar */
+.top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5mm}
+.top h2{font-size:17pt}
+.top .meta{color:var(--muted);font-size:8.6pt;margin-top:.8mm}
+.steps{display:flex;gap:1.2mm}
+.steps span{font-family:"Prompt",sans-serif;font-size:7.2pt;padding:.6mm 2.2mm;border-radius:10mm;background:var(--soft);color:#9ca3af;white-space:nowrap}
+.steps span.on{background:var(--accent);color:#fff}
+
+/* cover */
+.cover{padding:0;display:grid;grid-template-columns:1.25fr 1fr}
+.cover .l{padding:22mm 16mm 16mm 20mm;display:flex;flex-direction:column}
+.cover .kicker{font-family:"Prompt",sans-serif;color:var(--accent);font-weight:600;font-size:12pt;letter-spacing:.04em}
+.cover h1{font-size:40pt;margin-top:6mm;line-height:1.15}
+.cover .lead{font-size:13.5pt;color:var(--ink2);margin-top:6mm;max-width:150mm}
+.cover .meta{margin-top:auto;font-size:9.8pt;color:var(--ink2)}
+.cover .meta div{margin-bottom:1.4mm;display:grid;grid-template-columns:22mm 1fr}
+.cover .meta b{color:var(--muted);font-weight:400}
+.cover .r{background:var(--navy);color:#fff;padding:22mm 16mm;display:flex;flex-direction:column;justify-content:center}
+.cover .r .big{font-family:"Prompt",sans-serif;font-size:64pt;font-weight:600;line-height:1}
+.cover .r .cap{font-size:11pt;opacity:.8;margin-bottom:8mm}
+.cover .stg{display:grid;grid-template-columns:8mm 1fr 10mm;gap:1.5mm 3mm;font-size:10pt;align-items:center}
+.cover .stg .n{font-family:"Prompt",sans-serif;opacity:.6}
+.cover .stg .c{text-align:right;font-family:"Prompt",sans-serif}
+.cover .stg .bar{grid-column:2/4;height:1.4mm;background:rgba(255,255,255,.15);border-radius:1mm;margin-top:-.6mm;margin-bottom:1mm}
+.cover .stg .bar i{display:block;height:100%;background:#93c5fd;border-radius:1mm}
+
+/* how to read */
+.howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm}
+.panel{background:var(--soft);border-radius:3mm;padding:5mm 5.5mm}
+.panel h3{font-size:11pt;margin-bottom:3mm;color:var(--navy)}
+.panel .it{display:grid;grid-template-columns:32mm 1fr;gap:2mm;margin-bottom:2.4mm;align-items:start}
+.panel .it .chip,.panel .it .st{justify-self:start}
+.anat{display:grid;grid-template-columns:7mm 1fr;gap:1.5mm 2mm;margin-bottom:3mm}
+.anat .n{width:6mm;height:6mm;border-radius:50%;background:var(--accent);color:#fff;font-family:"Prompt",sans-serif;font-size:8pt;display:flex;align-items:center;justify-content:center}
+.rule-box{background:var(--navy);color:#fff;border-radius:3mm;padding:4mm 5mm;margin-top:3mm}
+.rule-box b{font-family:"Prompt",sans-serif;font-size:11pt;display:block;margin-bottom:1mm}
+
+/* overview */
+table.ov{border-collapse:collapse;width:100%;font-size:9.6pt}
+table.ov th{font-family:"Prompt",sans-serif;font-weight:500;color:var(--muted);font-size:8.6pt;text-align:center;padding:0 2mm 2mm;border-bottom:2px solid var(--ink)}
+table.ov td{border-bottom:1px solid var(--line);padding:2.2mm 2mm;text-align:center;vertical-align:middle}
+table.ov .l{text-align:left}
+table.ov td.l b{font-family:"Prompt",sans-serif;font-weight:600}
+table.ov .desc{color:var(--muted);font-size:8.4pt}
+table.ov .num{font-family:"Prompt",sans-serif;font-size:12pt}
+table.ov tr.tot td{border-bottom:none;border-top:2px solid var(--ink);font-weight:700}
+.sbar{display:flex;height:4mm;border-radius:1mm;overflow:hidden;width:70mm;background:var(--soft)}
+.sbar i{display:block;height:100%}
+.sbar .a{background:var(--ai)}.sbar .h{background:#38bdf8}.sbar .x{background:#cbd5e1}
+.legend{display:flex;gap:5mm;font-size:8.4pt;color:var(--muted);margin-top:3mm}
+.legend i{display:inline-block;width:3mm;height:3mm;border-radius:.6mm;margin-right:1.2mm;vertical-align:-.3mm}
+
+/* divider */
+.divider{padding:0;display:grid;grid-template-columns:78mm 1fr}
+.divider .side{background:var(--navy);color:#fff;padding:16mm 12mm;display:flex;flex-direction:column}
+.divider .side .lbl{font-family:"Prompt",sans-serif;font-size:10pt;opacity:.65;letter-spacing:.05em}
+.divider .side .num{font-family:"Prompt",sans-serif;font-size:120pt;font-weight:600;line-height:1;margin:2mm 0 4mm}
+.divider .side h2{font-size:26pt}
+.divider .side .lead{font-size:11pt;opacity:.85;margin-top:3mm}
+.divider .side .cnt{margin-top:auto;display:grid;grid-template-columns:1fr auto;gap:1.6mm;font-size:9.4pt}
+.divider .side .cnt b{font-family:"Prompt",sans-serif;font-weight:500}
+.divider .main{padding:14mm 14mm 16mm 12mm}
+.divider .main h3{font-size:11pt;color:var(--muted);font-weight:500;margin-bottom:4mm}
+.flist{display:grid;grid-template-columns:1fr;gap:1.6mm 8mm}
+.flist.c2{grid-template-columns:1fr 1fr}
+.fi{display:grid;grid-template-columns:9mm 25mm 1fr;align-items:start;gap:1mm;font-size:9.2pt;line-height:1.4;padding:1.2mm 0;border-bottom:1px solid var(--line)}
+.fi .no{font-family:"Prompt",sans-serif;color:var(--muted);font-size:8.4pt;padding-top:.3mm}
+.fi .chip{justify-self:start}
+
+/* cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4.5mm;height:160mm}
+.card{border:1px solid var(--line);border-radius:2.6mm;overflow:hidden;display:flex;flex-direction:column;font-size:8.3pt;line-height:1.4;background:#fff}
+.card-head{padding:2.4mm 3.6mm 2.2mm;border-bottom:1px solid var(--line);background:var(--none-soft)}
+.t-ai-card .card-head{background:var(--ai-soft)}.t-help-card .card-head{background:var(--help-soft)}
+.card-head .meta{display:flex;align-items:center;gap:2mm}
+.card-head .no{font-family:"Prompt",sans-serif;font-size:8pt;color:var(--muted)}
+.card-head h3{font-size:10.4pt;margin-top:.8mm;color:var(--ink)}
+.card-body{padding:2mm 3.6mm 0;flex:1;display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:19mm 1fr;gap:2.4mm;padding:1.1mm 0}
+.row + .row{border-top:1px solid #f0f1f3}
+.row .k{font-family:"Prompt",sans-serif;font-size:7.8pt;color:var(--accent);font-weight:500;padding-top:.2mm}
+.row .v{color:var(--ink2)}
+.sub{color:var(--muted);font-size:7.7pt;margin-top:.4mm}
+.ai-role{margin-top:.8mm;padding-left:2mm;border-left:2px solid var(--ai);color:var(--ink)}
+.t-help-card .ai-role{border-left-color:var(--help)}
+.pg b{color:var(--ink);font-weight:600}
+.bus{margin-top:.9mm;display:flex;flex-wrap:wrap;gap:.9mm}
+.bu{font-size:7.4pt;background:#fff;border:1px solid #d1d5db;border-radius:1.2mm;padding:0 1.6mm;color:var(--ink2)}
+.bu.none{border-style:dashed;color:var(--muted)}
+.decide{margin-top:auto;margin-left:-3.6mm;margin-right:-3.6mm;padding:1.8mm 3.6mm;background:var(--soft);border-top:1px solid var(--line);display:grid;grid-template-columns:19mm 1fr;gap:2.4mm}
+.decide .k{font-family:"Prompt",sans-serif;font-size:7.8pt;color:var(--navy);font-weight:600}
+.decide .v{color:var(--ink);font-weight:600}
+.flist.dense .fi{font-size:8.6pt;padding:.75mm 0;line-height:1.35}.flist.dense{gap:1mm 8mm}
+.card.tight{font-size:7.75pt;line-height:1.33}.card.tight .sub{font-size:7.2pt}.card.tight .row{padding:.8mm 0}
+.howto{font-size:9.4pt}
+.panel .it{grid-template-columns:27mm 1fr}
+.flow-h{font-size:11pt;color:var(--navy);margin:6mm 0 3mm}
+.flow{display:grid;grid-template-columns:repeat(8,1fr);gap:2mm}
+.fl{position:relative;background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:2mm;padding:2.4mm 2.6mm;display:flex;flex-direction:column;min-height:34mm}
+.fl .n{font-family:"Prompt",sans-serif;font-size:16pt;color:var(--accent);line-height:1}
+.fl b{font-family:"Prompt",sans-serif;font-size:10pt;margin-top:1mm}
+.fl .d{font-size:7.6pt;color:var(--muted);line-height:1.35;margin-top:.8mm}
+.fl .c{margin-top:auto;font-family:"Prompt",sans-serif;font-size:8pt;color:var(--ink2);padding-top:1.4mm}
+.flow-h span{font-family:"Sarabun",sans-serif;font-weight:400;font-size:8.8pt;color:var(--muted);margin-left:2mm}
+.flow{display:block}
+.mainline{display:flex;align-items:stretch}
+.mainline .fl{flex:1;min-height:27mm}
+.arr{display:flex;align-items:center;justify-content:center;width:6mm;color:var(--accent);font-size:13pt;font-family:"Prompt",sans-serif}
+.loop{position:relative;height:5.5mm;margin:0 calc((100% - 30mm)/12 + 0mm);border:1.6px solid var(--accent);border-top:none;border-radius:0 0 2.5mm 2.5mm;margin-top:0}
+.loop::before{content:"";position:absolute;left:-1.25mm;top:-1.6mm;border-left:1.1mm solid transparent;border-right:1.1mm solid transparent;border-bottom:1.8mm solid var(--accent)}
+.loop span{position:absolute;left:50%;bottom:-2.4mm;transform:translateX(-50%);background:#fff;padding:0 2.5mm;font-size:8pt;color:var(--accent);font-family:"Prompt",sans-serif;white-space:nowrap}
+.sides{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:5mm}
+.sw .tag{font-family:"Prompt",sans-serif;font-size:7.8pt;color:var(--muted);margin-bottom:1.2mm}
+.fl.side{flex-direction:row;align-items:baseline;gap:2.5mm;min-height:0;border-top:1px dashed #9ca3af;border-style:dashed;border-color:#9ca3af;padding:2mm 3mm}
+.fl.side .n{font-size:12pt;color:var(--muted)}
+.fl.side b{margin-top:0;white-space:nowrap}
+.fl.side .d{margin-top:0;flex:1}
+.fl.side .c{margin-top:0;padding-top:0;white-space:nowrap}
+
+.t-yel{background:#fff1c7;color:#92400e}.t-yel-card .card-head{background:#fff7dd}
+.dec{display:inline-block;font-family:"Prompt",sans-serif;font-size:7.8pt;font-weight:600;padding:.25mm 2.3mm;border-radius:10mm;white-space:nowrap;line-height:1.5}
+.d-must{background:#fde2e4;color:#be123c}.d-later{background:#dbeafe;color:#1e40af}.d-no{background:#e5e7eb;color:#374151}
+.d-dup{background:#fef3c7;color:#a16207}.d-open{background:#f3e8ff;color:#7e22ce}.d-star{background:#fef9c3;color:#854d0e}
+.imp{display:inline-block;font-family:"Prompt",sans-serif;font-size:7.4pt;padding:.2mm 2mm;border-radius:1.4mm;white-space:nowrap}
+.imp.big{background:#be123c;color:#fff}.imp.small{background:#fff;color:var(--muted);border:1px dashed #9ca3af}
+.card-head .meta{flex-wrap:wrap;row-gap:1mm}
+.card-head .grp{margin-left:auto;font-size:7.6pt;color:var(--muted);font-family:"Prompt",sans-serif}
+.tnote{margin-top:.8mm;font-size:7.6pt;color:#7e22ce}
+.cover .dsum{display:grid;grid-template-columns:1fr auto;gap:3mm 6mm;align-items:center;font-size:11pt;margin-top:4mm}
+.cover .dsum b{font-family:"Prompt",sans-serif;font-size:16pt}
+.cover .dsum .dec{font-size:10pt;padding:.6mm 3mm}
+.howto .panel .it{grid-template-columns:29mm 1fr}
+.phases{display:flex;align-items:stretch;margin-top:2mm}
+.phase{flex:1;background:#fff;border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:2.5mm;padding:4mm 4.5mm;display:flex;flex-direction:column}
+.phase .pn{font-family:"Prompt",sans-serif;font-size:24pt;color:var(--accent);line-height:1}
+.phase b{font-family:"Prompt",sans-serif;font-size:13pt;margin-top:1.5mm}
+.phase p{font-size:9pt;color:var(--ink2);margin:2mm 0 3mm;line-height:1.45}
+.phase .pc{margin-top:auto;font-size:9pt;font-family:"Prompt",sans-serif}
+.phases + .loop{margin:0 calc((100% - 12mm)/6);height:7mm}
+.outflow{margin-top:8mm}
+.outflow .tag{font-family:"Prompt",sans-serif;font-size:8pt;color:var(--muted);margin-bottom:1.2mm}
+.outflow .fl.side{display:flex;flex-direction:row;align-items:baseline;gap:4mm;background:#fff;border:1px dashed #9ca3af;border-radius:2mm;padding:3mm 4mm}
+.outflow .fl.side b{font-family:"Prompt",sans-serif;font-size:11pt;white-space:nowrap}
+.outflow .fl.side .d{flex:1;font-size:8.6pt;color:var(--muted)}
+.outflow .fl.side .c{white-space:nowrap;font-size:9pt;font-family:"Prompt",sans-serif}
+.principle{margin-top:6mm;background:var(--navy);color:#fff;border-radius:2.5mm;padding:4mm 5mm;font-size:10.5pt}
+.principle b{font-family:"Prompt",sans-serif}
+.divider .side .num.txt{font-size:90pt}
+.gh{grid-column:1/-1;margin:2.2mm 0 .4mm;font-size:9pt;display:flex;align-items:center;gap:2mm}
+.gh b{font-family:"Prompt",sans-serif;font-weight:600}
+.flist .fi{grid-template-columns:9mm 25mm 1fr}
+table.dt{border-collapse:collapse;width:100%;font-size:9pt}
+table.dt th{font-family:"Prompt",sans-serif;font-weight:500;color:var(--muted);font-size:8.4pt;text-align:left;padding:0 2mm 1.6mm;border-bottom:2px solid var(--ink)}
+table.dt td{border-bottom:1px solid var(--line);padding:1.5mm 2mm;vertical-align:top}
+table.dt .kc{white-space:nowrap;font-family:"Prompt",sans-serif;color:var(--muted);font-size:8.4pt;width:34mm}
+table.dt .tt{font-weight:600;width:120mm}
+table.dt .nt{color:var(--muted);font-size:8.4pt}
+.top h2 .dec{font-size:11pt;vertical-align:3px}
+.clist{columns:2;column-gap:8mm}
+.clist .gh{break-after:avoid;break-inside:avoid;margin:2mm 0 .8mm}
+.clist .gh:first-child{margin-top:0}
+.ci{display:grid;grid-template-columns:8mm 3mm 1fr;align-items:center;gap:1.2mm;font-size:8.6pt;line-height:1.3;padding:.75mm 0;border-bottom:1px solid #f0f1f3;break-inside:avoid}
+.ci .no{font-family:"Prompt",sans-serif;color:var(--muted);font-size:8pt}
+.ci .tt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci .dot{width:2.4mm;height:2.4mm;border-radius:50%;display:block}
+.ci .dot.t-ai{background:var(--ai)}.ci .dot.t-help{background:#38bdf8}.ci .dot.t-none{background:#cbd5e1}.ci .dot.t-yel{background:#fbbf24}
+.divider .main h3 .lg{font-weight:400;font-size:8.4pt;margin-left:2mm}
+.panel .it .dec,.panel .it .imp{justify-self:start}
+</style></head><body><section class="page cover">
+<div class="l">
+  <div class="kicker">SMART ONE CMS</div>
+  <h1>สรุปฟีเจอร์<br>จากทีม</h1>
+  <p class="lead">ผลการเลือกฟีเจอร์ของทีมจากแถบ "ฟีเจอร์บนเส้นทางข่าว" จัดตาม Flow ข่าวครบวงจรของคุณอภิญญา ตั้งแต่ Story Desk ถึงการเผยแพร่</p>
+  <div class="meta">
+    <div><b>ฉบับวันที่</b>23 พฤศจิกายน 2569</div>
+    <div><b>สถานะ</b>ผลการประชุมเลือกฟีเจอร์ของทีม</div>
+    <div><b>ที่มา</b>สติกเกอร์บนการ์ดในแถบ "ฟีเจอร์บนเส้นทางข่าว" และหน้า "ภาพรวม" ในบอร์ด One CMS UX Design</div>
+  </div>
+</div>
+<div class="r">
+  <div class="big">64</div><div class="cap">ฟีเจอร์ที่ทีมเลือกว่าต้องทำ จากทั้งหมด 110 การ์ด</div>
+  <div class="dsum">
+    <span><span class="dec d-must">&#9829; ต้องทำ</span></span><b>64</b>
+    <span><span class="dec d-later">&#128077; ทำทีหลัง</span></span><b>18</b>
+    <span><span class="dec d-no">&#10005; ไม่ทำ</span></span><b>15</b>
+    <span><span class="dec d-dup">&#128257; ซ้ำ</span></span><b>9</b>
+    <span><span class="dec d-open">? ยังไม่ตัดสิน</span></span><b>4</b>
+  </div>
+</div></section><section class="page ">
+<div class="top"><div><h2>วิธีอ่านเอกสารนี้</h2><div class="meta">ผลการตัดสินมาจากสติกเกอร์ที่ทีมแปะบนการ์ดแต่ละใบ</div></div></div>
+<div class="howto">
+  <div class="panel"><h3>สติกเกอร์ผลการตัดสิน</h3>
+    <div class="it"><span class="dec d-must">&#9829; ต้องทำ</span><div>สติกเกอร์หัวใจ ทีมเห็นว่าดีมากและต้องทำ มี 64 ข้อ</div></div>
+    <div class="it"><span class="dec d-later">&#128077; ทำทีหลัง</span><div>สติกเกอร์กดไลก์ ดีแต่เก็บไว้ทำทีหลัง มี 18 ข้อ</div></div>
+    <div class="it"><span class="dec d-no">&#10005; ไม่ทำ</span><div>สติกเกอร์กากบาท ทีมตัดสินว่าไม่ทำ มี 15 ข้อ</div></div>
+    <div class="it"><span class="dec d-dup">&#128257; ซ้ำ</span><div>สติกเกอร์ลูกศรวนสีเหลือง ซ้ำกับฟีเจอร์อื่น มี 9 ข้อ</div></div>
+    <div class="it"><span class="dec d-open">? ยังไม่ตัดสิน</span><div>การ์ดที่ยังไม่มีสติกเกอร์ผลการตัดสิน มี 4 ข้อ</div></div>
+  </div>
+  <div class="panel"><h3>สติกเกอร์ประกอบ</h3>
+    <div class="it"><span class="imp big">สำคัญมาก</span><div>สติกเกอร์ขนาดใหญ่ ทีมให้ความสำคัญมาก</div></div>
+    <div class="it"><span class="imp small">สำคัญน้อย</span><div>สติกเกอร์ขนาดเล็ก ทีมให้ความสำคัญน้อย</div></div>
+    <div class="it"><span class="dec d-star">&#9733; BU ทำเอง</span><div>สติกเกอร์ดาว เป็นเรื่องที่ให้ BU ไปทำเอง</div></div>
+    <div class="it"><span class="dec d-open">&#128591; 3 คน</span><div>สติกเกอร์ไหว้ ตัดสินตอนผู้ร่วมประชุมเหลือ 3 คน</div></div>
+    <div class="it"><span class="dec d-open">? 5 คน</span><div>สติกเกอร์ ? หมายถึงผู้ประชุมครบ 5 คน</div></div>
+    <div class="it"><span class="chip t-yel">มีแล้วแต่ไม่ครบทุก BU</span><div>การ์ดสีเหลือง มีฟีเจอร์อยู่แล้ว แต่ยังไม่มีในทุก BU</div></div>
+  </div>
+  <div class="panel"><h3>ในการ์ดแต่ละใบ</h3>
+    <div class="anat"><span class="n">1</span><div><b>ไอเดีย:</b> ฟีเจอร์ทำอะไร และ AI ทำอะไรถ้ามี</div>
+    <span class="n">2</span><div><b>อยู่หน้าไหน:</b> ชื่อหน้า และเป็นหน้าเดิมหรือหน้าใหม่</div>
+    <span class="n">3</span><div><b>แก้ปัญหาอะไร:</b> ปัญหาที่ผู้ใช้เจอ และ BU ที่ยกเรื่องนี้</div>
+    <span class="n">4</span><div><b>ใครตัดสิน:</b> ใครตรวจหรือยืนยันผล</div></div>
+    <p class="note">หัวการ์ดบอกประเภท AI ผลการตัดสิน และกลุ่มใน Flow ชื่อฟีเจอร์ใช้ข้อความล่าสุดบนบอร์ด ส่วนรายละเอียดมาจาก PDF "ฟีเจอร์บนเส้นทางข่าว" และปรับตามที่ทีมแก้การ์ด</p>
+    <p class="note">ชื่อ BU มาจากชีตสรุป Requirement ของคุณอภิญญาและคุณชุมพร (มี Komchadluek) และบันทึกการประชุม 8 BU ใน Asana (มี Thainews)</p>
+  </div>
+</div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 2 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>Flow ข่าวครบวงจร: จากสัญญาณถึงการเผยแพร่</h2><div class="meta">สรุปจาก Flow ของคุณอภิญญาในหน้า "ภาพรวม" ของบอร์ด ฟีเจอร์ที่ทีมเลือกถูกจัดเข้าแต่ละช่วงของ Flow นี้</div></div></div>
+<div class="phases"><div class="phase"><div class="pn">1</div><b>Story Desk หาเรื่องและคัดเลือก</b><p>รวบรวมสัญญาณจากข่าวแจก แหล่งทางการ กระแส และยอดอ่าน แล้วจับกลุ่มเป็นเรื่อง ให้คะแนน และทำ brief ให้ บก. คัดกรองลงบอร์ดเรื่อง</p><div class="pc"><span class="dec d-must">&#9829; ต้องทำ</span> 8 ข้อ &nbsp; <span class="dec d-later">&#128077; ทำทีหลัง</span> 2 ข้อ</div></div><span class="arr">&#8594;</span><div class="phase"><div class="pn">2</div><b>เขียนข่าว</b><p>คนทำเฉพาะ 3 จุด คือเขียนข่าว ใส่รูป และยืนยันจอเดียว ส่วน AI และระบบเติมหมวด Tag โปรย สรุป หาข่าวเกี่ยวข้อง และจัดรูปให้</p><div class="pc"><span class="dec d-must">&#9829; ต้องทำ</span> 30 ข้อ &nbsp; <span class="dec d-later">&#128077; ทำทีหลัง</span> 9 ข้อ</div></div><span class="arr">&#8594;</span><div class="phase"><div class="pn">3</div><b>ตรวจและเผยแพร่</b><p>Trust check ตรวจ 6 ด้านพร้อมกัน ถ้ามีข้อบล็อกให้แก้หรือให้ บก. อาวุโสปลดบล็อก แล้วเผยแพร่ทุกช่องทาง ทั้งเว็บ LINE และโซเชียล</p><div class="pc"><span class="dec d-must">&#9829; ต้องทำ</span> 18 ข้อ &nbsp; <span class="dec d-later">&#128077; ทำทีหลัง</span> 5 ข้อ</div></div></div>
+<div class="loop"><span>ยอดอ่านย้อนกลับไปช่วยระบบเรียนรู้ และใช้วางแผนเรื่องรอบถัดไป</span></div>
+<div class="outflow"><div class="fl side"><b>นอก flow หลัก</b><span class="d">สิทธิ์ ความปลอดภัย รายการข่าว คู่มือ และงานดูแลข้อมูลข่าวเก่า ที่ไม่ได้อยู่ในเส้นทางของข่าวชิ้นใดชิ้นหนึ่ง</span><span class="c"><span class="dec d-must">&#9829; ต้องทำ</span> 8 ข้อ &nbsp; <span class="dec d-later">&#128077; ทำทีหลัง</span> 2 ข้อ</span></div></div>
+<div class="principle"><b>หลักของ Flow:</b> Story Desk หาเรื่องและคัดเลือก แล้วคนเขียนเฉพาะส่วนที่ต้องใช้คน ให้ AI และระบบเติมส่วนที่เหลือ จากนั้น Trust check ตรวจก่อนเผยแพร่ทุกช่องทาง</div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 3 จาก 31</span></div></section><section class="page divider">
+<div class="side"><div class="lbl">ช่วงที่</div><div class="num ">1</div><h2>Story Desk หาเรื่องและคัดเลือก</h2><p class="lead">รวบรวมสัญญาณจากข่าวแจก แหล่งทางการ กระแส และยอดอ่าน แล้วจับกลุ่มเป็นเรื่อง ให้คะแนน และทำ brief ให้ บก. คัดกรองลงบอร์ดเรื่อง</p>
+  <div class="cnt"><span>ต้องทำ</span><b>8 ข้อ</b><span>ทำทีหลัง</span><b>2 ข้อ</b></div></div>
+<div class="main"><h3>ฟีเจอร์ในช่วงนี้ แยกตามผลการตัดสินและกลุ่มใน Flow</h3><div class="flist c2"><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI: Nation Eye หาเรื่อง</b></div><div class="fi"><span class="no">41</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span>AI เสนอประเด็นข่าวจาก Search Console และเทรนด์</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI: ยอดอ่านย้อนกลับ</b></div><div class="fi"><span class="no">91</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span>AI สรุปยอดเป็นประโยค และตอบคำถามเรื่องยอดของนักข่าว</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>Dashboard ยอดอ่านย้อนกลับ</b></div><div class="fi"><span class="no">82</span><span class="chip t-help">AI ช่วยเสริม</span><span>Dashboard จำนวนข่าวรายวันตามประเด็น หมวด และนักข่าว ในหน้า Articles List</span></div><div class="fi"><span class="no">83</span><span class="chip t-none">ไม่ใช้ AI</span><span>Dashboard ยอดวิวรายนักข่าว</span></div><div class="fi"><span class="no">84</span><span class="chip t-none">ไม่ใช้ AI</span><span>Dashboard ยอดแยกตามหมวด วิดีโอ และโซเชียล</span></div><div class="fi"><span class="no">87</span><span class="chip t-none">ไม่ใช้ AI</span><span>ตัดยอด bot ออกจากสถิติ</span></div><div class="fi"><span class="no">88</span><span class="chip t-none">ไม่ใช้ AI</span><span>Dashboard จัดอันดับ Top 10 ข่าวยอดวิวสูง</span></div><div class="fi"><span class="no">90</span><span class="chip t-none">ไม่ใช้ AI</span><span>ตัวเลขสถิติชุดเดียวกันทุกหน้า อัปเดตภายใน 15 นาที</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>AI: บอร์ดเรื่อง</b></div><div class="fi"><span class="no">39</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span>AI ช่วยสร้างและมอบหมายงานในบอร์ด รวมถึงร่างใบสั่งงานกราฟิกจากข่าว</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>ตรวจข่าวซ้ำและข่าวคล้ายกัน</b></div><div class="fi"><span class="no">16</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span>AI วิเคราะห์เนื้อหาข่าวที่คล้ายกัน และมีแจ้งเตือนเมื่อมีข่าวคล้ายกันอยู่แล้ว ทั้งใน BU และ BU อื่น</span></div></div></div></section><section class="page ">
+<div class="top"><div><h2>1. Story Desk หาเรื่องและคัดเลือก</h2><div class="meta">ฟีเจอร์ที่ 1 ถึง 4 จากทั้งหมด 10 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-ai-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 41</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI: Nation Eye หาเรื่อง</span></div><h3>AI เสนอประเด็นข่าวจาก Search Console และเทรนด์</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI ดู Google Search Console, Google Trends และกระแสโซเชียล แล้วเสนอคำค้นที่ข่าวเราติดอันดับ 5 ถึง 15 ซึ่งควรปรับ และประเด็นที่คนสนใจแต่เรายังไม่มีข่าว<div class="ai-role"><b>AI ทำอะไร:</b> AI วิเคราะห์คำค้นและเทรนด์แล้วเสนอประเด็น</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>บอร์ดงานข่าว</b> <span class="st s-new">หน้าใหม่</span><div class="sub">ประเด็นที่เสนอแสดงในบอร์ดงานข่าวตอนวางแผน และแทนปุ่ม Check rank ใน /articles/create ที่ใช้ไม่ได้</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Springnews เจอปุ่ม Check rank เดิมใช้ไม่ได้ ส่วนการเสนอประเด็นจาก Search Console ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อช่วยเรื่อง SEO และยอดวิว<div class="bus"><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และข้อเสนอของทีม</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. ตัดสินว่าจะเล่นประเด็นที่ AI เสนอหรือไม่</div></div>
+  </div>
+</div><div class="card t-ai-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 91</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI: ยอดอ่านย้อนกลับ</span></div><h3>AI สรุปยอดเป็นประโยค และตอบคำถามเรื่องยอดของนักข่าว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI สรุปว่ายอดใน Dashboard ขึ้นหรือลงเพราะข่าวไหน สรุปก่อนประชุมข่าว และให้นักข่าวถามตัวเลขของตัวเองพร้อมสรุปรายสัปดาห์ ฟีเจอร์นี้ไม่ผูกกับ KPI<div class="ai-role"><b>AI ทำอะไร:</b> AI สรุปตัวเลขเป็นประโยคและตอบคำถามจากตัวเลขชุดเดียวของระบบ โดยไม่เดาสาเหตุ</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>Dashboard</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มกล่องสรุปและช่องถามใน /dashboard</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">นักข่าวอยากเห็นยอดของตัวเอง แต่ The People และ Thainews เข้า GA4 หรือ Looker ไม่ได้ ส่วนการสรุปยอดเป็นประโยคเป็นข้อเสนอของทีม<div class="bus"><span class="bu">The People</span><span class="bu">Thainews</span></div><div class="sub">ที่มา: มาจากข้อเสนอของทีม และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. และนักข่าวอ่านสรุปแล้วตัดสินเอง และต้องตกลงก่อนว่าใครเห็นตัวเลขได้</div></div>
+  </div>
+</div><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 82</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Dashboard ยอดอ่านย้อนกลับ</span></div><h3>Dashboard จำนวนข่าวรายวันตามประเด็น หมวด และนักข่าว ในหน้า Articles List</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">แสดงจำนวนข่าวรายวันแยกตามประเด็น หมวด และนักข่าว ไว้ในหน้า Articles List ดูรายวันหรือรายเดือน และกดดูรายนักข่าวได้<div class="ai-role"><b>AI ทำอะไร:</b> AI จัดข่าวเข้าประเด็นตอนบันทึก และร่างไทม์ไลน์จากข่าวเก่าในประเด็น</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">ทีมย้ายตัวเลขนี้ไปไว้ในหน้า Articles List (/articles) แทนการทำหน้า Dashboard แยก</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online, Posttoday, Thansettakij, The Nation และ Springnews ขอดูจำนวนข่าวแยกตามประเด็น หมวด และนักข่าว และ The Nation ขอดึงข้อความเดิมมาเขียนต่อ<div class="bus"><span class="bu">Nation Online</span><span class="bu">Posttoday</span><span class="bu">Thansettakij</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. แก้ รวม หรือเปลี่ยนชื่อประเด็นที่ AI จัดได้</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 83</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Dashboard ยอดอ่านย้อนกลับ</span></div><h3>Dashboard ยอดวิวรายนักข่าว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้คลิกชื่อนักข่าวแล้วเห็นยอดวิวรายข่าว และดูรายสัปดาห์หรือรายเดือนได้ งานนี้มีสถานะ In progress ในชีต</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>Dashboard</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ต่อยอดตารางข้อมูลนักข่าวใน /dashboard ที่เดิมไม่มียอดวิว</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online, Posttoday, Springnews และ Komchadluek ขอดูยอดวิวรายนักข่าว<div class="bus"><span class="bu">Nation Online</span><span class="bu">Posttoday</span><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 5 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>1. Story Desk หาเรื่องและคัดเลือก</h2><div class="meta">ฟีเจอร์ที่ 5 ถึง 8 จากทั้งหมด 10 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 84</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Dashboard ยอดอ่านย้อนกลับ</span></div><h3>Dashboard ยอดแยกตามหมวด วิดีโอ และโซเชียล</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">Dashboard แสดง Top ข่าววิดีโอ ผู้ใช้กดกราฟแล้วเห็นว่ายอดมาจากประเด็นไหน และดูยอดวิวจากโซเชียลทั้งหมดได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>Dashboard</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มมุมมองใหม่ใน /dashboard</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Springnews และ Komchadluek ขอดูยอดแยกตามหมวด วิดีโอ และโซเชียล<div class="bus"><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 87</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Dashboard ยอดอ่านย้อนกลับ</span></div><h3>ตัดยอด bot ออกจากสถิติ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบจับยอดผิดปกติด้วยโมเดล anomaly detection โดยไม่ต้องใช้ LLM และแสดงทั้งยอดก่อนและหลังตัด bot</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>Dashboard</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มการกรองยอดในตัวเลขทุกหน้าของ /dashboard</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The Nation เจอว่ายอดใน GA4 สวิงจนไม่น่าเชื่อถือ<div class="bus"><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ทีมดูยอดก่อนและหลังตัด bot เทียบกันได้ ระบบตัดตามโมเดลเอง</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 88</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Dashboard ยอดอ่านย้อนกลับ</span></div><h3>Dashboard จัดอันดับ Top 10 ข่าวยอดวิวสูง</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">Dashboard จัดอันดับ 10 ข่าวที่มียอดวิวสูงสุดของทั้งเว็บ</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>Dashboard</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ปรับส่วน Top 20 ข่าวใน /dashboard</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online ขอดู Top 10 ข่าวยอดวิวสูงของทั้งเว็บ<div class="bus"><span class="bu">Nation Online</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 90</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Dashboard ยอดอ่านย้อนกลับ</span></div><h3>ตัวเลขสถิติชุดเดียวกันทุกหน้า อัปเดตภายใน 15 นาที</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ทุกหน้าใช้ตัวเลขชุดเดียวจาก GA4 หรือ BigQuery ที่กรอง bot แล้ว และอัปเดตไม่ช้ากว่า 15 นาที ไฟล์ export มี pageview ครบ และไม่แสดงข่าวที่ปิดแล้ว</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>Dashboard</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้เปลี่ยนแหล่งตัวเลขใน /dashboard และ /articles ที่เดิมนับเองและไม่ตรงกับ GA</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online และ The Nation เจอยอดดีเลย์ The Nation เจอตัวเลข 2 หน้าไม่ตรงกัน Posttoday export แล้วไม่มี pageview และ Springnews ยังเห็นข่าวที่ปิดแล้ว<div class="bus"><span class="bu">Nation Online</span><span class="bu">Posttoday</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 6 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>1. Story Desk หาเรื่องและคัดเลือก</h2><div class="meta">ฟีเจอร์ที่ 9 ถึง 10 จากทั้งหมด 10 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-ai-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 39</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">AI: บอร์ดเรื่อง</span></div><h3>AI ช่วยสร้างและมอบหมายงานในบอร์ด รวมถึงร่างใบสั่งงานกราฟิกจากข่าว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI แปลงบันทึกประชุมข่าวเป็นรายการประเด็นลงบอร์ด เสนอนักข่าว 1 ถึง 3 คนต่อประเด็น และร่างใบสั่งงานกราฟิกจากข่าวพร้อมเตือนข้อมูลที่ขาด<div class="ai-role"><b>AI ทำอะไร:</b> AI อ่านบันทึกประชุม เสนอคนรับงาน และร่างใบสั่งงานกราฟิก</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>บอร์ดงานข่าว</b> <span class="st s-new">หน้าใหม่</span><div class="sub">ฟีเจอร์นี้อยู่ในบอร์ดงานข่าวซึ่งเป็นหน้าใหม่ ระบบเดิมไม่มี</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Thansettakij และ The Nation สั่งงานทาง LINE และบรรณาธิการไม่รู้ว่างานไปถึงไหน ส่วน The Nation สั่งงานกราฟิกทาง LINE แล้วข้อมูลไม่ครบ<div class="bus"><span class="bu">Thansettakij</span><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากข้อเสนอของทีม และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. เลือกคนรับงานเอง และคนตรวจใบสั่งงานก่อนส่งจริง</div></div>
+  </div>
+</div><div class="card t-ai-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 16</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">ตรวจข่าวซ้ำและข่าวคล้ายกัน</span></div><h3>AI วิเคราะห์เนื้อหาข่าวที่คล้ายกัน และมีแจ้งเตือนเมื่อมีข่าวคล้ายกันอยู่แล้ว ทั้งใน BU และ BU อื่น</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบเช็กตั้งแต่ตอนวางแผนและระหว่างเขียนว่ามีข่าวเนื้อหาใกล้เคียงใน BU เดียวกันหรือ BU อื่นหรือไม่ และบอกว่า BU ไหนลงแล้วหรือกำลังทำ ระบบแค่เตือน ไม่บล็อกการบันทึก<div class="ai-role"><b>AI ทำอะไร:</b> AI เทียบประเด็นกับข่าวของทุก BU แล้วเตือน</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มการเตือนในหน้า /articles/create และแสดงในบอร์ดงานข่าวตอนวางแผน</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The Nation บอกว่างานแปลซ้ำซ้อนกับ BU อื่น แต่หลักฐานยังน้อย ส่วนการเตือนข่าวซ้ำใน BU เดียวกันเป็นข้อเสนอของทีม<div class="bus"><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากข้อเสนอของทีม และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. เลือกว่าจะทำเอง แบ่งงาน หรือขอใช้ข่าวของ BU อื่น</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 7 จาก 31</span></div></section><section class="page divider">
+<div class="side"><div class="lbl">ช่วงที่</div><div class="num ">2</div><h2>เขียนข่าว</h2><p class="lead">คนทำเฉพาะ 3 จุด คือเขียนข่าว ใส่รูป และยืนยันจอเดียว ส่วน AI และระบบเติมหมวด Tag โปรย สรุป หาข่าวเกี่ยวข้อง และจัดรูปให้</p>
+  <div class="cnt"><span>ต้องทำ</span><b>30 ข้อ</b><span>ทำทีหลัง</span><b>9 ข้อ</b></div></div>
+<div class="main"><h3>ฟีเจอร์ในช่วงนี้ แยกตามผลการตัดสินและกลุ่มใน Flow<span class="lg">จุดสีม่วง = AI เป็นตัวหลัก, สีฟ้า = AI ช่วยเสริม, สีเทา = ไม่ใช้ AI</span></h3><div class="clist"><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI Writer เขียนข่าวให้</b></div><div class="ci"><span class="no">17</span><i class="dot t-ai"></i><span class="tt">ส่งข่าวผ่าน LINE หรือวาง link โพสต์ Social แล้ว AI แปลงเป็นร่างข่าวใน CMS</span></div><div class="ci"><span class="no">19</span><i class="dot t-ai"></i><span class="tt">อัปไฟล์แล้วได้ข้อความ และ AI สร้างข่าวให้ เช่น ประกาศราชการ</span></div><div class="ci"><span class="no">20</span><i class="dot t-help"></i><span class="tt">ข่าวประจำ (ทอง น้ำมัน หุ้น อากาศ หวย) ดึงข้อมูลจาก API และ AI ร่างข่าวให้</span></div><div class="ci"><span class="no">108</span><i class="dot t-ai"></i><span class="tt">AI ช่วยเขียนข่าวจาก Story Desk</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI หาข่าวเกี่ยวข้อง</b></div><div class="ci"><span class="no">54</span><i class="dot t-help"></i><span class="tt">แนะนำข่าวที่เกี่ยวข้องอัตโนมัติ</span></div><div class="ci"><span class="no">65</span><i class="dot t-help"></i><span class="tt">ค้นหาข่าวช่องเดียว ค้นได้ทุกอย่างและค้นด้วยความหมาย (ค้นหาง่ายขึ้น)</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI ช่วยนักข่าวเขียน</b></div><div class="ci"><span class="no">1</span><i class="dot t-help"></i><span class="tt">เขียนข่าวยาวในช่องเดียว ระบบแทรกโฆษณาให้ และ AI เสนอจุดแบ่งข่าว</span></div><div class="ci"><span class="no">15</span><i class="dot t-ai"></i><span class="tt">ผู้ช่วย AI ถาม-ตอบจากคลังข่าวระหว่างเขียน แสดงผลเป็นไทม์ไลน์ข่าวที่เคยเขียน</span></div><div class="ci"><span class="no">18</span><i class="dot t-ai"></i><span class="tt">พูดแล้วได้ข้อความ และถอดเทปหรือคลิปสัมภาษณ์ พร้อมแยกคนพูดและเสนอ quote</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI จัดรูปอัตโนมัติ</b></div><div class="ci"><span class="no">24</span><i class="dot t-help"></i><span class="tt">อัปรูปเดียวได้ครบทุกขนาด ครอปตามจุดโฟกัส</span></div><div class="ci"><span class="no">28</span><i class="dot t-ai"></i><span class="tt">AI แนะนำรูปจากคลังที่เข้ากับข่าว</span></div><div class="ci"><span class="no">30</span><i class="dot t-ai"></i><span class="tt">AI ปรับรูปภาคสนามให้สว่างและคมขึ้น (ไม่แก้เนื้อหาในภาพ)</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI เติมข้อมูลข่าว</b></div><div class="ci"><span class="no">13</span><i class="dot t-ai"></i><span class="tt">AI สรุปข่าวและหา Key point ในระบบ กดครั้งเดียวได้ผล และแยกพาดหัว โปรย เนื้อหาลงช่องให้</span></div><div class="ci"><span class="no">10</span><i class="dot t-help"></i><span class="tt">ใส่ลิงก์ข่าวที่เกี่ยวข้องในเนื้อข่าว (Backlink) และ AI เสนอคำไหนควรเป็นลิงก์</span></div><div class="ci"><span class="no">51</span><i class="dot t-help"></i><span class="tt">เลือก Tag แบบค้นได้ AI เสนอ Tag จากเนื้อข่าว และกัน Tag ซ้ำ</span></div><div class="ci"><span class="no">55</span><i class="dot t-help"></i><span class="tt">ตรวจ SEO / AEO ระหว่างเขียน พร้อม AI แนะนำจุดที่ควรแก้</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>เขียนข่าว: งานของนักข่าว</b></div><div class="ci"><span class="no">2</span><i class="dot t-none"></i><span class="tt">วางข้อความจาก Word / Google Doc แล้วล้าง style ให้อัตโนมัติ</span></div><div class="ci"><span class="no">4</span><i class="dot t-none"></i><span class="tt">บันทึกร่างอัตโนมัติเร็วขึ้น กู้ร่างได้ เนื้อหาไม่หาย</span></div><div class="ci"><span class="no">5</span><i class="dot t-none"></i><span class="tt">แถบเครื่องมือ Editor เหลือเฉพาะปุ่มที่ใช้จริง</span></div><div class="ci"><span class="no">7</span><i class="dot t-none"></i><span class="tt">Title ที่มีชื่อเฉพาะต้องไม่ถูกตัดจนเสียความหมาย</span></div><div class="ci"><span class="no">9</span><i class="dot t-none"></i><span class="tt">พิมพ์ตัวห้อยและตัวยกได้</span></div><div class="ci"><span class="no">12</span><i class="dot t-none"></i><span class="tt">Footer ท้ายเนื้อข่าว ตั้งได้แต่ละ BU</span></div><div class="ci"><span class="no">21</span><i class="dot t-help"></i><span class="tt">หน้าส่งข่าวเร็วบนมือถือ / iPad สำหรับนักข่าวภาคสนาม</span></div><div class="ci"><span class="no">45</span><i class="dot t-none"></i><span class="tt">แสดงว่าใครกำลังแก้ข่าวนี้อยู่ กันแก้ทับกัน</span></div><div class="ci"><span class="no">47</span><i class="dot t-none"></i><span class="tt">ลงบทความ Advertorial ด้วยฟอร์มเดียวกับข่าว</span></div><div class="ci"><span class="no">57</span><i class="dot t-none"></i><span class="tt">จัดการ Byline และนามปากกา เรียงตามผู้ใช้มากสุด</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>ใส่รูปและวิดีโอ</b></div><div class="ci"><span class="no">22</span><i class="dot t-none"></i><span class="tt">ใส่หลายรูปในข่าวด้วยการลากวางหรือ Ctrl+V พร้อมจัดรูป</span></div><div class="ci"><span class="no">29</span><i class="dot t-none"></i><span class="tt">Template ปกข่าวและคลิปแนวตั้ง ใส่พาดหัวบนรูป และมีช่องแยกให้ใส่ Title ได้</span></div><div class="ci"><span class="no">31</span><i class="dot t-none"></i><span class="tt">วางลิงก์ FB / IG / YouTube แล้วแสดงผลในข่าวทันที</span></div><div class="ci"><span class="no">32</span><i class="dot t-none"></i><span class="tt">ลงวิดีโอง่าย: วางลิงก์แล้วดึงข้อมูลให้ และรวมเมนูวิดีโอเป็นเมนูเดียว</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>AI Writer</b></div><div class="ci"><span class="no">14</span><i class="dot t-ai"></i><span class="tt">AI แปลข่าวไทย ↔ อังกฤษ ให้คนแค่เรียบเรียง โดยแปลแบบ British English</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>AI ช่วยนักข่าวเขียน</b></div><div class="ci"><span class="no">8</span><i class="dot t-help"></i><span class="tt">แทรกตารางและกราฟในข่าว และ AI แปลงตัวเลขในข่าวเป็นกราฟ</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>เขียนข่าว: งานของนักข่าว</b></div><div class="ci"><span class="no">11</span><i class="dot t-none"></i><span class="tt">คำโปรยใส่ style ได้ และเขียนโปรยให้สอดคล้อง SEO</span></div><div class="ci"><span class="no">44</span><i class="dot t-none"></i><span class="tt">ทำสำเนาข่าว</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>ใส่รูปและวิดีโอ</b></div><div class="ci"><span class="no">23</span><i class="dot t-ai"></i><span class="tt">AI ร่าง alt text ให้รูปอัตโนมัติ</span></div><div class="ci"><span class="no">26</span><i class="dot t-none"></i><span class="tt">จัดลำดับรูปในแกลเลอรี เลือกรูปปก และโหลดต้นฉบับทั้งชุด</span></div><div class="ci"><span class="no">27</span><i class="dot t-none"></i><span class="tt">คลังรูปและวิดีโอกลาง ค้นได้ รวมภาพจาก DAM / Nation Photo</span></div><div class="ci"><span class="no">33</span><i class="dot t-none"></i><span class="tt">อัปคลิปเข้าระบบเองโดยไม่ต้องพึ่ง YouTube / Dailymotion</span></div><div class="ci"><span class="no">34</span><i class="dot t-ai"></i><span class="tt">AI เลือกภาพปกวิดีโอจากเฟรมที่คมชัด</span></div></div></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 1 ถึง 4 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-ai-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 17</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI Writer เขียนข่าวให้</span></div><h3>ส่งข่าวผ่าน LINE หรือวาง link โพสต์ Social แล้ว AI แปลงเป็นร่างข่าวใน CMS</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">LINE bot รับข้อความและรูปจากนักข่าว หรือผู้ใช้วางลิงก์โพสต์ social แล้วได้ร่างข่าวครบช่องใน CMS จุดที่ต้องยืนยันมีเครื่องหมาย และบัญชี LINE ต้องผูกกับผู้ใช้<div class="ai-role"><b>AI ทำอะไร:</b> AI แปลงข้อความหรือโพสต์เป็นร่างข่าวครบช่อง</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>LINE bot</b> <span class="st s-sep">ระบบแยก</span><div class="sub">LINE bot เป็นช่องทางใหม่นอก CMS และร่างที่ได้ไปอยู่ในหน้ารายการข่าว /articles</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online และ The Nation ลงข่าวด่วนใน social ก่อน The People โพสต์ social พร้อมเว็บ และ Thansettakij ส่งข่าวด่วนทาง LINE<div class="bus"><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">Thansettakij</span><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากข้อเสนอของทีม และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. ตรวจร่างก่อนเผยแพร่ทุกครั้ง</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 19</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI Writer เขียนข่าวให้</span></div><h3>อัปไฟล์แล้วได้ข้อความ และ AI สร้างข่าวให้ เช่น ประกาศราชการ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้อัปไฟล์หรือรูปเอกสาร เช่น ประกาศราชการ แล้ว AI ดึงข้อความและร่างข่าวให้ ผู้เขียนตรวจข้อความและร่างก่อนใช้<div class="ai-role"><b>AI ทำอะไร:</b> อ่านข้อความจากไฟล์และร่างข่าว</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">เพิ่มปุ่มอัปไฟล์ในหน้าเขียนข่าว (/articles/create) แล้วได้ร่างข่าวลงช่องต่างๆ</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ทีมข่าวได้ไฟล์ข่าวแจกหรือประกาศมาแล้วต้องพิมพ์และจัดลงช่องเอง Posttoday ขออัปไฟล์ Doc แล้วให้ระบบเติมช่องให้ และ Nation Online อยากอัปไฟล์แล้วสร้างข่าวได้เลย<div class="bus"><span class="bu">Nation Online</span><span class="bu">Posttoday</span></div><div class="sub">ที่มา: มาจากชีตของคุณอภิญญาและคุณชุมพร และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนตรวจข้อความที่ได้ก่อนใช้</div></div>
+  </div>
+</div><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 20</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI Writer เขียนข่าวให้</span></div><h3>ข่าวประจำ (ทอง น้ำมัน หุ้น อากาศ หวย) ดึงข้อมูลจาก API และ AI ร่างข่าวให้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">Template ข่าวประจำตั้งหมวด แท็ก รูป และโครงเนื้อหาไว้แล้ว ระบบดึงข้อมูลจาก API มาเติมและแสดงในรูปตาม Template ถ้า API ล่มระบบจะไม่สร้างร่าง<div class="ai-role"><b>AI ทำอะไร:</b> AI ร่างเนื้อข่าวจากตัวเลขที่ดึงจาก API และไม่แต่งตัวเลขเอง</div><div class="tnote">ติดสติกเกอร์ไหว้ด้วย หมายถึงตัดสินตอนผู้ร่วมประชุมเหลือ 3 คน</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่ม Template ข่าวประจำให้เลือกตอนสร้างข่าวใน /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Thansettakij ขอให้เขียนข่าวจากราคาทอง น้ำมัน หุ้น และอากาศที่ดึงมาให้ และ Komchadluek ขอเรื่องผลหวย<div class="bus"><span class="bu">Thansettakij</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. อนุมัติร่างก่อนเผยแพร่ทุกครั้ง</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 108 (Story Desk)</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI Writer เขียนข่าวให้</span></div><h3>AI ช่วยเขียนข่าวจาก Story Desk</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI ร่างข่าวจากเรื่องที่ Story Desk คัดเลือกไว้ แล้วผู้เขียนเติมเฉพาะส่วนที่ต้องใช้คนและตรวจก่อนส่ง ตาม Flow ข่าวครบวงจร<div class="ai-role"><b>AI ทำอะไร:</b> ร่างข่าวจาก brief ของ Story Desk</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">ร่างที่ AI เขียนไปอยู่ในหน้าเขียนข่าว (/articles/create) ให้ผู้เขียนแก้ต่อ</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ทีมเพิ่มไอเดียนี้ตอนประชุมสรุป เพื่อให้คนเขียนเฉพาะส่วนที่ต้องใช้คน ยังไม่มีบันทึกใน Asana หรือชีตว่า BU ไหนขอ<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: sticky ที่ทีมเพิ่มบนบอร์ดตอนประชุมสรุป</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนตรวจและแก้ร่างก่อนส่ง บก.</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 9 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 5 ถึง 8 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-help-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 54</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="imp big">สำคัญมาก</span><span class="grp">AI หาข่าวเกี่ยวข้อง</span></div><h3>แนะนำข่าวที่เกี่ยวข้องอัตโนมัติ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบแนะนำข่าวที่เกี่ยวข้องพร้อมภาพปก เรียงตามความเกี่ยวข้องหรือล่าสุด และไม่แนะนำข่าวที่ปิดแล้ว ผู้เขียนเลือกเองได้<div class="ai-role"><b>AI ทำอะไร:</b> AI หาข่าวที่ความหมายใกล้เคียง</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ปรับช่องข่าวที่เกี่ยวข้องใน /articles/create ที่เดิมต้องพิมพ์ค้นเอง</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">5 BU ขอให้ระบบแนะนำข่าวที่เกี่ยวข้อง และ Bangkokbiznews อยากให้ใส่ให้อัตโนมัติเพื่อประหยัดเวลา<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกหรือเอาข่าวที่ระบบแนะนำออกเอง</div></div>
+  </div>
+</div><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 65</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="imp big">สำคัญมาก</span><span class="grp">AI หาข่าวเกี่ยวข้อง</span></div><h3>ค้นหาข่าวช่องเดียว ค้นได้ทุกอย่างและค้นด้วยความหมาย (ค้นหาง่ายขึ้น)</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ช่องเดียวค้นได้ทั้งหัวข้อ เนื้อหา แท็ก ชื่อผู้เขียน และข่าวเก่า พิมพ์ผิดเล็กน้อยก็เจอ ค้นด้วยลิงก์และชื่อภาษาเกาหลีได้ และมีแท็บสำเร็จรูป เช่น &quot;ข่าวของฉัน&quot; และ &quot;ร่าง&quot;<div class="ai-role"><b>AI ทำอะไร:</b> AI ค้นด้วยความหมาย (embedding)</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้แทนตัวกรอง 8 ช่องใน /articles ที่ต้องกดค้นหาและค้นได้แค่พาดหัวหรือ ID</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The Nation ค้นได้แค่พาดหัว Bangkokbiznews ค้น keyword ในเนื้อข่าวไม่ได้ The People ค้นชื่อเกาหลีไม่เจอ และ Springnews ค้นคำสั้นหรือค้นด้วยลิงก์ไม่ได้<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">The People</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร), ข้อเสนอของทีม และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้ใช้เลือกผลการค้นเอง ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 1</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI ช่วยนักข่าวเขียน</span></div><h3>เขียนข่าวยาวในช่องเดียว ระบบแทรกโฆษณาให้ และ AI เสนอจุดแบ่งข่าว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนเขียนข่าวยาวใน Editor ช่องเดียวและวางบล็อกตำแหน่งโฆษณาเอง ระบบแทรกโฆษณาตอนแสดงผลโดยไม่ตัดเนื้อหาจริง<div class="ai-role"><b>AI ทำอะไร:</b> AI เสนอจุดแบ่งข่าวที่ไม่ตัดกลางประเด็น</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้ปรับจากหน้าสร้างข่าว /articles/create ที่เดิมแบ่งเนื้อหาเป็น 3 กล่องและจำกัดกล่องที่ 1 ถึง 2 ไว้ 1,500 คำ</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Bangkokbiznews ต้องเขียนข่าวยาวแล้วแบ่งเป็น 3 ส่วนเอง Komchadluek กลัวว่าระบบตัดข่าวแล้วความหมายเปลี่ยน ส่วน Thainews ยังอยากใช้ 3 ช่อง<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">Komchadluek</span><span class="bu">Thainews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร), การสำรวจระบบเดิมของทีม UX และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนยอมรับหรือย้ายจุดแบ่งที่ AI เสนอเองก่อนบันทึก</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 15</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI ช่วยนักข่าวเขียน</span></div><h3>ผู้ช่วย AI ถาม-ตอบจากคลังข่าวระหว่างเขียน แสดงผลเป็นไทม์ไลน์ข่าวที่เคยเขียน</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนถามเป็นประโยคระหว่างเขียน แล้วได้คำตอบจากคลังข่าวพร้อมลิงก์ และแสดงผลเป็นไทม์ไลน์ของข่าวที่เคยเขียนในเรื่องนั้น<div class="ai-role"><b>AI ทำอะไร:</b> AI ตอบจากคลังข่าวพร้อมลิงก์ และบอกตรง ๆ เมื่อหาไม่เจอ</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มแผงผู้ช่วยในหน้า /articles/create ซึ่งเดิมไม่มี</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อให้ผู้เขียนหาข่าวเก่าและวิธีใช้งานได้โดยไม่ต้องออกจากหน้าเขียนข่าว<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากข้อเสนอของทีม และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเปิดลิงก์ตรวจข่าวต้นทางก่อนนำข้อมูลไปใช้</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 10 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 9 ถึง 12 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-ai-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 18</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI ช่วยนักข่าวเขียน</span></div><h3>พูดแล้วได้ข้อความ และถอดเทปหรือคลิปสัมภาษณ์ พร้อมแยกคนพูดและเสนอ quote</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนกดไมค์แล้วพูดเป็นภาษาไทยลงช่องเนื้อหาได้ รวมถึงในหน้าส่งข่าวเร็วบนมือถือ และอัปไฟล์เสียงสัมภาษณ์เพื่อถอดเทปพร้อมเวลาและแยกคนพูด<div class="ai-role"><b>AI ทำอะไร:</b> AI ถอดเสียง ใส่วรรคตอน แยกคนพูด และเสนอ quote 3 ถึง 5 ประโยค</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มปุ่มไมค์และอัปไฟล์เสียงใน /articles/create และในหน้าส่งข่าวเร็วบนมือถือ</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ใน Asana มี 6 จาก 8 BU ที่ยกปัญหาการใช้มือถือ ทีม UX ตีความว่านักข่าวต้องพิมพ์ข้อความจากคำสัมภาษณ์เอง แต่ยังรอยืนยัน<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร), การสำรวจระบบเดิมของทีม UX และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนฟังเสียงจริงยืนยันก่อนใช้ quote</div></div>
+  </div>
+</div><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 24</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI จัดรูปอัตโนมัติ</span></div><h3>อัปรูปเดียวได้ครบทุกขนาด ครอปตามจุดโฟกัส</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนอัปรูปเดียวแล้วระบบครอปให้ครบทุกขนาด ทั้งปก แนวตั้ง Social และสี่เหลี่ยมจัตุรัส โดยคนในภาพไม่ถูกตัด ผู้เขียนเลื่อนจุดครอปเองได้ และมีขนาดมาตรฐาน 700 × 467 px<div class="ai-role"><b>AI ทำอะไร:</b> AI หาจุดโฟกัส เช่น ใบหน้า ก่อนครอป</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">ส่วนรูปปกใน /articles/create ที่เดิมต้องอัป 3 ช่อง (แนวตั้ง แนวนอน Social) จะรวมเป็นการอัปครั้งเดียว</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Bangkokbiznews ต้องทำปก 3 ไฟล์เอง The People และ The Nation เจอรูปแนวตั้งครอปแล้วคนในภาพขาด และ Springnews ขอขนาดรูปมาตรฐานตอนแนบรูป<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">The People</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลื่อนจุดครอปเองได้ถ้าจุดที่ AI เลือกไม่ตรง</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 28</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI จัดรูปอัตโนมัติ</span></div><h3>AI แนะนำรูปจากคลังที่เข้ากับข่าว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบหารูปที่เกี่ยวข้องกับข่าวจากคลังที่มีอยู่แล้วขึ้นมาแนะนำ ผู้เขียนจึงไม่ต้องค้นรูปเอง<div class="ai-role"><b>AI ทำอะไร:</b> AI หารูปในคลังที่เข้ากับเนื้อข่าว</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มรายการรูปแนะนำในส่วนรูปของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอจากการสำรวจระบบเดิมของทีม UX เพื่อให้ใช้รูปที่มีอยู่แล้วซ้ำได้<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกรูปเองจากรายการที่ AI แนะนำ</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 30</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI จัดรูปอัตโนมัติ</span></div><h3>AI ปรับรูปภาคสนามให้สว่างและคมขึ้น (ไม่แก้เนื้อหาในภาพ)</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนกดปุ่มเดียวให้รูปที่มืด เบลอ หรือความละเอียดต่ำสว่างและคมขึ้น และเทียบก่อนกับหลังได้ ระบบปรับแค่แสงและความคม และเก็บรูปต้นฉบับไว้เสมอ<div class="ai-role"><b>AI ทำอะไร:</b> AI ปรับแสงและความคมของรูป</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มปุ่มปรับรูปในส่วนรูปของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อให้รูปจากภาคสนามใช้ได้โดยไม่ต้องแต่งนอกระบบ<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: เป็นข้อเสนอของทีมที่ยังไม่มี BU ขอ</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเทียบก่อนกับหลังแล้วเลือกใช้เอง</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 11 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 13 ถึง 16 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-ai-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 13</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI เติมข้อมูลข่าว</span></div><h3>AI สรุปข่าวและหา Key point ในระบบ กดครั้งเดียวได้ผล และแยกพาดหัว โปรย เนื้อหาลงช่องให้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI สรุปข่าวและหา Key point ในระบบ กดครั้งเดียวได้ผล และแยกพาดหัว คำโปรย และเนื้อหาลงช่องให้ ทีมรวมส่วนแยกเนื้อหาจากลำดับ 3 ที่ตัดออกมาไว้ในข้อนี้<div class="ai-role"><b>AI ทำอะไร:</b> สรุปข่าว หา Key point และแยกเนื้อหาลงช่อง</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ปรับปุ่ม AI สรุปข่าวและ Key point ที่มีอยู่แล้วใน /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Springnews กด AI สรุปข่าว 4 ถึง 5 ครั้งแล้วไม่ขึ้น The Nation เจอว่าช้า Komchadluek ลบพื้นที่ว่างในช่อง Key point ไม่ได้ และ Nation Online ยังใช้ AI ภายนอกหา Key point<div class="bus"><span class="bu">Nation Online</span><span class="bu">The Nation</span><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนตรวจและแก้สรุปกับ Key point ก่อนบันทึก</div></div>
+  </div>
+</div><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 10</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI เติมข้อมูลข่าว</span></div><h3>ใส่ลิงก์ข่าวที่เกี่ยวข้องในเนื้อข่าว (Backlink) และ AI เสนอคำไหนควรเป็นลิงก์</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนเลือกคำแล้วระบบค้นข่าวในเว็บมาให้เลือก คำนั้นกลายเป็นลิงก์ทันที ระบบลิงก์เฉพาะข่าวที่ยังเปิดอยู่และไม่ใส่ลิงก์ถี่เกินไป<div class="ai-role"><b>AI ทำอะไร:</b> AI เสนอคำที่ควรใส่ลิงก์และหาข่าวที่ความหมายตรงกัน</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มการค้นและแทรกลิงก์ใน Editor ของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Springnews ต้องคัดลอกพาดหัวกับลิงก์มาใส่เองทีละข่าว และ Bangkokbiznews อยากให้ระบบหาข่าวที่เกี่ยวข้องจาก keyword ให้คนอ่านอยู่ในเว็บนานขึ้น<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกคำและข่าวที่จะลิงก์เอง</div></div>
+  </div>
+</div><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 51</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI เติมข้อมูลข่าว</span></div><h3>เลือก Tag แบบค้นได้ AI เสนอ Tag จากเนื้อข่าว และกัน Tag ซ้ำ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ช่อง Tag ค้นจาก Tag ที่มีอยู่พร้อมจำนวนข่าว ผู้เขียนเพิ่ม Tag ใหม่ในหน้าเขียนข่าวได้ ระบบผูกคำพ้องเป็น Tag หลักและเตือนเมื่อกำลังสร้าง Tag ที่คล้ายของเดิม<div class="ai-role"><b>AI ทำอะไร:</b> AI เสนอ Tag จากเนื้อข่าวและจับ Tag ที่ความหมายซ้ำ</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ปรับช่อง Tag ใน /articles/create ที่ค้นแล้วแสดงแค่ประมาณ 10 รายการ</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday, Thansettakij และ Springnews เจอ Tag ซ้ำ The Nation ค้น Tag แล้วเห็นแค่ประมาณ 10 รายการ และ 5 BU ขอ auto tag ส่วน Komchadluek ไม่ใช้ auto tag<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">Posttoday</span><span class="bu">Thansettakij</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนกดยืนยัน Tag ก่อนบันทึก และ Admin เปิดหรือปิด auto tag ราย BU</div></div>
+  </div>
+</div><div class="card t-help-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 55</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI เติมข้อมูลข่าว</span></div><h3>ตรวจ SEO / AEO ระหว่างเขียน พร้อม AI แนะนำจุดที่ควรแก้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบตรวจ SEO ระหว่างเขียนโดยอัตโนมัติ แล้วแนะนำว่าควรแก้อะไร ระบบไม่บังคับและไม่ทำให้ข่าวกลายเป็นภาษา SEO หรือ clickbait<div class="ai-role"><b>AI ทำอะไร:</b> AI แนะนำจุดที่ควรแก้หลังตรวจ SEO</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มแผงตรวจ SEO ใน /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online, Thansettakij และ The Nation ขอให้ตรวจ SEO ระหว่างเขียนและบอกจุดที่ควรแก้<div class="bus"><span class="bu">Nation Online</span><span class="bu">Thansettakij</span><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกเองว่าจะแก้ตามคำแนะนำหรือไม่</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 12 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 17 ถึง 20 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 2</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>วางข้อความจาก Word / Google Doc แล้วล้าง style ให้อัตโนมัติ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบล้าง style ที่ติดมาจาก Word หรือ Google Doc แต่คงตัวหนาและตัวเอียงไว้ และลบอักษรพิเศษที่ติดมาด้วย ผู้เขียนไม่ต้องวางผ่าน Notepad ก่อน</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ปรับ Editor ใน /articles/create ที่มีปุ่ม T ล้าง style อยู่แล้วแต่ล้างไม่หมด</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">หลายทีมวางข้อความผ่าน Notepad ก่อน The People, Springnews และ Bangkokbiznews วางจาก Word แล้ว style เพี้ยน ส่วน Komchadluek กดปุ่ม T แล้วล้าง style ไม่หมด<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">Thansettakij</span><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ผู้เขียนตรวจข้อความหลังวาง</div></div>
+  </div>
+</div><div class="card t-none-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 4</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>บันทึกร่างอัตโนมัติเร็วขึ้น กู้ร่างได้ เนื้อหาไม่หาย</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบบันทึกร่างทุก 10 วินาทีและแสดงป้าย &quot;บันทึกแล้ว&quot; เมื่อเปิดใหม่ระบบถามว่าจะกู้ร่างที่ค้างไหม เน็ตหลุดหรือปิดแท็บเนื้อหาก็ไม่หาย และเขียนต่อบนเครื่องอื่นได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มการบันทึกอัตโนมัติในหน้า /articles/create เพราะทีม UX ไม่พบ autosave ในระบบเดิม</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online, The Nation และ Bangkokbiznews เจอเนื้อหาหาย Bangkokbiznews บอกว่าผู้ใช้ 80% ไม่อยากเขียนในระบบเพราะกลัวข้อมูลหาย<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Nation Online</span><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบบันทึกเองตามกฎ ผู้เขียนเลือกว่าจะกู้ร่างที่ค้างหรือไม่</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 5</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>แถบเครื่องมือ Editor เหลือเฉพาะปุ่มที่ใช้จริง</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">แถบเครื่องมือเหลือแค่ปุ่มตัวหนา ตัวบาง ตัวเอียง ป้ายสี font และรูป และไม่แสดงปุ่ม Source HTML</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ลดปุ่มใน Editor ของ /articles/create และเอาปุ่ม Source HTML เดิมออก</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday ขอให้แถบเครื่องมือเหลือเฉพาะปุ่มที่ใช้จริงและไม่ต้องแสดงปุ่ม Source HTML<div class="bus"><span class="bu">Posttoday</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 7</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>Title ที่มีชื่อเฉพาะต้องไม่ถูกตัดจนเสียความหมาย</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">เมื่อพาดหัวหรือ Title มีชื่อเฉพาะและยาวเกินจำนวนตัวอักษร ระบบเดิมตัดคำจนเสียความหมาย ฟีเจอร์นี้ให้ระบบตัดคำไทยให้ถูก และไม่ตัดกลางชื่อเฉพาะ</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ต่อยอดช่องพาดหัวใน /articles/create ที่กำหนด 50 ตัวอักษรไว้แต่ยังไม่ lock</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The Nation และ Springnews อยากรู้ว่าพาดหัวเกินกี่ตัวอักษร Springnews เจอหัวข้อตัดกลางคำ และ Thansettakij เจอ H2 ที่คำถูกตัดขาด<div class="bus"><span class="bu">Thansettakij</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกหรือแก้พาดหัวที่ AI เสนอเอง</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 13 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 21 ถึง 24 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 9</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>พิมพ์ตัวห้อยและตัวยกได้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนพิมพ์ตัวห้อยและตัวยกในเนื้อข่าวได้ ฟีเจอร์นี้ใช้กับทีมข่าวภาษาอังกฤษเป็นหลัก</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มปุ่มตัวห้อยและตัวยกใน Editor ของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The Nation ซึ่งเป็นทีมข่าวภาษาอังกฤษขอให้พิมพ์ตัวห้อยและตัวยกได้<div class="bus"><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 12</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>Footer ท้ายเนื้อข่าว ตั้งได้แต่ละ BU</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">แต่ละ BU ตั้งข้อความท้ายข่าว (footer) ของตัวเองได้ เช่น ช่องทางติดตามและ disclaimer งานลูกค้า แล้วระบบใส่ให้ทุกข่าว</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มเครื่องมือแทรกข้อความและตรวจรูปแบบใน /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อลดการพิมพ์ข้อความท้ายข่าวซ้ำและให้รูปแบบการเขียนตรงกับกฎของแต่ละ BU<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: เป็นข้อเสนอของทีมที่ยังไม่มี BU ขอ</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน บก. ของแต่ละ BU ตั้งกฎและข้อความสำเร็จรูป</div></div>
+  </div>
+</div><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 21</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>หน้าส่งข่าวเร็วบนมือถือ / iPad สำหรับนักข่าวภาคสนาม</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">นักข่าวถ่ายหรือเลือกรูป ใส่พาดหัว เขียนช่องเดียว แล้วส่ง บก. หรือเผยแพร่ หน้านี้มีปุ่มใหญ่ บีบอัดรูปก่อนอัป และบันทึกร่างในเครื่องเผื่อเน็ตหลุด เป้าคือส่งข่าวสั้นพร้อมรูปได้ใน 3 นาที<div class="ai-role"><b>AI ทำอะไร:</b> ทีมเปลี่ยนการ์ดเป็นสีฟ้า (AI ช่วยเสริม) แต่ยังไม่ได้ระบุว่า AI ทำส่วนไหน</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าส่งข่าวเร็วบนมือถือ</b> <span class="st s-new">หน้าใหม่</span><div class="sub">ระบบเดิมไม่มีหน้าสำหรับมือถือ นักข่าวต้องใช้หน้า /articles/create ที่ออกแบบสำหรับคอมพิวเตอร์</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ทั้ง 8 BU ในชีตเจอปัญหาบนมือถือ เช่น Komchadluek ต้องซูมหน้าจอ Thansettakij คัดลอกข้อความบน Android ไม่ได้ และ The Nation กับ Springnews เลี่ยงไม่ใช้มือถือ<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">Posttoday</span><span class="bu">Thansettakij</span><span class="bu">The Nation</span><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกว่าจะส่ง บก. หรือเผยแพร่เอง ตามสิทธิ์ที่ BU ตั้งไว้</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 45</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>แสดงว่าใครกำลังแก้ข่าวนี้อยู่ กันแก้ทับกัน</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบแสดงชื่อคนที่กำลังแก้ข่าวนั้นอยู่ เพื่อกันไม่ให้หลายคนแก้ทับกัน</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มป้ายผู้ที่กำลังแก้ในหน้า /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอจากการสำรวจระบบเดิมของทีม UX เพื่อกันการแก้ข่าวทับกัน<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 14 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 25 ถึง 28 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 47</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>ลงบทความ Advertorial ด้วยฟอร์มเดียวกับข่าว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ฟอร์มข่าวเพิ่มประเภท &quot;Advertorial&quot; ที่มีช่อง Position และป้ายกำกับเนื้อหาโฆษณาอัตโนมัติ ระบบจึงไม่ต้องแยกเมนูและฟอร์มออกไป</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ยุบเมนู Advertorials /advertorials เข้าฟอร์ม /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ ทีม UX พบว่าเมนูและฟอร์ม Advertorial แยกจาก Articles ทำให้ต้องดูแลสองที่<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 57</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>จัดการ Byline และนามปากกา เรียงตามผู้ใช้มากสุด</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">Admin เพิ่ม byline ได้ ปักหมุดและเรียงตามที่ใช้บ่อย ระบบเรียกนามปากกากับ byline เป็นคำเดียวกัน และผูก byline กับผู้ใช้ให้ชื่อผู้เขียนถูกทุกข่าว</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าจัดการ Byline</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้รวมหน้า Bylines /bylines กับการผูกนามปากกาในหน้า Users /usersPenname</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The Nation ขอให้เรียงนามปากกาตามที่ใช้บ่อย และ Komchadluek ขอให้เรียกนามปากกากับ byline เป็นคำเดียวกัน<div class="bus"><span class="bu">The Nation</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">Admin ผูก byline กับผู้ใช้ และผู้เขียนเลือก byline ตอนเขียน</div></div>
+  </div>
+</div><div class="card t-none-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 22</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>ใส่หลายรูปในข่าวด้วยการลากวางหรือ Ctrl+V พร้อมจัดรูป</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนลากวางหรือวางรูปจาก clipboard ได้ในขั้นเดียว อัปหลายรูปพร้อมกันได้ ระบบย่อรูป แปลงเป็น webp และจัดระยะห่างรูปกับเนื้อหาให้ มีทั้งแบบลงในเนื้อข่าวและแบบแกลเลอรี</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้แทนการใส่รูปทีละรูปใน Editor ของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The People อยากให้ระบบจัดคำบรรยายรูปและระยะห่างให้ Posttoday อยากอัปหลายรูปผ่านแกลเลอรี The Nation ขออัปหลายรูปในครั้งเดียว และทีม UX พบว่าใส่รูปหนึ่งรูปต้องทำ 6 ขั้น<div class="bus"><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">Posttoday</span><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ผู้เขียนใส่คำบรรยายและ alt เอง</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 29</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>Template ปกข่าวและคลิปแนวตั้ง ใส่พาดหัวบนรูป และมีช่องแยกให้ใส่ Title ได้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">Template ปกข่าวและคลิปแนวตั้ง ใส่พาดหัวบนรูปได้ และมีช่องแยกให้ใส่ Title ของปกต่างหาก</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มตัวทำปกจาก Template ในส่วนรูปปกของ /articles/create ซึ่งเดิมไม่มี</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online ขอ Template ปกและคลิปแนวตั้งเพื่อช่วยคนทำงานภาคสนาม Thainews แต่งปกนอกระบบ และ Springnews ทำภาพ engagement เอง<div class="bus"><span class="bu">Nation Online</span><span class="bu">Springnews</span><span class="bu">Thainews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกหรือแก้ข้อความบนปกก่อนบันทึก</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 15 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 29 ถึง 32 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 31</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>วางลิงก์ FB / IG / YouTube แล้วแสดงผลในข่าวทันที</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนวางลิงก์ Facebook, Instagram หรือ YouTube ในเนื้อข่าวแล้วระบบแสดงผลให้ทันที โดยไม่ต้องแปลงเป็นโค้ด embed เอง</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ปรับการฝังสื่อใน Editor ของ /articles/create ที่เดิมต้องดูคู่มือ</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Springnews วางลิงก์ Facebook แล้วอยากให้ระบบแปลงเป็น embed ให้ The Nation ใช้คลิป Instagram และ Thansettakij ก็ขอเรื่องนี้<div class="bus"><span class="bu">Thansettakij</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 32</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>ลงวิดีโอง่าย: วางลิงก์แล้วดึงข้อมูลให้ และรวมเมนูวิดีโอเป็นเมนูเดียว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้วางลิงก์ YouTube หรือ Dailymotion แล้วระบบดึงชื่อ ภาพปก และความยาวให้ ลากไฟล์ .mp4 วางได้โดยไม่ต้อง Import ด้วย Excel และเลือกคลิปจาก NTV Logging พร้อมตัดหัวท้ายได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าวิดีโอ</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้รวมเมนู Videos /videos กับ Video Galleries /video-galleries เป็นเมนูเดียว</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday ไม่ใส่ Dailymotion เพราะขั้นตอนเยอะ Komchadluek ขอรวมเมนู Video กับ Video gallery และทีม UX พบว่าลงหลายคลิปต้อง Import ด้วย Excel<div class="bus"><span class="bu">Nation Online</span><span class="bu">Posttoday</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ผู้ใช้ตรวจข้อมูลคลิปที่ดึงมาก่อนบันทึก</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 14</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">AI Writer</span></div><h3>AI แปลข่าวไทย ↔ อังกฤษ ให้คนแค่เรียบเรียง โดยแปลแบบ British English</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI ร่างคำแปลไทยเป็นอังกฤษแบบ British English ให้คนแปลแก้ต่อ และแปลอังกฤษเป็นไทยสำหรับข่าวต่างประเทศ ระบบแปลพาดหัว คำโปรย และช่อง SEO ด้วย โดยใช้พจนานุกรมกลางของชื่อเฉพาะ<div class="ai-role"><b>AI ทำอะไร:</b> AI ร่างคำแปลทั้งเนื้อข่าวและช่อง SEO</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มเครื่องมือแปลใน /articles/create ต่อจากสวิตช์ TRANSLATE ที่ระบบเดิมใช้ส่งข่าวไปแปล</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The Nation แปลข่าวไทยเป็นภาษาอังกฤษเองทั้งข่าว และต้องใช้ British English<div class="bus"><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">คนแปลแก้ร่างคำแปล และ บก. ตรวจก่อนเผยแพร่</div></div>
+  </div>
+</div><div class="card t-help-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 8</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="imp small">สำคัญน้อย</span><span class="grp">AI ช่วยนักข่าวเขียน</span></div><h3>แทรกตารางและกราฟในข่าว และ AI แปลงตัวเลขในข่าวเป็นกราฟ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนแทรกกราฟและตารางในเนื้อข่าวสำหรับข่าวข้อมูลได้ AI ดึงตัวเลขจากเนื้อข่าวแล้วเสนอเป็นตารางหรือกราฟที่แก้ต่อได้<div class="ai-role"><b>AI ทำอะไร:</b> AI ดึงตัวเลขจากเนื้อข่าวแล้วเสนอเป็นตารางหรือกราฟ</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มบล็อกกราฟและตารางใน Editor ของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Thansettakij ทำข่าวข้อมูลและต้องทำกราฟเป็นภาพเองหรือใช้ AI ภายนอก<div class="bus"><span class="bu">Thansettakij</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนตรวจตัวเลขในกราฟก่อนแทรกลงข่าว</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 16 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 33 ถึง 36 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 11</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>คำโปรยใส่ style ได้ และเขียนโปรยให้สอดคล้อง SEO</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">คำโปรยใส่ตัวหนาและตัวบางได้ และแยกเก็บจาก SEO Description ที่เป็นข้อความล้วน ผู้เขียนเขียนโปรยให้สอดคล้องกับ SEO เอง</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้แยกช่องคำโปรยใน /articles/create ออกเป็น 2 ช่อง</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online อยากใส่ style ในคำโปรย แต่ถ้าใช้ช่องเดียวกับ SEO Description tag HTML จะหลุดไปใน meta ส่วน The People และ Springnews ขอให้ AI ช่วยเขียนโปรยให้ดีต่อ SEO<div class="bus"><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกหรือแก้คำโปรยที่ AI ร่างก่อนบันทึก</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 44</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="imp small">สำคัญน้อย</span><span class="grp">เขียนข่าว: งานของนักข่าว</span></div><h3>ทำสำเนาข่าว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้กด &quot;ทำสำเนา&quot; แล้วได้ข่าวใหม่ที่มีหมวด แท็ก รูปปก และการตั้งค่าเหมือนเดิม เช่น ข่าวต่อเนื่องประเด็นเดิมในวันถัดไป</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มคำสั่งทำสำเนาใน Action รายข่าวของ /articles</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอจากการสำรวจระบบเดิมของทีม UX เพื่อลดการตั้งค่าซ้ำ<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 23</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="imp small">สำคัญน้อย</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>AI ร่าง alt text ให้รูปอัตโนมัติ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI ดูรูปพร้อมพาดหัวและคำบรรยาย แล้วร่าง alt text 1 ประโยคตอนอัปรูป ลากวางหลายรูปก็ร่างให้ทุกรูป และเติมย้อนหลังให้รูปเก่าที่ไม่มี alt ได้ โดยไม่เดาชื่อคนจากใบหน้า<div class="ai-role"><b>AI ทำอะไร:</b> AI ร่าง alt text จากรูปและบริบทข่าว</div><div class="tnote">ติดสติกเกอร์นาฬิกาทรายด้วย ซึ่งไม่อยู่ในคำอธิบายสติกเกอร์ของทีม</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มช่อง alt text พร้อมร่างอัตโนมัติตอนอัปรูปใน /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The People และ Springnews ขอให้ใส่ alt text ตอนอัปรูปได้<div class="bus"><span class="bu">The People</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">นักข่าวตรวจและแก้ alt text ก่อนบันทึก</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 26</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="imp small">สำคัญน้อย</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>จัดลำดับรูปในแกลเลอรี เลือกรูปปก และโหลดต้นฉบับทั้งชุด</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้เขียนลากสลับลำดับรูปในแกลเลอรี เลือกรูปไหนเป็นปกก็ได้ และดาวน์โหลดรูปต้นฉบับทั้งชุดเป็นไฟล์เดียว</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าแกลเลอรี</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ต่อยอดหน้าคลังแกลเลอรีรูป /galleries</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อให้จัดแกลเลอรีได้เร็วขึ้นและเลือกรูปปกได้เอง<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: เป็นข้อเสนอของทีมที่ยังไม่มี BU ขอ</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกลำดับรูปและรูปปกเอง</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 17 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>2. เขียนข่าว</h2><div class="meta">ฟีเจอร์ที่ 37 ถึง 39 จากทั้งหมด 39 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 27</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>คลังรูปและวิดีโอกลาง ค้นได้ รวมภาพจาก DAM / Nation Photo</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">คลังกลางเก็บรูปและวิดีโอทุกไฟล์ที่เคยอัป ผู้ใช้ค้นได้จาก title หรือ tag และค้นภาพจาก DAM / Nation Photo ได้ในที่เดียว</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าคลังรูปและวิดีโอ</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้รวมคลังวิดีโอ /videos กับคลังแกลเลอรี /galleries เป็นคลังกลาง และเพิ่มการค้นจาก DAM</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Nation Online ขอค้นภาพจาก DAM / Nation Photo ในระบบ และทีม UX เสนอให้มีคลังรูปและวิดีโอกลาง<div class="bus"><span class="bu">Nation Online</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ผู้ใช้เลือกไฟล์เอง</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 33</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>อัปคลิปเข้าระบบเองโดยไม่ต้องพึ่ง YouTube / Dailymotion</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้อัปคลิปสั้นที่ยาวไม่ถึง 1 นาทีเข้าระบบได้เอง โดยไม่ต้องพึ่ง YouTube หรือ Dailymotion</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าวิดีโอ</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มการอัปไฟล์คลิปในหน้า /videos ที่เดิมรับแค่ลิงก์ YouTube และ Dailymotion</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Bangkokbiznews มีลูกค้าบางรายที่ไม่ต้องการโฆษณาของแพลตฟอร์ม และคลิปสั้นที่มีคนดูหลักร้อยก็ไม่คุ้มที่จะพึ่งแพลตฟอร์มข้างนอก<div class="bus"><span class="bu">Bangkokbiznews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 34</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">ใส่รูปและวิดีโอ</span></div><h3>AI เลือกภาพปกวิดีโอจากเฟรมที่คมชัด</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบเลือกเฟรมที่คมและเห็นหน้าคนชัดแทนเฟรมแรกที่มักดำหรือเบลอ และเสนอ 3 ถึง 4 เฟรมให้เลือก<div class="ai-role"><b>AI ทำอะไร:</b> AI เลือกเฟรมที่เหมาะเป็นภาพปก</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าวิดีโอ</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มตัวเลือกภาพปกในหน้า /videos</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อให้ภาพปกวิดีโอไม่ดำหรือเบลอ<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: เป็นข้อเสนอของทีมที่ยังไม่มี BU ขอ</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้ใช้เลือกเฟรมเองหรืออัปภาพปกเอง</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 18 จาก 31</span></div></section><section class="page divider">
+<div class="side"><div class="lbl">ช่วงที่</div><div class="num ">3</div><h2>ตรวจและเผยแพร่</h2><p class="lead">Trust check ตรวจ 6 ด้านพร้อมกัน ถ้ามีข้อบล็อกให้แก้หรือให้ บก. อาวุโสปลดบล็อก แล้วเผยแพร่ทุกช่องทาง ทั้งเว็บ LINE และโซเชียล</p>
+  <div class="cnt"><span>ต้องทำ</span><b>18 ข้อ</b><span>ทำทีหลัง</span><b>5 ข้อ</b></div></div>
+<div class="main"><h3>ฟีเจอร์ในช่วงนี้ แยกตามผลการตัดสินและกลุ่มใน Flow<span class="lg">จุดสีม่วง = AI เป็นตัวหลัก, สีฟ้า = AI ช่วยเสริม, สีเทา = ไม่ใช้ AI</span></h3><div class="clist"><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI: Trust check ตรวจก่อนเผยแพร่</b></div><div class="ci"><span class="no">60</span><i class="dot t-ai"></i><span class="tt">AI ตรวจคำผิดภาษาไทยและ British English</span></div><div class="ci"><span class="no">61</span><i class="dot t-ai"></i><span class="tt">AI ตรวจชื่อ ตำแหน่ง ตัวเลข เทียบกับข่าวที่เคยลง</span></div><div class="ci"><span class="no">62</span><i class="dot t-ai"></i><span class="tt">AI เตือนความเสี่ยงก่อนเผยแพร่ (กฎหมาย PDPA รูปอ่อนไหว พาดหัวเกินจริง)</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>AI: เผยแพร่ทุกช่องทาง</b></div><div class="ci"><span class="no">70</span><i class="dot t-ai"></i><span class="tt">AI ร่าง caption แยกตามแพลตฟอร์ม Social ในสไตล์ BU</span></div><div class="ci"><span class="no">108</span><i class="dot t-ai"></i><span class="tt">เสียงอ่านและการแปลภาษาให้ฟังเป็นธรรมชาติ และแยกเสียงตามหมวดได้</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>Trust check: ตรวจก่อนเผยแพร่</b></div><div class="ci"><span class="no">35</span><i class="dot t-none"></i><span class="tt">สถานะข่าวตั้งได้ราย BU และ บก. ส่งโน้ตสั่งแก้กลับได้</span></div><div class="ci"><span class="no">37</span><i class="dot t-none"></i><span class="tt">ประวัติการแก้ไขข่าว เทียบเวอร์ชัน</span></div><div class="ci"><span class="no">104</span><i class="dot t-none"></i><span class="tt">กันข่าวเบิ้ลตอนกดเผยแพร่และเคลียร์ข่าวซ้ำเดิม</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>เผยแพร่ทุกช่องทาง</b></div><div class="ci"><span class="no">43</span><i class="dot t-none"></i><span class="tt">ปุ่มข่าวด่วน: ติดป้าย ปักหน้าแรก ล้างแคช และเตรียมโพสต์ในคลิกเดียว</span></div><div class="ci"><span class="no">48</span><i class="dot t-none"></i><span class="tt">ปฏิทินรวมเวลาเผยแพร่ข่าวและโพสต์โซเชียล เตือนเวลาชนและโพสต์ซ้ำ</span></div><div class="ci"><span class="no">68</span><i class="dot t-none"></i><span class="tt">คัดลอกลิงก์ข่าวจริง พรีวิวการ์ดก่อนแชร์ และตั้งอายุลิงก์พรีวิว</span></div><div class="ci"><span class="no">69</span><i class="dot t-none"></i><span class="tt">โพสต์ FB / IG / X / LINE OA จากหลังบ้าน ตั้งเวลาโพสต์พร้อมข่าว และโพสต์ได้โดยไม่ต้องสร้างข่าวก่อน</span></div><div class="ci"><span class="no">80</span><i class="dot t-help"></i><span class="tt">ส่งข่าวตามความสนใจของสมาชิกทาง LINE (Personalization) และมี Dashboard ดูข้อมูลใน CMS</span></div><div class="ci"><span class="no">107</span><i class="dot t-none"></i><span class="tt">ล้างแคชภาพ Social ได้ทันทีหลังเปลี่ยนรูป</span></div><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>จัดหน้าเว็บ</b></div><div class="ci"><span class="no">71</span><i class="dot t-none"></i><span class="tt">ปักข่าวบนหน้าเว็บ (Lock news) แบบลากวาง และหมุนเวียนข่าวให้</span></div><div class="ci"><span class="no">72</span><i class="dot t-none"></i><span class="tt">จัดหน้าเว็บด้วย Template section พร้อมพรีวิวก่อนบันทึก</span></div><div class="ci"><span class="no">73</span><i class="dot t-none"></i><span class="tt">สร้างหน้าพิเศษ (Special page) ด้วยการ import HTML</span></div><div class="ci"><span class="no">78</span><i class="dot t-none"></i><span class="tt">กดรูปในข่าวเพื่อขยายดู</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>Trust check: ตรวจก่อนเผยแพร่</b></div><div class="ci"><span class="no">59</span><i class="dot t-none"></i><span class="tt">เลือกหมวดข่าวในช่องเดียว และบังคับมีหมวดก่อนเผยแพร่</span></div><div class="ci"><span class="no">102</span><i class="dot t-none"></i><span class="tt">ตรวจลิงก์เสียและข่าวที่ไม่มีลิงก์ภายใน</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>เผยแพร่และจัดหน้าเว็บ</b></div><div class="ci"><span class="no">49</span><i class="dot t-none"></i><span class="tt">แนะนำเวลาเผยแพร่และเวลาโพสต์จากยอดคนอ่านย้อนหลัง</span></div><div class="ci"><span class="no">74</span><i class="dot t-none"></i><span class="tt">เสนอข่าวลงแต่ละ section ของหน้าเว็บ</span></div><div class="ci"><span class="no">79</span><i class="dot t-help"></i><span class="tt">มาสคอต BU บนหน้าเว็บ อ่านข่าวให้ฟังและแนะนำข่าว</span></div></div></div></section><section class="page ">
+<div class="top"><div><h2>3. ตรวจและเผยแพร่</h2><div class="meta">ฟีเจอร์ที่ 1 ถึง 4 จากทั้งหมด 23 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-ai-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 60</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI: Trust check ตรวจก่อนเผยแพร่</span></div><h3>AI ตรวจคำผิดภาษาไทยและ British English</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI เตือนเฉพาะคำผิดจริง มีพจนานุกรมราย BU และโหมด British English ระบบตัดข่าวยาวเป็นช่วงตามย่อหน้าและขีดเส้นใต้ในเนื้อข่าวแทน Pop-up เป้าคือข่าว 10,000 ตัวอักษรไม่ error<div class="ai-role"><b>AI ทำอะไร:</b> AI ตรวจคำผิดไทยและการสะกดแบบ British English</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ปรับปุ่ม AI ตรวจคำผิดเดิมใน /articles/create ที่แสดงผลเป็น Pop-up</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ทั้ง 8 BU ในชีตเจอปัญหาตรวจคำผิด Nation Online และ Komchadluek เจอว่าช้า The People, Thansettakij, Springnews และ Bangkokbiznews เจอ error และ The Nation ต้องการ British English<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Nation Online</span><span class="bu">The People</span><span class="bu">Posttoday</span><span class="bu">Thansettakij</span><span class="bu">The Nation</span><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนเลือกแก้หรือข้ามคำที่ถูกเตือนทีละจุด</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 61</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI: Trust check ตรวจก่อนเผยแพร่</span></div><h3>AI ตรวจชื่อ ตำแหน่ง ตัวเลข เทียบกับข่าวที่เคยลง</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบเตือนเมื่อชื่อ ตำแหน่ง หรือตัวเลขไม่ตรงกับคลังข่าว ฟีเจอร์นี้ตรวจอย่างเดียวและไม่แต่งเนื้อหา<div class="ai-role"><b>AI ทำอะไร:</b> AI เทียบชื่อ ตำแหน่ง และตัวเลขกับคลังข่าวแล้วเตือน</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มการตรวจในแผงตรวจของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday ตรวจคำสะกดผิด ตัวเลข และตำแหน่งผิดเอง และต้องกรองข่าวจาก social ก่อน ฟีเจอร์นี้ตอบเป้าหมายความน่าเชื่อถือ<div class="bus"><span class="bu">Posttoday</span></div><div class="sub">ที่มา: มาจากบันทึกสัมภาษณ์ BU ใน Asana</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนยืนยันหรือแก้ทีละจุด</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 62</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI: Trust check ตรวจก่อนเผยแพร่</span></div><h3>AI เตือนความเสี่ยงก่อนเผยแพร่ (กฎหมาย PDPA รูปอ่อนไหว พาดหัวเกินจริง)</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI เตือนข้อความเสี่ยงทางกฎหมาย เช่น หมิ่นประมาทและชื่อผู้เสียหาย จับใบหน้าเด็ก ป้ายทะเบียน และเลขบัตรในรูป และเตือนรูปน่าสงสัยกับพาดหัวที่เกินเนื้อข่าว<div class="ai-role"><b>AI ทำอะไร:</b> AI อ่านเนื้อข่าวและรูปแล้วเตือนความเสี่ยง</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มการเตือนในแผงตรวจของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อลดความเสี่ยงทางกฎหมายและรักษาความน่าเชื่อถือ<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: เป็นข้อเสนอของทีมที่ยังไม่มี BU ขอ</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนกดยืนยันเบลอรูปเอง และ บก. หรือฝ่ายกฎหมายตัดสินเรื่องที่เสี่ยง</div></div>
+  </div>
+</div><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 70</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI: เผยแพร่ทุกช่องทาง</span></div><h3>AI ร่าง caption แยกตามแพลตฟอร์ม Social ในสไตล์ BU</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">AI ร่าง caption สำหรับ Facebook, Instagram และ X โดยคงน้ำเสียง คำประจำ emoji และ hashtag ของแต่ละ BU ตาม style guide และโพสต์เก่าของเพจ<div class="ai-role"><b>AI ทำอะไร:</b> AI ร่าง caption ตามแพลตฟอร์มและสไตล์ BU</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าตั้งค่าโพสต์โซเชียล</b> <span class="st s-new">หน้าใหม่</span><div class="sub">ฟีเจอร์นี้อยู่ในหน้าตั้งค่าโพสต์โซเชียลซึ่งระบบเดิมไม่มี</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Springnews และ Komchadluek ขอโพสต์ลงโซเชียลจากหลังบ้าน และ AI ช่วยร่าง caption ได้<div class="bus"><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">คนตรวจ caption และกดโพสต์เอง</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 20 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>3. ตรวจและเผยแพร่</h2><div class="meta">ฟีเจอร์ที่ 5 ถึง 8 จากทั้งหมด 23 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-ai-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 108 (เสียงอ่าน)</span><span class="chip t-ai">AI เป็นตัวหลัก</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">AI: เผยแพร่ทุกช่องทาง</span></div><h3>เสียงอ่านและการแปลภาษาให้ฟังเป็นธรรมชาติ และแยกเสียงตามหมวดได้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบอ่านข่าวเป็นเสียงและแปลภาษาให้ฟังเป็นธรรมชาติ และเลือกเสียงแยกตามหมวดข่าวได้<div class="ai-role"><b>AI ทำอะไร:</b> AI สร้างเสียงอ่านและคำแปลที่เป็นธรรมชาติ</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเว็บที่ผู้อ่านเห็น</b> <span class="st s-web">หน้าเว็บของผู้อ่าน</span><div class="sub">ฟีเจอร์นี้น่าจะอยู่บนหน้าเว็บของผู้อ่าน แต่ยังไม่ได้กำหนดหน้า</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่รู้ว่าฟีเจอร์นี้แก้ปัญหาอะไรและ BU ไหนขอ เพราะยังไม่มีข้อมูลในชีต<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากบอร์ด FigJam และยังไม่มีในชีตหรือหลักฐานจาก BU</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ยังไม่ได้กำหนด ต้องตกลงก่อนว่าใครตรวจเสียงและคำแปล</div></div>
+  </div>
+</div><div class="card t-none-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 35</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Trust check: ตรวจก่อนเผยแพร่</span></div><h3>สถานะข่าวตั้งได้ราย BU และ บก. ส่งโน้ตสั่งแก้กลับได้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">แต่ละ BU ตั้งขั้นสถานะได้เอง เช่น ร่าง รอตรวจ ตรวจแล้ว ซ่อน และเผยแพร่ ระบบแยกข่าวรอตรวจกับตรวจแล้ว และ บก. เขียนโน้ตสั่งแก้ส่งกลับได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้ขยายสถานะ Show, Draft และ Hidden ใน /articles และ /articles/create ให้มีขั้นรอตรวจและโน้ตจาก บก.</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Thansettakij ให้ บก. ตรวจก่อนขึ้นข่าว และ Posttoday ซ่อนข่าวไว้แก้ก่อนเผยแพร่ ส่วน Springnews และ Nation Online เผยแพร่เอง จึงต้องตั้งสถานะได้ราย BU<div class="bus"><span class="bu">Posttoday</span><span class="bu">Thansettakij</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">Admin ของแต่ละ BU ตั้งขั้นสถานะ และ บก. ตรวจแล้วส่งโน้ตสั่งแก้</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 37</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Trust check: ตรวจก่อนเผยแพร่</span></div><h3>ประวัติการแก้ไขข่าว เทียบเวอร์ชัน</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบเก็บทุกครั้งที่ข่าวถูกแก้พร้อมชื่อคนแก้และเวลา ผู้ใช้กดเทียบ 2 เวอร์ชันแล้วเห็นคำที่เปลี่ยน และกดกู้คืนได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มประวัติเวอร์ชันใน /articles/create เพราะระบบเดิมเก็บแค่คนแก้ล่าสุดและเวลา</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Bangkokbiznews อยากรู้ว่าใครแก้อะไรในข่าวบ้าง และทีม UX เสนอให้มีประวัติเวอร์ชัน<div class="bus"><span class="bu">Bangkokbiznews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ผู้ใช้เลือกเองว่าจะกู้คืนเวอร์ชันไหน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 104</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">Trust check: ตรวจก่อนเผยแพร่</span></div><h3>กันข่าวเบิ้ลตอนกดเผยแพร่และเคลียร์ข่าวซ้ำเดิม</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบปิดปุ่มทันทีหลังกดเผยแพร่ และฝั่ง server ไม่สร้างข่าวซ้ำถ้าได้คำสั่งเดิม 2 ครั้ง ทีมหาข่าวซ้ำที่มีอยู่แล้วเพื่อรวมหรือลบออก</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้แก้ปุ่มเผยแพร่ใน /articles/create และเคลียร์ข่าวซ้ำใน /articles</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday กดเผยแพร่แล้วข่าวเบิ้ล และ The People เจอข่าวซ้ำในระบบ<div class="bus"><span class="bu">The People</span><span class="bu">Posttoday</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ทีมงานตรวจข่าวซ้ำก่อนลบ</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 21 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>3. ตรวจและเผยแพร่</h2><div class="meta">ฟีเจอร์ที่ 9 ถึง 12 จากทั้งหมด 23 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 43</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เผยแพร่ทุกช่องทาง</span></div><h3>ปุ่มข่าวด่วน: ติดป้าย ปักหน้าแรก ล้างแคช และเตรียมโพสต์ในคลิกเดียว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้กดปุ่มเดียวแล้วระบบติดป้าย &quot;ด่วน&quot; ปักข่าวบนสุดของหน้าแรก ล้างแคช และเตรียมโพสต์ลงโซเชียลให้ครบ</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้รวมปุ่ม Cache ใน /articles และการปักข่าวในหน้า Lock News /lock เป็นปุ่มเดียว</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอจากการสำรวจระบบเดิมของทีม UX เพื่อลดขั้นตอนตอนลงข่าวด่วน<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ผู้เขียนหรือ บก. เป็นคนกดปุ่ม</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 48</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เผยแพร่ทุกช่องทาง</span></div><h3>ปฏิทินรวมเวลาเผยแพร่ข่าวและโพสต์โซเชียล เตือนเวลาชนและโพสต์ซ้ำ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ปฏิทินเดียวแสดงข่าวที่ตั้งเวลาเผยแพร่และโพสต์โซเชียลทุกแพลตฟอร์มและทุกเพจ ผู้ใช้ลากย้ายเวลาได้ และระบบเตือนข่าวชนกัน โพสต์ซ้ำ หรือโพสต์ถี่เกิน</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>ปฏิทินข่าว</b> <span class="st s-new">หน้าใหม่</span><div class="sub">ระบบเดิมไม่มีปฏิทิน การตั้งเวลาทำทีละข่าวใน /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อให้เห็นเวลาเผยแพร่และโพสต์ทั้งหมดในที่เดียว<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากข้อเสนอของทีม และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. หรือทีมโซเชียลลากย้ายเวลาเอง ระบบเตือนตามกฎ</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 68</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เผยแพร่ทุกช่องทาง</span></div><h3>คัดลอกลิงก์ข่าวจริง พรีวิวการ์ดก่อนแชร์ และตั้งอายุลิงก์พรีวิว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ปุ่ม &quot;คัดลอกลิงก์&quot; ให้ลิงก์จริงเสมอโดยไม่ปนโดเมน stag ผู้ใช้พรีวิวการ์ด Facebook หรือ LINE ก่อนแชร์ได้ และกำหนดวันหมดอายุลิงก์ See Temp เองได้ โดยค่าเริ่มต้นคือ 1 วัน</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้ปรับลิงก์หน้าเว็บและลิงก์ See Temp ในตาราง /articles</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The People ขอกำหนดวันหมดอายุลิงก์ See Temp เอง และทีม UX พบว่าลิงก์ปนโดเมน stag กับ www<div class="bus"><span class="bu">The People</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 69</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เผยแพร่ทุกช่องทาง</span></div><h3>โพสต์ FB / IG / X / LINE OA จากหลังบ้าน ตั้งเวลาโพสต์พร้อมข่าว และโพสต์ได้โดยไม่ต้องสร้างข่าวก่อน</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">โพสต์ลง FB, IG, X และ LINE OA จากหลังบ้าน ตั้งเวลาโพสต์พร้อมข่าวได้ และโพสต์ได้โดยไม่ต้องสร้างข่าวก่อน</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าตั้งค่าโพสต์โซเชียล</b> <span class="st s-new">หน้าใหม่</span><div class="sub">ระบบเดิมมีแค่ปุ่มแชร์ Facebook, X และ LINE ใน /articles และไม่มีหน้าตั้งเวลาโพสต์</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Komchadluek และ Springnews ขอโพสต์ลงโซเชียลจากหลังบ้าน และ Springnews อยากเพิ่มรูปปกแบบภาพ engagement แล้วกดโพสต์ได้เลย<div class="bus"><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้ใช้ตั้งเวลาและกดโพสต์เอง</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 22 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>3. ตรวจและเผยแพร่</h2><div class="meta">ฟีเจอร์ที่ 13 ถึง 16 จากทั้งหมด 23 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-help-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 80</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เผยแพร่ทุกช่องทาง</span></div><h3>ส่งข่าวตามความสนใจของสมาชิกทาง LINE (Personalization) และมี Dashboard ดูข้อมูลใน CMS</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบส่งข่าวที่ตรงความสนใจของสมาชิกทาง LINE และมี Dashboard ใน CMS ให้ดูข้อมูลสมาชิกและผลการส่ง<div class="ai-role"><b>AI ทำอะไร:</b> AI จับคู่ embedding ของข่าวกับความสนใจของสมาชิก</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>ระบบ Personalization (แยก)</b> <span class="st s-sep">ระบบแยก</span><div class="sub">ทีมจะทำเป็นอีกระบบ และ CMS เก็บ embedding ของข่าว (ai_vec) ไว้ใน DB News</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The People ขอดูข้อมูลสมาชิกและเลือกข่าวให้ตรงกับความสนใจของสมาชิก<div class="bus"><span class="bu">The People</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">สมาชิกให้ความยินยอมตาม PDPA ก่อน แล้วระบบจับคู่ข่าวเอง</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 107</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">เผยแพร่ทุกช่องทาง</span></div><h3>ล้างแคชภาพ Social ได้ทันทีหลังเปลี่ยนรูป</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้ล้างแคชภาพ Social ได้ทันทีหลังเปลี่ยนรูป แทนการรอแคชหมดอายุ 1 ชั่วโมง</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้แก้แคชภาพ Social ในส่วนรูปปกของ /articles/create</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Springnews อัปภาพ Social ผิดแล้วภาพเดิมติดแคชอยู่ 1 ชั่วโมง<div class="bus"><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 71</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">จัดหน้าเว็บ</span></div><h3>ปักข่าวบนหน้าเว็บ (Lock news) แบบลากวาง และหมุนเวียนข่าวให้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">พิมพ์ค้นข่าวแล้วลากเข้าช่องปักข่าว เรียงลำดับได้ ตั้งเวลาหมดการปักได้ และระบบหมุนเวียนข่าวตามกฎที่ตั้งไว้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้า Lock News</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้ปรับหน้า Lock News /lock ที่มี 14 ช่องใน 3 โซนและต้องค้นข่าวทีละช่อง</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Komchadluek ใช้ Lock news 1 ถึง 2 ช่อง และ Springnews อยากให้ AI ช่วยเลือกข่าว<div class="bus"><span class="bu">Springnews</span><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. เปลี่ยนข่าวที่ปักเองได้ทุกเมื่อ</div></div>
+  </div>
+</div><div class="card t-none-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 72</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">จัดหน้าเว็บ</span></div><h3>จัดหน้าเว็บด้วย Template section พร้อมพรีวิวก่อนบันทึก</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">หน้าจัดหน้าเว็บมีส่วนตั้งค่า section ด้านซ้ายและพรีวิวหน้าจริงด้านขวา ทั้ง desktop และมือถือ ผู้ใช้ย้อนกลับเวอร์ชันก่อนได้ และสร้าง section พิเศษได้โดยไม่ต้องกำหนด key เอง</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าจัดหน้าเว็บ</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้รวม Index Page /indexpage, Video Page /videopages และ Datasets /datasets เป็นหน้าเดียว</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Bangkokbiznews ขอให้นักข่าวจัดหน้าเอง และ Thansettakij ขอ section พิเศษและเจอว่า Admin tools ต้องกำหนด key เอง<div class="bus"><span class="bu">Bangkokbiznews</span><span class="bu">Thansettakij</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. หรือนักข่าวเลือก template และกดบันทึกเอง</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 23 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>3. ตรวจและเผยแพร่</h2><div class="meta">ฟีเจอร์ที่ 17 ถึง 20 จากทั้งหมด 23 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 73</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">จัดหน้าเว็บ</span></div><h3>สร้างหน้าพิเศษ (Special page) ด้วยการ import HTML</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">เมนูให้ผู้ใช้สร้างหน้าพิเศษเองด้วยการ import ไฟล์ HTML ระบบแสดงพรีวิวก่อนเผยแพร่ และตรวจโค้ดก่อนใช้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าสร้างหน้าพิเศษ</b> <span class="st s-new">หน้าใหม่</span><div class="sub">ระบบเดิมไม่มีเมนูนี้ มีแค่ Datasets /datasets ที่ใช้ key ทำ section และหน้า Tag พิเศษ</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อให้ทีมสร้างหน้าพิเศษได้เองโดยไม่ต้องรอทีม dev<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: เป็นข้อเสนอของทีมที่ยังไม่มี BU ขอ</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้ใช้แก้ข้อมูล SEO ก่อนบันทึก</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 78</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">จัดหน้าเว็บ</span></div><h3>กดรูปในข่าวเพื่อขยายดู</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้อ่านกดรูปแนวตั้งหรือแนวนอนที่แสดงเล็กในเนื้อข่าว แล้วระบบเปิด popup ขยายรูปโดยไม่ต้องใช้นิ้วถ่าง</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเว็บที่ผู้อ่านเห็น</b> <span class="st s-web">หน้าเว็บของผู้อ่าน</span><div class="sub">ฟีเจอร์นี้แก้หน้าเว็บข่าว ไม่มีหน้าในหลังบ้าน</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Bangkokbiznews ขอให้กดรูปในเนื้อข่าวแล้วขยายดูได้<div class="bus"><span class="bu">Bangkokbiznews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 59</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">Trust check: ตรวจก่อนเผยแพร่</span></div><h3>เลือกหมวดข่าวในช่องเดียว และบังคับมีหมวดก่อนเผยแพร่</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ช่องเดียวพิมพ์ค้น &quot;เศรษฐกิจ › การเงิน&quot; ได้ ระบบจำหมวดที่แต่ละคนใช้บ่อย ซ่อนหมวดที่เลิกใช้ และบังคับมีหมวดก่อนเผยแพร่</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้รวมช่องหมวดกับหมวดย่อยใน /articles/create เป็นช่องเดียว</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ ทีม UX เสนอเพื่อให้เลือกหมวดเร็วขึ้นและไม่มีลิงก์เสียจากข่าวที่ไม่มีหมวด<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 102</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">Trust check: ตรวจก่อนเผยแพร่</span></div><h3>ตรวจลิงก์เสียและข่าวที่ไม่มีลิงก์ภายใน</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบหาข่าวที่ไม่มีข่าวไหนลิงก์มาหาเลย และหาลิงก์เสียในข่าวเก่า ผู้ใช้แก้เป็นชุดได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มตัวกรองข่าวที่มีลิงก์เสียใน /articles</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อช่วยเรื่อง SEO และให้คนอ่านไปข่าวอื่นต่อได้<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: เป็นข้อเสนอของทีมที่ยังไม่มี BU ขอ</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ผู้ใช้เลือกว่าจะแก้ลิงก์ไหน</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 24 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>3. ตรวจและเผยแพร่</h2><div class="meta">ฟีเจอร์ที่ 21 ถึง 23 จากทั้งหมด 23 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 49</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">เผยแพร่และจัดหน้าเว็บ</span></div><h3>แนะนำเวลาเผยแพร่และเวลาโพสต์จากยอดคนอ่านย้อนหลัง</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ตอนกด &quot;ตั้งเวลา&quot; ระบบบอกช่วงที่ข่าวหมวดนั้นหรือเพจนั้นมักมีคนอ่านมาก แยกตามวันและช่วงเวลา ถ้าช่วงนั้นมีโพสต์อยู่แล้วระบบเสนอเวลาถัดไป<div class="tnote">ติดสติกเกอร์ดาวด้วย หมายถึงให้ BU ไปทำเอง</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเขียนข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้แสดงคำแนะนำข้างช่องวันเวลาเผยแพร่ใน /articles/create และในปฏิทินข่าว</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อให้ข่าวและโพสต์ออกในช่วงที่มีคนอ่านมาก<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากข้อเสนอของทีม และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ผู้เขียนหรือ บก. เลือกเวลาเอง ส่วนข่าวด่วนไม่ต้องรอ</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 74</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">เผยแพร่และจัดหน้าเว็บ</span></div><h3>เสนอข่าวลงแต่ละ section ของหน้าเว็บ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบเสนอข่าวลงแต่ละ section ของหน้าเว็บตามกฎ เช่น หัวข้อ ความใหม่ และยอดวิว แล้ว บก. เป็นคนเลือกสุดท้าย</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าจัดหน้าเว็บ</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">ฟีเจอร์นี้อยู่ในหน้าจัดหน้าเว็บที่รวมจาก Index Page /indexpage</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ เป็นข้อเสนอของทีมเพื่อช่วยจัดหน้าเว็บได้เร็วขึ้นและเพิ่มยอดวิว<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: เป็นข้อเสนอของทีมที่ยังไม่มี BU ขอ</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">บก. ลากข่าวเข้าช่องและตัดสินสุดท้าย</div></div>
+  </div>
+</div><div class="card t-help-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 79</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="imp small">สำคัญน้อย</span><span class="grp">เผยแพร่และจัดหน้าเว็บ</span></div><h3>มาสคอต BU บนหน้าเว็บ อ่านข่าวให้ฟังและแนะนำข่าว</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">มาสคอตของ BU แสดงและเคลื่อนไหวบนหน้าเว็บ อาจอ่านข่าวให้ฟังหรือแนะนำข่าวอื่นให้คนอยู่ในเว็บนานขึ้น มาสคอตต้องไม่บังเนื้อหาหรือโฆษณาและไม่ทำให้เว็บช้า<div class="ai-role"><b>AI ทำอะไร:</b> AI อ่านข่าวให้ฟัง (TTS) และแนะนำข่าวอื่น</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าเว็บที่ผู้อ่านเห็น</b> <span class="st s-web">หน้าเว็บของผู้อ่าน</span><div class="sub">ฟีเจอร์นี้อยู่บนหน้าเว็บของผู้อ่าน ไม่มีหน้าในหลังบ้าน</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Komchadluek ขอให้มีมาสคอตที่วิ่งในหน้าเว็บ<div class="bus"><span class="bu">Komchadluek</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">BU กำหนดว่ามาสคอตทำอะไรและแสดงตรงไหน</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 25 จาก 31</span></div></section><section class="page divider">
+<div class="side"><div class="lbl">อื่นๆ</div><div class="num txt">+</div><h2>นอก flow หลัก</h2><p class="lead">สิทธิ์ ความปลอดภัย รายการข่าว คู่มือ และงานดูแลข้อมูลข่าวเก่า ที่ไม่ได้อยู่ในเส้นทางของข่าวชิ้นใดชิ้นหนึ่ง</p>
+  <div class="cnt"><span>ต้องทำ</span><b>8 ข้อ</b><span>ทำทีหลัง</span><b>2 ข้อ</b></div></div>
+<div class="main"><h3>ฟีเจอร์ในช่วงนี้ แยกตามผลการตัดสินและกลุ่มใน Flow</h3><div class="flist c2"><div class="gh"><span class="dec d-must">&#9829; ต้องทำ</span> <b>สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</b></div><div class="fi"><span class="no">52</span><span class="chip t-help">AI ช่วยเสริม</span><span>เครื่องมือรวม Tag ซ้ำ พร้อม AI จับกลุ่ม Tag ที่ความหมายเดียวกัน</span></div><div class="fi"><span class="no">67</span><span class="chip t-none">ไม่ใช้ AI</span><span>หน้ารายการข่าวปุ่มน้อยลง และลบพลาดแล้วกู้คืนได้</span></div><div class="fi"><span class="no">93</span><span class="chip t-none">ไม่ใช้ AI</span><span>ปิดบัญชีพนักงานที่ลาออกทันที</span></div><div class="fi"><span class="no">94</span><span class="chip t-none">ไม่ใช้ AI</span><span>ยืนยันตัวตน 2 ชั้น (2FA)</span></div><div class="fi"><span class="no">95</span><span class="chip t-none">ไม่ใช้ AI</span><span>ดูรายชื่อคนที่กำลังใช้งานระบบ</span></div><div class="fi"><span class="no">96</span><span class="chip t-none">ไม่ใช้ AI</span><span>กำหนดสิทธิ์ผู้ใช้รายเมนู</span></div><div class="fi"><span class="no">98</span><span class="chip t-none">ไม่ใช้ AI</span><span>คำแนะนำในหน้าจอ คู่มือสั้น และคำศัพท์เดียวกันทั้งระบบ</span></div><div class="fi"><span class="no">99</span><span class="chip t-none">ไม่ใช้ AI</span><span>โหมดมืด (Dark mode)</span></div><div class="gh"><span class="dec d-later">&#128077; ทำทีหลัง</span> <b>จัดการข่าวหลายชิ้นและข้อมูลข่าวเก่า</b></div><div class="fi"><span class="no">66</span><span class="chip t-none">ไม่ใช้ AI</span><span>เลือกหลายข่าวแล้วจัดการพร้อมกัน</span></div><div class="fi"><span class="no">103</span><span class="chip t-none">ไม่ใช้ AI</span><span>เติมชื่อผู้เขียนให้ข่าวเก่าที่ byline หาย</span></div></div></div></section><section class="page ">
+<div class="top"><div><h2>นอก flow หลัก</h2><div class="meta">ฟีเจอร์ที่ 1 ถึง 4 จากทั้งหมด 10 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-help-card tight">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 52</span><span class="chip t-help">AI ช่วยเสริม</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</span></div><h3>เครื่องมือรวม Tag ซ้ำ พร้อม AI จับกลุ่ม Tag ที่ความหมายเดียวกัน</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ปุ่ม &quot;รวมแท็ก&quot; ย้ายข่าวและ redirect หน้า Tag เดิมให้เอง มีตัวกรอง &quot;แท็กที่ใช้ 1 ครั้ง&quot; และหน้า Tags ค้นได้เร็ว<div class="ai-role"><b>AI ทำอะไร:</b> AI จับกลุ่ม Tag ที่ความหมายเดียวกัน</div></div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าจัดการ Tag</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้ปรับหน้า Tags /tags ที่โหลดช้าจนระบบช้าทั้งระบบ และเพิ่มปุ่มรวมแท็ก</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday, Thansettakij และ Springnews เจอ Tag ซ้ำ Posttoday และ The Nation ขอให้ AI จับกลุ่ม Tag ที่ความหมายเดียวกัน และทีม UX พบว่าหน้า Tags โหลด 9.6 วินาที<div class="bus"><span class="bu">Posttoday</span><span class="bu">Thansettakij</span><span class="bu">The Nation</span><span class="bu">Springnews</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร) และการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">Admin ยืนยันกลุ่ม Tag ก่อนรวม</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 67</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="imp big">สำคัญมาก</span><span class="grp">สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</span></div><h3>หน้ารายการข่าวปุ่มน้อยลง และลบพลาดแล้วกู้คืนได้</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้คลิกหัวข่าวเพื่อแก้ไข มีปุ่ม Preview 1 ปุ่ม ปุ่มที่เหลือเก็บในเมนู &quot;⋯&quot; ปุ่ม Delete อยู่ล่างสุด มี confirm และ Undo ได้ภายใน 10 วินาที</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-redo">หน้าเดิม ปรับใหม่</span><div class="sub">หน้านี้จัดปุ่ม Preview, Edit, Delete, Cache และสวิตช์ในตาราง /articles ใหม่</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ ทีม UX เสนอเพื่อลดปุ่มในหน้ารายการข่าวและกันการกดลบพลาด<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน ผู้ใช้ยืนยันก่อนลบ</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 93</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</span></div><h3>ปิดบัญชีพนักงานที่ลาออกทันที</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ทีมไล่ปิดบัญชีที่ค้างอยู่ในระบบเดิมทันที และกำหนดขั้นตอนปิดบัญชีทุกครั้งที่ HR แจ้งว่ามีคนลาออก งานนี้ไม่ควรรอระบบใหม่</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าจัดการผู้ใช้</b> <span class="st s-all">ทั้งระบบ</span><div class="sub">ฟีเจอร์นี้ปรับหน้า Users /users ที่เดิมต้องมาปิด Status เอง</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday พบว่าคนที่ลาออกยังเข้าหลังบ้านได้ และให้เรื่องนี้เป็นความสำคัญสูงสุด<div class="bus"><span class="bu">Posttoday</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">Admin ปิดบัญชีเมื่อ HR แจ้ง ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 94</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</span></div><h3>ยืนยันตัวตน 2 ชั้น (2FA)</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบขอยืนยันตัวตน 2 ชั้นเมื่อผู้ใช้เข้าจากเน็ตภายนอกหรือทำงานจากต่างประเทศ</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>ทุกหน้า</b> <span class="st s-all">ทั้งระบบ</span><div class="sub">ฟีเจอร์นี้เพิ่มขั้นยืนยันตัวตนตอน login เข้าระบบ</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday และ The Nation ขอ 2FA เมื่อเข้าจากเน็ตภายนอกหรือทำงานต่างประเทศ<div class="bus"><span class="bu">Posttoday</span><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน Admin กำหนดว่าเมื่อไรต้องใช้ 2FA</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 27 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>นอก flow หลัก</h2><div class="meta">ฟีเจอร์ที่ 5 ถึง 8 จากทั้งหมด 10 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 95</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</span></div><h3>ดูรายชื่อคนที่กำลังใช้งานระบบ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">Admin ดูรายชื่อคนที่กำลัง login อยู่ในระบบได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าจัดการผู้ใช้</b> <span class="st s-all">ทั้งระบบ</span><div class="sub">ฟีเจอร์นี้เพิ่มรายการผู้ใช้ที่ออนไลน์ในหน้า Users /users</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The People ขอดูรายชื่อคนที่กำลัง login อยู่<div class="bus"><span class="bu">The People</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 96</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</span></div><h3>กำหนดสิทธิ์ผู้ใช้รายเมนู</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">Admin กำหนดสิทธิ์การใช้งานแยกเป็นรายเมนูได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าจัดการผู้ใช้</b> <span class="st s-all">ทั้งระบบ</span><div class="sub">ฟีเจอร์นี้แทน Level ใน /users ที่เดิมมีแค่ admin กับ editor</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">Posttoday ซีเรียสเรื่องสิทธิ์และขอให้กำหนดสิทธิ์ได้รายเมนู<div class="bus"><span class="bu">Posttoday</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน Admin เป็นคนตั้งสิทธิ์</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 98</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</span></div><h3>คำแนะนำในหน้าจอ คู่มือสั้น และคำศัพท์เดียวกันทั้งระบบ</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ระบบมีคำแนะนำสั้นข้างช่อง คู่มือวิดีโอยาว 1 นาที คำศัพท์เดียวกันทั้งระบบ และข้อความ error ที่บอกวิธีแก้ แทนคู่มือ PDF ปี 2020</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>ทุกหน้า</b> <span class="st s-all">ทั้งระบบ</span><div class="sub">ฟีเจอร์นี้แทนเมนูคู่มือ PDF ใน /document</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ ทีม UX พบว่าคู่มือเดิมเป็นไฟล์ PDF ปี 2020<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 99</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-must">&#9829; ต้องทำ</span><span class="grp">สิทธิ์ ความปลอดภัย รายการข่าว และคู่มือ</span></div><h3>โหมดมืด (Dark mode)</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้สลับหลังบ้านเป็นโหมดมืดได้</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>ทุกหน้า</b> <span class="st s-all">ทั้งระบบ</span><div class="sub">ฟีเจอร์นี้ใช้กับทุกหน้าของหลังบ้าน</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The Nation ขอโหมดมืด<div class="bus"><span class="bu">The Nation</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 28 จาก 31</span></div></section><section class="page ">
+<div class="top"><div><h2>นอก flow หลัก</h2><div class="meta">ฟีเจอร์ที่ 9 ถึง 10 จากทั้งหมด 10 ฟีเจอร์ในช่วงนี้</div></div></div>
+<div class="grid"><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 66</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">จัดการข่าวหลายชิ้นและข้อมูลข่าวเก่า</span></div><h3>เลือกหลายข่าวแล้วจัดการพร้อมกัน</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ผู้ใช้ติ๊กเลือกหลายข่าวแล้วสั่งครั้งเดียวได้ เช่น ซ่อน ย้ายหมวด เพิ่มแท็ก ล้างแคช และกู้คืนจาก Trash</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้ารายการข่าว</b> <span class="st s-old">หน้าเดิม</span><div class="sub">ฟีเจอร์นี้เพิ่มการเลือกหลายข่าวใน /articles และ /articles/trash ที่เดิมทำได้ทีละข่าว</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">ยังไม่มี BU ขอ ทีม UX พบว่าระบบเดิมทำได้ทีละข่าว<div class="bus"><span class="bu none">ยังไม่มี BU ขอ</span></div><div class="sub">ที่มา: มาจากการสำรวจระบบเดิมของทีม UX</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div><div class="card t-none-card">
+  <div class="card-head"><div class="meta"><span class="no">ลำดับ 103</span><span class="chip t-none">ไม่ใช้ AI</span><span class="dec d-later">&#128077; ทำทีหลัง</span><span class="grp">จัดการข่าวหลายชิ้นและข้อมูลข่าวเก่า</span></div><h3>เติมชื่อผู้เขียนให้ข่าวเก่าที่ byline หาย</h3></div>
+  <div class="card-body">
+    <div class="row"><div class="k">ไอเดีย</div><div class="v">ทีมเติมชื่อผู้เขียนให้ข่าวเก่าที่ byline หาย งานนี้เป็นการเคลียร์ข้อมูลเก่าที่ทำได้ในระบบเดิม</div></div>
+    <div class="row"><div class="k">อยู่หน้าไหน</div><div class="v pg"><b>หน้าจัดการ Byline</b> <span class="st s-old">หน้าเดิม</span><div class="sub">งานนี้เคลียร์ข้อมูลข่าวเก่าที่ผูกกับหน้า Bylines /bylines</div></div></div>
+    <div class="row"><div class="k">แก้ปัญหาอะไร</div><div class="v">The People เจอข่าวเก่าที่ byline หาย<div class="bus"><span class="bu">The People</span></div><div class="sub">ที่มา: มาจากการประชุมเก็บ requirement (ชีตของคุณอภิญญาและคุณชุมพร)</div></div></div>
+    <div class="decide"><div class="k">ใครตัดสิน</div><div class="v">ทีมงานเติมและตรวจชื่อผู้เขียน ระบบทำตามกฎ ไม่มีจุดที่ AI ต้องให้คนตัดสิน</div></div>
+  </div>
+</div></div><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 29 จาก 31</span></div></section><section class="page "><div class="top"><div><h2><span class="dec d-no">&#10005; ไม่ทำ</span> ฟีเจอร์ที่ทีมตัดสินว่าไม่ทำ (15 ข้อ)</h2><div class="meta">การ์ดที่ติดสติกเกอร์กากบาท ฟีเจอร์เหล่านี้จะไม่อยู่ในขอบเขตการพัฒนา</div></div></div>
+<table class="dt"><tr><th>การ์ด</th><th>ประเภท</th><th>ฟีเจอร์</th><th>หมายเหตุ</th></tr><tr><td class="kc">ลำดับ 38</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">บอร์ดติดตามงานข่าว แทนการสั่งงานใน LINE</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 3</td><td><span class="chip t-ai">AI เป็นตัวหลัก</span></td><td class="tt">อัปไฟล์ Word / Google Doc แล้ว</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 6</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">Editor แบบบล็อก พิมพ์ &quot;/&quot; เพื่อแทรกรูป วิดีโอ ตาราง และบล็อกสำเร็จรูป</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 36</td><td><span class="chip t-ai">AI เป็นตัวหลัก</span></td><td class="tt">สรุปสิ่งที่แก้ระหว่างเวอร์ชันให้ บก.</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 46</td><td><span class="chip t-help">AI ช่วยเสริม</span></td><td class="tt">หน้าให้ลูกค้าเขียนบทความเอง พร้อม AI ตรวจคำต้องห้ามก่อนเผยแพร่</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 76</td><td><span class="chip t-help">AI ช่วยเสริม</span></td><td class="tt">ทดสอบพาดหัวหน้าแรก 2–3 แบบ (A/B test)</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 50</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">ค่าเริ่มต้นตอนเผยแพร่ และปุ่ม &quot;เผยแพร่ตอนนี้&quot; / &quot;ตั้งเวลา&quot;</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 56</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">เตรียมข้อมูลข่าวให้ AI search (เช่น ChatGPT) อ่านและอ้างอิงข่าวเรา</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 105</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">แก้ข่าวไม่อัปเดตช่วงเที่ยงคืน (00:00–00:10)</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 106</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">แก้โฆษณาไม่แสดงในงานลูกค้า</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 86</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">แจ้งเตือน บก. เมื่อข่าวยอดพุ่ง</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 92</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">หน้าแรกแสดงงานตามบทบาท (นักข่าว / บก.)</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 100</td><td><span class="chip t-ai">AI เป็นตัวหลัก</span></td><td class="tt">AI จัดข่าวเก่าเข้าหมวดใหม่</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 101</td><td><span class="chip t-ai">AI เป็นตัวหลัก</span></td><td class="tt">AI หาข่าวเก่าที่ยังมีคนค้นแต่ข้อมูลล้าสมัย</td><td class="nt"></td></tr><tr><td class="kc">ลำดับ 89</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">เชื่อม KPI นักข่าวกับระบบ HR</td><td class="nt">ติดสติกเกอร์ดาวด้วย หมายถึงให้ BU ไปทำเอง ไม่ทำในระบบกลาง</td></tr></table><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 30 จาก 31</span></div></section><section class="page "><div class="top"><div><h2><span class="dec d-dup">&#128257; ซ้ำ</span> ฟีเจอร์ที่ซ้ำ (9 ข้อ) และ <span class="dec d-open">? ยังไม่ตัดสิน</span> ยังไม่ตัดสิน (4 ข้อ)</h2><div class="meta">การ์ดที่ติดสติกเกอร์ลูกศรวน และการ์ดที่ยังไม่มีสติกเกอร์ผลการตัดสิน</div></div></div>
+<table class="dt"><tr><th>การ์ด</th><th>ประเภท</th><th>ฟีเจอร์</th><th>หมายเหตุ</th></tr><tr><td class="kc">ลำดับ 40</td><td><span class="chip t-help">AI ช่วยเสริม</span></td><td class="tt">เช็กว่าประเด็นที่ตกลงในที่ประชุมลงข่าวครบหรือยัง</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 53</td><td><span class="chip t-ai">AI เป็นตัวหลัก</span></td><td class="tt">AI ร่างพาดหัว SEO Title, Description, โปรย และ caption ในครั้งเดียว</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 25</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">เลือกใส่ลายน้ำตอนอัปรูป และโหลดรูปต้นฉบับได้</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 42</td><td><span class="chip t-ai">AI เป็นตัวหลัก</span></td><td class="tt">AI ร่างย่อหน้า &quot;อัปเดต&quot; สำหรับข่าวด่วน</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 64</td><td><span class="chip t-help">AI ช่วยเสริม</span></td><td class="tt">ตรวจความพร้อมก่อนกดเผยแพร่: Checklist, Google Discover และหน้าตาพรีวิว</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 77</td><td><span class="chip t-help">AI ช่วยเสริม</span></td><td class="tt">วิดีโอถัดไปเล่นคลิป ที่เกี่ยวข้องกับข่าว</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 81</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">ลิงก์ในเนื้อข่าวเป็นสีมาตรฐาน</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 85</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">ยอดคนอ่าน realtime</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 97</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">จัดเมนูตามบทบาท ตัดเมนูที่ไม่ใช้ และค้นเมนูได้</td><td class="nt">ทีมระบุว่าซ้ำกับฟีเจอร์อื่น แต่บอร์ดไม่ได้บอกว่าซ้ำกับข้อไหน</td></tr><tr><td class="kc">ลำดับ 75</td><td><span class="chip t-help">AI ช่วยเสริม</span></td><td class="tt">หน้ารวมข่าวตามประเด็น (topic hub) พร้อมไทม์ไลน์อัตโนมัติ</td><td class="nt">ติดสติกเกอร์ ? (ผู้ประชุมครบ 5 คน) แต่ไม่มีสติกเกอร์ผลการตัดสิน</td></tr><tr><td class="kc">ลำดับ 58</td><td><span class="chip t-yel">มีแล้วแต่ไม่ครบทุก BU</span></td><td class="tt">หน้าโปรไฟล์ผู้เขียน เพิ่มให้ทุกเว็บของหน้าบ้าน</td><td class="nt">การ์ดสีเหลือง หมายถึงมีฟีเจอร์อยู่แล้วแต่ไม่มีทุก BU ยังไม่มีสติกเกอร์ผลการตัดสิน</td></tr><tr><td class="kc">เพิ่มเติม</td><td><span class="chip t-none">ไม่ใช้ AI</span></td><td class="tt">เพิ่มให้แสดงยอด PV ของเมื่อวานเพื่อให้ทีมวางแผนเล่นข่าวที่มียอดวิวสูง</td><td class="nt">sticky ที่เพิ่มทีหลัง ยังไม่มีลำดับและยังไม่มีสติกเกอร์</td></tr><tr><td class="kc">ข้อเสนอในหน้าภาพรวม</td><td><span class="chip t-ai">AI เป็นตัวหลัก</span></td><td class="tt">AI ทำปกข่าวจากรูปจริงครบทุกขนาดตาม template ของแต่ละ BU และภาพประกอบ AI แบบ pilot 1 BU พร้อมติดป้าย</td><td class="nt">อยู่ใน Flow หน้าภาพรวม ติดป้าย &quot;ข้อเสนอ ยังไม่ตัดสินใจ&quot;</td></tr></table><div class="foot"><span>สรุปฟีเจอร์จากทีม Smart ONE CMS</span><span>หน้า 31 จาก 31</span></div></section></body></html>
