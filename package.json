@@ -23,6 +23,7 @@
     "worklog:month-on": "launchctl load -w ~/Library/LaunchAgents/com.nation.worklog-month.plist && echo '✓ push worklog อัตโนมัติ เปิด (จ-ศ 17:30)'",
     "worklog:month-off": "launchctl unload ~/Library/LaunchAgents/com.nation.worklog-month.plist && echo '✓ push worklog อัตโนมัติ ปิดแล้ว'",
     "worklog:obsidian": "node scripts/worklog-obsidian.mjs",
+    "worklog:repo": "node scripts/worklog-repo.mjs",
     "one-cms:obsidian": "node scripts/one-cms-obsidian.mjs",
     "verify:coverage": "node scripts/verify-component-coverage.mjs",
     "verify:api": "node scripts/verify-component-api.mjs",

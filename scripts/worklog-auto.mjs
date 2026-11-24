@@ -11,7 +11,7 @@
 //   3. ส่งข้อความ สรุปท้ายรอบ (wrap_up) และ commit ให้ `claude -p` ร่าง worklog ตามกฎ
 //      Claude ได้แค่เครื่องมือ Read ส่วนการเขียนไฟล์ สคริปต์นี้ทำเองหลังตรวจหัวข้อครบ
 import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
-import { join, dirname } from 'node:path'
+import { join, dirname, isAbsolute } from 'node:path'
 import { homedir } from 'node:os'
 import { spawnSync, execFileSync } from 'node:child_process'
 import { pathToFileURL } from 'node:url'
@@ -147,8 +147,10 @@ export function runAuto({ date = todayISO(), dry = false } = {}) {
   const prompt = buildPrompt(date, previousWorklog(date), activity, commits)
   if (dry) return { status: 'dry', path, human, commits: commits.length, promptChars: prompt.length, prompt }
 
+  // ต้นทางอยู่นอก repo (WORKLOG_ROOT) ต้องเปิดให้ claude อ่านโฟลเดอร์นั้นด้วย
+  const addDir = isAbsolute(ROOT) ? ['--add-dir', ROOT] : []
   const r = spawnSync(CLAUDE, ['-p', '--tools', 'Read', '--allowedTools', 'Read', '--permission-mode', 'dontAsk',
-    '--output-format', 'text', '--no-session-persistence'],
+    ...addDir, '--output-format', 'text', '--no-session-persistence'],
   { input: prompt, encoding: 'utf8', timeout: 15 * 60 * 1000, maxBuffer: 10 * 1024 * 1024, env: claudeEnv() })
   if (r.error) throw new Error(`เรียก claude ไม่ได้: ${r.error.message}`)
   if (r.status !== 0) throw new Error(`claude จบด้วยรหัส ${r.status}: ${(r.stderr || r.stdout || '').trim().slice(0, 300)}`)

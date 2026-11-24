@@ -4,7 +4,7 @@
 //      npm run worklog:obsidian -- --vault "<path>"   ใช้ vault อื่น
 //
 // กติกา (user สั่ง 2026-10-27)
-//   ต้นทางยังเป็น docs/daily-log ในเครื่องที่เดียว Obsidian เป็นปลายทางไว้อ่านย้อนหลังรายเดือน
+//   ต้นทางคือ ROOT จาก worklog-path.mjs (WORKLOG_ROOT บนเครื่อง) ที่เดียว Obsidian เป็นปลายทางไว้อ่านย้อนหลังรายเดือน
 //   สร้างใหม่ทั้งชุดจากไฟล์ในเครื่องทุกครั้ง รันซ้ำกี่รอบก็ได้ผลเดิม วันไหนรอบ 17:30 พลาด รอบถัดไปก็ตามทัน
 //   เขียนเฉพาะในโฟลเดอร์ Worklog <ปี ค.ศ.>/ ของ vault และเขียนเฉพาะไฟล์ที่เนื้อหาเปลี่ยน
 //   ลบได้เฉพาะไฟล์ที่สคริปต์นี้เคยสร้าง (มีข้อความ BANNER) ซึ่งรอบนี้ไม่ได้สร้างแล้ว เช่นหลังเปลี่ยนชื่อไฟล์
@@ -49,7 +49,7 @@ const EN_MONTH = ['January','February','March','April','May','June','July','Augu
 const EN_DAY = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 // ⚠️ ห้ามเปลี่ยนข้อความ BANNER สคริปต์ใช้ข้อความนี้แยกไฟล์ที่ตัวเองสร้างออกจากไฟล์ที่ user เขียนเอง ก่อนลบ
 const BANNER = 'สร้างอัตโนมัติจาก worklog รายวันใน repo nation-design-system'
-const HOWTO = 'แก้ที่ไฟล์ต้นทางใน repo แล้วรัน `npm run worklog:obsidian` (รันเองตอน 17:30) ถ้าแก้ในนี้จะถูกเขียนทับรอบถัดไป'
+const HOWTO = 'แก้ที่ไฟล์ต้นทาง (WORKLOG_ROOT ใน .env) แล้วรัน `npm run worklog:obsidian` (รันเองตอน 17:30) ถ้าแก้ในนี้จะถูกเขียนทับรอบถัดไป'
 
 export const expandHome = (p) => p.replace(/^~(?=\/|$)/, homedir())
 const q = (s) => JSON.stringify(s)   // ค่า string ใน frontmatter (JSON string เป็น YAML ที่ถูกต้อง)

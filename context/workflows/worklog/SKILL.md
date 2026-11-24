@@ -15,14 +15,15 @@ Official rule files (Thai), read the one the task needs:
 - Task names and the 5-part description template: `docs/rules/task-naming.md`
 
 ## Where things live
-| What | Source in this repo | Copy in Obsidian (`obsidian/UXUI Worklog`) |
+| What | Source (`~/Obsidian/worklog`, `WORKLOG_ROOT` in `.env`) | Copy in Obsidian (`~/Obsidian/UXUI Worklog`, path set in `.env`) |
 | --- | --- | --- |
-| Daily worklog | `docs/daily-log/daily/<Thai month> <Buddhist year>/W{week}-{Day}-{DD}-{MM}-{year}.md` | one daily note |
+| Daily worklog | `daily/<Thai month> <Buddhist year>/W{week}-{Day}-{DD}-{MM}-{year}.md` | one daily note |
 | Work done per month | the `งานที่ทำวันนี้` section of each daily file | `01 งานที่ทำ <month>`, one heading per day |
 | Pending per month | the `งานค้าง` section of the latest daily file | `02 งานค้าง <month>`, one list, carried to the next month |
-| Task record | `docs/daily-log/tasks/<task name without brackets>.md` | `Worklog <year>/Tasks/` |
+| Task record | `tasks/<task name without brackets>.md` | `Worklog <year>/Tasks/` |
 
-- The vault is a generated read-only copy. MUST NOT edit notes there. Edit the repo file and rerun the script
+- The vault is a generated read-only copy. MUST NOT edit notes there. Edit the source file and rerun the script
+- `docs/daily-log/` in this repo is a generated ntgds-only copy (`npm run worklog:repo`, set by the user 2026-11-24). MUST NOT write or edit it: write the source. Every item about another project MUST contain its name (`One CMS`, `AI Adoption Tracker`). See `docs/rules/worklog.md` section 9
 - Notes the user writes in the vault are never touched by the scripts
 
 ## Ask first
@@ -51,4 +52,4 @@ Official rule files (Thai), read the one the task needs:
 - The 17:30 run (`com.nation.worklog-month`, `npm run worklog:month`) writes the day's file automatically through `scripts/worklog-auto.mjs`, then copies everything to both vaults (set by the user 2026-11-04, `docs/rules/worklog.md` section 3.3)
 - MUST NOT create or write the day's file before 17:30. `worklog-auto.mjs` skips a day whose file already exists, so a file written early hides every task done later that day (happened 2026-11-05: written at 11:19, the afternoon was lost)
 - Work done after 17:30: add it to the file the 17:30 run wrote, then run `npm run worklog:obsidian` yourself, no approval needed
-- One CMS has its own vault (`obsidian/One CMS`). Every worklog item about One CMS MUST contain the words `One CMS`. After 17:30, run `npm run one-cms:obsidian` yourself. See `docs/rules/worklog.md` section 8
+- One CMS has its own vault (`~/Obsidian/One CMS`, path set in `.env`). Every worklog item about One CMS MUST contain the words `One CMS`. After 17:30, run `npm run one-cms:obsidian` yourself. See `docs/rules/worklog.md` section 8

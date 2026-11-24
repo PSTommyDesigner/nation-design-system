@@ -1,10 +1,29 @@
 // worklog-path.mjs · ตัวเดียวที่รู้กติกาชื่อไฟล์และโฟลเดอร์ของ worklog
 // สคริปต์อื่นต้อง import จากที่นี่ ห้ามคำนวณเอง (กันสูตรหลุดกันเหมือนที่เคยเจอกับค่ากลาง)
-// กติกา: docs/daily-log/daily/<เดือนไทย ปีพ.ศ.>/W{สัปดาห์}-{Day}-{DD}-{MM}-{พ.ศ.}.md
+// กติกา: <ROOT>/daily/<เดือนไทย ปีพ.ศ.>/W{สัปดาห์}-{Day}-{DD}-{MM}-{พ.ศ.}.md
 //        สัปดาห์เริ่มนับ W1 ใหม่ทุกเดือน · W1 = สัปดาห์ (จันทร์เริ่ม) แรกของเดือนนั้น
-import { join } from 'node:path'
+import { join, resolve, dirname } from 'node:path'
+import { existsSync, readFileSync } from 'node:fs'
+import { homedir } from 'node:os'
+import { fileURLToPath } from 'node:url'
 
-export const ROOT = 'docs/daily-log'
+// ต้นทางของ worklog ทุกโปรเจกต์อยู่บนเครื่อง ตั้งใน WORKLOG_ROOT ของ .env (user สั่ง 2026-11-24)
+// ไม่ได้ตั้งก็ใช้ docs/daily-log ใน repo เหมือนเดิม ส่วน docs/daily-log เก็บเฉพาะงาน ntgds ที่ worklog-repo.mjs สำเนาให้
+export const REPO_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+export const REPO_ROOT = 'docs/daily-log'
+
+function envRoot() {
+  if (process.env.WORKLOG_ROOT) return process.env.WORKLOG_ROOT
+  const f = join(REPO_DIR, '.env')
+  if (!existsSync(f)) return ''
+  for (const l of readFileSync(f, 'utf8').split('\n')) {
+    const m = l.match(/^\s*WORKLOG_ROOT\s*=\s*(.*?)\s*$/)
+    if (m) return m[1].replace(/^["']|["']$/g, '')
+  }
+  return ''
+}
+const fromEnv = envRoot()
+export const ROOT = fromEnv ? resolve(fromEnv.replace(/^~(?=\/|$)/, homedir())) : REPO_ROOT
 const TH_MONTH = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
                   'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
 const DAY = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']

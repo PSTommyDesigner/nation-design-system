@@ -1,4 +1,4 @@
-// worklog-month.mjs · รอบ 17:30 จ-ศ (com.nation.worklog-month) เขียน worklog ที่ขาดอัตโนมัติ แล้วสำเนาไป Obsidian ทั้ง 2 vault
+// worklog-month.mjs · รอบ 17:30 จ-ศ (com.nation.worklog-month) เขียน worklog ที่ขาดอัตโนมัติ สำเนาไป Obsidian ทั้ง 2 vault แล้วสำเนาฉบับ ntgds เข้า repo
 // ใช้: npm run worklog:month
 //
 // เลิกส่ง Asana แล้ว (user สั่ง 2026-11-03) งานที่ทำ งานค้าง และบันทึกของการ์ดงานอยู่ใน Obsidian แทน
@@ -32,5 +32,18 @@ try {
 } catch (e) {
   failed = true
   console.error(`✗ สำเนาไป vault One CMS ไม่สำเร็จ: ${e.message}`)
+}
+// สุดท้าย สำเนาฉบับที่ตัดงานโปรเจกต์อื่นออกเข้า docs/daily-log ของ repo (user สั่ง 2026-11-24)
+try {
+  const { syncRepo } = await import('./worklog-repo.mjs')
+  const r = syncRepo()
+  if (r.skipped) console.log(`📁 worklog ntgds เข้า repo: ข้าม (${r.skipped})`)
+  else {
+    console.log(`📁 worklog ntgds เข้า repo ${r.days} วัน เขียน ${r.written.length} ไฟล์`)
+    if (r.removeFromRepo.length) console.warn(`⚠️ ไฟล์ใน repo ที่มีแต่งานโปรเจกต์อื่น ควรลบ ${r.removeFromRepo.length} ไฟล์ (ดู npm run worklog:repo -- --dry)`)
+  }
+} catch (e) {
+  failed = true
+  console.error(`✗ สำเนา worklog ntgds เข้า repo ไม่สำเร็จ: ${e.message}`)
 }
 if (failed) process.exit(1)
