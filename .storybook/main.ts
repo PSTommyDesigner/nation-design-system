@@ -13,6 +13,9 @@ const config: StorybookConfig = {
     '../prototype/**/*.stories.@(ts|tsx)',
   ],
   addons: ['@storybook/addon-docs'],
+  // favicon.svg ในโฟลเดอร์นี้ทับ favicon ของ Storybook เพราะชื่อและที่อยู่ไฟล์ตรงกัน
+  // เป็นโลโก้ nation-group-1:1 จาก Figma โหนด 4650:14144 (ผู้ใช้เลือก 2026-11-25)
+  staticDirs: ['./public'],
   framework: {
     name: '@storybook/react-vite',
     options: {},
