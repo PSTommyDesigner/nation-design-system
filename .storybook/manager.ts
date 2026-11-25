@@ -1,5 +1,7 @@
 import { STORY_RENDERED } from 'storybook/internal/core-events'
 import { addons, type API } from 'storybook/manager-api'
+import { create } from 'storybook/theming/create'
+import ntgdsLogo from './assets/ntgds-logo.svg'
 
 // หน้าที่แผงด้านขวาไม่ได้คุม component ไม่ต้องมีแผง (ผู้ใช้สั่ง 2026-11-02)
 // หน้า Atoms เป็นเอกสาร ยกเว้นหน้า 02 Icon ที่เป็น component จริง ส่วนหน้า prototype เป็นหน้าจอเต็ม
@@ -21,7 +23,18 @@ const hasNoComponentExample = (storyId = '', importPath = '') =>
   isMoleculeDocPage(importPath) ||
   (storyId.startsWith('atoms-identity-') && !storyId.startsWith('atoms-identity-02-icon-'))
 
+// โลโก้มุมซ้ายบนเป็นโลโก้ nation-group-fixed-height จาก Figma โหนด 4650:14104 (ผู้ใช้สั่ง 2026-11-25)
+// ธีมยังเป็นสีสว่างของ Storybook เปลี่ยนแค่โลโก้ ชื่อ และลิงก์ คลิกโลโก้แล้วกลับหน้าแรก
+const theme = create({
+  base: 'light',
+  brandTitle: 'Nation Design System',
+  brandUrl: './',
+  brandImage: ntgdsLogo,
+  brandTarget: '_self',
+})
+
 addons.setConfig({
+  theme,
   layoutCustomisations: {
     showPanel: (state, defaultValue) => {
       const entry = state.index?.[state.storyId]
