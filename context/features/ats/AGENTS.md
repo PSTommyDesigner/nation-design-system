@@ -42,7 +42,7 @@
 - Order: updated time, month, company filter, the production box, the two boxes มีครบ 2 แอปหรือมากกว่า and มีไม่ครบ on one row, the two boxes ยังไม่มีแอปเลย and ฝ่ายที่เสี่ยงไม่ถึงเป้า on one row, apps by Runbook Phase, the division list, then "ดูทั้ง <n> ฝ่าย"
 - The production box MUST show "ขึ้น production ครั้งแรก เดือนนี้" as "<n> / 80 แอป" with a `ProgressBar`. "มีครบ 2 แอปหรือมากกว่า" and "มีไม่ครบ" are boxes of their own under it, each with the number of divisions and of apps (moved out of the production box by the user 2026-11-25)
 - A click on "<n> / 80 แอป" opens page 3 filtered to apps first in production this month. A click on any of the four division boxes filters the division list to that group, and a second click shows every division again
-- Apps by Runbook Phase MUST use the `BarChart` and list P1 to P6 under it with each Phase's name instead of a short code (set by the user 2026-11-24). `BarChart` bars can't be pressed, so the P1 to P6 rows under the chart are what opens page 3 filtered to that Phase
+- Apps by Runbook Phase MUST use the `BarChart` and list P1 to P5 under it with each Phase's name instead of a short code (set by the user 2026-11-24). `BarChart` bars can't be pressed, so the P1 to P5 rows under the chart are what opens page 3 filtered to that Phase
 - The division list MUST be the ntgds `Table` on desktop and mobile (set by the user 2026-11-26: every project under the Nation Group brand uses ntgds, no hand-made rows). Columns: ฝ่าย (a `LinkButton` that opens page 2 for that division, the row header), บริษัท, ขึ้นแล้วเทียบเป้า (the count with a `ProgressBar`), สถานะ (a `Badge`). The caption names the group and the month. It is sorted from most at risk and shows the first 5
 - The company filter is a row of `Tag` sm pill brand, one choice at a time. The chosen tag is primary, the others secondary with default gray
 - NEEDS CLARIFICATION: `Tag` has no selected state for a single choice. Primary on the chosen tag is a stand-in
@@ -62,8 +62,8 @@
 - The app list MUST put apps first in production this month first, then apps not in production yet from the Phase closest to production, then apps from earlier months, newest first. Each row shows the current step or the production date, and opens page 4
 
 ### Page 3 รายการแอป
-- Opens from "<n> / 80 แอป" on page 1 (filtered to apps first in production this month) or from a P1 to P6 row (filtered to that Phase). The line under the title says which one it came from. Breadcrumb: ภาพรวม › รายการแอป
-- Filters: Phase as a row of `Tag` (ทุก Phase, P1 to P6, one at a time, as on page 1), then company and division as `Dropdown` md side by side. The division list follows the chosen company
+- Opens from "<n> / 80 แอป" on page 1 (filtered to apps first in production this month) or from a P1 to P5 row (filtered to that Phase). The line under the title says which one it came from. Breadcrumb: ภาพรวม › รายการแอป
+- Filters: Phase as a row of `Tag` (ทุก Phase, P1 to P5, one at a time, as on page 1), then company and division as `Dropdown` md side by side. The division list follows the chosen company
 - The filter "first in production this month" shows as a closable `Tag` brand primary, so users can see it and take it off
 - Phase is the app's status now and doesn't depend on the month
 - A line above the list says how many apps match and in which Phase, and is announced when it changes (`aria-live` polite)
@@ -75,7 +75,7 @@
 - Order: the app name with division and company under it, a `Badge` with the Phase and its name, the current step, the app creator, the path through the Runbook
 - The current step MUST say the step number and name, what it is waiting for and who does it, as the Runbook names them (for example "รอ: IT ลงทะเบียนแอปและใส่ค่า (ขั้น 13)"), and since when it has been on that step. For P6 it says when the app reached production, for P1 that it has no repo yet
 - The app creator shows the name from the employee system and the employee ID. ATS keeps only the ID (DATA-1)
-- The path through the Runbook lists P1 to P6. Done Phases show their step range and the date they ended, the current Phase opens into its steps (P4 lists steps 8 to 15), and later Phases are grey
+- The path through the Runbook lists P1 to P5. Done Phases show their step range and the date they ended, the current Phase opens into its steps (P3 lists steps 8 to 15), and later Phases are grey
 - Page 4 MUST NOT have any button that changes an app's status. A line under the path says the status follows GitLab
 - NEEDS CLARIFICATION: the names of steps 1, 2, 4, 5, 7 and 17 to 20 are not in the prototype yet. They MUST come from the Project Runbook before the real app is built
 
@@ -108,11 +108,13 @@
 - Error page: Icon 2xl, Button brand primary and neutral secondary lg full width
 - Built inside the story from tokens because the system doesn't have them (candidate components, NEEDS CLARIFICATION for the design system team), all in `src/ats.module.css` of `ats-prototype`:
   - the number box that filters the list when pressed (`button.tile`)
-  - the division row: name and company, the result with a small `ProgressBar`, and a status `Badge`
-  - the app row: name, division and company, the step line, and a Phase `Badge`
   - the breadcrumb, put together from `LinkButton` neutral sm and the chevron-right `Icon`
   - the path through the Runbook (a vertical stepper with done, current and later states)
-  - the user row: name, ID and a role `Dropdown`
+- Every list of rows MUST be the ntgds `Table`, on desktop and mobile, never hand-made rows (set by the user 2026-11-26). The link in the first data column opens the next page, because `Table` has no row click:
+  - page 1 Phases under the chart: Phase, ชื่อ Phase, จำนวนแอป (a `LinkButton` with chevron-right that opens page 3 filtered to that Phase)
+  - page 2 and page 3 apps: แอป (a `LinkButton` that opens page 4), ฝ่าย with the company as the second line (page 3 only), สถานะ, Phase (a `Badge` pill md)
+  - page 5 users: ผู้ใช้ with the employee ID as the second line, role (a `Dropdown` sm), หมายเหตุ (why the role is locked)
+  - NEEDS CLARIFICATION: the scroll box of `Table` cuts off the `Dropdown` menu in the last row of the users table, and on mobile the four columns of the apps table squeeze the text into many lines. Both need a decision from the design system team
 - The header is recorded as the pattern `app-header` (`../../patterns/app-header.dsds.yaml`)
 
 ## Content
