@@ -45,6 +45,8 @@ The full list for the end of a task, across Figma, code, Storybook, GitHub and t
 - Zero em dash characters (U+2014) anywhere, in content and in names. The middle dot `·` is allowed only in list lines of markdown docs, never in paragraphs, tables, headings, quotes or any text in the Figma file. Use a space instead, and commas between numbers. Titles have no special separators
 - Zero raw colors and zero raw shadows. In Figma, scan the whole page with `page.findAll()`, not only the frames you touched (see `context/workflows/figma-ds-file/SKILL.md` for the exempt pages)
 - Values were read from the real source, not guessed from a token name, and checked with a screenshot
+- A screenshot is for your own check, not for the user (set by the user 2026-11-26). MUST NOT send screenshots to the user to report work. Report in words with the link to the published page, the Storybook on GitHub Pages or the project's published prototype, which updates on every publish, so the user opens the real thing. IF the change is not on that link yet THEN say what is still needed, such as a push to `main`. Send an image only when the user asks for one
+- Screenshots taken in an AI's own environment can draw with fallback fonts, because Prompt and Sarabun load from Google Fonts and that host may be blocked there. Use them to check layout, clipping and behaviour, never to judge type or the final look
 - Code edits: `npm run typecheck` shows 0 errors, and the gates in `components/AGENTS.md` or `tokens/AGENTS.md` pass
 - `.dsds.yaml` edits: `node scripts/check-dsds.mjs` passes
 - End with a summary: what you did, files changed, components and tokens used (say which are beta), and the sync step still needed

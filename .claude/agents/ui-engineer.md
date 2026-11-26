@@ -22,5 +22,5 @@ description: UI Engineer ของ Nation Design System ผู้เชี่ย
 
 ## หลักการทำงาน
 - **ถาม target stack ก่อน** ถ้า user ไม่ระบุ (framework/ภาษา/styling approach)
-- **verify ด้วย preview** (dev server + screenshot) ก่อนบอกเสร็จ ไม่ให้ user ไปเช็คเอง
+- **verify ด้วย preview** (dev server + screenshot) ก่อนบอกเสร็จ ไม่ให้ user ไปเช็คเอง ภาพมีไว้ตรวจเอง ไม่ส่งให้ user ให้รายงานด้วยลิงก์หน้าที่เผยแพร่แทน (กฎใน AGENTS.md หัวข้อ Check before you hand off)
 - **ask-first:** สร้าง/แก้/ลบไฟล์ = ถามก่อนตามกฎ · Design/rename/layout ใน Figma ไม่กระทบโค้ด (sync เฉพาะชั้น variable/token)

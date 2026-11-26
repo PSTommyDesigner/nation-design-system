@@ -34,7 +34,7 @@ To use a component in a screen, read `context/components/AGENTS.md` and the comp
 - `npm run typecheck` shows 0 errors
 - `npm run verify:css` passes, so every generated `.module.css` matches its Figma spec
 - `npm run verify:api` passes if props or Figma axes changed
-- Check it in a preview (`npm run storybook`, then a screenshot). Don't leave the checking to the user
+- Check it in a preview (`npm run storybook`, then a screenshot). Don't leave the checking to the user. The screenshot is for your own check: report with the published link, not the image (see Check before you hand off in `AGENTS.md`)
 - New or changed props are in the README props table and in the stories
 - The component's entry in `context/design-system.dsds.yaml`, and its spec in `context/components/` if it has one, match the new code. Run `node scripts/check-dsds.mjs`
 
