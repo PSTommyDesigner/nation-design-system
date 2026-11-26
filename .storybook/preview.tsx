@@ -92,6 +92,8 @@ const preview: Preview = {
           ['27 Dropdowns', '28 Table', '29 Chart', '30 Modal'],
           'Template (Composition)',
           'Page (Prototype)',
+          // ท้ายสุดเสมอ: ของที่ยังไม่ใช่ component ของระบบ ไม่ให้ปนกับของที่ออกแล้ว
+          'Candidates',
         ],
       },
     },

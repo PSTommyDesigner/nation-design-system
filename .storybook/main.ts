@@ -11,6 +11,8 @@ const config: StorybookConfig = {
     '../organisms/**/*.stories.@(ts|tsx)',
     '../components/**/*.stories.@(ts|tsx)',
     '../prototype/**/*.stories.@(ts|tsx)',
+    // ทะเบียนและตัวอย่าง component candidate (ของที่โปรเจกต์ย่อยขอแต่ระบบยังไม่มี) ดู candidates/_template.candidate.yaml
+    '../candidates/**/*.stories.@(ts|tsx)',
   ],
   addons: ['@storybook/addon-docs'],
   // favicon.svg ในโฟลเดอร์นี้ทับ favicon ของ Storybook เพราะชื่อและที่อยู่ไฟล์ตรงกัน

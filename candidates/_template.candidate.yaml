@@ -1,0 +1,20 @@
+# แม่แบบ candidate.yaml คัดลอกไปวางที่ candidates/<ชื่อ>/candidate.yaml
+# เขียนเป็น key: value บรรทัดเดียวเท่านั้น ยกเว้น problem ที่ใช้ >- ต่อหลายบรรทัดได้
+# เพราะหน้ารวม (candidates/Candidates.stories.tsx) อ่านไฟล์นี้ด้วยตัวแยกค่าอย่างง่าย ไม่ใช่ YAML เต็มรูป
+# ห้ามใช้ขีดยาว ตามกฎของโปรเจกต์
+
+name: ชื่อ-component-ตัวพิมพ์เล็ก-คั่นขีด
+thaiName: ชื่อไทยที่ทีมเรียก
+requestedBy: โปรเจกต์ที่ขอ คั่นด้วยจุลภาคถ้ามีหลายโปรเจกต์
+status: proposed
+# proposed รอทีม Design System ตัดสิน · accepted รับแล้ว รอสร้างจริงผ่าน Figma
+# building กำลังสร้าง · merged รวมเข้า component เดิมเป็น variant · rejected ไม่รับ (บอกตัวที่ใช้แทนใน notes)
+submitted: YYYY-MM-DD
+expires: YYYY-MM-DD
+# วันหมดอายุของตัวชั่วคราวในโปรเจกต์ที่ขอ เกินแล้วหน้ารวมจะขึ้นป้ายเลยกำหนด ตั้งไม่เกิน 30 วันจากวันส่ง
+problem: >-
+  ใช้ทำอะไร ทำไม component เดิมใช้ไม่ได้ เขียนกี่บรรทัดก็ได้ตราบที่ย่อหน้าเดียว
+triedInstead: component เดิมที่ลองแล้วใช้ไม่ได้ พร้อมเหตุผลสั้น ๆ
+figma: ลิงก์เฟรม Figma ของหน้าจอที่ต้องใช้ (ใส่ node-id ด้วย)
+pr: ลิงก์ Pull Request (เว้นว่างได้ถ้ายังไม่เปิด)
+notes: ข้อสังเกตอื่น เช่น token ที่ยังไม่มีในระบบ (เว้นว่างได้)

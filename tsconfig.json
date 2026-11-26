@@ -29,6 +29,8 @@
     "components/**/*.tsx",
     "prototype/**/*.ts",
     "prototype/**/*.tsx",
+    "candidates/**/*.ts",
+    "candidates/**/*.tsx",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx"
   ],
