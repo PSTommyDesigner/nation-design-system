@@ -72,7 +72,8 @@
 - Icon is in [icons/icon.dsds.yaml](icons/icon.dsds.yaml). Deprecated List Item is in [design-system.dsds.yaml](design-system.dsds.yaml)
 
 ## Patterns
-- No pattern written yet. Patterns are recorded as prototype pages are approved, see [workflows/prototype/SKILL.md](workflows/prototype/SKILL.md). [patterns/_template.dsds.yaml](patterns/_template.dsds.yaml) is the template
+- [patterns/app-header.dsds.yaml](patterns/app-header.dsds.yaml): the top bar of an internal app, logo back to the first page and app actions (from ATS page 1)
+- Patterns are recorded as prototype pages are approved, see [workflows/prototype/SKILL.md](workflows/prototype/SKILL.md). [patterns/_template.dsds.yaml](patterns/_template.dsds.yaml) is the template
 
 ## Icons
 - [icons/icon.dsds.yaml](icons/icon.dsds.yaml): how to use Icon, sizes
@@ -83,4 +84,5 @@
 
 ## Features
 - [features/one-cms/AGENTS.md](features/one-cms/AGENTS.md): One CMS, the back office of the group's news websites
+- [features/ats/AGENTS.md](features/ats/AGENTS.md): AI Adoption Tracker System (ATS), the executive view of employee-built apps against the 2-apps-per-division target
 - Rules for one project are recorded in `features/<project>/` as its prototype pages are built. [features/_template/AGENTS.md](features/_template/AGENTS.md) is the template

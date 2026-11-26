@@ -1,0 +1,105 @@
+# App header in DSDS 0.23 format (a pattern is kind: entry)
+# Recorded from the ATS prototype page 1 ภาพรวม, approved by the user 2026-11-24
+# Raised to must on 2026-11-25: all 7 ATS pages repeat it the same way. Still one project, so when-to-use stays should
+
+kind: entry
+id: app-header
+name: App header
+description: >-
+  The top bar of an internal app that a group of employees uses, such as the AI Adoption Tracker System: the app logo at
+  the start, which always goes back to the first page, and the page actions at the end. It exists so users can get
+  back to the start from any page with one press, and so the actions that belong to the whole app sit in the same place
+  on every page.
+
+metadata:
+  owner: Nation Design System team
+  updated: {date: 2026-11-24}
+  tags: [pattern, organism, navigation]
+  status: {status: beta}
+  aliases: [site header, แถบหัว]
+
+sections:
+  - kind: guidelines
+    for: all
+    framing: when-to-use
+    items:
+      - level: should
+        statement: Use at the top of every page of an internal app that has its own logo and several pages.
+        checkedBy: manual
+      - level: should-not
+        statement: >-
+          Don't use it for a news website, whose header carries the brand menu and is a different organism
+          (site header in the Figma Organisms page).
+        checkedBy: manual
+
+  - kind: guidelines
+    for: all
+    items:
+      - level: must
+        statement: >-
+          Put the app logo at the start as one button or link named "<app> กลับหน้าแรก". It MUST go back to the
+          first page from every page.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          Put actions for the whole app at the end, at most two, such as a Badge pill sm that says the data is sample
+          data and a Button neutral secondary xs for an admin page. Show an action only to the roles that may use it.
+        checkedBy: manual
+      - level: must
+        statement: >-
+          IF the page is not the first page, and is not an error page, THEN put a breadcrumb under the header that
+          starts with the first page's name, so users know where they are.
+        checkedBy: manual
+      # NEEDS CLARIFICATION: ntgds has no Breadcrumb component. The ATS prototype builds it from LinkButton and Icon. Should it become a component?
+      # NEEDS CLARIFICATION: should the header stick to the top on scroll, as the One CMS header does
+
+      - level: should
+        statement: >-
+          Show the logo as the fixed-height kind from page 08 Logo, 40 high. Until the app has a fixed-height logo,
+          show its square logo at 32 with its short name beside it in the typography preset title-xl.
+        checkedBy: manual
+      - level: should
+        statement: >-
+          Keep the logo and the actions on one row at mobile width (375). Leave room for the actions, so the logo is
+          no wider than about 140.
+        checkedBy: manual
+
+  - kind: guidelines
+    for: agent
+    items:
+      - level: must
+        statement: IF the user is already on the first page THEN pressing the logo resets that page's filters instead of reloading.
+        checkedBy: assisted
+      - level: must
+        statement: IF a role may not use an action THEN hide the action. Don't show it disabled.
+        checkedBy: assisted
+
+  - kind: definitions
+    for: all
+    context: anatomy
+    items:
+      - term: Logo
+        definition: >-
+          At the start. A button or link that goes to the first page, named "<app> กลับหน้าแรก". The image inside has
+          empty alt text because the button name already says it.
+      - term: Actions
+        definition: >-
+          At the end, --ntg-size-space-s1-sm apart: badge, then button. The row has --ntg-size-space-s2-sm between
+          the logo and the actions.
+      - term: Breadcrumb
+        definition: >-
+          Under the header on every page except the first. Earlier pages are LinkButton neutral sm, the current page
+          is plain text, with a chevron-right Icon between them.
+
+uses:
+  - to: badge
+  - to: button
+  - to: link-button
+
+refs:
+  - href: https://github.com/PSTommyDesigner/ats-prototype/blob/main/src/Overview.stories.tsx
+    rel: demo
+    role: Correct example (ATS page 1 ภาพรวม)
+  - href: https://www.figma.com/board/cmFKQOIuV6Rpn1qdPbQcyS/ATS---UX-UI-Design?node-id=12-148
+    rel: design
+    role: Wireframe header on the FigJam board

@@ -8,7 +8,8 @@ The Figma file keeps only atoms and molecules as components. Organisms and templ
 on purpose (decided 2026-10-12, see `../../docs/rules/layer-scope.md`). They are meant to ship as documentation plus
 code examples, which is what a pattern file is.
 
-- No pattern is written yet. Patterns are recorded one at a time as prototype pages are approved, following `../workflows/prototype/SKILL.md`. A pattern's example page (`rel: demo`) is its prototype story in `prototype/`
+- [app-header.dsds.yaml](app-header.dsds.yaml): the top bar of an internal app, logo back to the first page and app actions. From ATS page 1 (2026-11-24)
+- Patterns are recorded one at a time as prototype pages are approved, following `../workflows/prototype/SKILL.md`. A pattern's example page (`rel: demo`) is its prototype story in `prototype/`
 - [_template.dsds.yaml](_template.dsds.yaml): template for a new pattern
 
 ## Candidates the team already named in Figma

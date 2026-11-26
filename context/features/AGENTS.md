@@ -5,6 +5,7 @@ such as business rules, flows and words. One folder per project, `features/<proj
 They are recorded as that project's prototype pages in `prototype/<project>/` are approved, following `../workflows/prototype/SKILL.md`.
 
 - [one-cms/AGENTS.md](one-cms/AGENTS.md): One CMS, the back office of the group's news websites (the Storybook prototype was removed on 2026-11-24, the rules stay)
+- [ats/AGENTS.md](ats/AGENTS.md): AI Adoption Tracker System (ATS), the executive view of employee-built apps against the 2-apps-per-division target (the prototype is in its own repo `ats-prototype`, the rules stay here)
 - [_template/AGENTS.md](_template/AGENTS.md): template for a new feature folder
 
 ## Rules
