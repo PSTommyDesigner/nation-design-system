@@ -41,3 +41,6 @@ storybook-static
 # ── Obsidian vault ที่สคริปต์สร้างให้อ่าน ────────────────────────
 # สำเนาจาก docs/daily-log และ context/features ต้นทางอยู่ใน repo แล้ว (ย้ายจาก ~/Documents เข้ามา 2026-11-02)
 obsidian/
+
+# worklog อยู่ใน ~/Obsidian ที่เดียว ไม่ขึ้น git (user สั่ง 2026-11-26) เหลือแค่ .schedule.log ของรอบ 17:30
+docs/daily-log/

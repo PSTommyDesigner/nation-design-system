@@ -14,7 +14,8 @@ If you don't follow a SHOULD or SHOULD NOT rule, say why in your task summary.
 - Tokens live in `tokens/tokens.json/*.json` (W3C DTCG, one file per Figma collection) and build with Style Dictionary to CSS variables with the prefix `--ntg-`
 - Docs for AI follow DSDS 0.23 (`.dsds.yaml` files) in `context/`. The list of everything is `context/design-system.dsds.yaml`
 - Docs for people are in Thai in `docs/`, starting at `docs/README.md`. Official rule files are in `docs/rules/`
-- The Obsidian vaults live outside the repo at `~/Obsidian` (paths in `.env`). Scripts copy into them from the worklog source `~/Obsidian/worklog` (`WORKLOG_ROOT`) and `context/features/` for reading. MUST NOT read them as a source or edit them: use the files they were copied from. `docs/daily-log/` is a generated ntgds-only copy of that source: MUST NOT edit it
+- The Obsidian vaults live outside the repo at `~/Obsidian` (paths in `.env`). Scripts copy into them from the worklog source `~/Obsidian/Tommy Worklog/.worklog` (`WORKLOG_ROOT`) and `context/features/` for reading. MUST NOT read them as a source or edit them: use the files they were copied from. The ntgds-only copy is `~/Obsidian/Nation Design System/` (`NTGDS_WORKLOG`), not in the repo: MUST NOT edit it, and worklogs MUST NOT be committed or pushed (set by the user 2026-11-26)
+- Worklog rules (`docs/rules/worklog.md`, `docs/rules/task-naming.md`, `context/workflows/worklog/SKILL.md`) are copies. The source is `~/Obsidian/Tommy Worklog/กฎของ worklog/` (set by the user 2026-11-26): change the rules there, not in the repo; `scripts/worklog-repo.mjs` overwrites the copies at 17:30.
 
 ## At the start of every task
 1. MUST open `context/index.md` first to see which files this task needs

@@ -128,4 +128,4 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [component-inventory-research.md](component-inventory-research.md) | รายการชิ้นงานที่ต้องมีและ token ที่ต้องใช้ |
 
 ### บันทึกงาน
-บันทึกรายวันอยู่ที่ `docs/daily-log/daily/<เดือนไทย ปีพุทธศักราช>/` หนึ่งไฟล์ต่อวัน วิธีเขียน บันทึกของงาน และการสำเนาไป Obsidian อยู่ใน [worklog.md](rules/worklog.md)
+worklog ไม่อยู่ใน repo แล้ว (user สั่ง 2026-11-26) ต้นทางอยู่ที่ `~/Obsidian/Tommy Worklog/.worklog/` ฉบับเฉพาะงาน ntgds อยู่ที่ `~/Obsidian/Nation Design System/` หนึ่งไฟล์ต่อวัน วิธีเขียน บันทึกของงาน และการสำเนาไป Obsidian อยู่ใน [worklog.md](rules/worklog.md)

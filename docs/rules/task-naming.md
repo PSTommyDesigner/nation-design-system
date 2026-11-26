@@ -1,7 +1,9 @@
+> สำเนาอัตโนมัติจาก `~/Obsidian/Tommy Worklog/กฎของ worklog/กฎการตั้งชื่องาน.md` ห้ามแก้ไฟล์นี้ แก้ที่ต้นฉบับ รอบ 17:30 เขียนทับ
+
 # Task Naming Convention
 
 > ต้นฉบับทางการ: แท็บ **Naming Convention** และ **Hierarchy of tasks** ในโปรเจกต์ Asana `Design Process 2026`
-> เลิกใช้ Asana แล้วตั้งแต่ 2026-11-03 ไฟล์นี้จึงเป็นต้นฉบับแทน ใช้ตั้งชื่อไฟล์งานใน `docs/daily-log/tasks/` (ดู `docs/rules/worklog.md` §3)
+> เลิกใช้ Asana แล้วตั้งแต่ 2026-11-03 ไฟล์นี้จึงเป็นต้นฉบับแทน ใช้ตั้งชื่อไฟล์งานใน `tasks/` ของต้นทาง worklog (`~/Obsidian/Tommy Worklog/.worklog/tasks/`) (ดู `docs/rules/worklog.md` §3)
 > ครอบคลุม **ชื่อ Task** (Golden Formula) **Description** (เทมเพลต 5 หัวข้อ) **Hierarchy** 6 ชั้น
 
 ## The Golden Formula

@@ -33,7 +33,7 @@ try {
   failed = true
   console.error(`✗ สำเนาไป vault One CMS ไม่สำเร็จ: ${e.message}`)
 }
-// สุดท้าย สำเนาฉบับที่ตัดงานโปรเจกต์อื่นออกเข้า docs/daily-log ของ repo (user สั่ง 2026-11-24)
+// สุดท้าย สำเนาฉบับที่ตัดงานโปรเจกต์อื่นออกไป ~/Obsidian/Nation Design System (user สั่ง 2026-11-24)
 try {
   const { syncRepo } = await import('./worklog-repo.mjs')
   const r = syncRepo()

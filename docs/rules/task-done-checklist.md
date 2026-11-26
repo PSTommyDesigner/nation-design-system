@@ -60,8 +60,8 @@ status: "active"
 
 รายละเอียด: [docs/rules/worklog.md](worklog.md)
 
-- [ ] worklog รายวันใน `~/Obsidian/worklog/daily/` ครบ 4 หัวข้อ งานที่เสร็จลบออกจาก `งานค้าง`
-- [ ] บันทึกของงานใน `~/Obsidian/worklog/tasks/` เขียน `### <วันที่> worklog <เลข>` พร้อม `#### ผลตรวจ` ที่มีตัวเลข **ต้องรอผู้ใช้คอนเฟิร์มก่อนเขียน**
+- [ ] worklog รายวันใน `~/Obsidian/Tommy Worklog/.worklog/daily/` ครบ 4 หัวข้อ งานที่เสร็จลบออกจาก `งานค้าง`
+- [ ] บันทึกของงานใน `~/Obsidian/Tommy Worklog/.worklog/tasks/` เขียน `### <วันที่> worklog <เลข>` พร้อม `#### ผลตรวจ` ที่มีตัวเลข **ต้องรอผู้ใช้คอนเฟิร์มก่อนเขียน**
 - [ ] ปิดงาน: ตั้ง `due` เป็นวันเสร็จ และ `status` เป็น `Internal Review` (`Done` ใช้เมื่อตรวจผ่านจริง)
 - [ ] สำเนาไป vault: รอบ 17:30 ทำเอง ถ้าเขียนหลัง 17:30 รัน `npm run worklog:obsidian` งาน One CMS รัน `npm run one-cms:obsidian` ด้วย
 - [ ] เรื่องที่เป็นบทเรียนหรือคำตัดสินใหม่ ถ้าเป็นกฎให้ลงไฟล์กฎในโปรเจกต์

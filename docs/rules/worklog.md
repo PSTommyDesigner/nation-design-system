@@ -6,23 +6,27 @@ last_updated: "2026-11-04"
 status: "active"
 ---
 
+> สำเนาอัตโนมัติจาก `~/Obsidian/Tommy Worklog/กฎของ worklog/กฎ worklog.md` ห้ามแก้ไฟล์นี้ แก้ที่ต้นฉบับ รอบ 17:30 เขียนทับ
+
 # Worklog Standard Nation Design System
 
-> ทุกวันที่มีงาน ต้องมีบันทึก 1 ชุด ต้นทางอยู่บนเครื่องที่ `~/Obsidian/worklog` รวมทุกโปรเจกต์ ส่วน Obsidian และ `docs/daily-log` ใน repo เป็นปลายทาง (ดู §9) เลิกใช้ Asana แล้วตั้งแต่ 2026-11-03
+> **ต้นฉบับของกฎ worklog ทั้งหมดอยู่ที่ `~/Obsidian/Tommy Worklog/กฎของ worklog/`** (user สั่ง 2026-11-26) แก้กฎที่นั่นเท่านั้น สำเนาใน repo ntgds (`docs/rules/worklog.md` `docs/rules/task-naming.md` `context/workflows/worklog/SKILL.md`) ถูกเขียนทับทุกรอบ 17:30 โดย `scripts/worklog-repo.mjs`
+>
+> ทุกวันที่มีงาน ต้องมีบันทึก 1 ชุด ต้นทางอยู่บนเครื่องที่ `~/Obsidian/Tommy Worklog/.worklog` รวมทุกโปรเจกต์ ส่วน Obsidian และ `docs/daily-log` ใน repo เป็นปลายทาง (ดู §9) เลิกใช้ Asana แล้วตั้งแต่ 2026-11-03
 
 ## 1. เก็บที่ไหน
 
 | ที่เก็บ | เนื้อหา | ใครอ่าน |
 |---|---|---|
-| `~/Obsidian/worklog/daily/<เดือนไทย ปีพ.ศ.>/W{สัปดาห์}-{Day}-{DD}-{MM}-{พ.ศ.}.md` | สรุปรายวันเต็ม ทุกการ์ดทุกโปรเจกต์รวมกัน (ต้นทางเดียว) | สคริปต์ เรา หัวหน้า |
-| `~/Obsidian/worklog/tasks/<ชื่องาน>.md` | บันทึกของแต่ละงาน 1 ไฟล์ต่อ 1 งาน (ดู §3) | สคริปต์ เรา หัวหน้า |
-| `docs/daily-log/` ใน repo | สำเนาที่สคริปต์สร้างให้ เฉพาะงาน ntgds (ดู §9) | คนที่เปิด repo |
+| `~/Obsidian/Tommy Worklog/.worklog/daily/<เดือนไทย ปีพ.ศ.>/W{สัปดาห์}-{Day}-{DD}-{MM}-{พ.ศ.}.md` | สรุปรายวันเต็ม ทุกการ์ดทุกโปรเจกต์รวมกัน (ต้นทางเดียว) | สคริปต์ เรา หัวหน้า |
+| `~/Obsidian/Tommy Worklog/.worklog/tasks/<ชื่องาน>.md` | บันทึกของแต่ละงาน 1 ไฟล์ต่อ 1 งาน (ดู §3) | สคริปต์ เรา หัวหน้า |
+| `~/Obsidian/Nation Design System/` | สำเนาที่สคริปต์สร้างให้ เฉพาะงาน ntgds (ดู §9) ไม่อยู่ใน repo | เรา |
 | Obsidian vault โฟลเดอร์ `Worklog <ปี ค.ศ.>/` | สำเนาที่สคริปต์สร้างให้ รายวัน สรุปเดือน 2 โน้ต บันทึกของงาน และหน้าหลักของปี (ดู §7) | เรา อ่านย้อนหลังรายเดือน |
 
 **สัปดาห์เริ่มนับ W1 ใหม่ทุกเดือน** (W1 = สัปดาห์ที่มี worklog แรกของเดือนนั้น) ปี พ.ศ. = ค.ศ. + 543 คั่นวันที่ด้วย `-` เพราะ `/` ใช้ในชื่อไฟล์ไม่ได้
 
 **ไฟล์ประกอบ**
-- `~/Obsidian/worklog/_template.md` แม่แบบ 4 หัวข้อ (สคริปต์ `worklog:new` สร้างไฟล์ตามนี้)
+- `~/Obsidian/Tommy Worklog/.worklog/_template.md` แม่แบบ 4 หัวข้อ (สคริปต์ `worklog:new` สร้างไฟล์ตามนี้)
 - **`scripts/worklog-path.mjs` เป็นตัวเดียวที่รู้กติกาชื่อไฟล์** สคริปต์อื่นต้อง import จากที่นี่ ห้ามคำนวณเอง
 
 **เคยมีโฟลเดอร์ `detail/` เก็บฉบับเต็มเชิงเทคนิค ลบแล้ว 2026-08-25** เพราะเป็นภาพถ่ายของสถานะที่ไม่มีอยู่แล้ว (รหัส node กับตัวเลขอ้างของที่เปลี่ยนไปหมดแล้ว) และไม่เคยถูกเปิดใช้จริง **ต่อไปเขียนบันทึกรายวันให้จบในไฟล์เดียว ไม่ต้องแยกฉบับเต็ม**
@@ -50,7 +54,7 @@ status: "active"
 
 | # | แบบ | ต้นทาง | ใน Obsidian | เมื่อไหร่ | ต้องขออนุมัติไหม |
 |---|---|---|---|---|---|
-| **1** | บันทึกของงาน | `~/Obsidian/worklog/tasks/<ชื่องาน>.md` | `Worklog <ปี>/Tasks/` | ระหว่างทาง และก่อนปิดงาน | **ต้องรอ user คอนเฟิร์มก่อนเสมอ** (คงไว้จากกฎเดิม) |
+| **1** | บันทึกของงาน | `~/Obsidian/Tommy Worklog/.worklog/tasks/<ชื่องาน>.md` | `Worklog <ปี>/Tasks/` | ระหว่างทาง และก่อนปิดงาน | **ต้องรอ user คอนเฟิร์มก่อนเสมอ** (คงไว้จากกฎเดิม) |
 | **2** | งานที่ทำแต่ละวัน | worklog รายวัน หัวข้อ `งานที่ทำวันนี้` | `01 งานที่ทำ <เดือน>` 1 วัน 1 หัวข้อ | สำเนาตอน 17:30 อัตโนมัติ | ไม่ต้อง |
 | **3** | งานค้าง | worklog รายวัน หัวข้อ `งานค้าง` | `02 งานค้าง <เดือน>` รายการเดียว ยกข้ามเดือน | สำเนาตอน 17:30 อัตโนมัติ | ไม่ต้อง |
 
@@ -140,7 +144,7 @@ status: "active"
 | `npm run worklog:schedule-on` / `-off` | เปิด ปิดตัวเตือน |
 | `npm run worklog:obsidian [-- --dry]` | สำเนา worklog สรุปเดือน และบันทึกของงานไป Obsidian (ดู §7) |
 | `npm run one-cms:obsidian [-- --dry]` | สำเนากฎโปรเจกต์และงานรายวันของ One CMS ไป vault ของโปรเจกต์ (ดู §8) |
-| `npm run worklog:repo [-- --dry]` | สำเนา worklog เฉพาะงาน ntgds เข้า `docs/daily-log` ใน repo (ดู §9) |
+| `npm run worklog:repo [-- --dry]` | สำเนา worklog เฉพาะงาน ntgds ไป `~/Obsidian/Nation Design System` และสำเนากฎ worklog เข้า repo (ดู §9) |
 
 - งานปัจจุบันเก็บที่ `scripts/worklog-current-task.json` ใช้เป็นบรรทัด `Task:` ของ worklog รายวัน `worklog:task` ตั้งให้เอง
 
@@ -247,15 +251,15 @@ Worklog 2026/
 
 | ส่วน | ของจริง |
 |---|---|
-| ต้นทาง | `~/Obsidian/worklog/` มี `daily/` `tasks/` และ `_template.md` รวมงานทุกโปรเจกต์ ตั้งใน `WORKLOG_ROOT` ของ `.env` ไม่ได้ตั้งก็ใช้ `docs/daily-log` เหมือนเดิม |
+| ต้นทาง | `~/Obsidian/Tommy Worklog/.worklog/` มี `daily/` `tasks/` และ `_template.md` รวมงานทุกโปรเจกต์ ตั้งใน `WORKLOG_ROOT` ของ `.env` ไม่ได้ตั้งก็ใช้ `docs/daily-log` เหมือนเดิม |
 | ใครอ่านค่านี้ | `scripts/worklog-path.mjs` ตัวเดียว (`ROOT`) สคริปต์อื่น import จากที่นี่ |
-| ฉบับใน repo | `docs/daily-log/` สร้างโดย `scripts/worklog-repo.mjs` ตัดรายการของโปรเจกต์อื่นออก |
+| ฉบับ ntgds | `~/Obsidian/Nation Design System/` (`NTGDS_WORKLOG` ใน `.env`) สร้างโดย `scripts/worklog-repo.mjs` ตัดรายการของโปรเจกต์อื่นออก user สั่ง 2026-11-26 ให้ worklog ทุกโปรเจกต์อยู่ใน `~/Obsidian` ที่เดียว ไม่เก็บใน repo และไม่ขึ้น git (`docs/daily-log/` อยู่ใน `.gitignore` เหลือแค่ `.schedule.log`) |
 | อัตโนมัติ | `worklog-month.mjs` เรียกเป็นขั้นสุดท้ายของรอบ 17:30 |
 | คำสั่งมือ | `npm run worklog:repo` หรือ `npm run worklog:repo -- --dry` |
 
 **กติกา**
 
-- **เขียนและแก้ worklog ที่ต้นทางบนเครื่องเท่านั้น** ห้ามแก้ `docs/daily-log` ใน repo เพราะรอบถัดไปจะถูกเขียนทับ
+- **เขียนและแก้ worklog ที่ต้นทางบนเครื่องเท่านั้น** ห้ามแก้ `~/Obsidian/Nation Design System` เพราะรอบถัดไปจะถูกเขียนทับ และห้าม commit worklog เข้า repo
 - **ทุกรายการของโปรเจกต์อื่นต้องมีชื่อโปรเจกต์อยู่ในรายการ** ตอนนี้มี `One CMS` กับ `AI Adoption Tracker` (อยู่ใน `OTHER_PROJECTS` ของสคริปต์) รายการที่ไม่มีชื่อโปรเจกต์ใดนับเป็นงาน ntgds และจะขึ้น repo
 - โปรเจกต์ใหม่ที่จดลง worklog ชุดนี้ ให้เพิ่มชื่อใน `OTHER_PROJECTS` ก่อนเขียนรายการแรก
 - หัวข้อที่ถูกตัดจนว่างได้ `- ไม่มี` บรรทัด `> Task:` ที่มีชื่อโปรเจกต์อื่นถูกตัดทิ้ง วันที่มีแต่งานโปรเจกต์อื่นไม่สำเนา worklog แบบเก่าที่เป็นย่อหน้าสำเนาตามเดิม

@@ -1,4 +1,6 @@
-// worklog-repo.mjs · สำเนา worklog ฉบับ ntgds จากต้นทางบนเครื่อง (WORKLOG_ROOT) เข้า docs/daily-log ใน repo
+// worklog-repo.mjs · สำเนา worklog ฉบับ ntgds จากต้นทางบนเครื่อง (WORKLOG_ROOT) ไปที่ ~/Obsidian/Nation Design System (NTGDS_WORKLOG ใน .env)
+// user สั่ง 2026-11-26: worklog ทุกโปรเจกต์อยู่ใน ~/Obsidian ที่เดียว ไม่เก็บใน repo และไม่ขึ้น git (docs/daily-log/ อยู่ใน .gitignore เหลือแค่ .schedule.log)
+// และสำเนากฎ worklog จาก vault เข้า repo (ดู RULES)
 // ใช้: npm run worklog:repo            (รอบ 17:30 เรียกเองหลังสำเนาไป Obsidian)
 //      npm run worklog:repo -- --dry   ดูว่าจะเขียนไฟล์ไหน
 //
@@ -13,6 +15,43 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { join, resolve, dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { ROOT, REPO_DIR, REPO_ROOT } from './worklog-path.mjs'
+import { homedir } from 'node:os'
+import { vaultPath, envValue, expandHome } from './worklog-obsidian.mjs'
+
+/** ที่เก็บ worklog ฉบับ ntgds: NTGDS_WORKLOG ใน .env ไม่ได้ตั้งใช้ ~/Obsidian/Nation Design System */
+export function ntgdsDir() {
+  const v = envValue('NTGDS_WORKLOG')
+  return resolve(v ? expandHome(v) : join(homedir(), 'Obsidian', 'Nation Design System'))
+}
+
+// user สั่ง 2026-11-26: ต้นฉบับกฎ worklog ทั้งหมดอยู่ใน vault ที่ <OBSIDIAN_VAULT>/กฎของ worklog/ ไฟล์ใน repo เป็นสำเนา เขียนทับทุกรอบ
+export const RULES_DIR = 'กฎของ worklog'
+export const RULES = [
+  ['กฎ worklog.md', 'docs/rules/worklog.md'],
+  ['กฎการตั้งชื่องาน.md', 'docs/rules/task-naming.md'],
+  ['ขั้นตอน worklog สำหรับ AI.md', 'context/workflows/worklog/SKILL.md'],
+]
+/** ใส่บรรทัดบอกว่าเป็นสำเนา ต่อจาก frontmatter (ถ้ามี) */
+function markCopy(md, name) {
+  const note = `> สำเนาอัตโนมัติจาก \`~/Obsidian/Tommy Worklog/${RULES_DIR}/${name}\` ห้ามแก้ไฟล์นี้ แก้ที่ต้นฉบับ รอบ 17:30 เขียนทับ\n\n`
+  const m = md.match(/^---\n[\s\S]*?\n---\n\n?/)
+  return m ? md.slice(0, m[0].length) + note + md.slice(m[0].length) : note + md
+}
+/** สำเนากฎ worklog จาก vault เข้า repo คืนจำนวนไฟล์ที่สำเนา หรือข้อความถ้าข้าม */
+export function syncRules({ dry = false, stat } = {}) {
+  let vault
+  try { vault = vaultPath([]) } catch { return 'หา vault ไม่เจอ' }
+  const dir = join(vault, RULES_DIR)
+  if (!existsSync(dir)) return `ไม่พบ ${dir}`
+  let n = 0
+  for (const [name, dest] of RULES) {
+    const src = join(dir, name)
+    if (!existsSync(src)) { stat.warnings = [...(stat.warnings || []), `ไม่พบกฎ ${name}`]; continue }
+    put(join(REPO_DIR, dest), markCopy(readFileSync(src, 'utf8'), name), dry, stat)
+    n++
+  }
+  return n
+}
 
 export const OTHER_PROJECTS = ['One CMS', 'AI Adoption Tracker']
 const isOther = (s) => OTHER_PROJECTS.some((p) => s.includes(p))
@@ -65,10 +104,10 @@ function put(path, content, dry, stat) {
 
 export function syncRepo({ dry = false } = {}) {
   const src = resolve(ROOT)
-  const dest = resolve(REPO_DIR, REPO_ROOT)
-  if (src === dest) return { skipped: 'ยังไม่ได้ตั้ง WORKLOG_ROOT ต้นทางกับ repo เป็นที่เดียวกัน' }
+  const dest = ntgdsDir()
+  if (src === dest || src === resolve(REPO_DIR, REPO_ROOT)) return { skipped: 'ยังไม่ได้ตั้ง WORKLOG_ROOT ต้นทางกับปลายทางเป็นที่เดียวกัน' }
   if (!existsSync(src)) throw new Error(`ไม่พบต้นทาง ${src}`)
-  const stat = { days: 0, noNtgds: [], tasks: 0, otherTasks: [], unchanged: 0, written: [], removeFromRepo: [] }
+  const stat = { dest, days: 0, noNtgds: [], tasks: 0, otherTasks: [], unchanged: 0, written: [], removeFromRepo: [] }
 
   for (const f of walkMd(join(src, 'daily'))) {
     const rel = relative(src, f)
@@ -88,6 +127,7 @@ export function syncRepo({ dry = false } = {}) {
   }
   const tpl = join(src, '_template.md')
   if (existsSync(tpl)) put(join(dest, '_template.md'), readFileSync(tpl, 'utf8'), dry, stat)
+  stat.rules = syncRules({ dry, stat })
   return stat
 }
 
@@ -96,15 +136,17 @@ if (isMain) {
   const dry = process.argv.includes('--dry')
   try {
     const r = syncRepo({ dry })
-    if (r.skipped) { console.log(`📁 worklog ntgds เข้า repo: ข้าม (${r.skipped})`); process.exit(0) }
-    console.log(`📁 worklog ntgds เข้า repo${dry ? ' (ลองดู)' : ''}: ${r.days} วัน บันทึกงาน ${r.tasks} ไฟล์ ${dry ? 'จะเขียน' : 'เขียน'} ${r.written.length} ไฟล์ เหมือนเดิม ${r.unchanged} ไฟล์`)
+    if (r.skipped) { console.log(`📁 worklog ntgds: ข้าม (${r.skipped})`); process.exit(0) }
+    console.log(`📁 worklog ntgds ไป ${r.dest}${dry ? ' (ลองดู)' : ''}: ${r.days} วัน บันทึกงาน ${r.tasks} ไฟล์ ${dry ? 'จะเขียน' : 'เขียน'} ${r.written.length} ไฟล์ เหมือนเดิม ${r.unchanged} ไฟล์`)
+    console.log(`   กฎ worklog จาก vault: ${typeof r.rules === 'number' ? `${r.rules} ไฟล์` : `ข้าม (${r.rules})`}`)
+    for (const w of r.warnings || []) console.warn(`   ⚠️ ${w}`)
     console.log(`   ไม่สำเนา: วันที่ไม่มีงาน ntgds ${r.noNtgds.length} วัน บันทึกงานโปรเจกต์อื่น ${r.otherTasks.length} ไฟล์`)
     if (r.removeFromRepo.length) {
-      console.warn(`⚠️ ไฟล์ใน repo ที่มีแต่งานโปรเจกต์อื่น ควรลบ ${r.removeFromRepo.length} ไฟล์:`)
-      for (const p of r.removeFromRepo) console.warn(`   ${join(REPO_ROOT, p)}`)
+      console.warn(`⚠️ ไฟล์ใน ${r.dest} ที่มีแต่งานโปรเจกต์อื่น ควรลบ ${r.removeFromRepo.length} ไฟล์:`)
+      for (const p of r.removeFromRepo) console.warn(`   ${p}`)
     }
   } catch (e) {
-    console.error(`✗ สำเนา worklog ntgds เข้า repo ไม่สำเร็จ: ${e.message}`)
+    console.error(`✗ สำเนา worklog ntgds ไม่สำเร็จ: ${e.message}`)
     process.exit(1)
   }
 }

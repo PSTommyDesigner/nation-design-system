@@ -1,9 +1,11 @@
 ---
 name: worklog
 description: >-
-  Write the daily worklog, create or update a task file in docs/daily-log/tasks, record task work, close a task,
+  Write the daily worklog, create or update a task file in the worklog source tasks/ folder, record task work, close a task,
   or sync the worklog to the Obsidian vaults. Use for any worklog or task-record work.
 ---
+
+> สำเนาอัตโนมัติจาก `~/Obsidian/Tommy Worklog/กฎของ worklog/ขั้นตอน worklog สำหรับ AI.md` ห้ามแก้ไฟล์นี้ แก้ที่ต้นฉบับ รอบ 17:30 เขียนทับ
 
 # Worklog and task records
 
@@ -11,11 +13,11 @@ Asana is not used anymore (set by the user 2026-11-03). Never create Asana cards
 The old Asana rules are kept for history in `docs/legacy/worklog-asana.2026-11-03.md`.
 
 Official rule files (Thai), read the one the task needs:
-- Worklog: where it lives, how to write it, task files, dates, scripts, the Obsidian copy: `docs/rules/worklog.md`. Change worklog rules in that file
+- Worklog: where it lives, how to write it, task files, dates, scripts, the Obsidian copy: `docs/rules/worklog.md`. The source of every worklog rule file is `~/Obsidian/Tommy Worklog/กฎของ worklog/` (set by the user 2026-11-26). Change worklog rules there only; the repo copies (this SKILL.md, docs/rules/worklog.md, docs/rules/task-naming.md) are overwritten at 17:30 by scripts/worklog-repo.mjs
 - Task names and the 5-part description template: `docs/rules/task-naming.md`
 
 ## Where things live
-| What | Source (`~/Obsidian/worklog`, `WORKLOG_ROOT` in `.env`) | Copy in Obsidian (`~/Obsidian/UXUI Worklog`, path set in `.env`) |
+| What | Source (`~/Obsidian/Tommy Worklog/.worklog`, `WORKLOG_ROOT` in `.env`) | Copy in Obsidian (`~/Obsidian/Tommy Worklog`, path set in `.env`) |
 | --- | --- | --- |
 | Daily worklog | `daily/<Thai month> <Buddhist year>/W{week}-{Day}-{DD}-{MM}-{year}.md` | one daily note |
 | Work done per month | the `งานที่ทำวันนี้` section of each daily file | `01 งานที่ทำ <month>`, one heading per day |
@@ -23,7 +25,7 @@ Official rule files (Thai), read the one the task needs:
 | Task record | `tasks/<task name without brackets>.md` | `Worklog <year>/Tasks/` |
 
 - The vault is a generated read-only copy. MUST NOT edit notes there. Edit the source file and rerun the script
-- `docs/daily-log/` in this repo is a generated ntgds-only copy (`npm run worklog:repo`, set by the user 2026-11-24). MUST NOT write or edit it: write the source. Every item about another project MUST contain its name (`One CMS`, `AI Adoption Tracker`). See `docs/rules/worklog.md` section 9
+- The ntgds-only copy is `~/Obsidian/Nation Design System/` (`npm run worklog:repo`, `NTGDS_WORKLOG` in `.env`). It is not in the repo: worklogs MUST NOT be committed or pushed (set by the user 2026-11-26; `docs/daily-log/` is gitignored and only keeps `.schedule.log`). MUST NOT write or edit the copy: write the source. Every item about another project MUST contain its name (`One CMS`, `AI Adoption Tracker`). See `docs/rules/worklog.md` section 9
 - Notes the user writes in the vault are never touched by the scripts
 
 ## Ask first
