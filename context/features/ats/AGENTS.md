@@ -74,7 +74,7 @@
 ### Page 4 รายละเอียดแอป
 - Opens from an app row on page 2 or page 3. The breadcrumb follows the way the user came, and every earlier part goes back to that page with its filters as they were
 - Order: the app name with division and company under it, a `Badge` with the Phase and its name, the current step, the app creator, the path through the Runbook
-- The current step MUST say the step number and name, what it is waiting for and who does it, as the Runbook names them (for example "รอ: IT ลงทะเบียนแอปและใส่ค่า (ขั้น 13)"), and since when it has been on that step. For P6 it says when the app reached production, for P1 that it has no repo yet
+- The current step MUST say the step number and name, what it is waiting for and who does it, as the Runbook names them (for example "รอ: IT ลงทะเบียนแอปและใส่ค่า (ขั้น 13)"), and since when it has been on that step. For an app in production it says when it reached production, for P1 that it has no repo yet
 - The app creator shows the name from the employee system and the employee ID. ATS keeps only the ID (DATA-1)
 - The path through the Runbook lists P1 to P4. Done Phases show their step range and the date they ended, the current Phase opens into its steps (P3 lists steps 8 to 15), and later Phases are grey
 - Page 4 MUST NOT have any button that changes an app's status. A line under the path says the status follows GitLab
