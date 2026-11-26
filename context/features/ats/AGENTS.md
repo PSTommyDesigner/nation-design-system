@@ -113,9 +113,11 @@
   - the path through the Runbook (a vertical stepper with done, current and later states)
 - Every list of rows MUST be the ntgds `Table`, on desktop and mobile, never hand-made rows (set by the user 2026-11-26). The link in the first data column opens the next page, because `Table` has no row click:
   - page 1 Phases under the chart: Phase, ชื่อ Phase, จำนวนแอป (a `LinkButton` with chevron-right that opens page 3 filtered to that Phase)
-  - page 2 and page 3 apps: แอป (a `LinkButton` that opens page 4), ฝ่าย with the company as the second line (page 3 only), สถานะ, Phase (a `Badge` pill md)
+  - page 2 and page 3 apps: แอป (a `LinkButton` that opens page 4), ฝ่าย with the company as the second line (page 3 only), สถานะ, Phase (plain text)
   - page 5 users: ผู้ใช้ with the employee ID as the second line, role (a `Dropdown` sm), หมายเหตุ (why the role is locked)
-  - NEEDS CLARIFICATION: the scroll box of `Table` cuts off the `Dropdown` menu in the last row of the users table, and on mobile the four columns of the apps table squeeze the text into many lines. Both need a decision from the design system team
+  - Below 1024 (the same width as the container query, measured on the app frame in code because CSS can't pick the columns) the apps table on page 2 and page 3 MUST pass 2 columns only: แอป (a `LinkButton` passed through `accessor`, because `Table` skips `supporting` when a column uses `render`) and สถานะ (a `Badge` pill md with the short status: ขึ้นแล้ว in green, ขั้น <n> or ยังไม่มี repo in neutral). The division with its company (page 3 only), the Phase and the rest of the status go in the second line under the app name through `supporting`. On desktop the columns stay as listed above (decided by the design system team 2026-11-26)
+  - MUST NOT style `Table` or `Dropdown` from outside to fix the role menu that the scroll box of `Table` cuts off in the last row of the users table. ntgds will fix `Dropdown` so its panel floats outside a scrolling box (decided by the design system team 2026-11-26). After ntgds updates, check page 5 again
+  - Text in table cells MUST NOT be brand blue (set by the user 2026-11-26): links in cells use `LinkButton` family neutral, and the Phase in the apps table is plain text, not a `Badge`
 - The header is recorded as the pattern `app-header` (`../../patterns/app-header.dsds.yaml`)
 
 ## Content
