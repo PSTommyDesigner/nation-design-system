@@ -16,8 +16,9 @@
 - A division is one of the 40 divisions on the Nation House chart. Each has a target of 2 apps a month, 80 for the group
 - Months are counted on their own: nothing carries over to the next month
 - Apps that reached production before ATS existed count in the month they really did (counted backwards), so users MUST be able to pick past months
-- A division at risk is one that has not reached its target this month and has no app in Phase 4 ใช้งานจริง (steps 16 to 20)
-- Phases MUST follow the Project Runbook board as of 2026-11-26, 5 phases (set by the user, who merged the old Phase 2 ขอโปรเจกต์ and Phase 3 สร้างและทดสอบบนเครื่อง because both are development): Phase 1 ออกแบบ, Phase 2 พัฒนา (steps 1 to 7), Phase 3 ทดสอบ (steps 8 to 15, the Merge Request check), Phase 4 ใช้งานจริง (steps 16 to 20, staging then production), Phase 5 ดูแลหลังขึ้นแอป. Step numbers 1 to 20 are the same as in base-instruction. Lines in this file written on 2026-11-24 and 2026-11-25 that say P4, P5 or P6 use the old 6-phase numbers: read them one lower
+- A division at risk is one that has not reached its target this month and has no app at steps 16 to 19 of Phase 4 ใช้งานจริง (on staging, about to reach production)
+- Phases MUST follow the Project Runbook board as of 2026-11-26, 4 phases (set by the user in two rounds that day: first merged the old ขอโปรเจกต์ and สร้างและทดสอบบนเครื่อง because both are development, then merged ดูแลหลังขึ้นแอป into ใช้งานจริง because an app in use is the same app that gets new features and bug fixes): Phase 1 ออกแบบ, Phase 2 พัฒนา (steps 1 to 7), Phase 3 ทดสอบ (steps 8 to 15, the Merge Request check), Phase 4 ใช้งานจริง (steps 16 to 20, staging then production, and the care of the app after it is in production). Step numbers 1 to 20 are the same as in base-instruction. Lines in this file written on 2026-11-24 and 2026-11-25 that say P4, P5 or P6 use the old 6-phase numbers: read P4 as P3, and P5 and P6 as P4
+- Phase 4 holds two kinds of app and screens show them as one number (set by the user 2026-11-26): apps still at steps 16 to 19, which do not count yet, and apps that finished step 20, which count. An app in production stays in Phase 4
 - ATS MUST NOT have any field where a person types or changes an app's status
 - NEEDS CLARIFICATION: Phase 1 ออกแบบ has no repo yet, so where does ATS read it from
 
@@ -42,7 +43,7 @@
 - Order: updated time, month, company filter, the production box, the two boxes มีครบ 2 แอปหรือมากกว่า and มีไม่ครบ on one row, the two boxes ยังไม่มีแอปเลย and ฝ่ายที่เสี่ยงไม่ถึงเป้า on one row, apps by Runbook Phase, the division list, then "ดูทั้ง <n> ฝ่าย"
 - The production box MUST show "ขึ้น production ครั้งแรก เดือนนี้" as "<n> / 80 แอป" with a `ProgressBar`. "มีครบ 2 แอปหรือมากกว่า" and "มีไม่ครบ" are boxes of their own under it, each with the number of divisions and of apps (moved out of the production box by the user 2026-11-25)
 - A click on "<n> / 80 แอป" opens page 3 filtered to apps first in production this month. A click on any of the four division boxes filters the division list to that group, and a second click shows every division again
-- Apps by Runbook Phase MUST use the `BarChart` and list P1 to P5 under it with each Phase's name instead of a short code (set by the user 2026-11-24). `BarChart` bars can't be pressed, so the P1 to P5 rows under the chart are what opens page 3 filtered to that Phase
+- Apps by Runbook Phase MUST use the `BarChart` and list P1 to P4 under it with each Phase's name instead of a short code (set by the user 2026-11-24). `BarChart` bars can't be pressed, so the P1 to P4 rows under the chart are what opens page 3 filtered to that Phase
 - The division list MUST be the ntgds `Table` on desktop and mobile (set by the user 2026-11-26: every project under the Nation Group brand uses ntgds, no hand-made rows). Columns: ฝ่าย (a `LinkButton` that opens page 2 for that division, the row header), บริษัท, ขึ้นแล้วเทียบเป้า (the count with a `ProgressBar`), สถานะ (a `Badge`). The caption names the group and the month. It is sorted from most at risk and shows the first 5
 - The company filter is a row of `Tag` sm pill brand, one choice at a time. The chosen tag is primary, the others secondary with default gray
 - NEEDS CLARIFICATION: `Tag` has no selected state for a single choice. Primary on the chosen tag is a stand-in
@@ -56,14 +57,14 @@
 - Opens from a division row on page 1. Breadcrumb: ภาพรวม › <division>
 - Order: the division name with "ฝ่ายใน <company code> <company name>" under it, month, this month's result, two boxes, the result of the last 6 months, the division's apps
 - This month's result MUST show "<n> / 2 แอป" with a `ProgressBar` and the same status `Badge` as the division row on page 1
-- The two boxes "แอปใน P5 ขึ้นระบบ" and "แอปทั้งหมดของฝ่าย" only show numbers and can't be pressed
+- The two boxes "แอปที่อยู่ขั้น 16 ถึง 19" and "แอปทั้งหมดของฝ่าย" only show numbers and can't be pressed
 - The last 6 months MUST be counted backwards from the apps' first production month. The chart is the `BarChart` with the apps as bars and the target of 2 as a line
 - NEEDS CLARIFICATION: the wireframe marks a month that reached the target with a darker bar. `BarChart` can't color one bar, so the target line stands in
 - The app list MUST put apps first in production this month first, then apps not in production yet from the Phase closest to production, then apps from earlier months, newest first. Each row shows the current step or the production date, and opens page 4
 
 ### Page 3 รายการแอป
-- Opens from "<n> / 80 แอป" on page 1 (filtered to apps first in production this month) or from a P1 to P5 row (filtered to that Phase). The line under the title says which one it came from. Breadcrumb: ภาพรวม › รายการแอป
-- Filters: Phase as a row of `Tag` (ทุก Phase, P1 to P5, one at a time, as on page 1), then company and division as `Dropdown` md side by side. The division list follows the chosen company
+- Opens from "<n> / 80 แอป" on page 1 (filtered to apps first in production this month) or from a P1 to P4 row (filtered to that Phase). The line under the title says which one it came from. Breadcrumb: ภาพรวม › รายการแอป
+- Filters: Phase as a row of `Tag` (ทุก Phase, P1 to P4, one at a time, as on page 1), then company and division as `Dropdown` md side by side. The division list follows the chosen company
 - The filter "first in production this month" shows as a closable `Tag` brand primary, so users can see it and take it off
 - Phase is the app's status now and doesn't depend on the month
 - A line above the list says how many apps match and in which Phase, and is announced when it changes (`aria-live` polite)
@@ -75,7 +76,7 @@
 - Order: the app name with division and company under it, a `Badge` with the Phase and its name, the current step, the app creator, the path through the Runbook
 - The current step MUST say the step number and name, what it is waiting for and who does it, as the Runbook names them (for example "รอ: IT ลงทะเบียนแอปและใส่ค่า (ขั้น 13)"), and since when it has been on that step. For P6 it says when the app reached production, for P1 that it has no repo yet
 - The app creator shows the name from the employee system and the employee ID. ATS keeps only the ID (DATA-1)
-- The path through the Runbook lists P1 to P5. Done Phases show their step range and the date they ended, the current Phase opens into its steps (P3 lists steps 8 to 15), and later Phases are grey
+- The path through the Runbook lists P1 to P4. Done Phases show their step range and the date they ended, the current Phase opens into its steps (P3 lists steps 8 to 15), and later Phases are grey
 - Page 4 MUST NOT have any button that changes an app's status. A line under the path says the status follows GitLab
 - NEEDS CLARIFICATION: the names of steps 1, 2, 4, 5, 7 and 17 to 20 are not in the prototype yet. They MUST come from the Project Runbook before the real app is built
 
