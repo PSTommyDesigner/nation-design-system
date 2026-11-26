@@ -43,7 +43,7 @@
 - The production box MUST show "ขึ้น production ครั้งแรก เดือนนี้" as "<n> / 80 แอป" with a `ProgressBar`. "มีครบ 2 แอปหรือมากกว่า" and "มีไม่ครบ" are boxes of their own under it, each with the number of divisions and of apps (moved out of the production box by the user 2026-11-25)
 - A click on "<n> / 80 แอป" opens page 3 filtered to apps first in production this month. A click on any of the four division boxes filters the division list to that group, and a second click shows every division again
 - Apps by Runbook Phase MUST use the `BarChart` and list P1 to P6 under it with each Phase's name instead of a short code (set by the user 2026-11-24). `BarChart` bars can't be pressed, so the P1 to P6 rows under the chart are what opens page 3 filtered to that Phase
-- The division list replaces a table on mobile. It is sorted from most at risk, shows the first 5, and each row opens page 2 for that division
+- The division list MUST be the ntgds `Table` on desktop and mobile (set by the user 2026-11-26: every project under the Nation Group brand uses ntgds, no hand-made rows). Columns: ฝ่าย (a `LinkButton` that opens page 2 for that division, the row header), บริษัท, ขึ้นแล้วเทียบเป้า (the count with a `ProgressBar`), สถานะ (a `Badge`). The caption names the group and the month. It is sorted from most at risk and shows the first 5
 - The company filter is a row of `Tag` sm pill brand, one choice at a time. The chosen tag is primary, the others secondary with default gray
 - NEEDS CLARIFICATION: `Tag` has no selected state for a single choice. Primary on the chosen tag is a stand-in
 
