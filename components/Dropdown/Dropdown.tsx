@@ -18,9 +18,14 @@
  * ⚠️ ยังไม่รองรับการเลือกหลายค่า และยังไม่รองรับการพิมพ์กรอง (งานค้างของหน้า 27)
  *    ถ้ารายการยาวเกิน 15 ตัว ให้รอชิ้นงานที่พิมพ์กรองได้ อย่าดัดตัวนี้
  *
+ * ⚠️ แผงลอยอยู่ชั้นบนสุดของหน้า (popover ของเบราว์เซอร์) ไม่ได้วางในกรอบของช่อง (แก้ 2026-11-26)
+ *    เพราะกรอบที่เลื่อนได้ เช่นกรอบของ Table ตัดแผงทิ้ง (เจอที่หน้า 5 จัดการ role ของ ATS)
+ *    ตำแหน่งคำนวณจากช่องทุกครั้งที่เลื่อนหรือเปลี่ยนขนาดจอ และเปิดขึ้นด้านบนเมื่อด้านล่างที่ว่างไม่พอ
+ *    เบราว์เซอร์ที่ไม่มี popover ใช้แผงแบบเดิมที่วางใต้ช่อง ห้ามแก้ปัญหาแผงโดนตัดด้วยการแต่งกรอบแม่จากข้างนอก
+ *
  * ค่าทั้งหมดมาจาก design tokens ผ่าน CSS variables ไม่มีค่า hard-code
  */
-import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Avatar, type AvatarSize } from '../Avatar';
 import { Icon, type IconName } from '../Icon';
 import styles from './Dropdown.module.css';
@@ -93,6 +98,12 @@ const AVATAR_FOR_SIZE: Record<DropdownSize, AvatarSize | null> = {
 
 /** เวลาที่บัฟเฟอร์การพิมพ์หาตัวเลือกจะหมดอายุ เป็นพฤติกรรมของแป้นพิมพ์ ไม่ใช่ค่าออกแบบ */
 const TYPEAHEAD_RESET_MS = 500;
+
+/**
+ * วางตำแหน่งแผงก่อนเบราว์เซอร์วาดภาพ ฝั่งเซิร์ฟเวอร์ไม่มี layout จึงสลับไปใช้ useEffect
+ * กันคำเตือนของ React 18 ที่โปรเจกต์ Next.js 12 และ 14 ยังใช้อยู่
+ */
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 /**
  * ช่องเลือกจากรายการ
@@ -233,12 +244,69 @@ export function Dropdown({
     return () => document.removeEventListener('pointerdown', onPointerDown);
   }, [open]);
 
-  // เลื่อนแถวที่ชี้อยู่ให้เห็นในแผงที่เลื่อนได้ ใช้ nearest เพื่อไม่ให้กระโดดทั้งหน้า
+  // ── แผงลอยชั้นบนสุด ─────────────────────────────────────
+  // เปิดแผงเป็น popover ให้หลุดจากกรอบที่เลื่อนได้ แล้ววางตำแหน่งจากช่องทุกเฟรมที่มีการเลื่อนหรือเปลี่ยนขนาดจอ
+  // ฟังการเลื่อนแบบ capture เพื่อจับการเลื่อนของกรอบแม่ทุกชั้น ไม่ใช่แค่ทั้งหน้า
+  // เบราว์เซอร์ที่ไม่มี showPopover ข้ามทั้งก้อน แผงจะวางใต้ช่องด้วย position absolute แบบเดิม
+  useIsomorphicLayoutEffect(() => {
+    const panel = panelRef.current;
+    const field = fieldRef.current;
+    if (!open || !panel || !field || typeof panel.showPopover !== 'function') return undefined;
+    try {
+      panel.showPopover();
+    } catch {
+      return undefined;
+    }
+
+    const place = () => {
+      const box = field.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      // ระยะห่างจากช่องอ่านจาก token dropdown/panel-offset ที่ผูกไว้กับ --dd-panel-offset
+      const offset = parseFloat(getComputedStyle(panel).getPropertyValue('--dd-panel-offset')) || 0;
+      panel.style.maxHeight = '';
+      const needed = panel.offsetHeight + offset;
+      const below = viewportHeight - box.bottom;
+      const above = box.top;
+      const upward = below < needed && above > below;
+      const room = (upward ? above : below) - offset;
+
+      panel.dataset.placement = upward ? 'top' : 'bottom';
+      panel.style.setProperty('--dd-float-left', `${box.left}px`);
+      panel.style.setProperty('--dd-float-width', `${box.width}px`);
+      panel.style.setProperty('--dd-float-top', upward ? 'auto' : `${box.bottom}px`);
+      panel.style.setProperty('--dd-float-bottom', upward ? `${viewportHeight - box.top}px` : 'auto');
+      // จอเตี้ยจนไม่มีด้านไหนพอ ให้แผงสั้นลงเท่าที่ว่างแล้วเลื่อนในแผงแทน
+      if (needed - offset > room) panel.style.maxHeight = `${Math.max(room, 0)}px`;
+    };
+
+    place();
+    let frame = 0;
+    const schedule = (event?: Event) => {
+      if (event?.target === panel) return; // การเลื่อนรายการในแผงเองไม่ต้องย้ายแผง
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(place);
+    };
+    window.addEventListener('scroll', schedule, true);
+    window.addEventListener('resize', schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule, true);
+      window.removeEventListener('resize', schedule);
+    };
+  }, [open]);
+
+  // เลื่อนแถวที่ชี้อยู่ให้เห็น โดยเลื่อนเฉพาะในแผง
+  // ไม่ใช้ scrollIntoView เพราะมันเลื่อนกรอบแม่ทุกชั้นด้วย กรอบของ Table เคยเลื่อนเองจนชื่อตารางโดนตัด (เจอ 2026-11-26)
   // ค้นด้วย data-index ไม่ใช่ id เพราะ id ที่ React สร้างมีเครื่องหมายทวิภาคซึ่งใช้ในตัวเลือก CSS ตรง ๆ ไม่ได้
   useEffect(() => {
-    if (!open || activeIndex < 0) return;
-    const node = panelRef.current?.querySelector<HTMLElement>(`[data-index="${activeIndex}"]`);
-    node?.scrollIntoView({ block: 'nearest' });
+    const panel = panelRef.current;
+    if (!open || activeIndex < 0 || !panel) return;
+    const node = panel.querySelector<HTMLElement>(`[data-index="${activeIndex}"]`);
+    if (!node) return;
+    const top = node.offsetTop;
+    const bottom = top + node.offsetHeight;
+    if (top < panel.scrollTop) panel.scrollTop = top;
+    else if (bottom > panel.scrollTop + panel.clientHeight) panel.scrollTop = bottom - panel.clientHeight;
   }, [open, activeIndex]);
 
   // ── พิมพ์หาตัวเลือก ──────────────────────────────────────
@@ -472,6 +540,8 @@ export function Dropdown({
             id={listboxId}
             role="listbox"
             className={styles.panel}
+            // manual: เปิดปิดเองตามสถานะ open ไม่ให้เบราว์เซอร์ปิดเอง เพราะมีตัวดักคลิกนอกแผงอยู่แล้ว
+            popover="manual"
             tabIndex={-1}
             aria-labelledby={labelId}
             // กันไม่ให้การกดในแผงดึงโฟกัสออกจากช่อง เพราะรูปแบบนี้ให้โฟกัสค้างที่ช่องเสมอ

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Dropdown, type DropdownOption, type DropdownSize } from './Dropdown'
+import { Table } from '../Table'
 import { Preview, Labeled, DoDont, Do, Dont } from '../../.storybook/docs-blocks'
 
 const OPTIONS: DropdownOption[] = [
@@ -102,5 +103,44 @@ export const GoodAndBad: Story = {
         <Dropdown options={OPTIONS} label="จังหวัด" defaultValue="bkk" />
       </Dont>
     </DoDont>
+  ),
+}
+
+// ── ในกรอบที่เลื่อนได้ (story ทดสอบ ไม่ขึ้นหน้า Docs) ─────────────────
+// กรอบของ Table ต้องเลื่อนแนวนอนได้ตาม spec และเมื่อแกนหนึ่งเลื่อนได้ เบราว์เซอร์จะตัดอีกแกนด้วย
+// สอง story นี้ไว้ตรวจว่าแผงไม่โดนกรอบตัด และเปิดขึ้นด้านบนเมื่อด้านล่างไม่พอ
+// เพิ่ม 2026-11-26 จากหน้า 5 จัดการ role ของ ATS ที่แผงในแถวสุดท้ายโดนตัด
+type ReporterRow = { id: string; name: string }
+const REPORTERS: ReporterRow[] = [
+  { id: '1', name: 'สมชาย ใจดี' },
+  { id: '2', name: 'สุดา รักงาน' },
+  { id: '3', name: 'ประเสริฐ มั่นคง' },
+]
+const ReporterTable = () => (
+  <Table<ReporterRow>
+    caption="นักข่าวและจังหวัดที่ประจำ"
+    data={REPORTERS}
+    getRowId={(r) => r.id}
+    columns={[
+      { id: 'name', header: 'นักข่าว', rowHeader: true, accessor: (r) => r.name },
+      { id: 'province', header: 'จังหวัดที่ประจำ', render: () => <Dropdown size="sm" options={OPTIONS} placeholder="เลือกจังหวัด" /> },
+    ]}
+  />
+)
+
+export const InTable: Story = {
+  tags: ['!autodocs'],
+  name: 'ทดสอบ: ในแถวสุดท้ายของตาราง',
+  render: () => <ReporterTable />,
+}
+
+export const NearViewportBottom: Story = {
+  tags: ['!autodocs'],
+  name: 'ทดสอบ: ชิดขอบล่างของจอ',
+  parameters: { layout: 'fullscreen' },
+  render: () => (
+    <div style={{ minHeight: '100vh', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'var(--ntg-size-space-s2-sm)' }}>
+      <ReporterTable />
+    </div>
   ),
 }

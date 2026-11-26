@@ -901,7 +901,9 @@ const AVATAR = {
 const ddRoot = (sel, attrs) => (sel.includes(' ') ? sel.replace(' ', `${attrs} `) : `.root${attrs} ${sel}`)
 const DROPDOWN_FIELD_STATES = {
   default: (sel) => sel,
-  hover: (sel) => `${ddRoot(sel, ':not([data-error]):not([data-disabled]):not([data-readonly])')}:hover`,
+  // :not([data-open]) เพราะไฟล์ออกแบบแยกสถานะ open ออกจาก hover เมื่อแผงเปิดอยู่ ช่องต้องแสดงสถานะ open แม้เมาส์ยังชี้
+  // (เดิมกฎ hover มีน้ำหนักมากกว่าเลยทับสถานะ open เจอ 2026-11-26)
+  hover: (sel) => `${ddRoot(sel, ':not([data-error]):not([data-disabled]):not([data-readonly]):not([data-open])')}:hover`,
   focused: (sel) => `${ddRoot(sel, ':not([data-error])')}:focus-visible`,
   open: (sel) => ddRoot(sel, '[data-open]'),
   error: (sel) => ddRoot(sel, '[data-error]'),

@@ -15,6 +15,8 @@
  *   2. สถานะของช่องเป็น data attribute ของ root (open disabled readonly error) + :hover/:focus-visible ของปุ่ม
  *   3. ชั้นข้อความในช่องของไฟล์ออกแบบเป็น placeholder ตอนพักและข้อความที่เลือกตอน hover/focused ตัวสร้างแยกเป็น --dd-placeholder / --dd-text
  *   4. แถวที่คีย์บอร์ดชี้ (data-active) ใช้วงแหวนโฟกัสของไฟล์ออกแบบวาดเข้าด้านในเพื่อไม่ให้ล้นแผง
+ *   5. แผงเปิดเป็น popover ลอยชั้นบนสุด ตำแหน่งมาจาก Dropdown.tsx ผ่าน --dd-float-* (แก้ 2026-11-26)
+ *      เบราว์เซอร์ที่ไม่มี popover ใช้กฎ .panel แบบ absolute ใต้ช่องตามเดิม
  */
 
 .root {
@@ -106,9 +108,21 @@
   background: var(--dd-panel-bg, transparent);
   box-shadow: inset 0 0 0 var(--dd-panel-border-w, 0px) var(--dd-panel-border, transparent), var(--dd-panel-shadow, 0 0 0 0 transparent);
 }
-.sm .panel { margin-top: var(--ntg-dropdown-panel-offset-sm); max-height: var(--ntg-dropdown-panel-max-height-sm); }
-.md .panel { margin-top: var(--ntg-dropdown-panel-offset-md); max-height: var(--ntg-dropdown-panel-max-height-md); }
-.lg .panel { margin-top: var(--ntg-dropdown-panel-offset-lg); max-height: var(--ntg-dropdown-panel-max-height-lg); }
+/* ล้างค่าตั้งต้นที่เบราว์เซอร์ใส่ให้ popover (ขอบ ระยะนอก สีตัวอักษร) ต้องอยู่ก่อนกฎต่อขนาด ระยะห่างจากช่องจึงชนะ */
+.panel[popover] { margin: 0; border: 0; color: inherit; }
+.panel:popover-open {
+  position: fixed;
+  inset: auto;
+  top: var(--dd-float-top, auto);
+  bottom: var(--dd-float-bottom, auto);
+  left: var(--dd-float-left, auto);
+  width: var(--dd-float-width, auto);
+}
+.sm .panel { --dd-panel-offset: var(--ntg-dropdown-panel-offset-sm); margin-top: var(--dd-panel-offset); max-height: var(--ntg-dropdown-panel-max-height-sm); }
+.md .panel { --dd-panel-offset: var(--ntg-dropdown-panel-offset-md); margin-top: var(--dd-panel-offset); max-height: var(--ntg-dropdown-panel-max-height-md); }
+.lg .panel { --dd-panel-offset: var(--ntg-dropdown-panel-offset-lg); margin-top: var(--dd-panel-offset); max-height: var(--ntg-dropdown-panel-max-height-lg); }
+/* เปิดขึ้นด้านบน ย้ายระยะห่างจากช่องไปไว้ด้านล่างของแผง */
+.panel[data-placement='top'] { margin-top: 0; margin-bottom: var(--dd-panel-offset); }
 .sm[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-sm); }
 .md[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-md); }
 .lg[data-supporting='true'] .panel { max-height: var(--ntg-dropdown-panel-max-height-supporting-lg); }

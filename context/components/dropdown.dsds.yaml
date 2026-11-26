@@ -18,7 +18,7 @@ description: >-
 
 metadata:
   owner: Nation Design System team
-  updated: {date: 2026-10-27}
+  updated: {date: 2026-11-26}
   tags: [form]
   status: {status: beta}
   aliases: [dropdown-menu, _dropdown-option, _dropdown-group-header, List Item / Dropdown, List Item / Dropdown&Check]
@@ -120,8 +120,14 @@ sections:
       - level: must-not
         statement: Add a variant or prop for the number of options. The number of options is data, not shape.
         checkedBy: manual
-      # NEEDS CLARIFICATION: the panel renders inside the field wrapper with no portal, so a parent with overflow hidden clips it. docs/27-dropdowns.md (common problems) and the Dropdown Accessibility frame in Figma say to move the panel out of the clipping container and wire it back to the field, but Dropdown has no way to do that. May a Dropdown sit inside a clipping container such as a Table cell, and if so how must the panel escape it?
-      # NEEDS CLARIFICATION: the Dropdown Accessibility frame in Figma leaves flipping the panel at the edge of the screen to code, but Dropdown always opens the panel downward. Must the panel flip up when there is no room below?
+      - level: must-not
+        statement: >-
+          Fix a clipped panel by styling the container around the Dropdown, such as overflow or z-index on the Table
+          frame. Since 2026-11-26 the panel floats on the browser's top layer as a popover, positioned from the field,
+          so no scrolling container clips it, and it flips upward when there is no room below (both questions were
+          settled that day, after the panel was clipped in the last Table row of the ATS role page). Browsers without
+          popover fall back to the absolute panel under the field. Report any clipping that remains as a Dropdown bug.
+        checkedBy: manual
 
   - kind: guidelines
     for: all
