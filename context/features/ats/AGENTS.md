@@ -40,11 +40,12 @@
 
 ### Page 1 ภาพรวม (approved by the user 2026-11-24)
 - Page 1 is the whole group at once, with a company filter in the page (set by the user 2026-11-24)
-- Order: updated time, month, company filter, the production box, the two boxes มีครบ 2 แอปหรือมากกว่า and มีไม่ครบ on one row, the two boxes ยังไม่มีแอปเลย and ฝ่ายที่เสี่ยงไม่ถึงเป้า on one row, apps by Runbook Phase, the division list, then "ดูทั้ง <n> ฝ่าย"
-- The production box MUST show "ขึ้น production ครั้งแรก เดือนนี้" as "<n> / 80 แอป" with a `ProgressBar`. "มีครบ 2 แอปหรือมากกว่า" and "มีไม่ครบ" are boxes of their own under it, each with the number of divisions and of apps (moved out of the production box by the user 2026-11-25)
-- A click on "<n> / 80 แอป" opens page 3 filtered to apps first in production this month. A click on any of the four division boxes filters the division list to that group, and a second click shows every division again
-- Apps by Runbook Phase MUST use the `BarChart` and list P1 to P4 under it with each Phase's name instead of a short code (set by the user 2026-11-24). `BarChart` bars can't be pressed, so the P1 to P4 rows under the chart are what opens page 3 filtered to that Phase
-- The division list MUST be the ntgds `Table` on desktop and mobile (set by the user 2026-11-26: every project under the Nation Group brand uses ntgds, no hand-made rows). Columns: ฝ่าย (a `LinkButton` that opens page 2 for that division, the row header), บริษัท, ขึ้นแล้วเทียบเป้า (the count with a `ProgressBar`), สถานะ (a `Badge`). The caption names the group and the month. It is sorted from most at risk and shows the first 5
+- Page 1 MUST read as data visualization, with as little text as possible, so an executive sees at once how many apps sit in each Phase and which divisions have shipped (set by the user 2026-11-26, replacing the box-and-table layout of 2026-11-24)
+- Order: updated time, month, company filter, two number boxes, then two charts side by side on desktop, then the divisions grouped by status
+- Number boxes: the production box "ขึ้น production ครั้งแรก เดือนนี้" as "<n> / 80 แอป" with a `ProgressBar`, and "ฝ่ายที่เสี่ยงไม่ถึงเป้า" with the number. A click on "<n> / 80 แอป" opens page 3 filtered to apps first in production this month. A click on the risk box shows only divisions at risk in the groups below, and a second click shows every division again. The boxes มีครบ 2 แอปหรือมากกว่า, มีไม่ครบ and ยังไม่มีแอปเลย were removed because the groups below carry the same numbers
+- Apps by Phase MUST use the ntgds `PieChart` as a donut, with the total in the middle, every Phase named (`P<n> <name> <count> แอป`, not a short code) and the legend at the end on desktop, at the bottom below 1024. `PieChart` slices can't be pressed, so one `LinkButton` ดูรายการแอป under it opens page 3
+- Divisions by company MUST use the ntgds `BarChart` with two series, ขึ้นแล้ว and ยังไม่ขึ้น, one pair of bars per company
+- Divisions MUST be grouped by status as rows of `Tag` md pill, one tag per division, in this order: ยังไม่ขึ้น (red), ขึ้นแล้วยังไม่ครบ 2 แอป (yellow), ขึ้นครบ 2 แอปหรือมากกว่า (green). Each group heading carries its count, each tag opens page 2 for that division, and inside a group the divisions at risk come first. There is no division table on page 1
 - The company filter is a row of `Tag` sm pill brand, one choice at a time. The chosen tag is primary, the others secondary with default gray
 - NEEDS CLARIFICATION: `Tag` has no selected state for a single choice. Primary on the chosen tag is a stand-in
 
@@ -56,7 +57,7 @@
 ### Page 2 รายฝ่าย
 - Opens from a division row on page 1. Breadcrumb: ภาพรวม › <division>
 - Order: the division name with "ฝ่ายใน <company code> <company name>" under it, month, this month's result, two boxes, the result of the last 6 months, the division's apps
-- This month's result MUST show "<n> / 2 แอป" with a `ProgressBar` and the same status `Badge` as the division row on page 1
+- This month's result MUST show "<n> / 2 แอป" with a `ProgressBar` and the status `Badge` for that division
 - The two boxes "แอปที่อยู่ขั้น 16 ถึง 19" and "แอปทั้งหมดของฝ่าย" only show numbers and can't be pressed
 - The last 6 months MUST be counted backwards from the apps' first production month. The chart is the `BarChart` with the apps as bars and the target of 2 as a line
 - NEEDS CLARIFICATION: the wireframe marks a month that reached the target with a darker bar. `BarChart` can't color one bar, so the target line stands in
@@ -108,7 +109,7 @@
 - Page 5: TextField md, Button brand primary md, Dropdown sm, Toast through ToastStack, TextField md with error, RadioGroup md, Button neutral secondary and brand primary md full width
 - Error page: Icon 2xl, Button brand primary and neutral secondary lg full width
 - Built inside the story from tokens because the system doesn't have them (candidate components, NEEDS CLARIFICATION for the design system team), all in `src/ats.module.css` of `ats-prototype`:
-  - the number box that filters the list when pressed (`button.tile`)
+  - the number box, pressed on page 1 to show only divisions at risk (`button.tile`)
   - the breadcrumb, put together from `LinkButton` neutral sm and the chevron-right `Icon`
   - the path through the Runbook (a vertical stepper with done, current and later states)
 - Every list of rows MUST be the ntgds `Table`, on desktop and mobile, never hand-made rows (set by the user 2026-11-26). The link in the first data column opens the next page, because `Table` has no row click:
