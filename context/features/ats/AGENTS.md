@@ -102,7 +102,7 @@
 - NEEDS CLARIFICATION: ntgds has no illustration for an error page. The prototype shows the error-circle `Icon` at size 2xl
 
 ## Components
-- Page 1: Badge pill sm (status and sample data), Button neutral secondary xs (จัดการ role), Dropdown md (month), Tag pill sm brand (company filter), ProgressBar sm and xs, BarChart, LinkButton neutral md (ดูทั้ง)
+- Page 1: Badge pill sm (sample data), Button neutral secondary xs (จัดการ role), Dropdown md (month), Tag pill sm brand (company filter), Tag pill md red/yellow/green (division groups), ProgressBar sm, PieChart donut, BarChart, LinkButton
 - Page 2: Dropdown md, Badge pill sm, ProgressBar sm, BarChart (bars and a line)
 - Page 3: Tag pill sm brand (Phase filter, and the closable this-month filter), Dropdown md (company, division), LinkButton (ดูอีก), Banner warning md (no app matches)
 - Page 4: Badge pill md, Icon (check in the path)
