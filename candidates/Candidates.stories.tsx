@@ -12,11 +12,13 @@ import { Banner } from '../components/Banner'
  * (เช่น One CMS เสนอตัวเลือกวันที่กับกล่องแชท AI ไว้ใน context/features/one-cms/AGENTS.md)
  * โปรเจกต์อื่นไม่เห็นกัน จึงเสี่ยงสร้างของเดียวกันซ้ำ หน้านี้รวมทุกข้อเสนอไว้ที่เดียว
  *
- * วิธีส่ง candidate
+ * กติกาเต็มอยู่ที่ docs/rules/component-candidate.md ฉบับสำหรับ AI อยู่ที่ candidates/AGENTS.md
+ *
+ * วิธีส่ง candidate โดยย่อ
  * 1. คัดลอก candidates/_template.candidate.yaml ไปเป็น candidates/<ชื่อ>/candidate.yaml แล้วกรอกให้ครบ
  * 2. ตัวอย่างที่กดดูได้ (ถ้ามี) เขียนเป็น story ในโฟลเดอร์เดียวกัน สร้างจาก token --ntg- ล้วน
  *    ห้ามวางใน components/ จนกว่าทีม Design System จะรับและสร้างจริงผ่าน Figma
- * 3. เปิด Pull Request ที่แตะเฉพาะ candidates/ แล้วแจ้งทีม Design System
+ * 3. npm run verify:candidates ให้ผ่าน แล้วเปิด Pull Request ที่แตะเฉพาะ candidates/
  */
 
 type CandidateRow = {
@@ -93,8 +95,8 @@ const meta: Meta = {
         component:
           'ของที่โปรเจกต์ย่อยต้องใช้แต่ระบบยังไม่มี แต่ละรายการมาจาก candidates/<ชื่อ>/candidate.yaml ' +
           'ส่งข้อเสนอโดยคัดลอก candidates/_template.candidate.yaml แล้วเปิด Pull Request ที่แตะเฉพาะ candidates/ ' +
-          'ตัวชั่วคราวในโปรเจกต์ต้องมีวันหมดอายุ รายการที่เลยกำหนดจะขึ้นป้ายแดง ' +
-          'ทีม Design System ตัดสินใน Pull Request แล้วแก้ status ในไฟล์ของรายการนั้น',
+          'ตัวชั่วคราวในโปรเจกต์ต้องมีวันหมดอายุไม่เกิน 30 วัน รายการที่เลยกำหนดจะขึ้นป้ายแดง ' +
+          'ทีม Design System ตัดสินใน Pull Request แล้วแก้ status ในไฟล์ของรายการนั้น กติกาเต็มอยู่ที่ docs/rules/component-candidate.md',
       },
     },
   },

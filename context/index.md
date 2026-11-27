@@ -18,6 +18,7 @@
 | Write copy, check accessibility | [guidelines/](guidelines/AGENTS.md) |
 | Build or change a prototype page for a project | [workflows/prototype/SKILL.md](workflows/prototype/SKILL.md) |
 | Follow the rules of one project | [features/](features/AGENTS.md) |
+| Propose a component the system doesn't have | [../candidates/AGENTS.md](../candidates/AGENTS.md) |
 | Change tokens, scale formulas or the token build | [../tokens/AGENTS.md](../tokens/AGENTS.md) |
 | Change component code | [../components/AGENTS.md](../components/AGENTS.md) |
 | Work inside the Figma file | [workflows/figma-ds-file/SKILL.md](workflows/figma-ds-file/SKILL.md) |
@@ -72,8 +73,7 @@
 - Icon is in [icons/icon.dsds.yaml](icons/icon.dsds.yaml). Deprecated List Item is in [design-system.dsds.yaml](design-system.dsds.yaml)
 
 ## Patterns
-- [patterns/app-header.dsds.yaml](patterns/app-header.dsds.yaml): the top bar of an internal app, logo back to the first page and app actions (from ATS page 1)
-- Patterns are recorded as prototype pages are approved, see [workflows/prototype/SKILL.md](workflows/prototype/SKILL.md). [patterns/_template.dsds.yaml](patterns/_template.dsds.yaml) is the template
+- No pattern written yet. Patterns are recorded as prototype pages are approved, see [workflows/prototype/SKILL.md](workflows/prototype/SKILL.md). [patterns/_template.dsds.yaml](patterns/_template.dsds.yaml) is the template
 
 ## Icons
 - [icons/icon.dsds.yaml](icons/icon.dsds.yaml): how to use Icon, sizes
@@ -82,7 +82,9 @@
 ## Guidelines
 - [guidelines/guidelines.dsds.yaml](guidelines/guidelines.dsds.yaml): writing rules and the shared accessibility rules
 
+## Candidates
+- [../candidates/AGENTS.md](../candidates/AGENTS.md): proposals for components the system doesn't have, one folder each, read by the Candidates section in Storybook. Full rules in Thai: [../docs/rules/component-candidate.md](../docs/rules/component-candidate.md)
+
 ## Features
 - [features/one-cms/AGENTS.md](features/one-cms/AGENTS.md): One CMS, the back office of the group's news websites
-- [features/ats/AGENTS.md](features/ats/AGENTS.md): AI Adoption Tracker System (ATS), the executive view of employee-built apps against the 2-apps-per-division target
 - Rules for one project are recorded in `features/<project>/` as its prototype pages are built. [features/_template/AGENTS.md](features/_template/AGENTS.md) is the template

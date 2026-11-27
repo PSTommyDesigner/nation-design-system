@@ -100,6 +100,7 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [task-done-checklist.md](rules/task-done-checklist.md) | เช็คลิสต์หลังจบงาน รวมทุกฝั่ง Figma Code Storybook GitHub และบันทึกงาน |
 | [task-naming.md](rules/task-naming.md) | กติกาตั้งชื่อการ์ดงานและแม่แบบรายละเอียด 5 หัวข้อ |
 | [worklog.md](rules/worklog.md) | วิธีบันทึกงาน เก็บที่ไหน และสำเนาไป Obsidian อย่างไร |
+| [component-candidate.md](rules/component-candidate.md) | เสนอ component ที่ระบบยังไม่มี วิธีส่ง การตัดสิน และวันหมดอายุของของชั่วคราว |
 
 ### เอกสารประจำหน้า (มีแล้ว 28 จาก 31 หน้า)
 | ชั้น | หน้า |
@@ -128,4 +129,4 @@ tokens/output/css + js             ← เอาไปใช้จริง
 | [component-inventory-research.md](component-inventory-research.md) | รายการชิ้นงานที่ต้องมีและ token ที่ต้องใช้ |
 
 ### บันทึกงาน
-worklog ไม่อยู่ใน repo แล้ว (user สั่ง 2026-11-26) ต้นทางอยู่ที่ `~/Obsidian/Tommy Worklog/.worklog/` ฉบับเฉพาะงาน ntgds อยู่ที่ `~/Obsidian/Nation Design System/` หนึ่งไฟล์ต่อวัน วิธีเขียน บันทึกของงาน และการสำเนาไป Obsidian อยู่ใน [worklog.md](rules/worklog.md)
+บันทึกรายวันอยู่ที่ `docs/daily-log/daily/<เดือนไทย ปีพุทธศักราช>/` หนึ่งไฟล์ต่อวัน วิธีเขียน บันทึกของงาน และการสำเนาไป Obsidian อยู่ใน [worklog.md](rules/worklog.md)

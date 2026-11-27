@@ -46,5 +46,5 @@ The full list for the end of a task, across Figma, code, Storybook, GitHub and t
 - Values were read from the real source, not guessed from a token name, and checked with a screenshot
 - Code edits: `npm run typecheck` shows 0 errors, and the gates in `components/AGENTS.md` or `tokens/AGENTS.md` pass
 - `.dsds.yaml` edits: `node scripts/check-dsds.mjs` passes
-- `candidates/` edits: `npm run verify:candidates` passes. A component the system doesn't have is proposed there, never built in `components/` (see `candidates/_template.candidate.yaml` and the Candidates section in Storybook)
+- `candidates/` edits: `npm run verify:candidates` passes. A component the system doesn't have is proposed there, never built in `components/`. Rules: `candidates/AGENTS.md`, in Thai `docs/rules/component-candidate.md`
 - End with a summary: what you did, files changed, components and tokens used (say which are beta), and the sync step still needed
